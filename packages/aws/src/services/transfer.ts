@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -2059,7 +2059,7 @@ export const deleteWebAppCustomization: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(544, __c34, 0) as any as S.Schema<DeleteWebAppCustomizationRequest>,
-  output: __S(545, __c34, 1) as any as S.Schema<DeleteWebAppCustomizationResponse>,
+  output: __S(384, __c24, 0) as any as S.Schema<DeleteWebAppCustomizationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3806,7 +3806,7 @@ export const updateWebAppCustomization: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1424, __c89, 0) as any as S.Schema<UpdateWebAppCustomizationRequest>,
-  output: __S(1425, __c89, 1) as any as S.Schema<UpdateWebAppCustomizationResponse>,
+  output: __S(304, __c19, 0) as any as S.Schema<UpdateWebAppCustomizationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3902,9 +3902,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ ResourceConfigurationArn: S.String, PortNumber: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "ConnectorVpcLatticeEgressConfig",
-      });
+      ).annotate({ identifier: "ConnectorVpcLatticeEgressConfig" });
     case 1:
       return S.Union([/*@__PURE__*/ S.Struct({ VpcLattice: __S(96, __c6, 0) })]);
   }
@@ -3914,9 +3912,7 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ Url: S.optional(S.String), ServerIds: S.optional(__S(80, __c5, 0)) }),
-      ).annotate({
-        identifier: "As2AsyncMdnConnectorConfig",
-      });
+      ).annotate({ identifier: "As2AsyncMdnConnectorConfig" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4258,9 +4254,7 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAccessResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteAccessResponse" });
   }
 }
 function __c25(j: number): any {
@@ -4330,9 +4324,7 @@ function __c31(j: number): any {
         S.Struct({ ServerId: S.String, SshPublicKeyId: S.String, UserName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteSshPublicKeyRequest",
-      });
+      ).annotate({ identifier: "DeleteSshPublicKeyRequest" });
   }
 }
 function __c32(j: number): any {
@@ -4369,13 +4361,7 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteWebAppCustomizationRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteWebAppCustomizationResponse",
-      });
+      ).annotate({ identifier: "DeleteWebAppCustomizationRequest" });
   }
 }
 function __c35(j: number): any {
@@ -4453,9 +4439,7 @@ function __c38(j: number): any {
         S.Struct({ CertificateId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeCertificateRequest",
-      });
+      ).annotate({ identifier: "DescribeCertificateRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4564,9 +4548,7 @@ function __c40(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({ WorkflowId: S.String, Execution: __S(646, __c40, 6) }),
-      ).annotate({
-        identifier: "DescribeExecutionResponse",
-      });
+      ).annotate({ identifier: "DescribeExecutionResponse" });
   }
 }
 function __c41(j: number): any {
@@ -4655,9 +4637,7 @@ function __c44(j: number): any {
         S.Struct({ SecurityPolicyName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeSecurityPolicyRequest",
-      });
+      ).annotate({ identifier: "DescribeSecurityPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4774,9 +4754,7 @@ function __c47(j: number): any {
           InstanceArn: S.optional(S.String),
           Role: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribedIdentityCenterConfig",
-      });
+      ).annotate({ identifier: "DescribedIdentityCenterConfig" });
     case 2:
       return S.Union([/*@__PURE__*/ S.Struct({ IdentityCenterConfig: __S(753, __c47, 1) })]);
     case 3:
@@ -4824,9 +4802,7 @@ function __c48(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeWebAppCustomizationRequest",
-      });
+      ).annotate({ identifier: "DescribeWebAppCustomizationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4836,9 +4812,7 @@ function __c48(j: number): any {
           LogoFile: S.optional(SensitiveBlob),
           FaviconFile: S.optional(SensitiveBlob),
         }),
-      ).annotate({
-        identifier: "DescribedWebAppCustomization",
-      });
+      ).annotate({ identifier: "DescribedWebAppCustomization" });
     case 2:
       return S.suspend(() => S.Struct({ WebAppCustomization: __S(769, __c48, 1) })).annotate({
         identifier: "DescribeWebAppCustomizationResponse",
@@ -4924,15 +4898,11 @@ function __c54(j: number): any {
         S.Struct({ ServerId: S.String, SshPublicKeyBody: S.String, UserName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ImportSshPublicKeyRequest",
-      });
+      ).annotate({ identifier: "ImportSshPublicKeyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ServerId: S.String, SshPublicKeyId: S.String, UserName: S.String }),
-      ).annotate({
-        identifier: "ImportSshPublicKeyResponse",
-      });
+      ).annotate({ identifier: "ImportSshPublicKeyResponse" });
   }
 }
 function __c55(j: number): any {
@@ -5099,9 +5069,7 @@ function __c60(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListFileTransferResultsRequest",
-      });
+      ).annotate({ identifier: "ListFileTransferResultsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5110,17 +5078,13 @@ function __c60(j: number): any {
           FailureCode: S.optional(S.String),
           FailureMessage: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ConnectorFileTransferResult",
-      });
+      ).annotate({ identifier: "ConnectorFileTransferResult" });
     case 2:
       return S.Array(__S(961, __c60, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ FileTransferResults: __S(962, __c60, 2), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListFileTransferResultsResponse",
-      });
+      ).annotate({ identifier: "ListFileTransferResultsResponse" });
   }
 }
 function __c61(j: number): any {
@@ -5190,15 +5154,11 @@ function __c63(j: number): any {
         S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListSecurityPoliciesRequest",
-      });
+      ).annotate({ identifier: "ListSecurityPoliciesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), SecurityPolicyNames: __S(80, __c5, 0) }),
-      ).annotate({
-        identifier: "ListSecurityPoliciesResponse",
-      });
+      ).annotate({ identifier: "ListSecurityPoliciesResponse" });
   }
 }
 function __c64(j: number): any {
@@ -5239,9 +5199,7 @@ function __c65(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5249,9 +5207,7 @@ function __c65(j: number): any {
           NextToken: S.optional(S.String),
           Tags: S.optional(__S(17, __c1, 1)),
         }),
-      ).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
+      ).annotate({ identifier: "ListTagsForResourceResponse" });
   }
 }
 function __c66(j: number): any {
@@ -5347,9 +5303,7 @@ function __c69(j: number): any {
           Token: S.String,
           Status: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SendWorkflowStepStateRequest",
-      });
+      ).annotate({ identifier: "SendWorkflowStepStateRequest" });
   }
 }
 function __c70(j: number): any {
@@ -5362,9 +5316,7 @@ function __c70(j: number): any {
           MaxItems: S.optional(S.Number),
           OutputDirectoryPath: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartDirectoryListingRequest",
-      });
+      ).annotate({ identifier: "StartDirectoryListingRequest" });
     case 1:
       return S.suspend(() => S.Struct({ ListingId: S.String, OutputFileName: S.String })).annotate({
         identifier: "StartDirectoryListingResponse",
@@ -5495,9 +5447,7 @@ function __c78(j: number): any {
           UserName: S.String,
           UserPassword: S.optional(SensitiveString),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "TestIdentityProviderRequest",
-      });
+      ).annotate({ identifier: "TestIdentityProviderRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5506,9 +5456,7 @@ function __c78(j: number): any {
           Message: S.optional(S.String),
           Url: S.String,
         }),
-      ).annotate({
-        identifier: "TestIdentityProviderResponse",
-      });
+      ).annotate({ identifier: "TestIdentityProviderResponse" });
   }
 }
 function __c79(j: number): any {
@@ -5579,9 +5527,7 @@ function __c83(j: number): any {
           ResourceConfigurationArn: S.optional(S.String),
           PortNumber: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "UpdateConnectorVpcLatticeEgressConfig",
-      });
+      ).annotate({ identifier: "UpdateConnectorVpcLatticeEgressConfig" });
     case 1:
       return S.Union([/*@__PURE__*/ S.Struct({ VpcLattice: __S(1328, __c83, 0) })]);
     case 2:
@@ -5673,10 +5619,7 @@ function __c88(j: number): any {
       return S.Union([/*@__PURE__*/ S.Struct({ IdentityCenterConfig: __S(1408, __c88, 0) })]);
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          SubnetIds: S.optional(__S(80, __c5, 0)),
-          IpAddressType: S.optional(S.String),
-        }),
+        S.Struct({ SubnetIds: S.optional(__S(80, __c5, 0)), IpAddressType: S.optional(S.String) }),
       ).annotate({ identifier: "UpdateWebAppVpcConfig" });
     case 3:
       return S.Union([/*@__PURE__*/ S.Struct({ Vpc: __S(1410, __c88, 2) })]);
@@ -5713,13 +5656,7 @@ function __c89(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateWebAppCustomizationRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ WebAppId: S.String })).annotate({
-        identifier: "UpdateWebAppCustomizationResponse",
-      });
+      ).annotate({ identifier: "UpdateWebAppCustomizationRequest" });
   }
 }
 function __c90(j: number): any {

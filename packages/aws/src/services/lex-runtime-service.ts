@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -747,11 +747,7 @@ function __c2(j: number): any {
       return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          timeToLive: __S(33, __c2, 1),
-          parameters: __S(34, __c2, 2),
-        }),
+        S.Struct({ name: S.String, timeToLive: __S(33, __c2, 1), parameters: __S(34, __c2, 2) }),
       ).annotate({ identifier: "ActiveContext" });
     case 4:
       return S.Array(__S(35, __c2, 3));

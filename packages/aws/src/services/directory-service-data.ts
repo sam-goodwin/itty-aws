@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -85,9 +85,7 @@ export class AccessDeniedException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       Reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({
-          identifier: "AccessDeniedReason",
-        }),
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "AccessDeniedReason" }),
       ),
     },
     /*@__PURE__*/ T.HttpError(403),
@@ -917,7 +915,7 @@ export const removeGroupMember: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(44, __c11, 0) as any as S.Schema<RemoveGroupMemberRequest>,
-  output: __S(45, __c11, 1) as any as S.Schema<RemoveGroupMemberResult>,
+  output: __S(68, __c17, 0) as any as S.Schema<RemoveGroupMemberResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1352,9 +1350,7 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListGroupsForMemberRequest",
-      });
+      ).annotate({ identifier: "ListGroupsForMemberRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1364,9 +1360,7 @@ function __c9(j: number): any {
           Groups: S.optional(__S(33, __c8, 1)),
           NextToken: S.optional(SensitiveString),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListGroupsForMemberResult",
-      });
+      ).annotate({ identifier: "ListGroupsForMemberResult" });
   }
 }
 function __c10(j: number): any {
@@ -1435,10 +1429,6 @@ function __c11(j: number): any {
           ),
         ),
       ).annotate({ identifier: "RemoveGroupMemberRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "RemoveGroupMemberResult",
-      });
   }
 }
 function __c12(j: number): any {

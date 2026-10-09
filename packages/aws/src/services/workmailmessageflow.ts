@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -186,15 +186,11 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetRawMessageContentRequest",
-      });
+      ).annotate({ identifier: "GetRawMessageContentRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ messageContent: T.StreamingOutput.pipe(T.HttpPayload()) }),
-      ).annotate({
-        identifier: "GetRawMessageContentResponse",
-      });
+      ).annotate({ identifier: "GetRawMessageContentResponse" });
   }
 }
 function __c1(j: number): any {
@@ -222,13 +218,9 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutRawMessageContentRequest",
-      });
+      ).annotate({ identifier: "PutRawMessageContentRequest" });
     case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "PutRawMessageContentResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "PutRawMessageContentResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1668,9 +1668,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ AdminUsername: S.String, AdminPassword: SensitiveString }),
-      ).annotate({
-        identifier: "MemberFabricConfiguration",
-      });
+      ).annotate({ identifier: "MemberFabricConfiguration" });
     case 1:
       return S.suspend(() => S.Struct({ Fabric: S.optional(__S(24, __c3, 0)) })).annotate({
         identifier: "MemberFrameworkConfiguration",
@@ -1802,9 +1800,7 @@ function __c9(j: number): any {
           ChaincodeLogs: S.optional(__S(33, __c4, 1)),
           PeerLogs: S.optional(__S(33, __c4, 1)),
         }),
-      ).annotate({
-        identifier: "NodeFabricLogPublishingConfiguration",
-      });
+      ).annotate({ identifier: "NodeFabricLogPublishingConfiguration" });
     case 1:
       return S.suspend(() => S.Struct({ Fabric: S.optional(__S(72, __c9, 0)) })).annotate({
         identifier: "NodeLogPublishingConfiguration",
@@ -1882,9 +1878,7 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAccessorOutput",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteAccessorOutput" });
   }
 }
 function __c14(j: number): any {
@@ -2039,9 +2033,7 @@ function __c18(j: number): any {
           Fabric: S.optional(__S(145, __c18, 1)),
           Ethereum: S.optional(__S(146, __c18, 2)),
         }),
-      ).annotate({
-        identifier: "NetworkFrameworkAttributes",
-      });
+      ).annotate({ identifier: "NetworkFrameworkAttributes" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2437,9 +2429,7 @@ function __c29(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(8, __c1, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",

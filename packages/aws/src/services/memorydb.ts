@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -2106,7 +2106,7 @@ export const describeMultiRegionParameterGroups: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(720, __c45, 0) as any as S.Schema<DescribeMultiRegionParameterGroupsRequest>,
-  output: __S(723, __c45, 3) as any as S.Schema<DescribeMultiRegionParameterGroupsResponse>,
+  output: __S(722, __c45, 2) as any as S.Schema<DescribeMultiRegionParameterGroupsResponse>,
   errors: [
     InvalidParameterCombinationException,
     InvalidParameterValueException,
@@ -2958,9 +2958,7 @@ function __c2(j: number): any {
           ClusterNames: __S(64, __c4, 0),
           ServiceUpdate: S.optional(__S(32, __c2, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "BatchUpdateClusterRequest",
-      });
+      ).annotate({ identifier: "BatchUpdateClusterRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2973,9 +2971,7 @@ function __c2(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(34, __c2, 2)
           .pipe(/*@__PURE__*/ T.XmlName("UnprocessedCluster"))
-          .annotate({
-            identifier: "UnprocessedCluster",
-          }),
+          .annotate({ identifier: "UnprocessedCluster" }),
       );
     case 4:
       return S.suspend(() =>
@@ -2983,9 +2979,7 @@ function __c2(j: number): any {
           ProcessedClusters: S.optional(__S(96, __c6, 0)),
           UnprocessedClusters: S.optional(__S(35, __c2, 3)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "BatchUpdateClusterResponse",
-      });
+      ).annotate({ identifier: "BatchUpdateClusterResponse" });
   }
 }
 function __c3(j: number): any {
@@ -3019,16 +3013,12 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ ServiceUpdateName: S.optional(S.String), Status: S.optional(S.String) }),
-      ).annotate({
-        identifier: "PendingModifiedServiceUpdate",
-      });
+      ).annotate({ identifier: "PendingModifiedServiceUpdate" });
     case 4:
       return S.Array(
         /*@__PURE__*/ __S(83, __c5, 3)
           .pipe(/*@__PURE__*/ T.XmlName("PendingModifiedServiceUpdate"))
-          .annotate({
-            identifier: "PendingModifiedServiceUpdate",
-          }),
+          .annotate({ identifier: "PendingModifiedServiceUpdate" }),
       );
     case 5:
       return S.suspend(() =>
@@ -3117,9 +3107,9 @@ function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ __S(92, __c5, 12).pipe(/*@__PURE__*/ T.XmlName("Cluster")).annotate({
-          identifier: "Cluster",
-        }),
+        /*@__PURE__*/ __S(92, __c5, 12)
+          .pipe(/*@__PURE__*/ T.XmlName("Cluster"))
+          .annotate({ identifier: "Cluster" }),
       );
   }
 }
@@ -3321,9 +3311,7 @@ function __c17(j: number): any {
           TLSEnabled: S.optional(S.Boolean),
           Tags: S.optional(__S(129, __c8, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateMultiRegionClusterRequest",
-      });
+      ).annotate({ identifier: "CreateMultiRegionClusterRequest" });
   }
 }
 function __c18(j: number): any {
@@ -3339,9 +3327,9 @@ function __c18(j: number): any {
       ).annotate({ identifier: "RegionalCluster" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(288, __c18, 0).pipe(/*@__PURE__*/ T.XmlName("RegionalCluster")).annotate({
-          identifier: "RegionalCluster",
-        }),
+        /*@__PURE__*/ __S(288, __c18, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("RegionalCluster"))
+          .annotate({ identifier: "RegionalCluster" }),
       );
     case 2:
       return S.suspend(() =>
@@ -3366,9 +3354,7 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ MultiRegionCluster: S.optional(__S(290, __c18, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateMultiRegionClusterResponse",
-      });
+      ).annotate({ identifier: "CreateMultiRegionClusterResponse" });
   }
 }
 function __c20(j: number): any {
@@ -3381,9 +3367,7 @@ function __c20(j: number): any {
           Description: S.optional(S.String),
           Tags: S.optional(__S(129, __c8, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateParameterGroupRequest",
-      });
+      ).annotate({ identifier: "CreateParameterGroupRequest" });
   }
 }
 function __c21(j: number): any {
@@ -3404,9 +3388,7 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ ParameterGroup: S.optional(__S(336, __c21, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateParameterGroupResponse",
-      });
+      ).annotate({ identifier: "CreateParameterGroupResponse" });
   }
 }
 function __c23(j: number): any {
@@ -3446,9 +3428,7 @@ function __c26(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ SubnetGroup: S.optional(__S(451, __c28, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateSubnetGroupResponse",
-      });
+      ).annotate({ identifier: "CreateSubnetGroupResponse" });
   }
 }
 function __c27(j: number): any {
@@ -3507,10 +3487,7 @@ function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          Type: S.optional(S.String),
-          Passwords: S.optional(S.Array(SensitiveString)),
-        }),
+        S.Struct({ Type: S.optional(S.String), Passwords: S.optional(S.Array(SensitiveString)) }),
       ).annotate({ identifier: "AuthenticationMode" });
   }
 }
@@ -3571,9 +3548,7 @@ function __c35(j: number): any {
         S.Struct({ MultiRegionClusterName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteMultiRegionClusterRequest",
-      });
+      ).annotate({ identifier: "DeleteMultiRegionClusterRequest" });
   }
 }
 function __c36(j: number): any {
@@ -3583,9 +3558,7 @@ function __c36(j: number): any {
         S.Struct({ ParameterGroupName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteParameterGroupRequest",
-      });
+      ).annotate({ identifier: "DeleteParameterGroupRequest" });
   }
 }
 function __c37(j: number): any {
@@ -3669,9 +3642,7 @@ function __c42(j: number): any {
           NextToken: S.optional(S.String),
           DefaultOnly: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeEngineVersionsRequest",
-      });
+      ).annotate({ identifier: "DescribeEngineVersionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3689,9 +3660,7 @@ function __c42(j: number): any {
           NextToken: S.optional(S.String),
           EngineVersions: S.optional(__S(674, __c42, 2)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeEngineVersionsResponse",
-      });
+      ).annotate({ identifier: "DescribeEngineVersionsResponse" });
   }
 }
 function __c43(j: number): any {
@@ -3741,9 +3710,7 @@ function __c44(j: number): any {
           NextToken: S.optional(S.String),
           ShowClusterDetails: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeMultiRegionClustersRequest",
-      });
+      ).annotate({ identifier: "DescribeMultiRegionClustersRequest" });
     case 1:
       return S.Array(__S(290, __c18, 2));
     case 2:
@@ -3752,9 +3719,7 @@ function __c44(j: number): any {
           NextToken: S.optional(S.String),
           MultiRegionClusters: S.optional(__S(705, __c44, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeMultiRegionClustersResponse",
-      });
+      ).annotate({ identifier: "DescribeMultiRegionClustersResponse" });
   }
 }
 function __c45(j: number): any {
@@ -3766,37 +3731,20 @@ function __c45(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeMultiRegionParameterGroupsRequest",
-      });
+      ).annotate({ identifier: "DescribeMultiRegionParameterGroupsRequest" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Family: S.optional(S.String),
-          Description: S.optional(S.String),
-          ARN: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MultiRegionParameterGroup",
-      });
-    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(721, __c45, 1)
+        /*@__PURE__*/ __S(336, __c21, 0)
           .pipe(/*@__PURE__*/ T.XmlName("MultiRegionParameterGroup"))
-          .annotate({
-            identifier: "MultiRegionParameterGroup",
-          }),
+          .annotate({ identifier: "MultiRegionParameterGroup" }),
       );
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          MultiRegionParameterGroups: S.optional(__S(722, __c45, 2)),
+          MultiRegionParameterGroups: S.optional(__S(721, __c45, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeMultiRegionParameterGroupsResponse",
-      });
+      ).annotate({ identifier: "DescribeMultiRegionParameterGroupsResponse" });
   }
 }
 function __c46(j: number): any {
@@ -3809,9 +3757,7 @@ function __c46(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeMultiRegionParametersRequest",
-      });
+      ).annotate({ identifier: "DescribeMultiRegionParametersRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3828,9 +3774,7 @@ function __c46(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(737, __c46, 1)
           .pipe(/*@__PURE__*/ T.XmlName("MultiRegionParameter"))
-          .annotate({
-            identifier: "MultiRegionParameter",
-          }),
+          .annotate({ identifier: "MultiRegionParameter" }),
       );
     case 3:
       return S.suspend(() =>
@@ -3838,9 +3782,7 @@ function __c46(j: number): any {
           NextToken: S.optional(S.String),
           MultiRegionParameters: S.optional(__S(738, __c46, 2)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeMultiRegionParametersResponse",
-      });
+      ).annotate({ identifier: "DescribeMultiRegionParametersResponse" });
   }
 }
 function __c47(j: number): any {
@@ -3852,14 +3794,12 @@ function __c47(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeParameterGroupsRequest",
-      });
+      ).annotate({ identifier: "DescribeParameterGroupsRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(336, __c21, 0).pipe(/*@__PURE__*/ T.XmlName("ParameterGroup")).annotate({
-          identifier: "ParameterGroup",
-        }),
+        /*@__PURE__*/ __S(336, __c21, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("ParameterGroup"))
+          .annotate({ identifier: "ParameterGroup" }),
       );
     case 2:
       return S.suspend(() =>
@@ -3867,9 +3807,7 @@ function __c47(j: number): any {
           NextToken: S.optional(S.String),
           ParameterGroups: S.optional(__S(753, __c47, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeParameterGroupsResponse",
-      });
+      ).annotate({ identifier: "DescribeParameterGroupsResponse" });
   }
 }
 function __c48(j: number): any {
@@ -3881,9 +3819,7 @@ function __c48(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeParametersRequest",
-      });
+      ).annotate({ identifier: "DescribeParametersRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3897,9 +3833,9 @@ function __c48(j: number): any {
       ).annotate({ identifier: "Parameter" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(769, __c48, 1).pipe(/*@__PURE__*/ T.XmlName("Parameter")).annotate({
-          identifier: "Parameter",
-        }),
+        /*@__PURE__*/ __S(769, __c48, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("Parameter"))
+          .annotate({ identifier: "Parameter" }),
       );
     case 3:
       return S.suspend(() =>
@@ -3907,9 +3843,7 @@ function __c48(j: number): any {
           NextToken: S.optional(S.String),
           Parameters: S.optional(__S(770, __c48, 2)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeParametersResponse",
-      });
+      ).annotate({ identifier: "DescribeParametersResponse" });
   }
 }
 function __c49(j: number): any {
@@ -3925,14 +3859,12 @@ function __c49(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeReservedNodesRequest",
-      });
+      ).annotate({ identifier: "DescribeReservedNodesRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(816, __c51, 0).pipe(/*@__PURE__*/ T.XmlName("ReservedNode")).annotate({
-          identifier: "ReservedNode",
-        }),
+        /*@__PURE__*/ __S(816, __c51, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("ReservedNode"))
+          .annotate({ identifier: "ReservedNode" }),
       );
     case 2:
       return S.suspend(() =>
@@ -3940,9 +3872,7 @@ function __c49(j: number): any {
           NextToken: S.optional(S.String),
           ReservedNodes: S.optional(__S(785, __c49, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeReservedNodesResponse",
-      });
+      ).annotate({ identifier: "DescribeReservedNodesResponse" });
   }
 }
 function __c50(j: number): any {
@@ -3956,9 +3886,9 @@ function __c50(j: number): any {
       ).annotate({ identifier: "RecurringCharge" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(800, __c50, 0).pipe(/*@__PURE__*/ T.XmlName("RecurringCharge")).annotate({
-          identifier: "RecurringCharge",
-        }),
+        /*@__PURE__*/ __S(800, __c50, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("RecurringCharge"))
+          .annotate({ identifier: "RecurringCharge" }),
       );
   }
 }
@@ -3994,9 +3924,7 @@ function __c52(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeReservedNodesOfferingsRequest",
-      });
+      ).annotate({ identifier: "DescribeReservedNodesOfferingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4012,9 +3940,7 @@ function __c52(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(833, __c52, 1)
           .pipe(/*@__PURE__*/ T.XmlName("ReservedNodesOffering"))
-          .annotate({
-            identifier: "ReservedNodesOffering",
-          }),
+          .annotate({ identifier: "ReservedNodesOffering" }),
       );
     case 3:
       return S.suspend(() =>
@@ -4022,9 +3948,7 @@ function __c52(j: number): any {
           NextToken: S.optional(S.String),
           ReservedNodesOfferings: S.optional(__S(834, __c52, 2)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeReservedNodesOfferingsResponse",
-      });
+      ).annotate({ identifier: "DescribeReservedNodesOfferingsResponse" });
   }
 }
 function __c53(j: number): any {
@@ -4038,9 +3962,7 @@ function __c53(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeServiceUpdatesRequest",
-      });
+      ).annotate({ identifier: "DescribeServiceUpdatesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4057,9 +3979,9 @@ function __c53(j: number): any {
       ).annotate({ identifier: "ServiceUpdate" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(849, __c53, 1).pipe(/*@__PURE__*/ T.XmlName("ServiceUpdate")).annotate({
-          identifier: "ServiceUpdate",
-        }),
+        /*@__PURE__*/ __S(849, __c53, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("ServiceUpdate"))
+          .annotate({ identifier: "ServiceUpdate" }),
       );
     case 3:
       return S.suspend(() =>
@@ -4067,9 +3989,7 @@ function __c53(j: number): any {
           NextToken: S.optional(S.String),
           ServiceUpdates: S.optional(__S(850, __c53, 2)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeServiceUpdatesResponse",
-      });
+      ).annotate({ identifier: "DescribeServiceUpdatesResponse" });
   }
 }
 function __c54(j: number): any {
@@ -4093,9 +4013,7 @@ function __c54(j: number): any {
           NextToken: S.optional(S.String),
           Snapshots: S.optional(__S(865, __c54, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeSnapshotsResponse",
-      });
+      ).annotate({ identifier: "DescribeSnapshotsResponse" });
   }
 }
 function __c55(j: number): any {
@@ -4107,9 +4025,7 @@ function __c55(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeSubnetGroupsRequest",
-      });
+      ).annotate({ identifier: "DescribeSubnetGroupsRequest" });
     case 1:
       return S.Array(__S(451, __c28, 3));
     case 2:
@@ -4118,9 +4034,7 @@ function __c55(j: number): any {
           NextToken: S.optional(S.String),
           SubnetGroups: S.optional(__S(881, __c55, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeSubnetGroupsResponse",
-      });
+      ).annotate({ identifier: "DescribeSubnetGroupsResponse" });
   }
 }
 function __c56(j: number): any {
@@ -4167,9 +4081,7 @@ function __c58(j: number): any {
         S.Struct({ MultiRegionClusterName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListAllowedMultiRegionClusterUpdatesRequest",
-      });
+      ).annotate({ identifier: "ListAllowedMultiRegionClusterUpdatesRequest" });
   }
 }
 function __c59(j: number): any {
@@ -4180,9 +4092,7 @@ function __c59(j: number): any {
           ScaleUpNodeTypes: S.optional(__S(64, __c4, 0)),
           ScaleDownNodeTypes: S.optional(__S(64, __c4, 0)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListAllowedMultiRegionClusterUpdatesResponse",
-      });
+      ).annotate({ identifier: "ListAllowedMultiRegionClusterUpdatesResponse" });
   }
 }
 function __c60(j: number): any {
@@ -4192,9 +4102,7 @@ function __c60(j: number): any {
         S.Struct({ ClusterName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListAllowedNodeTypeUpdatesRequest",
-      });
+      ).annotate({ identifier: "ListAllowedNodeTypeUpdatesRequest" });
   }
 }
 function __c61(j: number): any {
@@ -4225,15 +4133,11 @@ function __c63(j: number): any {
           NodeCount: S.optional(S.Number),
           Tags: S.optional(__S(129, __c8, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PurchaseReservedNodesOfferingRequest",
-      });
+      ).annotate({ identifier: "PurchaseReservedNodesOfferingRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ReservedNode: S.optional(__S(816, __c51, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "PurchaseReservedNodesOfferingResponse",
-      });
+      ).annotate({ identifier: "PurchaseReservedNodesOfferingResponse" });
   }
 }
 function __c64(j: number): any {
@@ -4245,9 +4149,7 @@ function __c64(j: number): any {
           AllParameters: S.optional(S.Boolean),
           ParameterNames: S.optional(__S(64, __c4, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ResetParameterGroupRequest",
-      });
+      ).annotate({ identifier: "ResetParameterGroupRequest" });
   }
 }
 function __c65(j: number): any {
@@ -4332,9 +4234,7 @@ function __c70(j: number): any {
           MultiRegionParameterGroupName: S.optional(S.String),
           UpdateStrategy: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateMultiRegionClusterRequest",
-      });
+      ).annotate({ identifier: "UpdateMultiRegionClusterRequest" });
   }
 }
 function __c71(j: number): any {
@@ -4347,18 +4247,14 @@ function __c71(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(1136, __c71, 0)
           .pipe(/*@__PURE__*/ T.XmlName("ParameterNameValue"))
-          .annotate({
-            identifier: "ParameterNameValue",
-          }),
+          .annotate({ identifier: "ParameterNameValue" }),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({ ParameterGroupName: S.String, ParameterNameValues: __S(1137, __c71, 1) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateParameterGroupRequest",
-      });
+      ).annotate({ identifier: "UpdateParameterGroupRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

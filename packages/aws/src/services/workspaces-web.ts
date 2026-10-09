@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1500,7 +1500,7 @@ export const createBrowserSettings: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(48, __c6, 0) as any as S.Schema<CreateBrowserSettingsRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<CreateBrowserSettingsResponse>,
+  output: __S(96, __c12, 0) as any as S.Schema<CreateBrowserSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1533,8 +1533,8 @@ export const createDataProtectionSettings: API.OperationMethod<
   CreateDataProtectionSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<CreateDataProtectionSettingsRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<CreateDataProtectionSettingsResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<CreateDataProtectionSettingsRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<CreateDataProtectionSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1567,8 +1567,8 @@ export const createIdentityProvider: API.OperationMethod<
   CreateIdentityProviderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<CreateIdentityProviderRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<CreateIdentityProviderResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<CreateIdentityProviderRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<CreateIdentityProviderResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1600,8 +1600,8 @@ export const createIpAccessSettings: API.OperationMethod<
   CreateIpAccessSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<CreateIpAccessSettingsRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<CreateIpAccessSettingsResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<CreateIpAccessSettingsRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<CreateIpAccessSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1632,8 +1632,8 @@ export const createNetworkSettings: API.OperationMethod<
   CreateNetworkSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<CreateNetworkSettingsRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<CreateNetworkSettingsResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<CreateNetworkSettingsRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<CreateNetworkSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1665,8 +1665,8 @@ export const createPortal: API.OperationMethod<
   CreatePortalError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<CreatePortalRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<CreatePortalResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<CreatePortalRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<CreatePortalResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1698,8 +1698,8 @@ export const createSessionLogger: API.OperationMethod<
   CreateSessionLoggerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<CreateSessionLoggerRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<CreateSessionLoggerResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<CreateSessionLoggerRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<CreateSessionLoggerResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1730,8 +1730,8 @@ export const createTrustStore: API.OperationMethod<
   CreateTrustStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<CreateTrustStoreRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<CreateTrustStoreResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<CreateTrustStoreRequest>,
+  output: __S(201, __c25, 1) as any as S.Schema<CreateTrustStoreResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1762,8 +1762,8 @@ export const createUserAccessLoggingSettings: API.OperationMethod<
   CreateUserAccessLoggingSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<CreateUserAccessLoggingSettingsRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<CreateUserAccessLoggingSettingsResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<CreateUserAccessLoggingSettingsRequest>,
+  output: __S(209, __c26, 1) as any as S.Schema<CreateUserAccessLoggingSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1795,8 +1795,8 @@ export const createUserSettings: API.OperationMethod<
   CreateUserSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<CreateUserSettingsRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<CreateUserSettingsResponse>,
+  input: __S(217, __c27, 1) as any as S.Schema<CreateUserSettingsRequest>,
+  output: __S(218, __c27, 2) as any as S.Schema<CreateUserSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1827,8 +1827,8 @@ export const deleteBrowserSettings: API.OperationMethod<
   DeleteBrowserSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<DeleteBrowserSettingsRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<DeleteBrowserSettingsResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<DeleteBrowserSettingsRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<DeleteBrowserSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1857,8 +1857,8 @@ export const deleteDataProtectionSettings: API.OperationMethod<
   DeleteDataProtectionSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<DeleteDataProtectionSettingsRequest>,
-  output: __S(256, __c32, 0) as any as S.Schema<DeleteDataProtectionSettingsResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<DeleteDataProtectionSettingsRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<DeleteDataProtectionSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1888,7 +1888,7 @@ export const deleteIdentityProvider: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(264, __c33, 0) as any as S.Schema<DeleteIdentityProviderRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<DeleteIdentityProviderResponse>,
+  output: __S(248, __c31, 0) as any as S.Schema<DeleteIdentityProviderResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1918,7 +1918,7 @@ export const deleteIpAccessSettings: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(272, __c34, 0) as any as S.Schema<DeleteIpAccessSettingsRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<DeleteIpAccessSettingsResponse>,
+  output: __S(248, __c31, 0) as any as S.Schema<DeleteIpAccessSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1948,7 +1948,7 @@ export const deleteNetworkSettings: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(280, __c35, 0) as any as S.Schema<DeleteNetworkSettingsRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<DeleteNetworkSettingsResponse>,
+  output: __S(248, __c31, 0) as any as S.Schema<DeleteNetworkSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1978,7 +1978,7 @@ export const deletePortal: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(288, __c36, 0) as any as S.Schema<DeletePortalRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<DeletePortalResponse>,
+  output: __S(248, __c31, 0) as any as S.Schema<DeletePortalResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2008,7 +2008,7 @@ export const deleteSessionLogger: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(296, __c37, 0) as any as S.Schema<DeleteSessionLoggerRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<DeleteSessionLoggerResponse>,
+  output: __S(248, __c31, 0) as any as S.Schema<DeleteSessionLoggerResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2038,7 +2038,7 @@ export const deleteTrustStore: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(304, __c38, 0) as any as S.Schema<DeleteTrustStoreRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<DeleteTrustStoreResponse>,
+  output: __S(248, __c31, 0) as any as S.Schema<DeleteTrustStoreResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2068,7 +2068,7 @@ export const deleteUserAccessLoggingSettings: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(312, __c39, 0) as any as S.Schema<DeleteUserAccessLoggingSettingsRequest>,
-  output: __S(256, __c32, 0) as any as S.Schema<DeleteUserAccessLoggingSettingsResponse>,
+  output: __S(248, __c31, 0) as any as S.Schema<DeleteUserAccessLoggingSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2098,7 +2098,7 @@ export const deleteUserSettings: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(320, __c40, 0) as any as S.Schema<DeleteUserSettingsRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<DeleteUserSettingsResponse>,
+  output: __S(248, __c31, 0) as any as S.Schema<DeleteUserSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2129,7 +2129,7 @@ export const disassociateBrowserSettings: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(328, __c41, 0) as any as S.Schema<DisassociateBrowserSettingsRequest>,
-  output: __S(256, __c32, 0) as any as S.Schema<DisassociateBrowserSettingsResponse>,
+  output: __S(248, __c31, 0) as any as S.Schema<DisassociateBrowserSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2161,7 +2161,7 @@ export const disassociateDataProtectionSettings: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(336, __c42, 0) as any as S.Schema<DisassociateDataProtectionSettingsRequest>,
-  output: __S(256, __c32, 0) as any as S.Schema<DisassociateDataProtectionSettingsResponse>,
+  output: __S(248, __c31, 0) as any as S.Schema<DisassociateDataProtectionSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2193,7 +2193,7 @@ export const disassociateIpAccessSettings: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(344, __c43, 0) as any as S.Schema<DisassociateIpAccessSettingsRequest>,
-  output: __S(256, __c32, 0) as any as S.Schema<DisassociateIpAccessSettingsResponse>,
+  output: __S(248, __c31, 0) as any as S.Schema<DisassociateIpAccessSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2225,7 +2225,7 @@ export const disassociateNetworkSettings: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(352, __c44, 0) as any as S.Schema<DisassociateNetworkSettingsRequest>,
-  output: __S(256, __c32, 0) as any as S.Schema<DisassociateNetworkSettingsResponse>,
+  output: __S(248, __c31, 0) as any as S.Schema<DisassociateNetworkSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2256,7 +2256,7 @@ export const disassociateSessionLogger: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(360, __c45, 0) as any as S.Schema<DisassociateSessionLoggerRequest>,
-  output: __S(256, __c32, 0) as any as S.Schema<DisassociateSessionLoggerResponse>,
+  output: __S(248, __c31, 0) as any as S.Schema<DisassociateSessionLoggerResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2287,7 +2287,7 @@ export const disassociateTrustStore: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(368, __c46, 0) as any as S.Schema<DisassociateTrustStoreRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<DisassociateTrustStoreResponse>,
+  output: __S(248, __c31, 0) as any as S.Schema<DisassociateTrustStoreResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2319,7 +2319,7 @@ export const disassociateUserAccessLoggingSettings: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(376, __c47, 0) as any as S.Schema<DisassociateUserAccessLoggingSettingsRequest>,
-  output: __S(256, __c32, 0) as any as S.Schema<DisassociateUserAccessLoggingSettingsResponse>,
+  output: __S(248, __c31, 0) as any as S.Schema<DisassociateUserAccessLoggingSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2351,7 +2351,7 @@ export const disassociateUserSettings: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(384, __c48, 0) as any as S.Schema<DisassociateUserSettingsRequest>,
-  output: __S(256, __c32, 0) as any as S.Schema<DisassociateUserSettingsResponse>,
+  output: __S(248, __c31, 0) as any as S.Schema<DisassociateUserSettingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2382,7 +2382,7 @@ export const expireSession: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(392, __c49, 0) as any as S.Schema<ExpireSessionRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<ExpireSessionResponse>,
+  output: __S(248, __c31, 0) as any as S.Schema<ExpireSessionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2802,7 +2802,7 @@ export const listBrowserSettings: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(584, __c73, 0) as any as S.Schema<ListBrowserSettingsRequest>,
-  output: __S(587, __c73, 3) as any as S.Schema<ListBrowserSettingsResponse>,
+  output: __S(586, __c73, 2) as any as S.Schema<ListBrowserSettingsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3248,7 +3248,7 @@ export const tagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(696, __c87, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<TagResourceResponse>,
+  output: __S(248, __c31, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3279,7 +3279,7 @@ export const untagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(704, __c88, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<UntagResourceResponse>,
+  output: __S(248, __c31, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3524,7 +3524,7 @@ export const updateTrustStore: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(776, __c97, 0) as any as S.Schema<UpdateTrustStoreRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<UpdateTrustStoreResponse>,
+  output: __S(201, __c25, 1) as any as S.Schema<UpdateTrustStoreResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3616,15 +3616,11 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateIpAccessSettingsRequest",
-      });
+      ).annotate({ identifier: "AssociateIpAccessSettingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ portalArn: S.String, ipAccessSettingsArn: S.String }),
-      ).annotate({
-        identifier: "AssociateIpAccessSettingsResponse",
-      });
+      ).annotate({ identifier: "AssociateIpAccessSettingsResponse" });
   }
 }
 function __c1(j: number): any {
@@ -3644,15 +3640,11 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateNetworkSettingsRequest",
-      });
+      ).annotate({ identifier: "AssociateNetworkSettingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ portalArn: S.String, networkSettingsArn: S.String }),
-      ).annotate({
-        identifier: "AssociateNetworkSettingsResponse",
-      });
+      ).annotate({ identifier: "AssociateNetworkSettingsResponse" });
   }
 }
 function __c2(j: number): any {
@@ -3672,15 +3664,11 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateSessionLoggerRequest",
-      });
+      ).annotate({ identifier: "AssociateSessionLoggerRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ portalArn: S.String, sessionLoggerArn: S.String }),
-      ).annotate({
-        identifier: "AssociateSessionLoggerResponse",
-      });
+      ).annotate({ identifier: "AssociateSessionLoggerResponse" });
   }
 }
 function __c3(j: number): any {
@@ -3700,9 +3688,7 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateTrustStoreRequest",
-      });
+      ).annotate({ identifier: "AssociateTrustStoreRequest" });
     case 1:
       return S.suspend(() => S.Struct({ portalArn: S.String, trustStoreArn: S.String })).annotate({
         identifier: "AssociateTrustStoreResponse",
@@ -3726,15 +3712,11 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateUserAccessLoggingSettingsRequest",
-      });
+      ).annotate({ identifier: "AssociateUserAccessLoggingSettingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ portalArn: S.String, userAccessLoggingSettingsArn: S.String }),
-      ).annotate({
-        identifier: "AssociateUserAccessLoggingSettingsResponse",
-      });
+      ).annotate({ identifier: "AssociateUserAccessLoggingSettingsResponse" });
   }
 }
 function __c5(j: number): any {
@@ -3754,14 +3736,10 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateUserSettingsRequest",
-      });
+      ).annotate({ identifier: "AssociateUserSettingsRequest" });
     case 1:
       return S.suspend(() => S.Struct({ portalArn: S.String, userSettingsArn: S.String })).annotate(
-        {
-          identifier: "AssociateUserSettingsResponse",
-        },
+        { identifier: "AssociateUserSettingsResponse" },
       );
   }
 }
@@ -3779,13 +3757,7 @@ function __c6(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/browserSettings" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateBrowserSettingsRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ browserSettingsArn: S.String })).annotate({
-        identifier: "CreateBrowserSettingsResponse",
-      });
+      ).annotate({ identifier: "CreateBrowserSettingsRequest" });
   }
 }
 function __c7(j: number): any {
@@ -3825,12 +3797,18 @@ function __c11(j: number): any {
           allowedUrls: S.optional(__S(72, __c9, 0)),
           blockedUrls: S.optional(__S(72, __c9, 0)),
         }),
-      ).annotate({
-        identifier: "WebContentFilteringPolicy",
-      });
+      ).annotate({ identifier: "WebContentFilteringPolicy" });
   }
 }
 function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ browserSettingsArn: S.String })).annotate({
+        identifier: "CreateBrowserSettingsResponse",
+      });
+  }
+}
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3840,7 +3818,7 @@ function __c12(j: number): any {
           tags: S.optional(__S(57, __c7, 1)),
           customerManagedKey: S.optional(S.String),
           additionalEncryptionContext: S.optional(__S(64, __c8, 0)),
-          inlineRedactionConfiguration: S.optional(__S(108, __c13, 4)),
+          inlineRedactionConfiguration: S.optional(__S(116, __c14, 4)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -3852,16 +3830,14 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateDataProtectionSettingsRequest",
-      });
+      ).annotate({ identifier: "CreateDataProtectionSettingsRequest" });
     case 1:
       return S.suspend(() => S.Struct({ dataProtectionSettingsArn: S.String })).annotate({
         identifier: "CreateDataProtectionSettingsResponse",
       });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3883,29 +3859,27 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           builtInPatternId: S.optional(SensitiveString),
-          customPattern: S.optional(__S(104, __c13, 0)),
-          redactionPlaceHolder: __S(105, __c13, 1),
+          customPattern: S.optional(__S(112, __c14, 0)),
+          redactionPlaceHolder: __S(113, __c14, 1),
           enforcedUrls: S.optional(__S(72, __c9, 0)),
           exemptUrls: S.optional(__S(72, __c9, 0)),
           confidenceLevel: S.optional(S.Number),
         }),
       ).annotate({ identifier: "InlineRedactionPattern" });
     case 3:
-      return S.Array(__S(106, __c13, 2));
+      return S.Array(__S(114, __c14, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          inlineRedactionPatterns: __S(107, __c13, 3),
+          inlineRedactionPatterns: __S(115, __c14, 3),
           globalEnforcedUrls: S.optional(__S(72, __c9, 0)),
           globalExemptUrls: S.optional(__S(72, __c9, 0)),
           globalConfidenceLevel: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "InlineRedactionConfiguration",
-      });
+      ).annotate({ identifier: "InlineRedactionConfiguration" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3926,16 +3900,14 @@ function __c14(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateIdentityProviderRequest",
-      });
+      ).annotate({ identifier: "CreateIdentityProviderRequest" });
     case 1:
       return S.suspend(() => S.Struct({ identityProviderArn: S.String })).annotate({
         identifier: "CreateIdentityProviderResponse",
       });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3945,59 +3917,55 @@ function __c15(j: number): any {
           tags: S.optional(__S(57, __c7, 1)),
           customerManagedKey: S.optional(S.String),
           additionalEncryptionContext: S.optional(__S(64, __c8, 0)),
-          ipRules: __S(129, __c16, 1),
+          ipRules: __S(137, __c17, 1),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/ipAccessSettings" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateIpAccessSettingsRequest",
-      });
+      ).annotate({ identifier: "CreateIpAccessSettingsRequest" });
     case 1:
       return S.suspend(() => S.Struct({ ipAccessSettingsArn: S.String })).annotate({
         identifier: "CreateIpAccessSettingsResponse",
       });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ ipRange: SensitiveString, description: S.optional(SensitiveString) }),
       ).annotate({ identifier: "IpRule" });
     case 1:
-      return S.Array(__S(128, __c16, 0));
+      return S.Array(__S(136, __c17, 0));
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           vpcId: S.String,
-          subnetIds: __S(144, __c18, 0),
-          securityGroupIds: __S(144, __c18, 0),
+          subnetIds: __S(152, __c19, 0),
+          securityGroupIds: __S(152, __c19, 0),
           tags: S.optional(__S(57, __c7, 1)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/networkSettings" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateNetworkSettingsRequest",
-      });
+      ).annotate({ identifier: "CreateNetworkSettingsRequest" });
     case 1:
       return S.suspend(() => S.Struct({ networkSettingsArn: S.String })).annotate({
         identifier: "CreateNetworkSettingsResponse",
       });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4019,13 +3987,13 @@ function __c19(j: number): any {
       });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          eventFilter: __S(176, __c22, 0),
-          logConfiguration: __S(169, __c21, 1),
+          eventFilter: __S(184, __c23, 0),
+          logConfiguration: __S(177, __c22, 1),
           displayName: S.optional(SensitiveString),
           customerManagedKey: S.optional(S.String),
           additionalEncryptionContext: S.optional(__S(64, __c8, 0)),
@@ -4034,16 +4002,14 @@ function __c20(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/sessionLoggers" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateSessionLoggerRequest",
-      });
+      ).annotate({ identifier: "CreateSessionLoggerRequest" });
     case 1:
       return S.suspend(() => S.Struct({ sessionLoggerArn: S.String })).annotate({
         identifier: "CreateSessionLoggerResponse",
       });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4056,12 +4022,12 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "S3LogConfiguration" });
     case 1:
-      return S.suspend(() => S.Struct({ s3: S.optional(__S(168, __c21, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ s3: S.optional(__S(176, __c22, 0)) })).annotate({
         identifier: "LogConfiguration",
       });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.Union([
@@ -4070,12 +4036,12 @@ function __c22(j: number): any {
       ]);
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          certificateList: __S(192, __c24, 0),
+          certificateList: __S(200, __c25, 0),
           tags: S.optional(__S(57, __c7, 1)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -4084,7 +4050,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "CreateTrustStoreRequest" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.Array(T.Blob);
@@ -4094,7 +4060,7 @@ function __c24(j: number): any {
       });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4112,30 +4078,26 @@ function __c25(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateUserAccessLoggingSettingsRequest",
-      });
+      ).annotate({ identifier: "CreateUserAccessLoggingSettingsRequest" });
     case 1:
       return S.suspend(() => S.Struct({ userAccessLoggingSettingsArn: S.String })).annotate({
         identifier: "CreateUserAccessLoggingSettingsResponse",
       });
   }
 }
-function __c26(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          logo: __S(224, __c28, 0),
-          wallpaper: S.optional(__S(224, __c28, 0)),
-          favicon: __S(224, __c28, 0),
-          localizedStrings: __S(221, __c27, 5),
+          logo: __S(232, __c29, 0),
+          wallpaper: S.optional(__S(232, __c29, 0)),
+          favicon: __S(232, __c29, 0),
+          localizedStrings: __S(229, __c28, 5),
           colorTheme: S.String,
           termsOfService: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "BrandingConfigurationCreateInput",
-      });
+      ).annotate({ identifier: "BrandingConfigurationCreateInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4148,26 +4110,24 @@ function __c26(j: number): any {
           disconnectTimeoutInMinutes: S.optional(S.Number),
           idleDisconnectTimeoutInMinutes: S.optional(S.Number),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          cookieSynchronizationConfiguration: S.optional(__S(218, __c27, 2)),
+          cookieSynchronizationConfiguration: S.optional(__S(226, __c28, 2)),
           customerManagedKey: S.optional(S.String),
           additionalEncryptionContext: S.optional(__S(64, __c8, 0)),
           deepLinkAllowed: S.optional(S.String),
-          toolbarConfiguration: S.optional(__S(219, __c27, 3)),
-          brandingConfigurationInput: S.optional(__S(208, __c26, 0)),
+          toolbarConfiguration: S.optional(__S(227, __c28, 3)),
+          brandingConfigurationInput: S.optional(__S(216, __c27, 0)),
           webAuthnAllowed: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/userSettings" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateUserSettingsRequest",
-      });
+      ).annotate({ identifier: "CreateUserSettingsRequest" });
     case 2:
       return S.suspend(() => S.Struct({ userSettingsArn: S.String })).annotate({
         identifier: "CreateUserSettingsResponse",
       });
   }
 }
-function __c27(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4178,19 +4138,17 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "CookieSpecification" });
     case 1:
-      return S.Array(__S(216, __c27, 0));
+      return S.Array(__S(224, __c28, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ allowlist: __S(217, __c27, 1), blocklist: S.optional(__S(217, __c27, 1)) }),
-      ).annotate({
-        identifier: "CookieSynchronizationConfiguration",
-      });
+        S.Struct({ allowlist: __S(225, __c28, 1), blocklist: S.optional(__S(225, __c28, 1)) }),
+      ).annotate({ identifier: "CookieSynchronizationConfiguration" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           toolbarType: S.optional(S.String),
           visualMode: S.optional(S.String),
-          hiddenToolbarItems: S.optional(__S(144, __c18, 0)),
+          hiddenToolbarItems: S.optional(__S(152, __c19, 0)),
           maxDisplayResolution: S.optional(S.String),
         }),
       ).annotate({ identifier: "ToolbarConfiguration" });
@@ -4208,10 +4166,10 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "LocalizedBrandingStrings" });
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(220, __c27, 4).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(228, __c28, 4).pipe(S.optional));
   }
 }
-function __c28(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.Union([
@@ -4220,7 +4178,7 @@ function __c28(j: number): any {
       ]);
   }
 }
-function __c29(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4234,12 +4192,10 @@ function __c29(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteBrowserSettingsRequest",
-      });
+      ).annotate({ identifier: "DeleteBrowserSettingsRequest" });
   }
 }
-function __c30(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
@@ -4247,7 +4203,7 @@ function __c30(j: number): any {
       });
   }
 }
-function __c31(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4266,17 +4222,7 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteDataProtectionSettingsRequest",
-      });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteDataProtectionSettingsResponse",
-      });
+      ).annotate({ identifier: "DeleteDataProtectionSettingsRequest" });
   }
 }
 function __c33(j: number): any {
@@ -4293,9 +4239,7 @@ function __c33(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteIdentityProviderRequest",
-      });
+      ).annotate({ identifier: "DeleteIdentityProviderRequest" });
   }
 }
 function __c34(j: number): any {
@@ -4312,9 +4256,7 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteIpAccessSettingsRequest",
-      });
+      ).annotate({ identifier: "DeleteIpAccessSettingsRequest" });
   }
 }
 function __c35(j: number): any {
@@ -4331,9 +4273,7 @@ function __c35(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteNetworkSettingsRequest",
-      });
+      ).annotate({ identifier: "DeleteNetworkSettingsRequest" });
   }
 }
 function __c36(j: number): any {
@@ -4367,9 +4307,7 @@ function __c37(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteSessionLoggerRequest",
-      });
+      ).annotate({ identifier: "DeleteSessionLoggerRequest" });
   }
 }
 function __c38(j: number): any {
@@ -4408,9 +4346,7 @@ function __c39(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteUserAccessLoggingSettingsRequest",
-      });
+      ).annotate({ identifier: "DeleteUserAccessLoggingSettingsRequest" });
   }
 }
 function __c40(j: number): any {
@@ -4427,9 +4363,7 @@ function __c40(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteUserSettingsRequest",
-      });
+      ).annotate({ identifier: "DeleteUserSettingsRequest" });
   }
 }
 function __c41(j: number): any {
@@ -4446,9 +4380,7 @@ function __c41(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateBrowserSettingsRequest",
-      });
+      ).annotate({ identifier: "DisassociateBrowserSettingsRequest" });
   }
 }
 function __c42(j: number): any {
@@ -4465,9 +4397,7 @@ function __c42(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateDataProtectionSettingsRequest",
-      });
+      ).annotate({ identifier: "DisassociateDataProtectionSettingsRequest" });
   }
 }
 function __c43(j: number): any {
@@ -4484,9 +4414,7 @@ function __c43(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateIpAccessSettingsRequest",
-      });
+      ).annotate({ identifier: "DisassociateIpAccessSettingsRequest" });
   }
 }
 function __c44(j: number): any {
@@ -4503,9 +4431,7 @@ function __c44(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateNetworkSettingsRequest",
-      });
+      ).annotate({ identifier: "DisassociateNetworkSettingsRequest" });
   }
 }
 function __c45(j: number): any {
@@ -4522,9 +4448,7 @@ function __c45(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateSessionLoggerRequest",
-      });
+      ).annotate({ identifier: "DisassociateSessionLoggerRequest" });
   }
 }
 function __c46(j: number): any {
@@ -4541,9 +4465,7 @@ function __c46(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateTrustStoreRequest",
-      });
+      ).annotate({ identifier: "DisassociateTrustStoreRequest" });
   }
 }
 function __c47(j: number): any {
@@ -4560,9 +4482,7 @@ function __c47(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateUserAccessLoggingSettingsRequest",
-      });
+      ).annotate({ identifier: "DisassociateUserAccessLoggingSettingsRequest" });
   }
 }
 function __c48(j: number): any {
@@ -4579,9 +4499,7 @@ function __c48(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateUserSettingsRequest",
-      });
+      ).annotate({ identifier: "DisassociateUserSettingsRequest" });
   }
 }
 function __c49(j: number): any {
@@ -4618,15 +4536,11 @@ function __c50(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetBrowserSettingsRequest",
-      });
+      ).annotate({ identifier: "GetBrowserSettingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ browserSettings: S.optional(__S(408, __c51, 0)) }),
-      ).annotate({
-        identifier: "GetBrowserSettingsResponse",
-      });
+      ).annotate({ identifier: "GetBrowserSettingsResponse" });
   }
 }
 function __c51(j: number): any {
@@ -4635,7 +4549,7 @@ function __c51(j: number): any {
       return S.suspend(() =>
         S.Struct({
           browserSettingsArn: S.String,
-          associatedPortalArns: S.optional(__S(144, __c18, 0)),
+          associatedPortalArns: S.optional(__S(152, __c19, 0)),
           browserPolicy: S.optional(SensitiveString),
           customerManagedKey: S.optional(S.String),
           additionalEncryptionContext: S.optional(__S(64, __c8, 0)),
@@ -4660,15 +4574,11 @@ function __c52(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDataProtectionSettingsRequest",
-      });
+      ).annotate({ identifier: "GetDataProtectionSettingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ dataProtectionSettings: S.optional(__S(424, __c53, 0)) }),
-      ).annotate({
-        identifier: "GetDataProtectionSettingsResponse",
-      });
+      ).annotate({ identifier: "GetDataProtectionSettingsResponse" });
   }
 }
 function __c53(j: number): any {
@@ -4677,8 +4587,8 @@ function __c53(j: number): any {
       return S.suspend(() =>
         S.Struct({
           dataProtectionSettingsArn: S.String,
-          inlineRedactionConfiguration: S.optional(__S(108, __c13, 4)),
-          associatedPortalArns: S.optional(__S(144, __c18, 0)),
+          inlineRedactionConfiguration: S.optional(__S(116, __c14, 4)),
+          associatedPortalArns: S.optional(__S(152, __c19, 0)),
           displayName: S.optional(SensitiveString),
           description: S.optional(SensitiveString),
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4702,15 +4612,11 @@ function __c54(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetIdentityProviderRequest",
-      });
+      ).annotate({ identifier: "GetIdentityProviderRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ identityProvider: S.optional(__S(440, __c55, 0)) }),
-      ).annotate({
-        identifier: "GetIdentityProviderResponse",
-      });
+      ).annotate({ identifier: "GetIdentityProviderResponse" });
   }
 }
 function __c55(j: number): any {
@@ -4740,15 +4646,11 @@ function __c56(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetIpAccessSettingsRequest",
-      });
+      ).annotate({ identifier: "GetIpAccessSettingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ipAccessSettings: S.optional(__S(456, __c57, 0)) }),
-      ).annotate({
-        identifier: "GetIpAccessSettingsResponse",
-      });
+      ).annotate({ identifier: "GetIpAccessSettingsResponse" });
   }
 }
 function __c57(j: number): any {
@@ -4757,8 +4659,8 @@ function __c57(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ipAccessSettingsArn: S.String,
-          associatedPortalArns: S.optional(__S(144, __c18, 0)),
-          ipRules: S.optional(__S(129, __c16, 1)),
+          associatedPortalArns: S.optional(__S(152, __c19, 0)),
+          ipRules: S.optional(__S(137, __c17, 1)),
           displayName: S.optional(SensitiveString),
           description: S.optional(SensitiveString),
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4782,15 +4684,11 @@ function __c58(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetNetworkSettingsRequest",
-      });
+      ).annotate({ identifier: "GetNetworkSettingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ networkSettings: S.optional(__S(472, __c59, 0)) }),
-      ).annotate({
-        identifier: "GetNetworkSettingsResponse",
-      });
+      ).annotate({ identifier: "GetNetworkSettingsResponse" });
   }
 }
 function __c59(j: number): any {
@@ -4799,10 +4697,10 @@ function __c59(j: number): any {
       return S.suspend(() =>
         S.Struct({
           networkSettingsArn: S.String,
-          associatedPortalArns: S.optional(__S(144, __c18, 0)),
+          associatedPortalArns: S.optional(__S(152, __c19, 0)),
           vpcId: S.optional(S.String),
-          subnetIds: S.optional(__S(144, __c18, 0)),
-          securityGroupIds: S.optional(__S(144, __c18, 0)),
+          subnetIds: S.optional(__S(152, __c19, 0)),
+          securityGroupIds: S.optional(__S(152, __c19, 0)),
         }),
       ).annotate({ identifier: "NetworkSettings" });
   }
@@ -4873,15 +4771,11 @@ function __c62(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetPortalServiceProviderMetadataRequest",
-      });
+      ).annotate({ identifier: "GetPortalServiceProviderMetadataRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ portalArn: S.String, serviceProviderSamlMetadata: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetPortalServiceProviderMetadataResponse",
-      });
+      ).annotate({ identifier: "GetPortalServiceProviderMetadataResponse" });
   }
 }
 function __c63(j: number): any {
@@ -4947,11 +4841,11 @@ function __c65(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sessionLoggerArn: S.String,
-          eventFilter: S.optional(__S(176, __c22, 0)),
-          logConfiguration: S.optional(__S(169, __c21, 1)),
+          eventFilter: S.optional(__S(184, __c23, 0)),
+          logConfiguration: S.optional(__S(177, __c22, 1)),
           customerManagedKey: S.optional(S.String),
           additionalEncryptionContext: S.optional(__S(64, __c8, 0)),
-          associatedPortalArns: S.optional(__S(144, __c18, 0)),
+          associatedPortalArns: S.optional(__S(152, __c19, 0)),
           displayName: S.optional(SensitiveString),
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -4975,7 +4869,7 @@ function __c66(j: number): any {
       ).annotate({ identifier: "GetTrustStoreRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ associatedPortalArns: S.optional(__S(144, __c18, 0)), trustStoreArn: S.String }),
+        S.Struct({ associatedPortalArns: S.optional(__S(152, __c19, 0)), trustStoreArn: S.String }),
       ).annotate({ identifier: "TrustStore" });
     case 2:
       return S.suspend(() => S.Struct({ trustStore: S.optional(__S(529, __c66, 1)) })).annotate({
@@ -5000,9 +4894,7 @@ function __c67(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetTrustStoreCertificateRequest",
-      });
+      ).annotate({ identifier: "GetTrustStoreCertificateRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5017,9 +4909,7 @@ function __c67(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ trustStoreArn: S.String, certificate: S.optional(__S(537, __c67, 1)) }),
-      ).annotate({
-        identifier: "GetTrustStoreCertificateResponse",
-      });
+      ).annotate({ identifier: "GetTrustStoreCertificateResponse" });
   }
 }
 function __c68(j: number): any {
@@ -5041,15 +4931,11 @@ function __c68(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetUserAccessLoggingSettingsRequest",
-      });
+      ).annotate({ identifier: "GetUserAccessLoggingSettingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ userAccessLoggingSettings: S.optional(__S(552, __c69, 0)) }),
-      ).annotate({
-        identifier: "GetUserAccessLoggingSettingsResponse",
-      });
+      ).annotate({ identifier: "GetUserAccessLoggingSettingsResponse" });
   }
 }
 function __c69(j: number): any {
@@ -5058,12 +4944,10 @@ function __c69(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userAccessLoggingSettingsArn: S.String,
-          associatedPortalArns: S.optional(__S(144, __c18, 0)),
+          associatedPortalArns: S.optional(__S(152, __c19, 0)),
           kinesisStreamArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "UserAccessLoggingSettings",
-      });
+      ).annotate({ identifier: "UserAccessLoggingSettings" });
   }
 }
 function __c70(j: number): any {
@@ -5103,7 +4987,7 @@ function __c71(j: number): any {
           logo: __S(568, __c71, 0),
           wallpaper: S.optional(__S(568, __c71, 0)),
           favicon: __S(568, __c71, 0),
-          localizedStrings: __S(221, __c27, 5),
+          localizedStrings: __S(229, __c28, 5),
           colorTheme: S.String,
           termsOfService: S.optional(SensitiveString),
         }),
@@ -5116,7 +5000,7 @@ function __c72(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userSettingsArn: S.String,
-          associatedPortalArns: S.optional(__S(144, __c18, 0)),
+          associatedPortalArns: S.optional(__S(152, __c19, 0)),
           copyAllowed: S.optional(S.String),
           pasteAllowed: S.optional(S.String),
           downloadAllowed: S.optional(S.String),
@@ -5124,11 +5008,11 @@ function __c72(j: number): any {
           printAllowed: S.optional(S.String),
           disconnectTimeoutInMinutes: S.optional(S.Number),
           idleDisconnectTimeoutInMinutes: S.optional(S.Number),
-          cookieSynchronizationConfiguration: S.optional(__S(218, __c27, 2)),
+          cookieSynchronizationConfiguration: S.optional(__S(226, __c28, 2)),
           customerManagedKey: S.optional(S.String),
           additionalEncryptionContext: S.optional(__S(64, __c8, 0)),
           deepLinkAllowed: S.optional(S.String),
-          toolbarConfiguration: S.optional(__S(219, __c27, 3)),
+          toolbarConfiguration: S.optional(__S(227, __c28, 3)),
           brandingConfiguration: S.optional(__S(569, __c71, 1)),
           webAuthnAllowed: S.optional(S.String),
         }),
@@ -5145,24 +5029,16 @@ function __c73(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/browserSettings" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListBrowserSettingsRequest",
-      });
+      ).annotate({ identifier: "ListBrowserSettingsRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ browserSettingsArn: S.String })).annotate({
-        identifier: "BrowserSettingsSummary",
-      });
+      return S.Array(__S(96, __c12, 0));
     case 2:
-      return S.Array(__S(585, __c73, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          browserSettings: S.optional(__S(586, __c73, 2)),
+          browserSettings: S.optional(__S(585, __c73, 1)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListBrowserSettingsResponse",
-      });
+      ).annotate({ identifier: "ListBrowserSettingsResponse" });
   }
 }
 function __c74(j: number): any {
@@ -5182,9 +5058,7 @@ function __c74(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDataProtectionSettingsRequest",
-      });
+      ).annotate({ identifier: "ListDataProtectionSettingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5193,9 +5067,7 @@ function __c74(j: number): any {
           description: S.optional(SensitiveString),
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "DataProtectionSettingsSummary",
-      });
+      ).annotate({ identifier: "DataProtectionSettingsSummary" });
     case 2:
       return S.Array(__S(593, __c74, 1));
     case 3:
@@ -5204,9 +5076,7 @@ function __c74(j: number): any {
           dataProtectionSettings: S.optional(__S(594, __c74, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListDataProtectionSettingsResponse",
-      });
+      ).annotate({ identifier: "ListDataProtectionSettingsResponse" });
   }
 }
 function __c75(j: number): any {
@@ -5227,9 +5097,7 @@ function __c75(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListIdentityProvidersRequest",
-      });
+      ).annotate({ identifier: "ListIdentityProvidersRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5246,9 +5114,7 @@ function __c75(j: number): any {
           nextToken: S.optional(S.String),
           identityProviders: S.optional(__S(602, __c75, 2)),
         }),
-      ).annotate({
-        identifier: "ListIdentityProvidersResponse",
-      });
+      ).annotate({ identifier: "ListIdentityProvidersResponse" });
   }
 }
 function __c76(j: number): any {
@@ -5261,9 +5127,7 @@ function __c76(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/ipAccessSettings" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListIpAccessSettingsRequest",
-      });
+      ).annotate({ identifier: "ListIpAccessSettingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5281,9 +5145,7 @@ function __c76(j: number): any {
           ipAccessSettings: S.optional(__S(610, __c76, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListIpAccessSettingsResponse",
-      });
+      ).annotate({ identifier: "ListIpAccessSettingsResponse" });
   }
 }
 function __c77(j: number): any {
@@ -5296,9 +5158,7 @@ function __c77(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/networkSettings" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListNetworkSettingsRequest",
-      });
+      ).annotate({ identifier: "ListNetworkSettingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ networkSettingsArn: S.String, vpcId: S.optional(S.String) }),
@@ -5311,9 +5171,7 @@ function __c77(j: number): any {
           networkSettings: S.optional(__S(618, __c77, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListNetworkSettingsResponse",
-      });
+      ).annotate({ identifier: "ListNetworkSettingsResponse" });
   }
 }
 function __c78(j: number): any {
@@ -5367,14 +5225,12 @@ function __c79(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/sessionLoggers" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListSessionLoggersRequest",
-      });
+      ).annotate({ identifier: "ListSessionLoggersRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           sessionLoggerArn: S.String,
-          logConfiguration: S.optional(__S(169, __c21, 1)),
+          logConfiguration: S.optional(__S(177, __c22, 1)),
           displayName: S.optional(SensitiveString),
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -5387,9 +5243,7 @@ function __c79(j: number): any {
           sessionLoggers: S.optional(__S(634, __c79, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListSessionLoggersResponse",
-      });
+      ).annotate({ identifier: "ListSessionLoggersResponse" });
   }
 }
 function __c80(j: number): any {
@@ -5448,9 +5302,7 @@ function __c81(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(57, __c7, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -5475,9 +5327,7 @@ function __c82(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTrustStoreCertificatesRequest",
-      });
+      ).annotate({ identifier: "ListTrustStoreCertificatesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5497,9 +5347,7 @@ function __c82(j: number): any {
           trustStoreArn: S.String,
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListTrustStoreCertificatesResponse",
-      });
+      ).annotate({ identifier: "ListTrustStoreCertificatesResponse" });
   }
 }
 function __c83(j: number): any {
@@ -5542,18 +5390,14 @@ function __c84(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListUserAccessLoggingSettingsRequest",
-      });
+      ).annotate({ identifier: "ListUserAccessLoggingSettingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           userAccessLoggingSettingsArn: S.String,
           kinesisStreamArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "UserAccessLoggingSettingsSummary",
-      });
+      ).annotate({ identifier: "UserAccessLoggingSettingsSummary" });
     case 2:
       return S.Array(__S(673, __c84, 1));
     case 3:
@@ -5562,9 +5406,7 @@ function __c84(j: number): any {
           userAccessLoggingSettings: S.optional(__S(674, __c84, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListUserAccessLoggingSettingsResponse",
-      });
+      ).annotate({ identifier: "ListUserAccessLoggingSettingsResponse" });
   }
 }
 function __c85(j: number): any {
@@ -5599,9 +5441,9 @@ function __c86(j: number): any {
           printAllowed: S.optional(S.String),
           disconnectTimeoutInMinutes: S.optional(S.Number),
           idleDisconnectTimeoutInMinutes: S.optional(S.Number),
-          cookieSynchronizationConfiguration: S.optional(__S(218, __c27, 2)),
+          cookieSynchronizationConfiguration: S.optional(__S(226, __c28, 2)),
           deepLinkAllowed: S.optional(S.String),
-          toolbarConfiguration: S.optional(__S(219, __c27, 3)),
+          toolbarConfiguration: S.optional(__S(227, __c28, 3)),
           brandingConfiguration: S.optional(__S(569, __c71, 1)),
           webAuthnAllowed: S.optional(S.String),
         }),
@@ -5674,9 +5516,7 @@ function __c89(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateBrowserSettingsRequest",
-      });
+      ).annotate({ identifier: "UpdateBrowserSettingsRequest" });
     case 1:
       return S.suspend(() => S.Struct({ browserSettings: __S(408, __c51, 0) })).annotate({
         identifier: "UpdateBrowserSettingsResponse",
@@ -5689,7 +5529,7 @@ function __c90(j: number): any {
       return S.suspend(() =>
         S.Struct({
           dataProtectionSettingsArn: S.String.pipe(T.HttpLabel("dataProtectionSettingsArn")),
-          inlineRedactionConfiguration: S.optional(__S(108, __c13, 4)),
+          inlineRedactionConfiguration: S.optional(__S(116, __c14, 4)),
           displayName: S.optional(SensitiveString),
           description: S.optional(SensitiveString),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -5706,9 +5546,7 @@ function __c90(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateDataProtectionSettingsRequest",
-      });
+      ).annotate({ identifier: "UpdateDataProtectionSettingsRequest" });
     case 1:
       return S.suspend(() => S.Struct({ dataProtectionSettings: __S(424, __c53, 0) })).annotate({
         identifier: "UpdateDataProtectionSettingsResponse",
@@ -5735,9 +5573,7 @@ function __c91(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateIdentityProviderRequest",
-      });
+      ).annotate({ identifier: "UpdateIdentityProviderRequest" });
     case 1:
       return S.suspend(() => S.Struct({ identityProvider: __S(440, __c55, 0) })).annotate({
         identifier: "UpdateIdentityProviderResponse",
@@ -5752,7 +5588,7 @@ function __c92(j: number): any {
           ipAccessSettingsArn: S.String.pipe(T.HttpLabel("ipAccessSettingsArn")),
           displayName: S.optional(SensitiveString),
           description: S.optional(SensitiveString),
-          ipRules: S.optional(__S(129, __c16, 1)),
+          ipRules: S.optional(__S(137, __c17, 1)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -5764,9 +5600,7 @@ function __c92(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateIpAccessSettingsRequest",
-      });
+      ).annotate({ identifier: "UpdateIpAccessSettingsRequest" });
     case 1:
       return S.suspend(() => S.Struct({ ipAccessSettings: __S(456, __c57, 0) })).annotate({
         identifier: "UpdateIpAccessSettingsResponse",
@@ -5780,8 +5614,8 @@ function __c93(j: number): any {
         S.Struct({
           networkSettingsArn: S.String.pipe(T.HttpLabel("networkSettingsArn")),
           vpcId: S.optional(S.String),
-          subnetIds: S.optional(__S(144, __c18, 0)),
-          securityGroupIds: S.optional(__S(144, __c18, 0)),
+          subnetIds: S.optional(__S(152, __c19, 0)),
+          securityGroupIds: S.optional(__S(152, __c19, 0)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -5793,9 +5627,7 @@ function __c93(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateNetworkSettingsRequest",
-      });
+      ).annotate({ identifier: "UpdateNetworkSettingsRequest" });
     case 1:
       return S.suspend(() => S.Struct({ networkSettings: __S(472, __c59, 0) })).annotate({
         identifier: "UpdateNetworkSettingsResponse",
@@ -5832,8 +5664,8 @@ function __c95(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sessionLoggerArn: S.String.pipe(T.HttpLabel("sessionLoggerArn")),
-          eventFilter: S.optional(__S(176, __c22, 0)),
-          logConfiguration: S.optional(__S(169, __c21, 1)),
+          eventFilter: S.optional(__S(184, __c23, 0)),
+          logConfiguration: S.optional(__S(177, __c22, 1)),
           displayName: S.optional(SensitiveString),
         }).pipe(
           T.all(
@@ -5845,9 +5677,7 @@ function __c95(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateSessionLoggerRequest",
-      });
+      ).annotate({ identifier: "UpdateSessionLoggerRequest" });
     case 1:
       return S.suspend(() => S.Struct({ sessionLogger: __S(520, __c65, 0) })).annotate({
         identifier: "UpdateSessionLoggerResponse",
@@ -5871,15 +5701,11 @@ function __c96(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateBrowserSettingsRequest",
-      });
+      ).annotate({ identifier: "AssociateBrowserSettingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ portalArn: S.String, browserSettingsArn: S.String }),
-      ).annotate({
-        identifier: "AssociateBrowserSettingsResponse",
-      });
+      ).annotate({ identifier: "AssociateBrowserSettingsResponse" });
   }
 }
 function __c97(j: number): any {
@@ -5888,8 +5714,8 @@ function __c97(j: number): any {
       return S.suspend(() =>
         S.Struct({
           trustStoreArn: S.String.pipe(T.HttpLabel("trustStoreArn")),
-          certificatesToAdd: S.optional(__S(192, __c24, 0)),
-          certificatesToDelete: S.optional(__S(144, __c18, 0)),
+          certificatesToAdd: S.optional(__S(200, __c25, 0)),
+          certificatesToDelete: S.optional(__S(152, __c19, 0)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -5925,9 +5751,7 @@ function __c98(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateUserAccessLoggingSettingsRequest",
-      });
+      ).annotate({ identifier: "UpdateUserAccessLoggingSettingsRequest" });
     case 1:
       return S.suspend(() => S.Struct({ userAccessLoggingSettings: __S(552, __c69, 0) })).annotate({
         identifier: "UpdateUserAccessLoggingSettingsResponse",
@@ -5939,16 +5763,14 @@ function __c99(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          logo: S.optional(__S(224, __c28, 0)),
-          wallpaper: S.optional(__S(224, __c28, 0)),
-          favicon: S.optional(__S(224, __c28, 0)),
-          localizedStrings: S.optional(__S(221, __c27, 5)),
+          logo: S.optional(__S(232, __c29, 0)),
+          wallpaper: S.optional(__S(232, __c29, 0)),
+          favicon: S.optional(__S(232, __c29, 0)),
+          localizedStrings: S.optional(__S(229, __c28, 5)),
           colorTheme: S.optional(S.String),
           termsOfService: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "BrandingConfigurationUpdateInput",
-      });
+      ).annotate({ identifier: "BrandingConfigurationUpdateInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5961,9 +5783,9 @@ function __c99(j: number): any {
           disconnectTimeoutInMinutes: S.optional(S.Number),
           idleDisconnectTimeoutInMinutes: S.optional(S.Number),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          cookieSynchronizationConfiguration: S.optional(__S(218, __c27, 2)),
+          cookieSynchronizationConfiguration: S.optional(__S(226, __c28, 2)),
           deepLinkAllowed: S.optional(S.String),
-          toolbarConfiguration: S.optional(__S(219, __c27, 3)),
+          toolbarConfiguration: S.optional(__S(227, __c28, 3)),
           brandingConfigurationInput: S.optional(__S(792, __c99, 0)),
           webAuthnAllowed: S.optional(S.String),
         }).pipe(
@@ -5976,9 +5798,7 @@ function __c99(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateUserSettingsRequest",
-      });
+      ).annotate({ identifier: "UpdateUserSettingsRequest" });
     case 2:
       return S.suspend(() => S.Struct({ userSettings: __S(576, __c72, 0) })).annotate({
         identifier: "UpdateUserSettingsResponse",
@@ -6002,15 +5822,11 @@ function __c100(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateDataProtectionSettingsRequest",
-      });
+      ).annotate({ identifier: "AssociateDataProtectionSettingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ portalArn: S.String, dataProtectionSettingsArn: S.String }),
-      ).annotate({
-        identifier: "AssociateDataProtectionSettingsResponse",
-      });
+      ).annotate({ identifier: "AssociateDataProtectionSettingsResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

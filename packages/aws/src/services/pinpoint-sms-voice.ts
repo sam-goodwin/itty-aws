@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -268,7 +268,7 @@ export const createConfigurationSetEventDestination: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(48, __c6, 0) as any as S.Schema<CreateConfigurationSetEventDestinationRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<CreateConfigurationSetEventDestinationResponse>,
+  output: __S(40, __c5, 0) as any as S.Schema<CreateConfigurationSetEventDestinationResponse>,
   errors: [
     AlreadyExistsException,
     BadRequestException,
@@ -297,7 +297,7 @@ export const deleteConfigurationSet: API.OperationMethod<
   DeleteConfigurationSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<DeleteConfigurationSetRequest>,
+  input: __S(72, __c9, 0) as any as S.Schema<DeleteConfigurationSetRequest>,
   output: __S(40, __c5, 0) as any as S.Schema<DeleteConfigurationSetResponse>,
   errors: [
     BadRequestException,
@@ -325,8 +325,8 @@ export const deleteConfigurationSetEventDestination: API.OperationMethod<
   DeleteConfigurationSetEventDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<DeleteConfigurationSetEventDestinationRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<DeleteConfigurationSetEventDestinationResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<DeleteConfigurationSetEventDestinationRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<DeleteConfigurationSetEventDestinationResponse>,
   errors: [
     BadRequestException,
     InternalServiceErrorException,
@@ -426,7 +426,7 @@ export const updateConfigurationSetEventDestination: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(24, __c3, 0) as any as S.Schema<UpdateConfigurationSetEventDestinationRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<UpdateConfigurationSetEventDestinationResponse>,
+  output: __S(40, __c5, 0) as any as S.Schema<UpdateConfigurationSetEventDestinationResponse>,
   errors: [
     BadRequestException,
     InternalServiceErrorException,
@@ -456,9 +456,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetConfigurationSetEventDestinationsRequest",
-      });
+      ).annotate({ identifier: "GetConfigurationSetEventDestinationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -474,9 +472,7 @@ function __c0(j: number): any {
       return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() => S.Struct({ EventDestinations: S.optional(__S(2, __c0, 2)) })).annotate(
-        {
-          identifier: "GetConfigurationSetEventDestinationsResponse",
-        },
+        { identifier: "GetConfigurationSetEventDestinationsResponse" },
       );
   }
 }
@@ -497,9 +493,7 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListConfigurationSetsRequest",
-      });
+      ).annotate({ identifier: "ListConfigurationSetsRequest" });
     case 1:
       return S.Array(S.String);
     case 2:
@@ -508,9 +502,7 @@ function __c1(j: number): any {
           ConfigurationSets: S.optional(__S(9, __c1, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListConfigurationSetsResponse",
-      });
+      ).annotate({ identifier: "ListConfigurationSetsResponse" });
   }
 }
 function __c2(j: number): any {
@@ -581,9 +573,7 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateConfigurationSetEventDestinationRequest",
-      });
+      ).annotate({ identifier: "UpdateConfigurationSetEventDestinationRequest" });
   }
 }
 function __c4(j: number): any {
@@ -600,9 +590,7 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateConfigurationSetRequest",
-      });
+      ).annotate({ identifier: "CreateConfigurationSetRequest" });
   }
 }
 function __c5(j: number): any {
@@ -634,9 +622,7 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateConfigurationSetEventDestinationRequest",
-      });
+      ).annotate({ identifier: "CreateConfigurationSetEventDestinationRequest" });
   }
 }
 function __c7(j: number): any {
@@ -644,15 +630,11 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ IamRoleArn: S.optional(S.String), LogGroupArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "CloudWatchLogsDestination",
-      });
+      ).annotate({ identifier: "CloudWatchLogsDestination" });
     case 1:
       return S.suspend(() =>
         S.Struct({ DeliveryStreamArn: S.optional(S.String), IamRoleArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "KinesisFirehoseDestination",
-      });
+      ).annotate({ identifier: "KinesisFirehoseDestination" });
     case 2:
       return S.Array(S.String);
     case 3:
@@ -672,20 +654,10 @@ function __c8(j: number): any {
           MatchingEventTypes: S.optional(__S(58, __c7, 2)),
           SnsDestination: S.optional(__S(59, __c7, 3)),
         }),
-      ).annotate({
-        identifier: "EventDestinationDefinition",
-      });
+      ).annotate({ identifier: "EventDestinationDefinition" });
   }
 }
 function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateConfigurationSetEventDestinationResponse",
-      });
-  }
-}
-function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -702,12 +674,10 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteConfigurationSetRequest",
-      });
+      ).annotate({ identifier: "DeleteConfigurationSetRequest" });
   }
 }
-function __c11(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -727,9 +697,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteConfigurationSetEventDestinationRequest",
-      });
+      ).annotate({ identifier: "DeleteConfigurationSetEventDestinationRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

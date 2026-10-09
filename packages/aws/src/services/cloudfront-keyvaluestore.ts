@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -537,9 +537,7 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeKeyValueStoreRequest",
-      });
+      ).annotate({ identifier: "DescribeKeyValueStoreRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -552,9 +550,7 @@ function __c4(j: number): any {
           Status: S.optional(S.String),
           FailureReason: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeKeyValueStoreResponse",
-      });
+      ).annotate({ identifier: "DescribeKeyValueStoreResponse" });
   }
 }
 function __c5(j: number): any {

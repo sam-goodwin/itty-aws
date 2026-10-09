@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1480,9 +1480,7 @@ function __c0(j: number): any {
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribePHIDetectionJobRequest",
-      });
+      ).annotate({ identifier: "DescribePHIDetectionJobRequest" });
   }
 }
 function __c1(j: number): any {
@@ -1492,9 +1490,7 @@ function __c1(j: number): any {
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeRxNormInferenceJobRequest",
-      });
+      ).annotate({ identifier: "DescribeRxNormInferenceJobRequest" });
   }
 }
 function __c2(j: number): any {
@@ -1504,9 +1500,7 @@ function __c2(j: number): any {
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeSNOMEDCTInferenceJobRequest",
-      });
+      ).annotate({ identifier: "DescribeSNOMEDCTInferenceJobRequest" });
   }
 }
 function __c3(j: number): any {
@@ -1805,9 +1799,7 @@ function __c13(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListEntitiesDetectionV2JobsRequest",
-      });
+      ).annotate({ identifier: "ListEntitiesDetectionV2JobsRequest" });
   }
 }
 function __c14(j: number): any {
@@ -1820,9 +1812,7 @@ function __c14(j: number): any {
           SubmitTimeBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           SubmitTimeAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "ComprehendMedicalAsyncJobFilter",
-      });
+      ).annotate({ identifier: "ComprehendMedicalAsyncJobFilter" });
     case 1:
       return S.Array(__S(256, __c32, 0));
     case 2:
@@ -1831,9 +1821,7 @@ function __c14(j: number): any {
           ComprehendMedicalAsyncJobPropertiesList: S.optional(__S(113, __c14, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListEntitiesDetectionV2JobsResponse",
-      });
+      ).annotate({ identifier: "ListEntitiesDetectionV2JobsResponse" });
   }
 }
 function __c15(j: number): any {
@@ -1845,9 +1833,7 @@ function __c15(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListICD10CMInferenceJobsRequest",
-      });
+      ).annotate({ identifier: "ListICD10CMInferenceJobsRequest" });
   }
 }
 function __c16(j: number): any {
@@ -1859,9 +1845,7 @@ function __c16(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListPHIDetectionJobsRequest",
-      });
+      ).annotate({ identifier: "ListPHIDetectionJobsRequest" });
   }
 }
 function __c17(j: number): any {
@@ -1873,9 +1857,7 @@ function __c17(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListRxNormInferenceJobsRequest",
-      });
+      ).annotate({ identifier: "ListRxNormInferenceJobsRequest" });
   }
 }
 function __c18(j: number): any {
@@ -1887,9 +1869,7 @@ function __c18(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListSNOMEDCTInferenceJobsRequest",
-      });
+      ).annotate({ identifier: "ListSNOMEDCTInferenceJobsRequest" });
   }
 }
 function __c19(j: number): any {
@@ -1905,9 +1885,7 @@ function __c19(j: number): any {
           KMSKey: S.optional(S.String),
           LanguageCode: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartEntitiesDetectionV2JobRequest",
-      });
+      ).annotate({ identifier: "StartEntitiesDetectionV2JobRequest" });
   }
 }
 function __c20(j: number): any {
@@ -1931,9 +1909,7 @@ function __c21(j: number): any {
           KMSKey: S.optional(S.String),
           LanguageCode: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartICD10CMInferenceJobRequest",
-      });
+      ).annotate({ identifier: "StartICD10CMInferenceJobRequest" });
   }
 }
 function __c22(j: number): any {
@@ -1949,9 +1925,7 @@ function __c22(j: number): any {
           KMSKey: S.optional(S.String),
           LanguageCode: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartPHIDetectionJobRequest",
-      });
+      ).annotate({ identifier: "StartPHIDetectionJobRequest" });
   }
 }
 function __c23(j: number): any {
@@ -1967,9 +1941,7 @@ function __c23(j: number): any {
           KMSKey: S.optional(S.String),
           LanguageCode: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartRxNormInferenceJobRequest",
-      });
+      ).annotate({ identifier: "StartRxNormInferenceJobRequest" });
   }
 }
 function __c24(j: number): any {
@@ -1985,9 +1957,7 @@ function __c24(j: number): any {
           KMSKey: S.optional(S.String),
           LanguageCode: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartSNOMEDCTInferenceJobRequest",
-      });
+      ).annotate({ identifier: "StartSNOMEDCTInferenceJobRequest" });
   }
 }
 function __c25(j: number): any {
@@ -1997,9 +1967,7 @@ function __c25(j: number): any {
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StopEntitiesDetectionV2JobRequest",
-      });
+      ).annotate({ identifier: "StopEntitiesDetectionV2JobRequest" });
   }
 }
 function __c26(j: number): any {
@@ -2009,9 +1977,7 @@ function __c26(j: number): any {
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StopICD10CMInferenceJobRequest",
-      });
+      ).annotate({ identifier: "StopICD10CMInferenceJobRequest" });
   }
 }
 function __c27(j: number): any {
@@ -2021,9 +1987,7 @@ function __c27(j: number): any {
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StopPHIDetectionJobRequest",
-      });
+      ).annotate({ identifier: "StopPHIDetectionJobRequest" });
   }
 }
 function __c28(j: number): any {
@@ -2033,9 +1997,7 @@ function __c28(j: number): any {
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StopRxNormInferenceJobRequest",
-      });
+      ).annotate({ identifier: "StopRxNormInferenceJobRequest" });
   }
 }
 function __c29(j: number): any {
@@ -2045,9 +2007,7 @@ function __c29(j: number): any {
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StopSNOMEDCTInferenceJobRequest",
-      });
+      ).annotate({ identifier: "StopSNOMEDCTInferenceJobRequest" });
   }
 }
 function __c30(j: number): any {
@@ -2057,21 +2017,15 @@ function __c30(j: number): any {
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeEntitiesDetectionV2JobRequest",
-      });
+      ).annotate({ identifier: "DescribeEntitiesDetectionV2JobRequest" });
   }
 }
 function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          ComprehendMedicalAsyncJobProperties: S.optional(__S(256, __c32, 0)),
-        }),
-      ).annotate({
-        identifier: "DescribeEntitiesDetectionV2JobResponse",
-      });
+        S.Struct({ ComprehendMedicalAsyncJobProperties: S.optional(__S(256, __c32, 0)) }),
+      ).annotate({ identifier: "DescribeEntitiesDetectionV2JobResponse" });
   }
 }
 function __c32(j: number): any {
@@ -2094,9 +2048,7 @@ function __c32(j: number): any {
           KMSKey: S.optional(S.String),
           ModelVersion: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ComprehendMedicalAsyncJobProperties",
-      });
+      ).annotate({ identifier: "ComprehendMedicalAsyncJobProperties" });
   }
 }
 function __c33(j: number): any {
@@ -2114,9 +2066,7 @@ function __c34(j: number): any {
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeICD10CMInferenceJobRequest",
-      });
+      ).annotate({ identifier: "DescribeICD10CMInferenceJobRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -89,9 +89,7 @@ export class BatchWriteException
   extends /*@__PURE__*/ S.TaggedError<BatchWriteException>()("BatchWriteException", {
     Index: /*@__PURE__*/ S.optional(S.Number),
     Type: /*@__PURE__*/ S.optional(
-      /*@__PURE__*/ S.suspend(() => S.String).annotate({
-        identifier: "BatchWriteExceptionType",
-      }),
+      /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "BatchWriteExceptionType" }),
     ),
     message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }) {}
@@ -1665,7 +1663,7 @@ export const attachTypedLink: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(416, __c13, 0) as any as S.Schema<AttachTypedLinkRequest>,
-  output: __S(417, __c13, 1) as any as S.Schema<AttachTypedLinkResponse>,
+  output: __S(480, __c15, 0) as any as S.Schema<AttachTypedLinkResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -1701,8 +1699,8 @@ export const batchRead: API.OperationMethod<
   BatchReadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(492, __c15, 12) as any as S.Schema<BatchReadRequest>,
-  output: __S(499, __c15, 19) as any as S.Schema<BatchReadResponse>,
+  input: __S(522, __c16, 10) as any as S.Schema<BatchReadRequest>,
+  output: __S(528, __c16, 16) as any as S.Schema<BatchReadResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -1737,8 +1735,8 @@ export const batchWrite: API.OperationMethod<
   BatchWriteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1135, __c35, 15) as any as S.Schema<BatchWriteRequest>,
-  output: __S(1144, __c35, 24) as any as S.Schema<BatchWriteResponse>,
+  input: __S(1166, __c36, 14) as any as S.Schema<BatchWriteRequest>,
+  output: __S(1171, __c36, 19) as any as S.Schema<BatchWriteResponse>,
   errors: [
     AccessDeniedException,
     BatchWriteException,
@@ -1777,8 +1775,8 @@ export const createDirectory: API.OperationMethod<
   CreateDirectoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1280, __c40, 0) as any as S.Schema<CreateDirectoryRequest>,
-  output: __S(1281, __c40, 1) as any as S.Schema<CreateDirectoryResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<CreateDirectoryRequest>,
+  output: __S(1345, __c42, 1) as any as S.Schema<CreateDirectoryResponse>,
   errors: [
     AccessDeniedException,
     DirectoryAlreadyExistsException,
@@ -1816,7 +1814,7 @@ export const createFacet: API.OperationMethod<
   CreateFacetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1312, __c41, 0) as any as S.Schema<CreateFacetRequest>,
+  input: __S(1376, __c43, 0) as any as S.Schema<CreateFacetRequest>,
   output: __S(96, __c3, 0) as any as S.Schema<CreateFacetResponse>,
   errors: [
     AccessDeniedException,
@@ -1857,8 +1855,8 @@ export const createIndex: API.OperationMethod<
   CreateIndexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c45, 0) as any as S.Schema<CreateIndexRequest>,
-  output: __S(1184, __c37, 0) as any as S.Schema<CreateIndexResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<CreateIndexRequest>,
+  output: __S(1216, __c38, 0) as any as S.Schema<CreateIndexResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -1902,8 +1900,8 @@ export const createObject: API.OperationMethod<
   CreateObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1472, __c46, 0) as any as S.Schema<CreateObjectRequest>,
-  output: __S(1184, __c37, 0) as any as S.Schema<CreateObjectResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<CreateObjectRequest>,
+  output: __S(1216, __c38, 0) as any as S.Schema<CreateObjectResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -1952,8 +1950,8 @@ export const createSchema: API.OperationMethod<
   CreateSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1504, __c47, 0) as any as S.Schema<CreateSchemaRequest>,
-  output: __S(1536, __c48, 0) as any as S.Schema<CreateSchemaResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<CreateSchemaRequest>,
+  output: __S(1600, __c50, 0) as any as S.Schema<CreateSchemaResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -1989,7 +1987,7 @@ export const createTypedLinkFacet: API.OperationMethod<
   CreateTypedLinkFacetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1569, __c49, 1) as any as S.Schema<CreateTypedLinkFacetRequest>,
+  input: __S(1633, __c51, 1) as any as S.Schema<CreateTypedLinkFacetRequest>,
   output: __S(96, __c3, 0) as any as S.Schema<CreateTypedLinkFacetResponse>,
   errors: [
     AccessDeniedException,
@@ -2030,8 +2028,8 @@ export const deleteDirectory: API.OperationMethod<
   DeleteDirectoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1664, __c52, 0) as any as S.Schema<DeleteDirectoryRequest>,
-  output: __S(1696, __c53, 0) as any as S.Schema<DeleteDirectoryResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<DeleteDirectoryRequest>,
+  output: __S(1760, __c55, 0) as any as S.Schema<DeleteDirectoryResponse>,
   errors: [
     AccessDeniedException,
     DirectoryDeletedException,
@@ -2070,7 +2068,7 @@ export const deleteFacet: API.OperationMethod<
   DeleteFacetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1728, __c54, 0) as any as S.Schema<DeleteFacetRequest>,
+  input: __S(1792, __c56, 0) as any as S.Schema<DeleteFacetRequest>,
   output: __S(96, __c3, 0) as any as S.Schema<DeleteFacetResponse>,
   errors: [
     AccessDeniedException,
@@ -2109,7 +2107,7 @@ export const deleteObject: API.OperationMethod<
   DeleteObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1760, __c55, 0) as any as S.Schema<DeleteObjectRequest>,
+  input: __S(1824, __c57, 0) as any as S.Schema<DeleteObjectRequest>,
   output: __S(96, __c3, 0) as any as S.Schema<DeleteObjectResponse>,
   errors: [
     AccessDeniedException,
@@ -2146,8 +2144,8 @@ export const deleteSchema: API.OperationMethod<
   DeleteSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1792, __c56, 0) as any as S.Schema<DeleteSchemaRequest>,
-  output: __S(1536, __c48, 0) as any as S.Schema<DeleteSchemaResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<DeleteSchemaRequest>,
+  output: __S(1600, __c50, 0) as any as S.Schema<DeleteSchemaResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -2182,7 +2180,7 @@ export const deleteTypedLinkFacet: API.OperationMethod<
   DeleteTypedLinkFacetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1824, __c57, 0) as any as S.Schema<DeleteTypedLinkFacetRequest>,
+  input: __S(1888, __c59, 0) as any as S.Schema<DeleteTypedLinkFacetRequest>,
   output: __S(96, __c3, 0) as any as S.Schema<DeleteTypedLinkFacetResponse>,
   errors: [
     AccessDeniedException,
@@ -2220,8 +2218,8 @@ export const detachFromIndex: API.OperationMethod<
   DetachFromIndexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1856, __c58, 0) as any as S.Schema<DetachFromIndexRequest>,
-  output: __S(1888, __c59, 0) as any as S.Schema<DetachFromIndexResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<DetachFromIndexRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<DetachFromIndexResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -2260,8 +2258,8 @@ export const detachObject: API.OperationMethod<
   DetachObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1920, __c60, 0) as any as S.Schema<DetachObjectRequest>,
-  output: __S(1888, __c59, 0) as any as S.Schema<DetachObjectResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<DetachObjectRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<DetachObjectResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -2298,7 +2296,7 @@ export const detachPolicy: API.OperationMethod<
   DetachPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1952, __c61, 0) as any as S.Schema<DetachPolicyRequest>,
+  input: __S(1984, __c62, 0) as any as S.Schema<DetachPolicyRequest>,
   output: __S(96, __c3, 0) as any as S.Schema<DetachPolicyResponse>,
   errors: [
     AccessDeniedException,
@@ -2336,7 +2334,7 @@ export const detachTypedLink: API.OperationMethod<
   DetachTypedLinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1984, __c62, 0) as any as S.Schema<DetachTypedLinkRequest>,
+  input: __S(2016, __c63, 0) as any as S.Schema<DetachTypedLinkRequest>,
   output: __S(96, __c3, 0) as any as S.Schema<DetachTypedLinkResponse>,
   errors: [
     AccessDeniedException,
@@ -2374,8 +2372,8 @@ export const disableDirectory: API.OperationMethod<
   DisableDirectoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2016, __c63, 0) as any as S.Schema<DisableDirectoryRequest>,
-  output: __S(1696, __c53, 0) as any as S.Schema<DisableDirectoryResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<DisableDirectoryRequest>,
+  output: __S(1760, __c55, 0) as any as S.Schema<DisableDirectoryResponse>,
   errors: [
     AccessDeniedException,
     DirectoryDeletedException,
@@ -2411,8 +2409,8 @@ export const enableDirectory: API.OperationMethod<
   EnableDirectoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2048, __c64, 0) as any as S.Schema<EnableDirectoryRequest>,
-  output: __S(1696, __c53, 0) as any as S.Schema<EnableDirectoryResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<EnableDirectoryRequest>,
+  output: __S(1760, __c55, 0) as any as S.Schema<EnableDirectoryResponse>,
   errors: [
     AccessDeniedException,
     DirectoryDeletedException,
@@ -2446,8 +2444,8 @@ export const getAppliedSchemaVersion: API.OperationMethod<
   GetAppliedSchemaVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2080, __c65, 0) as any as S.Schema<GetAppliedSchemaVersionRequest>,
-  output: __S(2081, __c65, 1) as any as S.Schema<GetAppliedSchemaVersionResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<GetAppliedSchemaVersionRequest>,
+  output: __S(2113, __c66, 1) as any as S.Schema<GetAppliedSchemaVersionResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -2479,8 +2477,8 @@ export const getDirectory: API.OperationMethod<
   GetDirectoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2112, __c66, 0) as any as S.Schema<GetDirectoryRequest>,
-  output: __S(2113, __c66, 1) as any as S.Schema<GetDirectoryResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<GetDirectoryRequest>,
+  output: __S(2145, __c67, 1) as any as S.Schema<GetDirectoryResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -2514,8 +2512,8 @@ export const getFacet: API.OperationMethod<
   GetFacetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2176, __c68, 0) as any as S.Schema<GetFacetRequest>,
-  output: __S(2178, __c68, 2) as any as S.Schema<GetFacetResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<GetFacetRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<GetFacetResponse>,
   errors: [
     AccessDeniedException,
     FacetNotFoundException,
@@ -2551,8 +2549,8 @@ export const getLinkAttributes: API.OperationMethod<
   GetLinkAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2208, __c69, 0) as any as S.Schema<GetLinkAttributesRequest>,
-  output: __S(608, __c19, 0) as any as S.Schema<GetLinkAttributesResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<GetLinkAttributesRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<GetLinkAttributesResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -2589,8 +2587,8 @@ export const getObjectAttributes: API.OperationMethod<
   GetObjectAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2240, __c70, 0) as any as S.Schema<GetObjectAttributesRequest>,
-  output: __S(608, __c19, 0) as any as S.Schema<GetObjectAttributesResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<GetObjectAttributesRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<GetObjectAttributesResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -2626,8 +2624,8 @@ export const getObjectInformation: API.OperationMethod<
   GetObjectInformationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2272, __c71, 0) as any as S.Schema<GetObjectInformationRequest>,
-  output: __S(640, __c20, 0) as any as S.Schema<GetObjectInformationResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<GetObjectInformationRequest>,
+  output: __S(704, __c22, 0) as any as S.Schema<GetObjectInformationResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -2661,8 +2659,8 @@ export const getSchemaAsJson: API.OperationMethod<
   GetSchemaAsJsonError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2304, __c72, 0) as any as S.Schema<GetSchemaAsJsonRequest>,
-  output: __S(2305, __c72, 1) as any as S.Schema<GetSchemaAsJsonResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<GetSchemaAsJsonRequest>,
+  output: __S(2337, __c73, 1) as any as S.Schema<GetSchemaAsJsonResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -2697,8 +2695,8 @@ export const getTypedLinkFacetInformation: API.OperationMethod<
   GetTypedLinkFacetInformationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2336, __c73, 0) as any as S.Schema<GetTypedLinkFacetInformationRequest>,
-  output: __S(2337, __c73, 1) as any as S.Schema<GetTypedLinkFacetInformationResponse>,
+  input: __S(2368, __c74, 0) as any as S.Schema<GetTypedLinkFacetInformationRequest>,
+  output: __S(2369, __c74, 1) as any as S.Schema<GetTypedLinkFacetInformationResponse>,
   errors: [
     AccessDeniedException,
     FacetNotFoundException,
@@ -2735,8 +2733,8 @@ export const listAppliedSchemaArns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2368, __c74, 0) as any as S.Schema<ListAppliedSchemaArnsRequest>,
-  output: __S(2400, __c75, 0) as any as S.Schema<ListAppliedSchemaArnsResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<ListAppliedSchemaArnsRequest>,
+  output: __S(2432, __c76, 0) as any as S.Schema<ListAppliedSchemaArnsResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -2777,8 +2775,8 @@ export const listAttachedIndices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2432, __c76, 0) as any as S.Schema<ListAttachedIndicesRequest>,
-  output: __S(672, __c21, 0) as any as S.Schema<ListAttachedIndicesResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<ListAttachedIndicesRequest>,
+  output: __S(738, __c23, 2) as any as S.Schema<ListAttachedIndicesResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -2820,8 +2818,8 @@ export const listDevelopmentSchemaArns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2464, __c77, 0) as any as S.Schema<ListDevelopmentSchemaArnsRequest>,
-  output: __S(2400, __c75, 0) as any as S.Schema<ListDevelopmentSchemaArnsResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<ListDevelopmentSchemaArnsRequest>,
+  output: __S(2432, __c76, 0) as any as S.Schema<ListDevelopmentSchemaArnsResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -2861,8 +2859,8 @@ export const listDirectories: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2496, __c78, 0) as any as S.Schema<ListDirectoriesRequest>,
-  output: __S(2498, __c78, 2) as any as S.Schema<ListDirectoriesResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<ListDirectoriesRequest>,
+  output: __S(2530, __c79, 2) as any as S.Schema<ListDirectoriesResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -2903,8 +2901,8 @@ export const listFacetAttributes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2528, __c79, 0) as any as S.Schema<ListFacetAttributesRequest>,
-  output: __S(2529, __c79, 1) as any as S.Schema<ListFacetAttributesResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<ListFacetAttributesRequest>,
+  output: __S(2561, __c80, 1) as any as S.Schema<ListFacetAttributesResponse>,
   errors: [
     AccessDeniedException,
     FacetNotFoundException,
@@ -2946,8 +2944,8 @@ export const listFacetNames: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2560, __c80, 0) as any as S.Schema<ListFacetNamesRequest>,
-  output: __S(2561, __c80, 1) as any as S.Schema<ListFacetNamesResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<ListFacetNamesRequest>,
+  output: __S(2624, __c82, 0) as any as S.Schema<ListFacetNamesResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -2991,8 +2989,8 @@ export const listIncomingTypedLinks: API.OperationMethod<
   ListIncomingTypedLinksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2592, __c81, 0) as any as S.Schema<ListIncomingTypedLinksRequest>,
-  output: __S(736, __c23, 0) as any as S.Schema<ListIncomingTypedLinksResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<ListIncomingTypedLinksRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<ListIncomingTypedLinksResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -3033,8 +3031,8 @@ export const listIndex: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2624, __c82, 0) as any as S.Schema<ListIndexRequest>,
-  output: __S(834, __c26, 2) as any as S.Schema<ListIndexResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<ListIndexRequest>,
+  output: __S(738, __c23, 2) as any as S.Schema<ListIndexResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -3076,8 +3074,8 @@ export const listManagedSchemaArns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2656, __c83, 0) as any as S.Schema<ListManagedSchemaArnsRequest>,
-  output: __S(2400, __c75, 0) as any as S.Schema<ListManagedSchemaArnsResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<ListManagedSchemaArnsRequest>,
+  output: __S(2432, __c76, 0) as any as S.Schema<ListManagedSchemaArnsResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -3118,8 +3116,8 @@ export const listObjectAttributes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2688, __c84, 0) as any as S.Schema<ListObjectAttributesRequest>,
-  output: __S(864, __c27, 0) as any as S.Schema<ListObjectAttributesResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<ListObjectAttributesRequest>,
+  output: __S(896, __c28, 0) as any as S.Schema<ListObjectAttributesResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -3165,8 +3163,8 @@ export const listObjectChildren: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2720, __c85, 0) as any as S.Schema<ListObjectChildrenRequest>,
-  output: __S(896, __c28, 0) as any as S.Schema<ListObjectChildrenResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<ListObjectChildrenRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<ListObjectChildrenResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -3218,8 +3216,8 @@ export const listObjectParentPaths: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2752, __c86, 0) as any as S.Schema<ListObjectParentPathsRequest>,
-  output: __S(930, __c29, 2) as any as S.Schema<ListObjectParentPathsResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<ListObjectParentPathsRequest>,
+  output: __S(962, __c30, 2) as any as S.Schema<ListObjectParentPathsResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -3264,8 +3262,8 @@ export const listObjectParents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2784, __c87, 0) as any as S.Schema<ListObjectParentsRequest>,
-  output: __S(2785, __c87, 1) as any as S.Schema<ListObjectParentsResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<ListObjectParentsRequest>,
+  output: __S(2849, __c89, 1) as any as S.Schema<ListObjectParentsResponse>,
   errors: [
     AccessDeniedException,
     CannotListParentOfRootException,
@@ -3309,8 +3307,8 @@ export const listObjectPolicies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2816, __c88, 0) as any as S.Schema<ListObjectPoliciesRequest>,
-  output: __S(992, __c31, 0) as any as S.Schema<ListObjectPoliciesResponse>,
+  input: __S(2880, __c90, 0) as any as S.Schema<ListObjectPoliciesRequest>,
+  output: __S(1024, __c32, 0) as any as S.Schema<ListObjectPoliciesResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -3355,8 +3353,8 @@ export const listOutgoingTypedLinks: API.OperationMethod<
   ListOutgoingTypedLinksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2848, __c89, 0) as any as S.Schema<ListOutgoingTypedLinksRequest>,
-  output: __S(1024, __c32, 0) as any as S.Schema<ListOutgoingTypedLinksResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<ListOutgoingTypedLinksRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<ListOutgoingTypedLinksResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -3396,8 +3394,8 @@ export const listPolicyAttachments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2880, __c90, 0) as any as S.Schema<ListPolicyAttachmentsRequest>,
-  output: __S(1056, __c33, 0) as any as S.Schema<ListPolicyAttachmentsResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<ListPolicyAttachmentsRequest>,
+  output: __S(1088, __c34, 0) as any as S.Schema<ListPolicyAttachmentsResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -3440,8 +3438,8 @@ export const listPublishedSchemaArns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2912, __c91, 0) as any as S.Schema<ListPublishedSchemaArnsRequest>,
-  output: __S(2400, __c75, 0) as any as S.Schema<ListPublishedSchemaArnsResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<ListPublishedSchemaArnsRequest>,
+  output: __S(2432, __c76, 0) as any as S.Schema<ListPublishedSchemaArnsResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -3484,8 +3482,8 @@ export const listTagsForResource: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2944, __c92, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(2945, __c92, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(3008, __c94, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(3009, __c94, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -3527,8 +3525,8 @@ export const listTypedLinkFacetAttributes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3008, __c94, 0) as any as S.Schema<ListTypedLinkFacetAttributesRequest>,
-  output: __S(3009, __c94, 1) as any as S.Schema<ListTypedLinkFacetAttributesResponse>,
+  input: __S(3072, __c96, 0) as any as S.Schema<ListTypedLinkFacetAttributesRequest>,
+  output: __S(3073, __c96, 1) as any as S.Schema<ListTypedLinkFacetAttributesResponse>,
   errors: [
     AccessDeniedException,
     FacetNotFoundException,
@@ -3571,8 +3569,8 @@ export const listTypedLinkFacetNames: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3040, __c95, 0) as any as S.Schema<ListTypedLinkFacetNamesRequest>,
-  output: __S(3041, __c95, 1) as any as S.Schema<ListTypedLinkFacetNamesResponse>,
+  input: __S(3104, __c97, 0) as any as S.Schema<ListTypedLinkFacetNamesRequest>,
+  output: __S(2624, __c82, 0) as any as S.Schema<ListTypedLinkFacetNamesResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -3619,8 +3617,8 @@ export const lookupPolicy: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3072, __c96, 0) as any as S.Schema<LookupPolicyRequest>,
-  output: __S(3073, __c96, 1) as any as S.Schema<LookupPolicyResponse>,
+  input: __S(3136, __c98, 0) as any as S.Schema<LookupPolicyRequest>,
+  output: __S(1124, __c35, 4) as any as S.Schema<LookupPolicyResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -3661,8 +3659,8 @@ export const publishSchema: API.OperationMethod<
   PublishSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3104, __c97, 0) as any as S.Schema<PublishSchemaRequest>,
-  output: __S(3105, __c97, 1) as any as S.Schema<PublishSchemaResponse>,
+  input: __S(3168, __c99, 0) as any as S.Schema<PublishSchemaRequest>,
+  output: __S(3169, __c99, 1) as any as S.Schema<PublishSchemaResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -3697,8 +3695,8 @@ export const putSchemaFromJson: API.OperationMethod<
   PutSchemaFromJsonError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3136, __c98, 0) as any as S.Schema<PutSchemaFromJsonRequest>,
-  output: __S(3137, __c98, 1) as any as S.Schema<PutSchemaFromJsonResponse>,
+  input: __S(3200, __c100, 0) as any as S.Schema<PutSchemaFromJsonRequest>,
+  output: __S(3201, __c100, 1) as any as S.Schema<PutSchemaFromJsonResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -3734,7 +3732,7 @@ export const removeFacetFromObject: API.OperationMethod<
   RemoveFacetFromObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3168, __c99, 0) as any as S.Schema<RemoveFacetFromObjectRequest>,
+  input: __S(3232, __c101, 0) as any as S.Schema<RemoveFacetFromObjectRequest>,
   output: __S(96, __c3, 0) as any as S.Schema<RemoveFacetFromObjectResponse>,
   errors: [
     AccessDeniedException,
@@ -3771,7 +3769,7 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3200, __c100, 0) as any as S.Schema<TagResourceRequest>,
+  input: __S(3264, __c102, 0) as any as S.Schema<TagResourceRequest>,
   output: __S(96, __c3, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
@@ -3807,7 +3805,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3232, __c101, 0) as any as S.Schema<UntagResourceRequest>,
+  input: __S(3296, __c103, 0) as any as S.Schema<UntagResourceRequest>,
   output: __S(96, __c3, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
@@ -3852,7 +3850,7 @@ export const updateFacet: API.OperationMethod<
   UpdateFacetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3266, __c102, 2) as any as S.Schema<UpdateFacetRequest>,
+  input: __S(3330, __c104, 2) as any as S.Schema<UpdateFacetRequest>,
   output: __S(96, __c3, 0) as any as S.Schema<UpdateFacetResponse>,
   errors: [
     AccessDeniedException,
@@ -3892,7 +3890,7 @@ export const updateLinkAttributes: API.OperationMethod<
   UpdateLinkAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3296, __c103, 0) as any as S.Schema<UpdateLinkAttributesRequest>,
+  input: __S(3360, __c105, 0) as any as S.Schema<UpdateLinkAttributesRequest>,
   output: __S(96, __c3, 0) as any as S.Schema<UpdateLinkAttributesResponse>,
   errors: [
     AccessDeniedException,
@@ -3931,8 +3929,8 @@ export const updateObjectAttributes: API.OperationMethod<
   UpdateObjectAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3328, __c104, 0) as any as S.Schema<UpdateObjectAttributesRequest>,
-  output: __S(1251, __c39, 3) as any as S.Schema<UpdateObjectAttributesResponse>,
+  input: __S(3392, __c106, 0) as any as S.Schema<UpdateObjectAttributesRequest>,
+  output: __S(1216, __c38, 0) as any as S.Schema<UpdateObjectAttributesResponse>,
   errors: [
     AccessDeniedException,
     DirectoryNotEnabledException,
@@ -3969,8 +3967,8 @@ export const updateSchema: API.OperationMethod<
   UpdateSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3360, __c105, 0) as any as S.Schema<UpdateSchemaRequest>,
-  output: __S(1536, __c48, 0) as any as S.Schema<UpdateSchemaResponse>,
+  input: __S(3424, __c107, 0) as any as S.Schema<UpdateSchemaRequest>,
+  output: __S(1600, __c50, 0) as any as S.Schema<UpdateSchemaResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -4007,7 +4005,7 @@ export const updateTypedLinkFacet: API.OperationMethod<
   UpdateTypedLinkFacetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3394, __c106, 2) as any as S.Schema<UpdateTypedLinkFacetRequest>,
+  input: __S(3458, __c108, 2) as any as S.Schema<UpdateTypedLinkFacetRequest>,
   output: __S(96, __c3, 0) as any as S.Schema<UpdateTypedLinkFacetResponse>,
   errors: [
     AccessDeniedException,
@@ -4047,8 +4045,8 @@ export const upgradeAppliedSchema: API.OperationMethod<
   UpgradeAppliedSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3424, __c107, 0) as any as S.Schema<UpgradeAppliedSchemaRequest>,
-  output: __S(3425, __c107, 1) as any as S.Schema<UpgradeAppliedSchemaResponse>,
+  input: __S(3488, __c109, 0) as any as S.Schema<UpgradeAppliedSchemaRequest>,
+  output: __S(3489, __c109, 1) as any as S.Schema<UpgradeAppliedSchemaResponse>,
   errors: [
     AccessDeniedException,
     IncompatibleSchemaException,
@@ -4126,9 +4124,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpgradePublishedSchemaRequest",
-      });
+      ).annotate({ identifier: "UpgradePublishedSchemaRequest" });
     case 1:
       return S.suspend(() => S.Struct({ UpgradedSchemaArn: S.optional(S.String) })).annotate({
         identifier: "UpgradePublishedSchemaResponse",
@@ -4168,9 +4164,7 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AddFacetToObjectResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "AddFacetToObjectResponse" });
   }
 }
 function __c4(j: number): any {
@@ -4332,10 +4326,6 @@ function __c13(j: number): any {
           ),
         ),
       ).annotate({ identifier: "AttachTypedLinkRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ TypedLinkSpecifier: S.optional(__S(451, __c14, 3)) }),
-      ).annotate({ identifier: "AttachTypedLinkResponse" });
   }
 }
 function __c14(j: number): any {
@@ -4365,15 +4355,21 @@ function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({ TypedLinkSpecifier: S.optional(__S(451, __c14, 3)) }),
+      ).annotate({ identifier: "AttachTypedLinkResponse" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({
           ObjectReference: __S(64, __c2, 0),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           FacetFilter: S.optional(__S(224, __c7, 0)),
         }),
-      ).annotate({
-        identifier: "BatchListObjectAttributes",
-      });
+      ).annotate({ identifier: "BatchListObjectAttributes" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4394,85 +4390,67 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ObjectReference: __S(64, __c2, 0),
-          NextToken: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "BatchListObjectParentPaths",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ ObjectReference: __S(64, __c2, 0) })).annotate({
-        identifier: "BatchGetObjectInformation",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ObjectReference: __S(64, __c2, 0),
           SchemaFacet: __S(224, __c7, 0),
-          AttributeNames: __S(576, __c18, 0),
+          AttributeNames: __S(640, __c20, 0),
         }),
       ).annotate({ identifier: "BatchGetObjectAttributes" });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           PolicyReference: __S(64, __c2, 0),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "BatchListPolicyAttachments",
-      });
-    case 7:
+      ).annotate({ identifier: "BatchListPolicyAttachments" });
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          RangesOnIndexedValues: S.optional(__S(833, __c26, 1)),
+          RangesOnIndexedValues: S.optional(__S(865, __c27, 1)),
           IndexReference: __S(64, __c2, 0),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "BatchListIndex" });
-    case 8:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           ObjectReference: __S(64, __c2, 0),
-          FilterAttributeRanges: S.optional(__S(801, __c25, 1)),
+          FilterAttributeRanges: S.optional(__S(833, __c26, 1)),
           FilterTypedLink: S.optional(__S(448, __c14, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "BatchListOutgoingTypedLinks",
-      });
-    case 9:
+      ).annotate({ identifier: "BatchListOutgoingTypedLinks" });
+    case 7:
       return S.suspend(() =>
-        S.Struct({ TypedLinkSpecifier: __S(451, __c14, 3), AttributeNames: __S(576, __c18, 0) }),
+        S.Struct({ TypedLinkSpecifier: __S(451, __c14, 3), AttributeNames: __S(640, __c20, 0) }),
       ).annotate({ identifier: "BatchGetLinkAttributes" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          ListObjectAttributes: S.optional(__S(512, __c16, 0)),
+          ListObjectChildren: S.optional(__S(513, __c16, 1)),
+          ListAttachedIndices: S.optional(__S(514, __c16, 2)),
+          ListObjectParentPaths: S.optional(__S(513, __c16, 1)),
+          GetObjectInformation: S.optional(__S(544, __c17, 0)),
+          GetObjectAttributes: S.optional(__S(515, __c16, 3)),
+          ListObjectParents: S.optional(__S(513, __c16, 1)),
+          ListObjectPolicies: S.optional(__S(513, __c16, 1)),
+          ListPolicyAttachments: S.optional(__S(516, __c16, 4)),
+          LookupPolicy: S.optional(__S(513, __c16, 1)),
+          ListIndex: S.optional(__S(517, __c16, 5)),
+          ListOutgoingTypedLinks: S.optional(__S(518, __c16, 6)),
+          ListIncomingTypedLinks: S.optional(__S(518, __c16, 6)),
+          GetLinkAttributes: S.optional(__S(519, __c16, 7)),
+        }),
+      ).annotate({ identifier: "BatchReadOperation" });
+    case 9:
+      return S.Array(__S(520, __c16, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
-          ListObjectAttributes: S.optional(__S(480, __c15, 0)),
-          ListObjectChildren: S.optional(__S(481, __c15, 1)),
-          ListAttachedIndices: S.optional(__S(482, __c15, 2)),
-          ListObjectParentPaths: S.optional(__S(483, __c15, 3)),
-          GetObjectInformation: S.optional(__S(484, __c15, 4)),
-          GetObjectAttributes: S.optional(__S(485, __c15, 5)),
-          ListObjectParents: S.optional(__S(481, __c15, 1)),
-          ListObjectPolicies: S.optional(__S(481, __c15, 1)),
-          ListPolicyAttachments: S.optional(__S(486, __c15, 6)),
-          LookupPolicy: S.optional(__S(481, __c15, 1)),
-          ListIndex: S.optional(__S(487, __c15, 7)),
-          ListOutgoingTypedLinks: S.optional(__S(488, __c15, 8)),
-          ListIncomingTypedLinks: S.optional(__S(488, __c15, 8)),
-          GetLinkAttributes: S.optional(__S(489, __c15, 9)),
-        }),
-      ).annotate({ identifier: "BatchReadOperation" });
-    case 11:
-      return S.Array(__S(490, __c15, 10));
-    case 12:
-      return S.suspend(() =>
-        S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          Operations: __S(491, __c15, 11),
+          Operations: __S(521, __c16, 9),
           ConsistencyLevel: S.optional(S.String).pipe(T.HttpHeader("x-amz-consistency-level")),
         }).pipe(
           T.all(
@@ -4485,85 +4463,75 @@ function __c15(j: number): any {
           ),
         ),
       ).annotate({ identifier: "BatchReadRequest" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({ ParentLinks: S.optional(__S(993, __c31, 1)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "BatchListObjectParentsResponse" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          ListObjectAttributes: S.optional(__S(896, __c28, 0)),
+          ListObjectChildren: S.optional(__S(928, __c29, 0)),
+          GetObjectInformation: S.optional(__S(704, __c22, 0)),
+          GetObjectAttributes: S.optional(__S(672, __c21, 0)),
+          ListAttachedIndices: S.optional(__S(738, __c23, 2)),
+          ListObjectParentPaths: S.optional(__S(962, __c30, 2)),
+          ListObjectPolicies: S.optional(__S(1024, __c32, 0)),
+          ListPolicyAttachments: S.optional(__S(1088, __c34, 0)),
+          LookupPolicy: S.optional(__S(1124, __c35, 4)),
+          ListIndex: S.optional(__S(738, __c23, 2)),
+          ListOutgoingTypedLinks: S.optional(__S(1056, __c33, 0)),
+          ListIncomingTypedLinks: S.optional(__S(768, __c24, 0)),
+          GetLinkAttributes: S.optional(__S(672, __c21, 0)),
+          ListObjectParents: S.optional(__S(523, __c16, 11)),
+        }),
+      ).annotate({ identifier: "BatchReadSuccessfulResponse" });
     case 13:
-      return S.suspend(() =>
-        S.Struct({
-          PolicyToPathList: S.optional(__S(1091, __c34, 3)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BatchLookupPolicyResponse",
-      });
-    case 14:
-      return S.suspend(() =>
-        S.Struct({
-          ParentLinks: S.optional(__S(961, __c30, 1)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BatchListObjectParentsResponse",
-      });
-    case 15:
-      return S.suspend(() =>
-        S.Struct({
-          ListObjectAttributes: S.optional(__S(864, __c27, 0)),
-          ListObjectChildren: S.optional(__S(896, __c28, 0)),
-          GetObjectInformation: S.optional(__S(640, __c20, 0)),
-          GetObjectAttributes: S.optional(__S(608, __c19, 0)),
-          ListAttachedIndices: S.optional(__S(672, __c21, 0)),
-          ListObjectParentPaths: S.optional(__S(930, __c29, 2)),
-          ListObjectPolicies: S.optional(__S(992, __c31, 0)),
-          ListPolicyAttachments: S.optional(__S(1056, __c33, 0)),
-          LookupPolicy: S.optional(__S(493, __c15, 13)),
-          ListIndex: S.optional(__S(834, __c26, 2)),
-          ListOutgoingTypedLinks: S.optional(__S(1024, __c32, 0)),
-          ListIncomingTypedLinks: S.optional(__S(736, __c23, 0)),
-          GetLinkAttributes: S.optional(__S(608, __c19, 0)),
-          ListObjectParents: S.optional(__S(494, __c15, 14)),
-        }),
-      ).annotate({
-        identifier: "BatchReadSuccessfulResponse",
-      });
-    case 16:
       return S.suspend(() =>
         S.Struct({ Type: S.optional(S.String), Message: S.optional(S.String) }),
       ).annotate({ identifier: "BatchReadException" });
-    case 17:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          SuccessfulResponse: S.optional(__S(495, __c15, 15)),
-          ExceptionResponse: S.optional(__S(496, __c15, 16)),
+          SuccessfulResponse: S.optional(__S(524, __c16, 12)),
+          ExceptionResponse: S.optional(__S(525, __c16, 13)),
         }),
-      ).annotate({
-        identifier: "BatchReadOperationResponse",
-      });
-    case 18:
-      return S.Array(__S(497, __c15, 17));
-    case 19:
-      return S.suspend(() => S.Struct({ Responses: S.optional(__S(498, __c15, 18)) })).annotate({
+      ).annotate({ identifier: "BatchReadOperationResponse" });
+    case 15:
+      return S.Array(__S(526, __c16, 14));
+    case 16:
+      return S.suspend(() => S.Struct({ Responses: S.optional(__S(527, __c16, 15)) })).annotate({
         identifier: "BatchReadResponse",
       });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(224, __c7, 0));
   }
 }
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+      return S.suspend(() => S.Struct({ ObjectReference: __S(64, __c2, 0) })).annotate({
+        identifier: "BatchGetObjectInformation",
+      });
   }
 }
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(__S(224, __c7, 0));
   }
 }
 function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Attributes: S.optional(__S(193, __c6, 1)) })).annotate({
@@ -4571,33 +4539,18 @@ function __c19(j: number): any {
       });
   }
 }
-function __c20(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          SchemaFacets: S.optional(__S(512, __c16, 0)),
+          SchemaFacets: S.optional(__S(576, __c18, 0)),
           ObjectIdentifier: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchGetObjectInformationResponse",
-      });
+      ).annotate({ identifier: "BatchGetObjectInformationResponse" });
   }
 }
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          IndexAttachments: S.optional(__S(705, __c22, 1)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BatchListAttachedIndicesResponse",
-      });
-  }
-}
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4607,23 +4560,28 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "IndexAttachment" });
     case 1:
-      return S.Array(__S(704, __c22, 0));
+      return S.Array(__S(736, __c23, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          IndexAttachments: S.optional(__S(737, __c23, 1)),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BatchListAttachedIndicesResponse" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          LinkSpecifiers: S.optional(__S(802, __c25, 2)),
+          LinkSpecifiers: S.optional(__S(834, __c26, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchListIncomingTypedLinksResponse",
-      });
+      ).annotate({ identifier: "BatchListIncomingTypedLinksResponse" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4636,103 +4594,72 @@ function __c24(j: number): any {
       ).annotate({ identifier: "TypedAttributeValueRange" });
   }
 }
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ AttributeName: S.optional(S.String), Range: __S(768, __c24, 0) }),
-      ).annotate({ identifier: "TypedLinkAttributeRange" });
-    case 1:
-      return S.Array(__S(800, __c25, 0));
-    case 2:
-      return S.Array(__S(451, __c14, 3));
-  }
-}
 function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          AttributeKey: S.optional(__S(160, __c5, 0)),
-          Range: S.optional(__S(768, __c24, 0)),
-        }),
-      ).annotate({ identifier: "ObjectAttributeRange" });
+        S.Struct({ AttributeName: S.optional(S.String), Range: __S(800, __c25, 0) }),
+      ).annotate({ identifier: "TypedLinkAttributeRange" });
     case 1:
       return S.Array(__S(832, __c26, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          IndexAttachments: S.optional(__S(705, __c22, 1)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BatchListIndexResponse" });
+      return S.Array(__S(451, __c14, 3));
   }
 }
 function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Attributes: S.optional(__S(193, __c6, 1)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "BatchListObjectAttributesResponse",
-      });
+        S.Struct({
+          AttributeKey: S.optional(__S(160, __c5, 0)),
+          Range: S.optional(__S(800, __c25, 0)),
+        }),
+      ).annotate({ identifier: "ObjectAttributeRange" });
+    case 1:
+      return S.Array(__S(864, __c27, 0));
   }
 }
 function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          Children: S.optional(__S(544, __c17, 0)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BatchListObjectChildrenResponse",
-      });
+        S.Struct({ Attributes: S.optional(__S(193, __c6, 1)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "BatchListObjectAttributesResponse" });
   }
 }
 function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Path: S.optional(S.String), ObjectIdentifiers: S.optional(__S(576, __c18, 0)) }),
-      ).annotate({ identifier: "PathToObjectIdentifiers" });
-    case 1:
-      return S.Array(__S(928, __c29, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          PathToObjectIdentifiersList: S.optional(__S(929, __c29, 1)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BatchListObjectParentPathsResponse",
-      });
+        S.Struct({ Children: S.optional(__S(608, __c19, 0)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "BatchListObjectChildrenResponse" });
   }
 }
 function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ObjectIdentifier: S.optional(S.String), LinkName: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ObjectIdentifierAndLinkNameTuple",
-      });
+        S.Struct({ Path: S.optional(S.String), ObjectIdentifiers: S.optional(__S(640, __c20, 0)) }),
+      ).annotate({ identifier: "PathToObjectIdentifiers" });
     case 1:
       return S.Array(__S(960, __c30, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          PathToObjectIdentifiersList: S.optional(__S(961, __c30, 1)),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BatchListObjectParentPathsResponse" });
   }
 }
 function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          AttachedPolicyIds: S.optional(__S(576, __c18, 0)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BatchListObjectPoliciesResponse",
-      });
+        S.Struct({ ObjectIdentifier: S.optional(S.String), LinkName: S.optional(S.String) }),
+      ).annotate({ identifier: "ObjectIdentifierAndLinkNameTuple" });
+    case 1:
+      return S.Array(__S(992, __c31, 0));
   }
 }
 function __c32(j: number): any {
@@ -4740,12 +4667,10 @@ function __c32(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          TypedLinkSpecifiers: S.optional(__S(802, __c25, 2)),
+          AttachedPolicyIds: S.optional(__S(640, __c20, 0)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchListOutgoingTypedLinksResponse",
-      });
+      ).annotate({ identifier: "BatchListObjectPoliciesResponse" });
   }
 }
 function __c33(j: number): any {
@@ -4753,15 +4678,24 @@ function __c33(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ObjectIdentifiers: S.optional(__S(576, __c18, 0)),
+          TypedLinkSpecifiers: S.optional(__S(834, __c26, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchListPolicyAttachmentsResponse",
-      });
+      ).annotate({ identifier: "BatchListOutgoingTypedLinksResponse" });
   }
 }
 function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ObjectIdentifiers: S.optional(__S(640, __c20, 0)),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BatchListPolicyAttachmentsResponse" });
+  }
+}
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4772,21 +4706,28 @@ function __c34(j: number): any {
         }),
       ).annotate({ identifier: "PolicyAttachment" });
     case 1:
-      return S.Array(__S(1088, __c34, 0));
+      return S.Array(__S(1120, __c35, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ Path: S.optional(S.String), Policies: S.optional(__S(1089, __c34, 1)) }),
+        S.Struct({ Path: S.optional(S.String), Policies: S.optional(__S(1121, __c35, 1)) }),
       ).annotate({ identifier: "PolicyToPath" });
     case 3:
-      return S.Array(__S(1090, __c34, 2));
+      return S.Array(__S(1122, __c35, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          PolicyToPathList: S.optional(__S(1123, __c35, 3)),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BatchLookupPolicyResponse" });
   }
 }
-function __c35(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          SchemaFacet: __S(512, __c16, 0),
+          SchemaFacet: __S(576, __c18, 0),
           ObjectAttributeList: __S(193, __c6, 1),
           ParentReference: S.optional(__S(64, __c2, 0)),
           LinkName: S.optional(S.String),
@@ -4811,15 +4752,9 @@ function __c35(j: number): any {
       ).annotate({ identifier: "BatchDetachObject" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ ObjectReference: __S(64, __c2, 0), AttributeUpdates: __S(1250, __c39, 2) }),
-      ).annotate({
-        identifier: "BatchUpdateObjectAttributes",
-      });
+        S.Struct({ ObjectReference: __S(64, __c2, 0), AttributeUpdates: __S(1314, __c41, 2) }),
+      ).annotate({ identifier: "BatchUpdateObjectAttributes" });
     case 4:
-      return S.suspend(() => S.Struct({ ObjectReference: __S(64, __c2, 0) })).annotate({
-        identifier: "BatchDeleteObject",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           SchemaFacet: __S(224, __c7, 0),
@@ -4827,31 +4762,29 @@ function __c35(j: number): any {
           ObjectReference: __S(64, __c2, 0),
         }),
       ).annotate({ identifier: "BatchAddFacetToObject" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({ SchemaFacet: __S(224, __c7, 0), ObjectReference: __S(64, __c2, 0) }),
-      ).annotate({
-        identifier: "BatchRemoveFacetFromObject",
-      });
-    case 7:
+      ).annotate({ identifier: "BatchRemoveFacetFromObject" });
+    case 6:
       return S.suspend(() =>
         S.Struct({ PolicyReference: __S(64, __c2, 0), ObjectReference: __S(64, __c2, 0) }),
       ).annotate({ identifier: "BatchAttachPolicy" });
-    case 8:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          OrderedIndexedAttributeList: __S(1152, __c36, 0),
+          OrderedIndexedAttributeList: __S(1184, __c37, 0),
           IsUnique: S.Boolean,
           ParentReference: S.optional(__S(64, __c2, 0)),
           LinkName: S.optional(S.String),
           BatchReferenceName: S.optional(S.String),
         }),
       ).annotate({ identifier: "BatchCreateIndex" });
-    case 9:
+    case 8:
       return S.suspend(() =>
         S.Struct({ IndexReference: __S(64, __c2, 0), TargetReference: __S(64, __c2, 0) }),
       ).annotate({ identifier: "BatchAttachToIndex" });
-    case 10:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           SourceObjectReference: __S(64, __c2, 0),
@@ -4860,43 +4793,41 @@ function __c35(j: number): any {
           Attributes: __S(450, __c14, 2),
         }),
       ).annotate({ identifier: "BatchAttachTypedLink" });
-    case 11:
+    case 10:
       return S.suspend(() => S.Struct({ TypedLinkSpecifier: __S(451, __c14, 3) })).annotate({
         identifier: "BatchDetachTypedLink",
       });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({ TypedLinkSpecifier: __S(451, __c14, 3), AttributeUpdates: __S(1282, __c40, 2) }),
+      ).annotate({ identifier: "BatchUpdateLinkAttributes" });
     case 12:
       return S.suspend(() =>
-        S.Struct({ TypedLinkSpecifier: __S(451, __c14, 3), AttributeUpdates: __S(1218, __c38, 2) }),
-      ).annotate({
-        identifier: "BatchUpdateLinkAttributes",
-      });
-    case 13:
-      return S.suspend(() =>
         S.Struct({
-          CreateObject: S.optional(__S(1120, __c35, 0)),
-          AttachObject: S.optional(__S(1121, __c35, 1)),
-          DetachObject: S.optional(__S(1122, __c35, 2)),
-          UpdateObjectAttributes: S.optional(__S(1123, __c35, 3)),
-          DeleteObject: S.optional(__S(1124, __c35, 4)),
-          AddFacetToObject: S.optional(__S(1125, __c35, 5)),
-          RemoveFacetFromObject: S.optional(__S(1126, __c35, 6)),
-          AttachPolicy: S.optional(__S(1127, __c35, 7)),
-          DetachPolicy: S.optional(__S(1127, __c35, 7)),
-          CreateIndex: S.optional(__S(1128, __c35, 8)),
-          AttachToIndex: S.optional(__S(1129, __c35, 9)),
-          DetachFromIndex: S.optional(__S(1129, __c35, 9)),
-          AttachTypedLink: S.optional(__S(1130, __c35, 10)),
-          DetachTypedLink: S.optional(__S(1131, __c35, 11)),
-          UpdateLinkAttributes: S.optional(__S(1132, __c35, 12)),
+          CreateObject: S.optional(__S(1152, __c36, 0)),
+          AttachObject: S.optional(__S(1153, __c36, 1)),
+          DetachObject: S.optional(__S(1154, __c36, 2)),
+          UpdateObjectAttributes: S.optional(__S(1155, __c36, 3)),
+          DeleteObject: S.optional(__S(544, __c17, 0)),
+          AddFacetToObject: S.optional(__S(1156, __c36, 4)),
+          RemoveFacetFromObject: S.optional(__S(1157, __c36, 5)),
+          AttachPolicy: S.optional(__S(1158, __c36, 6)),
+          DetachPolicy: S.optional(__S(1158, __c36, 6)),
+          CreateIndex: S.optional(__S(1159, __c36, 7)),
+          AttachToIndex: S.optional(__S(1160, __c36, 8)),
+          DetachFromIndex: S.optional(__S(1160, __c36, 8)),
+          AttachTypedLink: S.optional(__S(1161, __c36, 9)),
+          DetachTypedLink: S.optional(__S(1162, __c36, 10)),
+          UpdateLinkAttributes: S.optional(__S(1163, __c36, 11)),
         }),
       ).annotate({ identifier: "BatchWriteOperation" });
+    case 13:
+      return S.Array(__S(1164, __c36, 12));
     case 14:
-      return S.Array(__S(1133, __c35, 13));
-    case 15:
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          Operations: __S(1134, __c35, 14),
+          Operations: __S(1165, __c36, 13),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/amazonclouddirectory/2017-01-11/batchwrite" }),
@@ -4908,85 +4839,65 @@ function __c35(j: number): any {
           ),
         ),
       ).annotate({ identifier: "BatchWriteRequest" });
-    case 16:
+    case 15:
       return S.suspend(() => S.Struct({ attachedObjectIdentifier: S.optional(S.String) })).annotate(
-        {
-          identifier: "BatchAttachObjectResponse",
-        },
+        { identifier: "BatchAttachObjectResponse" },
+      );
+    case 16:
+      return S.suspend(() => S.Struct({ detachedObjectIdentifier: S.optional(S.String) })).annotate(
+        { identifier: "BatchDetachObjectResponse" },
       );
     case 17:
-      return S.suspend(() => S.Struct({ detachedObjectIdentifier: S.optional(S.String) })).annotate(
-        {
-          identifier: "BatchDetachObjectResponse",
-        },
-      );
-    case 18:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "BatchRemoveFacetFromObjectResponse",
-      });
-    case 19:
-      return S.suspend(() => S.Struct({ AttachedObjectIdentifier: S.optional(S.String) })).annotate(
-        {
-          identifier: "BatchAttachToIndexResponse",
-        },
-      );
-    case 20:
-      return S.suspend(() => S.Struct({ DetachedObjectIdentifier: S.optional(S.String) })).annotate(
-        {
-          identifier: "BatchDetachFromIndexResponse",
-        },
-      );
-    case 21:
-      return S.suspend(() =>
-        S.Struct({ TypedLinkSpecifier: S.optional(__S(451, __c14, 3)) }),
-      ).annotate({
-        identifier: "BatchAttachTypedLinkResponse",
-      });
-    case 22:
       return S.suspend(() =>
         S.Struct({
-          CreateObject: S.optional(__S(1251, __c39, 3)),
-          AttachObject: S.optional(__S(1136, __c35, 16)),
-          DetachObject: S.optional(__S(1137, __c35, 17)),
-          UpdateObjectAttributes: S.optional(__S(1251, __c39, 3)),
+          CreateObject: S.optional(__S(1216, __c38, 0)),
+          AttachObject: S.optional(__S(1167, __c36, 15)),
+          DetachObject: S.optional(__S(1168, __c36, 16)),
+          UpdateObjectAttributes: S.optional(__S(1216, __c38, 0)),
           DeleteObject: S.optional(__S(96, __c3, 0)),
           AddFacetToObject: S.optional(__S(96, __c3, 0)),
-          RemoveFacetFromObject: S.optional(__S(1138, __c35, 18)),
+          RemoveFacetFromObject: S.optional(__S(96, __c3, 0)),
           AttachPolicy: S.optional(__S(96, __c3, 0)),
           DetachPolicy: S.optional(__S(96, __c3, 0)),
-          CreateIndex: S.optional(__S(1184, __c37, 0)),
-          AttachToIndex: S.optional(__S(1139, __c35, 19)),
-          DetachFromIndex: S.optional(__S(1140, __c35, 20)),
-          AttachTypedLink: S.optional(__S(1141, __c35, 21)),
+          CreateIndex: S.optional(__S(1216, __c38, 0)),
+          AttachToIndex: S.optional(__S(320, __c10, 0)),
+          DetachFromIndex: S.optional(__S(1248, __c39, 0)),
+          AttachTypedLink: S.optional(__S(480, __c15, 0)),
           DetachTypedLink: S.optional(__S(96, __c3, 0)),
-          UpdateLinkAttributes: S.optional(__S(1138, __c35, 18)),
+          UpdateLinkAttributes: S.optional(__S(96, __c3, 0)),
         }),
-      ).annotate({
-        identifier: "BatchWriteOperationResponse",
-      });
-    case 23:
-      return S.Array(__S(1142, __c35, 22));
-    case 24:
-      return S.suspend(() => S.Struct({ Responses: S.optional(__S(1143, __c35, 23)) })).annotate({
+      ).annotate({ identifier: "BatchWriteOperationResponse" });
+    case 18:
+      return S.Array(__S(1169, __c36, 17));
+    case 19:
+      return S.suspend(() => S.Struct({ Responses: S.optional(__S(1170, __c36, 18)) })).annotate({
         identifier: "BatchWriteResponse",
       });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(160, __c5, 0));
   }
 }
 function __c37(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ ObjectIdentifier: S.optional(S.String) })).annotate({
-        identifier: "BatchCreateIndexResponse",
-      });
+      return S.Array(__S(160, __c5, 0));
   }
 }
 function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ ObjectIdentifier: S.optional(S.String) })).annotate({
+        identifier: "BatchCreateObjectResponse",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ DetachedObjectIdentifier: S.optional(S.String) })).annotate(
+        { identifier: "BatchDetachFromIndexResponse" },
+      );
+  }
+}
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4999,14 +4910,14 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AttributeKey: S.optional(__S(160, __c5, 0)),
-          AttributeAction: S.optional(__S(1216, __c38, 0)),
+          AttributeAction: S.optional(__S(1280, __c40, 0)),
         }),
       ).annotate({ identifier: "LinkAttributeUpdate" });
     case 2:
-      return S.Array(__S(1217, __c38, 1));
+      return S.Array(__S(1281, __c40, 1));
   }
 }
-function __c39(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5019,18 +4930,14 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ObjectAttributeKey: S.optional(__S(160, __c5, 0)),
-          ObjectAttributeAction: S.optional(__S(1248, __c39, 0)),
+          ObjectAttributeAction: S.optional(__S(1312, __c41, 0)),
         }),
       ).annotate({ identifier: "ObjectAttributeUpdate" });
     case 2:
-      return S.Array(__S(1249, __c39, 1));
-    case 3:
-      return S.suspend(() => S.Struct({ ObjectIdentifier: S.optional(S.String) })).annotate({
-        identifier: "BatchCreateObjectResponse",
-      });
+      return S.Array(__S(1313, __c41, 1));
   }
 }
-function __c40(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5059,14 +4966,14 @@ function __c40(j: number): any {
       ).annotate({ identifier: "CreateDirectoryResponse" });
   }
 }
-function __c41(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           SchemaArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
           Name: S.String,
-          Attributes: S.optional(__S(1376, __c43, 0)),
+          Attributes: S.optional(__S(1440, __c45, 0)),
           ObjectType: S.optional(S.String),
           FacetStyle: S.optional(S.String),
         }).pipe(
@@ -5082,23 +4989,23 @@ function __c41(j: number): any {
       ).annotate({ identifier: "CreateFacetRequest" });
   }
 }
-function __c42(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Type: S.optional(S.String), Parameters: S.optional(__S(544, __c17, 0)) }),
+        S.Struct({ Type: S.optional(S.String), Parameters: S.optional(__S(608, __c19, 0)) }),
       ).annotate({ identifier: "Rule" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(1344, __c42, 0).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(1408, __c44, 0).pipe(S.optional));
   }
 }
-function __c43(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1410, __c44, 2));
+      return S.Array(__S(1474, __c46, 2));
   }
 }
-function __c44(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5106,7 +5013,7 @@ function __c44(j: number): any {
           Type: S.String,
           DefaultValue: S.optional(__S(128, __c4, 0)),
           IsImmutable: S.optional(S.Boolean),
-          Rules: S.optional(__S(1345, __c42, 1)),
+          Rules: S.optional(__S(1409, __c44, 1)),
         }),
       ).annotate({ identifier: "FacetAttributeDefinition" });
     case 1:
@@ -5117,20 +5024,20 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          AttributeDefinition: S.optional(__S(1408, __c44, 0)),
-          AttributeReference: S.optional(__S(1409, __c44, 1)),
+          AttributeDefinition: S.optional(__S(1472, __c46, 0)),
+          AttributeReference: S.optional(__S(1473, __c46, 1)),
           RequiredBehavior: S.optional(S.String),
         }),
       ).annotate({ identifier: "FacetAttribute" });
   }
 }
-function __c45(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          OrderedIndexedAttributeList: __S(1152, __c36, 0),
+          OrderedIndexedAttributeList: __S(1184, __c37, 0),
           IsUnique: S.Boolean,
           ParentReference: S.optional(__S(64, __c2, 0)),
           LinkName: S.optional(S.String),
@@ -5147,13 +5054,13 @@ function __c45(j: number): any {
       ).annotate({ identifier: "CreateIndexRequest" });
   }
 }
-function __c46(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          SchemaFacets: __S(512, __c16, 0),
+          SchemaFacets: __S(576, __c18, 0),
           ObjectAttributeList: S.optional(__S(193, __c6, 1)),
           ParentReference: S.optional(__S(64, __c2, 0)),
           LinkName: S.optional(S.String),
@@ -5170,7 +5077,7 @@ function __c46(j: number): any {
       ).annotate({ identifier: "CreateObjectRequest" });
   }
 }
-function __c47(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5187,7 +5094,7 @@ function __c47(j: number): any {
       ).annotate({ identifier: "CreateSchemaRequest" });
   }
 }
-function __c48(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ SchemaArn: S.optional(S.String) })).annotate({
@@ -5195,21 +5102,21 @@ function __c48(j: number): any {
       });
   }
 }
-function __c49(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          Attributes: __S(1600, __c50, 0),
-          IdentityAttributeOrder: __S(576, __c18, 0),
+          Attributes: __S(1664, __c52, 0),
+          IdentityAttributeOrder: __S(640, __c20, 0),
         }),
       ).annotate({ identifier: "TypedLinkFacet" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           SchemaArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          Facet: __S(1568, __c49, 0),
+          Facet: __S(1632, __c51, 0),
         }).pipe(
           T.all(
             T.Http({
@@ -5223,18 +5130,16 @@ function __c49(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateTypedLinkFacetRequest",
-      });
+      ).annotate({ identifier: "CreateTypedLinkFacetRequest" });
   }
 }
-function __c50(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1632, __c51, 0));
+      return S.Array(__S(1696, __c53, 0));
   }
 }
-function __c51(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5243,15 +5148,13 @@ function __c51(j: number): any {
           Type: S.String,
           DefaultValue: S.optional(__S(128, __c4, 0)),
           IsImmutable: S.optional(S.Boolean),
-          Rules: S.optional(__S(1345, __c42, 1)),
+          Rules: S.optional(__S(1409, __c44, 1)),
           RequiredBehavior: S.String,
         }),
-      ).annotate({
-        identifier: "TypedLinkAttributeDefinition",
-      });
+      ).annotate({ identifier: "TypedLinkAttributeDefinition" });
   }
 }
-function __c52(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5268,7 +5171,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "DeleteDirectoryRequest" });
   }
 }
-function __c53(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ DirectoryArn: S.String })).annotate({
@@ -5276,7 +5179,7 @@ function __c53(j: number): any {
       });
   }
 }
-function __c54(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5296,7 +5199,7 @@ function __c54(j: number): any {
       ).annotate({ identifier: "DeleteFacetRequest" });
   }
 }
-function __c55(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5316,7 +5219,7 @@ function __c55(j: number): any {
       ).annotate({ identifier: "DeleteObjectRequest" });
   }
 }
-function __c56(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5333,7 +5236,7 @@ function __c56(j: number): any {
       ).annotate({ identifier: "DeleteSchemaRequest" });
   }
 }
-function __c57(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5353,12 +5256,10 @@ function __c57(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteTypedLinkFacetRequest",
-      });
+      ).annotate({ identifier: "DeleteTypedLinkFacetRequest" });
   }
 }
-function __c58(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5379,15 +5280,7 @@ function __c58(j: number): any {
       ).annotate({ identifier: "DetachFromIndexRequest" });
   }
 }
-function __c59(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ DetachedObjectIdentifier: S.optional(S.String) })).annotate(
-        { identifier: "DetachFromIndexResponse" },
-      );
-  }
-}
-function __c60(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5408,7 +5301,7 @@ function __c60(j: number): any {
       ).annotate({ identifier: "DetachObjectRequest" });
   }
 }
-function __c61(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5429,7 +5322,7 @@ function __c61(j: number): any {
       ).annotate({ identifier: "DetachPolicyRequest" });
   }
 }
-function __c62(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5449,7 +5342,7 @@ function __c62(j: number): any {
       ).annotate({ identifier: "DetachTypedLinkRequest" });
   }
 }
-function __c63(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5466,7 +5359,7 @@ function __c63(j: number): any {
       ).annotate({ identifier: "DisableDirectoryRequest" });
   }
 }
-function __c64(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5483,7 +5376,7 @@ function __c64(j: number): any {
       ).annotate({ identifier: "EnableDirectoryRequest" });
   }
 }
-function __c65(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5500,16 +5393,14 @@ function __c65(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAppliedSchemaVersionRequest",
-      });
+      ).annotate({ identifier: "GetAppliedSchemaVersionRequest" });
     case 1:
       return S.suspend(() => S.Struct({ AppliedSchemaArn: S.optional(S.String) })).annotate({
         identifier: "GetAppliedSchemaVersionResponse",
       });
   }
 }
-function __c66(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5525,12 +5416,12 @@ function __c66(j: number): any {
         ),
       ).annotate({ identifier: "GetDirectoryRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ Directory: __S(2144, __c67, 0) })).annotate({
+      return S.suspend(() => S.Struct({ Directory: __S(2176, __c68, 0) })).annotate({
         identifier: "GetDirectoryResponse",
       });
   }
 }
-function __c67(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5543,7 +5434,7 @@ function __c67(j: number): any {
       ).annotate({ identifier: "Directory" });
   }
 }
-function __c68(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5570,19 +5461,19 @@ function __c68(j: number): any {
         }),
       ).annotate({ identifier: "Facet" });
     case 2:
-      return S.suspend(() => S.Struct({ Facet: S.optional(__S(2177, __c68, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ Facet: S.optional(__S(2209, __c69, 1)) })).annotate({
         identifier: "GetFacetResponse",
       });
   }
 }
-function __c69(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
           TypedLinkSpecifier: __S(451, __c14, 3),
-          AttributeNames: __S(576, __c18, 0),
+          AttributeNames: __S(640, __c20, 0),
           ConsistencyLevel: S.optional(S.String),
         }).pipe(
           T.all(
@@ -5600,7 +5491,7 @@ function __c69(j: number): any {
       ).annotate({ identifier: "GetLinkAttributesRequest" });
   }
 }
-function __c70(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5609,7 +5500,7 @@ function __c70(j: number): any {
           ObjectReference: __S(64, __c2, 0),
           ConsistencyLevel: S.optional(S.String).pipe(T.HttpHeader("x-amz-consistency-level")),
           SchemaFacet: __S(224, __c7, 0),
-          AttributeNames: __S(576, __c18, 0),
+          AttributeNames: __S(640, __c20, 0),
         }).pipe(
           T.all(
             T.Http({
@@ -5623,12 +5514,10 @@ function __c70(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetObjectAttributesRequest",
-      });
+      ).annotate({ identifier: "GetObjectAttributesRequest" });
   }
 }
-function __c71(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5646,12 +5535,10 @@ function __c71(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetObjectInformationRequest",
-      });
+      ).annotate({ identifier: "GetObjectInformationRequest" });
   }
 }
-function __c72(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5672,7 +5559,7 @@ function __c72(j: number): any {
       ).annotate({ identifier: "GetSchemaAsJsonResponse" });
   }
 }
-function __c73(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5689,18 +5576,14 @@ function __c73(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetTypedLinkFacetInformationRequest",
-      });
+      ).annotate({ identifier: "GetTypedLinkFacetInformationRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ IdentityAttributeOrder: S.optional(__S(576, __c18, 0)) }),
-      ).annotate({
-        identifier: "GetTypedLinkFacetInformationResponse",
-      });
+        S.Struct({ IdentityAttributeOrder: S.optional(__S(640, __c20, 0)) }),
+      ).annotate({ identifier: "GetTypedLinkFacetInformationResponse" });
   }
 }
-function __c74(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5719,22 +5602,18 @@ function __c74(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListAppliedSchemaArnsRequest",
-      });
-  }
-}
-function __c75(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ SchemaArns: S.optional(__S(576, __c18, 0)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListAppliedSchemaArnsResponse",
-      });
+      ).annotate({ identifier: "ListAppliedSchemaArnsRequest" });
   }
 }
 function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ SchemaArns: S.optional(__S(640, __c20, 0)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListAppliedSchemaArnsResponse" });
+  }
+}
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5754,12 +5633,10 @@ function __c76(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListAttachedIndicesRequest",
-      });
+      ).annotate({ identifier: "ListAttachedIndicesRequest" });
   }
 }
-function __c77(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5773,12 +5650,10 @@ function __c77(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDevelopmentSchemaArnsRequest",
-      });
+      ).annotate({ identifier: "ListDevelopmentSchemaArnsRequest" });
   }
 }
-function __c78(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5798,14 +5673,14 @@ function __c78(j: number): any {
         ),
       ).annotate({ identifier: "ListDirectoriesRequest" });
     case 1:
-      return S.Array(__S(2144, __c67, 0));
+      return S.Array(__S(2176, __c68, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ Directories: __S(2497, __c78, 1), NextToken: S.optional(S.String) }),
+        S.Struct({ Directories: __S(2529, __c79, 1), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListDirectoriesResponse" });
   }
 }
-function __c79(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5824,18 +5699,14 @@ function __c79(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListFacetAttributesRequest",
-      });
+      ).annotate({ identifier: "ListFacetAttributesRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Attributes: S.optional(__S(1376, __c43, 0)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListFacetAttributesResponse",
-      });
+        S.Struct({ Attributes: S.optional(__S(1440, __c45, 0)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListFacetAttributesResponse" });
   }
 }
-function __c80(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5854,20 +5725,24 @@ function __c80(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListFacetNamesRequest" });
-    case 1:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ FacetNames: S.optional(__S(576, __c18, 0)), NextToken: S.optional(S.String) }),
+        S.Struct({ FacetNames: S.optional(__S(640, __c20, 0)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListFacetNamesResponse" });
   }
 }
-function __c81(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
           ObjectReference: __S(64, __c2, 0),
-          FilterAttributeRanges: S.optional(__S(801, __c25, 1)),
+          FilterAttributeRanges: S.optional(__S(833, __c26, 1)),
           FilterTypedLink: S.optional(__S(448, __c14, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
@@ -5882,18 +5757,16 @@ function __c81(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListIncomingTypedLinksRequest",
-      });
+      ).annotate({ identifier: "ListIncomingTypedLinksRequest" });
   }
 }
-function __c82(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-          RangesOnIndexedValues: S.optional(__S(833, __c26, 1)),
+          RangesOnIndexedValues: S.optional(__S(865, __c27, 1)),
           IndexReference: __S(64, __c2, 0),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
@@ -5911,7 +5784,7 @@ function __c82(j: number): any {
       ).annotate({ identifier: "ListIndexRequest" });
   }
 }
-function __c83(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5929,12 +5802,10 @@ function __c83(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListManagedSchemaArnsRequest",
-      });
+      ).annotate({ identifier: "ListManagedSchemaArnsRequest" });
   }
 }
-function __c84(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5955,12 +5826,10 @@ function __c84(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListObjectAttributesRequest",
-      });
+      ).annotate({ identifier: "ListObjectAttributesRequest" });
   }
 }
-function __c85(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5980,12 +5849,10 @@ function __c85(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListObjectChildrenRequest",
-      });
+      ).annotate({ identifier: "ListObjectChildrenRequest" });
   }
 }
-function __c86(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6004,12 +5871,10 @@ function __c86(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListObjectParentPathsRequest",
-      });
+      ).annotate({ identifier: "ListObjectParentPathsRequest" });
   }
 }
-function __c87(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6034,16 +5899,14 @@ function __c87(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Parents: S.optional(__S(544, __c17, 0)),
+          Parents: S.optional(__S(608, __c19, 0)),
           NextToken: S.optional(S.String),
-          ParentLinks: S.optional(__S(961, __c30, 1)),
+          ParentLinks: S.optional(__S(993, __c31, 1)),
         }),
-      ).annotate({
-        identifier: "ListObjectParentsResponse",
-      });
+      ).annotate({ identifier: "ListObjectParentsResponse" });
   }
 }
-function __c88(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6063,19 +5926,17 @@ function __c88(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListObjectPoliciesRequest",
-      });
+      ).annotate({ identifier: "ListObjectPoliciesRequest" });
   }
 }
-function __c89(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
           ObjectReference: __S(64, __c2, 0),
-          FilterAttributeRanges: S.optional(__S(801, __c25, 1)),
+          FilterAttributeRanges: S.optional(__S(833, __c26, 1)),
           FilterTypedLink: S.optional(__S(448, __c14, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
@@ -6090,12 +5951,10 @@ function __c89(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListOutgoingTypedLinksRequest",
-      });
+      ).annotate({ identifier: "ListOutgoingTypedLinksRequest" });
   }
 }
-function __c90(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6115,12 +5974,10 @@ function __c90(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListPolicyAttachmentsRequest",
-      });
+      ).annotate({ identifier: "ListPolicyAttachmentsRequest" });
   }
 }
-function __c91(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6138,12 +5995,10 @@ function __c91(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListPublishedSchemaArnsRequest",
-      });
+      ).annotate({ identifier: "ListPublishedSchemaArnsRequest" });
   }
 }
-function __c92(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6161,28 +6016,24 @@ function __c92(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Tags: S.optional(__S(2977, __c93, 1)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
+        S.Struct({ Tags: S.optional(__S(3041, __c95, 1)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListTagsForResourceResponse" });
   }
 }
-function __c93(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "Tag" });
     case 1:
-      return S.Array(__S(2976, __c93, 0));
+      return S.Array(__S(3040, __c95, 0));
   }
 }
-function __c94(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6204,21 +6055,14 @@ function __c94(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTypedLinkFacetAttributesRequest",
-      });
+      ).annotate({ identifier: "ListTypedLinkFacetAttributesRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          Attributes: S.optional(__S(1600, __c50, 0)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListTypedLinkFacetAttributesResponse",
-      });
+        S.Struct({ Attributes: S.optional(__S(1664, __c52, 0)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListTypedLinkFacetAttributesResponse" });
   }
 }
-function __c95(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6239,18 +6083,10 @@ function __c95(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTypedLinkFacetNamesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ FacetNames: S.optional(__S(576, __c18, 0)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListTypedLinkFacetNamesResponse",
-      });
+      ).annotate({ identifier: "ListTypedLinkFacetNamesRequest" });
   }
 }
-function __c96(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6270,16 +6106,9 @@ function __c96(j: number): any {
           ),
         ),
       ).annotate({ identifier: "LookupPolicyRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          PolicyToPathList: S.optional(__S(1091, __c34, 3)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LookupPolicyResponse" });
   }
 }
-function __c97(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6305,7 +6134,7 @@ function __c97(j: number): any {
       });
   }
 }
-function __c98(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6329,7 +6158,7 @@ function __c98(j: number): any {
       });
   }
 }
-function __c99(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6347,16 +6176,14 @@ function __c99(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RemoveFacetFromObjectRequest",
-      });
+      ).annotate({ identifier: "RemoveFacetFromObjectRequest" });
   }
 }
-function __c100(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Tags: __S(2977, __c93, 1) }).pipe(
+        S.Struct({ ResourceArn: S.String, Tags: __S(3041, __c95, 1) }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/amazonclouddirectory/2017-01-11/tags/add" }),
             svc,
@@ -6369,11 +6196,11 @@ function __c100(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c101(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, TagKeys: __S(576, __c18, 0) }).pipe(
+        S.Struct({ ResourceArn: S.String, TagKeys: __S(640, __c20, 0) }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/amazonclouddirectory/2017-01-11/tags/remove" }),
             svc,
@@ -6386,20 +6213,20 @@ function __c101(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c102(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Attribute: S.optional(__S(1410, __c44, 2)), Action: S.optional(S.String) }),
+        S.Struct({ Attribute: S.optional(__S(1474, __c46, 2)), Action: S.optional(S.String) }),
       ).annotate({ identifier: "FacetAttributeUpdate" });
     case 1:
-      return S.Array(__S(3264, __c102, 0));
+      return S.Array(__S(3328, __c104, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           SchemaArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
           Name: S.String,
-          AttributeUpdates: S.optional(__S(3265, __c102, 1)),
+          AttributeUpdates: S.optional(__S(3329, __c104, 1)),
           ObjectType: S.optional(S.String),
         }).pipe(
           T.all(
@@ -6414,14 +6241,14 @@ function __c102(j: number): any {
       ).annotate({ identifier: "UpdateFacetRequest" });
   }
 }
-function __c103(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
           TypedLinkSpecifier: __S(451, __c14, 3),
-          AttributeUpdates: __S(1218, __c38, 2),
+          AttributeUpdates: __S(1282, __c40, 2),
         }).pipe(
           T.all(
             T.Http({
@@ -6435,19 +6262,17 @@ function __c103(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateLinkAttributesRequest",
-      });
+      ).annotate({ identifier: "UpdateLinkAttributesRequest" });
   }
 }
-function __c104(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
           ObjectReference: __S(64, __c2, 0),
-          AttributeUpdates: __S(1250, __c39, 2),
+          AttributeUpdates: __S(1314, __c41, 2),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/amazonclouddirectory/2017-01-11/object/update" }),
@@ -6458,12 +6283,10 @@ function __c104(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateObjectAttributesRequest",
-      });
+      ).annotate({ identifier: "UpdateObjectAttributesRequest" });
   }
 }
-function __c105(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6483,23 +6306,21 @@ function __c105(j: number): any {
       ).annotate({ identifier: "UpdateSchemaRequest" });
   }
 }
-function __c106(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Attribute: __S(1632, __c51, 0), Action: S.String }),
-      ).annotate({
-        identifier: "TypedLinkFacetAttributeUpdate",
-      });
+        S.Struct({ Attribute: __S(1696, __c53, 0), Action: S.String }),
+      ).annotate({ identifier: "TypedLinkFacetAttributeUpdate" });
     case 1:
-      return S.Array(__S(3392, __c106, 0));
+      return S.Array(__S(3456, __c108, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           SchemaArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
           Name: S.String,
-          AttributeUpdates: __S(3393, __c106, 1),
-          IdentityAttributeOrder: __S(576, __c18, 0),
+          AttributeUpdates: __S(3457, __c108, 1),
+          IdentityAttributeOrder: __S(640, __c20, 0),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/amazonclouddirectory/2017-01-11/typedlink/facet" }),
@@ -6510,12 +6331,10 @@ function __c106(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateTypedLinkFacetRequest",
-      });
+      ).annotate({ identifier: "UpdateTypedLinkFacetRequest" });
   }
 }
-function __c107(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6536,15 +6355,11 @@ function __c107(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpgradeAppliedSchemaRequest",
-      });
+      ).annotate({ identifier: "UpgradeAppliedSchemaRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ UpgradedSchemaArn: S.optional(S.String), DirectoryArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "UpgradeAppliedSchemaResponse",
-      });
+      ).annotate({ identifier: "UpgradeAppliedSchemaResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

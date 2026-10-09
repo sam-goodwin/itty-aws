@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -888,8 +888,8 @@ export const createAssistant: API.OperationMethod<
   CreateAssistantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c58, 0) as any as S.Schema<CreateAssistantRequest>,
-  output: __S(976, __c61, 0) as any as S.Schema<CreateAssistantResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<CreateAssistantRequest>,
+  output: __S(912, __c57, 0) as any as S.Schema<CreateAssistantResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -919,8 +919,8 @@ export const createAssistantAssociation: API.OperationMethod<
   CreateAssistantAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1025, __c64, 1) as any as S.Schema<CreateAssistantAssociationRequest>,
-  output: __S(1041, __c65, 1) as any as S.Schema<CreateAssistantAssociationResponse>,
+  input: __S(961, __c60, 1) as any as S.Schema<CreateAssistantAssociationRequest>,
+  output: __S(976, __c61, 0) as any as S.Schema<CreateAssistantAssociationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -951,7 +951,7 @@ export const createContent: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateContentRequest>,
-  output: __S(33, __c2, 1) as any as S.Schema<CreateContentResponse>,
+  output: __S(17, __c1, 1) as any as S.Schema<CreateContentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -996,8 +996,8 @@ export const createKnowledgeBase: API.OperationMethod<
   CreateKnowledgeBaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c3, 0) as any as S.Schema<CreateKnowledgeBaseRequest>,
-  output: __S(112, __c7, 0) as any as S.Schema<CreateKnowledgeBaseResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<CreateKnowledgeBaseRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<CreateKnowledgeBaseResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1025,8 +1025,8 @@ export const createQuickResponse: API.OperationMethod<
   CreateQuickResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c8, 0) as any as S.Schema<CreateQuickResponseRequest>,
-  output: __S(192, __c12, 0) as any as S.Schema<CreateQuickResponseResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<CreateQuickResponseRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<CreateQuickResponseResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1055,8 +1055,8 @@ export const createSession: API.OperationMethod<
   CreateSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c13, 0) as any as S.Schema<CreateSessionRequest>,
-  output: __S(225, __c14, 1) as any as S.Schema<CreateSessionResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<CreateSessionRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<CreateSessionResponse>,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1077,8 +1077,8 @@ export const deleteAssistant: API.OperationMethod<
   DeleteAssistantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c15, 0) as any as S.Schema<DeleteAssistantRequest>,
-  output: __S(256, __c16, 0) as any as S.Schema<DeleteAssistantResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<DeleteAssistantRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<DeleteAssistantResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1099,8 +1099,8 @@ export const deleteAssistantAssociation: API.OperationMethod<
   DeleteAssistantAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c17, 0) as any as S.Schema<DeleteAssistantAssociationRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<DeleteAssistantAssociationResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<DeleteAssistantAssociationRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<DeleteAssistantAssociationResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1121,8 +1121,8 @@ export const deleteContent: API.OperationMethod<
   DeleteContentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c19, 0) as any as S.Schema<DeleteContentRequest>,
-  output: __S(256, __c16, 0) as any as S.Schema<DeleteContentResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<DeleteContentRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<DeleteContentResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1144,8 +1144,8 @@ export const deleteImportJob: API.OperationMethod<
   DeleteImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c20, 0) as any as S.Schema<DeleteImportJobRequest>,
-  output: __S(256, __c16, 0) as any as S.Schema<DeleteImportJobResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<DeleteImportJobRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<DeleteImportJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1179,8 +1179,8 @@ export const deleteKnowledgeBase: API.OperationMethod<
   DeleteKnowledgeBaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<DeleteKnowledgeBaseRequest>,
-  output: __S(256, __c16, 0) as any as S.Schema<DeleteKnowledgeBaseResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<DeleteKnowledgeBaseRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<DeleteKnowledgeBaseResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1206,8 +1206,8 @@ export const deleteQuickResponse: API.OperationMethod<
   DeleteQuickResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c22, 0) as any as S.Schema<DeleteQuickResponseRequest>,
-  output: __S(256, __c16, 0) as any as S.Schema<DeleteQuickResponseResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<DeleteQuickResponseRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<DeleteQuickResponseResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1228,8 +1228,8 @@ export const getAssistant: API.OperationMethod<
   GetAssistantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c23, 0) as any as S.Schema<GetAssistantRequest>,
-  output: __S(976, __c61, 0) as any as S.Schema<GetAssistantResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetAssistantRequest>,
+  output: __S(912, __c57, 0) as any as S.Schema<GetAssistantResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1250,8 +1250,8 @@ export const getAssistantAssociation: API.OperationMethod<
   GetAssistantAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<GetAssistantAssociationRequest>,
-  output: __S(1041, __c65, 1) as any as S.Schema<GetAssistantAssociationResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<GetAssistantAssociationRequest>,
+  output: __S(976, __c61, 0) as any as S.Schema<GetAssistantAssociationResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1272,8 +1272,8 @@ export const getContent: API.OperationMethod<
   GetContentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c25, 0) as any as S.Schema<GetContentRequest>,
-  output: __S(33, __c2, 1) as any as S.Schema<GetContentResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetContentRequest>,
+  output: __S(17, __c1, 1) as any as S.Schema<GetContentResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1294,8 +1294,8 @@ export const getContentSummary: API.OperationMethod<
   GetContentSummaryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c26, 0) as any as S.Schema<GetContentSummaryRequest>,
-  output: __S(417, __c26, 1) as any as S.Schema<GetContentSummaryResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetContentSummaryRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<GetContentSummaryResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1316,8 +1316,8 @@ export const getImportJob: API.OperationMethod<
   GetImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<GetImportJobRequest>,
-  output: __S(481, __c30, 1) as any as S.Schema<GetImportJobResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<GetImportJobRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<GetImportJobResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1338,8 +1338,8 @@ export const getKnowledgeBase: API.OperationMethod<
   GetKnowledgeBaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<GetKnowledgeBaseRequest>,
-  output: __S(497, __c31, 1) as any as S.Schema<GetKnowledgeBaseResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<GetKnowledgeBaseRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<GetKnowledgeBaseResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1360,8 +1360,8 @@ export const getQuickResponse: API.OperationMethod<
   GetQuickResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c32, 0) as any as S.Schema<GetQuickResponseRequest>,
-  output: __S(513, __c32, 1) as any as S.Schema<GetQuickResponseResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<GetQuickResponseRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<GetQuickResponseResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1385,8 +1385,8 @@ export const getRecommendations: API.OperationMethod<
   GetRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c33, 0) as any as S.Schema<GetRecommendationsRequest>,
-  output: __S(535, __c33, 7) as any as S.Schema<GetRecommendationsResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<GetRecommendationsRequest>,
+  output: __S(471, __c29, 7) as any as S.Schema<GetRecommendationsResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1407,8 +1407,8 @@ export const getSession: API.OperationMethod<
   GetSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(560, __c35, 0) as any as S.Schema<GetSessionRequest>,
-  output: __S(225, __c14, 1) as any as S.Schema<GetSessionResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<GetSessionRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<GetSessionResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1430,8 +1430,8 @@ export const listAssistantAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssistantAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(576, __c36, 0) as any as S.Schema<ListAssistantAssociationsRequest>,
-  output: __S(579, __c36, 3) as any as S.Schema<ListAssistantAssociationsResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListAssistantAssociationsRequest>,
+  output: __S(514, __c32, 2) as any as S.Schema<ListAssistantAssociationsResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1455,8 +1455,8 @@ export const listAssistants: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssistantSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(592, __c37, 0) as any as S.Schema<ListAssistantsRequest>,
-  output: __S(594, __c37, 2) as any as S.Schema<ListAssistantsResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<ListAssistantsRequest>,
+  output: __S(530, __c33, 2) as any as S.Schema<ListAssistantsResponse>,
   errors: [AccessDeniedException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1484,8 +1484,8 @@ export const listContents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ContentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(608, __c38, 0) as any as S.Schema<ListContentsRequest>,
-  output: __S(625, __c39, 1) as any as S.Schema<ListContentsResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<ListContentsRequest>,
+  output: __S(561, __c35, 1) as any as S.Schema<ListContentsResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1509,8 +1509,8 @@ export const listImportJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ImportJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(640, __c40, 0) as any as S.Schema<ListImportJobsRequest>,
-  output: __S(643, __c40, 3) as any as S.Schema<ListImportJobsResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<ListImportJobsRequest>,
+  output: __S(579, __c36, 3) as any as S.Schema<ListImportJobsResponse>,
   errors: [AccessDeniedException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1534,8 +1534,8 @@ export const listKnowledgeBases: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   KnowledgeBaseSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(656, __c41, 0) as any as S.Schema<ListKnowledgeBasesRequest>,
-  output: __S(659, __c41, 3) as any as S.Schema<ListKnowledgeBasesResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<ListKnowledgeBasesRequest>,
+  output: __S(595, __c37, 3) as any as S.Schema<ListKnowledgeBasesResponse>,
   errors: [AccessDeniedException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1563,8 +1563,8 @@ export const listQuickResponses: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   QuickResponseSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(672, __c42, 0) as any as S.Schema<ListQuickResponsesRequest>,
-  output: __S(675, __c42, 3) as any as S.Schema<ListQuickResponsesResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<ListQuickResponsesRequest>,
+  output: __S(611, __c38, 3) as any as S.Schema<ListQuickResponsesResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1587,8 +1587,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(688, __c43, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(689, __c43, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1611,8 +1611,8 @@ export const notifyRecommendationsReceived: API.OperationMethod<
   NotifyRecommendationsReceivedError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c44, 0) as any as S.Schema<NotifyRecommendationsReceivedRequest>,
-  output: __S(707, __c44, 3) as any as S.Schema<NotifyRecommendationsReceivedResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<NotifyRecommendationsReceivedRequest>,
+  output: __S(643, __c40, 3) as any as S.Schema<NotifyRecommendationsReceivedResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1636,8 +1636,8 @@ export const queryAssistant: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResultData
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(720, __c45, 0) as any as S.Schema<QueryAssistantRequest>,
-  output: __S(723, __c45, 3) as any as S.Schema<QueryAssistantResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<QueryAssistantRequest>,
+  output: __S(659, __c41, 3) as any as S.Schema<QueryAssistantResponse>,
   errors: [
     AccessDeniedException,
     RequestTimeoutException,
@@ -1669,8 +1669,8 @@ export const removeKnowledgeBaseTemplateUri: API.OperationMethod<
   RemoveKnowledgeBaseTemplateUriError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c46, 0) as any as S.Schema<RemoveKnowledgeBaseTemplateUriRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<RemoveKnowledgeBaseTemplateUriResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<RemoveKnowledgeBaseTemplateUriRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<RemoveKnowledgeBaseTemplateUriResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1693,8 +1693,8 @@ export const searchContent: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ContentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(752, __c47, 0) as any as S.Schema<SearchContentRequest>,
-  output: __S(625, __c39, 1) as any as S.Schema<SearchContentResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<SearchContentRequest>,
+  output: __S(561, __c35, 1) as any as S.Schema<SearchContentResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1723,8 +1723,8 @@ export const searchQuickResponses: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   QuickResponseSearchResultData
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(790, __c49, 6) as any as S.Schema<SearchQuickResponsesRequest>,
-  output: __S(793, __c49, 9) as any as S.Schema<SearchQuickResponsesResponse>,
+  input: __S(726, __c45, 6) as any as S.Schema<SearchQuickResponsesRequest>,
+  output: __S(729, __c45, 9) as any as S.Schema<SearchQuickResponsesResponse>,
   errors: [
     AccessDeniedException,
     RequestTimeoutException,
@@ -1757,8 +1757,8 @@ export const searchSessions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SessionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(800, __c50, 0) as any as S.Schema<SearchSessionsRequest>,
-  output: __S(803, __c50, 3) as any as S.Schema<SearchSessionsResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<SearchSessionsRequest>,
+  output: __S(739, __c46, 3) as any as S.Schema<SearchSessionsResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1788,8 +1788,8 @@ export const startContentUpload: API.OperationMethod<
   StartContentUploadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(816, __c51, 0) as any as S.Schema<StartContentUploadRequest>,
-  output: __S(817, __c51, 1) as any as S.Schema<StartContentUploadResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<StartContentUploadRequest>,
+  output: __S(753, __c47, 1) as any as S.Schema<StartContentUploadResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1815,8 +1815,8 @@ export const startImportJob: API.OperationMethod<
   StartImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c52, 0) as any as S.Schema<StartImportJobRequest>,
-  output: __S(481, __c30, 1) as any as S.Schema<StartImportJobResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<StartImportJobRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<StartImportJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1839,8 +1839,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(848, __c53, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(256, __c16, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<TagResourceResponse>,
   errors: [ResourceNotFoundException, TooManyTagsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1857,8 +1857,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c54, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(256, __c16, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1880,8 +1880,8 @@ export const updateContent: API.OperationMethod<
   UpdateContentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(880, __c55, 0) as any as S.Schema<UpdateContentRequest>,
-  output: __S(33, __c2, 1) as any as S.Schema<UpdateContentResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<UpdateContentRequest>,
+  output: __S(17, __c1, 1) as any as S.Schema<UpdateContentResponse>,
   errors: [
     AccessDeniedException,
     PreconditionFailedException,
@@ -1911,8 +1911,8 @@ export const updateKnowledgeBaseTemplateUri: API.OperationMethod<
   UpdateKnowledgeBaseTemplateUriError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c56, 0) as any as S.Schema<UpdateKnowledgeBaseTemplateUriRequest>,
-  output: __S(112, __c7, 0) as any as S.Schema<UpdateKnowledgeBaseTemplateUriResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<UpdateKnowledgeBaseTemplateUriRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<UpdateKnowledgeBaseTemplateUriResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1935,8 +1935,8 @@ export const updateQuickResponse: API.OperationMethod<
   UpdateQuickResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(912, __c57, 0) as any as S.Schema<UpdateQuickResponseRequest>,
-  output: __S(192, __c12, 0) as any as S.Schema<UpdateQuickResponseResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<UpdateQuickResponseRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<UpdateQuickResponseResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1959,10 +1959,10 @@ function __c0(j: number): any {
           name: S.String,
           title: S.optional(S.String),
           overrideLinkOutUri: S.optional(S.String),
-          metadata: S.optional(__S(16, __c1, 0)),
+          metadata: S.optional(__S(944, __c59, 0)),
           uploadId: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(1008, __c63, 0)),
+          tags: S.optional(__S(944, __c59, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/knowledgeBases/{knowledgeBaseId}/contents" }),
@@ -1979,12 +1979,6 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           contentArn: S.String,
@@ -1996,20 +1990,20 @@ function __c2(j: number): any {
           title: S.String,
           contentType: S.String,
           status: S.String,
-          metadata: __S(16, __c1, 0),
-          tags: S.optional(__S(1008, __c63, 0)),
+          metadata: __S(944, __c59, 0),
+          tags: S.optional(__S(944, __c59, 0)),
           linkOutUri: S.optional(S.String),
           url: SensitiveString,
           urlExpiry: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "ContentData" });
     case 1:
-      return S.suspend(() => S.Struct({ content: S.optional(__S(32, __c2, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ content: S.optional(__S(16, __c1, 0)) })).annotate({
         identifier: "CreateContentResponse",
       });
   }
 }
-function __c3(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2017,42 +2011,38 @@ function __c3(j: number): any {
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           name: S.String,
           knowledgeBaseType: S.String,
-          sourceConfiguration: S.optional(__S(81, __c5, 1)),
-          renderingConfiguration: S.optional(__S(82, __c5, 2)),
-          serverSideEncryptionConfiguration: S.optional(__S(944, __c59, 0)),
+          sourceConfiguration: S.optional(__S(65, __c4, 1)),
+          renderingConfiguration: S.optional(__S(66, __c4, 2)),
+          serverSideEncryptionConfiguration: S.optional(__S(880, __c55, 0)),
           description: S.optional(S.String),
-          tags: S.optional(__S(1008, __c63, 0)),
+          tags: S.optional(__S(944, __c59, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/knowledgeBases" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateKnowledgeBaseRequest",
-      });
+      ).annotate({ identifier: "CreateKnowledgeBaseRequest" });
   }
 }
-function __c4(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c5(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ appIntegrationArn: S.String, objectFields: S.optional(__S(64, __c4, 0)) }),
-      ).annotate({
-        identifier: "AppIntegrationsConfiguration",
-      });
+        S.Struct({ appIntegrationArn: S.String, objectFields: S.optional(__S(48, __c3, 0)) }),
+      ).annotate({ identifier: "AppIntegrationsConfiguration" });
     case 1:
-      return S.Union([/*@__PURE__*/ S.Struct({ appIntegrations: __S(80, __c5, 0) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ appIntegrations: __S(64, __c4, 0) })]);
     case 2:
       return S.suspend(() => S.Struct({ templateUri: S.optional(S.String) })).annotate({
         identifier: "RenderingConfiguration",
       });
   }
 }
-function __c6(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2063,40 +2053,36 @@ function __c6(j: number): any {
           knowledgeBaseType: S.String,
           status: S.String,
           lastContentModificationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          sourceConfiguration: S.optional(__S(81, __c5, 1)),
-          renderingConfiguration: S.optional(__S(82, __c5, 2)),
-          serverSideEncryptionConfiguration: S.optional(__S(944, __c59, 0)),
+          sourceConfiguration: S.optional(__S(65, __c4, 1)),
+          renderingConfiguration: S.optional(__S(66, __c4, 2)),
+          serverSideEncryptionConfiguration: S.optional(__S(880, __c55, 0)),
           description: S.optional(S.String),
-          tags: S.optional(__S(1008, __c63, 0)),
+          tags: S.optional(__S(944, __c59, 0)),
         }),
       ).annotate({ identifier: "KnowledgeBaseData" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ knowledgeBase: S.optional(__S(96, __c6, 0)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ knowledgeBase: S.optional(__S(80, __c5, 0)) })).annotate({
         identifier: "CreateKnowledgeBaseResponse",
       });
   }
 }
-function __c8(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
           name: S.String,
-          content: __S(160, __c10, 0),
+          content: __S(128, __c8, 0),
           contentType: S.optional(S.String),
-          groupingConfiguration: S.optional(__S(161, __c10, 1)),
+          groupingConfiguration: S.optional(__S(129, __c8, 1)),
           description: S.optional(S.String),
           shortcutKey: S.optional(S.String),
           isActive: S.optional(S.Boolean),
-          channels: S.optional(__S(144, __c9, 0)),
+          channels: S.optional(__S(112, __c7, 0)),
           language: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(1008, __c63, 0)),
+          tags: S.optional(__S(944, __c59, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/knowledgeBases/{knowledgeBaseId}/quickResponses" }),
@@ -2107,35 +2093,33 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateQuickResponseRequest",
-      });
+      ).annotate({ identifier: "CreateQuickResponseRequest" });
   }
 }
-function __c9(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.Array(SensitiveString);
   }
 }
-function __c10(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.Union([/*@__PURE__*/ S.Struct({ content: SensitiveString })]);
     case 1:
       return S.suspend(() =>
-        S.Struct({ criteria: S.optional(SensitiveString), values: S.optional(__S(144, __c9, 0)) }),
+        S.Struct({ criteria: S.optional(SensitiveString), values: S.optional(__S(112, __c7, 0)) }),
       ).annotate({ identifier: "GroupingConfiguration" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          plainText: S.optional(__S(160, __c10, 0)),
-          markdown: S.optional(__S(160, __c10, 0)),
+          plainText: S.optional(__S(128, __c8, 0)),
+          markdown: S.optional(__S(128, __c8, 0)),
         }),
       ).annotate({ identifier: "QuickResponseContents" });
   }
 }
-function __c11(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2149,28 +2133,24 @@ function __c11(j: number): any {
           status: S.String,
           createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastModifiedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          contents: S.optional(__S(162, __c10, 2)),
+          contents: S.optional(__S(130, __c8, 2)),
           description: S.optional(S.String),
-          groupingConfiguration: S.optional(__S(161, __c10, 1)),
+          groupingConfiguration: S.optional(__S(129, __c8, 1)),
           shortcutKey: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
           isActive: S.optional(S.Boolean),
-          channels: S.optional(__S(144, __c9, 0)),
+          channels: S.optional(__S(112, __c7, 0)),
           language: S.optional(S.String),
-          tags: S.optional(__S(1008, __c63, 0)),
+          tags: S.optional(__S(944, __c59, 0)),
         }),
       ).annotate({ identifier: "QuickResponseData" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ quickResponse: S.optional(__S(176, __c11, 0)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ quickResponse: S.optional(__S(144, __c9, 0)) })).annotate({
         identifier: "CreateQuickResponseResponse",
       });
   }
 }
-function __c13(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2179,7 +2159,7 @@ function __c13(j: number): any {
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
           name: S.String,
           description: S.optional(S.String),
-          tags: S.optional(__S(1008, __c63, 0)),
+          tags: S.optional(__S(944, __c59, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/assistants/{assistantId}/sessions" }),
@@ -2193,7 +2173,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "CreateSessionRequest" });
   }
 }
-function __c14(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2202,17 +2182,17 @@ function __c14(j: number): any {
           sessionId: S.String,
           name: S.String,
           description: S.optional(S.String),
-          tags: S.optional(__S(1008, __c63, 0)),
-          integrationConfiguration: S.optional(__S(960, __c60, 0)),
+          tags: S.optional(__S(944, __c59, 0)),
+          integrationConfiguration: S.optional(__S(896, __c56, 0)),
         }),
       ).annotate({ identifier: "SessionData" });
     case 1:
-      return S.suspend(() => S.Struct({ session: S.optional(__S(224, __c14, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ session: S.optional(__S(176, __c11, 0)) })).annotate({
         identifier: "CreateSessionResponse",
       });
   }
 }
-function __c15(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2229,15 +2209,13 @@ function __c15(j: number): any {
       ).annotate({ identifier: "DeleteAssistantRequest" });
   }
 }
-function __c16(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAssistantResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteAssistantResponse" });
   }
 }
-function __c17(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2257,20 +2235,10 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteAssistantAssociationRequest",
-      });
+      ).annotate({ identifier: "DeleteAssistantAssociationRequest" });
   }
 }
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAssistantAssociationResponse",
-      });
-  }
-}
-function __c19(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2293,7 +2261,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "DeleteContentRequest" });
   }
 }
-function __c20(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2316,7 +2284,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "DeleteImportJobRequest" });
   }
 }
-function __c21(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2330,12 +2298,10 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteKnowledgeBaseRequest",
-      });
+      ).annotate({ identifier: "DeleteKnowledgeBaseRequest" });
   }
 }
-function __c22(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2355,12 +2321,10 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteQuickResponseRequest",
-      });
+      ).annotate({ identifier: "DeleteQuickResponseRequest" });
   }
 }
-function __c23(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2377,7 +2341,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "GetAssistantRequest" });
   }
 }
-function __c24(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2397,12 +2361,10 @@ function __c24(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAssistantAssociationRequest",
-      });
+      ).annotate({ identifier: "GetAssistantAssociationRequest" });
   }
 }
-function __c25(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2425,7 +2387,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "GetContentRequest" });
   }
 }
-function __c26(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2447,14 +2409,12 @@ function __c26(j: number): any {
         ),
       ).annotate({ identifier: "GetContentSummaryRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ contentSummary: S.optional(__S(432, __c27, 0)) })).annotate(
-        {
-          identifier: "GetContentSummaryResponse",
-        },
+      return S.suspend(() => S.Struct({ contentSummary: S.optional(__S(368, __c23, 0)) })).annotate(
+        { identifier: "GetContentSummaryResponse" },
       );
   }
 }
-function __c27(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2468,13 +2428,13 @@ function __c27(j: number): any {
           title: S.String,
           contentType: S.String,
           status: S.String,
-          metadata: __S(16, __c1, 0),
-          tags: S.optional(__S(1008, __c63, 0)),
+          metadata: __S(944, __c59, 0),
+          tags: S.optional(__S(944, __c59, 0)),
         }),
       ).annotate({ identifier: "ContentSummary" });
   }
 }
-function __c28(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2497,23 +2457,21 @@ function __c28(j: number): any {
       ).annotate({ identifier: "GetImportJobRequest" });
   }
 }
-function __c29(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ instanceId: S.optional(S.String) })).annotate({
         identifier: "ConnectConfiguration",
       });
     case 1:
-      return S.Union([/*@__PURE__*/ S.Struct({ connectConfiguration: __S(464, __c29, 0) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ connectConfiguration: __S(400, __c25, 0) })]);
     case 2:
       return S.suspend(() =>
-        S.Struct({ source: S.String, configuration: __S(465, __c29, 1) }),
-      ).annotate({
-        identifier: "ExternalSourceConfiguration",
-      });
+        S.Struct({ source: S.String, configuration: __S(401, __c25, 1) }),
+      ).annotate({ identifier: "ExternalSourceConfiguration" });
   }
 }
-function __c30(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2529,17 +2487,17 @@ function __c30(j: number): any {
           urlExpiry: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastModifiedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          metadata: S.optional(__S(16, __c1, 0)),
-          externalSourceConfiguration: S.optional(__S(466, __c29, 2)),
+          metadata: S.optional(__S(944, __c59, 0)),
+          externalSourceConfiguration: S.optional(__S(402, __c25, 2)),
         }),
       ).annotate({ identifier: "ImportJobData" });
     case 1:
-      return S.suspend(() => S.Struct({ importJob: S.optional(__S(480, __c30, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ importJob: S.optional(__S(416, __c26, 0)) })).annotate({
         identifier: "GetImportJobResponse",
       });
   }
 }
-function __c31(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2554,13 +2512,9 @@ function __c31(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetKnowledgeBaseRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({ knowledgeBase: S.optional(__S(96, __c6, 0)) })).annotate({
-        identifier: "GetKnowledgeBaseResponse",
-      });
   }
 }
-function __c32(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2581,13 +2535,9 @@ function __c32(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetQuickResponseRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({ quickResponse: S.optional(__S(176, __c11, 0)) })).annotate({
-        identifier: "GetQuickResponseResponse",
-      });
   }
 }
-function __c33(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2609,51 +2559,44 @@ function __c33(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetRecommendationsRequest",
-      });
+      ).annotate({ identifier: "GetRecommendationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           recommendationId: S.String,
-          document: __S(548, __c34, 4),
+          document: __S(484, __c30, 4),
           relevanceScore: S.optional(S.Number),
           relevanceLevel: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecommendationData" });
     case 2:
-      return S.Array(__S(529, __c33, 1));
+      return S.Array(__S(465, __c29, 1));
     case 3:
       return S.suspend(() => S.Struct({ text: S.optional(SensitiveString) })).annotate({
         identifier: "QueryRecommendationTriggerData",
       });
     case 4:
-      return S.Union([/*@__PURE__*/ S.Struct({ query: __S(531, __c33, 3) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ query: __S(467, __c29, 3) })]);
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           type: S.String,
           source: S.String,
-          data: __S(532, __c33, 4),
-          recommendationIds: __S(64, __c4, 0),
+          data: __S(468, __c29, 4),
+          recommendationIds: __S(48, __c3, 0),
         }),
       ).annotate({ identifier: "RecommendationTrigger" });
     case 6:
-      return S.Array(__S(533, __c33, 5));
+      return S.Array(__S(469, __c29, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({
-          recommendations: __S(530, __c33, 2),
-          triggers: S.optional(__S(534, __c33, 6)),
-        }),
-      ).annotate({
-        identifier: "GetRecommendationsResponse",
-      });
+        S.Struct({ recommendations: __S(466, __c29, 2), triggers: S.optional(__S(470, __c29, 6)) }),
+      ).annotate({ identifier: "GetRecommendationsResponse" });
   }
 }
-function __c34(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2672,22 +2615,22 @@ function __c34(j: number): any {
         }),
       ).annotate({ identifier: "Highlight" });
     case 2:
-      return S.Array(__S(545, __c34, 1));
+      return S.Array(__S(481, __c30, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ text: S.optional(SensitiveString), highlights: S.optional(__S(546, __c34, 2)) }),
+        S.Struct({ text: S.optional(SensitiveString), highlights: S.optional(__S(482, __c30, 2)) }),
       ).annotate({ identifier: "DocumentText" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          contentReference: __S(544, __c34, 0),
-          title: S.optional(__S(547, __c34, 3)),
-          excerpt: S.optional(__S(547, __c34, 3)),
+          contentReference: __S(480, __c30, 0),
+          title: S.optional(__S(483, __c30, 3)),
+          excerpt: S.optional(__S(483, __c30, 3)),
         }),
       ).annotate({ identifier: "Document" });
   }
 }
-function __c35(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2707,7 +2650,7 @@ function __c35(j: number): any {
       ).annotate({ identifier: "GetSessionRequest" });
   }
 }
-function __c36(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2725,37 +2668,19 @@ function __c36(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListAssistantAssociationsRequest",
-      });
+      ).annotate({ identifier: "ListAssistantAssociationsRequest" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          assistantAssociationId: S.String,
-          assistantAssociationArn: S.String,
-          assistantId: S.String,
-          assistantArn: S.String,
-          associationType: S.String,
-          associationData: __S(1057, __c66, 1),
-          tags: S.optional(__S(1008, __c63, 0)),
-        }),
-      ).annotate({
-        identifier: "AssistantAssociationSummary",
-      });
+      return S.Array(__S(994, __c62, 2));
     case 2:
-      return S.Array(__S(577, __c36, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          assistantAssociationSummaries: __S(578, __c36, 2),
+          assistantAssociationSummaries: __S(513, __c32, 1),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListAssistantAssociationsResponse",
-      });
+      ).annotate({ identifier: "ListAssistantAssociationsResponse" });
   }
 }
-function __c37(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2765,14 +2690,14 @@ function __c37(j: number): any {
         }).pipe(T.all(T.Http({ method: "GET", uri: "/assistants" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListAssistantsRequest" });
     case 1:
-      return S.Array(__S(992, __c62, 0));
+      return S.Array(__S(928, __c58, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ assistantSummaries: __S(593, __c37, 1), nextToken: S.optional(S.String) }),
+        S.Struct({ assistantSummaries: __S(529, __c33, 1), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListAssistantsResponse" });
   }
 }
-function __c38(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2793,17 +2718,17 @@ function __c38(j: number): any {
       ).annotate({ identifier: "ListContentsRequest" });
   }
 }
-function __c39(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(432, __c27, 0));
+      return S.Array(__S(368, __c23, 0));
     case 1:
       return S.suspend(() =>
-        S.Struct({ contentSummaries: __S(624, __c39, 0), nextToken: S.optional(S.String) }),
+        S.Struct({ contentSummaries: __S(560, __c35, 0), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListContentsResponse" });
   }
 }
-function __c40(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2833,19 +2758,19 @@ function __c40(j: number): any {
           status: S.String,
           createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastModifiedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          metadata: S.optional(__S(16, __c1, 0)),
-          externalSourceConfiguration: S.optional(__S(466, __c29, 2)),
+          metadata: S.optional(__S(944, __c59, 0)),
+          externalSourceConfiguration: S.optional(__S(402, __c25, 2)),
         }),
       ).annotate({ identifier: "ImportJobSummary" });
     case 2:
-      return S.Array(__S(641, __c40, 1));
+      return S.Array(__S(577, __c36, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ importJobSummaries: __S(642, __c40, 2), nextToken: S.optional(S.String) }),
+        S.Struct({ importJobSummaries: __S(578, __c36, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListImportJobsResponse" });
   }
 }
-function __c41(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2855,9 +2780,7 @@ function __c41(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/knowledgeBases" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListKnowledgeBasesRequest",
-      });
+      ).annotate({ identifier: "ListKnowledgeBasesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2866,24 +2789,22 @@ function __c41(j: number): any {
           name: S.String,
           knowledgeBaseType: S.String,
           status: S.String,
-          sourceConfiguration: S.optional(__S(81, __c5, 1)),
-          renderingConfiguration: S.optional(__S(82, __c5, 2)),
-          serverSideEncryptionConfiguration: S.optional(__S(944, __c59, 0)),
+          sourceConfiguration: S.optional(__S(65, __c4, 1)),
+          renderingConfiguration: S.optional(__S(66, __c4, 2)),
+          serverSideEncryptionConfiguration: S.optional(__S(880, __c55, 0)),
           description: S.optional(S.String),
-          tags: S.optional(__S(1008, __c63, 0)),
+          tags: S.optional(__S(944, __c59, 0)),
         }),
       ).annotate({ identifier: "KnowledgeBaseSummary" });
     case 2:
-      return S.Array(__S(657, __c41, 1));
+      return S.Array(__S(593, __c37, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ knowledgeBaseSummaries: __S(658, __c41, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListKnowledgeBasesResponse",
-      });
+        S.Struct({ knowledgeBaseSummaries: __S(594, __c37, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListKnowledgeBasesResponse" });
   }
 }
-function __c42(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2901,9 +2822,7 @@ function __c42(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListQuickResponsesRequest",
-      });
+      ).annotate({ identifier: "ListQuickResponsesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2919,21 +2838,19 @@ function __c42(j: number): any {
           description: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
           isActive: S.optional(S.Boolean),
-          channels: S.optional(__S(144, __c9, 0)),
-          tags: S.optional(__S(1008, __c63, 0)),
+          channels: S.optional(__S(112, __c7, 0)),
+          tags: S.optional(__S(944, __c59, 0)),
         }),
       ).annotate({ identifier: "QuickResponseSummary" });
     case 2:
-      return S.Array(__S(673, __c42, 1));
+      return S.Array(__S(609, __c38, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ quickResponseSummaries: __S(674, __c42, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListQuickResponsesResponse",
-      });
+        S.Struct({ quickResponseSummaries: __S(610, __c38, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListQuickResponsesResponse" });
   }
 }
-function __c43(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2947,23 +2864,21 @@ function __c43(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(1008, __c63, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(944, __c59, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c44(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
           sessionId: S.String.pipe(T.HttpLabel("sessionId")),
-          recommendationIds: __S(64, __c4, 0),
+          recommendationIds: __S(48, __c3, 0),
         }).pipe(
           T.all(
             T.Http({
@@ -2977,29 +2892,23 @@ function __c44(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "NotifyRecommendationsReceivedRequest",
-      });
+      ).annotate({ identifier: "NotifyRecommendationsReceivedRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ recommendationId: S.optional(S.String), message: S.optional(S.String) }),
-      ).annotate({
-        identifier: "NotifyRecommendationsReceivedError",
-      });
+      ).annotate({ identifier: "NotifyRecommendationsReceivedError" });
     case 2:
-      return S.Array(__S(705, __c44, 1));
+      return S.Array(__S(641, __c40, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          recommendationIds: S.optional(__S(64, __c4, 0)),
-          errors: S.optional(__S(706, __c44, 2)),
+          recommendationIds: S.optional(__S(48, __c3, 0)),
+          errors: S.optional(__S(642, __c40, 2)),
         }),
-      ).annotate({
-        identifier: "NotifyRecommendationsReceivedResponse",
-      });
+      ).annotate({ identifier: "NotifyRecommendationsReceivedResponse" });
   }
 }
-function __c45(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3023,19 +2932,19 @@ function __c45(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resultId: S.String,
-          document: __S(548, __c34, 4),
+          document: __S(484, __c30, 4),
           relevanceScore: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ResultData" });
     case 2:
-      return S.Array(__S(721, __c45, 1));
+      return S.Array(__S(657, __c41, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ results: __S(722, __c45, 2), nextToken: S.optional(S.String) }),
+        S.Struct({ results: __S(658, __c41, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "QueryAssistantResponse" });
   }
 }
-function __c46(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3049,12 +2958,10 @@ function __c46(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RemoveKnowledgeBaseTemplateUriRequest",
-      });
+      ).annotate({ identifier: "RemoveKnowledgeBaseTemplateUriRequest" });
   }
 }
-function __c47(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3062,7 +2969,7 @@ function __c47(j: number): any {
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
-          searchExpression: __S(770, __c48, 2),
+          searchExpression: __S(706, __c44, 2),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/knowledgeBases/{knowledgeBaseId}/search" }),
@@ -3076,45 +2983,45 @@ function __c47(j: number): any {
       ).annotate({ identifier: "SearchContentRequest" });
   }
 }
-function __c48(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ field: S.String, operator: S.String, value: S.String }),
       ).annotate({ identifier: "Filter" });
     case 1:
-      return S.Array(__S(768, __c48, 0));
+      return S.Array(__S(704, __c44, 0));
     case 2:
-      return S.suspend(() => S.Struct({ filters: __S(769, __c48, 1) })).annotate({
+      return S.suspend(() => S.Struct({ filters: __S(705, __c44, 1) })).annotate({
         identifier: "SearchExpression",
       });
   }
 }
-function __c49(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          values: __S(64, __c4, 0),
+          values: __S(48, __c3, 0),
           operator: S.String,
           allowFuzziness: S.optional(S.Boolean),
           priority: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuickResponseQueryField" });
     case 1:
-      return S.Array(__S(784, __c49, 0));
+      return S.Array(__S(720, __c45, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          values: S.optional(__S(64, __c4, 0)),
+          values: S.optional(__S(48, __c3, 0)),
           operator: S.String,
           includeNoExistence: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "QuickResponseFilterField" });
     case 3:
-      return S.Array(__S(786, __c49, 2));
+      return S.Array(__S(722, __c45, 2));
     case 4:
       return S.suspend(() => S.Struct({ name: S.String, order: S.optional(S.String) })).annotate({
         identifier: "QuickResponseOrderField",
@@ -3122,21 +3029,19 @@ function __c49(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          queries: S.optional(__S(785, __c49, 1)),
-          filters: S.optional(__S(787, __c49, 3)),
-          orderOnField: S.optional(__S(788, __c49, 4)),
+          queries: S.optional(__S(721, __c45, 1)),
+          filters: S.optional(__S(723, __c45, 3)),
+          orderOnField: S.optional(__S(724, __c45, 4)),
         }),
-      ).annotate({
-        identifier: "QuickResponseSearchExpression",
-      });
+      ).annotate({ identifier: "QuickResponseSearchExpression" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
-          searchExpression: __S(789, __c49, 5),
+          searchExpression: __S(725, __c45, 5),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          attributes: S.optional(__S(16, __c1, 0)),
+          attributes: S.optional(__S(944, __c59, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -3150,9 +3055,7 @@ function __c49(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SearchQuickResponsesRequest",
-      });
+      ).annotate({ identifier: "SearchQuickResponsesRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -3163,34 +3066,30 @@ function __c49(j: number): any {
           name: S.String,
           contentType: S.String,
           status: S.String,
-          contents: __S(162, __c10, 2),
+          contents: __S(130, __c8, 2),
           createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastModifiedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           isActive: S.Boolean,
           description: S.optional(S.String),
-          groupingConfiguration: S.optional(__S(161, __c10, 1)),
+          groupingConfiguration: S.optional(__S(129, __c8, 1)),
           shortcutKey: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          channels: S.optional(__S(144, __c9, 0)),
+          channels: S.optional(__S(112, __c7, 0)),
           language: S.optional(S.String),
-          attributesNotInterpolated: S.optional(__S(64, __c4, 0)),
-          attributesInterpolated: S.optional(__S(64, __c4, 0)),
-          tags: S.optional(__S(1008, __c63, 0)),
+          attributesNotInterpolated: S.optional(__S(48, __c3, 0)),
+          attributesInterpolated: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(944, __c59, 0)),
         }),
-      ).annotate({
-        identifier: "QuickResponseSearchResultData",
-      });
+      ).annotate({ identifier: "QuickResponseSearchResultData" });
     case 8:
-      return S.Array(__S(791, __c49, 7));
+      return S.Array(__S(727, __c45, 7));
     case 9:
       return S.suspend(() =>
-        S.Struct({ results: __S(792, __c49, 8), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "SearchQuickResponsesResponse",
-      });
+        S.Struct({ results: __S(728, __c45, 8), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "SearchQuickResponsesResponse" });
   }
 }
-function __c50(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3198,7 +3097,7 @@ function __c50(j: number): any {
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
-          searchExpression: __S(770, __c48, 2),
+          searchExpression: __S(706, __c44, 2),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/assistants/{assistantId}/searchSessions" }),
@@ -3220,14 +3119,14 @@ function __c50(j: number): any {
         }),
       ).annotate({ identifier: "SessionSummary" });
     case 2:
-      return S.Array(__S(801, __c50, 1));
+      return S.Array(__S(737, __c46, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ sessionSummaries: __S(802, __c50, 2), nextToken: S.optional(S.String) }),
+        S.Struct({ sessionSummaries: __S(738, __c46, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "SearchSessionsResponse" });
   }
 }
-function __c51(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3245,23 +3144,19 @@ function __c51(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartContentUploadRequest",
-      });
+      ).annotate({ identifier: "StartContentUploadRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           uploadId: S.String,
           url: SensitiveString,
           urlExpiry: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          headersToInclude: __S(1008, __c63, 0),
+          headersToInclude: __S(944, __c59, 0),
         }),
-      ).annotate({
-        identifier: "StartContentUploadResponse",
-      });
+      ).annotate({ identifier: "StartContentUploadResponse" });
   }
 }
-function __c52(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3270,8 +3165,8 @@ function __c52(j: number): any {
           importJobType: S.String,
           uploadId: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          metadata: S.optional(__S(16, __c1, 0)),
-          externalSourceConfiguration: S.optional(__S(466, __c29, 2)),
+          metadata: S.optional(__S(944, __c59, 0)),
+          externalSourceConfiguration: S.optional(__S(402, __c25, 2)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/knowledgeBases/{knowledgeBaseId}/importJobs" }),
@@ -3285,13 +3180,13 @@ function __c52(j: number): any {
       ).annotate({ identifier: "StartImportJobRequest" });
   }
 }
-function __c53(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(1008, __c63, 0),
+          tags: __S(944, __c59, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -3305,13 +3200,13 @@ function __c53(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c54(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(64, __c4, 0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(48, __c3, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -3325,7 +3220,7 @@ function __c54(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c55(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3336,7 +3231,7 @@ function __c55(j: number): any {
           title: S.optional(S.String),
           overrideLinkOutUri: S.optional(S.String),
           removeOverrideLinkOutUri: S.optional(S.Boolean),
-          metadata: S.optional(__S(16, __c1, 0)),
+          metadata: S.optional(__S(944, __c59, 0)),
           uploadId: S.optional(S.String),
         }).pipe(
           T.all(
@@ -3354,7 +3249,7 @@ function __c55(j: number): any {
       ).annotate({ identifier: "UpdateContentRequest" });
   }
 }
-function __c56(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3371,12 +3266,10 @@ function __c56(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateKnowledgeBaseTemplateUriRequest",
-      });
+      ).annotate({ identifier: "UpdateKnowledgeBaseTemplateUriRequest" });
   }
 }
-function __c57(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3384,16 +3277,16 @@ function __c57(j: number): any {
           knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
           quickResponseId: S.String.pipe(T.HttpLabel("quickResponseId")),
           name: S.optional(S.String),
-          content: S.optional(__S(160, __c10, 0)),
+          content: S.optional(__S(128, __c8, 0)),
           contentType: S.optional(S.String),
-          groupingConfiguration: S.optional(__S(161, __c10, 1)),
+          groupingConfiguration: S.optional(__S(129, __c8, 1)),
           removeGroupingConfiguration: S.optional(S.Boolean),
           description: S.optional(S.String),
           removeDescription: S.optional(S.Boolean),
           shortcutKey: S.optional(S.String),
           removeShortcutKey: S.optional(S.Boolean),
           isActive: S.optional(S.Boolean),
-          channels: S.optional(__S(144, __c9, 0)),
+          channels: S.optional(__S(112, __c7, 0)),
           language: S.optional(S.String),
         }).pipe(
           T.all(
@@ -3408,12 +3301,10 @@ function __c57(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateQuickResponseRequest",
-      });
+      ).annotate({ identifier: "UpdateQuickResponseRequest" });
   }
 }
-function __c58(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3422,15 +3313,15 @@ function __c58(j: number): any {
           name: S.String,
           type: S.String,
           description: S.optional(S.String),
-          tags: S.optional(__S(1008, __c63, 0)),
-          serverSideEncryptionConfiguration: S.optional(__S(944, __c59, 0)),
+          tags: S.optional(__S(944, __c59, 0)),
+          serverSideEncryptionConfiguration: S.optional(__S(880, __c55, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/assistants" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateAssistantRequest" });
   }
 }
-function __c59(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ kmsKeyId: S.optional(S.String) })).annotate({
@@ -3438,7 +3329,7 @@ function __c59(j: number): any {
       });
   }
 }
-function __c60(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ topicIntegrationArn: S.optional(S.String) })).annotate({
@@ -3446,15 +3337,15 @@ function __c60(j: number): any {
       });
   }
 }
-function __c61(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ assistant: S.optional(__S(992, __c62, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ assistant: S.optional(__S(928, __c58, 0)) })).annotate({
         identifier: "CreateAssistantResponse",
       });
   }
 }
-function __c62(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3465,20 +3356,20 @@ function __c62(j: number): any {
           type: S.String,
           status: S.String,
           description: S.optional(S.String),
-          tags: S.optional(__S(1008, __c63, 0)),
-          serverSideEncryptionConfiguration: S.optional(__S(944, __c59, 0)),
-          integrationConfiguration: S.optional(__S(960, __c60, 0)),
+          tags: S.optional(__S(944, __c59, 0)),
+          serverSideEncryptionConfiguration: S.optional(__S(880, __c55, 0)),
+          integrationConfiguration: S.optional(__S(896, __c56, 0)),
         }),
       ).annotate({ identifier: "AssistantData" });
   }
 }
-function __c63(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c64(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.Union([/*@__PURE__*/ S.Struct({ knowledgeBaseId: S.String })]);
@@ -3487,9 +3378,9 @@ function __c64(j: number): any {
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
           associationType: S.String,
-          association: __S(1024, __c64, 0),
+          association: __S(960, __c60, 0),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(1008, __c63, 0)),
+          tags: S.optional(__S(944, __c59, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/assistants/{assistantId}/associations" }),
@@ -3500,14 +3391,26 @@ function __c64(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateAssistantAssociationRequest",
-      });
+      ).annotate({ identifier: "CreateAssistantAssociationRequest" });
   }
 }
-function __c65(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({ assistantAssociation: S.optional(__S(994, __c62, 2)) }),
+      ).annotate({ identifier: "CreateAssistantAssociationResponse" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ knowledgeBaseId: S.optional(S.String), knowledgeBaseArn: S.optional(S.String) }),
+      ).annotate({ identifier: "KnowledgeBaseAssociationData" });
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ knowledgeBaseAssociation: __S(992, __c62, 0) })]);
+    case 2:
       return S.suspend(() =>
         S.Struct({
           assistantAssociationId: S.String,
@@ -3515,28 +3418,10 @@ function __c65(j: number): any {
           assistantId: S.String,
           assistantArn: S.String,
           associationType: S.String,
-          associationData: __S(1057, __c66, 1),
-          tags: S.optional(__S(1008, __c63, 0)),
+          associationData: __S(993, __c62, 1),
+          tags: S.optional(__S(944, __c59, 0)),
         }),
       ).annotate({ identifier: "AssistantAssociationData" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ assistantAssociation: S.optional(__S(1040, __c65, 0)) }),
-      ).annotate({
-        identifier: "CreateAssistantAssociationResponse",
-      });
-  }
-}
-function __c66(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ knowledgeBaseId: S.optional(S.String), knowledgeBaseArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "KnowledgeBaseAssociationData",
-      });
-    case 1:
-      return S.Union([/*@__PURE__*/ S.Struct({ knowledgeBaseAssociation: __S(1056, __c66, 0) })]);
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

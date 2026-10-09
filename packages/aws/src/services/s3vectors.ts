@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -792,7 +792,7 @@ export const putVectorBucketDefaultIndexMode: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(64, __c16, 0) as any as S.Schema<PutVectorBucketDefaultIndexModeInput>,
-  output: __S(65, __c16, 1) as any as S.Schema<PutVectorBucketDefaultIndexModeOutput>,
+  output: __S(8, __c2, 0) as any as S.Schema<PutVectorBucketDefaultIndexModeOutput>,
   errors: [NotFoundException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1033,9 +1033,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteIndexOutput",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteIndexOutput" });
   }
 }
 function __c3(j: number): any {
@@ -1075,9 +1073,7 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteVectorBucketPolicyInput",
-      });
+      ).annotate({ identifier: "DeleteVectorBucketPolicyInput" });
   }
 }
 function __c5(j: number): any {
@@ -1170,9 +1166,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetVectorBucketPolicyInput",
-      });
+      ).annotate({ identifier: "GetVectorBucketPolicyInput" });
     case 1:
       return S.suspend(() => S.Struct({ policy: S.optional(S.String) })).annotate({
         identifier: "GetVectorBucketPolicyOutput",
@@ -1351,13 +1345,7 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutVectorBucketDefaultIndexModeInput",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "PutVectorBucketDefaultIndexModeOutput",
-      });
+      ).annotate({ identifier: "PutVectorBucketDefaultIndexModeInput" });
   }
 }
 function __c17(j: number): any {
@@ -1378,9 +1366,7 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutVectorBucketPolicyInput",
-      });
+      ).annotate({ identifier: "PutVectorBucketPolicyInput" });
   }
 }
 function __c18(j: number): any {

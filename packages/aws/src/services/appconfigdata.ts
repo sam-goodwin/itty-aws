@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -249,9 +249,7 @@ function __c2(j: number): any {
         S.Struct({ ConfigurationToken: S.String.pipe(T.HttpQuery("configuration_token")) }).pipe(
           T.all(T.Http({ method: "GET", uri: "/configuration" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetLatestConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetLatestConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -265,9 +263,7 @@ function __c2(j: number): any {
           Configuration: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
           VersionLabel: S.optional(S.String).pipe(T.HttpHeader("Version-Label")),
         }),
-      ).annotate({
-        identifier: "GetLatestConfigurationResponse",
-      });
+      ).annotate({ identifier: "GetLatestConfigurationResponse" });
   }
 }
 function __c3(j: number): any {
@@ -289,15 +285,11 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartConfigurationSessionRequest",
-      });
+      ).annotate({ identifier: "StartConfigurationSessionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ InitialConfigurationToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "StartConfigurationSessionResponse",
-      });
+      ).annotate({ identifier: "StartConfigurationSessionResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

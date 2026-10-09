@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -649,8 +649,8 @@ export const createWorkspaceInstance: API.OperationMethod<
   CreateWorkspaceInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(610, __c19, 2) as any as S.Schema<CreateWorkspaceInstanceRequest>,
-  output: __S(611, __c19, 3) as any as S.Schema<CreateWorkspaceInstanceResponse>,
+  input: __S(609, __c19, 1) as any as S.Schema<CreateWorkspaceInstanceRequest>,
+  output: __S(610, __c19, 2) as any as S.Schema<CreateWorkspaceInstanceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -716,7 +716,7 @@ export const deleteWorkspaceInstance: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(32, __c1, 0) as any as S.Schema<DeleteWorkspaceInstanceRequest>,
-  output: __S(33, __c1, 1) as any as S.Schema<DeleteWorkspaceInstanceResponse>,
+  output: __S(416, __c13, 0) as any as S.Schema<DeleteWorkspaceInstanceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1005,13 +1005,7 @@ function __c1(j: number): any {
         S.Struct({ WorkspaceInstanceId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteWorkspaceInstanceRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteWorkspaceInstanceResponse",
-      });
+      ).annotate({ identifier: "DeleteWorkspaceInstanceRequest" });
   }
 }
 function __c2(j: number): any {
@@ -1024,9 +1018,7 @@ function __c2(j: number): any {
           Device: S.optional(S.String),
           DisassociateMode: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisassociateVolumeRequest",
-      });
+      ).annotate({ identifier: "DisassociateVolumeRequest" });
   }
 }
 function __c3(j: number): any {
@@ -1036,9 +1028,7 @@ function __c3(j: number): any {
         S.Struct({ WorkspaceInstanceId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetWorkspaceInstanceRequest",
-      });
+      ).annotate({ identifier: "GetWorkspaceInstanceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ErrorCode: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
@@ -1065,9 +1055,7 @@ function __c3(j: number): any {
           EC2ManagedInstance: S.optional(__S(128, __c4, 0)),
           BillingConfiguration: S.optional(__S(640, __c20, 0)),
         }),
-      ).annotate({
-        identifier: "GetWorkspaceInstanceResponse",
-      });
+      ).annotate({ identifier: "GetWorkspaceInstanceResponse" });
   }
 }
 function __c4(j: number): any {
@@ -1082,14 +1070,8 @@ function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          BillingMode: S.String,
-          PlatformType: S.String,
-          Tenancy: S.String,
-        }),
-      ).annotate({
-        identifier: "InstanceConfigurationFilter",
-      });
+        S.Struct({ BillingMode: S.String, PlatformType: S.String, Tenancy: S.String }),
+      ).annotate({ identifier: "InstanceConfigurationFilter" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1105,9 +1087,7 @@ function __c5(j: number): any {
           PlatformType: S.optional(S.String),
           Tenancy: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SupportedInstanceConfiguration",
-      });
+      ).annotate({ identifier: "SupportedInstanceConfiguration" });
     case 3:
       return S.Array(__S(162, __c5, 2));
     case 4:
@@ -1122,9 +1102,7 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({ InstanceTypes: __S(165, __c5, 5), NextToken: S.optional(SensitiveString) }),
-      ).annotate({
-        identifier: "ListInstanceTypesResponse",
-      });
+      ).annotate({ identifier: "ListInstanceTypesResponse" });
   }
 }
 function __c6(j: number): any {
@@ -1150,9 +1128,7 @@ function __c7(j: number): any {
         S.Struct({ WorkspaceInstanceId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(545, __c17, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -1170,9 +1146,7 @@ function __c8(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(SensitiveString),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListWorkspaceInstancesRequest",
-      });
+      ).annotate({ identifier: "ListWorkspaceInstancesRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1186,9 +1160,7 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({ WorkspaceInstances: __S(259, __c8, 3), NextToken: S.optional(SensitiveString) }),
-      ).annotate({
-        identifier: "ListWorkspaceInstancesResponse",
-      });
+      ).annotate({ identifier: "ListWorkspaceInstancesResponse" });
   }
 }
 function __c9(j: number): any {
@@ -1234,9 +1206,7 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AssociateVolumeResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "AssociateVolumeResponse" });
   }
 }
 function __c14(j: number): any {
@@ -1311,9 +1281,7 @@ function __c18(j: number): any {
           NoDevice: S.optional(S.String),
           VirtualName: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BlockDeviceMappingRequest",
-      });
+      ).annotate({ identifier: "BlockDeviceMappingRequest" });
     case 2:
       return S.Array(__S(577, __c18, 1));
     case 3:
@@ -1322,18 +1290,14 @@ function __c18(j: number): any {
           CapacityReservationId: S.optional(S.String),
           CapacityReservationResourceGroupArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CapacityReservationTarget",
-      });
+      ).annotate({ identifier: "CapacityReservationTarget" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           CapacityReservationPreference: S.optional(S.String),
           CapacityReservationTarget: S.optional(__S(579, __c18, 3)),
         }),
-      ).annotate({
-        identifier: "CapacityReservationSpecification",
-      });
+      ).annotate({ identifier: "CapacityReservationSpecification" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1358,9 +1322,7 @@ function __c18(j: number): any {
     case 9:
       return S.suspend(() =>
         S.Struct({ Arn: S.optional(S.String), Name: S.optional(S.String) }),
-      ).annotate({
-        identifier: "IamInstanceProfileSpecification",
-      });
+      ).annotate({ identifier: "IamInstanceProfileSpecification" });
     case 10:
       return S.suspend(() =>
         S.Struct({
@@ -1377,9 +1339,7 @@ function __c18(j: number): any {
           MarketType: S.optional(S.String),
           SpotOptions: S.optional(__S(586, __c18, 10)),
         }),
-      ).annotate({
-        identifier: "InstanceMarketOptionsRequest",
-      });
+      ).annotate({ identifier: "InstanceMarketOptionsRequest" });
     case 12:
       return S.suspend(() =>
         S.Struct({
@@ -1408,91 +1368,77 @@ function __c18(j: number): any {
           HttpTokens: S.optional(S.String),
           InstanceMetadataTags: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "InstanceMetadataOptionsRequest",
-      });
+      ).annotate({ identifier: "InstanceMetadataOptionsRequest" });
     case 18:
-      return S.suspend(() => S.Struct({ Enabled: S.optional(S.Boolean) })).annotate({
-        identifier: "RunInstancesMonitoringEnabled",
-      });
-    case 19:
       return S.suspend(() =>
         S.Struct({
           TcpEstablishedTimeout: S.optional(S.Number),
           UdpStreamTimeout: S.optional(S.Number),
           UdpTimeout: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "ConnectionTrackingSpecificationRequest",
-      });
-    case 20:
+      ).annotate({ identifier: "ConnectionTrackingSpecificationRequest" });
+    case 19:
       return S.suspend(() => S.Struct({ EnaSrdUdpEnabled: S.optional(S.Boolean) })).annotate({
         identifier: "EnaSrdUdpSpecificationRequest",
       });
-    case 21:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           EnaSrdEnabled: S.optional(S.Boolean),
-          EnaSrdUdpSpecification: S.optional(__S(596, __c18, 20)),
+          EnaSrdUdpSpecification: S.optional(__S(595, __c18, 19)),
         }),
-      ).annotate({
-        identifier: "EnaSrdSpecificationRequest",
-      });
-    case 22:
+      ).annotate({ identifier: "EnaSrdSpecificationRequest" });
+    case 21:
       return S.suspend(() => S.Struct({ Ipv4Prefix: S.optional(S.String) })).annotate({
         identifier: "Ipv4PrefixSpecificationRequest",
       });
+    case 22:
+      return S.Array(__S(597, __c18, 21));
     case 23:
-      return S.Array(__S(598, __c18, 22));
-    case 24:
       return S.suspend(() => S.Struct({ Ipv6Prefix: S.optional(S.String) })).annotate({
         identifier: "Ipv6PrefixSpecificationRequest",
       });
+    case 24:
+      return S.Array(__S(599, __c18, 23));
     case 25:
-      return S.Array(__S(600, __c18, 24));
-    case 26:
       return S.suspend(() =>
         S.Struct({ Primary: S.optional(S.Boolean), PrivateIpAddress: S.optional(SensitiveString) }),
-      ).annotate({
-        identifier: "PrivateIpAddressSpecification",
-      });
+      ).annotate({ identifier: "PrivateIpAddressSpecification" });
+    case 26:
+      return S.Array(__S(601, __c18, 25));
     case 27:
-      return S.Array(__S(602, __c18, 26));
-    case 28:
       return S.suspend(() =>
         S.Struct({
           AssociateCarrierIpAddress: S.optional(S.Boolean),
           AssociatePublicIpAddress: S.optional(S.Boolean),
-          ConnectionTrackingSpecification: S.optional(__S(595, __c18, 19)),
+          ConnectionTrackingSpecification: S.optional(__S(594, __c18, 18)),
           Description: S.optional(S.String),
           DeviceIndex: S.optional(S.Number),
-          EnaSrdSpecification: S.optional(__S(597, __c18, 21)),
+          EnaSrdSpecification: S.optional(__S(596, __c18, 20)),
           InterfaceType: S.optional(S.String),
-          Ipv4Prefixes: S.optional(__S(599, __c18, 23)),
+          Ipv4Prefixes: S.optional(__S(598, __c18, 22)),
           Ipv4PrefixCount: S.optional(S.Number),
           Ipv6AddressCount: S.optional(S.Number),
           Ipv6Addresses: S.optional(__S(589, __c18, 13)),
-          Ipv6Prefixes: S.optional(__S(601, __c18, 25)),
+          Ipv6Prefixes: S.optional(__S(600, __c18, 24)),
           Ipv6PrefixCount: S.optional(S.Number),
           NetworkCardIndex: S.optional(S.Number),
           NetworkInterfaceId: S.optional(S.String),
           PrimaryIpv6: S.optional(S.Boolean),
           PrivateIpAddress: S.optional(SensitiveString),
-          PrivateIpAddresses: S.optional(__S(603, __c18, 27)),
+          PrivateIpAddresses: S.optional(__S(602, __c18, 26)),
           SecondaryPrivateIpAddressCount: S.optional(S.Number),
           Groups: S.optional(__S(672, __c21, 0)),
           SubnetId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "InstanceNetworkInterfaceSpecification",
-      });
+      ).annotate({ identifier: "InstanceNetworkInterfaceSpecification" });
+    case 28:
+      return S.Array(__S(603, __c18, 27));
     case 29:
-      return S.Array(__S(604, __c18, 28));
-    case 30:
       return S.suspend(() => S.Struct({ BandwidthWeighting: S.optional(S.String) })).annotate({
         identifier: "InstanceNetworkPerformanceOptionsRequest",
       });
-    case 31:
+    case 30:
       return S.suspend(() =>
         S.Struct({
           Affinity: S.optional(S.String),
@@ -1505,21 +1451,19 @@ function __c18(j: number): any {
           Tenancy: S.optional(S.String),
         }),
       ).annotate({ identifier: "Placement" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           HostnameType: S.optional(S.String),
           EnableResourceNameDnsARecord: S.optional(S.Boolean),
           EnableResourceNameDnsAAAARecord: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "PrivateDnsNameOptionsRequest",
-      });
-    case 1:
+      ).annotate({ identifier: "PrivateDnsNameOptionsRequest" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           BlockDeviceMappings: S.optional(__S(578, __c18, 2)),
@@ -1542,11 +1486,11 @@ function __c19(j: number): any {
           LicenseSpecifications: S.optional(__S(591, __c18, 15)),
           MaintenanceOptions: S.optional(__S(592, __c18, 16)),
           MetadataOptions: S.optional(__S(593, __c18, 17)),
-          Monitoring: S.optional(__S(594, __c18, 18)),
-          NetworkInterfaces: S.optional(__S(605, __c18, 29)),
-          NetworkPerformanceOptions: S.optional(__S(606, __c18, 30)),
-          Placement: S.optional(__S(607, __c18, 31)),
-          PrivateDnsNameOptions: S.optional(__S(608, __c19, 0)),
+          Monitoring: S.optional(__S(583, __c18, 7)),
+          NetworkInterfaces: S.optional(__S(604, __c18, 28)),
+          NetworkPerformanceOptions: S.optional(__S(605, __c18, 29)),
+          Placement: S.optional(__S(606, __c18, 30)),
+          PrivateDnsNameOptions: S.optional(__S(607, __c18, 31)),
           PrivateIpAddress: S.optional(SensitiveString),
           RamdiskId: S.optional(S.String),
           SecurityGroupIds: S.optional(__S(672, __c21, 0)),
@@ -1556,18 +1500,16 @@ function __c19(j: number): any {
           UserData: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "ManagedInstanceRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ClientToken: S.optional(SensitiveString).pipe(T.IdempotencyToken()),
           Tags: S.optional(__S(545, __c17, 1)),
-          ManagedInstance: __S(609, __c19, 1),
+          ManagedInstance: __S(608, __c19, 0),
           BillingConfiguration: S.optional(__S(640, __c20, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateWorkspaceInstanceRequest",
-      });
-    case 3:
+      ).annotate({ identifier: "CreateWorkspaceInstanceRequest" });
+    case 2:
       return S.suspend(() => S.Struct({ WorkspaceInstanceId: S.optional(S.String) })).annotate({
         identifier: "CreateWorkspaceInstanceResponse",
       });

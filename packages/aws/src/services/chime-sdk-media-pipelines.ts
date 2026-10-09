@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1377,7 +1377,7 @@ export const deleteMediaPipeline: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(480, __c15, 0) as any as S.Schema<DeleteMediaPipelineRequest>,
-  output: __S(512, __c16, 0) as any as S.Schema<DeleteMediaPipelineResponse>,
+  output: __S(416, __c13, 0) as any as S.Schema<DeleteMediaPipelineResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1412,7 +1412,7 @@ export const deleteMediaPipelineKinesisVideoStreamPool: API.OperationMethod<
   DeleteMediaPipelineKinesisVideoStreamPoolError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c17, 0) as any as S.Schema<DeleteMediaPipelineKinesisVideoStreamPoolRequest>,
+  input: __S(512, __c16, 0) as any as S.Schema<DeleteMediaPipelineKinesisVideoStreamPoolRequest>,
   output: __S(416, __c13, 0) as any as S.Schema<DeleteMediaPipelineKinesisVideoStreamPoolResponse>,
   errors: [
     BadRequestException,
@@ -1447,7 +1447,7 @@ export const getMediaCapturePipeline: API.OperationMethod<
   GetMediaCapturePipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c18, 0) as any as S.Schema<GetMediaCapturePipelineRequest>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetMediaCapturePipelineRequest>,
   output: __S(1440, __c45, 0) as any as S.Schema<GetMediaCapturePipelineResponse>,
   errors: [
     BadRequestException,
@@ -1481,7 +1481,7 @@ export const getMediaInsightsPipelineConfiguration: API.OperationMethod<
   GetMediaInsightsPipelineConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c19, 0) as any as S.Schema<GetMediaInsightsPipelineConfigurationRequest>,
+  input: __S(576, __c18, 0) as any as S.Schema<GetMediaInsightsPipelineConfigurationRequest>,
   output: __S(176, __c5, 16) as any as S.Schema<GetMediaInsightsPipelineConfigurationResponse>,
   errors: [
     BadRequestException,
@@ -1515,8 +1515,8 @@ export const getMediaPipeline: API.OperationMethod<
   GetMediaPipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c20, 0) as any as S.Schema<GetMediaPipelineRequest>,
-  output: __S(642, __c20, 2) as any as S.Schema<GetMediaPipelineResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<GetMediaPipelineRequest>,
+  output: __S(610, __c19, 2) as any as S.Schema<GetMediaPipelineResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1549,7 +1549,7 @@ export const getMediaPipelineKinesisVideoStreamPool: API.OperationMethod<
   GetMediaPipelineKinesisVideoStreamPoolError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c21, 0) as any as S.Schema<GetMediaPipelineKinesisVideoStreamPoolRequest>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetMediaPipelineKinesisVideoStreamPoolRequest>,
   output: __S(290, __c9, 2) as any as S.Schema<GetMediaPipelineKinesisVideoStreamPoolResponse>,
   errors: [
     BadRequestException,
@@ -1583,8 +1583,8 @@ export const getSpeakerSearchTask: API.OperationMethod<
   GetSpeakerSearchTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c22, 0) as any as S.Schema<GetSpeakerSearchTaskRequest>,
-  output: __S(737, __c23, 1) as any as S.Schema<GetSpeakerSearchTaskResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<GetSpeakerSearchTaskRequest>,
+  output: __S(705, __c22, 1) as any as S.Schema<GetSpeakerSearchTaskResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1617,8 +1617,8 @@ export const getVoiceToneAnalysisTask: API.OperationMethod<
   GetVoiceToneAnalysisTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c24, 0) as any as S.Schema<GetVoiceToneAnalysisTaskRequest>,
-  output: __S(801, __c25, 1) as any as S.Schema<GetVoiceToneAnalysisTaskResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetVoiceToneAnalysisTaskRequest>,
+  output: __S(769, __c24, 1) as any as S.Schema<GetVoiceToneAnalysisTaskResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1652,8 +1652,8 @@ export const listMediaCapturePipelines: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(832, __c26, 0) as any as S.Schema<ListMediaCapturePipelinesRequest>,
-  output: __S(835, __c26, 3) as any as S.Schema<ListMediaCapturePipelinesResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<ListMediaCapturePipelinesRequest>,
+  output: __S(801, __c25, 1) as any as S.Schema<ListMediaCapturePipelinesResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1773,7 +1773,7 @@ export const listMediaPipelines: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(928, __c29, 0) as any as S.Schema<ListMediaPipelinesRequest>,
-  output: __S(931, __c29, 3) as any as S.Schema<ListMediaPipelinesResponse>,
+  output: __S(929, __c29, 1) as any as S.Schema<ListMediaPipelinesResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1850,7 +1850,7 @@ export const startSpeakerSearchTask: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(992, __c31, 0) as any as S.Schema<StartSpeakerSearchTaskRequest>,
-  output: __S(737, __c23, 1) as any as S.Schema<StartSpeakerSearchTaskResponse>,
+  output: __S(705, __c22, 1) as any as S.Schema<StartSpeakerSearchTaskResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1891,7 +1891,7 @@ export const startVoiceToneAnalysisTask: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1056, __c33, 0) as any as S.Schema<StartVoiceToneAnalysisTaskRequest>,
-  output: __S(801, __c25, 1) as any as S.Schema<StartVoiceToneAnalysisTaskResponse>,
+  output: __S(769, __c24, 1) as any as S.Schema<StartVoiceToneAnalysisTaskResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1927,7 +1927,7 @@ export const stopSpeakerSearchTask: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1088, __c34, 0) as any as S.Schema<StopSpeakerSearchTaskRequest>,
-  output: __S(512, __c16, 0) as any as S.Schema<StopSpeakerSearchTaskResponse>,
+  output: __S(416, __c13, 0) as any as S.Schema<StopSpeakerSearchTaskResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1998,7 +1998,7 @@ export const tagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1152, __c36, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(512, __c16, 0) as any as S.Schema<TagResourceResponse>,
+  output: __S(416, __c13, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2032,7 +2032,7 @@ export const untagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1184, __c37, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(512, __c16, 0) as any as S.Schema<UntagResourceResponse>,
+  output: __S(416, __c13, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2175,15 +2175,11 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateMediaConcatenationPipelineRequest",
-      });
+      ).annotate({ identifier: "CreateMediaConcatenationPipelineRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ MediaConcatenationPipeline: S.optional(__S(41, __c1, 9)) }),
-      ).annotate({
-        identifier: "CreateMediaConcatenationPipelineResponse",
-      });
+      ).annotate({ identifier: "CreateMediaConcatenationPipelineResponse" });
   }
 }
 function __c1(j: number): any {
@@ -2203,9 +2199,7 @@ function __c1(j: number): any {
           MeetingEvents: __S(32, __c1, 0),
           CompositedVideo: __S(32, __c1, 0),
         }),
-      ).annotate({
-        identifier: "ArtifactsConcatenationConfiguration",
-      });
+      ).annotate({ identifier: "ArtifactsConcatenationConfiguration" });
     case 2:
       return S.suspend(() => S.Struct({ ArtifactsConfiguration: __S(33, __c1, 1) })).annotate({
         identifier: "ChimeSdkMeetingConcatenationConfiguration",
@@ -2216,15 +2210,10 @@ function __c1(j: number): any {
           MediaPipelineArn: SensitiveString,
           ChimeSdkMeetingConfiguration: __S(34, __c1, 2),
         }),
-      ).annotate({
-        identifier: "MediaCapturePipelineSourceConfiguration",
-      });
+      ).annotate({ identifier: "MediaCapturePipelineSourceConfiguration" });
     case 4:
       return S.suspend(() =>
-        S.Struct({
-          Type: S.String,
-          MediaCapturePipelineSourceConfiguration: __S(35, __c1, 3),
-        }),
+        S.Struct({ Type: S.String, MediaCapturePipelineSourceConfiguration: __S(35, __c1, 3) }),
       ).annotate({ identifier: "ConcatenationSource" });
     case 5:
       return S.Array(__S(36, __c1, 4));
@@ -2249,9 +2238,7 @@ function __c1(j: number): any {
           CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "MediaConcatenationPipeline",
-      });
+      ).annotate({ identifier: "MediaConcatenationPipeline" });
   }
 }
 function __c2(j: number): any {
@@ -2276,9 +2263,7 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateMediaInsightsPipelineRequest",
-      });
+      ).annotate({ identifier: "CreateMediaInsightsPipelineRequest" });
     case 1:
       return S.suspend(() => S.Struct({ MediaInsightsPipeline: __S(111, __c3, 15) })).annotate({
         identifier: "CreateMediaInsightsPipelineResponse",
@@ -2314,9 +2299,7 @@ function __c3(j: number): any {
           MediaEncoding: S.String,
           MediaSampleRate: S.Number,
         }),
-      ).annotate({
-        identifier: "KinesisVideoStreamSourceRuntimeConfiguration",
-      });
+      ).annotate({ identifier: "KinesisVideoStreamSourceRuntimeConfiguration" });
     case 6:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 7:
@@ -2339,24 +2322,15 @@ function __c3(j: number): any {
     case 11:
       return S.suspend(() =>
         S.Struct({ Streams: __S(104, __c3, 8), FragmentSelector: __S(106, __c3, 10) }),
-      ).annotate({
-        identifier: "KinesisVideoStreamRecordingSourceRuntimeConfiguration",
-      });
+      ).annotate({ identifier: "KinesisVideoStreamRecordingSourceRuntimeConfiguration" });
     case 12:
       return S.suspend(() =>
         S.Struct({ Destination: SensitiveString, RecordingFileFormat: S.String }),
-      ).annotate({
-        identifier: "S3RecordingSinkRuntimeConfiguration",
-      });
+      ).annotate({ identifier: "S3RecordingSinkRuntimeConfiguration" });
     case 13:
       return S.suspend(() =>
-        S.Struct({
-          Type: S.optional(S.String),
-          Status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MediaInsightsPipelineElementStatus",
-      });
+        S.Struct({ Type: S.optional(S.String), Status: S.optional(S.String) }),
+      ).annotate({ identifier: "MediaInsightsPipelineElementStatus" });
     case 14:
       return S.Array(__S(109, __c3, 13));
     case 15:
@@ -2397,9 +2371,7 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateMediaInsightsPipelineConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateMediaInsightsPipelineConfigurationRequest" });
   }
 }
 function __c5(j: number): any {
@@ -2411,9 +2383,7 @@ function __c5(j: number): any {
           Keywords: __S(1376, __c43, 0),
           Negate: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "KeywordMatchConfiguration",
-      });
+      ).annotate({ identifier: "KeywordMatchConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({ RuleName: S.String, SentimentType: S.String, TimePeriod: S.Number }),
@@ -2436,9 +2406,7 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({ Disabled: S.optional(S.Boolean), Rules: S.optional(__S(164, __c5, 4)) }),
-      ).annotate({
-        identifier: "RealTimeAlertConfiguration",
-      });
+      ).annotate({ identifier: "RealTimeAlertConfiguration" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2447,9 +2415,7 @@ function __c5(j: number): any {
           ContentRedactionOutput: S.optional(S.String),
           OutputEncryptionKMSKeyId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "PostCallAnalyticsSettings",
-      });
+      ).annotate({ identifier: "PostCallAnalyticsSettings" });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2467,9 +2433,7 @@ function __c5(j: number): any {
           PostCallAnalyticsSettings: S.optional(__S(166, __c5, 6)),
           CallAnalyticsStreamCategories: S.optional(__S(1376, __c43, 0)),
         }),
-      ).annotate({
-        identifier: "AmazonTranscribeCallAnalyticsProcessorConfiguration",
-      });
+      ).annotate({ identifier: "AmazonTranscribeCallAnalyticsProcessorConfiguration" });
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -2492,9 +2456,7 @@ function __c5(j: number): any {
           VocabularyNames: S.optional(S.String),
           VocabularyFilterNames: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "AmazonTranscribeProcessorConfiguration",
-      });
+      ).annotate({ identifier: "AmazonTranscribeProcessorConfiguration" });
     case 9:
       return S.suspend(() => S.Struct({ InsightsTarget: S.optional(SensitiveString) })).annotate({
         identifier: "KinesisDataStreamSinkConfiguration",
@@ -2505,18 +2467,14 @@ function __c5(j: number): any {
           Destination: S.optional(SensitiveString),
           RecordingFileFormat: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "S3RecordingSinkConfiguration",
-      });
+      ).annotate({ identifier: "S3RecordingSinkConfiguration" });
     case 11:
       return S.suspend(() =>
         S.Struct({
           SpeakerSearchStatus: S.optional(S.String),
           VoiceToneAnalysisStatus: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "VoiceAnalyticsProcessorConfiguration",
-      });
+      ).annotate({ identifier: "VoiceAnalyticsProcessorConfiguration" });
     case 12:
       return S.suspend(() => S.Struct({ Disabled: S.optional(S.Boolean) })).annotate({
         identifier: "VoiceEnhancementSinkConfiguration",
@@ -2535,9 +2493,7 @@ function __c5(j: number): any {
           SnsTopicSinkConfiguration: S.optional(__S(169, __c5, 9)),
           VoiceEnhancementSinkConfiguration: S.optional(__S(172, __c5, 12)),
         }),
-      ).annotate({
-        identifier: "MediaInsightsPipelineConfigurationElement",
-      });
+      ).annotate({ identifier: "MediaInsightsPipelineConfigurationElement" });
     case 14:
       return S.Array(__S(173, __c5, 13));
     case 15:
@@ -2552,15 +2508,11 @@ function __c5(j: number): any {
           CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "MediaInsightsPipelineConfiguration",
-      });
+      ).annotate({ identifier: "MediaInsightsPipelineConfiguration" });
     case 16:
       return S.suspend(() =>
         S.Struct({ MediaInsightsPipelineConfiguration: S.optional(__S(175, __c5, 15)) }),
-      ).annotate({
-        identifier: "CreateMediaInsightsPipelineConfigurationResponse",
-      });
+      ).annotate({ identifier: "CreateMediaInsightsPipelineConfigurationResponse" });
   }
 }
 function __c6(j: number): any {
@@ -2582,15 +2534,11 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateMediaLiveConnectorPipelineRequest",
-      });
+      ).annotate({ identifier: "CreateMediaLiveConnectorPipelineRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ MediaLiveConnectorPipeline: S.optional(__S(230, __c7, 6)) }),
-      ).annotate({
-        identifier: "CreateMediaLiveConnectorPipelineResponse",
-      });
+      ).annotate({ identifier: "CreateMediaLiveConnectorPipelineResponse" });
   }
 }
 function __c7(j: number): any {
@@ -2603,18 +2551,14 @@ function __c7(j: number): any {
           CompositedVideo: S.optional(__S(1416, __c44, 8)),
           SourceConfiguration: S.optional(__S(1410, __c44, 2)),
         }),
-      ).annotate({
-        identifier: "ChimeSdkMeetingLiveConnectorConfiguration",
-      });
+      ).annotate({ identifier: "ChimeSdkMeetingLiveConnectorConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           SourceType: S.String,
           ChimeSdkMeetingLiveConnectorConfiguration: __S(224, __c7, 0),
         }),
-      ).annotate({
-        identifier: "LiveConnectorSourceConfiguration",
-      });
+      ).annotate({ identifier: "LiveConnectorSourceConfiguration" });
     case 2:
       return S.Array(__S(225, __c7, 1));
     case 3:
@@ -2624,15 +2568,11 @@ function __c7(j: number): any {
           AudioChannels: S.optional(S.String),
           AudioSampleRate: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "LiveConnectorRTMPConfiguration",
-      });
+      ).annotate({ identifier: "LiveConnectorRTMPConfiguration" });
     case 4:
       return S.suspend(() =>
         S.Struct({ SinkType: S.String, RTMPConfiguration: __S(227, __c7, 3) }),
-      ).annotate({
-        identifier: "LiveConnectorSinkConfiguration",
-      });
+      ).annotate({ identifier: "LiveConnectorSinkConfiguration" });
     case 5:
       return S.Array(__S(228, __c7, 4));
     case 6:
@@ -2646,9 +2586,7 @@ function __c7(j: number): any {
           CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "MediaLiveConnectorPipeline",
-      });
+      ).annotate({ identifier: "MediaLiveConnectorPipeline" });
   }
 }
 function __c8(j: number): any {
@@ -2670,9 +2608,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateMediaPipelineKinesisVideoStreamPoolRequest",
-      });
+      ).annotate({ identifier: "CreateMediaPipelineKinesisVideoStreamPoolRequest" });
   }
 }
 function __c9(j: number): any {
@@ -2680,9 +2616,7 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ Region: S.String, DataRetentionInHours: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "KinesisVideoStreamConfiguration",
-      });
+      ).annotate({ identifier: "KinesisVideoStreamConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2695,17 +2629,11 @@ function __c9(j: number): any {
           CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "KinesisVideoStreamPoolConfiguration",
-      });
+      ).annotate({ identifier: "KinesisVideoStreamPoolConfiguration" });
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          KinesisVideoStreamPoolConfiguration: S.optional(__S(289, __c9, 1)),
-        }),
-      ).annotate({
-        identifier: "CreateMediaPipelineKinesisVideoStreamPoolResponse",
-      });
+        S.Struct({ KinesisVideoStreamPoolConfiguration: S.optional(__S(289, __c9, 1)) }),
+      ).annotate({ identifier: "CreateMediaPipelineKinesisVideoStreamPoolResponse" });
   }
 }
 function __c10(j: number): any {
@@ -2727,15 +2655,11 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateMediaStreamPipelineRequest",
-      });
+      ).annotate({ identifier: "CreateMediaStreamPipelineRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ MediaStreamPipeline: S.optional(__S(356, __c11, 4)) }),
-      ).annotate({
-        identifier: "CreateMediaStreamPipelineResponse",
-      });
+      ).annotate({ identifier: "CreateMediaStreamPipelineResponse" });
   }
 }
 function __c11(j: number): any {
@@ -2785,9 +2709,7 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteMediaCapturePipelineRequest",
-      });
+      ).annotate({ identifier: "DeleteMediaCapturePipelineRequest" });
   }
 }
 function __c13(j: number): any {
@@ -2815,9 +2737,7 @@ function __c14(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteMediaInsightsPipelineConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteMediaInsightsPipelineConfigurationRequest" });
   }
 }
 function __c15(j: number): any {
@@ -2834,20 +2754,10 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteMediaPipelineRequest",
-      });
+      ).annotate({ identifier: "DeleteMediaPipelineRequest" });
   }
 }
 function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteMediaPipelineResponse",
-      });
-  }
-}
-function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2864,12 +2774,10 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteMediaPipelineKinesisVideoStreamPoolRequest",
-      });
+      ).annotate({ identifier: "DeleteMediaPipelineKinesisVideoStreamPoolRequest" });
   }
 }
-function __c18(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2883,12 +2791,10 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetMediaCapturePipelineRequest",
-      });
+      ).annotate({ identifier: "GetMediaCapturePipelineRequest" });
   }
 }
-function __c19(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2902,12 +2808,10 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetMediaInsightsPipelineConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetMediaInsightsPipelineConfigurationRequest" });
   }
 }
-function __c20(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2933,12 +2837,12 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "MediaPipeline" });
     case 2:
-      return S.suspend(() => S.Struct({ MediaPipeline: S.optional(__S(641, __c20, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ MediaPipeline: S.optional(__S(609, __c19, 1)) })).annotate({
         identifier: "GetMediaPipelineResponse",
       });
   }
 }
-function __c21(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2955,12 +2859,10 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetMediaPipelineKinesisVideoStreamPoolRequest",
-      });
+      ).annotate({ identifier: "GetMediaPipelineKinesisVideoStreamPoolRequest" });
   }
 }
-function __c22(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2980,12 +2882,10 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetSpeakerSearchTaskRequest",
-      });
+      ).annotate({ identifier: "GetSpeakerSearchTaskRequest" });
   }
 }
-function __c23(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2998,13 +2898,11 @@ function __c23(j: number): any {
       ).annotate({ identifier: "SpeakerSearchTask" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ SpeakerSearchTask: S.optional(__S(736, __c23, 0)) }),
-      ).annotate({
-        identifier: "GetSpeakerSearchTaskResponse",
-      });
+        S.Struct({ SpeakerSearchTask: S.optional(__S(704, __c22, 0)) }),
+      ).annotate({ identifier: "GetSpeakerSearchTaskResponse" });
   }
 }
-function __c24(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3024,12 +2922,10 @@ function __c24(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetVoiceToneAnalysisTaskRequest",
-      });
+      ).annotate({ identifier: "GetVoiceToneAnalysisTaskRequest" });
   }
 }
-function __c25(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3042,13 +2938,11 @@ function __c25(j: number): any {
       ).annotate({ identifier: "VoiceToneAnalysisTask" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ VoiceToneAnalysisTask: S.optional(__S(800, __c25, 0)) }),
-      ).annotate({
-        identifier: "GetVoiceToneAnalysisTaskResponse",
-      });
+        S.Struct({ VoiceToneAnalysisTask: S.optional(__S(768, __c24, 0)) }),
+      ).annotate({ identifier: "GetVoiceToneAnalysisTaskResponse" });
   }
 }
-function __c26(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3065,26 +2959,24 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListMediaCapturePipelinesRequest",
-      });
+      ).annotate({ identifier: "ListMediaCapturePipelinesRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ MediaPipelineId: S.optional(S.String), MediaPipelineArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "MediaCapturePipelineSummary",
-      });
-    case 2:
-      return S.Array(__S(833, __c26, 1));
-    case 3:
-      return S.suspend(() =>
         S.Struct({
-          MediaCapturePipelines: S.optional(__S(834, __c26, 2)),
+          MediaCapturePipelines: S.optional(__S(833, __c26, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListMediaCapturePipelinesResponse",
-      });
+      ).annotate({ identifier: "ListMediaCapturePipelinesResponse" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ MediaPipelineId: S.optional(S.String), MediaPipelineArn: S.optional(S.String) }),
+      ).annotate({ identifier: "MediaCapturePipelineSummary" });
+    case 1:
+      return S.Array(__S(832, __c26, 0));
   }
 }
 function __c27(j: number): any {
@@ -3104,9 +2996,7 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListMediaInsightsPipelineConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListMediaInsightsPipelineConfigurationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3114,9 +3004,7 @@ function __c27(j: number): any {
           MediaInsightsPipelineConfigurationId: S.optional(S.String),
           MediaInsightsPipelineConfigurationArn: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "MediaInsightsPipelineConfigurationSummary",
-      });
+      ).annotate({ identifier: "MediaInsightsPipelineConfigurationSummary" });
     case 2:
       return S.Array(__S(865, __c27, 1));
     case 3:
@@ -3125,9 +3013,7 @@ function __c27(j: number): any {
           MediaInsightsPipelineConfigurations: S.optional(__S(866, __c27, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListMediaInsightsPipelineConfigurationsResponse",
-      });
+      ).annotate({ identifier: "ListMediaInsightsPipelineConfigurationsResponse" });
   }
 }
 function __c28(j: number): any {
@@ -3147,9 +3033,7 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListMediaPipelineKinesisVideoStreamPoolsRequest",
-      });
+      ).annotate({ identifier: "ListMediaPipelineKinesisVideoStreamPoolsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3157,9 +3041,7 @@ function __c28(j: number): any {
           PoolId: S.optional(S.String),
           PoolArn: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "KinesisVideoStreamPoolSummary",
-      });
+      ).annotate({ identifier: "KinesisVideoStreamPoolSummary" });
     case 2:
       return S.Array(__S(897, __c28, 1));
     case 3:
@@ -3168,9 +3050,7 @@ function __c28(j: number): any {
           KinesisVideoStreamPools: S.optional(__S(898, __c28, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListMediaPipelineKinesisVideoStreamPoolsResponse",
-      });
+      ).annotate({ identifier: "ListMediaPipelineKinesisVideoStreamPoolsResponse" });
   }
 }
 function __c29(j: number): any {
@@ -3190,24 +3070,14 @@ function __c29(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListMediaPipelinesRequest",
-      });
+      ).annotate({ identifier: "ListMediaPipelinesRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ MediaPipelineId: S.optional(S.String), MediaPipelineArn: S.optional(S.String) }),
-      ).annotate({ identifier: "MediaPipelineSummary" });
-    case 2:
-      return S.Array(__S(929, __c29, 1));
-    case 3:
-      return S.suspend(() =>
         S.Struct({
-          MediaPipelines: S.optional(__S(930, __c29, 2)),
+          MediaPipelines: S.optional(__S(833, __c26, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListMediaPipelinesResponse",
-      });
+      ).annotate({ identifier: "ListMediaPipelinesResponse" });
   }
 }
 function __c30(j: number): any {
@@ -3217,9 +3087,7 @@ function __c30(j: number): any {
         S.Struct({ ResourceARN: S.String.pipe(T.HttpQuery("arn")) }).pipe(
           T.all(T.Http({ method: "GET", uri: "/tags" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(1345, __c42, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -3248,9 +3116,7 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartSpeakerSearchTaskRequest",
-      });
+      ).annotate({ identifier: "StartSpeakerSearchTaskRequest" });
   }
 }
 function __c32(j: number): any {
@@ -3262,9 +3128,7 @@ function __c32(j: number): any {
           ChannelId: S.Number,
           FragmentNumber: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "KinesisVideoStreamSourceTaskConfiguration",
-      });
+      ).annotate({ identifier: "KinesisVideoStreamSourceTaskConfiguration" });
   }
 }
 function __c33(j: number): any {
@@ -3289,9 +3153,7 @@ function __c33(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartVoiceToneAnalysisTaskRequest",
-      });
+      ).annotate({ identifier: "StartVoiceToneAnalysisTaskRequest" });
   }
 }
 function __c34(j: number): any {
@@ -3314,9 +3176,7 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StopSpeakerSearchTaskRequest",
-      });
+      ).annotate({ identifier: "StopSpeakerSearchTaskRequest" });
   }
 }
 function __c35(j: number): any {
@@ -3339,9 +3199,7 @@ function __c35(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StopVoiceToneAnalysisTaskRequest",
-      });
+      ).annotate({ identifier: "StopVoiceToneAnalysisTaskRequest" });
   }
 }
 function __c36(j: number): any {
@@ -3397,9 +3255,7 @@ function __c38(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateMediaInsightsPipelineConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateMediaInsightsPipelineConfigurationRequest" });
   }
 }
 function __c39(j: number): any {
@@ -3419,9 +3275,7 @@ function __c39(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateMediaInsightsPipelineStatusRequest",
-      });
+      ).annotate({ identifier: "UpdateMediaInsightsPipelineStatusRequest" });
   }
 }
 function __c40(j: number): any {
@@ -3448,9 +3302,7 @@ function __c40(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateMediaPipelineKinesisVideoStreamPoolRequest",
-      });
+      ).annotate({ identifier: "UpdateMediaPipelineKinesisVideoStreamPoolRequest" });
   }
 }
 function __c41(j: number): any {
@@ -3477,9 +3329,7 @@ function __c41(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateMediaCapturePipelineRequest",
-      });
+      ).annotate({ identifier: "CreateMediaCapturePipelineRequest" });
   }
 }
 function __c42(j: number): any {
@@ -3529,9 +3379,7 @@ function __c44(j: number): any {
           TileCount: S.optional(S.Number),
           TileAspectRatio: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "HorizontalLayoutConfiguration",
-      });
+      ).annotate({ identifier: "HorizontalLayoutConfiguration" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3560,9 +3408,7 @@ function __c44(j: number): any {
           Resolution: S.optional(S.String),
           GridViewConfiguration: __S(1415, __c44, 7),
         }),
-      ).annotate({
-        identifier: "CompositedVideoArtifactsConfiguration",
-      });
+      ).annotate({ identifier: "CompositedVideoArtifactsConfiguration" });
   }
 }
 function __c45(j: number): any {
@@ -3570,9 +3416,7 @@ function __c45(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ MediaCapturePipeline: S.optional(__S(1477, __c46, 5)) }),
-      ).annotate({
-        identifier: "CreateMediaCapturePipelineResponse",
-      });
+      ).annotate({ identifier: "CreateMediaCapturePipelineResponse" });
   }
 }
 function __c46(j: number): any {
@@ -3583,9 +3427,7 @@ function __c46(j: number): any {
       });
     case 1:
       return S.suspend(() => S.Struct({ State: S.String, MuxType: S.optional(S.String) })).annotate(
-        {
-          identifier: "VideoArtifactsConfiguration",
-        },
+        { identifier: "VideoArtifactsConfiguration" },
       );
     case 2:
       return S.suspend(() =>
@@ -3602,15 +3444,11 @@ function __c46(j: number): any {
           SourceConfiguration: S.optional(__S(1410, __c44, 2)),
           ArtifactsConfiguration: S.optional(__S(1474, __c46, 2)),
         }),
-      ).annotate({
-        identifier: "ChimeSdkMeetingConfiguration",
-      });
+      ).annotate({ identifier: "ChimeSdkMeetingConfiguration" });
     case 4:
       return S.suspend(() =>
         S.Struct({ AwsKmsKeyId: S.String, AwsKmsEncryptionContext: S.optional(S.String) }),
-      ).annotate({
-        identifier: "SseAwsKeyManagementParams",
-      });
+      ).annotate({ identifier: "SseAwsKeyManagementParams" });
     case 5:
       return S.suspend(() =>
         S.Struct({

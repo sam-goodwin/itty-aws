@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -3417,7 +3417,7 @@ export const deleteSecurityRequirementPack: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1056, __c66, 0) as any as S.Schema<DeleteSecurityRequirementPackInput>,
-  output: __S(1057, __c66, 1) as any as S.Schema<DeleteSecurityRequirementPackOutput>,
+  output: __S(752, __c47, 0) as any as S.Schema<DeleteSecurityRequirementPackOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4081,7 +4081,7 @@ export const listPrivateConnections: API.PaginatedOperationMethod<
   PrivateConnectionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1504, __c94, 0) as any as S.Schema<ListPrivateConnectionsInput>,
-  output: __S(1507, __c94, 3) as any as S.Schema<ListPrivateConnectionsOutput>,
+  output: __S(1506, __c94, 2) as any as S.Schema<ListPrivateConnectionsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4566,7 +4566,7 @@ export const updateIntegratedResources: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1944, __c121, 8) as any as S.Schema<UpdateIntegratedResourcesInput>,
-  output: __S(1945, __c121, 9) as any as S.Schema<UpdateIntegratedResourcesOutput>,
+  output: __S(752, __c47, 0) as any as S.Schema<UpdateIntegratedResourcesOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4791,9 +4791,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ deleted: S.optional(__S(161, __c10, 1)), failed: S.optional(__S(2, __c0, 2)) }),
-      ).annotate({
-        identifier: "BatchDeletePentestsOutput",
-      });
+      ).annotate({ identifier: "BatchDeletePentestsOutput" });
   }
 }
 function __c1(j: number): any {
@@ -5039,18 +5037,14 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchDeleteSecurityRequirementsInput",
-      });
+      ).annotate({ identifier: "BatchDeleteSecurityRequirementsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           deletedSecurityRequirementNames: __S(1888, __c118, 0),
           errors: __S(1681, __c105, 1),
         }),
-      ).annotate({
-        identifier: "BatchDeleteSecurityRequirementsOutput",
-      });
+      ).annotate({ identifier: "BatchDeleteSecurityRequirementsOutput" });
   }
 }
 function __c13(j: number): any {
@@ -5067,9 +5061,7 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchDeleteThreatModelsInput",
-      });
+      ).annotate({ identifier: "BatchDeleteThreatModelsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ threatModelId: S.optional(S.String), reason: S.optional(S.String) }),
@@ -5082,9 +5074,7 @@ function __c13(j: number): any {
           deleted: S.optional(__S(1888, __c118, 0)),
           failed: S.optional(__S(210, __c13, 2)),
         }),
-      ).annotate({
-        identifier: "BatchDeleteThreatModelsOutput",
-      });
+      ).annotate({ identifier: "BatchDeleteThreatModelsOutput" });
   }
 }
 function __c14(j: number): any {
@@ -5110,9 +5100,7 @@ function __c14(j: number): any {
           agentSpaces: S.optional(__S(225, __c14, 1)),
           notFound: S.optional(__S(1888, __c118, 0)),
         }),
-      ).annotate({
-        identifier: "BatchGetAgentSpacesOutput",
-      });
+      ).annotate({ identifier: "BatchGetAgentSpacesOutput" });
   }
 }
 function __c15(j: number): any {
@@ -5168,9 +5156,7 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchGetArtifactMetadataInput",
-      });
+      ).annotate({ identifier: "BatchGetArtifactMetadataInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5202,9 +5188,7 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchGetCodeReviewJobsInput",
-      });
+      ).annotate({ identifier: "BatchGetCodeReviewJobsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5236,9 +5220,7 @@ function __c18(j: number): any {
           codeReviewJobs: S.optional(__S(290, __c18, 2)),
           notFound: S.optional(__S(1888, __c118, 0)),
         }),
-      ).annotate({
-        identifier: "BatchGetCodeReviewJobsOutput",
-      });
+      ).annotate({ identifier: "BatchGetCodeReviewJobsOutput" });
   }
 }
 function __c19(j: number): any {
@@ -5288,9 +5270,7 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchGetCodeReviewJobTasksInput",
-      });
+      ).annotate({ identifier: "BatchGetCodeReviewJobTasksInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5316,9 +5296,7 @@ function __c21(j: number): any {
           codeReviewJobTasks: S.optional(__S(338, __c21, 2)),
           notFound: S.optional(__S(1888, __c118, 0)),
         }),
-      ).annotate({
-        identifier: "BatchGetCodeReviewJobTasksOutput",
-      });
+      ).annotate({ identifier: "BatchGetCodeReviewJobTasksOutput" });
   }
 }
 function __c22(j: number): any {
@@ -5380,9 +5358,7 @@ function __c24(j: number): any {
           codeReviews: S.optional(__S(386, __c24, 2)),
           notFound: S.optional(__S(1888, __c118, 0)),
         }),
-      ).annotate({
-        identifier: "BatchGetCodeReviewsOutput",
-      });
+      ).annotate({ identifier: "BatchGetCodeReviewsOutput" });
   }
 }
 function __c25(j: number): any {
@@ -5400,9 +5376,7 @@ function __c25(j: number): any {
           codeDiffLink: S.optional(S.String),
           pullRequestLink: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CodeRemediationTaskDetails",
-      });
+      ).annotate({ identifier: "CodeRemediationTaskDetails" });
     case 2:
       return S.Array(__S(401, __c25, 1));
     case 3:
@@ -5542,9 +5516,7 @@ function __c26(j: number): any {
           pentestJobs: S.optional(__S(419, __c26, 3)),
           notFound: S.optional(__S(1888, __c118, 0)),
         }),
-      ).annotate({
-        identifier: "BatchGetPentestJobsOutput",
-      });
+      ).annotate({ identifier: "BatchGetPentestJobsOutput" });
   }
 }
 function __c27(j: number): any {
@@ -5577,9 +5549,7 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchGetPentestJobTasksInput",
-      });
+      ).annotate({ identifier: "BatchGetPentestJobTasksInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5607,9 +5577,7 @@ function __c28(j: number): any {
           tasks: S.optional(__S(450, __c28, 2)),
           notFound: S.optional(__S(1888, __c118, 0)),
         }),
-      ).annotate({
-        identifier: "BatchGetPentestJobTasksOutput",
-      });
+      ).annotate({ identifier: "BatchGetPentestJobTasksOutput" });
   }
 }
 function __c29(j: number): any {
@@ -5643,9 +5611,7 @@ function __c30(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchGetSecurityRequirementsInput",
-      });
+      ).annotate({ identifier: "BatchGetSecurityRequirementsInput" });
   }
 }
 function __c31(j: number): any {
@@ -5662,9 +5628,7 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchGetTargetDomainsInput",
-      });
+      ).annotate({ identifier: "BatchGetTargetDomainsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5685,9 +5649,7 @@ function __c31(j: number): any {
           targetDomains: S.optional(__S(498, __c31, 2)),
           notFound: S.optional(__S(1888, __c118, 0)),
         }),
-      ).annotate({
-        identifier: "BatchGetTargetDomainsOutput",
-      });
+      ).annotate({ identifier: "BatchGetTargetDomainsOutput" });
   }
 }
 function __c32(j: number): any {
@@ -5728,9 +5690,7 @@ function __c33(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchGetThreatModelJobsInput",
-      });
+      ).annotate({ identifier: "BatchGetThreatModelJobsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5760,9 +5720,7 @@ function __c33(j: number): any {
           threatModelJobs: S.optional(__S(530, __c33, 2)),
           notFound: S.optional(__S(1888, __c118, 0)),
         }),
-      ).annotate({
-        identifier: "BatchGetThreatModelJobsOutput",
-      });
+      ).annotate({ identifier: "BatchGetThreatModelJobsOutput" });
   }
 }
 function __c34(j: number): any {
@@ -5779,9 +5737,7 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchGetThreatModelJobTasksInput",
-      });
+      ).annotate({ identifier: "BatchGetThreatModelJobTasksInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5805,9 +5761,7 @@ function __c34(j: number): any {
           threatModelJobTasks: S.optional(__S(546, __c34, 2)),
           notFound: S.optional(__S(1888, __c118, 0)),
         }),
-      ).annotate({
-        identifier: "BatchGetThreatModelJobTasksOutput",
-      });
+      ).annotate({ identifier: "BatchGetThreatModelJobTasksOutput" });
   }
 }
 function __c35(j: number): any {
@@ -5824,9 +5778,7 @@ function __c35(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchGetThreatModelsInput",
-      });
+      ).annotate({ identifier: "BatchGetThreatModelsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5851,9 +5803,7 @@ function __c35(j: number): any {
           threatModels: S.optional(__S(562, __c35, 2)),
           notFound: S.optional(__S(1888, __c118, 0)),
         }),
-      ).annotate({
-        identifier: "BatchGetThreatModelsOutput",
-      });
+      ).annotate({ identifier: "BatchGetThreatModelsOutput" });
   }
 }
 function __c36(j: number): any {
@@ -5930,9 +5880,7 @@ function __c38(j: number): any {
           evaluation: S.optional(S.String),
           remediation: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "UpdateSecurityRequirementEntry",
-      });
+      ).annotate({ identifier: "UpdateSecurityRequirementEntry" });
     case 1:
       return S.Array(__S(608, __c38, 0));
     case 2:
@@ -5947,18 +5895,14 @@ function __c38(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchUpdateSecurityRequirementsInput",
-      });
+      ).annotate({ identifier: "BatchUpdateSecurityRequirementsInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           updatedSecurityRequirementNames: __S(1888, __c118, 0),
           errors: __S(1681, __c105, 1),
         }),
-      ).annotate({
-        identifier: "BatchUpdateSecurityRequirementsOutput",
-      });
+      ).annotate({ identifier: "BatchUpdateSecurityRequirementsOutput" });
   }
 }
 function __c39(j: number): any {
@@ -6087,27 +6031,19 @@ function __c45(j: number): any {
           code: S.String,
           state: S.String,
         }),
-      ).annotate({
-        identifier: "BitbucketIntegrationInput",
-      });
+      ).annotate({ identifier: "BitbucketIntegrationInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({ installationId: S.String, code: S.String, state: S.String, siteUrl: S.String }),
-      ).annotate({
-        identifier: "ConfluenceIntegrationInput",
-      });
+      ).annotate({ identifier: "ConfluenceIntegrationInput" });
     case 4:
       return S.suspend(() =>
         S.Struct({ code: S.String, state: S.String, organizationName: S.String }),
-      ).annotate({
-        identifier: "AzureDevOpsIntegrationInput",
-      });
+      ).annotate({ identifier: "AzureDevOpsIntegrationInput" });
     case 5:
       return S.suspend(() =>
         S.Struct({ targetUrl: S.String, code: S.String, state: S.String }),
-      ).annotate({
-        identifier: "BitbucketDataCenterIntegrationInput",
-      });
+      ).annotate({ identifier: "BitbucketDataCenterIntegrationInput" });
     case 6:
       return S.Union([
         /*@__PURE__*/ S.Struct({ github: __S(720, __c45, 0) }),
@@ -6162,9 +6098,7 @@ function __c46(j: number): any {
 function __c47(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateMembershipResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "CreateMembershipResponse" });
   }
 }
 function __c48(j: number): any {
@@ -6264,9 +6198,7 @@ function __c51(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreatePrivateConnectionInput",
-      });
+      ).annotate({ identifier: "CreatePrivateConnectionInput" });
   }
 }
 function __c52(j: number): any {
@@ -6286,9 +6218,7 @@ function __c52(j: number): any {
           failureMessage: S.optional(S.String),
           tags: S.optional(__S(640, __c40, 0)),
         }),
-      ).annotate({
-        identifier: "CreatePrivateConnectionOutput",
-      });
+      ).annotate({ identifier: "CreatePrivateConnectionOutput" });
   }
 }
 function __c53(j: number): any {
@@ -6311,19 +6241,11 @@ function __c53(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateSecurityRequirementPackInput",
-      });
+      ).annotate({ identifier: "CreateSecurityRequirementPackInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          packId: S.String,
-          status: S.String,
-          kmsKeyId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateSecurityRequirementPackOutput",
-      });
+        S.Struct({ packId: S.String, status: S.String, kmsKeyId: S.optional(S.String) }),
+      ).annotate({ identifier: "CreateSecurityRequirementPackOutput" });
   }
 }
 function __c54(j: number): any {
@@ -6553,9 +6475,7 @@ function __c65(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeletePrivateConnectionInput",
-      });
+      ).annotate({ identifier: "DeletePrivateConnectionInput" });
   }
 }
 function __c66(j: number): any {
@@ -6572,13 +6492,7 @@ function __c66(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteSecurityRequirementPackInput",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteSecurityRequirementPackOutput",
-      });
+      ).annotate({ identifier: "DeleteSecurityRequirementPackInput" });
   }
 }
 function __c67(j: number): any {
@@ -6616,9 +6530,7 @@ function __c68(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribePrivateConnectionInput",
-      });
+      ).annotate({ identifier: "DescribePrivateConnectionInput" });
   }
 }
 function __c69(j: number): any {
@@ -6708,9 +6620,7 @@ function __c72(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetSecurityRequirementPackInput",
-      });
+      ).annotate({ identifier: "GetSecurityRequirementPackInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6725,9 +6635,7 @@ function __c72(j: number): any {
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           kmsKeyId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetSecurityRequirementPackOutput",
-      });
+      ).annotate({ identifier: "GetSecurityRequirementPackOutput" });
   }
 }
 function __c73(j: number): any {
@@ -6735,9 +6643,7 @@ function __c73(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ name: S.String, format: S.String, content: SensitiveBlob }),
-      ).annotate({
-        identifier: "SecurityRequirementArtifact",
-      });
+      ).annotate({ identifier: "SecurityRequirementArtifact" });
     case 1:
       return S.Array(__S(1168, __c73, 0));
     case 2:
@@ -6754,9 +6660,7 @@ function __c73(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ImportSecurityRequirementsInput",
-      });
+      ).annotate({ identifier: "ImportSecurityRequirementsInput" });
     case 4:
       return S.suspend(() => S.Struct({ packId: S.String, importStatus: S.String })).annotate({
         identifier: "ImportSecurityRequirementsOutput",
@@ -6783,9 +6687,7 @@ function __c74(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "InitiateProviderRegistrationInput",
-      });
+      ).annotate({ identifier: "InitiateProviderRegistrationInput" });
     case 1:
       return S.suspend(() => S.Struct({ redirectTo: S.String, csrfState: S.String })).annotate({
         identifier: "InitiateProviderRegistrationOutput",
@@ -6926,9 +6828,7 @@ function __c79(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListCodeReviewJobsForCodeReviewInput",
-      });
+      ).annotate({ identifier: "ListCodeReviewJobsForCodeReviewInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6948,9 +6848,7 @@ function __c79(j: number): any {
           codeReviewJobSummaries: S.optional(__S(1266, __c79, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListCodeReviewJobsForCodeReviewOutput",
-      });
+      ).annotate({ identifier: "ListCodeReviewJobsForCodeReviewOutput" });
   }
 }
 function __c80(j: number): any {
@@ -6984,9 +6882,7 @@ function __c81(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListCodeReviewJobTasksInput",
-      });
+      ).annotate({ identifier: "ListCodeReviewJobTasksInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7009,9 +6905,7 @@ function __c81(j: number): any {
           codeReviewJobTaskSummaries: S.optional(__S(1298, __c81, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListCodeReviewJobTasksOutput",
-      });
+      ).annotate({ identifier: "ListCodeReviewJobTasksOutput" });
   }
 }
 function __c82(j: number): any {
@@ -7067,9 +6961,7 @@ function __c83(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDiscoveredEndpointsInput",
-      });
+      ).annotate({ identifier: "ListDiscoveredEndpointsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7090,9 +6982,7 @@ function __c83(j: number): any {
           discoveredEndpoints: S.optional(__S(1330, __c83, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListDiscoveredEndpointsOutput",
-      });
+      ).annotate({ identifier: "ListDiscoveredEndpointsOutput" });
   }
 }
 function __c84(j: number): any {
@@ -7164,9 +7054,7 @@ function __c85(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListIntegratedResourcesInput",
-      });
+      ).annotate({ identifier: "ListIntegratedResourcesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7193,9 +7081,7 @@ function __c85(j: number): any {
           workspace: S.String,
           accessType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BitbucketRepositoryMetadata",
-      });
+      ).annotate({ identifier: "BitbucketRepositoryMetadata" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -7206,9 +7092,7 @@ function __c85(j: number): any {
           title: S.optional(S.String),
           spaceTitle: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ConfluenceDocumentMetadata",
-      });
+      ).annotate({ identifier: "ConfluenceDocumentMetadata" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -7219,9 +7103,7 @@ function __c85(j: number): any {
           projectId: S.optional(S.String),
           accessType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "AzureDevOpsRepositoryMetadata",
-      });
+      ).annotate({ identifier: "AzureDevOpsRepositoryMetadata" });
     case 6:
       return S.Union([
         /*@__PURE__*/ S.Struct({ githubRepository: __S(1361, __c85, 1) }),
@@ -7237,9 +7119,7 @@ function __c85(j: number): any {
           resource: __S(1366, __c85, 6),
           capabilities: S.optional(__S(1382, __c86, 6)),
         }),
-      ).annotate({
-        identifier: "IntegratedResourceSummary",
-      });
+      ).annotate({ identifier: "IntegratedResourceSummary" });
     case 8:
       return S.Array(__S(1367, __c85, 7));
     case 9:
@@ -7248,9 +7128,7 @@ function __c85(j: number): any {
           integratedResourceSummaries: __S(1368, __c85, 8),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListIntegratedResourcesOutput",
-      });
+      ).annotate({ identifier: "ListIntegratedResourcesOutput" });
   }
 }
 function __c86(j: number): any {
@@ -7281,9 +7159,7 @@ function __c86(j: number): any {
           leaveComments: S.optional(S.Boolean),
           remediateCode: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "GitHubResourceCapabilities",
-      });
+      ).annotate({ identifier: "GitHubResourceCapabilities" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -7291,9 +7167,7 @@ function __c86(j: number): any {
           createDocument: S.optional(S.Boolean),
           updateDocument: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "ConfluenceResourceCapabilities",
-      });
+      ).annotate({ identifier: "ConfluenceResourceCapabilities" });
     case 6:
       return S.Union([
         /*@__PURE__*/ S.Struct({ github: __S(1380, __c86, 4) }),
@@ -7405,9 +7279,7 @@ function __c89(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListPentestJobsForPentestInput",
-      });
+      ).annotate({ identifier: "ListPentestJobsForPentestInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7429,9 +7301,7 @@ function __c89(j: number): any {
           pentestJobSummaries: S.optional(__S(1426, __c89, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListPentestJobsForPentestOutput",
-      });
+      ).annotate({ identifier: "ListPentestJobsForPentestOutput" });
   }
 }
 function __c90(j: number): any {
@@ -7479,9 +7349,7 @@ function __c90(j: number): any {
           taskSummaries: S.optional(__S(1442, __c90, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListPentestJobTasksOutput",
-      });
+      ).annotate({ identifier: "ListPentestJobTasksOutput" });
   }
 }
 function __c91(j: number): any {
@@ -7558,46 +7426,21 @@ function __c94(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListPrivateConnectionsInput",
-      });
+      ).annotate({ identifier: "ListPrivateConnectionsInput" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          type: S.String,
-          status: S.String,
-          resourceGatewayId: S.optional(S.String),
-          hostAddress: S.optional(S.String),
-          vpcId: S.optional(S.String),
-          resourceConfigurationId: S.optional(S.String),
-          certificateExpiryTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          dnsResolution: S.optional(S.String),
-          failureMessage: S.optional(S.String),
-          tags: S.optional(__S(640, __c40, 0)),
-        }),
-      ).annotate({ identifier: "PrivateConnectionSummary" });
+      return S.Array(__S(832, __c52, 0));
     case 2:
-      return S.Array(__S(1505, __c94, 1));
-    case 3:
       return S.suspend(() =>
-        S.Struct({ privateConnections: __S(1506, __c94, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListPrivateConnectionsOutput",
-      });
+        S.Struct({ privateConnections: __S(1505, __c94, 1), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListPrivateConnectionsOutput" });
   }
 }
 function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          managementType: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListSecurityRequirementPackFilter",
-      });
+        S.Struct({ managementType: S.optional(S.String), status: S.optional(S.String) }),
+      ).annotate({ identifier: "ListSecurityRequirementPackFilter" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7614,9 +7457,7 @@ function __c95(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSecurityRequirementPacksInput",
-      });
+      ).annotate({ identifier: "ListSecurityRequirementPacksInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -7629,9 +7470,7 @@ function __c95(j: number): any {
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "SecurityRequirementPackSummary",
-      });
+      ).annotate({ identifier: "SecurityRequirementPackSummary" });
     case 3:
       return S.Array(__S(1522, __c95, 2));
     case 4:
@@ -7640,9 +7479,7 @@ function __c95(j: number): any {
           securityRequirementPackSummaries: __S(1523, __c95, 3),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListSecurityRequirementPacksOutput",
-      });
+      ).annotate({ identifier: "ListSecurityRequirementPacksOutput" });
   }
 }
 function __c96(j: number): any {
@@ -7663,9 +7500,7 @@ function __c96(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSecurityRequirementsInput",
-      });
+      ).annotate({ identifier: "ListSecurityRequirementsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7675,9 +7510,7 @@ function __c96(j: number): any {
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "SecurityRequirementSummary",
-      });
+      ).annotate({ identifier: "SecurityRequirementSummary" });
     case 2:
       return S.Array(__S(1537, __c96, 1));
     case 3:
@@ -7686,9 +7519,7 @@ function __c96(j: number): any {
           securityRequirementSummaries: __S(1538, __c96, 2),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListSecurityRequirementsOutput",
-      });
+      ).annotate({ identifier: "ListSecurityRequirementsOutput" });
   }
 }
 function __c97(j: number): any {
@@ -7786,9 +7617,7 @@ function __c99(j: number): any {
           threatModelJobSummaries: S.optional(__S(1586, __c99, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListThreatModelJobsOutput",
-      });
+      ).annotate({ identifier: "ListThreatModelJobsOutput" });
   }
 }
 function __c100(j: number): any {
@@ -7810,9 +7639,7 @@ function __c100(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListThreatModelJobTasksInput",
-      });
+      ).annotate({ identifier: "ListThreatModelJobTasksInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7825,9 +7652,7 @@ function __c100(j: number): any {
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "ThreatModelJobTaskSummary",
-      });
+      ).annotate({ identifier: "ThreatModelJobTaskSummary" });
     case 2:
       return S.Array(__S(1601, __c100, 1));
     case 3:
@@ -7836,9 +7661,7 @@ function __c100(j: number): any {
           threatModelJobTaskSummaries: S.optional(__S(1602, __c100, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListThreatModelJobTasksOutput",
-      });
+      ).annotate({ identifier: "ListThreatModelJobTasksOutput" });
   }
 }
 function __c101(j: number): any {
@@ -7930,9 +7753,7 @@ function __c103(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartCodeRemediationInput",
-      });
+      ).annotate({ identifier: "StartCodeRemediationInput" });
   }
 }
 function __c104(j: number): any {
@@ -7946,9 +7767,7 @@ function __c104(j: number): any {
           evaluation: S.String,
           remediation: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateSecurityRequirementEntry",
-      });
+      ).annotate({ identifier: "CreateSecurityRequirementEntry" });
     case 1:
       return S.Array(__S(1664, __c104, 0));
     case 2:
@@ -7963,9 +7782,7 @@ function __c104(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchCreateSecurityRequirementsInput",
-      });
+      ).annotate({ identifier: "BatchCreateSecurityRequirementsInput" });
   }
 }
 function __c105(j: number): any {
@@ -7973,9 +7790,7 @@ function __c105(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ securityRequirementName: S.String, code: S.String, message: S.String }),
-      ).annotate({
-        identifier: "BatchSecurityRequirementError",
-      });
+      ).annotate({ identifier: "BatchSecurityRequirementError" });
     case 1:
       return S.Array(__S(1680, __c105, 0));
   }
@@ -7994,20 +7809,13 @@ function __c106(j: number): any {
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "BatchCreateSecurityRequirementResult",
-      });
+      ).annotate({ identifier: "BatchCreateSecurityRequirementResult" });
     case 1:
       return S.Array(__S(1696, __c106, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          securityRequirements: __S(1697, __c106, 1),
-          errors: __S(1681, __c105, 1),
-        }),
-      ).annotate({
-        identifier: "BatchCreateSecurityRequirementsOutput",
-      });
+        S.Struct({ securityRequirements: __S(1697, __c106, 1), errors: __S(1681, __c105, 1) }),
+      ).annotate({ identifier: "BatchCreateSecurityRequirementsOutput" });
   }
 }
 function __c107(j: number): any {
@@ -8099,9 +7907,7 @@ function __c109(j: number): any {
           threatModelJobId: S.String,
           agentSpaceId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "StartThreatModelJobOutput",
-      });
+      ).annotate({ identifier: "StartThreatModelJobOutput" });
   }
 }
 function __c110(j: number): any {
@@ -8253,9 +8059,7 @@ function __c117(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchDeleteCodeReviewsInput",
-      });
+      ).annotate({ identifier: "BatchDeleteCodeReviewsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ codeReviewId: S.optional(S.String), reason: S.optional(S.String) }),
@@ -8268,9 +8072,7 @@ function __c117(j: number): any {
           deleted: S.optional(__S(1888, __c118, 0)),
           failed: S.optional(__S(1874, __c117, 2)),
         }),
-      ).annotate({
-        identifier: "BatchDeleteCodeReviewsOutput",
-      });
+      ).annotate({ identifier: "BatchDeleteCodeReviewsOutput" });
   }
 }
 function __c118(j: number): any {
@@ -8346,15 +8148,11 @@ function __c121(j: number): any {
           title: S.optional(S.String),
           spaceTitle: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ConfluenceDocumentResource",
-      });
+      ).annotate({ identifier: "ConfluenceDocumentResource" });
     case 4:
       return S.suspend(() =>
         S.Struct({ name: S.String, organization: S.String, project: S.optional(S.String) }),
-      ).annotate({
-        identifier: "AzureDevOpsRepositoryResource",
-      });
+      ).annotate({ identifier: "AzureDevOpsRepositoryResource" });
     case 5:
       return S.Union([
         /*@__PURE__*/ S.Struct({ githubRepository: __S(1936, __c121, 0) }),
@@ -8365,13 +8163,8 @@ function __c121(j: number): any {
       ]);
     case 6:
       return S.suspend(() =>
-        S.Struct({
-          resource: __S(1941, __c121, 5),
-          capabilities: S.optional(__S(1382, __c86, 6)),
-        }),
-      ).annotate({
-        identifier: "IntegratedResourceInputItem",
-      });
+        S.Struct({ resource: __S(1941, __c121, 5), capabilities: S.optional(__S(1382, __c86, 6)) }),
+      ).annotate({ identifier: "IntegratedResourceInputItem" });
     case 7:
       return S.Array(__S(1942, __c121, 6));
     case 8:
@@ -8390,13 +8183,7 @@ function __c121(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateIntegratedResourcesInput",
-      });
-    case 9:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UpdateIntegratedResourcesOutput",
-      });
+      ).annotate({ identifier: "UpdateIntegratedResourcesInput" });
   }
 }
 function __c122(j: number): any {
@@ -8464,9 +8251,7 @@ function __c124(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdatePrivateConnectionCertificateInput",
-      });
+      ).annotate({ identifier: "UpdatePrivateConnectionCertificateInput" });
   }
 }
 function __c125(j: number): any {
@@ -8488,9 +8273,7 @@ function __c125(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateSecurityRequirementPackInput",
-      });
+      ).annotate({ identifier: "UpdateSecurityRequirementPackInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8499,9 +8282,7 @@ function __c125(j: number): any {
           description: S.optional(S.String),
           status: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "UpdateSecurityRequirementPackOutput",
-      });
+      ).annotate({ identifier: "UpdateSecurityRequirementPackOutput" });
   }
 }
 function __c126(j: number): any {

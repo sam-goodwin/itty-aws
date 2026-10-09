@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -295,18 +295,14 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
 
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()("AccessDeniedException", {
-    error: /*@__PURE__*/ S.suspend(() => S.String).annotate({
-      identifier: "OAuth2ErrorCode",
-    }),
+    error: /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "OAuth2ErrorCode" }),
     message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withAuthError) {}
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
-      error: /*@__PURE__*/ S.suspend(() => S.String).annotate({
-        identifier: "OAuth2ErrorCode",
-      }),
+      error: /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "OAuth2ErrorCode" }),
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
     /*@__PURE__*/ T.HttpError(409),
@@ -315,9 +311,7 @@ export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     {
-      error: /*@__PURE__*/ S.suspend(() => S.String).annotate({
-        identifier: "OAuth2ErrorCode",
-      }),
+      error: /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "OAuth2ErrorCode" }),
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
     /*@__PURE__*/ T.HttpError(500),
@@ -326,9 +320,7 @@ export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      error: /*@__PURE__*/ S.suspend(() => S.String).annotate({
-        identifier: "OAuth2ErrorCode",
-      }),
+      error: /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "OAuth2ErrorCode" }),
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
     /*@__PURE__*/ T.HttpError(404),
@@ -337,9 +329,7 @@ export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      error: /*@__PURE__*/ S.suspend(() => S.String).annotate({
-        identifier: "OAuth2ErrorCode",
-      }),
+      error: /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "OAuth2ErrorCode" }),
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
     /*@__PURE__*/ T.HttpError(402),
@@ -348,9 +338,7 @@ export class TooManyRequestsError
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestsError>()(
     "TooManyRequestsError",
     {
-      error: /*@__PURE__*/ S.suspend(() => S.String).annotate({
-        identifier: "OAuth2ErrorCode",
-      }),
+      error: /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "OAuth2ErrorCode" }),
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
     /*@__PURE__*/ T.HttpError(429),
@@ -359,9 +347,7 @@ export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      error: /*@__PURE__*/ S.suspend(() => S.String).annotate({
-        identifier: "OAuth2ErrorCode",
-      }),
+      error: /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "OAuth2ErrorCode" }),
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
     /*@__PURE__*/ T.HttpError(400),
@@ -936,9 +922,7 @@ function __c0(j: number): any {
             T.StaticContextParams({ IsControlPlane: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteResourcePermissionStatementInput",
-      });
+      ).annotate({ identifier: "DeleteResourcePermissionStatementInput" });
   }
 }
 function __c1(j: number): any {
@@ -964,9 +948,7 @@ function __c2(j: number): any {
             T.StaticContextParams({ IsControlPlane: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetConsoleAuthorizationConfigurationInput",
-      });
+      ).annotate({ identifier: "GetConsoleAuthorizationConfigurationInput" });
   }
 }
 function __c3(j: number): any {
@@ -1012,9 +994,7 @@ function __c3(j: number): any {
         S.Struct({ version: S.optional(S.String), statement: S.optional(__S(27, __c3, 3)) }).pipe(
           S.encodeKeys({ version: "Version", statement: "Statement" }),
         ),
-      ).annotate({
-        identifier: "SigninResourceBasedPolicy",
-      });
+      ).annotate({ identifier: "SigninResourceBasedPolicy" });
     case 5:
       return S.suspend(() => S.Struct({ signinResourceBasedPolicy: __S(28, __c3, 4) })).annotate({
         identifier: "GetResourcePolicyOutput",
@@ -1048,9 +1028,7 @@ function __c5(j: number): any {
               T.StaticContextParams({ IsOAuthEndpoint: { value: true } }),
             ),
           ),
-      ).annotate({
-        identifier: "IntrospectOAuth2TokenWithIAMRequest",
-      });
+      ).annotate({ identifier: "IntrospectOAuth2TokenWithIAMRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1077,9 +1055,7 @@ function __c5(j: number): any {
             signinSession: "signin_session",
           }),
         ),
-      ).annotate({
-        identifier: "IntrospectOAuth2TokenWithIAMResponse",
-      });
+      ).annotate({ identifier: "IntrospectOAuth2TokenWithIAMResponse" });
   }
 }
 function __c6(j: number): any {
@@ -1097,23 +1073,17 @@ function __c6(j: number): any {
             T.StaticContextParams({ IsControlPlane: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "ListResourcePermissionStatementsInput",
-      });
+      ).annotate({ identifier: "ListResourcePermissionStatementsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ sid: S.String, condition: S.optional(__S(34, __c4, 2)) }),
-      ).annotate({
-        identifier: "PermissionStatementSummary",
-      });
+      ).annotate({ identifier: "PermissionStatementSummary" });
     case 2:
       return S.Array(__S(49, __c6, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ permissionStatements: __S(50, __c6, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListResourcePermissionStatementsOutput",
-      });
+      ).annotate({ identifier: "ListResourcePermissionStatementsOutput" });
   }
 }
 function __c7(j: number): any {
@@ -1131,9 +1101,7 @@ function __c7(j: number): any {
             T.StaticContextParams({ IsControlPlane: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "PutConsoleAuthorizationConfigurationInput",
-      });
+      ).annotate({ identifier: "PutConsoleAuthorizationConfigurationInput" });
   }
 }
 function __c8(j: number): any {
@@ -1160,9 +1128,7 @@ function __c8(j: number): any {
             T.StaticContextParams({ IsControlPlane: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "PutResourcePermissionStatementInput",
-      });
+      ).annotate({ identifier: "PutResourcePermissionStatementInput" });
     case 1:
       return S.suspend(() => S.Struct({ statementId: S.String })).annotate({
         identifier: "PutResourcePermissionStatementOutput",
@@ -1184,9 +1150,7 @@ function __c9(j: number): any {
             T.StaticContextParams({ IsOAuthEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "RevokeOAuth2TokenWithIAMRequest",
-      });
+      ).annotate({ identifier: "RevokeOAuth2TokenWithIAMRequest" });
   }
 }
 function __c10(j: number): any {
@@ -1201,15 +1165,13 @@ function __c10(j: number): any {
           codeVerifier: S.optional(S.String),
           refreshToken: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "CreateOAuth2TokenRequestBody",
-      });
+      ).annotate({ identifier: "CreateOAuth2TokenRequestBody" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          tokenInput: __S(80, __c10, 0).pipe(T.HttpPayload()).annotate({
-            identifier: "CreateOAuth2TokenRequestBody",
-          }),
+          tokenInput: __S(80, __c10, 0)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "CreateOAuth2TokenRequestBody" }),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/token" }),
@@ -1235,19 +1197,15 @@ function __c10(j: number): any {
           refreshToken: SensitiveString,
           idToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateOAuth2TokenResponseBody",
-      });
+      ).annotate({ identifier: "CreateOAuth2TokenResponseBody" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          tokenOutput: __S(83, __c10, 3).pipe(T.HttpPayload()).annotate({
-            identifier: "CreateOAuth2TokenResponseBody",
-          }),
+          tokenOutput: __S(83, __c10, 3)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "CreateOAuth2TokenResponseBody" }),
         }),
-      ).annotate({
-        identifier: "CreateOAuth2TokenResponse",
-      });
+      ).annotate({ identifier: "CreateOAuth2TokenResponse" });
   }
 }
 function __c11(j: number): any {
@@ -1267,9 +1225,7 @@ function __c11(j: number): any {
               T.StaticContextParams({ IsOAuthEndpoint: { value: true } }),
             ),
           ),
-      ).annotate({
-        identifier: "CreateOAuth2TokenWithIAMRequest",
-      });
+      ).annotate({ identifier: "CreateOAuth2TokenWithIAMRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ accessToken: SensitiveString, tokenType: S.String, expiresIn: S.Number }).pipe(
@@ -1279,9 +1235,7 @@ function __c11(j: number): any {
             expiresIn: "expires_in",
           }),
         ),
-      ).annotate({
-        identifier: "CreateOAuth2TokenWithIAMResponse",
-      });
+      ).annotate({ identifier: "CreateOAuth2TokenWithIAMResponse" });
   }
 }
 function __c12(j: number): any {
@@ -1299,9 +1253,7 @@ function __c12(j: number): any {
             T.StaticContextParams({ IsControlPlane: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteConsoleAuthorizationConfigurationInput",
-      });
+      ).annotate({ identifier: "DeleteConsoleAuthorizationConfigurationInput" });
   }
 }
 function __c13(j: number): any {
@@ -1309,9 +1261,7 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ targetId: S.String, scope: S.String, consoleAuthorizationEnabled: S.Boolean }),
-      ).annotate({
-        identifier: "DeleteConsoleAuthorizationConfigurationOutput",
-      });
+      ).annotate({ identifier: "DeleteConsoleAuthorizationConfigurationOutput" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

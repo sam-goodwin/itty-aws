@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -9343,9 +9343,7 @@ function __c0(j: number): any {
         S.Struct({ EntityPath: S.String, OrganizationsPolicyId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GenerateOrganizationsAccessReportRequest",
-      });
+      ).annotate({ identifier: "GenerateOrganizationsAccessReportRequest" });
     case 1:
       return S.suspend(() => S.Struct({ JobId: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "GenerateOrganizationsAccessReportResponse",
@@ -9359,9 +9357,7 @@ function __c1(j: number): any {
         S.Struct({ Arn: S.String, Granularity: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GenerateServiceLastAccessedDetailsRequest",
-      });
+      ).annotate({ identifier: "GenerateServiceLastAccessedDetailsRequest" });
     case 1:
       return S.suspend(() => S.Struct({ JobId: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "GenerateServiceLastAccessedDetailsResponse",
@@ -9375,9 +9371,7 @@ function __c2(j: number): any {
         S.Struct({ AccessKeyId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetAccessKeyLastUsedRequest",
-      });
+      ).annotate({ identifier: "GetAccessKeyLastUsedRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9392,9 +9386,7 @@ function __c2(j: number): any {
           UserName: S.optional(S.String),
           AccessKeyLastUsed: S.optional(__S(33, __c2, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetAccessKeyLastUsedResponse",
-      });
+      ).annotate({ identifier: "GetAccessKeyLastUsedResponse" });
   }
 }
 function __c3(j: number): any {
@@ -9408,9 +9400,7 @@ function __c3(j: number): any {
           MaxItems: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetAccountAuthorizationDetailsRequest",
-      });
+      ).annotate({ identifier: "GetAccountAuthorizationDetailsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({ PolicyName: S.optional(S.String), PolicyDocument: S.optional(S.String) }),
@@ -9498,9 +9488,7 @@ function __c3(j: number): any {
           IsTruncated: S.optional(S.Boolean),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetAccountAuthorizationDetailsResponse",
-      });
+      ).annotate({ identifier: "GetAccountAuthorizationDetailsResponse" });
   }
 }
 function __c4(j: number): any {
@@ -9532,9 +9520,7 @@ function __c7(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetAccountPasswordPolicyRequest",
-      });
+      ).annotate({ identifier: "GetAccountPasswordPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9563,15 +9549,11 @@ function __c8(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetAccountPropertiesRequest",
-      });
+      ).annotate({ identifier: "GetAccountPropertiesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Properties: S.optional(__S(144, __c9, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetAccountPropertiesResponse",
-      });
+      ).annotate({ identifier: "GetAccountPropertiesResponse" });
   }
 }
 function __c9(j: number): any {
@@ -9593,9 +9575,7 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ SummaryMap: S.optional(__S(161, __c10, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetAccountSummaryResponse",
-      });
+      ).annotate({ identifier: "GetAccountSummaryResponse" });
   }
 }
 function __c11(j: number): any {
@@ -9605,9 +9585,7 @@ function __c11(j: number): any {
         S.Struct({ PolicyInputList: __S(208, __c13, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetContextKeysForCustomPolicyRequest",
-      });
+      ).annotate({ identifier: "GetContextKeysForCustomPolicyRequest" });
   }
 }
 function __c12(j: number): any {
@@ -9615,9 +9593,7 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ ContextKeyNames: S.optional(__S(209, __c13, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetContextKeysForPolicyResponse",
-      });
+      ).annotate({ identifier: "GetContextKeysForPolicyResponse" });
   }
 }
 function __c13(j: number): any {
@@ -9636,9 +9612,7 @@ function __c14(j: number): any {
           PolicySourceArn: S.String,
           PolicyInputList: S.optional(__S(208, __c13, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetContextKeysForPrincipalPolicyRequest",
-      });
+      ).annotate({ identifier: "GetContextKeysForPrincipalPolicyRequest" });
   }
 }
 function __c15(j: number): any {
@@ -9648,9 +9622,7 @@ function __c15(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetCredentialReportRequest",
-      });
+      ).annotate({ identifier: "GetCredentialReportRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9658,9 +9630,7 @@ function __c15(j: number): any {
           ReportFormat: S.optional(S.String),
           GeneratedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetCredentialReportResponse",
-      });
+      ).annotate({ identifier: "GetCredentialReportResponse" });
   }
 }
 function __c16(j: number): any {
@@ -9671,9 +9641,7 @@ function __c16(j: number): any {
           DelegationRequestId: S.String,
           DelegationPermissionCheck: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetDelegationRequestRequest",
-      });
+      ).annotate({ identifier: "GetDelegationRequestRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9681,9 +9649,7 @@ function __c16(j: number): any {
           PermissionCheckStatus: S.optional(S.String),
           PermissionCheckResult: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetDelegationRequestResponse",
-      });
+      ).annotate({ identifier: "GetDelegationRequestResponse" });
   }
 }
 function __c17(j: number): any {
@@ -9765,9 +9731,7 @@ function __c21(j: number): any {
         S.Struct({ EntityArn: S.String, Locale: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetHumanReadableSummaryRequest",
-      });
+      ).annotate({ identifier: "GetHumanReadableSummaryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9775,9 +9739,7 @@ function __c21(j: number): any {
           Locale: S.optional(S.String),
           SummaryState: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetHumanReadableSummaryResponse",
-      });
+      ).annotate({ identifier: "GetHumanReadableSummaryResponse" });
   }
 }
 function __c22(j: number): any {
@@ -9787,14 +9749,10 @@ function __c22(j: number): any {
         S.Struct({ InstanceProfileName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetInstanceProfileRequest",
-      });
+      ).annotate({ identifier: "GetInstanceProfileRequest" });
     case 1:
       return S.suspend(() => S.Struct({ InstanceProfile: __S(2496, __c156, 0) }).pipe(ns)).annotate(
-        {
-          identifier: "GetInstanceProfileResponse",
-        },
+        { identifier: "GetInstanceProfileResponse" },
       );
   }
 }
@@ -9840,9 +9798,7 @@ function __c25(j: number): any {
         S.Struct({ OpenIDConnectProviderArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetOpenIDConnectProviderRequest",
-      });
+      ).annotate({ identifier: "GetOpenIDConnectProviderRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9852,9 +9808,7 @@ function __c25(j: number): any {
           CreateDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Tags: S.optional(__S(2209, __c138, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetOpenIDConnectProviderResponse",
-      });
+      ).annotate({ identifier: "GetOpenIDConnectProviderResponse" });
   }
 }
 function __c26(j: number): any {
@@ -9867,9 +9821,7 @@ function __c26(j: number): any {
           Marker: S.optional(S.String),
           SortKey: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetOrganizationsAccessReportRequest",
-      });
+      ).annotate({ identifier: "GetOrganizationsAccessReportRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9896,9 +9848,7 @@ function __c26(j: number): any {
           Marker: S.optional(S.String),
           ErrorDetails: S.optional(__S(432, __c27, 0)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetOrganizationsAccessReportResponse",
-      });
+      ).annotate({ identifier: "GetOrganizationsAccessReportResponse" });
   }
 }
 function __c27(j: number): any {
@@ -9916,18 +9866,14 @@ function __c28(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetOutboundWebIdentityFederationInfoRequest",
-      });
+      ).annotate({ identifier: "GetOutboundWebIdentityFederationInfoRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           IssuerIdentifier: S.optional(S.String),
           JwtVendingEnabled: S.optional(S.Boolean),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetOutboundWebIdentityFederationInfoResponse",
-      });
+      ).annotate({ identifier: "GetOutboundWebIdentityFederationInfoResponse" });
   }
 }
 function __c29(j: number): any {
@@ -9993,9 +9939,7 @@ function __c33(j: number): any {
         S.Struct({ TemplateArn: S.String, MinorVersion: S.optional(S.Number) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetRoleTemplateVersionRequest",
-      });
+      ).annotate({ identifier: "GetRoleTemplateVersionRequest" });
     case 1:
       return S.suspend(() => S.Struct({ PolicyName: S.String, PolicyDocument: S.String })).annotate(
         { identifier: "InlinePolicy" },
@@ -10055,9 +9999,7 @@ function __c33(j: number): any {
     case 9:
       return S.suspend(() =>
         S.Struct({ RoleTemplateVersion: __S(536, __c33, 8) }).pipe(ns),
-      ).annotate({
-        identifier: "GetRoleTemplateVersionResponse",
-      });
+      ).annotate({ identifier: "GetRoleTemplateVersionResponse" });
   }
 }
 function __c34(j: number): any {
@@ -10098,9 +10040,7 @@ function __c35(j: number): any {
         S.Struct({ ServerCertificateName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetServerCertificateRequest",
-      });
+      ).annotate({ identifier: "GetServerCertificateRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10112,9 +10052,7 @@ function __c35(j: number): any {
       ).annotate({ identifier: "ServerCertificate" });
     case 2:
       return S.suspend(() => S.Struct({ ServerCertificate: __S(561, __c35, 1) }).pipe(ns)).annotate(
-        {
-          identifier: "GetServerCertificateResponse",
-        },
+        { identifier: "GetServerCertificateResponse" },
       );
   }
 }
@@ -10130,9 +10068,7 @@ function __c36(j: number): any {
           UploadDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Expiration: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "ServerCertificateMetadata",
-      });
+      ).annotate({ identifier: "ServerCertificateMetadata" });
   }
 }
 function __c37(j: number): any {
@@ -10144,9 +10080,7 @@ function __c37(j: number): any {
           MaxItems: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetServiceLastAccessedDetailsRequest",
-      });
+      ).annotate({ identifier: "GetServiceLastAccessedDetailsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10155,9 +10089,7 @@ function __c37(j: number): any {
           LastAccessedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           LastAccessedRegion: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "TrackedActionLastAccessed",
-      });
+      ).annotate({ identifier: "TrackedActionLastAccessed" });
     case 2:
       return S.Array(__S(593, __c37, 1));
     case 3:
@@ -10186,9 +10118,7 @@ function __c37(j: number): any {
           Marker: S.optional(S.String),
           Error: S.optional(__S(432, __c27, 0)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetServiceLastAccessedDetailsResponse",
-      });
+      ).annotate({ identifier: "GetServiceLastAccessedDetailsResponse" });
   }
 }
 function __c38(j: number): any {
@@ -10201,9 +10131,7 @@ function __c38(j: number): any {
           MaxItems: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetServiceLastAccessedDetailsWithEntitiesRequest",
-      });
+      ).annotate({ identifier: "GetServiceLastAccessedDetailsWithEntitiesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10234,9 +10162,7 @@ function __c38(j: number): any {
           Marker: S.optional(S.String),
           Error: S.optional(__S(432, __c27, 0)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetServiceLastAccessedDetailsWithEntitiesResponse",
-      });
+      ).annotate({ identifier: "GetServiceLastAccessedDetailsWithEntitiesResponse" });
   }
 }
 function __c39(j: number): any {
@@ -10246,9 +10172,7 @@ function __c39(j: number): any {
         S.Struct({ DeletionTaskId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetServiceLinkedRoleDeletionStatusRequest",
-      });
+      ).annotate({ identifier: "GetServiceLinkedRoleDeletionStatusRequest" });
     case 1:
       return S.Array(S.String);
     case 2:
@@ -10260,18 +10184,11 @@ function __c39(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({ Reason: S.optional(S.String), RoleUsageList: S.optional(__S(627, __c39, 3)) }),
-      ).annotate({
-        identifier: "DeletionTaskFailureReasonType",
-      });
+      ).annotate({ identifier: "DeletionTaskFailureReasonType" });
     case 5:
       return S.suspend(() =>
-        S.Struct({
-          Status: S.String,
-          Reason: S.optional(__S(628, __c39, 4)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "GetServiceLinkedRoleDeletionStatusResponse",
-      });
+        S.Struct({ Status: S.String, Reason: S.optional(__S(628, __c39, 4)) }).pipe(ns),
+      ).annotate({ identifier: "GetServiceLinkedRoleDeletionStatusResponse" });
   }
 }
 function __c40(j: number): any {
@@ -10369,9 +10286,7 @@ function __c45(j: number): any {
         S.Struct({ Marker: S.optional(S.String), MaxItems: S.optional(S.Number) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListAccountAliasesRequest",
-      });
+      ).annotate({ identifier: "ListAccountAliasesRequest" });
     case 1:
       return S.Array(S.String);
     case 2:
@@ -10381,9 +10296,7 @@ function __c45(j: number): any {
           IsTruncated: S.optional(S.Boolean),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListAccountAliasesResponse",
-      });
+      ).annotate({ identifier: "ListAccountAliasesResponse" });
   }
 }
 function __c46(j: number): any {
@@ -10396,9 +10309,7 @@ function __c46(j: number): any {
           Marker: S.optional(S.String),
           MaxItems: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListAttachedGroupPoliciesRequest",
-      });
+      ).annotate({ identifier: "ListAttachedGroupPoliciesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10406,9 +10317,7 @@ function __c46(j: number): any {
           IsTruncated: S.optional(S.Boolean),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListAttachedGroupPoliciesResponse",
-      });
+      ).annotate({ identifier: "ListAttachedGroupPoliciesResponse" });
   }
 }
 function __c47(j: number): any {
@@ -10421,9 +10330,7 @@ function __c47(j: number): any {
           Marker: S.optional(S.String),
           MaxItems: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListAttachedRolePoliciesRequest",
-      });
+      ).annotate({ identifier: "ListAttachedRolePoliciesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10431,9 +10338,7 @@ function __c47(j: number): any {
           IsTruncated: S.optional(S.Boolean),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListAttachedRolePoliciesResponse",
-      });
+      ).annotate({ identifier: "ListAttachedRolePoliciesResponse" });
   }
 }
 function __c48(j: number): any {
@@ -10446,9 +10351,7 @@ function __c48(j: number): any {
           Marker: S.optional(S.String),
           MaxItems: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListAttachedUserPoliciesRequest",
-      });
+      ).annotate({ identifier: "ListAttachedUserPoliciesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10456,9 +10359,7 @@ function __c48(j: number): any {
           IsTruncated: S.optional(S.Boolean),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListAttachedUserPoliciesResponse",
-      });
+      ).annotate({ identifier: "ListAttachedUserPoliciesResponse" });
   }
 }
 function __c49(j: number): any {
@@ -10470,9 +10371,7 @@ function __c49(j: number): any {
           Marker: S.optional(S.String),
           MaxItems: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListDelegationRequestsRequest",
-      });
+      ).annotate({ identifier: "ListDelegationRequestsRequest" });
     case 1:
       return S.Array(__S(273, __c17, 1));
     case 2:
@@ -10482,9 +10381,7 @@ function __c49(j: number): any {
           Marker: S.optional(S.String),
           isTruncated: S.optional(S.Boolean),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListDelegationRequestsResponse",
-      });
+      ).annotate({ identifier: "ListDelegationRequestsResponse" });
   }
 }
 function __c50(j: number): any {
@@ -10499,9 +10396,7 @@ function __c50(j: number): any {
           Marker: S.optional(S.String),
           MaxItems: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListEntitiesForPolicyRequest",
-      });
+      ).annotate({ identifier: "ListEntitiesForPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ GroupName: S.optional(S.String), GroupId: S.optional(S.String) }),
@@ -10529,9 +10424,7 @@ function __c50(j: number): any {
           IsTruncated: S.optional(S.Boolean),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListEntitiesForPolicyResponse",
-      });
+      ).annotate({ identifier: "ListEntitiesForPolicyResponse" });
   }
 }
 function __c51(j: number): any {
@@ -10551,9 +10444,7 @@ function __c51(j: number): any {
           IsTruncated: S.optional(S.Boolean),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListGroupPoliciesResponse",
-      });
+      ).annotate({ identifier: "ListGroupPoliciesResponse" });
   }
 }
 function __c52(j: number): any {
@@ -10605,9 +10496,7 @@ function __c55(j: number): any {
           IsTruncated: S.optional(S.Boolean),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListGroupsForUserResponse",
-      });
+      ).annotate({ identifier: "ListGroupsForUserResponse" });
   }
 }
 function __c56(j: number): any {
@@ -10619,9 +10508,7 @@ function __c56(j: number): any {
           Marker: S.optional(S.String),
           MaxItems: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListInstanceProfilesRequest",
-      });
+      ).annotate({ identifier: "ListInstanceProfilesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10629,9 +10516,7 @@ function __c56(j: number): any {
           IsTruncated: S.optional(S.Boolean),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListInstanceProfilesResponse",
-      });
+      ).annotate({ identifier: "ListInstanceProfilesResponse" });
   }
 }
 function __c57(j: number): any {
@@ -10643,9 +10528,7 @@ function __c57(j: number): any {
           Marker: S.optional(S.String),
           MaxItems: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListInstanceProfilesForRoleRequest",
-      });
+      ).annotate({ identifier: "ListInstanceProfilesForRoleRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10653,9 +10536,7 @@ function __c57(j: number): any {
           IsTruncated: S.optional(S.Boolean),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListInstanceProfilesForRoleResponse",
-      });
+      ).annotate({ identifier: "ListInstanceProfilesForRoleResponse" });
   }
 }
 function __c58(j: number): any {
@@ -10667,9 +10548,7 @@ function __c58(j: number): any {
           Marker: S.optional(S.String),
           MaxItems: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListInstanceProfileTagsRequest",
-      });
+      ).annotate({ identifier: "ListInstanceProfileTagsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10677,9 +10556,7 @@ function __c58(j: number): any {
           IsTruncated: S.optional(S.Boolean),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListInstanceProfileTagsResponse",
-      });
+      ).annotate({ identifier: "ListInstanceProfileTagsResponse" });
   }
 }
 function __c59(j: number): any {
@@ -10729,9 +10606,7 @@ function __c60(j: number): any {
           IsTruncated: S.optional(S.Boolean),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListMFADeviceTagsResponse",
-      });
+      ).annotate({ identifier: "ListMFADeviceTagsResponse" });
   }
 }
 function __c61(j: number): any {
@@ -10741,9 +10616,7 @@ function __c61(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListOpenIDConnectProvidersRequest",
-      });
+      ).annotate({ identifier: "ListOpenIDConnectProvidersRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Arn: S.optional(S.String) })).annotate({
         identifier: "OpenIDConnectProviderListEntry",
@@ -10753,9 +10626,7 @@ function __c61(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ OpenIDConnectProviderList: S.optional(__S(978, __c61, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "ListOpenIDConnectProvidersResponse",
-      });
+      ).annotate({ identifier: "ListOpenIDConnectProvidersResponse" });
   }
 }
 function __c62(j: number): any {
@@ -10767,9 +10638,7 @@ function __c62(j: number): any {
           Marker: S.optional(S.String),
           MaxItems: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListOpenIDConnectProviderTagsRequest",
-      });
+      ).annotate({ identifier: "ListOpenIDConnectProviderTagsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10777,9 +10646,7 @@ function __c62(j: number): any {
           IsTruncated: S.optional(S.Boolean),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListOpenIDConnectProviderTagsResponse",
-      });
+      ).annotate({ identifier: "ListOpenIDConnectProviderTagsResponse" });
   }
 }
 function __c63(j: number): any {
@@ -10789,18 +10656,14 @@ function __c63(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListOrganizationsFeaturesRequest",
-      });
+      ).annotate({ identifier: "ListOrganizationsFeaturesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           OrganizationId: S.optional(S.String),
           EnabledFeatures: S.optional(__S(3264, __c204, 0)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListOrganizationsFeaturesResponse",
-      });
+      ).annotate({ identifier: "ListOrganizationsFeaturesResponse" });
   }
 }
 function __c64(j: number): any {
@@ -10839,9 +10702,7 @@ function __c65(j: number): any {
           Arn: S.String,
           ServiceNamespaces: __S(1040, __c65, 0),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListPoliciesGrantingServiceAccessRequest",
-      });
+      ).annotate({ identifier: "ListPoliciesGrantingServiceAccessRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -10851,9 +10712,7 @@ function __c65(j: number): any {
           EntityType: S.optional(S.String),
           EntityName: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "PolicyGrantingServiceAccess",
-      });
+      ).annotate({ identifier: "PolicyGrantingServiceAccess" });
     case 3:
       return S.Array(__S(1042, __c65, 2));
     case 4:
@@ -10862,9 +10721,7 @@ function __c65(j: number): any {
           ServiceNamespace: S.optional(S.String),
           Policies: S.optional(__S(1043, __c65, 3)),
         }),
-      ).annotate({
-        identifier: "ListPoliciesGrantingServiceAccessEntry",
-      });
+      ).annotate({ identifier: "ListPoliciesGrantingServiceAccessEntry" });
     case 5:
       return S.Array(__S(1044, __c65, 4));
     case 6:
@@ -10874,9 +10731,7 @@ function __c65(j: number): any {
           IsTruncated: S.optional(S.Boolean),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListPoliciesGrantingServiceAccessResponse",
-      });
+      ).annotate({ identifier: "ListPoliciesGrantingServiceAccessResponse" });
   }
 }
 function __c66(j: number): any {
@@ -10908,9 +10763,7 @@ function __c67(j: number): any {
           Marker: S.optional(S.String),
           MaxItems: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListPolicyVersionsRequest",
-      });
+      ).annotate({ identifier: "ListPolicyVersionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10918,9 +10771,7 @@ function __c67(j: number): any {
           IsTruncated: S.optional(S.Boolean),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListPolicyVersionsResponse",
-      });
+      ).annotate({ identifier: "ListPolicyVersionsResponse" });
   }
 }
 function __c68(j: number): any {
@@ -11004,9 +10855,7 @@ function __c71(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ SAMLProviderList: S.optional(__S(1138, __c71, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "ListSAMLProvidersResponse",
-      });
+      ).annotate({ identifier: "ListSAMLProvidersResponse" });
   }
 }
 function __c72(j: number): any {
@@ -11018,9 +10867,7 @@ function __c72(j: number): any {
           Marker: S.optional(S.String),
           MaxItems: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListSAMLProviderTagsRequest",
-      });
+      ).annotate({ identifier: "ListSAMLProviderTagsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11028,9 +10875,7 @@ function __c72(j: number): any {
           IsTruncated: S.optional(S.Boolean),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListSAMLProviderTagsResponse",
-      });
+      ).annotate({ identifier: "ListSAMLProviderTagsResponse" });
   }
 }
 function __c73(j: number): any {
@@ -11042,9 +10887,7 @@ function __c73(j: number): any {
           Marker: S.optional(S.String),
           MaxItems: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListServerCertificatesRequest",
-      });
+      ).annotate({ identifier: "ListServerCertificatesRequest" });
     case 1:
       return S.Array(__S(576, __c36, 0));
     case 2:
@@ -11054,9 +10897,7 @@ function __c73(j: number): any {
           IsTruncated: S.optional(S.Boolean),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListServerCertificatesResponse",
-      });
+      ).annotate({ identifier: "ListServerCertificatesResponse" });
   }
 }
 function __c74(j: number): any {
@@ -11068,9 +10909,7 @@ function __c74(j: number): any {
           Marker: S.optional(S.String),
           MaxItems: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListServerCertificateTagsRequest",
-      });
+      ).annotate({ identifier: "ListServerCertificateTagsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11078,9 +10917,7 @@ function __c74(j: number): any {
           IsTruncated: S.optional(S.Boolean),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListServerCertificateTagsResponse",
-      });
+      ).annotate({ identifier: "ListServerCertificateTagsResponse" });
   }
 }
 function __c75(j: number): any {
@@ -11094,9 +10931,7 @@ function __c75(j: number): any {
           Marker: S.optional(S.String),
           MaxItems: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListServiceSpecificCredentialsRequest",
-      });
+      ).annotate({ identifier: "ListServiceSpecificCredentialsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11109,9 +10944,7 @@ function __c75(j: number): any {
           ServiceSpecificCredentialId: S.String,
           ServiceName: S.String,
         }),
-      ).annotate({
-        identifier: "ServiceSpecificCredentialMetadata",
-      });
+      ).annotate({ identifier: "ServiceSpecificCredentialMetadata" });
     case 2:
       return S.Array(__S(1201, __c75, 1));
     case 3:
@@ -11121,9 +10954,7 @@ function __c75(j: number): any {
           Marker: S.optional(S.String),
           IsTruncated: S.optional(S.Boolean),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListServiceSpecificCredentialsResponse",
-      });
+      ).annotate({ identifier: "ListServiceSpecificCredentialsResponse" });
   }
 }
 function __c76(j: number): any {
@@ -11135,9 +10966,7 @@ function __c76(j: number): any {
           Marker: S.optional(S.String),
           MaxItems: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListSigningCertificatesRequest",
-      });
+      ).annotate({ identifier: "ListSigningCertificatesRequest" });
     case 1:
       return S.Array(__S(1232, __c77, 0));
     case 2:
@@ -11147,9 +10976,7 @@ function __c76(j: number): any {
           IsTruncated: S.optional(S.Boolean),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListSigningCertificatesResponse",
-      });
+      ).annotate({ identifier: "ListSigningCertificatesResponse" });
   }
 }
 function __c77(j: number): any {
@@ -11194,9 +11021,7 @@ function __c78(j: number): any {
           IsTruncated: S.optional(S.Boolean),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListSSHPublicKeysResponse",
-      });
+      ).annotate({ identifier: "ListSSHPublicKeysResponse" });
   }
 }
 function __c79(j: number): any {
@@ -11268,9 +11093,7 @@ function __c82(j: number): any {
           Marker: S.optional(S.String),
           MaxItems: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListVirtualMFADevicesRequest",
-      });
+      ).annotate({ identifier: "ListVirtualMFADevicesRequest" });
     case 1:
       return S.Array(__S(2800, __c175, 0));
     case 2:
@@ -11280,9 +11103,7 @@ function __c82(j: number): any {
           IsTruncated: S.optional(S.Boolean),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListVirtualMFADevicesResponse",
-      });
+      ).annotate({ identifier: "ListVirtualMFADevicesResponse" });
   }
 }
 function __c83(j: number): any {
@@ -11292,9 +11113,7 @@ function __c83(j: number): any {
         S.Struct({ Properties: __S(144, __c9, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "PutAccountPropertiesRequest",
-      });
+      ).annotate({ identifier: "PutAccountPropertiesRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutAccountPropertiesResponse",
@@ -11322,9 +11141,7 @@ function __c85(j: number): any {
         S.Struct({ RoleName: S.String, PermissionsBoundary: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "PutRolePermissionsBoundaryRequest",
-      });
+      ).annotate({ identifier: "PutRolePermissionsBoundaryRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutRolePermissionsBoundaryResponse",
@@ -11352,9 +11169,7 @@ function __c87(j: number): any {
         S.Struct({ UserName: S.String, PermissionsBoundary: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "PutUserPermissionsBoundaryRequest",
-      });
+      ).annotate({ identifier: "PutUserPermissionsBoundaryRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutUserPermissionsBoundaryResponse",
@@ -11382,9 +11197,7 @@ function __c89(j: number): any {
         S.Struct({ DelegationRequestId: S.String, Notes: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "RejectDelegationRequestRequest",
-      });
+      ).annotate({ identifier: "RejectDelegationRequestRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "RejectDelegationRequestResponse",
@@ -11398,9 +11211,7 @@ function __c90(j: number): any {
         S.Struct({ OpenIDConnectProviderArn: S.String, ClientID: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "RemoveClientIDFromOpenIDConnectProviderRequest",
-      });
+      ).annotate({ identifier: "RemoveClientIDFromOpenIDConnectProviderRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "RemoveClientIDFromOpenIDConnectProviderResponse",
@@ -11414,9 +11225,7 @@ function __c91(j: number): any {
         S.Struct({ InstanceProfileName: S.String, RoleName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "RemoveRoleFromInstanceProfileRequest",
-      });
+      ).annotate({ identifier: "RemoveRoleFromInstanceProfileRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "RemoveRoleFromInstanceProfileResponse",
@@ -11430,9 +11239,7 @@ function __c92(j: number): any {
         S.Struct({ GroupName: S.String, UserName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "RemoveUserFromGroupRequest",
-      });
+      ).annotate({ identifier: "RemoveUserFromGroupRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "RemoveUserFromGroupResponse",
@@ -11446,15 +11253,11 @@ function __c93(j: number): any {
         S.Struct({ UserName: S.optional(S.String), ServiceSpecificCredentialId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ResetServiceSpecificCredentialRequest",
-      });
+      ).annotate({ identifier: "ResetServiceSpecificCredentialRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ServiceSpecificCredential: S.optional(__S(2736, __c171, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "ResetServiceSpecificCredentialResponse",
-      });
+      ).annotate({ identifier: "ResetServiceSpecificCredentialResponse" });
   }
 }
 function __c94(j: number): any {
@@ -11481,9 +11284,7 @@ function __c95(j: number): any {
         S.Struct({ DelegationRequestId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "SendDelegationTokenRequest",
-      });
+      ).annotate({ identifier: "SendDelegationTokenRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "SendDelegationTokenResponse",
@@ -11497,9 +11298,7 @@ function __c96(j: number): any {
         S.Struct({ PolicyArn: S.String, VersionId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "SetDefaultPolicyVersionRequest",
-      });
+      ).annotate({ identifier: "SetDefaultPolicyVersionRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "SetDefaultPolicyVersionResponse",
@@ -11513,9 +11312,7 @@ function __c97(j: number): any {
         S.Struct({ GlobalEndpointTokenVersion: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "SetSecurityTokenServicePreferencesRequest",
-      });
+      ).annotate({ identifier: "SetSecurityTokenServicePreferencesRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "SetSecurityTokenServicePreferencesResponse",
@@ -11527,9 +11324,7 @@ function __c98(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ ServiceControlPolicyInputList: S.optional(__S(208, __c13, 0)) }),
-      ).annotate({
-        identifier: "OrderedOrganizationPolicyType",
-      });
+      ).annotate({ identifier: "OrderedOrganizationPolicyType" });
     case 1:
       return S.Array(__S(1568, __c98, 0));
     case 2:
@@ -11548,9 +11343,7 @@ function __c98(j: number): any {
           MaxItems: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SimulateCustomPolicyRequest",
-      });
+      ).annotate({ identifier: "SimulateCustomPolicyRequest" });
   }
 }
 function __c99(j: number): any {
@@ -11593,9 +11386,7 @@ function __c99(j: number): any {
     case 9:
       return S.suspend(() =>
         S.Struct({ AllowedByPermissionsBoundary: S.optional(S.Boolean) }),
-      ).annotate({
-        identifier: "PermissionsBoundaryDecisionDetail",
-      });
+      ).annotate({ identifier: "PermissionsBoundaryDecisionDetail" });
     case 10:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 11:
@@ -11642,9 +11433,7 @@ function __c100(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ PolicyName: S.String, AttachmentType: S.String, AttachmentName: S.String }),
-      ).annotate({
-        identifier: "InlinePolicyIdentifierType",
-      });
+      ).annotate({ identifier: "InlinePolicyIdentifierType" });
     case 1:
       return S.Union([
         /*@__PURE__*/ S.Struct({ PolicyType: S.String }),
@@ -11670,9 +11459,7 @@ function __c100(j: number): any {
           MaxItems: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SimulatePrincipalPolicyRequest",
-      });
+      ).annotate({ identifier: "SimulatePrincipalPolicyRequest" });
   }
 }
 function __c101(j: number): any {
@@ -11682,9 +11469,7 @@ function __c101(j: number): any {
         S.Struct({ InstanceProfileName: S.String, Tags: __S(2209, __c138, 1) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "TagInstanceProfileRequest",
-      });
+      ).annotate({ identifier: "TagInstanceProfileRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "TagInstanceProfileResponse",
@@ -11712,9 +11497,7 @@ function __c103(j: number): any {
         S.Struct({ OpenIDConnectProviderArn: S.String, Tags: __S(2209, __c138, 1) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "TagOpenIDConnectProviderRequest",
-      });
+      ).annotate({ identifier: "TagOpenIDConnectProviderRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "TagOpenIDConnectProviderResponse",
@@ -11730,9 +11513,7 @@ function __c104(j: number): any {
         ),
       ).annotate({ identifier: "TagPolicyRequest" });
     case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "TagPolicyResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "TagPolicyResponse" });
   }
 }
 function __c105(j: number): any {
@@ -11744,9 +11525,7 @@ function __c105(j: number): any {
         ),
       ).annotate({ identifier: "TagRoleRequest" });
     case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "TagRoleResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "TagRoleResponse" });
   }
 }
 function __c106(j: number): any {
@@ -11770,9 +11549,7 @@ function __c107(j: number): any {
         S.Struct({ ServerCertificateName: S.String, Tags: __S(2209, __c138, 1) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "TagServerCertificateRequest",
-      });
+      ).annotate({ identifier: "TagServerCertificateRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "TagServerCertificateResponse",
@@ -11788,9 +11565,7 @@ function __c108(j: number): any {
         ),
       ).annotate({ identifier: "TagUserRequest" });
     case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "TagUserResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "TagUserResponse" });
   }
 }
 function __c109(j: number): any {
@@ -11800,9 +11575,7 @@ function __c109(j: number): any {
         S.Struct({ InstanceProfileName: S.String, TagKeys: __S(1760, __c110, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UntagInstanceProfileRequest",
-      });
+      ).annotate({ identifier: "UntagInstanceProfileRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "UntagInstanceProfileResponse",
@@ -11836,9 +11609,7 @@ function __c112(j: number): any {
         S.Struct({ OpenIDConnectProviderArn: S.String, TagKeys: __S(1760, __c110, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UntagOpenIDConnectProviderRequest",
-      });
+      ).annotate({ identifier: "UntagOpenIDConnectProviderRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "UntagOpenIDConnectProviderResponse",
@@ -11854,9 +11625,7 @@ function __c113(j: number): any {
         ),
       ).annotate({ identifier: "UntagPolicyRequest" });
     case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "UntagPolicyResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "UntagPolicyResponse" });
   }
 }
 function __c114(j: number): any {
@@ -11868,9 +11637,7 @@ function __c114(j: number): any {
         ),
       ).annotate({ identifier: "UntagRoleRequest" });
     case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "UntagRoleResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "UntagRoleResponse" });
   }
 }
 function __c115(j: number): any {
@@ -11894,9 +11661,7 @@ function __c116(j: number): any {
         S.Struct({ ServerCertificateName: S.String, TagKeys: __S(1760, __c110, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UntagServerCertificateRequest",
-      });
+      ).annotate({ identifier: "UntagServerCertificateRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "UntagServerCertificateResponse",
@@ -11912,9 +11677,7 @@ function __c117(j: number): any {
         ),
       ).annotate({ identifier: "UntagUserRequest" });
     case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "UntagUserResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "UntagUserResponse" });
   }
 }
 function __c118(j: number): any {
@@ -11946,9 +11709,7 @@ function __c119(j: number): any {
           PasswordReusePrevention: S.optional(S.Number),
           HardExpiry: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateAccountPasswordPolicyRequest",
-      });
+      ).annotate({ identifier: "UpdateAccountPasswordPolicyRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "UpdateAccountPasswordPolicyResponse",
@@ -11962,9 +11723,7 @@ function __c120(j: number): any {
         S.Struct({ RoleName: S.String, PolicyDocument: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateAssumeRolePolicyRequest",
-      });
+      ).annotate({ identifier: "UpdateAssumeRolePolicyRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "UpdateAssumeRolePolicyResponse",
@@ -11978,9 +11737,7 @@ function __c121(j: number): any {
         S.Struct({ DelegationRequestId: S.String, Notes: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateDelegationRequestRequest",
-      });
+      ).annotate({ identifier: "UpdateDelegationRequestRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "UpdateDelegationRequestResponse",
@@ -11998,9 +11755,7 @@ function __c122(j: number): any {
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateGroupRequest" });
     case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "UpdateGroupResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "UpdateGroupResponse" });
   }
 }
 function __c123(j: number): any {
@@ -12012,9 +11767,7 @@ function __c123(j: number): any {
           Password: S.optional(SensitiveString),
           PasswordResetRequired: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateLoginProfileRequest",
-      });
+      ).annotate({ identifier: "UpdateLoginProfileRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "UpdateLoginProfileResponse",
@@ -12028,9 +11781,7 @@ function __c124(j: number): any {
         S.Struct({ OpenIDConnectProviderArn: S.String, ThumbprintList: __S(2592, __c162, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateOpenIDConnectProviderThumbprintRequest",
-      });
+      ).annotate({ identifier: "UpdateOpenIDConnectProviderThumbprintRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "UpdateOpenIDConnectProviderThumbprintResponse",
@@ -12048,9 +11799,7 @@ function __c125(j: number): any {
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateRoleRequest" });
     case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "UpdateRoleResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "UpdateRoleResponse" });
   }
 }
 function __c126(j: number): any {
@@ -12060,15 +11809,11 @@ function __c126(j: number): any {
         S.Struct({ RoleName: S.String, Description: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateRoleDescriptionRequest",
-      });
+      ).annotate({ identifier: "UpdateRoleDescriptionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Role: S.optional(__S(2226, __c139, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateRoleDescriptionResponse",
-      });
+      ).annotate({ identifier: "UpdateRoleDescriptionResponse" });
   }
 }
 function __c127(j: number): any {
@@ -12082,14 +11827,10 @@ function __c127(j: number): any {
           AddPrivateKey: S.optional(SensitiveString),
           RemovePrivateKey: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateSAMLProviderRequest",
-      });
+      ).annotate({ identifier: "UpdateSAMLProviderRequest" });
     case 1:
       return S.suspend(() => S.Struct({ SAMLProviderArn: S.optional(S.String) }).pipe(ns)).annotate(
-        {
-          identifier: "UpdateSAMLProviderResponse",
-        },
+        { identifier: "UpdateSAMLProviderResponse" },
       );
   }
 }
@@ -12102,9 +11843,7 @@ function __c128(j: number): any {
           NewPath: S.optional(S.String),
           NewServerCertificateName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateServerCertificateRequest",
-      });
+      ).annotate({ identifier: "UpdateServerCertificateRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "UpdateServerCertificateResponse",
@@ -12120,9 +11859,7 @@ function __c129(j: number): any {
           ServiceSpecificCredentialId: S.String,
           Status: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateServiceSpecificCredentialRequest",
-      });
+      ).annotate({ identifier: "UpdateServiceSpecificCredentialRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "UpdateServiceSpecificCredentialResponse",
@@ -12138,9 +11875,7 @@ function __c130(j: number): any {
           CertificateId: S.String,
           Status: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateSigningCertificateRequest",
-      });
+      ).annotate({ identifier: "UpdateSigningCertificateRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "UpdateSigningCertificateResponse",
@@ -12154,9 +11889,7 @@ function __c131(j: number): any {
         S.Struct({ UserName: S.String, SSHPublicKeyId: S.String, Status: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateSSHPublicKeyRequest",
-      });
+      ).annotate({ identifier: "UpdateSSHPublicKeyRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "UpdateSSHPublicKeyResponse",
@@ -12174,9 +11907,7 @@ function __c132(j: number): any {
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateUserRequest" });
     case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "UpdateUserResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "UpdateUserResponse" });
   }
 }
 function __c133(j: number): any {
@@ -12191,18 +11922,14 @@ function __c133(j: number): any {
           CertificateChain: S.optional(S.String),
           Tags: S.optional(__S(2209, __c138, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UploadServerCertificateRequest",
-      });
+      ).annotate({ identifier: "UploadServerCertificateRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ServerCertificateMetadata: S.optional(__S(576, __c36, 0)),
           Tags: S.optional(__S(2209, __c138, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "UploadServerCertificateResponse",
-      });
+      ).annotate({ identifier: "UploadServerCertificateResponse" });
   }
 }
 function __c134(j: number): any {
@@ -12212,9 +11939,7 @@ function __c134(j: number): any {
         S.Struct({ UserName: S.optional(S.String), CertificateBody: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UploadSigningCertificateRequest",
-      });
+      ).annotate({ identifier: "UploadSigningCertificateRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Certificate: __S(1232, __c77, 0) }).pipe(ns)).annotate({
         identifier: "UploadSigningCertificateResponse",
@@ -12228,15 +11953,11 @@ function __c135(j: number): any {
         S.Struct({ UserName: S.String, SSHPublicKeyBody: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UploadSSHPublicKeyRequest",
-      });
+      ).annotate({ identifier: "UploadSSHPublicKeyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ SSHPublicKey: S.optional(__S(656, __c41, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "UploadSSHPublicKeyResponse",
-      });
+      ).annotate({ identifier: "UploadSSHPublicKeyResponse" });
   }
 }
 function __c136(j: number): any {
@@ -12246,9 +11967,7 @@ function __c136(j: number): any {
         S.Struct({ DelegationRequestId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "AcceptDelegationRequestRequest",
-      });
+      ).annotate({ identifier: "AcceptDelegationRequestRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "AcceptDelegationRequestResponse",
@@ -12329,9 +12048,7 @@ function __c140(j: number): any {
           PermissionsBoundaryType: S.optional(S.String),
           PermissionsBoundaryArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "AttachedPermissionsBoundary",
-      });
+      ).annotate({ identifier: "AttachedPermissionsBoundary" });
   }
 }
 function __c141(j: number): any {
@@ -12341,9 +12058,7 @@ function __c141(j: number): any {
         S.Struct({ OpenIDConnectProviderArn: S.String, ClientID: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "AddClientIDToOpenIDConnectProviderRequest",
-      });
+      ).annotate({ identifier: "AddClientIDToOpenIDConnectProviderRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "AddClientIDToOpenIDConnectProviderResponse",
@@ -12357,9 +12072,7 @@ function __c142(j: number): any {
         S.Struct({ InstanceProfileName: S.String, RoleName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "AddRoleToInstanceProfileRequest",
-      });
+      ).annotate({ identifier: "AddRoleToInstanceProfileRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "AddRoleToInstanceProfileResponse",
@@ -12387,9 +12100,7 @@ function __c144(j: number): any {
         S.Struct({ DelegationRequestId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "AssociateDelegationRequestRequest",
-      });
+      ).annotate({ identifier: "AssociateDelegationRequestRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "AssociateDelegationRequestResponse",
@@ -12483,9 +12194,7 @@ function __c150(j: number): any {
         S.Struct({ AccountAlias: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateAccountAliasRequest",
-      });
+      ).annotate({ identifier: "CreateAccountAliasRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateAccountAliasResponse",
@@ -12507,18 +12216,14 @@ function __c151(j: number): any {
           SessionDuration: S.Number,
           OnlySendByOwner: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateDelegationRequestRequest",
-      });
+      ).annotate({ identifier: "CreateDelegationRequestRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ConsoleDeepLink: S.optional(S.String),
           DelegationRequestId: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateDelegationRequestResponse",
-      });
+      ).annotate({ identifier: "CreateDelegationRequestResponse" });
   }
 }
 function __c152(j: number): any {
@@ -12581,14 +12286,10 @@ function __c155(j: number): any {
           Path: S.optional(S.String),
           Tags: S.optional(__S(2209, __c138, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateInstanceProfileRequest",
-      });
+      ).annotate({ identifier: "CreateInstanceProfileRequest" });
     case 1:
       return S.suspend(() => S.Struct({ InstanceProfile: __S(2496, __c156, 0) }).pipe(ns)).annotate(
-        {
-          identifier: "CreateInstanceProfileResponse",
-        },
+        { identifier: "CreateInstanceProfileResponse" },
       );
   }
 }
@@ -12623,9 +12324,7 @@ function __c158(j: number): any {
           Password: S.optional(SensitiveString),
           PasswordResetRequired: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateLoginProfileRequest",
-      });
+      ).annotate({ identifier: "CreateLoginProfileRequest" });
     case 1:
       return S.suspend(() => S.Struct({ LoginProfile: __S(2544, __c159, 0) }).pipe(ns)).annotate({
         identifier: "CreateLoginProfileResponse",
@@ -12654,18 +12353,14 @@ function __c160(j: number): any {
           ThumbprintList: S.optional(__S(2592, __c162, 0)),
           Tags: S.optional(__S(2209, __c138, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateOpenIDConnectProviderRequest",
-      });
+      ).annotate({ identifier: "CreateOpenIDConnectProviderRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           OpenIDConnectProviderArn: S.optional(S.String),
           Tags: S.optional(__S(2209, __c138, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateOpenIDConnectProviderResponse",
-      });
+      ).annotate({ identifier: "CreateOpenIDConnectProviderResponse" });
   }
 }
 function __c161(j: number): any {
@@ -12728,15 +12423,11 @@ function __c165(j: number): any {
           PolicyDocument: S.String,
           SetAsDefault: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreatePolicyVersionRequest",
-      });
+      ).annotate({ identifier: "CreatePolicyVersionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ PolicyVersion: S.optional(__S(2656, __c166, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreatePolicyVersionResponse",
-      });
+      ).annotate({ identifier: "CreatePolicyVersionResponse" });
   }
 }
 function __c166(j: number): any {
@@ -12783,18 +12474,14 @@ function __c168(j: number): any {
           AssertionEncryptionMode: S.optional(S.String),
           AddPrivateKey: S.optional(SensitiveString),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateSAMLProviderRequest",
-      });
+      ).annotate({ identifier: "CreateSAMLProviderRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           SAMLProviderArn: S.optional(S.String),
           Tags: S.optional(__S(2209, __c138, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateSAMLProviderResponse",
-      });
+      ).annotate({ identifier: "CreateSAMLProviderResponse" });
   }
 }
 function __c169(j: number): any {
@@ -12806,15 +12493,11 @@ function __c169(j: number): any {
           Description: S.optional(S.String),
           CustomSuffix: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateServiceLinkedRoleRequest",
-      });
+      ).annotate({ identifier: "CreateServiceLinkedRoleRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Role: S.optional(__S(2226, __c139, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateServiceLinkedRoleResponse",
-      });
+      ).annotate({ identifier: "CreateServiceLinkedRoleResponse" });
   }
 }
 function __c170(j: number): any {
@@ -12826,15 +12509,11 @@ function __c170(j: number): any {
           ServiceName: S.String,
           CredentialAgeDays: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateServiceSpecificCredentialRequest",
-      });
+      ).annotate({ identifier: "CreateServiceSpecificCredentialRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ServiceSpecificCredential: S.optional(__S(2736, __c171, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateServiceSpecificCredentialResponse",
-      });
+      ).annotate({ identifier: "CreateServiceSpecificCredentialResponse" });
   }
 }
 function __c171(j: number): any {
@@ -12853,9 +12532,7 @@ function __c171(j: number): any {
           UserName: S.String,
           Status: S.String,
         }),
-      ).annotate({
-        identifier: "ServiceSpecificCredential",
-      });
+      ).annotate({ identifier: "ServiceSpecificCredential" });
   }
 }
 function __c172(j: number): any {
@@ -12901,15 +12578,11 @@ function __c174(j: number): any {
           VirtualMFADeviceName: S.String,
           Tags: S.optional(__S(2209, __c138, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateVirtualMFADeviceRequest",
-      });
+      ).annotate({ identifier: "CreateVirtualMFADeviceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ VirtualMFADevice: __S(2800, __c175, 0) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateVirtualMFADeviceResponse",
-      });
+      ).annotate({ identifier: "CreateVirtualMFADeviceResponse" });
   }
 }
 function __c175(j: number): any {
@@ -12934,9 +12607,7 @@ function __c176(j: number): any {
         S.Struct({ UserName: S.optional(S.String), SerialNumber: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeactivateMFADeviceRequest",
-      });
+      ).annotate({ identifier: "DeactivateMFADeviceRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeactivateMFADeviceResponse",
@@ -12964,9 +12635,7 @@ function __c178(j: number): any {
         S.Struct({ AccountAlias: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteAccountAliasRequest",
-      });
+      ).annotate({ identifier: "DeleteAccountAliasRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteAccountAliasResponse",
@@ -12980,9 +12649,7 @@ function __c179(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteAccountPasswordPolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteAccountPasswordPolicyRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteAccountPasswordPolicyResponse",
@@ -12998,9 +12665,7 @@ function __c180(j: number): any {
         ),
       ).annotate({ identifier: "DeleteGroupRequest" });
     case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeleteGroupResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "DeleteGroupResponse" });
   }
 }
 function __c181(j: number): any {
@@ -13024,9 +12689,7 @@ function __c182(j: number): any {
         S.Struct({ InstanceProfileName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteInstanceProfileRequest",
-      });
+      ).annotate({ identifier: "DeleteInstanceProfileRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteInstanceProfileResponse",
@@ -13040,9 +12703,7 @@ function __c183(j: number): any {
         S.Struct({ UserName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteLoginProfileRequest",
-      });
+      ).annotate({ identifier: "DeleteLoginProfileRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteLoginProfileResponse",
@@ -13056,9 +12717,7 @@ function __c184(j: number): any {
         S.Struct({ OpenIDConnectProviderArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteOpenIDConnectProviderRequest",
-      });
+      ).annotate({ identifier: "DeleteOpenIDConnectProviderRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteOpenIDConnectProviderResponse",
@@ -13086,9 +12745,7 @@ function __c186(j: number): any {
         S.Struct({ PolicyArn: S.String, VersionId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeletePolicyVersionRequest",
-      });
+      ).annotate({ identifier: "DeletePolicyVersionRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeletePolicyVersionResponse",
@@ -13104,9 +12761,7 @@ function __c187(j: number): any {
         ),
       ).annotate({ identifier: "DeleteRoleRequest" });
     case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeleteRoleResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "DeleteRoleResponse" });
   }
 }
 function __c188(j: number): any {
@@ -13116,9 +12771,7 @@ function __c188(j: number): any {
         S.Struct({ RoleName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteRolePermissionsBoundaryRequest",
-      });
+      ).annotate({ identifier: "DeleteRolePermissionsBoundaryRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteRolePermissionsBoundaryResponse",
@@ -13146,9 +12799,7 @@ function __c190(j: number): any {
         S.Struct({ SAMLProviderArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteSAMLProviderRequest",
-      });
+      ).annotate({ identifier: "DeleteSAMLProviderRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteSAMLProviderResponse",
@@ -13162,9 +12813,7 @@ function __c191(j: number): any {
         S.Struct({ ServerCertificateName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteServerCertificateRequest",
-      });
+      ).annotate({ identifier: "DeleteServerCertificateRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteServerCertificateResponse",
@@ -13178,9 +12827,7 @@ function __c192(j: number): any {
         S.Struct({ RoleName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteServiceLinkedRoleRequest",
-      });
+      ).annotate({ identifier: "DeleteServiceLinkedRoleRequest" });
     case 1:
       return S.suspend(() => S.Struct({ DeletionTaskId: S.String }).pipe(ns)).annotate({
         identifier: "DeleteServiceLinkedRoleResponse",
@@ -13194,9 +12841,7 @@ function __c193(j: number): any {
         S.Struct({ UserName: S.optional(S.String), ServiceSpecificCredentialId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteServiceSpecificCredentialRequest",
-      });
+      ).annotate({ identifier: "DeleteServiceSpecificCredentialRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteServiceSpecificCredentialResponse",
@@ -13210,9 +12855,7 @@ function __c194(j: number): any {
         S.Struct({ UserName: S.optional(S.String), CertificateId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteSigningCertificateRequest",
-      });
+      ).annotate({ identifier: "DeleteSigningCertificateRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteSigningCertificateResponse",
@@ -13226,9 +12869,7 @@ function __c195(j: number): any {
         S.Struct({ UserName: S.String, SSHPublicKeyId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteSSHPublicKeyRequest",
-      });
+      ).annotate({ identifier: "DeleteSSHPublicKeyRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteSSHPublicKeyResponse",
@@ -13244,9 +12885,7 @@ function __c196(j: number): any {
         ),
       ).annotate({ identifier: "DeleteUserRequest" });
     case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeleteUserResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "DeleteUserResponse" });
   }
 }
 function __c197(j: number): any {
@@ -13256,9 +12895,7 @@ function __c197(j: number): any {
         S.Struct({ UserName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteUserPermissionsBoundaryRequest",
-      });
+      ).annotate({ identifier: "DeleteUserPermissionsBoundaryRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteUserPermissionsBoundaryResponse",
@@ -13286,9 +12923,7 @@ function __c199(j: number): any {
         S.Struct({ SerialNumber: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteVirtualMFADeviceRequest",
-      });
+      ).annotate({ identifier: "DeleteVirtualMFADeviceRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteVirtualMFADeviceResponse",
@@ -13344,18 +12979,14 @@ function __c203(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DisableOrganizationsRootCredentialsManagementRequest",
-      });
+      ).annotate({ identifier: "DisableOrganizationsRootCredentialsManagementRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           OrganizationId: S.optional(S.String),
           EnabledFeatures: S.optional(__S(3264, __c204, 0)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisableOrganizationsRootCredentialsManagementResponse",
-      });
+      ).annotate({ identifier: "DisableOrganizationsRootCredentialsManagementResponse" });
   }
 }
 function __c204(j: number): any {
@@ -13371,18 +13002,14 @@ function __c205(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DisableOrganizationsRootSessionsRequest",
-      });
+      ).annotate({ identifier: "DisableOrganizationsRootSessionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           OrganizationId: S.optional(S.String),
           EnabledFeatures: S.optional(__S(3264, __c204, 0)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisableOrganizationsRootSessionsResponse",
-      });
+      ).annotate({ identifier: "DisableOrganizationsRootSessionsResponse" });
   }
 }
 function __c206(j: number): any {
@@ -13392,9 +13019,7 @@ function __c206(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DisableOutboundWebIdentityFederationRequest",
-      });
+      ).annotate({ identifier: "DisableOutboundWebIdentityFederationRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DisableOutboundWebIdentityFederationResponse",
@@ -13425,18 +13050,14 @@ function __c208(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "EnableOrganizationsRootCredentialsManagementRequest",
-      });
+      ).annotate({ identifier: "EnableOrganizationsRootCredentialsManagementRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           OrganizationId: S.optional(S.String),
           EnabledFeatures: S.optional(__S(3264, __c204, 0)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "EnableOrganizationsRootCredentialsManagementResponse",
-      });
+      ).annotate({ identifier: "EnableOrganizationsRootCredentialsManagementResponse" });
   }
 }
 function __c209(j: number): any {
@@ -13446,18 +13067,14 @@ function __c209(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "EnableOrganizationsRootSessionsRequest",
-      });
+      ).annotate({ identifier: "EnableOrganizationsRootSessionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           OrganizationId: S.optional(S.String),
           EnabledFeatures: S.optional(__S(3264, __c204, 0)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "EnableOrganizationsRootSessionsResponse",
-      });
+      ).annotate({ identifier: "EnableOrganizationsRootSessionsResponse" });
   }
 }
 function __c210(j: number): any {
@@ -13467,15 +13084,11 @@ function __c210(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "EnableOutboundWebIdentityFederationRequest",
-      });
+      ).annotate({ identifier: "EnableOutboundWebIdentityFederationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ IssuerIdentifier: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "EnableOutboundWebIdentityFederationResponse",
-      });
+      ).annotate({ identifier: "EnableOutboundWebIdentityFederationResponse" });
   }
 }
 function __c211(j: number): any {
@@ -13485,15 +13098,11 @@ function __c211(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GenerateCredentialReportRequest",
-      });
+      ).annotate({ identifier: "GenerateCredentialReportRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ State: S.optional(S.String), Description: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "GenerateCredentialReportResponse",
-      });
+      ).annotate({ identifier: "GenerateCredentialReportResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

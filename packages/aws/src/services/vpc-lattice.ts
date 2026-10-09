@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1960,7 +1960,7 @@ export const deleteAuthPolicy: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(144, __c18, 0) as any as S.Schema<DeleteAuthPolicyRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<DeleteAuthPolicyResponse>,
+  output: __S(136, __c17, 0) as any as S.Schema<DeleteAuthPolicyResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1989,7 +1989,7 @@ export const deleteDomainVerification: API.OperationMethod<
   DeleteDomainVerificationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<DeleteDomainVerificationRequest>,
+  input: __S(152, __c19, 0) as any as S.Schema<DeleteDomainVerificationRequest>,
   output: __S(136, __c17, 0) as any as S.Schema<DeleteDomainVerificationResponse>,
   errors: [
     AccessDeniedException,
@@ -2020,8 +2020,8 @@ export const deleteListener: API.OperationMethod<
   DeleteListenerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<DeleteListenerRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<DeleteListenerResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<DeleteListenerRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<DeleteListenerResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2052,7 +2052,7 @@ export const deleteResourceConfiguration: API.OperationMethod<
   DeleteResourceConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<DeleteResourceConfigurationRequest>,
+  input: __S(168, __c21, 0) as any as S.Schema<DeleteResourceConfigurationRequest>,
   output: __S(136, __c17, 0) as any as S.Schema<DeleteResourceConfigurationResponse>,
   errors: [
     AccessDeniedException,
@@ -2083,8 +2083,8 @@ export const deleteResourceEndpointAssociation: API.OperationMethod<
   DeleteResourceEndpointAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<DeleteResourceEndpointAssociationRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<DeleteResourceEndpointAssociationResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<DeleteResourceEndpointAssociationRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<DeleteResourceEndpointAssociationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2114,8 +2114,8 @@ export const deleteResourceGateway: API.OperationMethod<
   DeleteResourceGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<DeleteResourceGatewayRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<DeleteResourceGatewayResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<DeleteResourceGatewayRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<DeleteResourceGatewayResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2146,7 +2146,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(200, __c25, 0) as any as S.Schema<DeleteResourcePolicyRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<DeleteResourcePolicyResponse>,
+  output: __S(136, __c17, 0) as any as S.Schema<DeleteResourcePolicyResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2179,7 +2179,7 @@ export const deleteRule: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(208, __c26, 0) as any as S.Schema<DeleteRuleRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<DeleteRuleResponse>,
+  output: __S(136, __c17, 0) as any as S.Schema<DeleteRuleResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2211,7 +2211,7 @@ export const deleteService: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(216, __c27, 0) as any as S.Schema<DeleteServiceRequest>,
-  output: __S(217, __c27, 1) as any as S.Schema<DeleteServiceResponse>,
+  output: __S(192, __c24, 0) as any as S.Schema<DeleteServiceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2243,7 +2243,7 @@ export const deleteServiceNetwork: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(224, __c28, 0) as any as S.Schema<DeleteServiceNetworkRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<DeleteServiceNetworkResponse>,
+  output: __S(136, __c17, 0) as any as S.Schema<DeleteServiceNetworkResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2401,7 +2401,7 @@ export const deregisterTargets: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(280, __c35, 0) as any as S.Schema<DeregisterTargetsRequest>,
-  output: __S(281, __c35, 1) as any as S.Schema<DeregisterTargetsResponse>,
+  output: __S(298, __c37, 2) as any as S.Schema<DeregisterTargetsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3449,7 +3449,7 @@ export const putResourcePolicy: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(584, __c73, 0) as any as S.Schema<PutResourcePolicyRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<PutResourcePolicyResponse>,
+  output: __S(136, __c17, 0) as any as S.Schema<PutResourcePolicyResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3481,7 +3481,7 @@ export const registerTargets: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(592, __c74, 0) as any as S.Schema<RegisterTargetsRequest>,
-  output: __S(593, __c74, 1) as any as S.Schema<RegisterTargetsResponse>,
+  output: __S(298, __c37, 2) as any as S.Schema<RegisterTargetsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3545,7 +3545,7 @@ export const tagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(608, __c76, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<TagResourceResponse>,
+  output: __S(136, __c17, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3574,7 +3574,7 @@ export const untagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(648, __c81, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<UntagResourceResponse>,
+  output: __S(136, __c17, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3911,9 +3911,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateResourceConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateResourceConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3935,9 +3933,7 @@ function __c0(j: number): any {
           groupDomain: S.optional(S.String),
           domainVerificationArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateResourceConfigurationResponse",
-      });
+      ).annotate({ identifier: "CreateResourceConfigurationResponse" });
   }
 }
 function __c1(j: number): any {
@@ -3990,9 +3986,7 @@ function __c3(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/resourcegateways" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateResourceGatewayRequest",
-      });
+      ).annotate({ identifier: "CreateResourceGatewayRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4007,9 +4001,7 @@ function __c3(j: number): any {
           ipv4AddressesPerEni: S.optional(S.Number),
           resourceConfigDnsResolution: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateResourceGatewayResponse",
-      });
+      ).annotate({ identifier: "CreateResourceGatewayResponse" });
   }
 }
 function __c4(j: number): any {
@@ -4103,9 +4095,7 @@ function __c7(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/servicenetworks" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateServiceNetworkRequest",
-      });
+      ).annotate({ identifier: "CreateServiceNetworkRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4115,9 +4105,7 @@ function __c7(j: number): any {
           sharingConfig: S.optional(__S(64, __c8, 0)),
           authType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateServiceNetworkResponse",
-      });
+      ).annotate({ identifier: "CreateServiceNetworkResponse" });
   }
 }
 function __c8(j: number): any {
@@ -4148,9 +4136,7 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateServiceNetworkResourceAssociationRequest",
-      });
+      ).annotate({ identifier: "CreateServiceNetworkResourceAssociationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4160,9 +4146,7 @@ function __c9(j: number): any {
           createdBy: S.optional(S.String),
           privateDnsEnabled: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "CreateServiceNetworkResourceAssociationResponse",
-      });
+      ).annotate({ identifier: "CreateServiceNetworkResourceAssociationResponse" });
   }
 }
 function __c10(j: number): any {
@@ -4184,9 +4168,7 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateServiceNetworkServiceAssociationRequest",
-      });
+      ).annotate({ identifier: "CreateServiceNetworkServiceAssociationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4197,9 +4179,7 @@ function __c10(j: number): any {
           customDomainName: S.optional(S.String),
           dnsEntry: S.optional(__S(48, __c6, 0)),
         }),
-      ).annotate({
-        identifier: "CreateServiceNetworkServiceAssociationResponse",
-      });
+      ).annotate({ identifier: "CreateServiceNetworkServiceAssociationResponse" });
   }
 }
 function __c11(j: number): any {
@@ -4224,9 +4204,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateServiceNetworkVpcAssociationRequest",
-      });
+      ).annotate({ identifier: "CreateServiceNetworkVpcAssociationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4238,9 +4216,7 @@ function __c11(j: number): any {
           privateDnsEnabled: S.optional(S.Boolean),
           dnsOptions: S.optional(__S(96, __c12, 0)),
         }),
-      ).annotate({
-        identifier: "CreateServiceNetworkVpcAssociationResponse",
-      });
+      ).annotate({ identifier: "CreateServiceNetworkVpcAssociationResponse" });
   }
 }
 function __c12(j: number): any {
@@ -4315,9 +4291,7 @@ function __c15(j: number): any {
           config: S.optional(__S(114, __c14, 2)),
           status: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateTargetGroupResponse",
-      });
+      ).annotate({ identifier: "CreateTargetGroupResponse" });
   }
 }
 function __c16(j: number): any {
@@ -4341,9 +4315,7 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteAccessLogSubscriptionRequest",
-      });
+      ).annotate({ identifier: "DeleteAccessLogSubscriptionRequest" });
   }
 }
 function __c17(j: number): any {
@@ -4374,14 +4346,6 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAuthPolicyResponse",
-      });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           domainVerificationIdentifier: S.String.pipe(T.HttpLabel("domainVerificationIdentifier")),
@@ -4398,12 +4362,10 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteDomainVerificationRequest",
-      });
+      ).annotate({ identifier: "DeleteDomainVerificationRequest" });
   }
 }
-function __c21(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4426,7 +4388,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "DeleteListenerRequest" });
   }
 }
-function __c22(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4447,12 +4409,10 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteResourceConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteResourceConfigurationRequest" });
   }
 }
-function __c23(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4473,9 +4433,7 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteResourceEndpointAssociationRequest",
-      });
+      ).annotate({ identifier: "DeleteResourceEndpointAssociationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4485,12 +4443,10 @@ function __c23(j: number): any {
           resourceConfigurationArn: S.optional(S.String),
           vpcEndpointId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DeleteResourceEndpointAssociationResponse",
-      });
+      ).annotate({ identifier: "DeleteResourceEndpointAssociationResponse" });
   }
 }
-function __c24(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4506,10 +4462,12 @@ function __c24(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteResourceGatewayRequest",
-      });
-    case 1:
+      ).annotate({ identifier: "DeleteResourceGatewayRequest" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -4517,9 +4475,7 @@ function __c24(j: number): any {
           name: S.optional(S.String),
           status: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DeleteResourceGatewayResponse",
-      });
+      ).annotate({ identifier: "DeleteResourceGatewayResponse" });
   }
 }
 function __c25(j: number): any {
@@ -4536,9 +4492,7 @@ function __c25(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteResourcePolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteResourcePolicyRequest" });
   }
 }
 function __c26(j: number): any {
@@ -4580,15 +4534,6 @@ function __c27(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteServiceRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          arn: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeleteServiceResponse" });
   }
 }
 function __c28(j: number): any {
@@ -4607,9 +4552,7 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteServiceNetworkRequest",
-      });
+      ).annotate({ identifier: "DeleteServiceNetworkRequest" });
   }
 }
 function __c29(j: number): any {
@@ -4633,9 +4576,7 @@ function __c29(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteServiceNetworkResourceAssociationRequest",
-      });
+      ).annotate({ identifier: "DeleteServiceNetworkResourceAssociationRequest" });
   }
 }
 function __c30(j: number): any {
@@ -4647,9 +4588,7 @@ function __c30(j: number): any {
           arn: S.optional(S.String),
           status: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DeleteServiceNetworkResourceAssociationResponse",
-      });
+      ).annotate({ identifier: "DeleteServiceNetworkResourceAssociationResponse" });
   }
 }
 function __c31(j: number): any {
@@ -4673,9 +4612,7 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteServiceNetworkServiceAssociationRequest",
-      });
+      ).annotate({ identifier: "DeleteServiceNetworkServiceAssociationRequest" });
   }
 }
 function __c32(j: number): any {
@@ -4687,9 +4624,7 @@ function __c32(j: number): any {
           status: S.optional(S.String),
           arn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DeleteServiceNetworkServiceAssociationResponse",
-      });
+      ).annotate({ identifier: "DeleteServiceNetworkServiceAssociationResponse" });
   }
 }
 function __c33(j: number): any {
@@ -4713,9 +4648,7 @@ function __c33(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteServiceNetworkVpcAssociationRequest",
-      });
+      ).annotate({ identifier: "DeleteServiceNetworkVpcAssociationRequest" });
   }
 }
 function __c34(j: number): any {
@@ -4758,15 +4691,6 @@ function __c35(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeregisterTargetsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          successful: S.optional(__S(289, __c36, 1)),
-          unsuccessful: S.optional(__S(297, __c37, 1)),
-        }),
-      ).annotate({
-        identifier: "DeregisterTargetsResponse",
-      });
   }
 }
 function __c36(j: number): any {
@@ -4792,6 +4716,13 @@ function __c37(j: number): any {
       ).annotate({ identifier: "TargetFailure" });
     case 1:
       return S.Array(__S(296, __c37, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          successful: S.optional(__S(289, __c36, 1)),
+          unsuccessful: S.optional(__S(297, __c37, 1)),
+        }),
+      ).annotate({ identifier: "DeregisterTargetsResponse" });
   }
 }
 function __c38(j: number): any {
@@ -4815,9 +4746,7 @@ function __c38(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAccessLogSubscriptionRequest",
-      });
+      ).annotate({ identifier: "GetAccessLogSubscriptionRequest" });
   }
 }
 function __c39(j: number): any {
@@ -4834,9 +4763,7 @@ function __c39(j: number): any {
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "GetAccessLogSubscriptionResponse",
-      });
+      ).annotate({ identifier: "GetAccessLogSubscriptionResponse" });
   }
 }
 function __c40(j: number): any {
@@ -4881,9 +4808,7 @@ function __c41(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDomainVerificationRequest",
-      });
+      ).annotate({ identifier: "GetDomainVerificationRequest" });
   }
 }
 function __c42(j: number): any {
@@ -4900,9 +4825,7 @@ function __c42(j: number): any {
           lastVerifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           tags: S.optional(__S(736, __c92, 0)),
         }),
-      ).annotate({
-        identifier: "GetDomainVerificationResponse",
-      });
+      ).annotate({ identifier: "GetDomainVerificationResponse" });
   }
 }
 function __c43(j: number): any {
@@ -4972,9 +4895,7 @@ function __c45(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetResourceConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetResourceConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4999,9 +4920,7 @@ function __c45(j: number): any {
           domainVerificationStatus: S.optional(S.String),
           groupDomain: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetResourceConfigurationResponse",
-      });
+      ).annotate({ identifier: "GetResourceConfigurationResponse" });
   }
 }
 function __c46(j: number): any {
@@ -5020,9 +4939,7 @@ function __c46(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetResourceGatewayRequest",
-      });
+      ).annotate({ identifier: "GetResourceGatewayRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5041,9 +4958,7 @@ function __c46(j: number): any {
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "GetResourceGatewayResponse",
-      });
+      ).annotate({ identifier: "GetResourceGatewayResponse" });
   }
 }
 function __c47(j: number): any {
@@ -5170,9 +5085,7 @@ function __c50(j: number): any {
           numberOfAssociatedVPCs: S.optional(S.Number),
           numberOfAssociatedServices: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "GetServiceNetworkResponse",
-      });
+      ).annotate({ identifier: "GetServiceNetworkResponse" });
   }
 }
 function __c51(j: number): any {
@@ -5196,9 +5109,7 @@ function __c51(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetServiceNetworkResourceAssociationRequest",
-      });
+      ).annotate({ identifier: "GetServiceNetworkResourceAssociationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5222,9 +5133,7 @@ function __c51(j: number): any {
           isManagedAssociation: S.optional(S.Boolean),
           domainVerificationStatus: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetServiceNetworkResourceAssociationResponse",
-      });
+      ).annotate({ identifier: "GetServiceNetworkResourceAssociationResponse" });
   }
 }
 function __c52(j: number): any {
@@ -5248,9 +5157,7 @@ function __c52(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetServiceNetworkServiceAssociationRequest",
-      });
+      ).annotate({ identifier: "GetServiceNetworkServiceAssociationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5270,9 +5177,7 @@ function __c52(j: number): any {
           failureMessage: S.optional(S.String),
           failureCode: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetServiceNetworkServiceAssociationResponse",
-      });
+      ).annotate({ identifier: "GetServiceNetworkServiceAssociationResponse" });
   }
 }
 function __c53(j: number): any {
@@ -5296,9 +5201,7 @@ function __c53(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetServiceNetworkVpcAssociationRequest",
-      });
+      ).annotate({ identifier: "GetServiceNetworkVpcAssociationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5318,9 +5221,7 @@ function __c53(j: number): any {
           lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           dnsOptions: S.optional(__S(96, __c12, 0)),
         }),
-      ).annotate({
-        identifier: "GetServiceNetworkVpcAssociationResponse",
-      });
+      ).annotate({ identifier: "GetServiceNetworkVpcAssociationResponse" });
   }
 }
 function __c54(j: number): any {
@@ -5376,17 +5277,13 @@ function __c55(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListAccessLogSubscriptionsRequest",
-      });
+      ).annotate({ identifier: "ListAccessLogSubscriptionsRequest" });
     case 1:
       return S.Array(__S(312, __c39, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ items: __S(441, __c55, 1), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListAccessLogSubscriptionsResponse",
-      });
+      ).annotate({ identifier: "ListAccessLogSubscriptionsResponse" });
   }
 }
 function __c56(j: number): any {
@@ -5406,17 +5303,13 @@ function __c56(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDomainVerificationsRequest",
-      });
+      ).annotate({ identifier: "ListDomainVerificationsRequest" });
     case 1:
       return S.Array(__S(336, __c42, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ items: __S(449, __c56, 1), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListDomainVerificationsResponse",
-      });
+      ).annotate({ identifier: "ListDomainVerificationsResponse" });
   }
 }
 function __c57(j: number): any {
@@ -5484,9 +5377,7 @@ function __c58(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListResourceConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListResourceConfigurationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5504,20 +5395,13 @@ function __c58(j: number): any {
           domainVerificationId: S.optional(S.String),
           groupDomain: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ResourceConfigurationSummary",
-      });
+      ).annotate({ identifier: "ResourceConfigurationSummary" });
     case 2:
       return S.Array(__S(465, __c58, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(466, __c58, 2)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListResourceConfigurationsResponse",
-      });
+        S.Struct({ items: S.optional(__S(466, __c58, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListResourceConfigurationsResponse" });
   }
 }
 function __c59(j: number): any {
@@ -5545,15 +5429,10 @@ function __c59(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListResourceEndpointAssociationsRequest",
-      });
+      ).annotate({ identifier: "ListResourceEndpointAssociationsRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          scope: S.optional(S.String),
-          payerResponsibilityType: S.optional(S.String),
-        }),
+        S.Struct({ scope: S.optional(S.String), payerResponsibilityType: S.optional(S.String) }),
       ).annotate({ identifier: "PayerResponsibilityEntry" });
     case 2:
       return S.Array(__S(473, __c59, 1));
@@ -5571,17 +5450,13 @@ function __c59(j: number): any {
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           payerResponsibility: S.optional(__S(474, __c59, 2)),
         }),
-      ).annotate({
-        identifier: "ResourceEndpointAssociationSummary",
-      });
+      ).annotate({ identifier: "ResourceEndpointAssociationSummary" });
     case 4:
       return S.Array(__S(475, __c59, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({ items: __S(476, __c59, 4), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListResourceEndpointAssociationsResponse",
-      });
+      ).annotate({ identifier: "ListResourceEndpointAssociationsResponse" });
   }
 }
 function __c60(j: number): any {
@@ -5594,9 +5469,7 @@ function __c60(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/resourcegateways" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListResourceGatewaysRequest",
-      });
+      ).annotate({ identifier: "ListResourceGatewaysRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5619,9 +5492,7 @@ function __c60(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ items: S.optional(__S(482, __c60, 2)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListResourceGatewaysResponse",
-      });
+      ).annotate({ identifier: "ListResourceGatewaysResponse" });
   }
 }
 function __c61(j: number): any {
@@ -5691,9 +5562,7 @@ function __c62(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListServiceNetworkResourceAssociationsRequest",
-      });
+      ).annotate({ identifier: "ListServiceNetworkResourceAssociationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5714,17 +5583,13 @@ function __c62(j: number): any {
           failureCode: S.optional(S.String),
           privateDnsEnabled: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "ServiceNetworkResourceAssociationSummary",
-      });
+      ).annotate({ identifier: "ServiceNetworkResourceAssociationSummary" });
     case 2:
       return S.Array(__S(497, __c62, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ items: __S(498, __c62, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListServiceNetworkResourceAssociationsResponse",
-      });
+      ).annotate({ identifier: "ListServiceNetworkResourceAssociationsResponse" });
   }
 }
 function __c63(j: number): any {
@@ -5737,9 +5602,7 @@ function __c63(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/servicenetworks" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListServiceNetworksRequest",
-      });
+      ).annotate({ identifier: "ListServiceNetworksRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5758,9 +5621,7 @@ function __c63(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ items: __S(506, __c63, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListServiceNetworksResponse",
-      });
+      ).annotate({ identifier: "ListServiceNetworksResponse" });
   }
 }
 function __c64(j: number): any {
@@ -5784,9 +5645,7 @@ function __c64(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListServiceNetworkServiceAssociationsRequest",
-      });
+      ).annotate({ identifier: "ListServiceNetworkServiceAssociationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5804,17 +5663,13 @@ function __c64(j: number): any {
           dnsEntry: S.optional(__S(48, __c6, 0)),
           customDomainName: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ServiceNetworkServiceAssociationSummary",
-      });
+      ).annotate({ identifier: "ServiceNetworkServiceAssociationSummary" });
     case 2:
       return S.Array(__S(513, __c64, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ items: __S(514, __c64, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListServiceNetworkServiceAssociationsResponse",
-      });
+      ).annotate({ identifier: "ListServiceNetworkServiceAssociationsResponse" });
   }
 }
 function __c65(j: number): any {
@@ -5838,9 +5693,7 @@ function __c65(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListServiceNetworkVpcAssociationsRequest",
-      });
+      ).annotate({ identifier: "ListServiceNetworkVpcAssociationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5857,17 +5710,13 @@ function __c65(j: number): any {
           vpcId: S.optional(S.String),
           lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "ServiceNetworkVpcAssociationSummary",
-      });
+      ).annotate({ identifier: "ServiceNetworkVpcAssociationSummary" });
     case 2:
       return S.Array(__S(521, __c65, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ items: __S(522, __c65, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListServiceNetworkVpcAssociationsResponse",
-      });
+      ).annotate({ identifier: "ListServiceNetworkVpcAssociationsResponse" });
   }
 }
 function __c66(j: number): any {
@@ -5898,9 +5747,7 @@ function __c67(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListServiceNetworkVpcEndpointAssociationsRequest",
-      });
+      ).annotate({ identifier: "ListServiceNetworkVpcEndpointAssociationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5912,17 +5759,13 @@ function __c67(j: number): any {
           serviceNetworkArn: S.optional(S.String),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "ServiceNetworkEndpointAssociation",
-      });
+      ).annotate({ identifier: "ServiceNetworkEndpointAssociation" });
     case 2:
       return S.Array(__S(537, __c67, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ items: __S(538, __c67, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListServiceNetworkVpcEndpointAssociationsResponse",
-      });
+      ).annotate({ identifier: "ListServiceNetworkVpcEndpointAssociationsResponse" });
   }
 }
 function __c68(j: number): any {
@@ -5969,9 +5812,7 @@ function __c69(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(736, __c92, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -6116,13 +5957,6 @@ function __c74(j: number): any {
           ),
         ),
       ).annotate({ identifier: "RegisterTargetsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          successful: S.optional(__S(289, __c36, 1)),
-          unsuccessful: S.optional(__S(297, __c37, 1)),
-        }),
-      ).annotate({ identifier: "RegisterTargetsResponse" });
   }
 }
 function __c75(j: number): any {
@@ -6143,9 +5977,7 @@ function __c75(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartDomainVerificationRequest",
-      });
+      ).annotate({ identifier: "StartDomainVerificationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6155,9 +5987,7 @@ function __c75(j: number): any {
           status: S.String,
           txtMethodConfig: S.optional(__S(344, __c43, 0)),
         }),
-      ).annotate({
-        identifier: "StartDomainVerificationResponse",
-      });
+      ).annotate({ identifier: "StartDomainVerificationResponse" });
   }
 }
 function __c76(j: number): any {
@@ -6354,9 +6184,7 @@ function __c82(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateAccessLogSubscriptionRequest",
-      });
+      ).annotate({ identifier: "UpdateAccessLogSubscriptionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6366,9 +6194,7 @@ function __c82(j: number): any {
           resourceArn: S.String,
           destinationArn: S.String,
         }),
-      ).annotate({
-        identifier: "UpdateAccessLogSubscriptionResponse",
-      });
+      ).annotate({ identifier: "UpdateAccessLogSubscriptionResponse" });
   }
 }
 function __c83(j: number): any {
@@ -6419,9 +6245,7 @@ function __c84(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateResourceConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateResourceConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6437,9 +6261,7 @@ function __c84(j: number): any {
           status: S.optional(S.String),
           resourceConfigurationDefinition: S.optional(__S(20, __c2, 4)),
         }),
-      ).annotate({
-        identifier: "UpdateResourceConfigurationResponse",
-      });
+      ).annotate({ identifier: "UpdateResourceConfigurationResponse" });
   }
 }
 function __c85(j: number): any {
@@ -6459,9 +6281,7 @@ function __c85(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateResourceGatewayRequest",
-      });
+      ).annotate({ identifier: "UpdateResourceGatewayRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6474,9 +6294,7 @@ function __c85(j: number): any {
           securityGroupIds: S.optional(__S(8, __c1, 0)),
           ipAddressType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "UpdateResourceGatewayResponse",
-      });
+      ).annotate({ identifier: "UpdateResourceGatewayResponse" });
   }
 }
 function __c86(j: number): any {
@@ -6557,9 +6375,7 @@ function __c88(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateServiceNetworkRequest",
-      });
+      ).annotate({ identifier: "UpdateServiceNetworkRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6568,9 +6384,7 @@ function __c88(j: number): any {
           arn: S.optional(S.String),
           authType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "UpdateServiceNetworkResponse",
-      });
+      ).annotate({ identifier: "UpdateServiceNetworkResponse" });
   }
 }
 function __c89(j: number): any {
@@ -6597,9 +6411,7 @@ function __c89(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateServiceNetworkVpcAssociationRequest",
-      });
+      ).annotate({ identifier: "UpdateServiceNetworkVpcAssociationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6611,9 +6423,7 @@ function __c89(j: number): any {
           privateDnsEnabled: S.optional(S.Boolean),
           dnsOptions: S.optional(__S(96, __c12, 0)),
         }),
-      ).annotate({
-        identifier: "UpdateServiceNetworkVpcAssociationResponse",
-      });
+      ).annotate({ identifier: "UpdateServiceNetworkVpcAssociationResponse" });
   }
 }
 function __c90(j: number): any {
@@ -6656,9 +6466,7 @@ function __c91(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateAccessLogSubscriptionRequest",
-      });
+      ).annotate({ identifier: "CreateAccessLogSubscriptionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6669,9 +6477,7 @@ function __c91(j: number): any {
           serviceNetworkLogType: S.optional(S.String),
           destinationArn: S.String,
         }),
-      ).annotate({
-        identifier: "CreateAccessLogSubscriptionResponse",
-      });
+      ).annotate({ identifier: "CreateAccessLogSubscriptionResponse" });
   }
 }
 function __c92(j: number): any {

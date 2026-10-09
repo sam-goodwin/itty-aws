@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1298,9 +1298,7 @@ function __c0(j: number): any {
           TargetTableName: S.String,
           RecordVersion: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateBatchLoadTaskRequest",
-      });
+      ).annotate({ identifier: "CreateBatchLoadTaskRequest" });
     case 1:
       return S.suspend(() => S.Struct({ TaskId: S.String })).annotate({
         identifier: "CreateBatchLoadTaskResponse",
@@ -1330,9 +1328,7 @@ function __c2(j: number): any {
           TargetMultiMeasureAttributeName: S.optional(S.String),
           MeasureValueType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "MultiMeasureAttributeMapping",
-      });
+      ).annotate({ identifier: "MultiMeasureAttributeMapping" });
     case 3:
       return S.Array(__S(34, __c2, 2));
     case 4:
@@ -1379,9 +1375,7 @@ function __c2(j: number): any {
     case 10:
       return S.suspend(() =>
         S.Struct({ BucketName: S.String, ObjectKeyPrefix: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DataSourceS3Configuration",
-      });
+      ).annotate({ identifier: "DataSourceS3Configuration" });
     case 11:
       return S.suspend(() =>
         S.Struct({
@@ -1495,9 +1489,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "S3Configuration" });
     case 2:
       return S.suspend(() => S.Struct({ S3Configuration: S.optional(__S(129, __c8, 1)) })).annotate(
-        {
-          identifier: "MagneticStoreRejectedDataLocation",
-        },
+        { identifier: "MagneticStoreRejectedDataLocation" },
       );
     case 3:
       return S.suspend(() =>
@@ -1505,9 +1497,7 @@ function __c8(j: number): any {
           EnableMagneticStoreWrites: S.Boolean,
           MagneticStoreRejectedDataLocation: S.optional(__S(130, __c8, 2)),
         }),
-      ).annotate({
-        identifier: "MagneticStoreWriteProperties",
-      });
+      ).annotate({ identifier: "MagneticStoreWriteProperties" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1559,9 +1549,7 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteDatabaseResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteDatabaseResponse" });
   }
 }
 function __c12(j: number): any {
@@ -1581,9 +1569,7 @@ function __c13(j: number): any {
         S.Struct({ TaskId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeBatchLoadTaskRequest",
-      });
+      ).annotate({ identifier: "DescribeBatchLoadTaskRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1664,9 +1650,7 @@ function __c17(j: number): any {
           MaxResults: S.optional(S.Number),
           TaskStatus: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListBatchLoadTasksRequest",
-      });
+      ).annotate({ identifier: "ListBatchLoadTasksRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1687,9 +1671,7 @@ function __c17(j: number): any {
           NextToken: S.optional(S.String),
           BatchLoadTasks: S.optional(__S(274, __c17, 2)),
         }),
-      ).annotate({
-        identifier: "ListBatchLoadTasksResponse",
-      });
+      ).annotate({ identifier: "ListBatchLoadTasksResponse" });
   }
 }
 function __c18(j: number): any {
@@ -1733,9 +1715,7 @@ function __c20(j: number): any {
         S.Struct({ ResourceARN: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(65, __c4, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -1749,9 +1729,7 @@ function __c21(j: number): any {
         S.Struct({ TaskId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ResumeBatchLoadTaskRequest",
-      });
+      ).annotate({ identifier: "ResumeBatchLoadTaskRequest" });
   }
 }
 function __c22(j: number): any {

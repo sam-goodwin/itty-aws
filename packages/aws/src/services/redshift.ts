@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -8568,15 +8568,11 @@ function __c0(j: number): any {
           ReservedNodeId: S.optional(S.String),
           TargetReservedNodeOfferingId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AcceptReservedNodeExchangeInputMessage",
-      });
+      ).annotate({ identifier: "AcceptReservedNodeExchangeInputMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ExchangedReservedNode: S.optional(__S(96, __c3, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "AcceptReservedNodeExchangeOutputMessage",
-      });
+      ).annotate({ identifier: "AcceptReservedNodeExchangeOutputMessage" });
   }
 }
 function __c1(j: number): any {
@@ -8593,9 +8589,9 @@ function __c1(j: number): any {
       ).annotate({ identifier: "NetworkInterface" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(32, __c1, 0).pipe(/*@__PURE__*/ T.XmlName("NetworkInterface")).annotate({
-          identifier: "NetworkInterface",
-        }),
+        /*@__PURE__*/ __S(32, __c1, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("NetworkInterface"))
+          .annotate({ identifier: "NetworkInterface" }),
       );
     case 2:
       return S.suspend(() =>
@@ -8607,9 +8603,9 @@ function __c1(j: number): any {
       ).annotate({ identifier: "VpcEndpoint" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(34, __c1, 2).pipe(/*@__PURE__*/ T.XmlName("VpcEndpoint")).annotate({
-          identifier: "VpcEndpoint",
-        }),
+        /*@__PURE__*/ __S(34, __c1, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("VpcEndpoint"))
+          .annotate({ identifier: "VpcEndpoint" }),
       );
     case 4:
       return S.suspend(() =>
@@ -8632,9 +8628,9 @@ function __c2(j: number): any {
       ).annotate({ identifier: "RecurringCharge" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(64, __c2, 0).pipe(/*@__PURE__*/ T.XmlName("RecurringCharge")).annotate({
-          identifier: "RecurringCharge",
-        }),
+        /*@__PURE__*/ __S(64, __c2, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("RecurringCharge"))
+          .annotate({ identifier: "RecurringCharge" }),
       );
   }
 }
@@ -8670,9 +8666,7 @@ function __c4(j: number): any {
           DatabaseName: S.optional(S.String),
           PartnerName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PartnerIntegrationInputMessage",
-      });
+      ).annotate({ identifier: "PartnerIntegrationInputMessage" });
   }
 }
 function __c5(j: number): any {
@@ -8682,9 +8676,7 @@ function __c5(j: number): any {
         S.Struct({ DatabaseName: S.optional(S.String), PartnerName: S.optional(S.String) }).pipe(
           ns,
         ),
-      ).annotate({
-        identifier: "PartnerIntegrationOutputMessage",
-      });
+      ).annotate({ identifier: "PartnerIntegrationOutputMessage" });
   }
 }
 function __c6(j: number): any {
@@ -8698,9 +8690,7 @@ function __c6(j: number): any {
           ConsumerRegion: S.optional(S.String),
           AllowWrites: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssociateDataShareConsumerMessage",
-      });
+      ).annotate({ identifier: "AssociateDataShareConsumerMessage" });
   }
 }
 function __c7(j: number): any {
@@ -8742,15 +8732,11 @@ function __c8(j: number): any {
           EC2SecurityGroupName: S.optional(S.String),
           EC2SecurityGroupOwnerId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AuthorizeClusterSecurityGroupIngressMessage",
-      });
+      ).annotate({ identifier: "AuthorizeClusterSecurityGroupIngressMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ClusterSecurityGroup: S.optional(__S(356, __c11, 4)) }).pipe(ns),
-      ).annotate({
-        identifier: "AuthorizeClusterSecurityGroupIngressResult",
-      });
+      ).annotate({ identifier: "AuthorizeClusterSecurityGroupIngressResult" });
   }
 }
 function __c9(j: number): any {
@@ -8786,9 +8772,7 @@ function __c11(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(352, __c11, 0)
           .pipe(/*@__PURE__*/ T.XmlName("EC2SecurityGroup"))
-          .annotate({
-            identifier: "EC2SecurityGroup",
-          }),
+          .annotate({ identifier: "EC2SecurityGroup" }),
       );
     case 2:
       return S.suspend(() =>
@@ -8800,9 +8784,9 @@ function __c11(j: number): any {
       ).annotate({ identifier: "IPRange" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(354, __c11, 2).pipe(/*@__PURE__*/ T.XmlName("IPRange")).annotate({
-          identifier: "IPRange",
-        }),
+        /*@__PURE__*/ __S(354, __c11, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("IPRange"))
+          .annotate({ identifier: "IPRange" }),
       );
     case 4:
       return S.suspend(() =>
@@ -8825,9 +8809,7 @@ function __c12(j: number): any {
           ConsumerIdentifier: S.optional(S.String),
           AllowWrites: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AuthorizeDataShareMessage",
-      });
+      ).annotate({ identifier: "AuthorizeDataShareMessage" });
   }
 }
 function __c13(j: number): any {
@@ -8839,9 +8821,7 @@ function __c13(j: number): any {
           Account: S.optional(S.String),
           VpcIds: S.optional(__S(448, __c14, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AuthorizeEndpointAccessMessage",
-      });
+      ).annotate({ identifier: "AuthorizeEndpointAccessMessage" });
   }
 }
 function __c14(j: number): any {
@@ -8874,15 +8854,11 @@ function __c15(j: number): any {
           SnapshotClusterIdentifier: S.optional(S.String),
           AccountWithRestoreAccess: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AuthorizeSnapshotAccessMessage",
-      });
+      ).annotate({ identifier: "AuthorizeSnapshotAccessMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Snapshot: S.optional(__S(515, __c16, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "AuthorizeSnapshotAccessResult",
-      });
+      ).annotate({ identifier: "AuthorizeSnapshotAccessResult" });
   }
 }
 function __c16(j: number): any {
@@ -8895,9 +8871,7 @@ function __c16(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(512, __c16, 0)
           .pipe(/*@__PURE__*/ T.XmlName("AccountWithRestoreAccess"))
-          .annotate({
-            identifier: "AccountWithRestoreAccess",
-          }),
+          .annotate({ identifier: "AccountWithRestoreAccess" }),
       );
     case 2:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("NodeType")));
@@ -8953,25 +8927,19 @@ function __c17(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(608, __c19, 0)
           .pipe(/*@__PURE__*/ T.XmlName("DeleteClusterSnapshotMessage"))
-          .annotate({
-            identifier: "DeleteClusterSnapshotMessage",
-          }),
+          .annotate({ identifier: "DeleteClusterSnapshotMessage" }),
       );
     case 1:
       return S.suspend(() =>
         S.Struct({ Identifiers: S.optional(__S(544, __c17, 0)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "BatchDeleteClusterSnapshotsRequest",
-      });
+      ).annotate({ identifier: "BatchDeleteClusterSnapshotsRequest" });
     case 2:
       return S.Array(
         /*@__PURE__*/ __S(577, __c18, 1)
           .pipe(/*@__PURE__*/ T.XmlName("SnapshotErrorMessage"))
-          .annotate({
-            identifier: "SnapshotErrorMessage",
-          }),
+          .annotate({ identifier: "SnapshotErrorMessage" }),
       );
     case 3:
       return S.suspend(() =>
@@ -8979,9 +8947,7 @@ function __c17(j: number): any {
           Resources: S.optional(__S(576, __c18, 0)),
           Errors: S.optional(__S(546, __c17, 2)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "BatchDeleteClusterSnapshotsResult",
-      });
+      ).annotate({ identifier: "BatchDeleteClusterSnapshotsResult" });
   }
 }
 function __c18(j: number): any {
@@ -9007,9 +8973,7 @@ function __c19(j: number): any {
           SnapshotIdentifier: S.optional(S.String),
           SnapshotClusterIdentifier: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteClusterSnapshotMessage",
-      });
+      ).annotate({ identifier: "DeleteClusterSnapshotMessage" });
   }
 }
 function __c20(j: number): any {
@@ -9021,16 +8985,12 @@ function __c20(j: number): any {
           ManualSnapshotRetentionPeriod: S.optional(S.Number),
           Force: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "BatchModifyClusterSnapshotsMessage",
-      });
+      ).annotate({ identifier: "BatchModifyClusterSnapshotsMessage" });
     case 1:
       return S.Array(
         /*@__PURE__*/ __S(577, __c18, 1)
           .pipe(/*@__PURE__*/ T.XmlName("SnapshotErrorMessage"))
-          .annotate({
-            identifier: "SnapshotErrorMessage",
-          }),
+          .annotate({ identifier: "SnapshotErrorMessage" }),
       );
     case 2:
       return S.suspend(() =>
@@ -9038,9 +8998,7 @@ function __c20(j: number): any {
           Resources: S.optional(__S(576, __c18, 0)),
           Errors: S.optional(__S(641, __c20, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "BatchModifyClusterSnapshotsOutputMessage",
-      });
+      ).annotate({ identifier: "BatchModifyClusterSnapshotsOutputMessage" });
   }
 }
 function __c21(j: number): any {
@@ -9094,15 +9052,11 @@ function __c23(j: number): any {
           TargetSnapshotIdentifier: S.optional(S.String),
           ManualSnapshotRetentionPeriod: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CopyClusterSnapshotMessage",
-      });
+      ).annotate({ identifier: "CopyClusterSnapshotMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Snapshot: S.optional(__S(515, __c16, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "CopyClusterSnapshotResult",
-      });
+      ).annotate({ identifier: "CopyClusterSnapshotResult" });
   }
 }
 function __c24(j: number): any {
@@ -9113,18 +9067,14 @@ function __c24(j: number): any {
           AuthenticationProfileName: S.optional(S.String),
           AuthenticationProfileContent: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateAuthenticationProfileMessage",
-      });
+      ).annotate({ identifier: "CreateAuthenticationProfileMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           AuthenticationProfileName: S.optional(S.String),
           AuthenticationProfileContent: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateAuthenticationProfileResult",
-      });
+      ).annotate({ identifier: "CreateAuthenticationProfileResult" });
   }
 }
 function __c25(j: number): any {
@@ -9186,16 +9136,12 @@ function __c26(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ VpcSecurityGroupId: S.optional(S.String), Status: S.optional(S.String) }),
-      ).annotate({
-        identifier: "VpcSecurityGroupMembership",
-      });
+      ).annotate({ identifier: "VpcSecurityGroupMembership" });
     case 1:
       return S.Array(
         /*@__PURE__*/ __S(832, __c26, 0)
           .pipe(/*@__PURE__*/ T.XmlName("VpcSecurityGroup"))
-          .annotate({
-            identifier: "VpcSecurityGroupMembership",
-          }),
+          .annotate({ identifier: "VpcSecurityGroupMembership" }),
       );
   }
 }
@@ -9238,9 +9184,7 @@ function __c29(j: number): any {
           TargetReservedNodeType: S.optional(S.String),
           TargetReservedNodeCount: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "ReservedNodeExchangeStatus",
-      });
+      ).annotate({ identifier: "ReservedNodeExchangeStatus" });
   }
 }
 function __c30(j: number): any {
@@ -9259,16 +9203,12 @@ function __c31(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ ClusterSecurityGroupName: S.optional(S.String), Status: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ClusterSecurityGroupMembership",
-      });
+      ).annotate({ identifier: "ClusterSecurityGroupMembership" });
     case 1:
       return S.Array(
         /*@__PURE__*/ __S(992, __c31, 0)
           .pipe(/*@__PURE__*/ T.XmlName("ClusterSecurityGroup"))
-          .annotate({
-            identifier: "ClusterSecurityGroupMembership",
-          }),
+          .annotate({ identifier: "ClusterSecurityGroupMembership" }),
       );
     case 2:
       return S.suspend(() =>
@@ -9287,16 +9227,12 @@ function __c31(j: number): any {
           ParameterApplyStatus: S.optional(S.String),
           ClusterParameterStatusList: S.optional(__S(995, __c31, 3)),
         }),
-      ).annotate({
-        identifier: "ClusterParameterGroupStatus",
-      });
+      ).annotate({ identifier: "ClusterParameterGroupStatus" });
     case 5:
       return S.Array(
         /*@__PURE__*/ __S(996, __c31, 4)
           .pipe(/*@__PURE__*/ T.XmlName("ClusterParameterGroup"))
-          .annotate({
-            identifier: "ClusterParameterGroupStatus",
-          }),
+          .annotate({ identifier: "ClusterParameterGroupStatus" }),
       );
     case 6:
       return S.suspend(() =>
@@ -9352,9 +9288,7 @@ function __c31(j: number): any {
           ManualSnapshotRetentionPeriod: S.optional(S.Number),
           SnapshotCopyGrantName: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ClusterSnapshotCopyStatus",
-      });
+      ).annotate({ identifier: "ClusterSnapshotCopyStatus" });
     case 11:
       return S.suspend(() =>
         S.Struct({
@@ -9377,9 +9311,7 @@ function __c31(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(1006, __c31, 14)
           .pipe(/*@__PURE__*/ T.XmlName("ClusterIamRole"))
-          .annotate({
-            identifier: "ClusterIamRole",
-          }),
+          .annotate({ identifier: "ClusterIamRole" }),
       );
     case 16:
       return S.Array(S.String);
@@ -9394,16 +9326,12 @@ function __c31(j: number): any {
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ),
         }),
-      ).annotate({
-        identifier: "DeferredMaintenanceWindow",
-      });
+      ).annotate({ identifier: "DeferredMaintenanceWindow" });
     case 18:
       return S.Array(
         /*@__PURE__*/ __S(1009, __c31, 17)
           .pipe(/*@__PURE__*/ T.XmlName("DeferredMaintenanceWindow"))
-          .annotate({
-            identifier: "DeferredMaintenanceWindow",
-          }),
+          .annotate({ identifier: "DeferredMaintenanceWindow" }),
       );
     case 19:
       return S.suspend(() =>
@@ -9521,15 +9449,11 @@ function __c34(j: number): any {
           Description: S.optional(S.String),
           Tags: S.optional(__S(320, __c10, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateClusterParameterGroupMessage",
-      });
+      ).annotate({ identifier: "CreateClusterParameterGroupMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ClusterParameterGroup: S.optional(__S(1120, __c35, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateClusterParameterGroupResult",
-      });
+      ).annotate({ identifier: "CreateClusterParameterGroupResult" });
   }
 }
 function __c35(j: number): any {
@@ -9554,15 +9478,11 @@ function __c36(j: number): any {
           Description: S.optional(S.String),
           Tags: S.optional(__S(320, __c10, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateClusterSecurityGroupMessage",
-      });
+      ).annotate({ identifier: "CreateClusterSecurityGroupMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ClusterSecurityGroup: S.optional(__S(356, __c11, 4)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateClusterSecurityGroupResult",
-      });
+      ).annotate({ identifier: "CreateClusterSecurityGroupResult" });
   }
 }
 function __c37(j: number): any {
@@ -9575,15 +9495,11 @@ function __c37(j: number): any {
           ManualSnapshotRetentionPeriod: S.optional(S.Number),
           Tags: S.optional(__S(320, __c10, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateClusterSnapshotMessage",
-      });
+      ).annotate({ identifier: "CreateClusterSnapshotMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Snapshot: S.optional(__S(515, __c16, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateClusterSnapshotResult",
-      });
+      ).annotate({ identifier: "CreateClusterSnapshotResult" });
   }
 }
 function __c38(j: number): any {
@@ -9596,15 +9512,11 @@ function __c38(j: number): any {
           SubnetIds: S.optional(__S(1344, __c42, 0)),
           Tags: S.optional(__S(320, __c10, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateClusterSubnetGroupMessage",
-      });
+      ).annotate({ identifier: "CreateClusterSubnetGroupMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ClusterSubnetGroup: S.optional(__S(1314, __c41, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateClusterSubnetGroupResult",
-      });
+      ).annotate({ identifier: "CreateClusterSubnetGroupResult" });
   }
 }
 function __c39(j: number): any {
@@ -9623,9 +9535,7 @@ function __c40(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(1280, __c40, 0)
           .pipe(/*@__PURE__*/ T.XmlName("SupportedPlatform"))
-          .annotate({
-            identifier: "SupportedPlatform",
-          }),
+          .annotate({ identifier: "SupportedPlatform" }),
       );
     case 2:
       return S.suspend(() =>
@@ -9681,9 +9591,7 @@ function __c43(j: number): any {
           CustomDomainCertificateArn: S.optional(S.String),
           ClusterIdentifier: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateCustomDomainAssociationMessage",
-      });
+      ).annotate({ identifier: "CreateCustomDomainAssociationMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9692,9 +9600,7 @@ function __c43(j: number): any {
           ClusterIdentifier: S.optional(S.String),
           CustomDomainCertExpiryTime: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateCustomDomainAssociationResult",
-      });
+      ).annotate({ identifier: "CreateCustomDomainAssociationResult" });
   }
 }
 function __c44(j: number): any {
@@ -9708,9 +9614,7 @@ function __c44(j: number): any {
           SubnetGroupName: S.optional(S.String),
           VpcSecurityGroupIds: S.optional(__S(864, __c27, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateEndpointAccessMessage",
-      });
+      ).annotate({ identifier: "CreateEndpointAccessMessage" });
   }
 }
 function __c45(j: number): any {
@@ -9746,15 +9650,11 @@ function __c46(j: number): any {
           Enabled: S.optional(S.Boolean),
           Tags: S.optional(__S(320, __c10, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateEventSubscriptionMessage",
-      });
+      ).annotate({ identifier: "CreateEventSubscriptionMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ EventSubscription: S.optional(__S(1537, __c48, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateEventSubscriptionResult",
-      });
+      ).annotate({ identifier: "CreateEventSubscriptionResult" });
   }
 }
 function __c47(j: number): any {
@@ -9795,15 +9695,11 @@ function __c49(j: number): any {
           HsmClientCertificateIdentifier: S.optional(S.String),
           Tags: S.optional(__S(320, __c10, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateHsmClientCertificateMessage",
-      });
+      ).annotate({ identifier: "CreateHsmClientCertificateMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ HsmClientCertificate: S.optional(__S(1600, __c50, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateHsmClientCertificateResult",
-      });
+      ).annotate({ identifier: "CreateHsmClientCertificateResult" });
   }
 }
 function __c50(j: number): any {
@@ -9831,15 +9727,11 @@ function __c51(j: number): any {
           HsmServerPublicCertificate: S.optional(S.String),
           Tags: S.optional(__S(320, __c10, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateHsmConfigurationMessage",
-      });
+      ).annotate({ identifier: "CreateHsmConfigurationMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ HsmConfiguration: S.optional(__S(1664, __c52, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateHsmConfigurationResult",
-      });
+      ).annotate({ identifier: "CreateHsmConfigurationResult" });
   }
 }
 function __c52(j: number): any {
@@ -9882,9 +9774,7 @@ function __c54(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(1728, __c54, 0)
           .pipe(/*@__PURE__*/ T.XmlName("IntegrationError"))
-          .annotate({
-            identifier: "IntegrationError",
-          }),
+          .annotate({ identifier: "IntegrationError" }),
       );
   }
 }
@@ -9920,15 +9810,11 @@ function __c56(j: number): any {
           IdcDisplayName: S.optional(S.String),
           Tags: S.optional(__S(320, __c10, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateQev2IdcApplicationMessage",
-      });
+      ).annotate({ identifier: "CreateQev2IdcApplicationMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Qev2IdcApplication: S.optional(__S(1824, __c57, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateQev2IdcApplicationResult",
-      });
+      ).annotate({ identifier: "CreateQev2IdcApplicationResult" });
   }
 }
 function __c57(j: number): any {
@@ -9963,15 +9849,11 @@ function __c58(j: number): any {
           Tags: S.optional(__S(320, __c10, 0)),
           SsoTagKeys: S.optional(__S(1888, __c59, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateRedshiftIdcApplicationMessage",
-      });
+      ).annotate({ identifier: "CreateRedshiftIdcApplicationMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ RedshiftIdcApplication: S.optional(__S(1934, __c60, 14)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateRedshiftIdcApplicationResult",
-      });
+      ).annotate({ identifier: "CreateRedshiftIdcApplicationResult" });
   }
 }
 function __c59(j: number): any {
@@ -10059,9 +9941,7 @@ function __c61(j: number): any {
           EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Enable: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateScheduledActionMessage",
-      });
+      ).annotate({ identifier: "CreateScheduledActionMessage" });
   }
 }
 function __c62(j: number): any {
@@ -10141,15 +10021,11 @@ function __c66(j: number): any {
           KmsKeyId: S.optional(S.String),
           Tags: S.optional(__S(320, __c10, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateSnapshotCopyGrantMessage",
-      });
+      ).annotate({ identifier: "CreateSnapshotCopyGrantMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ SnapshotCopyGrant: S.optional(__S(2144, __c67, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateSnapshotCopyGrantResult",
-      });
+      ).annotate({ identifier: "CreateSnapshotCopyGrantResult" });
   }
 }
 function __c67(j: number): any {
@@ -10176,9 +10052,7 @@ function __c68(j: number): any {
           DryRun: S.optional(S.Boolean),
           NextInvocations: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateSnapshotScheduleMessage",
-      });
+      ).annotate({ identifier: "CreateSnapshotScheduleMessage" });
   }
 }
 function __c69(j: number): any {
@@ -10197,16 +10071,12 @@ function __c69(j: number): any {
           ClusterIdentifier: S.optional(S.String),
           ScheduleAssociationState: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ClusterAssociatedToSchedule",
-      });
+      ).annotate({ identifier: "ClusterAssociatedToSchedule" });
     case 3:
       return S.Array(
         /*@__PURE__*/ __S(2210, __c69, 2)
           .pipe(/*@__PURE__*/ T.XmlName("ClusterAssociatedToSchedule"))
-          .annotate({
-            identifier: "ClusterAssociatedToSchedule",
-          }),
+          .annotate({ identifier: "ClusterAssociatedToSchedule" }),
       );
     case 4:
       return S.suspend(() =>
@@ -10231,9 +10101,7 @@ function __c70(j: number): any {
         ),
       ).annotate({ identifier: "CreateTagsMessage" });
     case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "CreateTagsResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "CreateTagsResponse" });
   }
 }
 function __c71(j: number): any {
@@ -10277,9 +10145,7 @@ function __c73(j: number): any {
           DataShareArn: S.optional(S.String),
           ConsumerIdentifier: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeauthorizeDataShareMessage",
-      });
+      ).annotate({ identifier: "DeauthorizeDataShareMessage" });
   }
 }
 function __c74(j: number): any {
@@ -10289,15 +10155,11 @@ function __c74(j: number): any {
         S.Struct({ AuthenticationProfileName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteAuthenticationProfileMessage",
-      });
+      ).annotate({ identifier: "DeleteAuthenticationProfileMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ AuthenticationProfileName: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteAuthenticationProfileResult",
-      });
+      ).annotate({ identifier: "DeleteAuthenticationProfileResult" });
   }
 }
 function __c75(j: number): any {
@@ -10324,9 +10186,7 @@ function __c76(j: number): any {
         S.Struct({ ParameterGroupName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteClusterParameterGroupMessage",
-      });
+      ).annotate({ identifier: "DeleteClusterParameterGroupMessage" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteClusterParameterGroupResponse",
@@ -10340,9 +10200,7 @@ function __c77(j: number): any {
         S.Struct({ ClusterSecurityGroupName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteClusterSecurityGroupMessage",
-      });
+      ).annotate({ identifier: "DeleteClusterSecurityGroupMessage" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteClusterSecurityGroupResponse",
@@ -10354,9 +10212,7 @@ function __c78(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ Snapshot: S.optional(__S(515, __c16, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteClusterSnapshotResult",
-      });
+      ).annotate({ identifier: "DeleteClusterSnapshotResult" });
   }
 }
 function __c79(j: number): any {
@@ -10366,9 +10222,7 @@ function __c79(j: number): any {
         S.Struct({ ClusterSubnetGroupName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteClusterSubnetGroupMessage",
-      });
+      ).annotate({ identifier: "DeleteClusterSubnetGroupMessage" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteClusterSubnetGroupResponse",
@@ -10383,9 +10237,7 @@ function __c80(j: number): any {
           ClusterIdentifier: S.optional(S.String),
           CustomDomainName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteCustomDomainAssociationMessage",
-      });
+      ).annotate({ identifier: "DeleteCustomDomainAssociationMessage" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteCustomDomainAssociationResponse",
@@ -10399,9 +10251,7 @@ function __c81(j: number): any {
         S.Struct({ EndpointName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteEndpointAccessMessage",
-      });
+      ).annotate({ identifier: "DeleteEndpointAccessMessage" });
   }
 }
 function __c82(j: number): any {
@@ -10411,9 +10261,7 @@ function __c82(j: number): any {
         S.Struct({ SubscriptionName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteEventSubscriptionMessage",
-      });
+      ).annotate({ identifier: "DeleteEventSubscriptionMessage" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteEventSubscriptionResponse",
@@ -10427,9 +10275,7 @@ function __c83(j: number): any {
         S.Struct({ HsmClientCertificateIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteHsmClientCertificateMessage",
-      });
+      ).annotate({ identifier: "DeleteHsmClientCertificateMessage" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteHsmClientCertificateResponse",
@@ -10443,9 +10289,7 @@ function __c84(j: number): any {
         S.Struct({ HsmConfigurationIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteHsmConfigurationMessage",
-      });
+      ).annotate({ identifier: "DeleteHsmConfigurationMessage" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteHsmConfigurationResponse",
@@ -10469,9 +10313,7 @@ function __c86(j: number): any {
         S.Struct({ Qev2IdcApplicationArn: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteQev2IdcApplicationMessage",
-      });
+      ).annotate({ identifier: "DeleteQev2IdcApplicationMessage" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteQev2IdcApplicationResponse",
@@ -10485,9 +10327,7 @@ function __c87(j: number): any {
         S.Struct({ RedshiftIdcApplicationArn: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteRedshiftIdcApplicationMessage",
-      });
+      ).annotate({ identifier: "DeleteRedshiftIdcApplicationMessage" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteRedshiftIdcApplicationResponse",
@@ -10501,9 +10341,7 @@ function __c88(j: number): any {
         S.Struct({ ResourceArn: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteResourcePolicyMessage",
-      });
+      ).annotate({ identifier: "DeleteResourcePolicyMessage" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteResourcePolicyResponse",
@@ -10517,9 +10355,7 @@ function __c89(j: number): any {
         S.Struct({ ScheduledActionName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteScheduledActionMessage",
-      });
+      ).annotate({ identifier: "DeleteScheduledActionMessage" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteScheduledActionResponse",
@@ -10533,9 +10369,7 @@ function __c90(j: number): any {
         S.Struct({ SnapshotCopyGrantName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteSnapshotCopyGrantMessage",
-      });
+      ).annotate({ identifier: "DeleteSnapshotCopyGrantMessage" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteSnapshotCopyGrantResponse",
@@ -10549,9 +10383,7 @@ function __c91(j: number): any {
         S.Struct({ ScheduleIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteSnapshotScheduleMessage",
-      });
+      ).annotate({ identifier: "DeleteSnapshotScheduleMessage" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteSnapshotScheduleResponse",
@@ -10568,9 +10400,7 @@ function __c92(j: number): any {
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DeleteTagsMessage" });
     case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeleteTagsResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "DeleteTagsResponse" });
   }
 }
 function __c93(j: number): any {
@@ -10595,9 +10425,7 @@ function __c94(j: number): any {
           NamespaceIdentifier: S.optional(__S(3042, __c95, 2)),
           ConsumerIdentifiers: S.optional(__S(3043, __c95, 3)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeregisterNamespaceInputMessage",
-      });
+      ).annotate({ identifier: "DeregisterNamespaceInputMessage" });
     case 1:
       return S.suspend(() => S.Struct({ Status: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "DeregisterNamespaceOutputMessage",
@@ -10635,9 +10463,7 @@ function __c96(j: number): any {
         S.Struct({ AttributeNames: S.optional(__S(3072, __c96, 0)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeAccountAttributesMessage",
-      });
+      ).annotate({ identifier: "DescribeAccountAttributesMessage" });
     case 2:
       return S.suspend(() => S.Struct({ AttributeValue: S.optional(S.String) })).annotate({
         identifier: "AttributeValueTarget",
@@ -10646,9 +10472,7 @@ function __c96(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(3074, __c96, 2)
           .pipe(/*@__PURE__*/ T.XmlName("AttributeValueTarget"))
-          .annotate({
-            identifier: "AttributeValueTarget",
-          }),
+          .annotate({ identifier: "AttributeValueTarget" }),
       );
     case 4:
       return S.suspend(() =>
@@ -10661,9 +10485,7 @@ function __c96(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(3076, __c96, 4)
           .pipe(/*@__PURE__*/ T.XmlName("AccountAttribute"))
-          .annotate({
-            identifier: "AccountAttribute",
-          }),
+          .annotate({ identifier: "AccountAttribute" }),
       );
     case 6:
       return S.suspend(() =>
@@ -10678,9 +10500,7 @@ function __c97(j: number): any {
         S.Struct({ AuthenticationProfileName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeAuthenticationProfilesMessage",
-      });
+      ).annotate({ identifier: "DescribeAuthenticationProfilesMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10693,9 +10513,7 @@ function __c97(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ AuthenticationProfiles: S.optional(__S(3106, __c97, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeAuthenticationProfilesResult",
-      });
+      ).annotate({ identifier: "DescribeAuthenticationProfilesResult" });
   }
 }
 function __c98(j: number): any {
@@ -10707,9 +10525,7 @@ function __c98(j: number): any {
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeClusterDbRevisionsMessage",
-      });
+      ).annotate({ identifier: "DescribeClusterDbRevisionsMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10722,9 +10538,9 @@ function __c98(j: number): any {
       ).annotate({ identifier: "RevisionTarget" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(3137, __c98, 1).pipe(/*@__PURE__*/ T.XmlName("RevisionTarget")).annotate({
-          identifier: "RevisionTarget",
-        }),
+        /*@__PURE__*/ __S(3137, __c98, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("RevisionTarget"))
+          .annotate({ identifier: "RevisionTarget" }),
       );
     case 3:
       return S.suspend(() =>
@@ -10741,9 +10557,7 @@ function __c98(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(3139, __c98, 3)
           .pipe(/*@__PURE__*/ T.XmlName("ClusterDbRevision"))
-          .annotate({
-            identifier: "ClusterDbRevision",
-          }),
+          .annotate({ identifier: "ClusterDbRevision" }),
       );
     case 5:
       return S.suspend(() =>
@@ -10751,9 +10565,7 @@ function __c98(j: number): any {
           Marker: S.optional(S.String),
           ClusterDbRevisions: S.optional(__S(3140, __c98, 4)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ClusterDbRevisionsMessage",
-      });
+      ).annotate({ identifier: "ClusterDbRevisionsMessage" });
   }
 }
 function __c99(j: number): any {
@@ -10767,16 +10579,12 @@ function __c99(j: number): any {
           TagKeys: S.optional(__S(1888, __c59, 0)),
           TagValues: S.optional(__S(3200, __c100, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeClusterParameterGroupsMessage",
-      });
+      ).annotate({ identifier: "DescribeClusterParameterGroupsMessage" });
     case 1:
       return S.Array(
         /*@__PURE__*/ __S(1120, __c35, 0)
           .pipe(/*@__PURE__*/ T.XmlName("ClusterParameterGroup"))
-          .annotate({
-            identifier: "ClusterParameterGroup",
-          }),
+          .annotate({ identifier: "ClusterParameterGroup" }),
       );
     case 2:
       return S.suspend(() =>
@@ -10784,9 +10592,7 @@ function __c99(j: number): any {
           Marker: S.optional(S.String),
           ParameterGroups: S.optional(__S(3169, __c99, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ClusterParameterGroupsMessage",
-      });
+      ).annotate({ identifier: "ClusterParameterGroupsMessage" });
   }
 }
 function __c100(j: number): any {
@@ -10805,18 +10611,14 @@ function __c101(j: number): any {
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeClusterParametersMessage",
-      });
+      ).annotate({ identifier: "DescribeClusterParametersMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Parameters: S.optional(__S(3265, __c102, 1)),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ClusterParameterGroupDetails",
-      });
+      ).annotate({ identifier: "ClusterParameterGroupDetails" });
   }
 }
 function __c102(j: number): any {
@@ -10837,9 +10639,9 @@ function __c102(j: number): any {
       ).annotate({ identifier: "Parameter" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(3264, __c102, 0).pipe(/*@__PURE__*/ T.XmlName("Parameter")).annotate({
-          identifier: "Parameter",
-        }),
+        /*@__PURE__*/ __S(3264, __c102, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("Parameter"))
+          .annotate({ identifier: "Parameter" }),
       );
   }
 }
@@ -10857,9 +10659,9 @@ function __c103(j: number): any {
       ).annotate({ identifier: "DescribeClustersMessage" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(1014, __c31, 22).pipe(/*@__PURE__*/ T.XmlName("Cluster")).annotate({
-          identifier: "Cluster",
-        }),
+        /*@__PURE__*/ __S(1014, __c31, 22)
+          .pipe(/*@__PURE__*/ T.XmlName("Cluster"))
+          .annotate({ identifier: "Cluster" }),
       );
     case 2:
       return S.suspend(() =>
@@ -10880,16 +10682,12 @@ function __c104(j: number): any {
           TagKeys: S.optional(__S(1888, __c59, 0)),
           TagValues: S.optional(__S(3200, __c100, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeClusterSecurityGroupsMessage",
-      });
+      ).annotate({ identifier: "DescribeClusterSecurityGroupsMessage" });
     case 1:
       return S.Array(
         /*@__PURE__*/ __S(356, __c11, 4)
           .pipe(/*@__PURE__*/ T.XmlName("ClusterSecurityGroup"))
-          .annotate({
-            identifier: "ClusterSecurityGroup",
-          }),
+          .annotate({ identifier: "ClusterSecurityGroup" }),
       );
     case 2:
       return S.suspend(() =>
@@ -10897,27 +10695,20 @@ function __c104(j: number): any {
           Marker: S.optional(S.String),
           ClusterSecurityGroups: S.optional(__S(3329, __c104, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ClusterSecurityGroupMessage",
-      });
+      ).annotate({ identifier: "ClusterSecurityGroupMessage" });
   }
 }
 function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          Attribute: S.optional(S.String),
-          SortOrder: S.optional(S.String),
-        }),
+        S.Struct({ Attribute: S.optional(S.String), SortOrder: S.optional(S.String) }),
       ).annotate({ identifier: "SnapshotSortingEntity" });
     case 1:
       return S.Array(
         /*@__PURE__*/ __S(3360, __c105, 0)
           .pipe(/*@__PURE__*/ T.XmlName("SnapshotSortingEntity"))
-          .annotate({
-            identifier: "SnapshotSortingEntity",
-          }),
+          .annotate({ identifier: "SnapshotSortingEntity" }),
       );
     case 2:
       return S.suspend(() =>
@@ -10936,14 +10727,12 @@ function __c105(j: number): any {
           ClusterExists: S.optional(S.Boolean),
           SortingEntities: S.optional(__S(3361, __c105, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeClusterSnapshotsMessage",
-      });
+      ).annotate({ identifier: "DescribeClusterSnapshotsMessage" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(515, __c16, 3).pipe(/*@__PURE__*/ T.XmlName("Snapshot")).annotate({
-          identifier: "Snapshot",
-        }),
+        /*@__PURE__*/ __S(515, __c16, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("Snapshot"))
+          .annotate({ identifier: "Snapshot" }),
       );
     case 4:
       return S.suspend(() =>
@@ -10965,16 +10754,12 @@ function __c106(j: number): any {
           TagKeys: S.optional(__S(1888, __c59, 0)),
           TagValues: S.optional(__S(3200, __c100, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeClusterSubnetGroupsMessage",
-      });
+      ).annotate({ identifier: "DescribeClusterSubnetGroupsMessage" });
     case 1:
       return S.Array(
         /*@__PURE__*/ __S(1314, __c41, 2)
           .pipe(/*@__PURE__*/ T.XmlName("ClusterSubnetGroup"))
-          .annotate({
-            identifier: "ClusterSubnetGroup",
-          }),
+          .annotate({ identifier: "ClusterSubnetGroup" }),
       );
     case 2:
       return S.suspend(() =>
@@ -10982,9 +10767,7 @@ function __c106(j: number): any {
           Marker: S.optional(S.String),
           ClusterSubnetGroups: S.optional(__S(3393, __c106, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ClusterSubnetGroupMessage",
-      });
+      ).annotate({ identifier: "ClusterSubnetGroupMessage" });
   }
 }
 function __c107(j: number): any {
@@ -10996,9 +10779,7 @@ function __c107(j: number): any {
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeClusterTracksMessage",
-      });
+      ).annotate({ identifier: "DescribeClusterTracksMessage" });
     case 1:
       return S.suspend(() => S.Struct({ OperationName: S.optional(S.String) })).annotate({
         identifier: "SupportedOperation",
@@ -11007,9 +10788,7 @@ function __c107(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(3425, __c107, 1)
           .pipe(/*@__PURE__*/ T.XmlName("SupportedOperation"))
-          .annotate({
-            identifier: "SupportedOperation",
-          }),
+          .annotate({ identifier: "SupportedOperation" }),
       );
     case 3:
       return S.suspend(() =>
@@ -11021,9 +10800,9 @@ function __c107(j: number): any {
       ).annotate({ identifier: "UpdateTarget" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(3427, __c107, 3).pipe(/*@__PURE__*/ T.XmlName("UpdateTarget")).annotate({
-          identifier: "UpdateTarget",
-        }),
+        /*@__PURE__*/ __S(3427, __c107, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("UpdateTarget"))
+          .annotate({ identifier: "UpdateTarget" }),
       );
     case 5:
       return S.suspend(() =>
@@ -11037,9 +10816,7 @@ function __c107(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(3429, __c107, 5)
           .pipe(/*@__PURE__*/ T.XmlName("MaintenanceTrack"))
-          .annotate({
-            identifier: "MaintenanceTrack",
-          }),
+          .annotate({ identifier: "MaintenanceTrack" }),
       );
     case 7:
       return S.suspend(() =>
@@ -11060,9 +10837,7 @@ function __c108(j: number): any {
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeClusterVersionsMessage",
-      });
+      ).annotate({ identifier: "DescribeClusterVersionsMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11075,9 +10850,7 @@ function __c108(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(3457, __c108, 1)
           .pipe(/*@__PURE__*/ T.XmlName("ClusterVersion"))
-          .annotate({
-            identifier: "ClusterVersion",
-          }),
+          .annotate({ identifier: "ClusterVersion" }),
       );
     case 3:
       return S.suspend(() =>
@@ -11098,9 +10871,7 @@ function __c109(j: number): any {
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeCustomDomainAssociationsMessage",
-      });
+      ).annotate({ identifier: "DescribeCustomDomainAssociationsMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11112,9 +10883,7 @@ function __c109(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(3489, __c109, 1)
           .pipe(/*@__PURE__*/ T.XmlName("CertificateAssociation"))
-          .annotate({
-            identifier: "CertificateAssociation",
-          }),
+          .annotate({ identifier: "CertificateAssociation" }),
       );
     case 3:
       return S.suspend(() =>
@@ -11128,9 +10897,9 @@ function __c109(j: number): any {
       ).annotate({ identifier: "Association" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(3491, __c109, 3).pipe(/*@__PURE__*/ T.XmlName("Association")).annotate({
-          identifier: "Association",
-        }),
+        /*@__PURE__*/ __S(3491, __c109, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("Association"))
+          .annotate({ identifier: "Association" }),
       );
     case 5:
       return S.suspend(() =>
@@ -11138,9 +10907,7 @@ function __c109(j: number): any {
           Marker: S.optional(S.String),
           Associations: S.optional(__S(3492, __c109, 4)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CustomDomainAssociationsMessage",
-      });
+      ).annotate({ identifier: "CustomDomainAssociationsMessage" });
   }
 }
 function __c110(j: number): any {
@@ -11152,9 +10919,7 @@ function __c110(j: number): any {
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeDataSharesMessage",
-      });
+      ).annotate({ identifier: "DescribeDataSharesMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11180,18 +10945,14 @@ function __c112(j: number): any {
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeDataSharesForConsumerMessage",
-      });
+      ).annotate({ identifier: "DescribeDataSharesForConsumerMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           DataShares: S.optional(__S(3552, __c111, 0)),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeDataSharesForConsumerResult",
-      });
+      ).annotate({ identifier: "DescribeDataSharesForConsumerResult" });
   }
 }
 function __c113(j: number): any {
@@ -11204,18 +10965,14 @@ function __c113(j: number): any {
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeDataSharesForProducerMessage",
-      });
+      ).annotate({ identifier: "DescribeDataSharesForProducerMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           DataShares: S.optional(__S(3552, __c111, 0)),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeDataSharesForProducerResult",
-      });
+      ).annotate({ identifier: "DescribeDataSharesForProducerResult" });
   }
 }
 function __c114(j: number): any {
@@ -11227,9 +10984,7 @@ function __c114(j: number): any {
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeDefaultClusterParametersMessage",
-      });
+      ).annotate({ identifier: "DescribeDefaultClusterParametersMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11241,9 +10996,7 @@ function __c114(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ DefaultClusterParameters: S.optional(__S(3649, __c114, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeDefaultClusterParametersResult",
-      });
+      ).annotate({ identifier: "DescribeDefaultClusterParametersResult" });
   }
 }
 function __c115(j: number): any {
@@ -11258,9 +11011,7 @@ function __c115(j: number): any {
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeEndpointAccessMessage",
-      });
+      ).annotate({ identifier: "DescribeEndpointAccessMessage" });
     case 1:
       return S.Array(__S(1440, __c45, 0));
     case 2:
@@ -11283,9 +11034,7 @@ function __c116(j: number): any {
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeEndpointAuthorizationMessage",
-      });
+      ).annotate({ identifier: "DescribeEndpointAuthorizationMessage" });
     case 1:
       return S.Array(__S(449, __c14, 1));
     case 2:
@@ -11294,9 +11043,7 @@ function __c116(j: number): any {
           EndpointAuthorizationList: S.optional(__S(3713, __c116, 1)),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "EndpointAuthorizationList",
-      });
+      ).annotate({ identifier: "EndpointAuthorizationList" });
   }
 }
 function __c117(j: number): any {
@@ -11306,9 +11053,7 @@ function __c117(j: number): any {
         S.Struct({ SourceType: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeEventCategoriesMessage",
-      });
+      ).annotate({ identifier: "DescribeEventCategoriesMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11320,9 +11065,9 @@ function __c117(j: number): any {
       ).annotate({ identifier: "EventInfoMap" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(3745, __c117, 1).pipe(/*@__PURE__*/ T.XmlName("EventInfoMap")).annotate({
-          identifier: "EventInfoMap",
-        }),
+        /*@__PURE__*/ __S(3745, __c117, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("EventInfoMap"))
+          .annotate({ identifier: "EventInfoMap" }),
       );
     case 3:
       return S.suspend(() =>
@@ -11332,9 +11077,7 @@ function __c117(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(3747, __c117, 3)
           .pipe(/*@__PURE__*/ T.XmlName("EventCategoriesMap"))
-          .annotate({
-            identifier: "EventCategoriesMap",
-          }),
+          .annotate({ identifier: "EventCategoriesMap" }),
       );
     case 5:
       return S.suspend(() =>
@@ -11393,16 +11136,12 @@ function __c119(j: number): any {
           TagKeys: S.optional(__S(1888, __c59, 0)),
           TagValues: S.optional(__S(3200, __c100, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeEventSubscriptionsMessage",
-      });
+      ).annotate({ identifier: "DescribeEventSubscriptionsMessage" });
     case 1:
       return S.Array(
         /*@__PURE__*/ __S(1537, __c48, 1)
           .pipe(/*@__PURE__*/ T.XmlName("EventSubscription"))
-          .annotate({
-            identifier: "EventSubscription",
-          }),
+          .annotate({ identifier: "EventSubscription" }),
       );
     case 2:
       return S.suspend(() =>
@@ -11410,9 +11149,7 @@ function __c119(j: number): any {
           Marker: S.optional(S.String),
           EventSubscriptionsList: S.optional(__S(3809, __c119, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "EventSubscriptionsMessage",
-      });
+      ).annotate({ identifier: "EventSubscriptionsMessage" });
   }
 }
 function __c120(j: number): any {
@@ -11426,16 +11163,12 @@ function __c120(j: number): any {
           TagKeys: S.optional(__S(1888, __c59, 0)),
           TagValues: S.optional(__S(3200, __c100, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeHsmClientCertificatesMessage",
-      });
+      ).annotate({ identifier: "DescribeHsmClientCertificatesMessage" });
     case 1:
       return S.Array(
         /*@__PURE__*/ __S(1600, __c50, 0)
           .pipe(/*@__PURE__*/ T.XmlName("HsmClientCertificate"))
-          .annotate({
-            identifier: "HsmClientCertificate",
-          }),
+          .annotate({ identifier: "HsmClientCertificate" }),
       );
     case 2:
       return S.suspend(() =>
@@ -11443,9 +11176,7 @@ function __c120(j: number): any {
           Marker: S.optional(S.String),
           HsmClientCertificates: S.optional(__S(3841, __c120, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "HsmClientCertificateMessage",
-      });
+      ).annotate({ identifier: "HsmClientCertificateMessage" });
   }
 }
 function __c121(j: number): any {
@@ -11459,16 +11190,12 @@ function __c121(j: number): any {
           TagKeys: S.optional(__S(1888, __c59, 0)),
           TagValues: S.optional(__S(3200, __c100, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeHsmConfigurationsMessage",
-      });
+      ).annotate({ identifier: "DescribeHsmConfigurationsMessage" });
     case 1:
       return S.Array(
         /*@__PURE__*/ __S(1664, __c52, 0)
           .pipe(/*@__PURE__*/ T.XmlName("HsmConfiguration"))
-          .annotate({
-            identifier: "HsmConfiguration",
-          }),
+          .annotate({ identifier: "HsmConfiguration" }),
       );
     case 2:
       return S.suspend(() =>
@@ -11489,9 +11216,7 @@ function __c122(j: number): any {
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeInboundIntegrationsMessage",
-      });
+      ).annotate({ identifier: "DescribeInboundIntegrationsMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11507,9 +11232,7 @@ function __c122(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(3905, __c122, 1)
           .pipe(/*@__PURE__*/ T.XmlName("InboundIntegration"))
-          .annotate({
-            identifier: "InboundIntegration",
-          }),
+          .annotate({ identifier: "InboundIntegration" }),
       );
     case 3:
       return S.suspend(() =>
@@ -11517,9 +11240,7 @@ function __c122(j: number): any {
           Marker: S.optional(S.String),
           InboundIntegrations: S.optional(__S(3906, __c122, 2)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "InboundIntegrationsMessage",
-      });
+      ).annotate({ identifier: "InboundIntegrationsMessage" });
   }
 }
 function __c123(j: number): any {
@@ -11528,20 +11249,13 @@ function __c123(j: number): any {
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Value")));
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Values: S.optional(__S(3936, __c123, 0)),
-        }),
-      ).annotate({
-        identifier: "DescribeIntegrationsFilter",
-      });
+        S.Struct({ Name: S.optional(S.String), Values: S.optional(__S(3936, __c123, 0)) }),
+      ).annotate({ identifier: "DescribeIntegrationsFilter" });
     case 2:
       return S.Array(
         /*@__PURE__*/ __S(3937, __c123, 1)
           .pipe(/*@__PURE__*/ T.XmlName("DescribeIntegrationsFilter"))
-          .annotate({
-            identifier: "DescribeIntegrationsFilter",
-          }),
+          .annotate({ identifier: "DescribeIntegrationsFilter" }),
       );
     case 3:
       return S.suspend(() =>
@@ -11551,14 +11265,12 @@ function __c123(j: number): any {
           Marker: S.optional(S.String),
           Filters: S.optional(__S(3938, __c123, 2)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeIntegrationsMessage",
-      });
+      ).annotate({ identifier: "DescribeIntegrationsMessage" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(1761, __c55, 1).pipe(/*@__PURE__*/ T.XmlName("Integration")).annotate({
-          identifier: "Integration",
-        }),
+        /*@__PURE__*/ __S(1761, __c55, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("Integration"))
+          .annotate({ identifier: "Integration" }),
       );
     case 5:
       return S.suspend(() =>
@@ -11576,9 +11288,7 @@ function __c124(j: number): any {
         S.Struct({ ClusterIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeLoggingStatusMessage",
-      });
+      ).annotate({ identifier: "DescribeLoggingStatusMessage" });
   }
 }
 function __c125(j: number): any {
@@ -11610,16 +11320,12 @@ function __c126(j: number): any {
           Operator: S.optional(S.String),
           Values: S.optional(__S(1248, __c39, 0)).pipe(T.XmlName("Value")),
         }),
-      ).annotate({
-        identifier: "NodeConfigurationOptionsFilter",
-      });
+      ).annotate({ identifier: "NodeConfigurationOptionsFilter" });
     case 1:
       return S.Array(
         /*@__PURE__*/ __S(4032, __c126, 0)
           .pipe(/*@__PURE__*/ T.XmlName("NodeConfigurationOptionsFilter"))
-          .annotate({
-            identifier: "NodeConfigurationOptionsFilter",
-          }),
+          .annotate({ identifier: "NodeConfigurationOptionsFilter" }),
       );
     case 2:
       return S.suspend(() =>
@@ -11633,9 +11339,7 @@ function __c126(j: number): any {
           Marker: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeNodeConfigurationOptionsMessage",
-      });
+      ).annotate({ identifier: "DescribeNodeConfigurationOptionsMessage" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -11649,9 +11353,7 @@ function __c126(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(4035, __c126, 3)
           .pipe(/*@__PURE__*/ T.XmlName("NodeConfigurationOption"))
-          .annotate({
-            identifier: "NodeConfigurationOption",
-          }),
+          .annotate({ identifier: "NodeConfigurationOption" }),
       );
     case 5:
       return S.suspend(() =>
@@ -11659,9 +11361,7 @@ function __c126(j: number): any {
           NodeConfigurationOptionList: S.optional(__S(4036, __c126, 4)),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "NodeConfigurationOptionsMessage",
-      });
+      ).annotate({ identifier: "NodeConfigurationOptionsMessage" });
   }
 }
 function __c127(j: number): any {
@@ -11674,16 +11374,12 @@ function __c127(j: number): any {
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeOrderableClusterOptionsMessage",
-      });
+      ).annotate({ identifier: "DescribeOrderableClusterOptionsMessage" });
     case 1:
       return S.Array(
         /*@__PURE__*/ __S(1282, __c40, 2)
           .pipe(/*@__PURE__*/ T.XmlName("AvailabilityZone"))
-          .annotate({
-            identifier: "AvailabilityZone",
-          }),
+          .annotate({ identifier: "AvailabilityZone" }),
       );
     case 2:
       return S.suspend(() =>
@@ -11698,9 +11394,7 @@ function __c127(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(4066, __c127, 2)
           .pipe(/*@__PURE__*/ T.XmlName("OrderableClusterOption"))
-          .annotate({
-            identifier: "OrderableClusterOption",
-          }),
+          .annotate({ identifier: "OrderableClusterOption" }),
       );
     case 4:
       return S.suspend(() =>
@@ -11708,9 +11402,7 @@ function __c127(j: number): any {
           OrderableClusterOptions: S.optional(__S(4067, __c127, 3)),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "OrderableClusterOptionsMessage",
-      });
+      ).annotate({ identifier: "OrderableClusterOptionsMessage" });
   }
 }
 function __c128(j: number): any {
@@ -11723,9 +11415,7 @@ function __c128(j: number): any {
           DatabaseName: S.optional(S.String),
           PartnerName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribePartnersInputMessage",
-      });
+      ).annotate({ identifier: "DescribePartnersInputMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11741,16 +11431,12 @@ function __c128(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(4097, __c128, 1)
           .pipe(/*@__PURE__*/ T.XmlName("PartnerIntegrationInfo"))
-          .annotate({
-            identifier: "PartnerIntegrationInfo",
-          }),
+          .annotate({ identifier: "PartnerIntegrationInfo" }),
       );
     case 3:
       return S.suspend(() =>
         S.Struct({ PartnerIntegrationInfoList: S.optional(__S(4098, __c128, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribePartnersOutputMessage",
-      });
+      ).annotate({ identifier: "DescribePartnersOutputMessage" });
   }
 }
 function __c129(j: number): any {
@@ -11762,9 +11448,7 @@ function __c129(j: number): any {
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeQev2IdcApplicationsMessage",
-      });
+      ).annotate({ identifier: "DescribeQev2IdcApplicationsMessage" });
     case 1:
       return S.Array(__S(1824, __c57, 0));
     case 2:
@@ -11773,9 +11457,7 @@ function __c129(j: number): any {
           Qev2IdcApplications: S.optional(__S(4129, __c129, 1)),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeQev2IdcApplicationsResult",
-      });
+      ).annotate({ identifier: "DescribeQev2IdcApplicationsResult" });
   }
 }
 function __c130(j: number): any {
@@ -11787,9 +11469,7 @@ function __c130(j: number): any {
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeRedshiftIdcApplicationsMessage",
-      });
+      ).annotate({ identifier: "DescribeRedshiftIdcApplicationsMessage" });
     case 1:
       return S.Array(__S(1934, __c60, 14));
     case 2:
@@ -11798,9 +11478,7 @@ function __c130(j: number): any {
           RedshiftIdcApplications: S.optional(__S(4161, __c130, 1)),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeRedshiftIdcApplicationsResult",
-      });
+      ).annotate({ identifier: "DescribeRedshiftIdcApplicationsResult" });
   }
 }
 function __c131(j: number): any {
@@ -11813,16 +11491,12 @@ function __c131(j: number): any {
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeReservedNodeExchangeStatusInputMessage",
-      });
+      ).annotate({ identifier: "DescribeReservedNodeExchangeStatusInputMessage" });
     case 1:
       return S.Array(
         /*@__PURE__*/ __S(928, __c29, 0)
           .pipe(/*@__PURE__*/ T.XmlName("ReservedNodeExchangeStatus"))
-          .annotate({
-            identifier: "ReservedNodeExchangeStatus",
-          }),
+          .annotate({ identifier: "ReservedNodeExchangeStatus" }),
       );
     case 2:
       return S.suspend(() =>
@@ -11830,9 +11504,7 @@ function __c131(j: number): any {
           ReservedNodeExchangeStatusDetails: S.optional(__S(4193, __c131, 1)),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeReservedNodeExchangeStatusOutputMessage",
-      });
+      ).annotate({ identifier: "DescribeReservedNodeExchangeStatusOutputMessage" });
   }
 }
 function __c132(j: number): any {
@@ -11844,18 +11516,14 @@ function __c132(j: number): any {
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeReservedNodeOfferingsMessage",
-      });
+      ).annotate({ identifier: "DescribeReservedNodeOfferingsMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
           ReservedNodeOfferings: S.optional(__S(4288, __c134, 0)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ReservedNodeOfferingsMessage",
-      });
+      ).annotate({ identifier: "ReservedNodeOfferingsMessage" });
   }
 }
 function __c133(j: number): any {
@@ -11882,9 +11550,7 @@ function __c134(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(4256, __c133, 0)
           .pipe(/*@__PURE__*/ T.XmlName("ReservedNodeOffering"))
-          .annotate({
-            identifier: "ReservedNodeOffering",
-          }),
+          .annotate({ identifier: "ReservedNodeOffering" }),
       );
   }
 }
@@ -11897,14 +11563,12 @@ function __c135(j: number): any {
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeReservedNodesMessage",
-      });
+      ).annotate({ identifier: "DescribeReservedNodesMessage" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(96, __c3, 0).pipe(/*@__PURE__*/ T.XmlName("ReservedNode")).annotate({
-          identifier: "ReservedNode",
-        }),
+        /*@__PURE__*/ __S(96, __c3, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("ReservedNode"))
+          .annotate({ identifier: "ReservedNode" }),
       );
     case 2:
       return S.suspend(() =>
@@ -11935,9 +11599,7 @@ function __c137(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(4384, __c137, 0)
           .pipe(/*@__PURE__*/ T.XmlName("ScheduledActionFilter"))
-          .annotate({
-            identifier: "ScheduledActionFilter",
-          }),
+          .annotate({ identifier: "ScheduledActionFilter" }),
       );
     case 2:
       return S.suspend(() =>
@@ -11951,16 +11613,12 @@ function __c137(j: number): any {
           Marker: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeScheduledActionsMessage",
-      });
+      ).annotate({ identifier: "DescribeScheduledActionsMessage" });
     case 3:
       return S.Array(
         /*@__PURE__*/ __S(1986, __c62, 2)
           .pipe(/*@__PURE__*/ T.XmlName("ScheduledAction"))
-          .annotate({
-            identifier: "ScheduledAction",
-          }),
+          .annotate({ identifier: "ScheduledAction" }),
       );
     case 4:
       return S.suspend(() =>
@@ -11982,16 +11640,12 @@ function __c138(j: number): any {
           TagKeys: S.optional(__S(1888, __c59, 0)),
           TagValues: S.optional(__S(3200, __c100, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeSnapshotCopyGrantsMessage",
-      });
+      ).annotate({ identifier: "DescribeSnapshotCopyGrantsMessage" });
     case 1:
       return S.Array(
         /*@__PURE__*/ __S(2144, __c67, 0)
           .pipe(/*@__PURE__*/ T.XmlName("SnapshotCopyGrant"))
-          .annotate({
-            identifier: "SnapshotCopyGrant",
-          }),
+          .annotate({ identifier: "SnapshotCopyGrant" }),
       );
     case 2:
       return S.suspend(() =>
@@ -12014,16 +11668,12 @@ function __c139(j: number): any {
           Marker: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeSnapshotSchedulesMessage",
-      });
+      ).annotate({ identifier: "DescribeSnapshotSchedulesMessage" });
     case 1:
       return S.Array(
         /*@__PURE__*/ __S(2212, __c69, 4)
           .pipe(/*@__PURE__*/ T.XmlName("SnapshotSchedule"))
-          .annotate({
-            identifier: "SnapshotSchedule",
-          }),
+          .annotate({ identifier: "SnapshotSchedule" }),
       );
     case 2:
       return S.suspend(() =>
@@ -12031,9 +11681,7 @@ function __c139(j: number): any {
           SnapshotSchedules: S.optional(__S(4449, __c139, 1)),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeSnapshotSchedulesOutputMessage",
-      });
+      ).annotate({ identifier: "DescribeSnapshotSchedulesOutputMessage" });
   }
 }
 function __c140(j: number): any {
@@ -12063,16 +11711,12 @@ function __c141(j: number): any {
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeTableRestoreStatusMessage",
-      });
+      ).annotate({ identifier: "DescribeTableRestoreStatusMessage" });
     case 1:
       return S.Array(
         /*@__PURE__*/ __S(4544, __c142, 0)
           .pipe(/*@__PURE__*/ T.XmlName("TableRestoreStatus"))
-          .annotate({
-            identifier: "TableRestoreStatus",
-          }),
+          .annotate({ identifier: "TableRestoreStatus" }),
       );
     case 2:
       return S.suspend(() =>
@@ -12080,9 +11724,7 @@ function __c141(j: number): any {
           TableRestoreStatusDetails: S.optional(__S(4513, __c141, 1)),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "TableRestoreStatusMessage",
-      });
+      ).annotate({ identifier: "TableRestoreStatusMessage" });
   }
 }
 function __c142(j: number): any {
@@ -12133,9 +11775,7 @@ function __c143(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(4577, __c143, 1)
           .pipe(/*@__PURE__*/ T.XmlName("TaggedResource"))
-          .annotate({
-            identifier: "TaggedResource",
-          }),
+          .annotate({ identifier: "TaggedResource" }),
       );
     case 3:
       return S.suspend(() =>
@@ -12143,9 +11783,7 @@ function __c143(j: number): any {
           TaggedResources: S.optional(__S(4578, __c143, 2)),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "TaggedResourceListMessage",
-      });
+      ).annotate({ identifier: "TaggedResourceListMessage" });
   }
 }
 function __c144(j: number): any {
@@ -12161,9 +11799,7 @@ function __c144(j: number): any {
           TagKeys: S.optional(__S(1888, __c59, 0)),
           TagValues: S.optional(__S(3200, __c100, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeUsageLimitsMessage",
-      });
+      ).annotate({ identifier: "DescribeUsageLimitsMessage" });
     case 1:
       return S.Array(__S(2304, __c72, 0));
     case 2:
@@ -12194,15 +11830,11 @@ function __c146(j: number): any {
         S.Struct({ ClusterIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DisableSnapshotCopyMessage",
-      });
+      ).annotate({ identifier: "DisableSnapshotCopyMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Cluster: S.optional(__S(1014, __c31, 22)) }).pipe(ns),
-      ).annotate({
-        identifier: "DisableSnapshotCopyResult",
-      });
+      ).annotate({ identifier: "DisableSnapshotCopyResult" });
   }
 }
 function __c147(j: number): any {
@@ -12215,9 +11847,7 @@ function __c147(j: number): any {
           ConsumerArn: S.optional(S.String),
           ConsumerRegion: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisassociateDataShareConsumerMessage",
-      });
+      ).annotate({ identifier: "DisassociateDataShareConsumerMessage" });
   }
 }
 function __c148(j: number): any {
@@ -12247,9 +11877,7 @@ function __c149(j: number): any {
           SnapshotCopyGrantName: S.optional(S.String),
           ManualSnapshotRetentionPeriod: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "EnableSnapshotCopyMessage",
-      });
+      ).annotate({ identifier: "EnableSnapshotCopyMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Cluster: S.optional(__S(1014, __c31, 22)) }).pipe(ns),
@@ -12263,15 +11891,11 @@ function __c150(j: number): any {
         S.Struct({ ClusterIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "FailoverPrimaryComputeInputMessage",
-      });
+      ).annotate({ identifier: "FailoverPrimaryComputeInputMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Cluster: S.optional(__S(1014, __c31, 22)) }).pipe(ns),
-      ).annotate({
-        identifier: "FailoverPrimaryComputeResult",
-      });
+      ).annotate({ identifier: "FailoverPrimaryComputeResult" });
   }
 }
 function __c151(j: number): any {
@@ -12289,9 +11913,7 @@ function __c151(j: number): any {
           DbGroups: S.optional(__S(4832, __c151, 0)),
           CustomDomainName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetClusterCredentialsMessage",
-      });
+      ).annotate({ identifier: "GetClusterCredentialsMessage" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -12312,9 +11934,7 @@ function __c152(j: number): any {
           DurationSeconds: S.optional(S.Number),
           CustomDomainName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetClusterCredentialsWithIAMMessage",
-      });
+      ).annotate({ identifier: "GetClusterCredentialsWithIAMMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12323,9 +11943,7 @@ function __c152(j: number): any {
           Expiration: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           NextRefreshTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ClusterExtendedCredentials",
-      });
+      ).annotate({ identifier: "ClusterExtendedCredentials" });
   }
 }
 function __c153(j: number): any {
@@ -12337,18 +11955,14 @@ function __c153(j: number): any {
         S.Struct({ ClusterIds: S.optional(__S(4896, __c153, 0)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetIdentityCenterAuthTokenRequest",
-      });
+      ).annotate({ identifier: "GetIdentityCenterAuthTokenRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           Token: S.optional(SensitiveString),
           ExpirationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetIdentityCenterAuthTokenResponse",
-      });
+      ).annotate({ identifier: "GetIdentityCenterAuthTokenResponse" });
   }
 }
 function __c154(j: number): any {
@@ -12362,9 +11976,7 @@ function __c154(j: number): any {
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetReservedNodeExchangeConfigurationOptionsInputMessage",
-      });
+      ).annotate({ identifier: "GetReservedNodeExchangeConfigurationOptionsInputMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12372,16 +11984,12 @@ function __c154(j: number): any {
           TargetReservedNodeCount: S.optional(S.Number),
           TargetReservedNodeOffering: S.optional(__S(4256, __c133, 0)),
         }),
-      ).annotate({
-        identifier: "ReservedNodeConfigurationOption",
-      });
+      ).annotate({ identifier: "ReservedNodeConfigurationOption" });
     case 2:
       return S.Array(
         /*@__PURE__*/ __S(4929, __c154, 1)
           .pipe(/*@__PURE__*/ T.XmlName("ReservedNodeConfigurationOption"))
-          .annotate({
-            identifier: "ReservedNodeConfigurationOption",
-          }),
+          .annotate({ identifier: "ReservedNodeConfigurationOption" }),
       );
     case 3:
       return S.suspend(() =>
@@ -12389,9 +11997,7 @@ function __c154(j: number): any {
           Marker: S.optional(S.String),
           ReservedNodeConfigurationOptionList: S.optional(__S(4930, __c154, 2)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetReservedNodeExchangeConfigurationOptionsOutputMessage",
-      });
+      ).annotate({ identifier: "GetReservedNodeExchangeConfigurationOptionsOutputMessage" });
   }
 }
 function __c155(j: number): any {
@@ -12403,18 +12009,14 @@ function __c155(j: number): any {
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetReservedNodeExchangeOfferingsInputMessage",
-      });
+      ).annotate({ identifier: "GetReservedNodeExchangeOfferingsInputMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
           ReservedNodeOfferings: S.optional(__S(4288, __c134, 0)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetReservedNodeExchangeOfferingsOutputMessage",
-      });
+      ).annotate({ identifier: "GetReservedNodeExchangeOfferingsOutputMessage" });
   }
 }
 function __c156(j: number): any {
@@ -12449,9 +12051,7 @@ function __c158(j: number): any {
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListRecommendationsMessage",
-      });
+      ).annotate({ identifier: "ListRecommendationsMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12465,9 +12065,7 @@ function __c158(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(5057, __c158, 1)
           .pipe(/*@__PURE__*/ T.XmlName("RecommendedAction"))
-          .annotate({
-            identifier: "RecommendedAction",
-          }),
+          .annotate({ identifier: "RecommendedAction" }),
       );
     case 3:
       return S.suspend(() =>
@@ -12475,9 +12073,9 @@ function __c158(j: number): any {
       ).annotate({ identifier: "ReferenceLink" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(5059, __c158, 3).pipe(/*@__PURE__*/ T.XmlName("ReferenceLink")).annotate({
-          identifier: "ReferenceLink",
-        }),
+        /*@__PURE__*/ __S(5059, __c158, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("ReferenceLink"))
+          .annotate({ identifier: "ReferenceLink" }),
       );
     case 5:
       return S.suspend(() =>
@@ -12500,9 +12098,7 @@ function __c158(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(5061, __c158, 5)
           .pipe(/*@__PURE__*/ T.XmlName("Recommendation"))
-          .annotate({
-            identifier: "Recommendation",
-          }),
+          .annotate({ identifier: "Recommendation" }),
       );
     case 7:
       return S.suspend(() =>
@@ -12510,9 +12106,7 @@ function __c158(j: number): any {
           Recommendations: S.optional(__S(5062, __c158, 6)),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListRecommendationsResult",
-      });
+      ).annotate({ identifier: "ListRecommendationsResult" });
   }
 }
 function __c159(j: number): any {
@@ -12538,18 +12132,14 @@ function __c160(j: number): any {
           AuthenticationProfileName: S.optional(S.String),
           AuthenticationProfileContent: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyAuthenticationProfileMessage",
-      });
+      ).annotate({ identifier: "ModifyAuthenticationProfileMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           AuthenticationProfileName: S.optional(S.String),
           AuthenticationProfileContent: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyAuthenticationProfileResult",
-      });
+      ).annotate({ identifier: "ModifyAuthenticationProfileResult" });
   }
 }
 function __c161(j: number): any {
@@ -12603,15 +12193,11 @@ function __c162(j: number): any {
           ClusterIdentifier: S.optional(S.String),
           RevisionTarget: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyClusterDbRevisionMessage",
-      });
+      ).annotate({ identifier: "ModifyClusterDbRevisionMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Cluster: S.optional(__S(1014, __c31, 22)) }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyClusterDbRevisionResult",
-      });
+      ).annotate({ identifier: "ModifyClusterDbRevisionResult" });
   }
 }
 function __c163(j: number): any {
@@ -12624,15 +12210,11 @@ function __c163(j: number): any {
           RemoveIamRoles: S.optional(__S(1056, __c33, 0)),
           DefaultIamRoleArn: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyClusterIamRolesMessage",
-      });
+      ).annotate({ identifier: "ModifyClusterIamRolesMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Cluster: S.optional(__S(1014, __c31, 22)) }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyClusterIamRolesResult",
-      });
+      ).annotate({ identifier: "ModifyClusterIamRolesResult" });
   }
 }
 function __c164(j: number): any {
@@ -12651,15 +12233,11 @@ function __c164(j: number): any {
           ),
           DeferMaintenanceDuration: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyClusterMaintenanceMessage",
-      });
+      ).annotate({ identifier: "ModifyClusterMaintenanceMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Cluster: S.optional(__S(1014, __c31, 22)) }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyClusterMaintenanceResult",
-      });
+      ).annotate({ identifier: "ModifyClusterMaintenanceResult" });
   }
 }
 function __c165(j: number): any {
@@ -12670,9 +12248,7 @@ function __c165(j: number): any {
           ParameterGroupName: S.optional(S.String),
           Parameters: S.optional(__S(3265, __c102, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyClusterParameterGroupMessage",
-      });
+      ).annotate({ identifier: "ModifyClusterParameterGroupMessage" });
   }
 }
 function __c166(j: number): any {
@@ -12683,9 +12259,7 @@ function __c166(j: number): any {
           ParameterGroupName: S.optional(S.String),
           ParameterGroupStatus: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ClusterParameterGroupNameMessage",
-      });
+      ).annotate({ identifier: "ClusterParameterGroupNameMessage" });
   }
 }
 function __c167(j: number): any {
@@ -12697,15 +12271,11 @@ function __c167(j: number): any {
           ManualSnapshotRetentionPeriod: S.optional(S.Number),
           Force: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyClusterSnapshotMessage",
-      });
+      ).annotate({ identifier: "ModifyClusterSnapshotMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Snapshot: S.optional(__S(515, __c16, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyClusterSnapshotResult",
-      });
+      ).annotate({ identifier: "ModifyClusterSnapshotResult" });
   }
 }
 function __c168(j: number): any {
@@ -12717,9 +12287,7 @@ function __c168(j: number): any {
           ScheduleIdentifier: S.optional(S.String),
           DisassociateSchedule: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyClusterSnapshotScheduleMessage",
-      });
+      ).annotate({ identifier: "ModifyClusterSnapshotScheduleMessage" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "ModifyClusterSnapshotScheduleResponse",
@@ -12735,15 +12303,11 @@ function __c169(j: number): any {
           Description: S.optional(S.String),
           SubnetIds: S.optional(__S(1344, __c42, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyClusterSubnetGroupMessage",
-      });
+      ).annotate({ identifier: "ModifyClusterSubnetGroupMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ClusterSubnetGroup: S.optional(__S(1314, __c41, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyClusterSubnetGroupResult",
-      });
+      ).annotate({ identifier: "ModifyClusterSubnetGroupResult" });
   }
 }
 function __c170(j: number): any {
@@ -12755,9 +12319,7 @@ function __c170(j: number): any {
           CustomDomainCertificateArn: S.optional(S.String),
           ClusterIdentifier: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyCustomDomainAssociationMessage",
-      });
+      ).annotate({ identifier: "ModifyCustomDomainAssociationMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12766,9 +12328,7 @@ function __c170(j: number): any {
           ClusterIdentifier: S.optional(S.String),
           CustomDomainCertExpiryTime: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyCustomDomainAssociationResult",
-      });
+      ).annotate({ identifier: "ModifyCustomDomainAssociationResult" });
   }
 }
 function __c171(j: number): any {
@@ -12779,9 +12339,7 @@ function __c171(j: number): any {
           EndpointName: S.optional(S.String),
           VpcSecurityGroupIds: S.optional(__S(864, __c27, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyEndpointAccessMessage",
-      });
+      ).annotate({ identifier: "ModifyEndpointAccessMessage" });
   }
 }
 function __c172(j: number): any {
@@ -12797,15 +12355,11 @@ function __c172(j: number): any {
           Severity: S.optional(S.String),
           Enabled: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyEventSubscriptionMessage",
-      });
+      ).annotate({ identifier: "ModifyEventSubscriptionMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ EventSubscription: S.optional(__S(1537, __c48, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyEventSubscriptionResult",
-      });
+      ).annotate({ identifier: "ModifyEventSubscriptionResult" });
   }
 }
 function __c173(j: number): any {
@@ -12832,9 +12386,7 @@ function __c174(j: number): any {
           LakehouseIdcApplicationArn: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyLakehouseConfigurationMessage",
-      });
+      ).annotate({ identifier: "ModifyLakehouseConfigurationMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12854,15 +12406,11 @@ function __c175(j: number): any {
           Qev2IdcApplicationArn: S.optional(S.String),
           IdcDisplayName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyQev2IdcApplicationMessage",
-      });
+      ).annotate({ identifier: "ModifyQev2IdcApplicationMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Qev2IdcApplication: S.optional(__S(1824, __c57, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyQev2IdcApplicationResult",
-      });
+      ).annotate({ identifier: "ModifyQev2IdcApplicationResult" });
   }
 }
 function __c176(j: number): any {
@@ -12877,15 +12425,11 @@ function __c176(j: number): any {
           AuthorizedTokenIssuerList: S.optional(__S(1922, __c60, 2)),
           ServiceIntegrations: S.optional(__S(1933, __c60, 13)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyRedshiftIdcApplicationMessage",
-      });
+      ).annotate({ identifier: "ModifyRedshiftIdcApplicationMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ RedshiftIdcApplication: S.optional(__S(1934, __c60, 14)) }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyRedshiftIdcApplicationResult",
-      });
+      ).annotate({ identifier: "ModifyRedshiftIdcApplicationResult" });
   }
 }
 function __c177(j: number): any {
@@ -12902,9 +12446,7 @@ function __c177(j: number): any {
           EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Enable: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyScheduledActionMessage",
-      });
+      ).annotate({ identifier: "ModifyScheduledActionMessage" });
   }
 }
 function __c178(j: number): any {
@@ -12916,15 +12458,11 @@ function __c178(j: number): any {
           RetentionPeriod: S.optional(S.Number),
           Manual: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifySnapshotCopyRetentionPeriodMessage",
-      });
+      ).annotate({ identifier: "ModifySnapshotCopyRetentionPeriodMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Cluster: S.optional(__S(1014, __c31, 22)) }).pipe(ns),
-      ).annotate({
-        identifier: "ModifySnapshotCopyRetentionPeriodResult",
-      });
+      ).annotate({ identifier: "ModifySnapshotCopyRetentionPeriodResult" });
   }
 }
 function __c179(j: number): any {
@@ -12935,9 +12473,7 @@ function __c179(j: number): any {
           ScheduleIdentifier: S.optional(S.String),
           ScheduleDefinitions: S.optional(__S(2208, __c69, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifySnapshotScheduleMessage",
-      });
+      ).annotate({ identifier: "ModifySnapshotScheduleMessage" });
   }
 }
 function __c180(j: number): any {
@@ -12968,15 +12504,11 @@ function __c182(j: number): any {
           ReservedNodeOfferingId: S.optional(S.String),
           NodeCount: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PurchaseReservedNodeOfferingMessage",
-      });
+      ).annotate({ identifier: "PurchaseReservedNodeOfferingMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ReservedNode: S.optional(__S(96, __c3, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "PurchaseReservedNodeOfferingResult",
-      });
+      ).annotate({ identifier: "PurchaseReservedNodeOfferingResult" });
   }
 }
 function __c183(j: number): any {
@@ -13015,9 +12547,7 @@ function __c185(j: number): any {
           NamespaceIdentifier: S.optional(__S(3042, __c95, 2)),
           ConsumerIdentifiers: S.optional(__S(3043, __c95, 3)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RegisterNamespaceInputMessage",
-      });
+      ).annotate({ identifier: "RegisterNamespaceInputMessage" });
     case 1:
       return S.suspend(() => S.Struct({ Status: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "RegisterNamespaceOutputMessage",
@@ -13043,9 +12573,7 @@ function __c187(j: number): any {
           ResetAllParameters: S.optional(S.Boolean),
           Parameters: S.optional(__S(3265, __c102, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ResetClusterParameterGroupMessage",
-      });
+      ).annotate({ identifier: "ResetClusterParameterGroupMessage" });
   }
 }
 function __c188(j: number): any {
@@ -13101,15 +12629,11 @@ function __c189(j: number): any {
           CatalogName: S.optional(S.String),
           RedshiftIdcApplicationArn: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RestoreFromClusterSnapshotMessage",
-      });
+      ).annotate({ identifier: "RestoreFromClusterSnapshotMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Cluster: S.optional(__S(1014, __c31, 22)) }).pipe(ns),
-      ).annotate({
-        identifier: "RestoreFromClusterSnapshotResult",
-      });
+      ).annotate({ identifier: "RestoreFromClusterSnapshotResult" });
   }
 }
 function __c190(j: number): any {
@@ -13127,15 +12651,11 @@ function __c190(j: number): any {
           NewTableName: S.optional(S.String),
           EnableCaseSensitiveIdentifier: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RestoreTableFromClusterSnapshotMessage",
-      });
+      ).annotate({ identifier: "RestoreTableFromClusterSnapshotMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ TableRestoreStatus: S.optional(__S(4544, __c142, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "RestoreTableFromClusterSnapshotResult",
-      });
+      ).annotate({ identifier: "RestoreTableFromClusterSnapshotResult" });
   }
 }
 function __c191(j: number): any {
@@ -13156,15 +12676,11 @@ function __c192(j: number): any {
           EC2SecurityGroupName: S.optional(S.String),
           EC2SecurityGroupOwnerId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RevokeClusterSecurityGroupIngressMessage",
-      });
+      ).annotate({ identifier: "RevokeClusterSecurityGroupIngressMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ClusterSecurityGroup: S.optional(__S(356, __c11, 4)) }).pipe(ns),
-      ).annotate({
-        identifier: "RevokeClusterSecurityGroupIngressResult",
-      });
+      ).annotate({ identifier: "RevokeClusterSecurityGroupIngressResult" });
   }
 }
 function __c193(j: number): any {
@@ -13177,9 +12693,7 @@ function __c193(j: number): any {
           VpcIds: S.optional(__S(448, __c14, 0)),
           Force: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RevokeEndpointAccessMessage",
-      });
+      ).annotate({ identifier: "RevokeEndpointAccessMessage" });
   }
 }
 function __c194(j: number): any {
@@ -13192,15 +12706,11 @@ function __c194(j: number): any {
           SnapshotClusterIdentifier: S.optional(S.String),
           AccountWithRestoreAccess: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RevokeSnapshotAccessMessage",
-      });
+      ).annotate({ identifier: "RevokeSnapshotAccessMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Snapshot: S.optional(__S(515, __c16, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "RevokeSnapshotAccessResult",
-      });
+      ).annotate({ identifier: "RevokeSnapshotAccessResult" });
   }
 }
 function __c195(j: number): any {
@@ -13210,15 +12720,11 @@ function __c195(j: number): any {
         S.Struct({ ClusterIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "RotateEncryptionKeyMessage",
-      });
+      ).annotate({ identifier: "RotateEncryptionKeyMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Cluster: S.optional(__S(1014, __c31, 22)) }).pipe(ns),
-      ).annotate({
-        identifier: "RotateEncryptionKeyResult",
-      });
+      ).annotate({ identifier: "RotateEncryptionKeyResult" });
   }
 }
 function __c196(j: number): any {
@@ -13233,9 +12739,7 @@ function __c196(j: number): any {
           Status: S.optional(S.String),
           StatusMessage: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdatePartnerStatusInputMessage",
-      });
+      ).annotate({ identifier: "UpdatePartnerStatusInputMessage" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

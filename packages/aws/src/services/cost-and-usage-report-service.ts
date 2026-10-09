@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -397,9 +397,7 @@ function __c0(j: number): any {
         S.Struct({ ReportDefinition: __S(22, __c5, 2), Tags: S.optional(__S(29, __c7, 1)) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "PutReportDefinitionRequest",
-      });
+      ).annotate({ identifier: "PutReportDefinitionRequest" });
   }
 }
 function __c1(j: number): any {
@@ -431,9 +429,7 @@ function __c3(j: number): any {
         S.Struct({ ReportName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteReportDefinitionRequest",
-      });
+      ).annotate({ identifier: "DeleteReportDefinitionRequest" });
     case 1:
       return S.suspend(() => S.Struct({ ResponseMessage: S.optional(S.String) })).annotate({
         identifier: "DeleteReportDefinitionResponse",
@@ -447,9 +443,7 @@ function __c4(j: number): any {
         S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeReportDefinitionsRequest",
-      });
+      ).annotate({ identifier: "DescribeReportDefinitionsRequest" });
     case 1:
       return S.Array(__S(22, __c5, 2));
     case 2:
@@ -458,9 +452,7 @@ function __c4(j: number): any {
           ReportDefinitions: S.optional(__S(17, __c4, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeReportDefinitionsResponse",
-      });
+      ).annotate({ identifier: "DescribeReportDefinitionsResponse" });
   }
 }
 function __c5(j: number): any {
@@ -498,9 +490,7 @@ function __c6(j: number): any {
         S.Struct({ ReportName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(29, __c7, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -524,9 +514,7 @@ function __c8(j: number): any {
         S.Struct({ ReportName: S.String, ReportDefinition: __S(22, __c5, 2) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ModifyReportDefinitionRequest",
-      });
+      ).annotate({ identifier: "ModifyReportDefinitionRequest" });
   }
 }
 function __c9(j: number): any {

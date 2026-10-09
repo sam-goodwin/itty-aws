@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -421,8 +421,8 @@ export const associateGatewayToServer: API.OperationMethod<
   AssociateGatewayToServerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<AssociateGatewayToServerInput>,
-  output: __S(176, __c22, 0) as any as S.Schema<AssociateGatewayToServerOutput>,
+  input: __S(160, __c20, 0) as any as S.Schema<AssociateGatewayToServerInput>,
+  output: __S(168, __c21, 0) as any as S.Schema<AssociateGatewayToServerOutput>,
   errors: [ConflictException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -439,8 +439,8 @@ export const createGateway: API.OperationMethod<
   CreateGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<CreateGatewayInput>,
-  output: __S(200, __c25, 0) as any as S.Schema<CreateGatewayOutput>,
+  input: __S(176, __c22, 0) as any as S.Schema<CreateGatewayInput>,
+  output: __S(168, __c21, 0) as any as S.Schema<CreateGatewayOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -457,8 +457,8 @@ export const deleteGateway: API.OperationMethod<
   DeleteGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<DeleteGatewayInput>,
-  output: __S(200, __c25, 0) as any as S.Schema<DeleteGatewayOutput>,
+  input: __S(192, __c24, 0) as any as S.Schema<DeleteGatewayInput>,
+  output: __S(168, __c21, 0) as any as S.Schema<DeleteGatewayOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -479,8 +479,8 @@ export const deleteHypervisor: API.OperationMethod<
   DeleteHypervisorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<DeleteHypervisorInput>,
-  output: __S(224, __c28, 0) as any as S.Schema<DeleteHypervisorOutput>,
+  input: __S(200, __c25, 0) as any as S.Schema<DeleteHypervisorInput>,
+  output: __S(208, __c26, 0) as any as S.Schema<DeleteHypervisorOutput>,
   errors: [AccessDeniedException, ConflictException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -500,8 +500,8 @@ export const disassociateGatewayFromServer: API.OperationMethod<
   DisassociateGatewayFromServerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<DisassociateGatewayFromServerInput>,
-  output: __S(176, __c22, 0) as any as S.Schema<DisassociateGatewayFromServerOutput>,
+  input: __S(216, __c27, 0) as any as S.Schema<DisassociateGatewayFromServerInput>,
+  output: __S(168, __c21, 0) as any as S.Schema<DisassociateGatewayFromServerOutput>,
   errors: [ConflictException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -518,8 +518,8 @@ export const getBandwidthRateLimitSchedule: API.OperationMethod<
   GetBandwidthRateLimitScheduleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<GetBandwidthRateLimitScheduleInput>,
-  output: __S(241, __c30, 1) as any as S.Schema<GetBandwidthRateLimitScheduleOutput>,
+  input: __S(224, __c28, 0) as any as S.Schema<GetBandwidthRateLimitScheduleInput>,
+  output: __S(225, __c28, 1) as any as S.Schema<GetBandwidthRateLimitScheduleOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -536,8 +536,8 @@ export const getGateway: API.OperationMethod<
   GetGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<GetGatewayInput>,
-  output: __S(259, __c32, 3) as any as S.Schema<GetGatewayOutput>,
+  input: __S(240, __c30, 0) as any as S.Schema<GetGatewayInput>,
+  output: __S(243, __c30, 3) as any as S.Schema<GetGatewayOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -612,7 +612,7 @@ export const importHypervisorConfiguration: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(32, __c4, 0) as any as S.Schema<ImportHypervisorConfigurationInput>,
-  output: __S(40, __c5, 0) as any as S.Schema<ImportHypervisorConfigurationOutput>,
+  output: __S(208, __c26, 0) as any as S.Schema<ImportHypervisorConfigurationOutput>,
   errors: [AccessDeniedException, ConflictException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -630,8 +630,8 @@ export const listGateways: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Gateway
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListGatewaysInput>,
-  output: __S(51, __c6, 3) as any as S.Schema<ListGatewaysOutput>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListGatewaysInput>,
+  output: __S(43, __c5, 3) as any as S.Schema<ListGatewaysOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -655,8 +655,8 @@ export const listHypervisors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Hypervisor
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ListHypervisorsInput>,
-  output: __S(59, __c7, 3) as any as S.Schema<ListHypervisorsOutput>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListHypervisorsInput>,
+  output: __S(51, __c6, 3) as any as S.Schema<ListHypervisorsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -679,8 +679,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(65, __c8, 1) as any as S.Schema<ListTagsForResourceOutput>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(57, __c7, 1) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -698,8 +698,8 @@ export const listVirtualMachines: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   VirtualMachine
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListVirtualMachinesInput>,
-  output: __S(75, __c9, 3) as any as S.Schema<ListVirtualMachinesOutput>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListVirtualMachinesInput>,
+  output: __S(67, __c8, 3) as any as S.Schema<ListVirtualMachinesOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -722,8 +722,8 @@ export const putBandwidthRateLimitSchedule: API.OperationMethod<
   PutBandwidthRateLimitScheduleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<PutBandwidthRateLimitScheduleInput>,
-  output: __S(176, __c22, 0) as any as S.Schema<PutBandwidthRateLimitScheduleOutput>,
+  input: __S(72, __c9, 0) as any as S.Schema<PutBandwidthRateLimitScheduleInput>,
+  output: __S(168, __c21, 0) as any as S.Schema<PutBandwidthRateLimitScheduleOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -744,8 +744,8 @@ export const putHypervisorPropertyMappings: API.OperationMethod<
   PutHypervisorPropertyMappingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<PutHypervisorPropertyMappingsInput>,
-  output: __S(40, __c5, 0) as any as S.Schema<PutHypervisorPropertyMappingsOutput>,
+  input: __S(80, __c10, 0) as any as S.Schema<PutHypervisorPropertyMappingsInput>,
+  output: __S(208, __c26, 0) as any as S.Schema<PutHypervisorPropertyMappingsOutput>,
   errors: [AccessDeniedException, ConflictException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -765,8 +765,8 @@ export const putMaintenanceStartTime: API.OperationMethod<
   PutMaintenanceStartTimeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<PutMaintenanceStartTimeInput>,
-  output: __S(176, __c22, 0) as any as S.Schema<PutMaintenanceStartTimeOutput>,
+  input: __S(88, __c11, 0) as any as S.Schema<PutMaintenanceStartTimeInput>,
+  output: __S(168, __c21, 0) as any as S.Schema<PutMaintenanceStartTimeOutput>,
   errors: [ConflictException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -786,8 +786,8 @@ export const startVirtualMachinesMetadataSync: API.OperationMethod<
   StartVirtualMachinesMetadataSyncError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<StartVirtualMachinesMetadataSyncInput>,
-  output: __S(40, __c5, 0) as any as S.Schema<StartVirtualMachinesMetadataSyncOutput>,
+  input: __S(96, __c12, 0) as any as S.Schema<StartVirtualMachinesMetadataSyncInput>,
+  output: __S(208, __c26, 0) as any as S.Schema<StartVirtualMachinesMetadataSyncOutput>,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -804,8 +804,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<TagResourceInput>,
-  output: __S(120, __c15, 0) as any as S.Schema<TagResourceOutput>,
+  input: __S(104, __c13, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(112, __c14, 0) as any as S.Schema<TagResourceOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -825,8 +825,8 @@ export const testHypervisorConfiguration: API.OperationMethod<
   TestHypervisorConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<TestHypervisorConfigurationInput>,
-  output: __S(129, __c16, 1) as any as S.Schema<TestHypervisorConfigurationOutput>,
+  input: __S(120, __c15, 0) as any as S.Schema<TestHypervisorConfigurationInput>,
+  output: __S(121, __c15, 1) as any as S.Schema<TestHypervisorConfigurationOutput>,
   errors: [ConflictException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -843,8 +843,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<UntagResourceInput>,
-  output: __S(120, __c15, 0) as any as S.Schema<UntagResourceOutput>,
+  input: __S(129, __c16, 1) as any as S.Schema<UntagResourceInput>,
+  output: __S(112, __c14, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -864,8 +864,8 @@ export const updateGatewayInformation: API.OperationMethod<
   UpdateGatewayInformationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<UpdateGatewayInformationInput>,
-  output: __S(176, __c22, 0) as any as S.Schema<UpdateGatewayInformationOutput>,
+  input: __S(136, __c17, 0) as any as S.Schema<UpdateGatewayInformationInput>,
+  output: __S(168, __c21, 0) as any as S.Schema<UpdateGatewayInformationOutput>,
   errors: [ConflictException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -884,8 +884,8 @@ export const updateGatewaySoftwareNow: API.OperationMethod<
   UpdateGatewaySoftwareNowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<UpdateGatewaySoftwareNowInput>,
-  output: __S(176, __c22, 0) as any as S.Schema<UpdateGatewaySoftwareNowOutput>,
+  input: __S(144, __c18, 0) as any as S.Schema<UpdateGatewaySoftwareNowInput>,
+  output: __S(168, __c21, 0) as any as S.Schema<UpdateGatewaySoftwareNowOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -906,8 +906,8 @@ export const updateHypervisor: API.OperationMethod<
   UpdateHypervisorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<UpdateHypervisorInput>,
-  output: __S(224, __c28, 0) as any as S.Schema<UpdateHypervisorOutput>,
+  input: __S(152, __c19, 0) as any as S.Schema<UpdateHypervisorInput>,
+  output: __S(208, __c26, 0) as any as S.Schema<UpdateHypervisorOutput>,
   errors: [AccessDeniedException, ConflictException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -952,9 +952,7 @@ function __c1(j: number): any {
         S.Struct({ HypervisorArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetHypervisorPropertyMappingsInput",
-      });
+      ).annotate({ identifier: "GetHypervisorPropertyMappingsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -962,9 +960,7 @@ function __c1(j: number): any {
           VmwareToAwsTagMappings: S.optional(__S(17, __c2, 1)),
           IamRoleArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetHypervisorPropertyMappingsOutput",
-      });
+      ).annotate({ identifier: "GetHypervisorPropertyMappingsOutput" });
   }
 }
 function __c2(j: number): any {
@@ -1028,22 +1024,12 @@ function __c4(j: number): any {
           Username: S.optional(SensitiveString),
           Password: S.optional(SensitiveString),
           KmsKeyArn: S.optional(S.String),
-          Tags: S.optional(__S(193, __c24, 1)),
+          Tags: S.optional(__S(185, __c23, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ImportHypervisorConfigurationInput",
-      });
+      ).annotate({ identifier: "ImportHypervisorConfigurationInput" });
   }
 }
 function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ HypervisorArn: S.optional(S.String) })).annotate({
-        identifier: "ImportHypervisorConfigurationOutput",
-      });
-  }
-}
-function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1062,14 +1048,14 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "Gateway" });
     case 2:
-      return S.Array(__S(49, __c6, 1));
+      return S.Array(__S(41, __c5, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Gateways: S.optional(__S(50, __c6, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ Gateways: S.optional(__S(42, __c5, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListGatewaysOutput" });
   }
 }
-function __c7(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1088,14 +1074,14 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "Hypervisor" });
     case 2:
-      return S.Array(__S(57, __c7, 1));
+      return S.Array(__S(49, __c6, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Hypervisors: S.optional(__S(58, __c7, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ Hypervisors: S.optional(__S(50, __c6, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListHypervisorsOutput" });
   }
 }
-function __c8(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1105,13 +1091,11 @@ function __c8(j: number): any {
       ).annotate({ identifier: "ListTagsForResourceInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.optional(S.String), Tags: S.optional(__S(193, __c24, 1)) }),
-      ).annotate({
-        identifier: "ListTagsForResourceOutput",
-      });
+        S.Struct({ ResourceArn: S.optional(S.String), Tags: S.optional(__S(185, __c23, 1)) }),
+      ).annotate({ identifier: "ListTagsForResourceOutput" });
   }
 }
-function __c9(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1133,31 +1117,27 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "VirtualMachine" });
     case 2:
-      return S.Array(__S(73, __c9, 1));
+      return S.Array(__S(65, __c8, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          VirtualMachines: S.optional(__S(74, __c9, 2)),
+          VirtualMachines: S.optional(__S(66, __c8, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListVirtualMachinesOutput",
-      });
+      ).annotate({ identifier: "ListVirtualMachinesOutput" });
   }
 }
-function __c10(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ GatewayArn: S.String, BandwidthRateLimitIntervals: __S(250, __c31, 2) }).pipe(
+        S.Struct({ GatewayArn: S.String, BandwidthRateLimitIntervals: __S(234, __c29, 2) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "PutBandwidthRateLimitScheduleInput",
-      });
+      ).annotate({ identifier: "PutBandwidthRateLimitScheduleInput" });
   }
 }
-function __c11(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1166,12 +1146,10 @@ function __c11(j: number): any {
           VmwareToAwsTagMappings: __S(17, __c2, 1),
           IamRoleArn: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PutHypervisorPropertyMappingsInput",
-      });
+      ).annotate({ identifier: "PutHypervisorPropertyMappingsInput" });
   }
 }
-function __c12(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1182,34 +1160,30 @@ function __c12(j: number): any {
           DayOfWeek: S.optional(S.Number),
           DayOfMonth: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PutMaintenanceStartTimeInput",
-      });
+      ).annotate({ identifier: "PutMaintenanceStartTimeInput" });
   }
 }
-function __c13(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ HypervisorArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StartVirtualMachinesMetadataSyncInput",
-      });
+      ).annotate({ identifier: "StartVirtualMachinesMetadataSyncInput" });
   }
 }
-function __c14(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, Tags: __S(193, __c24, 1) }).pipe(
+        S.Struct({ ResourceARN: S.String, Tags: __S(185, __c23, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceInput" });
   }
 }
-function __c15(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ ResourceARN: S.optional(S.String) })).annotate({
@@ -1217,7 +1191,7 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1227,52 +1201,46 @@ function __c16(j: number): any {
           Username: S.optional(SensitiveString),
           Password: S.optional(SensitiveString),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "TestHypervisorConfigurationInput",
-      });
+      ).annotate({ identifier: "TestHypervisorConfigurationInput" });
     case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "TestHypervisorConfigurationOutput",
       });
   }
 }
-function __c17(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
     case 1:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: __S(136, __c17, 0) }).pipe(
+        S.Struct({ ResourceARN: S.String, TagKeys: __S(128, __c16, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceInput" });
   }
 }
-function __c18(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ GatewayArn: S.String, GatewayDisplayName: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateGatewayInformationInput",
-      });
+      ).annotate({ identifier: "UpdateGatewayInformationInput" });
   }
 }
-function __c19(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ GatewayArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateGatewaySoftwareNowInput",
-      });
+      ).annotate({ identifier: "UpdateGatewaySoftwareNowInput" });
   }
 }
-function __c20(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1287,19 +1255,17 @@ function __c20(j: number): any {
       ).annotate({ identifier: "UpdateHypervisorInput" });
   }
 }
-function __c21(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ GatewayArn: S.String, ServerArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "AssociateGatewayToServerInput",
-      });
+      ).annotate({ identifier: "AssociateGatewayToServerInput" });
   }
 }
-function __c22(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ GatewayArn: S.optional(S.String) })).annotate({
@@ -1307,7 +1273,7 @@ function __c22(j: number): any {
       });
   }
 }
-function __c23(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1315,30 +1281,22 @@ function __c23(j: number): any {
           ActivationKey: S.String,
           GatewayDisplayName: S.String,
           GatewayType: S.String,
-          Tags: S.optional(__S(193, __c24, 1)),
+          Tags: S.optional(__S(185, __c23, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateGatewayInput" });
   }
 }
-function __c24(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
         identifier: "Tag",
       });
     case 1:
-      return S.Array(__S(192, __c24, 0));
+      return S.Array(__S(184, __c23, 0));
   }
 }
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ GatewayArn: S.optional(S.String) })).annotate({
-        identifier: "CreateGatewayOutput",
-      });
-  }
-}
-function __c26(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1348,7 +1306,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "DeleteGatewayInput" });
   }
 }
-function __c27(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1358,7 +1316,7 @@ function __c27(j: number): any {
       ).annotate({ identifier: "DeleteHypervisorInput" });
   }
 }
-function __c28(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ HypervisorArn: S.optional(S.String) })).annotate({
@@ -1366,40 +1324,34 @@ function __c28(j: number): any {
       });
   }
 }
-function __c29(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ GatewayArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DisassociateGatewayFromServerInput",
-      });
+      ).annotate({ identifier: "DisassociateGatewayFromServerInput" });
   }
 }
-function __c30(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ GatewayArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetBandwidthRateLimitScheduleInput",
-      });
+      ).annotate({ identifier: "GetBandwidthRateLimitScheduleInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           GatewayArn: S.optional(S.String),
-          BandwidthRateLimitIntervals: S.optional(__S(250, __c31, 2)),
+          BandwidthRateLimitIntervals: S.optional(__S(234, __c29, 2)),
         }),
-      ).annotate({
-        identifier: "GetBandwidthRateLimitScheduleOutput",
-      });
+      ).annotate({ identifier: "GetBandwidthRateLimitScheduleOutput" });
   }
 }
-function __c31(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.Number);
@@ -1411,16 +1363,14 @@ function __c31(j: number): any {
           EndHourOfDay: S.Number,
           StartMinuteOfHour: S.Number,
           EndMinuteOfHour: S.Number,
-          DaysOfWeek: __S(248, __c31, 0),
+          DaysOfWeek: __S(232, __c29, 0),
         }),
-      ).annotate({
-        identifier: "BandwidthRateLimitInterval",
-      });
+      ).annotate({ identifier: "BandwidthRateLimitInterval" });
     case 2:
-      return S.Array(__S(249, __c31, 1));
+      return S.Array(__S(233, __c29, 1));
   }
 }
-function __c32(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1445,7 +1395,7 @@ function __c32(j: number): any {
           GatewayType: S.optional(S.String),
           HypervisorId: S.optional(S.String),
           LastSeenTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          MaintenanceStartTime: S.optional(__S(257, __c32, 1)),
+          MaintenanceStartTime: S.optional(__S(241, __c30, 1)),
           NextUpdateAvailabilityTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           VpcEndpoint: S.optional(S.String),
           DeprecationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -1453,7 +1403,7 @@ function __c32(j: number): any {
         }),
       ).annotate({ identifier: "GatewayDetails" });
     case 3:
-      return S.suspend(() => S.Struct({ Gateway: S.optional(__S(258, __c32, 2)) })).annotate({
+      return S.suspend(() => S.Struct({ Gateway: S.optional(__S(242, __c30, 2)) })).annotate({
         identifier: "GetGatewayOutput",
       });
   }

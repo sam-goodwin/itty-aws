@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1045,7 +1045,7 @@ export const listSubCheckRuleResults: API.PaginatedOperationMethod<
   RuleResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(256, __c16, 0) as any as S.Schema<ListSubCheckRuleResultsInput>,
-  output: __S(260, __c16, 4) as any as S.Schema<ListSubCheckRuleResultsOutput>,
+  output: __S(259, __c16, 3) as any as S.Schema<ListSubCheckRuleResultsOutput>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1183,7 +1183,7 @@ export const startApplicationRefresh: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(352, __c22, 0) as any as S.Schema<StartApplicationRefreshInput>,
-  output: __S(353, __c22, 1) as any as S.Schema<StartApplicationRefreshOutput>,
+  output: __S(336, __c21, 0) as any as S.Schema<StartApplicationRefreshOutput>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1427,9 +1427,7 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetResourcePermissionInput",
-      });
+      ).annotate({ identifier: "GetResourcePermissionInput" });
   }
 }
 function __c5(j: number): any {
@@ -1523,9 +1521,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListConfigurationCheckDefinitionsInput",
-      });
+      ).annotate({ identifier: "ListConfigurationCheckDefinitionsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1534,9 +1530,7 @@ function __c8(j: number): any {
           Description: S.optional(S.String),
           ApplicableApplicationTypes: S.optional(__S(144, __c9, 0)),
         }),
-      ).annotate({
-        identifier: "ConfigurationCheckDefinition",
-      });
+      ).annotate({ identifier: "ConfigurationCheckDefinition" });
     case 2:
       return S.Array(__S(129, __c8, 1));
     case 3:
@@ -1545,9 +1539,7 @@ function __c8(j: number): any {
           ConfigurationChecks: S.optional(__S(130, __c8, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListConfigurationCheckDefinitionsOutput",
-      });
+      ).annotate({ identifier: "ListConfigurationCheckDefinitionsOutput" });
   }
 }
 function __c9(j: number): any {
@@ -1576,18 +1568,14 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListConfigurationCheckOperationsInput",
-      });
+      ).annotate({ identifier: "ListConfigurationCheckOperationsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ConfigurationCheckOperations: S.optional(__S(176, __c11, 0)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListConfigurationCheckOperationsOutput",
-      });
+      ).annotate({ identifier: "ListConfigurationCheckOperationsOutput" });
   }
 }
 function __c11(j: number): any {
@@ -1670,9 +1658,7 @@ function __c13(j: number): any {
           OperationEvents: S.optional(__S(211, __c13, 3)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListOperationEventsOutput",
-      });
+      ).annotate({ identifier: "ListOperationEventsOutput" });
   }
 }
 function __c14(j: number): any {
@@ -1732,9 +1718,7 @@ function __c15(j: number): any {
           SubCheckResults: S.optional(__S(242, __c15, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListSubCheckResultsOutput",
-      });
+      ).annotate({ identifier: "ListSubCheckResultsOutput" });
   }
 }
 function __c16(j: number): any {
@@ -1755,29 +1739,23 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSubCheckRuleResultsInput",
-      });
+      ).annotate({ identifier: "ListSubCheckRuleResultsInput" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
           Description: S.optional(S.String),
           Status: S.optional(S.String),
           Message: S.optional(S.String),
-          Metadata: S.optional(__S(257, __c16, 1)),
+          Metadata: S.optional(__S(544, __c34, 0)),
         }),
       ).annotate({ identifier: "RuleResult" });
+    case 2:
+      return S.Array(__S(257, __c16, 1));
     case 3:
-      return S.Array(__S(258, __c16, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({ RuleResults: S.optional(__S(259, __c16, 3)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListSubCheckRuleResultsOutput",
-      });
+        S.Struct({ RuleResults: S.optional(__S(258, __c16, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListSubCheckRuleResultsOutput" });
   }
 }
 function __c17(j: number): any {
@@ -1794,9 +1772,7 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(544, __c34, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -1807,11 +1783,7 @@ function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          ActionType: S.String,
-          SourceResourceArn: S.String,
-          ResourceArn: S.String,
-        }).pipe(
+        S.Struct({ ActionType: S.String, SourceResourceArn: S.String, ResourceArn: S.String }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/put-resource-permission" }),
             svc,
@@ -1821,9 +1793,7 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutResourcePermissionInput",
-      });
+      ).annotate({ identifier: "PutResourcePermissionInput" });
   }
 }
 function __c19(j: number): any {
@@ -1863,9 +1833,7 @@ function __c19(j: number): any {
           Application: S.optional(__S(528, __c33, 0)),
           OperationId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "RegisterApplicationOutput",
-      });
+      ).annotate({ identifier: "RegisterApplicationOutput" });
   }
 }
 function __c20(j: number): any {
@@ -1907,13 +1875,7 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartApplicationRefreshInput",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ OperationId: S.optional(S.String) })).annotate({
-        identifier: "StartApplicationRefreshOutput",
-      });
+      ).annotate({ identifier: "StartApplicationRefreshInput" });
   }
 }
 function __c23(j: number): any {
@@ -1933,15 +1895,11 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartConfigurationChecksInput",
-      });
+      ).annotate({ identifier: "StartConfigurationChecksInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ConfigurationCheckOperations: S.optional(__S(176, __c11, 0)) }),
-      ).annotate({
-        identifier: "StartConfigurationChecksOutput",
-      });
+      ).annotate({ identifier: "StartConfigurationChecksOutput" });
   }
 }
 function __c24(j: number): any {
@@ -2022,15 +1980,11 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateApplicationSettingsInput",
-      });
+      ).annotate({ identifier: "UpdateApplicationSettingsInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({ Message: S.optional(S.String), OperationIds: S.optional(__S(560, __c35, 0)) }),
-      ).annotate({
-        identifier: "UpdateApplicationSettingsOutput",
-      });
+      ).annotate({ identifier: "UpdateApplicationSettingsOutput" });
   }
 }
 function __c28(j: number): any {
@@ -2051,9 +2005,7 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteResourcePermissionInput",
-      });
+      ).annotate({ identifier: "DeleteResourcePermissionInput" });
   }
 }
 function __c29(j: number): any {
@@ -2078,17 +2030,13 @@ function __c30(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeregisterApplicationInput",
-      });
+      ).annotate({ identifier: "DeregisterApplicationInput" });
   }
 }
 function __c31(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeregisterApplicationOutput",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeregisterApplicationOutput" });
   }
 }
 function __c32(j: number): any {
@@ -2249,15 +2197,11 @@ function __c37(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetConfigurationCheckOperationInput",
-      });
+      ).annotate({ identifier: "GetConfigurationCheckOperationInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ConfigurationCheckOperation: S.optional(__S(609, __c38, 1)) }),
-      ).annotate({
-        identifier: "GetConfigurationCheckOperationOutput",
-      });
+      ).annotate({ identifier: "GetConfigurationCheckOperationOutput" });
   }
 }
 function __c38(j: number): any {
@@ -2286,9 +2230,7 @@ function __c38(j: number): any {
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           RuleStatusCounts: S.optional(__S(608, __c38, 0)),
         }),
-      ).annotate({
-        identifier: "ConfigurationCheckOperation",
-      });
+      ).annotate({ identifier: "ConfigurationCheckOperation" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

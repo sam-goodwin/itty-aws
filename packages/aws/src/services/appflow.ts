@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1823,7 +1823,7 @@ export const createConnectorProfile: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(64, __c2, 0) as any as S.Schema<CreateConnectorProfileRequest>,
-  output: __S(218, __c6, 26) as any as S.Schema<CreateConnectorProfileResponse>,
+  output: __S(216, __c6, 24) as any as S.Schema<CreateConnectorProfileResponse>,
   errors: [
     ConflictException,
     ConnectorAuthenticationException,
@@ -1861,7 +1861,7 @@ export const createFlow: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(224, __c7, 0) as any as S.Schema<CreateFlowRequest>,
-  output: __S(416, __c13, 0) as any as S.Schema<CreateFlowResponse>,
+  output: __S(384, __c12, 0) as any as S.Schema<CreateFlowResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1891,8 +1891,8 @@ export const deleteConnectorProfile: API.OperationMethod<
   DeleteConnectorProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c14, 0) as any as S.Schema<DeleteConnectorProfileRequest>,
-  output: __S(480, __c15, 0) as any as S.Schema<DeleteConnectorProfileResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<DeleteConnectorProfileRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<DeleteConnectorProfileResponse>,
   errors: [ConflictException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1914,8 +1914,8 @@ export const deleteFlow: API.OperationMethod<
   DeleteFlowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c16, 0) as any as S.Schema<DeleteFlowRequest>,
-  output: __S(480, __c15, 0) as any as S.Schema<DeleteFlowResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<DeleteFlowRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<DeleteFlowResponse>,
   errors: [ConflictException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1938,8 +1938,8 @@ export const describeConnector: API.OperationMethod<
   DescribeConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c17, 0) as any as S.Schema<DescribeConnectorRequest>,
-  output: __S(545, __c17, 1) as any as S.Schema<DescribeConnectorResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<DescribeConnectorRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<DescribeConnectorResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1963,8 +1963,8 @@ export const describeConnectorEntity: API.OperationMethod<
   DescribeConnectorEntityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c20, 0) as any as S.Schema<DescribeConnectorEntityRequest>,
-  output: __S(648, __c20, 8) as any as S.Schema<DescribeConnectorEntityResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<DescribeConnectorEntityRequest>,
+  output: __S(584, __c18, 8) as any as S.Schema<DescribeConnectorEntityResponse>,
   errors: [
     ConnectorAuthenticationException,
     ConnectorServerException,
@@ -1996,8 +1996,8 @@ export const describeConnectorProfiles: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(672, __c21, 0) as any as S.Schema<DescribeConnectorProfilesRequest>,
-  output: __S(676, __c21, 4) as any as S.Schema<DescribeConnectorProfilesResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<DescribeConnectorProfilesRequest>,
+  output: __S(612, __c19, 4) as any as S.Schema<DescribeConnectorProfilesResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2023,8 +2023,8 @@ export const describeConnectors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(704, __c22, 0) as any as S.Schema<DescribeConnectorsRequest>,
-  output: __S(706, __c22, 2) as any as S.Schema<DescribeConnectorsResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<DescribeConnectorsRequest>,
+  output: __S(642, __c20, 2) as any as S.Schema<DescribeConnectorsResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2046,8 +2046,8 @@ export const describeFlow: API.OperationMethod<
   DescribeFlowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c24, 0) as any as S.Schema<DescribeFlowRequest>,
-  output: __S(769, __c24, 1) as any as S.Schema<DescribeFlowResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<DescribeFlowRequest>,
+  output: __S(705, __c22, 1) as any as S.Schema<DescribeFlowResponse>,
   errors: [InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2069,8 +2069,8 @@ export const describeFlowExecutionRecords: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(864, __c27, 0) as any as S.Schema<DescribeFlowExecutionRecordsRequest>,
-  output: __S(869, __c27, 5) as any as S.Schema<DescribeFlowExecutionRecordsResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<DescribeFlowExecutionRecordsRequest>,
+  output: __S(805, __c25, 5) as any as S.Schema<DescribeFlowExecutionRecordsResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2101,8 +2101,8 @@ export const listConnectorEntities: API.OperationMethod<
   ListConnectorEntitiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c28, 0) as any as S.Schema<ListConnectorEntitiesRequest>,
-  output: __S(900, __c28, 4) as any as S.Schema<ListConnectorEntitiesResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<ListConnectorEntitiesRequest>,
+  output: __S(836, __c26, 4) as any as S.Schema<ListConnectorEntitiesResponse>,
   errors: [
     ConnectorAuthenticationException,
     ConnectorServerException,
@@ -2128,8 +2128,8 @@ export const listConnectors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(928, __c29, 0) as any as S.Schema<ListConnectorsRequest>,
-  output: __S(929, __c29, 1) as any as S.Schema<ListConnectorsResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<ListConnectorsRequest>,
+  output: __S(865, __c27, 1) as any as S.Schema<ListConnectorsResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2152,8 +2152,8 @@ export const listFlows: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(960, __c30, 0) as any as S.Schema<ListFlowsRequest>,
-  output: __S(963, __c30, 3) as any as S.Schema<ListFlowsResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<ListFlowsRequest>,
+  output: __S(899, __c28, 3) as any as S.Schema<ListFlowsResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2179,8 +2179,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c31, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(993, __c31, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(929, __c29, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2209,8 +2209,8 @@ export const registerConnector: API.OperationMethod<
   RegisterConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c32, 0) as any as S.Schema<RegisterConnectorRequest>,
-  output: __S(1056, __c33, 0) as any as S.Schema<RegisterConnectorResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<RegisterConnectorRequest>,
+  output: __S(992, __c31, 0) as any as S.Schema<RegisterConnectorResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2249,8 +2249,8 @@ export const resetConnectorMetadataCache: API.OperationMethod<
   ResetConnectorMetadataCacheError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c34, 0) as any as S.Schema<ResetConnectorMetadataCacheRequest>,
-  output: __S(128, __c4, 0) as any as S.Schema<ResetConnectorMetadataCacheResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ResetConnectorMetadataCacheRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<ResetConnectorMetadataCacheResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2278,8 +2278,8 @@ export const startFlow: API.OperationMethod<
   StartFlowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1120, __c35, 0) as any as S.Schema<StartFlowRequest>,
-  output: __S(1121, __c35, 1) as any as S.Schema<StartFlowResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<StartFlowRequest>,
+  output: __S(1057, __c33, 1) as any as S.Schema<StartFlowResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2308,8 +2308,8 @@ export const stopFlow: API.OperationMethod<
   StopFlowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1152, __c36, 0) as any as S.Schema<StopFlowRequest>,
-  output: __S(416, __c13, 0) as any as S.Schema<StopFlowResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<StopFlowRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<StopFlowResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2335,8 +2335,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1184, __c37, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(480, __c15, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<TagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2358,8 +2358,8 @@ export const unregisterConnector: API.OperationMethod<
   UnregisterConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1216, __c38, 0) as any as S.Schema<UnregisterConnectorRequest>,
-  output: __S(480, __c15, 0) as any as S.Schema<UnregisterConnectorResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<UnregisterConnectorRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<UnregisterConnectorResponse>,
   errors: [ConflictException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2380,8 +2380,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1248, __c39, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(480, __c15, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2405,8 +2405,8 @@ export const updateConnectorProfile: API.OperationMethod<
   UpdateConnectorProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1280, __c40, 0) as any as S.Schema<UpdateConnectorProfileRequest>,
-  output: __S(218, __c6, 26) as any as S.Schema<UpdateConnectorProfileResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<UpdateConnectorProfileRequest>,
+  output: __S(216, __c6, 24) as any as S.Schema<UpdateConnectorProfileResponse>,
   errors: [
     ConflictException,
     ConnectorAuthenticationException,
@@ -2445,8 +2445,8 @@ export const updateConnectorRegistration: API.OperationMethod<
   UpdateConnectorRegistrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1312, __c41, 0) as any as S.Schema<UpdateConnectorRegistrationRequest>,
-  output: __S(1056, __c33, 0) as any as S.Schema<UpdateConnectorRegistrationResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<UpdateConnectorRegistrationRequest>,
+  output: __S(992, __c31, 0) as any as S.Schema<UpdateConnectorRegistrationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2482,8 +2482,8 @@ export const updateFlow: API.OperationMethod<
   UpdateFlowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1344, __c42, 0) as any as S.Schema<UpdateFlowRequest>,
-  output: __S(1345, __c42, 1) as any as S.Schema<UpdateFlowResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<UpdateFlowRequest>,
+  output: __S(1281, __c40, 1) as any as S.Schema<UpdateFlowResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2514,15 +2514,11 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CancelFlowExecutionsRequest",
-      });
+      ).annotate({ identifier: "CancelFlowExecutionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ invalidExecutions: S.optional(__S(32, __c1, 0)) }),
-      ).annotate({
-        identifier: "CancelFlowExecutionsResponse",
-      });
+      ).annotate({ identifier: "CancelFlowExecutionsResponse" });
   }
 }
 function __c1(j: number): any {
@@ -2541,7 +2537,7 @@ function __c2(j: number): any {
           connectorType: S.String,
           connectorLabel: S.optional(S.String),
           connectionMode: S.String,
-          connectorProfileConfig: __S(217, __c6, 25),
+          connectorProfileConfig: __S(215, __c6, 23),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -2553,23 +2549,21 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateConnectorProfileRequest",
-      });
+      ).annotate({ identifier: "CreateConnectorProfileRequest" });
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AmplitudeConnectorProfileProperties",
+      });
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AmplitudeConnectorProfileProperties",
-      });
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
 function __c5(j: number): any {
@@ -2591,9 +2585,7 @@ function __c5(j: number): any {
           workgroupName: S.optional(S.String),
           databaseName: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "RedshiftConnectorProfileProperties",
-      });
+      ).annotate({ identifier: "RedshiftConnectorProfileProperties" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2601,9 +2593,7 @@ function __c5(j: number): any {
           isSandboxEnvironment: S.optional(S.Boolean),
           usePrivateLinkForMetadataAndAuthorization: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "SalesforceConnectorProfileProperties",
-      });
+      ).annotate({ identifier: "SalesforceConnectorProfileProperties" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2615,9 +2605,7 @@ function __c5(j: number): any {
           accountName: S.optional(S.String),
           region: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SnowflakeConnectorProfileProperties",
-      });
+      ).annotate({ identifier: "SnowflakeConnectorProfileProperties" });
     case 4:
       return S.suspend(() =>
         S.Struct({ tokenUrl: S.String, authCodeUrl: S.String, oAuthScopes: __S(32, __c1, 0) }),
@@ -2634,26 +2622,22 @@ function __c5(j: number): any {
           oAuthProperties: S.optional(__S(164, __c5, 4)),
           disableSSO: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "SAPODataConnectorProfileProperties",
-      });
+      ).annotate({ identifier: "SAPODataConnectorProfileProperties" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           tokenUrl: S.String,
           oAuth2GrantType: S.String,
-          tokenUrlCustomProperties: S.optional(__S(96, __c3, 0)),
+          tokenUrlCustomProperties: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({ identifier: "OAuth2Properties" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          profileProperties: S.optional(__S(96, __c3, 0)),
+          profileProperties: S.optional(__S(128, __c4, 0)),
           oAuth2Properties: S.optional(__S(166, __c5, 6)),
         }),
-      ).annotate({
-        identifier: "CustomConnectorProfileProperties",
-      });
+      ).annotate({ identifier: "CustomConnectorProfileProperties" });
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -2661,35 +2645,31 @@ function __c5(j: number): any {
           isSandboxEnvironment: S.optional(S.Boolean),
           businessUnitId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "PardotConnectorProfileProperties",
-      });
+      ).annotate({ identifier: "PardotConnectorProfileProperties" });
     case 9:
       return S.suspend(() =>
         S.Struct({
-          Amplitude: S.optional(__S(128, __c4, 0)),
+          Amplitude: S.optional(__S(96, __c3, 0)),
           Datadog: S.optional(__S(160, __c5, 0)),
           Dynatrace: S.optional(__S(160, __c5, 0)),
-          GoogleAnalytics: S.optional(__S(128, __c4, 0)),
-          Honeycode: S.optional(__S(128, __c4, 0)),
+          GoogleAnalytics: S.optional(__S(96, __c3, 0)),
+          Honeycode: S.optional(__S(96, __c3, 0)),
           InforNexus: S.optional(__S(160, __c5, 0)),
           Marketo: S.optional(__S(160, __c5, 0)),
           Redshift: S.optional(__S(161, __c5, 1)),
           Salesforce: S.optional(__S(162, __c5, 2)),
           ServiceNow: S.optional(__S(160, __c5, 0)),
-          Singular: S.optional(__S(128, __c4, 0)),
+          Singular: S.optional(__S(96, __c3, 0)),
           Slack: S.optional(__S(160, __c5, 0)),
           Snowflake: S.optional(__S(163, __c5, 3)),
-          Trendmicro: S.optional(__S(128, __c4, 0)),
+          Trendmicro: S.optional(__S(96, __c3, 0)),
           Veeva: S.optional(__S(160, __c5, 0)),
           Zendesk: S.optional(__S(160, __c5, 0)),
           SAPOData: S.optional(__S(165, __c5, 5)),
           CustomConnector: S.optional(__S(167, __c5, 7)),
           Pardot: S.optional(__S(168, __c5, 8)),
         }),
-      ).annotate({
-        identifier: "ConnectorProfileProperties",
-      });
+      ).annotate({ identifier: "ConnectorProfileProperties" });
   }
 }
 function __c6(j: number): any {
@@ -2697,15 +2677,11 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ apiKey: SensitiveString, secretKey: SensitiveString }),
-      ).annotate({
-        identifier: "AmplitudeConnectorProfileCredentials",
-      });
+      ).annotate({ identifier: "AmplitudeConnectorProfileCredentials" });
     case 1:
       return S.suspend(() =>
         S.Struct({ apiKey: SensitiveString, applicationKey: SensitiveString }),
-      ).annotate({
-        identifier: "DatadogConnectorProfileCredentials",
-      });
+      ).annotate({ identifier: "DatadogConnectorProfileCredentials" });
     case 2:
       return S.suspend(() => S.Struct({ apiToken: SensitiveString })).annotate({
         identifier: "DynatraceConnectorProfileCredentials",
@@ -2727,9 +2703,7 @@ function __c6(j: number): any {
           refreshToken: S.optional(SensitiveString),
           oAuthRequest: S.optional(__S(195, __c6, 3)),
         }),
-      ).annotate({
-        identifier: "GoogleAnalyticsConnectorProfileCredentials",
-      });
+      ).annotate({ identifier: "GoogleAnalyticsConnectorProfileCredentials" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2737,9 +2711,7 @@ function __c6(j: number): any {
           refreshToken: S.optional(SensitiveString),
           oAuthRequest: S.optional(__S(195, __c6, 3)),
         }),
-      ).annotate({
-        identifier: "HoneycodeConnectorProfileCredentials",
-      });
+      ).annotate({ identifier: "HoneycodeConnectorProfileCredentials" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2748,9 +2720,7 @@ function __c6(j: number): any {
           secretAccessKey: SensitiveString,
           datakey: SensitiveString,
         }),
-      ).annotate({
-        identifier: "InforNexusConnectorProfileCredentials",
-      });
+      ).annotate({ identifier: "InforNexusConnectorProfileCredentials" });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2759,15 +2729,11 @@ function __c6(j: number): any {
           accessToken: S.optional(SensitiveString),
           oAuthRequest: S.optional(__S(195, __c6, 3)),
         }),
-      ).annotate({
-        identifier: "MarketoConnectorProfileCredentials",
-      });
+      ).annotate({ identifier: "MarketoConnectorProfileCredentials" });
     case 8:
       return S.suspend(() =>
         S.Struct({ username: S.optional(S.String), password: S.optional(SensitiveString) }),
-      ).annotate({
-        identifier: "RedshiftConnectorProfileCredentials",
-      });
+      ).annotate({ identifier: "RedshiftConnectorProfileCredentials" });
     case 9:
       return S.suspend(() =>
         S.Struct({
@@ -2778,9 +2744,7 @@ function __c6(j: number): any {
           oAuth2GrantType: S.optional(S.String),
           jwtToken: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "SalesforceConnectorProfileCredentials",
-      });
+      ).annotate({ identifier: "SalesforceConnectorProfileCredentials" });
     case 10:
       return S.suspend(() =>
         S.Struct({
@@ -2798,9 +2762,7 @@ function __c6(j: number): any {
           password: S.optional(SensitiveString),
           oAuth2Credentials: S.optional(__S(202, __c6, 10)),
         }),
-      ).annotate({
-        identifier: "ServiceNowConnectorProfileCredentials",
-      });
+      ).annotate({ identifier: "ServiceNowConnectorProfileCredentials" });
     case 12:
       return S.suspend(() => S.Struct({ apiKey: SensitiveString })).annotate({
         identifier: "SingularConnectorProfileCredentials",
@@ -2812,9 +2774,7 @@ function __c6(j: number): any {
           password: S.optional(SensitiveString),
           privateKey: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "SnowflakeConnectorProfileCredentials",
-      });
+      ).annotate({ identifier: "SnowflakeConnectorProfileCredentials" });
     case 14:
       return S.suspend(() => S.Struct({ apiSecretKey: SensitiveString })).annotate({
         identifier: "TrendmicroConnectorProfileCredentials",
@@ -2824,54 +2784,36 @@ function __c6(j: number): any {
         identifier: "VeevaConnectorProfileCredentials",
       });
     case 16:
-      return S.suspend(() => S.Struct({ username: S.String, password: SensitiveString })).annotate({
-        identifier: "BasicAuthCredentials",
-      });
+      return S.suspend(() =>
+        S.Struct({
+          basicAuthCredentials: S.optional(__S(207, __c6, 15)),
+          oAuthCredentials: S.optional(__S(196, __c6, 4)),
+        }),
+      ).annotate({ identifier: "SAPODataConnectorProfileCredentials" });
     case 17:
-      return S.suspend(() =>
-        S.Struct({
-          clientId: S.String,
-          clientSecret: SensitiveString,
-          accessToken: S.optional(SensitiveString),
-          refreshToken: S.optional(SensitiveString),
-          oAuthRequest: S.optional(__S(195, __c6, 3)),
-        }),
-      ).annotate({ identifier: "OAuthCredentials" });
-    case 18:
-      return S.suspend(() =>
-        S.Struct({
-          basicAuthCredentials: S.optional(__S(208, __c6, 16)),
-          oAuthCredentials: S.optional(__S(209, __c6, 17)),
-        }),
-      ).annotate({
-        identifier: "SAPODataConnectorProfileCredentials",
-      });
-    case 19:
       return S.suspend(() =>
         S.Struct({ apiKey: SensitiveString, apiSecretKey: S.optional(SensitiveString) }),
       ).annotate({ identifier: "ApiKeyCredentials" });
-    case 20:
+    case 18:
       return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
-    case 21:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           customAuthenticationType: S.String,
-          credentialsMap: S.optional(__S(212, __c6, 20)),
+          credentialsMap: S.optional(__S(210, __c6, 18)),
         }),
       ).annotate({ identifier: "CustomAuthCredentials" });
-    case 22:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           authenticationType: S.String,
-          basic: S.optional(__S(208, __c6, 16)),
+          basic: S.optional(__S(207, __c6, 15)),
           oauth2: S.optional(__S(202, __c6, 10)),
-          apiKey: S.optional(__S(211, __c6, 19)),
-          custom: S.optional(__S(213, __c6, 21)),
+          apiKey: S.optional(__S(209, __c6, 17)),
+          custom: S.optional(__S(211, __c6, 19)),
         }),
-      ).annotate({
-        identifier: "CustomConnectorProfileCredentials",
-      });
-    case 23:
+      ).annotate({ identifier: "CustomConnectorProfileCredentials" });
+    case 21:
       return S.suspend(() =>
         S.Struct({
           accessToken: S.optional(SensitiveString),
@@ -2879,10 +2821,8 @@ function __c6(j: number): any {
           oAuthRequest: S.optional(__S(195, __c6, 3)),
           clientCredentialsArn: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "PardotConnectorProfileCredentials",
-      });
-    case 24:
+      ).annotate({ identifier: "PardotConnectorProfileCredentials" });
+    case 22:
       return S.suspend(() =>
         S.Struct({
           Amplitude: S.optional(__S(192, __c6, 0)),
@@ -2901,21 +2841,19 @@ function __c6(j: number): any {
           Trendmicro: S.optional(__S(206, __c6, 14)),
           Veeva: S.optional(__S(207, __c6, 15)),
           Zendesk: S.optional(__S(199, __c6, 7)),
-          SAPOData: S.optional(__S(210, __c6, 18)),
-          CustomConnector: S.optional(__S(214, __c6, 22)),
-          Pardot: S.optional(__S(215, __c6, 23)),
+          SAPOData: S.optional(__S(208, __c6, 16)),
+          CustomConnector: S.optional(__S(212, __c6, 20)),
+          Pardot: S.optional(__S(213, __c6, 21)),
         }),
-      ).annotate({
-        identifier: "ConnectorProfileCredentials",
-      });
-    case 25:
+      ).annotate({ identifier: "ConnectorProfileCredentials" });
+    case 23:
       return S.suspend(() =>
         S.Struct({
           connectorProfileProperties: __S(169, __c5, 9),
-          connectorProfileCredentials: S.optional(__S(216, __c6, 24)),
+          connectorProfileCredentials: S.optional(__S(214, __c6, 22)),
         }),
       ).annotate({ identifier: "ConnectorProfileConfig" });
-    case 26:
+    case 24:
       return S.suspend(() => S.Struct({ connectorProfileArn: S.optional(S.String) })).annotate({
         identifier: "CreateConnectorProfileResponse",
       });
@@ -2929,12 +2867,12 @@ function __c7(j: number): any {
           flowName: S.String,
           description: S.optional(S.String),
           kmsArn: S.optional(S.String),
-          triggerConfig: __S(354, __c11, 2),
-          sourceFlowConfig: __S(367, __c11, 15),
-          destinationFlowConfigList: __S(385, __c12, 1),
-          tasks: __S(389, __c12, 5),
-          tags: S.optional(__S(320, __c10, 0)),
-          metadataCatalogConfig: S.optional(__S(391, __c12, 7)),
+          triggerConfig: __S(322, __c10, 2),
+          sourceFlowConfig: __S(334, __c10, 14),
+          destinationFlowConfigList: __S(352, __c11, 0),
+          tasks: __S(356, __c11, 4),
+          tags: S.optional(__S(128, __c4, 0)),
+          metadataCatalogConfig: S.optional(__S(358, __c11, 6)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/create-flow" }), svc, auth, proto, ver, rules),
@@ -2959,12 +2897,6 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           scheduleExpression: S.String,
@@ -2976,38 +2908,32 @@ function __c11(j: number): any {
           firstExecutionFrom: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           flowErrorDeactivationThreshold: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "ScheduledTriggerProperties",
-      });
+      ).annotate({ identifier: "ScheduledTriggerProperties" });
     case 1:
-      return S.suspend(() => S.Struct({ Scheduled: S.optional(__S(352, __c11, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ Scheduled: S.optional(__S(320, __c10, 0)) })).annotate({
         identifier: "TriggerProperties",
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ triggerType: S.String, triggerProperties: S.optional(__S(353, __c11, 1)) }),
+        S.Struct({ triggerType: S.String, triggerProperties: S.optional(__S(321, __c10, 1)) }),
       ).annotate({ identifier: "TriggerConfig" });
     case 3:
       return S.suspend(() => S.Struct({ object: S.String })).annotate({
         identifier: "AmplitudeSourceProperties",
       });
     case 4:
-      return S.suspend(() => S.Struct({ object: S.String })).annotate({
-        identifier: "DatadogSourceProperties",
-      });
-    case 5:
       return S.suspend(() => S.Struct({ s3InputFileType: S.optional(S.String) })).annotate({
         identifier: "S3InputFormatConfig",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           bucketName: S.String,
           bucketPrefix: S.optional(S.String),
-          s3InputFormatConfig: S.optional(__S(357, __c11, 5)),
+          s3InputFormatConfig: S.optional(__S(324, __c10, 4)),
         }),
       ).annotate({ identifier: "S3SourceProperties" });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -3015,10 +2941,8 @@ function __c11(j: number): any {
           includeDeletedRecords: S.optional(S.Boolean),
           dataTransferApi: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SalesforceSourceProperties",
-      });
-    case 8:
+      ).annotate({ identifier: "SalesforceSourceProperties" });
+    case 7:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -3028,71 +2952,67 @@ function __c11(j: number): any {
           includeAllVersions: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "VeevaSourceProperties" });
-    case 9:
+    case 8:
       return S.suspend(() => S.Struct({ maxParallelism: S.Number })).annotate({
         identifier: "SAPODataParallelismConfig",
       });
-    case 10:
+    case 9:
       return S.suspend(() => S.Struct({ maxPageSize: S.Number })).annotate({
         identifier: "SAPODataPaginationConfig",
       });
-    case 11:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           objectPath: S.optional(S.String),
-          parallelismConfig: S.optional(__S(361, __c11, 9)),
-          paginationConfig: S.optional(__S(362, __c11, 10)),
+          parallelismConfig: S.optional(__S(328, __c10, 8)),
+          paginationConfig: S.optional(__S(329, __c10, 9)),
         }),
       ).annotate({ identifier: "SAPODataSourceProperties" });
-    case 12:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           entityName: S.String,
-          customProperties: S.optional(__S(96, __c3, 0)),
+          customProperties: S.optional(__S(128, __c4, 0)),
           dataTransferApi: S.optional(__S(288, __c9, 0)),
         }),
-      ).annotate({
-        identifier: "CustomConnectorSourceProperties",
-      });
-    case 13:
+      ).annotate({ identifier: "CustomConnectorSourceProperties" });
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          Amplitude: S.optional(__S(355, __c11, 3)),
-          Datadog: S.optional(__S(356, __c11, 4)),
-          Dynatrace: S.optional(__S(355, __c11, 3)),
-          GoogleAnalytics: S.optional(__S(355, __c11, 3)),
-          InforNexus: S.optional(__S(355, __c11, 3)),
-          Marketo: S.optional(__S(356, __c11, 4)),
-          S3: S.optional(__S(358, __c11, 6)),
-          Salesforce: S.optional(__S(359, __c11, 7)),
-          ServiceNow: S.optional(__S(355, __c11, 3)),
-          Singular: S.optional(__S(356, __c11, 4)),
-          Slack: S.optional(__S(356, __c11, 4)),
-          Trendmicro: S.optional(__S(355, __c11, 3)),
-          Veeva: S.optional(__S(360, __c11, 8)),
-          Zendesk: S.optional(__S(356, __c11, 4)),
-          SAPOData: S.optional(__S(363, __c11, 11)),
-          CustomConnector: S.optional(__S(364, __c11, 12)),
-          Pardot: S.optional(__S(356, __c11, 4)),
+          Amplitude: S.optional(__S(323, __c10, 3)),
+          Datadog: S.optional(__S(323, __c10, 3)),
+          Dynatrace: S.optional(__S(323, __c10, 3)),
+          GoogleAnalytics: S.optional(__S(323, __c10, 3)),
+          InforNexus: S.optional(__S(323, __c10, 3)),
+          Marketo: S.optional(__S(323, __c10, 3)),
+          S3: S.optional(__S(325, __c10, 5)),
+          Salesforce: S.optional(__S(326, __c10, 6)),
+          ServiceNow: S.optional(__S(323, __c10, 3)),
+          Singular: S.optional(__S(323, __c10, 3)),
+          Slack: S.optional(__S(323, __c10, 3)),
+          Trendmicro: S.optional(__S(323, __c10, 3)),
+          Veeva: S.optional(__S(327, __c10, 7)),
+          Zendesk: S.optional(__S(323, __c10, 3)),
+          SAPOData: S.optional(__S(330, __c10, 10)),
+          CustomConnector: S.optional(__S(331, __c10, 11)),
+          Pardot: S.optional(__S(323, __c10, 3)),
         }),
-      ).annotate({
-        identifier: "SourceConnectorProperties",
-      });
-    case 14:
+      ).annotate({ identifier: "SourceConnectorProperties" });
+    case 13:
       return S.suspend(() => S.Struct({ datetimeTypeFieldName: S.optional(S.String) })).annotate({
         identifier: "IncrementalPullConfig",
       });
-    case 15:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           connectorType: S.String,
           apiVersion: S.optional(S.String),
           connectorProfileName: S.optional(S.String),
-          sourceConnectorProperties: __S(365, __c11, 13),
-          incrementalPullConfig: S.optional(__S(366, __c11, 14)),
+          sourceConnectorProperties: __S(332, __c10, 12),
+          incrementalPullConfig: S.optional(__S(333, __c10, 13)),
         }),
       ).annotate({ identifier: "SourceFlowConfig" });
-    case 16:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           failOnFirstDestinationError: S.optional(S.Boolean),
@@ -3100,18 +3020,16 @@ function __c11(j: number): any {
           bucketName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ErrorHandlingConfig" });
-    case 17:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
           intermediateBucketName: S.String,
           bucketPrefix: S.optional(S.String),
-          errorHandlingConfig: S.optional(__S(368, __c11, 16)),
+          errorHandlingConfig: S.optional(__S(335, __c10, 15)),
         }),
-      ).annotate({
-        identifier: "RedshiftDestinationProperties",
-      });
-    case 18:
+      ).annotate({ identifier: "RedshiftDestinationProperties" });
+    case 17:
       return S.suspend(() =>
         S.Struct({
           prefixType: S.optional(S.String),
@@ -3119,148 +3037,128 @@ function __c11(j: number): any {
           pathPrefixHierarchy: S.optional(__S(256, __c8, 0)),
         }),
       ).annotate({ identifier: "PrefixConfig" });
-    case 19:
+    case 18:
       return S.suspend(() =>
         S.Struct({ aggregationType: S.optional(S.String), targetFileSize: S.optional(S.Number) }),
       ).annotate({ identifier: "AggregationConfig" });
-    case 20:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           fileType: S.optional(S.String),
-          prefixConfig: S.optional(__S(370, __c11, 18)),
-          aggregationConfig: S.optional(__S(371, __c11, 19)),
+          prefixConfig: S.optional(__S(337, __c10, 17)),
+          aggregationConfig: S.optional(__S(338, __c10, 18)),
           preserveSourceDataTyping: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "S3OutputFormatConfig" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          bucketName: S.String,
+          bucketPrefix: S.optional(S.String),
+          s3OutputFormatConfig: S.optional(__S(339, __c10, 19)),
+        }),
+      ).annotate({ identifier: "S3DestinationProperties" });
     case 21:
       return S.suspend(() =>
         S.Struct({
-          bucketName: S.String,
-          bucketPrefix: S.optional(S.String),
-          s3OutputFormatConfig: S.optional(__S(372, __c11, 20)),
-        }),
-      ).annotate({ identifier: "S3DestinationProperties" });
-    case 22:
-      return S.suspend(() =>
-        S.Struct({
           object: S.String,
           idFieldNames: S.optional(__S(32, __c1, 0)),
-          errorHandlingConfig: S.optional(__S(368, __c11, 16)),
+          errorHandlingConfig: S.optional(__S(335, __c10, 15)),
           writeOperationType: S.optional(S.String),
           dataTransferApi: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SalesforceDestinationProperties",
-      });
-    case 23:
+      ).annotate({ identifier: "SalesforceDestinationProperties" });
+    case 22:
       return S.suspend(() =>
-        S.Struct({ object: S.String, errorHandlingConfig: S.optional(__S(368, __c11, 16)) }),
-      ).annotate({
-        identifier: "EventBridgeDestinationProperties",
-      });
-    case 24:
+        S.Struct({ object: S.String, errorHandlingConfig: S.optional(__S(335, __c10, 15)) }),
+      ).annotate({ identifier: "EventBridgeDestinationProperties" });
+    case 23:
       return S.suspend(() =>
         S.Struct({
           fileType: S.optional(S.String),
-          prefixConfig: __S(370, __c11, 18),
-          aggregationConfig: S.optional(__S(371, __c11, 19)),
+          prefixConfig: __S(337, __c10, 17),
+          aggregationConfig: S.optional(__S(338, __c10, 18)),
         }),
-      ).annotate({
-        identifier: "UpsolverS3OutputFormatConfig",
-      });
-    case 25:
+      ).annotate({ identifier: "UpsolverS3OutputFormatConfig" });
+    case 24:
       return S.suspend(() =>
         S.Struct({
           bucketName: S.String,
           bucketPrefix: S.optional(S.String),
-          s3OutputFormatConfig: __S(376, __c11, 24),
+          s3OutputFormatConfig: __S(343, __c10, 23),
         }),
-      ).annotate({
-        identifier: "UpsolverDestinationProperties",
-      });
-    case 26:
+      ).annotate({ identifier: "UpsolverDestinationProperties" });
+    case 25:
       return S.suspend(() =>
         S.Struct({ domainName: S.String, objectTypeName: S.optional(S.String) }),
-      ).annotate({
-        identifier: "CustomerProfilesDestinationProperties",
-      });
-    case 27:
+      ).annotate({ identifier: "CustomerProfilesDestinationProperties" });
+    case 26:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
           idFieldNames: S.optional(__S(32, __c1, 0)),
-          errorHandlingConfig: S.optional(__S(368, __c11, 16)),
+          errorHandlingConfig: S.optional(__S(335, __c10, 15)),
           writeOperationType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ZendeskDestinationProperties",
-      });
-    case 28:
+      ).annotate({ identifier: "ZendeskDestinationProperties" });
+    case 27:
       return S.suspend(() =>
         S.Struct({
           entityName: S.String,
-          errorHandlingConfig: S.optional(__S(368, __c11, 16)),
+          errorHandlingConfig: S.optional(__S(335, __c10, 15)),
           writeOperationType: S.optional(S.String),
           idFieldNames: S.optional(__S(32, __c1, 0)),
-          customProperties: S.optional(__S(96, __c3, 0)),
+          customProperties: S.optional(__S(128, __c4, 0)),
         }),
-      ).annotate({
-        identifier: "CustomConnectorDestinationProperties",
-      });
-    case 29:
+      ).annotate({ identifier: "CustomConnectorDestinationProperties" });
+    case 28:
       return S.suspend(() =>
         S.Struct({ bucketPrefix: S.optional(S.String), bucketName: S.optional(S.String) }),
-      ).annotate({
-        identifier: "SuccessResponseHandlingConfig",
-      });
-    case 30:
+      ).annotate({ identifier: "SuccessResponseHandlingConfig" });
+    case 29:
       return S.suspend(() =>
         S.Struct({
           objectPath: S.String,
-          successResponseHandlingConfig: S.optional(__S(381, __c11, 29)),
+          successResponseHandlingConfig: S.optional(__S(348, __c10, 28)),
           idFieldNames: S.optional(__S(32, __c1, 0)),
-          errorHandlingConfig: S.optional(__S(368, __c11, 16)),
+          errorHandlingConfig: S.optional(__S(335, __c10, 15)),
           writeOperationType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SAPODataDestinationProperties",
-      });
-    case 31:
+      ).annotate({ identifier: "SAPODataDestinationProperties" });
+    case 30:
       return S.suspend(() =>
         S.Struct({
-          Redshift: S.optional(__S(369, __c11, 17)),
-          S3: S.optional(__S(373, __c11, 21)),
-          Salesforce: S.optional(__S(374, __c11, 22)),
-          Snowflake: S.optional(__S(369, __c11, 17)),
-          EventBridge: S.optional(__S(375, __c11, 23)),
-          LookoutMetrics: S.optional(__S(128, __c4, 0)),
-          Upsolver: S.optional(__S(377, __c11, 25)),
-          Honeycode: S.optional(__S(375, __c11, 23)),
-          CustomerProfiles: S.optional(__S(378, __c11, 26)),
-          Zendesk: S.optional(__S(379, __c11, 27)),
-          Marketo: S.optional(__S(375, __c11, 23)),
-          CustomConnector: S.optional(__S(380, __c11, 28)),
-          SAPOData: S.optional(__S(382, __c11, 30)),
+          Redshift: S.optional(__S(336, __c10, 16)),
+          S3: S.optional(__S(340, __c10, 20)),
+          Salesforce: S.optional(__S(341, __c10, 21)),
+          Snowflake: S.optional(__S(336, __c10, 16)),
+          EventBridge: S.optional(__S(342, __c10, 22)),
+          LookoutMetrics: S.optional(__S(96, __c3, 0)),
+          Upsolver: S.optional(__S(344, __c10, 24)),
+          Honeycode: S.optional(__S(342, __c10, 22)),
+          CustomerProfiles: S.optional(__S(345, __c10, 25)),
+          Zendesk: S.optional(__S(346, __c10, 26)),
+          Marketo: S.optional(__S(342, __c10, 22)),
+          CustomConnector: S.optional(__S(347, __c10, 27)),
+          SAPOData: S.optional(__S(349, __c10, 29)),
         }),
-      ).annotate({
-        identifier: "DestinationConnectorProperties",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+      ).annotate({ identifier: "DestinationConnectorProperties" });
+    case 31:
       return S.suspend(() =>
         S.Struct({
           connectorType: S.String,
           apiVersion: S.optional(S.String),
           connectorProfileName: S.optional(S.String),
-          destinationConnectorProperties: __S(383, __c11, 31),
+          destinationConnectorProperties: __S(350, __c10, 30),
         }),
       ).annotate({ identifier: "DestinationFlowConfig" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(351, __c10, 31));
     case 1:
-      return S.Array(__S(384, __c12, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           Amplitude: S.optional(S.String),
@@ -3282,31 +3180,31 @@ function __c12(j: number): any {
           Pardot: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectorOperator" });
-    case 3:
+    case 2:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           sourceFields: __S(32, __c1, 0),
-          connectorOperator: S.optional(__S(386, __c12, 2)),
+          connectorOperator: S.optional(__S(353, __c11, 1)),
           destinationField: S.optional(S.String),
           taskType: S.String,
-          taskProperties: S.optional(__S(387, __c12, 3)),
+          taskProperties: S.optional(__S(354, __c11, 2)),
         }),
       ).annotate({ identifier: "Task" });
+    case 4:
+      return S.Array(__S(355, __c11, 3));
     case 5:
-      return S.Array(__S(388, __c12, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({ roleArn: S.String, databaseName: S.String, tablePrefix: S.String }),
       ).annotate({ identifier: "GlueDataCatalogConfig" });
-    case 7:
+    case 6:
       return S.suspend(() =>
-        S.Struct({ glueDataCatalog: S.optional(__S(390, __c12, 6)) }),
+        S.Struct({ glueDataCatalog: S.optional(__S(357, __c11, 5)) }),
       ).annotate({ identifier: "MetadataCatalogConfig" });
   }
 }
-function __c13(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3314,7 +3212,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "CreateFlowResponse" });
   }
 }
-function __c14(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3328,20 +3226,10 @@ function __c14(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteConnectorProfileRequest",
-      });
+      ).annotate({ identifier: "DeleteConnectorProfileRequest" });
   }
 }
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteConnectorProfileResponse",
-      });
-  }
-}
-function __c16(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3351,7 +3239,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "DeleteFlowRequest" });
   }
 }
-function __c17(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3368,13 +3256,11 @@ function __c17(j: number): any {
       ).annotate({ identifier: "DescribeConnectorRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ connectorConfiguration: S.optional(__S(591, __c18, 15)) }),
-      ).annotate({
-        identifier: "DescribeConnectorResponse",
-      });
+        S.Struct({ connectorConfiguration: S.optional(__S(527, __c16, 15)) }),
+      ).annotate({ identifier: "DescribeConnectorResponse" });
   }
 }
-function __c18(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ oAuthScopes: S.optional(__S(32, __c1, 0)) })).annotate({
@@ -3395,28 +3281,28 @@ function __c18(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Amplitude: S.optional(__S(480, __c15, 0)),
-          Datadog: S.optional(__S(480, __c15, 0)),
-          Dynatrace: S.optional(__S(480, __c15, 0)),
-          GoogleAnalytics: S.optional(__S(576, __c18, 0)),
-          InforNexus: S.optional(__S(480, __c15, 0)),
-          Marketo: S.optional(__S(480, __c15, 0)),
-          Redshift: S.optional(__S(480, __c15, 0)),
-          S3: S.optional(__S(480, __c15, 0)),
-          Salesforce: S.optional(__S(577, __c18, 1)),
-          ServiceNow: S.optional(__S(480, __c15, 0)),
-          Singular: S.optional(__S(480, __c15, 0)),
-          Slack: S.optional(__S(576, __c18, 0)),
-          Snowflake: S.optional(__S(578, __c18, 2)),
-          Trendmicro: S.optional(__S(480, __c15, 0)),
-          Veeva: S.optional(__S(480, __c15, 0)),
-          Zendesk: S.optional(__S(576, __c18, 0)),
-          EventBridge: S.optional(__S(480, __c15, 0)),
-          Upsolver: S.optional(__S(480, __c15, 0)),
-          CustomerProfiles: S.optional(__S(480, __c15, 0)),
-          Honeycode: S.optional(__S(576, __c18, 0)),
-          SAPOData: S.optional(__S(480, __c15, 0)),
-          Pardot: S.optional(__S(480, __c15, 0)),
+          Amplitude: S.optional(__S(96, __c3, 0)),
+          Datadog: S.optional(__S(96, __c3, 0)),
+          Dynatrace: S.optional(__S(96, __c3, 0)),
+          GoogleAnalytics: S.optional(__S(512, __c16, 0)),
+          InforNexus: S.optional(__S(96, __c3, 0)),
+          Marketo: S.optional(__S(96, __c3, 0)),
+          Redshift: S.optional(__S(96, __c3, 0)),
+          S3: S.optional(__S(96, __c3, 0)),
+          Salesforce: S.optional(__S(513, __c16, 1)),
+          ServiceNow: S.optional(__S(96, __c3, 0)),
+          Singular: S.optional(__S(96, __c3, 0)),
+          Slack: S.optional(__S(512, __c16, 0)),
+          Snowflake: S.optional(__S(514, __c16, 2)),
+          Trendmicro: S.optional(__S(96, __c3, 0)),
+          Veeva: S.optional(__S(96, __c3, 0)),
+          Zendesk: S.optional(__S(512, __c16, 0)),
+          EventBridge: S.optional(__S(96, __c3, 0)),
+          Upsolver: S.optional(__S(96, __c3, 0)),
+          CustomerProfiles: S.optional(__S(96, __c3, 0)),
+          Honeycode: S.optional(__S(512, __c16, 0)),
+          SAPOData: S.optional(__S(96, __c3, 0)),
+          Pardot: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({ identifier: "ConnectorMetadata" });
     case 4:
@@ -3432,7 +3318,7 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "OAuth2CustomParameter" });
     case 5:
-      return S.Array(__S(580, __c18, 4));
+      return S.Array(__S(516, __c16, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3440,7 +3326,7 @@ function __c18(j: number): any {
           tokenUrls: S.optional(__S(32, __c1, 0)),
           authCodeUrls: S.optional(__S(32, __c1, 0)),
           oauth2GrantTypesSupported: S.optional(__S(256, __c8, 0)),
-          oauth2CustomProperties: S.optional(__S(581, __c18, 5)),
+          oauth2CustomProperties: S.optional(__S(517, __c16, 5)),
         }),
       ).annotate({ identifier: "OAuth2Defaults" });
     case 7:
@@ -3455,16 +3341,16 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "AuthParameter" });
     case 8:
-      return S.Array(__S(583, __c18, 7));
+      return S.Array(__S(519, __c16, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
           customAuthenticationType: S.optional(S.String),
-          authParameters: S.optional(__S(584, __c18, 8)),
+          authParameters: S.optional(__S(520, __c16, 8)),
         }),
       ).annotate({ identifier: "CustomAuthConfig" });
     case 10:
-      return S.Array(__S(585, __c18, 9));
+      return S.Array(__S(521, __c16, 9));
     case 11:
       return S.suspend(() =>
         S.Struct({
@@ -3472,8 +3358,8 @@ function __c18(j: number): any {
           isApiKeyAuthSupported: S.optional(S.Boolean),
           isOAuth2Supported: S.optional(S.Boolean),
           isCustomAuthSupported: S.optional(S.Boolean),
-          oAuth2Defaults: S.optional(__S(582, __c18, 6)),
-          customAuthConfigs: S.optional(__S(586, __c18, 10)),
+          oAuth2Defaults: S.optional(__S(518, __c16, 6)),
+          customAuthConfigs: S.optional(__S(522, __c16, 10)),
         }),
       ).annotate({ identifier: "AuthenticationConfig" });
     case 12:
@@ -3489,7 +3375,7 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "ConnectorRuntimeSetting" });
     case 13:
-      return S.Array(__S(588, __c18, 12));
+      return S.Array(__S(524, __c16, 12));
     case 14:
       return S.Array(__S(288, __c9, 0));
     case 15:
@@ -3502,7 +3388,7 @@ function __c18(j: number): any {
           isPrivateLinkEnabled: S.optional(S.Boolean),
           isPrivateLinkEndpointUrlRequired: S.optional(S.Boolean),
           supportedTriggerTypes: S.optional(__S(256, __c8, 0)),
-          connectorMetadata: S.optional(__S(579, __c18, 3)),
+          connectorMetadata: S.optional(__S(515, __c16, 3)),
           connectorType: S.optional(S.String),
           connectorLabel: S.optional(S.String),
           connectorDescription: S.optional(S.String),
@@ -3511,35 +3397,35 @@ function __c18(j: number): any {
           connectorVersion: S.optional(S.String),
           connectorArn: S.optional(S.String),
           connectorModes: S.optional(__S(32, __c1, 0)),
-          authenticationConfig: S.optional(__S(587, __c18, 11)),
-          connectorRuntimeSettings: S.optional(__S(589, __c18, 13)),
+          authenticationConfig: S.optional(__S(523, __c16, 11)),
+          connectorRuntimeSettings: S.optional(__S(525, __c16, 13)),
           supportedApiVersions: S.optional(__S(32, __c1, 0)),
           supportedOperators: S.optional(__S(256, __c8, 0)),
           supportedWriteOperations: S.optional(__S(256, __c8, 0)),
           connectorProvisioningType: S.optional(S.String),
-          connectorProvisioningConfig: S.optional(__S(609, __c19, 1)),
+          connectorProvisioningConfig: S.optional(__S(545, __c17, 1)),
           logoURL: S.optional(S.String),
           registeredAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           registeredBy: S.optional(S.String),
           supportedDataTransferTypes: S.optional(__S(256, __c8, 0)),
-          supportedDataTransferApis: S.optional(__S(590, __c18, 14)),
+          supportedDataTransferApis: S.optional(__S(526, __c16, 14)),
         }),
       ).annotate({ identifier: "ConnectorConfiguration" });
   }
 }
-function __c19(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ lambdaArn: S.String })).annotate({
         identifier: "LambdaConnectorProvisioningConfig",
       });
     case 1:
-      return S.suspend(() => S.Struct({ lambda: S.optional(__S(608, __c19, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ lambda: S.optional(__S(544, __c17, 0)) })).annotate({
         identifier: "ConnectorProvisioningConfig",
       });
   }
 }
-function __c20(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3558,9 +3444,7 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeConnectorEntityRequest",
-      });
+      ).annotate({ identifier: "DescribeConnectorEntityRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ maximum: S.optional(S.Number), minimum: S.optional(S.Number) }),
@@ -3573,12 +3457,12 @@ function __c20(j: number): any {
           supportedValues: S.optional(__S(32, __c1, 0)),
           valueRegexPattern: S.optional(S.String),
           supportedDateFormat: S.optional(S.String),
-          fieldValueRange: S.optional(__S(641, __c20, 1)),
-          fieldLengthRange: S.optional(__S(641, __c20, 1)),
+          fieldValueRange: S.optional(__S(577, __c18, 1)),
+          fieldLengthRange: S.optional(__S(577, __c18, 1)),
         }),
       ).annotate({ identifier: "FieldTypeDetails" });
     case 3:
-      return S.suspend(() => S.Struct({ v1: __S(642, __c20, 2) })).annotate({
+      return S.suspend(() => S.Struct({ v1: __S(578, __c18, 2) })).annotate({
         identifier: "SupportedFieldTypeDetails",
       });
     case 4:
@@ -3599,9 +3483,7 @@ function __c20(j: number): any {
           isDefaultedOnCreate: S.optional(S.Boolean),
           supportedWriteOperations: S.optional(__S(256, __c8, 0)),
         }),
-      ).annotate({
-        identifier: "DestinationFieldProperties",
-      });
+      ).annotate({ identifier: "DestinationFieldProperties" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3611,22 +3493,22 @@ function __c20(j: number): any {
           isPrimaryKey: S.optional(S.Boolean),
           defaultValue: S.optional(S.String),
           isDeprecated: S.optional(S.Boolean),
-          supportedFieldTypeDetails: S.optional(__S(643, __c20, 3)),
+          supportedFieldTypeDetails: S.optional(__S(579, __c18, 3)),
           description: S.optional(S.String),
-          sourceProperties: S.optional(__S(644, __c20, 4)),
-          destinationProperties: S.optional(__S(645, __c20, 5)),
-          customProperties: S.optional(__S(96, __c3, 0)),
+          sourceProperties: S.optional(__S(580, __c18, 4)),
+          destinationProperties: S.optional(__S(581, __c18, 5)),
+          customProperties: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({ identifier: "ConnectorEntityField" });
     case 7:
-      return S.Array(__S(646, __c20, 6));
+      return S.Array(__S(582, __c18, 6));
     case 8:
-      return S.suspend(() => S.Struct({ connectorEntityFields: __S(647, __c20, 7) })).annotate({
+      return S.suspend(() => S.Struct({ connectorEntityFields: __S(583, __c18, 7) })).annotate({
         identifier: "DescribeConnectorEntityResponse",
       });
   }
 }
-function __c21(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3646,9 +3528,7 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeConnectorProfilesRequest",
-      });
+      ).annotate({ identifier: "DescribeConnectorProfilesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3656,9 +3536,7 @@ function __c21(j: number): any {
           failureMessage: S.optional(S.String),
           failureCause: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "PrivateConnectionProvisioningState",
-      });
+      ).annotate({ identifier: "PrivateConnectionProvisioningState" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3671,23 +3549,21 @@ function __c21(j: number): any {
           connectorProfileProperties: S.optional(__S(169, __c5, 9)),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          privateConnectionProvisioningState: S.optional(__S(673, __c21, 1)),
+          privateConnectionProvisioningState: S.optional(__S(609, __c19, 1)),
         }),
       ).annotate({ identifier: "ConnectorProfile" });
     case 3:
-      return S.Array(__S(674, __c21, 2));
+      return S.Array(__S(610, __c19, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          connectorProfileDetails: S.optional(__S(675, __c21, 3)),
+          connectorProfileDetails: S.optional(__S(611, __c19, 3)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeConnectorProfilesResponse",
-      });
+      ).annotate({ identifier: "DescribeConnectorProfilesResponse" });
   }
 }
-function __c22(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3705,24 +3581,20 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeConnectorsRequest",
-      });
+      ).annotate({ identifier: "DescribeConnectorsRequest" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(591, __c18, 15).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(527, __c16, 15).pipe(S.optional));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          connectorConfigurations: S.optional(__S(705, __c22, 1)),
-          connectors: S.optional(__S(737, __c23, 1)),
+          connectorConfigurations: S.optional(__S(641, __c20, 1)),
+          connectors: S.optional(__S(673, __c21, 1)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeConnectorsResponse",
-      });
+      ).annotate({ identifier: "DescribeConnectorsResponse" });
   }
 }
-function __c23(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3742,10 +3614,10 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "ConnectorDetail" });
     case 1:
-      return S.Array(__S(736, __c23, 0));
+      return S.Array(__S(672, __c21, 0));
   }
 }
-function __c24(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3762,24 +3634,24 @@ function __c24(j: number): any {
           kmsArn: S.optional(S.String),
           flowStatus: S.optional(S.String),
           flowStatusMessage: S.optional(S.String),
-          sourceFlowConfig: S.optional(__S(367, __c11, 15)),
-          destinationFlowConfigList: S.optional(__S(385, __c12, 1)),
-          lastRunExecutionDetails: S.optional(__S(832, __c26, 0)),
-          triggerConfig: S.optional(__S(354, __c11, 2)),
-          tasks: S.optional(__S(389, __c12, 5)),
+          sourceFlowConfig: S.optional(__S(334, __c10, 14)),
+          destinationFlowConfigList: S.optional(__S(352, __c11, 0)),
+          lastRunExecutionDetails: S.optional(__S(768, __c24, 0)),
+          triggerConfig: S.optional(__S(322, __c10, 2)),
+          tasks: S.optional(__S(356, __c11, 4)),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           createdBy: S.optional(S.String),
           lastUpdatedBy: S.optional(S.String),
-          tags: S.optional(__S(320, __c10, 0)),
-          metadataCatalogConfig: S.optional(__S(391, __c12, 7)),
-          lastRunMetadataCatalogDetails: S.optional(__S(802, __c25, 2)),
+          tags: S.optional(__S(128, __c4, 0)),
+          metadataCatalogConfig: S.optional(__S(358, __c11, 6)),
+          lastRunMetadataCatalogDetails: S.optional(__S(738, __c23, 2)),
           schemaVersion: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DescribeFlowResponse" });
   }
 }
-function __c25(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3794,15 +3666,15 @@ function __c25(j: number): any {
         S.Struct({
           catalogType: S.optional(S.String),
           tableName: S.optional(S.String),
-          tableRegistrationOutput: S.optional(__S(800, __c25, 0)),
-          partitionRegistrationOutput: S.optional(__S(800, __c25, 0)),
+          tableRegistrationOutput: S.optional(__S(736, __c23, 0)),
+          partitionRegistrationOutput: S.optional(__S(736, __c23, 0)),
         }),
       ).annotate({ identifier: "MetadataCatalogDetail" });
     case 2:
-      return S.Array(__S(801, __c25, 1));
+      return S.Array(__S(737, __c23, 1));
   }
 }
-function __c26(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3814,7 +3686,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "ExecutionDetails" });
   }
 }
-function __c27(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3832,9 +3704,7 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeFlowExecutionRecordsRequest",
-      });
+      ).annotate({ identifier: "DescribeFlowExecutionRecordsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3845,7 +3715,7 @@ function __c27(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          errorInfo: S.optional(__S(865, __c27, 1)),
+          errorInfo: S.optional(__S(801, __c25, 1)),
           bytesProcessed: S.optional(S.Number),
           bytesWritten: S.optional(S.Number),
           recordsProcessed: S.optional(S.Number),
@@ -3858,28 +3728,26 @@ function __c27(j: number): any {
         S.Struct({
           executionId: S.optional(S.String),
           executionStatus: S.optional(S.String),
-          executionResult: S.optional(__S(866, __c27, 2)),
+          executionResult: S.optional(__S(802, __c25, 2)),
           startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           dataPullStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           dataPullEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          metadataCatalogDetails: S.optional(__S(802, __c25, 2)),
+          metadataCatalogDetails: S.optional(__S(738, __c23, 2)),
         }),
       ).annotate({ identifier: "ExecutionRecord" });
     case 4:
-      return S.Array(__S(867, __c27, 3));
+      return S.Array(__S(803, __c25, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          flowExecutions: S.optional(__S(868, __c27, 4)),
+          flowExecutions: S.optional(__S(804, __c25, 4)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeFlowExecutionRecordsResponse",
-      });
+      ).annotate({ identifier: "DescribeFlowExecutionRecordsResponse" });
   }
 }
-function __c28(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3900,9 +3768,7 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListConnectorEntitiesRequest",
-      });
+      ).annotate({ identifier: "ListConnectorEntitiesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3912,18 +3778,16 @@ function __c28(j: number): any {
         }),
       ).annotate({ identifier: "ConnectorEntity" });
     case 2:
-      return S.Array(__S(897, __c28, 1));
+      return S.Array(__S(833, __c26, 1));
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(898, __c28, 2).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(834, __c26, 2).pipe(S.optional));
     case 4:
       return S.suspend(() =>
-        S.Struct({ connectorEntityMap: __S(899, __c28, 3), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListConnectorEntitiesResponse",
-      });
+        S.Struct({ connectorEntityMap: __S(835, __c26, 3), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListConnectorEntitiesResponse" });
   }
 }
-function __c29(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3933,11 +3797,11 @@ function __c29(j: number): any {
       ).annotate({ identifier: "ListConnectorsRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ connectors: S.optional(__S(737, __c23, 1)), nextToken: S.optional(S.String) }),
+        S.Struct({ connectors: S.optional(__S(673, __c21, 1)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListConnectorsResponse" });
   }
 }
-function __c30(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3961,19 +3825,19 @@ function __c30(j: number): any {
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           createdBy: S.optional(S.String),
           lastUpdatedBy: S.optional(S.String),
-          tags: S.optional(__S(320, __c10, 0)),
-          lastRunExecutionDetails: S.optional(__S(832, __c26, 0)),
+          tags: S.optional(__S(128, __c4, 0)),
+          lastRunExecutionDetails: S.optional(__S(768, __c24, 0)),
         }),
       ).annotate({ identifier: "FlowDefinition" });
     case 2:
-      return S.Array(__S(961, __c30, 1));
+      return S.Array(__S(897, __c28, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ flows: S.optional(__S(962, __c30, 2)), nextToken: S.optional(S.String) }),
+        S.Struct({ flows: S.optional(__S(898, __c28, 2)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListFlowsResponse" });
   }
 }
-function __c31(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3987,16 +3851,14 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(320, __c10, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(128, __c4, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c32(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4004,7 +3866,7 @@ function __c32(j: number): any {
           connectorLabel: S.optional(S.String),
           description: S.optional(S.String),
           connectorProvisioningType: S.optional(S.String),
-          connectorProvisioningConfig: S.optional(__S(609, __c19, 1)),
+          connectorProvisioningConfig: S.optional(__S(545, __c17, 1)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -4019,7 +3881,7 @@ function __c32(j: number): any {
       ).annotate({ identifier: "RegisterConnectorRequest" });
   }
 }
-function __c33(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ connectorArn: S.optional(S.String) })).annotate({
@@ -4027,7 +3889,7 @@ function __c33(j: number): any {
       });
   }
 }
-function __c34(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4047,12 +3909,10 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ResetConnectorMetadataCacheRequest",
-      });
+      ).annotate({ identifier: "ResetConnectorMetadataCacheRequest" });
   }
 }
-function __c35(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4073,7 +3933,7 @@ function __c35(j: number): any {
       ).annotate({ identifier: "StartFlowResponse" });
   }
 }
-function __c36(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4083,13 +3943,13 @@ function __c36(j: number): any {
       ).annotate({ identifier: "StopFlowRequest" });
   }
 }
-function __c37(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(320, __c10, 0),
+          tags: __S(128, __c4, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -4103,7 +3963,7 @@ function __c37(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c38(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4117,12 +3977,10 @@ function __c38(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UnregisterConnectorRequest",
-      });
+      ).annotate({ identifier: "UnregisterConnectorRequest" });
   }
 }
-function __c39(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4142,14 +4000,14 @@ function __c39(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c40(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           connectorProfileName: S.String,
           connectionMode: S.String,
-          connectorProfileConfig: __S(217, __c6, 25),
+          connectorProfileConfig: __S(215, __c6, 23),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -4161,19 +4019,17 @@ function __c40(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateConnectorProfileRequest",
-      });
+      ).annotate({ identifier: "UpdateConnectorProfileRequest" });
   }
 }
-function __c41(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           connectorLabel: S.String,
           description: S.optional(S.String),
-          connectorProvisioningConfig: S.optional(__S(609, __c19, 1)),
+          connectorProvisioningConfig: S.optional(__S(545, __c17, 1)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -4185,23 +4041,21 @@ function __c41(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateConnectorRegistrationRequest",
-      });
+      ).annotate({ identifier: "UpdateConnectorRegistrationRequest" });
   }
 }
-function __c42(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           flowName: S.String,
           description: S.optional(S.String),
-          triggerConfig: __S(354, __c11, 2),
-          sourceFlowConfig: __S(367, __c11, 15),
-          destinationFlowConfigList: __S(385, __c12, 1),
-          tasks: __S(389, __c12, 5),
-          metadataCatalogConfig: S.optional(__S(391, __c12, 7)),
+          triggerConfig: __S(322, __c10, 2),
+          sourceFlowConfig: __S(334, __c10, 14),
+          destinationFlowConfigList: __S(352, __c11, 0),
+          tasks: __S(356, __c11, 4),
+          metadataCatalogConfig: S.optional(__S(358, __c11, 6)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/update-flow" }), svc, auth, proto, ver, rules),

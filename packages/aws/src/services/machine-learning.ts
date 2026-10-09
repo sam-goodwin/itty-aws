@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -817,8 +817,8 @@ export const createDataSourceFromRDS: API.OperationMethod<
   CreateDataSourceFromRDSError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateDataSourceFromRDSInput>,
-  output: __S(8, __c1, 0) as any as S.Schema<CreateDataSourceFromRDSOutput>,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateDataSourceFromRDSInput>,
+  output: __S(16, __c2, 0) as any as S.Schema<CreateDataSourceFromRDSOutput>,
   errors: [IdempotentParameterMismatchException, InternalServerException, InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -868,8 +868,8 @@ export const createDataSourceFromRedshift: API.OperationMethod<
   CreateDataSourceFromRedshiftError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<CreateDataSourceFromRedshiftInput>,
-  output: __S(8, __c1, 0) as any as S.Schema<CreateDataSourceFromRedshiftOutput>,
+  input: __S(41, __c5, 1) as any as S.Schema<CreateDataSourceFromRedshiftInput>,
+  output: __S(16, __c2, 0) as any as S.Schema<CreateDataSourceFromRedshiftOutput>,
   errors: [IdempotentParameterMismatchException, InternalServerException, InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -920,8 +920,8 @@ export const createDataSourceFromS3: API.OperationMethod<
   CreateDataSourceFromS3Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<CreateDataSourceFromS3Input>,
-  output: __S(8, __c1, 0) as any as S.Schema<CreateDataSourceFromS3Output>,
+  input: __S(57, __c7, 1) as any as S.Schema<CreateDataSourceFromS3Input>,
+  output: __S(16, __c2, 0) as any as S.Schema<CreateDataSourceFromS3Output>,
   errors: [IdempotentParameterMismatchException, InternalServerException, InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -951,8 +951,8 @@ export const createEvaluation: API.OperationMethod<
   CreateEvaluationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<CreateEvaluationInput>,
-  output: __S(64, __c8, 0) as any as S.Schema<CreateEvaluationOutput>,
+  input: __S(64, __c8, 0) as any as S.Schema<CreateEvaluationInput>,
+  output: __S(72, __c9, 0) as any as S.Schema<CreateEvaluationOutput>,
   errors: [IdempotentParameterMismatchException, InternalServerException, InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -992,8 +992,8 @@ export const createMLModel: API.OperationMethod<
   CreateMLModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<CreateMLModelInput>,
-  output: __S(80, __c10, 0) as any as S.Schema<CreateMLModelOutput>,
+  input: __S(80, __c10, 0) as any as S.Schema<CreateMLModelInput>,
+  output: __S(88, __c11, 0) as any as S.Schema<CreateMLModelOutput>,
   errors: [IdempotentParameterMismatchException, InternalServerException, InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1014,8 +1014,8 @@ export const createRealtimeEndpoint: API.OperationMethod<
   CreateRealtimeEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<CreateRealtimeEndpointInput>,
-  output: __S(104, __c13, 0) as any as S.Schema<CreateRealtimeEndpointOutput>,
+  input: __S(104, __c13, 0) as any as S.Schema<CreateRealtimeEndpointInput>,
+  output: __S(112, __c14, 0) as any as S.Schema<CreateRealtimeEndpointOutput>,
   errors: [InternalServerException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1041,7 +1041,7 @@ export const deleteBatchPrediction: API.OperationMethod<
   DeleteBatchPredictionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<DeleteBatchPredictionInput>,
+  input: __S(128, __c16, 0) as any as S.Schema<DeleteBatchPredictionInput>,
   output: __S(336, __c42, 0) as any as S.Schema<DeleteBatchPredictionOutput>,
   errors: [InternalServerException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
@@ -1067,8 +1067,8 @@ export const deleteDataSource: API.OperationMethod<
   DeleteDataSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<DeleteDataSourceInput>,
-  output: __S(136, __c17, 0) as any as S.Schema<DeleteDataSourceOutput>,
+  input: __S(136, __c17, 0) as any as S.Schema<DeleteDataSourceInput>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteDataSourceOutput>,
   errors: [InternalServerException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1095,7 +1095,7 @@ export const deleteEvaluation: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(144, __c18, 0) as any as S.Schema<DeleteEvaluationInput>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeleteEvaluationOutput>,
+  output: __S(72, __c9, 0) as any as S.Schema<DeleteEvaluationOutput>,
   errors: [InternalServerException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1122,7 +1122,7 @@ export const deleteMLModel: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(152, __c19, 0) as any as S.Schema<DeleteMLModelInput>,
-  output: __S(80, __c10, 0) as any as S.Schema<DeleteMLModelOutput>,
+  output: __S(88, __c11, 0) as any as S.Schema<DeleteMLModelOutput>,
   errors: [InternalServerException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1144,7 +1144,7 @@ export const deleteRealtimeEndpoint: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(160, __c20, 0) as any as S.Schema<DeleteRealtimeEndpointInput>,
-  output: __S(104, __c13, 0) as any as S.Schema<DeleteRealtimeEndpointOutput>,
+  output: __S(112, __c14, 0) as any as S.Schema<DeleteRealtimeEndpointOutput>,
   errors: [InternalServerException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1425,8 +1425,8 @@ export const predict: API.OperationMethod<
   PredictError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265, __c33, 1) as any as S.Schema<PredictInput>,
-  output: __S(269, __c33, 5) as any as S.Schema<PredictOutput>,
+  input: __S(264, __c33, 0) as any as S.Schema<PredictInput>,
+  output: __S(268, __c33, 4) as any as S.Schema<PredictOutput>,
   errors: [
     InternalServerException,
     InvalidInputException,
@@ -1480,7 +1480,7 @@ export const updateDataSource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(280, __c35, 0) as any as S.Schema<UpdateDataSourceInput>,
-  output: __S(136, __c17, 0) as any as S.Schema<UpdateDataSourceOutput>,
+  output: __S(16, __c2, 0) as any as S.Schema<UpdateDataSourceOutput>,
   errors: [InternalServerException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1504,7 +1504,7 @@ export const updateEvaluation: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(288, __c36, 0) as any as S.Schema<UpdateEvaluationInput>,
-  output: __S(64, __c8, 0) as any as S.Schema<UpdateEvaluationOutput>,
+  output: __S(72, __c9, 0) as any as S.Schema<UpdateEvaluationOutput>,
   errors: [InternalServerException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1528,7 +1528,7 @@ export const updateMLModel: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(296, __c37, 0) as any as S.Schema<UpdateMLModelInput>,
-  output: __S(80, __c10, 0) as any as S.Schema<UpdateMLModelOutput>,
+  output: __S(88, __c11, 0) as any as S.Schema<UpdateMLModelOutput>,
   errors: [InternalServerException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1539,15 +1539,11 @@ export const updateMLModel: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Username: S.String, Password: SensitiveString })).annotate({
-        identifier: "RDSDatabaseCredentials",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          DatabaseInformation: __S(24, __c3, 0),
+          DatabaseInformation: __S(32, __c4, 0),
           SelectSqlQuery: S.String,
-          DatabaseCredentials: __S(0, __c0, 0),
+          DatabaseCredentials: __S(8, __c1, 0),
           S3StagingLocation: S.String,
           DataRearrangement: S.optional(S.String),
           DataSchema: S.optional(S.String),
@@ -1555,24 +1551,30 @@ function __c0(j: number): any {
           ResourceRole: S.String,
           ServiceRole: S.String,
           SubnetId: S.String,
-          SecurityGroupIds: __S(16, __c2, 0),
+          SecurityGroupIds: __S(24, __c3, 0),
         }),
       ).annotate({ identifier: "RDSDataSpec" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DataSourceId: S.String,
           DataSourceName: S.optional(S.String),
-          RDSData: __S(1, __c0, 1),
+          RDSData: __S(0, __c0, 0),
           RoleARN: S.String,
           ComputeStatistics: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateDataSourceFromRDSInput",
-      });
+      ).annotate({ identifier: "CreateDataSourceFromRDSInput" });
   }
 }
 function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Username: S.String, Password: SensitiveString })).annotate({
+        identifier: "RDSDatabaseCredentials",
+      });
+  }
+}
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ DataSourceId: S.optional(S.String) }).pipe(ns)).annotate({
@@ -1580,13 +1582,13 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c3(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1594,39 +1596,33 @@ function __c3(j: number): any {
       ).annotate({ identifier: "RDSDatabase" });
   }
 }
-function __c4(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Username: S.String, Password: SensitiveString })).annotate({
-        identifier: "RedshiftDatabaseCredentials",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          DatabaseInformation: __S(40, __c5, 0),
+          DatabaseInformation: __S(48, __c6, 0),
           SelectSqlQuery: S.String,
-          DatabaseCredentials: __S(32, __c4, 0),
+          DatabaseCredentials: __S(8, __c1, 0),
           S3StagingLocation: S.String,
           DataRearrangement: S.optional(S.String),
           DataSchema: S.optional(S.String),
           DataSchemaUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "RedshiftDataSpec" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DataSourceId: S.String,
           DataSourceName: S.optional(S.String),
-          DataSpec: __S(33, __c4, 1),
+          DataSpec: __S(40, __c5, 0),
           RoleARN: S.String,
           ComputeStatistics: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateDataSourceFromRedshiftInput",
-      });
+      ).annotate({ identifier: "CreateDataSourceFromRedshiftInput" });
   }
 }
-function __c5(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1634,7 +1630,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "RedshiftDatabase" });
   }
 }
-function __c6(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1650,15 +1646,13 @@ function __c6(j: number): any {
         S.Struct({
           DataSourceId: S.String,
           DataSourceName: S.optional(S.String),
-          DataSpec: __S(48, __c6, 0),
+          DataSpec: __S(56, __c7, 0),
           ComputeStatistics: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateDataSourceFromS3Input",
-      });
+      ).annotate({ identifier: "CreateDataSourceFromS3Input" });
   }
 }
-function __c7(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1671,7 +1665,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "CreateEvaluationInput" });
   }
 }
-function __c8(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ EvaluationId: S.optional(S.String) }).pipe(ns)).annotate({
@@ -1679,7 +1673,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1687,7 +1681,7 @@ function __c9(j: number): any {
           MLModelId: S.String,
           MLModelName: S.optional(S.String),
           MLModelType: S.String,
-          Parameters: S.optional(__S(88, __c11, 0)),
+          Parameters: S.optional(__S(96, __c12, 0)),
           TrainingDataSourceId: S.String,
           Recipe: S.optional(S.String),
           RecipeUri: S.optional(S.String),
@@ -1695,7 +1689,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "CreateMLModelInput" });
   }
 }
-function __c10(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ MLModelId: S.optional(S.String) }).pipe(ns)).annotate({
@@ -1703,38 +1697,34 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ MLModelId: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "CreateRealtimeEndpointInput",
-      });
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
 function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          MLModelId: S.optional(S.String),
-          RealtimeEndpointInfo: S.optional(__S(112, __c14, 0)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "CreateRealtimeEndpointOutput",
-      });
+        S.Struct({ MLModelId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateRealtimeEndpointInput" });
   }
 }
 function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MLModelId: S.optional(S.String),
+          RealtimeEndpointInfo: S.optional(__S(120, __c15, 0)),
+        }).pipe(ns),
+      ).annotate({ identifier: "CreateRealtimeEndpointOutput" });
+  }
+}
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1747,19 +1737,17 @@ function __c14(j: number): any {
       ).annotate({ identifier: "RealtimeEndpointInfo" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ BatchPredictionId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteBatchPredictionInput",
-      });
+      ).annotate({ identifier: "DeleteBatchPredictionInput" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1767,14 +1755,6 @@ function __c16(j: number): any {
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteDataSourceInput" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ DataSourceId: S.optional(S.String) }).pipe(ns)).annotate({
-        identifier: "DeleteDataSourceOutput",
-      });
   }
 }
 function __c18(j: number): any {
@@ -1804,16 +1784,14 @@ function __c20(j: number): any {
         S.Struct({ MLModelId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteRealtimeEndpointInput",
-      });
+      ).annotate({ identifier: "DeleteRealtimeEndpointInput" });
   }
 }
 function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ TagKeys: __S(16, __c2, 0), ResourceId: S.String, ResourceType: S.String }).pipe(
+        S.Struct({ TagKeys: __S(24, __c3, 0), ResourceId: S.String, ResourceType: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteTagsInput" });
@@ -1836,9 +1814,7 @@ function __c22(j: number): any {
           NextToken: S.optional(S.String),
           Limit: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeBatchPredictionsInput",
-      });
+      ).annotate({ identifier: "DescribeBatchPredictionsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1867,9 +1843,7 @@ function __c22(j: number): any {
         S.Struct({ Results: S.optional(__S(178, __c22, 2)), NextToken: S.optional(S.String) }).pipe(
           ns,
         ),
-      ).annotate({
-        identifier: "DescribeBatchPredictionsOutput",
-      });
+      ).annotate({ identifier: "DescribeBatchPredictionsOutput" });
   }
 }
 function __c23(j: number): any {
@@ -1920,9 +1894,7 @@ function __c23(j: number): any {
         S.Struct({ Results: S.optional(__S(186, __c23, 2)), NextToken: S.optional(S.String) }).pipe(
           ns,
         ),
-      ).annotate({
-        identifier: "DescribeDataSourcesOutput",
-      });
+      ).annotate({ identifier: "DescribeDataSourcesOutput" });
   }
 }
 function __c24(j: number): any {
@@ -1930,7 +1902,7 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          RedshiftDatabase: S.optional(__S(40, __c5, 0)),
+          RedshiftDatabase: S.optional(__S(48, __c6, 0)),
           DatabaseUserName: S.optional(S.String),
           SelectSqlQuery: S.optional(S.String),
         }),
@@ -1938,7 +1910,7 @@ function __c24(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Database: S.optional(__S(24, __c3, 0)),
+          Database: S.optional(__S(32, __c4, 0)),
           DatabaseUserName: S.optional(S.String),
           SelectSqlQuery: S.optional(S.String),
           ResourceRole: S.optional(S.String),
@@ -1992,15 +1964,13 @@ function __c25(j: number): any {
         S.Struct({ Results: S.optional(__S(202, __c25, 2)), NextToken: S.optional(S.String) }).pipe(
           ns,
         ),
-      ).annotate({
-        identifier: "DescribeEvaluationsOutput",
-      });
+      ).annotate({ identifier: "DescribeEvaluationsOutput" });
   }
 }
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Properties: S.optional(__S(88, __c11, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ Properties: S.optional(__S(96, __c12, 0)) })).annotate({
         identifier: "PerformanceMetrics",
       });
   }
@@ -2034,8 +2004,8 @@ function __c27(j: number): any {
           Name: S.optional(S.String),
           Status: S.optional(S.String),
           SizeInBytes: S.optional(S.Number),
-          EndpointInfo: S.optional(__S(112, __c14, 0)),
-          TrainingParameters: S.optional(__S(88, __c11, 0)),
+          EndpointInfo: S.optional(__S(120, __c15, 0)),
+          TrainingParameters: S.optional(__S(96, __c12, 0)),
           InputDataLocationS3: S.optional(S.String),
           Algorithm: S.optional(S.String),
           MLModelType: S.optional(S.String),
@@ -2191,8 +2161,8 @@ function __c32(j: number): any {
           Name: S.optional(S.String),
           Status: S.optional(S.String),
           SizeInBytes: S.optional(S.Number),
-          EndpointInfo: S.optional(__S(112, __c14, 0)),
-          TrainingParameters: S.optional(__S(88, __c11, 0)),
+          EndpointInfo: S.optional(__S(120, __c15, 0)),
+          TrainingParameters: S.optional(__S(96, __c12, 0)),
           InputDataLocationS3: S.optional(S.String),
           MLModelType: S.optional(S.String),
           ScoreThreshold: S.optional(S.Number),
@@ -2211,31 +2181,29 @@ function __c32(j: number): any {
 function __c33(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 1:
       return S.suspend(() =>
         S.Struct({
           MLModelId: S.String,
-          Record: __S(264, __c33, 0),
+          Record: __S(96, __c12, 0),
           PredictEndpoint: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PredictInput" });
-    case 2:
+    case 1:
       return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
-    case 3:
+    case 2:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           predictedLabel: S.optional(S.String),
           predictedValue: S.optional(S.Number),
-          predictedScores: S.optional(__S(266, __c33, 2)),
-          details: S.optional(__S(267, __c33, 3)),
+          predictedScores: S.optional(__S(265, __c33, 1)),
+          details: S.optional(__S(266, __c33, 2)),
         }),
       ).annotate({ identifier: "Prediction" });
-    case 5:
+    case 4:
       return S.suspend(() =>
-        S.Struct({ Prediction: S.optional(__S(268, __c33, 4)) }).pipe(ns),
+        S.Struct({ Prediction: S.optional(__S(267, __c33, 3)) }).pipe(ns),
       ).annotate({ identifier: "PredictOutput" });
   }
 }
@@ -2246,9 +2214,7 @@ function __c34(j: number): any {
         S.Struct({ BatchPredictionId: S.String, BatchPredictionName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateBatchPredictionInput",
-      });
+      ).annotate({ identifier: "UpdateBatchPredictionInput" });
   }
 }
 function __c35(j: number): any {
@@ -2297,10 +2263,7 @@ function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          ResourceId: S.optional(S.String),
-          ResourceType: S.optional(S.String),
-        }).pipe(ns),
+        S.Struct({ ResourceId: S.optional(S.String), ResourceType: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "AddTagsOutput" });
   }
 }
@@ -2325,9 +2288,7 @@ function __c41(j: number): any {
           BatchPredictionDataSourceId: S.String,
           OutputUri: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateBatchPredictionInput",
-      });
+      ).annotate({ identifier: "CreateBatchPredictionInput" });
   }
 }
 function __c42(j: number): any {
@@ -2335,9 +2296,7 @@ function __c42(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ BatchPredictionId: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateBatchPredictionOutput",
-      });
+      ).annotate({ identifier: "CreateBatchPredictionOutput" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

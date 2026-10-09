@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -869,7 +869,7 @@ export const describeSafetyRule: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(48, __c12, 0) as any as S.Schema<DescribeSafetyRuleRequest>,
-  output: __S(49, __c12, 1) as any as S.Schema<DescribeSafetyRuleResponse>,
+  output: __S(12, __c3, 0) as any as S.Schema<DescribeSafetyRuleResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1371,9 +1371,7 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteClusterResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteClusterResponse" });
   }
 }
 function __c6(j: number): any {
@@ -1390,9 +1388,7 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteControlPanelRequest",
-      });
+      ).annotate({ identifier: "DeleteControlPanelRequest" });
   }
 }
 function __c7(j: number): any {
@@ -1409,9 +1405,7 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteRoutingControlRequest",
-      });
+      ).annotate({ identifier: "DeleteRoutingControlRequest" });
   }
 }
 function __c8(j: number): any {
@@ -1462,9 +1456,7 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeControlPanelRequest",
-      });
+      ).annotate({ identifier: "DescribeControlPanelRequest" });
   }
 }
 function __c11(j: number): any {
@@ -1481,9 +1473,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeRoutingControlRequest",
-      });
+      ).annotate({ identifier: "DescribeRoutingControlRequest" });
   }
 }
 function __c12(j: number): any {
@@ -1500,18 +1490,7 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeSafetyRuleRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          AssertionRule: S.optional(__S(9, __c2, 1)),
-          GatingRule: S.optional(__S(10, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "DescribeSafetyRuleResponse",
-      });
+      ).annotate({ identifier: "DescribeSafetyRuleRequest" });
   }
 }
 function __c13(j: number): any {
@@ -1556,18 +1535,14 @@ function __c14(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListAssociatedRoute53HealthChecksRequest",
-      });
+      ).annotate({ identifier: "ListAssociatedRoute53HealthChecksRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           HealthCheckIds: S.optional(__listOf__stringMax36PatternS),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListAssociatedRoute53HealthChecksResponse",
-      });
+      ).annotate({ identifier: "ListAssociatedRoute53HealthChecksResponse" });
   }
 }
 function __c15(j: number): any {
@@ -1607,9 +1582,7 @@ function __c16(j: number): any {
           ControlPanels: S.optional(__listOfControlPanel),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListControlPanelsResponse",
-      });
+      ).annotate({ identifier: "ListControlPanelsResponse" });
   }
 }
 function __c17(j: number): any {
@@ -1630,9 +1603,7 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListRoutingControlsRequest",
-      });
+      ).annotate({ identifier: "ListRoutingControlsRequest" });
     case 1:
       return S.Array(__S(136, __c34, 0));
     case 2:
@@ -1641,9 +1612,7 @@ function __c17(j: number): any {
           NextToken: S.optional(S.String),
           RoutingControls: S.optional(__listOfRoutingControl),
         }),
-      ).annotate({
-        identifier: "ListRoutingControlsResponse",
-      });
+      ).annotate({ identifier: "ListRoutingControlsResponse" });
   }
 }
 function __c18(j: number): any {
@@ -1691,15 +1660,11 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Tags: S.optional(__mapOf__stringMin0Max256PatternS) }),
-      ).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
+      ).annotate({ identifier: "ListTagsForResourceResponse" });
   }
 }
 function __c20(j: number): any {
@@ -1762,9 +1727,7 @@ function __c23(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/controlpanel" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateControlPanelRequest",
-      });
+      ).annotate({ identifier: "UpdateControlPanelRequest" });
   }
 }
 function __c24(j: number): any {
@@ -1777,9 +1740,7 @@ function __c24(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/routingcontrol" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateRoutingControlRequest",
-      });
+      ).annotate({ identifier: "UpdateRoutingControlRequest" });
   }
 }
 function __c25(j: number): any {
@@ -1861,9 +1822,7 @@ function __c30(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/controlpanel" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateControlPanelRequest",
-      });
+      ).annotate({ identifier: "CreateControlPanelRequest" });
   }
 }
 function __c31(j: number): any {
@@ -1902,9 +1861,7 @@ function __c33(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/routingcontrol" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateRoutingControlRequest",
-      });
+      ).annotate({ identifier: "CreateRoutingControlRequest" });
   }
 }
 function __c34(j: number): any {
@@ -1925,9 +1882,7 @@ function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ RoutingControl: S.optional(__S(136, __c34, 0)) })).annotate(
-        {
-          identifier: "CreateRoutingControlResponse",
-        },
+        { identifier: "CreateRoutingControlResponse" },
       );
   }
 }

@@ -1,9 +1,9 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
-import * as stream from "effect/Stream";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
+import type * as stream from "effect/Stream";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -13913,18 +13913,14 @@ function __c0(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetBucketVersioningRequest",
-      });
+      ).annotate({ identifier: "GetBucketVersioningRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String),
           MFADelete: S.optional(S.String).pipe(T.XmlName("MfaDelete")),
         }).pipe(T.all(T.XmlName("VersioningConfiguration"), ns)),
-      ).annotate({
-        identifier: "GetBucketVersioningOutput",
-      });
+      ).annotate({ identifier: "GetBucketVersioningOutput" });
   }
 }
 function __c1(j: number): any {
@@ -13971,9 +13967,7 @@ function __c2(j: number): any {
         identifier: "IndexDocument",
       });
     case 2:
-      return S.suspend(() => S.Struct({ Key: S.String })).annotate({
-        identifier: "ErrorDocument",
-      });
+      return S.suspend(() => S.Struct({ Key: S.String })).annotate({ identifier: "ErrorDocument" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -13997,9 +13991,9 @@ function __c2(j: number): any {
       ).annotate({ identifier: "RoutingRule" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ __S(37, __c2, 5).pipe(/*@__PURE__*/ T.XmlName("RoutingRule")).annotate({
-          identifier: "RoutingRule",
-        }),
+        /*@__PURE__*/ __S(37, __c2, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("RoutingRule"))
+          .annotate({ identifier: "RoutingRule" }),
       );
   }
 }
@@ -14225,9 +14219,7 @@ function __c5(j: number): any {
             }),
           ),
         ),
-      ).annotate({
-        identifier: "GetObjectAnnotationRequest",
-      });
+      ).annotate({ identifier: "GetObjectAnnotationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14255,9 +14247,7 @@ function __c5(j: number): any {
           RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
           ReplicationStatus: S.optional(S.String).pipe(T.HttpHeader("x-amz-replication-status")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetObjectAnnotationOutput",
-      });
+      ).annotate({ identifier: "GetObjectAnnotationOutput" });
   }
 }
 function __c6(j: number): any {
@@ -14297,9 +14287,7 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetObjectAttributesRequest",
-      });
+      ).annotate({ identifier: "GetObjectAttributesRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -14361,9 +14349,7 @@ function __c6(j: number): any {
           StorageClass: S.optional(S.String),
           ObjectSize: S.optional(S.Number),
         }).pipe(T.all(T.XmlName("GetObjectAttributesResponse"), ns)),
-      ).annotate({
-        identifier: "GetObjectAttributesOutput",
-      });
+      ).annotate({ identifier: "GetObjectAttributesOutput" });
   }
 }
 function __c7(j: number): any {
@@ -14389,9 +14375,7 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetObjectLegalHoldRequest",
-      });
+      ).annotate({ identifier: "GetObjectLegalHoldRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14430,9 +14414,7 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetObjectLockConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetObjectLockConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14440,9 +14422,7 @@ function __c9(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ObjectLockConfiguration" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetObjectLockConfigurationOutput",
-      });
+      ).annotate({ identifier: "GetObjectLockConfigurationOutput" });
   }
 }
 function __c10(j: number): any {
@@ -14497,9 +14477,7 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetObjectRetentionRequest",
-      });
+      ).annotate({ identifier: "GetObjectRetentionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14609,9 +14587,7 @@ function __c16(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetPublicAccessBlockRequest",
-      });
+      ).annotate({ identifier: "GetPublicAccessBlockRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14619,9 +14595,7 @@ function __c16(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "PublicAccessBlockConfiguration" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetPublicAccessBlockOutput",
-      });
+      ).annotate({ identifier: "GetPublicAccessBlockOutput" });
   }
 }
 function __c17(j: number): any {
@@ -14634,9 +14608,7 @@ function __c17(j: number): any {
           BlockPublicPolicy: S.optional(S.Boolean).pipe(T.XmlName("BlockPublicPolicy")),
           RestrictPublicBuckets: S.optional(S.Boolean).pipe(T.XmlName("RestrictPublicBuckets")),
         }),
-      ).annotate({
-        identifier: "PublicAccessBlockConfiguration",
-      });
+      ).annotate({ identifier: "PublicAccessBlockConfiguration" });
   }
 }
 function __c18(j: number): any {
@@ -14824,9 +14796,7 @@ function __c20(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "ListBucketAnalyticsConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListBucketAnalyticsConfigurationsRequest" });
     case 1:
       return S.Array(__S(1910, __c119, 6));
     case 2:
@@ -14840,9 +14810,7 @@ function __c20(j: number): any {
             T.XmlFlattened(),
           ),
         }).pipe(T.all(T.XmlName("ListBucketAnalyticsConfigurationResult"), ns)),
-      ).annotate({
-        identifier: "ListBucketAnalyticsConfigurationsOutput",
-      });
+      ).annotate({ identifier: "ListBucketAnalyticsConfigurationsOutput" });
   }
 }
 function __c21(j: number): any {
@@ -14870,9 +14838,7 @@ function __c21(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "ListBucketIntelligentTieringConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListBucketIntelligentTieringConfigurationsRequest" });
     case 1:
       return S.Array(__S(2004, __c125, 4));
     case 2:
@@ -14886,9 +14852,7 @@ function __c21(j: number): any {
             T.XmlFlattened(),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListBucketIntelligentTieringConfigurationsOutput",
-      });
+      ).annotate({ identifier: "ListBucketIntelligentTieringConfigurationsOutput" });
   }
 }
 function __c22(j: number): any {
@@ -14916,9 +14880,7 @@ function __c22(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "ListBucketInventoryConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListBucketInventoryConfigurationsRequest" });
     case 1:
       return S.Array(__S(2040, __c127, 8));
     case 2:
@@ -14932,9 +14894,7 @@ function __c22(j: number): any {
           IsTruncated: S.optional(S.Boolean),
           NextContinuationToken: S.optional(S.String),
         }).pipe(T.all(T.XmlName("ListInventoryConfigurationsResult"), ns)),
-      ).annotate({
-        identifier: "ListBucketInventoryConfigurationsOutput",
-      });
+      ).annotate({ identifier: "ListBucketInventoryConfigurationsOutput" });
   }
 }
 function __c23(j: number): any {
@@ -14962,9 +14922,7 @@ function __c23(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "ListBucketMetricsConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListBucketMetricsConfigurationsRequest" });
     case 1:
       return S.Array(__S(2194, __c137, 2));
     case 2:
@@ -14978,9 +14936,7 @@ function __c23(j: number): any {
             T.XmlFlattened(),
           ),
         }).pipe(T.all(T.XmlName("ListMetricsConfigurationsResult"), ns)),
-      ).annotate({
-        identifier: "ListBucketMetricsConfigurationsOutput",
-      });
+      ).annotate({ identifier: "ListBucketMetricsConfigurationsOutput" });
   }
 }
 function __c24(j: number): any {
@@ -15044,18 +15000,14 @@ function __c26(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "ListDirectoryBucketsRequest",
-      });
+      ).annotate({ identifier: "ListDirectoryBucketsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Buckets: S.optional(__S(400, __c25, 0)),
           ContinuationToken: S.optional(S.String),
         }).pipe(T.all(T.XmlName("ListAllMyDirectoryBucketsResult"), ns)),
-      ).annotate({
-        identifier: "ListDirectoryBucketsOutput",
-      });
+      ).annotate({ identifier: "ListDirectoryBucketsOutput" });
   }
 }
 function __c27(j: number): any {
@@ -15085,9 +15037,7 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListMultipartUploadsRequest",
-      });
+      ).annotate({ identifier: "ListMultipartUploadsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -15120,9 +15070,7 @@ function __c27(j: number): any {
           EncodingType: S.optional(S.String),
           RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
         }).pipe(T.all(T.XmlName("ListMultipartUploadsResult"), ns)),
-      ).annotate({
-        identifier: "ListMultipartUploadsOutput",
-      });
+      ).annotate({ identifier: "ListMultipartUploadsOutput" });
   }
 }
 function __c28(j: number): any {
@@ -15172,9 +15120,7 @@ function __c30(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListObjectAnnotationsRequest",
-      });
+      ).annotate({ identifier: "ListObjectAnnotationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -15188,9 +15134,9 @@ function __c30(j: number): any {
       ).annotate({ identifier: "AnnotationEntry" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(481, __c30, 1).pipe(/*@__PURE__*/ T.XmlName("AnnotationEntry")).annotate({
-          identifier: "AnnotationEntry",
-        }),
+        /*@__PURE__*/ __S(481, __c30, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("AnnotationEntry"))
+          .annotate({ identifier: "AnnotationEntry" }),
       );
     case 3:
       return S.suspend(() =>
@@ -15206,9 +15152,7 @@ function __c30(j: number): any {
           NextContinuationToken: S.optional(S.String),
           RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListObjectAnnotationsOutput",
-      });
+      ).annotate({ identifier: "ListObjectAnnotationsOutput" });
   }
 }
 function __c31(j: number): any {
@@ -15372,9 +15316,7 @@ function __c36(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListObjectVersionsRequest",
-      });
+      ).annotate({ identifier: "ListObjectVersionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -15523,9 +15465,9 @@ function __c38(j: number): any {
           ExpectedBucketOwner: S.optional(S.String).pipe(
             T.HttpHeader("x-amz-expected-bucket-owner"),
           ),
-          AbacStatus: __S(1792, __c112, 0).pipe(T.HttpPayload(), T.XmlName("AbacStatus")).annotate({
-            identifier: "AbacStatus",
-          }),
+          AbacStatus: __S(1792, __c112, 0)
+            .pipe(T.HttpPayload(), T.XmlName("AbacStatus"))
+            .annotate({ identifier: "AbacStatus" }),
         }).pipe(
           T.all(
             ns,
@@ -15577,9 +15519,7 @@ function __c39(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "PutBucketAccelerateConfigurationRequest",
-      });
+      ).annotate({ identifier: "PutBucketAccelerateConfigurationRequest" });
     case 2:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutBucketAccelerateConfigurationResponse",
@@ -15667,9 +15607,7 @@ function __c42(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "PutBucketAnalyticsConfigurationRequest",
-      });
+      ).annotate({ identifier: "PutBucketAnalyticsConfigurationRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutBucketAnalyticsConfigurationResponse",
@@ -15751,9 +15689,7 @@ function __c44(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "PutBucketEncryptionRequest",
-      });
+      ).annotate({ identifier: "PutBucketEncryptionRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutBucketEncryptionResponse",
@@ -15785,9 +15721,7 @@ function __c45(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "PutBucketIntelligentTieringConfigurationRequest",
-      });
+      ).annotate({ identifier: "PutBucketIntelligentTieringConfigurationRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutBucketIntelligentTieringConfigurationResponse",
@@ -15819,9 +15753,7 @@ function __c46(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "PutBucketInventoryConfigurationRequest",
-      });
+      ).annotate({ identifier: "PutBucketInventoryConfigurationRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutBucketInventoryConfigurationResponse",
@@ -15833,9 +15765,7 @@ function __c47(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ Rules: __S(2074, __c129, 10).pipe(T.XmlName("Rule"), T.XmlFlattened()) }),
-      ).annotate({
-        identifier: "BucketLifecycleConfiguration",
-      });
+      ).annotate({ identifier: "BucketLifecycleConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -15868,9 +15798,7 @@ function __c47(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "PutBucketLifecycleConfigurationRequest",
-      });
+      ).annotate({ identifier: "PutBucketLifecycleConfigurationRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -15878,9 +15806,7 @@ function __c47(j: number): any {
             T.HttpHeader("x-amz-transition-default-minimum-object-size"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "PutBucketLifecycleConfigurationOutput",
-      });
+      ).annotate({ identifier: "PutBucketLifecycleConfigurationOutput" });
   }
 }
 function __c48(j: number): any {
@@ -15951,9 +15877,7 @@ function __c49(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "PutBucketMetricsConfigurationRequest",
-      });
+      ).annotate({ identifier: "PutBucketMetricsConfigurationRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutBucketMetricsConfigurationResponse",
@@ -15987,9 +15911,7 @@ function __c50(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "PutBucketNotificationConfigurationRequest",
-      });
+      ).annotate({ identifier: "PutBucketNotificationConfigurationRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutBucketNotificationConfigurationResponse",
@@ -16028,9 +15950,7 @@ function __c51(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "PutBucketOwnershipControlsRequest",
-      });
+      ).annotate({ identifier: "PutBucketOwnershipControlsRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutBucketOwnershipControlsResponse",
@@ -16110,9 +16030,7 @@ function __c53(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "PutBucketReplicationRequest",
-      });
+      ).annotate({ identifier: "PutBucketReplicationRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutBucketReplicationResponse",
@@ -16155,9 +16073,7 @@ function __c54(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "PutBucketRequestPaymentRequest",
-      });
+      ).annotate({ identifier: "PutBucketRequestPaymentRequest" });
     case 2:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutBucketRequestPaymentResponse",
@@ -16174,9 +16090,9 @@ function __c55(j: number): any {
           ChecksumAlgorithm: S.optional(S.String).pipe(
             T.HttpHeader("x-amz-sdk-checksum-algorithm"),
           ),
-          Tagging: __S(896, __c56, 0).pipe(T.HttpPayload(), T.XmlName("Tagging")).annotate({
-            identifier: "Tagging",
-          }),
+          Tagging: __S(896, __c56, 0)
+            .pipe(T.HttpPayload(), T.XmlName("Tagging"))
+            .annotate({ identifier: "Tagging" }),
           ExpectedBucketOwner: S.optional(S.String).pipe(
             T.HttpHeader("x-amz-expected-bucket-owner"),
           ),
@@ -16251,9 +16167,7 @@ function __c57(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "PutBucketVersioningRequest",
-      });
+      ).annotate({ identifier: "PutBucketVersioningRequest" });
     case 2:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutBucketVersioningResponse",
@@ -16536,9 +16450,7 @@ function __c61(j: number): any {
             T.AwsProtocolsHttpChecksum({ requestAlgorithmMember: "ChecksumAlgorithm" }),
           ),
         ),
-      ).annotate({
-        identifier: "PutObjectAnnotationRequest",
-      });
+      ).annotate({ identifier: "PutObjectAnnotationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -16562,9 +16474,7 @@ function __c61(j: number): any {
           ),
           RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "PutObjectAnnotationOutput",
-      });
+      ).annotate({ identifier: "PutObjectAnnotationOutput" });
   }
 }
 function __c62(j: number): any {
@@ -16601,9 +16511,7 @@ function __c62(j: number): any {
             }),
           ),
         ),
-      ).annotate({
-        identifier: "PutObjectLegalHoldRequest",
-      });
+      ).annotate({ identifier: "PutObjectLegalHoldRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -16645,17 +16553,13 @@ function __c63(j: number): any {
             }),
           ),
         ),
-      ).annotate({
-        identifier: "PutObjectLockConfigurationRequest",
-      });
+      ).annotate({ identifier: "PutObjectLockConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "PutObjectLockConfigurationOutput",
-      });
+      ).annotate({ identifier: "PutObjectLockConfigurationOutput" });
   }
 }
 function __c64(j: number): any {
@@ -16695,9 +16599,7 @@ function __c64(j: number): any {
             }),
           ),
         ),
-      ).annotate({
-        identifier: "PutObjectRetentionRequest",
-      });
+      ).annotate({ identifier: "PutObjectRetentionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -16718,9 +16620,9 @@ function __c65(j: number): any {
           ChecksumAlgorithm: S.optional(S.String).pipe(
             T.HttpHeader("x-amz-sdk-checksum-algorithm"),
           ),
-          Tagging: __S(896, __c56, 0).pipe(T.HttpPayload(), T.XmlName("Tagging")).annotate({
-            identifier: "Tagging",
-          }),
+          Tagging: __S(896, __c56, 0)
+            .pipe(T.HttpPayload(), T.XmlName("Tagging"))
+            .annotate({ identifier: "Tagging" }),
           ExpectedBucketOwner: S.optional(S.String).pipe(
             T.HttpHeader("x-amz-expected-bucket-owner"),
           ),
@@ -16781,9 +16683,7 @@ function __c66(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "PutPublicAccessBlockRequest",
-      });
+      ).annotate({ identifier: "PutPublicAccessBlockRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutPublicAccessBlockResponse",
@@ -16833,9 +16733,7 @@ function __c67(j: number): any {
         ),
       ).annotate({ identifier: "RenameObjectRequest" });
     case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "RenameObjectOutput",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "RenameObjectOutput" });
   }
 }
 function __c68(j: number): any {
@@ -16867,9 +16765,9 @@ function __c68(j: number): any {
       ).annotate({ identifier: "MetadataEntry" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(1091, __c68, 3).pipe(/*@__PURE__*/ T.XmlName("MetadataEntry")).annotate({
-          identifier: "MetadataEntry",
-        }),
+        /*@__PURE__*/ __S(1091, __c68, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("MetadataEntry"))
+          .annotate({ identifier: "MetadataEntry" }),
       );
     case 5:
       return S.suspend(() =>
@@ -16957,9 +16855,7 @@ function __c69(j: number): any {
         identifier: "JSONInput",
       });
     case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ParquetInput",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "ParquetInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -17033,9 +16929,7 @@ function __c70(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SelectObjectContentRequest",
-      });
+      ).annotate({ identifier: "SelectObjectContentRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({ Payload: S.optional(T.Blob).pipe(T.EventPayload()) }),
@@ -17073,13 +16967,9 @@ function __c70(j: number): any {
         }),
       ).annotate({ identifier: "ProgressEvent" });
     case 8:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ContinuationEvent",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "ContinuationEvent" });
     case 9:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "EndEvent",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "EndEvent" });
     case 10:
       return T.EventStream(
         /*@__PURE__*/ S.Union([
@@ -17093,9 +16983,7 @@ function __c70(j: number): any {
     case 11:
       return S.suspend(() =>
         S.Struct({ Payload: S.optional(__S(1130, __c70, 10)).pipe(T.HttpPayload()) }).pipe(ns),
-      ).annotate({
-        identifier: "SelectObjectContentOutput",
-      });
+      ).annotate({ identifier: "SelectObjectContentOutput" });
   }
 }
 function __c71(j: number): any {
@@ -17107,9 +16995,7 @@ function __c71(j: number): any {
           EncryptionConfiguration: S.optional(__S(1376, __c86, 0)),
           Role: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "AnnotationTableConfigurationUpdates",
-      });
+      ).annotate({ identifier: "AnnotationTableConfigurationUpdates" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -17140,9 +17026,7 @@ function __c71(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "UpdateBucketMetadataAnnotationTableConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateBucketMetadataAnnotationTableConfigurationRequest" });
     case 2:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "UpdateBucketMetadataAnnotationTableConfigurationResponse",
@@ -17157,9 +17041,7 @@ function __c72(j: number): any {
           ConfigurationState: S.String,
           EncryptionConfiguration: S.optional(__S(1376, __c86, 0)),
         }),
-      ).annotate({
-        identifier: "InventoryTableConfigurationUpdates",
-      });
+      ).annotate({ identifier: "InventoryTableConfigurationUpdates" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -17190,9 +17072,7 @@ function __c72(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "UpdateBucketMetadataInventoryTableConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateBucketMetadataInventoryTableConfigurationRequest" });
     case 2:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "UpdateBucketMetadataInventoryTableConfigurationResponse",
@@ -17235,9 +17115,7 @@ function __c73(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "UpdateBucketMetadataJournalTableConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateBucketMetadataJournalTableConfigurationRequest" });
     case 2:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "UpdateBucketMetadataJournalTableConfigurationResponse",
@@ -17257,9 +17135,7 @@ function __c74(j: number): any {
         /*@__PURE__*/ S.Struct({
           SSEKMS: /*@__PURE__*/ __S(1184, __c74, 0)
             .pipe(/*@__PURE__*/ T.XmlName("SSE-KMS"))
-            .annotate({
-              identifier: "SSEKMSEncryption",
-            }),
+            .annotate({ identifier: "SSEKMSEncryption" }),
         }),
       ]);
     case 2:
@@ -17292,17 +17168,13 @@ function __c74(j: number): any {
             }),
           ),
         ),
-      ).annotate({
-        identifier: "UpdateObjectEncryptionRequest",
-      });
+      ).annotate({ identifier: "UpdateObjectEncryptionRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateObjectEncryptionResponse",
-      });
+      ).annotate({ identifier: "UpdateObjectEncryptionResponse" });
   }
 }
 function __c75(j: number): any {
@@ -17614,9 +17486,7 @@ function __c77(j: number): any {
             T.StaticContextParams({ UseObjectLambdaEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "WriteGetObjectResponseRequest",
-      });
+      ).annotate({ identifier: "WriteGetObjectResponseRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "WriteGetObjectResponseResponse",
@@ -17649,17 +17519,13 @@ function __c78(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AbortMultipartUploadRequest",
-      });
+      ).annotate({ identifier: "AbortMultipartUploadRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AbortMultipartUploadOutput",
-      });
+      ).annotate({ identifier: "AbortMultipartUploadOutput" });
   }
 }
 function __c79(j: number): any {
@@ -17749,9 +17615,7 @@ function __c80(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CompleteMultipartUploadRequest",
-      });
+      ).annotate({ identifier: "CompleteMultipartUploadRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -17783,9 +17647,7 @@ function __c80(j: number): any {
           ),
           RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
         }).pipe(T.all(T.XmlName("CompleteMultipartUploadResult"), ns)),
-      ).annotate({
-        identifier: "CompleteMultipartUploadOutput",
-      });
+      ).annotate({ identifier: "CompleteMultipartUploadOutput" });
   }
 }
 function __c81(j: number): any {
@@ -17976,9 +17838,7 @@ function __c83(j: number): any {
           Bucket: S.optional(__S(1329, __c83, 1)),
           Tags: S.optional(__S(1345, __c84, 1)),
         }),
-      ).annotate({
-        identifier: "CreateBucketConfiguration",
-      });
+      ).annotate({ identifier: "CreateBucketConfiguration" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -18044,18 +17904,14 @@ function __c85(j: number): any {
           RecordExpiration: __S(1392, __c87, 0),
           EncryptionConfiguration: S.optional(__S(1376, __c86, 0)),
         }),
-      ).annotate({
-        identifier: "JournalTableConfiguration",
-      });
+      ).annotate({ identifier: "JournalTableConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ConfigurationState: S.String,
           EncryptionConfiguration: S.optional(__S(1376, __c86, 0)),
         }),
-      ).annotate({
-        identifier: "InventoryTableConfiguration",
-      });
+      ).annotate({ identifier: "InventoryTableConfiguration" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -18063,9 +17919,7 @@ function __c85(j: number): any {
           EncryptionConfiguration: S.optional(__S(1376, __c86, 0)),
           Role: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "AnnotationTableConfiguration",
-      });
+      ).annotate({ identifier: "AnnotationTableConfiguration" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -18104,9 +17958,7 @@ function __c85(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "CreateBucketMetadataConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateBucketMetadataConfigurationRequest" });
     case 5:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateBucketMetadataConfigurationResponse",
@@ -18118,9 +17970,7 @@ function __c86(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ SseAlgorithm: S.String, KmsKeyArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "MetadataTableEncryptionConfiguration",
-      });
+      ).annotate({ identifier: "MetadataTableEncryptionConfiguration" });
   }
 }
 function __c87(j: number): any {
@@ -18171,9 +18021,7 @@ function __c88(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "CreateBucketMetadataTableConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateBucketMetadataTableConfigurationRequest" });
     case 3:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateBucketMetadataTableConfigurationResponse",
@@ -18258,9 +18106,7 @@ function __c89(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateMultipartUploadRequest",
-      });
+      ).annotate({ identifier: "CreateMultipartUploadRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -18293,9 +18139,7 @@ function __c89(j: number): any {
           ChecksumAlgorithm: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-algorithm")),
           ChecksumType: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-type")),
         }).pipe(T.all(T.XmlName("InitiateMultipartUploadResult"), ns)),
-      ).annotate({
-        identifier: "CreateMultipartUploadOutput",
-      });
+      ).annotate({ identifier: "CreateMultipartUploadOutput" });
   }
 }
 function __c90(j: number): any {
@@ -18354,9 +18198,9 @@ function __c90(j: number): any {
           BucketKeyEnabled: S.optional(S.Boolean).pipe(
             T.HttpHeader("x-amz-server-side-encryption-bucket-key-enabled"),
           ),
-          Credentials: __S(1441, __c90, 1).pipe(T.XmlName("Credentials")).annotate({
-            identifier: "SessionCredentials",
-          }),
+          Credentials: __S(1441, __c90, 1)
+            .pipe(T.XmlName("Credentials"))
+            .annotate({ identifier: "SessionCredentials" }),
         }).pipe(T.all(T.XmlName("CreateSessionResult"), ns)),
       ).annotate({ identifier: "CreateSessionOutput" });
   }
@@ -18411,9 +18255,7 @@ function __c92(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteBucketAnalyticsConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteBucketAnalyticsConfigurationRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketAnalyticsConfigurationResponse",
@@ -18469,9 +18311,7 @@ function __c94(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteBucketEncryptionRequest",
-      });
+      ).annotate({ identifier: "DeleteBucketEncryptionRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketEncryptionResponse",
@@ -18500,9 +18340,7 @@ function __c95(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteBucketIntelligentTieringConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteBucketIntelligentTieringConfigurationRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketIntelligentTieringConfigurationResponse",
@@ -18531,9 +18369,7 @@ function __c96(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteBucketInventoryConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteBucketInventoryConfigurationRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketInventoryConfigurationResponse",
@@ -18561,9 +18397,7 @@ function __c97(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteBucketLifecycleRequest",
-      });
+      ).annotate({ identifier: "DeleteBucketLifecycleRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketLifecycleResponse",
@@ -18591,9 +18425,7 @@ function __c98(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteBucketMetadataConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteBucketMetadataConfigurationRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketMetadataConfigurationResponse",
@@ -18621,9 +18453,7 @@ function __c99(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteBucketMetadataTableConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteBucketMetadataTableConfigurationRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketMetadataTableConfigurationResponse",
@@ -18652,9 +18482,7 @@ function __c100(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteBucketMetricsConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteBucketMetricsConfigurationRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketMetricsConfigurationResponse",
@@ -18682,9 +18510,7 @@ function __c101(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteBucketOwnershipControlsRequest",
-      });
+      ).annotate({ identifier: "DeleteBucketOwnershipControlsRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketOwnershipControlsResponse",
@@ -18712,9 +18538,7 @@ function __c102(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteBucketPolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteBucketPolicyRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketPolicyResponse",
@@ -18742,9 +18566,7 @@ function __c103(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteBucketReplicationRequest",
-      });
+      ).annotate({ identifier: "DeleteBucketReplicationRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketReplicationResponse",
@@ -18772,9 +18594,7 @@ function __c104(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteBucketTaggingRequest",
-      });
+      ).annotate({ identifier: "DeleteBucketTaggingRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketTaggingResponse",
@@ -18802,9 +18622,7 @@ function __c105(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteBucketWebsiteRequest",
-      });
+      ).annotate({ identifier: "DeleteBucketWebsiteRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketWebsiteResponse",
@@ -18879,18 +18697,14 @@ function __c107(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteObjectAnnotationRequest",
-      });
+      ).annotate({ identifier: "DeleteObjectAnnotationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ObjectVersionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-object-version-id")),
           RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteObjectAnnotationOutput",
-      });
+      ).annotate({ identifier: "DeleteObjectAnnotationOutput" });
   }
 }
 function __c108(j: number): any {
@@ -19002,17 +18816,13 @@ function __c109(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteObjectTaggingRequest",
-      });
+      ).annotate({ identifier: "DeleteObjectTaggingRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ VersionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-version-id")) }).pipe(
           ns,
         ),
-      ).annotate({
-        identifier: "DeleteObjectTaggingOutput",
-      });
+      ).annotate({ identifier: "DeleteObjectTaggingOutput" });
   }
 }
 function __c110(j: number): any {
@@ -19036,9 +18846,7 @@ function __c110(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeletePublicAccessBlockRequest",
-      });
+      ).annotate({ identifier: "DeletePublicAccessBlockRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeletePublicAccessBlockResponse",
@@ -19098,18 +18906,14 @@ function __c113(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetBucketAccelerateConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetBucketAccelerateConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String),
           RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
         }).pipe(T.all(T.XmlName("AccelerateConfiguration"), ns)),
-      ).annotate({
-        identifier: "GetBucketAccelerateConfigurationOutput",
-      });
+      ).annotate({ identifier: "GetBucketAccelerateConfigurationOutput" });
   }
 }
 function __c114(j: number): any {
@@ -19204,9 +19008,7 @@ function __c118(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetBucketAnalyticsConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetBucketAnalyticsConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -19214,9 +19016,7 @@ function __c118(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "AnalyticsConfiguration" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetBucketAnalyticsConfigurationOutput",
-      });
+      ).annotate({ identifier: "GetBucketAnalyticsConfigurationOutput" });
   }
 }
 function __c119(j: number): any {
@@ -19242,22 +19042,15 @@ function __c119(j: number): any {
           Bucket: S.String,
           Prefix: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "AnalyticsS3BucketDestination",
-      });
+      ).annotate({ identifier: "AnalyticsS3BucketDestination" });
     case 3:
       return S.suspend(() => S.Struct({ S3BucketDestination: __S(1906, __c119, 2) })).annotate({
         identifier: "AnalyticsExportDestination",
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({
-          OutputSchemaVersion: S.String,
-          Destination: __S(1907, __c119, 3),
-        }),
-      ).annotate({
-        identifier: "StorageClassAnalysisDataExport",
-      });
+        S.Struct({ OutputSchemaVersion: S.String, Destination: __S(1907, __c119, 3) }),
+      ).annotate({ identifier: "StorageClassAnalysisDataExport" });
     case 5:
       return S.suspend(() => S.Struct({ DataExport: S.optional(__S(1908, __c119, 4)) })).annotate({
         identifier: "StorageClassAnalysis",
@@ -19354,9 +19147,7 @@ function __c122(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetBucketEncryptionRequest",
-      });
+      ).annotate({ identifier: "GetBucketEncryptionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -19364,9 +19155,7 @@ function __c122(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ServerSideEncryptionConfiguration" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetBucketEncryptionOutput",
-      });
+      ).annotate({ identifier: "GetBucketEncryptionOutput" });
   }
 }
 function __c123(j: number): any {
@@ -19374,9 +19163,7 @@ function __c123(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ SSEAlgorithm: S.String, KMSMasterKeyID: S.optional(SensitiveString) }),
-      ).annotate({
-        identifier: "ServerSideEncryptionByDefault",
-      });
+      ).annotate({ identifier: "ServerSideEncryptionByDefault" });
     case 1:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("EncryptionType")));
     case 2:
@@ -19396,9 +19183,7 @@ function __c123(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({ Rules: __S(1972, __c123, 4).pipe(T.XmlName("Rule"), T.XmlFlattened()) }),
-      ).annotate({
-        identifier: "ServerSideEncryptionConfiguration",
-      });
+      ).annotate({ identifier: "ServerSideEncryptionConfiguration" });
   }
 }
 function __c124(j: number): any {
@@ -19426,9 +19211,7 @@ function __c124(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetBucketIntelligentTieringConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetBucketIntelligentTieringConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -19436,9 +19219,7 @@ function __c124(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "IntelligentTieringConfiguration" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetBucketIntelligentTieringConfigurationOutput",
-      });
+      ).annotate({ identifier: "GetBucketIntelligentTieringConfigurationOutput" });
   }
 }
 function __c125(j: number): any {
@@ -19449,9 +19230,7 @@ function __c125(j: number): any {
           Prefix: S.optional(S.String),
           Tags: S.optional(__S(1345, __c84, 1)).pipe(T.XmlName("Tag"), T.XmlFlattened()),
         }),
-      ).annotate({
-        identifier: "IntelligentTieringAndOperator",
-      });
+      ).annotate({ identifier: "IntelligentTieringAndOperator" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -19474,9 +19253,7 @@ function __c125(j: number): any {
           Status: S.String,
           Tierings: __S(2003, __c125, 3).pipe(T.XmlName("Tiering"), T.XmlFlattened()),
         }),
-      ).annotate({
-        identifier: "IntelligentTieringConfiguration",
-      });
+      ).annotate({ identifier: "IntelligentTieringConfiguration" });
   }
 }
 function __c126(j: number): any {
@@ -19504,9 +19281,7 @@ function __c126(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetBucketInventoryConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetBucketInventoryConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -19514,9 +19289,7 @@ function __c126(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "InventoryConfiguration" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetBucketInventoryConfigurationOutput",
-      });
+      ).annotate({ identifier: "GetBucketInventoryConfigurationOutput" });
   }
 }
 function __c127(j: number): any {
@@ -19549,9 +19322,7 @@ function __c127(j: number): any {
           Prefix: S.optional(S.String),
           Encryption: S.optional(__S(2034, __c127, 2)),
         }),
-      ).annotate({
-        identifier: "InventoryS3BucketDestination",
-      });
+      ).annotate({ identifier: "InventoryS3BucketDestination" });
     case 4:
       return S.suspend(() => S.Struct({ S3BucketDestination: __S(2035, __c127, 3) })).annotate({
         identifier: "InventoryDestination",
@@ -19601,9 +19372,7 @@ function __c128(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetBucketLifecycleConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetBucketLifecycleConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -19612,9 +19381,7 @@ function __c128(j: number): any {
             T.HttpHeader("x-amz-transition-default-minimum-object-size"),
           ),
         }).pipe(T.all(T.XmlName("LifecycleConfiguration"), ns)),
-      ).annotate({
-        identifier: "GetBucketLifecycleConfigurationOutput",
-      });
+      ).annotate({ identifier: "GetBucketLifecycleConfigurationOutput" });
   }
 }
 function __c129(j: number): any {
@@ -19663,9 +19430,7 @@ function __c129(j: number): any {
           StorageClass: S.optional(S.String),
           NewerNoncurrentVersions: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "NoncurrentVersionTransition",
-      });
+      ).annotate({ identifier: "NoncurrentVersionTransition" });
     case 6:
       return S.Array(__S(2069, __c129, 5));
     case 7:
@@ -19674,9 +19439,7 @@ function __c129(j: number): any {
           NoncurrentDays: S.optional(S.Number),
           NewerNoncurrentVersions: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "NoncurrentVersionExpiration",
-      });
+      ).annotate({ identifier: "NoncurrentVersionExpiration" });
     case 8:
       return S.suspend(() => S.Struct({ DaysAfterInitiation: S.optional(S.Number) })).annotate({
         identifier: "AbortIncompleteMultipartUpload",
@@ -19773,9 +19536,9 @@ function __c132(j: number): any {
       ).annotate({ identifier: "TargetGrant" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(2112, __c132, 0).pipe(/*@__PURE__*/ T.XmlName("Grant")).annotate({
-          identifier: "TargetGrant",
-        }),
+        /*@__PURE__*/ __S(2112, __c132, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("Grant"))
+          .annotate({ identifier: "TargetGrant" }),
       );
     case 2:
       return S.suspend(() => S.Struct({}).pipe(T.XmlName("SimplePrefix"))).annotate({
@@ -19830,9 +19593,7 @@ function __c133(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetBucketMetadataConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetBucketMetadataConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -19850,9 +19611,7 @@ function __c133(j: number): any {
           TableArn: S.optional(S.String),
           RecordExpiration: __S(1392, __c87, 0),
         }),
-      ).annotate({
-        identifier: "JournalTableConfigurationResult",
-      });
+      ).annotate({ identifier: "JournalTableConfigurationResult" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -19862,9 +19621,7 @@ function __c133(j: number): any {
           TableName: S.optional(S.String),
           TableArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "InventoryTableConfigurationResult",
-      });
+      ).annotate({ identifier: "InventoryTableConfigurationResult" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -19875,9 +19632,7 @@ function __c133(j: number): any {
           TableArn: S.optional(S.String),
           Role: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "AnnotationTableConfigurationResult",
-      });
+      ).annotate({ identifier: "AnnotationTableConfigurationResult" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -19886,15 +19641,11 @@ function __c133(j: number): any {
           InventoryTableConfigurationResult: S.optional(__S(2131, __c133, 3)),
           AnnotationTableConfigurationResult: S.optional(__S(2132, __c133, 4)),
         }),
-      ).annotate({
-        identifier: "MetadataConfigurationResult",
-      });
+      ).annotate({ identifier: "MetadataConfigurationResult" });
     case 6:
       return S.suspend(() =>
         S.Struct({ MetadataConfigurationResult: __S(2133, __c133, 5) }),
-      ).annotate({
-        identifier: "GetBucketMetadataConfigurationResult",
-      });
+      ).annotate({ identifier: "GetBucketMetadataConfigurationResult" });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -19902,9 +19653,7 @@ function __c133(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "GetBucketMetadataConfigurationResult" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetBucketMetadataConfigurationOutput",
-      });
+      ).annotate({ identifier: "GetBucketMetadataConfigurationOutput" });
   }
 }
 function __c134(j: number): any {
@@ -19936,9 +19685,7 @@ function __c135(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetBucketMetadataTableConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetBucketMetadataTableConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -19947,15 +19694,11 @@ function __c135(j: number): any {
           TableArn: S.String,
           TableNamespace: S.String,
         }),
-      ).annotate({
-        identifier: "S3TablesDestinationResult",
-      });
+      ).annotate({ identifier: "S3TablesDestinationResult" });
     case 2:
       return S.suspend(() =>
         S.Struct({ S3TablesDestinationResult: __S(2161, __c135, 1) }),
-      ).annotate({
-        identifier: "MetadataTableConfigurationResult",
-      });
+      ).annotate({ identifier: "MetadataTableConfigurationResult" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -19963,9 +19706,7 @@ function __c135(j: number): any {
           Status: S.String,
           Error: S.optional(__S(2144, __c134, 0)),
         }),
-      ).annotate({
-        identifier: "GetBucketMetadataTableConfigurationResult",
-      });
+      ).annotate({ identifier: "GetBucketMetadataTableConfigurationResult" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -19973,9 +19714,7 @@ function __c135(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "GetBucketMetadataTableConfigurationResult" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetBucketMetadataTableConfigurationOutput",
-      });
+      ).annotate({ identifier: "GetBucketMetadataTableConfigurationOutput" });
   }
 }
 function __c136(j: number): any {
@@ -20000,9 +19739,7 @@ function __c136(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetBucketMetricsConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetBucketMetricsConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -20010,9 +19747,7 @@ function __c136(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "MetricsConfiguration" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetBucketMetricsConfigurationOutput",
-      });
+      ).annotate({ identifier: "GetBucketMetricsConfigurationOutput" });
   }
 }
 function __c137(j: number): any {
@@ -20059,9 +19794,7 @@ function __c138(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetBucketNotificationConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetBucketNotificationConfigurationRequest" });
   }
 }
 function __c139(j: number): any {
@@ -20090,9 +19823,7 @@ function __c139(j: number): any {
             .pipe(T.XmlName("S3Key"))
             .annotate({ identifier: "S3KeyFilter" }),
         }),
-      ).annotate({
-        identifier: "NotificationConfigurationFilter",
-      });
+      ).annotate({ identifier: "NotificationConfigurationFilter" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -20123,15 +19854,11 @@ function __c139(j: number): any {
           Events: __S(2224, __c139, 0).pipe(T.XmlName("Event"), T.XmlFlattened()),
           Filter: S.optional(__S(2228, __c139, 4)),
         }),
-      ).annotate({
-        identifier: "LambdaFunctionConfiguration",
-      });
+      ).annotate({ identifier: "LambdaFunctionConfiguration" });
     case 10:
       return S.Array(__S(2233, __c139, 9));
     case 11:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "EventBridgeConfiguration",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "EventBridgeConfiguration" });
     case 12:
       return S.suspend(() =>
         S.Struct({
@@ -20149,9 +19876,7 @@ function __c139(j: number): any {
           ),
           EventBridgeConfiguration: S.optional(__S(2235, __c139, 11)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "NotificationConfiguration",
-      });
+      ).annotate({ identifier: "NotificationConfiguration" });
   }
 }
 function __c140(j: number): any {
@@ -20175,9 +19900,7 @@ function __c140(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetBucketOwnershipControlsRequest",
-      });
+      ).annotate({ identifier: "GetBucketOwnershipControlsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -20185,9 +19908,7 @@ function __c140(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "OwnershipControls" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetBucketOwnershipControlsOutput",
-      });
+      ).annotate({ identifier: "GetBucketOwnershipControlsOutput" });
   }
 }
 function __c141(j: number): any {
@@ -20253,9 +19974,7 @@ function __c143(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetBucketPolicyStatusRequest",
-      });
+      ).annotate({ identifier: "GetBucketPolicyStatusRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ IsPublic: S.optional(S.Boolean).pipe(T.XmlName("IsPublic")) }),
@@ -20267,9 +19986,7 @@ function __c143(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "PolicyStatus" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetBucketPolicyStatusOutput",
-      });
+      ).annotate({ identifier: "GetBucketPolicyStatusOutput" });
   }
 }
 function __c144(j: number): any {
@@ -20293,9 +20010,7 @@ function __c144(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetBucketReplicationRequest",
-      });
+      ).annotate({ identifier: "GetBucketReplicationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -20303,9 +20018,7 @@ function __c144(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ReplicationConfiguration" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetBucketReplicationOutput",
-      });
+      ).annotate({ identifier: "GetBucketReplicationOutput" });
   }
 }
 function __c145(j: number): any {
@@ -20316,9 +20029,7 @@ function __c145(j: number): any {
           Prefix: S.optional(S.String),
           Tags: S.optional(__S(1345, __c84, 1)).pipe(T.XmlName("Tag"), T.XmlFlattened()),
         }),
-      ).annotate({
-        identifier: "ReplicationRuleAndOperator",
-      });
+      ).annotate({ identifier: "ReplicationRuleAndOperator" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -20428,17 +20139,13 @@ function __c146(j: number): any {
             T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetBucketRequestPaymentRequest",
-      });
+      ).annotate({ identifier: "GetBucketRequestPaymentRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Payer: S.optional(S.String) }).pipe(
           T.all(T.XmlName("RequestPaymentConfiguration"), ns),
         ),
-      ).annotate({
-        identifier: "GetBucketRequestPaymentOutput",
-      });
+      ).annotate({ identifier: "GetBucketRequestPaymentOutput" });
   }
 }
 function __c147(j: number): any {

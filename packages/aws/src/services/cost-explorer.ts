@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1869,7 +1869,7 @@ export const deleteAnomalySubscription: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(480, __c15, 0) as any as S.Schema<DeleteAnomalySubscriptionRequest>,
-  output: __S(481, __c15, 1) as any as S.Schema<DeleteAnomalySubscriptionResponse>,
+  output: __S(448, __c14, 0) as any as S.Schema<DeleteAnomalySubscriptionResponse>,
   errors: [LimitExceededException, UnknownSubscriptionException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2083,7 +2083,7 @@ export const getCostAndUsage: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(864, __c27, 0) as any as S.Schema<GetCostAndUsageRequest>,
-  output: __S(865, __c27, 1) as any as S.Schema<GetCostAndUsageResponse>,
+  output: __S(933, __c29, 5) as any as S.Schema<GetCostAndUsageResponse>,
   errors: [
     BillExpirationException,
     BillingViewHealthStatusException,
@@ -2169,7 +2169,7 @@ export const getCostAndUsageWithResources: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1120, __c35, 0) as any as S.Schema<GetCostAndUsageWithResourcesRequest>,
-  output: __S(1121, __c35, 1) as any as S.Schema<GetCostAndUsageWithResourcesResponse>,
+  output: __S(933, __c29, 5) as any as S.Schema<GetCostAndUsageWithResourcesResponse>,
   errors: [
     BillExpirationException,
     BillingViewHealthStatusException,
@@ -3175,9 +3175,7 @@ function __c0(j: number): any {
           AnomalyMonitor: __S(128, __c4, 0),
           ResourceTags: S.optional(__S(97, __c3, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateAnomalyMonitorRequest",
-      });
+      ).annotate({ identifier: "CreateAnomalyMonitorRequest" });
   }
 }
 function __c1(j: number): any {
@@ -3275,9 +3273,7 @@ function __c6(j: number): any {
           AnomalySubscription: __S(224, __c7, 0),
           ResourceTags: S.optional(__S(97, __c3, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateAnomalySubscriptionRequest",
-      });
+      ).annotate({ identifier: "CreateAnomalySubscriptionRequest" });
   }
 }
 function __c7(j: number): any {
@@ -3332,22 +3328,15 @@ function __c10(j: number): any {
           SplitChargeRules: S.optional(__S(358, __c11, 6)),
           ResourceTags: S.optional(__S(97, __c3, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateCostCategoryDefinitionRequest",
-      });
+      ).annotate({ identifier: "CreateCostCategoryDefinitionRequest" });
   }
 }
 function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          DimensionName: S.optional(S.String),
-          DimensionKey: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CostCategoryInheritedValueDimension",
-      });
+        S.Struct({ DimensionName: S.optional(S.String), DimensionKey: S.optional(S.String) }),
+      ).annotate({ identifier: "CostCategoryInheritedValueDimension" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3360,12 +3349,7 @@ function __c11(j: number): any {
     case 2:
       return S.Array(__S(353, __c11, 1));
     case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Type: S.String,
-          Values: __S(32, __c1, 0),
-        }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Type: S.String, Values: __S(32, __c1, 0) })).annotate({
         identifier: "CostCategorySplitChargeRuleParameter",
       });
     case 4:
@@ -3378,9 +3362,7 @@ function __c11(j: number): any {
           Method: S.String,
           Parameters: S.optional(__S(356, __c11, 4)),
         }),
-      ).annotate({
-        identifier: "CostCategorySplitChargeRule",
-      });
+      ).annotate({ identifier: "CostCategorySplitChargeRule" });
     case 6:
       return S.Array(__S(357, __c11, 5));
   }
@@ -3390,9 +3372,7 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ CostCategoryArn: S.optional(S.String), EffectiveStart: S.optional(S.String) }),
-      ).annotate({
-        identifier: "CreateCostCategoryDefinitionResponse",
-      });
+      ).annotate({ identifier: "CreateCostCategoryDefinitionResponse" });
   }
 }
 function __c13(j: number): any {
@@ -3402,17 +3382,13 @@ function __c13(j: number): any {
         S.Struct({ MonitorArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteAnomalyMonitorRequest",
-      });
+      ).annotate({ identifier: "DeleteAnomalyMonitorRequest" });
   }
 }
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAnomalyMonitorResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteAnomalyMonitorResponse" });
   }
 }
 function __c15(j: number): any {
@@ -3422,13 +3398,7 @@ function __c15(j: number): any {
         S.Struct({ SubscriptionArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteAnomalySubscriptionRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAnomalySubscriptionResponse",
-      });
+      ).annotate({ identifier: "DeleteAnomalySubscriptionRequest" });
   }
 }
 function __c16(j: number): any {
@@ -3438,15 +3408,11 @@ function __c16(j: number): any {
         S.Struct({ CostCategoryArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteCostCategoryDefinitionRequest",
-      });
+      ).annotate({ identifier: "DeleteCostCategoryDefinitionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ CostCategoryArn: S.optional(S.String), EffectiveEnd: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DeleteCostCategoryDefinitionResponse",
-      });
+      ).annotate({ identifier: "DeleteCostCategoryDefinitionResponse" });
   }
 }
 function __c17(j: number): any {
@@ -3456,9 +3422,7 @@ function __c17(j: number): any {
         S.Struct({ CostCategoryArn: S.String, EffectiveOn: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeCostCategoryDefinitionRequest",
-      });
+      ).annotate({ identifier: "DescribeCostCategoryDefinitionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3483,13 +3447,8 @@ function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          Component: S.optional(S.String),
-          Status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CostCategoryProcessingStatus",
-      });
+        S.Struct({ Component: S.optional(S.String), Status: S.optional(S.String) }),
+      ).annotate({ identifier: "CostCategoryProcessingStatus" });
     case 1:
       return S.Array(__S(576, __c18, 0));
   }
@@ -3581,17 +3540,13 @@ function __c20(j: number): any {
           NextPageToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetAnomalyMonitorsRequest",
-      });
+      ).annotate({ identifier: "GetAnomalyMonitorsRequest" });
     case 1:
       return S.Array(__S(128, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ AnomalyMonitors: __S(641, __c20, 1), NextPageToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetAnomalyMonitorsResponse",
-      });
+      ).annotate({ identifier: "GetAnomalyMonitorsResponse" });
   }
 }
 function __c21(j: number): any {
@@ -3604,17 +3559,13 @@ function __c21(j: number): any {
           NextPageToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetAnomalySubscriptionsRequest",
-      });
+      ).annotate({ identifier: "GetAnomalySubscriptionsRequest" });
     case 1:
       return S.Array(__S(224, __c7, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ AnomalySubscriptions: __S(673, __c21, 1), NextPageToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetAnomalySubscriptionsResponse",
-      });
+      ).annotate({ identifier: "GetAnomalySubscriptionsResponse" });
   }
 }
 function __c22(j: number): any {
@@ -3626,9 +3577,7 @@ function __c22(j: number): any {
           Services: S.optional(__S(32, __c1, 0)),
           ApproximationDimension: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetApproximateUsageRecordsRequest",
-      });
+      ).annotate({ identifier: "GetApproximateUsageRecordsRequest" });
     case 1:
       return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
     case 2:
@@ -3638,9 +3587,7 @@ function __c22(j: number): any {
           TotalRecords: S.optional(S.Number),
           LookbackPeriod: S.optional(__S(736, __c23, 0)),
         }),
-      ).annotate({
-        identifier: "GetApproximateUsageRecordsResponse",
-      });
+      ).annotate({ identifier: "GetApproximateUsageRecordsResponse" });
   }
 }
 function __c23(j: number): any {
@@ -3658,9 +3605,7 @@ function __c24(j: number): any {
         S.Struct({ AnalysisId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetCommitmentPurchaseAnalysisRequest",
-      });
+      ).annotate({ identifier: "GetCommitmentPurchaseAnalysisRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3687,14 +3632,10 @@ function __c24(j: number): any {
           AdditionalMetadata: S.optional(S.String),
           MetricsOverLookbackPeriod: S.optional(__S(801, __c25, 1)),
         }),
-      ).annotate({
-        identifier: "SavingsPlansPurchaseAnalysisDetails",
-      });
+      ).annotate({ identifier: "SavingsPlansPurchaseAnalysisDetails" });
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          SavingsPlansPurchaseAnalysisDetails: S.optional(__S(769, __c24, 1)),
-        }),
+        S.Struct({ SavingsPlansPurchaseAnalysisDetails: S.optional(__S(769, __c24, 1)) }),
       ).annotate({ identifier: "AnalysisDetails" });
     case 3:
       return S.suspend(() =>
@@ -3708,9 +3649,7 @@ function __c24(j: number): any {
           AnalysisDetails: S.optional(__S(770, __c24, 2)),
           CommitmentPurchaseAnalysisConfiguration: __S(835, __c26, 3),
         }),
-      ).annotate({
-        identifier: "GetCommitmentPurchaseAnalysisResponse",
-      });
+      ).annotate({ identifier: "GetCommitmentPurchaseAnalysisResponse" });
   }
 }
 function __c25(j: number): any {
@@ -3724,9 +3663,7 @@ function __c25(j: number): any {
           EstimatedCoverage: S.optional(S.String),
           EstimatedNewCommitmentUtilization: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "RecommendationDetailHourlyMetrics",
-      });
+      ).annotate({ identifier: "RecommendationDetailHourlyMetrics" });
     case 1:
       return S.Array(__S(800, __c25, 0));
   }
@@ -3758,17 +3695,11 @@ function __c26(j: number): any {
           LookBackTimePeriod: __S(736, __c23, 0),
           SavingsPlansTargetCoverage: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "SavingsPlansPurchaseAnalysisConfiguration",
-      });
+      ).annotate({ identifier: "SavingsPlansPurchaseAnalysisConfiguration" });
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          SavingsPlansPurchaseAnalysisConfiguration: S.optional(__S(834, __c26, 2)),
-        }),
-      ).annotate({
-        identifier: "CommitmentPurchaseAnalysisConfiguration",
-      });
+        S.Struct({ SavingsPlansPurchaseAnalysisConfiguration: S.optional(__S(834, __c26, 2)) }),
+      ).annotate({ identifier: "CommitmentPurchaseAnalysisConfiguration" });
   }
 }
 function __c27(j: number): any {
@@ -3785,15 +3716,6 @@ function __c27(j: number): any {
           NextPageToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetCostAndUsageRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          NextPageToken: S.optional(S.String),
-          GroupDefinitions: S.optional(__S(897, __c28, 1)),
-          ResultsByTime: S.optional(__S(932, __c29, 4)),
-          DimensionValueAttributes: S.optional(__S(993, __c31, 1)),
-        }),
-      ).annotate({ identifier: "GetCostAndUsageResponse" });
   }
 }
 function __c28(j: number): any {
@@ -3827,6 +3749,15 @@ function __c29(j: number): any {
       ).annotate({ identifier: "ResultByTime" });
     case 4:
       return S.Array(__S(931, __c29, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          NextPageToken: S.optional(S.String),
+          GroupDefinitions: S.optional(__S(897, __c28, 1)),
+          ResultsByTime: S.optional(__S(932, __c29, 4)),
+          DimensionValueAttributes: S.optional(__S(993, __c31, 1)),
+        }),
+      ).annotate({ identifier: "GetCostAndUsageResponse" });
   }
 }
 function __c30(j: number): any {
@@ -3842,9 +3773,7 @@ function __c31(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ Value: S.optional(S.String), Attributes: S.optional(__S(1024, __c32, 0)) }),
-      ).annotate({
-        identifier: "DimensionValuesWithAttributes",
-      });
+      ).annotate({ identifier: "DimensionValuesWithAttributes" });
     case 1:
       return S.Array(__S(992, __c31, 0));
   }
@@ -3869,9 +3798,7 @@ function __c33(j: number): any {
           MaxResults: S.optional(S.Number),
           NextPageToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetCostAndUsageComparisonsRequest",
-      });
+      ).annotate({ identifier: "GetCostAndUsageComparisonsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3888,9 +3815,7 @@ function __c33(j: number): any {
           TotalCostAndUsage: S.optional(__S(1089, __c34, 1)),
           NextPageToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetCostAndUsageComparisonsResponse",
-      });
+      ).annotate({ identifier: "GetCostAndUsageComparisonsResponse" });
   }
 }
 function __c34(j: number): any {
@@ -3921,20 +3846,7 @@ function __c35(j: number): any {
           BillingViewArn: S.optional(S.String),
           NextPageToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetCostAndUsageWithResourcesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          NextPageToken: S.optional(S.String),
-          GroupDefinitions: S.optional(__S(897, __c28, 1)),
-          ResultsByTime: S.optional(__S(932, __c29, 4)),
-          DimensionValueAttributes: S.optional(__S(993, __c31, 1)),
-        }),
-      ).annotate({
-        identifier: "GetCostAndUsageWithResourcesResponse",
-      });
+      ).annotate({ identifier: "GetCostAndUsageWithResourcesRequest" });
   }
 }
 function __c36(j: number): any {
@@ -3961,9 +3873,7 @@ function __c36(j: number): any {
           ReturnSize: S.Number,
           TotalSize: S.Number,
         }),
-      ).annotate({
-        identifier: "GetCostCategoriesResponse",
-      });
+      ).annotate({ identifier: "GetCostCategoriesResponse" });
   }
 }
 function __c37(j: number): any {
@@ -3994,9 +3904,7 @@ function __c39(j: number): any {
           MaxResults: S.optional(S.Number),
           NextPageToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetCostComparisonDriversRequest",
-      });
+      ).annotate({ identifier: "GetCostComparisonDriversRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4023,9 +3931,7 @@ function __c39(j: number): any {
           CostComparisonDrivers: S.optional(__S(1252, __c39, 4)),
           NextPageToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetCostComparisonDriversResponse",
-      });
+      ).annotate({ identifier: "GetCostComparisonDriversResponse" });
   }
 }
 function __c40(j: number): any {
@@ -4080,9 +3986,7 @@ function __c42(j: number): any {
           MaxResults: S.optional(S.Number),
           NextPageToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetDimensionValuesRequest",
-      });
+      ).annotate({ identifier: "GetDimensionValuesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4091,9 +3995,7 @@ function __c42(j: number): any {
           TotalSize: S.Number,
           NextPageToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetDimensionValuesResponse",
-      });
+      ).annotate({ identifier: "GetDimensionValuesResponse" });
   }
 }
 function __c43(j: number): any {
@@ -4110,9 +4012,7 @@ function __c43(j: number): any {
           SortBy: S.optional(__S(1184, __c37, 0)),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetReservationCoverageRequest",
-      });
+      ).annotate({ identifier: "GetReservationCoverageRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4169,9 +4069,7 @@ function __c43(j: number): any {
           Total: S.optional(__S(1380, __c43, 4)),
           NextPageToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetReservationCoverageResponse",
-      });
+      ).annotate({ identifier: "GetReservationCoverageResponse" });
   }
 }
 function __c44(j: number): any {
@@ -4198,9 +4096,7 @@ function __c44(j: number): any {
           PageSize: S.optional(S.Number),
           NextPageToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetReservationPurchaseRecommendationRequest",
-      });
+      ).annotate({ identifier: "GetReservationPurchaseRecommendationRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4249,9 +4145,7 @@ function __c44(j: number): any {
           CurrentGeneration: S.optional(S.Boolean),
           SizeFlexEligible: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "ElastiCacheInstanceDetails",
-      });
+      ).annotate({ identifier: "ElastiCacheInstanceDetails" });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -4309,9 +4203,7 @@ function __c44(j: number): any {
           MaximumNumberOfCapacityUnitsUsedPerHour: S.optional(S.String),
           AverageNumberOfCapacityUnitsUsedPerHour: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ReservationPurchaseRecommendationDetail",
-      });
+      ).annotate({ identifier: "ReservationPurchaseRecommendationDetail" });
     case 12:
       return S.Array(__S(1419, __c44, 11));
     case 13:
@@ -4321,9 +4213,7 @@ function __c44(j: number): any {
           TotalEstimatedMonthlySavingsPercentage: S.optional(S.String),
           CurrencyCode: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ReservationPurchaseRecommendationSummary",
-      });
+      ).annotate({ identifier: "ReservationPurchaseRecommendationSummary" });
     case 14:
       return S.suspend(() =>
         S.Struct({
@@ -4335,9 +4225,7 @@ function __c44(j: number): any {
           RecommendationDetails: S.optional(__S(1420, __c44, 12)),
           RecommendationSummary: S.optional(__S(1421, __c44, 13)),
         }),
-      ).annotate({
-        identifier: "ReservationPurchaseRecommendation",
-      });
+      ).annotate({ identifier: "ReservationPurchaseRecommendation" });
     case 15:
       return S.Array(__S(1422, __c44, 14));
     case 16:
@@ -4347,9 +4235,7 @@ function __c44(j: number): any {
           Recommendations: S.optional(__S(1423, __c44, 15)),
           NextPageToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetReservationPurchaseRecommendationResponse",
-      });
+      ).annotate({ identifier: "GetReservationPurchaseRecommendationResponse" });
   }
 }
 function __c45(j: number): any {
@@ -4361,9 +4247,7 @@ function __c45(j: number): any {
           GenerationTimestamp: S.optional(S.String),
           AdditionalMetadata: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ReservationPurchaseRecommendationMetadata",
-      });
+      ).annotate({ identifier: "ReservationPurchaseRecommendationMetadata" });
   }
 }
 function __c46(j: number): any {
@@ -4379,9 +4263,7 @@ function __c46(j: number): any {
           NextPageToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetReservationUtilizationRequest",
-      });
+      ).annotate({ identifier: "GetReservationUtilizationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4412,9 +4294,7 @@ function __c46(j: number): any {
           Attributes: S.optional(__S(1024, __c32, 0)),
           Utilization: S.optional(__S(1473, __c46, 1)),
         }),
-      ).annotate({
-        identifier: "ReservationUtilizationGroup",
-      });
+      ).annotate({ identifier: "ReservationUtilizationGroup" });
     case 3:
       return S.Array(__S(1474, __c46, 2));
     case 4:
@@ -4434,9 +4314,7 @@ function __c46(j: number): any {
           Total: S.optional(__S(1473, __c46, 1)),
           NextPageToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetReservationUtilizationResponse",
-      });
+      ).annotate({ identifier: "GetReservationUtilizationResponse" });
   }
 }
 function __c47(j: number): any {
@@ -4444,9 +4322,7 @@ function __c47(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ RecommendationTarget: S.String, BenefitsConsidered: S.Boolean }),
-      ).annotate({
-        identifier: "RightsizingRecommendationConfiguration",
-      });
+      ).annotate({ identifier: "RightsizingRecommendationConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4456,9 +4332,7 @@ function __c47(j: number): any {
           PageSize: S.optional(S.Number),
           NextPageToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetRightsizingRecommendationRequest",
-      });
+      ).annotate({ identifier: "GetRightsizingRecommendationRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4467,9 +4341,7 @@ function __c47(j: number): any {
           LookbackPeriodInDays: S.optional(S.String),
           AdditionalMetadata: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "RightsizingRecommendationMetadata",
-      });
+      ).annotate({ identifier: "RightsizingRecommendationMetadata" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4478,9 +4350,7 @@ function __c47(j: number): any {
           SavingsCurrencyCode: S.optional(S.String),
           SavingsPercentage: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "RightsizingRecommendationSummary",
-      });
+      ).annotate({ identifier: "RightsizingRecommendationSummary" });
     case 4:
       return S.Array(__S(67, __c2, 3));
     case 5:
@@ -4527,9 +4397,7 @@ function __c47(j: number): any {
           NetworkPacketsInPerSecond: S.optional(S.String),
           NetworkPacketsOutPerSecond: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "NetworkResourceUtilization",
-      });
+      ).annotate({ identifier: "NetworkResourceUtilization" });
     case 10:
       return S.suspend(() =>
         S.Struct({
@@ -4578,18 +4446,14 @@ function __c47(j: number): any {
     case 15:
       return S.suspend(() =>
         S.Struct({ TargetInstances: S.optional(__S(1518, __c47, 14)) }),
-      ).annotate({
-        identifier: "ModifyRecommendationDetail",
-      });
+      ).annotate({ identifier: "ModifyRecommendationDetail" });
     case 16:
       return S.suspend(() =>
         S.Struct({
           EstimatedMonthlySavings: S.optional(S.String),
           CurrencyCode: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "TerminateRecommendationDetail",
-      });
+      ).annotate({ identifier: "TerminateRecommendationDetail" });
     case 17:
       return S.suspend(() =>
         S.Struct({
@@ -4600,9 +4464,7 @@ function __c47(j: number): any {
           TerminateRecommendationDetail: S.optional(__S(1520, __c47, 16)),
           FindingReasonCodes: S.optional(__S(65, __c2, 1)),
         }),
-      ).annotate({
-        identifier: "RightsizingRecommendation",
-      });
+      ).annotate({ identifier: "RightsizingRecommendation" });
     case 18:
       return S.Array(__S(1521, __c47, 17));
     case 19:
@@ -4614,9 +4476,7 @@ function __c47(j: number): any {
           NextPageToken: S.optional(S.String),
           Configuration: S.optional(__S(1504, __c47, 0)),
         }),
-      ).annotate({
-        identifier: "GetRightsizingRecommendationResponse",
-      });
+      ).annotate({ identifier: "GetRightsizingRecommendationResponse" });
   }
 }
 function __c48(j: number): any {
@@ -4626,9 +4486,7 @@ function __c48(j: number): any {
         S.Struct({ RecommendationDetailId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetSavingsPlanPurchaseRecommendationDetailsRequest",
-      });
+      ).annotate({ identifier: "GetSavingsPlanPurchaseRecommendationDetailsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4669,9 +4527,7 @@ function __c48(j: number): any {
           RecommendationDetailId: S.optional(S.String),
           RecommendationDetailData: S.optional(__S(1537, __c48, 1)),
         }),
-      ).annotate({
-        identifier: "GetSavingsPlanPurchaseRecommendationDetailsResponse",
-      });
+      ).annotate({ identifier: "GetSavingsPlanPurchaseRecommendationDetailsResponse" });
   }
 }
 function __c49(j: number): any {
@@ -4688,9 +4544,7 @@ function __c49(j: number): any {
           MaxResults: S.optional(S.Number),
           SortBy: S.optional(__S(1184, __c37, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetSavingsPlansCoverageRequest",
-      });
+      ).annotate({ identifier: "GetSavingsPlansCoverageRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4713,9 +4567,7 @@ function __c49(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({ SavingsPlansCoverages: __S(1571, __c49, 3), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetSavingsPlansCoverageResponse",
-      });
+      ).annotate({ identifier: "GetSavingsPlansCoverageResponse" });
   }
 }
 function __c50(j: number): any {
@@ -4732,9 +4584,7 @@ function __c50(j: number): any {
           LookbackPeriodInDays: S.String,
           Filter: S.optional(__S(68, __c2, 4)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetSavingsPlansPurchaseRecommendationRequest",
-      });
+      ).annotate({ identifier: "GetSavingsPlansPurchaseRecommendationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4764,9 +4614,7 @@ function __c50(j: number): any {
           CurrentAverageHourlyOnDemandSpend: S.optional(S.String),
           RecommendationDetailId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SavingsPlansPurchaseRecommendationDetail",
-      });
+      ).annotate({ identifier: "SavingsPlansPurchaseRecommendationDetail" });
     case 3:
       return S.Array(__S(1602, __c50, 2));
     case 4:
@@ -4784,9 +4632,7 @@ function __c50(j: number): any {
           EstimatedMonthlySavingsAmount: S.optional(S.String),
           EstimatedOnDemandCostWithCurrentCommitment: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SavingsPlansPurchaseRecommendationSummary",
-      });
+      ).annotate({ identifier: "SavingsPlansPurchaseRecommendationSummary" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -4798,9 +4644,7 @@ function __c50(j: number): any {
           SavingsPlansPurchaseRecommendationDetails: S.optional(__S(1603, __c50, 3)),
           SavingsPlansPurchaseRecommendationSummary: S.optional(__S(1604, __c50, 4)),
         }),
-      ).annotate({
-        identifier: "SavingsPlansPurchaseRecommendation",
-      });
+      ).annotate({ identifier: "SavingsPlansPurchaseRecommendation" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -4808,9 +4652,7 @@ function __c50(j: number): any {
           SavingsPlansPurchaseRecommendation: S.optional(__S(1605, __c50, 5)),
           NextPageToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetSavingsPlansPurchaseRecommendationResponse",
-      });
+      ).annotate({ identifier: "GetSavingsPlansPurchaseRecommendationResponse" });
   }
 }
 function __c51(j: number): any {
@@ -4823,9 +4665,7 @@ function __c51(j: number): any {
           Filter: S.optional(__S(68, __c2, 4)),
           SortBy: S.optional(__S(1184, __c37, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetSavingsPlansUtilizationRequest",
-      });
+      ).annotate({ identifier: "GetSavingsPlansUtilizationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4834,9 +4674,7 @@ function __c51(j: number): any {
           Savings: S.optional(__S(1665, __c52, 1)),
           AmortizedCommitment: S.optional(__S(1666, __c52, 2)),
         }),
-      ).annotate({
-        identifier: "SavingsPlansUtilizationByTime",
-      });
+      ).annotate({ identifier: "SavingsPlansUtilizationByTime" });
     case 2:
       return S.Array(__S(1633, __c51, 1));
     case 3:
@@ -4845,9 +4683,7 @@ function __c51(j: number): any {
           SavingsPlansUtilizationsByTime: S.optional(__S(1634, __c51, 2)),
           Total: __S(1667, __c52, 3),
         }),
-      ).annotate({
-        identifier: "GetSavingsPlansUtilizationResponse",
-      });
+      ).annotate({ identifier: "GetSavingsPlansUtilizationResponse" });
   }
 }
 function __c52(j: number): any {
@@ -4875,9 +4711,7 @@ function __c52(j: number): any {
           AmortizedUpfrontCommitment: S.optional(S.String),
           TotalAmortizedCommitment: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SavingsPlansAmortizedCommitment",
-      });
+      ).annotate({ identifier: "SavingsPlansAmortizedCommitment" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4885,9 +4719,7 @@ function __c52(j: number): any {
           Savings: S.optional(__S(1665, __c52, 1)),
           AmortizedCommitment: S.optional(__S(1666, __c52, 2)),
         }),
-      ).annotate({
-        identifier: "SavingsPlansUtilizationAggregates",
-      });
+      ).annotate({ identifier: "SavingsPlansUtilizationAggregates" });
   }
 }
 function __c53(j: number): any {
@@ -4902,9 +4734,7 @@ function __c53(j: number): any {
           MaxResults: S.optional(S.Number),
           SortBy: S.optional(__S(1184, __c37, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetSavingsPlansUtilizationDetailsRequest",
-      });
+      ).annotate({ identifier: "GetSavingsPlansUtilizationDetailsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4914,9 +4744,7 @@ function __c53(j: number): any {
           Savings: S.optional(__S(1665, __c52, 1)),
           AmortizedCommitment: S.optional(__S(1666, __c52, 2)),
         }),
-      ).annotate({
-        identifier: "SavingsPlansUtilizationDetail",
-      });
+      ).annotate({ identifier: "SavingsPlansUtilizationDetail" });
     case 2:
       return S.Array(__S(1697, __c53, 1));
     case 3:
@@ -4927,9 +4755,7 @@ function __c53(j: number): any {
           TimePeriod: __S(736, __c23, 0),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetSavingsPlansUtilizationDetailsResponse",
-      });
+      ).annotate({ identifier: "GetSavingsPlansUtilizationDetailsResponse" });
   }
 }
 function __c54(j: number): any {
@@ -4983,9 +4809,7 @@ function __c56(j: number): any {
           PageSize: S.optional(S.Number),
           AnalysisIds: S.optional(__S(32, __c1, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListCommitmentPurchaseAnalysesRequest",
-      });
+      ).annotate({ identifier: "ListCommitmentPurchaseAnalysesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5006,9 +4830,7 @@ function __c56(j: number): any {
           AnalysisSummaryList: S.optional(__S(1794, __c56, 2)),
           NextPageToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListCommitmentPurchaseAnalysesResponse",
-      });
+      ).annotate({ identifier: "ListCommitmentPurchaseAnalysesResponse" });
   }
 }
 function __c57(j: number): any {
@@ -5018,9 +4840,7 @@ function __c57(j: number): any {
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListCostAllocationTagBackfillHistoryRequest",
-      });
+      ).annotate({ identifier: "ListCostAllocationTagBackfillHistoryRequest" });
     case 1:
       return S.Array(__S(1856, __c58, 0));
     case 2:
@@ -5029,9 +4849,7 @@ function __c57(j: number): any {
           BackfillRequests: S.optional(__S(1825, __c57, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListCostAllocationTagBackfillHistoryResponse",
-      });
+      ).annotate({ identifier: "ListCostAllocationTagBackfillHistoryResponse" });
   }
 }
 function __c58(j: number): any {
@@ -5045,9 +4863,7 @@ function __c58(j: number): any {
           BackfillStatus: S.optional(S.String),
           LastUpdatedAt: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CostAllocationTagBackfillRequest",
-      });
+      ).annotate({ identifier: "CostAllocationTagBackfillRequest" });
   }
 }
 function __c59(j: number): any {
@@ -5061,9 +4877,7 @@ function __c59(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListCostAllocationTagsRequest",
-      });
+      ).annotate({ identifier: "ListCostAllocationTagsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5082,9 +4896,7 @@ function __c59(j: number): any {
           CostAllocationTags: S.optional(__S(1890, __c59, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListCostAllocationTagsResponse",
-      });
+      ).annotate({ identifier: "ListCostAllocationTagsResponse" });
   }
 }
 function __c60(j: number): any {
@@ -5097,9 +4909,7 @@ function __c60(j: number): any {
           MaxResults: S.optional(S.Number),
           SupportedResourceTypes: S.optional(__S(32, __c1, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListCostCategoryDefinitionsRequest",
-      });
+      ).annotate({ identifier: "ListCostCategoryDefinitionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5122,9 +4932,7 @@ function __c60(j: number): any {
           CostCategoryReferences: S.optional(__S(1922, __c60, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListCostCategoryDefinitionsResponse",
-      });
+      ).annotate({ identifier: "ListCostCategoryDefinitionsResponse" });
   }
 }
 function __c61(j: number): any {
@@ -5136,9 +4944,7 @@ function __c61(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListCostCategoryResourceAssociationsRequest",
-      });
+      ).annotate({ identifier: "ListCostCategoryResourceAssociationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5146,9 +4952,7 @@ function __c61(j: number): any {
           CostCategoryName: S.optional(S.String),
           CostCategoryArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CostCategoryResourceAssociation",
-      });
+      ).annotate({ identifier: "CostCategoryResourceAssociation" });
     case 2:
       return S.Array(__S(1953, __c61, 1));
     case 3:
@@ -5157,9 +4961,7 @@ function __c61(j: number): any {
           CostCategoryResourceAssociations: S.optional(__S(1954, __c61, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListCostCategoryResourceAssociationsResponse",
-      });
+      ).annotate({ identifier: "ListCostCategoryResourceAssociationsResponse" });
   }
 }
 function __c62(j: number): any {
@@ -5172,9 +4974,7 @@ function __c62(j: number): any {
           PageSize: S.optional(S.Number),
           NextPageToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListSavingsPlansPurchaseRecommendationGenerationRequest",
-      });
+      ).annotate({ identifier: "ListSavingsPlansPurchaseRecommendationGenerationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5193,9 +4993,7 @@ function __c62(j: number): any {
           GenerationSummaryList: S.optional(__S(1986, __c62, 2)),
           NextPageToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListSavingsPlansPurchaseRecommendationGenerationResponse",
-      });
+      ).annotate({ identifier: "ListSavingsPlansPurchaseRecommendationGenerationResponse" });
   }
 }
 function __c63(j: number): any {
@@ -5205,9 +5003,7 @@ function __c63(j: number): any {
         S.Struct({ ResourceArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ ResourceTags: S.optional(__S(97, __c3, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -5221,9 +5017,7 @@ function __c64(j: number): any {
         S.Struct({ AnomalyId: S.String, Feedback: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ProvideAnomalyFeedbackRequest",
-      });
+      ).annotate({ identifier: "ProvideAnomalyFeedbackRequest" });
     case 1:
       return S.suspend(() => S.Struct({ AnomalyId: S.String })).annotate({
         identifier: "ProvideAnomalyFeedbackResponse",
@@ -5234,12 +5028,10 @@ function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          CommitmentPurchaseAnalysisConfiguration: __S(835, __c26, 3),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartCommitmentPurchaseAnalysisRequest",
-      });
+        S.Struct({ CommitmentPurchaseAnalysisConfiguration: __S(835, __c26, 3) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "StartCommitmentPurchaseAnalysisRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5247,9 +5039,7 @@ function __c65(j: number): any {
           AnalysisStartedTime: S.String,
           EstimatedCompletionTime: S.String,
         }),
-      ).annotate({
-        identifier: "StartCommitmentPurchaseAnalysisResponse",
-      });
+      ).annotate({ identifier: "StartCommitmentPurchaseAnalysisResponse" });
   }
 }
 function __c66(j: number): any {
@@ -5259,15 +5049,11 @@ function __c66(j: number): any {
         S.Struct({ BackfillFrom: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StartCostAllocationTagBackfillRequest",
-      });
+      ).annotate({ identifier: "StartCostAllocationTagBackfillRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ BackfillRequest: S.optional(__S(1856, __c58, 0)) }),
-      ).annotate({
-        identifier: "StartCostAllocationTagBackfillResponse",
-      });
+      ).annotate({ identifier: "StartCostAllocationTagBackfillResponse" });
   }
 }
 function __c67(j: number): any {
@@ -5277,9 +5063,7 @@ function __c67(j: number): any {
         S.Struct({}).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StartSavingsPlansPurchaseRecommendationGenerationRequest",
-      });
+      ).annotate({ identifier: "StartSavingsPlansPurchaseRecommendationGenerationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5287,9 +5071,7 @@ function __c67(j: number): any {
           GenerationStartedTime: S.optional(S.String),
           EstimatedCompletionTime: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "StartSavingsPlansPurchaseRecommendationGenerationResponse",
-      });
+      ).annotate({ identifier: "StartSavingsPlansPurchaseRecommendationGenerationResponse" });
   }
 }
 function __c68(j: number): any {
@@ -5319,9 +5101,7 @@ function __c70(j: number): any {
         S.Struct({ MonitorArn: S.String, MonitorName: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateAnomalyMonitorRequest",
-      });
+      ).annotate({ identifier: "UpdateAnomalyMonitorRequest" });
   }
 }
 function __c71(j: number): any {
@@ -5337,9 +5117,7 @@ function __c71(j: number): any {
           SubscriptionName: S.optional(S.String),
           ThresholdExpression: S.optional(__S(68, __c2, 4)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateAnomalySubscriptionRequest",
-      });
+      ).annotate({ identifier: "UpdateAnomalySubscriptionRequest" });
   }
 }
 function __c72(j: number): any {
@@ -5355,9 +5133,7 @@ function __c72(j: number): any {
         S.Struct({ CostAllocationTagsStatus: __S(2305, __c72, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateCostAllocationTagsStatusRequest",
-      });
+      ).annotate({ identifier: "UpdateCostAllocationTagsStatusRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5365,9 +5141,7 @@ function __c72(j: number): any {
           Code: S.optional(S.String),
           Message: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "UpdateCostAllocationTagsStatusError",
-      });
+      ).annotate({ identifier: "UpdateCostAllocationTagsStatusError" });
     case 4:
       return S.Array(__S(2307, __c72, 3));
     case 5:
@@ -5388,9 +5162,7 @@ function __c73(j: number): any {
           DefaultValue: S.optional(S.String),
           SplitChargeRules: S.optional(__S(358, __c11, 6)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateCostCategoryDefinitionRequest",
-      });
+      ).annotate({ identifier: "UpdateCostCategoryDefinitionRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -132,7 +132,7 @@ export class ValidationException
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       FieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(305, __c38, 1)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(297, __c37, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -538,8 +538,8 @@ export const associateDefaultView: API.OperationMethod<
   AssociateDefaultViewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<AssociateDefaultViewInput>,
-  output: __S(313, __c39, 1) as any as S.Schema<AssociateDefaultViewOutput>,
+  input: __S(304, __c38, 0) as any as S.Schema<AssociateDefaultViewInput>,
+  output: __S(312, __c39, 0) as any as S.Schema<AssociateDefaultViewOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -780,7 +780,7 @@ export const deleteView: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(64, __c8, 0) as any as S.Schema<DeleteViewInput>,
-  output: __S(72, __c9, 0) as any as S.Schema<DeleteViewOutput>,
+  output: __S(312, __c39, 0) as any as S.Schema<DeleteViewOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -812,8 +812,8 @@ export const disassociateDefaultView: API.OperationMethod<
   DisassociateDefaultViewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<DisassociateDefaultViewRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<DisassociateDefaultViewResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<DisassociateDefaultViewRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DisassociateDefaultViewResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -871,7 +871,7 @@ export const getDefaultView: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c12, 0) as any as S.Schema<GetDefaultViewRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<GetDefaultViewOutput>,
+  output: __S(312, __c39, 0) as any as S.Schema<GetDefaultViewOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1487,7 +1487,7 @@ export const tagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(264, __c33, 0) as any as S.Schema<TagResourceInput>,
-  output: __S(272, __c34, 0) as any as S.Schema<TagResourceOutput>,
+  output: __S(80, __c10, 0) as any as S.Schema<TagResourceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1518,8 +1518,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<UntagResourceInput>,
-  output: __S(272, __c34, 0) as any as S.Schema<UntagResourceOutput>,
+  input: __S(272, __c34, 0) as any as S.Schema<UntagResourceInput>,
+  output: __S(80, __c10, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1567,8 +1567,8 @@ export const updateIndexType: API.OperationMethod<
   UpdateIndexTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<UpdateIndexTypeInput>,
-  output: __S(289, __c36, 1) as any as S.Schema<UpdateIndexTypeOutput>,
+  input: __S(280, __c35, 0) as any as S.Schema<UpdateIndexTypeInput>,
+  output: __S(281, __c35, 1) as any as S.Schema<UpdateIndexTypeOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1600,7 +1600,7 @@ export const updateView: API.OperationMethod<
   UpdateViewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<UpdateViewInput>,
+  input: __S(288, __c36, 0) as any as S.Schema<UpdateViewInput>,
   output: __S(40, __c5, 0) as any as S.Schema<UpdateViewOutput>,
   errors: [
     AccessDeniedException,
@@ -1661,9 +1661,7 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateResourceExplorerSetupInput",
-      });
+      ).annotate({ identifier: "CreateResourceExplorerSetupInput" });
   }
 }
 function __c3(j: number): any {
@@ -1734,9 +1732,7 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteResourceExplorerSetupInput",
-      });
+      ).annotate({ identifier: "DeleteResourceExplorerSetupInput" });
   }
 }
 function __c8(j: number): any {
@@ -1752,14 +1748,6 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ ViewArn: S.optional(S.String) })).annotate({
-        identifier: "DeleteViewOutput",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(
@@ -1771,10 +1759,12 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateDefaultViewRequest",
-      });
-    case 1:
+      ).annotate({ identifier: "DisassociateDefaultViewRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DisassociateDefaultViewResponse",
       });
@@ -1794,9 +1784,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAccountLevelServiceConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetAccountLevelServiceConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ AWSServiceAccessStatus: S.String, ServiceLinkedRole: S.optional(S.String) }),
@@ -1804,9 +1792,7 @@ function __c11(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ OrgConfiguration: S.optional(__S(89, __c11, 1)) }),
-      ).annotate({
-        identifier: "GetAccountLevelServiceConfigurationOutput",
-      });
+      ).annotate({ identifier: "GetAccountLevelServiceConfigurationOutput" });
   }
 }
 function __c12(j: number): any {
@@ -1889,9 +1875,7 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetResourceExplorerSetupInput",
-      });
+      ).annotate({ identifier: "GetResourceExplorerSetupInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Code: S.optional(S.String), Message: S.optional(S.String) }),
@@ -1925,9 +1909,7 @@ function __c15(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({ Regions: S.optional(__S(125, __c15, 5)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetResourceExplorerSetupOutput",
-      });
+      ).annotate({ identifier: "GetResourceExplorerSetupOutput" });
   }
 }
 function __c16(j: number): any {
@@ -1971,9 +1953,7 @@ function __c18(j: number): any {
           RecorderName: S.optional(S.String),
           RecorderType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ServiceLinkedRecorderInfo",
-      });
+      ).annotate({ identifier: "ServiceLinkedRecorderInfo" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2049,9 +2029,7 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListIndexesForMembersInput",
-      });
+      ).annotate({ identifier: "ListIndexesForMembersInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2066,9 +2044,7 @@ function __c22(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ Indexes: S.optional(__S(178, __c22, 2)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListIndexesForMembersOutput",
-      });
+      ).annotate({ identifier: "ListIndexesForMembersOutput" });
   }
 }
 function __c23(j: number): any {
@@ -2190,9 +2166,7 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListStreamingAccessForServicesInput",
-      });
+      ).annotate({ identifier: "ListStreamingAccessForServicesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2208,9 +2182,7 @@ function __c28(j: number): any {
           StreamingAccessForServices: __S(226, __c28, 2),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListStreamingAccessForServicesOutput",
-      });
+      ).annotate({ identifier: "ListStreamingAccessForServicesOutput" });
   }
 }
 function __c29(j: number): any {
@@ -2227,9 +2199,7 @@ function __c29(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSupportedResourceTypesInput",
-      });
+      ).annotate({ identifier: "ListSupportedResourceTypesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2246,9 +2216,7 @@ function __c29(j: number): any {
           ResourceTypes: S.optional(__S(234, __c29, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListSupportedResourceTypesOutput",
-      });
+      ).annotate({ identifier: "ListSupportedResourceTypesOutput" });
   }
 }
 function __c30(j: number): any {
@@ -2335,14 +2303,6 @@ function __c33(j: number): any {
 function __c34(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceOutput",
-      });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
@@ -2360,7 +2320,7 @@ function __c35(j: number): any {
       ).annotate({ identifier: "UntagResourceInput" });
   }
 }
-function __c36(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2379,7 +2339,7 @@ function __c36(j: number): any {
       ).annotate({ identifier: "UpdateIndexTypeOutput" });
   }
 }
-function __c37(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2393,17 +2353,17 @@ function __c37(j: number): any {
       ).annotate({ identifier: "UpdateViewInput" });
   }
 }
-function __c38(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Name: S.String, ValidationIssue: S.String })).annotate({
         identifier: "ValidationExceptionField",
       });
     case 1:
-      return S.Array(__S(304, __c38, 0));
+      return S.Array(__S(296, __c37, 0));
   }
 }
-function __c39(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2417,10 +2377,12 @@ function __c39(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateDefaultViewInput",
-      });
-    case 1:
+      ).annotate({ identifier: "AssociateDefaultViewInput" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ ViewArn: S.optional(S.String) })).annotate({
         identifier: "AssociateDefaultViewOutput",
       });

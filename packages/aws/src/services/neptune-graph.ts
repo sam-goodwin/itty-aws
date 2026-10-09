@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -112,9 +112,7 @@ export class ConflictException
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({
-          identifier: "ConflictExceptionReason",
-        }),
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ConflictExceptionReason" }),
       ),
     },
     /*@__PURE__*/ T.HttpError(409),
@@ -1065,7 +1063,7 @@ export const createGraphUsingImportTask: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(128, __c8, 0) as any as S.Schema<CreateGraphUsingImportTaskInput>,
-  output: __S(129, __c8, 1) as any as S.Schema<CreateGraphUsingImportTaskOutput>,
+  output: __S(160, __c10, 0) as any as S.Schema<CreateGraphUsingImportTaskOutput>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1097,8 +1095,8 @@ export const createPrivateGraphEndpoint: API.OperationMethod<
   CreatePrivateGraphEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c10, 0) as any as S.Schema<CreatePrivateGraphEndpointInput>,
-  output: __S(192, __c12, 0) as any as S.Schema<CreatePrivateGraphEndpointOutput>,
+  input: __S(176, __c11, 0) as any as S.Schema<CreatePrivateGraphEndpointInput>,
+  output: __S(208, __c13, 0) as any as S.Schema<CreatePrivateGraphEndpointOutput>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1128,7 +1126,7 @@ export const deleteGraph: API.OperationMethod<
   DeleteGraphError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c13, 0) as any as S.Schema<DeleteGraphInput>,
+  input: __S(224, __c14, 0) as any as S.Schema<DeleteGraphInput>,
   output: __S(80, __c5, 0) as any as S.Schema<DeleteGraphOutput>,
   errors: [
     ConflictException,
@@ -1158,7 +1156,7 @@ export const deleteGraphSnapshot: API.OperationMethod<
   DeleteGraphSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c14, 0) as any as S.Schema<DeleteGraphSnapshotInput>,
+  input: __S(240, __c15, 0) as any as S.Schema<DeleteGraphSnapshotInput>,
   output: __S(112, __c7, 0) as any as S.Schema<DeleteGraphSnapshotOutput>,
   errors: [
     ConflictException,
@@ -1188,8 +1186,8 @@ export const deletePrivateGraphEndpoint: API.OperationMethod<
   DeletePrivateGraphEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c15, 0) as any as S.Schema<DeletePrivateGraphEndpointInput>,
-  output: __S(192, __c12, 0) as any as S.Schema<DeletePrivateGraphEndpointOutput>,
+  input: __S(256, __c16, 0) as any as S.Schema<DeletePrivateGraphEndpointInput>,
+  output: __S(208, __c13, 0) as any as S.Schema<DeletePrivateGraphEndpointOutput>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1227,8 +1225,8 @@ export const executeQuery: API.OperationMethod<
   ExecuteQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257, __c16, 1) as any as S.Schema<ExecuteQueryInput>,
-  output: __S(258, __c16, 2) as any as S.Schema<ExecuteQueryOutput>,
+  input: __S(273, __c17, 1) as any as S.Schema<ExecuteQueryInput>,
+  output: __S(274, __c17, 2) as any as S.Schema<ExecuteQueryOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1258,8 +1256,8 @@ export const getExportTask: API.OperationMethod<
   GetExportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c17, 0) as any as S.Schema<GetExportTaskInput>,
-  output: __S(274, __c17, 2) as any as S.Schema<GetExportTaskOutput>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetExportTaskInput>,
+  output: __S(290, __c18, 2) as any as S.Schema<GetExportTaskOutput>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1286,7 +1284,7 @@ export const getGraph: API.OperationMethod<
   GetGraphError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c19, 0) as any as S.Schema<GetGraphInput>,
+  input: __S(320, __c20, 0) as any as S.Schema<GetGraphInput>,
   output: __S(80, __c5, 0) as any as S.Schema<GetGraphOutput>,
   errors: [
     InternalServerException,
@@ -1314,8 +1312,8 @@ export const getGraphSnapshot: API.OperationMethod<
   GetGraphSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c20, 0) as any as S.Schema<GetGraphSnapshotInput>,
-  output: __S(336, __c21, 0) as any as S.Schema<GetGraphSnapshotOutput>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetGraphSnapshotInput>,
+  output: __S(112, __c7, 0) as any as S.Schema<GetGraphSnapshotOutput>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1402,7 +1400,7 @@ export const getPrivateGraphEndpoint: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(384, __c24, 0) as any as S.Schema<GetPrivateGraphEndpointInput>,
-  output: __S(192, __c12, 0) as any as S.Schema<GetPrivateGraphEndpointOutput>,
+  output: __S(208, __c13, 0) as any as S.Schema<GetPrivateGraphEndpointOutput>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1721,7 +1719,7 @@ export const restoreGraphFromSnapshot: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(560, __c35, 0) as any as S.Schema<RestoreGraphFromSnapshotInput>,
-  output: __S(561, __c35, 1) as any as S.Schema<RestoreGraphFromSnapshotOutput>,
+  output: __S(80, __c5, 0) as any as S.Schema<RestoreGraphFromSnapshotOutput>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1812,7 +1810,7 @@ export const startImportTask: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(608, __c38, 0) as any as S.Schema<StartImportTaskInput>,
-  output: __S(609, __c38, 1) as any as S.Schema<StartImportTaskOutput>,
+  output: __S(160, __c10, 0) as any as S.Schema<StartImportTaskOutput>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1966,9 +1964,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelQueryResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "CancelQueryResponse" });
   }
 }
 function __c2(j: number): any {
@@ -2071,9 +2067,7 @@ function __c7(j: number): any {
           status: S.optional(S.String),
           kmsKeyIdentifier: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateGraphSnapshotOutput",
-      });
+      ).annotate({ identifier: "CreateGraphSnapshotOutput" });
   }
 }
 function __c8(j: number): any {
@@ -2108,24 +2102,7 @@ function __c8(j: number): any {
             T.StaticContextParams({ ApiType: { value: "ControlPlane" } }),
           ),
         ),
-      ).annotate({
-        identifier: "CreateGraphUsingImportTaskInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          graphId: S.optional(S.String),
-          taskId: S.String,
-          source: S.String,
-          format: S.optional(S.String),
-          parquetType: S.optional(S.String),
-          roleArn: S.String,
-          status: S.String,
-          importOptions: S.optional(__S(145, __c9, 1)),
-        }),
-      ).annotate({
-        identifier: "CreateGraphUsingImportTaskOutput",
-      });
+      ).annotate({ identifier: "CreateGraphUsingImportTaskInput" });
   }
 }
 function __c9(j: number): any {
@@ -2148,10 +2125,27 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          graphId: S.optional(S.String),
+          taskId: S.String,
+          source: S.String,
+          format: S.optional(S.String),
+          parquetType: S.optional(S.String),
+          roleArn: S.String,
+          status: S.String,
+          importOptions: S.optional(__S(145, __c9, 1)),
+        }),
+      ).annotate({ identifier: "CreateGraphUsingImportTaskOutput" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           graphIdentifier: S.String.pipe(T.HttpLabel("graphIdentifier")),
           vpcId: S.optional(S.String),
-          subnetIds: S.optional(__S(176, __c11, 0)),
-          vpcSecurityGroupIds: S.optional(__S(176, __c11, 0)),
+          subnetIds: S.optional(__S(192, __c12, 0)),
+          vpcSecurityGroupIds: S.optional(__S(192, __c12, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/graphs/{graphIdentifier}/endpoints/" }),
@@ -2163,33 +2157,29 @@ function __c10(j: number): any {
             T.StaticContextParams({ ApiType: { value: "ControlPlane" } }),
           ),
         ),
-      ).annotate({
-        identifier: "CreatePrivateGraphEndpointInput",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
+      ).annotate({ identifier: "CreatePrivateGraphEndpointInput" });
   }
 }
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          vpcId: S.String,
-          subnetIds: __S(176, __c11, 0),
-          status: S.String,
-          vpcEndpointId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreatePrivateGraphEndpointOutput",
-      });
+      return S.Array(S.String);
   }
 }
 function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          vpcId: S.String,
+          subnetIds: __S(192, __c12, 0),
+          status: S.String,
+          vpcEndpointId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreatePrivateGraphEndpointOutput" });
+  }
+}
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2210,7 +2200,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "DeleteGraphInput" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2228,7 +2218,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "DeleteGraphSnapshotInput" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2246,12 +2236,10 @@ function __c15(j: number): any {
             T.StaticContextParams({ ApiType: { value: "ControlPlane" } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeletePrivateGraphEndpointInput",
-      });
+      ).annotate({ identifier: "DeletePrivateGraphEndpointInput" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.Any.pipe(S.optional));
@@ -2261,7 +2249,7 @@ function __c16(j: number): any {
           graphIdentifier: S.String.pipe(T.HttpHeader("graphIdentifier"), T.HostLabel()),
           queryString: S.String,
           language: S.String,
-          parameters: S.optional(__S(256, __c16, 0)),
+          parameters: S.optional(__S(272, __c17, 0)),
           planCache: S.optional(S.String),
           explainMode: S.optional(S.String),
           queryTimeoutMilliseconds: S.optional(S.Number),
@@ -2285,7 +2273,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "ExecuteQueryOutput" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2323,13 +2311,13 @@ function __c17(j: number): any {
           kmsKeyIdentifier: S.String,
           parquetType: S.optional(S.String),
           statusReason: S.optional(S.String),
-          exportTaskDetails: S.optional(__S(273, __c17, 1)),
-          exportFilter: S.optional(__S(292, __c18, 4)),
+          exportTaskDetails: S.optional(__S(289, __c18, 1)),
+          exportFilter: S.optional(__S(308, __c19, 4)),
         }),
       ).annotate({ identifier: "GetExportTaskOutput" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2338,27 +2326,25 @@ function __c18(j: number): any {
           sourcePropertyName: S.optional(S.String),
           multiValueHandling: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ExportFilterPropertyAttributes",
-      });
+      ).annotate({ identifier: "ExportFilterPropertyAttributes" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(288, __c18, 0).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(304, __c19, 0).pipe(S.optional));
     case 2:
-      return S.suspend(() => S.Struct({ properties: S.optional(__S(289, __c18, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ properties: S.optional(__S(305, __c19, 1)) })).annotate({
         identifier: "ExportFilterElement",
       });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(290, __c18, 2).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(306, __c19, 2).pipe(S.optional));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          vertexFilter: S.optional(__S(291, __c18, 3)),
-          edgeFilter: S.optional(__S(291, __c18, 3)),
+          vertexFilter: S.optional(__S(307, __c19, 3)),
+          edgeFilter: S.optional(__S(307, __c19, 3)),
         }),
       ).annotate({ identifier: "ExportFilter" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2376,7 +2362,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "GetGraphInput" });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2392,22 +2378,6 @@ function __c20(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetGraphSnapshotInput" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          arn: S.String,
-          sourceGraphId: S.optional(S.String),
-          snapshotCreateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          status: S.optional(S.String),
-          kmsKeyIdentifier: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetGraphSnapshotOutput" });
   }
 }
 function __c22(j: number): any {
@@ -2437,15 +2407,15 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          nodeProperties: S.optional(__S(176, __c11, 0)),
-          distinctOutgoingEdgeLabels: S.optional(__S(176, __c11, 0)),
+          nodeProperties: S.optional(__S(192, __c12, 0)),
+          distinctOutgoingEdgeLabels: S.optional(__S(192, __c12, 0)),
         }),
       ).annotate({ identifier: "NodeStructure" });
     case 4:
       return S.Array(__S(355, __c22, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ count: S.optional(S.Number), edgeProperties: S.optional(__S(176, __c11, 0)) }),
+        S.Struct({ count: S.optional(S.Number), edgeProperties: S.optional(__S(192, __c12, 0)) }),
       ).annotate({ identifier: "EdgeStructure" });
     case 6:
       return S.Array(__S(357, __c22, 5));
@@ -2456,8 +2426,8 @@ function __c22(j: number): any {
           numEdges: S.optional(S.Number),
           numNodeLabels: S.optional(S.Number),
           numEdgeLabels: S.optional(S.Number),
-          nodeLabels: S.optional(__S(176, __c11, 0)),
-          edgeLabels: S.optional(__S(176, __c11, 0)),
+          nodeLabels: S.optional(__S(192, __c12, 0)),
+          edgeLabels: S.optional(__S(192, __c12, 0)),
           numNodeProperties: S.optional(S.Number),
           numEdgeProperties: S.optional(S.Number),
           nodeProperties: S.optional(__S(354, __c22, 2)),
@@ -2545,9 +2515,7 @@ function __c24(j: number): any {
             T.StaticContextParams({ ApiType: { value: "ControlPlane" } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetPrivateGraphEndpointInput",
-      });
+      ).annotate({ identifier: "GetPrivateGraphEndpointInput" });
   }
 }
 function __c25(j: number): any {
@@ -2676,7 +2644,7 @@ function __c29(j: number): any {
         ),
       ).annotate({ identifier: "ListGraphSnapshotsInput" });
     case 1:
-      return S.Array(__S(336, __c21, 0));
+      return S.Array(__S(112, __c7, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ graphSnapshots: __S(465, __c29, 1), nextToken: S.optional(S.String) }),
@@ -2730,20 +2698,13 @@ function __c31(j: number): any {
             T.StaticContextParams({ ApiType: { value: "ControlPlane" } }),
           ),
         ),
-      ).annotate({
-        identifier: "ListPrivateGraphEndpointsInput",
-      });
+      ).annotate({ identifier: "ListPrivateGraphEndpointsInput" });
     case 1:
-      return S.Array(__S(192, __c12, 0));
+      return S.Array(__S(208, __c13, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          privateGraphEndpoints: __S(497, __c31, 1),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListPrivateGraphEndpointsOutput",
-      });
+        S.Struct({ privateGraphEndpoints: __S(497, __c31, 1), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListPrivateGraphEndpointsOutput" });
   }
 }
 function __c32(j: number): any {
@@ -2840,31 +2801,7 @@ function __c35(j: number): any {
             T.StaticContextParams({ ApiType: { value: "ControlPlane" } }),
           ),
         ),
-      ).annotate({
-        identifier: "RestoreGraphFromSnapshotInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          arn: S.String,
-          status: S.optional(S.String),
-          statusReason: S.optional(S.String),
-          createTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          provisionedMemory: S.optional(S.Number),
-          endpoint: S.optional(S.String),
-          publicConnectivity: S.optional(S.Boolean),
-          vectorSearchConfiguration: S.optional(__S(64, __c4, 0)),
-          replicaCount: S.optional(S.Number),
-          kmsKeyIdentifier: S.optional(S.String),
-          sourceSnapshotId: S.optional(S.String),
-          deletionProtection: S.optional(S.Boolean),
-          buildNumber: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RestoreGraphFromSnapshotOutput",
-      });
+      ).annotate({ identifier: "RestoreGraphFromSnapshotInput" });
   }
 }
 function __c36(j: number): any {
@@ -2878,7 +2815,7 @@ function __c36(j: number): any {
           destination: S.String,
           kmsKeyIdentifier: S.String,
           parquetType: S.optional(S.String),
-          exportFilter: S.optional(__S(292, __c18, 4)),
+          exportFilter: S.optional(__S(308, __c19, 4)),
           tags: S.optional(__S(48, __c3, 0)),
         }).pipe(
           T.all(
@@ -2904,7 +2841,7 @@ function __c36(j: number): any {
           kmsKeyIdentifier: S.String,
           parquetType: S.optional(S.String),
           statusReason: S.optional(S.String),
-          exportFilter: S.optional(__S(292, __c18, 4)),
+          exportFilter: S.optional(__S(308, __c19, 4)),
         }),
       ).annotate({ identifier: "StartExportTaskOutput" });
   }
@@ -2952,19 +2889,6 @@ function __c38(j: number): any {
           ),
         ),
       ).annotate({ identifier: "StartImportTaskInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          graphId: S.optional(S.String),
-          taskId: S.String,
-          source: S.String,
-          format: S.optional(S.String),
-          parquetType: S.optional(S.String),
-          roleArn: S.String,
-          status: S.String,
-          importOptions: S.optional(__S(145, __c9, 1)),
-        }),
-      ).annotate({ identifier: "StartImportTaskOutput" });
   }
 }
 function __c39(j: number): any {
@@ -3012,7 +2936,7 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(176, __c11, 0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(192, __c12, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),

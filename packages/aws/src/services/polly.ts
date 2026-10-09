@@ -1,9 +1,9 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
-import * as stream from "effect/Stream";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
+import type * as stream from "effect/Stream";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -175,9 +175,7 @@ export class ServiceQuotaExceededException
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       quotaCode: /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "QuotaCode" }),
-      serviceCode: /*@__PURE__*/ S.suspend(() => S.String).annotate({
-        identifier: "ServiceCode",
-      }),
+      serviceCode: /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ServiceCode" }),
     },
     /*@__PURE__*/ T.HttpError(402),
   ).pipe(C.withQuotaError) {}
@@ -1033,9 +1031,7 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeleteLexiconOutput",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "DeleteLexiconOutput" });
   }
 }
 function __c4(j: number): any {
@@ -1140,9 +1136,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetSpeechSynthesisTaskInput",
-      });
+      ).annotate({ identifier: "GetSpeechSynthesisTaskInput" });
   }
 }
 function __c9(j: number): any {
@@ -1180,9 +1174,7 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ SynthesisTask: S.optional(__S(160, __c10, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetSpeechSynthesisTaskOutput",
-      });
+      ).annotate({ identifier: "GetSpeechSynthesisTaskOutput" });
   }
 }
 function __c12(j: number): any {
@@ -1227,9 +1219,7 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSpeechSynthesisTasksInput",
-      });
+      ).annotate({ identifier: "ListSpeechSynthesisTasksInput" });
     case 1:
       return S.Array(__S(160, __c10, 0));
     case 2:
@@ -1238,9 +1228,7 @@ function __c13(j: number): any {
           NextToken: S.optional(S.String),
           SynthesisTasks: S.optional(__S(209, __c13, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListSpeechSynthesisTasksOutput",
-      });
+      ).annotate({ identifier: "ListSpeechSynthesisTasksOutput" });
   }
 }
 function __c14(j: number): any {
@@ -1276,9 +1264,7 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "TextEvent" });
     case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CloseStreamEvent",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "CloseStreamEvent" });
     case 3:
       return T.InputEventStream(
         /*@__PURE__*/ S.Union([
@@ -1307,9 +1293,7 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartSpeechSynthesisStreamInput",
-      });
+      ).annotate({ identifier: "StartSpeechSynthesisStreamInput" });
     case 5:
       return S.suspend(() =>
         S.Struct({ AudioChunk: S.optional(T.Blob).pipe(T.EventPayload()) }),
@@ -1331,16 +1315,12 @@ function __c15(j: number): any {
           /*@__PURE__*/ S.Struct({
             ServiceQuotaExceededException: /*@__PURE__*/ S.suspend(
               () => ServiceQuotaExceededException,
-            ).annotate({
-              identifier: "ServiceQuotaExceededException",
-            }),
+            ).annotate({ identifier: "ServiceQuotaExceededException" }),
           }),
           /*@__PURE__*/ S.Struct({
             ServiceFailureException: /*@__PURE__*/ S.suspend(
               () => ServiceFailureException,
-            ).annotate({
-              identifier: "ServiceFailureException",
-            }),
+            ).annotate({ identifier: "ServiceFailureException" }),
           }),
           /*@__PURE__*/ S.Struct({
             ThrottlingException: /*@__PURE__*/ S.suspend(() => ThrottlingException).annotate({
@@ -1351,12 +1331,8 @@ function __c15(j: number): any {
       );
     case 8:
       return S.suspend(() =>
-        S.Struct({
-          EventStream: S.optional(__S(247, __c15, 7)).pipe(T.HttpPayload()),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "StartSpeechSynthesisStreamOutput",
-      });
+        S.Struct({ EventStream: S.optional(__S(247, __c15, 7)).pipe(T.HttpPayload()) }).pipe(ns),
+      ).annotate({ identifier: "StartSpeechSynthesisStreamOutput" });
   }
 }
 function __c16(j: number): any {
@@ -1387,9 +1363,7 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartSpeechSynthesisTaskInput",
-      });
+      ).annotate({ identifier: "StartSpeechSynthesisTaskInput" });
   }
 }
 function __c17(j: number): any {

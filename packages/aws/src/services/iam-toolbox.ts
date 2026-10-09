@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -205,9 +205,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetRequestAuthorizationDetailsInput",
-      });
+      ).annotate({ identifier: "GetRequestAuthorizationDetailsInput" });
     case 1:
       return S.Record(S.String, /*@__PURE__*/ S.Any.pipe(S.optional));
     case 2:
@@ -259,9 +257,7 @@ function __c0(j: number): any {
           policies: __S(11, __c0, 11),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetRequestAuthorizationDetailsOutput",
-      });
+      ).annotate({ identifier: "GetRequestAuthorizationDetailsOutput" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

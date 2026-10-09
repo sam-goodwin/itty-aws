@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -475,7 +475,7 @@ export const createLoggingConfiguration: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(184, __c23, 0) as any as S.Schema<CreateLoggingConfigurationRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<CreateLoggingConfigurationResponse>,
+  output: __S(196, __c24, 4) as any as S.Schema<CreateLoggingConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -542,7 +542,7 @@ export const deleteLoggingConfiguration: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(24, __c3, 0) as any as S.Schema<DeleteLoggingConfigurationRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<DeleteLoggingConfigurationResponse>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteLoggingConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -575,8 +575,8 @@ export const deleteMessage: API.OperationMethod<
   DeleteMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DeleteMessageRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<DeleteMessageResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<DeleteMessageRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<DeleteMessageResponse>,
   errors: [
     AccessDeniedException,
     PendingVerification,
@@ -605,8 +605,8 @@ export const deleteRoom: API.OperationMethod<
   DeleteRoomError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<DeleteRoomRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<DeleteRoomResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<DeleteRoomRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteRoomResponse>,
   errors: [
     AccessDeniedException,
     PendingVerification,
@@ -638,7 +638,7 @@ export const disconnectUser: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(64, __c8, 0) as any as S.Schema<DisconnectUserRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<DisconnectUserResponse>,
+  output: __S(32, __c4, 0) as any as S.Schema<DisconnectUserResponse>,
   errors: [
     AccessDeniedException,
     PendingVerification,
@@ -667,7 +667,7 @@ export const getLoggingConfiguration: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(72, __c9, 0) as any as S.Schema<GetLoggingConfigurationRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<GetLoggingConfigurationResponse>,
+  output: __S(196, __c24, 4) as any as S.Schema<GetLoggingConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -818,7 +818,7 @@ export const sendEvent: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(112, __c14, 0) as any as S.Schema<SendEventRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<SendEventResponse>,
+  output: __S(48, __c6, 0) as any as S.Schema<SendEventResponse>,
   errors: [
     AccessDeniedException,
     PendingVerification,
@@ -847,7 +847,7 @@ export const tagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(120, __c15, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<TagResourceResponse>,
+  output: __S(32, __c4, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -875,7 +875,7 @@ export const untagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(128, __c16, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<UntagResourceResponse>,
+  output: __S(32, __c4, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -905,7 +905,7 @@ export const updateLoggingConfiguration: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(136, __c17, 0) as any as S.Schema<UpdateLoggingConfigurationRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<UpdateLoggingConfigurationResponse>,
+  output: __S(196, __c24, 4) as any as S.Schema<UpdateLoggingConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -959,7 +959,7 @@ function __c0(j: number): any {
           maximumMessageRatePerSecond: S.optional(S.Number),
           maximumMessageLength: S.optional(S.Number),
           messageReviewHandler: S.optional(__S(8, __c1, 0)),
-          tags: S.optional(__S(192, __c24, 0)),
+          tags: S.optional(__S(176, __c22, 0)),
           loggingConfigurationIdentifiers: S.optional(__S(168, __c21, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/CreateRoom" }), svc, auth, proto, ver, rules),
@@ -988,7 +988,7 @@ function __c2(j: number): any {
           maximumMessageRatePerSecond: S.optional(S.Number),
           maximumMessageLength: S.optional(S.Number),
           messageReviewHandler: S.optional(__S(8, __c1, 0)),
-          tags: S.optional(__S(192, __c24, 0)),
+          tags: S.optional(__S(176, __c22, 0)),
           loggingConfigurationIdentifiers: S.optional(__S(168, __c21, 0)),
         }),
       ).annotate({ identifier: "CreateRoomResponse" });
@@ -1008,16 +1008,18 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteLoggingConfigurationRequest",
-      });
-    case 1:
+      ).annotate({ identifier: "DeleteLoggingConfigurationRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteLoggingConfigurationResponse",
       });
   }
 }
-function __c4(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1027,7 +1029,7 @@ function __c4(j: number): any {
       ).annotate({ identifier: "DeleteMessageRequest" });
   }
 }
-function __c5(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ id: S.optional(S.String) })).annotate({
@@ -1035,7 +1037,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1043,14 +1045,6 @@ function __c6(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/DeleteRoom" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteRoomRequest" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteRoomResponse",
-      });
   }
 }
 function __c8(j: number): any {
@@ -1081,9 +1075,7 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetLoggingConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetLoggingConfigurationRequest" });
   }
 }
 function __c10(j: number): any {
@@ -1110,17 +1102,13 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListLoggingConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListLoggingConfigurationsRequest" });
     case 1:
-      return S.Array(__S(204, __c25, 4));
+      return S.Array(__S(196, __c24, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({ loggingConfigurations: __S(89, __c11, 1), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListLoggingConfigurationsResponse",
-      });
+      ).annotate({ identifier: "ListLoggingConfigurationsResponse" });
   }
 }
 function __c12(j: number): any {
@@ -1144,7 +1132,7 @@ function __c12(j: number): any {
           messageReviewHandler: S.optional(__S(8, __c1, 0)),
           createTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           updateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          tags: S.optional(__S(192, __c24, 0)),
+          tags: S.optional(__S(176, __c22, 0)),
           loggingConfigurationIdentifiers: S.optional(__S(168, __c21, 0)),
         }),
       ).annotate({ identifier: "RoomSummary" });
@@ -1170,11 +1158,9 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: __S(192, __c24, 0) })).annotate({
+      return S.suspend(() => S.Struct({ tags: __S(176, __c22, 0) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
@@ -1197,7 +1183,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(192, __c24, 0),
+          tags: __S(176, __c22, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -1238,7 +1224,7 @@ function __c17(j: number): any {
         S.Struct({
           identifier: S.String,
           name: S.optional(S.String),
-          destinationConfiguration: S.optional(__S(203, __c25, 3)),
+          destinationConfiguration: S.optional(__S(195, __c24, 3)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/UpdateLoggingConfiguration" }),
@@ -1249,9 +1235,7 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateLoggingConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateLoggingConfigurationRequest" });
   }
 }
 function __c18(j: number): any {
@@ -1323,8 +1307,8 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          destinationConfiguration: __S(203, __c25, 3),
-          tags: S.optional(__S(192, __c24, 0)),
+          destinationConfiguration: __S(195, __c24, 3),
+          tags: S.optional(__S(176, __c22, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateLoggingConfiguration" }),
@@ -1335,18 +1319,10 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateLoggingConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateLoggingConfigurationRequest" });
   }
 }
 function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ bucketName: S.String })).annotate({
@@ -1362,9 +1338,9 @@ function __c25(j: number): any {
       });
     case 3:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ s3: __S(200, __c25, 0) }),
-        /*@__PURE__*/ S.Struct({ cloudWatchLogs: __S(201, __c25, 1) }),
-        /*@__PURE__*/ S.Struct({ firehose: __S(202, __c25, 2) }),
+        /*@__PURE__*/ S.Struct({ s3: __S(192, __c24, 0) }),
+        /*@__PURE__*/ S.Struct({ cloudWatchLogs: __S(193, __c24, 1) }),
+        /*@__PURE__*/ S.Struct({ firehose: __S(194, __c24, 2) }),
       ]);
     case 4:
       return S.suspend(() =>
@@ -1374,13 +1350,11 @@ function __c25(j: number): any {
           createTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           updateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           name: S.optional(S.String),
-          destinationConfiguration: S.optional(__S(203, __c25, 3)),
+          destinationConfiguration: S.optional(__S(195, __c24, 3)),
           state: S.optional(S.String),
-          tags: S.optional(__S(192, __c24, 0)),
+          tags: S.optional(__S(176, __c22, 0)),
         }),
-      ).annotate({
-        identifier: "CreateLoggingConfigurationResponse",
-      });
+      ).annotate({ identifier: "CreateLoggingConfigurationResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

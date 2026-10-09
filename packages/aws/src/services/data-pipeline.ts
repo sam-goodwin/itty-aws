@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
@@ -407,7 +407,7 @@ export const addTags: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(184, __c23, 0) as any as S.Schema<AddTagsInput>,
-  output: __S(192, __c24, 0) as any as S.Schema<AddTagsOutput>,
+  output: __S(176, __c22, 0) as any as S.Schema<AddTagsOutput>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -449,8 +449,8 @@ export const createPipeline: API.OperationMethod<
   CreatePipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<CreatePipelineInput>,
-  output: __S(209, __c26, 1) as any as S.Schema<CreatePipelineOutput>,
+  input: __S(200, __c25, 0) as any as S.Schema<CreatePipelineInput>,
+  output: __S(201, __c25, 1) as any as S.Schema<CreatePipelineOutput>,
   errors: [InternalServiceError, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -476,8 +476,8 @@ export const deactivatePipeline: API.OperationMethod<
   DeactivatePipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<DeactivatePipelineInput>,
-  output: __S(217, __c27, 1) as any as S.Schema<DeactivatePipelineOutput>,
+  input: __S(208, __c26, 0) as any as S.Schema<DeactivatePipelineInput>,
+  output: __S(176, __c22, 0) as any as S.Schema<DeactivatePipelineOutput>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -525,7 +525,7 @@ export const deletePipeline: API.OperationMethod<
   DeletePipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<DeletePipelineInput>,
+  input: __S(216, __c27, 0) as any as S.Schema<DeletePipelineInput>,
   output: __S(176, __c22, 0) as any as S.Schema<DeletePipelineResponse>,
   errors: [InternalServiceError, InvalidRequestException, PipelineNotFoundException],
   protocol: AwsProtocol,
@@ -1205,7 +1205,7 @@ export const removeTags: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(112, __c14, 0) as any as S.Schema<RemoveTagsInput>,
-  output: __S(192, __c24, 0) as any as S.Schema<RemoveTagsOutput>,
+  output: __S(176, __c22, 0) as any as S.Schema<RemoveTagsOutput>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1357,7 +1357,7 @@ export const setStatus: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(136, __c17, 0) as any as S.Schema<SetStatusInput>,
-  output: __S(192, __c24, 0) as any as S.Schema<SetStatusResponse>,
+  output: __S(176, __c22, 0) as any as S.Schema<SetStatusResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1406,7 +1406,7 @@ export const setTaskStatus: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(144, __c18, 0) as any as S.Schema<SetTaskStatusInput>,
-  output: __S(192, __c24, 0) as any as S.Schema<SetTaskStatusOutput>,
+  output: __S(176, __c22, 0) as any as S.Schema<SetTaskStatusOutput>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1649,7 +1649,7 @@ function __c5(j: number): any {
           name: S.String,
           fields: __S(9, __c1, 1),
           description: S.optional(S.String),
-          tags: S.optional(__S(201, __c25, 1)),
+          tags: S.optional(__S(193, __c24, 1)),
         }),
       ).annotate({ identifier: "PipelineDescription" });
     case 2:
@@ -1681,9 +1681,7 @@ function __c7(j: number): any {
         S.Struct({ pipelineId: S.String, version: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetPipelineDefinitionInput",
-      });
+      ).annotate({ identifier: "GetPipelineDefinitionInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1691,9 +1689,7 @@ function __c7(j: number): any {
           parameterObjects: S.optional(__S(67, __c8, 3)),
           parameterValues: S.optional(__S(169, __c21, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetPipelineDefinitionOutput",
-      });
+      ).annotate({ identifier: "GetPipelineDefinitionOutput" });
   }
 }
 function __c8(j: number): any {
@@ -1777,9 +1773,7 @@ function __c11(j: number): any {
           parameterObjects: S.optional(__S(67, __c8, 3)),
           parameterValues: S.optional(__S(169, __c21, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PutPipelineDefinitionInput",
-      });
+      ).annotate({ identifier: "PutPipelineDefinitionInput" });
   }
 }
 function __c12(j: number): any {
@@ -1803,9 +1797,7 @@ function __c12(j: number): any {
           validationWarnings: S.optional(__S(99, __c12, 3)),
           errored: S.Boolean,
         }).pipe(ns),
-      ).annotate({
-        identifier: "PutPipelineDefinitionOutput",
-      });
+      ).annotate({ identifier: "PutPipelineDefinitionOutput" });
   }
 }
 function __c13(j: number): any {
@@ -1877,9 +1869,7 @@ function __c16(j: number): any {
           workerGroup: S.optional(S.String),
           hostname: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ReportTaskRunnerHeartbeatInput",
-      });
+      ).annotate({ identifier: "ReportTaskRunnerHeartbeatInput" });
     case 1:
       return S.suspend(() => S.Struct({ terminate: S.Boolean }).pipe(ns)).annotate({
         identifier: "ReportTaskRunnerHeartbeatOutput",
@@ -1920,9 +1910,7 @@ function __c19(j: number): any {
           parameterObjects: S.optional(__S(67, __c8, 3)),
           parameterValues: S.optional(__S(169, __c21, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ValidatePipelineDefinitionInput",
-      });
+      ).annotate({ identifier: "ValidatePipelineDefinitionInput" });
   }
 }
 function __c20(j: number): any {
@@ -1959,7 +1947,7 @@ function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ pipelineId: S.String, tags: __S(201, __c25, 1) }).pipe(
+        S.Struct({ pipelineId: S.String, tags: __S(193, __c24, 1) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "AddTagsInput" });
@@ -1968,22 +1956,14 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "AddTagsOutput",
-      });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
         identifier: "Tag",
       });
     case 1:
-      return S.Array(__S(200, __c25, 0));
+      return S.Array(__S(192, __c24, 0));
   }
 }
-function __c26(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1991,7 +1971,7 @@ function __c26(j: number): any {
           name: S.String,
           uniqueId: S.String,
           description: S.optional(S.String),
-          tags: S.optional(__S(201, __c25, 1)),
+          tags: S.optional(__S(193, __c24, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreatePipelineInput" });
     case 1:
@@ -2000,7 +1980,7 @@ function __c26(j: number): any {
       });
   }
 }
-function __c27(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2008,13 +1988,9 @@ function __c27(j: number): any {
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeactivatePipelineInput" });
-    case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeactivatePipelineOutput",
-      });
   }
 }
-function __c28(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

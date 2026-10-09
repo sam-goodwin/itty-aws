@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials as Creds } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -214,9 +214,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssumeRoleForPodIdentityRequest",
-      });
+      ).annotate({ identifier: "AssumeRoleForPodIdentityRequest" });
     case 1:
       return S.suspend(() => S.Struct({ namespace: S.String, serviceAccount: S.String })).annotate({
         identifier: "Subject",
@@ -247,9 +245,7 @@ function __c0(j: number): any {
           assumedRoleUser: __S(3, __c0, 3),
           credentials: __S(4, __c0, 4),
         }),
-      ).annotate({
-        identifier: "AssumeRoleForPodIdentityResponse",
-      });
+      ).annotate({ identifier: "AssumeRoleForPodIdentityResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

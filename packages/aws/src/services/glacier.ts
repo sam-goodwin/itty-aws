@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -634,8 +634,8 @@ export const abortMultipartUpload: API.OperationMethod<
   AbortMultipartUploadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(688, __c43, 0) as any as S.Schema<AbortMultipartUploadInput>,
-  output: __S(704, __c44, 0) as any as S.Schema<AbortMultipartUploadResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<AbortMultipartUploadInput>,
+  output: __S(672, __c42, 0) as any as S.Schema<AbortMultipartUploadResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -680,7 +680,7 @@ export const abortVaultLock: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AbortVaultLockInput>,
-  output: __S(16, __c1, 0) as any as S.Schema<AbortVaultLockResponse>,
+  output: __S(672, __c42, 0) as any as S.Schema<AbortVaultLockResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -714,8 +714,8 @@ export const addTagsToVault: API.OperationMethod<
   AddTagsToVaultError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c2, 0) as any as S.Schema<AddTagsToVaultInput>,
-  output: __S(16, __c1, 0) as any as S.Schema<AddTagsToVaultResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<AddTagsToVaultInput>,
+  output: __S(672, __c42, 0) as any as S.Schema<AddTagsToVaultResponse>,
   errors: [
     InvalidParameterValueException,
     LimitExceededException,
@@ -783,8 +783,8 @@ export const completeMultipartUpload: API.OperationMethod<
   CompleteMultipartUploadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c4, 0) as any as S.Schema<CompleteMultipartUploadInput>,
-  output: __S(80, __c5, 0) as any as S.Schema<ArchiveCreationOutput>,
+  input: __S(48, __c3, 0) as any as S.Schema<CompleteMultipartUploadInput>,
+  output: __S(64, __c4, 0) as any as S.Schema<ArchiveCreationOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -828,8 +828,8 @@ export const completeVaultLock: API.OperationMethod<
   CompleteVaultLockError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c6, 0) as any as S.Schema<CompleteVaultLockInput>,
-  output: __S(704, __c44, 0) as any as S.Schema<CompleteVaultLockResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<CompleteVaultLockInput>,
+  output: __S(672, __c42, 0) as any as S.Schema<CompleteVaultLockResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -879,8 +879,8 @@ export const createVault: API.OperationMethod<
   CreateVaultError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c7, 0) as any as S.Schema<CreateVaultInput>,
-  output: __S(113, __c7, 1) as any as S.Schema<CreateVaultOutput>,
+  input: __S(96, __c6, 0) as any as S.Schema<CreateVaultInput>,
+  output: __S(97, __c6, 1) as any as S.Schema<CreateVaultOutput>,
   errors: [
     InvalidParameterValueException,
     LimitExceededException,
@@ -932,8 +932,8 @@ export const deleteArchive: API.OperationMethod<
   DeleteArchiveError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c8, 0) as any as S.Schema<DeleteArchiveInput>,
-  output: __S(144, __c9, 0) as any as S.Schema<DeleteArchiveResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<DeleteArchiveInput>,
+  output: __S(672, __c42, 0) as any as S.Schema<DeleteArchiveResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -982,8 +982,8 @@ export const deleteVault: API.OperationMethod<
   DeleteVaultError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c10, 0) as any as S.Schema<DeleteVaultInput>,
-  output: __S(144, __c9, 0) as any as S.Schema<DeleteVaultResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<DeleteVaultInput>,
+  output: __S(672, __c42, 0) as any as S.Schema<DeleteVaultResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1019,8 +1019,8 @@ export const deleteVaultAccessPolicy: API.OperationMethod<
   DeleteVaultAccessPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c11, 0) as any as S.Schema<DeleteVaultAccessPolicyInput>,
-  output: __S(704, __c44, 0) as any as S.Schema<DeleteVaultAccessPolicyResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<DeleteVaultAccessPolicyInput>,
+  output: __S(672, __c42, 0) as any as S.Schema<DeleteVaultAccessPolicyResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1062,8 +1062,8 @@ export const deleteVaultNotifications: API.OperationMethod<
   DeleteVaultNotificationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c12, 0) as any as S.Schema<DeleteVaultNotificationsInput>,
-  output: __S(704, __c44, 0) as any as S.Schema<DeleteVaultNotificationsResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<DeleteVaultNotificationsInput>,
+  output: __S(672, __c42, 0) as any as S.Schema<DeleteVaultNotificationsResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1113,8 +1113,8 @@ export const describeJob: API.OperationMethod<
   DescribeJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c13, 0) as any as S.Schema<DescribeJobInput>,
-  output: __S(241, __c15, 1) as any as S.Schema<GlacierJobDescription>,
+  input: __S(176, __c11, 0) as any as S.Schema<DescribeJobInput>,
+  output: __S(209, __c13, 1) as any as S.Schema<GlacierJobDescription>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1161,8 +1161,8 @@ export const describeVault: API.OperationMethod<
   DescribeVaultError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c16, 0) as any as S.Schema<DescribeVaultInput>,
-  output: __S(272, __c17, 0) as any as S.Schema<DescribeVaultOutput>,
+  input: __S(224, __c14, 0) as any as S.Schema<DescribeVaultInput>,
+  output: __S(240, __c15, 0) as any as S.Schema<DescribeVaultOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1192,8 +1192,8 @@ export const getDataRetrievalPolicy: API.OperationMethod<
   GetDataRetrievalPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c18, 0) as any as S.Schema<GetDataRetrievalPolicyInput>,
-  output: __S(289, __c18, 1) as any as S.Schema<GetDataRetrievalPolicyOutput>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetDataRetrievalPolicyInput>,
+  output: __S(257, __c16, 1) as any as S.Schema<GetDataRetrievalPolicyOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1260,8 +1260,8 @@ export const getJobOutput: API.OperationMethod<
   GetJobOutputError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c20, 0) as any as S.Schema<GetJobOutputInput>,
-  output: __S(321, __c20, 1) as any as S.Schema<GetJobOutputOutput>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetJobOutputInput>,
+  output: __S(289, __c18, 1) as any as S.Schema<GetJobOutputOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1295,8 +1295,8 @@ export const getVaultAccessPolicy: API.OperationMethod<
   GetVaultAccessPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<GetVaultAccessPolicyInput>,
-  output: __S(337, __c21, 1) as any as S.Schema<GetVaultAccessPolicyOutput>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetVaultAccessPolicyInput>,
+  output: __S(305, __c19, 1) as any as S.Schema<GetVaultAccessPolicyOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1347,8 +1347,8 @@ export const getVaultLock: API.OperationMethod<
   GetVaultLockError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c23, 0) as any as S.Schema<GetVaultLockInput>,
-  output: __S(369, __c23, 1) as any as S.Schema<GetVaultLockOutput>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetVaultLockInput>,
+  output: __S(337, __c21, 1) as any as S.Schema<GetVaultLockOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1393,8 +1393,8 @@ export const getVaultNotifications: API.OperationMethod<
   GetVaultNotificationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<GetVaultNotificationsInput>,
-  output: __S(385, __c24, 1) as any as S.Schema<GetVaultNotificationsOutput>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetVaultNotificationsInput>,
+  output: __S(353, __c22, 1) as any as S.Schema<GetVaultNotificationsOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1428,8 +1428,8 @@ export const initiateJob: API.OperationMethod<
   InitiateJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(434, __c27, 2) as any as S.Schema<InitiateJobInput>,
-  output: __S(435, __c27, 3) as any as S.Schema<InitiateJobOutput>,
+  input: __S(402, __c25, 2) as any as S.Schema<InitiateJobInput>,
+  output: __S(403, __c25, 3) as any as S.Schema<InitiateJobOutput>,
   errors: [
     InsufficientCapacityException,
     InvalidParameterValueException,
@@ -1492,8 +1492,8 @@ export const initiateMultipartUpload: API.OperationMethod<
   InitiateMultipartUploadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<InitiateMultipartUploadInput>,
-  output: __S(449, __c28, 1) as any as S.Schema<InitiateMultipartUploadOutput>,
+  input: __S(416, __c26, 0) as any as S.Schema<InitiateMultipartUploadInput>,
+  output: __S(417, __c26, 1) as any as S.Schema<InitiateMultipartUploadOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1553,8 +1553,8 @@ export const initiateVaultLock: API.OperationMethod<
   InitiateVaultLockError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c29, 0) as any as S.Schema<InitiateVaultLockInput>,
-  output: __S(465, __c29, 1) as any as S.Schema<InitiateVaultLockOutput>,
+  input: __S(432, __c27, 0) as any as S.Schema<InitiateVaultLockInput>,
+  output: __S(433, __c27, 1) as any as S.Schema<InitiateVaultLockOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1617,8 +1617,8 @@ export const listJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GlacierJobDescription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<ListJobsInput>,
-  output: __S(482, __c30, 2) as any as S.Schema<ListJobsOutput>,
+  input: __S(448, __c28, 0) as any as S.Schema<ListJobsInput>,
+  output: __S(450, __c28, 2) as any as S.Schema<ListJobsOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1679,8 +1679,8 @@ export const listMultipartUploads: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   UploadListElement
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<ListMultipartUploadsInput>,
-  output: __S(499, __c31, 3) as any as S.Schema<ListMultipartUploadsOutput>,
+  input: __S(464, __c29, 0) as any as S.Schema<ListMultipartUploadsInput>,
+  output: __S(467, __c29, 3) as any as S.Schema<ListMultipartUploadsOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1738,8 +1738,8 @@ export const listParts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PartListElement
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(512, __c32, 0) as any as S.Schema<ListPartsInput>,
-  output: __S(515, __c32, 3) as any as S.Schema<ListPartsOutput>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListPartsInput>,
+  output: __S(483, __c30, 3) as any as S.Schema<ListPartsOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1774,8 +1774,8 @@ export const listProvisionedCapacity: API.OperationMethod<
   ListProvisionedCapacityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c33, 0) as any as S.Schema<ListProvisionedCapacityInput>,
-  output: __S(531, __c33, 3) as any as S.Schema<ListProvisionedCapacityOutput>,
+  input: __S(496, __c31, 0) as any as S.Schema<ListProvisionedCapacityInput>,
+  output: __S(499, __c31, 3) as any as S.Schema<ListProvisionedCapacityOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1805,8 +1805,8 @@ export const listTagsForVault: API.OperationMethod<
   ListTagsForVaultError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c34, 0) as any as S.Schema<ListTagsForVaultInput>,
-  output: __S(545, __c34, 1) as any as S.Schema<ListTagsForVaultOutput>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListTagsForVaultInput>,
+  output: __S(513, __c32, 1) as any as S.Schema<ListTagsForVaultOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1855,8 +1855,8 @@ export const listVaults: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DescribeVaultOutput
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(560, __c35, 0) as any as S.Schema<ListVaultsInput>,
-  output: __S(562, __c35, 2) as any as S.Schema<ListVaultsOutput>,
+  input: __S(528, __c33, 0) as any as S.Schema<ListVaultsInput>,
+  output: __S(530, __c33, 2) as any as S.Schema<ListVaultsOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1891,8 +1891,8 @@ export const purchaseProvisionedCapacity: API.OperationMethod<
   PurchaseProvisionedCapacityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c36, 0) as any as S.Schema<PurchaseProvisionedCapacityInput>,
-  output: __S(577, __c36, 1) as any as S.Schema<PurchaseProvisionedCapacityOutput>,
+  input: __S(544, __c34, 0) as any as S.Schema<PurchaseProvisionedCapacityInput>,
+  output: __S(545, __c34, 1) as any as S.Schema<PurchaseProvisionedCapacityOutput>,
   errors: [
     InvalidParameterValueException,
     LimitExceededException,
@@ -1924,8 +1924,8 @@ export const removeTagsFromVault: API.OperationMethod<
   RemoveTagsFromVaultError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c37, 0) as any as S.Schema<RemoveTagsFromVaultInput>,
-  output: __S(704, __c44, 0) as any as S.Schema<RemoveTagsFromVaultResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<RemoveTagsFromVaultInput>,
+  output: __S(672, __c42, 0) as any as S.Schema<RemoveTagsFromVaultResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1959,8 +1959,8 @@ export const setDataRetrievalPolicy: API.OperationMethod<
   SetDataRetrievalPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c38, 0) as any as S.Schema<SetDataRetrievalPolicyInput>,
-  output: __S(704, __c44, 0) as any as S.Schema<SetDataRetrievalPolicyResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<SetDataRetrievalPolicyInput>,
+  output: __S(672, __c42, 0) as any as S.Schema<SetDataRetrievalPolicyResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1993,8 +1993,8 @@ export const setVaultAccessPolicy: API.OperationMethod<
   SetVaultAccessPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c39, 0) as any as S.Schema<SetVaultAccessPolicyInput>,
-  output: __S(704, __c44, 0) as any as S.Schema<SetVaultAccessPolicyResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<SetVaultAccessPolicyInput>,
+  output: __S(672, __c42, 0) as any as S.Schema<SetVaultAccessPolicyResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -2053,8 +2053,8 @@ export const setVaultNotifications: API.OperationMethod<
   SetVaultNotificationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c40, 0) as any as S.Schema<SetVaultNotificationsInput>,
-  output: __S(704, __c44, 0) as any as S.Schema<SetVaultNotificationsResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<SetVaultNotificationsInput>,
+  output: __S(672, __c42, 0) as any as S.Schema<SetVaultNotificationsResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -2116,8 +2116,8 @@ export const uploadArchive: API.OperationMethod<
   UploadArchiveError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656, __c41, 0) as any as S.Schema<UploadArchiveInput>,
-  output: __S(80, __c5, 0) as any as S.Schema<ArchiveCreationOutput>,
+  input: __S(624, __c39, 0) as any as S.Schema<UploadArchiveInput>,
+  output: __S(64, __c4, 0) as any as S.Schema<ArchiveCreationOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -2189,8 +2189,8 @@ export const uploadMultipartPart: API.OperationMethod<
   UploadMultipartPartError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c42, 0) as any as S.Schema<UploadMultipartPartInput>,
-  output: __S(673, __c42, 1) as any as S.Schema<UploadMultipartPartOutput>,
+  input: __S(640, __c40, 0) as any as S.Schema<UploadMultipartPartInput>,
+  output: __S(641, __c40, 1) as any as S.Schema<UploadMultipartPartOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -2229,19 +2229,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "AbortVaultLockResponse",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.HttpLabel("accountId")),
           vaultName: S.String.pipe(T.HttpLabel("vaultName")),
-          Tags: S.optional(__S(48, __c3, 0)),
+          Tags: S.optional(__S(32, __c2, 0)),
         }).pipe(
           T.all(
             ns,
@@ -2256,13 +2248,13 @@ function __c2(j: number): any {
       ).annotate({ identifier: "AddTagsToVaultInput" });
   }
 }
-function __c3(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c4(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2286,12 +2278,10 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CompleteMultipartUploadInput",
-      });
+      ).annotate({ identifier: "CompleteMultipartUploadInput" });
   }
 }
-function __c5(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2303,7 +2293,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "ArchiveCreationOutput" });
   }
 }
-function __c6(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2325,7 +2315,7 @@ function __c6(j: number): any {
       ).annotate({ identifier: "CompleteVaultLockInput" });
   }
 }
-function __c7(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2350,7 +2340,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "CreateVaultOutput" });
   }
 }
-function __c8(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2375,15 +2365,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "DeleteArchiveInput" });
   }
 }
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeleteArchiveResponse",
-      });
-  }
-}
-function __c10(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2404,7 +2386,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "DeleteVaultInput" });
   }
 }
-function __c11(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2422,12 +2404,10 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteVaultAccessPolicyInput",
-      });
+      ).annotate({ identifier: "DeleteVaultAccessPolicyInput" });
   }
 }
-function __c12(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2448,12 +2428,10 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteVaultNotificationsInput",
-      });
+      ).annotate({ identifier: "DeleteVaultNotificationsInput" });
   }
 }
-function __c13(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2475,7 +2453,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "DescribeJobInput" });
   }
 }
-function __c14(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2489,7 +2467,7 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "CSVInput" });
     case 1:
-      return S.suspend(() => S.Struct({ csv: S.optional(__S(224, __c14, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ csv: S.optional(__S(192, __c12, 0)) })).annotate({
         identifier: "InputSerialization",
       });
     case 2:
@@ -2503,16 +2481,16 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "CSVOutput" });
     case 3:
-      return S.suspend(() => S.Struct({ csv: S.optional(__S(226, __c14, 2)) })).annotate({
+      return S.suspend(() => S.Struct({ csv: S.optional(__S(194, __c12, 2)) })).annotate({
         identifier: "OutputSerialization",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          InputSerialization: S.optional(__S(225, __c14, 1)),
+          InputSerialization: S.optional(__S(193, __c12, 1)),
           ExpressionType: S.optional(S.String),
           Expression: S.optional(S.String),
-          OutputSerialization: S.optional(__S(227, __c14, 3)),
+          OutputSerialization: S.optional(__S(195, __c12, 3)),
         }),
       ).annotate({ identifier: "SelectParameters" });
     case 5:
@@ -2535,30 +2513,30 @@ function __c14(j: number): any {
       ).annotate({ identifier: "Grantee" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ Grantee: S.optional(__S(230, __c14, 6)), Permission: S.optional(S.String) }),
+        S.Struct({ Grantee: S.optional(__S(198, __c12, 6)), Permission: S.optional(S.String) }),
       ).annotate({ identifier: "Grant" });
     case 8:
-      return S.Array(__S(231, __c14, 7));
+      return S.Array(__S(199, __c12, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
           BucketName: S.optional(S.String),
           Prefix: S.optional(S.String),
-          Encryption: S.optional(__S(229, __c14, 5)),
+          Encryption: S.optional(__S(197, __c12, 5)),
           CannedACL: S.optional(S.String),
-          AccessControlList: S.optional(__S(232, __c14, 8)),
-          Tagging: S.optional(__S(48, __c3, 0)),
-          UserMetadata: S.optional(__S(48, __c3, 0)),
+          AccessControlList: S.optional(__S(200, __c12, 8)),
+          Tagging: S.optional(__S(32, __c2, 0)),
+          UserMetadata: S.optional(__S(32, __c2, 0)),
           StorageClass: S.optional(S.String),
         }),
       ).annotate({ identifier: "S3Location" });
     case 10:
-      return S.suspend(() => S.Struct({ S3: S.optional(__S(233, __c14, 9)) })).annotate({
+      return S.suspend(() => S.Struct({ S3: S.optional(__S(201, __c12, 9)) })).annotate({
         identifier: "OutputLocation",
       });
   }
 }
-function __c15(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2569,9 +2547,7 @@ function __c15(j: number): any {
           Limit: S.optional(S.String),
           Marker: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "InventoryRetrievalJobDescription",
-      });
+      ).annotate({ identifier: "InventoryRetrievalJobDescription" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2592,15 +2568,15 @@ function __c15(j: number): any {
           ArchiveSHA256TreeHash: S.optional(S.String),
           RetrievalByteRange: S.optional(S.String),
           Tier: S.optional(S.String),
-          InventoryRetrievalParameters: S.optional(__S(240, __c15, 0)),
+          InventoryRetrievalParameters: S.optional(__S(208, __c13, 0)),
           JobOutputPath: S.optional(S.String),
-          SelectParameters: S.optional(__S(228, __c14, 4)),
-          OutputLocation: S.optional(__S(234, __c14, 10)),
+          SelectParameters: S.optional(__S(196, __c12, 4)),
+          OutputLocation: S.optional(__S(202, __c12, 10)),
         }).pipe(ns),
       ).annotate({ identifier: "GlacierJobDescription" });
   }
 }
-function __c16(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2621,7 +2597,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "DescribeVaultInput" });
   }
 }
-function __c17(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2636,7 +2612,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "DescribeVaultOutput" });
   }
 }
-function __c18(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2651,32 +2627,28 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDataRetrievalPolicyInput",
-      });
+      ).annotate({ identifier: "GetDataRetrievalPolicyInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Policy: S.optional(__S(306, __c19, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetDataRetrievalPolicyOutput",
-      });
+        S.Struct({ Policy: S.optional(__S(274, __c17, 2)) }).pipe(ns),
+      ).annotate({ identifier: "GetDataRetrievalPolicyOutput" });
   }
 }
-function __c19(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ Strategy: S.optional(S.String), BytesPerHour: S.optional(S.Number) }),
       ).annotate({ identifier: "DataRetrievalRule" });
     case 1:
-      return S.Array(__S(304, __c19, 0));
+      return S.Array(__S(272, __c17, 0));
     case 2:
-      return S.suspend(() => S.Struct({ Rules: S.optional(__S(305, __c19, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ Rules: S.optional(__S(273, __c17, 1)) })).annotate({
         identifier: "DataRetrievalPolicy",
       });
   }
 }
-function __c20(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2711,7 +2683,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "GetJobOutputOutput" });
   }
 }
-function __c21(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2729,22 +2701,18 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetVaultAccessPolicyInput",
-      });
+      ).annotate({ identifier: "GetVaultAccessPolicyInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(__S(352, __c22, 0))
+          policy: S.optional(__S(320, __c20, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "VaultAccessPolicy" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetVaultAccessPolicyOutput",
-      });
+      ).annotate({ identifier: "GetVaultAccessPolicyOutput" });
   }
 }
-function __c22(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Policy: S.optional(S.String) })).annotate({
@@ -2752,7 +2720,7 @@ function __c22(j: number): any {
       });
   }
 }
-function __c23(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2782,7 +2750,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "GetVaultLockOutput" });
   }
 }
-function __c24(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2803,36 +2771,32 @@ function __c24(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetVaultNotificationsInput",
-      });
+      ).annotate({ identifier: "GetVaultNotificationsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          vaultNotificationConfig: S.optional(__S(416, __c26, 0))
+          vaultNotificationConfig: S.optional(__S(384, __c24, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "VaultNotificationConfig" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetVaultNotificationsOutput",
-      });
+      ).annotate({ identifier: "GetVaultNotificationsOutput" });
   }
 }
-function __c25(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c26(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ SNSTopic: S.optional(S.String), Events: S.optional(__S(400, __c25, 0)) }),
+        S.Struct({ SNSTopic: S.optional(S.String), Events: S.optional(__S(368, __c23, 0)) }),
       ).annotate({ identifier: "VaultNotificationConfig" });
   }
 }
-function __c27(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2842,9 +2806,7 @@ function __c27(j: number): any {
           Limit: S.optional(S.String),
           Marker: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "InventoryRetrievalJobInput",
-      });
+      ).annotate({ identifier: "InventoryRetrievalJobInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2855,9 +2817,9 @@ function __c27(j: number): any {
           SNSTopic: S.optional(S.String),
           RetrievalByteRange: S.optional(S.String),
           Tier: S.optional(S.String),
-          InventoryRetrievalParameters: S.optional(__S(432, __c27, 0)),
-          SelectParameters: S.optional(__S(228, __c14, 4)),
-          OutputLocation: S.optional(__S(234, __c14, 10)),
+          InventoryRetrievalParameters: S.optional(__S(400, __c25, 0)),
+          SelectParameters: S.optional(__S(196, __c12, 4)),
+          OutputLocation: S.optional(__S(202, __c12, 10)),
         }),
       ).annotate({ identifier: "JobParameters" });
     case 2:
@@ -2865,7 +2827,7 @@ function __c27(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.HttpLabel("accountId")),
           vaultName: S.String.pipe(T.HttpLabel("vaultName")),
-          jobParameters: S.optional(__S(433, __c27, 1))
+          jobParameters: S.optional(__S(401, __c25, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "JobParameters" }),
         }).pipe(
@@ -2890,7 +2852,7 @@ function __c27(j: number): any {
       ).annotate({ identifier: "InitiateJobOutput" });
   }
 }
-function __c28(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2910,28 +2872,24 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "InitiateMultipartUploadInput",
-      });
+      ).annotate({ identifier: "InitiateMultipartUploadInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String).pipe(T.HttpHeader("Location")),
           uploadId: S.optional(S.String).pipe(T.HttpHeader("x-amz-multipart-upload-id")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "InitiateMultipartUploadOutput",
-      });
+      ).annotate({ identifier: "InitiateMultipartUploadOutput" });
   }
 }
-function __c29(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.HttpLabel("accountId")),
           vaultName: S.String.pipe(T.HttpLabel("vaultName")),
-          policy: S.optional(__S(352, __c22, 0))
+          policy: S.optional(__S(320, __c20, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "VaultLockPolicy" }),
         }).pipe(
@@ -2952,7 +2910,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "InitiateVaultLockOutput" });
   }
 }
-function __c30(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2976,16 +2934,16 @@ function __c30(j: number): any {
         ),
       ).annotate({ identifier: "ListJobsInput" });
     case 1:
-      return S.Array(__S(241, __c15, 1));
+      return S.Array(__S(209, __c13, 1));
     case 2:
       return S.suspend(() =>
-        S.Struct({ JobList: S.optional(__S(481, __c30, 1)), Marker: S.optional(S.String) }).pipe(
+        S.Struct({ JobList: S.optional(__S(449, __c28, 1)), Marker: S.optional(S.String) }).pipe(
           ns,
         ),
       ).annotate({ identifier: "ListJobsOutput" });
   }
 }
-function __c31(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3005,9 +2963,7 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListMultipartUploadsInput",
-      });
+      ).annotate({ identifier: "ListMultipartUploadsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3019,19 +2975,17 @@ function __c31(j: number): any {
         }),
       ).annotate({ identifier: "UploadListElement" });
     case 2:
-      return S.Array(__S(497, __c31, 1));
+      return S.Array(__S(465, __c29, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          UploadsList: S.optional(__S(498, __c31, 2)),
+          UploadsList: S.optional(__S(466, __c29, 2)),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListMultipartUploadsOutput",
-      });
+      ).annotate({ identifier: "ListMultipartUploadsOutput" });
   }
 }
-function __c32(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3061,7 +3015,7 @@ function __c32(j: number): any {
         S.Struct({ RangeInBytes: S.optional(S.String), SHA256TreeHash: S.optional(S.String) }),
       ).annotate({ identifier: "PartListElement" });
     case 2:
-      return S.Array(__S(513, __c32, 1));
+      return S.Array(__S(481, __c30, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3070,13 +3024,13 @@ function __c32(j: number): any {
           ArchiveDescription: S.optional(S.String),
           PartSizeInBytes: S.optional(S.Number),
           CreationDate: S.optional(S.String),
-          Parts: S.optional(__S(514, __c32, 2)),
+          Parts: S.optional(__S(482, __c30, 2)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListPartsOutput" });
   }
 }
-function __c33(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3091,9 +3045,7 @@ function __c33(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListProvisionedCapacityInput",
-      });
+      ).annotate({ identifier: "ListProvisionedCapacityInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3101,20 +3053,16 @@ function __c33(j: number): any {
           StartDate: S.optional(S.String),
           ExpirationDate: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ProvisionedCapacityDescription",
-      });
+      ).annotate({ identifier: "ProvisionedCapacityDescription" });
     case 2:
-      return S.Array(__S(529, __c33, 1));
+      return S.Array(__S(497, __c31, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ ProvisionedCapacityList: S.optional(__S(530, __c33, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "ListProvisionedCapacityOutput",
-      });
+        S.Struct({ ProvisionedCapacityList: S.optional(__S(498, __c31, 2)) }).pipe(ns),
+      ).annotate({ identifier: "ListProvisionedCapacityOutput" });
   }
 }
-function __c34(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3134,12 +3082,12 @@ function __c34(j: number): any {
         ),
       ).annotate({ identifier: "ListTagsForVaultInput" });
     case 1:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(48, __c3, 0)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(32, __c2, 0)) }).pipe(ns)).annotate({
         identifier: "ListTagsForVaultOutput",
       });
   }
 }
-function __c35(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3160,16 +3108,16 @@ function __c35(j: number): any {
         ),
       ).annotate({ identifier: "ListVaultsInput" });
     case 1:
-      return S.Array(__S(272, __c17, 0));
+      return S.Array(__S(240, __c15, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ VaultList: S.optional(__S(561, __c35, 1)), Marker: S.optional(S.String) }).pipe(
+        S.Struct({ VaultList: S.optional(__S(529, __c33, 1)), Marker: S.optional(S.String) }).pipe(
           ns,
         ),
       ).annotate({ identifier: "ListVaultsOutput" });
   }
 }
-function __c36(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3184,27 +3132,23 @@ function __c36(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PurchaseProvisionedCapacityInput",
-      });
+      ).annotate({ identifier: "PurchaseProvisionedCapacityInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ capacityId: S.optional(S.String).pipe(T.HttpHeader("x-amz-capacity-id")) }).pipe(
           ns,
         ),
-      ).annotate({
-        identifier: "PurchaseProvisionedCapacityOutput",
-      });
+      ).annotate({ identifier: "PurchaseProvisionedCapacityOutput" });
   }
 }
-function __c37(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.HttpLabel("accountId")),
           vaultName: S.String.pipe(T.HttpLabel("vaultName")),
-          TagKeys: S.optional(__S(400, __c25, 0)),
+          TagKeys: S.optional(__S(368, __c23, 0)),
         }).pipe(
           T.all(
             ns,
@@ -3222,13 +3166,13 @@ function __c37(j: number): any {
       ).annotate({ identifier: "RemoveTagsFromVaultInput" });
   }
 }
-function __c38(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.HttpLabel("accountId")),
-          Policy: S.optional(__S(306, __c19, 2)),
+          Policy: S.optional(__S(274, __c17, 2)),
         }).pipe(
           T.all(
             ns,
@@ -3240,19 +3184,17 @@ function __c38(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SetDataRetrievalPolicyInput",
-      });
+      ).annotate({ identifier: "SetDataRetrievalPolicyInput" });
   }
 }
-function __c39(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.HttpLabel("accountId")),
           vaultName: S.String.pipe(T.HttpLabel("vaultName")),
-          policy: S.optional(__S(352, __c22, 0))
+          policy: S.optional(__S(320, __c20, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "VaultAccessPolicy" }),
         }).pipe(
@@ -3266,19 +3208,17 @@ function __c39(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SetVaultAccessPolicyInput",
-      });
+      ).annotate({ identifier: "SetVaultAccessPolicyInput" });
   }
 }
-function __c40(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.HttpLabel("accountId")),
           vaultName: S.String.pipe(T.HttpLabel("vaultName")),
-          vaultNotificationConfig: S.optional(__S(416, __c26, 0))
+          vaultNotificationConfig: S.optional(__S(384, __c24, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "VaultNotificationConfig" }),
         }).pipe(
@@ -3295,12 +3235,10 @@ function __c40(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SetVaultNotificationsInput",
-      });
+      ).annotate({ identifier: "SetVaultNotificationsInput" });
   }
 }
-function __c41(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3324,7 +3262,7 @@ function __c41(j: number): any {
       ).annotate({ identifier: "UploadArchiveInput" });
   }
 }
-function __c42(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3355,12 +3293,10 @@ function __c42(j: number): any {
         S.Struct({
           checksum: S.optional(S.String).pipe(T.HttpHeader("x-amz-sha256-tree-hash")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "UploadMultipartPartOutput",
-      });
+      ).annotate({ identifier: "UploadMultipartPartOutput" });
   }
 }
-function __c43(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3382,12 +3318,10 @@ function __c43(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AbortMultipartUploadInput",
-      });
+      ).annotate({ identifier: "AbortMultipartUploadInput" });
   }
 }
-function __c44(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({

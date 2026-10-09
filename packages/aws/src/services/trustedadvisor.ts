@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -923,9 +923,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListOrganizationRecommendationAccountsRequest",
-      });
+      ).annotate({ identifier: "ListOrganizationRecommendationAccountsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -938,9 +936,7 @@ function __c0(j: number): any {
           updateReasonCode: S.optional(S.String),
           lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "AccountRecommendationLifecycleSummary",
-      });
+      ).annotate({ identifier: "AccountRecommendationLifecycleSummary" });
     case 2:
       return S.Array(__S(1, __c0, 1));
     case 3:
@@ -949,9 +945,7 @@ function __c0(j: number): any {
           nextToken: S.optional(S.String),
           accountRecommendationLifecycleSummaries: __S(2, __c0, 2),
         }),
-      ).annotate({
-        identifier: "ListOrganizationRecommendationAccountsResponse",
-      });
+      ).annotate({ identifier: "ListOrganizationRecommendationAccountsResponse" });
   }
 }
 function __c1(j: number): any {
@@ -981,9 +975,7 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListOrganizationRecommendationResourcesRequest",
-      });
+      ).annotate({ identifier: "ListOrganizationRecommendationResourcesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -998,9 +990,7 @@ function __c1(j: number): any {
           accountId: S.optional(S.String),
           recommendationArn: S.String,
         }),
-      ).annotate({
-        identifier: "OrganizationRecommendationResourceSummary",
-      });
+      ).annotate({ identifier: "OrganizationRecommendationResourceSummary" });
     case 2:
       return S.Array(__S(9, __c1, 1));
     case 3:
@@ -1009,9 +999,7 @@ function __c1(j: number): any {
           nextToken: S.optional(S.String),
           organizationRecommendationResourceSummaries: __S(10, __c1, 2),
         }),
-      ).annotate({
-        identifier: "ListOrganizationRecommendationResourcesResponse",
-      });
+      ).annotate({ identifier: "ListOrganizationRecommendationResourcesResponse" });
   }
 }
 function __c2(j: number): any {
@@ -1043,9 +1031,7 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListOrganizationRecommendationsRequest",
-      });
+      ).annotate({ identifier: "ListOrganizationRecommendationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1064,9 +1050,7 @@ function __c2(j: number): any {
           lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           arn: S.String,
         }),
-      ).annotate({
-        identifier: "OrganizationRecommendationSummary",
-      });
+      ).annotate({ identifier: "OrganizationRecommendationSummary" });
     case 2:
       return S.Array(__S(17, __c2, 1));
     case 3:
@@ -1075,9 +1059,7 @@ function __c2(j: number): any {
           nextToken: S.optional(S.String),
           organizationRecommendationSummaries: __S(18, __c2, 2),
         }),
-      ).annotate({
-        identifier: "ListOrganizationRecommendationsResponse",
-      });
+      ).annotate({ identifier: "ListOrganizationRecommendationsResponse" });
   }
 }
 function __c3(j: number): any {
@@ -1105,9 +1087,7 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListRecommendationResourcesRequest",
-      });
+      ).annotate({ identifier: "ListRecommendationResourcesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1121,9 +1101,7 @@ function __c3(j: number): any {
           exclusionStatus: S.optional(S.String),
           recommendationArn: S.String,
         }),
-      ).annotate({
-        identifier: "RecommendationResourceSummary",
-      });
+      ).annotate({ identifier: "RecommendationResourceSummary" });
     case 2:
       return S.Array(__S(25, __c3, 1));
     case 3:
@@ -1132,9 +1110,7 @@ function __c3(j: number): any {
           nextToken: S.optional(S.String),
           recommendationResourceSummaries: __S(26, __c3, 2),
         }),
-      ).annotate({
-        identifier: "ListRecommendationResourcesResponse",
-      });
+      ).annotate({ identifier: "ListRecommendationResourcesResponse" });
   }
 }
 function __c4(j: number): any {
@@ -1167,9 +1143,7 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListRecommendationsRequest",
-      });
+      ).annotate({ identifier: "ListRecommendationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1195,9 +1169,7 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), recommendationSummaries: __S(34, __c4, 2) }),
-      ).annotate({
-        identifier: "ListRecommendationsResponse",
-      });
+      ).annotate({ identifier: "ListRecommendationsResponse" });
   }
 }
 function __c5(j: number): any {
@@ -1222,9 +1194,7 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListRecommendationsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListRecommendationsForResourceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1237,9 +1207,7 @@ function __c5(j: number): any {
           metadata: __S(128, __c16, 0),
           pillars: __S(104, __c13, 0),
         }),
-      ).annotate({
-        identifier: "RecommendationForResourceSummary",
-      });
+      ).annotate({ identifier: "RecommendationForResourceSummary" });
     case 2:
       return S.Array(__S(41, __c5, 1));
     case 3:
@@ -1248,9 +1216,7 @@ function __c5(j: number): any {
           nextToken: S.optional(S.String),
           recommendationForResourceSummaries: __S(42, __c5, 2),
         }),
-      ).annotate({
-        identifier: "ListRecommendationsForResourceResponse",
-      });
+      ).annotate({ identifier: "ListRecommendationsForResourceResponse" });
   }
 }
 function __c6(j: number): any {
@@ -1277,9 +1243,7 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateOrganizationRecommendationLifecycleRequest",
-      });
+      ).annotate({ identifier: "UpdateOrganizationRecommendationLifecycleRequest" });
   }
 }
 function __c7(j: number): any {
@@ -1312,9 +1276,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateRecommendationLifecycleRequest",
-      });
+      ).annotate({ identifier: "UpdateRecommendationLifecycleRequest" });
   }
 }
 function __c9(j: number): any {
@@ -1337,9 +1299,7 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchUpdateRecommendationResourceExclusionRequest",
-      });
+      ).annotate({ identifier: "BatchUpdateRecommendationResourceExclusionRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1347,19 +1307,13 @@ function __c9(j: number): any {
           errorCode: S.optional(S.String),
           errorMessage: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "UpdateRecommendationResourceExclusionError",
-      });
+      ).annotate({ identifier: "UpdateRecommendationResourceExclusionError" });
     case 4:
       return S.Array(__S(75, __c9, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({
-          batchUpdateRecommendationResourceExclusionErrors: __S(76, __c9, 4),
-        }),
-      ).annotate({
-        identifier: "BatchUpdateRecommendationResourceExclusionResponse",
-      });
+        S.Struct({ batchUpdateRecommendationResourceExclusionErrors: __S(76, __c9, 4) }),
+      ).annotate({ identifier: "BatchUpdateRecommendationResourceExclusionResponse" });
   }
 }
 function __c10(j: number): any {
@@ -1383,9 +1337,7 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetOrganizationRecommendationRequest",
-      });
+      ).annotate({ identifier: "GetOrganizationRecommendationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1411,15 +1363,11 @@ function __c10(j: number): any {
           updateReasonCode: S.optional(S.String),
           resolvedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "OrganizationRecommendation",
-      });
+      ).annotate({ identifier: "OrganizationRecommendation" });
     case 2:
       return S.suspend(() =>
         S.Struct({ organizationRecommendation: S.optional(__S(81, __c10, 1)) }),
-      ).annotate({
-        identifier: "GetOrganizationRecommendationResponse",
-      });
+      ).annotate({ identifier: "GetOrganizationRecommendationResponse" });
   }
 }
 function __c11(j: number): any {
@@ -1432,15 +1380,11 @@ function __c11(j: number): any {
           errorCount: S.Number,
           excludedCount: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "RecommendationResourcesAggregates",
-      });
+      ).annotate({ identifier: "RecommendationResourcesAggregates" });
     case 1:
       return S.suspend(() =>
         S.Struct({ estimatedMonthlySavings: S.Number, estimatedPercentMonthlySavings: S.Number }),
-      ).annotate({
-        identifier: "RecommendationCostOptimizingAggregates",
-      });
+      ).annotate({ identifier: "RecommendationCostOptimizingAggregates" });
     case 2:
       return S.suspend(() => S.Struct({ costOptimizing: S.optional(__S(89, __c11, 1)) })).annotate({
         identifier: "RecommendationPillarSpecificAggregates",
@@ -1506,9 +1450,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "Recommendation" });
     case 2:
       return S.suspend(() => S.Struct({ recommendation: S.optional(__S(113, __c14, 1)) })).annotate(
-        {
-          identifier: "GetRecommendationResponse",
-        },
+        { identifier: "GetRecommendationResponse" },
       );
   }
 }

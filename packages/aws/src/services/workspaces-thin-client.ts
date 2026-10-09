@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -483,7 +483,7 @@ export const createEnvironment: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(120, __c15, 0) as any as S.Schema<CreateEnvironmentRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<CreateEnvironmentResponse>,
+  output: __S(152, __c19, 0) as any as S.Schema<CreateEnvironmentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -516,8 +516,8 @@ export const deleteDevice: API.OperationMethod<
   DeleteDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<DeleteDeviceRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<DeleteDeviceResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<DeleteDeviceRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<DeleteDeviceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -549,8 +549,8 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<DeleteEnvironmentRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<DeleteEnvironmentResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<DeleteEnvironmentRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<DeleteEnvironmentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -583,7 +583,7 @@ export const deregisterDevice: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeregisterDeviceRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<DeregisterDeviceResponse>,
+  output: __S(168, __c21, 0) as any as S.Schema<DeregisterDeviceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -848,7 +848,7 @@ export const tagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(72, __c9, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<TagResourceResponse>,
+  output: __S(168, __c21, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -881,7 +881,7 @@ export const untagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(81, __c10, 1) as any as S.Schema<UntagResourceRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<UntagResourceResponse>,
+  output: __S(168, __c21, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -945,7 +945,7 @@ export const updateEnvironment: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c12, 0) as any as S.Schema<UpdateEnvironmentRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<UpdateEnvironmentResponse>,
+  output: __S(152, __c19, 0) as any as S.Schema<UpdateEnvironmentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -977,7 +977,7 @@ export const updateSoftwareSet: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(104, __c13, 0) as any as S.Schema<UpdateSoftwareSetRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<UpdateSoftwareSetResponse>,
+  output: __S(168, __c21, 0) as any as S.Schema<UpdateSoftwareSetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1228,11 +1228,9 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(152, __c19, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(136, __c17, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
@@ -1243,7 +1241,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(152, __c19, 0),
+          tags: __S(136, __c17, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -1329,10 +1327,7 @@ function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.HttpLabel("id")),
-          validationStatus: S.String,
-        }).pipe(
+        S.Struct({ id: S.String.pipe(T.HttpLabel("id")), validationStatus: S.String }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/softwaresets/{id}" }),
             svc,
@@ -1369,7 +1364,7 @@ function __c15(j: number): any {
           desiredSoftwareSetId: S.optional(S.String),
           kmsKeyArn: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(152, __c19, 0)),
+          tags: S.optional(__S(136, __c17, 0)),
           deviceCreationTags: S.optional(__S(136, __c17, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/environments" }), svc, auth, proto, ver, rules),
@@ -1427,18 +1422,12 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() => S.Struct({ environment: S.optional(__S(144, __c18, 0)) })).annotate({
         identifier: "CreateEnvironmentResponse",
       });
   }
 }
-function __c21(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1451,15 +1440,13 @@ function __c21(j: number): any {
       ).annotate({ identifier: "DeleteDeviceRequest" });
   }
 }
-function __c22(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteDeviceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteDeviceResponse" });
   }
 }
-function __c23(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

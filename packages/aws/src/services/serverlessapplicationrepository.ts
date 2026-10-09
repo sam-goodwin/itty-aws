@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -134,7 +134,7 @@ export class TooManyRequestsException
     /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export type __listOf__string = string[];
-const __listOf__string = /*@__PURE__*/ __L.at(__c16, 0);
+const __listOf__string = /*@__PURE__*/ __L.at(__c15, 0);
 export interface CreateApplicationRequest {
   Author?: string;
   Description?: string;
@@ -168,7 +168,7 @@ export interface ParameterDefinition {
   Type?: string;
 }
 export type __listOfParameterDefinition = ParameterDefinition[];
-const __listOfParameterDefinition = /*@__PURE__*/ __L.at(__c15, 1);
+const __listOfParameterDefinition = /*@__PURE__*/ __L.at(__c14, 1);
 export type Capability =
   | "CAPABILITY_IAM"
   | "CAPABILITY_NAMED_IAM"
@@ -176,7 +176,7 @@ export type Capability =
   | "CAPABILITY_RESOURCE_POLICY"
   | (string & {});
 export type __listOfCapability = Capability[];
-const __listOfCapability = /*@__PURE__*/ __L.at(__c15, 2);
+const __listOfCapability = /*@__PURE__*/ __L.at(__c14, 2);
 export interface Version {
   ApplicationId?: string;
   CreationTime?: string;
@@ -241,13 +241,13 @@ export interface ParameterValue {
   Value?: string;
 }
 export type __listOfParameterValue = ParameterValue[];
-const __listOfParameterValue = /*@__PURE__*/ __L.at(__c18, 1);
+const __listOfParameterValue = /*@__PURE__*/ __L.at(__c17, 1);
 export interface RollbackTrigger {
   Arn?: string;
   Type?: string;
 }
 export type __listOfRollbackTrigger = RollbackTrigger[];
-const __listOfRollbackTrigger = /*@__PURE__*/ __L.at(__c18, 3);
+const __listOfRollbackTrigger = /*@__PURE__*/ __L.at(__c17, 3);
 export interface RollbackConfiguration {
   MonitoringTimeInMinutes?: number;
   RollbackTriggers?: RollbackTrigger[];
@@ -257,7 +257,7 @@ export interface Tag {
   Value?: string;
 }
 export type __listOfTag = Tag[];
-const __listOfTag = /*@__PURE__*/ __L.at(__c18, 6);
+const __listOfTag = /*@__PURE__*/ __L.at(__c17, 6);
 export interface CreateCloudFormationChangeSetRequest {
   ApplicationId: string;
   Capabilities?: string[];
@@ -490,7 +490,7 @@ export const createApplication: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(192, __c12, 0) as any as S.Schema<CreateApplicationRequest>,
-  output: __S(224, __c14, 0) as any as S.Schema<CreateApplicationResponse>,
+  output: __S(208, __c13, 0) as any as S.Schema<CreateApplicationResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -519,8 +519,8 @@ export const createApplicationVersion: API.OperationMethod<
   CreateApplicationVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c17, 0) as any as S.Schema<CreateApplicationVersionRequest>,
-  output: __S(273, __c17, 1) as any as S.Schema<CreateApplicationVersionResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<CreateApplicationVersionRequest>,
+  output: __S(227, __c14, 3) as any as S.Schema<CreateApplicationVersionResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -548,8 +548,8 @@ export const createCloudFormationChangeSet: API.OperationMethod<
   CreateCloudFormationChangeSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295, __c18, 7) as any as S.Schema<CreateCloudFormationChangeSetRequest>,
-  output: __S(296, __c18, 8) as any as S.Schema<CreateCloudFormationChangeSetResponse>,
+  input: __S(279, __c17, 7) as any as S.Schema<CreateCloudFormationChangeSetRequest>,
+  output: __S(280, __c17, 8) as any as S.Schema<CreateCloudFormationChangeSetResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -577,8 +577,8 @@ export const createCloudFormationTemplate: API.OperationMethod<
   CreateCloudFormationTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c19, 0) as any as S.Schema<CreateCloudFormationTemplateRequest>,
-  output: __S(320, __c20, 0) as any as S.Schema<CreateCloudFormationTemplateResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<CreateCloudFormationTemplateRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<CreateCloudFormationTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -640,7 +640,7 @@ export const getApplication: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(32, __c2, 0) as any as S.Schema<GetApplicationRequest>,
-  output: __S(33, __c2, 1) as any as S.Schema<GetApplicationResponse>,
+  output: __S(208, __c13, 0) as any as S.Schema<GetApplicationResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -700,7 +700,7 @@ export const getCloudFormationTemplate: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(80, __c5, 0) as any as S.Schema<GetCloudFormationTemplateRequest>,
-  output: __S(320, __c20, 0) as any as S.Schema<GetCloudFormationTemplateResponse>,
+  output: __S(304, __c19, 0) as any as S.Schema<GetCloudFormationTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -890,7 +890,7 @@ export const updateApplication: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(176, __c11, 0) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(224, __c14, 0) as any as S.Schema<UpdateApplicationResponse>,
+  output: __S(208, __c13, 0) as any as S.Schema<UpdateApplicationResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -925,9 +925,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteApplicationResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteApplicationResponse" });
   }
 }
 function __c2(j: number): any {
@@ -948,40 +946,6 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetApplicationRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationId: S.optional(S.String),
-          Author: S.optional(S.String),
-          CreationTime: S.optional(S.String),
-          Description: S.optional(S.String),
-          HomePageUrl: S.optional(S.String),
-          IsVerifiedAuthor: S.optional(S.Boolean),
-          Labels: S.optional(__listOf__string),
-          LicenseUrl: S.optional(S.String),
-          Name: S.optional(S.String),
-          ReadmeUrl: S.optional(S.String),
-          SpdxLicenseId: S.optional(S.String),
-          VerifiedAuthorUrl: S.optional(S.String),
-          Version: S.optional(__S(208, __c13, 0)),
-        }).pipe(
-          S.encodeKeys({
-            ApplicationId: "applicationId",
-            Author: "author",
-            CreationTime: "creationTime",
-            Description: "description",
-            HomePageUrl: "homePageUrl",
-            IsVerifiedAuthor: "isVerifiedAuthor",
-            Labels: "labels",
-            LicenseUrl: "licenseUrl",
-            Name: "name",
-            ReadmeUrl: "readmeUrl",
-            SpdxLicenseId: "spdxLicenseId",
-            VerifiedAuthorUrl: "verifiedAuthorUrl",
-            Version: "version",
-          }),
-        ),
-      ).annotate({ identifier: "GetApplicationResponse" });
   }
 }
 function __c3(j: number): any {
@@ -998,9 +962,7 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetApplicationPolicyRequest",
-      });
+      ).annotate({ identifier: "GetApplicationPolicyRequest" });
   }
 }
 function __c4(j: number): any {
@@ -1020,9 +982,7 @@ function __c4(j: number): any {
             StatementId: "statementId",
           }),
         ),
-      ).annotate({
-        identifier: "ApplicationPolicyStatement",
-      });
+      ).annotate({ identifier: "ApplicationPolicyStatement" });
     case 1:
       return S.Array(__S(64, __c4, 0));
     case 2:
@@ -1030,9 +990,7 @@ function __c4(j: number): any {
         S.Struct({ Statements: S.optional(__listOfApplicationPolicyStatement) }).pipe(
           S.encodeKeys({ Statements: "statements" }),
         ),
-      ).annotate({
-        identifier: "GetApplicationPolicyResponse",
-      });
+      ).annotate({ identifier: "GetApplicationPolicyResponse" });
   }
 }
 function __c5(j: number): any {
@@ -1052,9 +1010,7 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetCloudFormationTemplateRequest",
-      });
+      ).annotate({ identifier: "GetCloudFormationTemplateRequest" });
   }
 }
 function __c6(j: number): any {
@@ -1076,9 +1032,7 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListApplicationDependenciesRequest",
-      });
+      ).annotate({ identifier: "ListApplicationDependenciesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1087,9 +1041,7 @@ function __c6(j: number): any {
         }).pipe(
           S.encodeKeys({ ApplicationId: "applicationId", SemanticVersion: "semanticVersion" }),
         ),
-      ).annotate({
-        identifier: "ApplicationDependencySummary",
-      });
+      ).annotate({ identifier: "ApplicationDependencySummary" });
     case 2:
       return S.Array(__S(97, __c6, 1));
     case 3:
@@ -1098,9 +1050,7 @@ function __c6(j: number): any {
           Dependencies: S.optional(__listOfApplicationDependencySummary),
           NextToken: S.optional(S.String),
         }).pipe(S.encodeKeys({ Dependencies: "dependencies", NextToken: "nextToken" })),
-      ).annotate({
-        identifier: "ListApplicationDependenciesResponse",
-      });
+      ).annotate({ identifier: "ListApplicationDependenciesResponse" });
   }
 }
 function __c7(j: number): any {
@@ -1167,9 +1117,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListApplicationVersionsRequest",
-      });
+      ).annotate({ identifier: "ListApplicationVersionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1194,9 +1142,7 @@ function __c8(j: number): any {
           NextToken: S.optional(S.String),
           Versions: S.optional(__listOfVersionSummary),
         }).pipe(S.encodeKeys({ NextToken: "nextToken", Versions: "versions" })),
-      ).annotate({
-        identifier: "ListApplicationVersionsResponse",
-      });
+      ).annotate({ identifier: "ListApplicationVersionsResponse" });
   }
 }
 function __c9(j: number): any {
@@ -1218,9 +1164,7 @@ function __c9(j: number): any {
               rules,
             ),
           ),
-      ).annotate({
-        identifier: "PutApplicationPolicyRequest",
-      });
+      ).annotate({ identifier: "PutApplicationPolicyRequest" });
   }
 }
 function __c10(j: number): any {
@@ -1242,9 +1186,7 @@ function __c10(j: number): any {
               rules,
             ),
           ),
-      ).annotate({
-        identifier: "UnshareApplicationRequest",
-      });
+      ).annotate({ identifier: "UnshareApplicationRequest" });
   }
 }
 function __c11(j: number): any {
@@ -1335,36 +1277,6 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.optional(S.String),
-          CreationTime: S.optional(S.String),
-          ParameterDefinitions: S.optional(__listOfParameterDefinition),
-          RequiredCapabilities: S.optional(__listOfCapability),
-          ResourcesSupported: S.optional(S.Boolean),
-          SemanticVersion: S.optional(S.String),
-          SourceCodeArchiveUrl: S.optional(S.String),
-          SourceCodeUrl: S.optional(S.String),
-          TemplateUrl: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            ApplicationId: "applicationId",
-            CreationTime: "creationTime",
-            ParameterDefinitions: "parameterDefinitions",
-            RequiredCapabilities: "requiredCapabilities",
-            ResourcesSupported: "resourcesSupported",
-            SemanticVersion: "semanticVersion",
-            SourceCodeArchiveUrl: "sourceCodeArchiveUrl",
-            SourceCodeUrl: "sourceCodeUrl",
-            TemplateUrl: "templateUrl",
-          }),
-        ),
-      ).annotate({ identifier: "Version" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationId: S.optional(S.String),
           Author: S.optional(S.String),
           CreationTime: S.optional(S.String),
           Description: S.optional(S.String),
@@ -1376,7 +1288,7 @@ function __c14(j: number): any {
           ReadmeUrl: S.optional(S.String),
           SpdxLicenseId: S.optional(S.String),
           VerifiedAuthorUrl: S.optional(S.String),
-          Version: S.optional(__S(208, __c13, 0)),
+          Version: S.optional(__S(227, __c14, 3)),
         }).pipe(
           S.encodeKeys({
             ApplicationId: "applicationId",
@@ -1394,12 +1306,10 @@ function __c14(j: number): any {
             Version: "version",
           }),
         ),
-      ).annotate({
-        identifier: "CreateApplicationResponse",
-      });
+      ).annotate({ identifier: "CreateApplicationResponse" });
   }
 }
-function __c15(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1436,18 +1346,44 @@ function __c15(j: number): any {
         ),
       ).annotate({ identifier: "ParameterDefinition" });
     case 1:
-      return S.Array(__S(240, __c15, 0));
+      return S.Array(__S(224, __c14, 0));
     case 2:
       return S.Array(S.String);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          CreationTime: S.optional(S.String),
+          ParameterDefinitions: S.optional(__listOfParameterDefinition),
+          RequiredCapabilities: S.optional(__listOfCapability),
+          ResourcesSupported: S.optional(S.Boolean),
+          SemanticVersion: S.optional(S.String),
+          SourceCodeArchiveUrl: S.optional(S.String),
+          SourceCodeUrl: S.optional(S.String),
+          TemplateUrl: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            ApplicationId: "applicationId",
+            CreationTime: "creationTime",
+            ParameterDefinitions: "parameterDefinitions",
+            RequiredCapabilities: "requiredCapabilities",
+            ResourcesSupported: "resourcesSupported",
+            SemanticVersion: "semanticVersion",
+            SourceCodeArchiveUrl: "sourceCodeArchiveUrl",
+            SourceCodeUrl: "sourceCodeUrl",
+            TemplateUrl: "templateUrl",
+          }),
+        ),
+      ).annotate({ identifier: "Version" });
   }
 }
-function __c16(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c17(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1480,40 +1416,10 @@ function __c17(j: number): any {
               rules,
             ),
           ),
-      ).annotate({
-        identifier: "CreateApplicationVersionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationId: S.optional(S.String),
-          CreationTime: S.optional(S.String),
-          ParameterDefinitions: S.optional(__listOfParameterDefinition),
-          RequiredCapabilities: S.optional(__listOfCapability),
-          ResourcesSupported: S.optional(S.Boolean),
-          SemanticVersion: S.optional(S.String),
-          SourceCodeArchiveUrl: S.optional(S.String),
-          SourceCodeUrl: S.optional(S.String),
-          TemplateUrl: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            ApplicationId: "applicationId",
-            CreationTime: "creationTime",
-            ParameterDefinitions: "parameterDefinitions",
-            RequiredCapabilities: "requiredCapabilities",
-            ResourcesSupported: "resourcesSupported",
-            SemanticVersion: "semanticVersion",
-            SourceCodeArchiveUrl: "sourceCodeArchiveUrl",
-            SourceCodeUrl: "sourceCodeUrl",
-            TemplateUrl: "templateUrl",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateApplicationVersionResponse",
-      });
+      ).annotate({ identifier: "CreateApplicationVersionRequest" });
   }
 }
-function __c18(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1522,7 +1428,7 @@ function __c18(j: number): any {
         ),
       ).annotate({ identifier: "ParameterValue" });
     case 1:
-      return S.Array(__S(288, __c18, 0));
+      return S.Array(__S(272, __c17, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ Arn: S.optional(S.String), Type: S.optional(S.String) }).pipe(
@@ -1530,7 +1436,7 @@ function __c18(j: number): any {
         ),
       ).annotate({ identifier: "RollbackTrigger" });
     case 3:
-      return S.Array(__S(290, __c18, 2));
+      return S.Array(__S(274, __c17, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1550,7 +1456,7 @@ function __c18(j: number): any {
         ),
       ).annotate({ identifier: "Tag" });
     case 6:
-      return S.Array(__S(293, __c18, 5));
+      return S.Array(__S(277, __c17, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1562,7 +1468,7 @@ function __c18(j: number): any {
           NotificationArns: S.optional(__listOf__string),
           ParameterOverrides: S.optional(__listOfParameterValue),
           ResourceTypes: S.optional(__listOf__string),
-          RollbackConfiguration: S.optional(__S(292, __c18, 4)),
+          RollbackConfiguration: S.optional(__S(276, __c17, 4)),
           SemanticVersion: S.optional(S.String),
           StackName: S.optional(S.String),
           Tags: S.optional(__listOfTag),
@@ -1594,9 +1500,7 @@ function __c18(j: number): any {
               rules,
             ),
           ),
-      ).annotate({
-        identifier: "CreateCloudFormationChangeSetRequest",
-      });
+      ).annotate({ identifier: "CreateCloudFormationChangeSetRequest" });
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -1612,12 +1516,10 @@ function __c18(j: number): any {
             StackId: "stackId",
           }),
         ),
-      ).annotate({
-        identifier: "CreateCloudFormationChangeSetResponse",
-      });
+      ).annotate({ identifier: "CreateCloudFormationChangeSetResponse" });
   }
 }
-function __c19(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1636,12 +1538,10 @@ function __c19(j: number): any {
               rules,
             ),
           ),
-      ).annotate({
-        identifier: "CreateCloudFormationTemplateRequest",
-      });
+      ).annotate({ identifier: "CreateCloudFormationTemplateRequest" });
   }
 }
-function __c20(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1664,9 +1564,7 @@ function __c20(j: number): any {
             TemplateUrl: "templateUrl",
           }),
         ),
-      ).annotate({
-        identifier: "CreateCloudFormationTemplateResponse",
-      });
+      ).annotate({ identifier: "CreateCloudFormationTemplateResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

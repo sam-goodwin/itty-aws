@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1182,8 +1182,8 @@ export const cancelCapacityTask: API.OperationMethod<
   CancelCapacityTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(848, __c53, 0) as any as S.Schema<CancelCapacityTaskInput>,
-  output: __S(864, __c54, 0) as any as S.Schema<CancelCapacityTaskOutput>,
+  input: __S(864, __c54, 0) as any as S.Schema<CancelCapacityTaskInput>,
+  output: __S(880, __c55, 0) as any as S.Schema<CancelCapacityTaskOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1212,8 +1212,8 @@ export const cancelOrder: API.OperationMethod<
   CancelOrderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(880, __c55, 0) as any as S.Schema<CancelOrderInput>,
-  output: __S(864, __c54, 0) as any as S.Schema<CancelOrderOutput>,
+  input: __S(896, __c56, 0) as any as S.Schema<CancelOrderInput>,
+  output: __S(880, __c55, 0) as any as S.Schema<CancelOrderOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1243,8 +1243,8 @@ export const createOrder: API.OperationMethod<
   CreateOrderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(898, __c56, 2) as any as S.Schema<CreateOrderInput>,
-  output: __S(934, __c58, 6) as any as S.Schema<CreateOrderOutput>,
+  input: __S(914, __c57, 2) as any as S.Schema<CreateOrderInput>,
+  output: __S(950, __c59, 6) as any as S.Schema<CreateOrderOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1277,8 +1277,8 @@ export const createOutpost: API.OperationMethod<
   CreateOutpostError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(944, __c59, 0) as any as S.Schema<CreateOutpostInput>,
-  output: __S(992, __c62, 0) as any as S.Schema<CreateOutpostOutput>,
+  input: __S(960, __c60, 0) as any as S.Schema<CreateOutpostInput>,
+  output: __S(1008, __c63, 0) as any as S.Schema<CreateOutpostOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1420,7 +1420,7 @@ export const deleteOutpost: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(208, __c13, 0) as any as S.Schema<DeleteOutpostInput>,
-  output: __S(864, __c54, 0) as any as S.Schema<DeleteOutpostOutput>,
+  output: __S(880, __c55, 0) as any as S.Schema<DeleteOutpostOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1449,7 +1449,7 @@ export const deleteQuote: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(224, __c14, 0) as any as S.Schema<DeleteQuoteInput>,
-  output: __S(864, __c54, 0) as any as S.Schema<DeleteQuoteOutput>,
+  output: __S(880, __c55, 0) as any as S.Schema<DeleteQuoteOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1473,7 +1473,7 @@ export const deleteSite: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(240, __c15, 0) as any as S.Schema<DeleteSiteInput>,
-  output: __S(864, __c54, 0) as any as S.Schema<DeleteSiteOutput>,
+  output: __S(880, __c55, 0) as any as S.Schema<DeleteSiteOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1502,7 +1502,7 @@ export const getCapacityTask: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(256, __c16, 0) as any as S.Schema<GetCapacityTaskInput>,
-  output: __S(276, __c17, 4) as any as S.Schema<GetCapacityTaskOutput>,
+  output: __S(290, __c18, 2) as any as S.Schema<GetCapacityTaskOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1524,8 +1524,8 @@ export const getCatalogItem: API.OperationMethod<
   GetCatalogItemError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c18, 0) as any as S.Schema<GetCatalogItemInput>,
-  output: __S(289, __c18, 1) as any as S.Schema<GetCatalogItemOutput>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetCatalogItemInput>,
+  output: __S(305, __c19, 1) as any as S.Schema<GetCatalogItemOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1554,8 +1554,8 @@ export const getConnection: API.OperationMethod<
   GetConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c20, 0) as any as S.Schema<GetConnectionRequest>,
-  output: __S(322, __c20, 2) as any as S.Schema<GetConnectionResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetConnectionRequest>,
+  output: __S(338, __c21, 2) as any as S.Schema<GetConnectionResponse>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1576,8 +1576,8 @@ export const getOrder: API.OperationMethod<
   GetOrderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<GetOrderInput>,
-  output: __S(934, __c58, 6) as any as S.Schema<GetOrderOutput>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetOrderInput>,
+  output: __S(950, __c59, 6) as any as S.Schema<GetOrderOutput>,
   errors: [InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1599,8 +1599,8 @@ export const getOutpost: API.OperationMethod<
   GetOutpostError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c22, 0) as any as S.Schema<GetOutpostInput>,
-  output: __S(992, __c62, 0) as any as S.Schema<GetOutpostOutput>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetOutpostInput>,
+  output: __S(1008, __c63, 0) as any as S.Schema<GetOutpostOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1622,8 +1622,8 @@ export const getOutpostBillingInformation: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Subscription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(368, __c23, 0) as any as S.Schema<GetOutpostBillingInformationInput>,
-  output: __S(371, __c23, 3) as any as S.Schema<GetOutpostBillingInformationOutput>,
+  input: __S(384, __c24, 0) as any as S.Schema<GetOutpostBillingInformationInput>,
+  output: __S(387, __c24, 3) as any as S.Schema<GetOutpostBillingInformationOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1652,8 +1652,8 @@ export const getOutpostInstanceTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   InstanceTypeItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<GetOutpostInstanceTypesInput>,
-  output: __S(385, __c24, 1) as any as S.Schema<GetOutpostInstanceTypesOutput>,
+  input: __S(400, __c25, 0) as any as S.Schema<GetOutpostInstanceTypesInput>,
+  output: __S(401, __c25, 1) as any as S.Schema<GetOutpostInstanceTypesOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1684,8 +1684,8 @@ export const getOutpostSupportedInstanceTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   InstanceTypeItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(416, __c26, 0) as any as S.Schema<GetOutpostSupportedInstanceTypesInput>,
-  output: __S(417, __c26, 1) as any as S.Schema<GetOutpostSupportedInstanceTypesOutput>,
+  input: __S(432, __c27, 0) as any as S.Schema<GetOutpostSupportedInstanceTypesInput>,
+  output: __S(433, __c27, 1) as any as S.Schema<GetOutpostSupportedInstanceTypesOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1713,8 +1713,8 @@ export const getPrivateConnectivityConfig: API.OperationMethod<
   GetPrivateConnectivityConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c27, 0) as any as S.Schema<GetPrivateConnectivityConfigInput>,
-  output: __S(433, __c27, 1) as any as S.Schema<GetPrivateConnectivityConfigOutput>,
+  input: __S(448, __c28, 0) as any as S.Schema<GetPrivateConnectivityConfigInput>,
+  output: __S(449, __c28, 1) as any as S.Schema<GetPrivateConnectivityConfigOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1736,7 +1736,7 @@ export const getQuote: API.OperationMethod<
   GetQuoteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<GetQuoteInput>,
+  input: __S(464, __c29, 0) as any as S.Schema<GetQuoteInput>,
   output: __S(115, __c7, 3) as any as S.Schema<GetQuoteOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
@@ -1759,8 +1759,8 @@ export const getRenewalPricing: API.OperationMethod<
   GetRenewalPricingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c29, 0) as any as S.Schema<GetRenewalPricingInput>,
-  output: __S(465, __c29, 1) as any as S.Schema<GetRenewalPricingOutput>,
+  input: __S(480, __c30, 0) as any as S.Schema<GetRenewalPricingInput>,
+  output: __S(481, __c30, 1) as any as S.Schema<GetRenewalPricingOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1782,7 +1782,7 @@ export const getSite: API.OperationMethod<
   GetSiteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<GetSiteInput>,
+  input: __S(496, __c31, 0) as any as S.Schema<GetSiteInput>,
   output: __S(176, __c11, 0) as any as S.Schema<GetSiteOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
@@ -1805,8 +1805,8 @@ export const getSiteAddress: API.OperationMethod<
   GetSiteAddressError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<GetSiteAddressInput>,
-  output: __S(497, __c31, 1) as any as S.Schema<GetSiteAddressOutput>,
+  input: __S(512, __c32, 0) as any as S.Schema<GetSiteAddressInput>,
+  output: __S(513, __c32, 1) as any as S.Schema<GetSiteAddressOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1830,8 +1830,8 @@ export const listAssetInstances: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssetInstance
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(512, __c32, 0) as any as S.Schema<ListAssetInstancesInput>,
-  output: __S(515, __c32, 3) as any as S.Schema<ListAssetInstancesOutput>,
+  input: __S(528, __c33, 0) as any as S.Schema<ListAssetInstancesInput>,
+  output: __S(531, __c33, 3) as any as S.Schema<ListAssetInstancesOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1864,8 +1864,8 @@ export const listAssets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssetInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(528, __c33, 0) as any as S.Schema<ListAssetsInput>,
-  output: __S(535, __c33, 7) as any as S.Schema<ListAssetsOutput>,
+  input: __S(544, __c34, 0) as any as S.Schema<ListAssetsInput>,
+  output: __S(549, __c34, 5) as any as S.Schema<ListAssetsOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1896,8 +1896,8 @@ export const listBlockingInstancesForCapacityTask: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BlockingInstance
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(544, __c34, 0) as any as S.Schema<ListBlockingInstancesForCapacityTaskInput>,
-  output: __S(547, __c34, 3) as any as S.Schema<ListBlockingInstancesForCapacityTaskOutput>,
+  input: __S(560, __c35, 0) as any as S.Schema<ListBlockingInstancesForCapacityTaskInput>,
+  output: __S(563, __c35, 3) as any as S.Schema<ListBlockingInstancesForCapacityTaskOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1930,8 +1930,8 @@ export const listCapacityTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CapacityTaskSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(560, __c35, 0) as any as S.Schema<ListCapacityTasksInput>,
-  output: __S(563, __c35, 3) as any as S.Schema<ListCapacityTasksOutput>,
+  input: __S(576, __c36, 0) as any as S.Schema<ListCapacityTasksInput>,
+  output: __S(579, __c36, 3) as any as S.Schema<ListCapacityTasksOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1964,8 +1964,8 @@ export const listCatalogItems: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CatalogItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(576, __c36, 0) as any as S.Schema<ListCatalogItemsInput>,
-  output: __S(578, __c36, 2) as any as S.Schema<ListCatalogItemsOutput>,
+  input: __S(592, __c37, 0) as any as S.Schema<ListCatalogItemsInput>,
+  output: __S(594, __c37, 2) as any as S.Schema<ListCatalogItemsOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1995,8 +1995,8 @@ export const listOrderableInstanceTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DetailedInstanceTypeItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(592, __c37, 0) as any as S.Schema<ListOrderableInstanceTypesInput>,
-  output: __S(597, __c37, 5) as any as S.Schema<ListOrderableInstanceTypesOutput>,
+  input: __S(608, __c38, 0) as any as S.Schema<ListOrderableInstanceTypesInput>,
+  output: __S(613, __c38, 5) as any as S.Schema<ListOrderableInstanceTypesOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2025,8 +2025,8 @@ export const listOrders: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   OrderSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(608, __c38, 0) as any as S.Schema<ListOrdersInput>,
-  output: __S(612, __c38, 4) as any as S.Schema<ListOrdersOutput>,
+  input: __S(624, __c39, 0) as any as S.Schema<ListOrdersInput>,
+  output: __S(628, __c39, 4) as any as S.Schema<ListOrdersOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2058,8 +2058,8 @@ export const listOutposts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Outpost
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(624, __c39, 0) as any as S.Schema<ListOutpostsInput>,
-  output: __S(626, __c39, 2) as any as S.Schema<ListOutpostsOutput>,
+  input: __S(640, __c40, 0) as any as S.Schema<ListOutpostsInput>,
+  output: __S(642, __c40, 2) as any as S.Schema<ListOutpostsOutput>,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2083,8 +2083,8 @@ export const listQuotes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   QuoteSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(640, __c40, 0) as any as S.Schema<ListQuotesInput>,
-  output: __S(643, __c40, 3) as any as S.Schema<ListQuotesOutput>,
+  input: __S(656, __c41, 0) as any as S.Schema<ListQuotesInput>,
+  output: __S(659, __c41, 3) as any as S.Schema<ListQuotesOutput>,
   errors: [AccessDeniedException, InternalServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2117,8 +2117,8 @@ export const listSites: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Site
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(656, __c41, 0) as any as S.Schema<ListSitesInput>,
-  output: __S(658, __c41, 2) as any as S.Schema<ListSitesOutput>,
+  input: __S(672, __c42, 0) as any as S.Schema<ListSitesInput>,
+  output: __S(674, __c42, 2) as any as S.Schema<ListSitesOutput>,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2145,8 +2145,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c42, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(673, __c42, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(689, __c43, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2170,8 +2170,8 @@ export const startCapacityTask: API.OperationMethod<
   StartCapacityTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(688, __c43, 0) as any as S.Schema<StartCapacityTaskInput>,
-  output: __S(276, __c17, 4) as any as S.Schema<StartCapacityTaskOutput>,
+  input: __S(704, __c44, 0) as any as S.Schema<StartCapacityTaskInput>,
+  output: __S(290, __c18, 2) as any as S.Schema<StartCapacityTaskOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2206,8 +2206,8 @@ export const startConnection: API.OperationMethod<
   StartConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c44, 0) as any as S.Schema<StartConnectionRequest>,
-  output: __S(705, __c44, 1) as any as S.Schema<StartConnectionResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<StartConnectionRequest>,
+  output: __S(721, __c45, 1) as any as S.Schema<StartConnectionResponse>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2230,8 +2230,8 @@ export const startOutpostDecommission: API.OperationMethod<
   StartOutpostDecommissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(720, __c45, 0) as any as S.Schema<StartOutpostDecommissionInput>,
-  output: __S(721, __c45, 1) as any as S.Schema<StartOutpostDecommissionOutput>,
+  input: __S(736, __c46, 0) as any as S.Schema<StartOutpostDecommissionInput>,
+  output: __S(737, __c46, 1) as any as S.Schema<StartOutpostDecommissionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2258,8 +2258,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c46, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(864, __c54, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(880, __c55, 0) as any as S.Schema<TagResourceResponse>,
   errors: [InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2280,8 +2280,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(752, __c47, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(864, __c54, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(880, __c55, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2304,8 +2304,8 @@ export const updateOutpost: API.OperationMethod<
   UpdateOutpostError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c48, 0) as any as S.Schema<UpdateOutpostInput>,
-  output: __S(992, __c62, 0) as any as S.Schema<UpdateOutpostOutput>,
+  input: __S(784, __c49, 0) as any as S.Schema<UpdateOutpostInput>,
+  output: __S(1008, __c63, 0) as any as S.Schema<UpdateOutpostOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2334,7 +2334,7 @@ export const updateQuote: API.OperationMethod<
   UpdateQuoteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(784, __c49, 0) as any as S.Schema<UpdateQuoteInput>,
+  input: __S(800, __c50, 0) as any as S.Schema<UpdateQuoteInput>,
   output: __S(115, __c7, 3) as any as S.Schema<UpdateQuoteOutput>,
   errors: [AccessDeniedException, InternalServerException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
@@ -2358,7 +2358,7 @@ export const updateSite: API.OperationMethod<
   UpdateSiteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c50, 0) as any as S.Schema<UpdateSiteInput>,
+  input: __S(816, __c51, 0) as any as S.Schema<UpdateSiteInput>,
   output: __S(176, __c11, 0) as any as S.Schema<UpdateSiteOutput>,
   errors: [
     AccessDeniedException,
@@ -2394,8 +2394,8 @@ export const updateSiteAddress: API.OperationMethod<
   UpdateSiteAddressError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(816, __c51, 0) as any as S.Schema<UpdateSiteAddressInput>,
-  output: __S(817, __c51, 1) as any as S.Schema<UpdateSiteAddressOutput>,
+  input: __S(832, __c52, 0) as any as S.Schema<UpdateSiteAddressInput>,
+  output: __S(833, __c52, 1) as any as S.Schema<UpdateSiteAddressOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2429,8 +2429,8 @@ export const updateSiteRackPhysicalProperties: API.OperationMethod<
   UpdateSiteRackPhysicalPropertiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c52, 0) as any as S.Schema<UpdateSiteRackPhysicalPropertiesInput>,
-  output: __S(833, __c52, 1) as any as S.Schema<UpdateSiteRackPhysicalPropertiesOutput>,
+  input: __S(848, __c53, 0) as any as S.Schema<UpdateSiteRackPhysicalPropertiesInput>,
+  output: __S(176, __c11, 0) as any as S.Schema<UpdateSiteRackPhysicalPropertiesOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2461,18 +2461,14 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreatePrivateConnectivityConfigInput",
-      });
+      ).annotate({ identifier: "CreatePrivateConnectivityConfigInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           PrivateConnectivityConfig: S.optional(__S(18, __c1, 2)),
           OutpostId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreatePrivateConnectivityConfigOutput",
-      });
+      ).annotate({ identifier: "CreatePrivateConnectivityConfigOutput" });
   }
 }
 function __c1(j: number): any {
@@ -2481,7 +2477,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           VpcId: S.optional(S.String),
-          SubnetIds: S.optional(__S(912, __c57, 0)),
+          SubnetIds: S.optional(__S(928, __c58, 0)),
           VpcEndpointId: S.optional(S.String),
         }),
       ).annotate({ identifier: "VpcInformation" });
@@ -2495,9 +2491,7 @@ function __c1(j: number): any {
           VpcInformationList: S.optional(__S(17, __c1, 1)),
           ProvisioningRoleArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "PrivateConnectivityConfig",
-      });
+      ).annotate({ identifier: "PrivateConnectivityConfig" });
   }
 }
 function __c2(j: number): any {
@@ -2547,9 +2541,7 @@ function __c5(j: number): any {
           MonthlyRecurringPrice: S.optional(S.Number),
           Currency: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SubscriptionPricingDetails",
-      });
+      ).annotate({ identifier: "SubscriptionPricingDetails" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2612,9 +2604,7 @@ function __c6(j: number): any {
           RackUnitHeight: S.optional(S.String),
           EC2Capacities: S.optional(__S(65, __c4, 1)),
         }),
-      ).annotate({
-        identifier: "ServerSpecificationDetails",
-      });
+      ).annotate({ identifier: "ServerSpecificationDetails" });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2711,7 +2701,7 @@ function __c9(j: number): any {
           Name: S.String,
           Description: S.optional(S.String),
           Notes: S.optional(S.String),
-          Tags: S.optional(__S(960, __c60, 0)),
+          Tags: S.optional(__S(976, __c61, 0)),
           OperatingAddress: S.optional(__S(192, __c12, 0)),
           ShippingAddress: S.optional(__S(192, __c12, 0)),
           RackPhysicalProperties: S.optional(__S(160, __c10, 0)),
@@ -2742,7 +2732,7 @@ function __c10(j: number): any {
           AccountId: S.optional(S.String),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          Tags: S.optional(__S(960, __c60, 0)),
+          Tags: S.optional(__S(976, __c61, 0)),
           SiteArn: S.optional(S.String),
           Notes: S.optional(S.String),
           OperatingAddressCountryCode: S.optional(S.String),
@@ -2856,19 +2846,23 @@ function __c17(j: number): any {
       });
     case 1:
       return S.Array(__S(272, __c17, 0));
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Instances: S.optional(__S(912, __c57, 0)),
-          AccountIds: S.optional(__S(912, __c57, 0)),
+          Instances: S.optional(__S(928, __c58, 0)),
+          AccountIds: S.optional(__S(928, __c58, 0)),
           Services: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({ identifier: "InstancesToExclude" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({ Reason: S.String, Type: S.optional(S.String) })).annotate({
         identifier: "CapacityTaskFailure",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           CapacityTaskId: S.optional(S.String),
@@ -2876,10 +2870,10 @@ function __c17(j: number): any {
           OrderId: S.optional(S.String),
           AssetId: S.optional(S.String),
           RequestedInstancePools: S.optional(__S(273, __c17, 1)),
-          InstancesToExclude: S.optional(__S(274, __c17, 2)),
+          InstancesToExclude: S.optional(__S(288, __c18, 0)),
           DryRun: S.optional(S.Boolean),
           CapacityTaskStatus: S.optional(S.String),
-          Failed: S.optional(__S(275, __c17, 3)),
+          Failed: S.optional(__S(289, __c18, 1)),
           CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CompletionDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -2888,7 +2882,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "GetCapacityTaskOutput" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2904,12 +2898,12 @@ function __c18(j: number): any {
         ),
       ).annotate({ identifier: "GetCatalogItemInput" });
     case 1:
-      return S.suspend(() => S.Struct({ CatalogItem: S.optional(__S(305, __c19, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ CatalogItem: S.optional(__S(321, __c20, 1)) })).annotate({
         identifier: "GetCatalogItemOutput",
       });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.Number);
@@ -2921,14 +2915,14 @@ function __c19(j: number): any {
           EC2Capacities: S.optional(__S(65, __c4, 1)),
           PowerKva: S.optional(S.Number),
           WeightLbs: S.optional(S.Number),
-          SupportedUplinkGbps: S.optional(__S(304, __c19, 0)),
+          SupportedUplinkGbps: S.optional(__S(320, __c20, 0)),
           SupportedStorage: S.optional(__S(48, __c3, 0)),
           RackScalingType: S.optional(S.String),
         }),
       ).annotate({ identifier: "CatalogItem" });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2951,19 +2945,19 @@ function __c20(j: number): any {
           ServerEndpoint: S.optional(S.String),
           ClientTunnelAddress: S.optional(S.String),
           ServerTunnelAddress: S.optional(S.String),
-          AllowedIps: S.optional(__S(912, __c57, 0)),
+          AllowedIps: S.optional(__S(928, __c58, 0)),
         }),
       ).annotate({ identifier: "ConnectionDetails" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           ConnectionId: S.optional(S.String),
-          ConnectionDetails: S.optional(__S(321, __c20, 1)),
+          ConnectionDetails: S.optional(__S(337, __c21, 1)),
         }),
       ).annotate({ identifier: "GetConnectionResponse" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2973,7 +2967,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "GetOrderInput" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2990,7 +2984,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "GetOutpostInput" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3008,16 +3002,14 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetOutpostBillingInformationInput",
-      });
+      ).annotate({ identifier: "GetOutpostBillingInformationInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           SubscriptionId: S.optional(S.String),
           SubscriptionType: S.optional(S.String),
           SubscriptionStatus: S.optional(S.String),
-          OrderIds: S.optional(__S(912, __c57, 0)),
+          OrderIds: S.optional(__S(928, __c58, 0)),
           BeginDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Currency: S.optional(S.String),
@@ -3026,22 +3018,20 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "Subscription" });
     case 2:
-      return S.Array(__S(369, __c23, 1));
+      return S.Array(__S(385, __c24, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          Subscriptions: S.optional(__S(370, __c23, 2)),
+          Subscriptions: S.optional(__S(386, __c24, 2)),
           ContractEndDate: S.optional(S.String),
           PaymentTerm: S.optional(S.String),
           PaymentOption: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetOutpostBillingInformationOutput",
-      });
+      ).annotate({ identifier: "GetOutpostBillingInformationOutput" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3059,33 +3049,29 @@ function __c24(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetOutpostInstanceTypesInput",
-      });
+      ).annotate({ identifier: "GetOutpostInstanceTypesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          InstanceTypes: S.optional(__S(401, __c25, 1)),
+          InstanceTypes: S.optional(__S(417, __c26, 1)),
           NextToken: S.optional(S.String),
           OutpostId: S.optional(S.String),
           OutpostArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetOutpostInstanceTypesOutput",
-      });
+      ).annotate({ identifier: "GetOutpostInstanceTypesOutput" });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ InstanceType: S.optional(S.String), VCPUs: S.optional(S.Number) }),
       ).annotate({ identifier: "InstanceTypeItem" });
     case 1:
-      return S.Array(__S(400, __c25, 0));
+      return S.Array(__S(416, __c26, 0));
   }
 }
-function __c26(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3105,21 +3091,17 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetOutpostSupportedInstanceTypesInput",
-      });
+      ).annotate({ identifier: "GetOutpostSupportedInstanceTypesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          InstanceTypes: S.optional(__S(401, __c25, 1)),
+          InstanceTypes: S.optional(__S(417, __c26, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetOutpostSupportedInstanceTypesOutput",
-      });
+      ).annotate({ identifier: "GetOutpostSupportedInstanceTypesOutput" });
   }
 }
-function __c27(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3133,18 +3115,14 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetPrivateConnectivityConfigInput",
-      });
+      ).annotate({ identifier: "GetPrivateConnectivityConfigInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ PrivateConnectivityConfig: S.optional(__S(18, __c1, 2)) }),
-      ).annotate({
-        identifier: "GetPrivateConnectivityConfigOutput",
-      });
+      ).annotate({ identifier: "GetPrivateConnectivityConfigOutput" });
   }
 }
-function __c28(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3161,7 +3139,7 @@ function __c28(j: number): any {
       ).annotate({ identifier: "GetQuoteInput" });
   }
 }
-function __c29(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3185,7 +3163,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "GetRenewalPricingOutput" });
   }
 }
-function __c30(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3195,7 +3173,7 @@ function __c30(j: number): any {
       ).annotate({ identifier: "GetSiteInput" });
   }
 }
-function __c31(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3223,17 +3201,17 @@ function __c31(j: number): any {
       ).annotate({ identifier: "GetSiteAddressOutput" });
   }
 }
-function __c32(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           OutpostIdentifier: S.String.pipe(T.HttpLabel("OutpostIdentifier")),
-          AssetIdFilter: S.optional(__S(912, __c57, 0)).pipe(T.HttpQuery("AssetIdFilter")),
-          InstanceTypeFilter: S.optional(__S(912, __c57, 0)).pipe(
+          AssetIdFilter: S.optional(__S(928, __c58, 0)).pipe(T.HttpQuery("AssetIdFilter")),
+          InstanceTypeFilter: S.optional(__S(928, __c58, 0)).pipe(
             T.HttpQuery("InstanceTypeFilter"),
           ),
-          AccountIdFilter: S.optional(__S(912, __c57, 0)).pipe(T.HttpQuery("AccountIdFilter")),
+          AccountIdFilter: S.optional(__S(928, __c58, 0)).pipe(T.HttpQuery("AccountIdFilter")),
           AwsServiceFilter: S.optional(__S(48, __c3, 0)).pipe(T.HttpQuery("AwsServiceFilter")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
@@ -3259,23 +3237,23 @@ function __c32(j: number): any {
         }),
       ).annotate({ identifier: "AssetInstance" });
     case 2:
-      return S.Array(__S(513, __c32, 1));
+      return S.Array(__S(529, __c33, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AssetInstances: S.optional(__S(514, __c32, 2)),
+          AssetInstances: S.optional(__S(530, __c33, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAssetInstancesOutput" });
   }
 }
-function __c33(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           OutpostIdentifier: S.String.pipe(T.HttpLabel("OutpostIdentifier")),
-          HostIdFilter: S.optional(__S(912, __c57, 0)).pipe(T.HttpQuery("HostIdFilter")),
+          HostIdFilter: S.optional(__S(928, __c58, 0)).pipe(T.HttpQuery("HostIdFilter")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
           StatusFilter: S.optional(__S(48, __c3, 0)).pipe(T.HttpQuery("StatusFilter")),
@@ -3292,44 +3270,38 @@ function __c33(j: number): any {
         ),
       ).annotate({ identifier: "ListAssetsInput" });
     case 1:
-      return S.suspend(() => S.Struct({ InstanceType: S.String, Count: S.Number })).annotate({
-        identifier: "AssetInstanceTypeCapacity",
-      });
-    case 2:
-      return S.Array(__S(529, __c33, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           HostId: S.optional(S.String),
           State: S.optional(S.String),
-          InstanceFamilies: S.optional(__S(912, __c57, 0)),
-          InstanceTypeCapacities: S.optional(__S(530, __c33, 2)),
+          InstanceFamilies: S.optional(__S(928, __c58, 0)),
+          InstanceTypeCapacities: S.optional(__S(273, __c17, 1)),
           MaxVcpus: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ComputeAttributes" });
-    case 4:
+    case 2:
       return S.suspend(() => S.Struct({ RackElevation: S.optional(S.Number) })).annotate({
         identifier: "AssetLocation",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           AssetId: S.optional(S.String),
           RackId: S.optional(S.String),
           AssetType: S.optional(S.String),
-          ComputeAttributes: S.optional(__S(531, __c33, 3)),
-          AssetLocation: S.optional(__S(532, __c33, 4)),
+          ComputeAttributes: S.optional(__S(545, __c34, 1)),
+          AssetLocation: S.optional(__S(546, __c34, 2)),
         }),
       ).annotate({ identifier: "AssetInfo" });
-    case 6:
-      return S.Array(__S(533, __c33, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(547, __c34, 3));
+    case 5:
       return S.suspend(() =>
-        S.Struct({ Assets: S.optional(__S(534, __c33, 6)), NextToken: S.optional(S.String) }),
+        S.Struct({ Assets: S.optional(__S(548, __c34, 4)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListAssetsOutput" });
   }
 }
-function __c34(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3351,9 +3323,7 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListBlockingInstancesForCapacityTaskInput",
-      });
+      ).annotate({ identifier: "ListBlockingInstancesForCapacityTaskInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3363,19 +3333,17 @@ function __c34(j: number): any {
         }),
       ).annotate({ identifier: "BlockingInstance" });
     case 2:
-      return S.Array(__S(545, __c34, 1));
+      return S.Array(__S(561, __c35, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          BlockingInstances: S.optional(__S(546, __c34, 2)),
+          BlockingInstances: S.optional(__S(562, __c35, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListBlockingInstancesForCapacityTaskOutput",
-      });
+      ).annotate({ identifier: "ListBlockingInstancesForCapacityTaskOutput" });
   }
 }
-function __c35(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3406,17 +3374,17 @@ function __c35(j: number): any {
         }),
       ).annotate({ identifier: "CapacityTaskSummary" });
     case 2:
-      return S.Array(__S(561, __c35, 1));
+      return S.Array(__S(577, __c36, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          CapacityTasks: S.optional(__S(562, __c35, 2)),
+          CapacityTasks: S.optional(__S(578, __c36, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListCapacityTasksOutput" });
   }
 }
-function __c36(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3427,23 +3395,20 @@ function __c36(j: number): any {
           SupportedStorageFilter: S.optional(__S(48, __c3, 0)).pipe(
             T.HttpQuery("SupportedStorageFilter"),
           ),
-          EC2FamilyFilter: S.optional(__S(912, __c57, 0)).pipe(T.HttpQuery("EC2FamilyFilter")),
+          EC2FamilyFilter: S.optional(__S(928, __c58, 0)).pipe(T.HttpQuery("EC2FamilyFilter")),
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/catalog/items" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListCatalogItemsInput" });
     case 1:
-      return S.Array(__S(305, __c19, 1));
+      return S.Array(__S(321, __c20, 1));
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          CatalogItems: S.optional(__S(577, __c36, 1)),
-          NextToken: S.optional(S.String),
-        }),
+        S.Struct({ CatalogItems: S.optional(__S(593, __c37, 1)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListCatalogItemsOutput" });
   }
 }
-function __c37(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3456,18 +3421,13 @@ function __c37(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/instanceTypes" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListOrderableInstanceTypesInput",
-      });
+      ).annotate({ identifier: "ListOrderableInstanceTypesInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          FormFactor: S.optional(S.String),
-          OutpostGeneration: S.optional(S.String),
-        }),
+        S.Struct({ FormFactor: S.optional(S.String), OutpostGeneration: S.optional(S.String) }),
       ).annotate({ identifier: "FormFactorConfig" });
     case 2:
-      return S.Array(__S(593, __c37, 1));
+      return S.Array(__S(609, __c38, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3475,23 +3435,21 @@ function __c37(j: number): any {
           VCPUs: S.optional(S.Number),
           MemoryInMib: S.optional(S.Number),
           NetworkPerformance: S.optional(S.String),
-          FormFactorConfigs: S.optional(__S(594, __c37, 2)),
+          FormFactorConfigs: S.optional(__S(610, __c38, 2)),
         }),
       ).annotate({ identifier: "DetailedInstanceTypeItem" });
     case 4:
-      return S.Array(__S(595, __c37, 3));
+      return S.Array(__S(611, __c38, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          InstanceTypes: S.optional(__S(596, __c37, 4)),
+          InstanceTypes: S.optional(__S(612, __c38, 4)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListOrderableInstanceTypesOutput",
-      });
+      ).annotate({ identifier: "ListOrderableInstanceTypesOutput" });
   }
 }
-function __c38(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3514,46 +3472,46 @@ function __c38(j: number): any {
           OrderId: S.optional(S.String),
           OrderType: S.optional(S.String),
           Status: S.optional(S.String),
-          LineItemCountsByStatus: S.optional(__S(609, __c38, 1)),
+          LineItemCountsByStatus: S.optional(__S(625, __c39, 1)),
           OrderSubmissionDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           OrderFulfilledDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "OrderSummary" });
     case 3:
-      return S.Array(__S(610, __c38, 2));
+      return S.Array(__S(626, __c39, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ Orders: S.optional(__S(611, __c38, 3)), NextToken: S.optional(S.String) }),
+        S.Struct({ Orders: S.optional(__S(627, __c39, 3)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListOrdersOutput" });
   }
 }
-function __c39(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-          LifeCycleStatusFilter: S.optional(__S(912, __c57, 0)).pipe(
+          LifeCycleStatusFilter: S.optional(__S(928, __c58, 0)).pipe(
             T.HttpQuery("LifeCycleStatusFilter"),
           ),
-          AvailabilityZoneFilter: S.optional(__S(912, __c57, 0)).pipe(
+          AvailabilityZoneFilter: S.optional(__S(928, __c58, 0)).pipe(
             T.HttpQuery("AvailabilityZoneFilter"),
           ),
-          AvailabilityZoneIdFilter: S.optional(__S(912, __c57, 0)).pipe(
+          AvailabilityZoneIdFilter: S.optional(__S(928, __c58, 0)).pipe(
             T.HttpQuery("AvailabilityZoneIdFilter"),
           ),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/outposts" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListOutpostsInput" });
     case 1:
-      return S.Array(__S(976, __c61, 0));
+      return S.Array(__S(992, __c62, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ Outposts: S.optional(__S(625, __c39, 1)), NextToken: S.optional(S.String) }),
+        S.Struct({ Outposts: S.optional(__S(641, __c40, 1)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListOutpostsOutput" });
   }
 }
-function __c40(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3583,27 +3541,27 @@ function __c40(j: number): any {
         }),
       ).annotate({ identifier: "QuoteSummary" });
     case 2:
-      return S.Array(__S(641, __c40, 1));
+      return S.Array(__S(657, __c41, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Quotes: S.optional(__S(642, __c40, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ Quotes: S.optional(__S(658, __c41, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListQuotesOutput" });
   }
 }
-function __c41(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-          OperatingAddressCountryCodeFilter: S.optional(__S(912, __c57, 0)).pipe(
+          OperatingAddressCountryCodeFilter: S.optional(__S(928, __c58, 0)).pipe(
             T.HttpQuery("OperatingAddressCountryCodeFilter"),
           ),
-          OperatingAddressStateOrRegionFilter: S.optional(__S(912, __c57, 0)).pipe(
+          OperatingAddressStateOrRegionFilter: S.optional(__S(928, __c58, 0)).pipe(
             T.HttpQuery("OperatingAddressStateOrRegionFilter"),
           ),
-          OperatingAddressCityFilter: S.optional(__S(912, __c57, 0)).pipe(
+          OperatingAddressCityFilter: S.optional(__S(928, __c58, 0)).pipe(
             T.HttpQuery("OperatingAddressCityFilter"),
           ),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/sites" }), svc, auth, proto, ver, rules)),
@@ -3612,11 +3570,11 @@ function __c41(j: number): any {
       return S.Array(__S(161, __c10, 1));
     case 2:
       return S.suspend(() =>
-        S.Struct({ Sites: S.optional(__S(657, __c41, 1)), NextToken: S.optional(S.String) }),
+        S.Struct({ Sites: S.optional(__S(673, __c42, 1)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListSitesOutput" });
   }
 }
-function __c42(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3630,16 +3588,14 @@ function __c42(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(960, __c60, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(976, __c61, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c43(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3648,7 +3604,7 @@ function __c43(j: number): any {
           OrderId: S.optional(S.String),
           AssetId: S.optional(S.String),
           InstancePools: __S(273, __c17, 1),
-          InstancesToExclude: S.optional(__S(274, __c17, 2)),
+          InstancesToExclude: S.optional(__S(288, __c18, 0)),
           DryRun: S.optional(S.Boolean),
           TaskActionOnBlockingInstances: S.optional(S.String),
         }).pipe(
@@ -3664,7 +3620,7 @@ function __c43(j: number): any {
       ).annotate({ identifier: "StartCapacityTaskInput" });
   }
 }
-function __c44(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3683,7 +3639,7 @@ function __c44(j: number): any {
       ).annotate({ identifier: "StartConnectionResponse" });
   }
 }
-function __c45(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3700,27 +3656,23 @@ function __c45(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartOutpostDecommissionInput",
-      });
+      ).annotate({ identifier: "StartOutpostDecommissionInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String),
           BlockingResourceTypes: S.optional(__S(48, __c3, 0)),
         }),
-      ).annotate({
-        identifier: "StartOutpostDecommissionOutput",
-      });
+      ).annotate({ identifier: "StartOutpostDecommissionOutput" });
   }
 }
-function __c46(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          Tags: __S(960, __c60, 0),
+          Tags: __S(976, __c61, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
@@ -3734,13 +3686,13 @@ function __c46(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c47(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: __S(912, __c57, 0).pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(928, __c58, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
@@ -3754,7 +3706,7 @@ function __c47(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c48(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3776,7 +3728,7 @@ function __c48(j: number): any {
       ).annotate({ identifier: "UpdateOutpostInput" });
   }
 }
-function __c49(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3802,7 +3754,7 @@ function __c49(j: number): any {
       ).annotate({ identifier: "UpdateQuoteInput" });
   }
 }
-function __c50(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3817,7 +3769,7 @@ function __c50(j: number): any {
       ).annotate({ identifier: "UpdateSiteInput" });
   }
 }
-function __c51(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3842,7 +3794,7 @@ function __c51(j: number): any {
       ).annotate({ identifier: "UpdateSiteAddressOutput" });
   }
 }
-function __c52(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3867,16 +3819,10 @@ function __c52(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateSiteRackPhysicalPropertiesInput",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ Site: S.optional(__S(161, __c10, 1)) })).annotate({
-        identifier: "UpdateSiteRackPhysicalPropertiesOutput",
-      });
+      ).annotate({ identifier: "UpdateSiteRackPhysicalPropertiesInput" });
   }
 }
-function __c53(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3899,15 +3845,13 @@ function __c53(j: number): any {
       ).annotate({ identifier: "CancelCapacityTaskInput" });
   }
 }
-function __c54(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelCapacityTaskOutput",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "CancelCapacityTaskOutput" });
   }
 }
-function __c55(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3924,34 +3868,34 @@ function __c55(j: number): any {
       ).annotate({ identifier: "CancelOrderInput" });
   }
 }
-function __c56(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ CatalogItemId: S.optional(S.String), Quantity: S.optional(S.Number) }),
       ).annotate({ identifier: "LineItemRequest" });
     case 1:
-      return S.Array(__S(896, __c56, 0));
+      return S.Array(__S(912, __c57, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           OutpostIdentifier: S.String,
           QuoteIdentifier: S.optional(S.String),
           QuoteOptionIdentifier: S.optional(S.String),
-          LineItems: S.optional(__S(897, __c56, 1)),
+          LineItems: S.optional(__S(913, __c57, 1)),
           PaymentOption: S.String,
           PaymentTerm: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/orders" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateOrderInput" });
   }
 }
-function __c57(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c58(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3962,10 +3906,10 @@ function __c58(j: number): any {
       ).annotate({ identifier: "ShipmentInformation" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ AssetId: S.optional(S.String), MacAddressList: S.optional(__S(912, __c57, 0)) }),
+        S.Struct({ AssetId: S.optional(S.String), MacAddressList: S.optional(__S(928, __c58, 0)) }),
       ).annotate({ identifier: "LineItemAssetInformation" });
     case 2:
-      return S.Array(__S(929, __c58, 1));
+      return S.Array(__S(945, __c59, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3973,14 +3917,14 @@ function __c58(j: number): any {
           LineItemId: S.optional(S.String),
           Quantity: S.optional(S.Number),
           Status: S.optional(S.String),
-          ShipmentInformation: S.optional(__S(928, __c58, 0)),
-          AssetInformationList: S.optional(__S(930, __c58, 2)),
+          ShipmentInformation: S.optional(__S(944, __c59, 0)),
+          AssetInformationList: S.optional(__S(946, __c59, 2)),
           PreviousLineItemId: S.optional(S.String),
           PreviousOrderId: S.optional(S.String),
         }),
       ).annotate({ identifier: "LineItem" });
     case 4:
-      return S.Array(__S(931, __c58, 3));
+      return S.Array(__S(947, __c59, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3989,7 +3933,7 @@ function __c58(j: number): any {
           QuoteOptionIdentifier: S.optional(S.String),
           OrderId: S.optional(S.String),
           Status: S.optional(S.String),
-          LineItems: S.optional(__S(932, __c58, 4)),
+          LineItems: S.optional(__S(948, __c59, 4)),
           PaymentOption: S.optional(S.String),
           OrderSubmissionDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           OrderFulfilledDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -3998,12 +3942,12 @@ function __c58(j: number): any {
         }),
       ).annotate({ identifier: "Order" });
     case 6:
-      return S.suspend(() => S.Struct({ Order: S.optional(__S(933, __c58, 5)) })).annotate({
+      return S.suspend(() => S.Struct({ Order: S.optional(__S(949, __c59, 5)) })).annotate({
         identifier: "CreateOrderOutput",
       });
   }
 }
-function __c59(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4013,19 +3957,19 @@ function __c59(j: number): any {
           SiteId: S.String,
           AvailabilityZone: S.optional(S.String),
           AvailabilityZoneId: S.optional(S.String),
-          Tags: S.optional(__S(960, __c60, 0)),
+          Tags: S.optional(__S(976, __c61, 0)),
           SupportedHardwareType: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/outposts" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateOutpostInput" });
   }
 }
-function __c60(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c61(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4039,7 +3983,7 @@ function __c61(j: number): any {
           LifeCycleStatus: S.optional(S.String),
           AvailabilityZone: S.optional(S.String),
           AvailabilityZoneId: S.optional(S.String),
-          Tags: S.optional(__S(960, __c60, 0)),
+          Tags: S.optional(__S(976, __c61, 0)),
           SiteArn: S.optional(S.String),
           SupportedHardwareType: S.optional(S.String),
           Generation: S.optional(S.String),
@@ -4048,10 +3992,10 @@ function __c61(j: number): any {
       ).annotate({ identifier: "Outpost" });
   }
 }
-function __c62(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Outpost: S.optional(__S(976, __c61, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ Outpost: S.optional(__S(992, __c62, 0)) })).annotate({
         identifier: "CreateOutpostOutput",
       });
   }

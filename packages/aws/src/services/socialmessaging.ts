@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -816,8 +816,8 @@ export const associateWhatsAppBusinessAccount: API.OperationMethod<
   AssociateWhatsAppBusinessAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(789, __c49, 5) as any as S.Schema<AssociateWhatsAppBusinessAccountInput>,
-  output: __S(793, __c49, 9) as any as S.Schema<AssociateWhatsAppBusinessAccountOutput>,
+  input: __S(773, __c48, 5) as any as S.Schema<AssociateWhatsAppBusinessAccountInput>,
+  output: __S(777, __c48, 9) as any as S.Schema<AssociateWhatsAppBusinessAccountOutput>,
   errors: [
     DependencyException,
     InvalidParametersException,
@@ -978,8 +978,8 @@ export const createWhatsAppMessageTemplateMedia: API.OperationMethod<
   CreateWhatsAppMessageTemplateMediaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c8, 0) as any as S.Schema<CreateWhatsAppMessageTemplateMediaInput>,
-  output: __S(129, __c8, 1) as any as S.Schema<CreateWhatsAppMessageTemplateMediaOutput>,
+  input: __S(144, __c9, 0) as any as S.Schema<CreateWhatsAppMessageTemplateMediaInput>,
+  output: __S(145, __c9, 1) as any as S.Schema<CreateWhatsAppMessageTemplateMediaOutput>,
   errors: [
     AccessDeniedByMetaException,
     DependencyException,
@@ -1010,8 +1010,8 @@ export const deleteWhatsAppFlow: API.OperationMethod<
   DeleteWhatsAppFlowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c10, 0) as any as S.Schema<DeleteWhatsAppFlowInput>,
-  output: __S(176, __c11, 0) as any as S.Schema<DeleteWhatsAppFlowOutput>,
+  input: __S(176, __c11, 0) as any as S.Schema<DeleteWhatsAppFlowInput>,
+  output: __S(192, __c12, 0) as any as S.Schema<DeleteWhatsAppFlowOutput>,
   errors: [
     AccessDeniedByMetaException,
     DependencyException,
@@ -1042,8 +1042,8 @@ export const deleteWhatsAppMessageMedia: API.OperationMethod<
   DeleteWhatsAppMessageMediaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c12, 0) as any as S.Schema<DeleteWhatsAppMessageMediaInput>,
-  output: __S(193, __c12, 1) as any as S.Schema<DeleteWhatsAppMessageMediaOutput>,
+  input: __S(208, __c13, 0) as any as S.Schema<DeleteWhatsAppMessageMediaInput>,
+  output: __S(209, __c13, 1) as any as S.Schema<DeleteWhatsAppMessageMediaOutput>,
   errors: [
     AccessDeniedByMetaException,
     DependencyException,
@@ -1074,8 +1074,8 @@ export const deleteWhatsAppMessageTemplate: API.OperationMethod<
   DeleteWhatsAppMessageTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c13, 0) as any as S.Schema<DeleteWhatsAppMessageTemplateInput>,
-  output: __S(224, __c14, 0) as any as S.Schema<DeleteWhatsAppMessageTemplateOutput>,
+  input: __S(224, __c14, 0) as any as S.Schema<DeleteWhatsAppMessageTemplateInput>,
+  output: __S(192, __c12, 0) as any as S.Schema<DeleteWhatsAppMessageTemplateOutput>,
   errors: [
     AccessDeniedByMetaException,
     DependencyException,
@@ -1107,7 +1107,7 @@ export const deprecateWhatsAppFlow: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(240, __c15, 0) as any as S.Schema<DeprecateWhatsAppFlowInput>,
-  output: __S(176, __c11, 0) as any as S.Schema<DeprecateWhatsAppFlowOutput>,
+  output: __S(192, __c12, 0) as any as S.Schema<DeprecateWhatsAppFlowOutput>,
   errors: [
     AccessDeniedByMetaException,
     DependencyException,
@@ -1137,7 +1137,7 @@ export const disassociateWhatsAppBusinessAccount: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(256, __c16, 0) as any as S.Schema<DisassociateWhatsAppBusinessAccountInput>,
-  output: __S(224, __c14, 0) as any as S.Schema<DisassociateWhatsAppBusinessAccountOutput>,
+  output: __S(192, __c12, 0) as any as S.Schema<DisassociateWhatsAppBusinessAccountOutput>,
   errors: [
     DependencyException,
     InvalidParametersException,
@@ -1392,8 +1392,8 @@ export const getWhatsAppMessageTemplate: API.OperationMethod<
   GetWhatsAppMessageTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<GetWhatsAppMessageTemplateInput>,
-  output: __S(449, __c28, 1) as any as S.Schema<GetWhatsAppMessageTemplateOutput>,
+  input: __S(432, __c27, 0) as any as S.Schema<GetWhatsAppMessageTemplateInput>,
+  output: __S(433, __c27, 1) as any as S.Schema<GetWhatsAppMessageTemplateOutput>,
   errors: [
     AccessDeniedByMetaException,
     DependencyException,
@@ -1423,8 +1423,8 @@ export const listLinkedWhatsAppBusinessAccounts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LinkedWhatsAppBusinessAccountSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(464, __c29, 0) as any as S.Schema<ListLinkedWhatsAppBusinessAccountsInput>,
-  output: __S(467, __c29, 3) as any as S.Schema<ListLinkedWhatsAppBusinessAccountsOutput>,
+  input: __S(448, __c28, 0) as any as S.Schema<ListLinkedWhatsAppBusinessAccountsInput>,
+  output: __S(451, __c28, 3) as any as S.Schema<ListLinkedWhatsAppBusinessAccountsOutput>,
   errors: [
     InternalServiceException,
     InvalidParametersException,
@@ -1456,8 +1456,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(481, __c30, 1) as any as S.Schema<ListTagsForResourceOutput>,
+  input: __S(464, __c29, 0) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(465, __c29, 1) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [InternalServiceException, InvalidParametersException, ThrottledRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1482,8 +1482,8 @@ export const listWhatsAppFlowAssets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MetaFlowAsset
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<ListWhatsAppFlowAssetsInput>,
-  output: __S(499, __c31, 3) as any as S.Schema<ListWhatsAppFlowAssetsOutput>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListWhatsAppFlowAssetsInput>,
+  output: __S(483, __c30, 3) as any as S.Schema<ListWhatsAppFlowAssetsOutput>,
   errors: [
     AccessDeniedByMetaException,
     DependencyException,
@@ -1521,8 +1521,8 @@ export const listWhatsAppFlows: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MetaFlowSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(512, __c32, 0) as any as S.Schema<ListWhatsAppFlowsInput>,
-  output: __S(515, __c32, 3) as any as S.Schema<ListWhatsAppFlowsOutput>,
+  input: __S(496, __c31, 0) as any as S.Schema<ListWhatsAppFlowsInput>,
+  output: __S(499, __c31, 3) as any as S.Schema<ListWhatsAppFlowsOutput>,
   errors: [
     AccessDeniedByMetaException,
     DependencyException,
@@ -1560,8 +1560,8 @@ export const listWhatsAppMessageTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(528, __c33, 0) as any as S.Schema<ListWhatsAppMessageTemplatesInput>,
-  output: __S(531, __c33, 3) as any as S.Schema<ListWhatsAppMessageTemplatesOutput>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListWhatsAppMessageTemplatesInput>,
+  output: __S(515, __c32, 3) as any as S.Schema<ListWhatsAppMessageTemplatesOutput>,
   errors: [
     AccessDeniedByMetaException,
     DependencyException,
@@ -1599,8 +1599,8 @@ export const listWhatsAppTemplateLibrary: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MetaLibraryTemplateDefinition
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(544, __c34, 0) as any as S.Schema<ListWhatsAppTemplateLibraryInput>,
-  output: __S(549, __c34, 5) as any as S.Schema<ListWhatsAppTemplateLibraryOutput>,
+  input: __S(528, __c33, 0) as any as S.Schema<ListWhatsAppTemplateLibraryInput>,
+  output: __S(533, __c33, 5) as any as S.Schema<ListWhatsAppTemplateLibraryOutput>,
   errors: [
     AccessDeniedByMetaException,
     DependencyException,
@@ -1641,8 +1641,8 @@ export const postWhatsAppMessageMedia: API.OperationMethod<
   PostWhatsAppMessageMediaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(560, __c35, 0) as any as S.Schema<PostWhatsAppMessageMediaInput>,
-  output: __S(561, __c35, 1) as any as S.Schema<PostWhatsAppMessageMediaOutput>,
+  input: __S(544, __c34, 0) as any as S.Schema<PostWhatsAppMessageMediaInput>,
+  output: __S(545, __c34, 1) as any as S.Schema<PostWhatsAppMessageMediaOutput>,
   errors: [
     AccessDeniedByMetaException,
     DependencyException,
@@ -1673,8 +1673,8 @@ export const publishWhatsAppFlow: API.OperationMethod<
   PublishWhatsAppFlowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c36, 0) as any as S.Schema<PublishWhatsAppFlowInput>,
-  output: __S(176, __c11, 0) as any as S.Schema<PublishWhatsAppFlowOutput>,
+  input: __S(560, __c35, 0) as any as S.Schema<PublishWhatsAppFlowInput>,
+  output: __S(192, __c12, 0) as any as S.Schema<PublishWhatsAppFlowOutput>,
   errors: [
     AccessDeniedByMetaException,
     DependencyException,
@@ -1702,8 +1702,8 @@ export const putWhatsAppBusinessAccountEventDestinations: API.OperationMethod<
   PutWhatsAppBusinessAccountEventDestinationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c37, 0) as any as S.Schema<PutWhatsAppBusinessAccountEventDestinationsInput>,
-  output: __S(224, __c14, 0) as any as S.Schema<PutWhatsAppBusinessAccountEventDestinationsOutput>,
+  input: __S(576, __c36, 0) as any as S.Schema<PutWhatsAppBusinessAccountEventDestinationsInput>,
+  output: __S(192, __c12, 0) as any as S.Schema<PutWhatsAppBusinessAccountEventDestinationsOutput>,
   errors: [InternalServiceException, InvalidParametersException, ThrottledRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1728,8 +1728,8 @@ export const putWhatsAppBusinessPublicKey: API.OperationMethod<
   PutWhatsAppBusinessPublicKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c38, 0) as any as S.Schema<PutWhatsAppBusinessPublicKeyInput>,
-  output: __S(224, __c14, 0) as any as S.Schema<PutWhatsAppBusinessPublicKeyOutput>,
+  input: __S(592, __c37, 0) as any as S.Schema<PutWhatsAppBusinessPublicKeyInput>,
+  output: __S(192, __c12, 0) as any as S.Schema<PutWhatsAppBusinessPublicKeyOutput>,
   errors: [
     AccessDeniedByMetaException,
     AccessDeniedException,
@@ -1762,8 +1762,8 @@ export const sendWhatsAppCallEvent: API.OperationMethod<
   SendWhatsAppCallEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c39, 0) as any as S.Schema<SendWhatsAppCallEventInput>,
-  output: __S(625, __c39, 1) as any as S.Schema<SendWhatsAppCallEventOutput>,
+  input: __S(608, __c38, 0) as any as S.Schema<SendWhatsAppCallEventInput>,
+  output: __S(609, __c38, 1) as any as S.Schema<SendWhatsAppCallEventOutput>,
   errors: [
     AccessDeniedByMetaException,
     ConflictException,
@@ -1795,8 +1795,8 @@ export const sendWhatsAppConversionEvent: API.OperationMethod<
   SendWhatsAppConversionEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c40, 0) as any as S.Schema<SendWhatsAppConversionEventInput>,
-  output: __S(641, __c40, 1) as any as S.Schema<SendWhatsAppConversionEventOutput>,
+  input: __S(624, __c39, 0) as any as S.Schema<SendWhatsAppConversionEventInput>,
+  output: __S(625, __c39, 1) as any as S.Schema<SendWhatsAppConversionEventOutput>,
   errors: [
     AccessDeniedByMetaException,
     DependencyException,
@@ -1831,8 +1831,8 @@ export const sendWhatsAppMessage: API.OperationMethod<
   SendWhatsAppMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656, __c41, 0) as any as S.Schema<SendWhatsAppMessageInput>,
-  output: __S(657, __c41, 1) as any as S.Schema<SendWhatsAppMessageOutput>,
+  input: __S(640, __c40, 0) as any as S.Schema<SendWhatsAppMessageInput>,
+  output: __S(641, __c40, 1) as any as S.Schema<SendWhatsAppMessageOutput>,
   errors: [
     DependencyException,
     InternalServiceException,
@@ -1861,8 +1861,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c42, 0) as any as S.Schema<TagResourceInput>,
-  output: __S(688, __c43, 0) as any as S.Schema<TagResourceOutput>,
+  input: __S(656, __c41, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(672, __c42, 0) as any as S.Schema<TagResourceOutput>,
   errors: [InternalServiceException, InvalidParametersException, ThrottledRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1883,8 +1883,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c44, 0) as any as S.Schema<UntagResourceInput>,
-  output: __S(688, __c43, 0) as any as S.Schema<UntagResourceOutput>,
+  input: __S(688, __c43, 0) as any as S.Schema<UntagResourceInput>,
+  output: __S(672, __c42, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [InternalServiceException, InvalidParametersException, ThrottledRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1908,10 +1908,10 @@ export const updateLinkedWhatsAppBusinessAccountPhoneNumber: API.OperationMethod
   UpdateLinkedWhatsAppBusinessAccountPhoneNumberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(720, __c45, 0) as any as S.Schema<UpdateLinkedWhatsAppBusinessAccountPhoneNumberInput>,
+  input: __S(704, __c44, 0) as any as S.Schema<UpdateLinkedWhatsAppBusinessAccountPhoneNumberInput>,
   output: __S(
-    721,
-    __c45,
+    705,
+    __c44,
     1,
   ) as any as S.Schema<UpdateLinkedWhatsAppBusinessAccountPhoneNumberOutput>,
   errors: [
@@ -1944,8 +1944,8 @@ export const updateWhatsAppFlow: API.OperationMethod<
   UpdateWhatsAppFlowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c46, 0) as any as S.Schema<UpdateWhatsAppFlowInput>,
-  output: __S(176, __c11, 0) as any as S.Schema<UpdateWhatsAppFlowOutput>,
+  input: __S(720, __c45, 0) as any as S.Schema<UpdateWhatsAppFlowInput>,
+  output: __S(192, __c12, 0) as any as S.Schema<UpdateWhatsAppFlowOutput>,
   errors: [
     AccessDeniedByMetaException,
     DependencyException,
@@ -1976,8 +1976,8 @@ export const updateWhatsAppFlowAssets: API.OperationMethod<
   UpdateWhatsAppFlowAssetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(752, __c47, 0) as any as S.Schema<UpdateWhatsAppFlowAssetsInput>,
-  output: __S(753, __c47, 1) as any as S.Schema<UpdateWhatsAppFlowAssetsOutput>,
+  input: __S(736, __c46, 0) as any as S.Schema<UpdateWhatsAppFlowAssetsInput>,
+  output: __S(737, __c46, 1) as any as S.Schema<UpdateWhatsAppFlowAssetsOutput>,
   errors: [
     AccessDeniedByMetaException,
     DependencyException,
@@ -2008,8 +2008,8 @@ export const updateWhatsAppMessageTemplate: API.OperationMethod<
   UpdateWhatsAppMessageTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c48, 0) as any as S.Schema<UpdateWhatsAppMessageTemplateInput>,
-  output: __S(224, __c14, 0) as any as S.Schema<UpdateWhatsAppMessageTemplateOutput>,
+  input: __S(752, __c47, 0) as any as S.Schema<UpdateWhatsAppMessageTemplateInput>,
+  output: __S(192, __c12, 0) as any as S.Schema<UpdateWhatsAppMessageTemplateOutput>,
   errors: [
     AccessDeniedByMetaException,
     DependencyException,
@@ -2038,9 +2038,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateWhatsAppDatasetInput",
-      });
+      ).annotate({ identifier: "CreateWhatsAppDatasetInput" });
     case 1:
       return S.suspend(() => S.Struct({ datasetId: S.String })).annotate({
         identifier: "CreateWhatsAppDatasetOutput",
@@ -2102,9 +2100,7 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateWhatsAppMessageTemplateInput",
-      });
+      ).annotate({ identifier: "CreateWhatsAppMessageTemplateInput" });
   }
 }
 function __c5(j: number): any {
@@ -2116,9 +2112,7 @@ function __c5(j: number): any {
           templateStatus: S.optional(S.String),
           category: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateWhatsAppMessageTemplateOutput",
-      });
+      ).annotate({ identifier: "CreateWhatsAppMessageTemplateOutput" });
   }
 }
 function __c6(j: number): any {
@@ -2131,11 +2125,9 @@ function __c6(j: number): any {
           url: S.optional(__S(112, __c7, 0)),
           otpType: S.optional(S.String),
           zeroTapTermsAccepted: S.optional(S.Boolean),
-          supportedApps: S.optional(__S(113, __c7, 1)),
+          supportedApps: S.optional(__S(128, __c8, 0)),
         }),
-      ).annotate({
-        identifier: "LibraryTemplateButtonInput",
-      });
+      ).annotate({ identifier: "LibraryTemplateButtonInput" });
     case 1:
       return S.Array(__S(96, __c6, 0));
     case 2:
@@ -2147,9 +2139,7 @@ function __c6(j: number): any {
           addTrackPackageLink: S.optional(S.Boolean),
           codeExpirationMinutes: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "LibraryTemplateBodyInputs",
-      });
+      ).annotate({ identifier: "LibraryTemplateBodyInputs" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2173,24 +2163,26 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateWhatsAppMessageTemplateFromLibraryInput",
-      });
+      ).annotate({ identifier: "CreateWhatsAppMessageTemplateFromLibraryInput" });
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 1:
-      return S.Array(__S(112, __c7, 0));
   }
 }
 function __c8(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(112, __c7, 0));
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ id: S.String, sourceS3File: S.optional(__S(144, __c9, 0)) }).pipe(
+        S.Struct({ id: S.String, sourceS3File: S.optional(__S(160, __c10, 0)) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/whatsapp/template/media" }),
             svc,
@@ -2200,16 +2192,14 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateWhatsAppMessageTemplateMediaInput",
-      });
+      ).annotate({ identifier: "CreateWhatsAppMessageTemplateMediaInput" });
     case 1:
       return S.suspend(() => S.Struct({ metaHeaderHandle: S.optional(S.String) })).annotate({
         identifier: "CreateWhatsAppMessageTemplateMediaOutput",
       });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ bucketName: S.String, key: S.String })).annotate({
@@ -2217,7 +2207,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2237,15 +2227,13 @@ function __c10(j: number): any {
       ).annotate({ identifier: "DeleteWhatsAppFlowInput" });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteWhatsAppFlowOutput",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteWhatsAppFlowOutput" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2262,16 +2250,14 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteWhatsAppMessageMediaInput",
-      });
+      ).annotate({ identifier: "DeleteWhatsAppMessageMediaInput" });
     case 1:
       return S.suspend(() => S.Struct({ success: S.optional(S.Boolean) })).annotate({
         identifier: "DeleteWhatsAppMessageMediaOutput",
       });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2290,17 +2276,7 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteWhatsAppMessageTemplateInput",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteWhatsAppMessageTemplateOutput",
-      });
+      ).annotate({ identifier: "DeleteWhatsAppMessageTemplateInput" });
   }
 }
 function __c15(j: number): any {
@@ -2317,9 +2293,7 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeprecateWhatsAppFlowInput",
-      });
+      ).annotate({ identifier: "DeprecateWhatsAppFlowInput" });
   }
 }
 function __c16(j: number): any {
@@ -2336,9 +2310,7 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateWhatsAppBusinessAccountInput",
-      });
+      ).annotate({ identifier: "DisassociateWhatsAppBusinessAccountInput" });
   }
 }
 function __c17(j: number): any {
@@ -2355,9 +2327,7 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetLinkedWhatsAppBusinessAccountInput",
-      });
+      ).annotate({ identifier: "GetLinkedWhatsAppBusinessAccountInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2367,14 +2337,12 @@ function __c17(j: number): any {
           registrationStatus: S.String,
           linkDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           wabaName: S.String,
-          eventDestinations: __S(833, __c52, 1),
+          eventDestinations: __S(817, __c51, 1),
           marketingMessagesOnboardingStatus: S.optional(S.String),
           datasetId: S.optional(S.String),
-          phoneNumbers: __S(800, __c50, 0),
+          phoneNumbers: __S(784, __c49, 0),
         }),
-      ).annotate({
-        identifier: "LinkedWhatsAppBusinessAccount",
-      });
+      ).annotate({ identifier: "LinkedWhatsAppBusinessAccount" });
     case 2:
       return S.suspend(() => S.Struct({ account: S.optional(__S(273, __c17, 1)) })).annotate({
         identifier: "GetLinkedWhatsAppBusinessAccountOutput",
@@ -2395,19 +2363,15 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetLinkedWhatsAppBusinessAccountPhoneNumberInput",
-      });
+      ).annotate({ identifier: "GetLinkedWhatsAppBusinessAccountPhoneNumberInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          phoneNumber: S.optional(__S(816, __c51, 0)),
+          phoneNumber: S.optional(__S(800, __c50, 0)),
           linkedWhatsAppBusinessAccountId: S.optional(S.String),
           callSettings: S.optional(__S(310, __c19, 6)),
         }),
-      ).annotate({
-        identifier: "GetLinkedWhatsAppBusinessAccountPhoneNumberOutput",
-      });
+      ).annotate({ identifier: "GetLinkedWhatsAppBusinessAccountPhoneNumberOutput" });
   }
 }
 function __c19(j: number): any {
@@ -2423,17 +2387,13 @@ function __c19(j: number): any {
           openTime: __S(304, __c19, 0),
           closeTime: __S(304, __c19, 0),
         }),
-      ).annotate({
-        identifier: "WhatsAppWeeklyOperatingHoursEntry",
-      });
+      ).annotate({ identifier: "WhatsAppWeeklyOperatingHoursEntry" });
     case 2:
       return S.Array(__S(305, __c19, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ date: S.String, startTime: __S(304, __c19, 0), endTime: __S(304, __c19, 0) }),
-      ).annotate({
-        identifier: "WhatsAppHolidayScheduleEntry",
-      });
+      ).annotate({ identifier: "WhatsAppHolidayScheduleEntry" });
     case 4:
       return S.Array(__S(307, __c19, 3));
     case 5:
@@ -2472,18 +2432,14 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetWhatsAppBusinessPublicKeyInput",
-      });
+      ).annotate({ identifier: "GetWhatsAppBusinessPublicKeyInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           businessPublicKey: S.optional(S.String),
           businessPublicKeySignatureStatus: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetWhatsAppBusinessPublicKeyOutput",
-      });
+      ).annotate({ identifier: "GetWhatsAppBusinessPublicKeyOutput" });
   }
 }
 function __c21(j: number): any {
@@ -2504,9 +2460,7 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetWhatsAppCallPermissionInput",
-      });
+      ).annotate({ identifier: "GetWhatsAppCallPermissionInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2522,29 +2476,19 @@ function __c21(j: number): any {
           currentUsage: S.Number,
           limitExpirationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "WhatsAppCallPermissionLimit",
-      });
+      ).annotate({ identifier: "WhatsAppCallPermissionLimit" });
     case 3:
       return S.Array(__S(338, __c21, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({
-          actionName: S.String,
-          canPerformAction: S.Boolean,
-          limits: __S(339, __c21, 3),
-        }),
-      ).annotate({
-        identifier: "WhatsAppCallPermissionAction",
-      });
+        S.Struct({ actionName: S.String, canPerformAction: S.Boolean, limits: __S(339, __c21, 3) }),
+      ).annotate({ identifier: "WhatsAppCallPermissionAction" });
     case 5:
       return S.Array(__S(340, __c21, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({ permission: __S(337, __c21, 1), actions: __S(341, __c21, 5) }),
-      ).annotate({
-        identifier: "GetWhatsAppCallPermissionOutput",
-      });
+      ).annotate({ identifier: "GetWhatsAppCallPermissionOutput" });
   }
 }
 function __c22(j: number): any {
@@ -2567,9 +2511,7 @@ function __c22(j: number): any {
           timezoneId: S.optional(S.String),
           messageTemplateNamespace: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "MetaFlowWhatsAppBusinessAccountInfo",
-      });
+      ).annotate({ identifier: "MetaFlowWhatsAppBusinessAccountInfo" });
     case 2:
       return S.suspend(() =>
         S.Struct({ link: S.optional(S.String), name: S.String, id: S.String }),
@@ -2629,9 +2571,7 @@ function __c24(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetWhatsAppFlowPreviewInput",
-      });
+      ).annotate({ identifier: "GetWhatsAppFlowPreviewInput" });
     case 1:
       return S.suspend(() => S.Struct({ flowId: S.String, preview: __S(368, __c23, 0) })).annotate({
         identifier: "GetWhatsAppFlowPreviewOutput",
@@ -2646,8 +2586,8 @@ function __c25(j: number): any {
           mediaId: S.String,
           originationPhoneNumberId: S.String,
           metadataOnly: S.optional(S.Boolean),
-          destinationS3PresignedUrl: S.optional(__S(432, __c27, 0)),
-          destinationS3File: S.optional(__S(144, __c9, 0)),
+          destinationS3PresignedUrl: S.optional(__S(416, __c26, 0)),
+          destinationS3File: S.optional(__S(160, __c10, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/whatsapp/media/get" }),
@@ -2658,32 +2598,22 @@ function __c25(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetWhatsAppMessageMediaInput",
-      });
+      ).annotate({ identifier: "GetWhatsAppMessageMediaInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ mimeType: S.optional(S.String), fileSize: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "GetWhatsAppMessageMediaOutput",
-      });
+      ).annotate({ identifier: "GetWhatsAppMessageMediaOutput" });
   }
 }
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ url: S.String, headers: __S(416, __c26, 0) })).annotate({
+      return S.suspend(() => S.Struct({ url: S.String, headers: __S(112, __c7, 0) })).annotate({
         identifier: "S3PresignedUrl",
       });
   }
 }
-function __c28(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2702,16 +2632,14 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetWhatsAppMessageTemplateInput",
-      });
+      ).annotate({ identifier: "GetWhatsAppMessageTemplateInput" });
     case 1:
       return S.suspend(() => S.Struct({ template: S.optional(S.String) })).annotate({
         identifier: "GetWhatsAppMessageTemplateOutput",
       });
   }
 }
-function __c29(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2728,9 +2656,7 @@ function __c29(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListLinkedWhatsAppBusinessAccountsInput",
-      });
+      ).annotate({ identifier: "ListLinkedWhatsAppBusinessAccountsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2740,27 +2666,23 @@ function __c29(j: number): any {
           registrationStatus: S.String,
           linkDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           wabaName: S.String,
-          eventDestinations: __S(833, __c52, 1),
+          eventDestinations: __S(817, __c51, 1),
           marketingMessagesOnboardingStatus: S.optional(S.String),
           datasetId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "LinkedWhatsAppBusinessAccountSummary",
-      });
+      ).annotate({ identifier: "LinkedWhatsAppBusinessAccountSummary" });
     case 2:
-      return S.Array(__S(465, __c29, 1));
+      return S.Array(__S(449, __c28, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          linkedAccounts: S.optional(__S(466, __c29, 2)),
+          linkedAccounts: S.optional(__S(450, __c28, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListLinkedWhatsAppBusinessAccountsOutput",
-      });
+      ).annotate({ identifier: "ListLinkedWhatsAppBusinessAccountsOutput" });
   }
 }
-function __c30(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2770,13 +2692,11 @@ function __c30(j: number): any {
       ).annotate({ identifier: "ListTagsForResourceInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ statusCode: S.optional(S.Number), tags: S.optional(__S(849, __c53, 1)) }),
-      ).annotate({
-        identifier: "ListTagsForResourceOutput",
-      });
+        S.Struct({ statusCode: S.optional(S.Number), tags: S.optional(__S(833, __c52, 1)) }),
+      ).annotate({ identifier: "ListTagsForResourceOutput" });
   }
 }
-function __c31(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2795,24 +2715,20 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListWhatsAppFlowAssetsInput",
-      });
+      ).annotate({ identifier: "ListWhatsAppFlowAssetsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ name: S.String, assetType: S.String, downloadUrl: S.String }),
       ).annotate({ identifier: "MetaFlowAsset" });
     case 2:
-      return S.Array(__S(497, __c31, 1));
+      return S.Array(__S(481, __c30, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ flowAssets: __S(498, __c31, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListWhatsAppFlowAssetsOutput",
-      });
+        S.Struct({ flowAssets: __S(482, __c30, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListWhatsAppFlowAssetsOutput" });
   }
 }
-function __c32(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2842,14 +2758,14 @@ function __c32(j: number): any {
         }),
       ).annotate({ identifier: "MetaFlowSummary" });
     case 2:
-      return S.Array(__S(513, __c32, 1));
+      return S.Array(__S(497, __c31, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ flows: __S(514, __c32, 2), nextToken: S.optional(S.String) }),
+        S.Struct({ flows: __S(498, __c31, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListWhatsAppFlowsOutput" });
   }
 }
-function __c33(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2867,9 +2783,7 @@ function __c33(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListWhatsAppMessageTemplatesInput",
-      });
+      ).annotate({ identifier: "ListWhatsAppMessageTemplatesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2882,16 +2796,14 @@ function __c33(j: number): any {
         }),
       ).annotate({ identifier: "TemplateSummary" });
     case 2:
-      return S.Array(__S(529, __c33, 1));
+      return S.Array(__S(513, __c32, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ templates: S.optional(__S(530, __c33, 2)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListWhatsAppMessageTemplatesOutput",
-      });
+        S.Struct({ templates: S.optional(__S(514, __c32, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListWhatsAppMessageTemplatesOutput" });
   }
 }
-function __c34(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2899,7 +2811,7 @@ function __c34(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
           id: S.String.pipe(T.HttpQuery("id")),
-          filters: S.optional(__S(416, __c26, 0)),
+          filters: S.optional(__S(112, __c7, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/whatsapp/template/library" }),
@@ -2910,9 +2822,7 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListWhatsAppTemplateLibraryInput",
-      });
+      ).annotate({ identifier: "ListWhatsAppTemplateLibraryInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2922,13 +2832,11 @@ function __c34(j: number): any {
           url: S.optional(S.String),
           otpType: S.optional(S.String),
           zeroTapTermsAccepted: S.optional(S.Boolean),
-          supportedApps: S.optional(__S(113, __c7, 1)),
+          supportedApps: S.optional(__S(128, __c8, 0)),
         }),
-      ).annotate({
-        identifier: "LibraryTemplateButtonList",
-      });
+      ).annotate({ identifier: "LibraryTemplateButtonList" });
     case 2:
-      return S.Array(__S(545, __c34, 1));
+      return S.Array(__S(529, __c33, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2940,34 +2848,30 @@ function __c34(j: number): any {
           templateIndustry: S.optional(__S(32, __c2, 0)),
           templateHeader: S.optional(S.String),
           templateBody: S.optional(S.String),
-          templateButtons: S.optional(__S(546, __c34, 2)),
+          templateButtons: S.optional(__S(530, __c33, 2)),
           templateId: S.optional(S.String),
           templateBodyExampleParams: S.optional(__S(32, __c2, 0)),
         }),
-      ).annotate({
-        identifier: "MetaLibraryTemplateDefinition",
-      });
+      ).annotate({ identifier: "MetaLibraryTemplateDefinition" });
     case 4:
-      return S.Array(__S(547, __c34, 3));
+      return S.Array(__S(531, __c33, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          metaLibraryTemplates: S.optional(__S(548, __c34, 4)),
+          metaLibraryTemplates: S.optional(__S(532, __c33, 4)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListWhatsAppTemplateLibraryOutput",
-      });
+      ).annotate({ identifier: "ListWhatsAppTemplateLibraryOutput" });
   }
 }
-function __c35(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           originationPhoneNumberId: S.String,
-          sourceS3PresignedUrl: S.optional(__S(432, __c27, 0)),
-          sourceS3File: S.optional(__S(144, __c9, 0)),
+          sourceS3PresignedUrl: S.optional(__S(416, __c26, 0)),
+          sourceS3File: S.optional(__S(160, __c10, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/whatsapp/media" }),
@@ -2978,16 +2882,14 @@ function __c35(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PostWhatsAppMessageMediaInput",
-      });
+      ).annotate({ identifier: "PostWhatsAppMessageMediaInput" });
     case 1:
       return S.suspend(() => S.Struct({ mediaId: S.optional(S.String) })).annotate({
         identifier: "PostWhatsAppMessageMediaOutput",
       });
   }
 }
-function __c36(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3004,11 +2906,11 @@ function __c36(j: number): any {
       ).annotate({ identifier: "PublishWhatsAppFlowInput" });
   }
 }
-function __c37(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ id: S.String, eventDestinations: __S(833, __c52, 1) }).pipe(
+        S.Struct({ id: S.String, eventDestinations: __S(817, __c51, 1) }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/v1/whatsapp/waba/eventdestinations" }),
             svc,
@@ -3018,12 +2920,10 @@ function __c37(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutWhatsAppBusinessAccountEventDestinationsInput",
-      });
+      ).annotate({ identifier: "PutWhatsAppBusinessAccountEventDestinationsInput" });
   }
 }
-function __c38(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3041,12 +2941,10 @@ function __c38(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutWhatsAppBusinessPublicKeyInput",
-      });
+      ).annotate({ identifier: "PutWhatsAppBusinessPublicKeyInput" });
   }
 }
-function __c39(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3064,16 +2962,14 @@ function __c39(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SendWhatsAppCallEventInput",
-      });
+      ).annotate({ identifier: "SendWhatsAppCallEventInput" });
     case 1:
       return S.suspend(() => S.Struct({ callId: S.String })).annotate({
         identifier: "SendWhatsAppCallEventOutput",
       });
   }
 }
-function __c40(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3087,16 +2983,14 @@ function __c40(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SendWhatsAppConversionEventInput",
-      });
+      ).annotate({ identifier: "SendWhatsAppConversionEventInput" });
     case 1:
       return S.suspend(() => S.Struct({ requestId: S.String })).annotate({
         identifier: "SendWhatsAppConversionEventOutput",
       });
   }
 }
-function __c41(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3114,11 +3008,11 @@ function __c41(j: number): any {
       });
   }
 }
-function __c42(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tags: __S(849, __c53, 1) }).pipe(
+        S.Struct({ resourceArn: S.String, tags: __S(833, __c52, 1) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/tags/tag-resource" }),
             svc,
@@ -3131,7 +3025,7 @@ function __c42(j: number): any {
       ).annotate({ identifier: "TagResourceInput" });
   }
 }
-function __c43(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ statusCode: S.optional(S.Number) })).annotate({
@@ -3139,7 +3033,7 @@ function __c43(j: number): any {
       });
   }
 }
-function __c44(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3156,7 +3050,7 @@ function __c44(j: number): any {
       ).annotate({ identifier: "UntagResourceInput" });
   }
 }
-function __c45(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3170,16 +3064,14 @@ function __c45(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateLinkedWhatsAppBusinessAccountPhoneNumberInput",
-      });
+      ).annotate({ identifier: "UpdateLinkedWhatsAppBusinessAccountPhoneNumberInput" });
     case 1:
       return S.suspend(() => S.Struct({ phoneNumberId: S.String })).annotate({
         identifier: "UpdateLinkedWhatsAppBusinessAccountPhoneNumberOutput",
       });
   }
 }
-function __c46(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3203,7 +3095,7 @@ function __c46(j: number): any {
       ).annotate({ identifier: "UpdateWhatsAppFlowInput" });
   }
 }
-function __c47(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3217,18 +3109,14 @@ function __c47(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateWhatsAppFlowAssetsInput",
-      });
+      ).annotate({ identifier: "UpdateWhatsAppFlowAssetsInput" });
     case 1:
       return S.suspend(() => S.Struct({ validationErrors: S.optional(__S(32, __c2, 0)) })).annotate(
-        {
-          identifier: "UpdateWhatsAppFlowAssetsOutput",
-        },
+        { identifier: "UpdateWhatsAppFlowAssetsOutput" },
       );
   }
 }
-function __c48(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3251,12 +3139,10 @@ function __c48(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateWhatsAppMessageTemplateInput",
-      });
+      ).annotate({ identifier: "UpdateWhatsAppMessageTemplateInput" });
   }
 }
-function __c49(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3268,37 +3154,33 @@ function __c49(j: number): any {
           id: S.String,
           twoFactorPin: SensitiveString,
           dataLocalizationRegion: S.optional(S.String),
-          tags: S.optional(__S(849, __c53, 1)),
+          tags: S.optional(__S(833, __c52, 1)),
         }),
-      ).annotate({
-        identifier: "WabaPhoneNumberSetupFinalization",
-      });
+      ).annotate({ identifier: "WabaPhoneNumberSetupFinalization" });
     case 2:
-      return S.Array(__S(785, __c49, 1));
+      return S.Array(__S(769, __c48, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          eventDestinations: S.optional(__S(833, __c52, 1)),
-          tags: S.optional(__S(849, __c53, 1)),
+          eventDestinations: S.optional(__S(817, __c51, 1)),
+          tags: S.optional(__S(833, __c52, 1)),
         }),
       ).annotate({ identifier: "WabaSetupFinalization" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           associateInProgressToken: SensitiveString,
-          phoneNumbers: __S(786, __c49, 2),
+          phoneNumbers: __S(770, __c48, 2),
           phoneNumberParent: S.optional(S.String),
-          waba: S.optional(__S(787, __c49, 3)),
+          waba: S.optional(__S(771, __c48, 3)),
         }),
-      ).annotate({
-        identifier: "WhatsAppSetupFinalization",
-      });
+      ).annotate({ identifier: "WhatsAppSetupFinalization" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          signupCallback: S.optional(__S(784, __c49, 0)),
-          setupFinalization: S.optional(__S(788, __c49, 4)),
+          signupCallback: S.optional(__S(768, __c48, 0)),
+          setupFinalization: S.optional(__S(772, __c48, 4)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/whatsapp/signup" }),
@@ -3309,50 +3191,42 @@ function __c49(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateWhatsAppBusinessAccountInput",
-      });
+      ).annotate({ identifier: "AssociateWhatsAppBusinessAccountInput" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           accountName: S.optional(S.String),
           registrationStatus: S.optional(S.String),
-          unregisteredWhatsAppPhoneNumbers: S.optional(__S(800, __c50, 0)),
+          unregisteredWhatsAppPhoneNumbers: S.optional(__S(784, __c49, 0)),
           wabaId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "LinkedWhatsAppBusinessAccountIdMetaData",
-      });
+      ).annotate({ identifier: "LinkedWhatsAppBusinessAccountIdMetaData" });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ __S(790, __c49, 6).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(774, __c48, 6).pipe(S.optional));
     case 8:
       return S.suspend(() =>
         S.Struct({
           associateInProgressToken: S.optional(SensitiveString),
-          linkedAccountsWithIncompleteSetup: S.optional(__S(791, __c49, 7)),
+          linkedAccountsWithIncompleteSetup: S.optional(__S(775, __c48, 7)),
         }),
-      ).annotate({
-        identifier: "WhatsAppSignupCallbackResult",
-      });
+      ).annotate({ identifier: "WhatsAppSignupCallbackResult" });
     case 9:
       return S.suspend(() =>
         S.Struct({
-          signupCallbackResult: S.optional(__S(792, __c49, 8)),
+          signupCallbackResult: S.optional(__S(776, __c48, 8)),
           statusCode: S.optional(S.Number),
           linkedWhatsAppBusinessAccountId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "AssociateWhatsAppBusinessAccountOutput",
-      });
+      ).annotate({ identifier: "AssociateWhatsAppBusinessAccountOutput" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(800, __c50, 0));
   }
 }
 function __c50(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(816, __c51, 0));
-  }
-}
-function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3366,31 +3240,27 @@ function __c51(j: number): any {
           qualityRating: S.String,
           dataLocalizationRegion: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "WhatsAppPhoneNumberDetail",
-      });
+      ).annotate({ identifier: "WhatsAppPhoneNumberDetail" });
   }
 }
-function __c52(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ eventDestinationArn: S.String, roleArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "WhatsAppBusinessAccountEventDestination",
-      });
+      ).annotate({ identifier: "WhatsAppBusinessAccountEventDestination" });
     case 1:
-      return S.Array(__S(832, __c52, 0));
+      return S.Array(__S(816, __c51, 0));
   }
 }
-function __c53(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ key: S.String, value: S.optional(S.String) })).annotate({
         identifier: "Tag",
       });
     case 1:
-      return S.Array(__S(848, __c53, 0));
+      return S.Array(__S(832, __c52, 0));
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

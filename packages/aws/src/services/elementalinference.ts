@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1333,9 +1333,7 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteFeedPolicyResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteFeedPolicyResponse" });
   }
 }
 function __c11(j: number): any {
@@ -1373,9 +1371,7 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ExportDictionaryEntriesRequest",
-      });
+      ).annotate({ identifier: "ExportDictionaryEntriesRequest" });
     case 1:
       return S.suspend(() => S.Struct({ entries: S.optional(S.String) })).annotate({
         identifier: "ExportDictionaryEntriesResponse",
@@ -1538,9 +1534,7 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(16, __c1, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",

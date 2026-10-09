@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -9302,9 +9302,7 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateDistributionTenantWebACLRequest",
-      });
+      ).annotate({ identifier: "AssociateDistributionTenantWebACLRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9312,9 +9310,7 @@ function __c1(j: number): any {
           WebACLArn: S.optional(S.String),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AssociateDistributionTenantWebACLResult",
-      });
+      ).annotate({ identifier: "AssociateDistributionTenantWebACLResult" });
   }
 }
 function __c2(j: number): any {
@@ -9336,9 +9332,7 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateDistributionWebACLRequest",
-      });
+      ).annotate({ identifier: "AssociateDistributionWebACLRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9346,9 +9340,7 @@ function __c2(j: number): any {
           WebACLArn: S.optional(S.String),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AssociateDistributionWebACLResult",
-      });
+      ).annotate({ identifier: "AssociateDistributionWebACLResult" });
   }
 }
 function __c3(j: number): any {
@@ -9473,9 +9465,7 @@ function __c9(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(288, __c9, 0)
           .pipe(/*@__PURE__*/ T.XmlName("OriginCustomHeader"))
-          .annotate({
-            identifier: "OriginCustomHeader",
-          }),
+          .annotate({ identifier: "OriginCustomHeader" }),
       );
     case 2:
       return S.suspend(() =>
@@ -9563,9 +9553,7 @@ function __c9(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(302, __c9, 14)
           .pipe(/*@__PURE__*/ T.XmlName("OriginGroupMember"))
-          .annotate({
-            identifier: "OriginGroupMember",
-          }),
+          .annotate({ identifier: "OriginGroupMember" }),
       );
     case 16:
       return S.suspend(() => S.Struct({ Quantity: S.Number, Items: __S(303, __c9, 15) })).annotate({
@@ -9582,9 +9570,9 @@ function __c9(j: number): any {
       ).annotate({ identifier: "OriginGroup" });
     case 18:
       return S.Array(
-        /*@__PURE__*/ __S(305, __c9, 17).pipe(/*@__PURE__*/ T.XmlName("OriginGroup")).annotate({
-          identifier: "OriginGroup",
-        }),
+        /*@__PURE__*/ __S(305, __c9, 17)
+          .pipe(/*@__PURE__*/ T.XmlName("OriginGroup"))
+          .annotate({ identifier: "OriginGroup" }),
       );
     case 19:
       return S.suspend(() =>
@@ -9617,23 +9605,17 @@ function __c9(j: number): any {
           EventType: S.String,
           IncludeBody: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "LambdaFunctionAssociation",
-      });
+      ).annotate({ identifier: "LambdaFunctionAssociation" });
     case 26:
       return S.Array(
         /*@__PURE__*/ __S(313, __c9, 25)
           .pipe(/*@__PURE__*/ T.XmlName("LambdaFunctionAssociation"))
-          .annotate({
-            identifier: "LambdaFunctionAssociation",
-          }),
+          .annotate({ identifier: "LambdaFunctionAssociation" }),
       );
     case 27:
       return S.suspend(() =>
         S.Struct({ Quantity: S.Number, Items: S.optional(__S(314, __c9, 26)) }),
-      ).annotate({
-        identifier: "LambdaFunctionAssociations",
-      });
+      ).annotate({ identifier: "LambdaFunctionAssociations" });
     case 28:
       return S.suspend(() => S.Struct({ FunctionARN: S.String, EventType: S.String })).annotate({
         identifier: "FunctionAssociation",
@@ -9642,9 +9624,7 @@ function __c9(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(316, __c9, 28)
           .pipe(/*@__PURE__*/ T.XmlName("FunctionAssociation"))
-          .annotate({
-            identifier: "FunctionAssociation",
-          }),
+          .annotate({ identifier: "FunctionAssociation" }),
       );
     case 30:
       return S.suspend(() =>
@@ -9728,9 +9708,9 @@ function __c10(j: number): any {
       ).annotate({ identifier: "CacheBehavior" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ __S(325, __c10, 5).pipe(/*@__PURE__*/ T.XmlName("CacheBehavior")).annotate({
-          identifier: "CacheBehavior",
-        }),
+        /*@__PURE__*/ __S(325, __c10, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("CacheBehavior"))
+          .annotate({ identifier: "CacheBehavior" }),
       );
     case 7:
       return S.suspend(() =>
@@ -9749,9 +9729,7 @@ function __c10(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(328, __c10, 8)
           .pipe(/*@__PURE__*/ T.XmlName("CustomErrorResponse"))
-          .annotate({
-            identifier: "CustomErrorResponse",
-          }),
+          .annotate({ identifier: "CustomErrorResponse" }),
       );
     case 10:
       return S.suspend(() =>
@@ -9878,9 +9856,7 @@ function __c12(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(384, __c12, 0)
           .pipe(/*@__PURE__*/ T.XmlName("AliasICPRecordal"))
-          .annotate({
-            identifier: "AliasICPRecordal",
-          }),
+          .annotate({ identifier: "AliasICPRecordal" }),
       );
   }
 }
@@ -9892,9 +9868,9 @@ function __c13(j: number): any {
       ).annotate({ identifier: "KGKeyPairIds" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(416, __c13, 0).pipe(/*@__PURE__*/ T.XmlName("KeyGroup")).annotate({
-          identifier: "KGKeyPairIds",
-        }),
+        /*@__PURE__*/ __S(416, __c13, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("KeyGroup"))
+          .annotate({ identifier: "KGKeyPairIds" }),
       );
     case 2:
       return S.suspend(() =>
@@ -9938,9 +9914,7 @@ function __c14(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateAnycastIpListRequest",
-      });
+      ).annotate({ identifier: "CreateAnycastIpListRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9949,9 +9923,7 @@ function __c14(j: number): any {
             .annotate({ identifier: "AnycastIpList" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateAnycastIpListResult",
-      });
+      ).annotate({ identifier: "CreateAnycastIpListResult" });
   }
 }
 function __c15(j: number): any {
@@ -9985,9 +9957,9 @@ function __c16(j: number): any {
       ).annotate({ identifier: "IpamCidrConfig" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(512, __c16, 0).pipe(/*@__PURE__*/ T.XmlName("IpamCidrConfig")).annotate({
-          identifier: "IpamCidrConfig",
-        }),
+        /*@__PURE__*/ __S(512, __c16, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("IpamCidrConfig"))
+          .annotate({ identifier: "IpamCidrConfig" }),
       );
     case 2:
       return S.suspend(() =>
@@ -10069,13 +10041,8 @@ function __c20(j: number): any {
       ).annotate({ identifier: "CachePolicyCookiesConfig" });
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          QueryStringBehavior: S.String,
-          QueryStrings: S.optional(__S(609, __c19, 1)),
-        }),
-      ).annotate({
-        identifier: "CachePolicyQueryStringsConfig",
-      });
+        S.Struct({ QueryStringBehavior: S.String, QueryStrings: S.optional(__S(609, __c19, 1)) }),
+      ).annotate({ identifier: "CachePolicyQueryStringsConfig" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -10085,9 +10052,7 @@ function __c20(j: number): any {
           CookiesConfig: __S(641, __c20, 1),
           QueryStringsConfig: __S(642, __c20, 2),
         }),
-      ).annotate({
-        identifier: "ParametersInCacheKeyAndForwardedToOrigin",
-      });
+      ).annotate({ identifier: "ParametersInCacheKeyAndForwardedToOrigin" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -10132,9 +10097,7 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateCloudFrontOriginAccessIdentityRequest",
-      });
+      ).annotate({ identifier: "CreateCloudFrontOriginAccessIdentityRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10144,9 +10107,7 @@ function __c22(j: number): any {
           Location: S.optional(S.String).pipe(T.HttpHeader("Location")),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateCloudFrontOriginAccessIdentityResult",
-      });
+      ).annotate({ identifier: "CreateCloudFrontOriginAccessIdentityResult" });
   }
 }
 function __c23(j: number): any {
@@ -10166,9 +10127,7 @@ function __c24(j: number): any {
           S3CanonicalUserId: S.String,
           CloudFrontOriginAccessIdentityConfig: S.optional(__S(736, __c23, 0)),
         }),
-      ).annotate({
-        identifier: "CloudFrontOriginAccessIdentity",
-      });
+      ).annotate({ identifier: "CloudFrontOriginAccessIdentity" });
   }
 }
 function __c25(j: number): any {
@@ -10191,9 +10150,7 @@ function __c25(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateConnectionFunctionRequest",
-      });
+      ).annotate({ identifier: "CreateConnectionFunctionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10203,9 +10160,7 @@ function __c25(j: number): any {
           Location: S.optional(S.String).pipe(T.HttpHeader("Location")),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateConnectionFunctionResult",
-      });
+      ).annotate({ identifier: "CreateConnectionFunctionResult" });
   }
 }
 function __c26(j: number): any {
@@ -10218,16 +10173,12 @@ function __c26(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(832, __c26, 0)
           .pipe(/*@__PURE__*/ T.XmlName("KeyValueStoreAssociation"))
-          .annotate({
-            identifier: "KeyValueStoreAssociation",
-          }),
+          .annotate({ identifier: "KeyValueStoreAssociation" }),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({ Quantity: S.Number, Items: S.optional(__S(833, __c26, 1)) }),
-      ).annotate({
-        identifier: "KeyValueStoreAssociations",
-      });
+      ).annotate({ identifier: "KeyValueStoreAssociations" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -10252,9 +10203,7 @@ function __c27(j: number): any {
           CreatedTime: T.DateFromString,
           LastModifiedTime: T.DateFromString,
         }),
-      ).annotate({
-        identifier: "ConnectionFunctionSummary",
-      });
+      ).annotate({ identifier: "ConnectionFunctionSummary" });
   }
 }
 function __c28(j: number): any {
@@ -10278,9 +10227,7 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateConnectionGroupRequest",
-      });
+      ).annotate({ identifier: "CreateConnectionGroupRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10289,9 +10236,7 @@ function __c28(j: number): any {
             .annotate({ identifier: "ConnectionGroup" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateConnectionGroupResult",
-      });
+      ).annotate({ identifier: "CreateConnectionGroupResult" });
   }
 }
 function __c29(j: number): any {
@@ -10334,9 +10279,7 @@ function __c30(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateContinuousDeploymentPolicyRequest",
-      });
+      ).annotate({ identifier: "CreateContinuousDeploymentPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10346,9 +10289,7 @@ function __c30(j: number): any {
           Location: S.optional(S.String).pipe(T.HttpHeader("Location")),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateContinuousDeploymentPolicyResult",
-      });
+      ).annotate({ identifier: "CreateContinuousDeploymentPolicyResult" });
   }
 }
 function __c31(j: number): any {
@@ -10358,9 +10299,7 @@ function __c31(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ Quantity: S.Number, Items: S.optional(__S(992, __c31, 0)) }),
-      ).annotate({
-        identifier: "StagingDistributionDnsNames",
-      });
+      ).annotate({ identifier: "StagingDistributionDnsNames" });
     case 2:
       return S.suspend(() => S.Struct({ IdleTTL: S.Number, MaximumTTL: S.Number })).annotate({
         identifier: "SessionStickinessConfig",
@@ -10368,9 +10307,7 @@ function __c31(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ Weight: S.Number, SessionStickinessConfig: S.optional(__S(994, __c31, 2)) }),
-      ).annotate({
-        identifier: "ContinuousDeploymentSingleWeightConfig",
-      });
+      ).annotate({ identifier: "ContinuousDeploymentSingleWeightConfig" });
     case 4:
       return S.suspend(() => S.Struct({ Header: S.String, Value: S.String })).annotate({
         identifier: "ContinuousDeploymentSingleHeaderConfig",
@@ -10390,9 +10327,7 @@ function __c31(j: number): any {
           Enabled: S.Boolean,
           TrafficConfig: S.optional(__S(997, __c31, 5)),
         }),
-      ).annotate({
-        identifier: "ContinuousDeploymentPolicyConfig",
-      });
+      ).annotate({ identifier: "ContinuousDeploymentPolicyConfig" });
   }
 }
 function __c32(j: number): any {
@@ -10404,9 +10339,7 @@ function __c32(j: number): any {
           LastModifiedTime: T.DateFromString,
           ContinuousDeploymentPolicyConfig: __S(998, __c31, 6),
         }),
-      ).annotate({
-        identifier: "ContinuousDeploymentPolicy",
-      });
+      ).annotate({ identifier: "ContinuousDeploymentPolicy" });
   }
 }
 function __c33(j: number): any {
@@ -10428,9 +10361,7 @@ function __c33(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateDistributionRequest",
-      });
+      ).annotate({ identifier: "CreateDistributionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10468,9 +10399,7 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateDistributionTenantRequest",
-      });
+      ).annotate({ identifier: "CreateDistributionTenantRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10479,9 +10408,7 @@ function __c34(j: number): any {
             .annotate({ identifier: "DistributionTenant" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateDistributionTenantResult",
-      });
+      ).annotate({ identifier: "CreateDistributionTenantResult" });
   }
 }
 function __c35(j: number): any {
@@ -10491,15 +10418,11 @@ function __c35(j: number): any {
         identifier: "WebAclCustomization",
       });
     case 1:
-      return S.suspend(() => S.Struct({ Arn: S.String })).annotate({
-        identifier: "Certificate",
-      });
+      return S.suspend(() => S.Struct({ Arn: S.String })).annotate({ identifier: "Certificate" });
     case 2:
       return S.suspend(() =>
         S.Struct({ RestrictionType: S.String, Locations: S.optional(__S(160, __c5, 0)) }),
-      ).annotate({
-        identifier: "GeoRestrictionCustomization",
-      });
+      ).annotate({ identifier: "GeoRestrictionCustomization" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -10547,9 +10470,7 @@ function __c36(j: number): any {
 function __c37(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Domain: S.String })).annotate({
-        identifier: "DomainItem",
-      });
+      return S.suspend(() => S.Struct({ Domain: S.String })).annotate({ identifier: "DomainItem" });
     case 1:
       return S.Array(__S(1184, __c37, 0));
     case 2:
@@ -10559,9 +10480,7 @@ function __c37(j: number): any {
           PrimaryDomainName: S.optional(S.String),
           CertificateTransparencyLoggingPreference: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ManagedCertificateRequest",
-      });
+      ).annotate({ identifier: "ManagedCertificateRequest" });
   }
 }
 function __c38(j: number): any {
@@ -10569,9 +10488,7 @@ function __c38(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ DistributionConfig: __S(359, __c11, 7), Tags: __S(482, __c15, 2) }),
-      ).annotate({
-        identifier: "DistributionConfigWithTags",
-      });
+      ).annotate({ identifier: "DistributionConfigWithTags" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10589,9 +10506,7 @@ function __c38(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateDistributionWithTagsRequest",
-      });
+      ).annotate({ identifier: "CreateDistributionWithTagsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -10601,9 +10516,7 @@ function __c38(j: number): any {
           Location: S.optional(S.String).pipe(T.HttpHeader("Location")),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateDistributionWithTagsResult",
-      });
+      ).annotate({ identifier: "CreateDistributionWithTagsResult" });
   }
 }
 function __c39(j: number): any {
@@ -10625,9 +10538,7 @@ function __c39(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateFieldLevelEncryptionConfigRequest",
-      });
+      ).annotate({ identifier: "CreateFieldLevelEncryptionConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10637,9 +10548,7 @@ function __c39(j: number): any {
           Location: S.optional(S.String).pipe(T.HttpHeader("Location")),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateFieldLevelEncryptionConfigResult",
-      });
+      ).annotate({ identifier: "CreateFieldLevelEncryptionConfigResult" });
   }
 }
 function __c40(j: number): any {
@@ -10652,9 +10561,7 @@ function __c40(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(1280, __c40, 0)
           .pipe(/*@__PURE__*/ T.XmlName("QueryArgProfile"))
-          .annotate({
-            identifier: "QueryArgProfile",
-          }),
+          .annotate({ identifier: "QueryArgProfile" }),
       );
     case 2:
       return S.suspend(() =>
@@ -10675,9 +10582,7 @@ function __c40(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(1284, __c40, 4)
           .pipe(/*@__PURE__*/ T.XmlName("ContentTypeProfile"))
-          .annotate({
-            identifier: "ContentTypeProfile",
-          }),
+          .annotate({ identifier: "ContentTypeProfile" }),
       );
     case 6:
       return S.suspend(() =>
@@ -10702,9 +10607,7 @@ function __c41(j: number): any {
           QueryArgProfileConfig: S.optional(__S(1283, __c40, 3)),
           ContentTypeProfileConfig: S.optional(__S(1287, __c40, 7)),
         }),
-      ).annotate({
-        identifier: "FieldLevelEncryptionConfig",
-      });
+      ).annotate({ identifier: "FieldLevelEncryptionConfig" });
   }
 }
 function __c42(j: number): any {
@@ -10738,9 +10641,7 @@ function __c43(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateFieldLevelEncryptionProfileRequest",
-      });
+      ).annotate({ identifier: "CreateFieldLevelEncryptionProfileRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10750,9 +10651,7 @@ function __c43(j: number): any {
           Location: S.optional(S.String).pipe(T.HttpHeader("Location")),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateFieldLevelEncryptionProfileResult",
-      });
+      ).annotate({ identifier: "CreateFieldLevelEncryptionProfileResult" });
   }
 }
 function __c44(j: number): any {
@@ -10775,9 +10674,7 @@ function __c44(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(1410, __c44, 2)
           .pipe(/*@__PURE__*/ T.XmlName("EncryptionEntity"))
-          .annotate({
-            identifier: "EncryptionEntity",
-          }),
+          .annotate({ identifier: "EncryptionEntity" }),
       );
     case 4:
       return S.suspend(() =>
@@ -10795,9 +10692,7 @@ function __c45(j: number): any {
           Comment: S.optional(S.String),
           EncryptionEntities: __S(1412, __c44, 4),
         }),
-      ).annotate({
-        identifier: "FieldLevelEncryptionProfileConfig",
-      });
+      ).annotate({ identifier: "FieldLevelEncryptionProfileConfig" });
   }
 }
 function __c46(j: number): any {
@@ -10809,9 +10704,7 @@ function __c46(j: number): any {
           LastModifiedTime: T.DateFromString,
           FieldLevelEncryptionProfileConfig: __S(1440, __c45, 0),
         }),
-      ).annotate({
-        identifier: "FieldLevelEncryptionProfile",
-      });
+      ).annotate({ identifier: "FieldLevelEncryptionProfile" });
   }
 }
 function __c47(j: number): any {
@@ -10892,9 +10785,7 @@ function __c49(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateInvalidationRequest",
-      });
+      ).annotate({ identifier: "CreateInvalidationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10949,9 +10840,7 @@ function __c51(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateInvalidationForDistributionTenantRequest",
-      });
+      ).annotate({ identifier: "CreateInvalidationForDistributionTenantRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10960,9 +10849,7 @@ function __c51(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "Invalidation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateInvalidationForDistributionTenantResult",
-      });
+      ).annotate({ identifier: "CreateInvalidationForDistributionTenantResult" });
   }
 }
 function __c52(j: number): any {
@@ -10972,9 +10859,7 @@ function __c52(j: number): any {
         S.Struct({
           KeyGroupConfig: __S(1697, __c53, 1)
             .pipe(T.HttpPayload(), T.XmlName("KeyGroupConfig"))
-            .annotate({
-              identifier: "KeyGroupConfig",
-            }),
+            .annotate({ identifier: "KeyGroupConfig" }),
         }).pipe(
           T.all(
             ns,
@@ -11045,9 +10930,7 @@ function __c55(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateKeyValueStoreRequest",
-      });
+      ).annotate({ identifier: "CreateKeyValueStoreRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -11057,9 +10940,7 @@ function __c55(j: number): any {
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
           Location: S.optional(S.String).pipe(T.HttpHeader("Location")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateKeyValueStoreResult",
-      });
+      ).annotate({ identifier: "CreateKeyValueStoreResult" });
   }
 }
 function __c56(j: number): any {
@@ -11100,9 +10981,7 @@ function __c57(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateMonitoringSubscriptionRequest",
-      });
+      ).annotate({ identifier: "CreateMonitoringSubscriptionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11110,9 +10989,7 @@ function __c57(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "MonitoringSubscription" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateMonitoringSubscriptionResult",
-      });
+      ).annotate({ identifier: "CreateMonitoringSubscriptionResult" });
   }
 }
 function __c58(j: number): any {
@@ -11146,9 +11023,7 @@ function __c59(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateOriginAccessControlRequest",
-      });
+      ).annotate({ identifier: "CreateOriginAccessControlRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11158,9 +11033,7 @@ function __c59(j: number): any {
           Location: S.optional(S.String).pipe(T.HttpHeader("Location")),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateOriginAccessControlResult",
-      });
+      ).annotate({ identifier: "CreateOriginAccessControlResult" });
   }
 }
 function __c60(j: number): any {
@@ -11174,9 +11047,7 @@ function __c60(j: number): any {
           SigningBehavior: S.String,
           OriginAccessControlOriginType: S.String,
         }),
-      ).annotate({
-        identifier: "OriginAccessControlConfig",
-      });
+      ).annotate({ identifier: "OriginAccessControlConfig" });
   }
 }
 function __c61(j: number): any {
@@ -11206,9 +11077,7 @@ function __c62(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateOriginRequestPolicyRequest",
-      });
+      ).annotate({ identifier: "CreateOriginRequestPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11218,9 +11087,7 @@ function __c62(j: number): any {
           Location: S.optional(S.String).pipe(T.HttpHeader("Location")),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateOriginRequestPolicyResult",
-      });
+      ).annotate({ identifier: "CreateOriginRequestPolicyResult" });
   }
 }
 function __c63(j: number): any {
@@ -11228,24 +11095,15 @@ function __c63(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ HeaderBehavior: S.String, Headers: S.optional(__S(131, __c4, 3)) }),
-      ).annotate({
-        identifier: "OriginRequestPolicyHeadersConfig",
-      });
+      ).annotate({ identifier: "OriginRequestPolicyHeadersConfig" });
     case 1:
       return S.suspend(() =>
         S.Struct({ CookieBehavior: S.String, Cookies: S.optional(__S(129, __c4, 1)) }),
-      ).annotate({
-        identifier: "OriginRequestPolicyCookiesConfig",
-      });
+      ).annotate({ identifier: "OriginRequestPolicyCookiesConfig" });
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          QueryStringBehavior: S.String,
-          QueryStrings: S.optional(__S(609, __c19, 1)),
-        }),
-      ).annotate({
-        identifier: "OriginRequestPolicyQueryStringsConfig",
-      });
+        S.Struct({ QueryStringBehavior: S.String, QueryStrings: S.optional(__S(609, __c19, 1)) }),
+      ).annotate({ identifier: "OriginRequestPolicyQueryStringsConfig" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -11255,9 +11113,7 @@ function __c63(j: number): any {
           CookiesConfig: __S(2017, __c63, 1),
           QueryStringsConfig: __S(2018, __c63, 2),
         }),
-      ).annotate({
-        identifier: "OriginRequestPolicyConfig",
-      });
+      ).annotate({ identifier: "OriginRequestPolicyConfig" });
   }
 }
 function __c64(j: number): any {
@@ -11279,9 +11135,7 @@ function __c65(j: number): any {
         S.Struct({
           PublicKeyConfig: __S(2112, __c66, 0)
             .pipe(T.HttpPayload(), T.XmlName("PublicKeyConfig"))
-            .annotate({
-              identifier: "PublicKeyConfig",
-            }),
+            .annotate({ identifier: "PublicKeyConfig" }),
         }).pipe(
           T.all(
             ns,
@@ -11351,15 +11205,11 @@ function __c68(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateRealtimeLogConfigRequest",
-      });
+      ).annotate({ identifier: "CreateRealtimeLogConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ RealtimeLogConfig: S.optional(__S(2212, __c69, 4)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateRealtimeLogConfigResult",
-      });
+      ).annotate({ identifier: "CreateRealtimeLogConfigResult" });
   }
 }
 function __c69(j: number): any {
@@ -11407,9 +11257,7 @@ function __c70(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateResponseHeadersPolicyRequest",
-      });
+      ).annotate({ identifier: "CreateResponseHeadersPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11419,9 +11267,7 @@ function __c70(j: number): any {
           Location: S.optional(S.String).pipe(T.HttpHeader("Location")),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateResponseHeadersPolicyResult",
-      });
+      ).annotate({ identifier: "CreateResponseHeadersPolicyResult" });
   }
 }
 function __c71(j: number): any {
@@ -11430,34 +11276,26 @@ function __c71(j: number): any {
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Origin")));
     case 1:
       return S.suspend(() => S.Struct({ Quantity: S.Number, Items: __S(2272, __c71, 0) })).annotate(
-        {
-          identifier: "ResponseHeadersPolicyAccessControlAllowOrigins",
-        },
+        { identifier: "ResponseHeadersPolicyAccessControlAllowOrigins" },
       );
     case 2:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Header")));
     case 3:
       return S.suspend(() => S.Struct({ Quantity: S.Number, Items: __S(2274, __c71, 2) })).annotate(
-        {
-          identifier: "ResponseHeadersPolicyAccessControlAllowHeaders",
-        },
+        { identifier: "ResponseHeadersPolicyAccessControlAllowHeaders" },
       );
     case 4:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Method")));
     case 5:
       return S.suspend(() => S.Struct({ Quantity: S.Number, Items: __S(2276, __c71, 4) })).annotate(
-        {
-          identifier: "ResponseHeadersPolicyAccessControlAllowMethods",
-        },
+        { identifier: "ResponseHeadersPolicyAccessControlAllowMethods" },
       );
     case 6:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Header")));
     case 7:
       return S.suspend(() =>
         S.Struct({ Quantity: S.Number, Items: S.optional(__S(2278, __c71, 6)) }),
-      ).annotate({
-        identifier: "ResponseHeadersPolicyAccessControlExposeHeaders",
-      });
+      ).annotate({ identifier: "ResponseHeadersPolicyAccessControlExposeHeaders" });
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -11469,9 +11307,7 @@ function __c71(j: number): any {
           AccessControlMaxAgeSec: S.optional(S.Number),
           OriginOverride: S.Boolean,
         }),
-      ).annotate({
-        identifier: "ResponseHeadersPolicyCorsConfig",
-      });
+      ).annotate({ identifier: "ResponseHeadersPolicyCorsConfig" });
     case 9:
       return S.suspend(() =>
         S.Struct({
@@ -11480,9 +11316,7 @@ function __c71(j: number): any {
           ModeBlock: S.optional(S.Boolean),
           ReportUri: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ResponseHeadersPolicyXSSProtection",
-      });
+      ).annotate({ identifier: "ResponseHeadersPolicyXSSProtection" });
     case 10:
       return S.suspend(() => S.Struct({ Override: S.Boolean, FrameOption: S.String })).annotate({
         identifier: "ResponseHeadersPolicyFrameOptions",
@@ -11494,9 +11328,7 @@ function __c71(j: number): any {
     case 12:
       return S.suspend(() =>
         S.Struct({ Override: S.Boolean, ContentSecurityPolicy: S.String }),
-      ).annotate({
-        identifier: "ResponseHeadersPolicyContentSecurityPolicy",
-      });
+      ).annotate({ identifier: "ResponseHeadersPolicyContentSecurityPolicy" });
     case 13:
       return S.suspend(() => S.Struct({ Override: S.Boolean })).annotate({
         identifier: "ResponseHeadersPolicyContentTypeOptions",
@@ -11509,9 +11341,7 @@ function __c71(j: number): any {
           Preload: S.optional(S.Boolean),
           AccessControlMaxAgeSec: S.Number,
         }),
-      ).annotate({
-        identifier: "ResponseHeadersPolicyStrictTransportSecurity",
-      });
+      ).annotate({ identifier: "ResponseHeadersPolicyStrictTransportSecurity" });
     case 15:
       return S.suspend(() =>
         S.Struct({
@@ -11522,35 +11352,25 @@ function __c71(j: number): any {
           ContentTypeOptions: S.optional(__S(2285, __c71, 13)),
           StrictTransportSecurity: S.optional(__S(2286, __c71, 14)),
         }),
-      ).annotate({
-        identifier: "ResponseHeadersPolicySecurityHeadersConfig",
-      });
+      ).annotate({ identifier: "ResponseHeadersPolicySecurityHeadersConfig" });
     case 16:
       return S.suspend(() =>
         S.Struct({ Enabled: S.Boolean, SamplingRate: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "ResponseHeadersPolicyServerTimingHeadersConfig",
-      });
+      ).annotate({ identifier: "ResponseHeadersPolicyServerTimingHeadersConfig" });
     case 17:
       return S.suspend(() =>
         S.Struct({ Header: S.String, Value: S.String, Override: S.Boolean }),
-      ).annotate({
-        identifier: "ResponseHeadersPolicyCustomHeader",
-      });
+      ).annotate({ identifier: "ResponseHeadersPolicyCustomHeader" });
     case 18:
       return S.Array(
         /*@__PURE__*/ __S(2289, __c71, 17)
           .pipe(/*@__PURE__*/ T.XmlName("ResponseHeadersPolicyCustomHeader"))
-          .annotate({
-            identifier: "ResponseHeadersPolicyCustomHeader",
-          }),
+          .annotate({ identifier: "ResponseHeadersPolicyCustomHeader" }),
       );
     case 19:
       return S.suspend(() =>
         S.Struct({ Quantity: S.Number, Items: S.optional(__S(2290, __c71, 18)) }),
-      ).annotate({
-        identifier: "ResponseHeadersPolicyCustomHeadersConfig",
-      });
+      ).annotate({ identifier: "ResponseHeadersPolicyCustomHeadersConfig" });
     case 20:
       return S.suspend(() => S.Struct({ Header: S.String })).annotate({
         identifier: "ResponseHeadersPolicyRemoveHeader",
@@ -11559,16 +11379,12 @@ function __c71(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(2292, __c71, 20)
           .pipe(/*@__PURE__*/ T.XmlName("ResponseHeadersPolicyRemoveHeader"))
-          .annotate({
-            identifier: "ResponseHeadersPolicyRemoveHeader",
-          }),
+          .annotate({ identifier: "ResponseHeadersPolicyRemoveHeader" }),
       );
     case 22:
       return S.suspend(() =>
         S.Struct({ Quantity: S.Number, Items: S.optional(__S(2293, __c71, 21)) }),
-      ).annotate({
-        identifier: "ResponseHeadersPolicyRemoveHeadersConfig",
-      });
+      ).annotate({ identifier: "ResponseHeadersPolicyRemoveHeadersConfig" });
     case 23:
       return S.suspend(() =>
         S.Struct({
@@ -11580,9 +11396,7 @@ function __c71(j: number): any {
           CustomHeadersConfig: S.optional(__S(2291, __c71, 19)),
           RemoveHeadersConfig: S.optional(__S(2294, __c71, 22)),
         }),
-      ).annotate({
-        identifier: "ResponseHeadersPolicyConfig",
-      });
+      ).annotate({ identifier: "ResponseHeadersPolicyConfig" });
   }
 }
 function __c72(j: number): any {
@@ -11616,9 +11430,7 @@ function __c73(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateStreamingDistributionRequest",
-      });
+      ).annotate({ identifier: "CreateStreamingDistributionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11628,9 +11440,7 @@ function __c73(j: number): any {
           Location: S.optional(S.String).pipe(T.HttpHeader("Location")),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateStreamingDistributionResult",
-      });
+      ).annotate({ identifier: "CreateStreamingDistributionResult" });
   }
 }
 function __c74(j: number): any {
@@ -11659,9 +11469,7 @@ function __c75(j: number): any {
           PriceClass: S.optional(S.String),
           Enabled: S.Boolean,
         }),
-      ).annotate({
-        identifier: "StreamingDistributionConfig",
-      });
+      ).annotate({ identifier: "StreamingDistributionConfig" });
   }
 }
 function __c76(j: number): any {
@@ -11685,9 +11493,7 @@ function __c77(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ StreamingDistributionConfig: __S(2401, __c75, 1), Tags: __S(482, __c15, 2) }),
-      ).annotate({
-        identifier: "StreamingDistributionConfigWithTags",
-      });
+      ).annotate({ identifier: "StreamingDistributionConfigWithTags" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11705,9 +11511,7 @@ function __c77(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateStreamingDistributionWithTagsRequest",
-      });
+      ).annotate({ identifier: "CreateStreamingDistributionWithTagsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -11717,9 +11521,7 @@ function __c77(j: number): any {
           Location: S.optional(S.String).pipe(T.HttpHeader("Location")),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateStreamingDistributionWithTagsResult",
-      });
+      ).annotate({ identifier: "CreateStreamingDistributionWithTagsResult" });
   }
 }
 function __c78(j: number): any {
@@ -11781,9 +11583,7 @@ function __c80(j: number): any {
           Region: S.String,
           Version: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CaCertificatesBundleS3Location",
-      });
+      ).annotate({ identifier: "CaCertificatesBundleS3Location" });
     case 1:
       return S.Union([
         /*@__PURE__*/ S.Struct({ CaCertificatesBundleS3Location: __S(2560, __c80, 0) }),
@@ -11866,9 +11666,7 @@ function __c83(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteAnycastIpListRequest",
-      });
+      ).annotate({ identifier: "DeleteAnycastIpListRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteAnycastIpListResponse",
@@ -11918,9 +11716,7 @@ function __c85(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteCloudFrontOriginAccessIdentityRequest",
-      });
+      ).annotate({ identifier: "DeleteCloudFrontOriginAccessIdentityRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteCloudFrontOriginAccessIdentityResponse",
@@ -11945,9 +11741,7 @@ function __c86(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteConnectionFunctionRequest",
-      });
+      ).annotate({ identifier: "DeleteConnectionFunctionRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteConnectionFunctionResponse",
@@ -11972,9 +11766,7 @@ function __c87(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteConnectionGroupRequest",
-      });
+      ).annotate({ identifier: "DeleteConnectionGroupRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteConnectionGroupResponse",
@@ -11999,9 +11791,7 @@ function __c88(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteContinuousDeploymentPolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteContinuousDeploymentPolicyRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteContinuousDeploymentPolicyResponse",
@@ -12026,9 +11816,7 @@ function __c89(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteDistributionRequest",
-      });
+      ).annotate({ identifier: "DeleteDistributionRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteDistributionResponse",
@@ -12053,9 +11841,7 @@ function __c90(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteDistributionTenantRequest",
-      });
+      ).annotate({ identifier: "DeleteDistributionTenantRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteDistributionTenantResponse",
@@ -12080,9 +11866,7 @@ function __c91(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteFieldLevelEncryptionConfigRequest",
-      });
+      ).annotate({ identifier: "DeleteFieldLevelEncryptionConfigRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteFieldLevelEncryptionConfigResponse",
@@ -12107,9 +11891,7 @@ function __c92(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteFieldLevelEncryptionProfileRequest",
-      });
+      ).annotate({ identifier: "DeleteFieldLevelEncryptionProfileRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteFieldLevelEncryptionProfileResponse",
@@ -12184,9 +11966,7 @@ function __c95(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteKeyValueStoreRequest",
-      });
+      ).annotate({ identifier: "DeleteKeyValueStoreRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteKeyValueStoreResponse",
@@ -12211,9 +11991,7 @@ function __c96(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteMonitoringSubscriptionRequest",
-      });
+      ).annotate({ identifier: "DeleteMonitoringSubscriptionRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteMonitoringSubscriptionResult",
@@ -12238,9 +12016,7 @@ function __c97(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteOriginAccessControlRequest",
-      });
+      ).annotate({ identifier: "DeleteOriginAccessControlRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteOriginAccessControlResponse",
@@ -12265,9 +12041,7 @@ function __c98(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteOriginRequestPolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteOriginRequestPolicyRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteOriginRequestPolicyResponse",
@@ -12314,9 +12088,7 @@ function __c100(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteRealtimeLogConfigRequest",
-      });
+      ).annotate({ identifier: "DeleteRealtimeLogConfigRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteRealtimeLogConfigResponse",
@@ -12338,9 +12110,7 @@ function __c101(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteResourcePolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteResourcePolicyRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteResourcePolicyResponse",
@@ -12365,9 +12135,7 @@ function __c102(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteResponseHeadersPolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteResponseHeadersPolicyRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteResponseHeadersPolicyResponse",
@@ -12392,9 +12160,7 @@ function __c103(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteStreamingDistributionRequest",
-      });
+      ).annotate({ identifier: "DeleteStreamingDistributionRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteStreamingDistributionResponse",
@@ -12474,9 +12240,7 @@ function __c106(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeConnectionFunctionRequest",
-      });
+      ).annotate({ identifier: "DescribeConnectionFunctionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12485,9 +12249,7 @@ function __c106(j: number): any {
             .annotate({ identifier: "ConnectionFunctionSummary" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeConnectionFunctionResult",
-      });
+      ).annotate({ identifier: "DescribeConnectionFunctionResult" });
   }
 }
 function __c107(j: number): any {
@@ -12535,9 +12297,7 @@ function __c108(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeKeyValueStoreRequest",
-      });
+      ).annotate({ identifier: "DescribeKeyValueStoreRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12546,9 +12306,7 @@ function __c108(j: number): any {
             .annotate({ identifier: "KeyValueStore" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeKeyValueStoreResult",
-      });
+      ).annotate({ identifier: "DescribeKeyValueStoreResult" });
   }
 }
 function __c109(j: number): any {
@@ -12572,18 +12330,14 @@ function __c109(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateDistributionTenantWebACLRequest",
-      });
+      ).annotate({ identifier: "DisassociateDistributionTenantWebACLRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisassociateDistributionTenantWebACLResult",
-      });
+      ).annotate({ identifier: "DisassociateDistributionTenantWebACLResult" });
   }
 }
 function __c110(j: number): any {
@@ -12604,18 +12358,14 @@ function __c110(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateDistributionWebACLRequest",
-      });
+      ).annotate({ identifier: "DisassociateDistributionWebACLRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisassociateDistributionWebACLResult",
-      });
+      ).annotate({ identifier: "DisassociateDistributionWebACLResult" });
   }
 }
 function __c111(j: number): any {
@@ -12687,9 +12437,7 @@ function __c113(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetCachePolicyConfigRequest",
-      });
+      ).annotate({ identifier: "GetCachePolicyConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12698,9 +12446,7 @@ function __c113(j: number): any {
             .annotate({ identifier: "CachePolicyConfig" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetCachePolicyConfigResult",
-      });
+      ).annotate({ identifier: "GetCachePolicyConfigResult" });
   }
 }
 function __c114(j: number): any {
@@ -12718,9 +12464,7 @@ function __c114(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetCloudFrontOriginAccessIdentityRequest",
-      });
+      ).annotate({ identifier: "GetCloudFrontOriginAccessIdentityRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12729,9 +12473,7 @@ function __c114(j: number): any {
             .annotate({ identifier: "CloudFrontOriginAccessIdentity" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetCloudFrontOriginAccessIdentityResult",
-      });
+      ).annotate({ identifier: "GetCloudFrontOriginAccessIdentityResult" });
   }
 }
 function __c115(j: number): any {
@@ -12752,9 +12494,7 @@ function __c115(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetCloudFrontOriginAccessIdentityConfigRequest",
-      });
+      ).annotate({ identifier: "GetCloudFrontOriginAccessIdentityConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12763,9 +12503,7 @@ function __c115(j: number): any {
             .annotate({ identifier: "CloudFrontOriginAccessIdentityConfig" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetCloudFrontOriginAccessIdentityConfigResult",
-      });
+      ).annotate({ identifier: "GetCloudFrontOriginAccessIdentityConfigResult" });
   }
 }
 function __c116(j: number): any {
@@ -12786,9 +12524,7 @@ function __c116(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetConnectionFunctionRequest",
-      });
+      ).annotate({ identifier: "GetConnectionFunctionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12796,9 +12532,7 @@ function __c116(j: number): any {
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
           ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetConnectionFunctionResult",
-      });
+      ).annotate({ identifier: "GetConnectionFunctionResult" });
   }
 }
 function __c117(j: number): any {
@@ -12816,9 +12550,7 @@ function __c117(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetConnectionGroupRequest",
-      });
+      ).annotate({ identifier: "GetConnectionGroupRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12845,9 +12577,7 @@ function __c118(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetConnectionGroupByRoutingEndpointRequest",
-      });
+      ).annotate({ identifier: "GetConnectionGroupByRoutingEndpointRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12856,9 +12586,7 @@ function __c118(j: number): any {
             .annotate({ identifier: "ConnectionGroup" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetConnectionGroupByRoutingEndpointResult",
-      });
+      ).annotate({ identifier: "GetConnectionGroupByRoutingEndpointResult" });
   }
 }
 function __c119(j: number): any {
@@ -12876,9 +12604,7 @@ function __c119(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetContinuousDeploymentPolicyRequest",
-      });
+      ).annotate({ identifier: "GetContinuousDeploymentPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12887,9 +12613,7 @@ function __c119(j: number): any {
             .annotate({ identifier: "ContinuousDeploymentPolicy" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetContinuousDeploymentPolicyResult",
-      });
+      ).annotate({ identifier: "GetContinuousDeploymentPolicyResult" });
   }
 }
 function __c120(j: number): any {
@@ -12907,9 +12631,7 @@ function __c120(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetContinuousDeploymentPolicyConfigRequest",
-      });
+      ).annotate({ identifier: "GetContinuousDeploymentPolicyConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12918,9 +12640,7 @@ function __c120(j: number): any {
             .annotate({ identifier: "ContinuousDeploymentPolicyConfig" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetContinuousDeploymentPolicyConfigResult",
-      });
+      ).annotate({ identifier: "GetContinuousDeploymentPolicyConfigResult" });
   }
 }
 function __c121(j: number): any {
@@ -12965,9 +12685,7 @@ function __c122(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDistributionConfigRequest",
-      });
+      ).annotate({ identifier: "GetDistributionConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12976,9 +12694,7 @@ function __c122(j: number): any {
             .annotate({ identifier: "DistributionConfig" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetDistributionConfigResult",
-      });
+      ).annotate({ identifier: "GetDistributionConfigResult" });
   }
 }
 function __c123(j: number): any {
@@ -12996,9 +12712,7 @@ function __c123(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDistributionTenantRequest",
-      });
+      ).annotate({ identifier: "GetDistributionTenantRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -13007,9 +12721,7 @@ function __c123(j: number): any {
             .annotate({ identifier: "DistributionTenant" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetDistributionTenantResult",
-      });
+      ).annotate({ identifier: "GetDistributionTenantResult" });
   }
 }
 function __c124(j: number): any {
@@ -13027,9 +12739,7 @@ function __c124(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDistributionTenantByDomainRequest",
-      });
+      ).annotate({ identifier: "GetDistributionTenantByDomainRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -13038,9 +12748,7 @@ function __c124(j: number): any {
             .annotate({ identifier: "DistributionTenant" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetDistributionTenantByDomainResult",
-      });
+      ).annotate({ identifier: "GetDistributionTenantByDomainResult" });
   }
 }
 function __c125(j: number): any {
@@ -13058,9 +12766,7 @@ function __c125(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetFieldLevelEncryptionRequest",
-      });
+      ).annotate({ identifier: "GetFieldLevelEncryptionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -13069,9 +12775,7 @@ function __c125(j: number): any {
             .annotate({ identifier: "FieldLevelEncryption" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetFieldLevelEncryptionResult",
-      });
+      ).annotate({ identifier: "GetFieldLevelEncryptionResult" });
   }
 }
 function __c126(j: number): any {
@@ -13089,9 +12793,7 @@ function __c126(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetFieldLevelEncryptionConfigRequest",
-      });
+      ).annotate({ identifier: "GetFieldLevelEncryptionConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -13100,9 +12802,7 @@ function __c126(j: number): any {
             .annotate({ identifier: "FieldLevelEncryptionConfig" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetFieldLevelEncryptionConfigResult",
-      });
+      ).annotate({ identifier: "GetFieldLevelEncryptionConfigResult" });
   }
 }
 function __c127(j: number): any {
@@ -13120,9 +12820,7 @@ function __c127(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetFieldLevelEncryptionProfileRequest",
-      });
+      ).annotate({ identifier: "GetFieldLevelEncryptionProfileRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -13131,9 +12829,7 @@ function __c127(j: number): any {
             .annotate({ identifier: "FieldLevelEncryptionProfile" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetFieldLevelEncryptionProfileResult",
-      });
+      ).annotate({ identifier: "GetFieldLevelEncryptionProfileResult" });
   }
 }
 function __c128(j: number): any {
@@ -13154,9 +12850,7 @@ function __c128(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetFieldLevelEncryptionProfileConfigRequest",
-      });
+      ).annotate({ identifier: "GetFieldLevelEncryptionProfileConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -13165,9 +12859,7 @@ function __c128(j: number): any {
             .annotate({ identifier: "FieldLevelEncryptionProfileConfig" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetFieldLevelEncryptionProfileConfigResult",
-      });
+      ).annotate({ identifier: "GetFieldLevelEncryptionProfileConfigResult" });
   }
 }
 function __c129(j: number): any {
@@ -13252,9 +12944,7 @@ function __c131(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetInvalidationForDistributionTenantRequest",
-      });
+      ).annotate({ identifier: "GetInvalidationForDistributionTenantRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -13262,9 +12952,7 @@ function __c131(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "Invalidation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetInvalidationForDistributionTenantResult",
-      });
+      ).annotate({ identifier: "GetInvalidationForDistributionTenantResult" });
   }
 }
 function __c132(j: number): any {
@@ -13336,9 +13024,7 @@ function __c134(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetManagedCertificateDetailsRequest",
-      });
+      ).annotate({ identifier: "GetManagedCertificateDetailsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -13357,9 +13043,7 @@ function __c134(j: number): any {
           ValidationTokenHost: S.optional(S.String),
           ValidationTokenDetails: S.optional(__S(4290, __c134, 2)),
         }),
-      ).annotate({
-        identifier: "ManagedCertificateDetails",
-      });
+      ).annotate({ identifier: "ManagedCertificateDetails" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -13367,9 +13051,7 @@ function __c134(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ManagedCertificateDetails" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetManagedCertificateDetailsResult",
-      });
+      ).annotate({ identifier: "GetManagedCertificateDetailsResult" });
   }
 }
 function __c135(j: number): any {
@@ -13390,9 +13072,7 @@ function __c135(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetMonitoringSubscriptionRequest",
-      });
+      ).annotate({ identifier: "GetMonitoringSubscriptionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -13400,9 +13080,7 @@ function __c135(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "MonitoringSubscription" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetMonitoringSubscriptionResult",
-      });
+      ).annotate({ identifier: "GetMonitoringSubscriptionResult" });
   }
 }
 function __c136(j: number): any {
@@ -13420,9 +13098,7 @@ function __c136(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetOriginAccessControlRequest",
-      });
+      ).annotate({ identifier: "GetOriginAccessControlRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -13431,9 +13107,7 @@ function __c136(j: number): any {
             .annotate({ identifier: "OriginAccessControl" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetOriginAccessControlResult",
-      });
+      ).annotate({ identifier: "GetOriginAccessControlResult" });
   }
 }
 function __c137(j: number): any {
@@ -13451,9 +13125,7 @@ function __c137(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetOriginAccessControlConfigRequest",
-      });
+      ).annotate({ identifier: "GetOriginAccessControlConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -13462,9 +13134,7 @@ function __c137(j: number): any {
             .annotate({ identifier: "OriginAccessControlConfig" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetOriginAccessControlConfigResult",
-      });
+      ).annotate({ identifier: "GetOriginAccessControlConfigResult" });
   }
 }
 function __c138(j: number): any {
@@ -13482,9 +13152,7 @@ function __c138(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetOriginRequestPolicyRequest",
-      });
+      ).annotate({ identifier: "GetOriginRequestPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -13493,9 +13161,7 @@ function __c138(j: number): any {
             .annotate({ identifier: "OriginRequestPolicy" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetOriginRequestPolicyResult",
-      });
+      ).annotate({ identifier: "GetOriginRequestPolicyResult" });
   }
 }
 function __c139(j: number): any {
@@ -13513,9 +13179,7 @@ function __c139(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetOriginRequestPolicyConfigRequest",
-      });
+      ).annotate({ identifier: "GetOriginRequestPolicyConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -13524,9 +13188,7 @@ function __c139(j: number): any {
             .annotate({ identifier: "OriginRequestPolicyConfig" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetOriginRequestPolicyConfigResult",
-      });
+      ).annotate({ identifier: "GetOriginRequestPolicyConfigResult" });
   }
 }
 function __c140(j: number): any {
@@ -13571,9 +13233,7 @@ function __c141(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetPublicKeyConfigRequest",
-      });
+      ).annotate({ identifier: "GetPublicKeyConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -13600,15 +13260,11 @@ function __c142(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetRealtimeLogConfigRequest",
-      });
+      ).annotate({ identifier: "GetRealtimeLogConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ RealtimeLogConfig: S.optional(__S(2212, __c69, 4)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetRealtimeLogConfigResult",
-      });
+      ).annotate({ identifier: "GetRealtimeLogConfigResult" });
   }
 }
 function __c143(j: number): any {
@@ -13650,9 +13306,7 @@ function __c144(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetResponseHeadersPolicyRequest",
-      });
+      ).annotate({ identifier: "GetResponseHeadersPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -13661,9 +13315,7 @@ function __c144(j: number): any {
             .annotate({ identifier: "ResponseHeadersPolicy" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetResponseHeadersPolicyResult",
-      });
+      ).annotate({ identifier: "GetResponseHeadersPolicyResult" });
   }
 }
 function __c145(j: number): any {
@@ -13681,9 +13333,7 @@ function __c145(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetResponseHeadersPolicyConfigRequest",
-      });
+      ).annotate({ identifier: "GetResponseHeadersPolicyConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -13692,9 +13342,7 @@ function __c145(j: number): any {
             .annotate({ identifier: "ResponseHeadersPolicyConfig" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetResponseHeadersPolicyConfigResult",
-      });
+      ).annotate({ identifier: "GetResponseHeadersPolicyConfigResult" });
   }
 }
 function __c146(j: number): any {
@@ -13712,9 +13360,7 @@ function __c146(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetStreamingDistributionRequest",
-      });
+      ).annotate({ identifier: "GetStreamingDistributionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -13723,9 +13369,7 @@ function __c146(j: number): any {
             .annotate({ identifier: "StreamingDistribution" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetStreamingDistributionResult",
-      });
+      ).annotate({ identifier: "GetStreamingDistributionResult" });
   }
 }
 function __c147(j: number): any {
@@ -13743,9 +13387,7 @@ function __c147(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetStreamingDistributionConfigRequest",
-      });
+      ).annotate({ identifier: "GetStreamingDistributionConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -13754,9 +13396,7 @@ function __c147(j: number): any {
             .annotate({ identifier: "StreamingDistributionConfig" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetStreamingDistributionConfigResult",
-      });
+      ).annotate({ identifier: "GetStreamingDistributionConfigResult" });
   }
 }
 function __c148(j: number): any {
@@ -13831,9 +13471,7 @@ function __c150(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListAnycastIpListsRequest",
-      });
+      ).annotate({ identifier: "ListAnycastIpListsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -13852,9 +13490,7 @@ function __c150(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(4801, __c150, 1)
           .pipe(/*@__PURE__*/ T.XmlName("AnycastIpListSummary"))
-          .annotate({
-            identifier: "AnycastIpListSummary",
-          }),
+          .annotate({ identifier: "AnycastIpListSummary" }),
       );
     case 3:
       return S.suspend(() =>
@@ -13905,9 +13541,7 @@ function __c151(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(4833, __c151, 1)
           .pipe(/*@__PURE__*/ T.XmlName("CachePolicySummary"))
-          .annotate({
-            identifier: "CachePolicySummary",
-          }),
+          .annotate({ identifier: "CachePolicySummary" }),
       );
     case 3:
       return S.suspend(() =>
@@ -13946,15 +13580,11 @@ function __c152(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListCloudFrontOriginAccessIdentitiesRequest",
-      });
+      ).annotate({ identifier: "ListCloudFrontOriginAccessIdentitiesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Id: S.String, S3CanonicalUserId: S.String, Comment: S.String }),
-      ).annotate({
-        identifier: "CloudFrontOriginAccessIdentitySummary",
-      });
+      ).annotate({ identifier: "CloudFrontOriginAccessIdentitySummary" });
     case 2:
       return S.Array(
         /*@__PURE__*/ __S(4865, __c152, 1)
@@ -13971,9 +13601,7 @@ function __c152(j: number): any {
           Quantity: S.Number,
           Items: S.optional(__S(4866, __c152, 2)),
         }),
-      ).annotate({
-        identifier: "CloudFrontOriginAccessIdentityList",
-      });
+      ).annotate({ identifier: "CloudFrontOriginAccessIdentityList" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -13981,9 +13609,7 @@ function __c152(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "CloudFrontOriginAccessIdentityList" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListCloudFrontOriginAccessIdentitiesResult",
-      });
+      ).annotate({ identifier: "ListCloudFrontOriginAccessIdentitiesResult" });
   }
 }
 function __c153(j: number): any {
@@ -14006,9 +13632,7 @@ function __c153(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListConflictingAliasesRequest",
-      });
+      ).annotate({ identifier: "ListConflictingAliasesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14021,9 +13645,7 @@ function __c153(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(4897, __c153, 1)
           .pipe(/*@__PURE__*/ T.XmlName("ConflictingAlias"))
-          .annotate({
-            identifier: "ConflictingAlias",
-          }),
+          .annotate({ identifier: "ConflictingAlias" }),
       );
     case 3:
       return S.suspend(() =>
@@ -14041,9 +13663,7 @@ function __c153(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ConflictingAliasesList" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListConflictingAliasesResult",
-      });
+      ).annotate({ identifier: "ListConflictingAliasesResult" });
   }
 }
 function __c154(j: number): any {
@@ -14065,16 +13685,12 @@ function __c154(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListConnectionFunctionsRequest",
-      });
+      ).annotate({ identifier: "ListConnectionFunctionsRequest" });
     case 1:
       return S.Array(
         /*@__PURE__*/ __S(864, __c27, 0)
           .pipe(/*@__PURE__*/ T.XmlName("ConnectionFunctionSummary"))
-          .annotate({
-            identifier: "ConnectionFunctionSummary",
-          }),
+          .annotate({ identifier: "ConnectionFunctionSummary" }),
       );
     case 2:
       return S.suspend(() =>
@@ -14082,9 +13698,7 @@ function __c154(j: number): any {
           NextMarker: S.optional(S.String),
           ConnectionFunctions: S.optional(__S(4929, __c154, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListConnectionFunctionsResult",
-      });
+      ).annotate({ identifier: "ListConnectionFunctionsResult" });
   }
 }
 function __c155(j: number): any {
@@ -14110,9 +13724,7 @@ function __c155(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListConnectionGroupsRequest",
-      });
+      ).annotate({ identifier: "ListConnectionGroupsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -14133,9 +13745,7 @@ function __c155(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(4962, __c155, 2)
           .pipe(/*@__PURE__*/ T.XmlName("ConnectionGroupSummary"))
-          .annotate({
-            identifier: "ConnectionGroupSummary",
-          }),
+          .annotate({ identifier: "ConnectionGroupSummary" }),
       );
     case 4:
       return S.suspend(() =>
@@ -14143,9 +13753,7 @@ function __c155(j: number): any {
           NextMarker: S.optional(S.String),
           ConnectionGroups: S.optional(__S(4963, __c155, 3)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListConnectionGroupsResult",
-      });
+      ).annotate({ identifier: "ListConnectionGroupsResult" });
   }
 }
 function __c156(j: number): any {
@@ -14166,22 +13774,16 @@ function __c156(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListContinuousDeploymentPoliciesRequest",
-      });
+      ).annotate({ identifier: "ListContinuousDeploymentPoliciesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ContinuousDeploymentPolicy: __S(1024, __c32, 0) }),
-      ).annotate({
-        identifier: "ContinuousDeploymentPolicySummary",
-      });
+      ).annotate({ identifier: "ContinuousDeploymentPolicySummary" });
     case 2:
       return S.Array(
         /*@__PURE__*/ __S(4993, __c156, 1)
           .pipe(/*@__PURE__*/ T.XmlName("ContinuousDeploymentPolicySummary"))
-          .annotate({
-            identifier: "ContinuousDeploymentPolicySummary",
-          }),
+          .annotate({ identifier: "ContinuousDeploymentPolicySummary" }),
       );
     case 3:
       return S.suspend(() =>
@@ -14191,9 +13793,7 @@ function __c156(j: number): any {
           Quantity: S.Number,
           Items: S.optional(__S(4994, __c156, 2)),
         }),
-      ).annotate({
-        identifier: "ContinuousDeploymentPolicyList",
-      });
+      ).annotate({ identifier: "ContinuousDeploymentPolicyList" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -14201,9 +13801,7 @@ function __c156(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ContinuousDeploymentPolicyList" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListContinuousDeploymentPoliciesResult",
-      });
+      ).annotate({ identifier: "ListContinuousDeploymentPoliciesResult" });
   }
 }
 function __c157(j: number): any {
@@ -14272,9 +13870,7 @@ function __c158(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(5056, __c158, 0)
           .pipe(/*@__PURE__*/ T.XmlName("DistributionSummary"))
-          .annotate({
-            identifier: "DistributionSummary",
-          }),
+          .annotate({ identifier: "DistributionSummary" }),
       );
     case 2:
       return S.suspend(() =>
@@ -14311,9 +13907,7 @@ function __c159(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDistributionsByAnycastIpListIdRequest",
-      });
+      ).annotate({ identifier: "ListDistributionsByAnycastIpListIdRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14321,9 +13915,7 @@ function __c159(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "DistributionList" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListDistributionsByAnycastIpListIdResult",
-      });
+      ).annotate({ identifier: "ListDistributionsByAnycastIpListIdResult" });
   }
 }
 function __c160(j: number): any {
@@ -14348,9 +13940,7 @@ function __c160(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDistributionsByCachePolicyIdRequest",
-      });
+      ).annotate({ identifier: "ListDistributionsByCachePolicyIdRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14358,9 +13948,7 @@ function __c160(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "DistributionIdList" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListDistributionsByCachePolicyIdResult",
-      });
+      ).annotate({ identifier: "ListDistributionsByCachePolicyIdResult" });
   }
 }
 function __c161(j: number): any {
@@ -14399,9 +13987,7 @@ function __c162(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDistributionsByConnectionFunctionRequest",
-      });
+      ).annotate({ identifier: "ListDistributionsByConnectionFunctionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14409,9 +13995,7 @@ function __c162(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "DistributionList" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListDistributionsByConnectionFunctionResult",
-      });
+      ).annotate({ identifier: "ListDistributionsByConnectionFunctionResult" });
   }
 }
 function __c163(j: number): any {
@@ -14436,9 +14020,7 @@ function __c163(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDistributionsByConnectionModeRequest",
-      });
+      ).annotate({ identifier: "ListDistributionsByConnectionModeRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14446,9 +14028,7 @@ function __c163(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "DistributionList" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListDistributionsByConnectionModeResult",
-      });
+      ).annotate({ identifier: "ListDistributionsByConnectionModeResult" });
   }
 }
 function __c164(j: number): any {
@@ -14470,9 +14050,7 @@ function __c164(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDistributionsByKeyGroupRequest",
-      });
+      ).annotate({ identifier: "ListDistributionsByKeyGroupRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14480,9 +14058,7 @@ function __c164(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "DistributionIdList" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListDistributionsByKeyGroupResult",
-      });
+      ).annotate({ identifier: "ListDistributionsByKeyGroupResult" });
   }
 }
 function __c165(j: number): any {
@@ -14507,9 +14083,7 @@ function __c165(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDistributionsByOriginRequestPolicyIdRequest",
-      });
+      ).annotate({ identifier: "ListDistributionsByOriginRequestPolicyIdRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14517,9 +14091,7 @@ function __c165(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "DistributionIdList" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListDistributionsByOriginRequestPolicyIdResult",
-      });
+      ).annotate({ identifier: "ListDistributionsByOriginRequestPolicyIdResult" });
   }
 }
 function __c166(j: number): any {
@@ -14544,9 +14116,7 @@ function __c166(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDistributionsByOwnedResourceRequest",
-      });
+      ).annotate({ identifier: "ListDistributionsByOwnedResourceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ DistributionId: S.String, OwnerAccountId: S.String }),
@@ -14555,9 +14125,7 @@ function __c166(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(5313, __c166, 1)
           .pipe(/*@__PURE__*/ T.XmlName("DistributionIdOwner"))
-          .annotate({
-            identifier: "DistributionIdOwner",
-          }),
+          .annotate({ identifier: "DistributionIdOwner" }),
       );
     case 3:
       return S.suspend(() =>
@@ -14577,9 +14145,7 @@ function __c166(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "DistributionIdOwnerList" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListDistributionsByOwnedResourceResult",
-      });
+      ).annotate({ identifier: "ListDistributionsByOwnedResourceResult" });
   }
 }
 function __c167(j: number): any {
@@ -14602,9 +14168,7 @@ function __c167(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDistributionsByRealtimeLogConfigRequest",
-      });
+      ).annotate({ identifier: "ListDistributionsByRealtimeLogConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14612,9 +14176,7 @@ function __c167(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "DistributionList" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListDistributionsByRealtimeLogConfigResult",
-      });
+      ).annotate({ identifier: "ListDistributionsByRealtimeLogConfigResult" });
   }
 }
 function __c168(j: number): any {
@@ -14639,9 +14201,7 @@ function __c168(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDistributionsByResponseHeadersPolicyIdRequest",
-      });
+      ).annotate({ identifier: "ListDistributionsByResponseHeadersPolicyIdRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14649,9 +14209,7 @@ function __c168(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "DistributionIdList" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListDistributionsByResponseHeadersPolicyIdResult",
-      });
+      ).annotate({ identifier: "ListDistributionsByResponseHeadersPolicyIdResult" });
   }
 }
 function __c169(j: number): any {
@@ -14673,9 +14231,7 @@ function __c169(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDistributionsByTrustStoreRequest",
-      });
+      ).annotate({ identifier: "ListDistributionsByTrustStoreRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14683,9 +14239,7 @@ function __c169(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "DistributionList" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListDistributionsByTrustStoreResult",
-      });
+      ).annotate({ identifier: "ListDistributionsByTrustStoreResult" });
   }
 }
 function __c170(j: number): any {
@@ -14707,9 +14261,7 @@ function __c170(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDistributionsByVpcOriginIdRequest",
-      });
+      ).annotate({ identifier: "ListDistributionsByVpcOriginIdRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14717,9 +14269,7 @@ function __c170(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "DistributionIdList" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListDistributionsByVpcOriginIdResult",
-      });
+      ).annotate({ identifier: "ListDistributionsByVpcOriginIdResult" });
   }
 }
 function __c171(j: number): any {
@@ -14741,9 +14291,7 @@ function __c171(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDistributionsByWebACLIdRequest",
-      });
+      ).annotate({ identifier: "ListDistributionsByWebACLIdRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14751,9 +14299,7 @@ function __c171(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "DistributionList" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListDistributionsByWebACLIdResult",
-      });
+      ).annotate({ identifier: "ListDistributionsByWebACLIdResult" });
   }
 }
 function __c172(j: number): any {
@@ -14761,9 +14307,7 @@ function __c172(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ DistributionId: S.optional(S.String), ConnectionGroupId: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DistributionTenantAssociationFilter",
-      });
+      ).annotate({ identifier: "DistributionTenantAssociationFilter" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14781,18 +14325,14 @@ function __c172(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDistributionTenantsRequest",
-      });
+      ).annotate({ identifier: "ListDistributionTenantsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           NextMarker: S.optional(S.String),
           DistributionTenantList: S.optional(__S(5537, __c173, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListDistributionTenantsResult",
-      });
+      ).annotate({ identifier: "ListDistributionTenantsResult" });
   }
 }
 function __c173(j: number): any {
@@ -14813,16 +14353,12 @@ function __c173(j: number): any {
           Enabled: S.optional(S.Boolean),
           Status: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DistributionTenantSummary",
-      });
+      ).annotate({ identifier: "DistributionTenantSummary" });
     case 1:
       return S.Array(
         /*@__PURE__*/ __S(5536, __c173, 0)
           .pipe(/*@__PURE__*/ T.XmlName("DistributionTenantSummary"))
-          .annotate({
-            identifier: "DistributionTenantSummary",
-          }),
+          .annotate({ identifier: "DistributionTenantSummary" }),
       );
   }
 }
@@ -14846,18 +14382,14 @@ function __c174(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDistributionTenantsByCustomizationRequest",
-      });
+      ).annotate({ identifier: "ListDistributionTenantsByCustomizationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           NextMarker: S.optional(S.String),
           DistributionTenantList: S.optional(__S(5537, __c173, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListDistributionTenantsByCustomizationResult",
-      });
+      ).annotate({ identifier: "ListDistributionTenantsByCustomizationResult" });
   }
 }
 function __c175(j: number): any {
@@ -14880,9 +14412,7 @@ function __c175(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDomainConflictsRequest",
-      });
+      ).annotate({ identifier: "ListDomainConflictsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14896,9 +14426,7 @@ function __c175(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(5601, __c175, 1)
           .pipe(/*@__PURE__*/ T.XmlName("DomainConflicts"))
-          .annotate({
-            identifier: "DomainConflict",
-          }),
+          .annotate({ identifier: "DomainConflict" }),
       );
     case 3:
       return S.suspend(() =>
@@ -14906,9 +14434,7 @@ function __c175(j: number): any {
           DomainConflicts: S.optional(__S(5602, __c175, 2)),
           NextMarker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListDomainConflictsResult",
-      });
+      ).annotate({ identifier: "ListDomainConflictsResult" });
   }
 }
 function __c176(j: number): any {
@@ -14940,9 +14466,7 @@ function __c177(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListFieldLevelEncryptionConfigsRequest",
-      });
+      ).annotate({ identifier: "ListFieldLevelEncryptionConfigsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14952,16 +14476,12 @@ function __c177(j: number): any {
           QueryArgProfileConfig: S.optional(__S(1283, __c40, 3)),
           ContentTypeProfileConfig: S.optional(__S(1287, __c40, 7)),
         }),
-      ).annotate({
-        identifier: "FieldLevelEncryptionSummary",
-      });
+      ).annotate({ identifier: "FieldLevelEncryptionSummary" });
     case 2:
       return S.Array(
         /*@__PURE__*/ __S(5665, __c177, 1)
           .pipe(/*@__PURE__*/ T.XmlName("FieldLevelEncryptionSummary"))
-          .annotate({
-            identifier: "FieldLevelEncryptionSummary",
-          }),
+          .annotate({ identifier: "FieldLevelEncryptionSummary" }),
       );
     case 3:
       return S.suspend(() =>
@@ -14979,9 +14499,7 @@ function __c177(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "FieldLevelEncryptionList" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListFieldLevelEncryptionConfigsResult",
-      });
+      ).annotate({ identifier: "ListFieldLevelEncryptionConfigsResult" });
   }
 }
 function __c178(j: number): any {
@@ -15002,9 +14520,7 @@ function __c178(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListFieldLevelEncryptionProfilesRequest",
-      });
+      ).annotate({ identifier: "ListFieldLevelEncryptionProfilesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -15014,9 +14530,7 @@ function __c178(j: number): any {
           EncryptionEntities: __S(1412, __c44, 4),
           Comment: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "FieldLevelEncryptionProfileSummary",
-      });
+      ).annotate({ identifier: "FieldLevelEncryptionProfileSummary" });
     case 2:
       return S.Array(
         /*@__PURE__*/ __S(5697, __c178, 1)
@@ -15031,9 +14545,7 @@ function __c178(j: number): any {
           Quantity: S.Number,
           Items: S.optional(__S(5698, __c178, 2)),
         }),
-      ).annotate({
-        identifier: "FieldLevelEncryptionProfileList",
-      });
+      ).annotate({ identifier: "FieldLevelEncryptionProfileList" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -15041,9 +14553,7 @@ function __c178(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "FieldLevelEncryptionProfileList" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListFieldLevelEncryptionProfilesResult",
-      });
+      ).annotate({ identifier: "ListFieldLevelEncryptionProfilesResult" });
   }
 }
 function __c179(j: number): any {
@@ -15070,9 +14580,7 @@ function __c179(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(1537, __c48, 1)
           .pipe(/*@__PURE__*/ T.XmlName("FunctionSummary"))
-          .annotate({
-            identifier: "FunctionSummary",
-          }),
+          .annotate({ identifier: "FunctionSummary" }),
       );
     case 2:
       return S.suspend(() =>
@@ -15136,9 +14644,7 @@ function __c181(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(5792, __c181, 0)
           .pipe(/*@__PURE__*/ T.XmlName("InvalidationSummary"))
-          .annotate({
-            identifier: "InvalidationSummary",
-          }),
+          .annotate({ identifier: "InvalidationSummary" }),
       );
     case 2:
       return S.suspend(() =>
@@ -15172,9 +14678,7 @@ function __c182(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListInvalidationsForDistributionTenantRequest",
-      });
+      ).annotate({ identifier: "ListInvalidationsForDistributionTenantRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -15182,9 +14686,7 @@ function __c182(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "InvalidationList" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListInvalidationsForDistributionTenantResult",
-      });
+      ).annotate({ identifier: "ListInvalidationsForDistributionTenantResult" });
   }
 }
 function __c183(j: number): any {
@@ -15214,9 +14716,7 @@ function __c183(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(5857, __c183, 1)
           .pipe(/*@__PURE__*/ T.XmlName("KeyGroupSummary"))
-          .annotate({
-            identifier: "KeyGroupSummary",
-          }),
+          .annotate({ identifier: "KeyGroupSummary" }),
       );
     case 3:
       return S.suspend(() =>
@@ -15256,14 +14756,12 @@ function __c184(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListKeyValueStoresRequest",
-      });
+      ).annotate({ identifier: "ListKeyValueStoresRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(1792, __c56, 0).pipe(/*@__PURE__*/ T.XmlName("KeyValueStore")).annotate({
-          identifier: "KeyValueStore",
-        }),
+        /*@__PURE__*/ __S(1792, __c56, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("KeyValueStore"))
+          .annotate({ identifier: "KeyValueStore" }),
       );
     case 2:
       return S.suspend(() =>
@@ -15302,9 +14800,7 @@ function __c185(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListOriginAccessControlsRequest",
-      });
+      ).annotate({ identifier: "ListOriginAccessControlsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -15315,16 +14811,12 @@ function __c185(j: number): any {
           SigningBehavior: S.String,
           OriginAccessControlOriginType: S.String,
         }),
-      ).annotate({
-        identifier: "OriginAccessControlSummary",
-      });
+      ).annotate({ identifier: "OriginAccessControlSummary" });
     case 2:
       return S.Array(
         /*@__PURE__*/ __S(5921, __c185, 1)
           .pipe(/*@__PURE__*/ T.XmlName("OriginAccessControlSummary"))
-          .annotate({
-            identifier: "OriginAccessControlSummary",
-          }),
+          .annotate({ identifier: "OriginAccessControlSummary" }),
       );
     case 3:
       return S.suspend(() =>
@@ -15344,9 +14836,7 @@ function __c185(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "OriginAccessControlList" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListOriginAccessControlsResult",
-      });
+      ).annotate({ identifier: "ListOriginAccessControlsResult" });
   }
 }
 function __c186(j: number): any {
@@ -15368,22 +14858,16 @@ function __c186(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListOriginRequestPoliciesRequest",
-      });
+      ).annotate({ identifier: "ListOriginRequestPoliciesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Type: S.String, OriginRequestPolicy: __S(2048, __c64, 0) }),
-      ).annotate({
-        identifier: "OriginRequestPolicySummary",
-      });
+      ).annotate({ identifier: "OriginRequestPolicySummary" });
     case 2:
       return S.Array(
         /*@__PURE__*/ __S(5953, __c186, 1)
           .pipe(/*@__PURE__*/ T.XmlName("OriginRequestPolicySummary"))
-          .annotate({
-            identifier: "OriginRequestPolicySummary",
-          }),
+          .annotate({ identifier: "OriginRequestPolicySummary" }),
       );
     case 3:
       return S.suspend(() =>
@@ -15401,9 +14885,7 @@ function __c186(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "OriginRequestPolicyList" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListOriginRequestPoliciesResult",
-      });
+      ).annotate({ identifier: "ListOriginRequestPoliciesResult" });
   }
 }
 function __c187(j: number): any {
@@ -15439,9 +14921,7 @@ function __c187(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(5985, __c187, 1)
           .pipe(/*@__PURE__*/ T.XmlName("PublicKeySummary"))
-          .annotate({
-            identifier: "PublicKeySummary",
-          }),
+          .annotate({ identifier: "PublicKeySummary" }),
       );
     case 3:
       return S.suspend(() =>
@@ -15480,9 +14960,7 @@ function __c188(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListRealtimeLogConfigsRequest",
-      });
+      ).annotate({ identifier: "ListRealtimeLogConfigsRequest" });
     case 1:
       return S.Array(__S(2212, __c69, 4));
     case 2:
@@ -15502,9 +14980,7 @@ function __c188(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "RealtimeLogConfigs" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListRealtimeLogConfigsResult",
-      });
+      ).annotate({ identifier: "ListRealtimeLogConfigsResult" });
   }
 }
 function __c189(j: number): any {
@@ -15526,22 +15002,16 @@ function __c189(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListResponseHeadersPoliciesRequest",
-      });
+      ).annotate({ identifier: "ListResponseHeadersPoliciesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Type: S.String, ResponseHeadersPolicy: __S(2304, __c72, 0) }),
-      ).annotate({
-        identifier: "ResponseHeadersPolicySummary",
-      });
+      ).annotate({ identifier: "ResponseHeadersPolicySummary" });
     case 2:
       return S.Array(
         /*@__PURE__*/ __S(6049, __c189, 1)
           .pipe(/*@__PURE__*/ T.XmlName("ResponseHeadersPolicySummary"))
-          .annotate({
-            identifier: "ResponseHeadersPolicySummary",
-          }),
+          .annotate({ identifier: "ResponseHeadersPolicySummary" }),
       );
     case 3:
       return S.suspend(() =>
@@ -15551,9 +15021,7 @@ function __c189(j: number): any {
           Quantity: S.Number,
           Items: S.optional(__S(6050, __c189, 2)),
         }),
-      ).annotate({
-        identifier: "ResponseHeadersPolicyList",
-      });
+      ).annotate({ identifier: "ResponseHeadersPolicyList" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -15561,9 +15029,7 @@ function __c189(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ResponseHeadersPolicyList" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListResponseHeadersPoliciesResult",
-      });
+      ).annotate({ identifier: "ListResponseHeadersPoliciesResult" });
   }
 }
 function __c190(j: number): any {
@@ -15584,9 +15050,7 @@ function __c190(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListStreamingDistributionsRequest",
-      });
+      ).annotate({ identifier: "ListStreamingDistributionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -15602,16 +15066,12 @@ function __c190(j: number): any {
           PriceClass: S.String,
           Enabled: S.Boolean,
         }),
-      ).annotate({
-        identifier: "StreamingDistributionSummary",
-      });
+      ).annotate({ identifier: "StreamingDistributionSummary" });
     case 2:
       return S.Array(
         /*@__PURE__*/ __S(6081, __c190, 1)
           .pipe(/*@__PURE__*/ T.XmlName("StreamingDistributionSummary"))
-          .annotate({
-            identifier: "StreamingDistributionSummary",
-          }),
+          .annotate({ identifier: "StreamingDistributionSummary" }),
       );
     case 3:
       return S.suspend(() =>
@@ -15623,9 +15083,7 @@ function __c190(j: number): any {
           Quantity: S.Number,
           Items: S.optional(__S(6082, __c190, 2)),
         }),
-      ).annotate({
-        identifier: "StreamingDistributionList",
-      });
+      ).annotate({ identifier: "StreamingDistributionList" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -15633,9 +15091,7 @@ function __c190(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "StreamingDistributionList" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListStreamingDistributionsResult",
-      });
+      ).annotate({ identifier: "ListStreamingDistributionsResult" });
   }
 }
 function __c191(j: number): any {
@@ -15653,17 +15109,13 @@ function __c191(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Tags: __S(482, __c15, 2).pipe(T.HttpPayload()).annotate({ identifier: "Tags" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListTagsForResourceResult",
-      });
+      ).annotate({ identifier: "ListTagsForResourceResult" });
   }
 }
 function __c192(j: number): any {
@@ -15699,9 +15151,7 @@ function __c192(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(6145, __c192, 1)
           .pipe(/*@__PURE__*/ T.XmlName("TrustStoreSummary"))
-          .annotate({
-            identifier: "TrustStoreSummary",
-          }),
+          .annotate({ identifier: "TrustStoreSummary" }),
       );
     case 3:
       return S.suspend(() =>
@@ -15748,9 +15198,7 @@ function __c193(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(6177, __c193, 1)
           .pipe(/*@__PURE__*/ T.XmlName("VpcOriginSummary"))
-          .annotate({
-            identifier: "VpcOriginSummary",
-          }),
+          .annotate({ identifier: "VpcOriginSummary" }),
       );
     case 3:
       return S.suspend(() =>
@@ -15791,9 +15239,7 @@ function __c194(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PublishConnectionFunctionRequest",
-      });
+      ).annotate({ identifier: "PublishConnectionFunctionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -15801,9 +15247,7 @@ function __c194(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ConnectionFunctionSummary" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "PublishConnectionFunctionResult",
-      });
+      ).annotate({ identifier: "PublishConnectionFunctionResult" });
   }
 }
 function __c195(j: number): any {
@@ -15879,9 +15323,7 @@ function __c197(j: number): any {
         ),
       ).annotate({ identifier: "TagResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "TagResourceResponse" });
   }
 }
 function __c198(j: number): any {
@@ -15904,9 +15346,7 @@ function __c198(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "TestConnectionFunctionRequest",
-      });
+      ).annotate({ identifier: "TestConnectionFunctionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -15916,9 +15356,7 @@ function __c198(j: number): any {
           ConnectionFunctionErrorMessage: S.optional(SensitiveString),
           ConnectionFunctionOutput: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "ConnectionFunctionTestResult",
-      });
+      ).annotate({ identifier: "ConnectionFunctionTestResult" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -15926,9 +15364,7 @@ function __c198(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ConnectionFunctionTestResult" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "TestConnectionFunctionResult",
-      });
+      ).annotate({ identifier: "TestConnectionFunctionResult" });
   }
 }
 function __c199(j: number): any {
@@ -15990,9 +15426,9 @@ function __c201(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Resource: S.String.pipe(T.HttpQuery("Resource")),
-          TagKeys: __S(6433, __c201, 1).pipe(T.HttpPayload(), T.XmlName("TagKeys")).annotate({
-            identifier: "TagKeys",
-          }),
+          TagKeys: __S(6433, __c201, 1)
+            .pipe(T.HttpPayload(), T.XmlName("TagKeys"))
+            .annotate({ identifier: "TagKeys" }),
         }).pipe(
           T.all(
             ns,
@@ -16031,9 +15467,7 @@ function __c202(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateAnycastIpListRequest",
-      });
+      ).annotate({ identifier: "UpdateAnycastIpListRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -16042,9 +15476,7 @@ function __c202(j: number): any {
             .annotate({ identifier: "AnycastIpList" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateAnycastIpListResult",
-      });
+      ).annotate({ identifier: "UpdateAnycastIpListResult" });
   }
 }
 function __c203(j: number): any {
@@ -16104,9 +15536,7 @@ function __c204(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateCloudFrontOriginAccessIdentityRequest",
-      });
+      ).annotate({ identifier: "UpdateCloudFrontOriginAccessIdentityRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -16115,9 +15545,7 @@ function __c204(j: number): any {
             .annotate({ identifier: "CloudFrontOriginAccessIdentity" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateCloudFrontOriginAccessIdentityResult",
-      });
+      ).annotate({ identifier: "UpdateCloudFrontOriginAccessIdentityResult" });
   }
 }
 function __c205(j: number): any {
@@ -16140,9 +15568,7 @@ function __c205(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateConnectionFunctionRequest",
-      });
+      ).annotate({ identifier: "UpdateConnectionFunctionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -16151,9 +15577,7 @@ function __c205(j: number): any {
             .annotate({ identifier: "ConnectionFunctionSummary" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateConnectionFunctionResult",
-      });
+      ).annotate({ identifier: "UpdateConnectionFunctionResult" });
   }
 }
 function __c206(j: number): any {
@@ -16177,9 +15601,7 @@ function __c206(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateConnectionGroupRequest",
-      });
+      ).annotate({ identifier: "UpdateConnectionGroupRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -16188,9 +15610,7 @@ function __c206(j: number): any {
             .annotate({ identifier: "ConnectionGroup" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateConnectionGroupResult",
-      });
+      ).annotate({ identifier: "UpdateConnectionGroupResult" });
   }
 }
 function __c207(j: number): any {
@@ -16214,9 +15634,7 @@ function __c207(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateContinuousDeploymentPolicyRequest",
-      });
+      ).annotate({ identifier: "UpdateContinuousDeploymentPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -16225,9 +15643,7 @@ function __c207(j: number): any {
             .annotate({ identifier: "ContinuousDeploymentPolicy" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateContinuousDeploymentPolicyResult",
-      });
+      ).annotate({ identifier: "UpdateContinuousDeploymentPolicyResult" });
   }
 }
 function __c208(j: number): any {
@@ -16251,9 +15667,7 @@ function __c208(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateDistributionRequest",
-      });
+      ).annotate({ identifier: "UpdateDistributionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -16290,9 +15704,7 @@ function __c209(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateDistributionTenantRequest",
-      });
+      ).annotate({ identifier: "UpdateDistributionTenantRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -16301,9 +15713,7 @@ function __c209(j: number): any {
             .annotate({ identifier: "DistributionTenant" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateDistributionTenantResult",
-      });
+      ).annotate({ identifier: "UpdateDistributionTenantResult" });
   }
 }
 function __c210(j: number): any {
@@ -16325,9 +15735,7 @@ function __c210(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateDistributionWithStagingConfigRequest",
-      });
+      ).annotate({ identifier: "UpdateDistributionWithStagingConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -16336,9 +15744,7 @@ function __c210(j: number): any {
             .annotate({ identifier: "Distribution" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateDistributionWithStagingConfigResult",
-      });
+      ).annotate({ identifier: "UpdateDistributionWithStagingConfigResult" });
   }
 }
 function __c211(j: number): any {
@@ -16360,9 +15766,7 @@ function __c211(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateDomainAssociationRequest",
-      });
+      ).annotate({ identifier: "UpdateDomainAssociationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -16370,9 +15774,7 @@ function __c211(j: number): any {
           ResourceId: S.optional(S.String),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateDomainAssociationResult",
-      });
+      ).annotate({ identifier: "UpdateDomainAssociationResult" });
   }
 }
 function __c212(j: number): any {
@@ -16396,9 +15798,7 @@ function __c212(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateFieldLevelEncryptionConfigRequest",
-      });
+      ).annotate({ identifier: "UpdateFieldLevelEncryptionConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -16407,9 +15807,7 @@ function __c212(j: number): any {
             .annotate({ identifier: "FieldLevelEncryption" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateFieldLevelEncryptionConfigResult",
-      });
+      ).annotate({ identifier: "UpdateFieldLevelEncryptionConfigResult" });
   }
 }
 function __c213(j: number): any {
@@ -16436,9 +15834,7 @@ function __c213(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateFieldLevelEncryptionProfileRequest",
-      });
+      ).annotate({ identifier: "UpdateFieldLevelEncryptionProfileRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -16447,9 +15843,7 @@ function __c213(j: number): any {
             .annotate({ identifier: "FieldLevelEncryptionProfile" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateFieldLevelEncryptionProfileResult",
-      });
+      ).annotate({ identifier: "UpdateFieldLevelEncryptionProfileResult" });
   }
 }
 function __c214(j: number): any {
@@ -16491,9 +15885,7 @@ function __c215(j: number): any {
         S.Struct({
           KeyGroupConfig: __S(1697, __c53, 1)
             .pipe(T.HttpPayload(), T.XmlName("KeyGroupConfig"))
-            .annotate({
-              identifier: "KeyGroupConfig",
-            }),
+            .annotate({ identifier: "KeyGroupConfig" }),
           Id: S.String.pipe(T.HttpLabel("Id")),
           IfMatch: S.optional(S.String).pipe(T.HttpHeader("If-Match")),
         }).pipe(
@@ -16538,9 +15930,7 @@ function __c216(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateKeyValueStoreRequest",
-      });
+      ).annotate({ identifier: "UpdateKeyValueStoreRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -16549,9 +15939,7 @@ function __c216(j: number): any {
             .annotate({ identifier: "KeyValueStore" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateKeyValueStoreResult",
-      });
+      ).annotate({ identifier: "UpdateKeyValueStoreResult" });
   }
 }
 function __c217(j: number): any {
@@ -16575,9 +15963,7 @@ function __c217(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateOriginAccessControlRequest",
-      });
+      ).annotate({ identifier: "UpdateOriginAccessControlRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -16586,9 +15972,7 @@ function __c217(j: number): any {
             .annotate({ identifier: "OriginAccessControl" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateOriginAccessControlResult",
-      });
+      ).annotate({ identifier: "UpdateOriginAccessControlResult" });
   }
 }
 function __c218(j: number): any {
@@ -16612,9 +15996,7 @@ function __c218(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateOriginRequestPolicyRequest",
-      });
+      ).annotate({ identifier: "UpdateOriginRequestPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -16623,9 +16005,7 @@ function __c218(j: number): any {
             .annotate({ identifier: "OriginRequestPolicy" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateOriginRequestPolicyResult",
-      });
+      ).annotate({ identifier: "UpdateOriginRequestPolicyResult" });
   }
 }
 function __c219(j: number): any {
@@ -16635,9 +16015,7 @@ function __c219(j: number): any {
         S.Struct({
           PublicKeyConfig: __S(2112, __c66, 0)
             .pipe(T.HttpPayload(), T.XmlName("PublicKeyConfig"))
-            .annotate({
-              identifier: "PublicKeyConfig",
-            }),
+            .annotate({ identifier: "PublicKeyConfig" }),
           Id: S.String.pipe(T.HttpLabel("Id")),
           IfMatch: S.optional(S.String).pipe(T.HttpHeader("If-Match")),
         }).pipe(
@@ -16684,15 +16062,11 @@ function __c220(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateRealtimeLogConfigRequest",
-      });
+      ).annotate({ identifier: "UpdateRealtimeLogConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ RealtimeLogConfig: S.optional(__S(2212, __c69, 4)) }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateRealtimeLogConfigResult",
-      });
+      ).annotate({ identifier: "UpdateRealtimeLogConfigResult" });
   }
 }
 function __c221(j: number): any {
@@ -16716,9 +16090,7 @@ function __c221(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateResponseHeadersPolicyRequest",
-      });
+      ).annotate({ identifier: "UpdateResponseHeadersPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -16727,9 +16099,7 @@ function __c221(j: number): any {
             .annotate({ identifier: "ResponseHeadersPolicy" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateResponseHeadersPolicyResult",
-      });
+      ).annotate({ identifier: "UpdateResponseHeadersPolicyResult" });
   }
 }
 function __c222(j: number): any {
@@ -16753,9 +16123,7 @@ function __c222(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateStreamingDistributionRequest",
-      });
+      ).annotate({ identifier: "UpdateStreamingDistributionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -16764,9 +16132,7 @@ function __c222(j: number): any {
             .annotate({ identifier: "StreamingDistribution" }),
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateStreamingDistributionResult",
-      });
+      ).annotate({ identifier: "UpdateStreamingDistributionResult" });
   }
 }
 function __c223(j: number): any {
@@ -16851,9 +16217,7 @@ function __c225(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "VerifyDnsConfigurationRequest",
-      });
+      ).annotate({ identifier: "VerifyDnsConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Domain: S.String, Status: S.String, Reason: S.optional(S.String) }),
@@ -16862,16 +16226,12 @@ function __c225(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(7201, __c225, 1)
           .pipe(/*@__PURE__*/ T.XmlName("DnsConfiguration"))
-          .annotate({
-            identifier: "DnsConfiguration",
-          }),
+          .annotate({ identifier: "DnsConfiguration" }),
       );
     case 3:
       return S.suspend(() =>
         S.Struct({ DnsConfigurationList: S.optional(__S(7202, __c225, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "VerifyDnsConfigurationResult",
-      });
+      ).annotate({ identifier: "VerifyDnsConfigurationResult" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -5283,9 +5283,7 @@ function __c0(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListTypeRegistrationsInput",
-      });
+      ).annotate({ identifier: "ListTypeRegistrationsInput" });
     case 1:
       return S.Array(S.String);
     case 2:
@@ -5294,9 +5292,7 @@ function __c0(j: number): any {
           RegistrationTokenList: S.optional(__S(1, __c0, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListTypeRegistrationsOutput",
-      });
+      ).annotate({ identifier: "ListTypeRegistrationsOutput" });
   }
 }
 function __c1(j: number): any {
@@ -5418,9 +5414,7 @@ function __c4(j: number): any {
           ResourceModel: S.optional(S.String),
           ClientRequestToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RecordHandlerProgressInput",
-      });
+      ).annotate({ identifier: "RecordHandlerProgressInput" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "RecordHandlerProgressOutput",
@@ -5506,15 +5500,11 @@ function __c9(j: number): any {
           TypeName: S.optional(S.String),
           Type: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SetTypeConfigurationInput",
-      });
+      ).annotate({ identifier: "SetTypeConfigurationInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ConfigurationArn: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "SetTypeConfigurationOutput",
-      });
+      ).annotate({ identifier: "SetTypeConfigurationOutput" });
   }
 }
 function __c10(j: number): any {
@@ -5527,9 +5517,7 @@ function __c10(j: number): any {
           TypeName: S.optional(S.String),
           VersionId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SetTypeDefaultVersionInput",
-      });
+      ).annotate({ identifier: "SetTypeDefaultVersionInput" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "SetTypeDefaultVersionOutput",
@@ -5577,9 +5565,7 @@ function __c13(j: number): any {
           OperationId: S.optional(S.String),
           CallAs: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StopStackSetOperationInput",
-      });
+      ).annotate({ identifier: "StopStackSetOperationInput" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "StopStackSetOperationOutput",
@@ -5618,15 +5604,11 @@ function __c15(j: number): any {
           RefreshAllResources: S.optional(S.Boolean),
           TemplateConfiguration: S.optional(__S(608, __c38, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateGeneratedTemplateInput",
-      });
+      ).annotate({ identifier: "UpdateGeneratedTemplateInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({ GeneratedTemplateId: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateGeneratedTemplateOutput",
-      });
+      ).annotate({ identifier: "UpdateGeneratedTemplateOutput" });
   }
 }
 function __c16(j: number): any {
@@ -5676,9 +5658,7 @@ function __c17(j: number): any {
           OperationId: S.optional(S.String).pipe(T.IdempotencyToken()),
           CallAs: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateStackInstancesInput",
-      });
+      ).annotate({ identifier: "UpdateStackInstancesInput" });
     case 1:
       return S.suspend(() => S.Struct({ OperationId: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "UpdateStackInstancesOutput",
@@ -5725,9 +5705,7 @@ function __c19(j: number): any {
           EnableTerminationProtection: S.optional(S.Boolean),
           StackName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateTerminationProtectionInput",
-      });
+      ).annotate({ identifier: "UpdateTerminationProtectionInput" });
     case 1:
       return S.suspend(() => S.Struct({ StackId: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "UpdateTerminationProtectionOutput",
@@ -5772,9 +5750,7 @@ function __c21(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ActivateOrganizationsAccessInput",
-      });
+      ).annotate({ identifier: "ActivateOrganizationsAccessInput" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "ActivateOrganizationsAccessOutput",
@@ -5823,9 +5799,7 @@ function __c24(j: number): any {
           Type: S.optional(S.String),
           TypeName: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "TypeConfigurationIdentifier",
-      });
+      ).annotate({ identifier: "TypeConfigurationIdentifier" });
     case 1:
       return S.Array(__S(384, __c24, 0));
     case 2:
@@ -5833,9 +5807,7 @@ function __c24(j: number): any {
         S.Struct({ TypeConfigurationIdentifiers: S.optional(__S(385, __c24, 1)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "BatchDescribeTypeConfigurationsInput",
-      });
+      ).annotate({ identifier: "BatchDescribeTypeConfigurationsInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5843,9 +5815,7 @@ function __c24(j: number): any {
           ErrorMessage: S.optional(S.String),
           TypeConfigurationIdentifier: S.optional(__S(384, __c24, 0)),
         }),
-      ).annotate({
-        identifier: "BatchDescribeTypeConfigurationsError",
-      });
+      ).annotate({ identifier: "BatchDescribeTypeConfigurationsError" });
     case 4:
       return S.Array(__S(387, __c24, 3));
     case 5:
@@ -5871,9 +5841,7 @@ function __c24(j: number): any {
           UnprocessedTypeConfigurations: S.optional(__S(389, __c24, 5)),
           TypeConfigurations: S.optional(__S(391, __c24, 7)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "BatchDescribeTypeConfigurationsOutput",
-      });
+      ).annotate({ identifier: "BatchDescribeTypeConfigurationsOutput" });
   }
 }
 function __c25(j: number): any {
@@ -5903,9 +5871,7 @@ function __c26(j: number): any {
           ResourcesToSkip: S.optional(__S(416, __c26, 0)),
           ClientRequestToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ContinueUpdateRollbackInput",
-      });
+      ).annotate({ identifier: "ContinueUpdateRollbackInput" });
     case 2:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "ContinueUpdateRollbackOutput",
@@ -6041,15 +6007,11 @@ function __c36(j: number): any {
           StackName: S.optional(S.String),
           TemplateConfiguration: S.optional(__S(608, __c38, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateGeneratedTemplateInput",
-      });
+      ).annotate({ identifier: "CreateGeneratedTemplateInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ GeneratedTemplateId: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateGeneratedTemplateOutput",
-      });
+      ).annotate({ identifier: "CreateGeneratedTemplateOutput" });
   }
 }
 function __c37(j: number): any {
@@ -6124,9 +6086,7 @@ function __c40(j: number): any {
           OperationId: S.optional(S.String).pipe(T.IdempotencyToken()),
           CallAs: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateStackInstancesInput",
-      });
+      ).annotate({ identifier: "CreateStackInstancesInput" });
     case 1:
       return S.suspend(() => S.Struct({ OperationId: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "CreateStackInstancesOutput",
@@ -6173,9 +6133,7 @@ function __c44(j: number): any {
           MaxConcurrentPercentage: S.optional(S.Number),
           ConcurrencyMode: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "StackSetOperationPreferences",
-      });
+      ).annotate({ identifier: "StackSetOperationPreferences" });
   }
 }
 function __c45(j: number): any {
@@ -6203,9 +6161,7 @@ function __c45(j: number): any {
       ).annotate({ identifier: "CreateStackRefactorInput" });
     case 4:
       return S.suspend(() => S.Struct({ StackRefactorId: S.optional(S.String) }).pipe(ns)).annotate(
-        {
-          identifier: "CreateStackRefactorOutput",
-        },
+        { identifier: "CreateStackRefactorOutput" },
       );
   }
 }
@@ -6277,9 +6233,7 @@ function __c49(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeactivateOrganizationsAccessInput",
-      });
+      ).annotate({ identifier: "DeactivateOrganizationsAccessInput" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeactivateOrganizationsAccessOutput",
@@ -6323,9 +6277,7 @@ function __c52(j: number): any {
         S.Struct({ GeneratedTemplateName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteGeneratedTemplateInput",
-      });
+      ).annotate({ identifier: "DeleteGeneratedTemplateInput" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteGeneratedTemplateResponse",
@@ -6348,9 +6300,7 @@ function __c53(j: number): any {
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DeleteStackInput" });
     case 2:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeleteStackResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "DeleteStackResponse" });
   }
 }
 function __c54(j: number): any {
@@ -6367,9 +6317,7 @@ function __c54(j: number): any {
           OperationId: S.optional(S.String).pipe(T.IdempotencyToken()),
           CallAs: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteStackInstancesInput",
-      });
+      ).annotate({ identifier: "DeleteStackInstancesInput" });
     case 1:
       return S.suspend(() => S.Struct({ OperationId: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "DeleteStackInstancesOutput",
@@ -6414,9 +6362,7 @@ function __c57(j: number): any {
         S.Struct({ NextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeAccountLimitsInput",
-      });
+      ).annotate({ identifier: "DescribeAccountLimitsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String), Value: S.optional(S.Number) }),
@@ -6429,9 +6375,7 @@ function __c57(j: number): any {
           AccountLimits: S.optional(__S(914, __c57, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeAccountLimitsOutput",
-      });
+      ).annotate({ identifier: "DescribeAccountLimitsOutput" });
   }
 }
 function __c58(j: number): any {
@@ -6450,9 +6394,7 @@ function __c58(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ Path: S.optional(S.String), Reason: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ResourceDriftIgnoredAttribute",
-      });
+      ).annotate({ identifier: "ResourceDriftIgnoredAttribute" });
     case 3:
       return S.Array(__S(930, __c58, 2));
     case 4:
@@ -6570,9 +6512,7 @@ function __c60(j: number): any {
           NextToken: S.optional(S.String),
           LogicalResourceId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeChangeSetHooksInput",
-      });
+      ).annotate({ identifier: "DescribeChangeSetHooksInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6580,18 +6520,14 @@ function __c60(j: number): any {
           ResourceType: S.optional(S.String),
           ResourceAction: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ChangeSetHookResourceTargetDetails",
-      });
+      ).annotate({ identifier: "ChangeSetHookResourceTargetDetails" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           TargetType: S.optional(S.String),
           ResourceTargetDetails: S.optional(__S(961, __c60, 1)),
         }),
-      ).annotate({
-        identifier: "ChangeSetHookTargetDetails",
-      });
+      ).annotate({ identifier: "ChangeSetHookTargetDetails" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6616,9 +6552,7 @@ function __c60(j: number): any {
           StackId: S.optional(S.String),
           StackName: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeChangeSetHooksOutput",
-      });
+      ).annotate({ identifier: "DescribeChangeSetHooksOutput" });
   }
 }
 function __c61(j: number): any {
@@ -6687,9 +6621,7 @@ function __c62(j: number): any {
         S.Struct({ GeneratedTemplateName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeGeneratedTemplateInput",
-      });
+      ).annotate({ identifier: "DescribeGeneratedTemplateInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6743,9 +6675,7 @@ function __c62(j: number): any {
           TemplateConfiguration: S.optional(__S(608, __c38, 0)),
           TotalWarnings: S.optional(S.Number),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeGeneratedTemplateOutput",
-      });
+      ).annotate({ identifier: "DescribeGeneratedTemplateOutput" });
   }
 }
 function __c63(j: number): any {
@@ -6755,9 +6685,7 @@ function __c63(j: number): any {
         S.Struct({ CallAs: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeOrganizationsAccessInput",
-      });
+      ).annotate({ identifier: "DescribeOrganizationsAccessInput" });
     case 1:
       return S.suspend(() => S.Struct({ Status: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "DescribeOrganizationsAccessOutput",
@@ -6790,9 +6718,7 @@ function __c65(j: number): any {
         S.Struct({ ResourceScanId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeResourceScanInput",
-      });
+      ).annotate({ identifier: "DescribeResourceScanInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6807,9 +6733,7 @@ function __c65(j: number): any {
           ResourcesRead: S.optional(S.Number),
           ScanFilters: S.optional(__S(1058, __c66, 2)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeResourceScanOutput",
-      });
+      ).annotate({ identifier: "DescribeResourceScanOutput" });
   }
 }
 function __c66(j: number): any {
@@ -6831,9 +6755,7 @@ function __c67(j: number): any {
         S.Struct({ StackDriftDetectionId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeStackDriftDetectionStatusInput",
-      });
+      ).annotate({ identifier: "DescribeStackDriftDetectionStatusInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6845,9 +6767,7 @@ function __c67(j: number): any {
           DriftedStackResourceCount: S.optional(S.Number),
           Timestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeStackDriftDetectionStatusOutput",
-      });
+      ).annotate({ identifier: "DescribeStackDriftDetectionStatusOutput" });
   }
 }
 function __c68(j: number): any {
@@ -6890,9 +6810,7 @@ function __c68(j: number): any {
           StackEvents: S.optional(__S(1090, __c68, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeStackEventsOutput",
-      });
+      ).annotate({ identifier: "DescribeStackEventsOutput" });
   }
 }
 function __c69(j: number): any {
@@ -6905,9 +6823,7 @@ function __c69(j: number): any {
           StackInstanceRegion: S.optional(S.String),
           CallAs: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeStackInstanceInput",
-      });
+      ).annotate({ identifier: "DescribeStackInstanceInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6930,9 +6846,7 @@ function __c69(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ StackInstance: S.optional(__S(1105, __c69, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeStackInstanceOutput",
-      });
+      ).annotate({ identifier: "DescribeStackInstanceOutput" });
   }
 }
 function __c70(j: number): any {
@@ -6950,9 +6864,7 @@ function __c71(j: number): any {
         S.Struct({ StackRefactorId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeStackRefactorInput",
-      });
+      ).annotate({ identifier: "DescribeStackRefactorInput" });
     case 1:
       return S.Array(S.String);
     case 2:
@@ -6966,9 +6878,7 @@ function __c71(j: number): any {
           Status: S.optional(S.String),
           StatusReason: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeStackRefactorOutput",
-      });
+      ).annotate({ identifier: "DescribeStackRefactorOutput" });
   }
 }
 function __c72(j: number): any {
@@ -6978,9 +6888,7 @@ function __c72(j: number): any {
         S.Struct({ StackName: S.optional(S.String), LogicalResourceId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeStackResourceInput",
-      });
+      ).annotate({ identifier: "DescribeStackResourceInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7001,9 +6909,7 @@ function __c72(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ StackResourceDetail: S.optional(__S(1153, __c72, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeStackResourceOutput",
-      });
+      ).annotate({ identifier: "DescribeStackResourceOutput" });
   }
 }
 function __c73(j: number): any {
@@ -7014,9 +6920,7 @@ function __c73(j: number): any {
           StackResourceDriftStatus: S.optional(S.String),
           LastCheckTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "StackResourceDriftInformation",
-      });
+      ).annotate({ identifier: "StackResourceDriftInformation" });
   }
 }
 function __c74(j: number): any {
@@ -7029,9 +6933,7 @@ function __c74(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeStackResourceDriftsInput",
-      });
+      ).annotate({ identifier: "DescribeStackResourceDriftsInput" });
     case 1:
       return S.Array(__S(1200, __c75, 0));
     case 2:
@@ -7040,9 +6942,7 @@ function __c74(j: number): any {
           StackResourceDrifts: S.optional(__S(1185, __c74, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeStackResourceDriftsOutput",
-      });
+      ).annotate({ identifier: "DescribeStackResourceDriftsOutput" });
   }
 }
 function __c75(j: number): any {
@@ -7071,9 +6971,7 @@ function __c76(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
-      ).annotate({
-        identifier: "PhysicalResourceIdContextKeyValuePair",
-      });
+      ).annotate({ identifier: "PhysicalResourceIdContextKeyValuePair" });
     case 1:
       return S.Array(__S(1216, __c76, 0));
     case 2:
@@ -7104,9 +7002,7 @@ function __c78(j: number): any {
           LogicalResourceId: S.optional(S.String),
           PhysicalResourceId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeStackResourcesInput",
-      });
+      ).annotate({ identifier: "DescribeStackResourcesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7128,9 +7024,7 @@ function __c78(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ StackResources: S.optional(__S(1250, __c78, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeStackResourcesOutput",
-      });
+      ).annotate({ identifier: "DescribeStackResourcesOutput" });
   }
 }
 function __c79(j: number): any {
@@ -7263,9 +7157,7 @@ function __c82(j: number): any {
           InProgressStackInstancesCount: S.optional(S.Number),
           FailedStackInstancesCount: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "StackSetDriftDetectionDetails",
-      });
+      ).annotate({ identifier: "StackSetDriftDetectionDetails" });
   }
 }
 function __c83(j: number): any {
@@ -7277,9 +7169,7 @@ function __c83(j: number): any {
           OperationId: S.optional(S.String),
           CallAs: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeStackSetOperationInput",
-      });
+      ).annotate({ identifier: "DescribeStackSetOperationInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7302,9 +7192,7 @@ function __c83(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ StackSetOperation: S.optional(__S(1329, __c83, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeStackSetOperationOutput",
-      });
+      ).annotate({ identifier: "DescribeStackSetOperationOutput" });
   }
 }
 function __c84(j: number): any {
@@ -7312,9 +7200,7 @@ function __c84(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ FailedStackInstancesCount: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "StackSetOperationStatusDetails",
-      });
+      ).annotate({ identifier: "StackSetOperationStatusDetails" });
   }
 }
 function __c85(j: number): any {
@@ -7384,9 +7270,7 @@ function __c86(j: number): any {
         S.Struct({ RegistrationToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeTypeRegistrationInput",
-      });
+      ).annotate({ identifier: "DescribeTypeRegistrationInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7395,9 +7279,7 @@ function __c86(j: number): any {
           TypeArn: S.optional(S.String),
           TypeVersionArn: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeTypeRegistrationOutput",
-      });
+      ).annotate({ identifier: "DescribeTypeRegistrationOutput" });
   }
 }
 function __c87(j: number): any {
@@ -7428,15 +7310,11 @@ function __c89(j: number): any {
         S.Struct({ StackName: S.optional(S.String), LogicalResourceId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DetectStackResourceDriftInput",
-      });
+      ).annotate({ identifier: "DetectStackResourceDriftInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ StackResourceDrift: S.optional(__S(1200, __c75, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "DetectStackResourceDriftOutput",
-      });
+      ).annotate({ identifier: "DetectStackResourceDriftOutput" });
   }
 }
 function __c90(j: number): any {
@@ -7465,9 +7343,7 @@ function __c91(j: number): any {
           TemplateURL: S.optional(S.String),
           Parameters: S.optional(__S(465, __c29, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "EstimateTemplateCostInput",
-      });
+      ).annotate({ identifier: "EstimateTemplateCostInput" });
     case 1:
       return S.suspend(() => S.Struct({ Url: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "EstimateTemplateCostOutput",
@@ -7499,9 +7375,7 @@ function __c93(j: number): any {
         S.Struct({ StackRefactorId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ExecuteStackRefactorInput",
-      });
+      ).annotate({ identifier: "ExecuteStackRefactorInput" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "ExecuteStackRefactorResponse",
@@ -7516,18 +7390,11 @@ function __c94(j: number): any {
           Format: S.optional(S.String),
           GeneratedTemplateName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetGeneratedTemplateInput",
-      });
+      ).annotate({ identifier: "GetGeneratedTemplateInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          Status: S.optional(S.String),
-          TemplateBody: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "GetGeneratedTemplateOutput",
-      });
+        S.Struct({ Status: S.optional(S.String), TemplateBody: S.optional(S.String) }).pipe(ns),
+      ).annotate({ identifier: "GetGeneratedTemplateOutput" });
   }
 }
 function __c95(j: number): any {
@@ -7660,9 +7527,7 @@ function __c98(j: number): any {
           LogicalResourceIds: S.optional(__S(1408, __c88, 0)),
           ResourceIdentifiers: S.optional(__S(1574, __c98, 6)),
         }),
-      ).annotate({
-        identifier: "ResourceIdentifierSummary",
-      });
+      ).annotate({ identifier: "ResourceIdentifierSummary" });
     case 8:
       return S.Array(__S(1575, __c98, 7));
     case 9:
@@ -7707,9 +7572,7 @@ function __c100(j: number): any {
           OperationId: S.optional(S.String).pipe(T.IdempotencyToken()),
           CallAs: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ImportStacksToStackSetInput",
-      });
+      ).annotate({ identifier: "ImportStacksToStackSetInput" });
     case 2:
       return S.suspend(() => S.Struct({ OperationId: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "ImportStacksToStackSetOutput",
@@ -7787,9 +7650,7 @@ function __c103(j: number): any {
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListGeneratedTemplatesInput",
-      });
+      ).annotate({ identifier: "ListGeneratedTemplatesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7810,9 +7671,7 @@ function __c103(j: number): any {
           Summaries: S.optional(__S(1650, __c103, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListGeneratedTemplatesOutput",
-      });
+      ).annotate({ identifier: "ListGeneratedTemplatesOutput" });
   }
 }
 function __c104(j: number): any {
@@ -7885,9 +7744,7 @@ function __c106(j: number): any {
           ResourceType: S.optional(S.String),
           ResourceIdentifier: S.optional(__S(1712, __c107, 0)),
         }),
-      ).annotate({
-        identifier: "ScannedResourceIdentifier",
-      });
+      ).annotate({ identifier: "ScannedResourceIdentifier" });
     case 1:
       return S.Array(__S(1696, __c106, 0));
     case 2:
@@ -7898,9 +7755,7 @@ function __c106(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListResourceScanRelatedResourcesInput",
-      });
+      ).annotate({ identifier: "ListResourceScanRelatedResourcesInput" });
     case 3:
       return S.Array(__S(1713, __c107, 1));
     case 4:
@@ -7909,9 +7764,7 @@ function __c106(j: number): any {
           RelatedResources: S.optional(__S(1699, __c106, 3)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListResourceScanRelatedResourcesOutput",
-      });
+      ).annotate({ identifier: "ListResourceScanRelatedResourcesOutput" });
   }
 }
 function __c107(j: number): any {
@@ -7941,9 +7794,7 @@ function __c108(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListResourceScanResourcesInput",
-      });
+      ).annotate({ identifier: "ListResourceScanResourcesInput" });
     case 1:
       return S.Array(__S(1713, __c107, 1));
     case 2:
@@ -7952,9 +7803,7 @@ function __c108(j: number): any {
           Resources: S.optional(__S(1729, __c108, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListResourceScanResourcesOutput",
-      });
+      ).annotate({ identifier: "ListResourceScanResourcesOutput" });
   }
 }
 function __c109(j: number): any {
@@ -8004,9 +7853,7 @@ function __c110(j: number): any {
           OperationId: S.optional(S.String),
           CallAs: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListStackInstanceResourceDriftsInput",
-      });
+      ).annotate({ identifier: "ListStackInstanceResourceDriftsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8019,9 +7866,7 @@ function __c110(j: number): any {
           StackResourceDriftStatus: S.optional(S.String),
           Timestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "StackInstanceResourceDriftsSummary",
-      });
+      ).annotate({ identifier: "StackInstanceResourceDriftsSummary" });
     case 2:
       return S.Array(__S(1761, __c110, 1));
     case 3:
@@ -8030,9 +7875,7 @@ function __c110(j: number): any {
           Summaries: S.optional(__S(1762, __c110, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListStackInstanceResourceDriftsOutput",
-      });
+      ).annotate({ identifier: "ListStackInstanceResourceDriftsOutput" });
   }
 }
 function __c111(j: number): any {
@@ -8093,9 +7936,7 @@ function __c112(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListStackRefactorActionsInput",
-      });
+      ).annotate({ identifier: "ListStackRefactorActionsInput" });
     case 1:
       return S.Array(__S(512, __c32, 0));
     case 2:
@@ -8123,9 +7964,7 @@ function __c112(j: number): any {
           StackRefactorActions: S.optional(__S(1796, __c112, 4)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListStackRefactorActionsOutput",
-      });
+      ).annotate({ identifier: "ListStackRefactorActionsOutput" });
   }
 }
 function __c113(j: number): any {
@@ -8176,9 +8015,7 @@ function __c114(j: number): any {
           StackResourceDriftStatus: S.optional(S.String),
           LastCheckTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "StackResourceDriftInformationSummary",
-      });
+      ).annotate({ identifier: "StackResourceDriftInformationSummary" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -8220,9 +8057,7 @@ function __c115(j: number): any {
           StackDriftStatus: S.optional(S.String),
           LastCheckTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "StackDriftInformationSummary",
-      });
+      ).annotate({ identifier: "StackDriftInformationSummary" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -8261,18 +8096,14 @@ function __c116(j: number): any {
           MaxResults: S.optional(S.Number),
           CallAs: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListStackSetAutoDeploymentTargetsInput",
-      });
+      ).annotate({ identifier: "ListStackSetAutoDeploymentTargetsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           OrganizationalUnitId: S.optional(S.String),
           Regions: S.optional(__S(656, __c41, 0)),
         }),
-      ).annotate({
-        identifier: "StackSetAutoDeploymentTargetSummary",
-      });
+      ).annotate({ identifier: "StackSetAutoDeploymentTargetSummary" });
     case 2:
       return S.Array(__S(1857, __c116, 1));
     case 3:
@@ -8281,9 +8112,7 @@ function __c116(j: number): any {
           Summaries: S.optional(__S(1858, __c116, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListStackSetAutoDeploymentTargetsOutput",
-      });
+      ).annotate({ identifier: "ListStackSetAutoDeploymentTargetsOutput" });
   }
 }
 function __c117(j: number): any {
@@ -8304,9 +8133,7 @@ function __c117(j: number): any {
           CallAs: S.optional(S.String),
           Filters: S.optional(__S(1873, __c117, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListStackSetOperationResultsInput",
-      });
+      ).annotate({ identifier: "ListStackSetOperationResultsInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({ Status: S.optional(S.String), StatusReason: S.optional(S.String) }),
@@ -8321,9 +8148,7 @@ function __c117(j: number): any {
           AccountGateResult: S.optional(__S(1875, __c117, 3)),
           OrganizationalUnitId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "StackSetOperationResultSummary",
-      });
+      ).annotate({ identifier: "StackSetOperationResultSummary" });
     case 5:
       return S.Array(__S(1876, __c117, 4));
     case 6:
@@ -8332,9 +8157,7 @@ function __c117(j: number): any {
           Summaries: S.optional(__S(1877, __c117, 5)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListStackSetOperationResultsOutput",
-      });
+      ).annotate({ identifier: "ListStackSetOperationResultsOutput" });
   }
 }
 function __c118(j: number): any {
@@ -8347,9 +8170,7 @@ function __c118(j: number): any {
           MaxResults: S.optional(S.Number),
           CallAs: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListStackSetOperationsInput",
-      });
+      ).annotate({ identifier: "ListStackSetOperationsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8371,9 +8192,7 @@ function __c118(j: number): any {
           Summaries: S.optional(__S(1890, __c118, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListStackSetOperationsOutput",
-      });
+      ).annotate({ identifier: "ListStackSetOperationsOutput" });
   }
 }
 function __c119(j: number): any {

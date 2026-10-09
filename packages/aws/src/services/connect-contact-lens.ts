@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -305,9 +305,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListRealtimeContactAnalysisSegmentsRequest",
-      });
+      ).annotate({ identifier: "ListRealtimeContactAnalysisSegmentsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ BeginOffsetChar: S.optional(S.Number), EndOffsetChar: S.optional(S.Number) }),
@@ -366,9 +364,7 @@ function __c0(j: number): any {
     case 12:
       return S.suspend(() =>
         S.Struct({ Content: S.optional(S.String), PointsOfInterest: S.optional(__S(7, __c0, 7)) }),
-      ).annotate({
-        identifier: "ExtractedInformationValue",
-      });
+      ).annotate({ identifier: "ExtractedInformationValue" });
     case 13:
       return S.Array(__S(12, __c0, 12));
     case 14:
@@ -389,20 +385,13 @@ function __c0(j: number): any {
           PostContactSummary: S.optional(__S(11, __c0, 11)),
           ExtractedInformation: S.optional(__S(14, __c0, 14)),
         }),
-      ).annotate({
-        identifier: "RealtimeContactAnalysisSegment",
-      });
+      ).annotate({ identifier: "RealtimeContactAnalysisSegment" });
     case 16:
       return S.Array(__S(15, __c0, 15));
     case 17:
       return S.suspend(() =>
-        S.Struct({
-          Segments: S.optional(__S(16, __c0, 16)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListRealtimeContactAnalysisSegmentsResponse",
-      });
+        S.Struct({ Segments: S.optional(__S(16, __c0, 16)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListRealtimeContactAnalysisSegmentsResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

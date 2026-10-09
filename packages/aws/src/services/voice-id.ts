@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1004,7 +1004,7 @@ export const describeWatchlist: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(256, __c16, 0) as any as S.Schema<DescribeWatchlistRequest>,
-  output: __S(257, __c16, 1) as any as S.Schema<DescribeWatchlistResponse>,
+  output: __S(704, __c44, 0) as any as S.Schema<DescribeWatchlistResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1139,7 +1139,7 @@ export const listFraudsterRegistrationJobs: API.PaginatedOperationMethod<
   FraudsterRegistrationJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(320, __c20, 0) as any as S.Schema<ListFraudsterRegistrationJobsRequest>,
-  output: __S(322, __c20, 2) as any as S.Schema<ListFraudsterRegistrationJobsResponse>,
+  output: __S(338, __c21, 2) as any as S.Schema<ListFraudsterRegistrationJobsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1215,7 +1215,7 @@ export const listSpeakerEnrollmentJobs: API.PaginatedOperationMethod<
   SpeakerEnrollmentJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(368, __c23, 0) as any as S.Schema<ListSpeakerEnrollmentJobsRequest>,
-  output: __S(370, __c23, 2) as any as S.Schema<ListSpeakerEnrollmentJobsResponse>,
+  output: __S(338, __c21, 2) as any as S.Schema<ListSpeakerEnrollmentJobsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1589,9 +1589,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteDomainResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteDomainResponse" });
   }
 }
 function __c2(j: number): any {
@@ -1651,9 +1649,7 @@ function __c7(j: number): any {
         S.Struct({ DomainId: S.String, JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeFraudsterRegistrationJobRequest",
-      });
+      ).annotate({ identifier: "DescribeFraudsterRegistrationJobRequest" });
   }
 }
 function __c8(j: number): any {
@@ -1754,9 +1750,7 @@ function __c14(j: number): any {
         S.Struct({ DomainId: S.String, JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeSpeakerEnrollmentJobRequest",
-      });
+      ).annotate({ identifier: "DescribeSpeakerEnrollmentJobRequest" });
   }
 }
 function __c15(j: number): any {
@@ -1768,9 +1762,7 @@ function __c15(j: number): any {
           RiskThreshold: S.optional(S.Number),
           WatchlistIds: S.optional(__S(560, __c35, 0)),
         }),
-      ).annotate({
-        identifier: "EnrollmentJobFraudDetectionConfig",
-      });
+      ).annotate({ identifier: "EnrollmentJobFraudDetectionConfig" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1809,10 +1801,6 @@ function __c16(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeWatchlistRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({ Watchlist: S.optional(__S(688, __c43, 0)) })).annotate({
-        identifier: "DescribeWatchlistResponse",
-      });
   }
 }
 function __c17(j: number): any {
@@ -1822,9 +1810,7 @@ function __c17(j: number): any {
         S.Struct({ DomainId: S.String, WatchlistId: S.String, FraudsterId: SensitiveString }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DisassociateFraudsterRequest",
-      });
+      ).annotate({ identifier: "DisassociateFraudsterRequest" });
   }
 }
 function __c18(j: number): any {
@@ -1855,9 +1841,7 @@ function __c18(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ RiskThreshold: S.optional(S.Number), WatchlistId: S.optional(S.String) }),
-      ).annotate({
-        identifier: "FraudDetectionConfiguration",
-      });
+      ).annotate({ identifier: "FraudDetectionConfiguration" });
     case 4:
       return S.suspend(() =>
         S.Struct({ RiskScore: S.Number, GeneratedFraudsterId: S.optional(S.String) }),
@@ -1924,20 +1908,7 @@ function __c20(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListFraudsterRegistrationJobsRequest",
-      });
-    case 1:
-      return S.Array(__S(336, __c21, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          JobSummaries: S.optional(__S(321, __c20, 1)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListFraudsterRegistrationJobsResponse",
-      });
+      ).annotate({ identifier: "ListFraudsterRegistrationJobsRequest" });
   }
 }
 function __c21(j: number): any {
@@ -1954,9 +1925,13 @@ function __c21(j: number): any {
           FailureDetails: S.optional(__S(128, __c8, 0)),
           JobProgress: S.optional(__S(129, __c8, 1)),
         }),
-      ).annotate({
-        identifier: "FraudsterRegistrationJobSummary",
-      });
+      ).annotate({ identifier: "FraudsterRegistrationJobSummary" });
+    case 1:
+      return S.Array(__S(336, __c21, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ JobSummaries: S.optional(__S(337, __c21, 1)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListFraudsterRegistrationJobsResponse" });
   }
 }
 function __c22(j: number): any {
@@ -1991,20 +1966,7 @@ function __c23(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListSpeakerEnrollmentJobsRequest",
-      });
-    case 1:
-      return S.Array(__S(336, __c21, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          JobSummaries: S.optional(__S(369, __c23, 1)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListSpeakerEnrollmentJobsResponse",
-      });
+      ).annotate({ identifier: "ListSpeakerEnrollmentJobsRequest" });
   }
 }
 function __c24(j: number): any {
@@ -2035,9 +1997,7 @@ function __c25(j: number): any {
         S.Struct({ ResourceArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(657, __c41, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -2088,9 +2048,7 @@ function __c28(j: number): any {
           InputDataConfig: __S(144, __c9, 0),
           OutputDataConfig: __S(145, __c9, 1),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartFraudsterRegistrationJobRequest",
-      });
+      ).annotate({ identifier: "StartFraudsterRegistrationJobRequest" });
   }
 }
 function __c29(j: number): any {
@@ -2106,9 +2064,7 @@ function __c29(j: number): any {
           InputDataConfig: __S(144, __c9, 0),
           OutputDataConfig: __S(145, __c9, 1),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartSpeakerEnrollmentJobRequest",
-      });
+      ).annotate({ identifier: "StartSpeakerEnrollmentJobRequest" });
   }
 }
 function __c30(j: number): any {
@@ -2166,9 +2122,7 @@ function __c34(j: number): any {
         S.Struct({ DomainId: S.String, WatchlistId: S.String, FraudsterId: SensitiveString }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "AssociateFraudsterRequest",
-      });
+      ).annotate({ identifier: "AssociateFraudsterRequest" });
   }
 }
 function __c35(j: number): any {
@@ -2225,9 +2179,7 @@ function __c39(j: number): any {
           UpdateStatus: S.optional(S.String),
           Message: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ServerSideEncryptionUpdateDetails",
-      });
+      ).annotate({ identifier: "ServerSideEncryptionUpdateDetails" });
     case 2:
       return S.suspend(() => S.Struct({ DefaultWatchlistId: S.String })).annotate({
         identifier: "WatchlistDetails",

@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1776,9 +1776,7 @@ function __c0(j: number): any {
           parameters: S.optional(__S(13, __c1, 5)),
           tags: S.optional(__S(216, __c27, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateDbParameterGroupInput",
-      });
+      ).annotate({ identifier: "CreateDbParameterGroupInput" });
   }
 }
 function __c1(j: number): any {
@@ -1935,9 +1933,7 @@ function __c1(j: number): any {
           replicationInterval: S.optional(__S(8, __c1, 0)),
           catalogSyncInterval: S.optional(__S(8, __c1, 0)),
         }),
-      ).annotate({
-        identifier: "InfluxDBv3EnterpriseParameters",
-      });
+      ).annotate({ identifier: "InfluxDBv3EnterpriseParameters" });
     case 5:
       return S.Union([
         /*@__PURE__*/ S.Struct({ InfluxDBv2: __S(9, __c1, 1) }),
@@ -1953,9 +1949,7 @@ function __c1(j: number): any {
           description: S.optional(S.String),
           parameters: S.optional(__S(13, __c1, 5)),
         }),
-      ).annotate({
-        identifier: "CreateDbParameterGroupOutput",
-      });
+      ).annotate({ identifier: "CreateDbParameterGroupOutput" });
   }
 }
 function __c2(j: number): any {
@@ -2177,9 +2171,7 @@ function __c13(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListDbInstancesForClusterInput",
-      });
+      ).annotate({ identifier: "ListDbInstancesForClusterInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2197,17 +2189,13 @@ function __c13(j: number): any {
           instanceMode: S.optional(S.String),
           instanceModes: S.optional(__S(272, __c34, 0)),
         }),
-      ).annotate({
-        identifier: "DbInstanceForClusterSummary",
-      });
+      ).annotate({ identifier: "DbInstanceForClusterSummary" });
     case 2:
       return S.Array(__S(105, __c13, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ items: __S(106, __c13, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListDbInstancesForClusterOutput",
-      });
+      ).annotate({ identifier: "ListDbInstancesForClusterOutput" });
   }
 }
 function __c14(j: number): any {
@@ -2217,9 +2205,7 @@ function __c14(j: number): any {
         S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListDbParameterGroupsInput",
-      });
+      ).annotate({ identifier: "ListDbParameterGroupsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2234,9 +2220,7 @@ function __c14(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ items: __S(114, __c14, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListDbParameterGroupsOutput",
-      });
+      ).annotate({ identifier: "ListDbParameterGroupsOutput" });
   }
 }
 function __c15(j: number): any {
@@ -2246,9 +2230,7 @@ function __c15(j: number): any {
         S.Struct({ resourceArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(216, __c27, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -2306,9 +2288,7 @@ function __c18(j: number): any {
           engineType: S.optional(S.String),
           deploymentType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "RestoreFromDbBackupOutput",
-      });
+      ).annotate({ identifier: "RestoreFromDbBackupOutput" });
   }
 }
 function __c19(j: number): any {
@@ -2324,9 +2304,7 @@ function __c19(j: number): any {
 function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TagResourceResponse" });
   }
 }
 function __c21(j: number): any {
@@ -2554,9 +2532,7 @@ function __c33(j: number): any {
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ),
         }),
-      ).annotate({
-        identifier: "DbBackupConfigurationOutput",
-      });
+      ).annotate({ identifier: "DbBackupConfigurationOutput" });
     case 1:
       return S.Array(__S(264, __c33, 0));
   }

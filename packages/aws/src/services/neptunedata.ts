@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1216,7 +1216,7 @@ export const cancelMLDataProcessingJob: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(24, __c3, 0) as any as S.Schema<CancelMLDataProcessingJobInput>,
-  output: __S(32, __c4, 0) as any as S.Schema<CancelMLDataProcessingJobOutput>,
+  output: __S(8, __c1, 0) as any as S.Schema<CancelMLDataProcessingJobOutput>,
   errors: [
     BadRequestException,
     ClientTimeoutException,
@@ -1259,8 +1259,8 @@ export const cancelMLModelTrainingJob: API.OperationMethod<
   CancelMLModelTrainingJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<CancelMLModelTrainingJobInput>,
-  output: __S(32, __c4, 0) as any as S.Schema<CancelMLModelTrainingJobOutput>,
+  input: __S(32, __c4, 0) as any as S.Schema<CancelMLModelTrainingJobInput>,
+  output: __S(8, __c1, 0) as any as S.Schema<CancelMLModelTrainingJobOutput>,
   errors: [
     BadRequestException,
     ClientTimeoutException,
@@ -1303,8 +1303,8 @@ export const cancelMLModelTransformJob: API.OperationMethod<
   CancelMLModelTransformJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<CancelMLModelTransformJobInput>,
-  output: __S(32, __c4, 0) as any as S.Schema<CancelMLModelTransformJobOutput>,
+  input: __S(40, __c5, 0) as any as S.Schema<CancelMLModelTransformJobInput>,
+  output: __S(8, __c1, 0) as any as S.Schema<CancelMLModelTransformJobOutput>,
   errors: [
     BadRequestException,
     ClientTimeoutException,
@@ -1351,8 +1351,8 @@ export const cancelOpenCypherQuery: API.OperationMethod<
   CancelOpenCypherQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<CancelOpenCypherQueryInput>,
-  output: __S(57, __c7, 1) as any as S.Schema<CancelOpenCypherQueryOutput>,
+  input: __S(48, __c6, 0) as any as S.Schema<CancelOpenCypherQueryInput>,
+  output: __S(49, __c6, 1) as any as S.Schema<CancelOpenCypherQueryOutput>,
   errors: [
     BadRequestException,
     ClientTimeoutException,
@@ -1399,8 +1399,8 @@ export const createMLEndpoint: API.OperationMethod<
   CreateMLEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<CreateMLEndpointInput>,
-  output: __S(65, __c8, 1) as any as S.Schema<CreateMLEndpointOutput>,
+  input: __S(56, __c7, 0) as any as S.Schema<CreateMLEndpointInput>,
+  output: __S(64, __c8, 0) as any as S.Schema<CreateMLEndpointOutput>,
   errors: [
     BadRequestException,
     ClientTimeoutException,
@@ -2029,7 +2029,7 @@ export const getGremlinQueryStatus: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(176, __c22, 0) as any as S.Schema<GetGremlinQueryStatusInput>,
-  output: __S(184, __c23, 0) as any as S.Schema<GetGremlinQueryStatusOutput>,
+  output: __S(185, __c23, 1) as any as S.Schema<GetGremlinQueryStatusOutput>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2081,8 +2081,8 @@ export const getLoaderJobStatus: API.OperationMethod<
   GetLoaderJobStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<GetLoaderJobStatusInput>,
-  output: __S(201, __c25, 1) as any as S.Schema<GetLoaderJobStatusOutput>,
+  input: __S(192, __c24, 0) as any as S.Schema<GetLoaderJobStatusInput>,
+  output: __S(193, __c24, 1) as any as S.Schema<GetLoaderJobStatusOutput>,
   errors: [
     BadRequestException,
     BulkLoadIdNotFoundException,
@@ -2127,8 +2127,8 @@ export const getMLDataProcessingJob: API.OperationMethod<
   GetMLDataProcessingJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<GetMLDataProcessingJobInput>,
-  output: __S(209, __c26, 1) as any as S.Schema<GetMLDataProcessingJobOutput>,
+  input: __S(200, __c25, 0) as any as S.Schema<GetMLDataProcessingJobInput>,
+  output: __S(201, __c25, 1) as any as S.Schema<GetMLDataProcessingJobOutput>,
   errors: [
     BadRequestException,
     ClientTimeoutException,
@@ -2171,8 +2171,8 @@ export const getMLEndpoint: API.OperationMethod<
   GetMLEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<GetMLEndpointInput>,
-  output: __S(225, __c28, 1) as any as S.Schema<GetMLEndpointOutput>,
+  input: __S(216, __c27, 0) as any as S.Schema<GetMLEndpointInput>,
+  output: __S(217, __c27, 1) as any as S.Schema<GetMLEndpointOutput>,
   errors: [
     BadRequestException,
     ClientTimeoutException,
@@ -2215,8 +2215,8 @@ export const getMLModelTrainingJob: API.OperationMethod<
   GetMLModelTrainingJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<GetMLModelTrainingJobInput>,
-  output: __S(241, __c30, 1) as any as S.Schema<GetMLModelTrainingJobOutput>,
+  input: __S(232, __c29, 0) as any as S.Schema<GetMLModelTrainingJobInput>,
+  output: __S(233, __c29, 1) as any as S.Schema<GetMLModelTrainingJobOutput>,
   errors: [
     BadRequestException,
     ClientTimeoutException,
@@ -2259,8 +2259,8 @@ export const getMLModelTransformJob: API.OperationMethod<
   GetMLModelTransformJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<GetMLModelTransformJobInput>,
-  output: __S(257, __c32, 1) as any as S.Schema<GetMLModelTransformJobOutput>,
+  input: __S(248, __c31, 0) as any as S.Schema<GetMLModelTransformJobInput>,
+  output: __S(249, __c31, 1) as any as S.Schema<GetMLModelTransformJobOutput>,
   errors: [
     BadRequestException,
     ClientTimeoutException,
@@ -2311,8 +2311,8 @@ export const getOpenCypherQueryStatus: API.OperationMethod<
   GetOpenCypherQueryStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<GetOpenCypherQueryStatusInput>,
-  output: __S(184, __c23, 0) as any as S.Schema<GetOpenCypherQueryStatusOutput>,
+  input: __S(256, __c32, 0) as any as S.Schema<GetOpenCypherQueryStatusInput>,
+  output: __S(185, __c23, 1) as any as S.Schema<GetOpenCypherQueryStatusOutput>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2363,8 +2363,8 @@ export const getPropertygraphStatistics: API.OperationMethod<
   GetPropertygraphStatisticsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<GetPropertygraphStatisticsRequest>,
-  output: __S(282, __c35, 2) as any as S.Schema<GetPropertygraphStatisticsOutput>,
+  input: __S(264, __c33, 0) as any as S.Schema<GetPropertygraphStatisticsRequest>,
+  output: __S(274, __c34, 2) as any as S.Schema<GetPropertygraphStatisticsOutput>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2426,8 +2426,8 @@ export const getPropertygraphStream: API.OperationMethod<
   GetPropertygraphStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<GetPropertygraphStreamInput>,
-  output: __S(292, __c36, 4) as any as S.Schema<GetPropertygraphStreamOutput>,
+  input: __S(280, __c35, 0) as any as S.Schema<GetPropertygraphStreamInput>,
+  output: __S(284, __c35, 4) as any as S.Schema<GetPropertygraphStreamOutput>,
   errors: [
     ClientTimeoutException,
     ConstraintViolationException,
@@ -2473,8 +2473,8 @@ export const getPropertygraphSummary: API.OperationMethod<
   GetPropertygraphSummaryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<GetPropertygraphSummaryInput>,
-  output: __S(303, __c37, 7) as any as S.Schema<GetPropertygraphSummaryOutput>,
+  input: __S(288, __c36, 0) as any as S.Schema<GetPropertygraphSummaryInput>,
+  output: __S(295, __c36, 7) as any as S.Schema<GetPropertygraphSummaryOutput>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2521,8 +2521,8 @@ export const getRDFGraphSummary: API.OperationMethod<
   GetRDFGraphSummaryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<GetRDFGraphSummaryInput>,
-  output: __S(325, __c40, 5) as any as S.Schema<GetRDFGraphSummaryOutput>,
+  input: __S(312, __c39, 0) as any as S.Schema<GetRDFGraphSummaryInput>,
+  output: __S(317, __c39, 5) as any as S.Schema<GetRDFGraphSummaryOutput>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2567,8 +2567,8 @@ export const getSparqlStatistics: API.OperationMethod<
   GetSparqlStatisticsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<GetSparqlStatisticsRequest>,
-  output: __S(282, __c35, 2) as any as S.Schema<GetSparqlStatisticsOutput>,
+  input: __S(320, __c40, 0) as any as S.Schema<GetSparqlStatisticsRequest>,
+  output: __S(274, __c34, 2) as any as S.Schema<GetSparqlStatisticsOutput>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2622,8 +2622,8 @@ export const getSparqlStream: API.OperationMethod<
   GetSparqlStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<GetSparqlStreamInput>,
-  output: __S(340, __c42, 4) as any as S.Schema<GetSparqlStreamOutput>,
+  input: __S(328, __c41, 0) as any as S.Schema<GetSparqlStreamInput>,
+  output: __S(332, __c41, 4) as any as S.Schema<GetSparqlStreamOutput>,
   errors: [
     ClientTimeoutException,
     ConstraintViolationException,
@@ -2674,7 +2674,7 @@ export const listGremlinQueries: API.OperationMethod<
   ListGremlinQueriesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<ListGremlinQueriesInput>,
+  input: __S(336, __c42, 0) as any as S.Schema<ListGremlinQueriesInput>,
   output: __S(345, __c43, 1) as any as S.Schema<ListGremlinQueriesOutput>,
   errors: [
     AccessDeniedException,
@@ -2724,8 +2724,8 @@ export const listLoaderJobs: API.OperationMethod<
   ListLoaderJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<ListLoaderJobsInput>,
-  output: __S(362, __c45, 2) as any as S.Schema<ListLoaderJobsOutput>,
+  input: __S(352, __c44, 0) as any as S.Schema<ListLoaderJobsInput>,
+  output: __S(354, __c44, 2) as any as S.Schema<ListLoaderJobsOutput>,
   errors: [
     BadRequestException,
     BulkLoadIdNotFoundException,
@@ -2769,8 +2769,8 @@ export const listMLDataProcessingJobs: API.OperationMethod<
   ListMLDataProcessingJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<ListMLDataProcessingJobsInput>,
-  output: __S(376, __c47, 0) as any as S.Schema<ListMLDataProcessingJobsOutput>,
+  input: __S(360, __c45, 0) as any as S.Schema<ListMLDataProcessingJobsInput>,
+  output: __S(368, __c46, 0) as any as S.Schema<ListMLDataProcessingJobsOutput>,
   errors: [
     BadRequestException,
     ClientTimeoutException,
@@ -2813,8 +2813,8 @@ export const listMLEndpoints: API.OperationMethod<
   ListMLEndpointsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c48, 0) as any as S.Schema<ListMLEndpointsInput>,
-  output: __S(385, __c48, 1) as any as S.Schema<ListMLEndpointsOutput>,
+  input: __S(376, __c47, 0) as any as S.Schema<ListMLEndpointsInput>,
+  output: __S(368, __c46, 0) as any as S.Schema<ListMLEndpointsOutput>,
   errors: [
     BadRequestException,
     ClientTimeoutException,
@@ -2857,8 +2857,8 @@ export const listMLModelTrainingJobs: API.OperationMethod<
   ListMLModelTrainingJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<ListMLModelTrainingJobsInput>,
-  output: __S(376, __c47, 0) as any as S.Schema<ListMLModelTrainingJobsOutput>,
+  input: __S(384, __c48, 0) as any as S.Schema<ListMLModelTrainingJobsInput>,
+  output: __S(368, __c46, 0) as any as S.Schema<ListMLModelTrainingJobsOutput>,
   errors: [
     BadRequestException,
     ClientTimeoutException,
@@ -2901,8 +2901,8 @@ export const listMLModelTransformJobs: API.OperationMethod<
   ListMLModelTransformJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c50, 0) as any as S.Schema<ListMLModelTransformJobsInput>,
-  output: __S(376, __c47, 0) as any as S.Schema<ListMLModelTransformJobsOutput>,
+  input: __S(392, __c49, 0) as any as S.Schema<ListMLModelTransformJobsInput>,
+  output: __S(368, __c46, 0) as any as S.Schema<ListMLModelTransformJobsOutput>,
   errors: [
     BadRequestException,
     ClientTimeoutException,
@@ -2953,8 +2953,8 @@ export const listOpenCypherQueries: API.OperationMethod<
   ListOpenCypherQueriesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(408, __c51, 0) as any as S.Schema<ListOpenCypherQueriesInput>,
-  output: __S(409, __c51, 1) as any as S.Schema<ListOpenCypherQueriesOutput>,
+  input: __S(400, __c50, 0) as any as S.Schema<ListOpenCypherQueriesInput>,
+  output: __S(345, __c43, 1) as any as S.Schema<ListOpenCypherQueriesOutput>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3005,8 +3005,8 @@ export const managePropertygraphStatistics: API.OperationMethod<
   ManagePropertygraphStatisticsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<ManagePropertygraphStatisticsInput>,
-  output: __S(425, __c53, 1) as any as S.Schema<ManagePropertygraphStatisticsOutput>,
+  input: __S(408, __c51, 0) as any as S.Schema<ManagePropertygraphStatisticsInput>,
+  output: __S(417, __c52, 1) as any as S.Schema<ManagePropertygraphStatisticsOutput>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3053,8 +3053,8 @@ export const manageSparqlStatistics: API.OperationMethod<
   ManageSparqlStatisticsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c54, 0) as any as S.Schema<ManageSparqlStatisticsInput>,
-  output: __S(425, __c53, 1) as any as S.Schema<ManageSparqlStatisticsOutput>,
+  input: __S(424, __c53, 0) as any as S.Schema<ManageSparqlStatisticsInput>,
+  output: __S(417, __c52, 1) as any as S.Schema<ManageSparqlStatisticsOutput>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3102,8 +3102,8 @@ export const startLoaderJob: API.OperationMethod<
   StartLoaderJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(440, __c55, 0) as any as S.Schema<StartLoaderJobInput>,
-  output: __S(441, __c55, 1) as any as S.Schema<StartLoaderJobOutput>,
+  input: __S(432, __c54, 0) as any as S.Schema<StartLoaderJobInput>,
+  output: __S(433, __c54, 1) as any as S.Schema<StartLoaderJobOutput>,
   errors: [
     BadRequestException,
     BulkLoadIdNotFoundException,
@@ -3149,8 +3149,8 @@ export const startMLDataProcessingJob: API.OperationMethod<
   StartMLDataProcessingJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c56, 0) as any as S.Schema<StartMLDataProcessingJobInput>,
-  output: __S(456, __c57, 0) as any as S.Schema<StartMLDataProcessingJobOutput>,
+  input: __S(440, __c55, 0) as any as S.Schema<StartMLDataProcessingJobInput>,
+  output: __S(64, __c8, 0) as any as S.Schema<StartMLDataProcessingJobOutput>,
   errors: [
     BadRequestException,
     ClientTimeoutException,
@@ -3193,8 +3193,8 @@ export const startMLModelTrainingJob: API.OperationMethod<
   StartMLModelTrainingJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(465, __c58, 1) as any as S.Schema<StartMLModelTrainingJobInput>,
-  output: __S(456, __c57, 0) as any as S.Schema<StartMLModelTrainingJobOutput>,
+  input: __S(449, __c56, 1) as any as S.Schema<StartMLModelTrainingJobInput>,
+  output: __S(64, __c8, 0) as any as S.Schema<StartMLModelTrainingJobOutput>,
   errors: [
     BadRequestException,
     ClientTimeoutException,
@@ -3237,8 +3237,8 @@ export const startMLModelTransformJob: API.OperationMethod<
   StartMLModelTransformJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(473, __c59, 1) as any as S.Schema<StartMLModelTransformJobInput>,
-  output: __S(456, __c57, 0) as any as S.Schema<StartMLModelTransformJobOutput>,
+  input: __S(457, __c57, 1) as any as S.Schema<StartMLModelTransformJobInput>,
+  output: __S(64, __c8, 0) as any as S.Schema<StartMLModelTransformJobOutput>,
   errors: [
     BadRequestException,
     ClientTimeoutException,
@@ -3318,20 +3318,10 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CancelMLDataProcessingJobInput",
-      });
+      ).annotate({ identifier: "CancelMLDataProcessingJobInput" });
   }
 }
 function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ status: S.optional(S.String) })).annotate({
-        identifier: "CancelMLDataProcessingJobOutput",
-      });
-  }
-}
-function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3349,12 +3339,10 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CancelMLModelTrainingJobInput",
-      });
+      ).annotate({ identifier: "CancelMLModelTrainingJobInput" });
   }
 }
-function __c6(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3372,12 +3360,10 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CancelMLModelTransformJobInput",
-      });
+      ).annotate({ identifier: "CancelMLModelTransformJobInput" });
   }
 }
-function __c7(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3394,18 +3380,14 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CancelOpenCypherQueryInput",
-      });
+      ).annotate({ identifier: "CancelOpenCypherQueryInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ status: S.optional(S.String), payload: S.optional(S.Boolean) }),
-      ).annotate({
-        identifier: "CancelOpenCypherQueryOutput",
-      });
+      ).annotate({ identifier: "CancelOpenCypherQueryOutput" });
   }
 }
-function __c8(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3423,7 +3405,11 @@ function __c8(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/ml/endpoints" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateMLEndpointInput" });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -3468,9 +3454,7 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeletePropertygraphStatisticsRequest",
-      });
+      ).annotate({ identifier: "DeletePropertygraphStatisticsRequest" });
   }
 }
 function __c11(j: number): any {
@@ -3486,9 +3470,7 @@ function __c11(j: number): any {
           status: S.optional(S.String),
           payload: S.optional(__S(88, __c11, 0)),
         }),
-      ).annotate({
-        identifier: "DeletePropertygraphStatisticsOutput",
-      });
+      ).annotate({ identifier: "DeletePropertygraphStatisticsOutput" });
   }
 }
 function __c12(j: number): any {
@@ -3505,9 +3487,7 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteSparqlStatisticsRequest",
-      });
+      ).annotate({ identifier: "DeleteSparqlStatisticsRequest" });
   }
 }
 function __c13(j: number): any {
@@ -3544,9 +3524,7 @@ function __c14(j: number): any {
               rules,
             ),
           ),
-      ).annotate({
-        identifier: "ExecuteGremlinExplainQueryInput",
-      });
+      ).annotate({ identifier: "ExecuteGremlinExplainQueryInput" });
   }
 }
 function __c15(j: number): any {
@@ -3554,9 +3532,7 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ output: S.optional(T.StreamingOutput).pipe(T.HttpPayload()) }),
-      ).annotate({
-        identifier: "ExecuteGremlinExplainQueryOutput",
-      });
+      ).annotate({ identifier: "ExecuteGremlinExplainQueryOutput" });
   }
 }
 function __c16(j: number): any {
@@ -3589,9 +3565,7 @@ function __c16(j: number): any {
               rules,
             ),
           ),
-      ).annotate({
-        identifier: "ExecuteGremlinProfileQueryInput",
-      });
+      ).annotate({ identifier: "ExecuteGremlinProfileQueryInput" });
   }
 }
 function __c17(j: number): any {
@@ -3612,9 +3586,7 @@ function __c17(j: number): any {
           code: S.optional(S.Number),
           attributes: S.optional(S.Any),
         }),
-      ).annotate({
-        identifier: "GremlinQueryStatusAttributes",
-      });
+      ).annotate({ identifier: "GremlinQueryStatusAttributes" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3623,9 +3595,7 @@ function __c17(j: number): any {
           result: S.optional(S.Any),
           meta: S.optional(S.Any),
         }),
-      ).annotate({
-        identifier: "ExecuteGremlinQueryOutput",
-      });
+      ).annotate({ identifier: "ExecuteGremlinQueryOutput" });
   }
 }
 function __c18(j: number): any {
@@ -3648,9 +3618,7 @@ function __c18(j: number): any {
               rules,
             ),
           ),
-      ).annotate({
-        identifier: "ExecuteOpenCypherExplainQueryInput",
-      });
+      ).annotate({ identifier: "ExecuteOpenCypherExplainQueryInput" });
     case 1:
       return S.suspend(() => S.Struct({ results: T.Blob.pipe(T.HttpPayload()) })).annotate({
         identifier: "ExecuteOpenCypherExplainQueryOutput",
@@ -3666,9 +3634,7 @@ function __c19(j: number): any {
           .pipe(
             T.all(T.Http({ method: "POST", uri: "/opencypher" }), svc, auth, proto, ver, rules),
           ),
-      ).annotate({
-        identifier: "ExecuteOpenCypherQueryInput",
-      });
+      ).annotate({ identifier: "ExecuteOpenCypherQueryInput" });
     case 1:
       return S.suspend(() => S.Struct({ results: S.Any })).annotate({
         identifier: "ExecuteOpenCypherQueryOutput",
@@ -3729,26 +3695,10 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetGremlinQueryStatusInput",
-      });
+      ).annotate({ identifier: "GetGremlinQueryStatusInput" });
   }
 }
 function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          queryId: S.optional(S.String),
-          queryString: S.optional(S.String),
-          queryEvalStats: S.optional(__S(192, __c24, 0)),
-        }),
-      ).annotate({
-        identifier: "GetGremlinQueryStatusOutput",
-      });
-  }
-}
-function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3759,9 +3709,17 @@ function __c24(j: number): any {
           subqueries: S.optional(S.Any),
         }),
       ).annotate({ identifier: "QueryEvalStats" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          queryId: S.optional(S.String),
+          queryString: S.optional(S.String),
+          queryEvalStats: S.optional(__S(184, __c23, 0)),
+        }),
+      ).annotate({ identifier: "GetGremlinQueryStatusOutput" });
   }
 }
-function __c25(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3781,7 +3739,7 @@ function __c25(j: number): any {
       });
   }
 }
-function __c26(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3798,22 +3756,18 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetMLDataProcessingJobInput",
-      });
+      ).annotate({ identifier: "GetMLDataProcessingJobInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
           id: S.optional(S.String),
-          processingJob: S.optional(__S(216, __c27, 0)),
+          processingJob: S.optional(__S(208, __c26, 0)),
         }),
-      ).annotate({
-        identifier: "GetMLDataProcessingJobOutput",
-      });
+      ).annotate({ identifier: "GetMLDataProcessingJobOutput" });
   }
 }
-function __c27(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3828,7 +3782,7 @@ function __c27(j: number): any {
       ).annotate({ identifier: "MlResourceDefinition" });
   }
 }
-function __c28(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3844,13 +3798,13 @@ function __c28(j: number): any {
         S.Struct({
           status: S.optional(S.String),
           id: S.optional(S.String),
-          endpoint: S.optional(__S(216, __c27, 0)),
-          endpointConfig: S.optional(__S(232, __c29, 0)),
+          endpoint: S.optional(__S(208, __c26, 0)),
+          endpointConfig: S.optional(__S(224, __c28, 0)),
         }),
       ).annotate({ identifier: "GetMLEndpointOutput" });
   }
 }
-function __c29(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3858,7 +3812,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "MlConfigDefinition" });
   }
 }
-function __c30(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3875,31 +3829,27 @@ function __c30(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetMLModelTrainingJobInput",
-      });
+      ).annotate({ identifier: "GetMLModelTrainingJobInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
           id: S.optional(S.String),
-          processingJob: S.optional(__S(216, __c27, 0)),
-          hpoJob: S.optional(__S(216, __c27, 0)),
-          modelTransformJob: S.optional(__S(216, __c27, 0)),
-          mlModels: S.optional(__S(248, __c31, 0)),
+          processingJob: S.optional(__S(208, __c26, 0)),
+          hpoJob: S.optional(__S(208, __c26, 0)),
+          modelTransformJob: S.optional(__S(208, __c26, 0)),
+          mlModels: S.optional(__S(240, __c30, 0)),
         }),
-      ).annotate({
-        identifier: "GetMLModelTrainingJobOutput",
-      });
+      ).annotate({ identifier: "GetMLModelTrainingJobOutput" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(224, __c28, 0));
   }
 }
 function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(232, __c29, 0));
-  }
-}
-function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3916,24 +3866,20 @@ function __c32(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetMLModelTransformJobInput",
-      });
+      ).annotate({ identifier: "GetMLModelTransformJobInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
           id: S.optional(S.String),
-          baseProcessingJob: S.optional(__S(216, __c27, 0)),
-          remoteModelTransformJob: S.optional(__S(216, __c27, 0)),
-          models: S.optional(__S(248, __c31, 0)),
+          baseProcessingJob: S.optional(__S(208, __c26, 0)),
+          remoteModelTransformJob: S.optional(__S(208, __c26, 0)),
+          models: S.optional(__S(240, __c30, 0)),
         }),
-      ).annotate({
-        identifier: "GetMLModelTransformJobOutput",
-      });
+      ).annotate({ identifier: "GetMLModelTransformJobOutput" });
   }
 }
-function __c33(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3947,12 +3893,10 @@ function __c33(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetOpenCypherQueryStatusInput",
-      });
+      ).annotate({ identifier: "GetOpenCypherQueryStatusInput" });
   }
 }
-function __c34(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3966,12 +3910,10 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetPropertygraphStatisticsRequest",
-      });
+      ).annotate({ identifier: "GetPropertygraphStatisticsRequest" });
   }
 }
-function __c35(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3989,16 +3931,16 @@ function __c35(j: number): any {
           statisticsId: S.optional(S.String),
           date: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           note: S.optional(S.String),
-          signatureInfo: S.optional(__S(280, __c35, 0)),
+          signatureInfo: S.optional(__S(272, __c34, 0)),
         }),
       ).annotate({ identifier: "Statistics" });
     case 2:
-      return S.suspend(() => S.Struct({ status: S.String, payload: __S(281, __c35, 1) })).annotate({
+      return S.suspend(() => S.Struct({ status: S.String, payload: __S(273, __c34, 1) })).annotate({
         identifier: "GetPropertygraphStatisticsOutput",
       });
   }
 }
-function __c36(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4018,9 +3960,7 @@ function __c36(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetPropertygraphStreamInput",
-      });
+      ).annotate({ identifier: "GetPropertygraphStreamInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4037,28 +3977,26 @@ function __c36(j: number): any {
         S.Struct({
           commitTimestampInMillis: S.Number,
           eventId: __S(168, __c21, 0),
-          data: __S(289, __c36, 1),
+          data: __S(281, __c35, 1),
           op: S.String,
           isLastOp: S.optional(S.Boolean),
         }).pipe(S.encodeKeys({ commitTimestampInMillis: "commitTimestamp" })),
       ).annotate({ identifier: "PropertygraphRecord" });
     case 3:
-      return S.Array(__S(290, __c36, 2));
+      return S.Array(__S(282, __c35, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           lastEventId: __S(168, __c21, 0),
           lastTrxTimestampInMillis: S.Number,
           format: S.String,
-          records: __S(291, __c36, 3),
+          records: __S(283, __c35, 3),
           totalRecords: S.Number,
         }).pipe(S.encodeKeys({ lastTrxTimestampInMillis: "lastTrxTimestamp" })),
-      ).annotate({
-        identifier: "GetPropertygraphStreamOutput",
-      });
+      ).annotate({ identifier: "GetPropertygraphStreamOutput" });
   }
 }
-function __c37(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4072,25 +4010,23 @@ function __c37(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetPropertygraphSummaryInput",
-      });
+      ).annotate({ identifier: "GetPropertygraphSummaryInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          nodeProperties: S.optional(__S(312, __c39, 0)),
-          distinctOutgoingEdgeLabels: S.optional(__S(312, __c39, 0)),
+          nodeProperties: S.optional(__S(304, __c38, 0)),
+          distinctOutgoingEdgeLabels: S.optional(__S(304, __c38, 0)),
         }),
       ).annotate({ identifier: "NodeStructure" });
     case 2:
-      return S.Array(__S(297, __c37, 1));
+      return S.Array(__S(289, __c36, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ count: S.optional(S.Number), edgeProperties: S.optional(__S(312, __c39, 0)) }),
+        S.Struct({ count: S.optional(S.Number), edgeProperties: S.optional(__S(304, __c38, 0)) }),
       ).annotate({ identifier: "EdgeStructure" });
     case 4:
-      return S.Array(__S(299, __c37, 3));
+      return S.Array(__S(291, __c36, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -4098,16 +4034,16 @@ function __c37(j: number): any {
           numEdges: S.optional(S.Number),
           numNodeLabels: S.optional(S.Number),
           numEdgeLabels: S.optional(S.Number),
-          nodeLabels: S.optional(__S(312, __c39, 0)),
-          edgeLabels: S.optional(__S(312, __c39, 0)),
+          nodeLabels: S.optional(__S(304, __c38, 0)),
+          edgeLabels: S.optional(__S(304, __c38, 0)),
           numNodeProperties: S.optional(S.Number),
           numEdgeProperties: S.optional(S.Number),
-          nodeProperties: S.optional(__S(305, __c38, 1)),
-          edgeProperties: S.optional(__S(305, __c38, 1)),
+          nodeProperties: S.optional(__S(297, __c37, 1)),
+          edgeProperties: S.optional(__S(297, __c37, 1)),
           totalNodePropertyValues: S.optional(S.Number),
           totalEdgePropertyValues: S.optional(S.Number),
-          nodeStructures: S.optional(__S(298, __c37, 2)),
-          edgeStructures: S.optional(__S(300, __c37, 4)),
+          nodeStructures: S.optional(__S(290, __c36, 2)),
+          edgeStructures: S.optional(__S(292, __c36, 4)),
         }),
       ).annotate({ identifier: "PropertygraphSummary" });
     case 6:
@@ -4117,37 +4053,33 @@ function __c37(j: number): any {
           lastStatisticsComputationTime: S.optional(
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ),
-          graphSummary: S.optional(__S(301, __c37, 5)),
+          graphSummary: S.optional(__S(293, __c36, 5)),
         }),
-      ).annotate({
-        identifier: "PropertygraphSummaryValueMap",
-      });
+      ).annotate({ identifier: "PropertygraphSummaryValueMap" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           statusCode: S.optional(S.Number).pipe(T.HttpResponseCode()),
-          payload: S.optional(__S(302, __c37, 6)),
+          payload: S.optional(__S(294, __c36, 6)),
         }),
-      ).annotate({
-        identifier: "GetPropertygraphSummaryOutput",
-      });
+      ).annotate({ identifier: "GetPropertygraphSummaryOutput" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
+    case 1:
+      return S.Array(__S(296, __c37, 0));
   }
 }
 function __c38(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
-    case 1:
-      return S.Array(__S(304, __c38, 0));
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
       return S.Array(S.String);
   }
 }
-function __c40(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4164,10 +4096,10 @@ function __c40(j: number): any {
       ).annotate({ identifier: "GetRDFGraphSummaryInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ count: S.optional(S.Number), predicates: S.optional(__S(312, __c39, 0)) }),
+        S.Struct({ count: S.optional(S.Number), predicates: S.optional(__S(304, __c38, 0)) }),
       ).annotate({ identifier: "SubjectStructure" });
     case 2:
-      return S.Array(__S(321, __c40, 1));
+      return S.Array(__S(313, __c39, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4175,9 +4107,9 @@ function __c40(j: number): any {
           numDistinctPredicates: S.optional(S.Number),
           numQuads: S.optional(S.Number),
           numClasses: S.optional(S.Number),
-          classes: S.optional(__S(312, __c39, 0)),
-          predicates: S.optional(__S(305, __c38, 1)),
-          subjectStructures: S.optional(__S(322, __c40, 2)),
+          classes: S.optional(__S(304, __c38, 0)),
+          predicates: S.optional(__S(297, __c37, 1)),
+          subjectStructures: S.optional(__S(314, __c39, 2)),
         }),
       ).annotate({ identifier: "RDFGraphSummary" });
     case 4:
@@ -4187,31 +4119,29 @@ function __c40(j: number): any {
           lastStatisticsComputationTime: S.optional(
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ),
-          graphSummary: S.optional(__S(323, __c40, 3)),
+          graphSummary: S.optional(__S(315, __c39, 3)),
         }),
       ).annotate({ identifier: "RDFGraphSummaryValueMap" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           statusCode: S.optional(S.Number).pipe(T.HttpResponseCode()),
-          payload: S.optional(__S(324, __c40, 4)),
+          payload: S.optional(__S(316, __c39, 4)),
         }),
       ).annotate({ identifier: "GetRDFGraphSummaryOutput" });
   }
 }
-function __c41(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "GET", uri: "/sparql/statistics" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetSparqlStatisticsRequest",
-      });
+      ).annotate({ identifier: "GetSparqlStatisticsRequest" });
   }
 }
-function __c42(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4226,34 +4156,32 @@ function __c42(j: number): any {
         ),
       ).annotate({ identifier: "GetSparqlStreamInput" });
     case 1:
-      return S.suspend(() => S.Struct({ stmt: S.String })).annotate({
-        identifier: "SparqlData",
-      });
+      return S.suspend(() => S.Struct({ stmt: S.String })).annotate({ identifier: "SparqlData" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           commitTimestampInMillis: S.Number,
           eventId: __S(168, __c21, 0),
-          data: __S(337, __c42, 1),
+          data: __S(329, __c41, 1),
           op: S.String,
           isLastOp: S.optional(S.Boolean),
         }).pipe(S.encodeKeys({ commitTimestampInMillis: "commitTimestamp" })),
       ).annotate({ identifier: "SparqlRecord" });
     case 3:
-      return S.Array(__S(338, __c42, 2));
+      return S.Array(__S(330, __c41, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           lastEventId: __S(168, __c21, 0),
           lastTrxTimestampInMillis: S.Number,
           format: S.String,
-          records: __S(339, __c42, 3),
+          records: __S(331, __c41, 3),
           totalRecords: S.Number,
         }).pipe(S.encodeKeys({ lastTrxTimestampInMillis: "lastTrxTimestamp" })),
       ).annotate({ identifier: "GetSparqlStreamOutput" });
   }
 }
-function __c43(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4263,12 +4191,18 @@ function __c43(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/gremlin/status" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListGremlinQueriesInput" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(185, __c23, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
           acceptedQueryCount: S.optional(S.Number),
           runningQueryCount: S.optional(S.Number),
-          queries: S.optional(__S(353, __c44, 1)),
+          queries: S.optional(__S(344, __c43, 0)),
         }),
       ).annotate({ identifier: "ListGremlinQueriesOutput" });
   }
@@ -4278,35 +4212,21 @@ function __c44(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          queryId: S.optional(S.String),
-          queryString: S.optional(S.String),
-          queryEvalStats: S.optional(__S(192, __c24, 0)),
-        }),
-      ).annotate({ identifier: "GremlinQueryStatus" });
-    case 1:
-      return S.Array(__S(352, __c44, 0));
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
           limit: S.optional(S.Number).pipe(T.HttpQuery("limit")),
           includeQueuedLoads: S.optional(S.Boolean).pipe(T.HttpQuery("includeQueuedLoads")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/loader" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListLoaderJobsInput" });
     case 1:
-      return S.suspend(() => S.Struct({ loadIds: S.optional(__S(312, __c39, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ loadIds: S.optional(__S(304, __c38, 0)) })).annotate({
         identifier: "LoaderIdResult",
       });
     case 2:
-      return S.suspend(() => S.Struct({ status: S.String, payload: __S(361, __c45, 1) })).annotate({
+      return S.suspend(() => S.Struct({ status: S.String, payload: __S(353, __c44, 1) })).annotate({
         identifier: "ListLoaderJobsOutput",
       });
   }
 }
-function __c46(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4316,20 +4236,18 @@ function __c46(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/ml/dataprocessing" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListMLDataProcessingJobsInput",
-      });
+      ).annotate({ identifier: "ListMLDataProcessingJobsInput" });
   }
 }
-function __c47(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ ids: S.optional(__S(312, __c39, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ ids: S.optional(__S(304, __c38, 0)) })).annotate({
         identifier: "ListMLDataProcessingJobsOutput",
       });
   }
 }
-function __c48(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4340,10 +4258,19 @@ function __c48(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/ml/endpoints" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListMLEndpointsInput" });
-    case 1:
-      return S.suspend(() => S.Struct({ ids: S.optional(__S(312, __c39, 0)) })).annotate({
-        identifier: "ListMLEndpointsOutput",
-      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxItems: S.optional(S.Number).pipe(T.HttpQuery("maxItems")),
+          neptuneIamRoleArn: S.optional(S.String).pipe(T.HttpQuery("neptuneIamRoleArn")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/ml/modeltraining" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListMLModelTrainingJobsInput" });
   }
 }
 function __c49(j: number): any {
@@ -4354,29 +4281,12 @@ function __c49(j: number): any {
           maxItems: S.optional(S.Number).pipe(T.HttpQuery("maxItems")),
           neptuneIamRoleArn: S.optional(S.String).pipe(T.HttpQuery("neptuneIamRoleArn")),
         }).pipe(
-          T.all(T.Http({ method: "GET", uri: "/ml/modeltraining" }), svc, auth, proto, ver, rules),
+          T.all(T.Http({ method: "GET", uri: "/ml/modeltransform" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListMLModelTrainingJobsInput",
-      });
+      ).annotate({ identifier: "ListMLModelTransformJobsInput" });
   }
 }
 function __c50(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          maxItems: S.optional(S.Number).pipe(T.HttpQuery("maxItems")),
-          neptuneIamRoleArn: S.optional(S.String).pipe(T.HttpQuery("neptuneIamRoleArn")),
-        }).pipe(
-          T.all(T.Http({ method: "GET", uri: "/ml/modeltransform" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "ListMLModelTransformJobsInput",
-      });
-  }
-}
-function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4385,22 +4295,10 @@ function __c51(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/opencypher/status" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListOpenCypherQueriesInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          acceptedQueryCount: S.optional(S.Number),
-          runningQueryCount: S.optional(S.Number),
-          queries: S.optional(__S(353, __c44, 1)),
-        }),
-      ).annotate({
-        identifier: "ListOpenCypherQueriesOutput",
-      });
+      ).annotate({ identifier: "ListOpenCypherQueriesInput" });
   }
 }
-function __c52(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4414,12 +4312,10 @@ function __c52(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ManagePropertygraphStatisticsInput",
-      });
+      ).annotate({ identifier: "ManagePropertygraphStatisticsInput" });
   }
 }
-function __c53(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ statisticsId: S.optional(S.String) })).annotate({
@@ -4427,13 +4323,11 @@ function __c53(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ status: S.String, payload: S.optional(__S(424, __c53, 0)) }),
-      ).annotate({
-        identifier: "ManagePropertygraphStatisticsOutput",
-      });
+        S.Struct({ status: S.String, payload: S.optional(__S(416, __c52, 0)) }),
+      ).annotate({ identifier: "ManagePropertygraphStatisticsOutput" });
   }
 }
-function __c54(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4447,12 +4341,10 @@ function __c54(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ManageSparqlStatisticsInput",
-      });
+      ).annotate({ identifier: "ManageSparqlStatisticsInput" });
   }
 }
-function __c55(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4467,7 +4359,7 @@ function __c55(j: number): any {
           parserConfiguration: S.optional(__S(168, __c21, 0)),
           updateSingleCardinalityProperties: S.optional(S.Boolean),
           queueRequest: S.optional(S.Boolean),
-          dependencies: S.optional(__S(312, __c39, 0)),
+          dependencies: S.optional(__S(304, __c38, 0)),
           userProvidedEdgeIds: S.optional(S.Boolean),
           edgeOnlyLoad: S.optional(S.Boolean),
         })
@@ -4480,7 +4372,7 @@ function __c55(j: number): any {
       });
   }
 }
-function __c56(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4496,8 +4388,8 @@ function __c56(j: number): any {
           processingTimeOutInSeconds: S.optional(S.Number),
           modelType: S.optional(S.String),
           configFileName: S.optional(S.String),
-          subnets: S.optional(__S(312, __c39, 0)),
-          securityGroupIds: S.optional(__S(312, __c39, 0)),
+          subnets: S.optional(__S(304, __c38, 0)),
+          securityGroupIds: S.optional(__S(304, __c38, 0)),
           volumeEncryptionKMSKey: S.optional(S.String),
           s3OutputEncryptionKMSKey: S.optional(S.String),
         }).pipe(
@@ -4510,26 +4402,10 @@ function __c56(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartMLDataProcessingJobInput",
-      });
+      ).annotate({ identifier: "StartMLDataProcessingJobInput" });
   }
 }
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          arn: S.optional(S.String),
-          creationTimeInMillis: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "StartMLDataProcessingJobOutput",
-      });
-  }
-}
-function __c58(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4538,9 +4414,7 @@ function __c58(j: number): any {
           trainingEntryPointScript: S.optional(S.String),
           transformEntryPointScript: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CustomModelTrainingParameters",
-      });
+      ).annotate({ identifier: "CustomModelTrainingParameters" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4556,21 +4430,19 @@ function __c58(j: number): any {
           trainingTimeOutInSeconds: S.optional(S.Number),
           maxHPONumberOfTrainingJobs: S.optional(S.Number),
           maxHPOParallelTrainingJobs: S.optional(S.Number),
-          subnets: S.optional(__S(312, __c39, 0)),
-          securityGroupIds: S.optional(__S(312, __c39, 0)),
+          subnets: S.optional(__S(304, __c38, 0)),
+          securityGroupIds: S.optional(__S(304, __c38, 0)),
           volumeEncryptionKMSKey: S.optional(S.String),
           s3OutputEncryptionKMSKey: S.optional(S.String),
           enableManagedSpotTraining: S.optional(S.Boolean),
-          customModelTrainingParameters: S.optional(__S(464, __c58, 0)),
+          customModelTrainingParameters: S.optional(__S(448, __c56, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/ml/modeltraining" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StartMLModelTrainingJobInput",
-      });
+      ).annotate({ identifier: "StartMLModelTrainingJobInput" });
   }
 }
-function __c59(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4578,9 +4450,7 @@ function __c59(j: number): any {
           sourceS3DirectoryPath: S.String,
           transformEntryPointScript: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CustomModelTransformParameters",
-      });
+      ).annotate({ identifier: "CustomModelTransformParameters" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4591,11 +4461,11 @@ function __c59(j: number): any {
           modelTransformOutputS3Location: S.String,
           sagemakerIamRoleArn: S.optional(S.String),
           neptuneIamRoleArn: S.optional(S.String),
-          customModelTransformParameters: S.optional(__S(472, __c59, 0)),
+          customModelTransformParameters: S.optional(__S(456, __c57, 0)),
           baseProcessingInstanceType: S.optional(S.String),
           baseProcessingInstanceVolumeSizeInGB: S.optional(S.Number),
-          subnets: S.optional(__S(312, __c39, 0)),
-          securityGroupIds: S.optional(__S(312, __c39, 0)),
+          subnets: S.optional(__S(304, __c38, 0)),
+          securityGroupIds: S.optional(__S(304, __c38, 0)),
           volumeEncryptionKMSKey: S.optional(S.String),
           s3OutputEncryptionKMSKey: S.optional(S.String),
         }).pipe(
@@ -4608,9 +4478,7 @@ function __c59(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartMLModelTransformJobInput",
-      });
+      ).annotate({ identifier: "StartMLModelTransformJobInput" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

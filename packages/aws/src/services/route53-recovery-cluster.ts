@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -478,9 +478,7 @@ function __c0(j: number): any {
           RoutingControlState: S.String,
           SafetyRulesToOverride: S.optional(__S(4, __c1, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateRoutingControlStateRequest",
-      });
+      ).annotate({ identifier: "UpdateRoutingControlStateRequest" });
   }
 }
 function __c1(j: number): any {
@@ -498,9 +496,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ RoutingControlArn: S.String, RoutingControlState: S.String }),
-      ).annotate({
-        identifier: "UpdateRoutingControlStateEntry",
-      });
+      ).annotate({ identifier: "UpdateRoutingControlStateEntry" });
     case 1:
       return S.Array(__S(8, __c2, 0));
     case 2:
@@ -509,9 +505,7 @@ function __c2(j: number): any {
           UpdateRoutingControlStateEntries: __S(9, __c2, 1),
           SafetyRulesToOverride: S.optional(__S(4, __c1, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateRoutingControlStatesRequest",
-      });
+      ).annotate({ identifier: "UpdateRoutingControlStatesRequest" });
   }
 }
 function __c3(j: number): any {
@@ -531,9 +525,7 @@ function __c4(j: number): any {
         S.Struct({ RoutingControlArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetRoutingControlStateRequest",
-      });
+      ).annotate({ identifier: "GetRoutingControlStateRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -541,9 +533,7 @@ function __c4(j: number): any {
           RoutingControlState: S.String,
           RoutingControlName: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetRoutingControlStateResponse",
-      });
+      ).annotate({ identifier: "GetRoutingControlStateResponse" });
   }
 }
 function __c5(j: number): any {
@@ -555,9 +545,7 @@ function __c5(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListRoutingControlsRequest",
-      });
+      ).annotate({ identifier: "ListRoutingControlsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -574,9 +562,7 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ RoutingControls: __S(22, __c5, 2), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListRoutingControlsResponse",
-      });
+      ).annotate({ identifier: "ListRoutingControlsResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

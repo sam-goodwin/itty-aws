@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -2243,7 +2243,7 @@ export const associateEncryptionConfig: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(256, __c8, 0) as any as S.Schema<AssociateEncryptionConfigRequest>,
-  output: __S(320, __c10, 0) as any as S.Schema<AssociateEncryptionConfigResponse>,
+  output: __S(288, __c9, 0) as any as S.Schema<AssociateEncryptionConfigResponse>,
   errors: [
     ClientException,
     InvalidParameterException,
@@ -2326,8 +2326,8 @@ export const cancelUpdate: API.OperationMethod<
   CancelUpdateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c14, 0) as any as S.Schema<CancelUpdateRequest>,
-  output: __S(480, __c15, 0) as any as S.Schema<CancelUpdateResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<CancelUpdateRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<CancelUpdateResponse>,
   errors: [
     ClientException,
     InvalidParameterException,
@@ -2374,8 +2374,8 @@ export const createAccessEntry: API.OperationMethod<
   CreateAccessEntryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c16, 0) as any as S.Schema<CreateAccessEntryRequest>,
-  output: __S(545, __c17, 1) as any as S.Schema<CreateAccessEntryResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<CreateAccessEntryRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<CreateAccessEntryResponse>,
   errors: [
     InvalidParameterException,
     InvalidRequestException,
@@ -2410,8 +2410,8 @@ export const createAddon: API.OperationMethod<
   CreateAddonError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c18, 0) as any as S.Schema<CreateAddonRequest>,
-  output: __S(642, __c20, 2) as any as S.Schema<CreateAddonResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<CreateAddonRequest>,
+  output: __S(578, __c18, 2) as any as S.Schema<CreateAddonResponse>,
   errors: [
     ClientException,
     InvalidParameterException,
@@ -2449,8 +2449,8 @@ export const createCapability: API.OperationMethod<
   CreateCapabilityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(739, __c23, 3) as any as S.Schema<CreateCapabilityRequest>,
-  output: __S(768, __c24, 0) as any as S.Schema<CreateCapabilityResponse>,
+  input: __S(675, __c21, 3) as any as S.Schema<CreateCapabilityRequest>,
+  output: __S(711, __c22, 7) as any as S.Schema<CreateCapabilityResponse>,
   errors: [
     AccessDeniedException,
     InvalidParameterException,
@@ -2507,7 +2507,7 @@ export const createCertificateAuthority: API.OperationMethod<
   CreateCertificateAuthorityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c27, 0) as any as S.Schema<CreateCertificateAuthorityRequest>,
+  input: __S(768, __c24, 0) as any as S.Schema<CreateCertificateAuthorityRequest>,
   output: __S(128, __c4, 0) as any as S.Schema<CreateCertificateAuthorityResponse>,
   errors: [
     InvalidParameterException,
@@ -2583,8 +2583,8 @@ export const createCluster: API.OperationMethod<
   CreateClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(897, __c28, 1) as any as S.Schema<CreateClusterRequest>,
-  output: __S(1056, __c33, 0) as any as S.Schema<CreateClusterResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<CreateClusterRequest>,
+  output: __S(908, __c28, 12) as any as S.Schema<CreateClusterResponse>,
   errors: [
     ClientException,
     InvalidParameterException,
@@ -2618,8 +2618,8 @@ export const createEksAnywhereSubscription: API.OperationMethod<
   CreateEksAnywhereSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1120, __c35, 0) as any as S.Schema<CreateEksAnywhereSubscriptionRequest>,
-  output: __S(1184, __c37, 0) as any as S.Schema<CreateEksAnywhereSubscriptionResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<CreateEksAnywhereSubscriptionRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<CreateEksAnywhereSubscriptionResponse>,
   errors: [
     ClientException,
     InvalidParameterException,
@@ -2679,8 +2679,8 @@ export const createFargateProfile: API.OperationMethod<
   CreateFargateProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1216, __c38, 0) as any as S.Schema<CreateFargateProfileRequest>,
-  output: __S(1251, __c39, 3) as any as S.Schema<CreateFargateProfileResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<CreateFargateProfileRequest>,
+  output: __S(1123, __c35, 3) as any as S.Schema<CreateFargateProfileResponse>,
   errors: [
     ClientException,
     InvalidParameterException,
@@ -2732,8 +2732,8 @@ export const createNodegroup: API.OperationMethod<
   CreateNodegroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1280, __c40, 0) as any as S.Schema<CreateNodegroupRequest>,
-  output: __S(1312, __c41, 0) as any as S.Schema<CreateNodegroupResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<CreateNodegroupRequest>,
+  output: __S(1189, __c37, 5) as any as S.Schema<CreateNodegroupResponse>,
   errors: [
     ClientException,
     InvalidParameterException,
@@ -2792,8 +2792,8 @@ export const createPodIdentityAssociation: API.OperationMethod<
   CreatePodIdentityAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c45, 0) as any as S.Schema<CreatePodIdentityAssociationRequest>,
-  output: __S(1473, __c46, 1) as any as S.Schema<CreatePodIdentityAssociationResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<CreatePodIdentityAssociationRequest>,
+  output: __S(1313, __c41, 1) as any as S.Schema<CreatePodIdentityAssociationResponse>,
   errors: [
     InvalidParameterException,
     InvalidRequestException,
@@ -2825,8 +2825,8 @@ export const deleteAccessEntry: API.OperationMethod<
   DeleteAccessEntryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1504, __c47, 0) as any as S.Schema<DeleteAccessEntryRequest>,
-  output: __S(1536, __c48, 0) as any as S.Schema<DeleteAccessEntryResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<DeleteAccessEntryRequest>,
+  output: __S(1376, __c43, 0) as any as S.Schema<DeleteAccessEntryResponse>,
   errors: [InvalidRequestException, ResourceNotFoundException, ServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2852,8 +2852,8 @@ export const deleteAddon: API.OperationMethod<
   DeleteAddonError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1568, __c49, 0) as any as S.Schema<DeleteAddonRequest>,
-  output: __S(642, __c20, 2) as any as S.Schema<DeleteAddonResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<DeleteAddonRequest>,
+  output: __S(578, __c18, 2) as any as S.Schema<DeleteAddonResponse>,
   errors: [
     ClientException,
     InvalidParameterException,
@@ -2884,8 +2884,8 @@ export const deleteCapability: API.OperationMethod<
   DeleteCapabilityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1600, __c50, 0) as any as S.Schema<DeleteCapabilityRequest>,
-  output: __S(768, __c24, 0) as any as S.Schema<DeleteCapabilityResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<DeleteCapabilityRequest>,
+  output: __S(711, __c22, 7) as any as S.Schema<DeleteCapabilityResponse>,
   errors: [
     AccessDeniedException,
     InvalidParameterException,
@@ -2924,7 +2924,7 @@ export const deleteCertificateAuthority: API.OperationMethod<
   DeleteCertificateAuthorityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1632, __c51, 0) as any as S.Schema<DeleteCertificateAuthorityRequest>,
+  input: __S(1472, __c46, 0) as any as S.Schema<DeleteCertificateAuthorityRequest>,
   output: __S(128, __c4, 0) as any as S.Schema<DeleteCertificateAuthorityResponse>,
   errors: [
     InvalidParameterException,
@@ -2965,8 +2965,8 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1664, __c52, 0) as any as S.Schema<DeleteClusterRequest>,
-  output: __S(1056, __c33, 0) as any as S.Schema<DeleteClusterResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<DeleteClusterRequest>,
+  output: __S(908, __c28, 12) as any as S.Schema<DeleteClusterResponse>,
   errors: [
     ClientException,
     InvalidRequestException,
@@ -2998,8 +2998,8 @@ export const deleteEksAnywhereSubscription: API.OperationMethod<
   DeleteEksAnywhereSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1696, __c53, 0) as any as S.Schema<DeleteEksAnywhereSubscriptionRequest>,
-  output: __S(1184, __c37, 0) as any as S.Schema<DeleteEksAnywhereSubscriptionResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<DeleteEksAnywhereSubscriptionRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<DeleteEksAnywhereSubscriptionResponse>,
   errors: [ClientException, InvalidRequestException, ResourceNotFoundException, ServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3032,8 +3032,8 @@ export const deleteFargateProfile: API.OperationMethod<
   DeleteFargateProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1728, __c54, 0) as any as S.Schema<DeleteFargateProfileRequest>,
-  output: __S(1251, __c39, 3) as any as S.Schema<DeleteFargateProfileResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<DeleteFargateProfileRequest>,
+  output: __S(1123, __c35, 3) as any as S.Schema<DeleteFargateProfileResponse>,
   errors: [
     ClientException,
     InvalidParameterException,
@@ -3063,8 +3063,8 @@ export const deleteNodegroup: API.OperationMethod<
   DeleteNodegroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1760, __c55, 0) as any as S.Schema<DeleteNodegroupRequest>,
-  output: __S(1312, __c41, 0) as any as S.Schema<DeleteNodegroupResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<DeleteNodegroupRequest>,
+  output: __S(1189, __c37, 5) as any as S.Schema<DeleteNodegroupResponse>,
   errors: [
     ClientException,
     InvalidParameterException,
@@ -3095,8 +3095,8 @@ export const deletePodIdentityAssociation: API.OperationMethod<
   DeletePodIdentityAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1792, __c56, 0) as any as S.Schema<DeletePodIdentityAssociationRequest>,
-  output: __S(1473, __c46, 1) as any as S.Schema<DeletePodIdentityAssociationResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<DeletePodIdentityAssociationRequest>,
+  output: __S(1313, __c41, 1) as any as S.Schema<DeletePodIdentityAssociationResponse>,
   errors: [
     InvalidParameterException,
     InvalidRequestException,
@@ -3128,8 +3128,8 @@ export const deregisterCluster: API.OperationMethod<
   DeregisterClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1824, __c57, 0) as any as S.Schema<DeregisterClusterRequest>,
-  output: __S(1825, __c57, 1) as any as S.Schema<DeregisterClusterResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<DeregisterClusterRequest>,
+  output: __S(908, __c28, 12) as any as S.Schema<DeregisterClusterResponse>,
   errors: [
     AccessDeniedException,
     ClientException,
@@ -3157,8 +3157,8 @@ export const describeAccessEntry: API.OperationMethod<
   DescribeAccessEntryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1856, __c58, 0) as any as S.Schema<DescribeAccessEntryRequest>,
-  output: __S(545, __c17, 1) as any as S.Schema<DescribeAccessEntryResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<DescribeAccessEntryRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<DescribeAccessEntryResponse>,
   errors: [InvalidRequestException, ResourceNotFoundException, ServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3181,8 +3181,8 @@ export const describeAddon: API.OperationMethod<
   DescribeAddonError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1888, __c59, 0) as any as S.Schema<DescribeAddonRequest>,
-  output: __S(642, __c20, 2) as any as S.Schema<DescribeAddonResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<DescribeAddonRequest>,
+  output: __S(578, __c18, 2) as any as S.Schema<DescribeAddonResponse>,
   errors: [
     ClientException,
     InvalidParameterException,
@@ -3209,8 +3209,8 @@ export const describeAddonConfiguration: API.OperationMethod<
   DescribeAddonConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1920, __c60, 0) as any as S.Schema<DescribeAddonConfigurationRequest>,
-  output: __S(1923, __c60, 3) as any as S.Schema<DescribeAddonConfigurationResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<DescribeAddonConfigurationRequest>,
+  output: __S(1763, __c55, 3) as any as S.Schema<DescribeAddonConfigurationResponse>,
   errors: [InvalidParameterException, ResourceNotFoundException, ServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3236,8 +3236,8 @@ export const describeAddonVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AddonInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1952, __c61, 0) as any as S.Schema<DescribeAddonVersionsRequest>,
-  output: __S(1959, __c61, 7) as any as S.Schema<DescribeAddonVersionsResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<DescribeAddonVersionsRequest>,
+  output: __S(1799, __c56, 7) as any as S.Schema<DescribeAddonVersionsResponse>,
   errors: [InvalidParameterException, ResourceNotFoundException, ServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3265,8 +3265,8 @@ export const describeCapability: API.OperationMethod<
   DescribeCapabilityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1984, __c62, 0) as any as S.Schema<DescribeCapabilityRequest>,
-  output: __S(1985, __c62, 1) as any as S.Schema<DescribeCapabilityResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<DescribeCapabilityRequest>,
+  output: __S(711, __c22, 7) as any as S.Schema<DescribeCapabilityResponse>,
   errors: [
     AccessDeniedException,
     InvalidParameterException,
@@ -3294,8 +3294,8 @@ export const describeCertificateAuthority: API.OperationMethod<
   DescribeCertificateAuthorityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2016, __c63, 0) as any as S.Schema<DescribeCertificateAuthorityRequest>,
-  output: __S(2020, __c63, 4) as any as S.Schema<DescribeCertificateAuthorityResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<DescribeCertificateAuthorityRequest>,
+  output: __S(1860, __c58, 4) as any as S.Schema<DescribeCertificateAuthorityResponse>,
   errors: [ResourceNotFoundException, ServerException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3325,8 +3325,8 @@ export const describeCluster: API.OperationMethod<
   DescribeClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2048, __c64, 0) as any as S.Schema<DescribeClusterRequest>,
-  output: __S(1056, __c33, 0) as any as S.Schema<DescribeClusterResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<DescribeClusterRequest>,
+  output: __S(908, __c28, 12) as any as S.Schema<DescribeClusterResponse>,
   errors: [
     ClientException,
     ResourceNotFoundException,
@@ -3353,8 +3353,8 @@ export const describeClusterVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ClusterVersionInformation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2080, __c65, 0) as any as S.Schema<DescribeClusterVersionsRequest>,
-  output: __S(2102, __c65, 22) as any as S.Schema<DescribeClusterVersionsResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<DescribeClusterVersionsRequest>,
+  output: __S(1942, __c60, 22) as any as S.Schema<DescribeClusterVersionsResponse>,
   errors: [InvalidParameterException, InvalidRequestException, ServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3382,8 +3382,8 @@ export const describeEksAnywhereSubscription: API.OperationMethod<
   DescribeEksAnywhereSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2112, __c66, 0) as any as S.Schema<DescribeEksAnywhereSubscriptionRequest>,
-  output: __S(1184, __c37, 0) as any as S.Schema<DescribeEksAnywhereSubscriptionResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<DescribeEksAnywhereSubscriptionRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<DescribeEksAnywhereSubscriptionResponse>,
   errors: [
     ClientException,
     ResourceNotFoundException,
@@ -3410,8 +3410,8 @@ export const describeFargateProfile: API.OperationMethod<
   DescribeFargateProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2144, __c67, 0) as any as S.Schema<DescribeFargateProfileRequest>,
-  output: __S(1251, __c39, 3) as any as S.Schema<DescribeFargateProfileResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<DescribeFargateProfileRequest>,
+  output: __S(1123, __c35, 3) as any as S.Schema<DescribeFargateProfileResponse>,
   errors: [ClientException, InvalidParameterException, ResourceNotFoundException, ServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3434,8 +3434,8 @@ export const describeIdentityProviderConfig: API.OperationMethod<
   DescribeIdentityProviderConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2176, __c68, 0) as any as S.Schema<DescribeIdentityProviderConfigRequest>,
-  output: __S(2179, __c68, 3) as any as S.Schema<DescribeIdentityProviderConfigResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<DescribeIdentityProviderConfigRequest>,
+  output: __S(2019, __c63, 3) as any as S.Schema<DescribeIdentityProviderConfigResponse>,
   errors: [
     ClientException,
     InvalidParameterException,
@@ -3463,8 +3463,8 @@ export const describeInsight: API.OperationMethod<
   DescribeInsightError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2240, __c70, 0) as any as S.Schema<DescribeInsightRequest>,
-  output: __S(2251, __c70, 11) as any as S.Schema<DescribeInsightResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<DescribeInsightRequest>,
+  output: __S(2091, __c65, 11) as any as S.Schema<DescribeInsightResponse>,
   errors: [
     InvalidParameterException,
     InvalidRequestException,
@@ -3491,8 +3491,8 @@ export const describeInsightsRefresh: API.OperationMethod<
   DescribeInsightsRefreshError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2272, __c71, 0) as any as S.Schema<DescribeInsightsRefreshRequest>,
-  output: __S(2273, __c71, 1) as any as S.Schema<DescribeInsightsRefreshResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<DescribeInsightsRefreshRequest>,
+  output: __S(2113, __c66, 1) as any as S.Schema<DescribeInsightsRefreshResponse>,
   errors: [
     InvalidParameterException,
     InvalidRequestException,
@@ -3520,8 +3520,8 @@ export const describeNodegroup: API.OperationMethod<
   DescribeNodegroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2304, __c72, 0) as any as S.Schema<DescribeNodegroupRequest>,
-  output: __S(2305, __c72, 1) as any as S.Schema<DescribeNodegroupResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<DescribeNodegroupRequest>,
+  output: __S(1189, __c37, 5) as any as S.Schema<DescribeNodegroupResponse>,
   errors: [
     ClientException,
     InvalidParameterException,
@@ -3554,8 +3554,8 @@ export const describePodIdentityAssociation: API.OperationMethod<
   DescribePodIdentityAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2336, __c73, 0) as any as S.Schema<DescribePodIdentityAssociationRequest>,
-  output: __S(1473, __c46, 1) as any as S.Schema<DescribePodIdentityAssociationResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<DescribePodIdentityAssociationRequest>,
+  output: __S(1313, __c41, 1) as any as S.Schema<DescribePodIdentityAssociationResponse>,
   errors: [
     InvalidParameterException,
     InvalidRequestException,
@@ -3586,8 +3586,8 @@ export const describeUpdate: API.OperationMethod<
   DescribeUpdateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2368, __c74, 0) as any as S.Schema<DescribeUpdateRequest>,
-  output: __S(480, __c15, 0) as any as S.Schema<DescribeUpdateResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<DescribeUpdateRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<DescribeUpdateResponse>,
   errors: [ClientException, InvalidParameterException, ResourceNotFoundException, ServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3608,8 +3608,8 @@ export const disassociateAccessPolicy: API.OperationMethod<
   DisassociateAccessPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2400, __c75, 0) as any as S.Schema<DisassociateAccessPolicyRequest>,
-  output: __S(2401, __c75, 1) as any as S.Schema<DisassociateAccessPolicyResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<DisassociateAccessPolicyRequest>,
+  output: __S(1376, __c43, 0) as any as S.Schema<DisassociateAccessPolicyResponse>,
   errors: [InvalidRequestException, ResourceNotFoundException, ServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3638,8 +3638,8 @@ export const disassociateIdentityProviderConfig: API.OperationMethod<
   DisassociateIdentityProviderConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2432, __c76, 0) as any as S.Schema<DisassociateIdentityProviderConfigRequest>,
-  output: __S(320, __c10, 0) as any as S.Schema<DisassociateIdentityProviderConfigResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<DisassociateIdentityProviderConfigRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<DisassociateIdentityProviderConfigResponse>,
   errors: [
     ClientException,
     InvalidParameterException,
@@ -3670,8 +3670,8 @@ export const listAccessEntries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2464, __c77, 0) as any as S.Schema<ListAccessEntriesRequest>,
-  output: __S(2465, __c77, 1) as any as S.Schema<ListAccessEntriesResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<ListAccessEntriesRequest>,
+  output: __S(2305, __c72, 1) as any as S.Schema<ListAccessEntriesResponse>,
   errors: [
     InvalidParameterException,
     InvalidRequestException,
@@ -3700,8 +3700,8 @@ export const listAccessPolicies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AccessPolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2496, __c78, 0) as any as S.Schema<ListAccessPoliciesRequest>,
-  output: __S(2499, __c78, 3) as any as S.Schema<ListAccessPoliciesResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<ListAccessPoliciesRequest>,
+  output: __S(2339, __c73, 3) as any as S.Schema<ListAccessPoliciesResponse>,
   errors: [ServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3731,8 +3731,8 @@ export const listAddons: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2528, __c79, 0) as any as S.Schema<ListAddonsRequest>,
-  output: __S(2529, __c79, 1) as any as S.Schema<ListAddonsResponse>,
+  input: __S(2368, __c74, 0) as any as S.Schema<ListAddonsRequest>,
+  output: __S(2369, __c74, 1) as any as S.Schema<ListAddonsResponse>,
   errors: [
     ClientException,
     InvalidParameterException,
@@ -3766,8 +3766,8 @@ export const listAssociatedAccessPolicies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssociatedAccessPolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2560, __c80, 0) as any as S.Schema<ListAssociatedAccessPoliciesRequest>,
-  output: __S(2562, __c80, 2) as any as S.Schema<ListAssociatedAccessPoliciesResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<ListAssociatedAccessPoliciesRequest>,
+  output: __S(2402, __c75, 2) as any as S.Schema<ListAssociatedAccessPoliciesResponse>,
   errors: [InvalidRequestException, ResourceNotFoundException, ServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3791,8 +3791,8 @@ export const listCapabilities: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CapabilitySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2592, __c81, 0) as any as S.Schema<ListCapabilitiesRequest>,
-  output: __S(2595, __c81, 3) as any as S.Schema<ListCapabilitiesResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<ListCapabilitiesRequest>,
+  output: __S(2435, __c76, 3) as any as S.Schema<ListCapabilitiesResponse>,
   errors: [InvalidParameterException, ServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3823,8 +3823,8 @@ export const listCertificateAuthorities: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CertificateAuthoritySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2624, __c82, 0) as any as S.Schema<ListCertificateAuthoritiesRequest>,
-  output: __S(2626, __c82, 2) as any as S.Schema<ListCertificateAuthoritiesResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<ListCertificateAuthoritiesRequest>,
+  output: __S(2466, __c77, 2) as any as S.Schema<ListCertificateAuthoritiesResponse>,
   errors: [
     InvalidParameterException,
     ResourceNotFoundException,
@@ -3858,8 +3858,8 @@ export const listClusters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2656, __c83, 0) as any as S.Schema<ListClustersRequest>,
-  output: __S(2657, __c83, 1) as any as S.Schema<ListClustersResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<ListClustersRequest>,
+  output: __S(2497, __c78, 1) as any as S.Schema<ListClustersResponse>,
   errors: [
     ClientException,
     InvalidParameterException,
@@ -3893,8 +3893,8 @@ export const listEksAnywhereSubscriptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EksAnywhereSubscription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2689, __c84, 1) as any as S.Schema<ListEksAnywhereSubscriptionsRequest>,
-  output: __S(2691, __c84, 3) as any as S.Schema<ListEksAnywhereSubscriptionsResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<ListEksAnywhereSubscriptionsRequest>,
+  output: __S(2530, __c79, 2) as any as S.Schema<ListEksAnywhereSubscriptionsResponse>,
   errors: [
     ClientException,
     InvalidParameterException,
@@ -3929,8 +3929,8 @@ export const listFargateProfiles: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2720, __c85, 0) as any as S.Schema<ListFargateProfilesRequest>,
-  output: __S(2721, __c85, 1) as any as S.Schema<ListFargateProfilesResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<ListFargateProfilesRequest>,
+  output: __S(2561, __c80, 1) as any as S.Schema<ListFargateProfilesResponse>,
   errors: [ClientException, InvalidParameterException, ResourceNotFoundException, ServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3960,8 +3960,8 @@ export const listIdentityProviderConfigs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   IdentityProviderConfig
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2752, __c86, 0) as any as S.Schema<ListIdentityProviderConfigsRequest>,
-  output: __S(2754, __c86, 2) as any as S.Schema<ListIdentityProviderConfigsResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<ListIdentityProviderConfigsRequest>,
+  output: __S(2594, __c81, 2) as any as S.Schema<ListIdentityProviderConfigsResponse>,
   errors: [
     ClientException,
     InvalidParameterException,
@@ -4007,8 +4007,8 @@ export const listInsights: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   InsightSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2785, __c87, 1) as any as S.Schema<ListInsightsRequest>,
-  output: __S(2788, __c87, 4) as any as S.Schema<ListInsightsResponse>,
+  input: __S(2625, __c82, 1) as any as S.Schema<ListInsightsRequest>,
+  output: __S(2628, __c82, 4) as any as S.Schema<ListInsightsResponse>,
   errors: [
     InvalidParameterException,
     InvalidRequestException,
@@ -4044,8 +4044,8 @@ export const listNodegroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2816, __c88, 0) as any as S.Schema<ListNodegroupsRequest>,
-  output: __S(2817, __c88, 1) as any as S.Schema<ListNodegroupsResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<ListNodegroupsRequest>,
+  output: __S(2657, __c83, 1) as any as S.Schema<ListNodegroupsResponse>,
   errors: [
     ClientException,
     InvalidParameterException,
@@ -4081,8 +4081,8 @@ export const listPodIdentityAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PodIdentityAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2848, __c89, 0) as any as S.Schema<ListPodIdentityAssociationsRequest>,
-  output: __S(2851, __c89, 3) as any as S.Schema<ListPodIdentityAssociationsResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<ListPodIdentityAssociationsRequest>,
+  output: __S(2691, __c84, 3) as any as S.Schema<ListPodIdentityAssociationsResponse>,
   errors: [
     InvalidParameterException,
     InvalidRequestException,
@@ -4110,8 +4110,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2880, __c90, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(2881, __c90, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(2721, __c85, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [BadRequestException, NotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4135,8 +4135,8 @@ export const listUpdates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2912, __c91, 0) as any as S.Schema<ListUpdatesRequest>,
-  output: __S(2913, __c91, 1) as any as S.Schema<ListUpdatesResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<ListUpdatesRequest>,
+  output: __S(2753, __c86, 1) as any as S.Schema<ListUpdatesResponse>,
   errors: [ClientException, InvalidParameterException, ResourceNotFoundException, ServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4185,8 +4185,8 @@ export const registerCluster: API.OperationMethod<
   RegisterClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2945, __c92, 1) as any as S.Schema<RegisterClusterRequest>,
-  output: __S(1056, __c33, 0) as any as S.Schema<RegisterClusterResponse>,
+  input: __S(2785, __c87, 1) as any as S.Schema<RegisterClusterRequest>,
+  output: __S(908, __c28, 12) as any as S.Schema<RegisterClusterResponse>,
   errors: [
     AccessDeniedException,
     ClientException,
@@ -4217,8 +4217,8 @@ export const startInsightsRefresh: API.OperationMethod<
   StartInsightsRefreshError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2976, __c93, 0) as any as S.Schema<StartInsightsRefreshRequest>,
-  output: __S(2977, __c93, 1) as any as S.Schema<StartInsightsRefreshResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<StartInsightsRefreshRequest>,
+  output: __S(2817, __c88, 1) as any as S.Schema<StartInsightsRefreshResponse>,
   errors: [
     InvalidParameterException,
     InvalidRequestException,
@@ -4246,8 +4246,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3008, __c94, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(1536, __c48, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(1376, __c43, 0) as any as S.Schema<TagResourceResponse>,
   errors: [BadRequestException, NotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4264,8 +4264,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3040, __c95, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(1536, __c48, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(2880, __c90, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(1376, __c43, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [BadRequestException, NotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4287,8 +4287,8 @@ export const updateAccessEntry: API.OperationMethod<
   UpdateAccessEntryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3072, __c96, 0) as any as S.Schema<UpdateAccessEntryRequest>,
-  output: __S(545, __c17, 1) as any as S.Schema<UpdateAccessEntryResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<UpdateAccessEntryRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<UpdateAccessEntryResponse>,
   errors: [
     InvalidParameterException,
     InvalidRequestException,
@@ -4317,8 +4317,8 @@ export const updateAddon: API.OperationMethod<
   UpdateAddonError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3104, __c97, 0) as any as S.Schema<UpdateAddonRequest>,
-  output: __S(480, __c15, 0) as any as S.Schema<UpdateAddonResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<UpdateAddonRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<UpdateAddonResponse>,
   errors: [
     ClientException,
     InvalidParameterException,
@@ -4350,8 +4350,8 @@ export const updateCapability: API.OperationMethod<
   UpdateCapabilityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3139, __c98, 3) as any as S.Schema<UpdateCapabilityRequest>,
-  output: __S(480, __c15, 0) as any as S.Schema<UpdateCapabilityResponse>,
+  input: __S(2979, __c93, 3) as any as S.Schema<UpdateCapabilityRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<UpdateCapabilityResponse>,
   errors: [
     AccessDeniedException,
     InvalidParameterException,
@@ -4428,8 +4428,8 @@ export const updateClusterConfig: API.OperationMethod<
   UpdateClusterConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3169, __c99, 1) as any as S.Schema<UpdateClusterConfigRequest>,
-  output: __S(320, __c10, 0) as any as S.Schema<UpdateClusterConfigResponse>,
+  input: __S(3009, __c94, 1) as any as S.Schema<UpdateClusterConfigRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<UpdateClusterConfigResponse>,
   errors: [
     ClientException,
     InvalidParameterException,
@@ -4476,8 +4476,8 @@ export const updateClusterVersion: API.OperationMethod<
   UpdateClusterVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3201, __c100, 1) as any as S.Schema<UpdateClusterVersionRequest>,
-  output: __S(320, __c10, 0) as any as S.Schema<UpdateClusterVersionResponse>,
+  input: __S(3041, __c95, 1) as any as S.Schema<UpdateClusterVersionRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<UpdateClusterVersionResponse>,
   errors: [
     ClientException,
     InvalidParameterException,
@@ -4510,8 +4510,8 @@ export const updateEksAnywhereSubscription: API.OperationMethod<
   UpdateEksAnywhereSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3232, __c101, 0) as any as S.Schema<UpdateEksAnywhereSubscriptionRequest>,
-  output: __S(1184, __c37, 0) as any as S.Schema<UpdateEksAnywhereSubscriptionResponse>,
+  input: __S(3072, __c96, 0) as any as S.Schema<UpdateEksAnywhereSubscriptionRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<UpdateEksAnywhereSubscriptionResponse>,
   errors: [
     ClientException,
     InvalidParameterException,
@@ -4546,8 +4546,8 @@ export const updateNodegroupConfig: API.OperationMethod<
   UpdateNodegroupConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3266, __c102, 2) as any as S.Schema<UpdateNodegroupConfigRequest>,
-  output: __S(320, __c10, 0) as any as S.Schema<UpdateNodegroupConfigResponse>,
+  input: __S(3106, __c97, 2) as any as S.Schema<UpdateNodegroupConfigRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<UpdateNodegroupConfigResponse>,
   errors: [
     ClientException,
     InvalidParameterException,
@@ -4604,8 +4604,8 @@ export const updateNodegroupVersion: API.OperationMethod<
   UpdateNodegroupVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3296, __c103, 0) as any as S.Schema<UpdateNodegroupVersionRequest>,
-  output: __S(320, __c10, 0) as any as S.Schema<UpdateNodegroupVersionResponse>,
+  input: __S(3136, __c98, 0) as any as S.Schema<UpdateNodegroupVersionRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<UpdateNodegroupVersionResponse>,
   errors: [
     ClientException,
     InvalidParameterException,
@@ -4652,8 +4652,8 @@ export const updatePodIdentityAssociation: API.OperationMethod<
   UpdatePodIdentityAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3328, __c104, 0) as any as S.Schema<UpdatePodIdentityAssociationRequest>,
-  output: __S(1473, __c46, 1) as any as S.Schema<UpdatePodIdentityAssociationResponse>,
+  input: __S(3168, __c99, 0) as any as S.Schema<UpdatePodIdentityAssociationRequest>,
+  output: __S(1313, __c41, 1) as any as S.Schema<UpdatePodIdentityAssociationResponse>,
   errors: [
     InvalidParameterException,
     InvalidRequestException,
@@ -4693,9 +4693,7 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ActivateCertificateAuthorityRequest",
-      });
+      ).annotate({ identifier: "ActivateCertificateAuthorityRequest" });
   }
 }
 function __c2(j: number): any {
@@ -4746,9 +4744,7 @@ function __c4(j: number): any {
           update: S.optional(__S(100, __c3, 4)),
           certificateAuthority: S.optional(__S(160, __c5, 0)),
         }),
-      ).annotate({
-        identifier: "ActivateCertificateAuthorityResponse",
-      });
+      ).annotate({ identifier: "ActivateCertificateAuthorityResponse" });
   }
 }
 function __c5(j: number): any {
@@ -4764,9 +4760,7 @@ function __c5(j: number): any {
           signingStatus: S.optional(S.String),
           distributionStatus: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CertificateAuthoritySummary",
-      });
+      ).annotate({ identifier: "CertificateAuthoritySummary" });
   }
 }
 function __c6(j: number): any {
@@ -4791,9 +4785,7 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateAccessPolicyRequest",
-      });
+      ).annotate({ identifier: "AssociateAccessPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4801,9 +4793,7 @@ function __c6(j: number): any {
           principalArn: S.optional(S.String),
           associatedAccessPolicy: S.optional(__S(225, __c7, 1)),
         }),
-      ).annotate({
-        identifier: "AssociateAccessPolicyResponse",
-      });
+      ).annotate({ identifier: "AssociateAccessPolicyResponse" });
   }
 }
 function __c7(j: number): any {
@@ -4829,7 +4819,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           clusterName: S.String.pipe(T.HttpLabel("clusterName")),
-          encryptionConfig: __S(290, __c9, 2),
+          encryptionConfig: __S(322, __c10, 2),
           clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -4841,12 +4831,18 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateEncryptionConfigRequest",
-      });
+      ).annotate({ identifier: "AssociateEncryptionConfigRequest" });
   }
 }
 function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ update: S.optional(__S(100, __c3, 4)) })).annotate({
+        identifier: "AssociateEncryptionConfigResponse",
+      });
+  }
+}
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ keyArn: S.optional(S.String) })).annotate({
@@ -4856,19 +4852,11 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resources: S.optional(__S(0, __c0, 0)),
-          provider: S.optional(__S(288, __c9, 0)),
+          provider: S.optional(__S(320, __c10, 0)),
         }),
       ).annotate({ identifier: "EncryptionConfig" });
     case 2:
-      return S.Array(__S(289, __c9, 1));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ update: S.optional(__S(100, __c3, 4)) })).annotate({
-        identifier: "AssociateEncryptionConfigResponse",
-      });
+      return S.Array(__S(321, __c10, 1));
   }
 }
 function __c11(j: number): any {
@@ -4883,11 +4871,9 @@ function __c11(j: number): any {
           usernamePrefix: S.optional(S.String),
           groupsClaim: S.optional(S.String),
           groupsPrefix: S.optional(S.String),
-          requiredClaims: S.optional(__S(416, __c13, 0)),
+          requiredClaims: S.optional(__S(384, __c12, 0)),
         }),
-      ).annotate({
-        identifier: "OidcIdentityProviderConfigRequest",
-      });
+      ).annotate({ identifier: "OidcIdentityProviderConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4908,15 +4894,11 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateIdentityProviderConfigRequest",
-      });
+      ).annotate({ identifier: "AssociateIdentityProviderConfigRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({ update: S.optional(__S(100, __c3, 4)), tags: S.optional(__S(384, __c12, 0)) }),
-      ).annotate({
-        identifier: "AssociateIdentityProviderConfigResponse",
-      });
+      ).annotate({ identifier: "AssociateIdentityProviderConfigResponse" });
   }
 }
 function __c12(j: number): any {
@@ -4926,12 +4908,6 @@ function __c12(j: number): any {
   }
 }
 function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4952,15 +4928,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "CancelUpdateRequest" });
   }
 }
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ update: S.optional(__S(100, __c3, 4)) })).annotate({
-        identifier: "CancelUpdateResponse",
-      });
-  }
-}
-function __c16(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4985,7 +4953,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "CreateAccessEntryRequest" });
   }
 }
-function __c17(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5002,12 +4970,12 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "AccessEntry" });
     case 1:
-      return S.suspend(() => S.Struct({ accessEntry: S.optional(__S(544, __c17, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ accessEntry: S.optional(__S(480, __c15, 0)) })).annotate({
         identifier: "CreateAccessEntryResponse",
       });
   }
 }
-function __c18(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5020,8 +4988,8 @@ function __c18(j: number): any {
           clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           tags: S.optional(__S(384, __c12, 0)),
           configurationValues: S.optional(S.String),
-          podIdentityAssociations: S.optional(__S(705, __c22, 1)),
-          namespaceConfig: S.optional(__S(640, __c20, 0)),
+          podIdentityAssociations: S.optional(__S(641, __c20, 1)),
+          namespaceConfig: S.optional(__S(576, __c18, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/clusters/{clusterName}/addons" }),
@@ -5035,7 +5003,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "CreateAddonRequest" });
   }
 }
-function __c19(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5046,14 +5014,14 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "AddonIssue" });
     case 1:
-      return S.Array(__S(608, __c19, 0));
+      return S.Array(__S(544, __c17, 0));
     case 2:
-      return S.suspend(() => S.Struct({ issues: S.optional(__S(609, __c19, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ issues: S.optional(__S(545, __c17, 1)) })).annotate({
         identifier: "AddonHealth",
       });
   }
 }
-function __c20(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ namespace: S.optional(S.String) })).annotate({
@@ -5066,7 +5034,7 @@ function __c20(j: number): any {
           clusterName: S.optional(S.String),
           status: S.optional(S.String),
           addonVersion: S.optional(S.String),
-          health: S.optional(__S(610, __c19, 2)),
+          health: S.optional(__S(546, __c17, 2)),
           addonArn: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           modifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -5074,19 +5042,19 @@ function __c20(j: number): any {
           tags: S.optional(__S(384, __c12, 0)),
           publisher: S.optional(S.String),
           owner: S.optional(S.String),
-          marketplaceInformation: S.optional(__S(672, __c21, 0)),
+          marketplaceInformation: S.optional(__S(608, __c19, 0)),
           configurationValues: S.optional(S.String),
           podIdentityAssociations: S.optional(__S(0, __c0, 0)),
-          namespaceConfig: S.optional(__S(640, __c20, 0)),
+          namespaceConfig: S.optional(__S(576, __c18, 0)),
         }),
       ).annotate({ identifier: "Addon" });
     case 2:
-      return S.suspend(() => S.Struct({ addon: S.optional(__S(641, __c20, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ addon: S.optional(__S(577, __c18, 1)) })).annotate({
         identifier: "CreateAddonResponse",
       });
   }
 }
-function __c21(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5094,36 +5062,34 @@ function __c21(j: number): any {
       ).annotate({ identifier: "MarketplaceInformation" });
   }
 }
-function __c22(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ serviceAccount: S.String, roleArn: S.String })).annotate({
         identifier: "AddonPodIdentityAssociations",
       });
     case 1:
-      return S.Array(__S(704, __c22, 0));
+      return S.Array(__S(640, __c20, 0));
   }
 }
-function __c23(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ idcInstanceArn: S.String, idcRegion: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ArgoCdAwsIdcConfigRequest",
-      });
+      ).annotate({ identifier: "ArgoCdAwsIdcConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           namespace: S.optional(S.String),
-          awsIdc: __S(736, __c23, 0),
-          rbacRoleMappings: S.optional(__S(835, __c26, 3)),
-          networkAccess: S.optional(__S(836, __c26, 4)),
+          awsIdc: __S(672, __c21, 0),
+          rbacRoleMappings: S.optional(__S(739, __c23, 3)),
+          networkAccess: S.optional(__S(740, __c23, 4)),
           endpointPrefix: S.optional(S.String),
         }),
       ).annotate({ identifier: "ArgoCdConfigRequest" });
     case 2:
-      return S.suspend(() => S.Struct({ argoCd: S.optional(__S(737, __c23, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ argoCd: S.optional(__S(673, __c21, 1)) })).annotate({
         identifier: "CapabilityConfigurationRequest",
       });
     case 3:
@@ -5134,7 +5100,7 @@ function __c23(j: number): any {
           clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           type: S.String,
           roleArn: S.String,
-          configuration: S.optional(__S(738, __c23, 2)),
+          configuration: S.optional(__S(674, __c21, 2)),
           tags: S.optional(__S(384, __c12, 0)),
           deletePropagationPolicy: S.String,
         }).pipe(
@@ -5150,15 +5116,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "CreateCapabilityRequest" });
   }
 }
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ capability: S.optional(__S(806, __c25, 6)) })).annotate({
-        identifier: "CreateCapabilityResponse",
-      });
-  }
-}
-function __c25(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5167,22 +5125,20 @@ function __c25(j: number): any {
           idcRegion: S.optional(S.String),
           idcManagedApplicationArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ArgoCdAwsIdcConfigResponse",
-      });
+      ).annotate({ identifier: "ArgoCdAwsIdcConfigResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           namespace: S.optional(S.String),
-          awsIdc: S.optional(__S(800, __c25, 0)),
-          rbacRoleMappings: S.optional(__S(835, __c26, 3)),
-          networkAccess: S.optional(__S(836, __c26, 4)),
+          awsIdc: S.optional(__S(704, __c22, 0)),
+          rbacRoleMappings: S.optional(__S(739, __c23, 3)),
+          networkAccess: S.optional(__S(740, __c23, 4)),
           serverUrl: S.optional(S.String),
           endpointPrefix: S.optional(S.String),
         }),
       ).annotate({ identifier: "ArgoCdConfigResponse" });
     case 2:
-      return S.suspend(() => S.Struct({ argoCd: S.optional(__S(801, __c25, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ argoCd: S.optional(__S(705, __c22, 1)) })).annotate({
         identifier: "CapabilityConfigurationResponse",
       });
     case 3:
@@ -5190,9 +5146,9 @@ function __c25(j: number): any {
         S.Struct({ code: S.optional(S.String), message: S.optional(S.String) }),
       ).annotate({ identifier: "CapabilityIssue" });
     case 4:
-      return S.Array(__S(803, __c25, 3));
+      return S.Array(__S(707, __c22, 3));
     case 5:
-      return S.suspend(() => S.Struct({ issues: S.optional(__S(804, __c25, 4)) })).annotate({
+      return S.suspend(() => S.Struct({ issues: S.optional(__S(708, __c22, 4)) })).annotate({
         identifier: "CapabilityHealth",
       });
     case 6:
@@ -5205,37 +5161,41 @@ function __c25(j: number): any {
           roleArn: S.optional(S.String),
           status: S.optional(S.String),
           version: S.optional(S.String),
-          configuration: S.optional(__S(802, __c25, 2)),
+          configuration: S.optional(__S(706, __c22, 2)),
           tags: S.optional(__S(384, __c12, 0)),
-          health: S.optional(__S(805, __c25, 5)),
+          health: S.optional(__S(709, __c22, 5)),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           modifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           deletePropagationPolicy: S.optional(S.String),
         }),
       ).annotate({ identifier: "Capability" });
+    case 7:
+      return S.suspend(() => S.Struct({ capability: S.optional(__S(710, __c22, 6)) })).annotate({
+        identifier: "CreateCapabilityResponse",
+      });
   }
 }
-function __c26(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ id: S.String, type: S.String })).annotate({
         identifier: "SsoIdentity",
       });
     case 1:
-      return S.Array(__S(832, __c26, 0));
+      return S.Array(__S(736, __c23, 0));
     case 2:
-      return S.suspend(() => S.Struct({ role: S.String, identities: __S(833, __c26, 1) })).annotate(
+      return S.suspend(() => S.Struct({ role: S.String, identities: __S(737, __c23, 1) })).annotate(
         { identifier: "ArgoCdRoleMapping" },
       );
     case 3:
-      return S.Array(__S(834, __c26, 2));
+      return S.Array(__S(738, __c23, 2));
     case 4:
       return S.suspend(() => S.Struct({ vpceIds: S.optional(__S(0, __c0, 0)) })).annotate({
         identifier: "ArgoCdNetworkAccessConfigRequest",
       });
   }
 }
-function __c27(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5252,52 +5212,41 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateCertificateAuthorityRequest",
-      });
+      ).annotate({ identifier: "CreateCertificateAuthorityRequest" });
   }
 }
-function __c28(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          bootstrapClusterCreatorAdminPermissions: S.optional(S.Boolean),
-          authenticationMode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateAccessConfigRequest",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           version: S.optional(S.String),
           roleArn: S.String,
-          resourcesVpcConfig: __S(1088, __c34, 0),
-          kubernetesNetworkConfig: S.optional(__S(1089, __c34, 1)),
-          logging: S.optional(__S(1027, __c32, 3)),
+          resourcesVpcConfig: __S(960, __c30, 0),
+          kubernetesNetworkConfig: S.optional(__S(961, __c30, 1)),
+          logging: S.optional(__S(931, __c29, 3)),
           clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           tags: S.optional(__S(384, __c12, 0)),
-          encryptionConfig: S.optional(__S(290, __c9, 2)),
-          outpostConfig: S.optional(__S(994, __c31, 2)),
-          accessConfig: S.optional(__S(896, __c28, 0)),
+          encryptionConfig: S.optional(__S(322, __c10, 2)),
+          outpostConfig: S.optional(__S(898, __c28, 2)),
+          accessConfig: S.optional(__S(899, __c28, 3)),
           bootstrapSelfManagedAddons: S.optional(S.Boolean),
-          upgradePolicy: S.optional(__S(1028, __c32, 4)),
-          zonalShiftConfig: S.optional(__S(1024, __c32, 0)),
-          remoteNetworkConfig: S.optional(__S(1031, __c32, 7)),
-          computeConfig: S.optional(__S(1032, __c32, 8)),
-          storageConfig: S.optional(__S(1033, __c32, 9)),
+          upgradePolicy: S.optional(__S(932, __c29, 4)),
+          zonalShiftConfig: S.optional(__S(928, __c29, 0)),
+          remoteNetworkConfig: S.optional(__S(935, __c29, 7)),
+          computeConfig: S.optional(__S(936, __c29, 8)),
+          storageConfig: S.optional(__S(937, __c29, 9)),
           deletionProtection: S.optional(S.Boolean),
-          controlPlaneScalingConfig: S.optional(__S(1034, __c32, 10)),
-          kubeApiServerConfig: S.optional(__S(1035, __c32, 11)),
-          kubeSchedulerConfig: S.optional(__S(1037, __c32, 13)),
-          kubeControllerManagerConfig: S.optional(__S(1040, __c32, 16)),
+          controlPlaneScalingConfig: S.optional(__S(938, __c29, 10)),
+          kubeApiServerConfig: S.optional(__S(939, __c29, 11)),
+          kubeSchedulerConfig: S.optional(__S(941, __c29, 13)),
+          kubeControllerManagerConfig: S.optional(__S(944, __c29, 16)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/clusters" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateClusterRequest" });
   }
 }
-function __c29(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5308,27 +5257,25 @@ function __c29(j: number): any {
         S.Struct({ name: S.optional(S.String), weight: S.optional(S.Number) }),
       ).annotate({ identifier: "ResourceWeight" });
     case 2:
-      return S.Array(__S(929, __c29, 1));
+      return S.Array(__S(833, __c26, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ type: S.optional(S.String), resources: S.optional(__S(930, __c29, 2)) }),
+        S.Struct({ type: S.optional(S.String), resources: S.optional(__S(834, __c26, 2)) }),
       ).annotate({ identifier: "ScoringStrategy" });
   }
 }
-function __c30(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c31(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ groupName: S.optional(S.String), spreadLevel: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ControlPlanePlacementRequest",
-      });
+      ).annotate({ identifier: "ControlPlanePlacementRequest" });
     case 1:
       return S.suspend(() => S.Struct({ spreadLevel: S.optional(S.String) })).annotate({
         identifier: "EtcdPlacementRequest",
@@ -5338,12 +5285,19 @@ function __c31(j: number): any {
         S.Struct({
           outpostArns: __S(0, __c0, 0),
           controlPlaneInstanceType: S.String,
-          controlPlanePlacement: S.optional(__S(992, __c31, 0)),
+          controlPlanePlacement: S.optional(__S(896, __c28, 0)),
           etcdInstanceType: S.optional(S.String),
-          etcdPlacement: S.optional(__S(993, __c31, 1)),
+          etcdPlacement: S.optional(__S(897, __c28, 1)),
         }),
       ).annotate({ identifier: "OutpostConfigRequest" });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          bootstrapClusterCreatorAdminPermissions: S.optional(S.Boolean),
+          authenticationMode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateAccessConfigRequest" });
+    case 4:
       return S.suspend(() =>
         S.Struct({
           subnetIds: S.optional(__S(0, __c0, 0)),
@@ -5356,36 +5310,32 @@ function __c31(j: number): any {
           controlPlaneEgressMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "VpcConfigResponse" });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           serviceIpv4Cidr: S.optional(S.String),
           serviceIpv6Cidr: S.optional(S.String),
           ipFamily: S.optional(S.String),
-          elasticLoadBalancing: S.optional(__S(1024, __c32, 0)),
+          elasticLoadBalancing: S.optional(__S(928, __c29, 0)),
         }),
-      ).annotate({
-        identifier: "KubernetesNetworkConfigResponse",
-      });
-    case 5:
+      ).annotate({ identifier: "KubernetesNetworkConfigResponse" });
+    case 6:
       return S.suspend(() => S.Struct({ issuer: S.optional(S.String) })).annotate({
         identifier: "OIDC",
       });
-    case 6:
-      return S.suspend(() => S.Struct({ oidc: S.optional(__S(997, __c31, 5)) })).annotate({
-        identifier: "Identity",
-      });
     case 7:
-      return S.suspend(() =>
-        S.Struct({ id: S.optional(S.String), activatedBy: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ActiveCertificateAuthority",
+      return S.suspend(() => S.Struct({ oidc: S.optional(__S(902, __c28, 6)) })).annotate({
+        identifier: "Identity",
       });
     case 8:
       return S.suspend(() =>
-        S.Struct({ data: S.optional(S.String), active: S.optional(__S(999, __c31, 7)) }),
-      ).annotate({ identifier: "Certificate" });
+        S.Struct({ id: S.optional(S.String), activatedBy: S.optional(S.String) }),
+      ).annotate({ identifier: "ActiveCertificateAuthority" });
     case 9:
+      return S.suspend(() =>
+        S.Struct({ data: S.optional(S.String), active: S.optional(__S(904, __c28, 8)) }),
+      ).annotate({ identifier: "Certificate" });
+    case 10:
       return S.suspend(() =>
         S.Struct({
           activationId: S.optional(S.String),
@@ -5395,13 +5345,6 @@ function __c31(j: number): any {
           roleArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectorConfigResponse" });
-    case 10:
-      return S.suspend(() =>
-        S.Struct({
-          bootstrapClusterCreatorAdminPermissions: S.optional(S.Boolean),
-          authenticationMode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AccessConfigResponse" });
     case 11:
       return S.suspend(() =>
         S.Struct({
@@ -5411,36 +5354,40 @@ function __c31(j: number): any {
           version: S.optional(S.String),
           endpoint: S.optional(S.String),
           roleArn: S.optional(S.String),
-          resourcesVpcConfig: S.optional(__S(995, __c31, 3)),
-          kubernetesNetworkConfig: S.optional(__S(996, __c31, 4)),
-          logging: S.optional(__S(1027, __c32, 3)),
-          identity: S.optional(__S(998, __c31, 6)),
+          resourcesVpcConfig: S.optional(__S(900, __c28, 4)),
+          kubernetesNetworkConfig: S.optional(__S(901, __c28, 5)),
+          logging: S.optional(__S(931, __c29, 3)),
+          identity: S.optional(__S(903, __c28, 7)),
           status: S.optional(S.String),
-          certificateAuthority: S.optional(__S(1000, __c31, 8)),
+          certificateAuthority: S.optional(__S(905, __c28, 9)),
           clientRequestToken: S.optional(S.String),
           platformVersion: S.optional(S.String),
           tags: S.optional(__S(384, __c12, 0)),
-          encryptionConfig: S.optional(__S(290, __c9, 2)),
-          connectorConfig: S.optional(__S(1001, __c31, 9)),
+          encryptionConfig: S.optional(__S(322, __c10, 2)),
+          connectorConfig: S.optional(__S(906, __c28, 10)),
           id: S.optional(S.String),
-          health: S.optional(__S(610, __c19, 2)),
-          outpostConfig: S.optional(__S(994, __c31, 2)),
-          accessConfig: S.optional(__S(1002, __c31, 10)),
-          upgradePolicy: S.optional(__S(1028, __c32, 4)),
-          zonalShiftConfig: S.optional(__S(1024, __c32, 0)),
-          remoteNetworkConfig: S.optional(__S(1031, __c32, 7)),
-          computeConfig: S.optional(__S(1032, __c32, 8)),
-          storageConfig: S.optional(__S(1033, __c32, 9)),
+          health: S.optional(__S(546, __c17, 2)),
+          outpostConfig: S.optional(__S(898, __c28, 2)),
+          accessConfig: S.optional(__S(899, __c28, 3)),
+          upgradePolicy: S.optional(__S(932, __c29, 4)),
+          zonalShiftConfig: S.optional(__S(928, __c29, 0)),
+          remoteNetworkConfig: S.optional(__S(935, __c29, 7)),
+          computeConfig: S.optional(__S(936, __c29, 8)),
+          storageConfig: S.optional(__S(937, __c29, 9)),
           deletionProtection: S.optional(S.Boolean),
-          controlPlaneScalingConfig: S.optional(__S(1034, __c32, 10)),
-          kubeApiServerConfig: S.optional(__S(1035, __c32, 11)),
-          kubeSchedulerConfig: S.optional(__S(1037, __c32, 13)),
-          kubeControllerManagerConfig: S.optional(__S(1040, __c32, 16)),
+          controlPlaneScalingConfig: S.optional(__S(938, __c29, 10)),
+          kubeApiServerConfig: S.optional(__S(939, __c29, 11)),
+          kubeSchedulerConfig: S.optional(__S(941, __c29, 13)),
+          kubeControllerManagerConfig: S.optional(__S(944, __c29, 16)),
         }),
       ).annotate({ identifier: "Cluster" });
+    case 12:
+      return S.suspend(() => S.Struct({ cluster: S.optional(__S(907, __c28, 11)) })).annotate({
+        identifier: "CreateClusterResponse",
+      });
   }
 }
-function __c32(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ enabled: S.optional(S.Boolean) })).annotate({
@@ -5448,14 +5395,14 @@ function __c32(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ types: S.optional(__S(960, __c30, 0)), enabled: S.optional(S.Boolean) }),
+        S.Struct({ types: S.optional(__S(864, __c27, 0)), enabled: S.optional(S.Boolean) }),
       ).annotate({ identifier: "LogSetup" });
     case 2:
-      return S.Array(__S(1025, __c32, 1));
+      return S.Array(__S(929, __c29, 1));
     case 3:
-      return S.suspend(() =>
-        S.Struct({ clusterLogging: S.optional(__S(1026, __c32, 2)) }),
-      ).annotate({ identifier: "Logging" });
+      return S.suspend(() => S.Struct({ clusterLogging: S.optional(__S(930, __c29, 2)) })).annotate(
+        { identifier: "Logging" },
+      );
     case 4:
       return S.suspend(() => S.Struct({ supportType: S.optional(S.String) })).annotate({
         identifier: "UpgradePolicyRequest",
@@ -5465,16 +5412,14 @@ function __c32(j: number): any {
         identifier: "RemoteNodeNetwork",
       });
     case 6:
-      return S.Array(__S(1029, __c32, 5));
+      return S.Array(__S(933, __c29, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          remoteNodeNetworks: S.optional(__S(1030, __c32, 6)),
-          remotePodNetworks: S.optional(__S(1030, __c32, 6)),
+          remoteNodeNetworks: S.optional(__S(934, __c29, 6)),
+          remotePodNetworks: S.optional(__S(934, __c29, 6)),
         }),
-      ).annotate({
-        identifier: "RemoteNetworkConfigRequest",
-      });
+      ).annotate({ identifier: "RemoteNetworkConfigRequest" });
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -5484,7 +5429,7 @@ function __c32(j: number): any {
         }),
       ).annotate({ identifier: "ComputeConfigRequest" });
     case 9:
-      return S.suspend(() => S.Struct({ blockStorage: S.optional(__S(1024, __c32, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ blockStorage: S.optional(__S(928, __c29, 0)) })).annotate({
         identifier: "StorageConfigRequest",
       });
     case 10:
@@ -5495,53 +5440,35 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           eventTtl: S.optional(S.String),
-          serviceNodePortRange: S.optional(__S(928, __c29, 0)),
+          serviceNodePortRange: S.optional(__S(832, __c26, 0)),
         }),
-      ).annotate({
-        identifier: "KubeApiServerConfigRequest",
-      });
+      ).annotate({ identifier: "KubeApiServerConfigRequest" });
     case 12:
       return S.suspend(() =>
-        S.Struct({ scoringStrategy: S.optional(__S(931, __c29, 3)) }),
+        S.Struct({ scoringStrategy: S.optional(__S(835, __c26, 3)) }),
       ).annotate({ identifier: "NodeResourcesFitConfig" });
     case 13:
       return S.suspend(() =>
-        S.Struct({ nodeResourcesFit: S.optional(__S(1036, __c32, 12)) }),
-      ).annotate({
-        identifier: "KubeSchedulerConfigRequest",
-      });
+        S.Struct({ nodeResourcesFit: S.optional(__S(940, __c29, 12)) }),
+      ).annotate({ identifier: "KubeSchedulerConfigRequest" });
     case 14:
       return S.suspend(() => S.Struct({ terminatedPodGcThreshold: S.optional(S.Number) })).annotate(
-        {
-          identifier: "PodGcControllerConfigRequest",
-        },
+        { identifier: "PodGcControllerConfigRequest" },
       );
     case 15:
       return S.suspend(() =>
         S.Struct({ horizontalPodAutoscalerSyncPeriod: S.optional(S.String) }),
-      ).annotate({
-        identifier: "HorizontalPodAutoscalerControllerConfigRequest",
-      });
+      ).annotate({ identifier: "HorizontalPodAutoscalerControllerConfigRequest" });
     case 16:
       return S.suspend(() =>
         S.Struct({
-          podGcControllerConfig: S.optional(__S(1038, __c32, 14)),
-          horizontalPodAutoscalerControllerConfig: S.optional(__S(1039, __c32, 15)),
+          podGcControllerConfig: S.optional(__S(942, __c29, 14)),
+          horizontalPodAutoscalerControllerConfig: S.optional(__S(943, __c29, 15)),
         }),
-      ).annotate({
-        identifier: "KubeControllerManagerConfigRequest",
-      });
+      ).annotate({ identifier: "KubeControllerManagerConfigRequest" });
   }
 }
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ cluster: S.optional(__S(1003, __c31, 11)) })).annotate({
-        identifier: "CreateClusterResponse",
-      });
-  }
-}
-function __c34(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5559,20 +5486,18 @@ function __c34(j: number): any {
         S.Struct({
           serviceIpv4Cidr: S.optional(S.String),
           ipFamily: S.optional(S.String),
-          elasticLoadBalancing: S.optional(__S(1024, __c32, 0)),
+          elasticLoadBalancing: S.optional(__S(928, __c29, 0)),
         }),
-      ).annotate({
-        identifier: "KubernetesNetworkConfigRequest",
-      });
+      ).annotate({ identifier: "KubernetesNetworkConfigRequest" });
   }
 }
-function __c35(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          term: __S(1152, __c36, 0),
+          term: __S(1024, __c32, 0),
           licenseQuantity: S.optional(S.Number),
           licenseType: S.optional(S.String),
           autoRenew: S.optional(S.Boolean),
@@ -5588,25 +5513,21 @@ function __c35(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateEksAnywhereSubscriptionRequest",
-      });
+      ).annotate({ identifier: "CreateEksAnywhereSubscriptionRequest" });
   }
 }
-function __c36(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ duration: S.optional(S.Number), unit: S.optional(S.String) }),
-      ).annotate({
-        identifier: "EksAnywhereSubscriptionTerm",
-      });
+      ).annotate({ identifier: "EksAnywhereSubscriptionTerm" });
     case 1:
       return S.suspend(() =>
         S.Struct({ id: S.optional(S.String), token: S.optional(S.String) }),
       ).annotate({ identifier: "License" });
     case 2:
-      return S.Array(__S(1153, __c36, 1));
+      return S.Array(__S(1025, __c32, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5617,25 +5538,25 @@ function __c36(j: number): any {
           expirationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           licenseQuantity: S.optional(S.Number),
           licenseType: S.optional(S.String),
-          term: S.optional(__S(1152, __c36, 0)),
+          term: S.optional(__S(1024, __c32, 0)),
           status: S.optional(S.String),
           autoRenew: S.optional(S.Boolean),
           licenseArns: S.optional(__S(0, __c0, 0)),
-          licenses: S.optional(__S(1154, __c36, 2)),
+          licenses: S.optional(__S(1026, __c32, 2)),
           tags: S.optional(__S(384, __c12, 0)),
         }),
       ).annotate({ identifier: "EksAnywhereSubscription" });
   }
 }
-function __c37(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ subscription: S.optional(__S(1155, __c36, 3)) })).annotate({
+      return S.suspend(() => S.Struct({ subscription: S.optional(__S(1027, __c32, 3)) })).annotate({
         identifier: "CreateEksAnywhereSubscriptionResponse",
       });
   }
 }
-function __c38(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5644,7 +5565,7 @@ function __c38(j: number): any {
           clusterName: S.String.pipe(T.HttpLabel("clusterName")),
           podExecutionRoleArn: S.String,
           subnets: S.optional(__S(0, __c0, 0)),
-          selectors: S.optional(__S(1249, __c39, 1)),
+          selectors: S.optional(__S(1121, __c35, 1)),
           clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           tags: S.optional(__S(384, __c12, 0)),
         }).pipe(
@@ -5657,19 +5578,17 @@ function __c38(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateFargateProfileRequest",
-      });
+      ).annotate({ identifier: "CreateFargateProfileRequest" });
   }
 }
-function __c39(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ namespace: S.optional(S.String), labels: S.optional(__S(416, __c13, 0)) }),
+        S.Struct({ namespace: S.optional(S.String), labels: S.optional(__S(384, __c12, 0)) }),
       ).annotate({ identifier: "FargateProfileSelector" });
     case 1:
-      return S.Array(__S(1248, __c39, 0));
+      return S.Array(__S(1120, __c35, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5679,45 +5598,43 @@ function __c39(j: number): any {
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           podExecutionRoleArn: S.optional(S.String),
           subnets: S.optional(__S(0, __c0, 0)),
-          selectors: S.optional(__S(1249, __c39, 1)),
+          selectors: S.optional(__S(1121, __c35, 1)),
           status: S.optional(S.String),
           tags: S.optional(__S(384, __c12, 0)),
-          health: S.optional(__S(610, __c19, 2)),
+          health: S.optional(__S(546, __c17, 2)),
         }),
       ).annotate({ identifier: "FargateProfile" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ fargateProfile: S.optional(__S(1250, __c39, 2)) }),
-      ).annotate({
-        identifier: "CreateFargateProfileResponse",
-      });
+        S.Struct({ fargateProfile: S.optional(__S(1122, __c35, 2)) }),
+      ).annotate({ identifier: "CreateFargateProfileResponse" });
   }
 }
-function __c40(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           clusterName: S.String.pipe(T.HttpLabel("clusterName")),
           nodegroupName: S.String,
-          scalingConfig: S.optional(__S(1376, __c43, 0)),
+          scalingConfig: S.optional(__S(1216, __c38, 0)),
           diskSize: S.optional(S.Number),
           subnets: __S(0, __c0, 0),
           instanceTypes: S.optional(__S(0, __c0, 0)),
           amiType: S.optional(S.String),
-          remoteAccess: S.optional(__S(1344, __c42, 0)),
+          remoteAccess: S.optional(__S(1184, __c37, 0)),
           nodeRole: S.String,
           labels: S.optional(__S(384, __c12, 0)),
-          taints: S.optional(__S(1378, __c43, 2)),
+          taints: S.optional(__S(1218, __c38, 2)),
           tags: S.optional(__S(384, __c12, 0)),
           clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          launchTemplate: S.optional(__S(1408, __c44, 0)),
-          updateConfig: S.optional(__S(1379, __c43, 3)),
-          nodeRepairConfig: S.optional(__S(1382, __c43, 6)),
+          launchTemplate: S.optional(__S(1248, __c39, 0)),
+          updateConfig: S.optional(__S(1219, __c38, 3)),
+          nodeRepairConfig: S.optional(__S(1222, __c38, 6)),
           capacityType: S.optional(S.String),
           version: S.optional(S.String),
           releaseVersion: S.optional(S.String),
-          warmPoolConfig: S.optional(__S(1383, __c43, 7)),
+          warmPoolConfig: S.optional(__S(1223, __c38, 7)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/clusters/{clusterName}/node-groups" }),
@@ -5731,15 +5648,7 @@ function __c40(j: number): any {
       ).annotate({ identifier: "CreateNodegroupRequest" });
   }
 }
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ nodegroup: S.optional(__S(1348, __c42, 4)) })).annotate({
-        identifier: "CreateNodegroupResponse",
-      });
-  }
-}
-function __c42(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5753,11 +5662,11 @@ function __c42(j: number): any {
         identifier: "AutoScalingGroup",
       });
     case 2:
-      return S.Array(__S(1345, __c42, 1));
+      return S.Array(__S(1185, __c37, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          autoScalingGroups: S.optional(__S(1346, __c42, 2)),
+          autoScalingGroups: S.optional(__S(1186, __c37, 2)),
           remoteAccessSecurityGroup: S.optional(S.String),
         }),
       ).annotate({ identifier: "NodegroupResources" });
@@ -5773,27 +5682,31 @@ function __c42(j: number): any {
           modifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           status: S.optional(S.String),
           capacityType: S.optional(S.String),
-          scalingConfig: S.optional(__S(1376, __c43, 0)),
+          scalingConfig: S.optional(__S(1216, __c38, 0)),
           instanceTypes: S.optional(__S(0, __c0, 0)),
           subnets: S.optional(__S(0, __c0, 0)),
-          remoteAccess: S.optional(__S(1344, __c42, 0)),
+          remoteAccess: S.optional(__S(1184, __c37, 0)),
           amiType: S.optional(S.String),
           nodeRole: S.optional(S.String),
           labels: S.optional(__S(384, __c12, 0)),
-          taints: S.optional(__S(1378, __c43, 2)),
-          resources: S.optional(__S(1347, __c42, 3)),
+          taints: S.optional(__S(1218, __c38, 2)),
+          resources: S.optional(__S(1187, __c37, 3)),
           diskSize: S.optional(S.Number),
-          health: S.optional(__S(610, __c19, 2)),
-          updateConfig: S.optional(__S(1379, __c43, 3)),
-          nodeRepairConfig: S.optional(__S(1382, __c43, 6)),
-          launchTemplate: S.optional(__S(1408, __c44, 0)),
+          health: S.optional(__S(546, __c17, 2)),
+          updateConfig: S.optional(__S(1219, __c38, 3)),
+          nodeRepairConfig: S.optional(__S(1222, __c38, 6)),
+          launchTemplate: S.optional(__S(1248, __c39, 0)),
           tags: S.optional(__S(384, __c12, 0)),
-          warmPoolConfig: S.optional(__S(1383, __c43, 7)),
+          warmPoolConfig: S.optional(__S(1223, __c38, 7)),
         }),
       ).annotate({ identifier: "Nodegroup" });
+    case 5:
+      return S.suspend(() => S.Struct({ nodegroup: S.optional(__S(1188, __c37, 4)) })).annotate({
+        identifier: "CreateNodegroupResponse",
+      });
   }
 }
-function __c43(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5812,7 +5725,7 @@ function __c43(j: number): any {
         }),
       ).annotate({ identifier: "Taint" });
     case 2:
-      return S.Array(__S(1377, __c43, 1));
+      return S.Array(__S(1217, __c38, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5829,11 +5742,9 @@ function __c43(j: number): any {
           minRepairWaitTimeMins: S.optional(S.Number),
           repairAction: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "NodeRepairConfigOverrides",
-      });
+      ).annotate({ identifier: "NodeRepairConfigOverrides" });
     case 5:
-      return S.Array(__S(1380, __c43, 4));
+      return S.Array(__S(1220, __c38, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5842,7 +5753,7 @@ function __c43(j: number): any {
           maxUnhealthyNodeThresholdPercentage: S.optional(S.Number),
           maxParallelNodesRepairedCount: S.optional(S.Number),
           maxParallelNodesRepairedPercentage: S.optional(S.Number),
-          nodeRepairConfigOverrides: S.optional(__S(1381, __c43, 5)),
+          nodeRepairConfigOverrides: S.optional(__S(1221, __c38, 5)),
         }),
       ).annotate({ identifier: "NodeRepairConfig" });
     case 7:
@@ -5857,7 +5768,7 @@ function __c43(j: number): any {
       ).annotate({ identifier: "WarmPoolConfig" });
   }
 }
-function __c44(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5866,12 +5777,10 @@ function __c44(j: number): any {
           version: S.optional(S.String),
           id: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateSpecification",
-      });
+      ).annotate({ identifier: "LaunchTemplateSpecification" });
   }
 }
-function __c45(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5895,12 +5804,10 @@ function __c45(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreatePodIdentityAssociationRequest",
-      });
+      ).annotate({ identifier: "CreatePodIdentityAssociationRequest" });
   }
 }
-function __c46(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5922,12 +5829,12 @@ function __c46(j: number): any {
         }),
       ).annotate({ identifier: "PodIdentityAssociation" });
     case 1:
-      return S.suspend(() => S.Struct({ association: S.optional(__S(1472, __c46, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ association: S.optional(__S(1312, __c41, 0)) })).annotate({
         identifier: "CreatePodIdentityAssociationResponse",
       });
   }
 }
-function __c47(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5950,15 +5857,13 @@ function __c47(j: number): any {
       ).annotate({ identifier: "DeleteAccessEntryRequest" });
   }
 }
-function __c48(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAccessEntryResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteAccessEntryResponse" });
   }
 }
-function __c49(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5979,7 +5884,7 @@ function __c49(j: number): any {
       ).annotate({ identifier: "DeleteAddonRequest" });
   }
 }
-function __c50(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6002,7 +5907,7 @@ function __c50(j: number): any {
       ).annotate({ identifier: "DeleteCapabilityRequest" });
   }
 }
-function __c51(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6026,12 +5931,10 @@ function __c51(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteCertificateAuthorityRequest",
-      });
+      ).annotate({ identifier: "DeleteCertificateAuthorityRequest" });
   }
 }
-function __c52(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6048,7 +5951,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "DeleteClusterRequest" });
   }
 }
-function __c53(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6062,12 +5965,10 @@ function __c53(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteEksAnywhereSubscriptionRequest",
-      });
+      ).annotate({ identifier: "DeleteEksAnywhereSubscriptionRequest" });
   }
 }
-function __c54(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6087,12 +5988,10 @@ function __c54(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteFargateProfileRequest",
-      });
+      ).annotate({ identifier: "DeleteFargateProfileRequest" });
   }
 }
-function __c55(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6115,7 +6014,7 @@ function __c55(j: number): any {
       ).annotate({ identifier: "DeleteNodegroupRequest" });
   }
 }
-function __c56(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6135,12 +6034,10 @@ function __c56(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeletePodIdentityAssociationRequest",
-      });
+      ).annotate({ identifier: "DeletePodIdentityAssociationRequest" });
   }
 }
-function __c57(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6155,13 +6052,9 @@ function __c57(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeregisterClusterRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({ cluster: S.optional(__S(1003, __c31, 11)) })).annotate({
-        identifier: "DeregisterClusterResponse",
-      });
   }
 }
-function __c58(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6178,12 +6071,10 @@ function __c58(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeAccessEntryRequest",
-      });
+      ).annotate({ identifier: "DescribeAccessEntryRequest" });
   }
 }
-function __c59(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6203,7 +6094,7 @@ function __c59(j: number): any {
       ).annotate({ identifier: "DescribeAddonRequest" });
   }
 }
-function __c60(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6220,34 +6111,28 @@ function __c60(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeAddonConfigurationRequest",
-      });
+      ).annotate({ identifier: "DescribeAddonConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           serviceAccount: S.optional(S.String),
           recommendedManagedPolicies: S.optional(__S(0, __c0, 0)),
         }),
-      ).annotate({
-        identifier: "AddonPodIdentityConfiguration",
-      });
+      ).annotate({ identifier: "AddonPodIdentityConfiguration" });
     case 2:
-      return S.Array(__S(1921, __c60, 1));
+      return S.Array(__S(1761, __c55, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           addonName: S.optional(S.String),
           addonVersion: S.optional(S.String),
           configurationSchema: S.optional(S.String),
-          podIdentityConfiguration: S.optional(__S(1922, __c60, 2)),
+          podIdentityConfiguration: S.optional(__S(1762, __c55, 2)),
         }),
-      ).annotate({
-        identifier: "DescribeAddonConfigurationResponse",
-      });
+      ).annotate({ identifier: "DescribeAddonConfigurationResponse" });
   }
 }
-function __c61(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6269,9 +6154,7 @@ function __c61(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeAddonVersionsRequest",
-      });
+      ).annotate({ identifier: "DescribeAddonVersionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6281,43 +6164,41 @@ function __c61(j: number): any {
         }),
       ).annotate({ identifier: "Compatibility" });
     case 2:
-      return S.Array(__S(1953, __c61, 1));
+      return S.Array(__S(1793, __c56, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           addonVersion: S.optional(S.String),
           architecture: S.optional(__S(0, __c0, 0)),
           computeTypes: S.optional(__S(0, __c0, 0)),
-          compatibilities: S.optional(__S(1954, __c61, 2)),
+          compatibilities: S.optional(__S(1794, __c56, 2)),
           requiresConfiguration: S.optional(S.Boolean),
           requiresIamPermissions: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AddonVersionInfo" });
     case 4:
-      return S.Array(__S(1955, __c61, 3));
+      return S.Array(__S(1795, __c56, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           addonName: S.optional(S.String),
           type: S.optional(S.String),
-          addonVersions: S.optional(__S(1956, __c61, 4)),
+          addonVersions: S.optional(__S(1796, __c56, 4)),
           publisher: S.optional(S.String),
           owner: S.optional(S.String),
-          marketplaceInformation: S.optional(__S(672, __c21, 0)),
+          marketplaceInformation: S.optional(__S(608, __c19, 0)),
           defaultNamespace: S.optional(S.String),
         }),
       ).annotate({ identifier: "AddonInfo" });
     case 6:
-      return S.Array(__S(1957, __c61, 5));
+      return S.Array(__S(1797, __c56, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ addons: S.optional(__S(1958, __c61, 6)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DescribeAddonVersionsResponse",
-      });
+        S.Struct({ addons: S.optional(__S(1798, __c56, 6)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "DescribeAddonVersionsResponse" });
   }
 }
-function __c62(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6334,16 +6215,10 @@ function __c62(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeCapabilityRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ capability: S.optional(__S(806, __c25, 6)) })).annotate({
-        identifier: "DescribeCapabilityResponse",
-      });
+      ).annotate({ identifier: "DescribeCapabilityRequest" });
   }
 }
-function __c63(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6363,27 +6238,21 @@ function __c63(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeCertificateAuthorityRequest",
-      });
+      ).annotate({ identifier: "DescribeCertificateAuthorityRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           notBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           notAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "CertificateAuthorityValidity",
-      });
+      ).annotate({ identifier: "CertificateAuthorityValidity" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           firstAutoActivation: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           finalAutoActivation: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "CertificateAuthorityScheduledEvents",
-      });
+      ).annotate({ identifier: "CertificateAuthorityScheduledEvents" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6394,21 +6263,19 @@ function __c63(j: number): any {
           activatedBy: S.optional(S.String),
           signingStatus: S.optional(S.String),
           distributionStatus: S.optional(S.String),
-          validity: S.optional(__S(2017, __c63, 1)),
-          scheduledEvents: S.optional(__S(2018, __c63, 2)),
+          validity: S.optional(__S(1857, __c58, 1)),
+          scheduledEvents: S.optional(__S(1858, __c58, 2)),
           rollbackAvailable: S.optional(S.Boolean),
           data: S.optional(S.String),
         }),
       ).annotate({ identifier: "CertificateAuthority" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ certificateAuthority: S.optional(__S(2019, __c63, 3)) }),
-      ).annotate({
-        identifier: "DescribeCertificateAuthorityResponse",
-      });
+        S.Struct({ certificateAuthority: S.optional(__S(1859, __c58, 3)) }),
+      ).annotate({ identifier: "DescribeCertificateAuthorityResponse" });
   }
 }
-function __c64(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6418,7 +6285,7 @@ function __c64(j: number): any {
       ).annotate({ identifier: "DescribeClusterRequest" });
   }
 }
-function __c65(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6434,9 +6301,7 @@ function __c65(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/cluster-versions" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeClusterVersionsRequest",
-      });
+      ).annotate({ identifier: "DescribeClusterVersionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ min: S.optional(S.String), max: S.optional(S.String) }),
@@ -6445,7 +6310,7 @@ function __c65(j: number): any {
       return S.suspend(() =>
         S.Struct({
           defaultValue: S.optional(S.String),
-          constraints: S.optional(__S(2081, __c65, 1)),
+          constraints: S.optional(__S(1921, __c60, 1)),
         }),
       ).annotate({ identifier: "DurationParameterConfig" });
     case 3:
@@ -6455,26 +6320,24 @@ function __c65(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          minPort: S.optional(__S(2083, __c65, 3)),
-          maxPort: S.optional(__S(2083, __c65, 3)),
+          minPort: S.optional(__S(1923, __c60, 3)),
+          maxPort: S.optional(__S(1923, __c60, 3)),
         }),
       ).annotate({ identifier: "PortRangeConstraints" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          defaultValue: S.optional(__S(928, __c29, 0)),
-          constraints: S.optional(__S(2084, __c65, 4)),
+          defaultValue: S.optional(__S(832, __c26, 0)),
+          constraints: S.optional(__S(1924, __c60, 4)),
         }),
       ).annotate({ identifier: "PortRangeParameterConfig" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          eventTtl: S.optional(__S(2082, __c65, 2)),
-          serviceNodePortRange: S.optional(__S(2085, __c65, 5)),
+          eventTtl: S.optional(__S(1922, __c60, 2)),
+          serviceNodePortRange: S.optional(__S(1925, __c60, 5)),
         }),
-      ).annotate({
-        identifier: "KubeApiServerVersionConfig",
-      });
+      ).annotate({ identifier: "KubeApiServerVersionConfig" });
     case 7:
       return S.suspend(() => S.Struct({ allowedValues: S.optional(__S(0, __c0, 0)) })).annotate({
         identifier: "AllowedValuesConstraint",
@@ -6482,72 +6345,60 @@ function __c65(j: number): any {
     case 8:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(__S(2087, __c65, 7)),
-          weight: S.optional(__S(2083, __c65, 3)),
+          name: S.optional(__S(1927, __c60, 7)),
+          weight: S.optional(__S(1923, __c60, 3)),
         }),
       ).annotate({ identifier: "ResourceConstraints" });
     case 9:
       return S.suspend(() =>
         S.Struct({
-          scoringStrategy: S.optional(__S(2087, __c65, 7)),
-          resources: S.optional(__S(2088, __c65, 8)),
+          scoringStrategy: S.optional(__S(1927, __c60, 7)),
+          resources: S.optional(__S(1928, __c60, 8)),
         }),
-      ).annotate({
-        identifier: "ScoringStrategyConstraints",
-      });
+      ).annotate({ identifier: "ScoringStrategyConstraints" });
     case 10:
       return S.suspend(() =>
         S.Struct({
-          defaultValue: S.optional(__S(931, __c29, 3)),
-          constraints: S.optional(__S(2089, __c65, 9)),
+          defaultValue: S.optional(__S(835, __c26, 3)),
+          constraints: S.optional(__S(1929, __c60, 9)),
         }),
       ).annotate({ identifier: "ScoringStrategyConfig" });
     case 11:
       return S.suspend(() =>
-        S.Struct({ scoringStrategy: S.optional(__S(2090, __c65, 10)) }),
-      ).annotate({
-        identifier: "NodeResourcesFitVersionConfig",
-      });
+        S.Struct({ scoringStrategy: S.optional(__S(1930, __c60, 10)) }),
+      ).annotate({ identifier: "NodeResourcesFitVersionConfig" });
     case 12:
       return S.suspend(() =>
-        S.Struct({ nodeResourcesFit: S.optional(__S(2091, __c65, 11)) }),
-      ).annotate({
-        identifier: "KubeSchedulerVersionConfig",
-      });
+        S.Struct({ nodeResourcesFit: S.optional(__S(1931, __c60, 11)) }),
+      ).annotate({ identifier: "KubeSchedulerVersionConfig" });
     case 13:
       return S.suspend(() =>
         S.Struct({
           defaultValue: S.optional(S.Number),
-          constraints: S.optional(__S(2083, __c65, 3)),
+          constraints: S.optional(__S(1923, __c60, 3)),
         }),
       ).annotate({ identifier: "IntegerParameterConfig" });
     case 14:
       return S.suspend(() =>
-        S.Struct({ terminatedPodGcThreshold: S.optional(__S(2093, __c65, 13)) }),
-      ).annotate({
-        identifier: "PodGcControllerVersionConfig",
-      });
+        S.Struct({ terminatedPodGcThreshold: S.optional(__S(1933, __c60, 13)) }),
+      ).annotate({ identifier: "PodGcControllerVersionConfig" });
     case 15:
       return S.suspend(() =>
-        S.Struct({ horizontalPodAutoscalerSyncPeriod: S.optional(__S(2082, __c65, 2)) }),
-      ).annotate({
-        identifier: "HorizontalPodAutoscalerControllerVersionConfig",
-      });
+        S.Struct({ horizontalPodAutoscalerSyncPeriod: S.optional(__S(1922, __c60, 2)) }),
+      ).annotate({ identifier: "HorizontalPodAutoscalerControllerVersionConfig" });
     case 16:
       return S.suspend(() =>
         S.Struct({
-          podGcControllerConfig: S.optional(__S(2094, __c65, 14)),
-          horizontalPodAutoscalerControllerConfig: S.optional(__S(2095, __c65, 15)),
+          podGcControllerConfig: S.optional(__S(1934, __c60, 14)),
+          horizontalPodAutoscalerControllerConfig: S.optional(__S(1935, __c60, 15)),
         }),
-      ).annotate({
-        identifier: "KubeControllerManagerVersionConfig",
-      });
+      ).annotate({ identifier: "KubeControllerManagerVersionConfig" });
     case 17:
       return S.suspend(() =>
         S.Struct({
-          kubeApiServerConfig: S.optional(__S(2086, __c65, 6)),
-          kubeSchedulerConfig: S.optional(__S(2092, __c65, 12)),
-          kubeControllerManagerConfig: S.optional(__S(2096, __c65, 16)),
+          kubeApiServerConfig: S.optional(__S(1926, __c60, 6)),
+          kubeSchedulerConfig: S.optional(__S(1932, __c60, 12)),
+          kubeControllerManagerConfig: S.optional(__S(1936, __c60, 16)),
         }),
       ).annotate({ identifier: "ControlPlaneConfigInfo" });
     case 18:
@@ -6557,13 +6408,11 @@ function __c65(j: number): any {
           apiRequestConcurrency: S.optional(S.Number),
           podSchedulingRatePerSecond: S.optional(S.Number),
           clusterDatabaseSizeGb: S.optional(S.Number),
-          controlPlaneComponentConfigOverrides: S.optional(__S(2097, __c65, 17)),
+          controlPlaneComponentConfigOverrides: S.optional(__S(1937, __c60, 17)),
         }),
-      ).annotate({
-        identifier: "ControlPlaneScalingTierInfo",
-      });
+      ).annotate({ identifier: "ControlPlaneScalingTierInfo" });
     case 19:
-      return S.Array(__S(2098, __c65, 18));
+      return S.Array(__S(1938, __c60, 18));
     case 20:
       return S.suspend(() =>
         S.Struct({
@@ -6577,26 +6426,22 @@ function __c65(j: number): any {
           status: S.optional(S.String),
           versionStatus: S.optional(S.String),
           kubernetesPatchVersion: S.optional(S.String),
-          controlPlaneScalingTiers: S.optional(__S(2099, __c65, 19)),
-          controlPlaneComponentConfig: S.optional(__S(2097, __c65, 17)),
+          controlPlaneScalingTiers: S.optional(__S(1939, __c60, 19)),
+          controlPlaneComponentConfig: S.optional(__S(1937, __c60, 17)),
         }),
-      ).annotate({
-        identifier: "ClusterVersionInformation",
-      });
+      ).annotate({ identifier: "ClusterVersionInformation" });
     case 21:
-      return S.Array(__S(2100, __c65, 20));
+      return S.Array(__S(1940, __c60, 20));
     case 22:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          clusterVersions: S.optional(__S(2101, __c65, 21)),
+          clusterVersions: S.optional(__S(1941, __c60, 21)),
         }),
-      ).annotate({
-        identifier: "DescribeClusterVersionsResponse",
-      });
+      ).annotate({ identifier: "DescribeClusterVersionsResponse" });
   }
 }
-function __c66(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6610,12 +6455,10 @@ function __c66(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeEksAnywhereSubscriptionRequest",
-      });
+      ).annotate({ identifier: "DescribeEksAnywhereSubscriptionRequest" });
   }
 }
-function __c67(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6635,18 +6478,16 @@ function __c67(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeFargateProfileRequest",
-      });
+      ).annotate({ identifier: "DescribeFargateProfileRequest" });
   }
 }
-function __c68(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           clusterName: S.String.pipe(T.HttpLabel("clusterName")),
-          identityProviderConfig: __S(2208, __c69, 0),
+          identityProviderConfig: __S(2048, __c64, 0),
         }).pipe(
           T.all(
             T.Http({
@@ -6660,9 +6501,7 @@ function __c68(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeIdentityProviderConfigRequest",
-      });
+      ).annotate({ identifier: "DescribeIdentityProviderConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6675,26 +6514,22 @@ function __c68(j: number): any {
           usernamePrefix: S.optional(S.String),
           groupsClaim: S.optional(S.String),
           groupsPrefix: S.optional(S.String),
-          requiredClaims: S.optional(__S(416, __c13, 0)),
+          requiredClaims: S.optional(__S(384, __c12, 0)),
           tags: S.optional(__S(384, __c12, 0)),
           status: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "OidcIdentityProviderConfig",
-      });
+      ).annotate({ identifier: "OidcIdentityProviderConfig" });
     case 2:
-      return S.suspend(() => S.Struct({ oidc: S.optional(__S(2177, __c68, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ oidc: S.optional(__S(2017, __c63, 1)) })).annotate({
         identifier: "IdentityProviderConfigResponse",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ identityProviderConfig: S.optional(__S(2178, __c68, 2)) }),
-      ).annotate({
-        identifier: "DescribeIdentityProviderConfigResponse",
-      });
+        S.Struct({ identityProviderConfig: S.optional(__S(2018, __c63, 2)) }),
+      ).annotate({ identifier: "DescribeIdentityProviderConfigResponse" });
   }
 }
-function __c69(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ type: S.String, name: S.String })).annotate({
@@ -6702,7 +6537,7 @@ function __c69(j: number): any {
       });
   }
 }
-function __c70(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6729,7 +6564,7 @@ function __c70(j: number): any {
         }),
       ).annotate({ identifier: "InsightResourceDetail" });
     case 2:
-      return S.Array(__S(2241, __c70, 1));
+      return S.Array(__S(2081, __c65, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6739,7 +6574,7 @@ function __c70(j: number): any {
         }),
       ).annotate({ identifier: "ClientStat" });
     case 4:
-      return S.Array(__S(2243, __c70, 3));
+      return S.Array(__S(2083, __c65, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -6747,26 +6582,24 @@ function __c70(j: number): any {
           replacedWith: S.optional(S.String),
           stopServingVersion: S.optional(S.String),
           startServingReplacementVersion: S.optional(S.String),
-          clientStats: S.optional(__S(2244, __c70, 4)),
+          clientStats: S.optional(__S(2084, __c65, 4)),
         }),
       ).annotate({ identifier: "DeprecationDetail" });
     case 6:
-      return S.Array(__S(2245, __c70, 5));
+      return S.Array(__S(2085, __c65, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({ name: S.optional(S.String), compatibleVersions: S.optional(__S(0, __c0, 0)) }),
       ).annotate({ identifier: "AddonCompatibilityDetail" });
     case 8:
-      return S.Array(__S(2247, __c70, 7));
+      return S.Array(__S(2087, __c65, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
-          deprecationDetails: S.optional(__S(2246, __c70, 6)),
-          addonCompatibilityDetails: S.optional(__S(2248, __c70, 8)),
+          deprecationDetails: S.optional(__S(2086, __c65, 6)),
+          addonCompatibilityDetails: S.optional(__S(2088, __c65, 8)),
         }),
-      ).annotate({
-        identifier: "InsightCategorySpecificSummary",
-      });
+      ).annotate({ identifier: "InsightCategorySpecificSummary" });
     case 10:
       return S.suspend(() =>
         S.Struct({
@@ -6779,18 +6612,18 @@ function __c70(j: number): any {
           description: S.optional(S.String),
           insightStatus: S.optional(__S(64, __c2, 0)),
           recommendation: S.optional(S.String),
-          additionalInfo: S.optional(__S(416, __c13, 0)),
-          resources: S.optional(__S(2242, __c70, 2)),
-          categorySpecificSummary: S.optional(__S(2249, __c70, 9)),
+          additionalInfo: S.optional(__S(384, __c12, 0)),
+          resources: S.optional(__S(2082, __c65, 2)),
+          categorySpecificSummary: S.optional(__S(2089, __c65, 9)),
         }),
       ).annotate({ identifier: "Insight" });
     case 11:
-      return S.suspend(() => S.Struct({ insight: S.optional(__S(2250, __c70, 10)) })).annotate({
+      return S.suspend(() => S.Struct({ insight: S.optional(__S(2090, __c65, 10)) })).annotate({
         identifier: "DescribeInsightResponse",
       });
   }
 }
-function __c71(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6804,9 +6637,7 @@ function __c71(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeInsightsRefreshRequest",
-      });
+      ).annotate({ identifier: "DescribeInsightsRefreshRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6815,12 +6646,10 @@ function __c71(j: number): any {
           startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "DescribeInsightsRefreshResponse",
-      });
+      ).annotate({ identifier: "DescribeInsightsRefreshResponse" });
   }
 }
-function __c72(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6838,13 +6667,9 @@ function __c72(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DescribeNodegroupRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({ nodegroup: S.optional(__S(1348, __c42, 4)) })).annotate({
-        identifier: "DescribeNodegroupResponse",
-      });
   }
 }
-function __c73(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6864,12 +6689,10 @@ function __c73(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribePodIdentityAssociationRequest",
-      });
+      ).annotate({ identifier: "DescribePodIdentityAssociationRequest" });
   }
 }
-function __c74(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6892,7 +6715,7 @@ function __c74(j: number): any {
       ).annotate({ identifier: "DescribeUpdateRequest" });
   }
 }
-function __c75(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6913,22 +6736,16 @@ function __c75(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateAccessPolicyRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DisassociateAccessPolicyResponse",
-      });
+      ).annotate({ identifier: "DisassociateAccessPolicyRequest" });
   }
 }
-function __c76(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           clusterName: S.String.pipe(T.HttpLabel("clusterName")),
-          identityProviderConfig: __S(2208, __c69, 0),
+          identityProviderConfig: __S(2048, __c64, 0),
           clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -6943,12 +6760,10 @@ function __c76(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateIdentityProviderConfigRequest",
-      });
+      ).annotate({ identifier: "DisassociateIdentityProviderConfigRequest" });
   }
 }
-function __c77(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6971,12 +6786,10 @@ function __c77(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ accessEntries: S.optional(__S(0, __c0, 0)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListAccessEntriesResponse",
-      });
+      ).annotate({ identifier: "ListAccessEntriesResponse" });
   }
 }
-function __c78(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6986,27 +6799,23 @@ function __c78(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/access-policies" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListAccessPoliciesRequest",
-      });
+      ).annotate({ identifier: "ListAccessPoliciesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ name: S.optional(S.String), arn: S.optional(S.String) }),
       ).annotate({ identifier: "AccessPolicy" });
     case 2:
-      return S.Array(__S(2497, __c78, 1));
+      return S.Array(__S(2337, __c73, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          accessPolicies: S.optional(__S(2498, __c78, 2)),
+          accessPolicies: S.optional(__S(2338, __c73, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListAccessPoliciesResponse",
-      });
+      ).annotate({ identifier: "ListAccessPoliciesResponse" });
   }
 }
-function __c79(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7031,7 +6840,7 @@ function __c79(j: number): any {
       ).annotate({ identifier: "ListAddonsResponse" });
   }
 }
-function __c80(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7053,9 +6862,7 @@ function __c80(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListAssociatedAccessPoliciesRequest",
-      });
+      ).annotate({ identifier: "ListAssociatedAccessPoliciesRequest" });
     case 1:
       return S.Array(__S(225, __c7, 1));
     case 2:
@@ -7064,14 +6871,12 @@ function __c80(j: number): any {
           clusterName: S.optional(S.String),
           principalArn: S.optional(S.String),
           nextToken: S.optional(S.String),
-          associatedAccessPolicies: S.optional(__S(2561, __c80, 1)),
+          associatedAccessPolicies: S.optional(__S(2401, __c75, 1)),
         }),
-      ).annotate({
-        identifier: "ListAssociatedAccessPoliciesResponse",
-      });
+      ).annotate({ identifier: "ListAssociatedAccessPoliciesResponse" });
   }
 }
-function __c81(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7103,17 +6908,17 @@ function __c81(j: number): any {
         }),
       ).annotate({ identifier: "CapabilitySummary" });
     case 2:
-      return S.Array(__S(2593, __c81, 1));
+      return S.Array(__S(2433, __c76, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          capabilities: S.optional(__S(2594, __c81, 2)),
+          capabilities: S.optional(__S(2434, __c76, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListCapabilitiesResponse" });
   }
 }
-function __c82(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7131,23 +6936,19 @@ function __c82(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListCertificateAuthoritiesRequest",
-      });
+      ).annotate({ identifier: "ListCertificateAuthoritiesRequest" });
     case 1:
       return S.Array(__S(160, __c5, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          certificateAuthorities: S.optional(__S(2625, __c82, 1)),
+          certificateAuthorities: S.optional(__S(2465, __c77, 1)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListCertificateAuthoritiesResponse",
-      });
+      ).annotate({ identifier: "ListCertificateAuthoritiesResponse" });
   }
 }
-function __c83(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7163,16 +6964,14 @@ function __c83(j: number): any {
       ).annotate({ identifier: "ListClustersResponse" });
   }
 }
-function __c84(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          includeStatus: S.optional(__S(2688, __c84, 0)).pipe(T.HttpQuery("includeStatus")),
+          includeStatus: S.optional(__S(864, __c27, 0)).pipe(T.HttpQuery("includeStatus")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/eks-anywhere-subscriptions" }),
@@ -7183,23 +6982,19 @@ function __c84(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListEksAnywhereSubscriptionsRequest",
-      });
+      ).annotate({ identifier: "ListEksAnywhereSubscriptionsRequest" });
+    case 1:
+      return S.Array(__S(1027, __c32, 3));
     case 2:
-      return S.Array(__S(1155, __c36, 3));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          subscriptions: S.optional(__S(2690, __c84, 2)),
+          subscriptions: S.optional(__S(2529, __c79, 1)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListEksAnywhereSubscriptionsResponse",
-      });
+      ).annotate({ identifier: "ListEksAnywhereSubscriptionsResponse" });
   }
 }
-function __c85(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7217,21 +7012,17 @@ function __c85(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListFargateProfilesRequest",
-      });
+      ).annotate({ identifier: "ListFargateProfilesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           fargateProfileNames: S.optional(__S(0, __c0, 0)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListFargateProfilesResponse",
-      });
+      ).annotate({ identifier: "ListFargateProfilesResponse" });
   }
 }
-function __c86(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7249,37 +7040,33 @@ function __c86(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListIdentityProviderConfigsRequest",
-      });
+      ).annotate({ identifier: "ListIdentityProviderConfigsRequest" });
     case 1:
-      return S.Array(__S(2208, __c69, 0));
+      return S.Array(__S(2048, __c64, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          identityProviderConfigs: S.optional(__S(2753, __c86, 1)),
+          identityProviderConfigs: S.optional(__S(2593, __c81, 1)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListIdentityProviderConfigsResponse",
-      });
+      ).annotate({ identifier: "ListIdentityProviderConfigsResponse" });
   }
 }
-function __c87(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          categories: S.optional(__S(960, __c30, 0)),
+          categories: S.optional(__S(864, __c27, 0)),
           kubernetesVersions: S.optional(__S(0, __c0, 0)),
-          statuses: S.optional(__S(960, __c30, 0)),
+          statuses: S.optional(__S(864, __c27, 0)),
         }),
       ).annotate({ identifier: "InsightsFilter" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           clusterName: S.String.pipe(T.HttpLabel("clusterName")),
-          filter: S.optional(__S(2784, __c87, 0)),
+          filter: S.optional(__S(2624, __c82, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -7307,14 +7094,14 @@ function __c87(j: number): any {
         }),
       ).annotate({ identifier: "InsightSummary" });
     case 3:
-      return S.Array(__S(2786, __c87, 2));
+      return S.Array(__S(2626, __c82, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ insights: S.optional(__S(2787, __c87, 3)), nextToken: S.optional(S.String) }),
+        S.Struct({ insights: S.optional(__S(2627, __c82, 3)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListInsightsResponse" });
   }
 }
-function __c88(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7339,7 +7126,7 @@ function __c88(j: number): any {
       ).annotate({ identifier: "ListNodegroupsResponse" });
   }
 }
-function __c89(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7359,9 +7146,7 @@ function __c89(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListPodIdentityAssociationsRequest",
-      });
+      ).annotate({ identifier: "ListPodIdentityAssociationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7372,23 +7157,19 @@ function __c89(j: number): any {
           associationId: S.optional(S.String),
           ownerArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "PodIdentityAssociationSummary",
-      });
+      ).annotate({ identifier: "PodIdentityAssociationSummary" });
     case 2:
-      return S.Array(__S(2849, __c89, 1));
+      return S.Array(__S(2689, __c84, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          associations: S.optional(__S(2850, __c89, 2)),
+          associations: S.optional(__S(2690, __c84, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListPodIdentityAssociationsResponse",
-      });
+      ).annotate({ identifier: "ListPodIdentityAssociationsResponse" });
   }
 }
-function __c90(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7402,16 +7183,14 @@ function __c90(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(384, __c12, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c91(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7439,7 +7218,7 @@ function __c91(j: number): any {
       ).annotate({ identifier: "ListUpdatesResponse" });
   }
 }
-function __c92(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ roleArn: S.String, provider: S.String })).annotate({
@@ -7449,7 +7228,7 @@ function __c92(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          connectorConfig: __S(2944, __c92, 0),
+          connectorConfig: __S(2784, __c87, 0),
           clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           tags: S.optional(__S(384, __c12, 0)),
         }).pipe(
@@ -7465,7 +7244,7 @@ function __c92(j: number): any {
       ).annotate({ identifier: "RegisterClusterRequest" });
   }
 }
-function __c93(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7479,18 +7258,14 @@ function __c93(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartInsightsRefreshRequest",
-      });
+      ).annotate({ identifier: "StartInsightsRefreshRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ message: S.optional(S.String), status: S.optional(S.String) }),
-      ).annotate({
-        identifier: "StartInsightsRefreshResponse",
-      });
+      ).annotate({ identifier: "StartInsightsRefreshResponse" });
   }
 }
-function __c94(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7510,7 +7285,7 @@ function __c94(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c95(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7530,7 +7305,7 @@ function __c95(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c96(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7556,7 +7331,7 @@ function __c96(j: number): any {
       ).annotate({ identifier: "UpdateAccessEntryRequest" });
   }
 }
-function __c97(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7568,7 +7343,7 @@ function __c97(j: number): any {
           resolveConflicts: S.optional(S.String),
           clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           configurationValues: S.optional(S.String),
-          podIdentityAssociations: S.optional(__S(705, __c22, 1)),
+          podIdentityAssociations: S.optional(__S(641, __c20, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/clusters/{clusterName}/addons/{addonName}/update" }),
@@ -7582,24 +7357,24 @@ function __c97(j: number): any {
       ).annotate({ identifier: "UpdateAddonRequest" });
   }
 }
-function __c98(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          addOrUpdateRoleMappings: S.optional(__S(835, __c26, 3)),
-          removeRoleMappings: S.optional(__S(835, __c26, 3)),
+          addOrUpdateRoleMappings: S.optional(__S(739, __c23, 3)),
+          removeRoleMappings: S.optional(__S(739, __c23, 3)),
         }),
       ).annotate({ identifier: "UpdateRoleMappings" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          rbacRoleMappings: S.optional(__S(3136, __c98, 0)),
-          networkAccess: S.optional(__S(836, __c26, 4)),
+          rbacRoleMappings: S.optional(__S(2976, __c93, 0)),
+          networkAccess: S.optional(__S(740, __c23, 4)),
         }),
       ).annotate({ identifier: "UpdateArgoCdConfig" });
     case 2:
-      return S.suspend(() => S.Struct({ argoCd: S.optional(__S(3137, __c98, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ argoCd: S.optional(__S(2977, __c93, 1)) })).annotate({
         identifier: "UpdateCapabilityConfiguration",
       });
     case 3:
@@ -7608,7 +7383,7 @@ function __c98(j: number): any {
           clusterName: S.String.pipe(T.HttpLabel("clusterName")),
           capabilityName: S.String.pipe(T.HttpLabel("capabilityName")),
           roleArn: S.optional(S.String),
-          configuration: S.optional(__S(3138, __c98, 2)),
+          configuration: S.optional(__S(2978, __c93, 2)),
           clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           deletePropagationPolicy: S.optional(S.String),
         }).pipe(
@@ -7627,7 +7402,7 @@ function __c98(j: number): any {
       ).annotate({ identifier: "UpdateCapabilityRequest" });
   }
 }
-function __c99(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ authenticationMode: S.optional(S.String) })).annotate({
@@ -7637,21 +7412,21 @@ function __c99(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.HttpLabel("name")),
-          resourcesVpcConfig: S.optional(__S(1088, __c34, 0)),
-          logging: S.optional(__S(1027, __c32, 3)),
+          resourcesVpcConfig: S.optional(__S(960, __c30, 0)),
+          logging: S.optional(__S(931, __c29, 3)),
           clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          accessConfig: S.optional(__S(3168, __c99, 0)),
-          upgradePolicy: S.optional(__S(1028, __c32, 4)),
-          zonalShiftConfig: S.optional(__S(1024, __c32, 0)),
-          computeConfig: S.optional(__S(1032, __c32, 8)),
-          kubernetesNetworkConfig: S.optional(__S(1089, __c34, 1)),
-          storageConfig: S.optional(__S(1033, __c32, 9)),
-          remoteNetworkConfig: S.optional(__S(1031, __c32, 7)),
+          accessConfig: S.optional(__S(3008, __c94, 0)),
+          upgradePolicy: S.optional(__S(932, __c29, 4)),
+          zonalShiftConfig: S.optional(__S(928, __c29, 0)),
+          computeConfig: S.optional(__S(936, __c29, 8)),
+          kubernetesNetworkConfig: S.optional(__S(961, __c30, 1)),
+          storageConfig: S.optional(__S(937, __c29, 9)),
+          remoteNetworkConfig: S.optional(__S(935, __c29, 7)),
           deletionProtection: S.optional(S.Boolean),
-          controlPlaneScalingConfig: S.optional(__S(1034, __c32, 10)),
-          kubeApiServerConfig: S.optional(__S(1035, __c32, 11)),
-          kubeSchedulerConfig: S.optional(__S(1037, __c32, 13)),
-          kubeControllerManagerConfig: S.optional(__S(1040, __c32, 16)),
+          controlPlaneScalingConfig: S.optional(__S(938, __c29, 10)),
+          kubeApiServerConfig: S.optional(__S(939, __c29, 11)),
+          kubeSchedulerConfig: S.optional(__S(941, __c29, 13)),
+          kubeControllerManagerConfig: S.optional(__S(944, __c29, 16)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/clusters/{name}/update-config" }),
@@ -7662,12 +7437,10 @@ function __c99(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateClusterConfigRequest",
-      });
+      ).annotate({ identifier: "UpdateClusterConfigRequest" });
   }
 }
-function __c100(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ timeoutMinutes: S.optional(S.Number) })).annotate({
@@ -7680,7 +7453,7 @@ function __c100(j: number): any {
           version: S.String,
           clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           force: S.optional(S.Boolean),
-          rollbackConfig: S.optional(__S(3200, __c100, 0)),
+          rollbackConfig: S.optional(__S(3040, __c95, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/clusters/{name}/updates" }),
@@ -7691,12 +7464,10 @@ function __c100(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateClusterVersionRequest",
-      });
+      ).annotate({ identifier: "UpdateClusterVersionRequest" });
   }
 }
-function __c101(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7714,12 +7485,10 @@ function __c101(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateEksAnywhereSubscriptionRequest",
-      });
+      ).annotate({ identifier: "UpdateEksAnywhereSubscriptionRequest" });
   }
 }
-function __c102(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7731,8 +7500,8 @@ function __c102(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          addOrUpdateTaints: S.optional(__S(1378, __c43, 2)),
-          removeTaints: S.optional(__S(1378, __c43, 2)),
+          addOrUpdateTaints: S.optional(__S(1218, __c38, 2)),
+          removeTaints: S.optional(__S(1218, __c38, 2)),
         }),
       ).annotate({ identifier: "UpdateTaintsPayload" });
     case 2:
@@ -7740,12 +7509,12 @@ function __c102(j: number): any {
         S.Struct({
           clusterName: S.String.pipe(T.HttpLabel("clusterName")),
           nodegroupName: S.String.pipe(T.HttpLabel("nodegroupName")),
-          labels: S.optional(__S(3264, __c102, 0)),
-          taints: S.optional(__S(3265, __c102, 1)),
-          scalingConfig: S.optional(__S(1376, __c43, 0)),
-          updateConfig: S.optional(__S(1379, __c43, 3)),
-          nodeRepairConfig: S.optional(__S(1382, __c43, 6)),
-          warmPoolConfig: S.optional(__S(1383, __c43, 7)),
+          labels: S.optional(__S(3104, __c97, 0)),
+          taints: S.optional(__S(3105, __c97, 1)),
+          scalingConfig: S.optional(__S(1216, __c38, 0)),
+          updateConfig: S.optional(__S(1219, __c38, 3)),
+          nodeRepairConfig: S.optional(__S(1222, __c38, 6)),
+          warmPoolConfig: S.optional(__S(1223, __c38, 7)),
           clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -7760,12 +7529,10 @@ function __c102(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateNodegroupConfigRequest",
-      });
+      ).annotate({ identifier: "UpdateNodegroupConfigRequest" });
   }
 }
-function __c103(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7774,7 +7541,7 @@ function __c103(j: number): any {
           nodegroupName: S.String.pipe(T.HttpLabel("nodegroupName")),
           version: S.optional(S.String),
           releaseVersion: S.optional(S.String),
-          launchTemplate: S.optional(__S(1408, __c44, 0)),
+          launchTemplate: S.optional(__S(1248, __c39, 0)),
           force: S.optional(S.Boolean),
           clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -7790,12 +7557,10 @@ function __c103(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateNodegroupVersionRequest",
-      });
+      ).annotate({ identifier: "UpdateNodegroupVersionRequest" });
   }
 }
-function __c104(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7820,9 +7585,7 @@ function __c104(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdatePodIdentityAssociationRequest",
-      });
+      ).annotate({ identifier: "UpdatePodIdentityAssociationRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

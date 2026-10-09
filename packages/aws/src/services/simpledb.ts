@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -571,9 +571,7 @@ function __c0(j: number): any {
           DomainName: S.String,
           Items: __S(1, __c0, 1).pipe(T.XmlName("Item"), T.XmlFlattened()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "BatchDeleteAttributesRequest",
-      });
+      ).annotate({ identifier: "BatchDeleteAttributesRequest" });
     case 3:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "BatchDeleteAttributesResponse",
@@ -607,9 +605,7 @@ function __c2(j: number): any {
           DomainName: S.String,
           Items: __S(9, __c2, 1).pipe(T.XmlName("Item"), T.XmlFlattened()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "BatchPutAttributesRequest",
-      });
+      ).annotate({ identifier: "BatchPutAttributesRequest" });
     case 3:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "BatchPutAttributesResponse",

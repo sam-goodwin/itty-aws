@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -400,9 +400,7 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchGetDiscoverableRegistryRecordRequest",
-      });
+      ).annotate({ identifier: "BatchGetDiscoverableRegistryRecordRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -411,20 +409,13 @@ function __c1(j: number): any {
           errorCode: S.String,
           message: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchGetDiscoverableRegistryRecordError",
-      });
+      ).annotate({ identifier: "BatchGetDiscoverableRegistryRecordError" });
     case 4:
       return S.Array(__S(19, __c1, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({
-          registryRecords: __S(60, __c3, 12),
-          errors: __S(20, __c1, 4),
-        }),
-      ).annotate({
-        identifier: "BatchGetDiscoverableRegistryRecordResponse",
-      });
+        S.Struct({ registryRecords: __S(60, __c3, 12), errors: __S(20, __c1, 4) }),
+      ).annotate({ identifier: "BatchGetDiscoverableRegistryRecordResponse" });
   }
 }
 function __c2(j: number): any {
@@ -479,9 +470,7 @@ function __c3(j: number): any {
           dataSchemaVersion: S.optional(S.String),
           additionalData: S.optional(__S(54, __c3, 6)),
         }),
-      ).annotate({
-        identifier: "AgentSkillsDefinitionDescriptor",
-      });
+      ).annotate({ identifier: "AgentSkillsDefinitionDescriptor" });
     case 8:
       return S.suspend(() => S.Struct({ data: S.optional(SensitiveString) })).annotate({
         identifier: "CustomDescriptor",
@@ -548,9 +537,7 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDiscoverableRegistryRecordsRequest",
-      });
+      ).annotate({ identifier: "ListDiscoverableRegistryRecordsRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -567,20 +554,13 @@ function __c4(j: number): any {
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           descriptorTypes: S.optional(__S(32, __c2, 0)),
         }),
-      ).annotate({
-        identifier: "DiscoverableRegistryRecordSummary",
-      });
+      ).annotate({ identifier: "DiscoverableRegistryRecordSummary" });
     case 4:
       return S.Array(__S(67, __c4, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({
-          registryRecords: __S(68, __c4, 4),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListDiscoverableRegistryRecordsResponse",
-      });
+        S.Struct({ registryRecords: __S(68, __c4, 4), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListDiscoverableRegistryRecordsResponse" });
   }
 }
 function __c5(j: number): any {
@@ -602,9 +582,7 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SearchDiscoverableRegistryRecordsRequest",
-      });
+      ).annotate({ identifier: "SearchDiscoverableRegistryRecordsRequest" });
     case 1:
       return S.suspend(() => S.Struct({ registryRecords: __S(60, __c3, 12) })).annotate({
         identifier: "SearchDiscoverableRegistryRecordsResponse",

@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -173,7 +173,7 @@ export const queryForecast: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<QueryForecastRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<QueryForecastResponse>,
+  output: __S(13, __c1, 5) as any as S.Schema<QueryForecastResponse>,
   errors: [
     InvalidInputException,
     InvalidNextTokenException,
@@ -203,7 +203,7 @@ export const queryWhatIfForecast: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(16, __c2, 0) as any as S.Schema<QueryWhatIfForecastRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<QueryWhatIfForecastResponse>,
+  output: __S(13, __c1, 5) as any as S.Schema<QueryWhatIfForecastResponse>,
   errors: [
     InvalidInputException,
     InvalidNextTokenException,
@@ -229,10 +229,6 @@ function __c0(j: number): any {
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "QueryForecastRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({ Forecast: S.optional(__S(12, __c1, 4)) })).annotate({
-        identifier: "QueryForecastResponse",
-      });
   }
 }
 function __c1(j: number): any {
@@ -251,6 +247,10 @@ function __c1(j: number): any {
       return S.suspend(() => S.Struct({ Predictions: S.optional(__S(11, __c1, 3)) })).annotate({
         identifier: "Forecast",
       });
+    case 5:
+      return S.suspend(() => S.Struct({ Forecast: S.optional(__S(12, __c1, 4)) })).annotate({
+        identifier: "QueryForecastResponse",
+      });
   }
 }
 function __c2(j: number): any {
@@ -264,13 +264,7 @@ function __c2(j: number): any {
           Filters: __S(8, __c1, 0),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "QueryWhatIfForecastRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ Forecast: S.optional(__S(12, __c1, 4)) })).annotate({
-        identifier: "QueryWhatIfForecastResponse",
-      });
+      ).annotate({ identifier: "QueryWhatIfForecastRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1144,7 +1144,7 @@ export const setCognitoEvents: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(76, __c19, 0) as any as S.Schema<SetCognitoEventsRequest>,
-  output: __S(77, __c19, 1) as any as S.Schema<SetCognitoEventsResponse>,
+  output: __S(80, __c20, 0) as any as S.Schema<SetCognitoEventsResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -1221,7 +1221,7 @@ export const setIdentityPoolConfiguration: API.OperationMethod<
   SetIdentityPoolConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c20, 0) as any as S.Schema<SetIdentityPoolConfigurationRequest>,
+  input: __S(84, __c21, 0) as any as S.Schema<SetIdentityPoolConfigurationRequest>,
   output: __S(54, __c13, 2) as any as S.Schema<SetIdentityPoolConfigurationResponse>,
   errors: [
     ConcurrentModificationException,
@@ -1293,8 +1293,8 @@ export const subscribeToDataset: API.OperationMethod<
   SubscribeToDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c21, 0) as any as S.Schema<SubscribeToDatasetRequest>,
-  output: __S(88, __c22, 0) as any as S.Schema<SubscribeToDatasetResponse>,
+  input: __S(88, __c22, 0) as any as S.Schema<SubscribeToDatasetRequest>,
+  output: __S(80, __c20, 0) as any as S.Schema<SubscribeToDatasetResponse>,
   errors: [
     InternalErrorException,
     InvalidConfigurationException,
@@ -1367,7 +1367,7 @@ export const unsubscribeFromDataset: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(92, __c23, 0) as any as S.Schema<UnsubscribeFromDatasetRequest>,
-  output: __S(88, __c22, 0) as any as S.Schema<UnsubscribeFromDatasetResponse>,
+  output: __S(80, __c20, 0) as any as S.Schema<UnsubscribeFromDatasetResponse>,
   errors: [
     InternalErrorException,
     InvalidConfigurationException,
@@ -1537,15 +1537,11 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeIdentityPoolUsageRequest",
-      });
+      ).annotate({ identifier: "DescribeIdentityPoolUsageRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ IdentityPoolUsage: S.optional(__S(24, __c6, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeIdentityPoolUsageResponse",
-      });
+      ).annotate({ identifier: "DescribeIdentityPoolUsageResponse" });
   }
 }
 function __c6(j: number): any {
@@ -1582,9 +1578,7 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeIdentityUsageRequest",
-      });
+      ).annotate({ identifier: "DescribeIdentityUsageRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1598,9 +1592,7 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ IdentityUsage: S.optional(__S(29, __c7, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeIdentityUsageResponse",
-      });
+      ).annotate({ identifier: "DescribeIdentityUsageResponse" });
   }
 }
 function __c8(j: number): any {
@@ -1621,9 +1613,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetBulkPublishDetailsRequest",
-      });
+      ).annotate({ identifier: "GetBulkPublishDetailsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1633,9 +1623,7 @@ function __c8(j: number): any {
           BulkPublishStatus: S.optional(S.String),
           FailureMessage: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetBulkPublishDetailsResponse",
-      });
+      ).annotate({ identifier: "GetBulkPublishDetailsResponse" });
   }
 }
 function __c9(j: number): any {
@@ -1681,9 +1669,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetIdentityPoolConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetIdentityPoolConfigurationRequest" });
   }
 }
 function __c12(j: number): any {
@@ -1713,9 +1699,7 @@ function __c13(j: number): any {
           PushSync: S.optional(__S(52, __c13, 0)),
           CognitoStreams: S.optional(__S(53, __c13, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetIdentityPoolConfigurationResponse",
-      });
+      ).annotate({ identifier: "GetIdentityPoolConfigurationResponse" });
   }
 }
 function __c14(j: number): any {
@@ -1764,9 +1748,7 @@ function __c15(j: number): any {
         }).pipe(
           T.all(ns, T.Http({ method: "GET", uri: "/identitypools" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListIdentityPoolUsageRequest",
-      });
+      ).annotate({ identifier: "ListIdentityPoolUsageRequest" });
     case 1:
       return S.Array(__S(24, __c6, 0));
     case 2:
@@ -1777,9 +1759,7 @@ function __c15(j: number): any {
           Count: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListIdentityPoolUsageResponse",
-      });
+      ).annotate({ identifier: "ListIdentityPoolUsageResponse" });
   }
 }
 function __c16(j: number): any {
@@ -1891,13 +1871,17 @@ function __c19(j: number): any {
           ),
         ),
       ).annotate({ identifier: "SetCognitoEventsRequest" });
-    case 1:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "SetCognitoEventsResponse",
       });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1916,12 +1900,10 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SetIdentityPoolConfigurationRequest",
-      });
+      ).annotate({ identifier: "SetIdentityPoolConfigurationRequest" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1944,17 +1926,7 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SubscribeToDatasetRequest",
-      });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "SubscribeToDatasetResponse",
-      });
+      ).annotate({ identifier: "SubscribeToDatasetRequest" });
   }
 }
 function __c23(j: number): any {
@@ -1980,9 +1952,7 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UnsubscribeFromDatasetRequest",
-      });
+      ).annotate({ identifier: "UnsubscribeFromDatasetRequest" });
   }
 }
 function __c24(j: number): any {

@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -419,7 +419,7 @@ export const getStyleDescriptor: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(12, __c6, 0) as any as S.Schema<GetStyleDescriptorRequest>,
-  output: __S(13, __c6, 1) as any as S.Schema<GetStyleDescriptorResponse>,
+  output: __S(4, __c2, 0) as any as S.Schema<GetStyleDescriptorResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -607,20 +607,7 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetStyleDescriptorRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Blob: S.optional(T.Blob).pipe(T.HttpPayload()),
-          ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-          CacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-          ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
-        }),
-      ).annotate({
-        identifier: "GetStyleDescriptorResponse",
-      });
+      ).annotate({ identifier: "GetStyleDescriptorRequest" });
   }
 }
 function __c7(j: number): any {

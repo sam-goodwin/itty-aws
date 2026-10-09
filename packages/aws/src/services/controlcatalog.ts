@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -375,7 +375,7 @@ export const listCommonControls: API.PaginatedOperationMethod<
   CommonControlSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(65, __c4, 1) as any as S.Schema<ListCommonControlsRequest>,
-  output: __S(69, __c4, 5) as any as S.Schema<ListCommonControlsResponse>,
+  output: __S(68, __c4, 4) as any as S.Schema<ListCommonControlsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -638,35 +638,25 @@ function __c4(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/common-controls" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListCommonControlsRequest",
-      });
+      ).annotate({ identifier: "ListCommonControlsRequest" });
     case 2:
-      return S.suspend(() =>
-        S.Struct({ Arn: S.optional(S.String), Name: S.optional(S.String) }),
-      ).annotate({
-        identifier: "AssociatedObjectiveSummary",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
           Name: S.String,
           Description: S.String,
           Domain: __S(82, __c5, 2),
-          Objective: __S(66, __c4, 2),
+          Objective: __S(82, __c5, 2),
           CreateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           LastUpdateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "CommonControlSummary" });
+    case 3:
+      return S.Array(__S(66, __c4, 2));
     case 4:
-      return S.Array(__S(67, __c4, 3));
-    case 5:
       return S.suspend(() =>
-        S.Struct({ CommonControls: __S(68, __c4, 4), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListCommonControlsResponse",
-      });
+        S.Struct({ CommonControls: __S(67, __c4, 3), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListCommonControlsResponse" });
   }
 }
 function __c5(j: number): any {
@@ -711,9 +701,7 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListControlMappingsRequest",
-      });
+      ).annotate({ identifier: "ListControlMappingsRequest" });
     case 3:
       return S.suspend(() => S.Struct({ Name: S.String, Item: S.String })).annotate({
         identifier: "FrameworkMappingDetails",
@@ -725,9 +713,7 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({ ControlArn: S.optional(S.String), RelationType: S.String }),
-      ).annotate({
-        identifier: "RelatedControlMappingDetails",
-      });
+      ).annotate({ identifier: "RelatedControlMappingDetails" });
     case 6:
       return S.Union([
         /*@__PURE__*/ S.Struct({ Framework: __S(99, __c6, 3) }),
@@ -743,9 +729,7 @@ function __c6(j: number): any {
     case 9:
       return S.suspend(() =>
         S.Struct({ ControlMappings: __S(104, __c6, 8), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListControlMappingsResponse",
-      });
+      ).annotate({ identifier: "ListControlMappingsResponse" });
   }
 }
 function __c7(j: number): any {

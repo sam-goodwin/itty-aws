@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -201,7 +201,7 @@ export const sample: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(6, __c3, 0) as any as S.Schema<SampleRequest>,
-  output: __S(7, __c3, 1) as any as S.Schema<SampleResponse>,
+  output: __S(8, __c4, 0) as any as S.Schema<SampleResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -234,8 +234,8 @@ export const sampleWithResponseStream: API.OperationMethod<
   SampleWithResponseStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c4, 0) as any as S.Schema<SampleWithResponseStreamRequest>,
-  output: __S(9, __c4, 1) as any as S.Schema<SampleWithResponseStreamResponse>,
+  input: __S(10, __c5, 0) as any as S.Schema<SampleWithResponseStreamRequest>,
+  output: __S(8, __c4, 0) as any as S.Schema<SampleWithResponseStreamResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -321,9 +321,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CompleteRolloutResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "CompleteRolloutResponse" });
   }
 }
 function __c3(j: number): any {
@@ -336,7 +334,11 @@ function __c3(j: number): any {
           Body: T.StreamingInput.pipe(T.HttpPayload()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/sample" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "SampleRequest" });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
@@ -345,7 +347,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "SampleResponse" });
   }
 }
-function __c4(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -363,18 +365,7 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SampleWithResponseStreamRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-          Body: T.StreamingOutput.pipe(T.HttpPayload()),
-        }),
-      ).annotate({
-        identifier: "SampleWithResponseStreamResponse",
-      });
+      ).annotate({ identifier: "SampleWithResponseStreamRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

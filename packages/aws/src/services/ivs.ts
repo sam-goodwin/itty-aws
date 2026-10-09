@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1435,7 +1435,7 @@ export const deletePlaybackRestrictionPolicy: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(400, __c25, 0) as any as S.Schema<DeletePlaybackRestrictionPolicyRequest>,
-  output: __S(416, __c26, 0) as any as S.Schema<DeletePlaybackRestrictionPolicyResponse>,
+  output: __S(352, __c22, 0) as any as S.Schema<DeletePlaybackRestrictionPolicyResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1468,8 +1468,8 @@ export const deleteRecordingConfiguration: API.OperationMethod<
   DeleteRecordingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c27, 0) as any as S.Schema<DeleteRecordingConfigurationRequest>,
-  output: __S(416, __c26, 0) as any as S.Schema<DeleteRecordingConfigurationResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<DeleteRecordingConfigurationRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<DeleteRecordingConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1499,7 +1499,7 @@ export const deleteStreamKey: API.OperationMethod<
   DeleteStreamKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<DeleteStreamKeyRequest>,
+  input: __S(432, __c27, 0) as any as S.Schema<DeleteStreamKeyRequest>,
   output: __S(352, __c22, 0) as any as S.Schema<DeleteStreamKeyResponse>,
   errors: [
     AccessDeniedException,
@@ -1529,8 +1529,8 @@ export const getAdConfiguration: API.OperationMethod<
   GetAdConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c29, 0) as any as S.Schema<GetAdConfigurationRequest>,
-  output: __S(465, __c29, 1) as any as S.Schema<GetAdConfigurationResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<GetAdConfigurationRequest>,
+  output: __S(449, __c28, 1) as any as S.Schema<GetAdConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1558,8 +1558,8 @@ export const getChannel: API.OperationMethod<
   GetChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<GetChannelRequest>,
-  output: __S(496, __c31, 0) as any as S.Schema<GetChannelResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<GetChannelRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<GetChannelResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -1586,8 +1586,8 @@ export const getPlaybackKeyPair: API.OperationMethod<
   GetPlaybackKeyPairError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c32, 0) as any as S.Schema<GetPlaybackKeyPairRequest>,
-  output: __S(529, __c33, 1) as any as S.Schema<GetPlaybackKeyPairResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<GetPlaybackKeyPairRequest>,
+  output: __S(513, __c32, 1) as any as S.Schema<GetPlaybackKeyPairResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -1615,7 +1615,7 @@ export const getPlaybackRestrictionPolicy: API.OperationMethod<
   GetPlaybackRestrictionPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c34, 0) as any as S.Schema<GetPlaybackRestrictionPolicyRequest>,
+  input: __S(528, __c33, 0) as any as S.Schema<GetPlaybackRestrictionPolicyRequest>,
   output: __S(224, __c14, 0) as any as S.Schema<GetPlaybackRestrictionPolicyResponse>,
   errors: [
     AccessDeniedException,
@@ -1645,7 +1645,7 @@ export const getRecordingConfiguration: API.OperationMethod<
   GetRecordingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(560, __c35, 0) as any as S.Schema<GetRecordingConfigurationRequest>,
+  input: __S(544, __c34, 0) as any as S.Schema<GetRecordingConfigurationRequest>,
   output: __S(256, __c16, 0) as any as S.Schema<GetRecordingConfigurationResponse>,
   errors: [
     AccessDeniedException,
@@ -1675,8 +1675,8 @@ export const getStream: API.OperationMethod<
   GetStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c36, 0) as any as S.Schema<GetStreamRequest>,
-  output: __S(578, __c36, 2) as any as S.Schema<GetStreamResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<GetStreamRequest>,
+  output: __S(562, __c35, 2) as any as S.Schema<GetStreamResponse>,
   errors: [
     AccessDeniedException,
     ChannelNotBroadcasting,
@@ -1704,7 +1704,7 @@ export const getStreamKey: API.OperationMethod<
   GetStreamKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c37, 0) as any as S.Schema<GetStreamKeyRequest>,
+  input: __S(576, __c36, 0) as any as S.Schema<GetStreamKeyRequest>,
   output: __S(320, __c20, 0) as any as S.Schema<GetStreamKeyResponse>,
   errors: [
     AccessDeniedException,
@@ -1732,8 +1732,8 @@ export const getStreamSession: API.OperationMethod<
   GetStreamSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c38, 0) as any as S.Schema<GetStreamSessionRequest>,
-  output: __S(618, __c38, 10) as any as S.Schema<GetStreamSessionResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<GetStreamSessionRequest>,
+  output: __S(602, __c37, 10) as any as S.Schema<GetStreamSessionResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -1762,8 +1762,8 @@ export const importPlaybackKeyPair: API.OperationMethod<
   ImportPlaybackKeyPairError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c39, 0) as any as S.Schema<ImportPlaybackKeyPairRequest>,
-  output: __S(529, __c33, 1) as any as S.Schema<ImportPlaybackKeyPairResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<ImportPlaybackKeyPairRequest>,
+  output: __S(513, __c32, 1) as any as S.Schema<ImportPlaybackKeyPairResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1797,8 +1797,8 @@ export const insertAdBreak: API.OperationMethod<
   InsertAdBreakError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c40, 0) as any as S.Schema<InsertAdBreakRequest>,
-  output: __S(641, __c40, 1) as any as S.Schema<InsertAdBreakResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<InsertAdBreakRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<InsertAdBreakResponse>,
   errors: [
     AccessDeniedException,
     ChannelNotBroadcasting,
@@ -1829,8 +1829,8 @@ export const listAdConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AdConfigurationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(656, __c41, 0) as any as S.Schema<ListAdConfigurationsRequest>,
-  output: __S(658, __c41, 2) as any as S.Schema<ListAdConfigurationsResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<ListAdConfigurationsRequest>,
+  output: __S(642, __c40, 2) as any as S.Schema<ListAdConfigurationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1864,8 +1864,8 @@ export const listChannels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(672, __c42, 0) as any as S.Schema<ListChannelsRequest>,
-  output: __S(675, __c42, 3) as any as S.Schema<ListChannelsResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<ListChannelsRequest>,
+  output: __S(659, __c41, 3) as any as S.Schema<ListChannelsResponse>,
   errors: [AccessDeniedException, ConflictException, ValidationException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1892,8 +1892,8 @@ export const listPlaybackKeyPairs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(688, __c43, 0) as any as S.Schema<ListPlaybackKeyPairsRequest>,
-  output: __S(691, __c43, 3) as any as S.Schema<ListPlaybackKeyPairsResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<ListPlaybackKeyPairsRequest>,
+  output: __S(675, __c42, 3) as any as S.Schema<ListPlaybackKeyPairsResponse>,
   errors: [AccessDeniedException, ValidationException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1922,8 +1922,8 @@ export const listPlaybackRestrictionPolicies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(704, __c44, 0) as any as S.Schema<ListPlaybackRestrictionPoliciesRequest>,
-  output: __S(706, __c44, 2) as any as S.Schema<ListPlaybackRestrictionPoliciesResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<ListPlaybackRestrictionPoliciesRequest>,
+  output: __S(690, __c43, 2) as any as S.Schema<ListPlaybackRestrictionPoliciesResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1957,8 +1957,8 @@ export const listRecordingConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(720, __c45, 0) as any as S.Schema<ListRecordingConfigurationsRequest>,
-  output: __S(723, __c45, 3) as any as S.Schema<ListRecordingConfigurationsResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<ListRecordingConfigurationsRequest>,
+  output: __S(707, __c44, 3) as any as S.Schema<ListRecordingConfigurationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1991,8 +1991,8 @@ export const listStreamKeys: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(736, __c46, 0) as any as S.Schema<ListStreamKeysRequest>,
-  output: __S(739, __c46, 3) as any as S.Schema<ListStreamKeysResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<ListStreamKeysRequest>,
+  output: __S(723, __c45, 3) as any as S.Schema<ListStreamKeysResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2024,8 +2024,8 @@ export const listStreams: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(753, __c47, 1) as any as S.Schema<ListStreamsRequest>,
-  output: __S(756, __c47, 4) as any as S.Schema<ListStreamsResponse>,
+  input: __S(737, __c46, 1) as any as S.Schema<ListStreamsRequest>,
+  output: __S(740, __c46, 4) as any as S.Schema<ListStreamsResponse>,
   errors: [AccessDeniedException, ValidationException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2053,8 +2053,8 @@ export const listStreamSessions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(768, __c48, 0) as any as S.Schema<ListStreamSessionsRequest>,
-  output: __S(771, __c48, 3) as any as S.Schema<ListStreamSessionsResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<ListStreamSessionsRequest>,
+  output: __S(755, __c47, 3) as any as S.Schema<ListStreamSessionsResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2086,8 +2086,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(784, __c49, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(785, __c49, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(769, __c48, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -2115,7 +2115,7 @@ export const putMetadata: API.OperationMethod<
   PutMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c50, 0) as any as S.Schema<PutMetadataRequest>,
+  input: __S(784, __c49, 0) as any as S.Schema<PutMetadataRequest>,
   output: __S(352, __c22, 0) as any as S.Schema<PutMetadataResponse>,
   errors: [
     AccessDeniedException,
@@ -2146,8 +2146,8 @@ export const startViewerSessionRevocation: API.OperationMethod<
   StartViewerSessionRevocationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(816, __c51, 0) as any as S.Schema<StartViewerSessionRevocationRequest>,
-  output: __S(416, __c26, 0) as any as S.Schema<StartViewerSessionRevocationResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<StartViewerSessionRevocationRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<StartViewerSessionRevocationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2180,7 +2180,7 @@ export const stopStream: API.OperationMethod<
   StopStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c52, 0) as any as S.Schema<StopStreamRequest>,
+  input: __S(816, __c51, 0) as any as S.Schema<StopStreamRequest>,
   output: __S(352, __c22, 0) as any as S.Schema<StopStreamResponse>,
   errors: [
     AccessDeniedException,
@@ -2210,7 +2210,7 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(848, __c53, 0) as any as S.Schema<TagResourceRequest>,
+  input: __S(832, __c52, 0) as any as S.Schema<TagResourceRequest>,
   output: __S(352, __c22, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     InternalServerException,
@@ -2238,7 +2238,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c54, 0) as any as S.Schema<UntagResourceRequest>,
+  input: __S(848, __c53, 0) as any as S.Schema<UntagResourceRequest>,
   output: __S(352, __c22, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     InternalServerException,
@@ -2270,7 +2270,7 @@ export const updateAdConfiguration: API.OperationMethod<
   UpdateAdConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(880, __c55, 0) as any as S.Schema<UpdateAdConfigurationRequest>,
+  input: __S(864, __c54, 0) as any as S.Schema<UpdateAdConfigurationRequest>,
   output: __S(160, __c10, 0) as any as S.Schema<UpdateAdConfigurationResponse>,
   errors: [
     AccessDeniedException,
@@ -2304,8 +2304,8 @@ export const updateChannel: API.OperationMethod<
   UpdateChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c56, 0) as any as S.Schema<UpdateChannelRequest>,
-  output: __S(496, __c31, 0) as any as S.Schema<UpdateChannelResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<UpdateChannelRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<UpdateChannelResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2335,7 +2335,7 @@ export const updatePlaybackRestrictionPolicy: API.OperationMethod<
   UpdatePlaybackRestrictionPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(912, __c57, 0) as any as S.Schema<UpdatePlaybackRestrictionPolicyRequest>,
+  input: __S(896, __c56, 0) as any as S.Schema<UpdatePlaybackRestrictionPolicyRequest>,
   output: __S(224, __c14, 0) as any as S.Schema<UpdatePlaybackRestrictionPolicyResponse>,
   errors: [
     AccessDeniedException,
@@ -2421,9 +2421,7 @@ function __c4(j: number): any {
           policy: S.optional(S.String),
           maximumResolution: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "MultitrackInputConfiguration",
-      });
+      ).annotate({ identifier: "MultitrackInputConfiguration" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2483,9 +2481,7 @@ function __c5(j: number): any {
           streamKeys: S.optional(__S(81, __c5, 1)),
           errors: S.optional(__S(17, __c1, 1)),
         }),
-      ).annotate({
-        identifier: "BatchGetStreamKeyResponse",
-      });
+      ).annotate({ identifier: "BatchGetStreamKeyResponse" });
   }
 }
 function __c6(j: number): any {
@@ -2510,9 +2506,7 @@ function __c7(j: number): any {
           viewerId: S.String,
           viewerSessionVersionsLessThanOrEqualTo: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "BatchStartViewerSessionRevocationViewerSession",
-      });
+      ).annotate({ identifier: "BatchStartViewerSessionRevocationViewerSession" });
     case 1:
       return S.Array(__S(112, __c7, 0));
     case 2:
@@ -2527,9 +2521,7 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchStartViewerSessionRevocationRequest",
-      });
+      ).annotate({ identifier: "BatchStartViewerSessionRevocationRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2538,9 +2530,7 @@ function __c7(j: number): any {
           code: S.optional(S.String),
           message: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchStartViewerSessionRevocationError",
-      });
+      ).annotate({ identifier: "BatchStartViewerSessionRevocationError" });
     case 4:
       return S.Array(__S(115, __c7, 3));
     case 5:
@@ -2561,9 +2551,7 @@ function __c7(j: number): any {
           xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
           errors: S.optional(__S(116, __c7, 4)),
         }),
-      ).annotate({
-        identifier: "BatchStartViewerSessionRevocationResponse",
-      });
+      ).annotate({ identifier: "BatchStartViewerSessionRevocationResponse" });
   }
 }
 function __c8(j: number): any {
@@ -2585,18 +2573,14 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateAdConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateAdConfigurationRequest" });
   }
 }
 function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ playbackConfigurationArn: S.optional(S.String) })).annotate(
-        {
-          identifier: "MediaTailorPlaybackConfiguration",
-        },
+        { identifier: "MediaTailorPlaybackConfiguration" },
       );
     case 1:
       return S.Array(__S(144, __c9, 0));
@@ -2674,9 +2658,7 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreatePlaybackRestrictionPolicyRequest",
-      });
+      ).annotate({ identifier: "CreatePlaybackRestrictionPolicyRequest" });
   }
 }
 function __c13(j: number): any {
@@ -2691,9 +2673,7 @@ function __c13(j: number): any {
           name: S.optional(S.String),
           tags: S.optional(__S(32, __c2, 0)),
         }),
-      ).annotate({
-        identifier: "PlaybackRestrictionPolicy",
-      });
+      ).annotate({ identifier: "PlaybackRestrictionPolicy" });
   }
 }
 function __c14(j: number): any {
@@ -2701,9 +2681,7 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ playbackRestrictionPolicy: S.optional(__S(208, __c13, 0)) }),
-      ).annotate({
-        identifier: "CreatePlaybackRestrictionPolicyResponse",
-      });
+      ).annotate({ identifier: "CreatePlaybackRestrictionPolicyResponse" });
   }
 }
 function __c15(j: number): any {
@@ -2727,9 +2705,7 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateRecordingConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateRecordingConfigurationRequest" });
   }
 }
 function __c16(j: number): any {
@@ -2737,9 +2713,7 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ recordingConfiguration: S.optional(__S(275, __c17, 3)) }),
-      ).annotate({
-        identifier: "CreateRecordingConfigurationResponse",
-      });
+      ).annotate({ identifier: "CreateRecordingConfigurationResponse" });
   }
 }
 function __c17(j: number): any {
@@ -2821,9 +2795,7 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteAdConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteAdConfigurationRequest" });
   }
 }
 function __c22(j: number): any {
@@ -2858,9 +2830,7 @@ function __c24(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeletePlaybackKeyPairRequest",
-      });
+      ).annotate({ identifier: "DeletePlaybackKeyPairRequest" });
   }
 }
 function __c25(j: number): any {
@@ -2877,20 +2847,10 @@ function __c25(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeletePlaybackRestrictionPolicyRequest",
-      });
+      ).annotate({ identifier: "DeletePlaybackRestrictionPolicyRequest" });
   }
 }
 function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeletePlaybackRestrictionPolicyResponse",
-      });
-  }
-}
-function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2904,12 +2864,10 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteRecordingConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteRecordingConfigurationRequest" });
   }
 }
-function __c28(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2919,7 +2877,7 @@ function __c28(j: number): any {
       ).annotate({ identifier: "DeleteStreamKeyRequest" });
   }
 }
-function __c29(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2933,18 +2891,14 @@ function __c29(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAdConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetAdConfigurationRequest" });
     case 1:
       return S.suspend(() => S.Struct({ adConfiguration: S.optional(__S(147, __c9, 3)) })).annotate(
-        {
-          identifier: "GetAdConfigurationResponse",
-        },
+        { identifier: "GetAdConfigurationResponse" },
       );
   }
 }
-function __c30(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2954,7 +2908,7 @@ function __c30(j: number): any {
       ).annotate({ identifier: "GetChannelRequest" });
   }
 }
-function __c31(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ channel: S.optional(__S(66, __c4, 2)) })).annotate({
@@ -2962,7 +2916,7 @@ function __c31(j: number): any {
       });
   }
 }
-function __c32(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2976,12 +2930,10 @@ function __c32(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetPlaybackKeyPairRequest",
-      });
+      ).annotate({ identifier: "GetPlaybackKeyPairRequest" });
   }
 }
-function __c33(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2993,12 +2945,12 @@ function __c33(j: number): any {
         }),
       ).annotate({ identifier: "PlaybackKeyPair" });
     case 1:
-      return S.suspend(() => S.Struct({ keyPair: S.optional(__S(528, __c33, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ keyPair: S.optional(__S(512, __c32, 0)) })).annotate({
         identifier: "GetPlaybackKeyPairResponse",
       });
   }
 }
-function __c34(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3012,12 +2964,10 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetPlaybackRestrictionPolicyRequest",
-      });
+      ).annotate({ identifier: "GetPlaybackRestrictionPolicyRequest" });
   }
 }
-function __c35(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3031,12 +2981,10 @@ function __c35(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetRecordingConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetRecordingConfigurationRequest" });
   }
 }
-function __c36(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3057,12 +3005,12 @@ function __c36(j: number): any {
         }),
       ).annotate({ identifier: "Stream" });
     case 2:
-      return S.suspend(() => S.Struct({ stream: S.optional(__S(577, __c36, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ stream: S.optional(__S(561, __c35, 1)) })).annotate({
         identifier: "GetStreamResponse",
       });
   }
 }
-function __c37(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3072,7 +3020,7 @@ function __c37(j: number): any {
       ).annotate({ identifier: "GetStreamKeyRequest" });
   }
 }
-function __c38(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3108,17 +3056,17 @@ function __c38(j: number): any {
       ).annotate({ identifier: "AudioConfiguration" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ video: S.optional(__S(609, __c38, 1)), audio: S.optional(__S(610, __c38, 2)) }),
+        S.Struct({ video: S.optional(__S(593, __c37, 1)), audio: S.optional(__S(594, __c37, 2)) }),
       ).annotate({ identifier: "IngestConfiguration" });
     case 4:
-      return S.Array(__S(609, __c38, 1));
+      return S.Array(__S(593, __c37, 1));
     case 5:
-      return S.Array(__S(610, __c38, 2));
+      return S.Array(__S(594, __c37, 2));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          videoConfigurations: __S(612, __c38, 4),
-          audioConfigurations: __S(613, __c38, 5),
+          videoConfigurations: __S(596, __c37, 4),
+          audioConfigurations: __S(597, __c37, 5),
         }),
       ).annotate({ identifier: "IngestConfigurations" });
     case 7:
@@ -3131,7 +3079,7 @@ function __c38(j: number): any {
         }),
       ).annotate({ identifier: "StreamEvent" });
     case 8:
-      return S.Array(__S(615, __c38, 7));
+      return S.Array(__S(599, __c37, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
@@ -3139,19 +3087,19 @@ function __c38(j: number): any {
           startTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           channel: S.optional(__S(66, __c4, 2)),
-          ingestConfiguration: S.optional(__S(611, __c38, 3)),
-          ingestConfigurations: S.optional(__S(614, __c38, 6)),
+          ingestConfiguration: S.optional(__S(595, __c37, 3)),
+          ingestConfigurations: S.optional(__S(598, __c37, 6)),
           recordingConfiguration: S.optional(__S(275, __c17, 3)),
-          truncatedEvents: S.optional(__S(616, __c38, 8)),
+          truncatedEvents: S.optional(__S(600, __c37, 8)),
         }),
       ).annotate({ identifier: "StreamSession" });
     case 10:
-      return S.suspend(() => S.Struct({ streamSession: S.optional(__S(617, __c38, 9)) })).annotate({
+      return S.suspend(() => S.Struct({ streamSession: S.optional(__S(601, __c37, 9)) })).annotate({
         identifier: "GetStreamSessionResponse",
       });
   }
 }
-function __c39(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3169,12 +3117,10 @@ function __c39(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ImportPlaybackKeyPairRequest",
-      });
+      ).annotate({ identifier: "ImportPlaybackKeyPairRequest" });
   }
 }
-function __c40(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3188,7 +3134,7 @@ function __c40(j: number): any {
       });
   }
 }
-function __c41(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3202,20 +3148,16 @@ function __c41(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListAdConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListAdConfigurationsRequest" });
     case 1:
       return S.Array(__S(147, __c9, 3));
     case 2:
       return S.suspend(() =>
-        S.Struct({ adConfigurations: __S(657, __c41, 1), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListAdConfigurationsResponse",
-      });
+        S.Struct({ adConfigurations: __S(641, __c40, 1), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListAdConfigurationsResponse" });
   }
 }
-function __c42(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3247,14 +3189,14 @@ function __c42(j: number): any {
         }),
       ).annotate({ identifier: "ChannelSummary" });
     case 2:
-      return S.Array(__S(673, __c42, 1));
+      return S.Array(__S(657, __c41, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ channels: __S(674, __c42, 2), nextToken: S.optional(S.String) }),
+        S.Struct({ channels: __S(658, __c41, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListChannelsResponse" });
   }
 }
-function __c43(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3268,9 +3210,7 @@ function __c43(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListPlaybackKeyPairsRequest",
-      });
+      ).annotate({ identifier: "ListPlaybackKeyPairsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3280,16 +3220,14 @@ function __c43(j: number): any {
         }),
       ).annotate({ identifier: "PlaybackKeyPairSummary" });
     case 2:
-      return S.Array(__S(689, __c43, 1));
+      return S.Array(__S(673, __c42, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ keyPairs: __S(690, __c43, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListPlaybackKeyPairsResponse",
-      });
+        S.Struct({ keyPairs: __S(674, __c42, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListPlaybackKeyPairsResponse" });
   }
 }
-function __c44(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3303,23 +3241,19 @@ function __c44(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListPlaybackRestrictionPoliciesRequest",
-      });
+      ).annotate({ identifier: "ListPlaybackRestrictionPoliciesRequest" });
     case 1:
       return S.Array(__S(208, __c13, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          playbackRestrictionPolicies: __S(705, __c44, 1),
+          playbackRestrictionPolicies: __S(689, __c43, 1),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListPlaybackRestrictionPoliciesResponse",
-      });
+      ).annotate({ identifier: "ListPlaybackRestrictionPoliciesResponse" });
   }
 }
-function __c45(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3333,9 +3267,7 @@ function __c45(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListRecordingConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListRecordingConfigurationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3345,23 +3277,16 @@ function __c45(j: number): any {
           state: S.String,
           tags: S.optional(__S(32, __c2, 0)),
         }),
-      ).annotate({
-        identifier: "RecordingConfigurationSummary",
-      });
+      ).annotate({ identifier: "RecordingConfigurationSummary" });
     case 2:
-      return S.Array(__S(721, __c45, 1));
+      return S.Array(__S(705, __c44, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          recordingConfigurations: __S(722, __c45, 2),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListRecordingConfigurationsResponse",
-      });
+        S.Struct({ recordingConfigurations: __S(706, __c44, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListRecordingConfigurationsResponse" });
   }
 }
-function __c46(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3382,14 +3307,14 @@ function __c46(j: number): any {
         }),
       ).annotate({ identifier: "StreamKeySummary" });
     case 2:
-      return S.Array(__S(737, __c46, 1));
+      return S.Array(__S(721, __c45, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ streamKeys: __S(738, __c46, 2), nextToken: S.optional(S.String) }),
+        S.Struct({ streamKeys: __S(722, __c45, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListStreamKeysResponse" });
   }
 }
-function __c47(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ health: S.optional(S.String) })).annotate({
@@ -3398,7 +3323,7 @@ function __c47(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          filterBy: S.optional(__S(752, __c47, 0)),
+          filterBy: S.optional(__S(736, __c46, 0)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(
@@ -3417,14 +3342,14 @@ function __c47(j: number): any {
         }),
       ).annotate({ identifier: "StreamSummary" });
     case 3:
-      return S.Array(__S(754, __c47, 2));
+      return S.Array(__S(738, __c46, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ streams: __S(755, __c47, 3), nextToken: S.optional(S.String) }),
+        S.Struct({ streams: __S(739, __c46, 3), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListStreamsResponse" });
   }
 }
-function __c48(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3442,9 +3367,7 @@ function __c48(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListStreamSessionsRequest",
-      });
+      ).annotate({ identifier: "ListStreamSessionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3455,16 +3378,14 @@ function __c48(j: number): any {
         }),
       ).annotate({ identifier: "StreamSessionSummary" });
     case 2:
-      return S.Array(__S(769, __c48, 1));
+      return S.Array(__S(753, __c47, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ streamSessions: __S(770, __c48, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListStreamSessionsResponse",
-      });
+        S.Struct({ streamSessions: __S(754, __c47, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListStreamSessionsResponse" });
   }
 }
-function __c49(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3478,16 +3399,14 @@ function __c49(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: __S(32, __c2, 0) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c50(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3497,7 +3416,7 @@ function __c50(j: number): any {
       ).annotate({ identifier: "PutMetadataRequest" });
   }
 }
-function __c51(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3515,12 +3434,10 @@ function __c51(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartViewerSessionRevocationRequest",
-      });
+      ).annotate({ identifier: "StartViewerSessionRevocationRequest" });
   }
 }
-function __c52(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3530,7 +3447,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "StopStreamRequest" });
   }
 }
-function __c53(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3550,7 +3467,7 @@ function __c53(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c54(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3570,7 +3487,7 @@ function __c54(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c55(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3589,12 +3506,10 @@ function __c55(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateAdConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateAdConfigurationRequest" });
   }
 }
-function __c56(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3617,7 +3532,7 @@ function __c56(j: number): any {
       ).annotate({ identifier: "UpdateChannelRequest" });
   }
 }
-function __c57(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3637,9 +3552,7 @@ function __c57(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdatePlaybackRestrictionPolicyRequest",
-      });
+      ).annotate({ identifier: "UpdatePlaybackRestrictionPolicyRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

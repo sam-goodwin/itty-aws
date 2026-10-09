@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -163,7 +163,7 @@ export class ValidationException
       code: /*@__PURE__*/ S.optional(S.String),
       reason: /*@__PURE__*/ S.optional(S.String),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(3009, __c94, 1)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(2913, __c91, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -2004,8 +2004,8 @@ export const archiveApplication: API.OperationMethod<
   ArchiveApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3424, __c107, 0) as any as S.Schema<ArchiveApplicationRequest>,
-  output: __S(3457, __c108, 1) as any as S.Schema<Application>,
+  input: __S(3328, __c104, 0) as any as S.Schema<ArchiveApplicationRequest>,
+  output: __S(3361, __c105, 1) as any as S.Schema<Application>,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -2032,8 +2032,8 @@ export const archiveWave: API.OperationMethod<
   ArchiveWaveError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3840, __c120, 0) as any as S.Schema<ArchiveWaveRequest>,
-  output: __S(3873, __c121, 1) as any as S.Schema<Wave>,
+  input: __S(3744, __c117, 0) as any as S.Schema<ArchiveWaveRequest>,
+  output: __S(3777, __c118, 1) as any as S.Schema<Wave>,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -2144,7 +2144,7 @@ export const createApplication: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(320, __c10, 0) as any as S.Schema<CreateApplicationRequest>,
-  output: __S(3457, __c108, 1) as any as S.Schema<Application>,
+  output: __S(3361, __c105, 1) as any as S.Schema<Application>,
   errors: [ConflictException, ServiceQuotaExceededException, UninitializedAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2208,7 +2208,7 @@ export const createNetworkMigrationDefinition: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(576, __c18, 0) as any as S.Schema<CreateNetworkMigrationDefinitionRequest>,
-  output: __S(647, __c20, 7) as any as S.Schema<NetworkMigrationDefinition>,
+  output: __S(646, __c20, 6) as any as S.Schema<NetworkMigrationDefinition>,
   errors: [ServiceQuotaExceededException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2252,7 +2252,7 @@ export const createWave: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(768, __c24, 0) as any as S.Schema<CreateWaveRequest>,
-  output: __S(3873, __c121, 1) as any as S.Schema<Wave>,
+  output: __S(3777, __c118, 1) as any as S.Schema<Wave>,
   errors: [ConflictException, ServiceQuotaExceededException, UninitializedAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2340,7 +2340,7 @@ export const deleteLaunchConfigurationTemplate: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(896, __c28, 0) as any as S.Schema<DeleteLaunchConfigurationTemplateRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<DeleteLaunchConfigurationTemplateResponse>,
+  output: __S(96, __c3, 0) as any as S.Schema<DeleteLaunchConfigurationTemplateResponse>,
   errors: [ConflictException, ResourceNotFoundException, UninitializedAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2361,8 +2361,8 @@ export const deleteNetworkMigrationDefinition: API.OperationMethod<
   DeleteNetworkMigrationDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c30, 0) as any as S.Schema<DeleteNetworkMigrationDefinitionRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<DeleteNetworkMigrationDefinitionResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<DeleteNetworkMigrationDefinitionRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<DeleteNetworkMigrationDefinitionResponse>,
   errors: [AccessDeniedException, ConflictException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2383,8 +2383,8 @@ export const deleteReplicationConfigurationTemplate: API.OperationMethod<
   DeleteReplicationConfigurationTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c31, 0) as any as S.Schema<DeleteReplicationConfigurationTemplateRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<DeleteReplicationConfigurationTemplateResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<DeleteReplicationConfigurationTemplateRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<DeleteReplicationConfigurationTemplateResponse>,
   errors: [ConflictException, ResourceNotFoundException, UninitializedAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2405,7 +2405,7 @@ export const deleteSourceServer: API.OperationMethod<
   DeleteSourceServerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c32, 0) as any as S.Schema<DeleteSourceServerRequest>,
+  input: __S(992, __c31, 0) as any as S.Schema<DeleteSourceServerRequest>,
   output: __S(96, __c3, 0) as any as S.Schema<DeleteSourceServerResponse>,
   errors: [ConflictException, ResourceNotFoundException, UninitializedAccountException],
   protocol: AwsProtocol,
@@ -2427,7 +2427,7 @@ export const deleteVcenterClient: API.OperationMethod<
   DeleteVcenterClientError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c33, 0) as any as S.Schema<DeleteVcenterClientRequest>,
+  input: __S(1024, __c32, 0) as any as S.Schema<DeleteVcenterClientRequest>,
   output: __S(96, __c3, 0) as any as S.Schema<DeleteVcenterClientResponse>,
   errors: [ResourceNotFoundException, UninitializedAccountException, ValidationException],
   protocol: AwsProtocol,
@@ -2449,7 +2449,7 @@ export const deleteWave: API.OperationMethod<
   DeleteWaveError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c34, 0) as any as S.Schema<DeleteWaveRequest>,
+  input: __S(1056, __c33, 0) as any as S.Schema<DeleteWaveRequest>,
   output: __S(96, __c3, 0) as any as S.Schema<DeleteWaveResponse>,
   errors: [ConflictException, ResourceNotFoundException, UninitializedAccountException],
   protocol: AwsProtocol,
@@ -2471,8 +2471,8 @@ export const describeJobLogItems: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   JobLog
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1120, __c35, 0) as any as S.Schema<DescribeJobLogItemsRequest>,
-  output: __S(1124, __c35, 4) as any as S.Schema<DescribeJobLogItemsResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<DescribeJobLogItemsRequest>,
+  output: __S(1092, __c34, 4) as any as S.Schema<DescribeJobLogItemsResponse>,
   errors: [UninitializedAccountException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2496,8 +2496,8 @@ export const describeJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Job
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1153, __c36, 1) as any as S.Schema<DescribeJobsRequest>,
-  output: __S(1155, __c36, 3) as any as S.Schema<DescribeJobsResponse>,
+  input: __S(1121, __c35, 1) as any as S.Schema<DescribeJobsRequest>,
+  output: __S(1123, __c35, 3) as any as S.Schema<DescribeJobsResponse>,
   errors: [UninitializedAccountException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2525,8 +2525,8 @@ export const describeLaunchConfigurationTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LaunchConfigurationTemplate
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1216, __c38, 0) as any as S.Schema<DescribeLaunchConfigurationTemplatesRequest>,
-  output: __S(1218, __c38, 2) as any as S.Schema<DescribeLaunchConfigurationTemplatesResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<DescribeLaunchConfigurationTemplatesRequest>,
+  output: __S(1186, __c37, 2) as any as S.Schema<DescribeLaunchConfigurationTemplatesResponse>,
   errors: [ResourceNotFoundException, UninitializedAccountException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2554,8 +2554,8 @@ export const describeReplicationConfigurationTemplates: API.PaginatedOperationMe
   Credentials | HttpClient.HttpClient,
   ReplicationConfigurationTemplate
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1248, __c39, 0) as any as S.Schema<DescribeReplicationConfigurationTemplatesRequest>,
-  output: __S(1250, __c39, 2) as any as S.Schema<DescribeReplicationConfigurationTemplatesResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<DescribeReplicationConfigurationTemplatesRequest>,
+  output: __S(1218, __c38, 2) as any as S.Schema<DescribeReplicationConfigurationTemplatesResponse>,
   errors: [ResourceNotFoundException, UninitializedAccountException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2582,8 +2582,8 @@ export const describeSourceServers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SourceServer
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1281, __c40, 1) as any as S.Schema<DescribeSourceServersRequest>,
-  output: __S(1283, __c40, 3) as any as S.Schema<DescribeSourceServersResponse>,
+  input: __S(1249, __c39, 1) as any as S.Schema<DescribeSourceServersRequest>,
+  output: __S(1251, __c39, 3) as any as S.Schema<DescribeSourceServersResponse>,
   errors: [UninitializedAccountException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2611,8 +2611,8 @@ export const describeVcenterClients: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   VcenterClient
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1312, __c41, 0) as any as S.Schema<DescribeVcenterClientsRequest>,
-  output: __S(1315, __c41, 3) as any as S.Schema<DescribeVcenterClientsResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<DescribeVcenterClientsRequest>,
+  output: __S(1283, __c40, 3) as any as S.Schema<DescribeVcenterClientsResponse>,
   errors: [ResourceNotFoundException, UninitializedAccountException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2639,8 +2639,8 @@ export const disassociateApplications: API.OperationMethod<
   DisassociateApplicationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1344, __c42, 0) as any as S.Schema<DisassociateApplicationsRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<DisassociateApplicationsResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<DisassociateApplicationsRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<DisassociateApplicationsResponse>,
   errors: [ConflictException, ResourceNotFoundException, UninitializedAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2661,8 +2661,8 @@ export const disassociateSourceServers: API.OperationMethod<
   DisassociateSourceServersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1376, __c43, 0) as any as S.Schema<DisassociateSourceServersRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<DisassociateSourceServersResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<DisassociateSourceServersRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<DisassociateSourceServersResponse>,
   errors: [ConflictException, ResourceNotFoundException, UninitializedAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2683,7 +2683,7 @@ export const disconnectFromService: API.OperationMethod<
   DisconnectFromServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1408, __c44, 0) as any as S.Schema<DisconnectFromServiceRequest>,
+  input: __S(1376, __c43, 0) as any as S.Schema<DisconnectFromServiceRequest>,
   output: __S(312, __c9, 24) as any as S.Schema<SourceServer>,
   errors: [ConflictException, ResourceNotFoundException, UninitializedAccountException],
   protocol: AwsProtocol,
@@ -2706,7 +2706,7 @@ export const finalizeCutover: API.OperationMethod<
   FinalizeCutoverError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c45, 0) as any as S.Schema<FinalizeCutoverRequest>,
+  input: __S(1408, __c44, 0) as any as S.Schema<FinalizeCutoverRequest>,
   output: __S(312, __c9, 24) as any as S.Schema<SourceServer>,
   errors: [
     ConflictException,
@@ -2732,8 +2732,8 @@ export const getLaunchConfiguration: API.OperationMethod<
   GetLaunchConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1472, __c46, 0) as any as S.Schema<GetLaunchConfigurationRequest>,
-  output: __S(1504, __c47, 0) as any as S.Schema<LaunchConfiguration>,
+  input: __S(1440, __c45, 0) as any as S.Schema<GetLaunchConfigurationRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<LaunchConfiguration>,
   errors: [ResourceNotFoundException, UninitializedAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2753,8 +2753,8 @@ export const getNetworkMigrationDefinition: API.OperationMethod<
   GetNetworkMigrationDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1536, __c48, 0) as any as S.Schema<GetNetworkMigrationDefinitionRequest>,
-  output: __S(647, __c20, 7) as any as S.Schema<NetworkMigrationDefinition>,
+  input: __S(1504, __c47, 0) as any as S.Schema<GetNetworkMigrationDefinitionRequest>,
+  output: __S(646, __c20, 6) as any as S.Schema<NetworkMigrationDefinition>,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2775,8 +2775,8 @@ export const getNetworkMigrationMapperSegmentConstruct: API.OperationMethod<
   GetNetworkMigrationMapperSegmentConstructError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1568, __c49, 0) as any as S.Schema<GetNetworkMigrationMapperSegmentConstructRequest>,
-  output: __S(1569, __c49, 1) as any as S.Schema<GetNetworkMigrationMapperSegmentConstructResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<GetNetworkMigrationMapperSegmentConstructRequest>,
+  output: __S(1537, __c48, 1) as any as S.Schema<GetNetworkMigrationMapperSegmentConstructResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2796,8 +2796,8 @@ export const getReplicationConfiguration: API.OperationMethod<
   GetReplicationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1632, __c51, 0) as any as S.Schema<GetReplicationConfigurationRequest>,
-  output: __S(1666, __c52, 2) as any as S.Schema<ReplicationConfiguration>,
+  input: __S(1600, __c50, 0) as any as S.Schema<GetReplicationConfigurationRequest>,
+  output: __S(1634, __c51, 2) as any as S.Schema<ReplicationConfiguration>,
   errors: [ResourceNotFoundException, UninitializedAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2814,7 +2814,7 @@ export const initializeService: API.OperationMethod<
   InitializeServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1696, __c53, 0) as any as S.Schema<InitializeServiceRequest>,
+  input: __S(1664, __c52, 0) as any as S.Schema<InitializeServiceRequest>,
   output: __S(96, __c3, 0) as any as S.Schema<InitializeServiceResponse>,
   errors: [AccessDeniedException, ValidationException],
   protocol: AwsProtocol,
@@ -2833,8 +2833,8 @@ export const listApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Application
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1729, __c54, 1) as any as S.Schema<ListApplicationsRequest>,
-  output: __S(1731, __c54, 3) as any as S.Schema<ListApplicationsResponse>,
+  input: __S(1697, __c53, 1) as any as S.Schema<ListApplicationsRequest>,
+  output: __S(1699, __c53, 3) as any as S.Schema<ListApplicationsResponse>,
   errors: [UninitializedAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2861,8 +2861,8 @@ export const listConnectors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Connector
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1761, __c55, 1) as any as S.Schema<ListConnectorsRequest>,
-  output: __S(1763, __c55, 3) as any as S.Schema<ListConnectorsResponse>,
+  input: __S(1729, __c54, 1) as any as S.Schema<ListConnectorsRequest>,
+  output: __S(1731, __c54, 3) as any as S.Schema<ListConnectorsResponse>,
   errors: [UninitializedAccountException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2889,8 +2889,8 @@ export const listExportErrors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExportTaskError
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1792, __c56, 0) as any as S.Schema<ListExportErrorsRequest>,
-  output: __S(1796, __c56, 4) as any as S.Schema<ListExportErrorsResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<ListExportErrorsRequest>,
+  output: __S(1764, __c55, 4) as any as S.Schema<ListExportErrorsResponse>,
   errors: [UninitializedAccountException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2914,8 +2914,8 @@ export const listExports: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExportTask
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1825, __c57, 1) as any as S.Schema<ListExportsRequest>,
-  output: __S(1827, __c57, 3) as any as S.Schema<ListExportsResponse>,
+  input: __S(1793, __c56, 1) as any as S.Schema<ListExportsRequest>,
+  output: __S(1795, __c56, 3) as any as S.Schema<ListExportsResponse>,
   errors: [UninitializedAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2942,8 +2942,8 @@ export const listImportErrors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ImportTaskError
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1888, __c59, 0) as any as S.Schema<ListImportErrorsRequest>,
-  output: __S(1892, __c59, 4) as any as S.Schema<ListImportErrorsResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<ListImportErrorsRequest>,
+  output: __S(1860, __c58, 4) as any as S.Schema<ListImportErrorsResponse>,
   errors: [UninitializedAccountException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2967,8 +2967,8 @@ export const listImportFileEnrichments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ImportFileEnrichment
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1920, __c60, 0) as any as S.Schema<ListImportFileEnrichmentsRequest>,
-  output: __S(1923, __c60, 3) as any as S.Schema<ListImportFileEnrichmentsResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<ListImportFileEnrichmentsRequest>,
+  output: __S(1891, __c59, 3) as any as S.Schema<ListImportFileEnrichmentsResponse>,
   errors: [ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2992,8 +2992,8 @@ export const listImports: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ImportTask
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2049, __c64, 1) as any as S.Schema<ListImportsRequest>,
-  output: __S(2051, __c64, 3) as any as S.Schema<ListImportsResponse>,
+  input: __S(1985, __c62, 1) as any as S.Schema<ListImportsRequest>,
+  output: __S(1987, __c62, 3) as any as S.Schema<ListImportsResponse>,
   errors: [UninitializedAccountException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3020,8 +3020,8 @@ export const listManagedAccounts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ManagedAccount
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2112, __c66, 0) as any as S.Schema<ListManagedAccountsRequest>,
-  output: __S(2115, __c66, 3) as any as S.Schema<ListManagedAccountsResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<ListManagedAccountsRequest>,
+  output: __S(2051, __c64, 3) as any as S.Schema<ListManagedAccountsResponse>,
   errors: [UninitializedAccountException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3050,8 +3050,8 @@ export const listNetworkMigrationAnalyses: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NetworkMigrationAnalysisJobDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2144, __c67, 0) as any as S.Schema<ListNetworkMigrationAnalysesRequest>,
-  output: __S(2176, __c68, 0) as any as S.Schema<ListNetworkMigrationAnalysesResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<ListNetworkMigrationAnalysesRequest>,
+  output: __S(2114, __c66, 2) as any as S.Schema<ListNetworkMigrationAnalysesResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -3085,8 +3085,8 @@ export const listNetworkMigrationAnalysisResults: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NetworkMigrationAnalysisResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2241, __c70, 1) as any as S.Schema<ListNetworkMigrationAnalysisResultsRequest>,
-  output: __S(2245, __c70, 5) as any as S.Schema<ListNetworkMigrationAnalysisResultsResponse>,
+  input: __S(2145, __c67, 1) as any as S.Schema<ListNetworkMigrationAnalysisResultsRequest>,
+  output: __S(2149, __c67, 5) as any as S.Schema<ListNetworkMigrationAnalysisResultsResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -3120,8 +3120,8 @@ export const listNetworkMigrationCodeGenerations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NetworkMigrationCodeGenerationJobDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2272, __c71, 0) as any as S.Schema<ListNetworkMigrationCodeGenerationsRequest>,
-  output: __S(2277, __c71, 5) as any as S.Schema<ListNetworkMigrationCodeGenerationsResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<ListNetworkMigrationCodeGenerationsRequest>,
+  output: __S(2181, __c68, 5) as any as S.Schema<ListNetworkMigrationCodeGenerationsResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -3155,10 +3155,10 @@ export const listNetworkMigrationCodeGenerationSegments: API.PaginatedOperationM
   Credentials | HttpClient.HttpClient,
   NetworkMigrationCodeGenerationSegment
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2304, __c72, 0) as any as S.Schema<ListNetworkMigrationCodeGenerationSegmentsRequest>,
+  input: __S(2208, __c69, 0) as any as S.Schema<ListNetworkMigrationCodeGenerationSegmentsRequest>,
   output: __S(
-    2309,
-    __c72,
+    2213,
+    __c69,
     5,
   ) as any as S.Schema<ListNetworkMigrationCodeGenerationSegmentsResponse>,
   errors: [
@@ -3189,8 +3189,8 @@ export const listNetworkMigrationDefinitions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NetworkMigrationDefinitionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2401, __c75, 1) as any as S.Schema<ListNetworkMigrationDefinitionsRequest>,
-  output: __S(2404, __c75, 4) as any as S.Schema<ListNetworkMigrationDefinitionsResponse>,
+  input: __S(2305, __c72, 1) as any as S.Schema<ListNetworkMigrationDefinitionsRequest>,
+  output: __S(2308, __c72, 4) as any as S.Schema<ListNetworkMigrationDefinitionsResponse>,
   errors: [AccessDeniedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3219,8 +3219,8 @@ export const listNetworkMigrationDeployedStacks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NetworkMigrationDeployedStackDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2432, __c76, 0) as any as S.Schema<ListNetworkMigrationDeployedStacksRequest>,
-  output: __S(2437, __c76, 5) as any as S.Schema<ListNetworkMigrationDeployedStacksResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<ListNetworkMigrationDeployedStacksRequest>,
+  output: __S(2341, __c73, 5) as any as S.Schema<ListNetworkMigrationDeployedStacksResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -3254,8 +3254,8 @@ export const listNetworkMigrationDeployments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NetworkMigrationDeployerJobDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2464, __c77, 0) as any as S.Schema<ListNetworkMigrationDeploymentsRequest>,
-  output: __S(2176, __c68, 0) as any as S.Schema<ListNetworkMigrationDeployerJobResponse>,
+  input: __S(2368, __c74, 0) as any as S.Schema<ListNetworkMigrationDeploymentsRequest>,
+  output: __S(2114, __c66, 2) as any as S.Schema<ListNetworkMigrationDeployerJobResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -3287,8 +3287,8 @@ export const listNetworkMigrationExecutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NetworkMigrationExecution
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2497, __c78, 1) as any as S.Schema<ListNetworkMigrationExecutionsRequest>,
-  output: __S(2500, __c78, 4) as any as S.Schema<ListNetworkMigrationExecutionsResponse>,
+  input: __S(2401, __c75, 1) as any as S.Schema<ListNetworkMigrationExecutionsRequest>,
+  output: __S(2404, __c75, 4) as any as S.Schema<ListNetworkMigrationExecutionsResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3317,11 +3317,11 @@ export const listNetworkMigrationMapperSegmentConstructs: API.PaginatedOperation
   Credentials | HttpClient.HttpClient,
   NetworkMigrationMapperSegmentConstruct
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2530, __c79, 2) as any as S.Schema<ListNetworkMigrationMapperSegmentConstructsRequest>,
+  input: __S(2433, __c76, 1) as any as S.Schema<ListNetworkMigrationMapperSegmentConstructsRequest>,
   output: __S(
-    2532,
-    __c79,
-    4,
+    2435,
+    __c76,
+    3,
   ) as any as S.Schema<ListNetworkMigrationMapperSegmentConstructsResponse>,
   errors: [
     AccessDeniedException,
@@ -3356,8 +3356,8 @@ export const listNetworkMigrationMapperSegments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NetworkMigrationMapperSegment
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2560, __c80, 0) as any as S.Schema<ListNetworkMigrationMapperSegmentsRequest>,
-  output: __S(2562, __c80, 2) as any as S.Schema<ListNetworkMigrationMapperSegmentsResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<ListNetworkMigrationMapperSegmentsRequest>,
+  output: __S(2466, __c77, 2) as any as S.Schema<ListNetworkMigrationMapperSegmentsResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -3391,8 +3391,8 @@ export const listNetworkMigrationMappings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NetworkMigrationMappingJobDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2624, __c82, 0) as any as S.Schema<ListNetworkMigrationMappingsRequest>,
-  output: __S(2176, __c68, 0) as any as S.Schema<ListNetworkMigrationMappingsResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<ListNetworkMigrationMappingsRequest>,
+  output: __S(2114, __c66, 2) as any as S.Schema<ListNetworkMigrationMappingsResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -3426,8 +3426,8 @@ export const listNetworkMigrationMappingUpdates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NetworkMigrationMappingUpdateJobDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2656, __c83, 0) as any as S.Schema<ListNetworkMigrationMappingUpdatesRequest>,
-  output: __S(2657, __c83, 1) as any as S.Schema<ListNetworkMigrationMappingUpdatesResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<ListNetworkMigrationMappingUpdatesRequest>,
+  output: __S(2114, __c66, 2) as any as S.Schema<ListNetworkMigrationMappingUpdatesResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -3459,8 +3459,8 @@ export const listSourceServerActions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SourceServerActionDocument
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2688, __c84, 0) as any as S.Schema<ListSourceServerActionsRequest>,
-  output: __S(2690, __c84, 2) as any as S.Schema<ListSourceServerActionsResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<ListSourceServerActionsRequest>,
+  output: __S(2594, __c81, 2) as any as S.Schema<ListSourceServerActionsResponse>,
   errors: [ResourceNotFoundException, UninitializedAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3489,8 +3489,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2784, __c87, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(2785, __c87, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(2689, __c84, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3517,8 +3517,8 @@ export const listTemplateActions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TemplateActionDocument
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2816, __c88, 0) as any as S.Schema<ListTemplateActionsRequest>,
-  output: __S(2818, __c88, 2) as any as S.Schema<ListTemplateActionsResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<ListTemplateActionsRequest>,
+  output: __S(2722, __c85, 2) as any as S.Schema<ListTemplateActionsResponse>,
   errors: [ResourceNotFoundException, UninitializedAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3542,8 +3542,8 @@ export const listWaves: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Wave
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2881, __c90, 1) as any as S.Schema<ListWavesRequest>,
-  output: __S(2883, __c90, 3) as any as S.Schema<ListWavesResponse>,
+  input: __S(2785, __c87, 1) as any as S.Schema<ListWavesRequest>,
+  output: __S(2787, __c87, 3) as any as S.Schema<ListWavesResponse>,
   errors: [UninitializedAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3570,7 +3570,7 @@ export const markAsArchived: API.OperationMethod<
   MarkAsArchivedError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2912, __c91, 0) as any as S.Schema<MarkAsArchivedRequest>,
+  input: __S(2816, __c88, 0) as any as S.Schema<MarkAsArchivedRequest>,
   output: __S(312, __c9, 24) as any as S.Schema<SourceServer>,
   errors: [ConflictException, ResourceNotFoundException, UninitializedAccountException],
   protocol: AwsProtocol,
@@ -3594,7 +3594,7 @@ export const pauseReplication: API.OperationMethod<
   PauseReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2944, __c92, 0) as any as S.Schema<PauseReplicationRequest>,
+  input: __S(2848, __c89, 0) as any as S.Schema<PauseReplicationRequest>,
   output: __S(312, __c9, 24) as any as S.Schema<SourceServer>,
   errors: [
     ConflictException,
@@ -3623,8 +3623,8 @@ export const putSourceServerAction: API.OperationMethod<
   PutSourceServerActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2976, __c93, 0) as any as S.Schema<PutSourceServerActionRequest>,
-  output: __S(2752, __c86, 0) as any as S.Schema<SourceServerActionDocument>,
+  input: __S(2880, __c90, 0) as any as S.Schema<PutSourceServerActionRequest>,
+  output: __S(2656, __c83, 0) as any as S.Schema<SourceServerActionDocument>,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -3651,8 +3651,8 @@ export const putTemplateAction: API.OperationMethod<
   PutTemplateActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3040, __c95, 0) as any as S.Schema<PutTemplateActionRequest>,
-  output: __S(2848, __c89, 0) as any as S.Schema<TemplateActionDocument>,
+  input: __S(2944, __c92, 0) as any as S.Schema<PutTemplateActionRequest>,
+  output: __S(2752, __c86, 0) as any as S.Schema<TemplateActionDocument>,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -3678,8 +3678,8 @@ export const removeSourceServerAction: API.OperationMethod<
   RemoveSourceServerActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3072, __c96, 0) as any as S.Schema<RemoveSourceServerActionRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<RemoveSourceServerActionResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<RemoveSourceServerActionRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<RemoveSourceServerActionResponse>,
   errors: [ResourceNotFoundException, UninitializedAccountException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3700,7 +3700,7 @@ export const removeTemplateAction: API.OperationMethod<
   RemoveTemplateActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3104, __c97, 0) as any as S.Schema<RemoveTemplateActionRequest>,
+  input: __S(3008, __c94, 0) as any as S.Schema<RemoveTemplateActionRequest>,
   output: __S(96, __c3, 0) as any as S.Schema<RemoveTemplateActionResponse>,
   errors: [ResourceNotFoundException, UninitializedAccountException, ValidationException],
   protocol: AwsProtocol,
@@ -3724,7 +3724,7 @@ export const resumeReplication: API.OperationMethod<
   ResumeReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3136, __c98, 0) as any as S.Schema<ResumeReplicationRequest>,
+  input: __S(3040, __c95, 0) as any as S.Schema<ResumeReplicationRequest>,
   output: __S(312, __c9, 24) as any as S.Schema<SourceServer>,
   errors: [
     ConflictException,
@@ -3752,7 +3752,7 @@ export const retryDataReplication: API.OperationMethod<
   RetryDataReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3168, __c99, 0) as any as S.Schema<RetryDataReplicationRequest>,
+  input: __S(3072, __c96, 0) as any as S.Schema<RetryDataReplicationRequest>,
   output: __S(312, __c9, 24) as any as S.Schema<SourceServer>,
   errors: [ResourceNotFoundException, UninitializedAccountException, ValidationException],
   protocol: AwsProtocol,
@@ -3774,8 +3774,8 @@ export const startCutover: API.OperationMethod<
   StartCutoverError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3200, __c100, 0) as any as S.Schema<StartCutoverRequest>,
-  output: __S(3232, __c101, 0) as any as S.Schema<StartCutoverResponse>,
+  input: __S(3104, __c97, 0) as any as S.Schema<StartCutoverRequest>,
+  output: __S(3136, __c98, 0) as any as S.Schema<StartCutoverResponse>,
   errors: [ConflictException, UninitializedAccountException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3796,8 +3796,8 @@ export const startExport: API.OperationMethod<
   StartExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3264, __c102, 0) as any as S.Schema<StartExportRequest>,
-  output: __S(3265, __c102, 1) as any as S.Schema<StartExportResponse>,
+  input: __S(3168, __c99, 0) as any as S.Schema<StartExportRequest>,
+  output: __S(3169, __c99, 1) as any as S.Schema<StartExportResponse>,
   errors: [ServiceQuotaExceededException, UninitializedAccountException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3820,8 +3820,8 @@ export const startImport: API.OperationMethod<
   StartImportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3296, __c103, 0) as any as S.Schema<StartImportRequest>,
-  output: __S(3297, __c103, 1) as any as S.Schema<StartImportResponse>,
+  input: __S(3200, __c100, 0) as any as S.Schema<StartImportRequest>,
+  output: __S(3201, __c100, 1) as any as S.Schema<StartImportResponse>,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -3850,8 +3850,8 @@ export const startImportFileEnrichment: API.OperationMethod<
   StartImportFileEnrichmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3328, __c104, 0) as any as S.Schema<StartImportFileEnrichmentRequest>,
-  output: __S(3360, __c105, 0) as any as S.Schema<StartImportFileEnrichmentResponse>,
+  input: __S(3232, __c101, 0) as any as S.Schema<StartImportFileEnrichmentRequest>,
+  output: __S(3264, __c102, 0) as any as S.Schema<StartImportFileEnrichmentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3881,8 +3881,8 @@ export const startNetworkMigrationAnalysis: API.OperationMethod<
   StartNetworkMigrationAnalysisError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3392, __c106, 0) as any as S.Schema<StartNetworkMigrationAnalysisRequest>,
-  output: __S(3360, __c105, 0) as any as S.Schema<StartNetworkMigrationAnalysisResponse>,
+  input: __S(3296, __c103, 0) as any as S.Schema<StartNetworkMigrationAnalysisRequest>,
+  output: __S(3264, __c102, 0) as any as S.Schema<StartNetworkMigrationAnalysisResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3913,8 +3913,8 @@ export const startNetworkMigrationCodeGeneration: API.OperationMethod<
   StartNetworkMigrationCodeGenerationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3520, __c110, 0) as any as S.Schema<StartNetworkMigrationCodeGenerationRequest>,
-  output: __S(3360, __c105, 0) as any as S.Schema<StartNetworkMigrationCodeGenerationResponse>,
+  input: __S(3424, __c107, 0) as any as S.Schema<StartNetworkMigrationCodeGenerationRequest>,
+  output: __S(3264, __c102, 0) as any as S.Schema<StartNetworkMigrationCodeGenerationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3945,8 +3945,8 @@ export const startNetworkMigrationDeployment: API.OperationMethod<
   StartNetworkMigrationDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3552, __c111, 0) as any as S.Schema<StartNetworkMigrationDeploymentRequest>,
-  output: __S(3360, __c105, 0) as any as S.Schema<StartNetworkMigrationDeployerJobResponse>,
+  input: __S(3456, __c108, 0) as any as S.Schema<StartNetworkMigrationDeploymentRequest>,
+  output: __S(3264, __c102, 0) as any as S.Schema<StartNetworkMigrationDeployerJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3977,8 +3977,8 @@ export const startNetworkMigrationMapping: API.OperationMethod<
   StartNetworkMigrationMappingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3584, __c112, 0) as any as S.Schema<StartNetworkMigrationMappingRequest>,
-  output: __S(3360, __c105, 0) as any as S.Schema<StartNetworkMigrationMappingResponse>,
+  input: __S(3488, __c109, 0) as any as S.Schema<StartNetworkMigrationMappingRequest>,
+  output: __S(3264, __c102, 0) as any as S.Schema<StartNetworkMigrationMappingResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4009,8 +4009,8 @@ export const startNetworkMigrationMappingUpdate: API.OperationMethod<
   StartNetworkMigrationMappingUpdateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3628, __c113, 12) as any as S.Schema<StartNetworkMigrationMappingUpdateRequest>,
-  output: __S(3360, __c105, 0) as any as S.Schema<StartNetworkMigrationMappingUpdateResponse>,
+  input: __S(3532, __c110, 12) as any as S.Schema<StartNetworkMigrationMappingUpdateRequest>,
+  output: __S(3264, __c102, 0) as any as S.Schema<StartNetworkMigrationMappingUpdateResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4040,7 +4040,7 @@ export const startReplication: API.OperationMethod<
   StartReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3648, __c114, 0) as any as S.Schema<StartReplicationRequest>,
+  input: __S(3552, __c111, 0) as any as S.Schema<StartReplicationRequest>,
   output: __S(312, __c9, 24) as any as S.Schema<SourceServer>,
   errors: [
     ConflictException,
@@ -4068,8 +4068,8 @@ export const startTest: API.OperationMethod<
   StartTestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3680, __c115, 0) as any as S.Schema<StartTestRequest>,
-  output: __S(3232, __c101, 0) as any as S.Schema<StartTestResponse>,
+  input: __S(3584, __c112, 0) as any as S.Schema<StartTestRequest>,
+  output: __S(3136, __c98, 0) as any as S.Schema<StartTestResponse>,
   errors: [ConflictException, UninitializedAccountException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4092,7 +4092,7 @@ export const stopReplication: API.OperationMethod<
   StopReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3712, __c116, 0) as any as S.Schema<StopReplicationRequest>,
+  input: __S(3616, __c113, 0) as any as S.Schema<StopReplicationRequest>,
   output: __S(312, __c9, 24) as any as S.Schema<SourceServer>,
   errors: [
     ConflictException,
@@ -4122,7 +4122,7 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3744, __c117, 0) as any as S.Schema<TagResourceRequest>,
+  input: __S(3648, __c114, 0) as any as S.Schema<TagResourceRequest>,
   output: __S(96, __c3, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
@@ -4150,8 +4150,8 @@ export const terminateTargetInstances: API.OperationMethod<
   TerminateTargetInstancesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3776, __c118, 0) as any as S.Schema<TerminateTargetInstancesRequest>,
-  output: __S(3777, __c118, 1) as any as S.Schema<TerminateTargetInstancesResponse>,
+  input: __S(3680, __c115, 0) as any as S.Schema<TerminateTargetInstancesRequest>,
+  output: __S(3136, __c98, 0) as any as S.Schema<TerminateTargetInstancesResponse>,
   errors: [ConflictException, UninitializedAccountException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4172,8 +4172,8 @@ export const unarchiveApplication: API.OperationMethod<
   UnarchiveApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3808, __c119, 0) as any as S.Schema<UnarchiveApplicationRequest>,
-  output: __S(3457, __c108, 1) as any as S.Schema<Application>,
+  input: __S(3712, __c116, 0) as any as S.Schema<UnarchiveApplicationRequest>,
+  output: __S(3361, __c105, 1) as any as S.Schema<Application>,
   errors: [ResourceNotFoundException, ServiceQuotaExceededException, UninitializedAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4194,8 +4194,8 @@ export const unarchiveWave: API.OperationMethod<
   UnarchiveWaveError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3904, __c122, 0) as any as S.Schema<UnarchiveWaveRequest>,
-  output: __S(3873, __c121, 1) as any as S.Schema<Wave>,
+  input: __S(3808, __c119, 0) as any as S.Schema<UnarchiveWaveRequest>,
+  output: __S(3777, __c118, 1) as any as S.Schema<Wave>,
   errors: [ResourceNotFoundException, ServiceQuotaExceededException, UninitializedAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4218,7 +4218,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3936, __c123, 0) as any as S.Schema<UntagResourceRequest>,
+  input: __S(3840, __c120, 0) as any as S.Schema<UntagResourceRequest>,
   output: __S(96, __c3, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
@@ -4246,8 +4246,8 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3968, __c124, 0) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(3457, __c108, 1) as any as S.Schema<Application>,
+  input: __S(3872, __c121, 0) as any as S.Schema<UpdateApplicationRequest>,
+  output: __S(3361, __c105, 1) as any as S.Schema<Application>,
   errors: [ConflictException, ResourceNotFoundException, UninitializedAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4268,7 +4268,7 @@ export const updateConnector: API.OperationMethod<
   UpdateConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4000, __c125, 0) as any as S.Schema<UpdateConnectorRequest>,
+  input: __S(3904, __c122, 0) as any as S.Schema<UpdateConnectorRequest>,
   output: __S(385, __c12, 1) as any as S.Schema<Connector>,
   errors: [ResourceNotFoundException, UninitializedAccountException, ValidationException],
   protocol: AwsProtocol,
@@ -4293,8 +4293,8 @@ export const updateLaunchConfiguration: API.OperationMethod<
   UpdateLaunchConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4032, __c126, 0) as any as S.Schema<UpdateLaunchConfigurationRequest>,
-  output: __S(1504, __c47, 0) as any as S.Schema<LaunchConfiguration>,
+  input: __S(3936, __c123, 0) as any as S.Schema<UpdateLaunchConfigurationRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<LaunchConfiguration>,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -4321,7 +4321,7 @@ export const updateLaunchConfigurationTemplate: API.OperationMethod<
   UpdateLaunchConfigurationTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4064, __c127, 0) as any as S.Schema<UpdateLaunchConfigurationTemplateRequest>,
+  input: __S(3968, __c124, 0) as any as S.Schema<UpdateLaunchConfigurationTemplateRequest>,
   output: __S(545, __c17, 1) as any as S.Schema<LaunchConfigurationTemplate>,
   errors: [
     AccessDeniedException,
@@ -4348,8 +4348,8 @@ export const updateNetworkMigrationDefinition: API.OperationMethod<
   UpdateNetworkMigrationDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4098, __c128, 2) as any as S.Schema<UpdateNetworkMigrationDefinitionRequest>,
-  output: __S(647, __c20, 7) as any as S.Schema<NetworkMigrationDefinition>,
+  input: __S(4002, __c125, 2) as any as S.Schema<UpdateNetworkMigrationDefinitionRequest>,
+  output: __S(646, __c20, 6) as any as S.Schema<NetworkMigrationDefinition>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4370,8 +4370,8 @@ export const updateNetworkMigrationMapperSegment: API.OperationMethod<
   UpdateNetworkMigrationMapperSegmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4128, __c129, 0) as any as S.Schema<UpdateNetworkMigrationMapperSegmentRequest>,
-  output: __S(2592, __c81, 0) as any as S.Schema<NetworkMigrationMapperSegment>,
+  input: __S(4032, __c126, 0) as any as S.Schema<UpdateNetworkMigrationMapperSegmentRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<NetworkMigrationMapperSegment>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4394,8 +4394,8 @@ export const updateReplicationConfiguration: API.OperationMethod<
   UpdateReplicationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4160, __c130, 0) as any as S.Schema<UpdateReplicationConfigurationRequest>,
-  output: __S(1666, __c52, 2) as any as S.Schema<ReplicationConfiguration>,
+  input: __S(4064, __c127, 0) as any as S.Schema<UpdateReplicationConfigurationRequest>,
+  output: __S(1634, __c51, 2) as any as S.Schema<ReplicationConfiguration>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4423,7 +4423,7 @@ export const updateReplicationConfigurationTemplate: API.OperationMethod<
   UpdateReplicationConfigurationTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4192, __c131, 0) as any as S.Schema<UpdateReplicationConfigurationTemplateRequest>,
+  input: __S(4096, __c128, 0) as any as S.Schema<UpdateReplicationConfigurationTemplateRequest>,
   output: __S(736, __c23, 0) as any as S.Schema<ReplicationConfigurationTemplate>,
   errors: [
     AccessDeniedException,
@@ -4503,7 +4503,7 @@ export const updateWave: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(192, __c6, 0) as any as S.Schema<UpdateWaveRequest>,
-  output: __S(3873, __c121, 1) as any as S.Schema<Wave>,
+  output: __S(3777, __c118, 1) as any as S.Schema<Wave>,
   errors: [ConflictException, ResourceNotFoundException, UninitializedAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4544,9 +4544,7 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateApplicationsRequest",
-      });
+      ).annotate({ identifier: "AssociateApplicationsRequest" });
   }
 }
 function __c2(j: number): any {
@@ -4584,9 +4582,7 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateSourceServerRequest",
-      });
+      ).annotate({ identifier: "UpdateSourceServerRequest" });
   }
 }
 function __c5(j: number): any {
@@ -4607,9 +4603,7 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateSourceServerReplicationTypeRequest",
-      });
+      ).annotate({ identifier: "UpdateSourceServerReplicationTypeRequest" });
   }
 }
 function __c6(j: number): any {
@@ -4645,9 +4639,7 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateSourceServersRequest",
-      });
+      ).annotate({ identifier: "AssociateSourceServersRequest" });
   }
 }
 function __c8(j: number): any {
@@ -4672,9 +4664,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ChangeServerLifeCycleStateRequest",
-      });
+      ).annotate({ identifier: "ChangeServerLifeCycleStateRequest" });
   }
 }
 function __c9(j: number): any {
@@ -4710,17 +4700,13 @@ function __c9(j: number): any {
           rescannedStorageBytes: S.optional(S.Number),
           backloggedStorageBytes: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "DataReplicationInfoReplicatedDisk",
-      });
+      ).annotate({ identifier: "DataReplicationInfoReplicatedDisk" });
     case 4:
       return S.Array(__S(291, __c9, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({ name: S.optional(S.String), status: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DataReplicationInitiationStep",
-      });
+      ).annotate({ identifier: "DataReplicationInitiationStep" });
     case 6:
       return S.Array(__S(293, __c9, 5));
     case 7:
@@ -4730,9 +4716,7 @@ function __c9(j: number): any {
           nextAttemptDateTime: S.optional(S.String),
           steps: S.optional(__S(294, __c9, 6)),
         }),
-      ).annotate({
-        identifier: "DataReplicationInitiation",
-      });
+      ).annotate({ identifier: "DataReplicationInitiation" });
     case 8:
       return S.suspend(() =>
         S.Struct({ error: S.optional(S.String), rawError: S.optional(S.String) }),
@@ -4753,9 +4737,7 @@ function __c9(j: number): any {
     case 10:
       return S.suspend(() =>
         S.Struct({ apiCallDateTime: S.optional(S.String), jobID: S.optional(S.String) }),
-      ).annotate({
-        identifier: "LifeCycleLastTestInitiated",
-      });
+      ).annotate({ identifier: "LifeCycleLastTestInitiated" });
     case 11:
       return S.suspend(() => S.Struct({ apiCallDateTime: S.optional(S.String) })).annotate({
         identifier: "LifeCycleLastTestReverted",
@@ -4835,16 +4817,14 @@ function __c9(j: number): any {
           credentialsSecretArn: S.optional(S.String),
           connectorArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SourceServerConnectorAction",
-      });
+      ).annotate({ identifier: "SourceServerConnectorAction" });
     case 24:
       return S.suspend(() =>
         S.Struct({
           sourceServerID: S.optional(S.String),
           arn: S.optional(S.String),
           isArchived: S.optional(S.Boolean),
-          tags: S.optional(__S(3488, __c109, 0)),
+          tags: S.optional(__S(3392, __c106, 0)),
           launchedInstance: S.optional(__S(290, __c9, 2)),
           dataReplicationInfo: S.optional(__S(297, __c9, 9)),
           lifeCycle: S.optional(__S(301, __c9, 13)),
@@ -4866,7 +4846,7 @@ function __c10(j: number): any {
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          tags: S.optional(__S(3488, __c109, 0)),
+          tags: S.optional(__S(3392, __c106, 0)),
           accountID: S.optional(S.String),
         }).pipe(
           T.all(
@@ -4888,7 +4868,7 @@ function __c11(j: number): any {
         S.Struct({
           name: S.String,
           ssmInstanceID: S.String,
-          tags: S.optional(__S(3488, __c109, 0)),
+          tags: S.optional(__S(3392, __c106, 0)),
           ssmCommandConfig: S.optional(__S(384, __c12, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/CreateConnector" }), svc, auth, proto, ver, rules),
@@ -4906,9 +4886,7 @@ function __c12(j: number): any {
           cloudWatchOutputEnabled: S.Boolean,
           cloudWatchLogGroupName: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ConnectorSsmCommandConfig",
-      });
+      ).annotate({ identifier: "ConnectorSsmCommandConfig" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4916,7 +4894,7 @@ function __c12(j: number): any {
           name: S.optional(S.String),
           ssmInstanceID: S.optional(S.String),
           arn: S.optional(S.String),
-          tags: S.optional(__S(3488, __c109, 0)),
+          tags: S.optional(__S(3392, __c106, 0)),
           ssmCommandConfig: S.optional(__S(384, __c12, 0)),
         }),
       ).annotate({ identifier: "Connector" });
@@ -4930,7 +4908,7 @@ function __c13(j: number): any {
           postLaunchActions: S.optional(__S(513, __c16, 1)),
           enableMapAutoTagging: S.optional(S.Boolean),
           mapAutoTaggingMpeID: S.optional(S.String),
-          tags: S.optional(__S(3488, __c109, 0)),
+          tags: S.optional(__S(3392, __c106, 0)),
           launchDisposition: S.optional(S.String),
           targetInstanceTypeRightSizingMethod: S.optional(S.String),
           copyPrivateIp: S.optional(S.Boolean),
@@ -4953,9 +4931,7 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateLaunchConfigurationTemplateRequest",
-      });
+      ).annotate({ identifier: "CreateLaunchConfigurationTemplateRequest" });
   }
 }
 function __c14(j: number): any {
@@ -4963,9 +4939,7 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ parameterType: S.String, parameterName: S.String }),
-      ).annotate({
-        identifier: "SsmParameterStoreParameter",
-      });
+      ).annotate({ identifier: "SsmParameterStoreParameter" });
     case 1:
       return S.Array(__S(448, __c14, 0));
     case 2:
@@ -5031,7 +5005,7 @@ function __c17(j: number): any {
           postLaunchActions: S.optional(__S(513, __c16, 1)),
           enableMapAutoTagging: S.optional(S.Boolean),
           mapAutoTaggingMpeID: S.optional(S.String),
-          tags: S.optional(__S(3488, __c109, 0)),
+          tags: S.optional(__S(3392, __c106, 0)),
           ec2LaunchTemplateID: S.optional(S.String),
           launchDisposition: S.optional(S.String),
           targetInstanceTypeRightSizingMethod: S.optional(S.String),
@@ -5046,9 +5020,7 @@ function __c17(j: number): any {
           enableParametersEncryption: S.optional(S.Boolean),
           parametersEncryptionKey: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "LaunchConfigurationTemplate",
-      });
+      ).annotate({ identifier: "LaunchConfigurationTemplate" });
   }
 }
 function __c18(j: number): any {
@@ -5058,14 +5030,14 @@ function __c18(j: number): any {
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          sourceConfigurations: S.optional(__S(642, __c20, 2)),
-          targetS3Configuration: __S(643, __c20, 3),
-          targetNetwork: __S(644, __c20, 4),
+          sourceConfigurations: S.optional(__S(641, __c20, 1)),
+          targetS3Configuration: __S(642, __c20, 2),
+          targetNetwork: __S(643, __c20, 3),
           targetDeployment: S.optional(S.String),
           vpcProvisioningStrategy: S.optional(S.String),
-          cidrMappings: S.optional(__S(646, __c20, 6)),
-          tags: S.optional(__S(3488, __c109, 0)),
-          scopeTags: S.optional(__S(608, __c19, 0)),
+          cidrMappings: S.optional(__S(645, __c20, 5)),
+          tags: S.optional(__S(3392, __c106, 0)),
+          scopeTags: S.optional(__S(3392, __c106, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/network-migration/CreateNetworkMigrationDefinition" }),
@@ -5076,34 +5048,30 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateNetworkMigrationDefinitionRequest",
-      });
+      ).annotate({ identifier: "CreateNetworkMigrationDefinitionRequest" });
   }
 }
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+      return S.suspend(() =>
+        S.Struct({ s3Bucket: S.String, s3BucketOwner: S.String, s3Key: S.String }),
+      ).annotate({ identifier: "SourceS3Configuration" });
   }
 }
 function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ s3Bucket: S.String, s3BucketOwner: S.String, s3Key: S.String }),
-      ).annotate({ identifier: "SourceS3Configuration" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ sourceEnvironment: S.String, sourceS3Configuration: __S(640, __c20, 0) }),
+        S.Struct({ sourceEnvironment: S.String, sourceS3Configuration: __S(608, __c19, 0) }),
       ).annotate({ identifier: "SourceConfiguration" });
+    case 1:
+      return S.Array(__S(640, __c20, 0));
     case 2:
-      return S.Array(__S(641, __c20, 1));
-    case 3:
       return S.suspend(() => S.Struct({ s3Bucket: S.String, s3BucketOwner: S.String })).annotate({
         identifier: "TargetS3Configuration",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           topology: S.String,
@@ -5112,33 +5080,31 @@ function __c20(j: number): any {
           inspectionCidr: S.optional(S.String),
         }),
       ).annotate({ identifier: "TargetNetwork" });
-    case 5:
+    case 4:
       return S.suspend(() => S.Struct({ originalCidr: S.String, updatedCidr: S.String })).annotate({
         identifier: "CidrMapping",
       });
+    case 5:
+      return S.Array(__S(644, __c20, 4));
     case 6:
-      return S.Array(__S(645, __c20, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
           networkMigrationDefinitionID: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          sourceConfigurations: S.optional(__S(642, __c20, 2)),
-          targetS3Configuration: S.optional(__S(643, __c20, 3)),
-          targetNetwork: S.optional(__S(644, __c20, 4)),
+          sourceConfigurations: S.optional(__S(641, __c20, 1)),
+          targetS3Configuration: S.optional(__S(642, __c20, 2)),
+          targetNetwork: S.optional(__S(643, __c20, 3)),
           targetDeployment: S.optional(S.String),
           vpcProvisioningStrategy: S.optional(S.String),
-          cidrMappings: S.optional(__S(646, __c20, 6)),
+          cidrMappings: S.optional(__S(645, __c20, 5)),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tags: S.optional(__S(3488, __c109, 0)),
-          scopeTags: S.optional(__S(608, __c19, 0)),
+          tags: S.optional(__S(3392, __c106, 0)),
+          scopeTags: S.optional(__S(3392, __c106, 0)),
         }),
-      ).annotate({
-        identifier: "NetworkMigrationDefinition",
-      });
+      ).annotate({ identifier: "NetworkMigrationDefinition" });
   }
 }
 function __c21(j: number): any {
@@ -5157,9 +5123,9 @@ function __c21(j: number): any {
           bandwidthThrottling: S.Number,
           dataPlaneRouting: S.String,
           createPublicIP: S.Boolean,
-          stagingAreaTags: __S(3488, __c109, 0),
+          stagingAreaTags: __S(3392, __c106, 0),
           useFipsEndpoint: S.optional(S.Boolean),
-          tags: S.optional(__S(3488, __c109, 0)),
+          tags: S.optional(__S(3392, __c106, 0)),
           internetProtocol: S.optional(S.String),
           storeSnapshotOnLocalZone: S.optional(S.Boolean),
           storageConfiguration: S.optional(__S(705, __c22, 1)),
@@ -5173,9 +5139,7 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateReplicationConfigurationTemplateRequest",
-      });
+      ).annotate({ identifier: "CreateReplicationConfigurationTemplateRequest" });
   }
 }
 function __c22(j: number): any {
@@ -5208,16 +5172,14 @@ function __c23(j: number): any {
           bandwidthThrottling: S.optional(S.Number),
           dataPlaneRouting: S.optional(S.String),
           createPublicIP: S.optional(S.Boolean),
-          stagingAreaTags: S.optional(__S(3488, __c109, 0)),
+          stagingAreaTags: S.optional(__S(3392, __c106, 0)),
           useFipsEndpoint: S.optional(S.Boolean),
-          tags: S.optional(__S(3488, __c109, 0)),
+          tags: S.optional(__S(3392, __c106, 0)),
           internetProtocol: S.optional(S.String),
           storeSnapshotOnLocalZone: S.optional(S.Boolean),
           storageConfiguration: S.optional(__S(705, __c22, 1)),
         }),
-      ).annotate({
-        identifier: "ReplicationConfigurationTemplate",
-      });
+      ).annotate({ identifier: "ReplicationConfigurationTemplate" });
   }
 }
 function __c24(j: number): any {
@@ -5227,7 +5189,7 @@ function __c24(j: number): any {
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          tags: S.optional(__S(3488, __c109, 0)),
+          tags: S.optional(__S(3392, __c106, 0)),
           accountID: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/CreateWave" }), svc, auth, proto, ver, rules),
@@ -5286,20 +5248,10 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteLaunchConfigurationTemplateRequest",
-      });
+      ).annotate({ identifier: "DeleteLaunchConfigurationTemplateRequest" });
   }
 }
 function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteLaunchConfigurationTemplateResponse",
-      });
-  }
-}
-function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5313,12 +5265,10 @@ function __c30(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteNetworkMigrationDefinitionRequest",
-      });
+      ).annotate({ identifier: "DeleteNetworkMigrationDefinitionRequest" });
   }
 }
-function __c31(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5332,12 +5282,10 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteReplicationConfigurationTemplateRequest",
-      });
+      ).annotate({ identifier: "DeleteReplicationConfigurationTemplateRequest" });
   }
 }
-function __c32(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5351,12 +5299,10 @@ function __c32(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteSourceServerRequest",
-      });
+      ).annotate({ identifier: "DeleteSourceServerRequest" });
   }
 }
-function __c33(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5370,12 +5316,10 @@ function __c33(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteVcenterClientRequest",
-      });
+      ).annotate({ identifier: "DeleteVcenterClientRequest" });
   }
 }
-function __c34(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5385,7 +5329,7 @@ function __c34(j: number): any {
       ).annotate({ identifier: "DeleteWaveRequest" });
   }
 }
-function __c35(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5404,9 +5348,7 @@ function __c35(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeJobLogItemsRequest",
-      });
+      ).annotate({ identifier: "DescribeJobLogItemsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5423,20 +5365,18 @@ function __c35(j: number): any {
         S.Struct({
           logDateTime: S.optional(S.String),
           event: S.optional(S.String),
-          eventData: S.optional(__S(1121, __c35, 1)),
+          eventData: S.optional(__S(1089, __c34, 1)),
         }),
       ).annotate({ identifier: "JobLog" });
     case 3:
-      return S.Array(__S(1122, __c35, 2));
+      return S.Array(__S(1090, __c34, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(1123, __c35, 3)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DescribeJobLogItemsResponse",
-      });
+        S.Struct({ items: S.optional(__S(1091, __c34, 3)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "DescribeJobLogItemsResponse" });
   }
 }
-function __c36(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5445,13 +5385,11 @@ function __c36(j: number): any {
           fromDate: S.optional(S.String),
           toDate: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeJobsRequestFilters",
-      });
+      ).annotate({ identifier: "DescribeJobsRequestFilters" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(1152, __c36, 0)),
+          filters: S.optional(__S(1120, __c35, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
           accountID: S.optional(S.String),
@@ -5460,14 +5398,14 @@ function __c36(j: number): any {
         ),
       ).annotate({ identifier: "DescribeJobsRequest" });
     case 2:
-      return S.Array(__S(1189, __c37, 5));
+      return S.Array(__S(1157, __c36, 5));
     case 3:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(1154, __c36, 2)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(__S(1122, __c35, 2)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "DescribeJobsResponse" });
   }
 }
-function __c37(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5478,16 +5416,14 @@ function __c37(j: number): any {
           executionStatus: S.optional(S.String),
           failureReason: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "JobPostLaunchActionsLaunchStatus",
-      });
+      ).annotate({ identifier: "JobPostLaunchActionsLaunchStatus" });
     case 1:
-      return S.Array(__S(1184, __c37, 0));
+      return S.Array(__S(1152, __c36, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           ssmAgentDiscoveryDatetime: S.optional(S.String),
-          postLaunchActionsLaunchStatusList: S.optional(__S(1185, __c37, 1)),
+          postLaunchActionsLaunchStatusList: S.optional(__S(1153, __c36, 1)),
         }),
       ).annotate({ identifier: "PostLaunchActionsStatus" });
     case 3:
@@ -5496,11 +5432,11 @@ function __c37(j: number): any {
           sourceServerID: S.String,
           launchStatus: S.optional(S.String),
           launchedEc2InstanceID: S.optional(S.String),
-          postLaunchActionsStatus: S.optional(__S(1186, __c37, 2)),
+          postLaunchActionsStatus: S.optional(__S(1154, __c36, 2)),
         }),
       ).annotate({ identifier: "ParticipatingServer" });
     case 4:
-      return S.Array(__S(1187, __c37, 3));
+      return S.Array(__S(1155, __c36, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5511,13 +5447,13 @@ function __c37(j: number): any {
           creationDateTime: S.optional(S.String),
           endDateTime: S.optional(S.String),
           status: S.optional(S.String),
-          participatingServers: S.optional(__S(1188, __c37, 4)),
-          tags: S.optional(__S(3488, __c109, 0)),
+          participatingServers: S.optional(__S(1156, __c36, 4)),
+          tags: S.optional(__S(3392, __c106, 0)),
         }),
       ).annotate({ identifier: "Job" });
   }
 }
-function __c38(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5535,20 +5471,16 @@ function __c38(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeLaunchConfigurationTemplatesRequest",
-      });
+      ).annotate({ identifier: "DescribeLaunchConfigurationTemplatesRequest" });
     case 1:
       return S.Array(__S(545, __c17, 1));
     case 2:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(1217, __c38, 1)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DescribeLaunchConfigurationTemplatesResponse",
-      });
+        S.Struct({ items: S.optional(__S(1185, __c37, 1)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "DescribeLaunchConfigurationTemplatesResponse" });
   }
 }
-function __c39(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5566,23 +5498,16 @@ function __c39(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeReplicationConfigurationTemplatesRequest",
-      });
+      ).annotate({ identifier: "DescribeReplicationConfigurationTemplatesRequest" });
     case 1:
       return S.Array(__S(736, __c23, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(1249, __c39, 1)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DescribeReplicationConfigurationTemplatesResponse",
-      });
+        S.Struct({ items: S.optional(__S(1217, __c38, 1)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "DescribeReplicationConfigurationTemplatesResponse" });
   }
 }
-function __c40(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5593,13 +5518,11 @@ function __c40(j: number): any {
           lifeCycleStates: S.optional(__S(64, __c2, 0)),
           applicationIDs: S.optional(__S(64, __c2, 0)),
         }),
-      ).annotate({
-        identifier: "DescribeSourceServersRequestFilters",
-      });
+      ).annotate({ identifier: "DescribeSourceServersRequestFilters" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(1280, __c40, 0)),
+          filters: S.optional(__S(1248, __c39, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
           accountID: S.optional(S.String),
@@ -5613,20 +5536,16 @@ function __c40(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeSourceServersRequest",
-      });
+      ).annotate({ identifier: "DescribeSourceServersRequest" });
     case 2:
       return S.Array(__S(312, __c9, 24));
     case 3:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(1282, __c40, 2)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DescribeSourceServersResponse",
-      });
+        S.Struct({ items: S.optional(__S(1250, __c39, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "DescribeSourceServersResponse" });
   }
 }
-function __c41(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5643,9 +5562,7 @@ function __c41(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeVcenterClientsRequest",
-      });
+      ).annotate({ identifier: "DescribeVcenterClientsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5655,21 +5572,19 @@ function __c41(j: number): any {
           vcenterUUID: S.optional(S.String),
           datacenterName: S.optional(S.String),
           lastSeenDatetime: S.optional(S.String),
-          sourceServerTags: S.optional(__S(3488, __c109, 0)),
-          tags: S.optional(__S(3488, __c109, 0)),
+          sourceServerTags: S.optional(__S(3392, __c106, 0)),
+          tags: S.optional(__S(3392, __c106, 0)),
         }),
       ).annotate({ identifier: "VcenterClient" });
     case 2:
-      return S.Array(__S(1313, __c41, 1));
+      return S.Array(__S(1281, __c40, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(1314, __c41, 2)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DescribeVcenterClientsResponse",
-      });
+        S.Struct({ items: S.optional(__S(1282, __c40, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "DescribeVcenterClientsResponse" });
   }
 }
-function __c42(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5687,12 +5602,10 @@ function __c42(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateApplicationsRequest",
-      });
+      ).annotate({ identifier: "DisassociateApplicationsRequest" });
   }
 }
-function __c43(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5710,12 +5623,10 @@ function __c43(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateSourceServersRequest",
-      });
+      ).annotate({ identifier: "DisassociateSourceServersRequest" });
   }
 }
-function __c44(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5729,12 +5640,10 @@ function __c44(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisconnectFromServiceRequest",
-      });
+      ).annotate({ identifier: "DisconnectFromServiceRequest" });
   }
 }
-function __c45(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5744,7 +5653,7 @@ function __c45(j: number): any {
       ).annotate({ identifier: "FinalizeCutoverRequest" });
   }
 }
-function __c46(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5758,12 +5667,10 @@ function __c46(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetLaunchConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetLaunchConfigurationRequest" });
   }
 }
-function __c47(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5784,7 +5691,7 @@ function __c47(j: number): any {
       ).annotate({ identifier: "LaunchConfiguration" });
   }
 }
-function __c48(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5798,12 +5705,10 @@ function __c48(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetNetworkMigrationDefinitionRequest",
-      });
+      ).annotate({ identifier: "GetNetworkMigrationDefinitionRequest" });
   }
 }
-function __c49(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5825,16 +5730,14 @@ function __c49(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetNetworkMigrationMapperSegmentConstructRequest",
-      });
+      ).annotate({ identifier: "GetNetworkMigrationMapperSegmentConstructRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ construct: S.optional(__S(1600, __c50, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ construct: S.optional(__S(1568, __c49, 0)) })).annotate({
         identifier: "GetNetworkMigrationMapperSegmentConstructResponse",
       });
   }
 }
-function __c50(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5847,14 +5750,12 @@ function __c50(j: number): any {
           excluded: S.optional(S.Boolean),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          properties: S.optional(__S(608, __c19, 0)),
+          properties: S.optional(__S(3392, __c106, 0)),
         }),
-      ).annotate({
-        identifier: "NetworkMigrationMapperSegmentConstruct",
-      });
+      ).annotate({ identifier: "NetworkMigrationMapperSegmentConstruct" });
   }
 }
-function __c51(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5868,12 +5769,10 @@ function __c51(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetReplicationConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetReplicationConfigurationRequest" });
   }
 }
-function __c52(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5884,11 +5783,9 @@ function __c52(j: number): any {
           iops: S.optional(S.Number),
           throughput: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "ReplicationConfigurationReplicatedDisk",
-      });
+      ).annotate({ identifier: "ReplicationConfigurationReplicatedDisk" });
     case 1:
-      return S.Array(__S(1664, __c52, 0));
+      return S.Array(__S(1632, __c51, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5900,13 +5797,13 @@ function __c52(j: number): any {
           replicationServerInstanceType: S.optional(S.String),
           useDedicatedReplicationServer: S.optional(S.Boolean),
           defaultLargeStagingDiskType: S.optional(S.String),
-          replicatedDisks: S.optional(__S(1665, __c52, 1)),
+          replicatedDisks: S.optional(__S(1633, __c51, 1)),
           ebsEncryption: S.optional(S.String),
           ebsEncryptionKeyArn: S.optional(S.String),
           bandwidthThrottling: S.optional(S.Number),
           dataPlaneRouting: S.optional(S.String),
           createPublicIP: S.optional(S.Boolean),
-          stagingAreaTags: S.optional(__S(3488, __c109, 0)),
+          stagingAreaTags: S.optional(__S(3392, __c106, 0)),
           useFipsEndpoint: S.optional(S.Boolean),
           internetProtocol: S.optional(S.String),
           storeSnapshotOnLocalZone: S.optional(S.Boolean),
@@ -5915,7 +5812,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "ReplicationConfiguration" });
   }
 }
-function __c53(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5932,7 +5829,7 @@ function __c53(j: number): any {
       ).annotate({ identifier: "InitializeServiceRequest" });
   }
 }
-function __c54(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5941,13 +5838,11 @@ function __c54(j: number): any {
           isArchived: S.optional(S.Boolean),
           waveIDs: S.optional(__S(64, __c2, 0)),
         }),
-      ).annotate({
-        identifier: "ListApplicationsRequestFilters",
-      });
+      ).annotate({ identifier: "ListApplicationsRequestFilters" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(1728, __c54, 0)),
+          filters: S.optional(__S(1696, __c53, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
           accountID: S.optional(S.String),
@@ -5956,14 +5851,14 @@ function __c54(j: number): any {
         ),
       ).annotate({ identifier: "ListApplicationsRequest" });
     case 2:
-      return S.Array(__S(3457, __c108, 1));
+      return S.Array(__S(3361, __c105, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(1730, __c54, 2)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(__S(1698, __c53, 2)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListApplicationsResponse" });
   }
 }
-function __c55(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ connectorIDs: S.optional(__S(64, __c2, 0)) })).annotate({
@@ -5972,7 +5867,7 @@ function __c55(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(1760, __c55, 0)),
+          filters: S.optional(__S(1728, __c54, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -5983,11 +5878,11 @@ function __c55(j: number): any {
       return S.Array(__S(385, __c12, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(1762, __c55, 2)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(__S(1730, __c54, 2)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListConnectorsResponse" });
   }
 }
-function __c56(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6007,18 +5902,18 @@ function __c56(j: number): any {
       return S.suspend(() =>
         S.Struct({
           errorDateTime: S.optional(S.String),
-          errorData: S.optional(__S(1793, __c56, 1)),
+          errorData: S.optional(__S(1761, __c55, 1)),
         }),
       ).annotate({ identifier: "ExportTaskError" });
     case 3:
-      return S.Array(__S(1794, __c56, 2));
+      return S.Array(__S(1762, __c55, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(1795, __c56, 3)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(__S(1763, __c55, 3)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListExportErrorsResponse" });
   }
 }
-function __c57(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ exportIDs: S.optional(__S(64, __c2, 0)) })).annotate({
@@ -6027,7 +5922,7 @@ function __c57(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(1824, __c57, 0)),
+          filters: S.optional(__S(1792, __c56, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -6035,14 +5930,14 @@ function __c57(j: number): any {
         ),
       ).annotate({ identifier: "ListExportsRequest" });
     case 2:
-      return S.Array(__S(1857, __c58, 1));
+      return S.Array(__S(1825, __c57, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(1826, __c57, 2)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(__S(1794, __c56, 2)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListExportsResponse" });
   }
 }
-function __c58(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6064,13 +5959,13 @@ function __c58(j: number): any {
           endDateTime: S.optional(S.String),
           status: S.optional(S.String),
           progressPercentage: S.optional(S.Number),
-          summary: S.optional(__S(1856, __c58, 0)),
-          tags: S.optional(__S(3488, __c109, 0)),
+          summary: S.optional(__S(1824, __c57, 0)),
+          tags: S.optional(__S(3392, __c106, 0)),
         }),
       ).annotate({ identifier: "ExportTask" });
   }
 }
-function __c59(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6099,23 +5994,23 @@ function __c59(j: number): any {
         S.Struct({
           errorDateTime: S.optional(S.String),
           errorType: S.optional(S.String),
-          errorData: S.optional(__S(1889, __c59, 1)),
+          errorData: S.optional(__S(1857, __c58, 1)),
         }),
       ).annotate({ identifier: "ImportTaskError" });
     case 3:
-      return S.Array(__S(1890, __c59, 2));
+      return S.Array(__S(1858, __c58, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(1891, __c59, 3)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(__S(1859, __c58, 3)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListImportErrorsResponse" });
   }
 }
-function __c60(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(1952, __c61, 0)),
+          filters: S.optional(__S(1920, __c60, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -6128,9 +6023,7 @@ function __c60(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListImportFileEnrichmentsRequest",
-      });
+      ).annotate({ identifier: "ListImportFileEnrichmentsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6139,21 +6032,19 @@ function __c60(j: number): any {
           endedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           status: S.optional(S.String),
           statusDetails: S.optional(S.String),
-          checksum: S.optional(__S(1984, __c62, 0)),
-          s3BucketTarget: S.optional(__S(2016, __c63, 0)),
+          checksum: S.optional(__S(1952, __c61, 0)),
+          s3BucketTarget: S.optional(__S(608, __c19, 0)),
         }),
       ).annotate({ identifier: "ImportFileEnrichment" });
     case 2:
-      return S.Array(__S(1921, __c60, 1));
+      return S.Array(__S(1889, __c59, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(1922, __c60, 2)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListImportFileEnrichmentsResponse",
-      });
+        S.Struct({ items: S.optional(__S(1890, __c59, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListImportFileEnrichmentsResponse" });
   }
 }
-function __c61(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ jobIDs: S.optional(__S(64, __c2, 0)) })).annotate({
@@ -6161,7 +6052,7 @@ function __c61(j: number): any {
       });
   }
 }
-function __c62(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6169,17 +6060,7 @@ function __c62(j: number): any {
       ).annotate({ identifier: "Checksum" });
   }
 }
-function __c63(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ s3Bucket: S.String, s3BucketOwner: S.String, s3Key: S.String }),
-      ).annotate({
-        identifier: "EnrichmentTargetS3Configuration",
-      });
-  }
-}
-function __c64(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ importIDs: S.optional(__S(64, __c2, 0)) })).annotate({
@@ -6188,7 +6069,7 @@ function __c64(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(2048, __c64, 0)),
+          filters: S.optional(__S(1984, __c62, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -6196,14 +6077,14 @@ function __c64(j: number): any {
         ),
       ).annotate({ identifier: "ListImportsRequest" });
     case 2:
-      return S.Array(__S(2084, __c65, 4));
+      return S.Array(__S(2019, __c63, 3));
     case 3:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(2050, __c64, 2)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(__S(1986, __c62, 2)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListImportsResponse" });
   }
 }
-function __c65(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6215,35 +6096,29 @@ function __c65(j: number): any {
       ).annotate({ identifier: "ImportTaskSummaryWaves" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ createdCount: S.optional(S.Number), modifiedCount: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "ImportTaskSummaryApplications",
-      });
-    case 3:
-      return S.suspend(() =>
         S.Struct({
-          waves: S.optional(__S(2081, __c65, 1)),
-          applications: S.optional(__S(2082, __c65, 2)),
-          servers: S.optional(__S(2081, __c65, 1)),
+          waves: S.optional(__S(2017, __c63, 1)),
+          applications: S.optional(__S(2017, __c63, 1)),
+          servers: S.optional(__S(2017, __c63, 1)),
         }),
       ).annotate({ identifier: "ImportTaskSummary" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           importID: S.optional(S.String),
           arn: S.optional(S.String),
-          s3BucketSource: S.optional(__S(2080, __c65, 0)),
+          s3BucketSource: S.optional(__S(2016, __c63, 0)),
           creationDateTime: S.optional(S.String),
           endDateTime: S.optional(S.String),
           status: S.optional(S.String),
           progressPercentage: S.optional(S.Number),
-          summary: S.optional(__S(2083, __c65, 3)),
-          tags: S.optional(__S(3488, __c109, 0)),
+          summary: S.optional(__S(2018, __c63, 2)),
+          tags: S.optional(__S(3392, __c106, 0)),
         }),
       ).annotate({ identifier: "ImportTask" });
   }
 }
-function __c66(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6257,31 +6132,27 @@ function __c66(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListManagedAccountsRequest",
-      });
+      ).annotate({ identifier: "ListManagedAccountsRequest" });
     case 1:
       return S.suspend(() => S.Struct({ accountId: S.optional(S.String) })).annotate({
         identifier: "ManagedAccount",
       });
     case 2:
-      return S.Array(__S(2113, __c66, 1));
+      return S.Array(__S(2049, __c64, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ items: __S(2114, __c66, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListManagedAccountsResponse",
-      });
+        S.Struct({ items: __S(2050, __c64, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListManagedAccountsResponse" });
   }
 }
-function __c67(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           networkMigrationExecutionID: S.String,
           networkMigrationDefinitionID: S.String,
-          filters: S.optional(__S(1952, __c61, 0)),
+          filters: S.optional(__S(1920, __c60, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -6294,22 +6165,10 @@ function __c67(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListNetworkMigrationAnalysesRequest",
-      });
+      ).annotate({ identifier: "ListNetworkMigrationAnalysesRequest" });
   }
 }
-function __c68(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(2209, __c69, 1)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListNetworkMigrationAnalysesResponse",
-      });
-  }
-}
-function __c69(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6322,14 +6181,16 @@ function __c69(j: number): any {
           status: S.optional(S.String),
           statusDetails: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "NetworkMigrationAnalysisJobDetails",
-      });
+      ).annotate({ identifier: "NetworkMigrationAnalysisJobDetails" });
     case 1:
-      return S.Array(__S(2208, __c69, 0));
+      return S.Array(__S(2112, __c66, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ items: S.optional(__S(2113, __c66, 1)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListNetworkMigrationAnalysesResponse" });
   }
 }
-function __c70(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ vpcIDs: S.optional(__S(64, __c2, 0)) })).annotate({
@@ -6340,7 +6201,7 @@ function __c70(j: number): any {
         S.Struct({
           networkMigrationExecutionID: S.String,
           networkMigrationDefinitionID: S.String,
-          filters: S.optional(__S(2240, __c70, 0)),
+          filters: S.optional(__S(2144, __c67, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -6356,15 +6217,11 @@ function __c70(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListNetworkMigrationAnalysisResultsRequest",
-      });
+      ).annotate({ identifier: "ListNetworkMigrationAnalysisResultsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({ vpcID: S.optional(S.String), subnetID: S.optional(S.String) }),
-      ).annotate({
-        identifier: "NetworkMigrationAnalysisResultSource",
-      });
+      ).annotate({ identifier: "NetworkMigrationAnalysisResultSource" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6372,35 +6229,28 @@ function __c70(j: number): any {
           networkMigrationExecutionID: S.optional(S.String),
           networkMigrationDefinitionID: S.optional(S.String),
           analyzerType: S.optional(S.String),
-          source: S.optional(__S(2242, __c70, 2)),
-          target: S.optional(__S(2242, __c70, 2)),
+          source: S.optional(__S(2146, __c67, 2)),
+          target: S.optional(__S(2146, __c67, 2)),
           status: S.optional(S.String),
           analysisResult: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "NetworkMigrationAnalysisResult",
-      });
+      ).annotate({ identifier: "NetworkMigrationAnalysisResult" });
     case 4:
-      return S.Array(__S(2243, __c70, 3));
+      return S.Array(__S(2147, __c67, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(2244, __c70, 4)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListNetworkMigrationAnalysisResultsResponse",
-      });
+        S.Struct({ items: S.optional(__S(2148, __c67, 4)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListNetworkMigrationAnalysisResultsResponse" });
   }
 }
-function __c71(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           networkMigrationExecutionID: S.String,
           networkMigrationDefinitionID: S.String,
-          filters: S.optional(__S(1952, __c61, 0)),
+          filters: S.optional(__S(1920, __c60, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -6416,17 +6266,13 @@ function __c71(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListNetworkMigrationCodeGenerationsRequest",
-      });
+      ).annotate({ identifier: "ListNetworkMigrationCodeGenerationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ status: S.optional(S.String), statusDetailList: S.optional(S.String) }),
-      ).annotate({
-        identifier: "CodeGenerationOutputFormatStatusDetails",
-      });
+      ).annotate({ identifier: "CodeGenerationOutputFormatStatusDetails" });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(2273, __c71, 1).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(2177, __c68, 1).pipe(S.optional));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6437,32 +6283,25 @@ function __c71(j: number): any {
           endedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           status: S.optional(S.String),
           statusDetails: S.optional(S.String),
-          codeGenerationOutputFormatStatusDetailsMap: S.optional(__S(2274, __c71, 2)),
+          codeGenerationOutputFormatStatusDetailsMap: S.optional(__S(2178, __c68, 2)),
         }),
-      ).annotate({
-        identifier: "NetworkMigrationCodeGenerationJobDetails",
-      });
+      ).annotate({ identifier: "NetworkMigrationCodeGenerationJobDetails" });
     case 4:
-      return S.Array(__S(2275, __c71, 3));
+      return S.Array(__S(2179, __c68, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(2276, __c71, 4)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListNetworkMigrationCodeGenerationsResponse",
-      });
+        S.Struct({ items: S.optional(__S(2180, __c68, 4)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListNetworkMigrationCodeGenerationsResponse" });
   }
 }
-function __c72(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           networkMigrationExecutionID: S.String,
           networkMigrationDefinitionID: S.String,
-          filters: S.optional(__S(2336, __c73, 0)),
+          filters: S.optional(__S(2240, __c70, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -6478,9 +6317,7 @@ function __c72(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListNetworkMigrationCodeGenerationSegmentsRequest",
-      });
+      ).annotate({ identifier: "ListNetworkMigrationCodeGenerationSegmentsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6488,15 +6325,13 @@ function __c72(j: number): any {
           artifactType: S.optional(S.String),
           artifactSubType: S.optional(S.String),
           logicalID: S.optional(S.String),
-          outputS3Configuration: S.optional(__S(2368, __c74, 0)),
-          checksum: S.optional(__S(1984, __c62, 0)),
+          outputS3Configuration: S.optional(__S(2272, __c71, 0)),
+          checksum: S.optional(__S(1952, __c61, 0)),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "NetworkMigrationCodeGenerationArtifact",
-      });
+      ).annotate({ identifier: "NetworkMigrationCodeGenerationArtifact" });
     case 2:
-      return S.Array(__S(2305, __c72, 1));
+      return S.Array(__S(2209, __c69, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6507,27 +6342,20 @@ function __c72(j: number): any {
           segmentType: S.optional(S.String),
           logicalID: S.optional(S.String),
           mapperSegmentID: S.optional(S.String),
-          artifacts: S.optional(__S(2306, __c72, 2)),
+          artifacts: S.optional(__S(2210, __c69, 2)),
           referencedSegments: S.optional(__S(64, __c2, 0)),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "NetworkMigrationCodeGenerationSegment",
-      });
+      ).annotate({ identifier: "NetworkMigrationCodeGenerationSegment" });
     case 4:
-      return S.Array(__S(2307, __c72, 3));
+      return S.Array(__S(2211, __c69, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(2308, __c72, 4)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListNetworkMigrationCodeGenerationSegmentsResponse",
-      });
+        S.Struct({ items: S.optional(__S(2212, __c69, 4)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListNetworkMigrationCodeGenerationSegmentsResponse" });
   }
 }
-function __c73(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ segmentIDs: S.optional(__S(64, __c2, 0)) })).annotate({
@@ -6535,7 +6363,7 @@ function __c73(j: number): any {
       });
   }
 }
-function __c74(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6547,18 +6375,16 @@ function __c74(j: number): any {
       ).annotate({ identifier: "S3Configuration" });
   }
 }
-function __c75(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ networkMigrationDefinitionIDs: S.optional(__S(64, __c2, 0)) }),
-      ).annotate({
-        identifier: "ListNetworkMigrationDefinitionsRequestFilters",
-      });
+      ).annotate({ identifier: "ListNetworkMigrationDefinitionsRequestFilters" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(2400, __c75, 0)),
+          filters: S.optional(__S(2304, __c72, 0)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(
@@ -6571,9 +6397,7 @@ function __c75(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListNetworkMigrationDefinitionsRequest",
-      });
+      ).annotate({ identifier: "ListNetworkMigrationDefinitionsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -6581,26 +6405,19 @@ function __c75(j: number): any {
           name: S.optional(S.String),
           sourceEnvironment: S.optional(S.String),
           arn: S.optional(S.String),
-          tags: S.optional(__S(3488, __c109, 0)),
-          scopeTags: S.optional(__S(608, __c19, 0)),
+          tags: S.optional(__S(3392, __c106, 0)),
+          scopeTags: S.optional(__S(3392, __c106, 0)),
         }),
-      ).annotate({
-        identifier: "NetworkMigrationDefinitionSummary",
-      });
+      ).annotate({ identifier: "NetworkMigrationDefinitionSummary" });
     case 3:
-      return S.Array(__S(2402, __c75, 2));
+      return S.Array(__S(2306, __c72, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(2403, __c75, 3)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListNetworkMigrationDefinitionsResponse",
-      });
+        S.Struct({ items: S.optional(__S(2307, __c72, 3)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListNetworkMigrationDefinitionsResponse" });
   }
 }
-function __c76(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6622,9 +6439,7 @@ function __c76(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListNetworkMigrationDeployedStacksRequest",
-      });
+      ).annotate({ identifier: "ListNetworkMigrationDeployedStacksRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6632,11 +6447,9 @@ function __c76(j: number): any {
           status: S.optional(S.String),
           statusReason: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "NetworkMigrationFailedResourceDetails",
-      });
+      ).annotate({ identifier: "NetworkMigrationFailedResourceDetails" });
     case 2:
-      return S.Array(__S(2433, __c76, 1));
+      return S.Array(__S(2337, __c73, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6645,32 +6458,25 @@ function __c76(j: number): any {
           stackLogicalID: S.optional(S.String),
           segmentID: S.optional(S.String),
           targetAccount: S.optional(S.String),
-          failedResources: S.optional(__S(2434, __c76, 2)),
+          failedResources: S.optional(__S(2338, __c73, 2)),
         }),
-      ).annotate({
-        identifier: "NetworkMigrationDeployedStackDetails",
-      });
+      ).annotate({ identifier: "NetworkMigrationDeployedStackDetails" });
     case 4:
-      return S.Array(__S(2435, __c76, 3));
+      return S.Array(__S(2339, __c73, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(2436, __c76, 4)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListNetworkMigrationDeployedStacksResponse",
-      });
+        S.Struct({ items: S.optional(__S(2340, __c73, 4)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListNetworkMigrationDeployedStacksResponse" });
   }
 }
-function __c77(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           networkMigrationExecutionID: S.String,
           networkMigrationDefinitionID: S.String,
-          filters: S.optional(__S(1952, __c61, 0)),
+          filters: S.optional(__S(1920, __c60, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -6683,12 +6489,10 @@ function __c77(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListNetworkMigrationDeploymentsRequest",
-      });
+      ).annotate({ identifier: "ListNetworkMigrationDeploymentsRequest" });
   }
 }
-function __c78(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6696,14 +6500,12 @@ function __c78(j: number): any {
           networkMigrationExecutionIDs: S.optional(__S(64, __c2, 0)),
           networkMigrationExecutionStatuses: S.optional(__S(64, __c2, 0)),
         }),
-      ).annotate({
-        identifier: "ListNetworkMigrationExecutionRequestFilters",
-      });
+      ).annotate({ identifier: "ListNetworkMigrationExecutionRequestFilters" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           networkMigrationDefinitionID: S.String,
-          filters: S.optional(__S(2496, __c78, 0)),
+          filters: S.optional(__S(2400, __c75, 0)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(
@@ -6716,9 +6518,7 @@ function __c78(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListNetworkMigrationExecutionsRequest",
-      });
+      ).annotate({ identifier: "ListNetworkMigrationExecutionsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -6729,41 +6529,33 @@ function __c78(j: number): any {
           activity: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tags: S.optional(__S(3488, __c109, 0)),
+          tags: S.optional(__S(3392, __c106, 0)),
         }),
-      ).annotate({
-        identifier: "NetworkMigrationExecution",
-      });
+      ).annotate({ identifier: "NetworkMigrationExecution" });
     case 3:
-      return S.Array(__S(2498, __c78, 2));
+      return S.Array(__S(2402, __c75, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(2499, __c78, 3)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListNetworkMigrationExecutionsResponse",
-      });
+        S.Struct({ items: S.optional(__S(2403, __c75, 3)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListNetworkMigrationExecutionsResponse" });
   }
 }
-function __c79(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           constructIDs: S.optional(__S(64, __c2, 0)),
-          constructTypes: S.optional(__S(2528, __c79, 0)),
+          constructTypes: S.optional(__S(64, __c2, 0)),
         }),
-      ).annotate({
-        identifier: "ListNetworkMigrationMapperSegmentConstructsFilters",
-      });
-    case 2:
+      ).annotate({ identifier: "ListNetworkMigrationMapperSegmentConstructsFilters" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           networkMigrationExecutionID: S.String,
           networkMigrationDefinitionID: S.String,
           segmentID: S.String,
-          filters: S.optional(__S(2529, __c79, 1)),
+          filters: S.optional(__S(2432, __c76, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -6779,30 +6571,23 @@ function __c79(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListNetworkMigrationMapperSegmentConstructsRequest",
-      });
+      ).annotate({ identifier: "ListNetworkMigrationMapperSegmentConstructsRequest" });
+    case 2:
+      return S.Array(__S(1568, __c49, 0));
     case 3:
-      return S.Array(__S(1600, __c50, 0));
-    case 4:
       return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(2531, __c79, 3)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListNetworkMigrationMapperSegmentConstructsResponse",
-      });
+        S.Struct({ items: S.optional(__S(2434, __c76, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListNetworkMigrationMapperSegmentConstructsResponse" });
   }
 }
-function __c80(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           networkMigrationExecutionID: S.String,
           networkMigrationDefinitionID: S.String,
-          filters: S.optional(__S(2336, __c73, 0)),
+          filters: S.optional(__S(2240, __c70, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -6818,23 +6603,16 @@ function __c80(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListNetworkMigrationMapperSegmentsRequest",
-      });
+      ).annotate({ identifier: "ListNetworkMigrationMapperSegmentsRequest" });
     case 1:
-      return S.Array(__S(2592, __c81, 0));
+      return S.Array(__S(2496, __c78, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(2561, __c80, 1)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListNetworkMigrationMapperSegmentsResponse",
-      });
+        S.Struct({ items: S.optional(__S(2465, __c77, 1)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListNetworkMigrationMapperSegmentsResponse" });
   }
 }
-function __c81(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6847,27 +6625,25 @@ function __c81(j: number): any {
           name: S.optional(S.String),
           description: S.optional(S.String),
           logicalID: S.optional(S.String),
-          checksum: S.optional(__S(1984, __c62, 0)),
-          outputS3Configuration: S.optional(__S(2368, __c74, 0)),
+          checksum: S.optional(__S(1952, __c61, 0)),
+          outputS3Configuration: S.optional(__S(2272, __c71, 0)),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          scopeTags: S.optional(__S(608, __c19, 0)),
+          scopeTags: S.optional(__S(3392, __c106, 0)),
           targetAccount: S.optional(S.String),
           referencedSegments: S.optional(__S(64, __c2, 0)),
         }),
-      ).annotate({
-        identifier: "NetworkMigrationMapperSegment",
-      });
+      ).annotate({ identifier: "NetworkMigrationMapperSegment" });
   }
 }
-function __c82(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           networkMigrationExecutionID: S.String,
           networkMigrationDefinitionID: S.String,
-          filters: S.optional(__S(1952, __c61, 0)),
+          filters: S.optional(__S(1920, __c60, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -6880,19 +6656,17 @@ function __c82(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListNetworkMigrationMappingsRequest",
-      });
+      ).annotate({ identifier: "ListNetworkMigrationMappingsRequest" });
   }
 }
-function __c83(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           networkMigrationExecutionID: S.String,
           networkMigrationDefinitionID: S.String,
-          filters: S.optional(__S(1952, __c61, 0)),
+          filters: S.optional(__S(1920, __c60, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -6908,27 +6682,16 @@ function __c83(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListNetworkMigrationMappingUpdatesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(2209, __c69, 1)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListNetworkMigrationMappingUpdatesResponse",
-      });
+      ).annotate({ identifier: "ListNetworkMigrationMappingUpdatesRequest" });
   }
 }
-function __c84(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           sourceServerID: S.String,
-          filters: S.optional(__S(2720, __c85, 0)),
+          filters: S.optional(__S(2624, __c82, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
           accountID: S.optional(S.String),
@@ -6942,20 +6705,16 @@ function __c84(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSourceServerActionsRequest",
-      });
+      ).annotate({ identifier: "ListSourceServerActionsRequest" });
     case 1:
-      return S.Array(__S(2752, __c86, 0));
+      return S.Array(__S(2656, __c83, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(2689, __c84, 1)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListSourceServerActionsResponse",
-      });
+        S.Struct({ items: S.optional(__S(2593, __c81, 1)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListSourceServerActionsResponse" });
   }
 }
-function __c85(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ actionIDs: S.optional(__S(64, __c2, 0)) })).annotate({
@@ -6963,7 +6722,7 @@ function __c85(j: number): any {
       });
   }
 }
-function __c86(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6981,12 +6740,10 @@ function __c86(j: number): any {
           description: S.optional(S.String),
           category: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SourceServerActionDocument",
-      });
+      ).annotate({ identifier: "SourceServerActionDocument" });
   }
 }
-function __c87(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7000,22 +6757,20 @@ function __c87(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(3488, __c109, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(3392, __c106, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c88(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           launchConfigurationTemplateID: S.String,
-          filters: S.optional(__S(2720, __c85, 0)),
+          filters: S.optional(__S(2624, __c82, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -7028,20 +6783,16 @@ function __c88(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTemplateActionsRequest",
-      });
+      ).annotate({ identifier: "ListTemplateActionsRequest" });
     case 1:
-      return S.Array(__S(2848, __c89, 0));
+      return S.Array(__S(2752, __c86, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(2817, __c88, 1)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListTemplateActionsResponse",
-      });
+        S.Struct({ items: S.optional(__S(2721, __c85, 1)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListTemplateActionsResponse" });
   }
 }
-function __c89(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7063,7 +6814,7 @@ function __c89(j: number): any {
       ).annotate({ identifier: "TemplateActionDocument" });
   }
 }
-function __c90(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7072,21 +6823,21 @@ function __c90(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(2880, __c90, 0)),
+          filters: S.optional(__S(2784, __c87, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
           accountID: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/ListWaves" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListWavesRequest" });
     case 2:
-      return S.Array(__S(3873, __c121, 1));
+      return S.Array(__S(3777, __c118, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(2882, __c90, 2)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(__S(2786, __c87, 2)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListWavesResponse" });
   }
 }
-function __c91(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7096,7 +6847,7 @@ function __c91(j: number): any {
       ).annotate({ identifier: "MarkAsArchivedRequest" });
   }
 }
-function __c92(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7106,7 +6857,7 @@ function __c92(j: number): any {
       ).annotate({ identifier: "PauseReplicationRequest" });
   }
 }
-function __c93(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7135,22 +6886,20 @@ function __c93(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutSourceServerActionRequest",
-      });
+      ).annotate({ identifier: "PutSourceServerActionRequest" });
   }
 }
-function __c94(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ name: S.optional(S.String), message: S.optional(S.String) }),
       ).annotate({ identifier: "ValidationExceptionField" });
     case 1:
-      return S.Array(__S(3008, __c94, 0));
+      return S.Array(__S(2912, __c91, 0));
   }
 }
-function __c95(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7182,7 +6931,7 @@ function __c95(j: number): any {
       ).annotate({ identifier: "PutTemplateActionRequest" });
   }
 }
-function __c96(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7200,12 +6949,10 @@ function __c96(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RemoveSourceServerActionRequest",
-      });
+      ).annotate({ identifier: "RemoveSourceServerActionRequest" });
   }
 }
-function __c97(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7219,12 +6966,10 @@ function __c97(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RemoveTemplateActionRequest",
-      });
+      ).annotate({ identifier: "RemoveTemplateActionRequest" });
   }
 }
-function __c98(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7241,7 +6986,7 @@ function __c98(j: number): any {
       ).annotate({ identifier: "ResumeReplicationRequest" });
   }
 }
-function __c99(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7255,8 +7000,47 @@ function __c99(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RetryDataReplicationRequest",
+      ).annotate({ identifier: "RetryDataReplicationRequest" });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sourceServerIDs: __S(64, __c2, 0),
+          tags: S.optional(__S(3392, __c106, 0)),
+          accountID: S.optional(S.String),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/StartCutover" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "StartCutoverRequest" });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ job: S.optional(__S(1157, __c36, 5)) })).annotate({
+        identifier: "StartCutoverResponse",
+      });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          s3Bucket: S.String,
+          s3Key: S.String,
+          s3BucketOwner: S.optional(S.String),
+          tags: S.optional(__S(3392, __c106, 0)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/StartExport" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "StartExportRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ exportTask: S.optional(__S(1825, __c57, 1)) })).annotate({
+        identifier: "StartExportResponse",
       });
   }
 }
@@ -7265,68 +7049,27 @@ function __c100(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sourceServerIDs: __S(64, __c2, 0),
-          tags: S.optional(__S(3488, __c109, 0)),
-          accountID: S.optional(S.String),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/StartCutover" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "StartCutoverRequest" });
-  }
-}
-function __c101(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ job: S.optional(__S(1189, __c37, 5)) })).annotate({
-        identifier: "StartCutoverResponse",
-      });
-  }
-}
-function __c102(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          s3Bucket: S.String,
-          s3Key: S.String,
-          s3BucketOwner: S.optional(S.String),
-          tags: S.optional(__S(3488, __c109, 0)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/StartExport" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "StartExportRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({ exportTask: S.optional(__S(1857, __c58, 1)) })).annotate({
-        identifier: "StartExportResponse",
-      });
-  }
-}
-function __c103(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          s3BucketSource: __S(2080, __c65, 0),
-          tags: S.optional(__S(3488, __c109, 0)),
+          s3BucketSource: __S(2016, __c63, 0),
+          tags: S.optional(__S(3392, __c106, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/StartImport" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StartImportRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ importTask: S.optional(__S(2084, __c65, 4)) })).annotate({
+      return S.suspend(() => S.Struct({ importTask: S.optional(__S(2019, __c63, 3)) })).annotate({
         identifier: "StartImportResponse",
       });
   }
 }
-function __c104(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          s3BucketSource: __S(2016, __c63, 0),
-          s3BucketTarget: __S(2016, __c63, 0),
+          s3BucketSource: __S(608, __c19, 0),
+          s3BucketTarget: __S(608, __c19, 0),
           ipAssignmentStrategy: S.optional(S.String),
         }).pipe(
           T.all(
@@ -7338,12 +7081,10 @@ function __c104(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartImportFileEnrichmentRequest",
-      });
+      ).annotate({ identifier: "StartImportFileEnrichmentRequest" });
   }
 }
-function __c105(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ jobID: S.optional(S.String) })).annotate({
@@ -7351,7 +7092,7 @@ function __c105(j: number): any {
       });
   }
 }
-function __c106(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7368,12 +7109,10 @@ function __c106(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartNetworkMigrationAnalysisRequest",
-      });
+      ).annotate({ identifier: "StartNetworkMigrationAnalysisRequest" });
   }
 }
-function __c107(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7387,12 +7126,10 @@ function __c107(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ArchiveApplicationRequest",
-      });
+      ).annotate({ identifier: "ArchiveApplicationRequest" });
   }
 }
-function __c108(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7402,9 +7139,7 @@ function __c108(j: number): any {
           progressStatus: S.optional(S.String),
           totalSourceServers: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "ApplicationAggregatedStatus",
-      });
+      ).annotate({ identifier: "ApplicationAggregatedStatus" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7413,22 +7148,22 @@ function __c108(j: number): any {
           name: S.optional(S.String),
           description: S.optional(S.String),
           isArchived: S.optional(S.Boolean),
-          applicationAggregatedStatus: S.optional(__S(3456, __c108, 0)),
+          applicationAggregatedStatus: S.optional(__S(3360, __c105, 0)),
           creationDateTime: S.optional(S.String),
           lastModifiedDateTime: S.optional(S.String),
-          tags: S.optional(__S(3488, __c109, 0)),
+          tags: S.optional(__S(3392, __c106, 0)),
           waveID: S.optional(S.String),
         }),
       ).annotate({ identifier: "Application" });
   }
 }
-function __c109(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c110(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7449,12 +7184,10 @@ function __c110(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartNetworkMigrationCodeGenerationRequest",
-      });
+      ).annotate({ identifier: "StartNetworkMigrationCodeGenerationRequest" });
   }
 }
-function __c111(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7471,12 +7204,10 @@ function __c111(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartNetworkMigrationDeploymentRequest",
-      });
+      ).annotate({ identifier: "StartNetworkMigrationDeploymentRequest" });
   }
 }
-function __c112(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7494,47 +7225,45 @@ function __c112(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartNetworkMigrationMappingRequest",
-      });
+      ).annotate({ identifier: "StartNetworkMigrationMappingRequest" });
   }
 }
-function __c113(j: number): any {
+function __c110(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ segmentID: S.optional(S.String), constructID: S.optional(S.String) }),
       ).annotate({ identifier: "MergeConstruct" });
     case 1:
-      return S.Array(__S(3616, __c113, 0));
+      return S.Array(__S(3520, __c110, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ mergeConstructs: S.optional(__S(3617, __c113, 1)) }),
+        S.Struct({ mergeConstructs: S.optional(__S(3521, __c110, 1)) }),
       ).annotate({ identifier: "MergeOperation" });
     case 3:
       return S.suspend(() => S.Struct({ cidrBlock: S.optional(S.String) })).annotate({
         identifier: "SplitConstruct",
       });
     case 4:
-      return S.Array(__S(3619, __c113, 3));
+      return S.Array(__S(3523, __c110, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ splitConstructs: S.optional(__S(3620, __c113, 4)) }),
+        S.Struct({ splitConstructs: S.optional(__S(3524, __c110, 4)) }),
       ).annotate({ identifier: "SplitOperation" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           excluded: S.optional(S.Boolean),
-          properties: S.optional(__S(608, __c19, 0)),
+          properties: S.optional(__S(3392, __c106, 0)),
         }),
       ).annotate({ identifier: "UpdateOperation" });
     case 7:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ merge: __S(3618, __c113, 2) }),
-        /*@__PURE__*/ S.Struct({ split: __S(3621, __c113, 5) }),
+        /*@__PURE__*/ S.Struct({ merge: __S(3522, __c110, 2) }),
+        /*@__PURE__*/ S.Struct({ split: __S(3525, __c110, 5) }),
         /*@__PURE__*/ S.Struct({ delete: __S(96, __c3, 0) }),
-        /*@__PURE__*/ S.Struct({ update: __S(3622, __c113, 6) }),
+        /*@__PURE__*/ S.Struct({ update: __S(3526, __c110, 6) }),
       ]);
     case 8:
       return S.suspend(() =>
@@ -7542,32 +7271,28 @@ function __c113(j: number): any {
           segmentID: S.String,
           constructID: S.String,
           constructType: S.String,
-          operation: S.optional(__S(3623, __c113, 7)),
+          operation: S.optional(__S(3527, __c110, 7)),
         }),
-      ).annotate({
-        identifier: "StartNetworkMigrationMappingUpdateConstruct",
-      });
+      ).annotate({ identifier: "StartNetworkMigrationMappingUpdateConstruct" });
     case 9:
-      return S.Array(__S(3624, __c113, 8));
+      return S.Array(__S(3528, __c110, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
           segmentID: S.String,
           targetAccount: S.optional(S.String),
-          scopeTags: S.optional(__S(608, __c19, 0)),
+          scopeTags: S.optional(__S(3392, __c106, 0)),
         }),
-      ).annotate({
-        identifier: "StartNetworkMigrationMappingUpdateSegment",
-      });
+      ).annotate({ identifier: "StartNetworkMigrationMappingUpdateSegment" });
     case 11:
-      return S.Array(__S(3626, __c113, 10));
+      return S.Array(__S(3530, __c110, 10));
     case 12:
       return S.suspend(() =>
         S.Struct({
           networkMigrationExecutionID: S.String,
           networkMigrationDefinitionID: S.String,
-          constructs: S.optional(__S(3625, __c113, 9)),
-          segments: S.optional(__S(3627, __c113, 11)),
+          constructs: S.optional(__S(3529, __c110, 9)),
+          segments: S.optional(__S(3531, __c110, 11)),
         }).pipe(
           T.all(
             T.Http({
@@ -7581,12 +7306,10 @@ function __c113(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartNetworkMigrationMappingUpdateRequest",
-      });
+      ).annotate({ identifier: "StartNetworkMigrationMappingUpdateRequest" });
   }
 }
-function __c114(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7596,19 +7319,19 @@ function __c114(j: number): any {
       ).annotate({ identifier: "StartReplicationRequest" });
   }
 }
-function __c115(j: number): any {
+function __c112(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           sourceServerIDs: __S(64, __c2, 0),
-          tags: S.optional(__S(3488, __c109, 0)),
+          tags: S.optional(__S(3392, __c106, 0)),
           accountID: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/StartTest" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartTestRequest" });
   }
 }
-function __c116(j: number): any {
+function __c113(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7618,13 +7341,13 @@ function __c116(j: number): any {
       ).annotate({ identifier: "StopReplicationRequest" });
   }
 }
-function __c117(j: number): any {
+function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(3488, __c109, 0),
+          tags: __S(3392, __c106, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -7638,13 +7361,13 @@ function __c117(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c118(j: number): any {
+function __c115(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           sourceServerIDs: __S(64, __c2, 0),
-          tags: S.optional(__S(3488, __c109, 0)),
+          tags: S.optional(__S(3392, __c106, 0)),
           accountID: S.optional(S.String),
         }).pipe(
           T.all(
@@ -7656,16 +7379,10 @@ function __c118(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "TerminateTargetInstancesRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ job: S.optional(__S(1189, __c37, 5)) })).annotate({
-        identifier: "TerminateTargetInstancesResponse",
-      });
+      ).annotate({ identifier: "TerminateTargetInstancesRequest" });
   }
 }
-function __c119(j: number): any {
+function __c116(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7679,12 +7396,10 @@ function __c119(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UnarchiveApplicationRequest",
-      });
+      ).annotate({ identifier: "UnarchiveApplicationRequest" });
   }
 }
-function __c120(j: number): any {
+function __c117(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7694,7 +7409,7 @@ function __c120(j: number): any {
       ).annotate({ identifier: "ArchiveWaveRequest" });
   }
 }
-function __c121(j: number): any {
+function __c118(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7714,15 +7429,15 @@ function __c121(j: number): any {
           name: S.optional(S.String),
           description: S.optional(S.String),
           isArchived: S.optional(S.Boolean),
-          waveAggregatedStatus: S.optional(__S(3872, __c121, 0)),
+          waveAggregatedStatus: S.optional(__S(3776, __c118, 0)),
           creationDateTime: S.optional(S.String),
           lastModifiedDateTime: S.optional(S.String),
-          tags: S.optional(__S(3488, __c109, 0)),
+          tags: S.optional(__S(3392, __c106, 0)),
         }),
       ).annotate({ identifier: "Wave" });
   }
 }
-function __c122(j: number): any {
+function __c119(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7732,7 +7447,7 @@ function __c122(j: number): any {
       ).annotate({ identifier: "UnarchiveWaveRequest" });
   }
 }
-function __c123(j: number): any {
+function __c120(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7752,7 +7467,7 @@ function __c123(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c124(j: number): any {
+function __c121(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7774,7 +7489,7 @@ function __c124(j: number): any {
       ).annotate({ identifier: "UpdateApplicationRequest" });
   }
 }
-function __c125(j: number): any {
+function __c122(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7788,7 +7503,7 @@ function __c125(j: number): any {
       ).annotate({ identifier: "UpdateConnectorRequest" });
   }
 }
-function __c126(j: number): any {
+function __c123(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7815,12 +7530,10 @@ function __c126(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateLaunchConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateLaunchConfigurationRequest" });
   }
 }
-function __c127(j: number): any {
+function __c124(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7851,19 +7564,15 @@ function __c127(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateLaunchConfigurationTemplateRequest",
-      });
+      ).annotate({ identifier: "UpdateLaunchConfigurationTemplateRequest" });
   }
 }
-function __c128(j: number): any {
+function __c125(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ s3Bucket: S.optional(S.String), s3BucketOwner: S.optional(S.String) }),
-      ).annotate({
-        identifier: "TargetS3ConfigurationUpdate",
-      });
+      ).annotate({ identifier: "TargetS3ConfigurationUpdate" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7879,13 +7588,13 @@ function __c128(j: number): any {
           networkMigrationDefinitionID: S.String,
           name: S.optional(S.String),
           description: S.optional(S.String),
-          sourceConfigurations: S.optional(__S(642, __c20, 2)),
-          targetS3Configuration: S.optional(__S(4096, __c128, 0)),
-          targetNetwork: S.optional(__S(4097, __c128, 1)),
+          sourceConfigurations: S.optional(__S(641, __c20, 1)),
+          targetS3Configuration: S.optional(__S(4000, __c125, 0)),
+          targetNetwork: S.optional(__S(4001, __c125, 1)),
           targetDeployment: S.optional(S.String),
           vpcProvisioningStrategy: S.optional(S.String),
-          cidrMappings: S.optional(__S(646, __c20, 6)),
-          scopeTags: S.optional(__S(608, __c19, 0)),
+          cidrMappings: S.optional(__S(645, __c20, 5)),
+          scopeTags: S.optional(__S(3392, __c106, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/network-migration/UpdateNetworkMigrationDefinition" }),
@@ -7896,12 +7605,10 @@ function __c128(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateNetworkMigrationDefinitionRequest",
-      });
+      ).annotate({ identifier: "UpdateNetworkMigrationDefinitionRequest" });
   }
 }
-function __c129(j: number): any {
+function __c126(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7909,7 +7616,7 @@ function __c129(j: number): any {
           networkMigrationDefinitionID: S.String,
           networkMigrationExecutionID: S.String,
           segmentID: S.String,
-          scopeTags: S.optional(__S(608, __c19, 0)),
+          scopeTags: S.optional(__S(3392, __c106, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -7923,12 +7630,10 @@ function __c129(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateNetworkMigrationMapperSegmentRequest",
-      });
+      ).annotate({ identifier: "UpdateNetworkMigrationMapperSegmentRequest" });
   }
 }
-function __c130(j: number): any {
+function __c127(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7941,13 +7646,13 @@ function __c130(j: number): any {
           replicationServerInstanceType: S.optional(S.String),
           useDedicatedReplicationServer: S.optional(S.Boolean),
           defaultLargeStagingDiskType: S.optional(S.String),
-          replicatedDisks: S.optional(__S(1665, __c52, 1)),
+          replicatedDisks: S.optional(__S(1633, __c51, 1)),
           ebsEncryption: S.optional(S.String),
           ebsEncryptionKeyArn: S.optional(S.String),
           bandwidthThrottling: S.optional(S.Number),
           dataPlaneRouting: S.optional(S.String),
           createPublicIP: S.optional(S.Boolean),
-          stagingAreaTags: S.optional(__S(3488, __c109, 0)),
+          stagingAreaTags: S.optional(__S(3392, __c106, 0)),
           useFipsEndpoint: S.optional(S.Boolean),
           accountID: S.optional(S.String),
           internetProtocol: S.optional(S.String),
@@ -7963,12 +7668,10 @@ function __c130(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateReplicationConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateReplicationConfigurationRequest" });
   }
 }
-function __c131(j: number): any {
+function __c128(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7986,7 +7689,7 @@ function __c131(j: number): any {
           bandwidthThrottling: S.optional(S.Number),
           dataPlaneRouting: S.optional(S.String),
           createPublicIP: S.optional(S.Boolean),
-          stagingAreaTags: S.optional(__S(3488, __c109, 0)),
+          stagingAreaTags: S.optional(__S(3392, __c106, 0)),
           useFipsEndpoint: S.optional(S.Boolean),
           internetProtocol: S.optional(S.String),
           storeSnapshotOnLocalZone: S.optional(S.Boolean),
@@ -8001,9 +7704,7 @@ function __c131(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateReplicationConfigurationTemplateRequest",
-      });
+      ).annotate({ identifier: "UpdateReplicationConfigurationTemplateRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

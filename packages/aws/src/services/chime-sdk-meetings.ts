@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -775,7 +775,7 @@ export const deleteAttendee: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(128, __c16, 0) as any as S.Schema<DeleteAttendeeRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<DeleteAttendeeResponse>,
+  output: __S(48, __c6, 0) as any as S.Schema<DeleteAttendeeResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -811,8 +811,8 @@ export const deleteMeeting: API.OperationMethod<
   DeleteMeetingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<DeleteMeetingRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<DeleteMeetingResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<DeleteMeetingRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<DeleteMeetingResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -847,7 +847,7 @@ export const getAttendee: API.OperationMethod<
   GetAttendeeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<GetAttendeeRequest>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetAttendeeRequest>,
   output: __S(64, __c8, 0) as any as S.Schema<GetAttendeeResponse>,
   errors: [
     BadRequestException,
@@ -883,7 +883,7 @@ export const getMeeting: API.OperationMethod<
   GetMeetingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<GetMeetingRequest>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetMeetingRequest>,
   output: __S(112, __c14, 0) as any as S.Schema<GetMeetingResponse>,
   errors: [
     BadRequestException,
@@ -920,8 +920,8 @@ export const listAttendees: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<ListAttendeesRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<ListAttendeesResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<ListAttendeesRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<ListAttendeesResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -960,8 +960,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1011,7 +1011,7 @@ export const startMeetingTranscription: API.OperationMethod<
   StartMeetingTranscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<StartMeetingTranscriptionRequest>,
+  input: __S(179, __c22, 3) as any as S.Schema<StartMeetingTranscriptionRequest>,
   output: __S(48, __c6, 0) as any as S.Schema<StartMeetingTranscriptionResponse>,
   errors: [
     BadRequestException,
@@ -1057,7 +1057,7 @@ export const stopMeetingTranscription: API.OperationMethod<
   StopMeetingTranscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<StopMeetingTranscriptionRequest>,
+  input: __S(184, __c23, 0) as any as S.Schema<StopMeetingTranscriptionRequest>,
   output: __S(48, __c6, 0) as any as S.Schema<StopMeetingTranscriptionResponse>,
   errors: [
     BadRequestException,
@@ -1094,8 +1094,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1146,8 +1146,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1211,8 +1211,8 @@ export const updateAttendeeCapabilities: API.OperationMethod<
   UpdateAttendeeCapabilitiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<UpdateAttendeeCapabilitiesRequest>,
-  output: __S(217, __c27, 1) as any as S.Schema<UpdateAttendeeCapabilitiesResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<UpdateAttendeeCapabilitiesRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<UpdateAttendeeCapabilitiesResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1249,18 +1249,11 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchCreateAttendeeRequest",
-      });
+      ).annotate({ identifier: "BatchCreateAttendeeRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          Attendees: S.optional(__S(32, __c4, 0)),
-          Errors: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({
-        identifier: "BatchCreateAttendeeResponse",
-      });
+        S.Struct({ Attendees: S.optional(__S(32, __c4, 0)), Errors: S.optional(__S(27, __c3, 3)) }),
+      ).annotate({ identifier: "BatchCreateAttendeeResponse" });
   }
 }
 function __c1(j: number): any {
@@ -1289,9 +1282,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ ExternalUserId: SensitiveString, Capabilities: S.optional(__S(8, __c1, 0)) }),
-      ).annotate({
-        identifier: "CreateAttendeeRequestItem",
-      });
+      ).annotate({ identifier: "CreateAttendeeRequestItem" });
     case 1:
       return S.Array(__S(24, __c3, 0));
     case 2:
@@ -1339,9 +1330,7 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchUpdateAttendeeCapabilitiesExceptRequest",
-      });
+      ).annotate({ identifier: "BatchUpdateAttendeeCapabilitiesExceptRequest" });
   }
 }
 function __c6(j: number): any {
@@ -1409,9 +1398,7 @@ function __c10(j: number): any {
           SnsTopicArn: S.optional(SensitiveString),
           SqsQueueArn: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "NotificationsConfiguration",
-      });
+      ).annotate({ identifier: "NotificationsConfiguration" });
   }
 }
 function __c11(j: number): any {
@@ -1436,9 +1423,7 @@ function __c11(j: number): any {
           Content: S.optional(__S(89, __c11, 1)),
           Attendee: S.optional(__S(90, __c11, 2)),
         }),
-      ).annotate({
-        identifier: "MeetingFeaturesConfiguration",
-      });
+      ).annotate({ identifier: "MeetingFeaturesConfiguration" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1518,9 +1503,7 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateMeetingWithAttendeesRequest",
-      });
+      ).annotate({ identifier: "CreateMeetingWithAttendeesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1528,9 +1511,7 @@ function __c15(j: number): any {
           Attendees: S.optional(__S(32, __c4, 0)),
           Errors: S.optional(__S(27, __c3, 3)),
         }),
-      ).annotate({
-        identifier: "CreateMeetingWithAttendeesResponse",
-      });
+      ).annotate({ identifier: "CreateMeetingWithAttendeesResponse" });
   }
 }
 function __c16(j: number): any {
@@ -1556,14 +1537,6 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAttendeeResponse",
-      });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({ MeetingId: S.String.pipe(T.HttpLabel("MeetingId")) }).pipe(
           T.all(
@@ -1578,7 +1551,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "DeleteMeetingRequest" });
   }
 }
-function __c19(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1598,7 +1571,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "GetAttendeeRequest" });
   }
 }
-function __c20(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1615,7 +1588,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "GetMeetingRequest" });
   }
 }
-function __c21(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1640,23 +1613,21 @@ function __c21(j: number): any {
       ).annotate({ identifier: "ListAttendeesResponse" });
   }
 }
-function __c22(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ ResourceARN: S.String.pipe(T.HttpQuery("arn")) }).pipe(
           T.all(T.Http({ method: "GET", uri: "/tags" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(105, __c13, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c23(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1689,23 +1660,19 @@ function __c23(j: number): any {
           Region: S.optional(S.String),
           ContentIdentificationType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "EngineTranscribeMedicalSettings",
-      });
+      ).annotate({ identifier: "EngineTranscribeMedicalSettings" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          EngineTranscribeSettings: S.optional(__S(184, __c23, 0)),
-          EngineTranscribeMedicalSettings: S.optional(__S(185, __c23, 1)),
+          EngineTranscribeSettings: S.optional(__S(176, __c22, 0)),
+          EngineTranscribeMedicalSettings: S.optional(__S(177, __c22, 1)),
         }),
-      ).annotate({
-        identifier: "TranscriptionConfiguration",
-      });
+      ).annotate({ identifier: "TranscriptionConfiguration" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           MeetingId: S.String.pipe(T.HttpLabel("MeetingId")),
-          TranscriptionConfiguration: __S(186, __c23, 2),
+          TranscriptionConfiguration: __S(178, __c22, 2),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/meetings/{MeetingId}/transcription?operation=start" }),
@@ -1716,12 +1683,10 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartMeetingTranscriptionRequest",
-      });
+      ).annotate({ identifier: "StartMeetingTranscriptionRequest" });
   }
 }
-function __c24(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1735,12 +1700,10 @@ function __c24(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StopMeetingTranscriptionRequest",
-      });
+      ).annotate({ identifier: "StopMeetingTranscriptionRequest" });
   }
 }
-function __c25(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1757,7 +1720,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c26(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1774,7 +1737,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c27(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1795,13 +1758,7 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateAttendeeCapabilitiesRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ Attendee: S.optional(__S(16, __c2, 0)) })).annotate({
-        identifier: "UpdateAttendeeCapabilitiesResponse",
-      });
+      ).annotate({ identifier: "UpdateAttendeeCapabilitiesRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

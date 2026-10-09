@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -348,9 +348,7 @@ function __c2(j: number): any {
           exportArn: S.String,
           requestedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
-      ).annotate({
-        identifier: "StartDomainExportResponse",
-      });
+      ).annotate({ identifier: "StartDomainExportResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

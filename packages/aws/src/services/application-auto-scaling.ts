@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -688,7 +688,7 @@ export const deleteScalingPolicy: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteScalingPolicyRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteScalingPolicyResponse>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteScalingPolicyResponse>,
   errors: [
     ConcurrentUpdateException,
     InternalServiceException,
@@ -717,8 +717,8 @@ export const deleteScheduledAction: API.OperationMethod<
   DeleteScheduledActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c2, 0) as any as S.Schema<DeleteScheduledActionRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteScheduledActionResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<DeleteScheduledActionRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteScheduledActionResponse>,
   errors: [
     ConcurrentUpdateException,
     InternalServiceException,
@@ -749,8 +749,8 @@ export const deregisterScalableTarget: API.OperationMethod<
   DeregisterScalableTargetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c3, 0) as any as S.Schema<DeregisterScalableTargetRequest>,
-  output: __S(97, __c3, 1) as any as S.Schema<DeregisterScalableTargetResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<DeregisterScalableTargetRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeregisterScalableTargetResponse>,
   errors: [
     ConcurrentUpdateException,
     InternalServiceException,
@@ -781,8 +781,8 @@ export const describeScalableTargets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ScalableTarget
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(128, __c4, 0) as any as S.Schema<DescribeScalableTargetsRequest>,
-  output: __S(131, __c4, 3) as any as S.Schema<DescribeScalableTargetsResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<DescribeScalableTargetsRequest>,
+  output: __S(67, __c4, 3) as any as S.Schema<DescribeScalableTargetsResponse>,
   errors: [
     ConcurrentUpdateException,
     InternalServiceException,
@@ -822,8 +822,8 @@ export const describeScalingActivities: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ScalingActivity
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(224, __c7, 0) as any as S.Schema<DescribeScalingActivitiesRequest>,
-  output: __S(229, __c7, 5) as any as S.Schema<DescribeScalingActivitiesResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<DescribeScalingActivitiesRequest>,
+  output: __S(117, __c7, 5) as any as S.Schema<DescribeScalingActivitiesResponse>,
   errors: [
     ConcurrentUpdateException,
     InternalServiceException,
@@ -863,8 +863,8 @@ export const describeScalingPolicies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ScalingPolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(256, __c8, 0) as any as S.Schema<DescribeScalingPoliciesRequest>,
-  output: __S(259, __c8, 3) as any as S.Schema<DescribeScalingPoliciesResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<DescribeScalingPoliciesRequest>,
+  output: __S(131, __c8, 3) as any as S.Schema<DescribeScalingPoliciesResponse>,
   errors: [
     ConcurrentUpdateException,
     FailedResourceAccessException,
@@ -904,8 +904,8 @@ export const describeScheduledActions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ScheduledAction
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(352, __c11, 0) as any as S.Schema<DescribeScheduledActionsRequest>,
-  output: __S(355, __c11, 3) as any as S.Schema<DescribeScheduledActionsResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<DescribeScheduledActionsRequest>,
+  output: __S(179, __c11, 3) as any as S.Schema<DescribeScheduledActionsResponse>,
   errors: [
     ConcurrentUpdateException,
     InternalServiceException,
@@ -945,8 +945,8 @@ export const getPredictiveScalingForecast: API.OperationMethod<
   GetPredictiveScalingForecastError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c13, 0) as any as S.Schema<GetPredictiveScalingForecastRequest>,
-  output: __S(422, __c13, 6) as any as S.Schema<GetPredictiveScalingForecastResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetPredictiveScalingForecastRequest>,
+  output: __S(214, __c13, 6) as any as S.Schema<GetPredictiveScalingForecastResponse>,
   errors: [InternalServiceException, ValidationException, PredictiveScalingForecastNotSupported],
   protocol: AwsProtocol,
   retry: Retry,
@@ -966,8 +966,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c14, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(449, __c14, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1019,8 +1019,8 @@ export const putScalingPolicy: API.OperationMethod<
   PutScalingPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c16, 0) as any as S.Schema<PutScalingPolicyRequest>,
-  output: __S(513, __c16, 1) as any as S.Schema<PutScalingPolicyResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<PutScalingPolicyRequest>,
+  output: __S(257, __c16, 1) as any as S.Schema<PutScalingPolicyResponse>,
   errors: [
     ConcurrentUpdateException,
     FailedResourceAccessException,
@@ -1067,8 +1067,8 @@ export const putScheduledAction: API.OperationMethod<
   PutScheduledActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c17, 0) as any as S.Schema<PutScheduledActionRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<PutScheduledActionResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<PutScheduledActionRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<PutScheduledActionResponse>,
   errors: [
     ConcurrentUpdateException,
     InternalServiceException,
@@ -1132,8 +1132,8 @@ export const registerScalableTarget: API.OperationMethod<
   RegisterScalableTargetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c18, 0) as any as S.Schema<RegisterScalableTargetRequest>,
-  output: __S(577, __c18, 1) as any as S.Schema<RegisterScalableTargetResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<RegisterScalableTargetRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<RegisterScalableTargetResponse>,
   errors: [
     ConcurrentUpdateException,
     InternalServiceException,
@@ -1175,8 +1175,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c19, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<TagResourceResponse>,
   errors: [ResourceNotFoundException, TooManyTagsException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1194,8 +1194,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c20, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1213,17 +1213,13 @@ function __c0(j: number): any {
           ResourceId: S.String,
           ScalableDimension: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteScalingPolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteScalingPolicyRequest" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteScalingPolicyResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteScalingPolicyResponse" });
   }
 }
 function __c2(j: number): any {
@@ -1236,9 +1232,7 @@ function __c2(j: number): any {
           ResourceId: S.String,
           ScalableDimension: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteScheduledActionRequest",
-      });
+      ).annotate({ identifier: "DeleteScheduledActionRequest" });
   }
 }
 function __c3(j: number): any {
@@ -1250,13 +1244,7 @@ function __c3(j: number): any {
           ResourceId: S.String,
           ScalableDimension: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeregisterScalableTargetRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeregisterScalableTargetResponse",
-      });
+      ).annotate({ identifier: "DeregisterScalableTargetRequest" });
   }
 }
 function __c4(j: number): any {
@@ -1265,14 +1253,12 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ServiceNamespace: S.String,
-          ResourceIds: S.optional(__S(160, __c5, 0)),
+          ResourceIds: S.optional(__S(80, __c5, 0)),
           ScalableDimension: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeScalableTargetsRequest",
-      });
+      ).annotate({ identifier: "DescribeScalableTargetsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1284,21 +1270,19 @@ function __c4(j: number): any {
           PredictedCapacity: S.optional(S.Number),
           RoleARN: S.String,
           CreationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          SuspendedState: S.optional(__S(192, __c6, 0)),
+          SuspendedState: S.optional(__S(96, __c6, 0)),
           ScalableTargetARN: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScalableTarget" });
     case 2:
-      return S.Array(__S(129, __c4, 1));
+      return S.Array(__S(65, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ScalableTargets: S.optional(__S(130, __c4, 2)),
+          ScalableTargets: S.optional(__S(66, __c4, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeScalableTargetsResponse",
-      });
+      ).annotate({ identifier: "DescribeScalableTargetsResponse" });
   }
 }
 function __c5(j: number): any {
@@ -1331,9 +1315,7 @@ function __c7(j: number): any {
           NextToken: S.optional(S.String),
           IncludeNotScaledActivities: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeScalingActivitiesRequest",
-      });
+      ).annotate({ identifier: "DescribeScalingActivitiesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1344,7 +1326,7 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "NotScaledReason" });
     case 2:
-      return S.Array(__S(225, __c7, 1));
+      return S.Array(__S(113, __c7, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1359,20 +1341,18 @@ function __c7(j: number): any {
           StatusCode: S.String,
           StatusMessage: S.optional(S.String),
           Details: S.optional(S.String),
-          NotScaledReasons: S.optional(__S(226, __c7, 2)),
+          NotScaledReasons: S.optional(__S(114, __c7, 2)),
         }),
       ).annotate({ identifier: "ScalingActivity" });
     case 4:
-      return S.Array(__S(227, __c7, 3));
+      return S.Array(__S(115, __c7, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ScalingActivities: S.optional(__S(228, __c7, 4)),
+          ScalingActivities: S.optional(__S(116, __c7, 4)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeScalingActivitiesResponse",
-      });
+      ).annotate({ identifier: "DescribeScalingActivitiesResponse" });
   }
 }
 function __c8(j: number): any {
@@ -1380,16 +1360,14 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          PolicyNames: S.optional(__S(160, __c5, 0)),
+          PolicyNames: S.optional(__S(80, __c5, 0)),
           ServiceNamespace: S.String,
           ResourceId: S.optional(S.String),
           ScalableDimension: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeScalingPoliciesRequest",
-      });
+      ).annotate({ identifier: "DescribeScalingPoliciesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1399,86 +1377,76 @@ function __c8(j: number): any {
           ResourceId: S.String,
           ScalableDimension: S.String,
           PolicyType: S.String,
-          StepScalingPolicyConfiguration: S.optional(__S(322, __c10, 2)),
-          TargetTrackingScalingPolicyConfiguration: S.optional(__S(332, __c10, 12)),
-          PredictiveScalingPolicyConfiguration: S.optional(__S(334, __c10, 14)),
-          Alarms: S.optional(__S(336, __c10, 16)),
+          StepScalingPolicyConfiguration: S.optional(__S(162, __c10, 2)),
+          TargetTrackingScalingPolicyConfiguration: S.optional(__S(167, __c10, 7)),
+          PredictiveScalingPolicyConfiguration: S.optional(__S(169, __c10, 9)),
+          Alarms: S.optional(__S(171, __c10, 11)),
           CreationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "ScalingPolicy" });
     case 2:
-      return S.Array(__S(257, __c8, 1));
+      return S.Array(__S(129, __c8, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ScalingPolicies: S.optional(__S(258, __c8, 2)),
+          ScalingPolicies: S.optional(__S(130, __c8, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeScalingPoliciesResponse",
-      });
+      ).annotate({ identifier: "DescribeScalingPoliciesResponse" });
   }
 }
 function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Name: S.String, Value: S.String })).annotate({
-        identifier: "TargetTrackingMetricDimension",
+        identifier: "MetricDimension",
       });
     case 1:
-      return S.suspend(() =>
-        S.Struct({ PredefinedMetricType: S.String, ResourceLabel: S.optional(S.String) }),
-      ).annotate({
-        identifier: "PredictiveScalingPredefinedMetricPairSpecification",
-      });
+      return S.Array(__S(144, __c9, 0));
     case 2:
-      return S.Array(__S(288, __c9, 0));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          Dimensions: S.optional(__S(290, __c9, 2)),
+          Dimensions: S.optional(__S(145, __c9, 1)),
           MetricName: S.optional(S.String),
           Namespace: S.optional(S.String),
         }),
-      ).annotate({ identifier: "PredictiveScalingMetric" });
+      ).annotate({ identifier: "TargetTrackingMetric" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Metric: __S(146, __c9, 2), Stat: S.String, Unit: S.optional(S.String) }),
+      ).annotate({ identifier: "TargetTrackingMetricStat" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Metric: __S(291, __c9, 3), Stat: S.String, Unit: S.optional(S.String) }),
-      ).annotate({
-        identifier: "PredictiveScalingMetricStat",
-      });
+        S.Struct({ PredefinedMetricType: S.String, ResourceLabel: S.optional(S.String) }),
+      ).annotate({ identifier: "PredictiveScalingPredefinedMetricPairSpecification" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           Id: S.String,
           Expression: S.optional(S.String),
-          MetricStat: S.optional(__S(292, __c9, 4)),
+          MetricStat: S.optional(__S(147, __c9, 3)),
           Label: S.optional(S.String),
           ReturnData: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "PredictiveScalingMetricDataQuery",
-      });
+      ).annotate({ identifier: "PredictiveScalingMetricDataQuery" });
     case 6:
-      return S.Array(__S(293, __c9, 5));
+      return S.Array(__S(149, __c9, 5));
     case 7:
-      return S.suspend(() => S.Struct({ MetricDataQueries: __S(294, __c9, 6) })).annotate({
+      return S.suspend(() => S.Struct({ MetricDataQueries: __S(150, __c9, 6) })).annotate({
         identifier: "PredictiveScalingCustomizedMetricSpecification",
       });
     case 8:
       return S.suspend(() =>
         S.Struct({
           TargetValue: S.Number,
-          PredefinedMetricPairSpecification: S.optional(__S(289, __c9, 1)),
-          PredefinedScalingMetricSpecification: S.optional(__S(289, __c9, 1)),
-          PredefinedLoadMetricSpecification: S.optional(__S(289, __c9, 1)),
-          CustomizedScalingMetricSpecification: S.optional(__S(295, __c9, 7)),
-          CustomizedLoadMetricSpecification: S.optional(__S(295, __c9, 7)),
-          CustomizedCapacityMetricSpecification: S.optional(__S(295, __c9, 7)),
+          PredefinedMetricPairSpecification: S.optional(__S(148, __c9, 4)),
+          PredefinedScalingMetricSpecification: S.optional(__S(148, __c9, 4)),
+          PredefinedLoadMetricSpecification: S.optional(__S(148, __c9, 4)),
+          CustomizedScalingMetricSpecification: S.optional(__S(151, __c9, 7)),
+          CustomizedLoadMetricSpecification: S.optional(__S(151, __c9, 7)),
+          CustomizedCapacityMetricSpecification: S.optional(__S(151, __c9, 7)),
         }),
-      ).annotate({
-        identifier: "PredictiveScalingMetricSpecification",
-      });
+      ).annotate({ identifier: "PredictiveScalingMetricSpecification" });
   }
 }
 function __c10(j: number): any {
@@ -1492,105 +1460,73 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "StepAdjustment" });
     case 1:
-      return S.Array(__S(320, __c10, 0));
+      return S.Array(__S(160, __c10, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           AdjustmentType: S.optional(S.String),
-          StepAdjustments: S.optional(__S(321, __c10, 1)),
+          StepAdjustments: S.optional(__S(161, __c10, 1)),
           MinAdjustmentMagnitude: S.optional(S.Number),
           Cooldown: S.optional(S.Number),
           MetricAggregationType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "StepScalingPolicyConfiguration",
-      });
+      ).annotate({ identifier: "StepScalingPolicyConfiguration" });
     case 3:
       return S.suspend(() =>
         S.Struct({ PredefinedMetricType: S.String, ResourceLabel: S.optional(S.String) }),
-      ).annotate({
-        identifier: "PredefinedMetricSpecification",
-      });
+      ).annotate({ identifier: "PredefinedMetricSpecification" });
     case 4:
-      return S.suspend(() => S.Struct({ Name: S.String, Value: S.String })).annotate({
-        identifier: "MetricDimension",
-      });
-    case 5:
-      return S.Array(__S(324, __c10, 4));
-    case 6:
-      return S.Array(__S(288, __c9, 0));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Dimensions: S.optional(__S(326, __c10, 6)),
-          MetricName: S.optional(S.String),
-          Namespace: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TargetTrackingMetric" });
-    case 8:
-      return S.suspend(() =>
-        S.Struct({ Metric: __S(327, __c10, 7), Stat: S.String, Unit: S.optional(S.String) }),
-      ).annotate({ identifier: "TargetTrackingMetricStat" });
-    case 9:
       return S.suspend(() =>
         S.Struct({
           Expression: S.optional(S.String),
           Id: S.String,
           Label: S.optional(S.String),
-          MetricStat: S.optional(__S(328, __c10, 8)),
+          MetricStat: S.optional(__S(147, __c9, 3)),
           ReturnData: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "TargetTrackingMetricDataQuery",
-      });
-    case 10:
-      return S.Array(__S(329, __c10, 9));
-    case 11:
+      ).annotate({ identifier: "TargetTrackingMetricDataQuery" });
+    case 5:
+      return S.Array(__S(164, __c10, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           MetricName: S.optional(S.String),
           Namespace: S.optional(S.String),
-          Dimensions: S.optional(__S(325, __c10, 5)),
+          Dimensions: S.optional(__S(145, __c9, 1)),
           Statistic: S.optional(S.String),
           Unit: S.optional(S.String),
-          Metrics: S.optional(__S(330, __c10, 10)),
+          Metrics: S.optional(__S(165, __c10, 5)),
         }),
-      ).annotate({
-        identifier: "CustomizedMetricSpecification",
-      });
-    case 12:
+      ).annotate({ identifier: "CustomizedMetricSpecification" });
+    case 7:
       return S.suspend(() =>
         S.Struct({
           TargetValue: S.Number,
-          PredefinedMetricSpecification: S.optional(__S(323, __c10, 3)),
-          CustomizedMetricSpecification: S.optional(__S(331, __c10, 11)),
+          PredefinedMetricSpecification: S.optional(__S(163, __c10, 3)),
+          CustomizedMetricSpecification: S.optional(__S(166, __c10, 6)),
           ScaleOutCooldown: S.optional(S.Number),
           ScaleInCooldown: S.optional(S.Number),
           DisableScaleIn: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "TargetTrackingScalingPolicyConfiguration",
-      });
-    case 13:
-      return S.Array(__S(296, __c9, 8));
-    case 14:
+      ).annotate({ identifier: "TargetTrackingScalingPolicyConfiguration" });
+    case 8:
+      return S.Array(__S(152, __c9, 8));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          MetricSpecifications: __S(333, __c10, 13),
+          MetricSpecifications: __S(168, __c10, 8),
           Mode: S.optional(S.String),
           SchedulingBufferTime: S.optional(S.Number),
           MaxCapacityBreachBehavior: S.optional(S.String),
           MaxCapacityBuffer: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "PredictiveScalingPolicyConfiguration",
-      });
-    case 15:
+      ).annotate({ identifier: "PredictiveScalingPolicyConfiguration" });
+    case 10:
       return S.suspend(() => S.Struct({ AlarmName: S.String, AlarmARN: S.String })).annotate({
         identifier: "Alarm",
       });
-    case 16:
-      return S.Array(__S(335, __c10, 15));
+    case 11:
+      return S.Array(__S(170, __c10, 10));
   }
 }
 function __c11(j: number): any {
@@ -1598,16 +1534,14 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ScheduledActionNames: S.optional(__S(160, __c5, 0)),
+          ScheduledActionNames: S.optional(__S(80, __c5, 0)),
           ServiceNamespace: S.String,
           ResourceId: S.optional(S.String),
           ScalableDimension: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeScheduledActionsRequest",
-      });
+      ).annotate({ identifier: "DescribeScheduledActionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1620,21 +1554,19 @@ function __c11(j: number): any {
           ScalableDimension: S.String,
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ScalableTargetAction: S.optional(__S(384, __c12, 0)),
+          ScalableTargetAction: S.optional(__S(192, __c12, 0)),
           CreationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "ScheduledAction" });
     case 2:
-      return S.Array(__S(353, __c11, 1));
+      return S.Array(__S(177, __c11, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ScheduledActions: S.optional(__S(354, __c11, 2)),
+          ScheduledActions: S.optional(__S(178, __c11, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeScheduledActionsResponse",
-      });
+      ).annotate({ identifier: "DescribeScheduledActionsResponse" });
   }
 }
 function __c12(j: number): any {
@@ -1657,9 +1589,7 @@ function __c13(j: number): any {
           StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetPredictiveScalingForecastRequest",
-      });
+      ).annotate({ identifier: "GetPredictiveScalingForecastRequest" });
     case 1:
       return S.Array(/*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")));
     case 2:
@@ -1667,30 +1597,25 @@ function __c13(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Timestamps: __S(417, __c13, 1),
-          Values: __S(418, __c13, 2),
-          MetricSpecification: __S(296, __c9, 8),
+          Timestamps: __S(209, __c13, 1),
+          Values: __S(210, __c13, 2),
+          MetricSpecification: __S(152, __c9, 8),
         }),
       ).annotate({ identifier: "LoadForecast" });
     case 4:
-      return S.Array(__S(419, __c13, 3));
+      return S.Array(__S(211, __c13, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({
-          Timestamps: __S(417, __c13, 1),
-          Values: __S(418, __c13, 2),
-        }),
+        S.Struct({ Timestamps: __S(209, __c13, 1), Values: __S(210, __c13, 2) }),
       ).annotate({ identifier: "CapacityForecast" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          LoadForecast: S.optional(__S(420, __c13, 4)),
-          CapacityForecast: S.optional(__S(421, __c13, 5)),
+          LoadForecast: S.optional(__S(212, __c13, 4)),
+          CapacityForecast: S.optional(__S(213, __c13, 5)),
           UpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "GetPredictiveScalingForecastResponse",
-      });
+      ).annotate({ identifier: "GetPredictiveScalingForecastResponse" });
   }
 }
 function __c14(j: number): any {
@@ -1700,11 +1625,9 @@ function __c14(j: number): any {
         S.Struct({ ResourceARN: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(480, __c15, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(240, __c15, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
@@ -1725,14 +1648,14 @@ function __c16(j: number): any {
           ResourceId: S.String,
           ScalableDimension: S.String,
           PolicyType: S.optional(S.String),
-          StepScalingPolicyConfiguration: S.optional(__S(322, __c10, 2)),
-          TargetTrackingScalingPolicyConfiguration: S.optional(__S(332, __c10, 12)),
-          PredictiveScalingPolicyConfiguration: S.optional(__S(334, __c10, 14)),
+          StepScalingPolicyConfiguration: S.optional(__S(162, __c10, 2)),
+          TargetTrackingScalingPolicyConfiguration: S.optional(__S(167, __c10, 7)),
+          PredictiveScalingPolicyConfiguration: S.optional(__S(169, __c10, 9)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutScalingPolicyRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ PolicyARN: S.String, Alarms: S.optional(__S(336, __c10, 16)) }),
+        S.Struct({ PolicyARN: S.String, Alarms: S.optional(__S(171, __c10, 11)) }),
       ).annotate({ identifier: "PutScalingPolicyResponse" });
   }
 }
@@ -1749,11 +1672,9 @@ function __c17(j: number): any {
           ScalableDimension: S.String,
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ScalableTargetAction: S.optional(__S(384, __c12, 0)),
+          ScalableTargetAction: S.optional(__S(192, __c12, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PutScheduledActionRequest",
-      });
+      ).annotate({ identifier: "PutScheduledActionRequest" });
   }
 }
 function __c18(j: number): any {
@@ -1767,12 +1688,10 @@ function __c18(j: number): any {
           MinCapacity: S.optional(S.Number),
           MaxCapacity: S.optional(S.Number),
           RoleARN: S.optional(S.String),
-          SuspendedState: S.optional(__S(192, __c6, 0)),
-          Tags: S.optional(__S(480, __c15, 0)),
+          SuspendedState: S.optional(__S(96, __c6, 0)),
+          Tags: S.optional(__S(240, __c15, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RegisterScalableTargetRequest",
-      });
+      ).annotate({ identifier: "RegisterScalableTargetRequest" });
     case 1:
       return S.suspend(() => S.Struct({ ScalableTargetARN: S.optional(S.String) })).annotate({
         identifier: "RegisterScalableTargetResponse",
@@ -1783,7 +1702,7 @@ function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, Tags: __S(480, __c15, 0) }).pipe(
+        S.Struct({ ResourceARN: S.String, Tags: __S(240, __c15, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
@@ -1793,7 +1712,7 @@ function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: __S(160, __c5, 0) }).pipe(
+        S.Struct({ ResourceARN: S.String, TagKeys: __S(80, __c5, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });

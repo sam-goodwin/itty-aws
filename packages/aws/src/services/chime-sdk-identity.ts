@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -885,7 +885,7 @@ export const deregisterAppInstanceUserEndpoint: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(52, __c13, 0) as any as S.Schema<DeregisterAppInstanceUserEndpointRequest>,
-  output: __S(53, __c13, 1) as any as S.Schema<DeregisterAppInstanceUserEndpointResponse>,
+  output: __S(36, __c9, 0) as any as S.Schema<DeregisterAppInstanceUserEndpointResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1655,18 +1655,14 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateAppInstanceAdminRequest",
-      });
+      ).annotate({ identifier: "CreateAppInstanceAdminRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           AppInstanceAdmin: S.optional(__S(4, __c1, 0)),
           AppInstanceArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateAppInstanceAdminResponse",
-      });
+      ).annotate({ identifier: "CreateAppInstanceAdminResponse" });
   }
 }
 function __c1(j: number): any {
@@ -1698,9 +1694,7 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateAppInstanceBotRequest",
-      });
+      ).annotate({ identifier: "CreateAppInstanceBotRequest" });
   }
 }
 function __c3(j: number): any {
@@ -1755,9 +1749,7 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateAppInstanceUserRequest",
-      });
+      ).annotate({ identifier: "CreateAppInstanceUserRequest" });
   }
 }
 function __c6(j: number): any {
@@ -1796,9 +1788,7 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAppInstanceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteAppInstanceResponse" });
   }
 }
 function __c10(j: number): any {
@@ -1821,9 +1811,7 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteAppInstanceAdminRequest",
-      });
+      ).annotate({ identifier: "DeleteAppInstanceAdminRequest" });
   }
 }
 function __c11(j: number): any {
@@ -1840,9 +1828,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteAppInstanceBotRequest",
-      });
+      ).annotate({ identifier: "DeleteAppInstanceBotRequest" });
   }
 }
 function __c12(j: number): any {
@@ -1859,9 +1845,7 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteAppInstanceUserRequest",
-      });
+      ).annotate({ identifier: "DeleteAppInstanceUserRequest" });
   }
 }
 function __c13(j: number): any {
@@ -1884,13 +1868,7 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeregisterAppInstanceUserEndpointRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeregisterAppInstanceUserEndpointResponse",
-      });
+      ).annotate({ identifier: "DeregisterAppInstanceUserEndpointRequest" });
   }
 }
 function __c14(j: number): any {
@@ -1907,9 +1885,7 @@ function __c14(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeAppInstanceRequest",
-      });
+      ).annotate({ identifier: "DescribeAppInstanceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1946,9 +1922,7 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeAppInstanceAdminRequest",
-      });
+      ).annotate({ identifier: "DescribeAppInstanceAdminRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1960,9 +1934,7 @@ function __c15(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ AppInstanceAdmin: S.optional(__S(61, __c15, 1)) }),
-      ).annotate({
-        identifier: "DescribeAppInstanceAdminResponse",
-      });
+      ).annotate({ identifier: "DescribeAppInstanceAdminResponse" });
   }
 }
 function __c16(j: number): any {
@@ -1979,9 +1951,7 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeAppInstanceBotRequest",
-      });
+      ).annotate({ identifier: "DescribeAppInstanceBotRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2013,9 +1983,7 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeAppInstanceUserRequest",
-      });
+      ).annotate({ identifier: "DescribeAppInstanceUserRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2029,9 +1997,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "AppInstanceUser" });
     case 2:
       return S.suspend(() => S.Struct({ AppInstanceUser: S.optional(__S(69, __c17, 1)) })).annotate(
-        {
-          identifier: "DescribeAppInstanceUserResponse",
-        },
+        { identifier: "DescribeAppInstanceUserResponse" },
       );
   }
 }
@@ -2055,9 +2021,7 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeAppInstanceUserEndpointRequest",
-      });
+      ).annotate({ identifier: "DescribeAppInstanceUserEndpointRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2076,9 +2040,7 @@ function __c18(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ AppInstanceUserEndpoint: S.optional(__S(73, __c18, 1)) }),
-      ).annotate({
-        identifier: "DescribeAppInstanceUserEndpointResponse",
-      });
+      ).annotate({ identifier: "DescribeAppInstanceUserEndpointResponse" });
   }
 }
 function __c19(j: number): any {
@@ -2111,9 +2073,7 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAppInstanceRetentionSettingsRequest",
-      });
+      ).annotate({ identifier: "GetAppInstanceRetentionSettingsRequest" });
   }
 }
 function __c22(j: number): any {
@@ -2125,18 +2085,14 @@ function __c22(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ ChannelRetentionSettings: S.optional(__S(88, __c22, 0)) }),
-      ).annotate({
-        identifier: "AppInstanceRetentionSettings",
-      });
+      ).annotate({ identifier: "AppInstanceRetentionSettings" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           AppInstanceRetentionSettings: S.optional(__S(89, __c22, 1)),
           InitiateDeletionTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "GetAppInstanceRetentionSettingsResponse",
-      });
+      ).annotate({ identifier: "GetAppInstanceRetentionSettingsResponse" });
   }
 }
 function __c23(j: number): any {
@@ -2157,9 +2113,7 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListAppInstanceAdminsRequest",
-      });
+      ).annotate({ identifier: "ListAppInstanceAdminsRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Admin: S.optional(__S(4, __c1, 0)) })).annotate({
         identifier: "AppInstanceAdminSummary",
@@ -2173,9 +2127,7 @@ function __c23(j: number): any {
           AppInstanceAdmins: S.optional(__S(94, __c23, 2)),
           NextToken: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "ListAppInstanceAdminsResponse",
-      });
+      ).annotate({ identifier: "ListAppInstanceAdminsResponse" });
   }
 }
 function __c24(j: number): any {
@@ -2189,9 +2141,7 @@ function __c24(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/app-instance-bots" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListAppInstanceBotsRequest",
-      });
+      ).annotate({ identifier: "ListAppInstanceBotsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2209,9 +2159,7 @@ function __c24(j: number): any {
           AppInstanceBots: S.optional(__S(98, __c24, 2)),
           NextToken: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "ListAppInstanceBotsResponse",
-      });
+      ).annotate({ identifier: "ListAppInstanceBotsResponse" });
   }
 }
 function __c25(j: number): any {
@@ -2262,9 +2210,7 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListAppInstanceUserEndpointsRequest",
-      });
+      ).annotate({ identifier: "ListAppInstanceUserEndpointsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2275,9 +2221,7 @@ function __c26(j: number): any {
           AllowMessages: S.optional(S.String),
           EndpointState: S.optional(__S(76, __c19, 0)),
         }),
-      ).annotate({
-        identifier: "AppInstanceUserEndpointSummary",
-      });
+      ).annotate({ identifier: "AppInstanceUserEndpointSummary" });
     case 2:
       return S.Array(__S(105, __c26, 1));
     case 3:
@@ -2286,9 +2230,7 @@ function __c26(j: number): any {
           AppInstanceUserEndpoints: S.optional(__S(106, __c26, 2)),
           NextToken: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "ListAppInstanceUserEndpointsResponse",
-      });
+      ).annotate({ identifier: "ListAppInstanceUserEndpointsResponse" });
   }
 }
 function __c27(j: number): any {
@@ -2309,9 +2251,7 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListAppInstanceUsersRequest",
-      });
+      ).annotate({ identifier: "ListAppInstanceUsersRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2329,9 +2269,7 @@ function __c27(j: number): any {
           AppInstanceUsers: S.optional(__S(110, __c27, 2)),
           NextToken: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "ListAppInstanceUsersResponse",
-      });
+      ).annotate({ identifier: "ListAppInstanceUsersResponse" });
   }
 }
 function __c28(j: number): any {
@@ -2341,9 +2279,7 @@ function __c28(j: number): any {
         S.Struct({ ResourceARN: S.String.pipe(T.HttpQuery("arn")) }).pipe(
           T.all(T.Http({ method: "GET", uri: "/tags" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(161, __c40, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -2367,9 +2303,7 @@ function __c29(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutAppInstanceRetentionSettingsRequest",
-      });
+      ).annotate({ identifier: "PutAppInstanceRetentionSettingsRequest" });
   }
 }
 function __c30(j: number): any {
@@ -2392,18 +2326,14 @@ function __c30(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutAppInstanceUserExpirationSettingsRequest",
-      });
+      ).annotate({ identifier: "PutAppInstanceUserExpirationSettingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           AppInstanceUserArn: S.optional(S.String),
           ExpirationSettings: S.optional(__S(24, __c6, 0)),
         }),
-      ).annotate({
-        identifier: "PutAppInstanceUserExpirationSettingsResponse",
-      });
+      ).annotate({ identifier: "PutAppInstanceUserExpirationSettingsResponse" });
   }
 }
 function __c31(j: number): any {
@@ -2428,9 +2358,7 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RegisterAppInstanceUserEndpointRequest",
-      });
+      ).annotate({ identifier: "RegisterAppInstanceUserEndpointRequest" });
   }
 }
 function __c32(j: number): any {
@@ -2438,9 +2366,7 @@ function __c32(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ AppInstanceUserArn: S.optional(S.String), EndpointId: S.optional(S.String) }),
-      ).annotate({
-        identifier: "RegisterAppInstanceUserEndpointResponse",
-      });
+      ).annotate({ identifier: "RegisterAppInstanceUserEndpointResponse" });
   }
 }
 function __c33(j: number): any {
@@ -2519,9 +2445,7 @@ function __c36(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateAppInstanceBotRequest",
-      });
+      ).annotate({ identifier: "UpdateAppInstanceBotRequest" });
   }
 }
 function __c37(j: number): any {
@@ -2542,9 +2466,7 @@ function __c37(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateAppInstanceUserRequest",
-      });
+      ).annotate({ identifier: "UpdateAppInstanceUserRequest" });
   }
 }
 function __c38(j: number): any {
@@ -2569,9 +2491,7 @@ function __c38(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateAppInstanceUserEndpointRequest",
-      });
+      ).annotate({ identifier: "UpdateAppInstanceUserEndpointRequest" });
   }
 }
 function __c39(j: number): any {

@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1068,8 +1068,8 @@ export const createEncoderConfiguration: API.OperationMethod<
   CreateEncoderConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c50, 0) as any as S.Schema<CreateEncoderConfigurationRequest>,
-  output: __S(818, __c51, 2) as any as S.Schema<CreateEncoderConfigurationResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<CreateEncoderConfigurationRequest>,
+  output: __S(802, __c50, 2) as any as S.Schema<CreateEncoderConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1099,8 +1099,8 @@ export const createIngestConfiguration: API.OperationMethod<
   CreateIngestConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(848, __c53, 0) as any as S.Schema<CreateIngestConfigurationRequest>,
-  output: __S(896, __c56, 0) as any as S.Schema<CreateIngestConfigurationResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<CreateIngestConfigurationRequest>,
+  output: __S(864, __c54, 0) as any as S.Schema<CreateIngestConfigurationResponse>,
   errors: [
     AccessDeniedException,
     PendingVerification,
@@ -1193,7 +1193,7 @@ export const createStorageConfiguration: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c6, 0) as any as S.Schema<CreateStorageConfigurationRequest>,
-  output: __S(113, __c7, 1) as any as S.Schema<CreateStorageConfigurationResponse>,
+  output: __S(112, __c7, 0) as any as S.Schema<CreateStorageConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1287,7 +1287,7 @@ export const deletePublicKey: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(192, __c12, 0) as any as S.Schema<DeletePublicKeyRequest>,
-  output: __S(208, __c13, 0) as any as S.Schema<DeletePublicKeyResponse>,
+  output: __S(160, __c10, 0) as any as S.Schema<DeletePublicKeyResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1317,8 +1317,8 @@ export const deleteStage: API.OperationMethod<
   DeleteStageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c14, 0) as any as S.Schema<DeleteStageRequest>,
-  output: __S(208, __c13, 0) as any as S.Schema<DeleteStageResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<DeleteStageRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<DeleteStageResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1351,7 +1351,7 @@ export const deleteStorageConfiguration: API.OperationMethod<
   DeleteStorageConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c15, 0) as any as S.Schema<DeleteStorageConfigurationRequest>,
+  input: __S(224, __c14, 0) as any as S.Schema<DeleteStorageConfigurationRequest>,
   output: __S(160, __c10, 0) as any as S.Schema<DeleteStorageConfigurationResponse>,
   errors: [
     AccessDeniedException,
@@ -1381,8 +1381,8 @@ export const disconnectParticipant: API.OperationMethod<
   DisconnectParticipantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c16, 0) as any as S.Schema<DisconnectParticipantRequest>,
-  output: __S(208, __c13, 0) as any as S.Schema<DisconnectParticipantResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<DisconnectParticipantRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<DisconnectParticipantResponse>,
   errors: [
     AccessDeniedException,
     PendingVerification,
@@ -1411,8 +1411,8 @@ export const getComposition: API.OperationMethod<
   GetCompositionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c17, 0) as any as S.Schema<GetCompositionRequest>,
-  output: __S(302, __c18, 14) as any as S.Schema<GetCompositionResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetCompositionRequest>,
+  output: __S(286, __c17, 14) as any as S.Schema<GetCompositionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1443,8 +1443,8 @@ export const getEncoderConfiguration: API.OperationMethod<
   GetEncoderConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c19, 0) as any as S.Schema<GetEncoderConfigurationRequest>,
-  output: __S(818, __c51, 2) as any as S.Schema<GetEncoderConfigurationResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetEncoderConfigurationRequest>,
+  output: __S(802, __c50, 2) as any as S.Schema<GetEncoderConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1472,8 +1472,8 @@ export const getIngestConfiguration: API.OperationMethod<
   GetIngestConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c20, 0) as any as S.Schema<GetIngestConfigurationRequest>,
-  output: __S(321, __c20, 1) as any as S.Schema<GetIngestConfigurationResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetIngestConfigurationRequest>,
+  output: __S(305, __c19, 1) as any as S.Schema<GetIngestConfigurationResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1494,8 +1494,8 @@ export const getParticipant: API.OperationMethod<
   GetParticipantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<GetParticipantRequest>,
-  output: __S(338, __c21, 2) as any as S.Schema<GetParticipantResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<GetParticipantRequest>,
+  output: __S(322, __c20, 2) as any as S.Schema<GetParticipantResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1516,8 +1516,8 @@ export const getPublicKey: API.OperationMethod<
   GetPublicKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c22, 0) as any as S.Schema<GetPublicKeyRequest>,
-  output: __S(369, __c23, 1) as any as S.Schema<GetPublicKeyResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetPublicKeyRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<GetPublicKeyResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1539,8 +1539,8 @@ export const getStage: API.OperationMethod<
   GetStageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<GetStageRequest>,
-  output: __S(400, __c25, 0) as any as S.Schema<GetStageResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetStageRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<GetStageResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -1566,8 +1566,8 @@ export const getStageSession: API.OperationMethod<
   GetStageSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c26, 0) as any as S.Schema<GetStageSessionRequest>,
-  output: __S(417, __c26, 1) as any as S.Schema<GetStageSessionResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<GetStageSessionRequest>,
+  output: __S(401, __c25, 1) as any as S.Schema<GetStageSessionResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1591,8 +1591,8 @@ export const getStorageConfiguration: API.OperationMethod<
   GetStorageConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<GetStorageConfigurationRequest>,
-  output: __S(113, __c7, 1) as any as S.Schema<GetStorageConfigurationResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<GetStorageConfigurationRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<GetStorageConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1622,8 +1622,8 @@ export const importPublicKey: API.OperationMethod<
   ImportPublicKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c29, 0) as any as S.Schema<ImportPublicKeyRequest>,
-  output: __S(369, __c23, 1) as any as S.Schema<ImportPublicKeyResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<ImportPublicKeyRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<ImportPublicKeyResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1653,8 +1653,8 @@ export const listCompositions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<ListCompositionsRequest>,
-  output: __S(485, __c30, 5) as any as S.Schema<ListCompositionsResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<ListCompositionsRequest>,
+  output: __S(469, __c29, 5) as any as S.Schema<ListCompositionsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1689,8 +1689,8 @@ export const listEncoderConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<ListEncoderConfigurationsRequest>,
-  output: __S(499, __c31, 3) as any as S.Schema<ListEncoderConfigurationsResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListEncoderConfigurationsRequest>,
+  output: __S(483, __c30, 3) as any as S.Schema<ListEncoderConfigurationsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1722,8 +1722,8 @@ export const listIngestConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   IngestConfigurationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(512, __c32, 0) as any as S.Schema<ListIngestConfigurationsRequest>,
-  output: __S(515, __c32, 3) as any as S.Schema<ListIngestConfigurationsResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<ListIngestConfigurationsRequest>,
+  output: __S(499, __c31, 3) as any as S.Schema<ListIngestConfigurationsResponse>,
   errors: [AccessDeniedException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1747,8 +1747,8 @@ export const listParticipantEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(528, __c33, 0) as any as S.Schema<ListParticipantEventsRequest>,
-  output: __S(532, __c33, 4) as any as S.Schema<ListParticipantEventsResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListParticipantEventsRequest>,
+  output: __S(516, __c32, 4) as any as S.Schema<ListParticipantEventsResponse>,
   errors: [AccessDeniedException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1774,8 +1774,8 @@ export const listParticipantReplicas: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ParticipantReplica
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(544, __c34, 0) as any as S.Schema<ListParticipantReplicasRequest>,
-  output: __S(547, __c34, 3) as any as S.Schema<ListParticipantReplicasResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<ListParticipantReplicasRequest>,
+  output: __S(531, __c33, 3) as any as S.Schema<ListParticipantReplicasResponse>,
   errors: [AccessDeniedException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1799,8 +1799,8 @@ export const listParticipants: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(560, __c35, 0) as any as S.Schema<ListParticipantsRequest>,
-  output: __S(563, __c35, 3) as any as S.Schema<ListParticipantsResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<ListParticipantsRequest>,
+  output: __S(547, __c34, 3) as any as S.Schema<ListParticipantsResponse>,
   errors: [AccessDeniedException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1823,8 +1823,8 @@ export const listPublicKeys: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PublicKeySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(576, __c36, 0) as any as S.Schema<ListPublicKeysRequest>,
-  output: __S(579, __c36, 3) as any as S.Schema<ListPublicKeysResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<ListPublicKeysRequest>,
+  output: __S(563, __c35, 3) as any as S.Schema<ListPublicKeysResponse>,
   errors: [AccessDeniedException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1853,8 +1853,8 @@ export const listStages: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(592, __c37, 0) as any as S.Schema<ListStagesRequest>,
-  output: __S(595, __c37, 3) as any as S.Schema<ListStagesResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<ListStagesRequest>,
+  output: __S(579, __c36, 3) as any as S.Schema<ListStagesResponse>,
   errors: [AccessDeniedException, ConflictException, ValidationException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1877,8 +1877,8 @@ export const listStageSessions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(608, __c38, 0) as any as S.Schema<ListStageSessionsRequest>,
-  output: __S(610, __c38, 2) as any as S.Schema<ListStageSessionsResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<ListStageSessionsRequest>,
+  output: __S(594, __c37, 2) as any as S.Schema<ListStageSessionsResponse>,
   errors: [AccessDeniedException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1907,8 +1907,8 @@ export const listStorageConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(624, __c39, 0) as any as S.Schema<ListStorageConfigurationsRequest>,
-  output: __S(627, __c39, 3) as any as S.Schema<ListStorageConfigurationsResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<ListStorageConfigurationsRequest>,
+  output: __S(610, __c38, 2) as any as S.Schema<ListStorageConfigurationsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1941,8 +1941,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c40, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(641, __c40, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1984,8 +1984,8 @@ export const startComposition: API.OperationMethod<
   StartCompositionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(657, __c41, 1) as any as S.Schema<StartCompositionRequest>,
-  output: __S(302, __c18, 14) as any as S.Schema<StartCompositionResponse>,
+  input: __S(641, __c40, 1) as any as S.Schema<StartCompositionRequest>,
+  output: __S(286, __c17, 14) as any as S.Schema<StartCompositionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2018,8 +2018,8 @@ export const startParticipantReplication: API.OperationMethod<
   StartParticipantReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c42, 0) as any as S.Schema<StartParticipantReplicationRequest>,
-  output: __S(688, __c43, 0) as any as S.Schema<StartParticipantReplicationResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<StartParticipantReplicationRequest>,
+  output: __S(672, __c42, 0) as any as S.Schema<StartParticipantReplicationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2051,8 +2051,8 @@ export const stopComposition: API.OperationMethod<
   StopCompositionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c44, 0) as any as S.Schema<StopCompositionRequest>,
-  output: __S(208, __c13, 0) as any as S.Schema<StopCompositionResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<StopCompositionRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<StopCompositionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2081,8 +2081,8 @@ export const stopParticipantReplication: API.OperationMethod<
   StopParticipantReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(720, __c45, 0) as any as S.Schema<StopParticipantReplicationRequest>,
-  output: __S(688, __c43, 0) as any as S.Schema<StopParticipantReplicationResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<StopParticipantReplicationRequest>,
+  output: __S(672, __c42, 0) as any as S.Schema<StopParticipantReplicationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2109,8 +2109,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c46, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(208, __c13, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -2137,8 +2137,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(752, __c47, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(208, __c13, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -2166,8 +2166,8 @@ export const updateIngestConfiguration: API.OperationMethod<
   UpdateIngestConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c48, 0) as any as S.Schema<UpdateIngestConfigurationRequest>,
-  output: __S(896, __c56, 0) as any as S.Schema<UpdateIngestConfigurationResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<UpdateIngestConfigurationRequest>,
+  output: __S(864, __c54, 0) as any as S.Schema<UpdateIngestConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2198,8 +2198,8 @@ export const updateStage: API.OperationMethod<
   UpdateStageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(784, __c49, 0) as any as S.Schema<UpdateStageRequest>,
-  output: __S(400, __c25, 0) as any as S.Schema<UpdateStageResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<UpdateStageRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<UpdateStageResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2223,7 +2223,7 @@ function __c0(j: number): any {
           stageArn: S.String,
           duration: S.optional(S.Number),
           userId: S.optional(S.String),
-          attributes: S.optional(__S(864, __c54, 0)),
+          attributes: S.optional(__S(816, __c51, 0)),
           capabilities: S.optional(__S(32, __c2, 0)),
         }).pipe(
           T.all(
@@ -2235,14 +2235,10 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateParticipantTokenRequest",
-      });
+      ).annotate({ identifier: "CreateParticipantTokenRequest" });
     case 1:
       return S.suspend(() => S.Struct({ participantToken: S.optional(__S(16, __c1, 0)) })).annotate(
-        {
-          identifier: "CreateParticipantTokenResponse",
-        },
+        { identifier: "CreateParticipantTokenResponse" },
       );
   }
 }
@@ -2254,7 +2250,7 @@ function __c1(j: number): any {
           participantId: S.optional(S.String),
           token: S.optional(SensitiveString),
           userId: S.optional(S.String),
-          attributes: S.optional(__S(864, __c54, 0)),
+          attributes: S.optional(__S(816, __c51, 0)),
           duration: S.optional(S.Number),
           capabilities: S.optional(__S(32, __c2, 0)),
           expirationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -2275,12 +2271,10 @@ function __c3(j: number): any {
         S.Struct({
           duration: S.optional(S.Number),
           userId: S.optional(S.String),
-          attributes: S.optional(__S(864, __c54, 0)),
+          attributes: S.optional(__S(816, __c51, 0)),
           capabilities: S.optional(__S(32, __c2, 0)),
         }),
-      ).annotate({
-        identifier: "ParticipantTokenConfiguration",
-      });
+      ).annotate({ identifier: "ParticipantTokenConfiguration" });
     case 1:
       return S.Array(__S(48, __c3, 0));
     case 2:
@@ -2288,8 +2282,8 @@ function __c3(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           participantTokenConfigurations: S.optional(__S(49, __c3, 1)),
-          tags: S.optional(__S(832, __c52, 0)),
-          autoParticipantRecordingConfiguration: S.optional(__S(82, __c5, 2)),
+          tags: S.optional(__S(816, __c51, 0)),
+          autoParticipantRecordingConfiguration: S.optional(__S(81, __c5, 1)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/CreateStage" }), svc, auth, proto, ver, rules),
         ),
@@ -2299,7 +2293,7 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          stage: S.optional(__S(84, __c5, 4)),
+          stage: S.optional(__S(83, __c5, 3)),
           participantTokens: S.optional(__S(51, __c3, 3)),
         }),
       ).annotate({ identifier: "CreateStageResponse" });
@@ -2312,39 +2306,31 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ targetSegmentDurationSeconds: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "ParticipantRecordingHlsConfiguration",
-      });
+      ).annotate({ identifier: "ParticipantRecordingHlsConfiguration" });
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           targetIntervalSeconds: S.optional(S.Number),
           storage: S.optional(__S(64, __c4, 0)),
           recordingMode: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ParticipantThumbnailConfiguration",
-      });
-    case 2:
+      ).annotate({ identifier: "ParticipantThumbnailConfiguration" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           storageConfigurationArn: S.String,
-          mediaTypes: S.optional(__S(80, __c5, 0)),
-          thumbnailConfiguration: S.optional(__S(81, __c5, 1)),
+          mediaTypes: S.optional(__S(64, __c4, 0)),
+          thumbnailConfiguration: S.optional(__S(80, __c5, 0)),
           recordingReconnectWindowSeconds: S.optional(S.Number),
           hlsConfiguration: S.optional(__S(65, __c4, 1)),
           recordParticipantReplicas: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "AutoParticipantRecordingConfiguration",
-      });
-    case 3:
+      ).annotate({ identifier: "AutoParticipantRecordingConfiguration" });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           events: S.optional(S.String),
@@ -2353,15 +2339,15 @@ function __c5(j: number): any {
           rtmps: S.optional(S.String),
         }),
       ).annotate({ identifier: "StageEndpoints" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
           name: S.optional(S.String),
           activeSessionId: S.optional(S.String),
-          tags: S.optional(__S(832, __c52, 0)),
-          autoParticipantRecordingConfiguration: S.optional(__S(82, __c5, 2)),
-          endpoints: S.optional(__S(83, __c5, 3)),
+          tags: S.optional(__S(816, __c51, 0)),
+          autoParticipantRecordingConfiguration: S.optional(__S(81, __c5, 1)),
+          endpoints: S.optional(__S(82, __c5, 2)),
         }),
       ).annotate({ identifier: "Stage" });
   }
@@ -2373,7 +2359,7 @@ function __c6(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           s3: __S(128, __c8, 0),
-          tags: S.optional(__S(832, __c52, 0)),
+          tags: S.optional(__S(816, __c51, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateStorageConfiguration" }),
@@ -2384,28 +2370,15 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateStorageConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateStorageConfigurationRequest" });
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          arn: S.String,
-          name: S.optional(S.String),
-          s3: S.optional(__S(128, __c8, 0)),
-          tags: S.optional(__S(832, __c52, 0)),
-        }),
-      ).annotate({ identifier: "StorageConfiguration" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ storageConfiguration: S.optional(__S(112, __c7, 0)) }),
-      ).annotate({
-        identifier: "CreateStorageConfigurationResponse",
-      });
+        S.Struct({ storageConfiguration: S.optional(__S(129, __c8, 1)) }),
+      ).annotate({ identifier: "CreateStorageConfigurationResponse" });
   }
 }
 function __c8(j: number): any {
@@ -2414,6 +2387,15 @@ function __c8(j: number): any {
       return S.suspend(() => S.Struct({ bucketName: S.String })).annotate({
         identifier: "S3StorageConfiguration",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.String,
+          name: S.optional(S.String),
+          s3: S.optional(__S(128, __c8, 0)),
+          tags: S.optional(__S(816, __c51, 0)),
+        }),
+      ).annotate({ identifier: "StorageConfiguration" });
   }
 }
 function __c9(j: number): any {
@@ -2430,9 +2412,7 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteEncoderConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteEncoderConfigurationRequest" });
   }
 }
 function __c10(j: number): any {
@@ -2457,9 +2437,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteIngestConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteIngestConfigurationRequest" });
   }
 }
 function __c12(j: number): any {
@@ -2475,14 +2453,6 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeletePublicKeyResponse",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({ arn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/DeleteStage" }), svc, auth, proto, ver, rules),
@@ -2490,7 +2460,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "DeleteStageRequest" });
   }
 }
-function __c15(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2504,12 +2474,10 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteStorageConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteStorageConfigurationRequest" });
   }
 }
-function __c16(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2527,12 +2495,10 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisconnectParticipantRequest",
-      });
+      ).annotate({ identifier: "DisconnectParticipantRequest" });
   }
 }
-function __c17(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2542,7 +2508,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "GetCompositionRequest" });
   }
 }
-function __c18(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2573,20 +2539,15 @@ function __c18(j: number): any {
       ).annotate({ identifier: "PipConfiguration" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ grid: S.optional(__S(288, __c18, 0)), pip: S.optional(__S(289, __c18, 1)) }),
+        S.Struct({ grid: S.optional(__S(272, __c17, 0)), pip: S.optional(__S(273, __c17, 1)) }),
       ).annotate({ identifier: "LayoutConfiguration" });
     case 3:
       return S.suspend(() =>
         S.Struct({ channelArn: S.String, encoderConfigurationArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ChannelDestinationConfiguration",
-      });
+      ).annotate({ identifier: "ChannelDestinationConfiguration" });
     case 4:
       return S.suspend(() =>
-        S.Struct({
-          hlsConfiguration: S.optional(__S(65, __c4, 1)),
-          format: S.optional(S.String),
-        }),
+        S.Struct({ hlsConfiguration: S.optional(__S(65, __c4, 1)), format: S.optional(S.String) }),
       ).annotate({ identifier: "RecordingConfiguration" });
     case 5:
       return S.suspend(() =>
@@ -2594,28 +2555,24 @@ function __c18(j: number): any {
           targetIntervalSeconds: S.optional(S.Number),
           storage: S.optional(__S(64, __c4, 0)),
         }),
-      ).annotate({
-        identifier: "CompositionThumbnailConfiguration",
-      });
+      ).annotate({ identifier: "CompositionThumbnailConfiguration" });
     case 6:
-      return S.Array(__S(293, __c18, 5));
+      return S.Array(__S(277, __c17, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           storageConfigurationArn: S.String,
           encoderConfigurationArns: __S(32, __c2, 0),
-          recordingConfiguration: S.optional(__S(292, __c18, 4)),
-          thumbnailConfigurations: S.optional(__S(294, __c18, 6)),
+          recordingConfiguration: S.optional(__S(276, __c17, 4)),
+          thumbnailConfigurations: S.optional(__S(278, __c17, 6)),
         }),
-      ).annotate({
-        identifier: "S3DestinationConfiguration",
-      });
+      ).annotate({ identifier: "S3DestinationConfiguration" });
     case 8:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          channel: S.optional(__S(291, __c18, 3)),
-          s3: S.optional(__S(295, __c18, 7)),
+          channel: S.optional(__S(275, __c17, 3)),
+          s3: S.optional(__S(279, __c17, 7)),
         }),
       ).annotate({ identifier: "DestinationConfiguration" });
     case 9:
@@ -2623,7 +2580,7 @@ function __c18(j: number): any {
         identifier: "S3Detail",
       });
     case 10:
-      return S.suspend(() => S.Struct({ s3: S.optional(__S(297, __c18, 9)) })).annotate({
+      return S.suspend(() => S.Struct({ s3: S.optional(__S(281, __c17, 9)) })).annotate({
         identifier: "DestinationDetail",
       });
     case 11:
@@ -2633,32 +2590,32 @@ function __c18(j: number): any {
           state: S.String,
           startTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          configuration: __S(296, __c18, 8),
-          detail: S.optional(__S(298, __c18, 10)),
+          configuration: __S(280, __c17, 8),
+          detail: S.optional(__S(282, __c17, 10)),
         }),
       ).annotate({ identifier: "Destination" });
     case 12:
-      return S.Array(__S(299, __c18, 11));
+      return S.Array(__S(283, __c17, 11));
     case 13:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
           stageArn: S.String,
           state: S.String,
-          layout: __S(290, __c18, 2),
-          destinations: __S(300, __c18, 12),
-          tags: S.optional(__S(832, __c52, 0)),
+          layout: __S(274, __c17, 2),
+          destinations: __S(284, __c17, 12),
+          tags: S.optional(__S(816, __c51, 0)),
           startTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "Composition" });
     case 14:
-      return S.suspend(() => S.Struct({ composition: S.optional(__S(301, __c18, 13)) })).annotate({
+      return S.suspend(() => S.Struct({ composition: S.optional(__S(285, __c17, 13)) })).annotate({
         identifier: "GetCompositionResponse",
       });
   }
 }
-function __c19(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2672,12 +2629,10 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetEncoderConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetEncoderConfigurationRequest" });
   }
 }
-function __c20(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2691,18 +2646,14 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetIngestConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetIngestConfigurationRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ingestConfiguration: S.optional(__S(882, __c55, 2)) }),
-      ).annotate({
-        identifier: "GetIngestConfigurationResponse",
-      });
+        S.Struct({ ingestConfiguration: S.optional(__S(850, __c53, 2)) }),
+      ).annotate({ identifier: "GetIngestConfigurationResponse" });
   }
 }
-function __c21(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2717,7 +2668,7 @@ function __c21(j: number): any {
           userId: S.optional(S.String),
           state: S.optional(S.String),
           firstJoinTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          attributes: S.optional(__S(864, __c54, 0)),
+          attributes: S.optional(__S(816, __c51, 0)),
           published: S.optional(S.Boolean),
           ispName: S.optional(S.String),
           osName: S.optional(S.String),
@@ -2738,12 +2689,12 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "Participant" });
     case 2:
-      return S.suspend(() => S.Struct({ participant: S.optional(__S(337, __c21, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ participant: S.optional(__S(321, __c20, 1)) })).annotate({
         identifier: "GetParticipantResponse",
       });
   }
 }
-function __c22(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2753,7 +2704,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "GetPublicKeyRequest" });
   }
 }
-function __c23(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2762,16 +2713,16 @@ function __c23(j: number): any {
           name: S.optional(S.String),
           publicKeyMaterial: S.optional(S.String),
           fingerprint: S.optional(S.String),
-          tags: S.optional(__S(832, __c52, 0)),
+          tags: S.optional(__S(816, __c51, 0)),
         }),
       ).annotate({ identifier: "PublicKey" });
     case 1:
-      return S.suspend(() => S.Struct({ publicKey: S.optional(__S(368, __c23, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ publicKey: S.optional(__S(352, __c22, 0)) })).annotate({
         identifier: "GetPublicKeyResponse",
       });
   }
 }
-function __c24(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2781,15 +2732,15 @@ function __c24(j: number): any {
       ).annotate({ identifier: "GetStageRequest" });
   }
 }
-function __c25(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ stage: S.optional(__S(84, __c5, 4)) })).annotate({
+      return S.suspend(() => S.Struct({ stage: S.optional(__S(83, __c5, 3)) })).annotate({
         identifier: "GetStageResponse",
       });
   }
 }
-function __c26(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2798,12 +2749,12 @@ function __c26(j: number): any {
         ),
       ).annotate({ identifier: "GetStageSessionRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ stageSession: S.optional(__S(432, __c27, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ stageSession: S.optional(__S(416, __c26, 0)) })).annotate({
         identifier: "GetStageSessionResponse",
       });
   }
 }
-function __c27(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2815,7 +2766,7 @@ function __c27(j: number): any {
       ).annotate({ identifier: "StageSession" });
   }
 }
-function __c28(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2829,26 +2780,24 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetStorageConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetStorageConfigurationRequest" });
   }
 }
-function __c29(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           publicKeyMaterial: S.String,
           name: S.optional(S.String),
-          tags: S.optional(__S(832, __c52, 0)),
+          tags: S.optional(__S(816, __c51, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/ImportPublicKey" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ImportPublicKeyRequest" });
   }
 }
-function __c30(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2871,28 +2820,28 @@ function __c30(j: number): any {
         }),
       ).annotate({ identifier: "DestinationSummary" });
     case 2:
-      return S.Array(__S(481, __c30, 1));
+      return S.Array(__S(465, __c29, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
           stageArn: S.String,
-          destinations: __S(482, __c30, 2),
+          destinations: __S(466, __c29, 2),
           state: S.String,
-          tags: S.optional(__S(832, __c52, 0)),
+          tags: S.optional(__S(816, __c51, 0)),
           startTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "CompositionSummary" });
     case 4:
-      return S.Array(__S(483, __c30, 3));
+      return S.Array(__S(467, __c29, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ compositions: __S(484, __c30, 4), nextToken: S.optional(S.String) }),
+        S.Struct({ compositions: __S(468, __c29, 4), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListCompositionsResponse" });
   }
 }
-function __c31(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2906,33 +2855,24 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListEncoderConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListEncoderConfigurationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
           name: S.optional(S.String),
-          tags: S.optional(__S(832, __c52, 0)),
+          tags: S.optional(__S(816, __c51, 0)),
         }),
-      ).annotate({
-        identifier: "EncoderConfigurationSummary",
-      });
+      ).annotate({ identifier: "EncoderConfigurationSummary" });
     case 2:
-      return S.Array(__S(497, __c31, 1));
+      return S.Array(__S(481, __c30, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          encoderConfigurations: __S(498, __c31, 2),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListEncoderConfigurationsResponse",
-      });
+        S.Struct({ encoderConfigurations: __S(482, __c30, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListEncoderConfigurationsResponse" });
   }
 }
-function __c32(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2951,9 +2891,7 @@ function __c32(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListIngestConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListIngestConfigurationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2966,20 +2904,16 @@ function __c32(j: number): any {
           userId: S.optional(S.String),
           redundantIngest: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "IngestConfigurationSummary",
-      });
+      ).annotate({ identifier: "IngestConfigurationSummary" });
     case 2:
-      return S.Array(__S(513, __c32, 1));
+      return S.Array(__S(497, __c31, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ ingestConfigurations: __S(514, __c32, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListIngestConfigurationsResponse",
-      });
+        S.Struct({ ingestConfigurations: __S(498, __c31, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListIngestConfigurationsResponse" });
   }
 }
-function __c33(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2999,20 +2933,16 @@ function __c33(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListParticipantEventsRequest",
-      });
+      ).annotate({ identifier: "ListParticipantEventsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           capabilities: S.optional(__S(32, __c2, 0)),
-          attributes: S.optional(__S(864, __c54, 0)),
+          attributes: S.optional(__S(816, __c51, 0)),
           userId: S.optional(S.String),
           expirationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "ExchangedParticipantToken",
-      });
+      ).annotate({ identifier: "ExchangedParticipantToken" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3024,21 +2954,19 @@ function __c33(j: number): any {
           destinationStageArn: S.optional(S.String),
           destinationSessionId: S.optional(S.String),
           replica: S.optional(S.Boolean),
-          previousToken: S.optional(__S(529, __c33, 1)),
-          newToken: S.optional(__S(529, __c33, 1)),
+          previousToken: S.optional(__S(513, __c32, 1)),
+          newToken: S.optional(__S(513, __c32, 1)),
         }),
       ).annotate({ identifier: "Event" });
     case 3:
-      return S.Array(__S(530, __c33, 2));
+      return S.Array(__S(514, __c32, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ events: __S(531, __c33, 3), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListParticipantEventsResponse",
-      });
+        S.Struct({ events: __S(515, __c32, 3), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListParticipantEventsResponse" });
   }
 }
-function __c34(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3057,9 +2985,7 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListParticipantReplicasRequest",
-      });
+      ).annotate({ identifier: "ListParticipantReplicasRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3072,16 +2998,14 @@ function __c34(j: number): any {
         }),
       ).annotate({ identifier: "ParticipantReplica" });
     case 2:
-      return S.Array(__S(545, __c34, 1));
+      return S.Array(__S(529, __c33, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ replicas: __S(546, __c34, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListParticipantReplicasResponse",
-      });
+        S.Struct({ replicas: __S(530, __c33, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListParticipantReplicasResponse" });
   }
 }
-function __c35(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3116,14 +3040,14 @@ function __c35(j: number): any {
         }),
       ).annotate({ identifier: "ParticipantSummary" });
     case 2:
-      return S.Array(__S(561, __c35, 1));
+      return S.Array(__S(545, __c34, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ participants: __S(562, __c35, 2), nextToken: S.optional(S.String) }),
+        S.Struct({ participants: __S(546, __c34, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListParticipantsResponse" });
   }
 }
-function __c36(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3136,18 +3060,18 @@ function __c36(j: number): any {
         S.Struct({
           arn: S.optional(S.String),
           name: S.optional(S.String),
-          tags: S.optional(__S(832, __c52, 0)),
+          tags: S.optional(__S(816, __c51, 0)),
         }),
       ).annotate({ identifier: "PublicKeySummary" });
     case 2:
-      return S.Array(__S(577, __c36, 1));
+      return S.Array(__S(561, __c35, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ publicKeys: __S(578, __c36, 2), nextToken: S.optional(S.String) }),
+        S.Struct({ publicKeys: __S(562, __c35, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListPublicKeysResponse" });
   }
 }
-function __c37(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3161,18 +3085,18 @@ function __c37(j: number): any {
           arn: S.String,
           name: S.optional(S.String),
           activeSessionId: S.optional(S.String),
-          tags: S.optional(__S(832, __c52, 0)),
+          tags: S.optional(__S(816, __c51, 0)),
         }),
       ).annotate({ identifier: "StageSummary" });
     case 2:
-      return S.Array(__S(593, __c37, 1));
+      return S.Array(__S(577, __c36, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ stages: __S(594, __c37, 2), nextToken: S.optional(S.String) }),
+        S.Struct({ stages: __S(578, __c36, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListStagesResponse" });
   }
 }
-function __c38(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3192,16 +3116,14 @@ function __c38(j: number): any {
         ),
       ).annotate({ identifier: "ListStageSessionsRequest" });
     case 1:
-      return S.Array(__S(432, __c27, 0));
+      return S.Array(__S(416, __c26, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ stageSessions: __S(609, __c38, 1), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListStageSessionsResponse",
-      });
+        S.Struct({ stageSessions: __S(593, __c37, 1), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListStageSessionsResponse" });
   }
 }
-function __c39(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3215,34 +3137,16 @@ function __c39(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListStorageConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListStorageConfigurationsRequest" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          arn: S.String,
-          name: S.optional(S.String),
-          s3: S.optional(__S(128, __c8, 0)),
-          tags: S.optional(__S(832, __c52, 0)),
-        }),
-      ).annotate({
-        identifier: "StorageConfigurationSummary",
-      });
+      return S.Array(__S(129, __c8, 1));
     case 2:
-      return S.Array(__S(625, __c39, 1));
-    case 3:
       return S.suspend(() =>
-        S.Struct({
-          storageConfigurations: __S(626, __c39, 2),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListStorageConfigurationsResponse",
-      });
+        S.Struct({ storageConfigurations: __S(609, __c38, 1), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListStorageConfigurationsResponse" });
   }
 }
-function __c40(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3256,34 +3160,32 @@ function __c40(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: __S(832, __c52, 0) })).annotate({
+      return S.suspend(() => S.Struct({ tags: __S(816, __c51, 0) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c41(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(296, __c18, 8));
+      return S.Array(__S(280, __c17, 8));
     case 1:
       return S.suspend(() =>
         S.Struct({
           stageArn: S.String,
           idempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          layout: S.optional(__S(290, __c18, 2)),
-          destinations: __S(656, __c41, 0),
-          tags: S.optional(__S(832, __c52, 0)),
+          layout: S.optional(__S(274, __c17, 2)),
+          destinations: __S(640, __c40, 0),
+          tags: S.optional(__S(816, __c51, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/StartComposition" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StartCompositionRequest" });
   }
 }
-function __c42(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3292,7 +3194,7 @@ function __c42(j: number): any {
           destinationStageArn: S.String,
           participantId: S.String,
           reconnectWindowSeconds: S.optional(S.Number),
-          attributes: S.optional(__S(864, __c54, 0)),
+          attributes: S.optional(__S(816, __c51, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/StartParticipantReplication" }),
@@ -3303,12 +3205,10 @@ function __c42(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartParticipantReplicationRequest",
-      });
+      ).annotate({ identifier: "StartParticipantReplicationRequest" });
   }
 }
-function __c43(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3327,12 +3227,10 @@ function __c43(j: number): any {
           xContentTypeOptions: S.optional(S.String).pipe(T.HttpHeader("X-Content-Type-Options")),
           xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
         }),
-      ).annotate({
-        identifier: "StartParticipantReplicationResponse",
-      });
+      ).annotate({ identifier: "StartParticipantReplicationResponse" });
   }
 }
-function __c44(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3342,7 +3240,7 @@ function __c44(j: number): any {
       ).annotate({ identifier: "StopCompositionRequest" });
   }
 }
-function __c45(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3360,18 +3258,16 @@ function __c45(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StopParticipantReplicationRequest",
-      });
+      ).annotate({ identifier: "StopParticipantReplicationRequest" });
   }
 }
-function __c46(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(832, __c52, 0),
+          tags: __S(816, __c51, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -3385,7 +3281,7 @@ function __c46(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c47(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3405,7 +3301,7 @@ function __c47(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c48(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3423,9 +3319,21 @@ function __c48(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateIngestConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateIngestConfigurationRequest" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.String,
+          name: S.optional(S.String),
+          autoParticipantRecordingConfiguration: S.optional(__S(81, __c5, 1)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/UpdateStage" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UpdateStageRequest" });
   }
 }
 function __c49(j: number): any {
@@ -3433,23 +3341,9 @@ function __c49(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          arn: S.String,
           name: S.optional(S.String),
-          autoParticipantRecordingConfiguration: S.optional(__S(82, __c5, 2)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/UpdateStage" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "UpdateStageRequest" });
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          video: S.optional(__S(816, __c51, 0)),
-          tags: S.optional(__S(832, __c52, 0)),
+          video: S.optional(__S(800, __c50, 0)),
+          tags: S.optional(__S(816, __c51, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateEncoderConfiguration" }),
@@ -3460,12 +3354,10 @@ function __c50(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateEncoderConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateEncoderConfigurationRequest" });
   }
 }
-function __c51(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3481,25 +3373,23 @@ function __c51(j: number): any {
         S.Struct({
           arn: S.String,
           name: S.optional(S.String),
-          video: S.optional(__S(816, __c51, 0)),
-          tags: S.optional(__S(832, __c52, 0)),
+          video: S.optional(__S(800, __c50, 0)),
+          tags: S.optional(__S(816, __c51, 0)),
         }),
       ).annotate({ identifier: "EncoderConfiguration" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ encoderConfiguration: S.optional(__S(817, __c51, 1)) }),
-      ).annotate({
-        identifier: "CreateEncoderConfigurationResponse",
-      });
+        S.Struct({ encoderConfiguration: S.optional(__S(801, __c50, 1)) }),
+      ).annotate({ identifier: "CreateEncoderConfigurationResponse" });
   }
 }
-function __c52(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c53(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3507,11 +3397,11 @@ function __c53(j: number): any {
           name: S.optional(S.String),
           stageArn: S.optional(S.String),
           userId: S.optional(S.String),
-          attributes: S.optional(__S(864, __c54, 0)),
+          attributes: S.optional(__S(816, __c51, 0)),
           ingestProtocol: S.String,
           insecureIngest: S.optional(S.Boolean),
           redundantIngest: S.optional(S.Boolean),
-          tags: S.optional(__S(832, __c52, 0)),
+          tags: S.optional(__S(816, __c51, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateIngestConfiguration" }),
@@ -3522,27 +3412,17 @@ function __c53(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateIngestConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateIngestConfigurationRequest" });
   }
 }
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c55(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ participantId: S.optional(S.String), streamKey: S.optional(SensitiveString) }),
-      ).annotate({
-        identifier: "RedundantIngestCredential",
-      });
+      ).annotate({ identifier: "RedundantIngestCredential" });
     case 1:
-      return S.Array(__S(880, __c55, 0));
+      return S.Array(__S(848, __c53, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3555,14 +3435,14 @@ function __c55(j: number): any {
           state: S.String,
           userId: S.optional(S.String),
           redundantIngest: S.optional(S.Boolean),
-          redundantIngestCredentials: S.optional(__S(881, __c55, 1)),
-          attributes: S.optional(__S(864, __c54, 0)),
-          tags: S.optional(__S(832, __c52, 0)),
+          redundantIngestCredentials: S.optional(__S(849, __c53, 1)),
+          attributes: S.optional(__S(816, __c51, 0)),
+          tags: S.optional(__S(816, __c51, 0)),
         }),
       ).annotate({ identifier: "IngestConfiguration" });
   }
 }
-function __c56(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3580,11 +3460,9 @@ function __c56(j: number): any {
           ),
           xContentTypeOptions: S.optional(S.String).pipe(T.HttpHeader("X-Content-Type-Options")),
           xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
-          ingestConfiguration: S.optional(__S(882, __c55, 2)),
+          ingestConfiguration: S.optional(__S(850, __c53, 2)),
         }),
-      ).annotate({
-        identifier: "CreateIngestConfigurationResponse",
-      });
+      ).annotate({ identifier: "CreateIngestConfigurationResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -2566,9 +2566,7 @@ function __c0(j: number): any {
           EnvironmentId: S.optional(S.String),
           EnvironmentName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AbortEnvironmentUpdateMessage",
-      });
+      ).annotate({ identifier: "AbortEnvironmentUpdateMessage" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "AbortEnvironmentUpdateResponse",
@@ -2584,9 +2582,7 @@ function __c1(j: number): any {
           EnvironmentId: S.optional(S.String),
           ActionId: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ApplyEnvironmentManagedActionRequest",
-      });
+      ).annotate({ identifier: "ApplyEnvironmentManagedActionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2595,9 +2591,7 @@ function __c1(j: number): any {
           ActionType: S.optional(S.String),
           Status: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ApplyEnvironmentManagedActionResult",
-      });
+      ).annotate({ identifier: "ApplyEnvironmentManagedActionResult" });
   }
 }
 function __c2(j: number): any {
@@ -2607,9 +2601,7 @@ function __c2(j: number): any {
         S.Struct({ EnvironmentName: S.String, OperationsRole: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "AssociateEnvironmentOperationsRoleMessage",
-      });
+      ).annotate({ identifier: "AssociateEnvironmentOperationsRoleMessage" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "AssociateEnvironmentOperationsRoleResponse",
@@ -2623,18 +2615,14 @@ function __c3(j: number): any {
         S.Struct({ CNAMEPrefix: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CheckDNSAvailabilityMessage",
-      });
+      ).annotate({ identifier: "CheckDNSAvailabilityMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Available: S.optional(S.Boolean),
           FullyQualifiedCNAME: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CheckDNSAvailabilityResultMessage",
-      });
+      ).annotate({ identifier: "CheckDNSAvailabilityResultMessage" });
   }
 }
 function __c4(j: number): any {
@@ -2648,9 +2636,7 @@ function __c4(j: number): any {
           GroupName: S.optional(S.String),
           VersionLabels: S.optional(__S(128, __c4, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ComposeEnvironmentsMessage",
-      });
+      ).annotate({ identifier: "ComposeEnvironmentsMessage" });
   }
 }
 function __c5(j: number): any {
@@ -2725,9 +2711,7 @@ function __c6(j: number): any {
           Environments: S.optional(__S(192, __c6, 0)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "EnvironmentDescriptionsMessage",
-      });
+      ).annotate({ identifier: "EnvironmentDescriptionsMessage" });
   }
 }
 function __c7(j: number): any {
@@ -2806,18 +2790,14 @@ function __c12(j: number): any {
           MaxCountRule: S.optional(__S(384, __c12, 0)),
           MaxAgeRule: S.optional(__S(385, __c12, 1)),
         }),
-      ).annotate({
-        identifier: "ApplicationVersionLifecycleConfig",
-      });
+      ).annotate({ identifier: "ApplicationVersionLifecycleConfig" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           ServiceRole: S.optional(S.String),
           VersionLifecycleConfig: S.optional(__S(386, __c12, 2)),
         }),
-      ).annotate({
-        identifier: "ApplicationResourceLifecycleConfig",
-      });
+      ).annotate({ identifier: "ApplicationResourceLifecycleConfig" });
   }
 }
 function __c13(j: number): any {
@@ -2825,9 +2805,7 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ Application: S.optional(__S(353, __c11, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "ApplicationDescriptionMessage",
-      });
+      ).annotate({ identifier: "ApplicationDescriptionMessage" });
   }
 }
 function __c14(j: number): any {
@@ -2860,9 +2838,7 @@ function __c14(j: number): any {
           Tags: S.optional(__S(256, __c8, 0)),
           ImageConfiguration: S.optional(__S(449, __c14, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateApplicationVersionMessage",
-      });
+      ).annotate({ identifier: "CreateApplicationVersionMessage" });
   }
 }
 function __c15(j: number): any {
@@ -2877,11 +2853,7 @@ function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          SourceType: S.String,
-          SourceRepository: S.String,
-          SourceLocation: S.String,
-        }),
+        S.Struct({ SourceType: S.String, SourceRepository: S.String, SourceLocation: S.String }),
       ).annotate({ identifier: "SourceBuildInformation" });
     case 1:
       return S.suspend(() => S.Struct({ Uri: S.optional(S.String) })).annotate({
@@ -2916,9 +2888,7 @@ function __c16(j: number): any {
           DateUpdated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Status: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ApplicationVersionDescription",
-      });
+      ).annotate({ identifier: "ApplicationVersionDescription" });
   }
 }
 function __c17(j: number): any {
@@ -2926,9 +2896,7 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ ApplicationVersion: S.optional(__S(515, __c16, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "ApplicationVersionDescriptionMessage",
-      });
+      ).annotate({ identifier: "ApplicationVersionDescriptionMessage" });
   }
 }
 function __c18(j: number): any {
@@ -2950,9 +2918,7 @@ function __c18(j: number): any {
           OptionSettings: S.optional(__S(609, __c19, 1)),
           Tags: S.optional(__S(256, __c8, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateConfigurationTemplateMessage",
-      });
+      ).annotate({ identifier: "CreateConfigurationTemplateMessage" });
   }
 }
 function __c19(j: number): any {
@@ -2965,9 +2931,7 @@ function __c19(j: number): any {
           OptionName: S.optional(S.String),
           Value: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ConfigurationOptionSetting",
-      });
+      ).annotate({ identifier: "ConfigurationOptionSetting" });
     case 1:
       return S.Array(__S(608, __c19, 0));
   }
@@ -2988,9 +2952,7 @@ function __c20(j: number): any {
           DateUpdated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           OptionSettings: S.optional(__S(609, __c19, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ConfigurationSettingsDescription",
-      });
+      ).annotate({ identifier: "ConfigurationSettingsDescription" });
   }
 }
 function __c21(j: number): any {
@@ -3042,9 +3004,7 @@ function __c23(j: number): any {
           OptionSettings: S.optional(__S(609, __c19, 1)),
           Tags: S.optional(__S(256, __c8, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreatePlatformVersionRequest",
-      });
+      ).annotate({ identifier: "CreatePlatformVersionRequest" });
     case 1:
       return S.suspend(() => S.Struct({ ARN: S.optional(S.String) })).annotate({
         identifier: "Builder",
@@ -3055,9 +3015,7 @@ function __c23(j: number): any {
           PlatformSummary: S.optional(__S(832, __c26, 0)),
           Builder: S.optional(__S(737, __c23, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreatePlatformVersionResult",
-      });
+      ).annotate({ identifier: "CreatePlatformVersionResult" });
   }
 }
 function __c24(j: number): any {
@@ -3100,9 +3058,7 @@ function __c27(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateStorageLocationRequest",
-      });
+      ).annotate({ identifier: "CreateStorageLocationRequest" });
     case 1:
       return S.suspend(() => S.Struct({ S3Bucket: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "CreateStorageLocationResultMessage",
@@ -3132,9 +3088,7 @@ function __c29(j: number): any {
           VersionLabel: S.String,
           DeleteSourceBundle: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteApplicationVersionMessage",
-      });
+      ).annotate({ identifier: "DeleteApplicationVersionMessage" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteApplicationVersionResponse",
@@ -3148,9 +3102,7 @@ function __c30(j: number): any {
         S.Struct({ ApplicationName: S.String, TemplateName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteConfigurationTemplateMessage",
-      });
+      ).annotate({ identifier: "DeleteConfigurationTemplateMessage" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteConfigurationTemplateResponse",
@@ -3164,9 +3116,7 @@ function __c31(j: number): any {
         S.Struct({ ApplicationName: S.String, EnvironmentName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteEnvironmentConfigurationMessage",
-      });
+      ).annotate({ identifier: "DeleteEnvironmentConfigurationMessage" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteEnvironmentConfigurationResponse",
@@ -3180,15 +3130,11 @@ function __c32(j: number): any {
         S.Struct({ PlatformArn: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeletePlatformVersionRequest",
-      });
+      ).annotate({ identifier: "DeletePlatformVersionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ PlatformSummary: S.optional(__S(832, __c26, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "DeletePlatformVersionResult",
-      });
+      ).annotate({ identifier: "DeletePlatformVersionResult" });
   }
 }
 function __c33(j: number): any {
@@ -3198,9 +3144,7 @@ function __c33(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeAccountAttributesRequest",
-      });
+      ).annotate({ identifier: "DescribeAccountAttributesRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Maximum: S.optional(S.Number) })).annotate({
         identifier: "ResourceQuota",
@@ -3218,9 +3162,7 @@ function __c33(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ ResourceQuotas: S.optional(__S(1058, __c33, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeAccountAttributesResult",
-      });
+      ).annotate({ identifier: "DescribeAccountAttributesResult" });
   }
 }
 function __c34(j: number): any {
@@ -3232,17 +3174,13 @@ function __c34(j: number): any {
         S.Struct({ ApplicationNames: S.optional(__S(1088, __c34, 0)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeApplicationsMessage",
-      });
+      ).annotate({ identifier: "DescribeApplicationsMessage" });
     case 2:
       return S.Array(__S(353, __c11, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ Applications: S.optional(__S(1090, __c34, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "ApplicationDescriptionsMessage",
-      });
+      ).annotate({ identifier: "ApplicationDescriptionsMessage" });
   }
 }
 function __c35(j: number): any {
@@ -3255,9 +3193,7 @@ function __c35(j: number): any {
           MaxRecords: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeApplicationVersionsMessage",
-      });
+      ).annotate({ identifier: "DescribeApplicationVersionsMessage" });
     case 1:
       return S.Array(__S(515, __c16, 3));
     case 2:
@@ -3266,9 +3202,7 @@ function __c35(j: number): any {
           ApplicationVersions: S.optional(__S(1121, __c35, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ApplicationVersionDescriptionsMessage",
-      });
+      ).annotate({ identifier: "ApplicationVersionDescriptionsMessage" });
   }
 }
 function __c36(j: number): any {
@@ -3283,9 +3217,7 @@ function __c36(j: number): any {
           PlatformArn: S.optional(S.String),
           Options: S.optional(__S(705, __c22, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeConfigurationOptionsMessage",
-      });
+      ).annotate({ identifier: "DescribeConfigurationOptionsMessage" });
     case 1:
       return S.Array(S.String);
     case 2:
@@ -3307,9 +3239,7 @@ function __c36(j: number): any {
           MaxLength: S.optional(S.Number),
           Regex: S.optional(__S(1154, __c36, 2)),
         }),
-      ).annotate({
-        identifier: "ConfigurationOptionDescription",
-      });
+      ).annotate({ identifier: "ConfigurationOptionDescription" });
     case 4:
       return S.Array(__S(1155, __c36, 3));
     case 5:
@@ -3319,9 +3249,7 @@ function __c36(j: number): any {
           PlatformArn: S.optional(S.String),
           Options: S.optional(__S(1156, __c36, 4)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ConfigurationOptionsDescription",
-      });
+      ).annotate({ identifier: "ConfigurationOptionsDescription" });
   }
 }
 function __c37(j: number): any {
@@ -3333,17 +3261,13 @@ function __c37(j: number): any {
           TemplateName: S.optional(S.String),
           EnvironmentName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeConfigurationSettingsMessage",
-      });
+      ).annotate({ identifier: "DescribeConfigurationSettingsMessage" });
     case 1:
       return S.Array(__S(640, __c20, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ ConfigurationSettings: S.optional(__S(1185, __c37, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "ConfigurationSettingsDescriptions",
-      });
+      ).annotate({ identifier: "ConfigurationSettingsDescriptions" });
   }
 }
 function __c38(j: number): any {
@@ -3357,9 +3281,7 @@ function __c38(j: number): any {
           EnvironmentId: S.optional(S.String),
           AttributeNames: S.optional(__S(1216, __c38, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeEnvironmentHealthRequest",
-      });
+      ).annotate({ identifier: "DescribeEnvironmentHealthRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3385,9 +3307,7 @@ function __c38(j: number): any {
           InstancesHealth: S.optional(__S(1218, __c38, 2)),
           RefreshedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeEnvironmentHealthResult",
-      });
+      ).annotate({ identifier: "DescribeEnvironmentHealthResult" });
   }
 }
 function __c39(j: number): any {
@@ -3437,9 +3357,7 @@ function __c40(j: number): any {
           NextToken: S.optional(S.String),
           MaxItems: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeEnvironmentManagedActionHistoryRequest",
-      });
+      ).annotate({ identifier: "DescribeEnvironmentManagedActionHistoryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3461,9 +3379,7 @@ function __c40(j: number): any {
           ManagedActionHistoryItems: S.optional(__S(1282, __c40, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeEnvironmentManagedActionHistoryResult",
-      });
+      ).annotate({ identifier: "DescribeEnvironmentManagedActionHistoryResult" });
   }
 }
 function __c41(j: number): any {
@@ -3475,9 +3391,7 @@ function __c41(j: number): any {
           EnvironmentId: S.optional(S.String),
           Status: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeEnvironmentManagedActionsRequest",
-      });
+      ).annotate({ identifier: "DescribeEnvironmentManagedActionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3493,9 +3407,7 @@ function __c41(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ ManagedActions: S.optional(__S(1314, __c41, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeEnvironmentManagedActionsResult",
-      });
+      ).annotate({ identifier: "DescribeEnvironmentManagedActionsResult" });
   }
 }
 function __c42(j: number): any {
@@ -3506,9 +3418,7 @@ function __c42(j: number): any {
           EnvironmentId: S.optional(S.String),
           EnvironmentName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeEnvironmentResourcesMessage",
-      });
+      ).annotate({ identifier: "DescribeEnvironmentResourcesMessage" });
     case 1:
       return S.suspend(() => S.Struct({ Name: S.optional(S.String) })).annotate({
         identifier: "AutoScalingGroup",
@@ -3568,15 +3478,11 @@ function __c42(j: number): any {
           Triggers: S.optional(__S(1357, __c42, 13)),
           Queues: S.optional(__S(1359, __c42, 15)),
         }),
-      ).annotate({
-        identifier: "EnvironmentResourceDescription",
-      });
+      ).annotate({ identifier: "EnvironmentResourceDescription" });
     case 17:
       return S.suspend(() =>
         S.Struct({ EnvironmentResources: S.optional(__S(1360, __c42, 16)) }).pipe(ns),
-      ).annotate({
-        identifier: "EnvironmentResourceDescriptionsMessage",
-      });
+      ).annotate({ identifier: "EnvironmentResourceDescriptionsMessage" });
   }
 }
 function __c43(j: number): any {
@@ -3597,9 +3503,7 @@ function __c43(j: number): any {
           MaxRecords: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeEnvironmentsMessage",
-      });
+      ).annotate({ identifier: "DescribeEnvironmentsMessage" });
   }
 }
 function __c44(j: number): any {
@@ -3657,9 +3561,7 @@ function __c45(j: number): any {
           AttributeNames: S.optional(__S(1440, __c45, 0)),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeInstancesHealthRequest",
-      });
+      ).annotate({ identifier: "DescribeInstancesHealthRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3715,9 +3617,7 @@ function __c45(j: number): any {
           RefreshedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeInstancesHealthResult",
-      });
+      ).annotate({ identifier: "DescribeInstancesHealthResult" });
   }
 }
 function __c46(j: number): any {
@@ -3727,15 +3627,11 @@ function __c46(j: number): any {
         S.Struct({ PlatformArn: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribePlatformVersionRequest",
-      });
+      ).annotate({ identifier: "DescribePlatformVersionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String), Version: S.optional(S.String) }),
-      ).annotate({
-        identifier: "PlatformProgrammingLanguage",
-      });
+      ).annotate({ identifier: "PlatformProgrammingLanguage" });
     case 2:
       return S.Array(__S(1473, __c46, 1));
     case 3:
@@ -3779,9 +3675,7 @@ function __c46(j: number): any {
     case 8:
       return S.suspend(() =>
         S.Struct({ PlatformDescription: S.optional(__S(1479, __c46, 7)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribePlatformVersionResult",
-      });
+      ).annotate({ identifier: "DescribePlatformVersionResult" });
   }
 }
 function __c47(j: number): any {
@@ -3791,9 +3685,7 @@ function __c47(j: number): any {
         S.Struct({ EnvironmentName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DisassociateEnvironmentOperationsRoleMessage",
-      });
+      ).annotate({ identifier: "DisassociateEnvironmentOperationsRoleMessage" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DisassociateEnvironmentOperationsRoleResponse",
@@ -3807,9 +3699,7 @@ function __c48(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListAvailableSolutionStacksRequest",
-      });
+      ).annotate({ identifier: "ListAvailableSolutionStacksRequest" });
     case 1:
       return S.Array(S.String);
     case 2:
@@ -3829,9 +3719,7 @@ function __c48(j: number): any {
           SolutionStacks: S.optional(__S(1537, __c48, 1)),
           SolutionStackDetails: S.optional(__S(1540, __c48, 4)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListAvailableSolutionStacksResultMessage",
-      });
+      ).annotate({ identifier: "ListAvailableSolutionStacksResultMessage" });
   }
 }
 function __c49(j: number): any {
@@ -3855,9 +3743,7 @@ function __c49(j: number): any {
           MaxRecords: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListPlatformBranchesRequest",
-      });
+      ).annotate({ identifier: "ListPlatformBranchesRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3876,9 +3762,7 @@ function __c49(j: number): any {
           PlatformBranchSummaryList: S.optional(__S(1573, __c49, 5)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListPlatformBranchesResult",
-      });
+      ).annotate({ identifier: "ListPlatformBranchesResult" });
   }
 }
 function __c50(j: number): any {
@@ -3902,9 +3786,7 @@ function __c50(j: number): any {
           MaxRecords: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListPlatformVersionsRequest",
-      });
+      ).annotate({ identifier: "ListPlatformVersionsRequest" });
     case 4:
       return S.Array(__S(832, __c26, 0));
     case 5:
@@ -3913,9 +3795,7 @@ function __c50(j: number): any {
           PlatformSummaryList: S.optional(__S(1604, __c50, 4)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListPlatformVersionsResult",
-      });
+      ).annotate({ identifier: "ListPlatformVersionsResult" });
   }
 }
 function __c51(j: number): any {
@@ -3925,18 +3805,14 @@ function __c51(j: number): any {
         S.Struct({ ResourceArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceMessage",
-      });
+      ).annotate({ identifier: "ListTagsForResourceMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.optional(S.String),
           ResourceTags: S.optional(__S(1664, __c52, 0)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ResourceTagsDescriptionMessage",
-      });
+      ).annotate({ identifier: "ResourceTagsDescriptionMessage" });
   }
 }
 function __c52(j: number): any {
@@ -3953,9 +3829,7 @@ function __c53(j: number): any {
           EnvironmentId: S.optional(S.String),
           EnvironmentName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RebuildEnvironmentMessage",
-      });
+      ).annotate({ identifier: "RebuildEnvironmentMessage" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "RebuildEnvironmentResponse",
@@ -3971,9 +3845,7 @@ function __c54(j: number): any {
           EnvironmentName: S.optional(S.String),
           InfoType: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RequestEnvironmentInfoMessage",
-      });
+      ).annotate({ identifier: "RequestEnvironmentInfoMessage" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "RequestEnvironmentInfoResponse",
@@ -4004,9 +3876,7 @@ function __c56(j: number): any {
           EnvironmentName: S.optional(S.String),
           InfoType: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RetrieveEnvironmentInfoMessage",
-      });
+      ).annotate({ identifier: "RetrieveEnvironmentInfoMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4015,17 +3885,13 @@ function __c56(j: number): any {
           SampleTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Message: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "EnvironmentInfoDescription",
-      });
+      ).annotate({ identifier: "EnvironmentInfoDescription" });
     case 2:
       return S.Array(__S(1793, __c56, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ EnvironmentInfo: S.optional(__S(1794, __c56, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "RetrieveEnvironmentInfoResultMessage",
-      });
+      ).annotate({ identifier: "RetrieveEnvironmentInfoResultMessage" });
   }
 }
 function __c57(j: number): any {
@@ -4038,9 +3904,7 @@ function __c57(j: number): any {
           DestinationEnvironmentId: S.optional(S.String),
           DestinationEnvironmentName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SwapEnvironmentCNAMEsMessage",
-      });
+      ).annotate({ identifier: "SwapEnvironmentCNAMEsMessage" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "SwapEnvironmentCNAMEsResponse",
@@ -4057,9 +3921,7 @@ function __c58(j: number): any {
           TerminateResources: S.optional(S.Boolean),
           ForceTerminate: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "TerminateEnvironmentMessage",
-      });
+      ).annotate({ identifier: "TerminateEnvironmentMessage" });
   }
 }
 function __c59(j: number): any {
@@ -4076,22 +3938,17 @@ function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          ApplicationName: S.String,
-          ResourceLifecycleConfig: __S(387, __c12, 3),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateApplicationResourceLifecycleMessage",
-      });
+        S.Struct({ ApplicationName: S.String, ResourceLifecycleConfig: __S(387, __c12, 3) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UpdateApplicationResourceLifecycleMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ApplicationName: S.optional(S.String),
           ResourceLifecycleConfig: S.optional(__S(387, __c12, 3)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ApplicationResourceLifecycleDescriptionMessage",
-      });
+      ).annotate({ identifier: "ApplicationResourceLifecycleDescriptionMessage" });
   }
 }
 function __c61(j: number): any {
@@ -4103,9 +3960,7 @@ function __c61(j: number): any {
           VersionLabel: S.String,
           Description: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateApplicationVersionMessage",
-      });
+      ).annotate({ identifier: "UpdateApplicationVersionMessage" });
   }
 }
 function __c62(j: number): any {
@@ -4119,9 +3974,7 @@ function __c62(j: number): any {
           OptionSettings: S.optional(__S(609, __c19, 1)),
           OptionsToRemove: S.optional(__S(705, __c22, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateConfigurationTemplateMessage",
-      });
+      ).annotate({ identifier: "UpdateConfigurationTemplateMessage" });
   }
 }
 function __c63(j: number): any {
@@ -4156,9 +4009,7 @@ function __c64(j: number): any {
           TagsToAdd: S.optional(__S(1664, __c52, 0)),
           TagsToRemove: S.optional(__S(2048, __c64, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateTagsForResourceMessage",
-      });
+      ).annotate({ identifier: "UpdateTagsForResourceMessage" });
     case 2:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "UpdateTagsForResourceResponse",
@@ -4175,9 +4026,7 @@ function __c65(j: number): any {
           EnvironmentName: S.optional(S.String),
           OptionSettings: __S(609, __c19, 1),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ValidateConfigurationSettingsMessage",
-      });
+      ).annotate({ identifier: "ValidateConfigurationSettingsMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4192,9 +4041,7 @@ function __c65(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ Messages: S.optional(__S(2082, __c65, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "ConfigurationSettingsValidationMessages",
-      });
+      ).annotate({ identifier: "ConfigurationSettingsValidationMessages" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

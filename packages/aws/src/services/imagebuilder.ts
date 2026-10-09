@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -3287,7 +3287,7 @@ export const getImagePolicy: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(992, __c62, 0) as any as S.Schema<GetImagePolicyRequest>,
-  output: __S(993, __c62, 1) as any as S.Schema<GetImagePolicyResponse>,
+  output: __S(800, __c50, 0) as any as S.Schema<GetImagePolicyResponse>,
   errors: [
     CallRateLimitExceededException,
     ForbiddenException,
@@ -4293,7 +4293,7 @@ export const listLifecycleExecutionResources: API.PaginatedOperationMethod<
   LifecycleExecutionResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1472, __c92, 0) as any as S.Schema<ListLifecycleExecutionResourcesRequest>,
-  output: __S(1479, __c92, 7) as any as S.Schema<ListLifecycleExecutionResourcesResponse>,
+  output: __S(1478, __c92, 6) as any as S.Schema<ListLifecycleExecutionResourcesResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -5197,9 +5197,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CancelImageCreationRequest",
-      });
+      ).annotate({ identifier: "CancelImageCreationRequest" });
   }
 }
 function __c1(j: number): any {
@@ -5211,9 +5209,7 @@ function __c1(j: number): any {
           clientToken: S.optional(S.String),
           imageBuildVersionArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CancelImageCreationResponse",
-      });
+      ).annotate({ identifier: "CancelImageCreationResponse" });
   }
 }
 function __c2(j: number): any {
@@ -5233,9 +5229,7 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CancelLifecycleExecutionRequest",
-      });
+      ).annotate({ identifier: "CancelLifecycleExecutionRequest" });
     case 1:
       return S.suspend(() => S.Struct({ lifecycleExecutionId: S.optional(S.String) })).annotate({
         identifier: "CancelLifecycleExecutionResponse",
@@ -5331,9 +5325,7 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateContainerRecipeRequest",
-      });
+      ).annotate({ identifier: "CreateContainerRecipeRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5342,9 +5334,7 @@ function __c7(j: number): any {
           containerRecipeArn: S.optional(S.String),
           latestVersionReferences: S.optional(__S(96, __c6, 0)),
         }),
-      ).annotate({
-        identifier: "CreateContainerRecipeResponse",
-      });
+      ).annotate({ identifier: "CreateContainerRecipeResponse" });
   }
 }
 function __c8(j: number): any {
@@ -5385,9 +5375,7 @@ function __c10(j: number): any {
           volumeType: S.optional(S.String),
           throughput: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "EbsInstanceBlockDeviceSpecification",
-      });
+      ).annotate({ identifier: "EbsInstanceBlockDeviceSpecification" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5396,9 +5384,7 @@ function __c10(j: number): any {
           virtualName: S.optional(S.String),
           noDevice: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "InstanceBlockDeviceMapping",
-      });
+      ).annotate({ identifier: "InstanceBlockDeviceMapping" });
     case 4:
       return S.Array(__S(163, __c10, 3));
   }
@@ -5435,9 +5421,7 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateDistributionConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateDistributionConfigurationRequest" });
   }
 }
 function __c13(j: number): any {
@@ -5450,9 +5434,7 @@ function __c13(j: number): any {
           organizationArns: S.optional(__S(80, __c5, 0)),
           organizationalUnitArns: S.optional(__S(80, __c5, 0)),
         }),
-      ).annotate({
-        identifier: "LaunchPermissionConfiguration",
-      });
+      ).annotate({ identifier: "LaunchPermissionConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5463,9 +5445,7 @@ function __c13(j: number): any {
           kmsKeyId: S.optional(S.String),
           launchPermission: S.optional(__S(208, __c13, 0)),
         }),
-      ).annotate({
-        identifier: "AmiDistributionConfiguration",
-      });
+      ).annotate({ identifier: "AmiDistributionConfiguration" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5473,9 +5453,7 @@ function __c13(j: number): any {
           containerTags: S.optional(__S(80, __c5, 0)),
           targetRepository: __S(128, __c8, 0),
         }),
-      ).annotate({
-        identifier: "ContainerDistributionConfiguration",
-      });
+      ).annotate({ identifier: "ContainerDistributionConfiguration" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5483,9 +5461,7 @@ function __c13(j: number): any {
           accountId: S.optional(S.String),
           setDefaultVersion: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateConfiguration",
-      });
+      ).annotate({ identifier: "LaunchTemplateConfiguration" });
     case 4:
       return S.Array(__S(211, __c13, 3));
     case 5:
@@ -5508,9 +5484,7 @@ function __c13(j: number): any {
           launchTemplateName: S.optional(S.String),
           launchTemplateVersion: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "FastLaunchLaunchTemplateSpecification",
-      });
+      ).annotate({ identifier: "FastLaunchLaunchTemplateSpecification" });
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -5530,9 +5504,7 @@ function __c13(j: number): any {
           parameterName: S.String,
           dataType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SsmParameterConfiguration",
-      });
+      ).annotate({ identifier: "SsmParameterConfiguration" });
     case 11:
       return S.Array(__S(218, __c13, 10));
     case 12:
@@ -5561,9 +5533,7 @@ function __c14(j: number): any {
           clientToken: S.optional(S.String),
           distributionConfigurationArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateDistributionConfigurationResponse",
-      });
+      ).annotate({ identifier: "CreateDistributionConfigurationResponse" });
   }
 }
 function __c15(j: number): any {
@@ -5620,9 +5590,7 @@ function __c16(j: number): any {
           imageScanningEnabled: S.optional(S.Boolean),
           ecrConfiguration: S.optional(__S(257, __c16, 1)),
         }),
-      ).annotate({
-        identifier: "ImageScanningConfiguration",
-      });
+      ).annotate({ identifier: "ImageScanningConfiguration" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5677,9 +5645,7 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateImagePipelineRequest",
-      });
+      ).annotate({ identifier: "CreateImagePipelineRequest" });
   }
 }
 function __c19(j: number): any {
@@ -5703,9 +5669,7 @@ function __c19(j: number): any {
           imageLogGroupName: S.optional(S.String),
           pipelineLogGroupName: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "PipelineLoggingConfiguration",
-      });
+      ).annotate({ identifier: "PipelineLoggingConfiguration" });
   }
 }
 function __c20(j: number): any {
@@ -5717,9 +5681,7 @@ function __c20(j: number): any {
           clientToken: S.optional(S.String),
           imagePipelineArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateImagePipelineResponse",
-      });
+      ).annotate({ identifier: "CreateImagePipelineResponse" });
   }
 }
 function __c21(j: number): any {
@@ -5752,9 +5714,7 @@ function __c21(j: number): any {
           imageRecipeArn: S.optional(S.String),
           latestVersionReferences: S.optional(__S(96, __c6, 0)),
         }),
-      ).annotate({
-        identifier: "CreateImageRecipeResponse",
-      });
+      ).annotate({ identifier: "CreateImageRecipeResponse" });
   }
 }
 function __c22(j: number): any {
@@ -5769,9 +5729,7 @@ function __c22(j: number): any {
           systemsManagerAgent: S.optional(__S(352, __c22, 0)),
           userDataOverride: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "AdditionalInstanceConfiguration",
-      });
+      ).annotate({ identifier: "AdditionalInstanceConfiguration" });
   }
 }
 function __c23(j: number): any {
@@ -5789,10 +5747,10 @@ function __c23(j: number): any {
           keyPair: S.optional(S.String),
           terminateInstanceOnFailure: S.optional(S.Boolean),
           snsTopicArn: S.optional(S.String),
-          resourceTags: S.optional(__S(384, __c24, 0)),
+          resourceTags: S.optional(__S(64, __c4, 0)),
           instanceMetadataOptions: S.optional(__S(402, __c25, 2)),
           tags: S.optional(__S(64, __c4, 0)),
-          placement: S.optional(__S(385, __c24, 1)),
+          placement: S.optional(__S(384, __c24, 0)),
           clientToken: S.String.pipe(T.IdempotencyToken()),
           dryRun: S.optional(S.Boolean),
         }).pipe(
@@ -5805,16 +5763,12 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateInfrastructureConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateInfrastructureConfigurationRequest" });
   }
 }
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 1:
       return S.suspend(() =>
         S.Struct({
           availabilityZone: S.optional(S.String),
@@ -5853,9 +5807,7 @@ function __c26(j: number): any {
           clientToken: S.optional(S.String),
           infrastructureConfigurationArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateInfrastructureConfigurationResponse",
-      });
+      ).annotate({ identifier: "CreateInfrastructureConfigurationResponse" });
   }
 }
 function __c27(j: number): any {
@@ -5883,15 +5835,11 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateLifecyclePolicyRequest",
-      });
+      ).annotate({ identifier: "CreateLifecyclePolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ clientToken: S.optional(S.String), lifecyclePolicyArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "CreateLifecyclePolicyResponse",
-      });
+      ).annotate({ identifier: "CreateLifecyclePolicyResponse" });
   }
 }
 function __c28(j: number): any {
@@ -5903,9 +5851,7 @@ function __c28(j: number): any {
           snapshots: S.optional(S.Boolean),
           containers: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "LifecyclePolicyDetailActionIncludeResources",
-      });
+      ).annotate({ identifier: "LifecyclePolicyDetailActionIncludeResources" });
     case 1:
       return S.suspend(() => S.Struct({ value: S.Number, unit: S.String })).annotate({
         identifier: "LifecyclePolicyDetailExclusionRulesAmisLastLaunched",
@@ -5919,22 +5865,15 @@ function __c28(j: number): any {
           lastLaunched: S.optional(__S(449, __c28, 1)),
           tagMap: S.optional(__S(64, __c4, 0)),
         }),
-      ).annotate({
-        identifier: "LifecyclePolicyDetailExclusionRulesAmis",
-      });
+      ).annotate({ identifier: "LifecyclePolicyDetailExclusionRulesAmis" });
   }
 }
 function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          includeResources: S.optional(__S(448, __c28, 0)),
-        }),
-      ).annotate({
-        identifier: "LifecyclePolicyDetailAction",
-      });
+        S.Struct({ type: S.String, includeResources: S.optional(__S(448, __c28, 0)) }),
+      ).annotate({ identifier: "LifecyclePolicyDetailAction" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5943,18 +5882,11 @@ function __c29(j: number): any {
           unit: S.optional(S.String),
           retainAtLeast: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "LifecyclePolicyDetailFilter",
-      });
+      ).annotate({ identifier: "LifecyclePolicyDetailFilter" });
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          tagMap: S.optional(__S(64, __c4, 0)),
-          amis: S.optional(__S(450, __c28, 2)),
-        }),
-      ).annotate({
-        identifier: "LifecyclePolicyDetailExclusionRules",
-      });
+        S.Struct({ tagMap: S.optional(__S(64, __c4, 0)), amis: S.optional(__S(450, __c28, 2)) }),
+      ).annotate({ identifier: "LifecyclePolicyDetailExclusionRules" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5973,13 +5905,8 @@ function __c29(j: number): any {
       return S.Array(__S(469, __c29, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({
-          recipes: S.optional(__S(470, __c29, 6)),
-          tagMap: S.optional(__S(64, __c4, 0)),
-        }),
-      ).annotate({
-        identifier: "LifecyclePolicyResourceSelection",
-      });
+        S.Struct({ recipes: S.optional(__S(470, __c29, 6)), tagMap: S.optional(__S(64, __c4, 0)) }),
+      ).annotate({ identifier: "LifecyclePolicyResourceSelection" });
   }
 }
 function __c30(j: number): any {
@@ -6052,9 +5979,7 @@ function __c32(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteContainerRecipeRequest",
-      });
+      ).annotate({ identifier: "DeleteContainerRecipeRequest" });
   }
 }
 function __c33(j: number): any {
@@ -6062,9 +5987,7 @@ function __c33(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ requestId: S.optional(S.String), containerRecipeArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DeleteContainerRecipeResponse",
-      });
+      ).annotate({ identifier: "DeleteContainerRecipeResponse" });
   }
 }
 function __c34(j: number): any {
@@ -6083,18 +6006,14 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteDistributionConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteDistributionConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
           distributionConfigurationArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DeleteDistributionConfigurationResponse",
-      });
+      ).annotate({ identifier: "DeleteDistributionConfigurationResponse" });
   }
 }
 function __c35(j: number): any {
@@ -6125,15 +6044,11 @@ function __c36(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteImagePipelineRequest",
-      });
+      ).annotate({ identifier: "DeleteImagePipelineRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ requestId: S.optional(S.String), imagePipelineArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DeleteImagePipelineResponse",
-      });
+      ).annotate({ identifier: "DeleteImagePipelineResponse" });
   }
 }
 function __c37(j: number): any {
@@ -6158,9 +6073,7 @@ function __c38(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ requestId: S.optional(S.String), imageRecipeArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DeleteImageRecipeResponse",
-      });
+      ).annotate({ identifier: "DeleteImageRecipeResponse" });
   }
 }
 function __c39(j: number): any {
@@ -6181,18 +6094,14 @@ function __c39(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteInfrastructureConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteInfrastructureConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
           infrastructureConfigurationArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DeleteInfrastructureConfigurationResponse",
-      });
+      ).annotate({ identifier: "DeleteInfrastructureConfigurationResponse" });
   }
 }
 function __c40(j: number): any {
@@ -6209,9 +6118,7 @@ function __c40(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteLifecyclePolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteLifecyclePolicyRequest" });
   }
 }
 function __c41(j: number): any {
@@ -6354,9 +6261,7 @@ function __c49(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetComponentPolicyRequest",
-      });
+      ).annotate({ identifier: "GetComponentPolicyRequest" });
   }
 }
 function __c50(j: number): any {
@@ -6364,9 +6269,7 @@ function __c50(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ requestId: S.optional(S.String), policy: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetComponentPolicyResponse",
-      });
+      ).annotate({ identifier: "GetComponentPolicyResponse" });
   }
 }
 function __c51(j: number): any {
@@ -6383,9 +6286,7 @@ function __c51(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetContainerRecipeRequest",
-      });
+      ).annotate({ identifier: "GetContainerRecipeRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6393,9 +6294,7 @@ function __c51(j: number): any {
           containerRecipe: S.optional(__S(832, __c52, 0)),
           latestVersionReferences: S.optional(__S(96, __c6, 0)),
         }),
-      ).annotate({
-        identifier: "GetContainerRecipeResponse",
-      });
+      ).annotate({ identifier: "GetContainerRecipeResponse" });
   }
 }
 function __c52(j: number): any {
@@ -6438,9 +6337,7 @@ function __c53(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetContainerRecipePolicyRequest",
-      });
+      ).annotate({ identifier: "GetContainerRecipePolicyRequest" });
   }
 }
 function __c54(j: number): any {
@@ -6459,18 +6356,14 @@ function __c54(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDistributionConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetDistributionConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
           distributionConfiguration: S.optional(__S(880, __c55, 0)),
         }),
-      ).annotate({
-        identifier: "GetDistributionConfigurationResponse",
-      });
+      ).annotate({ identifier: "GetDistributionConfigurationResponse" });
   }
 }
 function __c55(j: number): any {
@@ -6487,9 +6380,7 @@ function __c55(j: number): any {
           dateUpdated: S.optional(S.String),
           tags: S.optional(__S(64, __c4, 0)),
         }),
-      ).annotate({
-        identifier: "DistributionConfiguration",
-      });
+      ).annotate({ identifier: "DistributionConfiguration" });
   }
 }
 function __c56(j: number): any {
@@ -6585,14 +6476,12 @@ function __c58(j: number): any {
           snsTopicArn: S.optional(S.String),
           dateCreated: S.optional(S.String),
           dateUpdated: S.optional(S.String),
-          resourceTags: S.optional(__S(384, __c24, 0)),
+          resourceTags: S.optional(__S(64, __c4, 0)),
           instanceMetadataOptions: S.optional(__S(402, __c25, 2)),
           tags: S.optional(__S(64, __c4, 0)),
-          placement: S.optional(__S(385, __c24, 1)),
+          placement: S.optional(__S(384, __c24, 0)),
         }),
-      ).annotate({
-        identifier: "InfrastructureConfiguration",
-      });
+      ).annotate({ identifier: "InfrastructureConfiguration" });
   }
 }
 function __c59(j: number): any {
@@ -6625,9 +6514,7 @@ function __c59(j: number): any {
           errorMessage: S.optional(S.String),
           regionFailures: S.optional(__S(946, __c59, 2)),
         }),
-      ).annotate({
-        identifier: "DistributionFailureContext",
-      });
+      ).annotate({ identifier: "DistributionFailureContext" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -6734,10 +6621,6 @@ function __c62(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/GetImagePolicy" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetImagePolicyRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ requestId: S.optional(S.String), policy: S.optional(S.String) }),
-      ).annotate({ identifier: "GetImagePolicyResponse" });
   }
 }
 function __c63(j: number): any {
@@ -6772,9 +6655,7 @@ function __c64(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetImageRecipePolicyRequest",
-      });
+      ).annotate({ identifier: "GetImageRecipePolicyRequest" });
   }
 }
 function __c65(j: number): any {
@@ -6795,18 +6676,14 @@ function __c65(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetInfrastructureConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetInfrastructureConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
           infrastructureConfiguration: S.optional(__S(928, __c58, 0)),
         }),
-      ).annotate({
-        identifier: "GetInfrastructureConfigurationResponse",
-      });
+      ).annotate({ identifier: "GetInfrastructureConfigurationResponse" });
   }
 }
 function __c66(j: number): any {
@@ -6823,15 +6700,11 @@ function __c66(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetLifecycleExecutionRequest",
-      });
+      ).annotate({ identifier: "GetLifecycleExecutionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ lifecycleExecution: S.optional(__S(1073, __c67, 1)) }),
-      ).annotate({
-        identifier: "GetLifecycleExecutionResponse",
-      });
+      ).annotate({ identifier: "GetLifecycleExecutionResponse" });
   }
 }
 function __c67(j: number): any {
@@ -6867,9 +6740,7 @@ function __c68(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetLifecyclePolicyRequest",
-      });
+      ).annotate({ identifier: "GetLifecyclePolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6890,9 +6761,7 @@ function __c68(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ lifecyclePolicy: S.optional(__S(1089, __c68, 1)) }),
-      ).annotate({
-        identifier: "GetLifecyclePolicyResponse",
-      });
+      ).annotate({ identifier: "GetLifecyclePolicyResponse" });
   }
 }
 function __c69(j: number): any {
@@ -6913,9 +6782,7 @@ function __c69(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetMarketplaceResourceRequest",
-      });
+      ).annotate({ identifier: "GetMarketplaceResourceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6923,9 +6790,7 @@ function __c69(j: number): any {
           url: S.optional(S.String),
           data: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetMarketplaceResourceResponse",
-      });
+      ).annotate({ identifier: "GetMarketplaceResourceResponse" });
   }
 }
 function __c70(j: number): any {
@@ -6979,9 +6844,7 @@ function __c71(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetWorkflowExecutionRequest",
-      });
+      ).annotate({ identifier: "GetWorkflowExecutionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7000,9 +6863,7 @@ function __c71(j: number): any {
           endTime: S.optional(S.String),
           parallelGroup: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetWorkflowExecutionResponse",
-      });
+      ).annotate({ identifier: "GetWorkflowExecutionResponse" });
   }
 }
 function __c72(j: number): any {
@@ -7019,9 +6880,7 @@ function __c72(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetWorkflowStepExecutionRequest",
-      });
+      ).annotate({ identifier: "GetWorkflowStepExecutionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7045,9 +6904,7 @@ function __c72(j: number): any {
           attemptNumber: S.optional(S.Number),
           maxAttempts: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "GetWorkflowStepExecutionResponse",
-      });
+      ).annotate({ identifier: "GetWorkflowStepExecutionResponse" });
   }
 }
 function __c73(j: number): any {
@@ -7159,9 +7016,7 @@ function __c76(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListComponentBuildVersionsRequest",
-      });
+      ).annotate({ identifier: "ListComponentBuildVersionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7190,9 +7045,7 @@ function __c76(j: number): any {
           componentSummaryList: S.optional(__S(1218, __c76, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListComponentBuildVersionsResponse",
-      });
+      ).annotate({ identifier: "ListComponentBuildVersionsResponse" });
   }
 }
 function __c77(j: number): any {
@@ -7270,9 +7123,7 @@ function __c80(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListContainerRecipesRequest",
-      });
+      ).annotate({ identifier: "ListContainerRecipesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7296,9 +7147,7 @@ function __c80(j: number): any {
           containerRecipeSummaryList: S.optional(__S(1282, __c80, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListContainerRecipesResponse",
-      });
+      ).annotate({ identifier: "ListContainerRecipesResponse" });
   }
 }
 function __c81(j: number): any {
@@ -7319,9 +7168,7 @@ function __c81(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDistributionConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListDistributionConfigurationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7333,9 +7180,7 @@ function __c81(j: number): any {
           tags: S.optional(__S(64, __c4, 0)),
           regions: S.optional(__S(80, __c5, 0)),
         }),
-      ).annotate({
-        identifier: "DistributionConfigurationSummary",
-      });
+      ).annotate({ identifier: "DistributionConfigurationSummary" });
     case 2:
       return S.Array(__S(1297, __c81, 1));
     case 3:
@@ -7345,9 +7190,7 @@ function __c81(j: number): any {
           distributionConfigurationSummaryList: S.optional(__S(1298, __c81, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListDistributionConfigurationsResponse",
-      });
+      ).annotate({ identifier: "ListDistributionConfigurationsResponse" });
   }
 }
 function __c82(j: number): any {
@@ -7369,9 +7212,7 @@ function __c82(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListImageBuildVersionsRequest",
-      });
+      ).annotate({ identifier: "ListImageBuildVersionsRequest" });
   }
 }
 function __c83(j: number): any {
@@ -7406,9 +7247,7 @@ function __c83(j: number): any {
           imageSummaryList: S.optional(__S(1329, __c83, 1)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListImageBuildVersionsResponse",
-      });
+      ).annotate({ identifier: "ListImageBuildVersionsResponse" });
   }
 }
 function __c84(j: number): any {
@@ -7443,9 +7282,7 @@ function __c84(j: number): any {
           imagePackageList: S.optional(__S(1346, __c84, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListImagePackagesResponse",
-      });
+      ).annotate({ identifier: "ListImagePackagesResponse" });
   }
 }
 function __c85(j: number): any {
@@ -7467,9 +7304,7 @@ function __c85(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListImagePipelineImagesRequest",
-      });
+      ).annotate({ identifier: "ListImagePipelineImagesRequest" });
   }
 }
 function __c86(j: number): any {
@@ -7490,9 +7325,7 @@ function __c86(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListImagePipelinesRequest",
-      });
+      ).annotate({ identifier: "ListImagePipelinesRequest" });
     case 1:
       return S.Array(__S(976, __c61, 0));
     case 2:
@@ -7502,9 +7335,7 @@ function __c86(j: number): any {
           imagePipelineList: S.optional(__S(1377, __c86, 1)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListImagePipelinesResponse",
-      });
+      ).annotate({ identifier: "ListImagePipelinesResponse" });
   }
 }
 function __c87(j: number): any {
@@ -7600,9 +7431,7 @@ function __c89(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListImageScanFindingAggregationsRequest",
-      });
+      ).annotate({ identifier: "ListImageScanFindingAggregationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7639,9 +7468,7 @@ function __c89(j: number): any {
           vulnerabilityId: S.optional(S.String),
           severityCounts: S.optional(__S(1425, __c89, 1)),
         }),
-      ).annotate({
-        identifier: "VulnerabilityIdAggregation",
-      });
+      ).annotate({ identifier: "VulnerabilityIdAggregation" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -7650,9 +7477,7 @@ function __c89(j: number): any {
           imagePipelineAggregation: S.optional(__S(1428, __c89, 4)),
           vulnerabilityIdAggregation: S.optional(__S(1429, __c89, 5)),
         }),
-      ).annotate({
-        identifier: "ImageScanFindingAggregation",
-      });
+      ).annotate({ identifier: "ImageScanFindingAggregation" });
     case 7:
       return S.Array(__S(1430, __c89, 6));
     case 8:
@@ -7663,9 +7488,7 @@ function __c89(j: number): any {
           responses: S.optional(__S(1431, __c89, 7)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListImageScanFindingAggregationsResponse",
-      });
+      ).annotate({ identifier: "ListImageScanFindingAggregationsResponse" });
   }
 }
 function __c90(j: number): any {
@@ -7686,15 +7509,11 @@ function __c90(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListImageScanFindingsRequest",
-      });
+      ).annotate({ identifier: "ListImageScanFindingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ text: S.optional(S.String), url: S.optional(S.String) }),
-      ).annotate({
-        identifier: "RemediationRecommendation",
-      });
+      ).annotate({ identifier: "RemediationRecommendation" });
     case 2:
       return S.suspend(() =>
         S.Struct({ recommendation: S.optional(__S(1441, __c90, 1)) }),
@@ -7762,9 +7581,7 @@ function __c90(j: number): any {
           vendorUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           referenceUrls: S.optional(__S(80, __c5, 0)),
         }),
-      ).annotate({
-        identifier: "PackageVulnerabilityDetails",
-      });
+      ).annotate({ identifier: "PackageVulnerabilityDetails" });
     case 12:
       return S.suspend(() =>
         S.Struct({
@@ -7793,9 +7610,7 @@ function __c90(j: number): any {
           findings: S.optional(__S(1453, __c90, 13)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListImageScanFindingsResponse",
-      });
+      ).annotate({ identifier: "ListImageScanFindingsResponse" });
   }
 }
 function __c91(j: number): any {
@@ -7816,9 +7631,7 @@ function __c91(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListInfrastructureConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListInfrastructureConfigurationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7827,15 +7640,13 @@ function __c91(j: number): any {
           description: S.optional(S.String),
           dateCreated: S.optional(S.String),
           dateUpdated: S.optional(S.String),
-          resourceTags: S.optional(__S(384, __c24, 0)),
+          resourceTags: S.optional(__S(64, __c4, 0)),
           tags: S.optional(__S(64, __c4, 0)),
           instanceTypes: S.optional(__S(80, __c5, 0)),
           instanceProfileName: S.optional(S.String),
-          placement: S.optional(__S(385, __c24, 1)),
+          placement: S.optional(__S(384, __c24, 0)),
         }),
-      ).annotate({
-        identifier: "InfrastructureConfigurationSummary",
-      });
+      ).annotate({ identifier: "InfrastructureConfigurationSummary" });
     case 2:
       return S.Array(__S(1457, __c91, 1));
     case 3:
@@ -7845,9 +7656,7 @@ function __c91(j: number): any {
           infrastructureConfigurationSummaryList: S.optional(__S(1458, __c91, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListInfrastructureConfigurationsResponse",
-      });
+      ).annotate({ identifier: "ListInfrastructureConfigurationsResponse" });
   }
 }
 function __c92(j: number): any {
@@ -7869,64 +7678,42 @@ function __c92(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListLifecycleExecutionResourcesRequest",
-      });
+      ).annotate({ identifier: "ListLifecycleExecutionResourcesRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ status: S.optional(S.String), reason: S.optional(S.String) }),
-      ).annotate({
-        identifier: "LifecycleExecutionResourceState",
-      });
+        S.Struct({ name: S.optional(S.String), reason: S.optional(S.String) }),
+      ).annotate({ identifier: "LifecycleExecutionResourceAction" });
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          reason: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LifecycleExecutionResourceAction",
-      });
+        S.Struct({ snapshotId: S.optional(S.String), state: S.optional(__S(736, __c46, 0)) }),
+      ).annotate({ identifier: "LifecycleExecutionSnapshotResource" });
     case 3:
-      return S.suspend(() =>
-        S.Struct({
-          snapshotId: S.optional(S.String),
-          state: S.optional(__S(1473, __c92, 1)),
-        }),
-      ).annotate({
-        identifier: "LifecycleExecutionSnapshotResource",
-      });
+      return S.Array(__S(1474, __c92, 2));
     case 4:
-      return S.Array(__S(1475, __c92, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           accountId: S.optional(S.String),
           resourceId: S.optional(S.String),
-          state: S.optional(__S(1473, __c92, 1)),
-          action: S.optional(__S(1474, __c92, 2)),
+          state: S.optional(__S(736, __c46, 0)),
+          action: S.optional(__S(1473, __c92, 1)),
           region: S.optional(S.String),
-          snapshots: S.optional(__S(1476, __c92, 4)),
+          snapshots: S.optional(__S(1475, __c92, 3)),
           imageUris: S.optional(__S(80, __c5, 0)),
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "LifecycleExecutionResource",
-      });
+      ).annotate({ identifier: "LifecycleExecutionResource" });
+    case 5:
+      return S.Array(__S(1476, __c92, 4));
     case 6:
-      return S.Array(__S(1477, __c92, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           lifecycleExecutionId: S.optional(S.String),
           lifecycleExecutionState: S.optional(__S(736, __c46, 0)),
-          resources: S.optional(__S(1478, __c92, 6)),
+          resources: S.optional(__S(1477, __c92, 5)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListLifecycleExecutionResourcesResponse",
-      });
+      ).annotate({ identifier: "ListLifecycleExecutionResourcesResponse" });
   }
 }
 function __c93(j: number): any {
@@ -7947,9 +7734,7 @@ function __c93(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListLifecycleExecutionsRequest",
-      });
+      ).annotate({ identifier: "ListLifecycleExecutionsRequest" });
     case 1:
       return S.Array(__S(1073, __c67, 1));
     case 2:
@@ -7958,9 +7743,7 @@ function __c93(j: number): any {
           lifecycleExecutions: S.optional(__S(1489, __c93, 1)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListLifecycleExecutionsResponse",
-      });
+      ).annotate({ identifier: "ListLifecycleExecutionsResponse" });
   }
 }
 function __c94(j: number): any {
@@ -7981,9 +7764,7 @@ function __c94(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListLifecyclePoliciesRequest",
-      });
+      ).annotate({ identifier: "ListLifecyclePoliciesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8007,9 +7788,7 @@ function __c94(j: number): any {
           lifecyclePolicySummaryList: S.optional(__S(1506, __c94, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListLifecyclePoliciesResponse",
-      });
+      ).annotate({ identifier: "ListLifecyclePoliciesResponse" });
   }
 }
 function __c95(j: number): any {
@@ -8026,9 +7805,7 @@ function __c95(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(64, __c4, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -8049,9 +7826,7 @@ function __c96(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListWaitingWorkflowStepsRequest",
-      });
+      ).annotate({ identifier: "ListWaitingWorkflowStepsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8069,9 +7844,7 @@ function __c96(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ steps: S.optional(__S(1538, __c96, 2)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListWaitingWorkflowStepsResponse",
-      });
+      ).annotate({ identifier: "ListWaitingWorkflowStepsResponse" });
   }
 }
 function __c97(j: number): any {
@@ -8092,9 +7865,7 @@ function __c97(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListWorkflowBuildVersionsRequest",
-      });
+      ).annotate({ identifier: "ListWorkflowBuildVersionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8118,9 +7889,7 @@ function __c97(j: number): any {
           workflowSummaryList: S.optional(__S(1554, __c97, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListWorkflowBuildVersionsResponse",
-      });
+      ).annotate({ identifier: "ListWorkflowBuildVersionsResponse" });
   }
 }
 function __c98(j: number): any {
@@ -8141,9 +7910,7 @@ function __c98(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListWorkflowExecutionsRequest",
-      });
+      ).annotate({ identifier: "ListWorkflowExecutionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8161,9 +7928,7 @@ function __c98(j: number): any {
           parallelGroup: S.optional(S.String),
           retried: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "WorkflowExecutionMetadata",
-      });
+      ).annotate({ identifier: "WorkflowExecutionMetadata" });
     case 2:
       return S.Array(__S(1569, __c98, 1));
     case 3:
@@ -8175,9 +7940,7 @@ function __c98(j: number): any {
           message: S.optional(S.String),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListWorkflowExecutionsResponse",
-      });
+      ).annotate({ identifier: "ListWorkflowExecutionsResponse" });
   }
 }
 function __c99(j: number): any {
@@ -8235,9 +7998,7 @@ function __c100(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListWorkflowStepExecutionsRequest",
-      });
+      ).annotate({ identifier: "ListWorkflowStepExecutionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8269,9 +8030,7 @@ function __c100(j: number): any {
           message: S.optional(S.String),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListWorkflowStepExecutionsResponse",
-      });
+      ).annotate({ identifier: "ListWorkflowStepExecutionsResponse" });
   }
 }
 function __c101(j: number): any {
@@ -8288,15 +8047,11 @@ function __c101(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutComponentPolicyRequest",
-      });
+      ).annotate({ identifier: "PutComponentPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ requestId: S.optional(S.String), componentArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "PutComponentPolicyResponse",
-      });
+      ).annotate({ identifier: "PutComponentPolicyResponse" });
   }
 }
 function __c102(j: number): any {
@@ -8313,9 +8068,7 @@ function __c102(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutContainerRecipePolicyRequest",
-      });
+      ).annotate({ identifier: "PutContainerRecipePolicyRequest" });
   }
 }
 function __c103(j: number): any {
@@ -8346,9 +8099,7 @@ function __c104(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutImageRecipePolicyRequest",
-      });
+      ).annotate({ identifier: "PutImageRecipePolicyRequest" });
   }
 }
 function __c105(j: number): any {
@@ -8382,9 +8133,7 @@ function __c106(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SendWorkflowStepActionRequest",
-      });
+      ).annotate({ identifier: "SendWorkflowStepActionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8392,9 +8141,7 @@ function __c106(j: number): any {
           imageBuildVersionArn: S.optional(S.String),
           clientToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SendWorkflowStepActionResponse",
-      });
+      ).annotate({ identifier: "SendWorkflowStepActionResponse" });
   }
 }
 function __c107(j: number): any {
@@ -8415,9 +8162,7 @@ function __c107(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartImagePipelineExecutionRequest",
-      });
+      ).annotate({ identifier: "StartImagePipelineExecutionRequest" });
   }
 }
 function __c108(j: number): any {
@@ -8450,15 +8195,11 @@ function __c108(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartResourceStateUpdateRequest",
-      });
+      ).annotate({ identifier: "StartResourceStateUpdateRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({ lifecycleExecutionId: S.optional(S.String), resourceArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "StartResourceStateUpdateResponse",
-      });
+      ).annotate({ identifier: "StartResourceStateUpdateResponse" });
   }
 }
 function __c109(j: number): any {
@@ -8484,9 +8225,7 @@ function __c109(j: number): any {
 function __c110(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TagResourceResponse" });
   }
 }
 function __c111(j: number): any {
@@ -8528,9 +8267,7 @@ function __c112(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateDistributionConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateDistributionConfigurationRequest" });
   }
 }
 function __c113(j: number): any {
@@ -8564,9 +8301,7 @@ function __c113(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateImagePipelineRequest",
-      });
+      ).annotate({ identifier: "UpdateImagePipelineRequest" });
   }
 }
 function __c114(j: number): any {
@@ -8584,9 +8319,9 @@ function __c114(j: number): any {
           keyPair: S.optional(S.String),
           terminateInstanceOnFailure: S.optional(S.Boolean),
           snsTopicArn: S.optional(S.String),
-          resourceTags: S.optional(__S(384, __c24, 0)),
+          resourceTags: S.optional(__S(64, __c4, 0)),
           instanceMetadataOptions: S.optional(__S(402, __c25, 2)),
-          placement: S.optional(__S(385, __c24, 1)),
+          placement: S.optional(__S(384, __c24, 0)),
           clientToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -8598,9 +8333,7 @@ function __c114(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateInfrastructureConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateInfrastructureConfigurationRequest" });
   }
 }
 function __c115(j: number): any {
@@ -8626,9 +8359,7 @@ function __c115(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateLifecyclePolicyRequest",
-      });
+      ).annotate({ identifier: "UpdateLifecyclePolicyRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

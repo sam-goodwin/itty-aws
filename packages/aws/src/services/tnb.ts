@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -688,8 +688,8 @@ export const cancelSolNetworkOperation: API.OperationMethod<
   CancelSolNetworkOperationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<CancelSolNetworkOperationInput>,
-  output: __S(312, __c39, 0) as any as S.Schema<CancelSolNetworkOperationResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<CancelSolNetworkOperationInput>,
+  output: __S(304, __c38, 0) as any as S.Schema<CancelSolNetworkOperationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -725,8 +725,8 @@ export const createSolFunctionPackage: API.OperationMethod<
   CreateSolFunctionPackageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<CreateSolFunctionPackageInput>,
-  output: __S(321, __c40, 1) as any as S.Schema<CreateSolFunctionPackageOutput>,
+  input: __S(312, __c39, 0) as any as S.Schema<CreateSolFunctionPackageInput>,
+  output: __S(313, __c39, 1) as any as S.Schema<CreateSolFunctionPackageOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -763,8 +763,8 @@ export const createSolNetworkInstance: API.OperationMethod<
   CreateSolNetworkInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<CreateSolNetworkInstanceInput>,
-  output: __S(337, __c42, 1) as any as S.Schema<CreateSolNetworkInstanceOutput>,
+  input: __S(328, __c41, 0) as any as S.Schema<CreateSolNetworkInstanceInput>,
+  output: __S(329, __c41, 1) as any as S.Schema<CreateSolNetworkInstanceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -805,8 +805,8 @@ export const createSolNetworkPackage: API.OperationMethod<
   CreateSolNetworkPackageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<CreateSolNetworkPackageInput>,
-  output: __S(345, __c43, 1) as any as S.Schema<CreateSolNetworkPackageOutput>,
+  input: __S(336, __c42, 0) as any as S.Schema<CreateSolNetworkPackageInput>,
+  output: __S(337, __c42, 1) as any as S.Schema<CreateSolNetworkPackageOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -841,7 +841,7 @@ export const deleteSolFunctionPackage: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteSolFunctionPackageInput>,
-  output: __S(312, __c39, 0) as any as S.Schema<DeleteSolFunctionPackageResponse>,
+  output: __S(304, __c38, 0) as any as S.Schema<DeleteSolFunctionPackageResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -876,7 +876,7 @@ export const deleteSolNetworkInstance: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(8, __c1, 0) as any as S.Schema<DeleteSolNetworkInstanceInput>,
-  output: __S(312, __c39, 0) as any as S.Schema<DeleteSolNetworkInstanceResponse>,
+  output: __S(304, __c38, 0) as any as S.Schema<DeleteSolNetworkInstanceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -911,7 +911,7 @@ export const deleteSolNetworkPackage: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(16, __c2, 0) as any as S.Schema<DeleteSolNetworkPackageInput>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteSolNetworkPackageResponse>,
+  output: __S(304, __c38, 0) as any as S.Schema<DeleteSolNetworkPackageResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1108,7 +1108,7 @@ export const getSolNetworkOperation: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(80, __c10, 0) as any as S.Schema<GetSolNetworkOperationInput>,
-  output: __S(86, __c10, 6) as any as S.Schema<GetSolNetworkOperationOutput>,
+  output: __S(85, __c10, 5) as any as S.Schema<GetSolNetworkOperationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1553,7 +1553,7 @@ export const tagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(224, __c28, 0) as any as S.Schema<TagResourceInput>,
-  output: __S(232, __c29, 0) as any as S.Schema<TagResourceOutput>,
+  output: __S(304, __c38, 0) as any as S.Schema<TagResourceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1587,8 +1587,8 @@ export const terminateSolNetworkInstance: API.OperationMethod<
   TerminateSolNetworkInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<TerminateSolNetworkInstanceInput>,
-  output: __S(248, __c31, 0) as any as S.Schema<TerminateSolNetworkInstanceOutput>,
+  input: __S(232, __c29, 0) as any as S.Schema<TerminateSolNetworkInstanceInput>,
+  output: __S(240, __c30, 0) as any as S.Schema<TerminateSolNetworkInstanceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1620,8 +1620,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<UntagResourceInput>,
-  output: __S(232, __c29, 0) as any as S.Schema<UntagResourceOutput>,
+  input: __S(248, __c31, 0) as any as S.Schema<UntagResourceInput>,
+  output: __S(304, __c38, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1652,8 +1652,8 @@ export const updateSolFunctionPackage: API.OperationMethod<
   UpdateSolFunctionPackageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<UpdateSolFunctionPackageInput>,
-  output: __S(265, __c33, 1) as any as S.Schema<UpdateSolFunctionPackageOutput>,
+  input: __S(256, __c32, 0) as any as S.Schema<UpdateSolFunctionPackageInput>,
+  output: __S(257, __c32, 1) as any as S.Schema<UpdateSolFunctionPackageOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1687,8 +1687,8 @@ export const updateSolNetworkInstance: API.OperationMethod<
   UpdateSolNetworkInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<UpdateSolNetworkInstanceInput>,
-  output: __S(248, __c31, 0) as any as S.Schema<UpdateSolNetworkInstanceOutput>,
+  input: __S(264, __c33, 0) as any as S.Schema<UpdateSolNetworkInstanceInput>,
+  output: __S(240, __c30, 0) as any as S.Schema<UpdateSolNetworkInstanceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1722,8 +1722,8 @@ export const updateSolNetworkPackage: API.OperationMethod<
   UpdateSolNetworkPackageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<UpdateSolNetworkPackageInput>,
-  output: __S(281, __c35, 1) as any as S.Schema<UpdateSolNetworkPackageOutput>,
+  input: __S(272, __c34, 0) as any as S.Schema<UpdateSolNetworkPackageInput>,
+  output: __S(273, __c34, 1) as any as S.Schema<UpdateSolNetworkPackageOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1755,7 +1755,7 @@ export const validateSolFunctionPackageContent: API.OperationMethod<
   ValidateSolFunctionPackageContentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<ValidateSolFunctionPackageContentInput>,
+  input: __S(280, __c35, 0) as any as S.Schema<ValidateSolFunctionPackageContentInput>,
   output: __S(201, __c25, 1) as any as S.Schema<ValidateSolFunctionPackageContentOutput>,
   errors: [
     AccessDeniedException,
@@ -1788,7 +1788,7 @@ export const validateSolNetworkPackageContent: API.OperationMethod<
   ValidateSolNetworkPackageContentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<ValidateSolNetworkPackageContentInput>,
+  input: __S(288, __c36, 0) as any as S.Schema<ValidateSolNetworkPackageContentInput>,
   output: __S(217, __c27, 1) as any as S.Schema<ValidateSolNetworkPackageContentOutput>,
   errors: [
     AccessDeniedException,
@@ -1817,9 +1817,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteSolFunctionPackageInput",
-      });
+      ).annotate({ identifier: "DeleteSolFunctionPackageInput" });
   }
 }
 function __c1(j: number): any {
@@ -1836,9 +1834,7 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteSolNetworkInstanceInput",
-      });
+      ).annotate({ identifier: "DeleteSolNetworkInstanceInput" });
   }
 }
 function __c2(j: number): any {
@@ -1855,13 +1851,7 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteSolNetworkPackageInput",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteSolNetworkPackageResponse",
-      });
+      ).annotate({ identifier: "DeleteSolNetworkPackageInput" });
   }
 }
 function __c3(j: number): any {
@@ -1878,9 +1868,7 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetSolFunctionInstanceInput",
-      });
+      ).annotate({ identifier: "GetSolFunctionInstanceInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1888,9 +1876,7 @@ function __c3(j: number): any {
           cluster: S.optional(S.String),
           helmChart: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetSolVnfcResourceInfoMetadata",
-      });
+      ).annotate({ identifier: "GetSolVnfcResourceInfoMetadata" });
     case 2:
       return S.suspend(() => S.Struct({ metadata: S.optional(__S(25, __c3, 1)) })).annotate({
         identifier: "GetSolVnfcResourceInfo",
@@ -1918,11 +1904,9 @@ function __c3(j: number): any {
           instantiationState: S.String,
           instantiatedVnfInfo: S.optional(__S(28, __c3, 4)),
           metadata: __S(32, __c4, 0),
-          tags: S.optional(__S(328, __c41, 0)),
+          tags: S.optional(__S(320, __c40, 0)),
         }),
-      ).annotate({
-        identifier: "GetSolFunctionInstanceOutput",
-      });
+      ).annotate({ identifier: "GetSolFunctionInstanceOutput" });
   }
 }
 function __c4(j: number): any {
@@ -1933,9 +1917,7 @@ function __c4(j: number): any {
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           lastModified: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "GetSolFunctionInstanceMetadata",
-      });
+      ).annotate({ identifier: "GetSolFunctionInstanceMetadata" });
   }
 }
 function __c5(j: number): any {
@@ -1952,9 +1934,7 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetSolFunctionPackageInput",
-      });
+      ).annotate({ identifier: "GetSolFunctionPackageInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1962,9 +1942,7 @@ function __c5(j: number): any {
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           lastModified: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "GetSolFunctionPackageMetadata",
-      });
+      ).annotate({ identifier: "GetSolFunctionPackageMetadata" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1978,11 +1956,9 @@ function __c5(j: number): any {
           vnfProductName: S.optional(S.String),
           vnfdVersion: S.optional(S.String),
           metadata: S.optional(__S(41, __c5, 1)),
-          tags: S.optional(__S(328, __c41, 0)),
+          tags: S.optional(__S(320, __c40, 0)),
         }),
-      ).annotate({
-        identifier: "GetSolFunctionPackageOutput",
-      });
+      ).annotate({ identifier: "GetSolFunctionPackageOutput" });
   }
 }
 function __c6(j: number): any {
@@ -2019,18 +1995,14 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetSolFunctionPackageContentInput",
-      });
+      ).annotate({ identifier: "GetSolFunctionPackageContentInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           contentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
           packageContent: S.optional(T.Blob).pipe(T.HttpPayload()),
         }),
-      ).annotate({
-        identifier: "GetSolFunctionPackageContentOutput",
-      });
+      ).annotate({ identifier: "GetSolFunctionPackageContentOutput" });
   }
 }
 function __c8(j: number): any {
@@ -2050,18 +2022,14 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetSolFunctionPackageDescriptorInput",
-      });
+      ).annotate({ identifier: "GetSolFunctionPackageDescriptorInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           contentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
           vnfd: S.optional(T.Blob).pipe(T.HttpPayload()),
         }),
-      ).annotate({
-        identifier: "GetSolFunctionPackageDescriptorOutput",
-      });
+      ).annotate({ identifier: "GetSolFunctionPackageDescriptorOutput" });
   }
 }
 function __c9(j: number): any {
@@ -2078,9 +2046,7 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetSolNetworkInstanceInput",
-      });
+      ).annotate({ identifier: "GetSolNetworkInstanceInput" });
     case 1:
       return S.suspend(() => S.Struct({ nsLcmOpOccId: S.String })).annotate({
         identifier: "LcmOperationInfo",
@@ -2097,11 +2063,9 @@ function __c9(j: number): any {
           nsState: S.optional(S.String),
           lcmOpInfo: S.optional(__S(73, __c9, 1)),
           metadata: __S(32, __c4, 0),
-          tags: S.optional(__S(328, __c41, 0)),
+          tags: S.optional(__S(320, __c40, 0)),
         }),
-      ).annotate({
-        identifier: "GetSolNetworkInstanceOutput",
-      });
+      ).annotate({ identifier: "GetSolNetworkInstanceOutput" });
   }
 }
 function __c10(j: number): any {
@@ -2118,45 +2082,35 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetSolNetworkOperationInput",
-      });
+      ).annotate({ identifier: "GetSolNetworkOperationInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ nsdInfoId: S.String, additionalParamsForNs: S.optional(S.Any) }),
-      ).annotate({ identifier: "UpdateNsMetadata" });
-    case 2:
-      return S.suspend(() =>
         S.Struct({
-          updateNsMetadata: S.optional(__S(81, __c10, 1)),
-          modifyVnfInfoMetadata: S.optional(__S(96, __c12, 0)),
-          instantiateMetadata: S.optional(__S(81, __c10, 1)),
+          updateNsMetadata: S.optional(__S(96, __c12, 0)),
+          modifyVnfInfoMetadata: S.optional(__S(97, __c12, 1)),
+          instantiateMetadata: S.optional(__S(96, __c12, 0)),
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           lastModified: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "GetSolNetworkOperationMetadata",
-      });
-    case 3:
+      ).annotate({ identifier: "GetSolNetworkOperationMetadata" });
+    case 2:
       return S.suspend(() =>
         S.Struct({ cause: S.optional(S.String), details: S.optional(S.String) }),
       ).annotate({ identifier: "ErrorInfo" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           taskName: S.optional(S.String),
-          taskContext: S.optional(__S(328, __c41, 0)),
-          taskErrorDetails: S.optional(__S(83, __c10, 3)),
+          taskContext: S.optional(__S(320, __c40, 0)),
+          taskErrorDetails: S.optional(__S(82, __c10, 2)),
           taskStatus: S.optional(S.String),
           taskStartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           taskEndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "GetSolNetworkOperationTaskDetails",
-      });
+      ).annotate({ identifier: "GetSolNetworkOperationTaskDetails" });
+    case 4:
+      return S.Array(__S(83, __c10, 3));
     case 5:
-      return S.Array(__S(84, __c10, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -2166,13 +2120,11 @@ function __c10(j: number): any {
           lcmOperationType: S.optional(S.String),
           updateType: S.optional(S.String),
           error: S.optional(__S(88, __c11, 0)),
-          metadata: S.optional(__S(82, __c10, 2)),
-          tasks: S.optional(__S(85, __c10, 5)),
-          tags: S.optional(__S(328, __c41, 0)),
+          metadata: S.optional(__S(81, __c10, 1)),
+          tasks: S.optional(__S(84, __c10, 4)),
+          tags: S.optional(__S(320, __c40, 0)),
         }),
-      ).annotate({
-        identifier: "GetSolNetworkOperationOutput",
-      });
+      ).annotate({ identifier: "GetSolNetworkOperationOutput" });
   }
 }
 function __c11(j: number): any {
@@ -2186,6 +2138,10 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({ nsdInfoId: S.String, additionalParamsForNs: S.optional(S.Any) }),
+      ).annotate({ identifier: "UpdateNsMetadata" });
+    case 1:
       return S.suspend(() =>
         S.Struct({ vnfInstanceId: S.String, vnfConfigurableProperties: S.Any }),
       ).annotate({ identifier: "ModifyVnfInfoMetadata" });
@@ -2205,9 +2161,7 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetSolNetworkPackageInput",
-      });
+      ).annotate({ identifier: "GetSolNetworkPackageInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2215,9 +2169,7 @@ function __c13(j: number): any {
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           lastModified: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "GetSolNetworkPackageMetadata",
-      });
+      ).annotate({ identifier: "GetSolNetworkPackageMetadata" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2231,11 +2183,9 @@ function __c13(j: number): any {
           nsdVersion: S.String,
           vnfPkgIds: __S(112, __c14, 0),
           metadata: __S(105, __c13, 1),
-          tags: S.optional(__S(328, __c41, 0)),
+          tags: S.optional(__S(320, __c40, 0)),
         }),
-      ).annotate({
-        identifier: "GetSolNetworkPackageOutput",
-      });
+      ).annotate({ identifier: "GetSolNetworkPackageOutput" });
   }
 }
 function __c14(j: number): any {
@@ -2261,18 +2211,14 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetSolNetworkPackageContentInput",
-      });
+      ).annotate({ identifier: "GetSolNetworkPackageContentInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           contentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
           nsdContent: S.optional(T.Blob).pipe(T.HttpPayload()),
         }),
-      ).annotate({
-        identifier: "GetSolNetworkPackageContentOutput",
-      });
+      ).annotate({ identifier: "GetSolNetworkPackageContentOutput" });
   }
 }
 function __c16(j: number): any {
@@ -2289,18 +2235,14 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetSolNetworkPackageDescriptorInput",
-      });
+      ).annotate({ identifier: "GetSolNetworkPackageDescriptorInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           contentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
           nsd: S.optional(T.Blob).pipe(T.HttpPayload()),
         }),
-      ).annotate({
-        identifier: "GetSolNetworkPackageDescriptorOutput",
-      });
+      ).annotate({ identifier: "GetSolNetworkPackageDescriptorOutput" });
   }
 }
 function __c17(j: number): any {
@@ -2311,7 +2253,7 @@ function __c17(j: number): any {
           nsInstanceId: S.String.pipe(T.HttpLabel("nsInstanceId")),
           dryRun: S.optional(S.Boolean).pipe(T.HttpQuery("dry_run")),
           additionalParamsForNs: S.optional(S.Any),
-          tags: S.optional(__S(328, __c41, 0)),
+          tags: S.optional(__S(320, __c40, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -2325,15 +2267,11 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "InstantiateSolNetworkInstanceInput",
-      });
+      ).annotate({ identifier: "InstantiateSolNetworkInstanceInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ nsLcmOpOccId: S.String, tags: S.optional(__S(328, __c41, 0)) }),
-      ).annotate({
-        identifier: "InstantiateSolNetworkInstanceOutput",
-      });
+        S.Struct({ nsLcmOpOccId: S.String, tags: S.optional(__S(320, __c40, 0)) }),
+      ).annotate({ identifier: "InstantiateSolNetworkInstanceOutput" });
   }
 }
 function __c18(j: number): any {
@@ -2353,9 +2291,7 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSolFunctionInstancesInput",
-      });
+      ).annotate({ identifier: "ListSolFunctionInstancesInput" });
     case 1:
       return S.suspend(() => S.Struct({ vnfState: S.optional(S.String) })).annotate({
         identifier: "GetSolInstantiatedVnfInfo",
@@ -2372,9 +2308,7 @@ function __c18(j: number): any {
           instantiatedVnfInfo: S.optional(__S(145, __c18, 1)),
           metadata: __S(32, __c4, 0),
         }),
-      ).annotate({
-        identifier: "ListSolFunctionInstanceInfo",
-      });
+      ).annotate({ identifier: "ListSolFunctionInstanceInfo" });
     case 3:
       return S.Array(__S(146, __c18, 2));
     case 4:
@@ -2383,9 +2317,7 @@ function __c18(j: number): any {
           nextToken: S.optional(S.String),
           functionInstances: S.optional(__S(147, __c18, 3)),
         }),
-      ).annotate({
-        identifier: "ListSolFunctionInstancesOutput",
-      });
+      ).annotate({ identifier: "ListSolFunctionInstancesOutput" });
   }
 }
 function __c19(j: number): any {
@@ -2405,9 +2337,7 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSolFunctionPackagesInput",
-      });
+      ).annotate({ identifier: "ListSolFunctionPackagesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2422,17 +2352,13 @@ function __c19(j: number): any {
           vnfdVersion: S.optional(S.String),
           metadata: S.optional(__S(32, __c4, 0)),
         }),
-      ).annotate({
-        identifier: "ListSolFunctionPackageInfo",
-      });
+      ).annotate({ identifier: "ListSolFunctionPackageInfo" });
     case 2:
       return S.Array(__S(153, __c19, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), functionPackages: __S(154, __c19, 2) }),
-      ).annotate({
-        identifier: "ListSolFunctionPackagesOutput",
-      });
+      ).annotate({ identifier: "ListSolFunctionPackagesOutput" });
   }
 }
 function __c20(j: number): any {
@@ -2452,9 +2378,7 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSolNetworkInstancesInput",
-      });
+      ).annotate({ identifier: "ListSolNetworkInstancesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2467,9 +2391,7 @@ function __c20(j: number): any {
           nsState: S.String,
           metadata: __S(32, __c4, 0),
         }),
-      ).annotate({
-        identifier: "ListSolNetworkInstanceInfo",
-      });
+      ).annotate({ identifier: "ListSolNetworkInstanceInfo" });
     case 2:
       return S.Array(__S(161, __c20, 1));
     case 3:
@@ -2478,9 +2400,7 @@ function __c20(j: number): any {
           nextToken: S.optional(S.String),
           networkInstances: S.optional(__S(162, __c20, 2)),
         }),
-      ).annotate({
-        identifier: "ListSolNetworkInstancesOutput",
-      });
+      ).annotate({ identifier: "ListSolNetworkInstancesOutput" });
   }
 }
 function __c21(j: number): any {
@@ -2501,9 +2421,7 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSolNetworkOperationsInput",
-      });
+      ).annotate({ identifier: "ListSolNetworkOperationsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2512,9 +2430,7 @@ function __c21(j: number): any {
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           lastModified: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "ListSolNetworkOperationsMetadata",
-      });
+      ).annotate({ identifier: "ListSolNetworkOperationsMetadata" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2527,9 +2443,7 @@ function __c21(j: number): any {
           error: S.optional(__S(88, __c11, 0)),
           metadata: S.optional(__S(169, __c21, 1)),
         }),
-      ).annotate({
-        identifier: "ListSolNetworkOperationsInfo",
-      });
+      ).annotate({ identifier: "ListSolNetworkOperationsInfo" });
     case 3:
       return S.Array(__S(170, __c21, 2));
     case 4:
@@ -2538,9 +2452,7 @@ function __c21(j: number): any {
           nextToken: S.optional(S.String),
           networkOperations: S.optional(__S(171, __c21, 3)),
         }),
-      ).annotate({
-        identifier: "ListSolNetworkOperationsOutput",
-      });
+      ).annotate({ identifier: "ListSolNetworkOperationsOutput" });
   }
 }
 function __c22(j: number): any {
@@ -2560,9 +2472,7 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSolNetworkPackagesInput",
-      });
+      ).annotate({ identifier: "ListSolNetworkPackagesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2579,17 +2489,13 @@ function __c22(j: number): any {
           vnfPkgIds: S.optional(__S(112, __c14, 0)),
           metadata: __S(32, __c4, 0),
         }),
-      ).annotate({
-        identifier: "ListSolNetworkPackageInfo",
-      });
+      ).annotate({ identifier: "ListSolNetworkPackageInfo" });
     case 2:
       return S.Array(__S(177, __c22, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), networkPackages: __S(178, __c22, 2) }),
-      ).annotate({
-        identifier: "ListSolNetworkPackagesOutput",
-      });
+      ).annotate({ identifier: "ListSolNetworkPackagesOutput" });
   }
 }
 function __c23(j: number): any {
@@ -2608,7 +2514,7 @@ function __c23(j: number): any {
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: __S(328, __c41, 0) })).annotate({
+      return S.suspend(() => S.Struct({ tags: __S(320, __c40, 0) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
   }
@@ -2634,9 +2540,7 @@ function __c24(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutSolFunctionPackageContentInput",
-      });
+      ).annotate({ identifier: "PutSolFunctionPackageContentInput" });
   }
 }
 function __c25(j: number): any {
@@ -2655,9 +2559,7 @@ function __c25(j: number): any {
           vnfdVersion: S.String,
           metadata: __S(200, __c25, 0),
         }),
-      ).annotate({
-        identifier: "PutSolFunctionPackageContentOutput",
-      });
+      ).annotate({ identifier: "PutSolFunctionPackageContentOutput" });
   }
 }
 function __c26(j: number): any {
@@ -2678,9 +2580,7 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutSolNetworkPackageContentInput",
-      });
+      ).annotate({ identifier: "PutSolNetworkPackageContentInput" });
   }
 }
 function __c27(j: number): any {
@@ -2700,9 +2600,7 @@ function __c27(j: number): any {
           vnfPkgIds: __S(112, __c14, 0),
           metadata: __S(216, __c27, 0),
         }),
-      ).annotate({
-        identifier: "PutSolNetworkPackageContentOutput",
-      });
+      ).annotate({ identifier: "PutSolNetworkPackageContentOutput" });
   }
 }
 function __c28(j: number): any {
@@ -2711,7 +2609,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(328, __c41, 0),
+          tags: __S(320, __c40, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -2728,18 +2626,10 @@ function __c28(j: number): any {
 function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceOutput",
-      });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           nsInstanceId: S.String.pipe(T.HttpLabel("nsInstanceId")),
-          tags: S.optional(__S(328, __c41, 0)),
+          tags: S.optional(__S(320, __c40, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/sol/nslcm/v1/ns_instances/{nsInstanceId}/terminate" }),
@@ -2750,22 +2640,18 @@ function __c30(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "TerminateSolNetworkInstanceInput",
-      });
+      ).annotate({ identifier: "TerminateSolNetworkInstanceInput" });
   }
 }
-function __c31(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ nsLcmOpOccId: S.optional(S.String), tags: S.optional(__S(328, __c41, 0)) }),
-      ).annotate({
-        identifier: "TerminateSolNetworkInstanceOutput",
-      });
+        S.Struct({ nsLcmOpOccId: S.optional(S.String), tags: S.optional(__S(320, __c40, 0)) }),
+      ).annotate({ identifier: "TerminateSolNetworkInstanceOutput" });
   }
 }
-function __c32(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2785,7 +2671,7 @@ function __c32(j: number): any {
       ).annotate({ identifier: "UntagResourceInput" });
   }
 }
-function __c33(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2802,31 +2688,23 @@ function __c33(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateSolFunctionPackageInput",
-      });
+      ).annotate({ identifier: "UpdateSolFunctionPackageInput" });
     case 1:
       return S.suspend(() => S.Struct({ operationalState: S.String })).annotate({
         identifier: "UpdateSolFunctionPackageOutput",
       });
   }
 }
-function __c34(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ nsdInfoId: S.String, additionalParamsForNs: S.optional(S.Any) }),
-      ).annotate({
-        identifier: "UpdateSolNetworkServiceData",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           nsInstanceId: S.String.pipe(T.HttpLabel("nsInstanceId")),
           updateType: S.String,
-          modifyVnfInfoData: S.optional(__S(96, __c12, 0)),
-          updateNs: S.optional(__S(272, __c34, 0)),
-          tags: S.optional(__S(328, __c41, 0)),
+          modifyVnfInfoData: S.optional(__S(97, __c12, 1)),
+          updateNs: S.optional(__S(96, __c12, 0)),
+          tags: S.optional(__S(320, __c40, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/sol/nslcm/v1/ns_instances/{nsInstanceId}/update" }),
@@ -2837,12 +2715,10 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateSolNetworkInstanceInput",
-      });
+      ).annotate({ identifier: "UpdateSolNetworkInstanceInput" });
   }
 }
-function __c35(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2859,16 +2735,14 @@ function __c35(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateSolNetworkPackageInput",
-      });
+      ).annotate({ identifier: "UpdateSolNetworkPackageInput" });
     case 1:
       return S.suspend(() => S.Struct({ nsdOperationalState: S.String })).annotate({
         identifier: "UpdateSolNetworkPackageOutput",
       });
   }
 }
-function __c36(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2889,12 +2763,10 @@ function __c36(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ValidateSolFunctionPackageContentInput",
-      });
+      ).annotate({ identifier: "ValidateSolFunctionPackageContentInput" });
   }
 }
-function __c37(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2915,12 +2787,10 @@ function __c37(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ValidateSolNetworkPackageContentInput",
-      });
+      ).annotate({ identifier: "ValidateSolNetworkPackageContentInput" });
   }
 }
-function __c38(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2934,12 +2804,10 @@ function __c38(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CancelSolNetworkOperationInput",
-      });
+      ).annotate({ identifier: "CancelSolNetworkOperationInput" });
   }
 }
-function __c39(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
@@ -2947,11 +2815,11 @@ function __c39(j: number): any {
       });
   }
 }
-function __c40(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ tags: S.optional(__S(328, __c41, 0)) }).pipe(
+        S.Struct({ tags: S.optional(__S(320, __c40, 0)) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/sol/vnfpkgm/v1/vnf_packages" }),
             svc,
@@ -2961,9 +2829,7 @@ function __c40(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateSolFunctionPackageInput",
-      });
+      ).annotate({ identifier: "CreateSolFunctionPackageInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2972,20 +2838,18 @@ function __c40(j: number): any {
           onboardingState: S.String,
           operationalState: S.String,
           usageState: S.String,
-          tags: S.optional(__S(328, __c41, 0)),
+          tags: S.optional(__S(320, __c40, 0)),
         }),
-      ).annotate({
-        identifier: "CreateSolFunctionPackageOutput",
-      });
+      ).annotate({ identifier: "CreateSolFunctionPackageOutput" });
   }
 }
-function __c41(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c42(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2993,7 +2857,7 @@ function __c42(j: number): any {
           nsdInfoId: S.String,
           nsName: S.String,
           nsDescription: S.optional(S.String),
-          tags: S.optional(__S(328, __c41, 0)),
+          tags: S.optional(__S(320, __c40, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/sol/nslcm/v1/ns_instances" }),
@@ -3004,9 +2868,7 @@ function __c42(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateSolNetworkInstanceInput",
-      });
+      ).annotate({ identifier: "CreateSolNetworkInstanceInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3014,18 +2876,16 @@ function __c42(j: number): any {
           arn: S.String,
           nsdInfoId: S.String,
           nsInstanceName: S.String,
-          tags: S.optional(__S(328, __c41, 0)),
+          tags: S.optional(__S(320, __c40, 0)),
         }),
-      ).annotate({
-        identifier: "CreateSolNetworkInstanceOutput",
-      });
+      ).annotate({ identifier: "CreateSolNetworkInstanceOutput" });
   }
 }
-function __c43(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ tags: S.optional(__S(328, __c41, 0)) }).pipe(
+        S.Struct({ tags: S.optional(__S(320, __c40, 0)) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/sol/nsd/v1/ns_descriptors" }),
             svc,
@@ -3035,9 +2895,7 @@ function __c43(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateSolNetworkPackageInput",
-      });
+      ).annotate({ identifier: "CreateSolNetworkPackageInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3046,11 +2904,9 @@ function __c43(j: number): any {
           nsdOnboardingState: S.String,
           nsdOperationalState: S.String,
           nsdUsageState: S.String,
-          tags: S.optional(__S(328, __c41, 0)),
+          tags: S.optional(__S(320, __c40, 0)),
         }),
-      ).annotate({
-        identifier: "CreateSolNetworkPackageOutput",
-      });
+      ).annotate({ identifier: "CreateSolNetworkPackageOutput" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

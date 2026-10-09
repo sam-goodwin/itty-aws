@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -406,9 +406,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetEstimatedCarbonEmissionsRequest",
-      });
+      ).annotate({ identifier: "GetEstimatedCarbonEmissionsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -423,9 +421,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({ Results: __S(3, __c0, 3), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetEstimatedCarbonEmissionsResponse",
-      });
+      ).annotate({ identifier: "GetEstimatedCarbonEmissionsResponse" });
   }
 }
 function __c1(j: number): any {
@@ -480,15 +476,11 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetEstimatedCarbonEmissionsDimensionValuesRequest",
-      });
+      ).annotate({ identifier: "GetEstimatedCarbonEmissionsDimensionValuesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Results: S.optional(__S(33, __c4, 1)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetEstimatedCarbonEmissionsDimensionValuesResponse",
-      });
+      ).annotate({ identifier: "GetEstimatedCarbonEmissionsDimensionValuesResponse" });
   }
 }
 function __c4(j: number): any {
@@ -523,9 +515,7 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetEstimatedWaterAllocationRequest",
-      });
+      ).annotate({ identifier: "GetEstimatedWaterAllocationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -540,9 +530,7 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ Results: __S(42, __c5, 2), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetEstimatedWaterAllocationResponse",
-      });
+      ).annotate({ identifier: "GetEstimatedWaterAllocationResponse" });
   }
 }
 function __c6(j: number): any {
@@ -564,15 +552,11 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetEstimatedWaterAllocationDimensionValuesRequest",
-      });
+      ).annotate({ identifier: "GetEstimatedWaterAllocationDimensionValuesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Results: __S(33, __c4, 1), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetEstimatedWaterAllocationDimensionValuesResponse",
-      });
+      ).annotate({ identifier: "GetEstimatedWaterAllocationDimensionValuesResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

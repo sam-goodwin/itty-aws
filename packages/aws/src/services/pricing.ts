@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -439,9 +439,7 @@ function __c0(j: number): any {
         S.Struct({ PriceListArn: S.String, FileFormat: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetPriceListFileUrlRequest",
-      });
+      ).annotate({ identifier: "GetPriceListFileUrlRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Url: S.optional(S.String) })).annotate({
         identifier: "GetPriceListFileUrlResponse",
@@ -549,9 +547,7 @@ function __c5(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetAttributeValuesRequest",
-      });
+      ).annotate({ identifier: "GetAttributeValuesRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Value: S.optional(S.String) })).annotate({
         identifier: "AttributeValue",
@@ -564,9 +560,7 @@ function __c5(j: number): any {
           AttributeValues: S.optional(__S(22, __c5, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetAttributeValuesResponse",
-      });
+      ).annotate({ identifier: "GetAttributeValuesResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -864,7 +864,7 @@ export const createApp: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(360, __c45, 0) as any as S.Schema<CreateAppRequest>,
-  output: __S(400, __c50, 0) as any as S.Schema<CreateAppResult>,
+  output: __S(392, __c49, 0) as any as S.Schema<CreateAppResult>,
   errors: [
     BadRequestException,
     DependentServiceFailureException,
@@ -901,8 +901,8 @@ export const createBackendEnvironment: API.OperationMethod<
   CreateBackendEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(408, __c51, 0) as any as S.Schema<CreateBackendEnvironmentRequest>,
-  output: __S(416, __c52, 0) as any as S.Schema<CreateBackendEnvironmentResult>,
+  input: __S(400, __c50, 0) as any as S.Schema<CreateBackendEnvironmentRequest>,
+  output: __S(408, __c51, 0) as any as S.Schema<CreateBackendEnvironmentResult>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -1073,7 +1073,7 @@ export const deleteApp: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(88, __c11, 0) as any as S.Schema<DeleteAppRequest>,
-  output: __S(400, __c50, 0) as any as S.Schema<DeleteAppResult>,
+  output: __S(392, __c49, 0) as any as S.Schema<DeleteAppResult>,
   errors: [
     BadRequestException,
     DependentServiceFailureException,
@@ -1111,7 +1111,7 @@ export const deleteBackendEnvironment: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c12, 0) as any as S.Schema<DeleteBackendEnvironmentRequest>,
-  output: __S(416, __c52, 0) as any as S.Schema<DeleteBackendEnvironmentResult>,
+  output: __S(408, __c51, 0) as any as S.Schema<DeleteBackendEnvironmentResult>,
   errors: [
     BadRequestException,
     DependentServiceFailureException,
@@ -1300,7 +1300,7 @@ export const getApp: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(160, __c20, 0) as any as S.Schema<GetAppRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<GetAppResult>,
+  output: __S(392, __c49, 0) as any as S.Schema<GetAppResult>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -1368,7 +1368,7 @@ export const getBackendEnvironment: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(176, __c22, 0) as any as S.Schema<GetBackendEnvironmentRequest>,
-  output: __S(416, __c52, 0) as any as S.Schema<GetBackendEnvironmentResult>,
+  output: __S(408, __c51, 0) as any as S.Schema<GetBackendEnvironmentResult>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -1931,7 +1931,7 @@ export const updateApp: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(328, __c41, 0) as any as S.Schema<UpdateAppRequest>,
-  output: __S(400, __c50, 0) as any as S.Schema<UpdateAppResult>,
+  output: __S(392, __c49, 0) as any as S.Schema<UpdateAppResult>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -2058,7 +2058,7 @@ function __c0(j: number): any {
           basicAuthCredentials: S.optional(SensitiveString),
           enableBasicAuth: S.optional(S.Boolean),
           enablePerformanceMode: S.optional(S.Boolean),
-          tags: S.optional(__S(376, __c47, 0)),
+          tags: S.optional(__S(368, __c46, 0)),
           buildSpec: S.optional(SensitiveString),
           ttl: S.optional(S.String),
           displayName: S.optional(S.String),
@@ -2093,7 +2093,7 @@ function __c1(j: number): any {
           branchArn: S.String,
           branchName: S.String,
           description: S.optional(S.String),
-          tags: S.optional(__S(376, __c47, 0)),
+          tags: S.optional(__S(368, __c46, 0)),
           stage: S.optional(S.String),
           displayName: S.optional(S.String),
           enableNotification: S.optional(S.Boolean),
@@ -2102,7 +2102,7 @@ function __c1(j: number): any {
           environmentVariables: S.optional(__S(368, __c46, 0)),
           enableAutoBuild: S.optional(S.Boolean),
           enableSkewProtection: S.optional(S.Boolean),
-          customDomains: S.optional(__S(384, __c48, 0)),
+          customDomains: S.optional(__S(376, __c47, 0)),
           framework: S.optional(S.String),
           activeJobId: S.optional(S.String),
           totalNumberOfJobs: S.optional(S.String),
@@ -2112,7 +2112,7 @@ function __c1(j: number): any {
           basicAuthCredentials: S.optional(SensitiveString),
           buildSpec: S.optional(SensitiveString),
           ttl: S.optional(S.String),
-          associatedResources: S.optional(__S(384, __c48, 0)),
+          associatedResources: S.optional(__S(376, __c47, 0)),
           enablePullRequestPreview: S.optional(S.Boolean),
           pullRequestEnvironmentName: S.optional(S.String),
           destinationBranch: S.optional(S.String),
@@ -2139,7 +2139,7 @@ function __c3(j: number): any {
         S.Struct({
           appId: S.String.pipe(T.HttpLabel("appId")),
           branchName: S.String.pipe(T.HttpLabel("branchName")),
-          fileMap: S.optional(__S(376, __c47, 0)),
+          fileMap: S.optional(__S(368, __c46, 0)),
         }).pipe(
           T.all(
             ns,
@@ -2171,7 +2171,7 @@ function __c4(j: number): any {
           domainName: S.String,
           enableAutoSubDomain: S.optional(S.Boolean),
           subDomainSettings: __S(56, __c7, 0),
-          autoSubDomainCreationPatterns: S.optional(__S(384, __c48, 0)),
+          autoSubDomainCreationPatterns: S.optional(__S(376, __c47, 0)),
           autoSubDomainIAMRole: S.optional(S.String),
           certificateSettings: S.optional(__S(57, __c7, 1)),
         }).pipe(
@@ -2185,9 +2185,7 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateDomainAssociationRequest",
-      });
+      ).annotate({ identifier: "CreateDomainAssociationRequest" });
   }
 }
 function __c5(j: number): any {
@@ -2216,7 +2214,7 @@ function __c5(j: number): any {
           domainAssociationArn: S.String,
           domainName: S.String,
           enableAutoSubDomain: S.Boolean,
-          autoSubDomainCreationPatterns: S.optional(__S(384, __c48, 0)),
+          autoSubDomainCreationPatterns: S.optional(__S(376, __c47, 0)),
           autoSubDomainIAMRole: S.optional(S.String),
           domainStatus: S.String,
           updateStatus: S.optional(S.String),
@@ -2332,9 +2330,7 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteBackendEnvironmentRequest",
-      });
+      ).annotate({ identifier: "DeleteBackendEnvironmentRequest" });
   }
 }
 function __c13(j: number): any {
@@ -2376,9 +2372,7 @@ function __c14(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteDomainAssociationRequest",
-      });
+      ).annotate({ identifier: "DeleteDomainAssociationRequest" });
   }
 }
 function __c15(j: number): any {
@@ -2469,9 +2463,7 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GenerateAccessLogsRequest",
-      });
+      ).annotate({ identifier: "GenerateAccessLogsRequest" });
     case 1:
       return S.suspend(() => S.Struct({ logUrl: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "GenerateAccessLogsResult",
@@ -2486,10 +2478,6 @@ function __c20(j: number): any {
           T.all(ns, T.Http({ method: "GET", uri: "/apps/{appId}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetAppRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({ app: __S(399, __c49, 7) }).pipe(ns)).annotate({
-        identifier: "GetAppResult",
-      });
   }
 }
 function __c21(j: number): any {
@@ -2532,9 +2520,7 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetBackendEnvironmentRequest",
-      });
+      ).annotate({ identifier: "GetBackendEnvironmentRequest" });
   }
 }
 function __c23(j: number): any {
@@ -2576,9 +2562,7 @@ function __c24(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDomainAssociationRequest",
-      });
+      ).annotate({ identifier: "GetDomainAssociationRequest" });
   }
 }
 function __c25(j: number): any {
@@ -2657,7 +2641,7 @@ function __c27(j: number): any {
         }).pipe(T.all(ns, T.Http({ method: "GET", uri: "/apps" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListAppsRequest" });
     case 1:
-      return S.Array(__S(399, __c49, 7));
+      return S.Array(__S(391, __c48, 7));
     case 2:
       return S.suspend(() =>
         S.Struct({ apps: __S(217, __c27, 1), nextToken: S.optional(S.String) }).pipe(ns),
@@ -2721,19 +2705,15 @@ function __c29(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListBackendEnvironmentsRequest",
-      });
+      ).annotate({ identifier: "ListBackendEnvironmentsRequest" });
     case 1:
-      return S.Array(__S(424, __c53, 0));
+      return S.Array(__S(416, __c52, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ backendEnvironments: __S(233, __c29, 1), nextToken: S.optional(S.String) }).pipe(
           ns,
         ),
-      ).annotate({
-        identifier: "ListBackendEnvironmentsResult",
-      });
+      ).annotate({ identifier: "ListBackendEnvironmentsResult" });
   }
 }
 function __c30(j: number): any {
@@ -2783,9 +2763,7 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDomainAssociationsRequest",
-      });
+      ).annotate({ identifier: "ListDomainAssociationsRequest" });
     case 1:
       return S.Array(__S(44, __c5, 4));
     case 2:
@@ -2793,9 +2771,7 @@ function __c31(j: number): any {
         S.Struct({ domainAssociations: __S(249, __c31, 1), nextToken: S.optional(S.String) }).pipe(
           ns,
         ),
-      ).annotate({
-        identifier: "ListDomainAssociationsResult",
-      });
+      ).annotate({ identifier: "ListDomainAssociationsResult" });
   }
 }
 function __c32(j: number): any {
@@ -2842,11 +2818,9 @@ function __c33(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(376, __c47, 0)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(368, __c46, 0)) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
@@ -2964,7 +2938,7 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(376, __c47, 0),
+          tags: __S(368, __c46, 0),
         }).pipe(
           T.all(
             ns,
@@ -2982,9 +2956,7 @@ function __c38(j: number): any {
 function __c39(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "TagResourceResponse" });
   }
 }
 function __c40(j: number): any {
@@ -2993,7 +2965,7 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(384, __c48, 0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(376, __c47, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             ns,
@@ -3024,17 +2996,17 @@ function __c41(j: number): any {
           enableBranchAutoDeletion: S.optional(S.Boolean),
           enableBasicAuth: S.optional(S.Boolean),
           basicAuthCredentials: S.optional(SensitiveString),
-          customRules: S.optional(__S(393, __c49, 1)),
+          customRules: S.optional(__S(385, __c48, 1)),
           buildSpec: S.optional(SensitiveString),
           customHeaders: S.optional(S.String),
           enableAutoBranchCreation: S.optional(S.Boolean),
-          autoBranchCreationPatterns: S.optional(__S(384, __c48, 0)),
-          autoBranchCreationConfig: S.optional(__S(394, __c49, 2)),
+          autoBranchCreationPatterns: S.optional(__S(376, __c47, 0)),
+          autoBranchCreationConfig: S.optional(__S(386, __c48, 2)),
           repository: S.optional(S.String),
           oauthToken: S.optional(SensitiveString),
           accessToken: S.optional(SensitiveString),
-          jobConfig: S.optional(__S(395, __c49, 3)),
-          cacheConfig: S.optional(__S(396, __c49, 4)),
+          jobConfig: S.optional(__S(387, __c48, 3)),
+          cacheConfig: S.optional(__S(388, __c48, 4)),
         }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/apps/{appId}" }), svc, auth, proto, ver, rules),
         ),
@@ -3089,7 +3061,7 @@ function __c43(j: number): any {
           domainName: S.String.pipe(T.HttpLabel("domainName")),
           enableAutoSubDomain: S.optional(S.Boolean),
           subDomainSettings: S.optional(__S(56, __c7, 0)),
-          autoSubDomainCreationPatterns: S.optional(__S(384, __c48, 0)),
+          autoSubDomainCreationPatterns: S.optional(__S(376, __c47, 0)),
           autoSubDomainIAMRole: S.optional(S.String),
           certificateSettings: S.optional(__S(57, __c7, 1)),
         }).pipe(
@@ -3103,9 +3075,7 @@ function __c43(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateDomainAssociationRequest",
-      });
+      ).annotate({ identifier: "UpdateDomainAssociationRequest" });
   }
 }
 function __c44(j: number): any {
@@ -3148,15 +3118,15 @@ function __c45(j: number): any {
           enableBranchAutoDeletion: S.optional(S.Boolean),
           enableBasicAuth: S.optional(S.Boolean),
           basicAuthCredentials: S.optional(SensitiveString),
-          customRules: S.optional(__S(393, __c49, 1)),
-          tags: S.optional(__S(376, __c47, 0)),
+          customRules: S.optional(__S(385, __c48, 1)),
+          tags: S.optional(__S(368, __c46, 0)),
           buildSpec: S.optional(SensitiveString),
           customHeaders: S.optional(S.String),
           enableAutoBranchCreation: S.optional(S.Boolean),
-          autoBranchCreationPatterns: S.optional(__S(384, __c48, 0)),
-          autoBranchCreationConfig: S.optional(__S(394, __c49, 2)),
-          jobConfig: S.optional(__S(395, __c49, 3)),
-          cacheConfig: S.optional(__S(396, __c49, 4)),
+          autoBranchCreationPatterns: S.optional(__S(376, __c47, 0)),
+          autoBranchCreationConfig: S.optional(__S(386, __c48, 2)),
+          jobConfig: S.optional(__S(387, __c48, 3)),
+          cacheConfig: S.optional(__S(388, __c48, 4)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/apps" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateAppRequest" });
   }
@@ -3170,16 +3140,10 @@ function __c46(j: number): any {
 function __c47(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
       return S.Array(S.String);
   }
 }
-function __c49(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3191,7 +3155,7 @@ function __c49(j: number): any {
         }),
       ).annotate({ identifier: "CustomRule" });
     case 1:
-      return S.Array(__S(392, __c49, 0));
+      return S.Array(__S(384, __c48, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3212,9 +3176,7 @@ function __c49(j: number): any {
         identifier: "JobConfig",
       });
     case 4:
-      return S.suspend(() => S.Struct({ type: S.String })).annotate({
-        identifier: "CacheConfig",
-      });
+      return S.suspend(() => S.Struct({ type: S.String })).annotate({ identifier: "CacheConfig" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3238,7 +3200,7 @@ function __c49(j: number): any {
           appId: S.String,
           appArn: S.String,
           name: S.String,
-          tags: S.optional(__S(376, __c47, 0)),
+          tags: S.optional(__S(368, __c46, 0)),
           description: S.optional(S.String),
           repository: S.optional(S.String),
           platform: S.optional(S.String),
@@ -3252,31 +3214,31 @@ function __c49(j: number): any {
           enableBranchAutoDeletion: S.optional(S.Boolean),
           enableBasicAuth: S.optional(S.Boolean),
           basicAuthCredentials: S.optional(SensitiveString),
-          customRules: S.optional(__S(393, __c49, 1)),
-          productionBranch: S.optional(__S(397, __c49, 5)),
+          customRules: S.optional(__S(385, __c48, 1)),
+          productionBranch: S.optional(__S(389, __c48, 5)),
           buildSpec: S.optional(SensitiveString),
           customHeaders: S.optional(S.String),
           enableAutoBranchCreation: S.optional(S.Boolean),
-          autoBranchCreationPatterns: S.optional(__S(384, __c48, 0)),
-          autoBranchCreationConfig: S.optional(__S(394, __c49, 2)),
+          autoBranchCreationPatterns: S.optional(__S(376, __c47, 0)),
+          autoBranchCreationConfig: S.optional(__S(386, __c48, 2)),
           repositoryCloneMethod: S.optional(S.String),
-          cacheConfig: S.optional(__S(396, __c49, 4)),
+          cacheConfig: S.optional(__S(388, __c48, 4)),
           webhookCreateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          wafConfiguration: S.optional(__S(398, __c49, 6)),
-          jobConfig: S.optional(__S(395, __c49, 3)),
+          wafConfiguration: S.optional(__S(390, __c48, 6)),
+          jobConfig: S.optional(__S(387, __c48, 3)),
         }),
       ).annotate({ identifier: "App" });
   }
 }
-function __c50(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ app: __S(399, __c49, 7) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ app: __S(391, __c48, 7) }).pipe(ns)).annotate({
         identifier: "CreateAppResult",
       });
   }
 }
-function __c51(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3296,22 +3258,18 @@ function __c51(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateBackendEnvironmentRequest",
-      });
+      ).annotate({ identifier: "CreateBackendEnvironmentRequest" });
   }
 }
-function __c52(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ backendEnvironment: __S(424, __c53, 0) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateBackendEnvironmentResult",
-      });
+        S.Struct({ backendEnvironment: __S(416, __c52, 0) }).pipe(ns),
+      ).annotate({ identifier: "CreateBackendEnvironmentResult" });
   }
 }
-function __c53(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

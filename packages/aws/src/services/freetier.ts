@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -407,9 +407,7 @@ function __c0(j: number): any {
         S.Struct({ activityId: S.String, languageCode: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetAccountActivityRequest",
-      });
+      ).annotate({ identifier: "GetAccountActivityRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -424,9 +422,7 @@ function __c0(j: number): any {
           startedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           completedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "GetAccountActivityResponse",
-      });
+      ).annotate({ identifier: "GetAccountActivityResponse" });
   }
 }
 function __c1(j: number): any {
@@ -450,9 +446,7 @@ function __c3(j: number): any {
         S.Struct({}).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetAccountPlanStateRequest",
-      });
+      ).annotate({ identifier: "GetAccountPlanStateRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -464,9 +458,7 @@ function __c3(j: number): any {
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ),
         }),
-      ).annotate({
-        identifier: "GetAccountPlanStateResponse",
-      });
+      ).annotate({ identifier: "GetAccountPlanStateResponse" });
   }
 }
 function __c4(j: number): any {
@@ -545,9 +537,7 @@ function __c6(j: number): any {
           maxResults: S.optional(S.Number),
           languageCode: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListAccountActivitiesRequest",
-      });
+      ).annotate({ identifier: "ListAccountActivitiesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -562,9 +552,7 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ activities: __S(50, __c6, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListAccountActivitiesResponse",
-      });
+      ).annotate({ identifier: "ListAccountActivitiesResponse" });
   }
 }
 function __c7(j: number): any {
@@ -574,19 +562,11 @@ function __c7(j: number): any {
         S.Struct({ accountPlanType: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpgradeAccountPlanRequest",
-      });
+      ).annotate({ identifier: "UpgradeAccountPlanRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          accountId: S.String,
-          accountPlanType: S.String,
-          accountPlanStatus: S.String,
-        }),
-      ).annotate({
-        identifier: "UpgradeAccountPlanResponse",
-      });
+        S.Struct({ accountId: S.String, accountPlanType: S.String, accountPlanStatus: S.String }),
+      ).annotate({ identifier: "UpgradeAccountPlanResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

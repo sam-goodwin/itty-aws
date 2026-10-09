@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -268,9 +268,7 @@ function __c1(j: number): any {
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListRecommendedActionsRequest",
-      });
+      ).annotate({ identifier: "ListRecommendedActionsRequest" });
     case 5:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 6:
@@ -291,9 +289,7 @@ function __c1(j: number): any {
     case 8:
       return S.suspend(() =>
         S.Struct({ recommendedActions: __S(23, __c1, 7), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListRecommendedActionsResponse",
-      });
+      ).annotate({ identifier: "ListRecommendedActionsResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

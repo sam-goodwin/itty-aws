@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials as Creds } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1416,9 +1416,7 @@ function __c6(j: number): any {
           DurationSeconds: S.optional(S.Number),
           MinimumSessionTokenSize: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssumeRoleWithSAMLRequest",
-      });
+      ).annotate({ identifier: "AssumeRoleWithSAMLRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1434,9 +1432,7 @@ function __c6(j: number): any {
           SessionTokenUtilization: S.optional(S.Number),
           SessionTokenSize: S.optional(S.Number),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AssumeRoleWithSAMLResponse",
-      });
+      ).annotate({ identifier: "AssumeRoleWithSAMLResponse" });
   }
 }
 function __c7(j: number): any {
@@ -1453,9 +1449,7 @@ function __c7(j: number): any {
           DurationSeconds: S.optional(S.Number),
           MinimumSessionTokenSize: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssumeRoleWithWebIdentityRequest",
-      });
+      ).annotate({ identifier: "AssumeRoleWithWebIdentityRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1469,9 +1463,7 @@ function __c7(j: number): any {
           SessionTokenUtilization: S.optional(S.Number),
           SessionTokenSize: S.optional(S.Number),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AssumeRoleWithWebIdentityResponse",
-      });
+      ).annotate({ identifier: "AssumeRoleWithWebIdentityResponse" });
   }
 }
 function __c8(j: number): any {
@@ -1503,9 +1495,7 @@ function __c9(j: number): any {
         S.Struct({ EncodedMessage: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DecodeAuthorizationMessageRequest",
-      });
+      ).annotate({ identifier: "DecodeAuthorizationMessageRequest" });
     case 1:
       return S.suspend(() => S.Struct({ DecodedMessage: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "DecodeAuthorizationMessageResponse",
@@ -1541,9 +1531,7 @@ function __c11(j: number): any {
           Account: S.optional(S.String),
           Arn: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetCallerIdentityResponse",
-      });
+      ).annotate({ identifier: "GetCallerIdentityResponse" });
   }
 }
 function __c12(j: number): any {
@@ -1553,9 +1541,7 @@ function __c12(j: number): any {
         S.Struct({ TradeInToken: SensitiveString }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetDelegatedAccessTokenRequest",
-      });
+      ).annotate({ identifier: "GetDelegatedAccessTokenRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1563,9 +1549,7 @@ function __c12(j: number): any {
           PackedPolicySize: S.optional(S.Number),
           AssumedPrincipal: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetDelegatedAccessTokenResponse",
-      });
+      ).annotate({ identifier: "GetDelegatedAccessTokenResponse" });
   }
 }
 function __c13(j: number): any {
@@ -1580,9 +1564,7 @@ function __c13(j: number): any {
           Tags: S.optional(__S(41, __c5, 1)),
           MinimumSessionTokenSize: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetFederationTokenRequest",
-      });
+      ).annotate({ identifier: "GetFederationTokenRequest" });
     case 1:
       return S.suspend(() => S.Struct({ FederatedUserId: S.String, Arn: S.String })).annotate({
         identifier: "FederatedUser",
@@ -1596,9 +1578,7 @@ function __c13(j: number): any {
           SessionTokenUtilization: S.optional(S.Number),
           SessionTokenSize: S.optional(S.Number),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetFederationTokenResponse",
-      });
+      ).annotate({ identifier: "GetFederationTokenResponse" });
   }
 }
 function __c14(j: number): any {
@@ -1634,18 +1614,14 @@ function __c15(j: number): any {
           SigningAlgorithm: S.String,
           Tags: S.optional(__S(41, __c5, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetWebIdentityTokenRequest",
-      });
+      ).annotate({ identifier: "GetWebIdentityTokenRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           WebIdentityToken: S.optional(SensitiveString),
           Expiration: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetWebIdentityTokenResponse",
-      });
+      ).annotate({ identifier: "GetWebIdentityTokenResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

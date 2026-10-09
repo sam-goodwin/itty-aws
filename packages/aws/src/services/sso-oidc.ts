@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -554,9 +554,7 @@ function __c2(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/token?aws_iam=t" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateTokenWithIAMRequest",
-      });
+      ).annotate({ identifier: "CreateTokenWithIAMRequest" });
     case 1:
       return S.suspend(() => S.Struct({ identityContext: S.optional(S.String) })).annotate({
         identifier: "AwsAdditionalDetails",
@@ -573,9 +571,7 @@ function __c2(j: number): any {
           scope: S.optional(__S(4, __c1, 0)),
           awsAdditionalDetails: S.optional(__S(9, __c2, 1)),
         }),
-      ).annotate({
-        identifier: "CreateTokenWithIAMResponse",
-      });
+      ).annotate({ identifier: "CreateTokenWithIAMResponse" });
   }
 }
 function __c3(j: number): any {
@@ -621,9 +617,7 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartDeviceAuthorizationRequest",
-      });
+      ).annotate({ identifier: "StartDeviceAuthorizationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -634,9 +628,7 @@ function __c4(j: number): any {
           expiresIn: S.optional(S.Number),
           interval: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "StartDeviceAuthorizationResponse",
-      });
+      ).annotate({ identifier: "StartDeviceAuthorizationResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

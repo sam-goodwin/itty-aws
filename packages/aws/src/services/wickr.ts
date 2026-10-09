@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -952,7 +952,7 @@ export const batchDeleteUser: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(864, __c54, 0) as any as S.Schema<BatchDeleteUserRequest>,
-  output: __S(865, __c54, 1) as any as S.Schema<BatchDeleteUserResponse>,
+  output: __S(882, __c55, 2) as any as S.Schema<BatchDeleteUserResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1020,7 +1020,7 @@ export const batchReinviteUser: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<BatchReinviteUserRequest>,
-  output: __S(16, __c1, 0) as any as S.Schema<BatchReinviteUserResponse>,
+  output: __S(882, __c55, 2) as any as S.Schema<BatchReinviteUserResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1053,8 +1053,8 @@ export const batchResetDevicesForUser: API.OperationMethod<
   BatchResetDevicesForUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c2, 0) as any as S.Schema<BatchResetDevicesForUserRequest>,
-  output: __S(37, __c2, 5) as any as S.Schema<BatchResetDevicesForUserResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<BatchResetDevicesForUserRequest>,
+  output: __S(21, __c1, 5) as any as S.Schema<BatchResetDevicesForUserResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1087,8 +1087,8 @@ export const batchToggleUserSuspendStatus: API.OperationMethod<
   BatchToggleUserSuspendStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c3, 0) as any as S.Schema<BatchToggleUserSuspendStatusRequest>,
-  output: __S(16, __c1, 0) as any as S.Schema<BatchToggleUserSuspendStatusResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<BatchToggleUserSuspendStatusRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<BatchToggleUserSuspendStatusResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1121,8 +1121,8 @@ export const createBot: API.OperationMethod<
   CreateBotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c4, 0) as any as S.Schema<CreateBotRequest>,
-  output: __S(65, __c4, 1) as any as S.Schema<CreateBotResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<CreateBotRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<CreateBotResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1155,8 +1155,8 @@ export const createDataRetentionBot: API.OperationMethod<
   CreateDataRetentionBotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c5, 0) as any as S.Schema<CreateDataRetentionBotRequest>,
-  output: __S(96, __c6, 0) as any as S.Schema<CreateDataRetentionBotResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<CreateDataRetentionBotRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<CreateDataRetentionBotResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1189,8 +1189,8 @@ export const createDataRetentionBotChallenge: API.OperationMethod<
   CreateDataRetentionBotChallengeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c7, 0) as any as S.Schema<CreateDataRetentionBotChallengeRequest>,
-  output: __S(113, __c7, 1) as any as S.Schema<CreateDataRetentionBotChallengeResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<CreateDataRetentionBotChallengeRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<CreateDataRetentionBotChallengeResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1223,8 +1223,8 @@ export const createNetwork: API.OperationMethod<
   CreateNetworkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c8, 0) as any as S.Schema<CreateNetworkRequest>,
-  output: __S(129, __c8, 1) as any as S.Schema<CreateNetworkResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<CreateNetworkRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<CreateNetworkResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1257,8 +1257,8 @@ export const createSecurityGroup: API.OperationMethod<
   CreateSecurityGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c9, 1) as any as S.Schema<CreateSecurityGroupRequest>,
-  output: __S(176, __c11, 0) as any as S.Schema<CreateSecurityGroupResponse>,
+  input: __S(129, __c8, 1) as any as S.Schema<CreateSecurityGroupRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<CreateSecurityGroupResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1291,8 +1291,8 @@ export const deleteBot: API.OperationMethod<
   DeleteBotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c12, 0) as any as S.Schema<DeleteBotRequest>,
-  output: __S(208, __c13, 0) as any as S.Schema<DeleteBotResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<DeleteBotRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<DeleteBotResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1325,8 +1325,8 @@ export const deleteDataRetentionBot: API.OperationMethod<
   DeleteDataRetentionBotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c14, 0) as any as S.Schema<DeleteDataRetentionBotRequest>,
-  output: __S(96, __c6, 0) as any as S.Schema<DeleteDataRetentionBotResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<DeleteDataRetentionBotRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<DeleteDataRetentionBotResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1359,8 +1359,8 @@ export const deleteNetwork: API.OperationMethod<
   DeleteNetworkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c15, 0) as any as S.Schema<DeleteNetworkRequest>,
-  output: __S(208, __c13, 0) as any as S.Schema<DeleteNetworkResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<DeleteNetworkRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<DeleteNetworkResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1393,8 +1393,8 @@ export const deleteSecurityGroup: API.OperationMethod<
   DeleteSecurityGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c16, 0) as any as S.Schema<DeleteSecurityGroupRequest>,
-  output: __S(257, __c16, 1) as any as S.Schema<DeleteSecurityGroupResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<DeleteSecurityGroupRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<DeleteSecurityGroupResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1427,8 +1427,8 @@ export const getBot: API.OperationMethod<
   GetBotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c17, 0) as any as S.Schema<GetBotRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<GetBotResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetBotRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<GetBotResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1461,8 +1461,8 @@ export const getBotsCount: API.OperationMethod<
   GetBotsCountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c19, 0) as any as S.Schema<GetBotsCountRequest>,
-  output: __S(305, __c19, 1) as any as S.Schema<GetBotsCountResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<GetBotsCountRequest>,
+  output: __S(273, __c17, 1) as any as S.Schema<GetBotsCountResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1495,8 +1495,8 @@ export const getDataRetentionBot: API.OperationMethod<
   GetDataRetentionBotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c20, 0) as any as S.Schema<GetDataRetentionBotRequest>,
-  output: __S(321, __c20, 1) as any as S.Schema<GetDataRetentionBotResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetDataRetentionBotRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<GetDataRetentionBotResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1529,8 +1529,8 @@ export const getGuestUserHistoryCount: API.OperationMethod<
   GetGuestUserHistoryCountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<GetGuestUserHistoryCountRequest>,
-  output: __S(339, __c21, 3) as any as S.Schema<GetGuestUserHistoryCountResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetGuestUserHistoryCountRequest>,
+  output: __S(307, __c19, 3) as any as S.Schema<GetGuestUserHistoryCountResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1563,8 +1563,8 @@ export const getNetwork: API.OperationMethod<
   GetNetworkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c22, 0) as any as S.Schema<GetNetworkRequest>,
-  output: __S(368, __c23, 0) as any as S.Schema<GetNetworkResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<GetNetworkRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<GetNetworkResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1597,8 +1597,8 @@ export const getNetworkSettings: API.OperationMethod<
   GetNetworkSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<GetNetworkSettingsRequest>,
-  output: __S(402, __c25, 2) as any as S.Schema<GetNetworkSettingsResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetNetworkSettingsRequest>,
+  output: __S(370, __c23, 2) as any as S.Schema<GetNetworkSettingsResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1631,8 +1631,8 @@ export const getOidcInfo: API.OperationMethod<
   GetOidcInfoError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c26, 0) as any as S.Schema<GetOidcInfoRequest>,
-  output: __S(419, __c26, 3) as any as S.Schema<GetOidcInfoResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<GetOidcInfoRequest>,
+  output: __S(386, __c24, 2) as any as S.Schema<GetOidcInfoResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1665,8 +1665,8 @@ export const getOpentdfConfig: API.OperationMethod<
   GetOpentdfConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c27, 0) as any as S.Schema<GetOpentdfConfigRequest>,
-  output: __S(433, __c27, 1) as any as S.Schema<GetOpentdfConfigResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<GetOpentdfConfigRequest>,
+  output: __S(432, __c27, 0) as any as S.Schema<GetOpentdfConfigResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1700,7 +1700,7 @@ export const getSecurityGroup: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(448, __c28, 0) as any as S.Schema<GetSecurityGroupRequest>,
-  output: __S(449, __c28, 1) as any as S.Schema<GetSecurityGroupResponse>,
+  output: __S(160, __c10, 0) as any as S.Schema<GetSecurityGroupResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2128,7 +2128,7 @@ export const registerOidcConfig: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(624, __c39, 0) as any as S.Schema<RegisterOidcConfigRequest>,
-  output: __S(625, __c39, 1) as any as S.Schema<RegisterOidcConfigResponse>,
+  output: __S(400, __c25, 0) as any as S.Schema<RegisterOidcConfigResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2196,7 +2196,7 @@ export const registerOpentdfConfig: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(656, __c41, 0) as any as S.Schema<RegisterOpentdfConfigRequest>,
-  output: __S(657, __c41, 1) as any as S.Schema<RegisterOpentdfConfigResponse>,
+  output: __S(432, __c27, 0) as any as S.Schema<RegisterOpentdfConfigResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2230,7 +2230,7 @@ export const updateBot: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(672, __c42, 0) as any as S.Schema<UpdateBotRequest>,
-  output: __S(208, __c13, 0) as any as S.Schema<UpdateBotResponse>,
+  output: __S(80, __c5, 0) as any as S.Schema<UpdateBotResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2264,7 +2264,7 @@ export const updateDataRetention: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(688, __c43, 0) as any as S.Schema<UpdateDataRetentionRequest>,
-  output: __S(96, __c6, 0) as any as S.Schema<UpdateDataRetentionResponse>,
+  output: __S(80, __c5, 0) as any as S.Schema<UpdateDataRetentionResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2298,7 +2298,7 @@ export const updateGuestUser: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(704, __c44, 0) as any as S.Schema<UpdateGuestUserRequest>,
-  output: __S(208, __c13, 0) as any as S.Schema<UpdateGuestUserResponse>,
+  output: __S(80, __c5, 0) as any as S.Schema<UpdateGuestUserResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2332,7 +2332,7 @@ export const updateNetwork: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(720, __c45, 0) as any as S.Schema<UpdateNetworkRequest>,
-  output: __S(208, __c13, 0) as any as S.Schema<UpdateNetworkResponse>,
+  output: __S(80, __c5, 0) as any as S.Schema<UpdateNetworkResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2366,7 +2366,7 @@ export const updateNetworkSettings: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(739, __c46, 3) as any as S.Schema<UpdateNetworkSettingsRequest>,
-  output: __S(402, __c25, 2) as any as S.Schema<UpdateNetworkSettingsResponse>,
+  output: __S(370, __c23, 2) as any as S.Schema<UpdateNetworkSettingsResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2400,7 +2400,7 @@ export const updateSecurityGroup: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(752, __c47, 0) as any as S.Schema<UpdateSecurityGroupRequest>,
-  output: __S(176, __c11, 0) as any as S.Schema<UpdateSecurityGroupResponse>,
+  output: __S(160, __c10, 0) as any as S.Schema<UpdateSecurityGroupResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2481,20 +2481,6 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(S.String),
-          successful: S.optional(__S(881, __c55, 1)),
-          failed: S.optional(__S(833, __c52, 1)),
-        }),
-      ).annotate({
-        identifier: "BatchReinviteUserResponse",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
           networkId: S.String.pipe(T.HttpLabel("networkId")),
           userId: S.String.pipe(T.HttpLabel("userId")),
           appIds: __S(848, __c53, 0),
@@ -2512,36 +2498,30 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchResetDevicesForUserRequest",
-      });
+      ).annotate({ identifier: "BatchResetDevicesForUserRequest" });
     case 1:
       return S.suspend(() => S.Struct({ appId: S.String })).annotate({
         identifier: "BatchDeviceSuccessResponseItem",
       });
     case 2:
-      return S.Array(__S(33, __c2, 1));
+      return S.Array(__S(17, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ field: S.optional(S.String), reason: S.optional(S.String), appId: S.String }),
-      ).annotate({
-        identifier: "BatchDeviceErrorResponseItem",
-      });
+      ).annotate({ identifier: "BatchDeviceErrorResponseItem" });
     case 4:
-      return S.Array(__S(35, __c2, 3));
+      return S.Array(__S(19, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          successful: S.optional(__S(34, __c2, 2)),
-          failed: S.optional(__S(36, __c2, 4)),
+          successful: S.optional(__S(18, __c1, 2)),
+          failed: S.optional(__S(20, __c1, 4)),
         }),
-      ).annotate({
-        identifier: "BatchResetDevicesForUserResponse",
-      });
+      ).annotate({ identifier: "BatchResetDevicesForUserResponse" });
   }
 }
-function __c3(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2563,12 +2543,10 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchToggleUserSuspendStatusRequest",
-      });
+      ).annotate({ identifier: "BatchToggleUserSuspendStatusRequest" });
   }
 }
-function __c4(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2602,7 +2580,7 @@ function __c4(j: number): any {
       ).annotate({ identifier: "CreateBotResponse" });
   }
 }
-function __c5(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2616,12 +2594,10 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateDataRetentionBotRequest",
-      });
+      ).annotate({ identifier: "CreateDataRetentionBotRequest" });
   }
 }
-function __c6(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ message: S.optional(S.String) })).annotate({
@@ -2629,7 +2605,7 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2643,16 +2619,14 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateDataRetentionBotChallengeRequest",
-      });
+      ).annotate({ identifier: "CreateDataRetentionBotChallengeRequest" });
     case 1:
       return S.suspend(() => S.Struct({ challenge: SensitiveString })).annotate({
         identifier: "CreateDataRetentionBotChallengeResponse",
       });
   }
 }
-function __c8(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2673,7 +2647,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "CreateNetworkResponse" });
   }
 }
-function __c9(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2684,18 +2658,16 @@ function __c9(j: number): any {
           globalFederation: S.optional(S.Boolean),
           federationMode: S.optional(S.Number),
           enableRestrictedGlobalFederation: S.optional(S.Boolean),
-          permittedWickrAwsNetworks: S.optional(__S(161, __c10, 1)),
-          permittedWickrEnterpriseNetworks: S.optional(__S(163, __c10, 3)),
+          permittedWickrAwsNetworks: S.optional(__S(145, __c9, 1)),
+          permittedWickrEnterpriseNetworks: S.optional(__S(147, __c9, 3)),
         }),
-      ).annotate({
-        identifier: "SecurityGroupSettingsRequest",
-      });
+      ).annotate({ identifier: "SecurityGroupSettingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           networkId: S.String.pipe(T.HttpLabel("networkId")),
           name: S.String,
-          securityGroupSettings: __S(144, __c9, 0),
+          securityGroupSettings: __S(128, __c8, 0),
           clientToken: S.optional(S.String).pipe(
             T.HttpHeader("X-Client-Token"),
             T.IdempotencyToken(),
@@ -2710,25 +2682,23 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateSecurityGroupRequest",
-      });
+      ).annotate({ identifier: "CreateSecurityGroupRequest" });
   }
 }
-function __c10(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ region: S.String, networkId: S.String })).annotate({
         identifier: "WickrAwsNetworks",
       });
     case 1:
-      return S.Array(__S(160, __c10, 0));
+      return S.Array(__S(144, __c9, 0));
     case 2:
       return S.suspend(() => S.Struct({ domain: S.String, networkId: S.String })).annotate({
         identifier: "PermittedWickrEnterpriseNetwork",
       });
     case 3:
-      return S.Array(__S(162, __c10, 2));
+      return S.Array(__S(146, __c9, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2756,7 +2726,7 @@ function __c10(j: number): any {
         S.Struct({
           alwaysReauthenticate: S.optional(S.Boolean),
           atakPackageValues: S.optional(__S(848, __c53, 0)),
-          calling: S.optional(__S(164, __c10, 4)),
+          calling: S.optional(__S(148, __c9, 4)),
           checkForUpdates: S.optional(S.Boolean),
           enableAtak: S.optional(S.Boolean),
           enableCrashReports: S.optional(S.Boolean),
@@ -2778,18 +2748,18 @@ function __c10(j: number): any {
           maxBor: S.optional(S.Number),
           maxTtl: S.optional(S.Number),
           messageForwardingEnabled: S.optional(S.Boolean),
-          passwordRequirements: S.optional(__S(165, __c10, 5)),
+          passwordRequirements: S.optional(__S(149, __c9, 5)),
           presenceEnabled: S.optional(S.Boolean),
           quickResponses: S.optional(__S(848, __c53, 0)),
           showMasterRecoveryKey: S.optional(S.Boolean),
-          shredder: S.optional(__S(166, __c10, 6)),
+          shredder: S.optional(__S(150, __c9, 6)),
           ssoMaxIdleMinutes: S.optional(S.Number),
           maxNonSsoSessionMinutes: S.optional(S.Number),
           federationMode: S.optional(S.Number),
           lockoutThreshold: S.optional(S.Number),
           permittedNetworks: S.optional(__S(848, __c53, 0)),
-          permittedWickrAwsNetworks: S.optional(__S(161, __c10, 1)),
-          permittedWickrEnterpriseNetworks: S.optional(__S(163, __c10, 3)),
+          permittedWickrAwsNetworks: S.optional(__S(145, __c9, 1)),
+          permittedWickrEnterpriseNetworks: S.optional(__S(147, __c9, 3)),
         }),
       ).annotate({ identifier: "SecurityGroupSettings" });
     case 8:
@@ -2802,20 +2772,20 @@ function __c10(j: number): any {
           isDefault: S.Boolean,
           name: S.String,
           modified: S.Number,
-          securityGroupSettings: __S(167, __c10, 7),
+          securityGroupSettings: __S(151, __c9, 7),
         }),
       ).annotate({ identifier: "SecurityGroup" });
   }
 }
-function __c11(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ securityGroup: __S(168, __c10, 8) })).annotate({
+      return S.suspend(() => S.Struct({ securityGroup: __S(152, __c9, 8) })).annotate({
         identifier: "CreateSecurityGroupResponse",
       });
   }
 }
-function __c12(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2835,15 +2805,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "DeleteBotRequest" });
   }
 }
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ message: S.optional(S.String) })).annotate({
-        identifier: "DeleteBotResponse",
-      });
-  }
-}
-function __c14(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2857,12 +2819,10 @@ function __c14(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteDataRetentionBotRequest",
-      });
+      ).annotate({ identifier: "DeleteDataRetentionBotRequest" });
   }
 }
-function __c15(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2885,7 +2845,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "DeleteNetworkRequest" });
   }
 }
-function __c16(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2902,9 +2862,7 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteSecurityGroupRequest",
-      });
+      ).annotate({ identifier: "DeleteSecurityGroupRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2912,12 +2870,10 @@ function __c16(j: number): any {
           networkId: S.optional(S.String),
           groupId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DeleteSecurityGroupResponse",
-      });
+      ).annotate({ identifier: "DeleteSecurityGroupResponse" });
   }
 }
-function __c17(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2937,7 +2893,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "GetBotRequest" });
   }
 }
-function __c18(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2956,7 +2912,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "GetBotResponse" });
   }
 }
-function __c19(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2977,7 +2933,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "GetBotsCountResponse" });
   }
 }
-function __c20(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2991,9 +2947,7 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDataRetentionBotRequest",
-      });
+      ).annotate({ identifier: "GetDataRetentionBotRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3004,12 +2958,10 @@ function __c20(j: number): any {
           isDataRetentionServiceEnabled: S.optional(S.Boolean),
           isPubkeyMsgAcked: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "GetDataRetentionBotResponse",
-      });
+      ).annotate({ identifier: "GetDataRetentionBotResponse" });
   }
 }
-function __c21(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3023,22 +2975,20 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetGuestUserHistoryCountRequest",
-      });
+      ).annotate({ identifier: "GetGuestUserHistoryCountRequest" });
     case 1:
       return S.suspend(() => S.Struct({ month: S.String, count: S.String })).annotate({
         identifier: "GuestUserHistoryCount",
       });
     case 2:
-      return S.Array(__S(337, __c21, 1));
+      return S.Array(__S(305, __c19, 1));
     case 3:
-      return S.suspend(() => S.Struct({ history: __S(338, __c21, 2) })).annotate({
+      return S.suspend(() => S.Struct({ history: __S(306, __c19, 2) })).annotate({
         identifier: "GetGuestUserHistoryCountResponse",
       });
   }
 }
-function __c22(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3055,7 +3005,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "GetNetworkRequest" });
   }
 }
-function __c23(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3073,7 +3023,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "GetNetworkResponse" });
   }
 }
-function __c24(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3087,26 +3037,24 @@ function __c24(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetNetworkSettingsRequest",
-      });
+      ).annotate({ identifier: "GetNetworkSettingsRequest" });
   }
 }
-function __c25(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ optionName: S.String, value: S.String, type: S.String }),
       ).annotate({ identifier: "Setting" });
     case 1:
-      return S.Array(__S(400, __c25, 0));
+      return S.Array(__S(368, __c23, 0));
     case 2:
-      return S.suspend(() => S.Struct({ settings: __S(401, __c25, 1) })).annotate({
+      return S.suspend(() => S.Struct({ settings: __S(369, __c23, 1) })).annotate({
         identifier: "GetNetworkSettingsResponse",
       });
   }
 }
-function __c26(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3134,6 +3082,29 @@ function __c26(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          codeVerifier: S.optional(S.String),
+          codeChallenge: S.optional(S.String),
+          accessToken: S.optional(S.String),
+          idToken: S.optional(S.String),
+          refreshToken: S.optional(S.String),
+          tokenType: S.optional(S.String),
+          expiresIn: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "OidcTokenInfo" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          openidConnectInfo: S.optional(__S(400, __c25, 0)),
+          tokenInfo: S.optional(__S(385, __c24, 1)),
+        }),
+      ).annotate({ identifier: "GetOidcInfoResponse" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           applicationName: S.optional(S.String),
           clientId: S.optional(S.String),
           companyId: S.String,
@@ -3150,28 +3121,9 @@ function __c26(j: number): any {
           extraAuthParams: S.optional(S.String),
         }),
       ).annotate({ identifier: "OidcConfigInfo" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          codeVerifier: S.optional(S.String),
-          codeChallenge: S.optional(S.String),
-          accessToken: S.optional(S.String),
-          idToken: S.optional(S.String),
-          refreshToken: S.optional(S.String),
-          tokenType: S.optional(S.String),
-          expiresIn: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "OidcTokenInfo" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          openidConnectInfo: S.optional(__S(417, __c26, 1)),
-          tokenInfo: S.optional(__S(418, __c26, 2)),
-        }),
-      ).annotate({ identifier: "GetOidcInfoResponse" });
   }
 }
-function __c27(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3186,7 +3138,11 @@ function __c27(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetOpentdfConfigRequest" });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientId: S.String,
@@ -3215,10 +3171,6 @@ function __c28(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetSecurityGroupRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({ securityGroup: __S(168, __c10, 8) })).annotate({
-        identifier: "GetSecurityGroupResponse",
-      });
   }
 }
 function __c29(j: number): any {
@@ -3311,9 +3263,7 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListBlockedGuestUsersRequest",
-      });
+      ).annotate({ identifier: "ListBlockedGuestUsersRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3328,9 +3278,7 @@ function __c31(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), blocklist: __S(498, __c31, 2) }),
-      ).annotate({
-        identifier: "ListBlockedGuestUsersResponse",
-      });
+      ).annotate({ identifier: "ListBlockedGuestUsersResponse" });
   }
 }
 function __c32(j: number): any {
@@ -3359,7 +3307,7 @@ function __c32(j: number): any {
         ),
       ).annotate({ identifier: "ListBotsRequest" });
     case 1:
-      return S.Array(__S(288, __c18, 0));
+      return S.Array(__S(256, __c16, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ bots: __S(513, __c32, 1), nextToken: S.optional(S.String) }),
@@ -3387,9 +3335,7 @@ function __c33(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDevicesForUserRequest",
-      });
+      ).annotate({ identifier: "ListDevicesForUserRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3406,9 +3352,7 @@ function __c33(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), devices: __S(530, __c33, 2) }),
-      ).annotate({
-        identifier: "ListDevicesForUserResponse",
-      });
+      ).annotate({ identifier: "ListDevicesForUserResponse" });
   }
 }
 function __c34(j: number): any {
@@ -3458,7 +3402,7 @@ function __c35(j: number): any {
         }).pipe(T.all(T.Http({ method: "GET", uri: "/networks" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListNetworksRequest" });
     case 1:
-      return S.Array(__S(368, __c23, 0));
+      return S.Array(__S(336, __c21, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ networks: __S(561, __c35, 1), nextToken: S.optional(S.String) }),
@@ -3485,20 +3429,16 @@ function __c36(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSecurityGroupsRequest",
-      });
+      ).annotate({ identifier: "ListSecurityGroupsRequest" });
     case 1:
-      return S.Array(__S(168, __c10, 8));
+      return S.Array(__S(152, __c9, 8));
     case 2:
       return S.suspend(() =>
         S.Struct({
           securityGroups: S.optional(__S(577, __c36, 1)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListSecurityGroupsResponse",
-      });
+      ).annotate({ identifier: "ListSecurityGroupsResponse" });
   }
 }
 function __c37(j: number): any {
@@ -3522,15 +3462,11 @@ function __c37(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSecurityGroupUsersRequest",
-      });
+      ).annotate({ identifier: "ListSecurityGroupUsersRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ users: __S(817, __c51, 1), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListSecurityGroupUsersResponse",
-      });
+      ).annotate({ identifier: "ListSecurityGroupUsersResponse" });
   }
 }
 function __c38(j: number): any {
@@ -3589,30 +3525,7 @@ function __c39(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RegisterOidcConfigRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          applicationName: S.optional(S.String),
-          clientId: S.optional(S.String),
-          companyId: S.String,
-          scopes: S.String,
-          issuer: S.String,
-          clientSecret: S.optional(SensitiveString),
-          secret: S.optional(SensitiveString),
-          redirectUrl: S.optional(S.String),
-          userId: S.optional(S.String),
-          customUsername: S.optional(S.String),
-          caCertificate: S.optional(S.String),
-          applicationId: S.optional(S.Number),
-          ssoTokenBufferMinutes: S.optional(S.Number),
-          extraAuthParams: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RegisterOidcConfigResponse",
-      });
+      ).annotate({ identifier: "RegisterOidcConfigRequest" });
   }
 }
 function __c40(j: number): any {
@@ -3635,9 +3548,7 @@ function __c40(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RegisterOidcConfigTestRequest",
-      });
+      ).annotate({ identifier: "RegisterOidcConfigTestRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3654,9 +3565,7 @@ function __c40(j: number): any {
           tokenEndpointAuthMethodsSupported: S.optional(__S(848, __c53, 0)),
           microsoftMultiRefreshToken: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "RegisterOidcConfigTestResponse",
-      });
+      ).annotate({ identifier: "RegisterOidcConfigTestResponse" });
   }
 }
 function __c41(j: number): any {
@@ -3680,20 +3589,7 @@ function __c41(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RegisterOpentdfConfigRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          clientId: S.String,
-          domain: S.String,
-          clientSecret: SensitiveString,
-          provider: S.String,
-        }),
-      ).annotate({
-        identifier: "RegisterOpentdfConfigResponse",
-      });
+      ).annotate({ identifier: "RegisterOpentdfConfigRequest" });
   }
 }
 function __c42(j: number): any {
@@ -3724,10 +3620,7 @@ function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          networkId: S.String.pipe(T.HttpLabel("networkId")),
-          actionType: S.String,
-        }).pipe(
+        S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")), actionType: S.String }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/networks/{networkId}/data-retention-bots" }),
             svc,
@@ -3737,9 +3630,7 @@ function __c43(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateDataRetentionRequest",
-      });
+      ).annotate({ identifier: "UpdateDataRetentionRequest" });
   }
 }
 function __c44(j: number): any {
@@ -3828,9 +3719,7 @@ function __c46(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateNetworkSettingsRequest",
-      });
+      ).annotate({ identifier: "UpdateNetworkSettingsRequest" });
   }
 }
 function __c47(j: number): any {
@@ -3841,7 +3730,7 @@ function __c47(j: number): any {
           networkId: S.String.pipe(T.HttpLabel("networkId")),
           groupId: S.String.pipe(T.HttpLabel("groupId")),
           name: S.optional(S.String),
-          securityGroupSettings: S.optional(__S(167, __c10, 7)),
+          securityGroupSettings: S.optional(__S(151, __c9, 7)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/networks/{networkId}/security-groups/{groupId}" }),
@@ -3852,9 +3741,7 @@ function __c47(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateSecurityGroupRequest",
-      });
+      ).annotate({ identifier: "UpdateSecurityGroupRequest" });
   }
 }
 function __c48(j: number): any {
@@ -3930,9 +3817,7 @@ function __c50(j: number): any {
           inviteCodeTtl: S.optional(S.Number),
           codeValidation: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "BatchCreateUserRequestItem",
-      });
+      ).annotate({ identifier: "BatchCreateUserRequestItem" });
     case 1:
       return S.Array(__S(800, __c50, 0));
     case 2:
@@ -4000,9 +3885,7 @@ function __c52(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ field: S.optional(S.String), reason: S.optional(S.String), userId: S.String }),
-      ).annotate({
-        identifier: "BatchUserErrorResponseItem",
-      });
+      ).annotate({ identifier: "BatchUserErrorResponseItem" });
     case 1:
       return S.Array(__S(832, __c52, 0));
   }
@@ -4035,14 +3918,6 @@ function __c54(j: number): any {
           ),
         ),
       ).annotate({ identifier: "BatchDeleteUserRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          successful: S.optional(__S(881, __c55, 1)),
-          failed: S.optional(__S(833, __c52, 1)),
-        }),
-      ).annotate({ identifier: "BatchDeleteUserResponse" });
   }
 }
 function __c55(j: number): any {
@@ -4053,6 +3928,14 @@ function __c55(j: number): any {
       });
     case 1:
       return S.Array(__S(880, __c55, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          successful: S.optional(__S(881, __c55, 1)),
+          failed: S.optional(__S(833, __c52, 1)),
+        }),
+      ).annotate({ identifier: "BatchDeleteUserResponse" });
   }
 }
 function __c56(j: number): any {
@@ -4076,9 +3959,7 @@ function __c56(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchLookupUserUnameRequest",
-      });
+      ).annotate({ identifier: "BatchLookupUserUnameRequest" });
     case 1:
       return S.suspend(() => S.Struct({ uname: S.String, username: S.String })).annotate({
         identifier: "BatchUnameSuccessResponseItem",
@@ -4088,9 +3969,7 @@ function __c56(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ field: S.optional(S.String), reason: S.optional(S.String), uname: S.String }),
-      ).annotate({
-        identifier: "BatchUnameErrorResponseItem",
-      });
+      ).annotate({ identifier: "BatchUnameErrorResponseItem" });
     case 4:
       return S.Array(__S(899, __c56, 3));
     case 5:
@@ -4100,9 +3979,7 @@ function __c56(j: number): any {
           successful: S.optional(__S(898, __c56, 2)),
           failed: S.optional(__S(900, __c56, 4)),
         }),
-      ).annotate({
-        identifier: "BatchLookupUserUnameResponse",
-      });
+      ).annotate({ identifier: "BatchLookupUserUnameResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

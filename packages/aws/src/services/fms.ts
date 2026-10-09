@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1216,8 +1216,8 @@ export const associateAdminAccount: API.OperationMethod<
   AssociateAdminAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1632, __c51, 0) as any as S.Schema<AssociateAdminAccountRequest>,
-  output: __S(1664, __c52, 0) as any as S.Schema<AssociateAdminAccountResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<AssociateAdminAccountRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<AssociateAdminAccountResponse>,
   errors: [
     InternalErrorException,
     InvalidInputException,
@@ -1245,8 +1245,8 @@ export const associateThirdPartyFirewall: API.OperationMethod<
   AssociateThirdPartyFirewallError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1696, __c53, 0) as any as S.Schema<AssociateThirdPartyFirewallRequest>,
-  output: __S(1728, __c54, 0) as any as S.Schema<AssociateThirdPartyFirewallResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<AssociateThirdPartyFirewallRequest>,
+  output: __S(1696, __c53, 0) as any as S.Schema<AssociateThirdPartyFirewallResponse>,
   errors: [
     InternalErrorException,
     InvalidInputException,
@@ -1274,8 +1274,8 @@ export const batchAssociateResource: API.OperationMethod<
   BatchAssociateResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1760, __c55, 0) as any as S.Schema<BatchAssociateResourceRequest>,
-  output: __S(1794, __c56, 2) as any as S.Schema<BatchAssociateResourceResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<BatchAssociateResourceRequest>,
+  output: __S(1762, __c55, 2) as any as S.Schema<BatchAssociateResourceResponse>,
   errors: [
     InternalErrorException,
     InvalidInputException,
@@ -1303,8 +1303,8 @@ export const batchDisassociateResource: API.OperationMethod<
   BatchDisassociateResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1856, __c58, 0) as any as S.Schema<BatchDisassociateResourceRequest>,
-  output: __S(1794, __c56, 2) as any as S.Schema<BatchDisassociateResourceResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<BatchDisassociateResourceRequest>,
+  output: __S(1762, __c55, 2) as any as S.Schema<BatchDisassociateResourceResponse>,
   errors: [
     InternalErrorException,
     InvalidInputException,
@@ -1331,7 +1331,7 @@ export const deleteAppsList: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteAppsListRequest>,
-  output: __S(1664, __c52, 0) as any as S.Schema<DeleteAppsListResponse>,
+  output: __S(1632, __c51, 0) as any as S.Schema<DeleteAppsListResponse>,
   errors: [InternalErrorException, InvalidOperationException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1354,7 +1354,7 @@ export const deleteNotificationChannel: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(32, __c1, 0) as any as S.Schema<DeleteNotificationChannelRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<DeleteNotificationChannelResponse>,
+  output: __S(1632, __c51, 0) as any as S.Schema<DeleteNotificationChannelResponse>,
   errors: [InternalErrorException, InvalidOperationException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1377,8 +1377,8 @@ export const deletePolicy: API.OperationMethod<
   DeletePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c3, 0) as any as S.Schema<DeletePolicyRequest>,
-  output: __S(1664, __c52, 0) as any as S.Schema<DeletePolicyResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<DeletePolicyRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<DeletePolicyResponse>,
   errors: [
     InternalErrorException,
     InvalidInputException,
@@ -1405,8 +1405,8 @@ export const deleteProtocolsList: API.OperationMethod<
   DeleteProtocolsListError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c4, 0) as any as S.Schema<DeleteProtocolsListRequest>,
-  output: __S(1664, __c52, 0) as any as S.Schema<DeleteProtocolsListResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<DeleteProtocolsListRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<DeleteProtocolsListResponse>,
   errors: [InternalErrorException, InvalidOperationException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1428,8 +1428,8 @@ export const deleteResourceSet: API.OperationMethod<
   DeleteResourceSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c5, 0) as any as S.Schema<DeleteResourceSetRequest>,
-  output: __S(1664, __c52, 0) as any as S.Schema<DeleteResourceSetResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<DeleteResourceSetRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<DeleteResourceSetResponse>,
   errors: [
     InternalErrorException,
     InvalidInputException,
@@ -1457,8 +1457,8 @@ export const disassociateAdminAccount: API.OperationMethod<
   DisassociateAdminAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c6, 0) as any as S.Schema<DisassociateAdminAccountRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<DisassociateAdminAccountResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<DisassociateAdminAccountRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<DisassociateAdminAccountResponse>,
   errors: [InternalErrorException, InvalidOperationException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1480,8 +1480,8 @@ export const disassociateThirdPartyFirewall: API.OperationMethod<
   DisassociateThirdPartyFirewallError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c7, 0) as any as S.Schema<DisassociateThirdPartyFirewallRequest>,
-  output: __S(1728, __c54, 0) as any as S.Schema<DisassociateThirdPartyFirewallResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<DisassociateThirdPartyFirewallRequest>,
+  output: __S(1696, __c53, 0) as any as S.Schema<DisassociateThirdPartyFirewallResponse>,
   errors: [
     InternalErrorException,
     InvalidInputException,
@@ -1508,8 +1508,8 @@ export const getAdminAccount: API.OperationMethod<
   GetAdminAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c8, 0) as any as S.Schema<GetAdminAccountRequest>,
-  output: __S(257, __c8, 1) as any as S.Schema<GetAdminAccountResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetAdminAccountRequest>,
+  output: __S(225, __c7, 1) as any as S.Schema<GetAdminAccountResponse>,
   errors: [InternalErrorException, InvalidOperationException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1532,8 +1532,8 @@ export const getAdminScope: API.OperationMethod<
   GetAdminScopeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c9, 0) as any as S.Schema<GetAdminScopeRequest>,
-  output: __S(289, __c9, 1) as any as S.Schema<GetAdminScopeResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<GetAdminScopeRequest>,
+  output: __S(257, __c8, 1) as any as S.Schema<GetAdminScopeResponse>,
   errors: [
     InternalErrorException,
     InvalidInputException,
@@ -1560,8 +1560,8 @@ export const getAppsList: API.OperationMethod<
   GetAppsListError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c12, 0) as any as S.Schema<GetAppsListRequest>,
-  output: __S(450, __c14, 2) as any as S.Schema<GetAppsListResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetAppsListRequest>,
+  output: __S(418, __c13, 2) as any as S.Schema<GetAppsListResponse>,
   errors: [InternalErrorException, InvalidOperationException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1586,8 +1586,8 @@ export const getComplianceDetail: API.OperationMethod<
   GetComplianceDetailError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c15, 0) as any as S.Schema<GetComplianceDetailRequest>,
-  output: __S(485, __c15, 5) as any as S.Schema<GetComplianceDetailResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<GetComplianceDetailRequest>,
+  output: __S(453, __c14, 5) as any as S.Schema<GetComplianceDetailResponse>,
   errors: [
     InternalErrorException,
     InvalidInputException,
@@ -1615,8 +1615,8 @@ export const getNotificationChannel: API.OperationMethod<
   GetNotificationChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c17, 0) as any as S.Schema<GetNotificationChannelRequest>,
-  output: __S(545, __c17, 1) as any as S.Schema<GetNotificationChannelResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetNotificationChannelRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<GetNotificationChannelResponse>,
   errors: [InternalErrorException, InvalidOperationException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1638,8 +1638,8 @@ export const getPolicy: API.OperationMethod<
   GetPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c18, 0) as any as S.Schema<GetPolicyRequest>,
-  output: __S(650, __c20, 10) as any as S.Schema<GetPolicyResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetPolicyRequest>,
+  output: __S(618, __c19, 10) as any as S.Schema<GetPolicyResponse>,
   errors: [
     InternalErrorException,
     InvalidOperationException,
@@ -1666,8 +1666,8 @@ export const getProtectionStatus: API.OperationMethod<
   GetProtectionStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c21, 0) as any as S.Schema<GetProtectionStatusRequest>,
-  output: __S(673, __c21, 1) as any as S.Schema<GetProtectionStatusResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetProtectionStatusRequest>,
+  output: __S(641, __c20, 1) as any as S.Schema<GetProtectionStatusResponse>,
   errors: [InternalErrorException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1688,8 +1688,8 @@ export const getProtocolsList: API.OperationMethod<
   GetProtocolsListError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c22, 0) as any as S.Schema<GetProtocolsListRequest>,
-  output: __S(738, __c23, 2) as any as S.Schema<GetProtocolsListResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<GetProtocolsListRequest>,
+  output: __S(706, __c22, 2) as any as S.Schema<GetProtocolsListResponse>,
   errors: [InternalErrorException, InvalidOperationException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1711,8 +1711,8 @@ export const getResourceSet: API.OperationMethod<
   GetResourceSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c24, 0) as any as S.Schema<GetResourceSetRequest>,
-  output: __S(801, __c25, 1) as any as S.Schema<GetResourceSetResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetResourceSetRequest>,
+  output: __S(769, __c24, 1) as any as S.Schema<GetResourceSetResponse>,
   errors: [
     InternalErrorException,
     InvalidInputException,
@@ -1739,8 +1739,8 @@ export const getThirdPartyFirewallAssociationStatus: API.OperationMethod<
   GetThirdPartyFirewallAssociationStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c26, 0) as any as S.Schema<GetThirdPartyFirewallAssociationStatusRequest>,
-  output: __S(833, __c26, 1) as any as S.Schema<GetThirdPartyFirewallAssociationStatusResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetThirdPartyFirewallAssociationStatusRequest>,
+  output: __S(801, __c25, 1) as any as S.Schema<GetThirdPartyFirewallAssociationStatusResponse>,
   errors: [
     InternalErrorException,
     InvalidInputException,
@@ -1766,8 +1766,8 @@ export const getViolationDetails: API.OperationMethod<
   GetViolationDetailsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c27, 0) as any as S.Schema<GetViolationDetailsRequest>,
-  output: __S(930, __c29, 2) as any as S.Schema<GetViolationDetailsResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetViolationDetailsRequest>,
+  output: __S(898, __c28, 2) as any as S.Schema<GetViolationDetailsResponse>,
   errors: [InternalErrorException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1792,8 +1792,8 @@ export const listAdminAccountsForOrganization: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AdminAccountSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(992, __c31, 0) as any as S.Schema<ListAdminAccountsForOrganizationRequest>,
-  output: __S(995, __c31, 3) as any as S.Schema<ListAdminAccountsForOrganizationResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<ListAdminAccountsForOrganizationRequest>,
+  output: __S(963, __c30, 3) as any as S.Schema<ListAdminAccountsForOrganizationResponse>,
   errors: [
     InternalErrorException,
     InvalidOperationException,
@@ -1826,8 +1826,8 @@ export const listAdminsManagingAccount: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AWSAccountId
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1024, __c32, 0) as any as S.Schema<ListAdminsManagingAccountRequest>,
-  output: __S(1025, __c32, 1) as any as S.Schema<ListAdminsManagingAccountResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<ListAdminsManagingAccountRequest>,
+  output: __S(993, __c31, 1) as any as S.Schema<ListAdminsManagingAccountResponse>,
   errors: [InternalErrorException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1856,8 +1856,8 @@ export const listAppsLists: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AppsListDataSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1056, __c33, 0) as any as S.Schema<ListAppsListsRequest>,
-  output: __S(1059, __c33, 3) as any as S.Schema<ListAppsListsResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListAppsListsRequest>,
+  output: __S(1027, __c32, 3) as any as S.Schema<ListAppsListsResponse>,
   errors: [
     InternalErrorException,
     InvalidOperationException,
@@ -1891,8 +1891,8 @@ export const listComplianceStatus: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PolicyComplianceStatus
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1088, __c34, 0) as any as S.Schema<ListComplianceStatusRequest>,
-  output: __S(1093, __c34, 5) as any as S.Schema<ListComplianceStatusResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<ListComplianceStatusRequest>,
+  output: __S(1061, __c33, 5) as any as S.Schema<ListComplianceStatusResponse>,
   errors: [InternalErrorException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1919,8 +1919,8 @@ export const listDiscoveredResources: API.OperationMethod<
   ListDiscoveredResourcesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1120, __c35, 0) as any as S.Schema<ListDiscoveredResourcesRequest>,
-  output: __S(1123, __c35, 3) as any as S.Schema<ListDiscoveredResourcesResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<ListDiscoveredResourcesRequest>,
+  output: __S(1091, __c34, 3) as any as S.Schema<ListDiscoveredResourcesResponse>,
   errors: [InternalErrorException, InvalidInputException, InvalidOperationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1944,8 +1944,8 @@ export const listMemberAccounts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AWSAccountId
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1152, __c36, 0) as any as S.Schema<ListMemberAccountsRequest>,
-  output: __S(1153, __c36, 1) as any as S.Schema<ListMemberAccountsResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<ListMemberAccountsRequest>,
+  output: __S(1121, __c35, 1) as any as S.Schema<ListMemberAccountsResponse>,
   errors: [InternalErrorException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1974,8 +1974,8 @@ export const listPolicies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PolicySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1184, __c37, 0) as any as S.Schema<ListPoliciesRequest>,
-  output: __S(1187, __c37, 3) as any as S.Schema<ListPoliciesResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<ListPoliciesRequest>,
+  output: __S(1155, __c36, 3) as any as S.Schema<ListPoliciesResponse>,
   errors: [
     InternalErrorException,
     InvalidOperationException,
@@ -2008,8 +2008,8 @@ export const listProtocolsLists: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProtocolsListDataSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1216, __c38, 0) as any as S.Schema<ListProtocolsListsRequest>,
-  output: __S(1219, __c38, 3) as any as S.Schema<ListProtocolsListsResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<ListProtocolsListsRequest>,
+  output: __S(1187, __c37, 3) as any as S.Schema<ListProtocolsListsResponse>,
   errors: [InternalErrorException, InvalidOperationException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2037,8 +2037,8 @@ export const listResourceSetResources: API.OperationMethod<
   ListResourceSetResourcesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1248, __c39, 0) as any as S.Schema<ListResourceSetResourcesRequest>,
-  output: __S(1251, __c39, 3) as any as S.Schema<ListResourceSetResourcesResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<ListResourceSetResourcesRequest>,
+  output: __S(1219, __c38, 3) as any as S.Schema<ListResourceSetResourcesResponse>,
   errors: [
     InternalErrorException,
     InvalidInputException,
@@ -2064,8 +2064,8 @@ export const listResourceSets: API.OperationMethod<
   ListResourceSetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1280, __c40, 0) as any as S.Schema<ListResourceSetsRequest>,
-  output: __S(1283, __c40, 3) as any as S.Schema<ListResourceSetsResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<ListResourceSetsRequest>,
+  output: __S(1251, __c39, 3) as any as S.Schema<ListResourceSetsResponse>,
   errors: [InternalErrorException, InvalidInputException, InvalidOperationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2087,8 +2087,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1312, __c41, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(1313, __c41, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(1281, __c40, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     InternalErrorException,
     InvalidInputException,
@@ -2116,8 +2116,8 @@ export const listThirdPartyFirewallFirewallPolicies: API.PaginatedOperationMetho
   Credentials | HttpClient.HttpClient,
   ThirdPartyFirewallFirewallPolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1344, __c42, 0) as any as S.Schema<ListThirdPartyFirewallFirewallPoliciesRequest>,
-  output: __S(1347, __c42, 3) as any as S.Schema<ListThirdPartyFirewallFirewallPoliciesResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<ListThirdPartyFirewallFirewallPoliciesRequest>,
+  output: __S(1315, __c41, 3) as any as S.Schema<ListThirdPartyFirewallFirewallPoliciesResponse>,
   errors: [
     InternalErrorException,
     InvalidInputException,
@@ -2151,8 +2151,8 @@ export const putAdminAccount: API.OperationMethod<
   PutAdminAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1376, __c43, 0) as any as S.Schema<PutAdminAccountRequest>,
-  output: __S(1664, __c52, 0) as any as S.Schema<PutAdminAccountResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<PutAdminAccountRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<PutAdminAccountResponse>,
   errors: [
     InternalErrorException,
     InvalidInputException,
@@ -2180,8 +2180,8 @@ export const putAppsList: API.OperationMethod<
   PutAppsListError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1408, __c44, 0) as any as S.Schema<PutAppsListRequest>,
-  output: __S(450, __c14, 2) as any as S.Schema<PutAppsListResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<PutAppsListRequest>,
+  output: __S(418, __c13, 2) as any as S.Schema<PutAppsListResponse>,
   errors: [
     InternalErrorException,
     InvalidInputException,
@@ -2212,8 +2212,8 @@ export const putNotificationChannel: API.OperationMethod<
   PutNotificationChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c45, 0) as any as S.Schema<PutNotificationChannelRequest>,
-  output: __S(1664, __c52, 0) as any as S.Schema<PutNotificationChannelResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<PutNotificationChannelRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<PutNotificationChannelResponse>,
   errors: [InternalErrorException, InvalidOperationException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2274,8 +2274,8 @@ export const putPolicy: API.OperationMethod<
   PutPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1472, __c46, 0) as any as S.Schema<PutPolicyRequest>,
-  output: __S(650, __c20, 10) as any as S.Schema<PutPolicyResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<PutPolicyRequest>,
+  output: __S(618, __c19, 10) as any as S.Schema<PutPolicyResponse>,
   errors: [
     InternalErrorException,
     InvalidInputException,
@@ -2305,8 +2305,8 @@ export const putProtocolsList: API.OperationMethod<
   PutProtocolsListError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1504, __c47, 0) as any as S.Schema<PutProtocolsListRequest>,
-  output: __S(738, __c23, 2) as any as S.Schema<PutProtocolsListResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<PutProtocolsListRequest>,
+  output: __S(706, __c22, 2) as any as S.Schema<PutProtocolsListResponse>,
   errors: [
     InternalErrorException,
     InvalidInputException,
@@ -2336,8 +2336,8 @@ export const putResourceSet: API.OperationMethod<
   PutResourceSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1536, __c48, 0) as any as S.Schema<PutResourceSetRequest>,
-  output: __S(801, __c25, 1) as any as S.Schema<PutResourceSetResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<PutResourceSetRequest>,
+  output: __S(769, __c24, 1) as any as S.Schema<PutResourceSetResponse>,
   errors: [
     InternalErrorException,
     InvalidInputException,
@@ -2365,8 +2365,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1568, __c49, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(1664, __c52, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     InternalErrorException,
     InvalidInputException,
@@ -2394,8 +2394,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1600, __c50, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(1664, __c52, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     InternalErrorException,
     InvalidInputException,
@@ -2425,20 +2425,10 @@ function __c1(j: number): any {
         S.Struct({}).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteNotificationChannelRequest",
-      });
+      ).annotate({ identifier: "DeleteNotificationChannelRequest" });
   }
 }
 function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteNotificationChannelResponse",
-      });
-  }
-}
-function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2448,19 +2438,17 @@ function __c3(j: number): any {
       ).annotate({ identifier: "DeletePolicyRequest" });
   }
 }
-function __c4(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ ListId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteProtocolsListRequest",
-      });
+      ).annotate({ identifier: "DeleteProtocolsListRequest" });
   }
 }
-function __c5(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2470,31 +2458,27 @@ function __c5(j: number): any {
       ).annotate({ identifier: "DeleteResourceSetRequest" });
   }
 }
-function __c6(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DisassociateAdminAccountRequest",
-      });
+      ).annotate({ identifier: "DisassociateAdminAccountRequest" });
   }
 }
-function __c7(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ ThirdPartyFirewall: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DisassociateThirdPartyFirewallRequest",
-      });
+      ).annotate({ identifier: "DisassociateThirdPartyFirewallRequest" });
   }
 }
-function __c8(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2508,7 +2492,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "GetAdminAccountResponse" });
   }
 }
-function __c9(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2518,22 +2502,22 @@ function __c9(j: number): any {
       ).annotate({ identifier: "GetAdminScopeRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ AdminScope: S.optional(__S(356, __c11, 4)), Status: S.optional(S.String) }),
+        S.Struct({ AdminScope: S.optional(__S(324, __c10, 4)), Status: S.optional(S.String) }),
       ).annotate({ identifier: "GetAdminScopeResponse" });
   }
 }
-function __c10(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c11(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Accounts: S.optional(__S(1824, __c57, 0)),
+          Accounts: S.optional(__S(1792, __c56, 0)),
           AllAccountsEnabled: S.optional(S.Boolean),
           ExcludeSpecifiedAccounts: S.optional(S.Boolean),
         }),
@@ -2541,7 +2525,7 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          OrganizationalUnits: S.optional(__S(1824, __c57, 0)),
+          OrganizationalUnits: S.optional(__S(1792, __c56, 0)),
           AllOrganizationalUnitsEnabled: S.optional(S.Boolean),
           ExcludeSpecifiedOrganizationalUnits: S.optional(S.Boolean),
         }),
@@ -2549,29 +2533,29 @@ function __c11(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Regions: S.optional(__S(1824, __c57, 0)),
+          Regions: S.optional(__S(1792, __c56, 0)),
           AllRegionsEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "RegionScope" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          PolicyTypes: S.optional(__S(320, __c10, 0)),
+          PolicyTypes: S.optional(__S(288, __c9, 0)),
           AllPolicyTypesEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PolicyTypeScope" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          AccountScope: S.optional(__S(352, __c11, 0)),
-          OrganizationalUnitScope: S.optional(__S(353, __c11, 1)),
-          RegionScope: S.optional(__S(354, __c11, 2)),
-          PolicyTypeScope: S.optional(__S(355, __c11, 3)),
+          AccountScope: S.optional(__S(320, __c10, 0)),
+          OrganizationalUnitScope: S.optional(__S(321, __c10, 1)),
+          RegionScope: S.optional(__S(322, __c10, 2)),
+          PolicyTypeScope: S.optional(__S(323, __c10, 3)),
         }),
       ).annotate({ identifier: "AdminScope" });
   }
 }
-function __c12(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2581,20 +2565,20 @@ function __c12(j: number): any {
       ).annotate({ identifier: "GetAppsListRequest" });
   }
 }
-function __c13(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ AppName: S.String, Protocol: S.String, Port: S.Number }),
       ).annotate({ identifier: "App" });
     case 1:
-      return S.Array(__S(416, __c13, 0));
+      return S.Array(__S(384, __c12, 0));
   }
 }
-function __c14(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ __S(417, __c13, 1).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(385, __c12, 1).pipe(S.optional));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2603,26 +2587,24 @@ function __c14(j: number): any {
           ListUpdateToken: S.optional(S.String),
           CreateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AppsList: __S(417, __c13, 1),
-          PreviousAppsList: S.optional(__S(448, __c14, 0)),
+          AppsList: __S(385, __c12, 1),
+          PreviousAppsList: S.optional(__S(416, __c13, 0)),
         }),
       ).annotate({ identifier: "AppsListData" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ AppsList: S.optional(__S(449, __c14, 1)), AppsListArn: S.optional(S.String) }),
+        S.Struct({ AppsList: S.optional(__S(417, __c13, 1)), AppsListArn: S.optional(S.String) }),
       ).annotate({ identifier: "GetAppsListResponse" });
   }
 }
-function __c15(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ PolicyId: S.String, MemberAccount: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetComplianceDetailRequest",
-      });
+      ).annotate({ identifier: "GetComplianceDetailRequest" });
     case 1:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 2:
@@ -2631,56 +2613,50 @@ function __c15(j: number): any {
           ResourceId: S.optional(S.String),
           ViolationReason: S.optional(S.String),
           ResourceType: S.optional(S.String),
-          Metadata: S.optional(__S(481, __c15, 1)),
+          Metadata: S.optional(__S(449, __c14, 1)),
         }),
       ).annotate({ identifier: "ComplianceViolator" });
     case 3:
-      return S.Array(__S(482, __c15, 2));
+      return S.Array(__S(450, __c14, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           PolicyOwner: S.optional(S.String),
           PolicyId: S.optional(S.String),
           MemberAccount: S.optional(S.String),
-          Violators: S.optional(__S(483, __c15, 3)),
+          Violators: S.optional(__S(451, __c14, 3)),
           EvaluationLimitExceeded: S.optional(S.Boolean),
           ExpiredAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          IssueInfoMap: S.optional(__S(512, __c16, 0)),
+          IssueInfoMap: S.optional(__S(480, __c15, 0)),
         }),
       ).annotate({ identifier: "PolicyComplianceDetail" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ PolicyComplianceDetail: S.optional(__S(484, __c15, 4)) }),
-      ).annotate({
-        identifier: "GetComplianceDetailResponse",
-      });
+        S.Struct({ PolicyComplianceDetail: S.optional(__S(452, __c14, 4)) }),
+      ).annotate({ identifier: "GetComplianceDetailResponse" });
   }
 }
-function __c16(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c17(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetNotificationChannelRequest",
-      });
+      ).annotate({ identifier: "GetNotificationChannelRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ SnsTopicArn: S.optional(S.String), SnsRoleName: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetNotificationChannelResponse",
-      });
+      ).annotate({ identifier: "GetNotificationChannelResponse" });
   }
 }
-function __c18(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2690,7 +2666,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "GetPolicyRequest" });
   }
 }
-function __c19(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2703,9 +2679,9 @@ function __c19(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          IcmpTypeCode: S.optional(__S(608, __c19, 0)),
+          IcmpTypeCode: S.optional(__S(576, __c18, 0)),
           Protocol: S.String,
-          PortRange: S.optional(__S(609, __c19, 1)),
+          PortRange: S.optional(__S(577, __c18, 1)),
           CidrBlock: S.optional(S.String),
           Ipv6CidrBlock: S.optional(S.String),
           RuleAction: S.String,
@@ -2714,33 +2690,33 @@ function __c19(j: number): any {
       ).annotate({ identifier: "NetworkAclEntry" });
   }
 }
-function __c20(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ FirewallDeploymentModel: S.optional(S.String) })).annotate({
         identifier: "NetworkFirewallPolicy",
       });
     case 1:
-      return S.Array(__S(610, __c19, 2));
+      return S.Array(__S(578, __c18, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          FirstEntries: S.optional(__S(641, __c20, 1)),
+          FirstEntries: S.optional(__S(609, __c19, 1)),
           ForceRemediateForFirstEntries: S.Boolean,
-          LastEntries: S.optional(__S(641, __c20, 1)),
+          LastEntries: S.optional(__S(609, __c19, 1)),
           ForceRemediateForLastEntries: S.Boolean,
         }),
       ).annotate({ identifier: "NetworkAclEntrySet" });
     case 3:
-      return S.suspend(() => S.Struct({ NetworkAclEntrySet: __S(642, __c20, 2) })).annotate({
+      return S.suspend(() => S.Struct({ NetworkAclEntrySet: __S(610, __c19, 2) })).annotate({
         identifier: "NetworkAclCommonPolicy",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          NetworkFirewallPolicy: S.optional(__S(640, __c20, 0)),
-          ThirdPartyFirewallPolicy: S.optional(__S(640, __c20, 0)),
-          NetworkAclCommonPolicy: S.optional(__S(643, __c20, 3)),
+          NetworkFirewallPolicy: S.optional(__S(608, __c19, 0)),
+          ThirdPartyFirewallPolicy: S.optional(__S(608, __c19, 0)),
+          NetworkAclCommonPolicy: S.optional(__S(611, __c19, 3)),
         }),
       ).annotate({ identifier: "PolicyOption" });
     case 5:
@@ -2748,35 +2724,33 @@ function __c20(j: number): any {
         S.Struct({
           Type: S.String,
           ManagedServiceData: S.optional(S.String),
-          PolicyOption: S.optional(__S(644, __c20, 4)),
+          PolicyOption: S.optional(__S(612, __c19, 4)),
         }),
-      ).annotate({
-        identifier: "SecurityServicePolicyData",
-      });
+      ).annotate({ identifier: "SecurityServicePolicyData" });
     case 6:
       return S.suspend(() => S.Struct({ Key: S.String, Value: S.optional(S.String) })).annotate({
         identifier: "ResourceTag",
       });
     case 7:
-      return S.Array(__S(646, __c20, 6));
+      return S.Array(__S(614, __c19, 6));
     case 8:
-      return S.Record(S.String, /*@__PURE__*/ __S(1824, __c57, 0).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(1792, __c56, 0).pipe(S.optional));
     case 9:
       return S.suspend(() =>
         S.Struct({
           PolicyId: S.optional(S.String),
           PolicyName: S.String,
           PolicyUpdateToken: S.optional(S.String),
-          SecurityServicePolicyData: __S(645, __c20, 5),
+          SecurityServicePolicyData: __S(613, __c19, 5),
           ResourceType: S.String,
-          ResourceTypeList: S.optional(__S(1824, __c57, 0)),
-          ResourceTags: S.optional(__S(647, __c20, 7)),
+          ResourceTypeList: S.optional(__S(1792, __c56, 0)),
+          ResourceTags: S.optional(__S(615, __c19, 7)),
           ExcludeResourceTags: S.Boolean,
           RemediationEnabled: S.Boolean,
           DeleteUnusedFMManagedResources: S.optional(S.Boolean),
-          IncludeMap: S.optional(__S(648, __c20, 8)),
-          ExcludeMap: S.optional(__S(648, __c20, 8)),
-          ResourceSetIds: S.optional(__S(1824, __c57, 0)),
+          IncludeMap: S.optional(__S(616, __c19, 8)),
+          ExcludeMap: S.optional(__S(616, __c19, 8)),
+          ResourceSetIds: S.optional(__S(1792, __c56, 0)),
           PolicyDescription: S.optional(S.String),
           PolicyStatus: S.optional(S.String),
           ResourceTagLogicalOperator: S.optional(S.String),
@@ -2784,11 +2758,11 @@ function __c20(j: number): any {
       ).annotate({ identifier: "Policy" });
     case 10:
       return S.suspend(() =>
-        S.Struct({ Policy: S.optional(__S(649, __c20, 9)), PolicyArn: S.optional(S.String) }),
+        S.Struct({ Policy: S.optional(__S(617, __c19, 9)), PolicyArn: S.optional(S.String) }),
       ).annotate({ identifier: "GetPolicyResponse" });
   }
 }
-function __c21(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2800,9 +2774,7 @@ function __c21(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetProtectionStatusRequest",
-      });
+      ).annotate({ identifier: "GetProtectionStatusRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2811,12 +2783,10 @@ function __c21(j: number): any {
           Data: S.optional(S.String),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetProtectionStatusResponse",
-      });
+      ).annotate({ identifier: "GetProtectionStatusResponse" });
   }
 }
-function __c22(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2826,10 +2796,10 @@ function __c22(j: number): any {
       ).annotate({ identifier: "GetProtocolsListRequest" });
   }
 }
-function __c23(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ __S(1824, __c57, 0).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(1792, __c56, 0).pipe(S.optional));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2838,20 +2808,20 @@ function __c23(j: number): any {
           ListUpdateToken: S.optional(S.String),
           CreateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ProtocolsList: __S(1824, __c57, 0),
-          PreviousProtocolsList: S.optional(__S(736, __c23, 0)),
+          ProtocolsList: __S(1792, __c56, 0),
+          PreviousProtocolsList: S.optional(__S(704, __c22, 0)),
         }),
       ).annotate({ identifier: "ProtocolsListData" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ProtocolsList: S.optional(__S(737, __c23, 1)),
+          ProtocolsList: S.optional(__S(705, __c22, 1)),
           ProtocolsListArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetProtocolsListResponse" });
   }
 }
-function __c24(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2861,7 +2831,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "GetResourceSetRequest" });
   }
 }
-function __c25(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2870,39 +2840,35 @@ function __c25(j: number): any {
           Name: S.String,
           Description: S.optional(S.String),
           UpdateToken: S.optional(S.String),
-          ResourceTypeList: __S(1824, __c57, 0),
+          ResourceTypeList: __S(1792, __c56, 0),
           LastUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ResourceSetStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceSet" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ResourceSet: __S(800, __c25, 0), ResourceSetArn: S.String }),
+        S.Struct({ ResourceSet: __S(768, __c24, 0), ResourceSetArn: S.String }),
       ).annotate({ identifier: "GetResourceSetResponse" });
   }
 }
-function __c26(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ ThirdPartyFirewall: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetThirdPartyFirewallAssociationStatusRequest",
-      });
+      ).annotate({ identifier: "GetThirdPartyFirewallAssociationStatusRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ThirdPartyFirewallStatus: S.optional(S.String),
           MarketplaceOnboardingStatus: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetThirdPartyFirewallAssociationStatusResponse",
-      });
+      ).annotate({ identifier: "GetThirdPartyFirewallAssociationStatusResponse" });
   }
 }
-function __c27(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2912,18 +2878,16 @@ function __c27(j: number): any {
           ResourceId: S.String,
           ResourceType: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetViolationDetailsRequest",
-      });
+      ).annotate({ identifier: "GetViolationDetailsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Reference: S.optional(S.String),
-          TargetViolationReasons: S.optional(__S(1824, __c57, 0)),
+          TargetViolationReasons: S.optional(__S(1792, __c56, 0)),
         }),
       ).annotate({ identifier: "PartialMatch" });
     case 2:
-      return S.Array(__S(865, __c27, 1));
+      return S.Array(__S(833, __c26, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2934,49 +2898,41 @@ function __c27(j: number): any {
           FromPort: S.optional(S.Number),
           ToPort: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "SecurityGroupRuleDescription",
-      });
+      ).annotate({ identifier: "SecurityGroupRuleDescription" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           RemediationActionType: S.optional(S.String),
           Description: S.optional(S.String),
-          RemediationResult: S.optional(__S(867, __c27, 3)),
+          RemediationResult: S.optional(__S(835, __c26, 3)),
           IsDefaultAction: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "SecurityGroupRemediationAction",
-      });
+      ).annotate({ identifier: "SecurityGroupRemediationAction" });
     case 5:
-      return S.Array(__S(868, __c27, 4));
+      return S.Array(__S(836, __c26, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           ViolationTarget: S.optional(S.String),
           ViolationTargetDescription: S.optional(S.String),
-          PartialMatches: S.optional(__S(866, __c27, 2)),
-          PossibleSecurityGroupRemediationActions: S.optional(__S(869, __c27, 5)),
+          PartialMatches: S.optional(__S(834, __c26, 2)),
+          PossibleSecurityGroupRemediationActions: S.optional(__S(837, __c26, 5)),
         }),
-      ).annotate({
-        identifier: "AwsVPCSecurityGroupViolation",
-      });
+      ).annotate({ identifier: "AwsVPCSecurityGroupViolation" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           ViolationTarget: S.optional(S.String),
-          ViolatingSecurityGroups: S.optional(__S(1824, __c57, 0)),
+          ViolatingSecurityGroups: S.optional(__S(1792, __c56, 0)),
         }),
-      ).annotate({
-        identifier: "AwsEc2NetworkInterfaceViolation",
-      });
+      ).annotate({ identifier: "AwsEc2NetworkInterfaceViolation" });
     case 8:
-      return S.Array(__S(871, __c27, 7));
+      return S.Array(__S(839, __c26, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
           ViolationTarget: S.optional(S.String),
-          AwsEc2NetworkInterfaceViolations: S.optional(__S(872, __c27, 8)),
+          AwsEc2NetworkInterfaceViolations: S.optional(__S(840, __c26, 8)),
         }),
       ).annotate({ identifier: "AwsEc2InstanceViolation" });
     case 10:
@@ -2987,9 +2943,7 @@ function __c27(j: number): any {
           AvailabilityZone: S.optional(S.String),
           TargetViolationReason: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "NetworkFirewallMissingFirewallViolation",
-      });
+      ).annotate({ identifier: "NetworkFirewallMissingFirewallViolation" });
     case 11:
       return S.suspend(() =>
         S.Struct({
@@ -2999,9 +2953,7 @@ function __c27(j: number): any {
           CurrentRouteTable: S.optional(S.String),
           ExpectedRouteTable: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "NetworkFirewallMissingExpectedRTViolation",
-      });
+      ).annotate({ identifier: "NetworkFirewallMissingExpectedRTViolation" });
     case 12:
       return S.suspend(() =>
         S.Struct({
@@ -3011,7 +2963,7 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "StatelessRuleGroup" });
     case 13:
-      return S.Array(__S(876, __c27, 12));
+      return S.Array(__S(844, __c26, 12));
     case 14:
       return S.suspend(() => S.Struct({ Action: S.optional(S.String) })).annotate({
         identifier: "NetworkFirewallStatefulRuleGroupOverride",
@@ -3022,42 +2974,35 @@ function __c27(j: number): any {
           RuleGroupName: S.optional(S.String),
           ResourceId: S.optional(S.String),
           Priority: S.optional(S.Number),
-          Override: S.optional(__S(878, __c27, 14)),
+          Override: S.optional(__S(846, __c26, 14)),
         }),
       ).annotate({ identifier: "StatefulRuleGroup" });
     case 16:
-      return S.Array(__S(879, __c27, 15));
+      return S.Array(__S(847, __c26, 15));
     case 17:
       return S.suspend(() =>
-        S.Struct({
-          RuleOrder: S.optional(S.String),
-          StreamExceptionPolicy: S.optional(S.String),
-        }),
+        S.Struct({ RuleOrder: S.optional(S.String), StreamExceptionPolicy: S.optional(S.String) }),
       ).annotate({ identifier: "StatefulEngineOptions" });
     case 18:
       return S.suspend(() =>
         S.Struct({
-          StatelessRuleGroups: S.optional(__S(877, __c27, 13)),
-          StatelessDefaultActions: S.optional(__S(1824, __c57, 0)),
-          StatelessFragmentDefaultActions: S.optional(__S(1824, __c57, 0)),
-          StatelessCustomActions: S.optional(__S(1824, __c57, 0)),
-          StatefulRuleGroups: S.optional(__S(880, __c27, 16)),
-          StatefulDefaultActions: S.optional(__S(1824, __c57, 0)),
-          StatefulEngineOptions: S.optional(__S(881, __c27, 17)),
+          StatelessRuleGroups: S.optional(__S(845, __c26, 13)),
+          StatelessDefaultActions: S.optional(__S(1792, __c56, 0)),
+          StatelessFragmentDefaultActions: S.optional(__S(1792, __c56, 0)),
+          StatelessCustomActions: S.optional(__S(1792, __c56, 0)),
+          StatefulRuleGroups: S.optional(__S(848, __c26, 16)),
+          StatefulDefaultActions: S.optional(__S(1792, __c56, 0)),
+          StatefulEngineOptions: S.optional(__S(849, __c26, 17)),
         }),
-      ).annotate({
-        identifier: "NetworkFirewallPolicyDescription",
-      });
+      ).annotate({ identifier: "NetworkFirewallPolicyDescription" });
     case 19:
       return S.suspend(() =>
         S.Struct({
           ViolationTarget: S.optional(S.String),
-          CurrentPolicyDescription: S.optional(__S(882, __c27, 18)),
-          ExpectedPolicyDescription: S.optional(__S(882, __c27, 18)),
+          CurrentPolicyDescription: S.optional(__S(850, __c26, 18)),
+          ExpectedPolicyDescription: S.optional(__S(850, __c26, 18)),
         }),
-      ).annotate({
-        identifier: "NetworkFirewallPolicyModifiedViolation",
-      });
+      ).annotate({ identifier: "NetworkFirewallPolicyModifiedViolation" });
     case 20:
       return S.suspend(() =>
         S.Struct({
@@ -3068,109 +3013,97 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "Route" });
     case 21:
-      return S.Array(__S(884, __c27, 20));
+      return S.Array(__S(852, __c26, 20));
     case 22:
       return S.suspend(() =>
         S.Struct({
           IpV4Cidr: S.optional(S.String),
           PrefixListId: S.optional(S.String),
           IpV6Cidr: S.optional(S.String),
-          ContributingSubnets: S.optional(__S(1824, __c57, 0)),
-          AllowedTargets: S.optional(__S(1824, __c57, 0)),
+          ContributingSubnets: S.optional(__S(1792, __c56, 0)),
+          AllowedTargets: S.optional(__S(1792, __c56, 0)),
           RouteTableId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExpectedRoute" });
     case 23:
-      return S.Array(__S(886, __c27, 22));
+      return S.Array(__S(854, __c26, 22));
     case 24:
       return S.suspend(() =>
         S.Struct({
           SubnetId: S.optional(S.String),
           SubnetAvailabilityZone: S.optional(S.String),
           RouteTableId: S.optional(S.String),
-          ViolatingRoutes: S.optional(__S(885, __c27, 21)),
+          ViolatingRoutes: S.optional(__S(853, __c26, 21)),
           IsRouteTableUsedInDifferentAZ: S.optional(S.Boolean),
           CurrentFirewallSubnetRouteTable: S.optional(S.String),
           ExpectedFirewallEndpoint: S.optional(S.String),
           FirewallSubnetId: S.optional(S.String),
-          ExpectedFirewallSubnetRoutes: S.optional(__S(887, __c27, 23)),
-          ActualFirewallSubnetRoutes: S.optional(__S(885, __c27, 21)),
+          ExpectedFirewallSubnetRoutes: S.optional(__S(855, __c26, 23)),
+          ActualFirewallSubnetRoutes: S.optional(__S(853, __c26, 21)),
           InternetGatewayId: S.optional(S.String),
           CurrentInternetGatewayRouteTable: S.optional(S.String),
-          ExpectedInternetGatewayRoutes: S.optional(__S(887, __c27, 23)),
-          ActualInternetGatewayRoutes: S.optional(__S(885, __c27, 21)),
+          ExpectedInternetGatewayRoutes: S.optional(__S(855, __c26, 23)),
+          ActualInternetGatewayRoutes: S.optional(__S(853, __c26, 21)),
           VpcId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "NetworkFirewallInternetTrafficNotInspectedViolation",
-      });
+      ).annotate({ identifier: "NetworkFirewallInternetTrafficNotInspectedViolation" });
     case 25:
       return S.suspend(() =>
         S.Struct({
-          AffectedSubnets: S.optional(__S(1824, __c57, 0)),
+          AffectedSubnets: S.optional(__S(1792, __c56, 0)),
           RouteTableId: S.optional(S.String),
           IsRouteTableUsedInDifferentAZ: S.optional(S.Boolean),
-          ViolatingRoute: S.optional(__S(884, __c27, 20)),
+          ViolatingRoute: S.optional(__S(852, __c26, 20)),
           CurrentFirewallSubnetRouteTable: S.optional(S.String),
           ExpectedFirewallEndpoint: S.optional(S.String),
           ActualFirewallEndpoint: S.optional(S.String),
           ExpectedFirewallSubnetId: S.optional(S.String),
           ActualFirewallSubnetId: S.optional(S.String),
-          ExpectedFirewallSubnetRoutes: S.optional(__S(887, __c27, 23)),
-          ActualFirewallSubnetRoutes: S.optional(__S(885, __c27, 21)),
+          ExpectedFirewallSubnetRoutes: S.optional(__S(855, __c26, 23)),
+          ActualFirewallSubnetRoutes: S.optional(__S(853, __c26, 21)),
           InternetGatewayId: S.optional(S.String),
           CurrentInternetGatewayRouteTable: S.optional(S.String),
-          ExpectedInternetGatewayRoutes: S.optional(__S(887, __c27, 23)),
-          ActualInternetGatewayRoutes: S.optional(__S(885, __c27, 21)),
+          ExpectedInternetGatewayRoutes: S.optional(__S(855, __c26, 23)),
+          ActualInternetGatewayRoutes: S.optional(__S(853, __c26, 21)),
           VpcId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "NetworkFirewallInvalidRouteConfigurationViolation",
-      });
+      ).annotate({ identifier: "NetworkFirewallInvalidRouteConfigurationViolation" });
     case 26:
       return S.suspend(() =>
         S.Struct({
           ViolationTarget: S.optional(S.String),
           RouteTableId: S.optional(S.String),
           VpcId: S.optional(S.String),
-          ViolatingRoutes: S.optional(__S(885, __c27, 21)),
+          ViolatingRoutes: S.optional(__S(853, __c26, 21)),
         }),
-      ).annotate({
-        identifier: "NetworkFirewallBlackHoleRouteDetectedViolation",
-      });
+      ).annotate({ identifier: "NetworkFirewallBlackHoleRouteDetectedViolation" });
     case 27:
       return S.suspend(() =>
         S.Struct({
           FirewallSubnetId: S.optional(S.String),
-          ViolatingRoutes: S.optional(__S(885, __c27, 21)),
+          ViolatingRoutes: S.optional(__S(853, __c26, 21)),
           RouteTableId: S.optional(S.String),
           FirewallEndpoint: S.optional(S.String),
           VpcId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "NetworkFirewallUnexpectedFirewallRoutesViolation",
-      });
+      ).annotate({ identifier: "NetworkFirewallUnexpectedFirewallRoutesViolation" });
     case 28:
       return S.suspend(() =>
         S.Struct({
           GatewayId: S.optional(S.String),
-          ViolatingRoutes: S.optional(__S(885, __c27, 21)),
+          ViolatingRoutes: S.optional(__S(853, __c26, 21)),
           RouteTableId: S.optional(S.String),
           VpcId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "NetworkFirewallUnexpectedGatewayRoutesViolation",
-      });
+      ).annotate({ identifier: "NetworkFirewallUnexpectedGatewayRoutesViolation" });
     case 29:
       return S.suspend(() =>
         S.Struct({
           ViolationTarget: S.optional(S.String),
-          ExpectedRoutes: S.optional(__S(887, __c27, 23)),
+          ExpectedRoutes: S.optional(__S(855, __c26, 23)),
           VpcId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "NetworkFirewallMissingExpectedRoutesViolation",
-      });
+      ).annotate({ identifier: "NetworkFirewallMissingExpectedRoutesViolation" });
     case 30:
       return S.Array(S.Number);
     case 31:
@@ -3180,14 +3113,12 @@ function __c27(j: number): any {
           ViolationTargetDescription: S.optional(S.String),
           ConflictingPriority: S.optional(S.Number),
           ConflictingPolicyId: S.optional(S.String),
-          UnavailablePriorities: S.optional(__S(894, __c27, 30)),
+          UnavailablePriorities: S.optional(__S(862, __c26, 30)),
         }),
-      ).annotate({
-        identifier: "DnsRuleGroupPriorityConflictViolation",
-      });
+      ).annotate({ identifier: "DnsRuleGroupPriorityConflictViolation" });
   }
 }
-function __c28(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3195,9 +3126,7 @@ function __c28(j: number): any {
           ViolationTarget: S.optional(S.String),
           ViolationTargetDescription: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DnsDuplicateRuleGroupViolation",
-      });
+      ).annotate({ identifier: "DnsDuplicateRuleGroupViolation" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3205,9 +3134,7 @@ function __c28(j: number): any {
           ViolationTargetDescription: S.optional(S.String),
           NumberOfRuleGroupsAlreadyAssociated: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "DnsRuleGroupLimitExceededViolation",
-      });
+      ).annotate({ identifier: "DnsRuleGroupLimitExceededViolation" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3217,28 +3144,24 @@ function __c28(j: number): any {
           SubnetAvailabilityZoneId: S.optional(S.String),
           VpcEndpointId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "FirewallSubnetIsOutOfScopeViolation",
-      });
+      ).annotate({ identifier: "FirewallSubnetIsOutOfScopeViolation" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           SubnetId: S.optional(S.String),
           VpcId: S.optional(S.String),
           RouteTableId: S.optional(S.String),
-          ViolatingRoutes: S.optional(__S(885, __c27, 21)),
+          ViolatingRoutes: S.optional(__S(853, __c26, 21)),
           SubnetAvailabilityZone: S.optional(S.String),
           SubnetAvailabilityZoneId: S.optional(S.String),
           CurrentFirewallSubnetRouteTable: S.optional(S.String),
           FirewallSubnetId: S.optional(S.String),
-          FirewallSubnetRoutes: S.optional(__S(885, __c27, 21)),
+          FirewallSubnetRoutes: S.optional(__S(853, __c26, 21)),
           InternetGatewayId: S.optional(S.String),
           CurrentInternetGatewayRouteTable: S.optional(S.String),
-          InternetGatewayRoutes: S.optional(__S(885, __c27, 21)),
+          InternetGatewayRoutes: S.optional(__S(853, __c26, 21)),
         }),
-      ).annotate({
-        identifier: "RouteHasOutOfScopeEndpointViolation",
-      });
+      ).annotate({ identifier: "RouteHasOutOfScopeEndpointViolation" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3247,32 +3170,30 @@ function __c28(j: number): any {
           SubnetAvailabilityZone: S.optional(S.String),
           SubnetAvailabilityZoneId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "FirewallSubnetMissingVPCEndpointViolation",
-      });
+      ).annotate({ identifier: "FirewallSubnetMissingVPCEndpointViolation" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          EntryDetail: S.optional(__S(610, __c19, 2)),
+          EntryDetail: S.optional(__S(578, __c18, 2)),
           EntryRuleNumber: S.optional(S.Number),
           EntryType: S.optional(S.String),
         }),
       ).annotate({ identifier: "EntryDescription" });
     case 6:
-      return S.Array(__S(901, __c28, 5));
+      return S.Array(__S(869, __c27, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ExpectedEntry: S.optional(__S(901, __c28, 5)),
+          ExpectedEntry: S.optional(__S(869, __c27, 5)),
           ExpectedEvaluationOrder: S.optional(S.String),
           ActualEvaluationOrder: S.optional(S.String),
-          EntryAtExpectedEvaluationOrder: S.optional(__S(901, __c28, 5)),
-          EntriesWithConflicts: S.optional(__S(902, __c28, 6)),
-          EntryViolationReasons: S.optional(__S(320, __c10, 0)),
+          EntryAtExpectedEvaluationOrder: S.optional(__S(869, __c27, 5)),
+          EntriesWithConflicts: S.optional(__S(870, __c27, 6)),
+          EntryViolationReasons: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({ identifier: "EntryViolation" });
     case 8:
-      return S.Array(__S(903, __c28, 7));
+      return S.Array(__S(871, __c27, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
@@ -3280,11 +3201,9 @@ function __c28(j: number): any {
           Subnet: S.optional(S.String),
           SubnetAvailabilityZone: S.optional(S.String),
           CurrentAssociatedNetworkAcl: S.optional(S.String),
-          EntryViolations: S.optional(__S(904, __c28, 8)),
+          EntryViolations: S.optional(__S(872, __c27, 8)),
         }),
-      ).annotate({
-        identifier: "InvalidNetworkAclEntriesViolation",
-      });
+      ).annotate({ identifier: "InvalidNetworkAclEntriesViolation" });
     case 10:
       return S.suspend(() =>
         S.Struct({ ResourceId: S.optional(S.String), Description: S.optional(S.String) }),
@@ -3296,9 +3215,9 @@ function __c28(j: number): any {
           DestinationCidrBlock: S.optional(S.String),
           DestinationPrefixListId: S.optional(S.String),
           DestinationIpv6CidrBlock: S.optional(S.String),
-          VpcEndpointId: S.optional(__S(906, __c28, 10)),
-          GatewayId: S.optional(__S(906, __c28, 10)),
-          RouteTableId: __S(906, __c28, 10),
+          VpcEndpointId: S.optional(__S(874, __c27, 10)),
+          GatewayId: S.optional(__S(874, __c27, 10)),
+          RouteTableId: __S(874, __c27, 10),
         }),
       ).annotate({ identifier: "EC2CreateRouteAction" });
     case 12:
@@ -3308,8 +3227,8 @@ function __c28(j: number): any {
           DestinationCidrBlock: S.optional(S.String),
           DestinationPrefixListId: S.optional(S.String),
           DestinationIpv6CidrBlock: S.optional(S.String),
-          GatewayId: S.optional(__S(906, __c28, 10)),
-          RouteTableId: __S(906, __c28, 10),
+          GatewayId: S.optional(__S(874, __c27, 10)),
+          RouteTableId: __S(874, __c27, 10),
         }),
       ).annotate({ identifier: "EC2ReplaceRouteAction" });
     case 13:
@@ -3319,58 +3238,50 @@ function __c28(j: number): any {
           DestinationCidrBlock: S.optional(S.String),
           DestinationPrefixListId: S.optional(S.String),
           DestinationIpv6CidrBlock: S.optional(S.String),
-          RouteTableId: __S(906, __c28, 10),
+          RouteTableId: __S(874, __c27, 10),
         }),
       ).annotate({ identifier: "EC2DeleteRouteAction" });
     case 14:
       return S.suspend(() =>
         S.Struct({
           Description: S.optional(S.String),
-          VpcId: __S(906, __c28, 10),
-          RouteTableId: __S(906, __c28, 10),
+          VpcId: __S(874, __c27, 10),
+          RouteTableId: __S(874, __c27, 10),
         }),
       ).annotate({ identifier: "EC2CopyRouteTableAction" });
     case 15:
       return S.suspend(() =>
         S.Struct({
           Description: S.optional(S.String),
-          AssociationId: __S(906, __c28, 10),
-          RouteTableId: __S(906, __c28, 10),
+          AssociationId: __S(874, __c27, 10),
+          RouteTableId: __S(874, __c27, 10),
         }),
-      ).annotate({
-        identifier: "EC2ReplaceRouteTableAssociationAction",
-      });
+      ).annotate({ identifier: "EC2ReplaceRouteTableAssociationAction" });
     case 16:
       return S.suspend(() =>
         S.Struct({
           Description: S.optional(S.String),
-          RouteTableId: __S(906, __c28, 10),
-          SubnetId: S.optional(__S(906, __c28, 10)),
-          GatewayId: S.optional(__S(906, __c28, 10)),
+          RouteTableId: __S(874, __c27, 10),
+          SubnetId: S.optional(__S(874, __c27, 10)),
+          GatewayId: S.optional(__S(874, __c27, 10)),
         }),
-      ).annotate({
-        identifier: "EC2AssociateRouteTableAction",
-      });
+      ).annotate({ identifier: "EC2AssociateRouteTableAction" });
     case 17:
       return S.suspend(() =>
-        S.Struct({ Description: S.optional(S.String), VpcId: __S(906, __c28, 10) }),
-      ).annotate({
-        identifier: "EC2CreateRouteTableAction",
-      });
+        S.Struct({ Description: S.optional(S.String), VpcId: __S(874, __c27, 10) }),
+      ).annotate({ identifier: "EC2CreateRouteTableAction" });
     case 18:
       return S.suspend(() =>
         S.Struct({
           Description: S.optional(S.String),
           FirewallCreationConfig: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "FMSPolicyUpdateFirewallCreationConfigAction",
-      });
+      ).annotate({ identifier: "FMSPolicyUpdateFirewallCreationConfigAction" });
     case 19:
       return S.suspend(() =>
         S.Struct({
           Description: S.optional(S.String),
-          Vpc: S.optional(__S(906, __c28, 10)),
+          Vpc: S.optional(__S(874, __c27, 10)),
           FMSCanRemediate: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CreateNetworkAclAction" });
@@ -3378,137 +3289,118 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Description: S.optional(S.String),
-          AssociationId: S.optional(__S(906, __c28, 10)),
-          NetworkAclId: S.optional(__S(906, __c28, 10)),
+          AssociationId: S.optional(__S(874, __c27, 10)),
+          NetworkAclId: S.optional(__S(874, __c27, 10)),
           FMSCanRemediate: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "ReplaceNetworkAclAssociationAction",
-      });
+      ).annotate({ identifier: "ReplaceNetworkAclAssociationAction" });
     case 21:
       return S.suspend(() =>
         S.Struct({
           Description: S.optional(S.String),
-          NetworkAclId: S.optional(__S(906, __c28, 10)),
-          NetworkAclEntriesToBeCreated: S.optional(__S(902, __c28, 6)),
+          NetworkAclId: S.optional(__S(874, __c27, 10)),
+          NetworkAclEntriesToBeCreated: S.optional(__S(870, __c27, 6)),
           FMSCanRemediate: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "CreateNetworkAclEntriesAction",
-      });
+      ).annotate({ identifier: "CreateNetworkAclEntriesAction" });
     case 22:
       return S.suspend(() =>
         S.Struct({
           Description: S.optional(S.String),
-          NetworkAclId: S.optional(__S(906, __c28, 10)),
-          NetworkAclEntriesToBeDeleted: S.optional(__S(902, __c28, 6)),
+          NetworkAclId: S.optional(__S(874, __c27, 10)),
+          NetworkAclEntriesToBeDeleted: S.optional(__S(870, __c27, 6)),
           FMSCanRemediate: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "DeleteNetworkAclEntriesAction",
-      });
+      ).annotate({ identifier: "DeleteNetworkAclEntriesAction" });
     case 23:
       return S.suspend(() =>
         S.Struct({
           Description: S.optional(S.String),
-          EC2CreateRouteAction: S.optional(__S(907, __c28, 11)),
-          EC2ReplaceRouteAction: S.optional(__S(908, __c28, 12)),
-          EC2DeleteRouteAction: S.optional(__S(909, __c28, 13)),
-          EC2CopyRouteTableAction: S.optional(__S(910, __c28, 14)),
-          EC2ReplaceRouteTableAssociationAction: S.optional(__S(911, __c28, 15)),
-          EC2AssociateRouteTableAction: S.optional(__S(912, __c28, 16)),
-          EC2CreateRouteTableAction: S.optional(__S(913, __c28, 17)),
-          FMSPolicyUpdateFirewallCreationConfigAction: S.optional(__S(914, __c28, 18)),
-          CreateNetworkAclAction: S.optional(__S(915, __c28, 19)),
-          ReplaceNetworkAclAssociationAction: S.optional(__S(916, __c28, 20)),
-          CreateNetworkAclEntriesAction: S.optional(__S(917, __c28, 21)),
-          DeleteNetworkAclEntriesAction: S.optional(__S(918, __c28, 22)),
+          EC2CreateRouteAction: S.optional(__S(875, __c27, 11)),
+          EC2ReplaceRouteAction: S.optional(__S(876, __c27, 12)),
+          EC2DeleteRouteAction: S.optional(__S(877, __c27, 13)),
+          EC2CopyRouteTableAction: S.optional(__S(878, __c27, 14)),
+          EC2ReplaceRouteTableAssociationAction: S.optional(__S(879, __c27, 15)),
+          EC2AssociateRouteTableAction: S.optional(__S(880, __c27, 16)),
+          EC2CreateRouteTableAction: S.optional(__S(881, __c27, 17)),
+          FMSPolicyUpdateFirewallCreationConfigAction: S.optional(__S(882, __c27, 18)),
+          CreateNetworkAclAction: S.optional(__S(883, __c27, 19)),
+          ReplaceNetworkAclAssociationAction: S.optional(__S(884, __c27, 20)),
+          CreateNetworkAclEntriesAction: S.optional(__S(885, __c27, 21)),
+          DeleteNetworkAclEntriesAction: S.optional(__S(886, __c27, 22)),
         }),
       ).annotate({ identifier: "RemediationAction" });
     case 24:
       return S.suspend(() =>
         S.Struct({
-          RemediationAction: S.optional(__S(919, __c28, 23)),
+          RemediationAction: S.optional(__S(887, __c27, 23)),
           Order: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "RemediationActionWithOrder",
-      });
+      ).annotate({ identifier: "RemediationActionWithOrder" });
     case 25:
-      return S.Array(__S(920, __c28, 24));
+      return S.Array(__S(888, __c27, 24));
     case 26:
       return S.suspend(() =>
         S.Struct({
           Description: S.optional(S.String),
-          OrderedRemediationActions: __S(921, __c28, 25),
+          OrderedRemediationActions: __S(889, __c27, 25),
           IsDefaultAction: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "PossibleRemediationAction",
-      });
+      ).annotate({ identifier: "PossibleRemediationAction" });
     case 27:
-      return S.Array(__S(922, __c28, 26));
+      return S.Array(__S(890, __c27, 26));
     case 28:
       return S.suspend(() =>
-        S.Struct({
-          Description: S.optional(S.String),
-          Actions: S.optional(__S(923, __c28, 27)),
-        }),
-      ).annotate({
-        identifier: "PossibleRemediationActions",
-      });
+        S.Struct({ Description: S.optional(S.String), Actions: S.optional(__S(891, __c27, 27)) }),
+      ).annotate({ identifier: "PossibleRemediationActions" });
     case 29:
       return S.suspend(() =>
         S.Struct({ WebACLArn: S.optional(S.String), Description: S.optional(S.String) }),
-      ).annotate({
-        identifier: "WebACLHasIncompatibleConfigurationViolation",
-      });
+      ).annotate({ identifier: "WebACLHasIncompatibleConfigurationViolation" });
     case 30:
       return S.suspend(() =>
         S.Struct({
           WebACLArn: S.optional(S.String),
-          OutOfScopeResourceList: S.optional(__S(1824, __c57, 0)),
+          OutOfScopeResourceList: S.optional(__S(1792, __c56, 0)),
         }),
-      ).annotate({
-        identifier: "WebACLHasOutOfScopeResourcesViolation",
-      });
+      ).annotate({ identifier: "WebACLHasOutOfScopeResourcesViolation" });
     case 31:
       return S.suspend(() =>
         S.Struct({
-          AwsVPCSecurityGroupViolation: S.optional(__S(870, __c27, 6)),
-          AwsEc2NetworkInterfaceViolation: S.optional(__S(871, __c27, 7)),
-          AwsEc2InstanceViolation: S.optional(__S(873, __c27, 9)),
-          NetworkFirewallMissingFirewallViolation: S.optional(__S(874, __c27, 10)),
-          NetworkFirewallMissingSubnetViolation: S.optional(__S(874, __c27, 10)),
-          NetworkFirewallMissingExpectedRTViolation: S.optional(__S(875, __c27, 11)),
-          NetworkFirewallPolicyModifiedViolation: S.optional(__S(883, __c27, 19)),
-          NetworkFirewallInternetTrafficNotInspectedViolation: S.optional(__S(888, __c27, 24)),
-          NetworkFirewallInvalidRouteConfigurationViolation: S.optional(__S(889, __c27, 25)),
-          NetworkFirewallBlackHoleRouteDetectedViolation: S.optional(__S(890, __c27, 26)),
-          NetworkFirewallUnexpectedFirewallRoutesViolation: S.optional(__S(891, __c27, 27)),
-          NetworkFirewallUnexpectedGatewayRoutesViolation: S.optional(__S(892, __c27, 28)),
-          NetworkFirewallMissingExpectedRoutesViolation: S.optional(__S(893, __c27, 29)),
-          DnsRuleGroupPriorityConflictViolation: S.optional(__S(895, __c27, 31)),
-          DnsDuplicateRuleGroupViolation: S.optional(__S(896, __c28, 0)),
-          DnsRuleGroupLimitExceededViolation: S.optional(__S(897, __c28, 1)),
-          FirewallSubnetIsOutOfScopeViolation: S.optional(__S(898, __c28, 2)),
-          RouteHasOutOfScopeEndpointViolation: S.optional(__S(899, __c28, 3)),
-          ThirdPartyFirewallMissingFirewallViolation: S.optional(__S(874, __c27, 10)),
-          ThirdPartyFirewallMissingSubnetViolation: S.optional(__S(874, __c27, 10)),
-          ThirdPartyFirewallMissingExpectedRouteTableViolation: S.optional(__S(875, __c27, 11)),
-          FirewallSubnetMissingVPCEndpointViolation: S.optional(__S(900, __c28, 4)),
-          InvalidNetworkAclEntriesViolation: S.optional(__S(905, __c28, 9)),
-          PossibleRemediationActions: S.optional(__S(924, __c28, 28)),
-          WebACLHasIncompatibleConfigurationViolation: S.optional(__S(925, __c28, 29)),
-          WebACLHasOutOfScopeResourcesViolation: S.optional(__S(926, __c28, 30)),
+          AwsVPCSecurityGroupViolation: S.optional(__S(838, __c26, 6)),
+          AwsEc2NetworkInterfaceViolation: S.optional(__S(839, __c26, 7)),
+          AwsEc2InstanceViolation: S.optional(__S(841, __c26, 9)),
+          NetworkFirewallMissingFirewallViolation: S.optional(__S(842, __c26, 10)),
+          NetworkFirewallMissingSubnetViolation: S.optional(__S(842, __c26, 10)),
+          NetworkFirewallMissingExpectedRTViolation: S.optional(__S(843, __c26, 11)),
+          NetworkFirewallPolicyModifiedViolation: S.optional(__S(851, __c26, 19)),
+          NetworkFirewallInternetTrafficNotInspectedViolation: S.optional(__S(856, __c26, 24)),
+          NetworkFirewallInvalidRouteConfigurationViolation: S.optional(__S(857, __c26, 25)),
+          NetworkFirewallBlackHoleRouteDetectedViolation: S.optional(__S(858, __c26, 26)),
+          NetworkFirewallUnexpectedFirewallRoutesViolation: S.optional(__S(859, __c26, 27)),
+          NetworkFirewallUnexpectedGatewayRoutesViolation: S.optional(__S(860, __c26, 28)),
+          NetworkFirewallMissingExpectedRoutesViolation: S.optional(__S(861, __c26, 29)),
+          DnsRuleGroupPriorityConflictViolation: S.optional(__S(863, __c26, 31)),
+          DnsDuplicateRuleGroupViolation: S.optional(__S(864, __c27, 0)),
+          DnsRuleGroupLimitExceededViolation: S.optional(__S(865, __c27, 1)),
+          FirewallSubnetIsOutOfScopeViolation: S.optional(__S(866, __c27, 2)),
+          RouteHasOutOfScopeEndpointViolation: S.optional(__S(867, __c27, 3)),
+          ThirdPartyFirewallMissingFirewallViolation: S.optional(__S(842, __c26, 10)),
+          ThirdPartyFirewallMissingSubnetViolation: S.optional(__S(842, __c26, 10)),
+          ThirdPartyFirewallMissingExpectedRouteTableViolation: S.optional(__S(843, __c26, 11)),
+          FirewallSubnetMissingVPCEndpointViolation: S.optional(__S(868, __c27, 4)),
+          InvalidNetworkAclEntriesViolation: S.optional(__S(873, __c27, 9)),
+          PossibleRemediationActions: S.optional(__S(892, __c27, 28)),
+          WebACLHasIncompatibleConfigurationViolation: S.optional(__S(893, __c27, 29)),
+          WebACLHasOutOfScopeResourcesViolation: S.optional(__S(894, __c27, 30)),
         }),
       ).annotate({ identifier: "ResourceViolation" });
   }
 }
-function __c29(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(927, __c28, 31));
+      return S.Array(__S(895, __c27, 31));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3516,39 +3408,35 @@ function __c29(j: number): any {
           MemberAccount: S.String,
           ResourceId: S.String,
           ResourceType: S.String,
-          ResourceViolations: __S(928, __c29, 0),
-          ResourceTags: S.optional(__S(961, __c30, 1)),
+          ResourceViolations: __S(896, __c28, 0),
+          ResourceTags: S.optional(__S(929, __c29, 1)),
           ResourceDescription: S.optional(S.String),
         }),
       ).annotate({ identifier: "ViolationDetail" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ ViolationDetail: S.optional(__S(929, __c29, 1)) }),
-      ).annotate({
-        identifier: "GetViolationDetailsResponse",
-      });
+        S.Struct({ ViolationDetail: S.optional(__S(897, __c28, 1)) }),
+      ).annotate({ identifier: "GetViolationDetailsResponse" });
   }
 }
-function __c30(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
         identifier: "Tag",
       });
     case 1:
-      return S.Array(__S(960, __c30, 0));
+      return S.Array(__S(928, __c29, 0));
   }
 }
-function __c31(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListAdminAccountsForOrganizationRequest",
-      });
+      ).annotate({ identifier: "ListAdminAccountsForOrganizationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3558,40 +3446,34 @@ function __c31(j: number): any {
         }),
       ).annotate({ identifier: "AdminAccountSummary" });
     case 2:
-      return S.Array(__S(993, __c31, 1));
+      return S.Array(__S(961, __c30, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AdminAccounts: S.optional(__S(994, __c31, 2)),
+          AdminAccounts: S.optional(__S(962, __c30, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListAdminAccountsForOrganizationResponse",
-      });
+      ).annotate({ identifier: "ListAdminAccountsForOrganizationResponse" });
   }
 }
-function __c32(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListAdminsManagingAccountRequest",
-      });
+      ).annotate({ identifier: "ListAdminsManagingAccountRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          AdminAccounts: S.optional(__S(1824, __c57, 0)),
+          AdminAccounts: S.optional(__S(1792, __c56, 0)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListAdminsManagingAccountResponse",
-      });
+      ).annotate({ identifier: "ListAdminsManagingAccountResponse" });
   }
 }
-function __c33(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3607,18 +3489,18 @@ function __c33(j: number): any {
           ListArn: S.optional(S.String),
           ListId: S.optional(S.String),
           ListName: S.optional(S.String),
-          AppsList: S.optional(__S(417, __c13, 1)),
+          AppsList: S.optional(__S(385, __c12, 1)),
         }),
       ).annotate({ identifier: "AppsListDataSummary" });
     case 2:
-      return S.Array(__S(1057, __c33, 1));
+      return S.Array(__S(1025, __c32, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ AppsLists: S.optional(__S(1058, __c33, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ AppsLists: S.optional(__S(1026, __c32, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListAppsListsResponse" });
   }
 }
-function __c34(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3627,9 +3509,7 @@ function __c34(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListComplianceStatusRequest",
-      });
+      ).annotate({ identifier: "ListComplianceStatusRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3639,7 +3519,7 @@ function __c34(j: number): any {
         }),
       ).annotate({ identifier: "EvaluationResult" });
     case 2:
-      return S.Array(__S(1089, __c34, 1));
+      return S.Array(__S(1057, __c33, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3647,37 +3527,33 @@ function __c34(j: number): any {
           PolicyId: S.optional(S.String),
           PolicyName: S.optional(S.String),
           MemberAccount: S.optional(S.String),
-          EvaluationResults: S.optional(__S(1090, __c34, 2)),
+          EvaluationResults: S.optional(__S(1058, __c33, 2)),
           LastUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          IssueInfoMap: S.optional(__S(512, __c16, 0)),
+          IssueInfoMap: S.optional(__S(480, __c15, 0)),
         }),
       ).annotate({ identifier: "PolicyComplianceStatus" });
     case 4:
-      return S.Array(__S(1091, __c34, 3));
+      return S.Array(__S(1059, __c33, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          PolicyComplianceStatusList: S.optional(__S(1092, __c34, 4)),
+          PolicyComplianceStatusList: S.optional(__S(1060, __c33, 4)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListComplianceStatusResponse",
-      });
+      ).annotate({ identifier: "ListComplianceStatusResponse" });
   }
 }
-function __c35(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          MemberAccountIds: __S(1824, __c57, 0),
+          MemberAccountIds: __S(1792, __c56, 0),
           ResourceType: S.String,
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListDiscoveredResourcesRequest",
-      });
+      ).annotate({ identifier: "ListDiscoveredResourcesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3688,37 +3564,31 @@ function __c35(j: number): any {
         }),
       ).annotate({ identifier: "DiscoveredResource" });
     case 2:
-      return S.Array(__S(1121, __c35, 1));
+      return S.Array(__S(1089, __c34, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(1122, __c35, 2)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListDiscoveredResourcesResponse",
-      });
+        S.Struct({ Items: S.optional(__S(1090, __c34, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListDiscoveredResourcesResponse" });
   }
 }
-function __c36(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListMemberAccountsRequest",
-      });
+      ).annotate({ identifier: "ListMemberAccountsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          MemberAccounts: S.optional(__S(1824, __c57, 0)),
+          MemberAccounts: S.optional(__S(1792, __c56, 0)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListMemberAccountsResponse",
-      });
+      ).annotate({ identifier: "ListMemberAccountsResponse" });
   }
 }
-function __c37(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3740,14 +3610,14 @@ function __c37(j: number): any {
         }),
       ).annotate({ identifier: "PolicySummary" });
     case 2:
-      return S.Array(__S(1185, __c37, 1));
+      return S.Array(__S(1153, __c36, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ PolicyList: S.optional(__S(1186, __c37, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ PolicyList: S.optional(__S(1154, __c36, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListPoliciesResponse" });
   }
 }
-function __c38(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3756,32 +3626,28 @@ function __c38(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.Number,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListProtocolsListsRequest",
-      });
+      ).annotate({ identifier: "ListProtocolsListsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ListArn: S.optional(S.String),
           ListId: S.optional(S.String),
           ListName: S.optional(S.String),
-          ProtocolsList: S.optional(__S(1824, __c57, 0)),
+          ProtocolsList: S.optional(__S(1792, __c56, 0)),
         }),
       ).annotate({ identifier: "ProtocolsListDataSummary" });
     case 2:
-      return S.Array(__S(1217, __c38, 1));
+      return S.Array(__S(1185, __c37, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ProtocolsLists: S.optional(__S(1218, __c38, 2)),
+          ProtocolsLists: S.optional(__S(1186, __c37, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListProtocolsListsResponse",
-      });
+      ).annotate({ identifier: "ListProtocolsListsResponse" });
   }
 }
-function __c39(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3790,24 +3656,20 @@ function __c39(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListResourceSetResourcesRequest",
-      });
+      ).annotate({ identifier: "ListResourceSetResourcesRequest" });
     case 1:
       return S.suspend(() => S.Struct({ URI: S.String, AccountId: S.optional(S.String) })).annotate(
         { identifier: "Resource" },
       );
     case 2:
-      return S.Array(__S(1249, __c39, 1));
+      return S.Array(__S(1217, __c38, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Items: __S(1250, __c39, 2), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListResourceSetResourcesResponse",
-      });
+        S.Struct({ Items: __S(1218, __c38, 2), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListResourceSetResourcesResponse" });
   }
 }
-function __c40(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3826,33 +3688,31 @@ function __c40(j: number): any {
         }),
       ).annotate({ identifier: "ResourceSetSummary" });
     case 2:
-      return S.Array(__S(1281, __c40, 1));
+      return S.Array(__S(1249, __c39, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ResourceSets: S.optional(__S(1282, __c40, 2)),
+          ResourceSets: S.optional(__S(1250, __c39, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListResourceSetsResponse" });
   }
 }
-function __c41(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ TagList: S.optional(__S(961, __c30, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ TagList: S.optional(__S(929, __c29, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c42(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3861,127 +3721,117 @@ function __c42(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.Number,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListThirdPartyFirewallFirewallPoliciesRequest",
-      });
+      ).annotate({ identifier: "ListThirdPartyFirewallFirewallPoliciesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           FirewallPolicyId: S.optional(S.String),
           FirewallPolicyName: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ThirdPartyFirewallFirewallPolicy",
-      });
+      ).annotate({ identifier: "ThirdPartyFirewallFirewallPolicy" });
     case 2:
-      return S.Array(__S(1345, __c42, 1));
+      return S.Array(__S(1313, __c41, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ThirdPartyFirewallFirewallPolicies: S.optional(__S(1346, __c42, 2)),
+          ThirdPartyFirewallFirewallPolicies: S.optional(__S(1314, __c41, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListThirdPartyFirewallFirewallPoliciesResponse",
-      });
+      ).annotate({ identifier: "ListThirdPartyFirewallFirewallPoliciesResponse" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AdminAccount: S.String, AdminScope: S.optional(__S(324, __c10, 4)) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "PutAdminAccountRequest" });
   }
 }
 function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ AdminAccount: S.String, AdminScope: S.optional(__S(356, __c11, 4)) }).pipe(
+        S.Struct({ AppsList: __S(417, __c13, 1), TagList: S.optional(__S(929, __c29, 1)) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({ identifier: "PutAdminAccountRequest" });
+      ).annotate({ identifier: "PutAppsListRequest" });
   }
 }
 function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ AppsList: __S(449, __c14, 1), TagList: S.optional(__S(961, __c30, 1)) }).pipe(
+        S.Struct({ SnsTopicArn: S.String, SnsRoleName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({ identifier: "PutAppsListRequest" });
+      ).annotate({ identifier: "PutNotificationChannelRequest" });
   }
 }
 function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ SnsTopicArn: S.String, SnsRoleName: S.String }).pipe(
+        S.Struct({ Policy: __S(617, __c19, 9), TagList: S.optional(__S(929, __c29, 1)) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "PutNotificationChannelRequest",
-      });
+      ).annotate({ identifier: "PutPolicyRequest" });
   }
 }
 function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Policy: __S(649, __c20, 9), TagList: S.optional(__S(961, __c30, 1)) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "PutPolicyRequest" });
+        S.Struct({
+          ProtocolsList: __S(705, __c22, 1),
+          TagList: S.optional(__S(929, __c29, 1)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "PutProtocolsListRequest" });
   }
 }
 function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          ProtocolsList: __S(737, __c23, 1),
-          TagList: S.optional(__S(961, __c30, 1)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "PutProtocolsListRequest" });
+        S.Struct({ ResourceSet: __S(768, __c24, 0), TagList: S.optional(__S(929, __c29, 1)) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "PutResourceSetRequest" });
   }
 }
 function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceSet: __S(800, __c25, 0), TagList: S.optional(__S(961, __c30, 1)) }).pipe(
+        S.Struct({ ResourceArn: S.String, TagList: __S(929, __c29, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({ identifier: "PutResourceSetRequest" });
+      ).annotate({ identifier: "TagResourceRequest" });
   }
 }
 function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, TagList: __S(961, __c30, 1) }).pipe(
+        S.Struct({ ResourceArn: S.String, TagKeys: __S(1792, __c56, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({ identifier: "TagResourceRequest" });
+      ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
 function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, TagKeys: __S(1824, __c57, 0) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "UntagResourceRequest" });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
         S.Struct({ AdminAccount: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "AssociateAdminAccountRequest",
-      });
+      ).annotate({ identifier: "AssociateAdminAccountRequest" });
   }
 }
-function __c52(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
@@ -3989,72 +3839,62 @@ function __c52(j: number): any {
       });
   }
 }
-function __c53(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ ThirdPartyFirewall: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "AssociateThirdPartyFirewallRequest",
-      });
+      ).annotate({ identifier: "AssociateThirdPartyFirewallRequest" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ ThirdPartyFirewallStatus: S.optional(S.String) })).annotate(
+        { identifier: "AssociateThirdPartyFirewallResponse" },
+      );
   }
 }
 function __c54(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ ThirdPartyFirewallStatus: S.optional(S.String) })).annotate(
-        {
-          identifier: "AssociateThirdPartyFirewallResponse",
-        },
-      );
+      return S.suspend(() =>
+        S.Struct({ ResourceSetIdentifier: S.String, Items: __S(1792, __c56, 0) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "BatchAssociateResourceRequest" });
   }
 }
 function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceSetIdentifier: S.String, Items: __S(1824, __c57, 0) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "BatchAssociateResourceRequest",
-      });
+        S.Struct({ URI: S.optional(S.String), Reason: S.optional(S.String) }),
+      ).annotate({ identifier: "FailedItem" });
+    case 1:
+      return S.Array(__S(1760, __c55, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ ResourceSetIdentifier: S.String, FailedItems: __S(1761, __c55, 1) }),
+      ).annotate({ identifier: "BatchAssociateResourceResponse" });
   }
 }
 function __c56(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ URI: S.optional(S.String), Reason: S.optional(S.String) }),
-      ).annotate({ identifier: "FailedItem" });
-    case 1:
-      return S.Array(__S(1792, __c56, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ ResourceSetIdentifier: S.String, FailedItems: __S(1793, __c56, 1) }),
-      ).annotate({
-        identifier: "BatchAssociateResourceResponse",
-      });
+      return S.Array(S.String);
   }
 }
 function __c57(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-  }
-}
-function __c58(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceSetIdentifier: S.String, Items: __S(1824, __c57, 0) }).pipe(
+        S.Struct({ ResourceSetIdentifier: S.String, Items: __S(1792, __c56, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "BatchDisassociateResourceRequest",
-      });
+      ).annotate({ identifier: "BatchDisassociateResourceRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

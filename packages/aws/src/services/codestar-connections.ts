@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -864,7 +864,7 @@ export const getRepositoryLink: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(76, __c19, 0) as any as S.Schema<GetRepositoryLinkInput>,
-  output: __S(77, __c19, 1) as any as S.Schema<GetRepositoryLinkOutput>,
+  output: __S(28, __c7, 0) as any as S.Schema<GetRepositoryLinkOutput>,
   errors: [
     AccessDeniedException,
     ConcurrentModificationException,
@@ -1415,9 +1415,7 @@ function __c5(j: number): any {
           EncryptionKeyArn: S.optional(S.String),
           Tags: S.optional(__S(5, __c1, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateRepositoryLinkInput",
-      });
+      ).annotate({ identifier: "CreateRepositoryLinkInput" });
   }
 }
 function __c6(j: number): any {
@@ -1458,9 +1456,7 @@ function __c8(j: number): any {
           PublishDeploymentStatus: S.optional(S.String),
           TriggerResourceUpdateOn: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateSyncConfigurationInput",
-      });
+      ).annotate({ identifier: "CreateSyncConfigurationInput" });
   }
 }
 function __c9(j: number): any {
@@ -1504,9 +1500,7 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteConnectionOutput",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteConnectionOutput" });
   }
 }
 function __c13(j: number): any {
@@ -1526,9 +1520,7 @@ function __c14(j: number): any {
         S.Struct({ RepositoryLinkId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteRepositoryLinkInput",
-      });
+      ).annotate({ identifier: "DeleteRepositoryLinkInput" });
   }
 }
 function __c15(j: number): any {
@@ -1538,9 +1530,7 @@ function __c15(j: number): any {
         S.Struct({ SyncType: S.String, ResourceName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteSyncConfigurationInput",
-      });
+      ).annotate({ identifier: "DeleteSyncConfigurationInput" });
   }
 }
 function __c16(j: number): any {
@@ -1600,10 +1590,6 @@ function __c19(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetRepositoryLinkInput" });
-    case 1:
-      return S.suspend(() => S.Struct({ RepositoryLinkInfo: __S(24, __c6, 0) })).annotate({
-        identifier: "GetRepositoryLinkOutput",
-      });
   }
 }
 function __c20(j: number): any {
@@ -1613,9 +1599,7 @@ function __c20(j: number): any {
         S.Struct({ Branch: S.String, RepositoryLinkId: S.String, SyncType: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetRepositorySyncStatusInput",
-      });
+      ).annotate({ identifier: "GetRepositorySyncStatusInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1652,9 +1636,7 @@ function __c22(j: number): any {
         S.Struct({ ResourceName: S.String, SyncType: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetResourceSyncStatusInput",
-      });
+      ).annotate({ identifier: "GetResourceSyncStatusInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1684,9 +1666,7 @@ function __c22(j: number): any {
           LatestSuccessfulSync: S.optional(__S(90, __c22, 2)),
           LatestSync: __S(90, __c22, 2),
         }),
-      ).annotate({
-        identifier: "GetResourceSyncStatusOutput",
-      });
+      ).annotate({ identifier: "GetResourceSyncStatusOutput" });
   }
 }
 function __c23(j: number): any {
@@ -1696,9 +1676,7 @@ function __c23(j: number): any {
         S.Struct({ SyncType: S.String, ResourceName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetSyncBlockerSummaryInput",
-      });
+      ).annotate({ identifier: "GetSyncBlockerSummaryInput" });
     case 1:
       return S.Array(__S(96, __c24, 0));
     case 2:
@@ -1739,9 +1717,7 @@ function __c25(j: number): any {
         S.Struct({ SyncType: S.String, ResourceName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetSyncConfigurationInput",
-      });
+      ).annotate({ identifier: "GetSyncConfigurationInput" });
   }
 }
 function __c26(j: number): any {
@@ -1804,9 +1780,7 @@ function __c28(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ RepositoryLinks: __S(113, __c28, 1), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListRepositoryLinksOutput",
-      });
+      ).annotate({ identifier: "ListRepositoryLinksOutput" });
   }
 }
 function __c29(j: number): any {
@@ -1816,9 +1790,7 @@ function __c29(j: number): any {
         S.Struct({ RepositoryLinkId: S.String, SyncType: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListRepositorySyncDefinitionsInput",
-      });
+      ).annotate({ identifier: "ListRepositorySyncDefinitionsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Branch: S.String, Directory: S.String, Parent: S.String, Target: S.String }),
@@ -1831,9 +1803,7 @@ function __c29(j: number): any {
           RepositorySyncDefinitions: __S(118, __c29, 2),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListRepositorySyncDefinitionsOutput",
-      });
+      ).annotate({ identifier: "ListRepositorySyncDefinitionsOutput" });
   }
 }
 function __c30(j: number): any {
@@ -1846,17 +1816,13 @@ function __c30(j: number): any {
           RepositoryLinkId: S.String,
           SyncType: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListSyncConfigurationsInput",
-      });
+      ).annotate({ identifier: "ListSyncConfigurationsInput" });
     case 1:
       return S.Array(__S(36, __c9, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ SyncConfigurations: __S(121, __c30, 1), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListSyncConfigurationsOutput",
-      });
+      ).annotate({ identifier: "ListSyncConfigurationsOutput" });
   }
 }
 function __c31(j: number): any {
@@ -1914,9 +1880,7 @@ function __c35(j: number): any {
           EncryptionKeyArn: S.optional(S.String),
           RepositoryLinkId: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateRepositoryLinkInput",
-      });
+      ).annotate({ identifier: "UpdateRepositoryLinkInput" });
   }
 }
 function __c36(j: number): any {
@@ -1954,9 +1918,7 @@ function __c37(j: number): any {
           PublishDeploymentStatus: S.optional(S.String),
           TriggerResourceUpdateOn: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateSyncConfigurationInput",
-      });
+      ).annotate({ identifier: "UpdateSyncConfigurationInput" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

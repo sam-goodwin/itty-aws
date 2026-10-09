@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -667,8 +667,8 @@ export const acceptQualificationRequest: API.OperationMethod<
   AcceptQualificationRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<AcceptQualificationRequestRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<AcceptQualificationRequestResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<AcceptQualificationRequestRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<AcceptQualificationRequestResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -701,8 +701,8 @@ export const approveAssignment: API.OperationMethod<
   ApproveAssignmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<ApproveAssignmentRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<ApproveAssignmentResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<ApproveAssignmentRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<ApproveAssignmentResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -731,8 +731,8 @@ export const associateQualificationWithWorker: API.OperationMethod<
   AssociateQualificationWithWorkerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<AssociateQualificationWithWorkerRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<AssociateQualificationWithWorkerResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<AssociateQualificationWithWorkerRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<AssociateQualificationWithWorkerResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -762,8 +762,8 @@ export const createAdditionalAssignmentsForHIT: API.OperationMethod<
   CreateAdditionalAssignmentsForHITError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<CreateAdditionalAssignmentsForHITRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<CreateAdditionalAssignmentsForHITResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<CreateAdditionalAssignmentsForHITRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<CreateAdditionalAssignmentsForHITResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -793,8 +793,8 @@ export const createHIT: API.OperationMethod<
   CreateHITError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<CreateHITRequest>,
-  output: __S(352, __c44, 0) as any as S.Schema<CreateHITResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<CreateHITRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<CreateHITResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -814,8 +814,8 @@ export const createHITType: API.OperationMethod<
   CreateHITTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(408, __c51, 0) as any as S.Schema<CreateHITTypeRequest>,
-  output: __S(409, __c51, 1) as any as S.Schema<CreateHITTypeResponse>,
+  input: __S(392, __c49, 0) as any as S.Schema<CreateHITTypeRequest>,
+  output: __S(393, __c49, 1) as any as S.Schema<CreateHITTypeResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -843,8 +843,8 @@ export const createHITWithHITType: API.OperationMethod<
   CreateHITWithHITTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<CreateHITWithHITTypeRequest>,
-  output: __S(417, __c52, 1) as any as S.Schema<CreateHITWithHITTypeResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<CreateHITWithHITTypeRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<CreateHITWithHITTypeResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -865,8 +865,8 @@ export const createQualificationType: API.OperationMethod<
   CreateQualificationTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<CreateQualificationTypeRequest>,
-  output: __S(440, __c55, 0) as any as S.Schema<CreateQualificationTypeResponse>,
+  input: __S(408, __c51, 0) as any as S.Schema<CreateQualificationTypeRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<CreateQualificationTypeResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -884,7 +884,7 @@ export const createWorkerBlock: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateWorkerBlockRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<CreateWorkerBlockResponse>,
+  output: __S(104, __c13, 0) as any as S.Schema<CreateWorkerBlockResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -918,7 +918,7 @@ export const deleteHIT: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(8, __c1, 0) as any as S.Schema<DeleteHITRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteHITResponse>,
+  output: __S(104, __c13, 0) as any as S.Schema<DeleteHITResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -951,8 +951,8 @@ export const deleteQualificationType: API.OperationMethod<
   DeleteQualificationTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeleteQualificationTypeRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<DeleteQualificationTypeResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteQualificationTypeRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<DeleteQualificationTypeResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -969,8 +969,8 @@ export const deleteWorkerBlock: API.OperationMethod<
   DeleteWorkerBlockError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DeleteWorkerBlockRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<DeleteWorkerBlockResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<DeleteWorkerBlockRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<DeleteWorkerBlockResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -991,8 +991,8 @@ export const disassociateQualificationFromWorker: API.OperationMethod<
   DisassociateQualificationFromWorkerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DisassociateQualificationFromWorkerRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<DisassociateQualificationFromWorkerResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<DisassociateQualificationFromWorkerRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<DisassociateQualificationFromWorkerResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1011,8 +1011,8 @@ export const getAccountBalance: API.OperationMethod<
   GetAccountBalanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetAccountBalanceRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<GetAccountBalanceResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetAccountBalanceRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<GetAccountBalanceResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1029,8 +1029,8 @@ export const getAssignment: API.OperationMethod<
   GetAssignmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetAssignmentRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<GetAssignmentResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetAssignmentRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<GetAssignmentResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1061,8 +1061,8 @@ export const getFileUploadURL: API.OperationMethod<
   GetFileUploadURLError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<GetFileUploadURLRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<GetFileUploadURLResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetFileUploadURLRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<GetFileUploadURLResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1079,8 +1079,8 @@ export const getHIT: API.OperationMethod<
   GetHITError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<GetHITRequest>,
-  output: __S(352, __c44, 0) as any as S.Schema<GetHITResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetHITRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<GetHITResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1108,8 +1108,8 @@ export const getQualificationScore: API.OperationMethod<
   GetQualificationScoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<GetQualificationScoreRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<GetQualificationScoreResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetQualificationScoreRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<GetQualificationScoreResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1126,8 +1126,8 @@ export const getQualificationType: API.OperationMethod<
   GetQualificationTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<GetQualificationTypeRequest>,
-  output: __S(440, __c55, 0) as any as S.Schema<GetQualificationTypeResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetQualificationTypeRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<GetQualificationTypeResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1169,8 +1169,8 @@ export const listAssignmentsForHIT: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<ListAssignmentsForHITRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<ListAssignmentsForHITResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<ListAssignmentsForHITRequest>,
+  output: __S(122, __c15, 2) as any as S.Schema<ListAssignmentsForHITResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1196,8 +1196,8 @@ export const listBonusPayments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<ListBonusPaymentsRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<ListBonusPaymentsResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<ListBonusPaymentsRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<ListBonusPaymentsResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1224,7 +1224,7 @@ export const listHITs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<ListHITsRequest>,
+  input: __S(144, __c18, 0) as any as S.Schema<ListHITsRequest>,
   output: __S(153, __c19, 1) as any as S.Schema<ListHITsResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
@@ -1251,8 +1251,8 @@ export const listHITsForQualificationType: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<ListHITsForQualificationTypeRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<ListHITsForQualificationTypeResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<ListHITsForQualificationTypeRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<ListHITsForQualificationTypeResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1280,8 +1280,8 @@ export const listQualificationRequests: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<ListQualificationRequestsRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<ListQualificationRequestsResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<ListQualificationRequestsRequest>,
+  output: __S(171, __c21, 3) as any as S.Schema<ListQualificationRequestsResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1307,8 +1307,8 @@ export const listQualificationTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<ListQualificationTypesRequest>,
-  output: __S(194, __c24, 2) as any as S.Schema<ListQualificationTypesResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<ListQualificationTypesRequest>,
+  output: __S(178, __c22, 2) as any as S.Schema<ListQualificationTypesResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1332,8 +1332,8 @@ export const listReviewableHITs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<ListReviewableHITsRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<ListReviewableHITsResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<ListReviewableHITsRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<ListReviewableHITsResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1360,8 +1360,8 @@ export const listReviewPolicyResultsForHIT: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<ListReviewPolicyResultsForHITRequest>,
-  output: __S(214, __c26, 6) as any as S.Schema<ListReviewPolicyResultsForHITResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<ListReviewPolicyResultsForHITRequest>,
+  output: __S(198, __c24, 6) as any as S.Schema<ListReviewPolicyResultsForHITResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1384,8 +1384,8 @@ export const listWorkerBlocks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<ListWorkerBlocksRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<ListWorkerBlocksResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<ListWorkerBlocksRequest>,
+  output: __S(203, __c25, 3) as any as S.Schema<ListWorkerBlocksResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1409,8 +1409,8 @@ export const listWorkersWithQualificationType: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<ListWorkersWithQualificationTypeRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<ListWorkersWithQualificationTypeResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<ListWorkersWithQualificationTypeRequest>,
+  output: __S(218, __c27, 2) as any as S.Schema<ListWorkersWithQualificationTypeResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1439,8 +1439,8 @@ export const notifyWorkers: API.OperationMethod<
   NotifyWorkersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<NotifyWorkersRequest>,
-  output: __S(243, __c30, 3) as any as S.Schema<NotifyWorkersResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<NotifyWorkersRequest>,
+  output: __S(227, __c28, 3) as any as S.Schema<NotifyWorkersResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1465,8 +1465,8 @@ export const rejectAssignment: API.OperationMethod<
   RejectAssignmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<RejectAssignmentRequest>,
-  output: __S(249, __c31, 1) as any as S.Schema<RejectAssignmentResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<RejectAssignmentRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<RejectAssignmentResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1488,8 +1488,8 @@ export const rejectQualificationRequest: API.OperationMethod<
   RejectQualificationRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<RejectQualificationRequestRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<RejectQualificationRequestResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<RejectQualificationRequestRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<RejectQualificationRequestResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1517,8 +1517,8 @@ export const sendBonus: API.OperationMethod<
   SendBonusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<SendBonusRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<SendBonusResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<SendBonusRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<SendBonusResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1539,8 +1539,8 @@ export const sendTestEventNotification: API.OperationMethod<
   SendTestEventNotificationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<SendTestEventNotificationRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<SendTestEventNotificationResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<SendTestEventNotificationRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<SendTestEventNotificationResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1558,8 +1558,8 @@ export const updateExpirationForHIT: API.OperationMethod<
   UpdateExpirationForHITError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<UpdateExpirationForHITRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<UpdateExpirationForHITResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<UpdateExpirationForHITRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<UpdateExpirationForHITResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1578,8 +1578,8 @@ export const updateHITReviewStatus: API.OperationMethod<
   UpdateHITReviewStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<UpdateHITReviewStatusRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<UpdateHITReviewStatusResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<UpdateHITReviewStatusRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<UpdateHITReviewStatusResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1601,8 +1601,8 @@ export const updateHITTypeOfHIT: API.OperationMethod<
   UpdateHITTypeOfHITError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<UpdateHITTypeOfHITRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<UpdateHITTypeOfHITResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<UpdateHITTypeOfHITRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<UpdateHITTypeOfHITResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1628,8 +1628,8 @@ export const updateNotificationSettings: API.OperationMethod<
   UpdateNotificationSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<UpdateNotificationSettingsRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<UpdateNotificationSettingsResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<UpdateNotificationSettingsRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<UpdateNotificationSettingsResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1682,8 +1682,8 @@ export const updateQualificationType: API.OperationMethod<
   UpdateQualificationTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<UpdateQualificationTypeRequest>,
-  output: __S(440, __c55, 0) as any as S.Schema<UpdateQualificationTypeResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<UpdateQualificationTypeRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<UpdateQualificationTypeResponse>,
   errors: [RequestError, ServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1714,24 +1714,14 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeleteHITResponse",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({ QualificationTypeId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteQualificationTypeRequest",
-      });
+      ).annotate({ identifier: "DeleteQualificationTypeRequest" });
   }
 }
-function __c4(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1741,7 +1731,7 @@ function __c4(j: number): any {
       ).annotate({ identifier: "DeleteWorkerBlockRequest" });
   }
 }
-function __c5(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1750,12 +1740,10 @@ function __c5(j: number): any {
           QualificationTypeId: S.String,
           Reason: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisassociateQualificationFromWorkerRequest",
-      });
+      ).annotate({ identifier: "DisassociateQualificationFromWorkerRequest" });
   }
 }
-function __c6(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1769,12 +1757,10 @@ function __c6(j: number): any {
           AvailableBalance: S.optional(S.String),
           OnHoldBalance: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetAccountBalanceResponse",
-      });
+      ).annotate({ identifier: "GetAccountBalanceResponse" });
   }
 }
-function __c7(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1785,13 +1771,13 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Assignment: S.optional(__S(64, __c8, 0)),
-          HIT: S.optional(__S(384, __c48, 0)),
+          Assignment: S.optional(__S(56, __c7, 0)),
+          HIT: S.optional(__S(360, __c45, 0)),
         }).pipe(ns),
       ).annotate({ identifier: "GetAssignmentResponse" });
   }
 }
-function __c8(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1812,7 +1798,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "Assignment" });
   }
 }
-function __c9(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1826,7 +1812,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1836,25 +1822,21 @@ function __c10(j: number): any {
       ).annotate({ identifier: "GetHITRequest" });
   }
 }
-function __c11(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ QualificationTypeId: S.String, WorkerId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetQualificationScoreRequest",
-      });
+      ).annotate({ identifier: "GetQualificationScoreRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Qualification: S.optional(__S(96, __c12, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetQualificationScoreResponse",
-      });
+        S.Struct({ Qualification: S.optional(__S(88, __c11, 0)) }).pipe(ns),
+      ).annotate({ identifier: "GetQualificationScoreResponse" });
   }
 }
-function __c12(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1863,25 +1845,23 @@ function __c12(j: number): any {
           WorkerId: S.optional(S.String),
           GrantTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           IntegerValue: S.optional(S.Number),
-          LocaleValue: S.optional(__S(360, __c45, 0)),
+          LocaleValue: S.optional(__S(336, __c42, 0)),
           Status: S.optional(S.String),
         }),
       ).annotate({ identifier: "Qualification" });
   }
 }
-function __c13(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ QualificationRequestId: S.String, IntegerValue: S.optional(S.Number) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "AcceptQualificationRequestRequest",
-      });
+      ).annotate({ identifier: "AcceptQualificationRequestRequest" });
   }
 }
-function __c14(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
@@ -1889,19 +1869,17 @@ function __c14(j: number): any {
       });
   }
 }
-function __c15(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ QualificationTypeId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetQualificationTypeRequest",
-      });
+      ).annotate({ identifier: "GetQualificationTypeRequest" });
   }
 }
-function __c16(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1909,32 +1887,28 @@ function __c16(j: number): any {
           HITId: S.String,
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          AssignmentStatuses: S.optional(__S(136, __c17, 0)),
+          AssignmentStatuses: S.optional(__S(128, __c16, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListAssignmentsForHITRequest",
-      });
+      ).annotate({ identifier: "ListAssignmentsForHITRequest" });
     case 1:
-      return S.Array(__S(64, __c8, 0));
+      return S.Array(__S(56, __c7, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           NumResults: S.optional(S.Number),
-          Assignments: S.optional(__S(129, __c16, 1)),
+          Assignments: S.optional(__S(121, __c15, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListAssignmentsForHITResponse",
-      });
+      ).annotate({ identifier: "ListAssignmentsForHITResponse" });
   }
 }
-function __c17(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c18(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1956,20 +1930,18 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "BonusPayment" });
     case 2:
-      return S.Array(__S(145, __c18, 1));
+      return S.Array(__S(137, __c17, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           NumResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          BonusPayments: S.optional(__S(146, __c18, 2)),
+          BonusPayments: S.optional(__S(138, __c17, 2)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListBonusPaymentsResponse",
-      });
+      ).annotate({ identifier: "ListBonusPaymentsResponse" });
   }
 }
-function __c19(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1977,23 +1949,23 @@ function __c19(j: number): any {
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListHITsRequest" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(360, __c45, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           NumResults: S.optional(S.Number),
-          HITs: S.optional(__S(160, __c20, 0)),
+          HITs: S.optional(__S(152, __c19, 0)),
         }).pipe(ns),
       ).annotate({ identifier: "ListHITsResponse" });
   }
 }
 function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(384, __c48, 0));
-  }
-}
-function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2002,26 +1974,10 @@ function __c21(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListHITsForQualificationTypeRequest",
-      });
+      ).annotate({ identifier: "ListHITsForQualificationTypeRequest" });
   }
 }
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          NextToken: S.optional(S.String),
-          NumResults: S.optional(S.Number),
-          HITs: S.optional(__S(160, __c20, 0)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "ListHITsForQualificationTypeResponse",
-      });
-  }
-}
-function __c23(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2030,9 +1986,7 @@ function __c23(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListQualificationRequestsRequest",
-      });
+      ).annotate({ identifier: "ListQualificationRequestsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2045,20 +1999,18 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "QualificationRequest" });
     case 2:
-      return S.Array(__S(185, __c23, 1));
+      return S.Array(__S(169, __c21, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           NumResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          QualificationRequests: S.optional(__S(186, __c23, 2)),
+          QualificationRequests: S.optional(__S(170, __c21, 2)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListQualificationRequestsResponse",
-      });
+      ).annotate({ identifier: "ListQualificationRequestsResponse" });
   }
 }
-function __c24(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2069,24 +2021,20 @@ function __c24(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListQualificationTypesRequest",
-      });
+      ).annotate({ identifier: "ListQualificationTypesRequest" });
     case 1:
-      return S.Array(__S(432, __c54, 0));
+      return S.Array(__S(416, __c52, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           NumResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          QualificationTypes: S.optional(__S(193, __c24, 1)),
+          QualificationTypes: S.optional(__S(177, __c22, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListQualificationTypesResponse",
-      });
+      ).annotate({ identifier: "ListQualificationTypesResponse" });
   }
 }
-function __c25(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2096,26 +2044,22 @@ function __c25(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListReviewableHITsRequest",
-      });
+      ).annotate({ identifier: "ListReviewableHITsRequest" });
   }
 }
-function __c26(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           HITId: S.String,
-          PolicyLevels: S.optional(__S(136, __c17, 0)),
+          PolicyLevels: S.optional(__S(128, __c16, 0)),
           RetrieveActions: S.optional(S.Boolean),
           RetrieveResults: S.optional(S.Boolean),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListReviewPolicyResultsForHITRequest",
-      });
+      ).annotate({ identifier: "ListReviewPolicyResultsForHITRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2128,7 +2072,7 @@ function __c26(j: number): any {
         }),
       ).annotate({ identifier: "ReviewResultDetail" });
     case 2:
-      return S.Array(__S(209, __c26, 1));
+      return S.Array(__S(193, __c24, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2143,30 +2087,28 @@ function __c26(j: number): any {
         }),
       ).annotate({ identifier: "ReviewActionDetail" });
     case 4:
-      return S.Array(__S(211, __c26, 3));
+      return S.Array(__S(195, __c24, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ReviewResults: S.optional(__S(210, __c26, 2)),
-          ReviewActions: S.optional(__S(212, __c26, 4)),
+          ReviewResults: S.optional(__S(194, __c24, 2)),
+          ReviewActions: S.optional(__S(196, __c24, 4)),
         }),
       ).annotate({ identifier: "ReviewReport" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           HITId: S.optional(S.String),
-          AssignmentReviewPolicy: S.optional(__S(396, __c49, 4)),
-          HITReviewPolicy: S.optional(__S(396, __c49, 4)),
-          AssignmentReviewReport: S.optional(__S(213, __c26, 5)),
-          HITReviewReport: S.optional(__S(213, __c26, 5)),
+          AssignmentReviewPolicy: S.optional(__S(380, __c47, 4)),
+          HITReviewPolicy: S.optional(__S(380, __c47, 4)),
+          AssignmentReviewReport: S.optional(__S(197, __c24, 5)),
+          HITReviewReport: S.optional(__S(197, __c24, 5)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListReviewPolicyResultsForHITResponse",
-      });
+      ).annotate({ identifier: "ListReviewPolicyResultsForHITResponse" });
   }
 }
-function __c27(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2179,18 +2121,18 @@ function __c27(j: number): any {
         S.Struct({ WorkerId: S.optional(S.String), Reason: S.optional(S.String) }),
       ).annotate({ identifier: "WorkerBlock" });
     case 2:
-      return S.Array(__S(217, __c27, 1));
+      return S.Array(__S(201, __c25, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           NumResults: S.optional(S.Number),
-          WorkerBlocks: S.optional(__S(218, __c27, 2)),
+          WorkerBlocks: S.optional(__S(202, __c25, 2)),
         }).pipe(ns),
       ).annotate({ identifier: "ListWorkerBlocksResponse" });
   }
 }
-function __c28(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2202,7 +2144,7 @@ function __c28(j: number): any {
       ).annotate({ identifier: "ApproveAssignmentRequest" });
   }
 }
-function __c29(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2212,28 +2154,24 @@ function __c29(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListWorkersWithQualificationTypeRequest",
-      });
+      ).annotate({ identifier: "ListWorkersWithQualificationTypeRequest" });
     case 1:
-      return S.Array(__S(96, __c12, 0));
+      return S.Array(__S(88, __c11, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           NumResults: S.optional(S.Number),
-          Qualifications: S.optional(__S(233, __c29, 1)),
+          Qualifications: S.optional(__S(217, __c27, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListWorkersWithQualificationTypeResponse",
-      });
+      ).annotate({ identifier: "ListWorkersWithQualificationTypeResponse" });
   }
 }
-function __c30(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Subject: S.String, MessageText: S.String, WorkerIds: __S(400, __c50, 0) }).pipe(
+        S.Struct({ Subject: S.String, MessageText: S.String, WorkerIds: __S(384, __c48, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "NotifyWorkersRequest" });
@@ -2244,18 +2182,16 @@ function __c30(j: number): any {
           NotifyWorkersFailureMessage: S.optional(S.String),
           WorkerId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "NotifyWorkersFailureStatus",
-      });
+      ).annotate({ identifier: "NotifyWorkersFailureStatus" });
     case 2:
-      return S.Array(__S(241, __c30, 1));
+      return S.Array(__S(225, __c28, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ NotifyWorkersFailureStatuses: S.optional(__S(242, __c30, 2)) }).pipe(ns),
+        S.Struct({ NotifyWorkersFailureStatuses: S.optional(__S(226, __c28, 2)) }).pipe(ns),
       ).annotate({ identifier: "NotifyWorkersResponse" });
   }
 }
-function __c31(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2263,25 +2199,19 @@ function __c31(j: number): any {
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "RejectAssignmentRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "RejectAssignmentResponse",
-      });
   }
 }
-function __c32(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ QualificationRequestId: S.String, Reason: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "RejectQualificationRequestRequest",
-      });
+      ).annotate({ identifier: "RejectQualificationRequestRequest" });
   }
 }
-function __c33(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2295,19 +2225,17 @@ function __c33(j: number): any {
       ).annotate({ identifier: "SendBonusRequest" });
   }
 }
-function __c34(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Notification: __S(280, __c35, 0), TestEventType: S.String }).pipe(
+        S.Struct({ Notification: __S(264, __c33, 0), TestEventType: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "SendTestEventNotificationRequest",
-      });
+      ).annotate({ identifier: "SendTestEventNotificationRequest" });
   }
 }
-function __c35(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2315,14 +2243,12 @@ function __c35(j: number): any {
           Destination: S.String,
           Transport: S.String,
           Version: S.String,
-          EventTypes: __S(136, __c17, 0),
+          EventTypes: __S(128, __c16, 0),
         }),
-      ).annotate({
-        identifier: "NotificationSpecification",
-      });
+      ).annotate({ identifier: "NotificationSpecification" });
   }
 }
-function __c36(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2330,50 +2256,42 @@ function __c36(j: number): any {
           HITId: S.String,
           ExpireAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateExpirationForHITRequest",
-      });
+      ).annotate({ identifier: "UpdateExpirationForHITRequest" });
   }
 }
-function __c37(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ HITId: S.String, Revert: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateHITReviewStatusRequest",
-      });
+      ).annotate({ identifier: "UpdateHITReviewStatusRequest" });
   }
 }
-function __c38(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ HITId: S.String, HITTypeId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateHITTypeOfHITRequest",
-      });
+      ).annotate({ identifier: "UpdateHITTypeOfHITRequest" });
   }
 }
-function __c39(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           HITTypeId: S.String,
-          Notification: S.optional(__S(280, __c35, 0)),
+          Notification: S.optional(__S(264, __c33, 0)),
           Active: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateNotificationSettingsRequest",
-      });
+      ).annotate({ identifier: "UpdateNotificationSettingsRequest" });
   }
 }
-function __c40(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2383,12 +2301,10 @@ function __c40(j: number): any {
           IntegerValue: S.optional(S.Number),
           SendNotification: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssociateQualificationWithWorkerRequest",
-      });
+      ).annotate({ identifier: "AssociateQualificationWithWorkerRequest" });
   }
 }
-function __c41(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2403,12 +2319,10 @@ function __c41(j: number): any {
           AutoGranted: S.optional(S.Boolean),
           AutoGrantedValue: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateQualificationTypeRequest",
-      });
+      ).annotate({ identifier: "UpdateQualificationTypeRequest" });
   }
 }
-function __c42(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2417,12 +2331,10 @@ function __c42(j: number): any {
           NumberOfAdditionalAssignments: S.Number,
           UniqueRequestToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateAdditionalAssignmentsForHITRequest",
-      });
+      ).annotate({ identifier: "CreateAdditionalAssignmentsForHITRequest" });
   }
 }
-function __c43(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2437,25 +2349,17 @@ function __c43(j: number): any {
           Description: S.String,
           Question: S.optional(S.String),
           RequesterAnnotation: S.optional(S.String),
-          QualificationRequirements: S.optional(__S(371, __c46, 3)),
+          QualificationRequirements: S.optional(__S(347, __c43, 3)),
           UniqueRequestToken: S.optional(S.String),
-          AssignmentReviewPolicy: S.optional(__S(396, __c49, 4)),
-          HITReviewPolicy: S.optional(__S(396, __c49, 4)),
+          AssignmentReviewPolicy: S.optional(__S(380, __c47, 4)),
+          HITReviewPolicy: S.optional(__S(380, __c47, 4)),
           HITLayoutId: S.optional(S.String),
-          HITLayoutParameters: S.optional(__S(377, __c47, 1)),
+          HITLayoutParameters: S.optional(__S(353, __c44, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateHITRequest" });
   }
 }
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ HIT: S.optional(__S(384, __c48, 0)) }).pipe(ns)).annotate({
-        identifier: "CreateHITResponse",
-      });
-  }
-}
-function __c45(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2463,38 +2367,38 @@ function __c45(j: number): any {
       ).annotate({ identifier: "Locale" });
   }
 }
-function __c46(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.Number);
     case 1:
-      return S.Array(__S(360, __c45, 0));
+      return S.Array(__S(336, __c42, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           QualificationTypeId: S.String,
           Comparator: S.String,
-          IntegerValues: S.optional(__S(368, __c46, 0)),
-          LocaleValues: S.optional(__S(369, __c46, 1)),
+          IntegerValues: S.optional(__S(344, __c43, 0)),
+          LocaleValues: S.optional(__S(345, __c43, 1)),
           RequiredToPreview: S.optional(S.Boolean),
           ActionsGuarded: S.optional(S.String),
         }),
       ).annotate({ identifier: "QualificationRequirement" });
     case 3:
-      return S.Array(__S(370, __c46, 2));
+      return S.Array(__S(346, __c43, 2));
   }
 }
-function __c47(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Name: S.String, Value: S.String })).annotate({
         identifier: "HITLayoutParameter",
       });
     case 1:
-      return S.Array(__S(376, __c47, 0));
+      return S.Array(__S(352, __c44, 0));
   }
 }
-function __c48(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2515,7 +2419,7 @@ function __c48(j: number): any {
           Expiration: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           AssignmentDurationInSeconds: S.optional(S.Number),
           RequesterAnnotation: S.optional(S.String),
-          QualificationRequirements: S.optional(__S(371, __c46, 3)),
+          QualificationRequirements: S.optional(__S(347, __c43, 3)),
           HITReviewStatus: S.optional(S.String),
           NumberOfAssignmentsPending: S.optional(S.Number),
           NumberOfAssignmentsAvailable: S.optional(S.Number),
@@ -2524,37 +2428,45 @@ function __c48(j: number): any {
       ).annotate({ identifier: "HIT" });
   }
 }
-function __c49(j: number): any {
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ HIT: S.optional(__S(360, __c45, 0)) }).pipe(ns)).annotate({
+        identifier: "CreateHITResponse",
+      });
+  }
+}
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Key: S.optional(S.String), Values: S.optional(__S(400, __c50, 0)) }),
+        S.Struct({ Key: S.optional(S.String), Values: S.optional(__S(384, __c48, 0)) }),
       ).annotate({ identifier: "ParameterMapEntry" });
     case 1:
-      return S.Array(__S(392, __c49, 0));
+      return S.Array(__S(376, __c47, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           Key: S.optional(S.String),
-          Values: S.optional(__S(400, __c50, 0)),
-          MapEntries: S.optional(__S(393, __c49, 1)),
+          Values: S.optional(__S(384, __c48, 0)),
+          MapEntries: S.optional(__S(377, __c47, 1)),
         }),
       ).annotate({ identifier: "PolicyParameter" });
     case 3:
-      return S.Array(__S(394, __c49, 2));
+      return S.Array(__S(378, __c47, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ PolicyName: S.String, Parameters: S.optional(__S(395, __c49, 3)) }),
+        S.Struct({ PolicyName: S.String, Parameters: S.optional(__S(379, __c47, 3)) }),
       ).annotate({ identifier: "ReviewPolicy" });
   }
 }
-function __c50(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c51(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2565,7 +2477,7 @@ function __c51(j: number): any {
           Title: S.String,
           Keywords: S.optional(S.String),
           Description: S.String,
-          QualificationRequirements: S.optional(__S(371, __c46, 3)),
+          QualificationRequirements: S.optional(__S(347, __c43, 3)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateHITTypeRequest" });
     case 1:
@@ -2574,7 +2486,7 @@ function __c51(j: number): any {
       });
   }
 }
-function __c52(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2585,21 +2497,15 @@ function __c52(j: number): any {
           Question: S.optional(S.String),
           RequesterAnnotation: S.optional(S.String),
           UniqueRequestToken: S.optional(S.String),
-          AssignmentReviewPolicy: S.optional(__S(396, __c49, 4)),
-          HITReviewPolicy: S.optional(__S(396, __c49, 4)),
+          AssignmentReviewPolicy: S.optional(__S(380, __c47, 4)),
+          HITReviewPolicy: S.optional(__S(380, __c47, 4)),
           HITLayoutId: S.optional(S.String),
-          HITLayoutParameters: S.optional(__S(377, __c47, 1)),
+          HITLayoutParameters: S.optional(__S(353, __c44, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateHITWithHITTypeRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ HIT: S.optional(__S(384, __c48, 0)) }).pipe(ns)).annotate({
-        identifier: "CreateHITWithHITTypeResponse",
-      });
+      ).annotate({ identifier: "CreateHITWithHITTypeRequest" });
   }
 }
-function __c53(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2615,12 +2521,10 @@ function __c53(j: number): any {
           AutoGranted: S.optional(S.Boolean),
           AutoGrantedValue: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateQualificationTypeRequest",
-      });
+      ).annotate({ identifier: "CreateQualificationTypeRequest" });
   }
 }
-function __c54(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2642,14 +2546,12 @@ function __c54(j: number): any {
       ).annotate({ identifier: "QualificationType" });
   }
 }
-function __c55(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ QualificationType: S.optional(__S(432, __c54, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateQualificationTypeResponse",
-      });
+        S.Struct({ QualificationType: S.optional(__S(416, __c52, 0)) }).pipe(ns),
+      ).annotate({ identifier: "CreateQualificationTypeResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

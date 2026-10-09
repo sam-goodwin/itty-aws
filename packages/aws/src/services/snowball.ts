@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -960,7 +960,7 @@ export const describeAddresses: API.PaginatedOperationMethod<
   Address
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(512, __c16, 0) as any as S.Schema<DescribeAddressesRequest>,
-  output: __S(513, __c16, 1) as any as S.Schema<DescribeAddressesResult>,
+  output: __S(545, __c17, 1) as any as S.Schema<DescribeAddressesResult>,
   errors: [InvalidNextTokenException, InvalidResourceException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1308,7 +1308,7 @@ export const listPickupLocations: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(992, __c31, 0) as any as S.Schema<ListPickupLocationsRequest>,
-  output: __S(993, __c31, 1) as any as S.Schema<ListPickupLocationsResult>,
+  output: __S(545, __c17, 1) as any as S.Schema<ListPickupLocationsResult>,
   errors: [InvalidResourceException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1462,9 +1462,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelClusterResult",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "CancelClusterResult" });
   }
 }
 function __c2(j: number): any {
@@ -1568,10 +1566,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "KeyRange" });
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          ServiceName: S.optional(S.String),
-          TransferOption: S.optional(S.String),
-        }),
+        S.Struct({ ServiceName: S.optional(S.String), TransferOption: S.optional(S.String) }),
       ).annotate({ identifier: "TargetOnDeviceService" });
     case 2:
       return S.Array(__S(225, __c7, 1));
@@ -1593,10 +1588,7 @@ function __c7(j: number): any {
       return S.Array(__S(229, __c7, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({
-          LambdaArn: S.optional(S.String),
-          EventTriggers: S.optional(__S(230, __c7, 6)),
-        }),
+        S.Struct({ LambdaArn: S.optional(S.String), EventTriggers: S.optional(__S(230, __c7, 6)) }),
       ).annotate({ identifier: "LambdaResource" });
     case 8:
       return S.Array(__S(231, __c7, 7));
@@ -1617,18 +1609,14 @@ function __c7(j: number): any {
     case 12:
       return S.suspend(() =>
         S.Struct({ StorageLimit: S.optional(S.Number), StorageUnit: S.optional(S.String) }),
-      ).annotate({
-        identifier: "NFSOnDeviceServiceConfiguration",
-      });
+      ).annotate({ identifier: "NFSOnDeviceServiceConfiguration" });
     case 13:
       return S.suspend(() =>
         S.Struct({
           KubernetesVersion: S.optional(S.String),
           EKSAnywhereVersion: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "EKSOnDeviceServiceConfiguration",
-      });
+      ).annotate({ identifier: "EKSOnDeviceServiceConfiguration" });
     case 14:
       return S.suspend(() =>
         S.Struct({
@@ -1637,9 +1625,7 @@ function __c7(j: number): any {
           ServiceSize: S.optional(S.Number),
           FaultTolerance: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "S3OnDeviceServiceConfiguration",
-      });
+      ).annotate({ identifier: "S3OnDeviceServiceConfiguration" });
     case 15:
       return S.suspend(() =>
         S.Struct({
@@ -1648,9 +1634,7 @@ function __c7(j: number): any {
           EKSOnDeviceService: S.optional(__S(237, __c7, 13)),
           S3OnDeviceService: S.optional(__S(238, __c7, 14)),
         }),
-      ).annotate({
-        identifier: "OnDeviceServiceConfiguration",
-      });
+      ).annotate({ identifier: "OnDeviceServiceConfiguration" });
     case 16:
       return S.Array(S.String);
     case 17:
@@ -1729,9 +1713,7 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ WirelessConnection: S.optional(__S(352, __c11, 0)) }),
-      ).annotate({
-        identifier: "SnowconeDeviceConfiguration",
-      });
+      ).annotate({ identifier: "SnowconeDeviceConfiguration" });
     case 2:
       return S.suspend(() =>
         S.Struct({ SnowconeDeviceConfiguration: S.optional(__S(353, __c11, 1)) }),
@@ -1763,9 +1745,7 @@ function __c13(j: number): any {
           IsLongTermPricingAutoRenew: S.optional(S.Boolean),
           SnowballType: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateLongTermPricingRequest",
-      });
+      ).annotate({ identifier: "CreateLongTermPricingRequest" });
     case 1:
       return S.suspend(() => S.Struct({ LongTermPricingId: S.optional(S.String) })).annotate({
         identifier: "CreateLongTermPricingResult",
@@ -1779,9 +1759,7 @@ function __c14(j: number): any {
         S.Struct({ JobId: S.String, ShippingOption: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateReturnShippingLabelRequest",
-      });
+      ).annotate({ identifier: "CreateReturnShippingLabelRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
         identifier: "CreateReturnShippingLabelResult",
@@ -1810,16 +1788,16 @@ function __c16(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeAddressesRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Addresses: S.optional(__S(544, __c17, 0)), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "DescribeAddressesResult" });
   }
 }
 function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(128, __c4, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Addresses: S.optional(__S(544, __c17, 0)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "DescribeAddressesResult" });
   }
 }
 function __c18(j: number): any {
@@ -1941,9 +1919,7 @@ function __c20(j: number): any {
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeReturnShippingLabelRequest",
-      });
+      ).annotate({ identifier: "DescribeReturnShippingLabelRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1951,9 +1927,7 @@ function __c20(j: number): any {
           ExpirationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ReturnShippingLabelURI: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeReturnShippingLabelResult",
-      });
+      ).annotate({ identifier: "DescribeReturnShippingLabelResult" });
   }
 }
 function __c21(j: number): any {
@@ -2005,9 +1979,7 @@ function __c24(j: number): any {
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetSoftwareUpdatesRequest",
-      });
+      ).annotate({ identifier: "GetSoftwareUpdatesRequest" });
     case 1:
       return S.suspend(() => S.Struct({ UpdatesURI: S.optional(S.String) })).annotate({
         identifier: "GetSoftwareUpdatesResult",
@@ -2072,9 +2044,7 @@ function __c28(j: number): any {
         S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListCompatibleImagesRequest",
-      });
+      ).annotate({ identifier: "ListCompatibleImagesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ AmiId: S.optional(S.String), Name: S.optional(S.String) }),
@@ -2087,9 +2057,7 @@ function __c28(j: number): any {
           CompatibleImages: S.optional(__S(898, __c28, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListCompatibleImagesResult",
-      });
+      ).annotate({ identifier: "ListCompatibleImagesResult" });
   }
 }
 function __c29(j: number): any {
@@ -2109,9 +2077,7 @@ function __c30(j: number): any {
         S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListLongTermPricingRequest",
-      });
+      ).annotate({ identifier: "ListLongTermPricingRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2135,9 +2101,7 @@ function __c30(j: number): any {
           LongTermPricingEntries: S.optional(__S(962, __c30, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListLongTermPricingResult",
-      });
+      ).annotate({ identifier: "ListLongTermPricingResult" });
   }
 }
 function __c31(j: number): any {
@@ -2147,15 +2111,7 @@ function __c31(j: number): any {
         S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListPickupLocationsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Addresses: S.optional(__S(544, __c17, 0)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListPickupLocationsResult",
-      });
+      ).annotate({ identifier: "ListPickupLocationsRequest" });
   }
 }
 function __c32(j: number): any {
@@ -2181,9 +2137,7 @@ function __c32(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListServiceVersionsRequest",
-      });
+      ).annotate({ identifier: "ListServiceVersionsRequest" });
     case 4:
       return S.Array(__S(1024, __c32, 0));
     case 5:
@@ -2194,9 +2148,7 @@ function __c32(j: number): any {
           DependentServices: S.optional(__S(1026, __c32, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListServiceVersionsResult",
-      });
+      ).annotate({ identifier: "ListServiceVersionsResult" });
   }
 }
 function __c33(j: number): any {
@@ -2244,9 +2196,7 @@ function __c35(j: number): any {
         S.Struct({ JobId: S.String, ShipmentState: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateJobShipmentStateRequest",
-      });
+      ).annotate({ identifier: "UpdateJobShipmentStateRequest" });
   }
 }
 function __c36(j: number): any {
@@ -2258,9 +2208,7 @@ function __c36(j: number): any {
           ReplacementJob: S.optional(S.String),
           IsLongTermPricingAutoRenew: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateLongTermPricingRequest",
-      });
+      ).annotate({ identifier: "UpdateLongTermPricingRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

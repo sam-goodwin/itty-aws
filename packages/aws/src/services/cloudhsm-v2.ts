@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -851,7 +851,7 @@ export const modifyBackupAttributes: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(104, __c13, 0) as any as S.Schema<ModifyBackupAttributesRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<ModifyBackupAttributesResponse>,
+  output: __S(16, __c2, 0) as any as S.Schema<ModifyBackupAttributesResponse>,
   errors: [
     CloudHsmAccessDeniedException,
     CloudHsmInternalFailureException,
@@ -1122,9 +1122,7 @@ function __c5(j: number): any {
         S.Struct({ ResourceArn: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteResourcePolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteResourcePolicyRequest" });
   }
 }
 function __c6(j: number): any {
@@ -1132,9 +1130,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.optional(S.String), Policy: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DeleteResourcePolicyResponse",
-      });
+      ).annotate({ identifier: "DeleteResourcePolicyResponse" });
   }
 }
 function __c7(j: number): any {
@@ -1206,9 +1202,7 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ State: S.optional(S.String), StateMessage: S.optional(S.String) }),
-      ).annotate({
-        identifier: "InitializeClusterResponse",
-      });
+      ).annotate({ identifier: "InitializeClusterResponse" });
   }
 }
 function __c12(j: number): any {
@@ -1234,13 +1228,7 @@ function __c13(j: number): any {
         S.Struct({ BackupId: S.String, NeverExpires: S.Boolean }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ModifyBackupAttributesRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ Backup: S.optional(__S(8, __c1, 0)) })).annotate({
-        identifier: "ModifyBackupAttributesResponse",
-      });
+      ).annotate({ identifier: "ModifyBackupAttributesRequest" });
   }
 }
 function __c14(j: number): any {
@@ -1288,9 +1276,7 @@ function __c17(j: number): any {
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TagResourceResponse" });
   }
 }
 function __c19(j: number): any {
@@ -1312,9 +1298,7 @@ function __c20(j: number): any {
           BackupId: S.String,
           TagList: S.optional(__S(169, __c21, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CopyBackupToRegionRequest",
-      });
+      ).annotate({ identifier: "CopyBackupToRegionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1327,9 +1311,7 @@ function __c20(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ DestinationBackup: S.optional(__S(161, __c20, 1)) }),
-      ).annotate({
-        identifier: "CopyBackupToRegionResponse",
-      });
+      ).annotate({ identifier: "CopyBackupToRegionResponse" });
   }
 }
 function __c21(j: number): any {

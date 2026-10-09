@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -154,7 +154,7 @@ export class ValidationException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       Errors: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(1762, __c55, 2)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(1730, __c54, 2)).annotate({
           identifier: "ValidationErrors",
         }),
       ),
@@ -930,8 +930,8 @@ export const createCentralizationRuleForOrganization: API.OperationMethod<
   CreateCentralizationRuleForOrganizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1792, __c56, 0) as any as S.Schema<CreateCentralizationRuleForOrganizationInput>,
-  output: __S(1856, __c58, 0) as any as S.Schema<CreateCentralizationRuleForOrganizationOutput>,
+  input: __S(1760, __c55, 0) as any as S.Schema<CreateCentralizationRuleForOrganizationInput>,
+  output: __S(1824, __c57, 0) as any as S.Schema<CreateCentralizationRuleForOrganizationOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -965,8 +965,8 @@ export const createDatasetIntegration: API.OperationMethod<
   CreateDatasetIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1984, __c62, 0) as any as S.Schema<CreateDatasetIntegrationInput>,
-  output: __S(2016, __c63, 0) as any as S.Schema<CreateDatasetIntegrationOutput>,
+  input: __S(1920, __c60, 0) as any as S.Schema<CreateDatasetIntegrationInput>,
+  output: __S(1952, __c61, 0) as any as S.Schema<CreateDatasetIntegrationOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1061,7 +1061,7 @@ export const createTelemetryRule: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(160, __c5, 0) as any as S.Schema<CreateTelemetryRuleInput>,
-  output: __S(1856, __c58, 0) as any as S.Schema<CreateTelemetryRuleOutput>,
+  output: __S(1824, __c57, 0) as any as S.Schema<CreateTelemetryRuleOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1093,7 +1093,7 @@ export const createTelemetryRuleForOrganization: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(256, __c8, 0) as any as S.Schema<CreateTelemetryRuleForOrganizationInput>,
-  output: __S(1856, __c58, 0) as any as S.Schema<CreateTelemetryRuleForOrganizationOutput>,
+  output: __S(1824, __c57, 0) as any as S.Schema<CreateTelemetryRuleForOrganizationOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1124,7 +1124,7 @@ export const deleteCentralizationRuleForOrganization: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(288, __c9, 0) as any as S.Schema<DeleteCentralizationRuleForOrganizationInput>,
-  output: __S(320, __c10, 0) as any as S.Schema<DeleteCentralizationRuleForOrganizationResponse>,
+  output: __S(1856, __c58, 0) as any as S.Schema<DeleteCentralizationRuleForOrganizationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1153,8 +1153,8 @@ export const deleteDatasetIntegration: API.OperationMethod<
   DeleteDatasetIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c11, 0) as any as S.Schema<DeleteDatasetIntegrationInput>,
-  output: __S(320, __c10, 0) as any as S.Schema<DeleteDatasetIntegrationResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<DeleteDatasetIntegrationInput>,
+  output: __S(1856, __c58, 0) as any as S.Schema<DeleteDatasetIntegrationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1184,8 +1184,8 @@ export const deleteS3TableIntegration: API.OperationMethod<
   DeleteS3TableIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c12, 0) as any as S.Schema<DeleteS3TableIntegrationInput>,
-  output: __S(320, __c10, 0) as any as S.Schema<DeleteS3TableIntegrationResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<DeleteS3TableIntegrationInput>,
+  output: __S(1856, __c58, 0) as any as S.Schema<DeleteS3TableIntegrationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1216,8 +1216,8 @@ export const deleteTelemetryPipeline: API.OperationMethod<
   DeleteTelemetryPipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c13, 0) as any as S.Schema<DeleteTelemetryPipelineInput>,
-  output: __S(448, __c14, 0) as any as S.Schema<DeleteTelemetryPipelineOutput>,
+  input: __S(384, __c12, 0) as any as S.Schema<DeleteTelemetryPipelineInput>,
+  output: __S(1856, __c58, 0) as any as S.Schema<DeleteTelemetryPipelineOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1247,8 +1247,8 @@ export const deleteTelemetryRule: API.OperationMethod<
   DeleteTelemetryRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c15, 0) as any as S.Schema<DeleteTelemetryRuleInput>,
-  output: __S(448, __c14, 0) as any as S.Schema<DeleteTelemetryRuleResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<DeleteTelemetryRuleInput>,
+  output: __S(1856, __c58, 0) as any as S.Schema<DeleteTelemetryRuleResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1277,8 +1277,8 @@ export const deleteTelemetryRuleForOrganization: API.OperationMethod<
   DeleteTelemetryRuleForOrganizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c16, 0) as any as S.Schema<DeleteTelemetryRuleForOrganizationInput>,
-  output: __S(320, __c10, 0) as any as S.Schema<DeleteTelemetryRuleForOrganizationResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<DeleteTelemetryRuleForOrganizationInput>,
+  output: __S(1856, __c58, 0) as any as S.Schema<DeleteTelemetryRuleForOrganizationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1307,8 +1307,8 @@ export const getCentralizationRuleForOrganization: API.OperationMethod<
   GetCentralizationRuleForOrganizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c17, 0) as any as S.Schema<GetCentralizationRuleForOrganizationInput>,
-  output: __S(545, __c17, 1) as any as S.Schema<GetCentralizationRuleForOrganizationOutput>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetCentralizationRuleForOrganizationInput>,
+  output: __S(481, __c15, 1) as any as S.Schema<GetCentralizationRuleForOrganizationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1337,8 +1337,8 @@ export const getDatasetIntegration: API.OperationMethod<
   GetDatasetIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c18, 0) as any as S.Schema<GetDatasetIntegrationInput>,
-  output: __S(577, __c18, 1) as any as S.Schema<GetDatasetIntegrationOutput>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetDatasetIntegrationInput>,
+  output: __S(513, __c16, 1) as any as S.Schema<GetDatasetIntegrationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1367,8 +1367,8 @@ export const getS3TableIntegration: API.OperationMethod<
   GetS3TableIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c19, 0) as any as S.Schema<GetS3TableIntegrationInput>,
-  output: __S(609, __c19, 1) as any as S.Schema<GetS3TableIntegrationOutput>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetS3TableIntegrationInput>,
+  output: __S(545, __c17, 1) as any as S.Schema<GetS3TableIntegrationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1396,8 +1396,8 @@ export const getTelemetryEnrichmentStatus: API.OperationMethod<
   GetTelemetryEnrichmentStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c20, 0) as any as S.Schema<GetTelemetryEnrichmentStatusRequest>,
-  output: __S(672, __c21, 0) as any as S.Schema<GetTelemetryEnrichmentStatusOutput>,
+  input: __S(576, __c18, 0) as any as S.Schema<GetTelemetryEnrichmentStatusRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<GetTelemetryEnrichmentStatusOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1423,8 +1423,8 @@ export const getTelemetryEvaluationStatus: API.OperationMethod<
   GetTelemetryEvaluationStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c22, 0) as any as S.Schema<GetTelemetryEvaluationStatusRequest>,
-  output: __S(736, __c23, 0) as any as S.Schema<GetTelemetryEvaluationStatusOutput>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetTelemetryEvaluationStatusRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<GetTelemetryEvaluationStatusOutput>,
   errors: [AccessDeniedException, InternalServerException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1446,8 +1446,8 @@ export const getTelemetryEvaluationStatusForOrganization: API.OperationMethod<
   GetTelemetryEvaluationStatusForOrganizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c25, 0) as any as S.Schema<GetTelemetryEvaluationStatusForOrganizationRequest>,
-  output: __S(736, __c23, 0) as any as S.Schema<GetTelemetryEvaluationStatusForOrganizationOutput>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetTelemetryEvaluationStatusForOrganizationRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<GetTelemetryEvaluationStatusForOrganizationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1475,8 +1475,8 @@ export const getTelemetryPipeline: API.OperationMethod<
   GetTelemetryPipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c26, 0) as any as S.Schema<GetTelemetryPipelineInput>,
-  output: __S(835, __c26, 3) as any as S.Schema<GetTelemetryPipelineOutput>,
+  input: __S(768, __c24, 0) as any as S.Schema<GetTelemetryPipelineInput>,
+  output: __S(771, __c24, 3) as any as S.Schema<GetTelemetryPipelineOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1505,8 +1505,8 @@ export const getTelemetryRule: API.OperationMethod<
   GetTelemetryRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c27, 0) as any as S.Schema<GetTelemetryRuleInput>,
-  output: __S(865, __c27, 1) as any as S.Schema<GetTelemetryRuleOutput>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetTelemetryRuleInput>,
+  output: __S(832, __c26, 0) as any as S.Schema<GetTelemetryRuleOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1535,8 +1535,8 @@ export const getTelemetryRuleForOrganization: API.OperationMethod<
   GetTelemetryRuleForOrganizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c28, 0) as any as S.Schema<GetTelemetryRuleForOrganizationInput>,
-  output: __S(897, __c28, 1) as any as S.Schema<GetTelemetryRuleForOrganizationOutput>,
+  input: __S(864, __c27, 0) as any as S.Schema<GetTelemetryRuleForOrganizationInput>,
+  output: __S(832, __c26, 0) as any as S.Schema<GetTelemetryRuleForOrganizationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1565,8 +1565,8 @@ export const listCentralizationRulesForOrganization: API.PaginatedOperationMetho
   Credentials | HttpClient.HttpClient,
   CentralizationRuleSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(928, __c29, 0) as any as S.Schema<ListCentralizationRulesForOrganizationInput>,
-  output: __S(931, __c29, 3) as any as S.Schema<ListCentralizationRulesForOrganizationOutput>,
+  input: __S(896, __c28, 0) as any as S.Schema<ListCentralizationRulesForOrganizationInput>,
+  output: __S(899, __c28, 3) as any as S.Schema<ListCentralizationRulesForOrganizationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1600,8 +1600,8 @@ export const listDatasetIntegrations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DatasetIntegrationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(960, __c30, 0) as any as S.Schema<ListDatasetIntegrationsInput>,
-  output: __S(963, __c30, 3) as any as S.Schema<ListDatasetIntegrationsOutput>,
+  input: __S(928, __c29, 0) as any as S.Schema<ListDatasetIntegrationsInput>,
+  output: __S(931, __c29, 3) as any as S.Schema<ListDatasetIntegrationsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1635,8 +1635,8 @@ export const listResourceTelemetry: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TelemetryConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(992, __c31, 0) as any as S.Schema<ListResourceTelemetryInput>,
-  output: __S(1027, __c32, 3) as any as S.Schema<ListResourceTelemetryOutput>,
+  input: __S(960, __c30, 0) as any as S.Schema<ListResourceTelemetryInput>,
+  output: __S(995, __c31, 3) as any as S.Schema<ListResourceTelemetryOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1670,8 +1670,8 @@ export const listResourceTelemetryForOrganization: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TelemetryConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1056, __c33, 0) as any as S.Schema<ListResourceTelemetryForOrganizationInput>,
-  output: __S(1027, __c32, 3) as any as S.Schema<ListResourceTelemetryForOrganizationOutput>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListResourceTelemetryForOrganizationInput>,
+  output: __S(995, __c31, 3) as any as S.Schema<ListResourceTelemetryForOrganizationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1705,8 +1705,8 @@ export const listS3TableIntegrations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   IntegrationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1088, __c34, 0) as any as S.Schema<ListS3TableIntegrationsInput>,
-  output: __S(1091, __c34, 3) as any as S.Schema<ListS3TableIntegrationsOutput>,
+  input: __S(1056, __c33, 0) as any as S.Schema<ListS3TableIntegrationsInput>,
+  output: __S(1059, __c33, 3) as any as S.Schema<ListS3TableIntegrationsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1740,8 +1740,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1120, __c35, 0) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(1121, __c35, 1) as any as S.Schema<ListTagsForResourceOutput>,
+  input: __S(1088, __c34, 0) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(1089, __c34, 1) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1770,8 +1770,8 @@ export const listTelemetryPipelines: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TelemetryPipelineSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1152, __c36, 0) as any as S.Schema<ListTelemetryPipelinesInput>,
-  output: __S(1160, __c36, 8) as any as S.Schema<ListTelemetryPipelinesOutput>,
+  input: __S(1120, __c35, 0) as any as S.Schema<ListTelemetryPipelinesInput>,
+  output: __S(1128, __c35, 8) as any as S.Schema<ListTelemetryPipelinesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1805,8 +1805,8 @@ export const listTelemetryRules: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TelemetryRuleSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1184, __c37, 0) as any as S.Schema<ListTelemetryRulesInput>,
-  output: __S(1185, __c37, 1) as any as S.Schema<ListTelemetryRulesOutput>,
+  input: __S(1152, __c36, 0) as any as S.Schema<ListTelemetryRulesInput>,
+  output: __S(1186, __c37, 2) as any as S.Schema<ListTelemetryRulesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1840,8 +1840,8 @@ export const listTelemetryRulesForOrganization: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TelemetryRuleSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1248, __c39, 0) as any as S.Schema<ListTelemetryRulesForOrganizationInput>,
-  output: __S(1249, __c39, 1) as any as S.Schema<ListTelemetryRulesForOrganizationOutput>,
+  input: __S(1216, __c38, 0) as any as S.Schema<ListTelemetryRulesForOrganizationInput>,
+  output: __S(1186, __c37, 2) as any as S.Schema<ListTelemetryRulesForOrganizationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1874,8 +1874,8 @@ export const startTelemetryEnrichment: API.OperationMethod<
   StartTelemetryEnrichmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1280, __c40, 0) as any as S.Schema<StartTelemetryEnrichmentRequest>,
-  output: __S(672, __c21, 0) as any as S.Schema<StartTelemetryEnrichmentOutput>,
+  input: __S(1248, __c39, 0) as any as S.Schema<StartTelemetryEnrichmentRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<StartTelemetryEnrichmentOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1902,8 +1902,8 @@ export const startTelemetryEvaluation: API.OperationMethod<
   StartTelemetryEvaluationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1312, __c41, 0) as any as S.Schema<StartTelemetryEvaluationInput>,
-  output: __S(320, __c10, 0) as any as S.Schema<StartTelemetryEvaluationResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<StartTelemetryEvaluationInput>,
+  output: __S(1856, __c58, 0) as any as S.Schema<StartTelemetryEvaluationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1930,8 +1930,8 @@ export const startTelemetryEvaluationForOrganization: API.OperationMethod<
   StartTelemetryEvaluationForOrganizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1344, __c42, 0) as any as S.Schema<StartTelemetryEvaluationForOrganizationInput>,
-  output: __S(320, __c10, 0) as any as S.Schema<StartTelemetryEvaluationForOrganizationResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<StartTelemetryEvaluationForOrganizationInput>,
+  output: __S(1856, __c58, 0) as any as S.Schema<StartTelemetryEvaluationForOrganizationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1958,8 +1958,8 @@ export const stopTelemetryEnrichment: API.OperationMethod<
   StopTelemetryEnrichmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1376, __c43, 0) as any as S.Schema<StopTelemetryEnrichmentRequest>,
-  output: __S(1377, __c43, 1) as any as S.Schema<StopTelemetryEnrichmentOutput>,
+  input: __S(1344, __c42, 0) as any as S.Schema<StopTelemetryEnrichmentRequest>,
+  output: __S(1345, __c42, 1) as any as S.Schema<StopTelemetryEnrichmentOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1986,8 +1986,8 @@ export const stopTelemetryEvaluation: API.OperationMethod<
   StopTelemetryEvaluationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1408, __c44, 0) as any as S.Schema<StopTelemetryEvaluationRequest>,
-  output: __S(1888, __c59, 0) as any as S.Schema<StopTelemetryEvaluationResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<StopTelemetryEvaluationRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<StopTelemetryEvaluationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2014,8 +2014,8 @@ export const stopTelemetryEvaluationForOrganization: API.OperationMethod<
   StopTelemetryEvaluationForOrganizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c45, 0) as any as S.Schema<StopTelemetryEvaluationForOrganizationRequest>,
-  output: __S(320, __c10, 0) as any as S.Schema<StopTelemetryEvaluationForOrganizationResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<StopTelemetryEvaluationForOrganizationRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<StopTelemetryEvaluationForOrganizationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2044,8 +2044,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1472, __c46, 0) as any as S.Schema<TagResourceInput>,
-  output: __S(448, __c14, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(1856, __c58, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2074,8 +2074,8 @@ export const testTelemetryPipeline: API.OperationMethod<
   TestTelemetryPipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1506, __c47, 2) as any as S.Schema<TestTelemetryPipelineInput>,
-  output: __S(1510, __c47, 6) as any as S.Schema<TestTelemetryPipelineOutput>,
+  input: __S(1474, __c46, 2) as any as S.Schema<TestTelemetryPipelineInput>,
+  output: __S(1478, __c46, 6) as any as S.Schema<TestTelemetryPipelineOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2103,8 +2103,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1536, __c48, 0) as any as S.Schema<UntagResourceInput>,
-  output: __S(448, __c14, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<UntagResourceInput>,
+  output: __S(1856, __c58, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2134,8 +2134,8 @@ export const updateCentralizationRuleForOrganization: API.OperationMethod<
   UpdateCentralizationRuleForOrganizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1568, __c49, 0) as any as S.Schema<UpdateCentralizationRuleForOrganizationInput>,
-  output: __S(1856, __c58, 0) as any as S.Schema<UpdateCentralizationRuleForOrganizationOutput>,
+  input: __S(1536, __c48, 0) as any as S.Schema<UpdateCentralizationRuleForOrganizationInput>,
+  output: __S(1824, __c57, 0) as any as S.Schema<UpdateCentralizationRuleForOrganizationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2165,8 +2165,8 @@ export const updateDatasetIntegration: API.OperationMethod<
   UpdateDatasetIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1600, __c50, 0) as any as S.Schema<UpdateDatasetIntegrationInput>,
-  output: __S(2016, __c63, 0) as any as S.Schema<UpdateDatasetIntegrationOutput>,
+  input: __S(1568, __c49, 0) as any as S.Schema<UpdateDatasetIntegrationInput>,
+  output: __S(1952, __c61, 0) as any as S.Schema<UpdateDatasetIntegrationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2243,8 +2243,8 @@ export const updateTelemetryPipeline: API.OperationMethod<
   UpdateTelemetryPipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1632, __c51, 0) as any as S.Schema<UpdateTelemetryPipelineInput>,
-  output: __S(448, __c14, 0) as any as S.Schema<UpdateTelemetryPipelineOutput>,
+  input: __S(1600, __c50, 0) as any as S.Schema<UpdateTelemetryPipelineInput>,
+  output: __S(1856, __c58, 0) as any as S.Schema<UpdateTelemetryPipelineOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2275,8 +2275,8 @@ export const updateTelemetryRule: API.OperationMethod<
   UpdateTelemetryRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1664, __c52, 0) as any as S.Schema<UpdateTelemetryRuleInput>,
-  output: __S(1856, __c58, 0) as any as S.Schema<UpdateTelemetryRuleOutput>,
+  input: __S(1632, __c51, 0) as any as S.Schema<UpdateTelemetryRuleInput>,
+  output: __S(1824, __c57, 0) as any as S.Schema<UpdateTelemetryRuleOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2308,8 +2308,8 @@ export const updateTelemetryRuleForOrganization: API.OperationMethod<
   UpdateTelemetryRuleForOrganizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1696, __c53, 0) as any as S.Schema<UpdateTelemetryRuleForOrganizationInput>,
-  output: __S(1856, __c58, 0) as any as S.Schema<UpdateTelemetryRuleForOrganizationOutput>,
+  input: __S(1664, __c52, 0) as any as S.Schema<UpdateTelemetryRuleForOrganizationInput>,
+  output: __S(1824, __c57, 0) as any as S.Schema<UpdateTelemetryRuleForOrganizationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2338,8 +2338,8 @@ export const validateTelemetryPipelineConfiguration: API.OperationMethod<
   ValidateTelemetryPipelineConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1728, __c54, 0) as any as S.Schema<ValidateTelemetryPipelineConfigurationInput>,
-  output: __S(1729, __c54, 1) as any as S.Schema<ValidateTelemetryPipelineConfigurationOutput>,
+  input: __S(1696, __c53, 0) as any as S.Schema<ValidateTelemetryPipelineConfigurationInput>,
+  output: __S(1697, __c53, 1) as any as S.Schema<ValidateTelemetryPipelineConfigurationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2359,7 +2359,7 @@ function __c0(j: number): any {
         S.Struct({
           Encryption: __S(64, __c2, 0),
           RoleArn: S.String,
-          Tags: S.optional(__S(1952, __c61, 0)),
+          Tags: S.optional(__S(1728, __c54, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateS3TableIntegration" }),
@@ -2370,9 +2370,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateS3TableIntegrationInput",
-      });
+      ).annotate({ identifier: "CreateS3TableIntegrationInput" });
   }
 }
 function __c1(j: number): any {
@@ -2398,7 +2396,7 @@ function __c3(j: number): any {
         S.Struct({
           Name: S.String,
           Configuration: __S(128, __c4, 0),
-          Tags: S.optional(__S(1952, __c61, 0)),
+          Tags: S.optional(__S(1728, __c54, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateTelemetryPipeline" }),
@@ -2409,9 +2407,7 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateTelemetryPipelineInput",
-      });
+      ).annotate({ identifier: "CreateTelemetryPipelineInput" });
   }
 }
 function __c4(j: number): any {
@@ -2429,7 +2425,7 @@ function __c5(j: number): any {
         S.Struct({
           RuleName: S.String,
           Rule: __S(245, __c7, 21),
-          Tags: S.optional(__S(1952, __c61, 0)),
+          Tags: S.optional(__S(1728, __c54, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateTelemetryRule" }),
@@ -2463,12 +2459,12 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Field: S.String,
-          Equals: S.optional(__S(1824, __c57, 0)),
-          StartsWith: S.optional(__S(1824, __c57, 0)),
-          EndsWith: S.optional(__S(1824, __c57, 0)),
-          NotEquals: S.optional(__S(1824, __c57, 0)),
-          NotStartsWith: S.optional(__S(1824, __c57, 0)),
-          NotEndsWith: S.optional(__S(1824, __c57, 0)),
+          Equals: S.optional(__S(1792, __c56, 0)),
+          StartsWith: S.optional(__S(1792, __c56, 0)),
+          EndsWith: S.optional(__S(1792, __c56, 0)),
+          NotEquals: S.optional(__S(1792, __c56, 0)),
+          NotStartsWith: S.optional(__S(1792, __c56, 0)),
+          NotEndsWith: S.optional(__S(1792, __c56, 0)),
         }),
       ).annotate({ identifier: "AdvancedFieldSelector" });
     case 2:
@@ -2486,9 +2482,7 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({ OutputFormat: S.optional(S.String), FieldDelimiter: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ELBLoadBalancerLoggingParameters",
-      });
+      ).annotate({ identifier: "ELBLoadBalancerLoggingParameters" });
     case 7:
       return S.suspend(() => S.Struct({ Name: S.optional(S.String) })).annotate({
         identifier: "SingleHeader",
@@ -2568,9 +2562,7 @@ function __c7(j: number): any {
           MskMonitoringParameters: S.optional(__S(243, __c7, 19)),
           KmsKeyArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "TelemetryDestinationConfiguration",
-      });
+      ).annotate({ identifier: "TelemetryDestinationConfiguration" });
     case 21:
       return S.suspend(() =>
         S.Struct({
@@ -2581,7 +2573,7 @@ function __c7(j: number): any {
           Scope: S.optional(S.String),
           SelectionCriteria: S.optional(S.String),
           AllowFieldUpdates: S.optional(S.Boolean),
-          Regions: S.optional(__S(1824, __c57, 0)),
+          Regions: S.optional(__S(1792, __c56, 0)),
           AllRegions: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "TelemetryRule" });
@@ -2594,7 +2586,7 @@ function __c8(j: number): any {
         S.Struct({
           RuleName: S.String,
           Rule: __S(245, __c7, 21),
-          Tags: S.optional(__S(1952, __c61, 0)),
+          Tags: S.optional(__S(1728, __c54, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateTelemetryRuleForOrganization" }),
@@ -2605,9 +2597,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateTelemetryRuleForOrganizationInput",
-      });
+      ).annotate({ identifier: "CreateTelemetryRuleForOrganizationInput" });
   }
 }
 function __c9(j: number): any {
@@ -2624,20 +2614,10 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteCentralizationRuleForOrganizationInput",
-      });
+      ).annotate({ identifier: "DeleteCentralizationRuleForOrganizationInput" });
   }
 }
 function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteCentralizationRuleForOrganizationResponse",
-      });
-  }
-}
-function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2651,12 +2631,10 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteDatasetIntegrationInput",
-      });
+      ).annotate({ identifier: "DeleteDatasetIntegrationInput" });
   }
 }
-function __c12(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2670,12 +2648,10 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteS3TableIntegrationInput",
-      });
+      ).annotate({ identifier: "DeleteS3TableIntegrationInput" });
   }
 }
-function __c13(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2689,20 +2665,10 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteTelemetryPipelineInput",
-      });
+      ).annotate({ identifier: "DeleteTelemetryPipelineInput" });
   }
 }
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteTelemetryPipelineOutput",
-      });
-  }
-}
-function __c15(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2719,7 +2685,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "DeleteTelemetryRuleInput" });
   }
 }
-function __c16(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2733,12 +2699,10 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteTelemetryRuleForOrganizationInput",
-      });
+      ).annotate({ identifier: "DeleteTelemetryRuleForOrganizationInput" });
   }
 }
-function __c17(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2752,9 +2716,7 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetCentralizationRuleForOrganizationInput",
-      });
+      ).annotate({ identifier: "GetCentralizationRuleForOrganizationInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2769,14 +2731,12 @@ function __c17(j: number): any {
           TagPropagationStatus: S.optional(S.String),
           TagPropagationFailureReason: S.optional(S.String),
           ContextGraphStatus: S.optional(S.String),
-          CentralizationRule: S.optional(__S(1931, __c60, 11)),
+          CentralizationRule: S.optional(__S(1899, __c59, 11)),
         }),
-      ).annotate({
-        identifier: "GetCentralizationRuleForOrganizationOutput",
-      });
+      ).annotate({ identifier: "GetCentralizationRuleForOrganizationOutput" });
   }
 }
-function __c18(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2790,9 +2750,7 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDatasetIntegrationInput",
-      });
+      ).annotate({ identifier: "GetDatasetIntegrationInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2801,12 +2759,10 @@ function __c18(j: number): any {
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "GetDatasetIntegrationOutput",
-      });
+      ).annotate({ identifier: "GetDatasetIntegrationOutput" });
   }
 }
-function __c19(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2820,9 +2776,7 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetS3TableIntegrationInput",
-      });
+      ).annotate({ identifier: "GetS3TableIntegrationInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2833,12 +2787,10 @@ function __c19(j: number): any {
           DestinationTableBucketArn: S.optional(S.String),
           CreatedTimeStamp: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "GetS3TableIntegrationOutput",
-      });
+      ).annotate({ identifier: "GetS3TableIntegrationOutput" });
   }
 }
-function __c20(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2852,12 +2804,10 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetTelemetryEnrichmentStatusRequest",
-      });
+      ).annotate({ identifier: "GetTelemetryEnrichmentStatusRequest" });
   }
 }
-function __c21(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2865,12 +2815,10 @@ function __c21(j: number): any {
           Status: S.optional(S.String),
           AwsResourceExplorerManagedViewArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetTelemetryEnrichmentStatusOutput",
-      });
+      ).annotate({ identifier: "GetTelemetryEnrichmentStatusOutput" });
   }
 }
-function __c22(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2884,12 +2832,10 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetTelemetryEvaluationStatusRequest",
-      });
+      ).annotate({ identifier: "GetTelemetryEvaluationStatusRequest" });
   }
 }
-function __c23(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2897,14 +2843,12 @@ function __c23(j: number): any {
           Status: S.optional(S.String),
           FailureReason: S.optional(S.String),
           HomeRegion: S.optional(S.String),
-          RegionStatuses: S.optional(__S(769, __c24, 1)),
+          RegionStatuses: S.optional(__S(705, __c22, 1)),
         }),
-      ).annotate({
-        identifier: "GetTelemetryEvaluationStatusOutput",
-      });
+      ).annotate({ identifier: "GetTelemetryEvaluationStatusOutput" });
   }
 }
-function __c24(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2916,10 +2860,10 @@ function __c24(j: number): any {
         }),
       ).annotate({ identifier: "RegionStatus" });
     case 1:
-      return S.Array(__S(768, __c24, 0));
+      return S.Array(__S(704, __c22, 0));
   }
 }
-function __c25(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2933,12 +2877,10 @@ function __c25(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetTelemetryEvaluationStatusForOrganizationRequest",
-      });
+      ).annotate({ identifier: "GetTelemetryEvaluationStatusForOrganizationRequest" });
   }
 }
-function __c26(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2952,9 +2894,7 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetTelemetryPipelineInput",
-      });
+      ).annotate({ identifier: "GetTelemetryPipelineInput" });
     case 1:
       return S.suspend(() => S.Struct({ Description: S.optional(S.String) })).annotate({
         identifier: "TelemetryPipelineStatusReason",
@@ -2968,17 +2908,17 @@ function __c26(j: number): any {
           Name: S.optional(S.String),
           Configuration: S.optional(__S(128, __c4, 0)),
           Status: S.optional(S.String),
-          StatusReason: S.optional(__S(833, __c26, 1)),
-          Tags: S.optional(__S(1952, __c61, 0)),
+          StatusReason: S.optional(__S(769, __c24, 1)),
+          Tags: S.optional(__S(1728, __c54, 0)),
         }),
       ).annotate({ identifier: "TelemetryPipeline" });
     case 3:
-      return S.suspend(() => S.Struct({ Pipeline: S.optional(__S(834, __c26, 2)) })).annotate({
+      return S.suspend(() => S.Struct({ Pipeline: S.optional(__S(770, __c24, 2)) })).annotate({
         identifier: "GetTelemetryPipelineOutput",
       });
   }
 }
-function __c27(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2986,7 +2926,11 @@ function __c27(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/GetTelemetryRule" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetTelemetryRuleInput" });
-    case 1:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           RuleName: S.optional(S.String),
@@ -2996,12 +2940,12 @@ function __c27(j: number): any {
           TelemetryRule: S.optional(__S(245, __c7, 21)),
           HomeRegion: S.optional(S.String),
           IsReplicated: S.optional(S.Boolean),
-          RegionStatuses: S.optional(__S(769, __c24, 1)),
+          RegionStatuses: S.optional(__S(705, __c22, 1)),
         }),
       ).annotate({ identifier: "GetTelemetryRuleOutput" });
   }
 }
-function __c28(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3015,27 +2959,10 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetTelemetryRuleForOrganizationInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          RuleName: S.optional(S.String),
-          RuleArn: S.optional(S.String),
-          CreatedTimeStamp: S.optional(S.Number),
-          LastUpdateTimeStamp: S.optional(S.Number),
-          TelemetryRule: S.optional(__S(245, __c7, 21)),
-          HomeRegion: S.optional(S.String),
-          IsReplicated: S.optional(S.Boolean),
-          RegionStatuses: S.optional(__S(769, __c24, 1)),
-        }),
-      ).annotate({
-        identifier: "GetTelemetryRuleForOrganizationOutput",
-      });
+      ).annotate({ identifier: "GetTelemetryRuleForOrganizationInput" });
   }
 }
-function __c29(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3054,9 +2981,7 @@ function __c29(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListCentralizationRulesForOrganizationInput",
-      });
+      ).annotate({ identifier: "ListCentralizationRulesForOrganizationInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3074,23 +2999,19 @@ function __c29(j: number): any {
           DestinationAccountId: S.optional(S.String),
           DestinationRegion: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CentralizationRuleSummary",
-      });
+      ).annotate({ identifier: "CentralizationRuleSummary" });
     case 2:
-      return S.Array(__S(929, __c29, 1));
+      return S.Array(__S(897, __c28, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          CentralizationRuleSummaries: S.optional(__S(930, __c29, 2)),
+          CentralizationRuleSummaries: S.optional(__S(898, __c28, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListCentralizationRulesForOrganizationOutput",
-      });
+      ).annotate({ identifier: "ListCentralizationRulesForOrganizationOutput" });
   }
 }
-function __c30(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3104,9 +3025,7 @@ function __c30(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDatasetIntegrationsInput",
-      });
+      ).annotate({ identifier: "ListDatasetIntegrationsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3115,31 +3034,27 @@ function __c30(j: number): any {
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "DatasetIntegrationSummary",
-      });
+      ).annotate({ identifier: "DatasetIntegrationSummary" });
     case 2:
-      return S.Array(__S(961, __c30, 1));
+      return S.Array(__S(929, __c29, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          DatasetIntegrationSummaries: __S(962, __c30, 2),
+          DatasetIntegrationSummaries: __S(930, __c29, 2),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListDatasetIntegrationsOutput",
-      });
+      ).annotate({ identifier: "ListDatasetIntegrationsOutput" });
   }
 }
-function __c31(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceIdentifierPrefix: S.optional(S.String),
           ResourceTypes: S.optional(__S(192, __c6, 0)),
-          TelemetryConfigurationState: S.optional(__S(1024, __c32, 0)),
-          ResourceTags: S.optional(__S(1952, __c61, 0)),
+          TelemetryConfigurationState: S.optional(__S(992, __c31, 0)),
+          ResourceTags: S.optional(__S(1728, __c54, 0)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -3152,12 +3067,10 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListResourceTelemetryInput",
-      });
+      ).annotate({ identifier: "ListResourceTelemetryInput" });
   }
 }
-function __c32(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
@@ -3165,37 +3078,35 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AccountIdentifier: S.optional(S.String),
-          TelemetryConfigurationState: S.optional(__S(1024, __c32, 0)),
+          TelemetryConfigurationState: S.optional(__S(992, __c31, 0)),
           ResourceType: S.optional(S.String),
           ResourceIdentifier: S.optional(S.String),
-          ResourceTags: S.optional(__S(1952, __c61, 0)),
+          ResourceTags: S.optional(__S(1728, __c54, 0)),
           LastUpdateTimeStamp: S.optional(S.Number),
           TelemetrySourceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "TelemetryConfiguration" });
     case 2:
-      return S.Array(__S(1025, __c32, 1));
+      return S.Array(__S(993, __c31, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          TelemetryConfigurations: S.optional(__S(1026, __c32, 2)),
+          TelemetryConfigurations: S.optional(__S(994, __c31, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListResourceTelemetryOutput",
-      });
+      ).annotate({ identifier: "ListResourceTelemetryOutput" });
   }
 }
-function __c33(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          AccountIdentifiers: S.optional(__S(1824, __c57, 0)),
+          AccountIdentifiers: S.optional(__S(1792, __c56, 0)),
           ResourceIdentifierPrefix: S.optional(S.String),
           ResourceTypes: S.optional(__S(192, __c6, 0)),
-          TelemetryConfigurationState: S.optional(__S(1024, __c32, 0)),
-          ResourceTags: S.optional(__S(1952, __c61, 0)),
+          TelemetryConfigurationState: S.optional(__S(992, __c31, 0)),
+          ResourceTags: S.optional(__S(1728, __c54, 0)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -3208,12 +3119,10 @@ function __c33(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListResourceTelemetryForOrganizationInput",
-      });
+      ).annotate({ identifier: "ListResourceTelemetryForOrganizationInput" });
   }
 }
-function __c34(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3227,27 +3136,23 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListS3TableIntegrationsInput",
-      });
+      ).annotate({ identifier: "ListS3TableIntegrationsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Arn: S.optional(S.String), Status: S.optional(S.String) }),
       ).annotate({ identifier: "IntegrationSummary" });
     case 2:
-      return S.Array(__S(1089, __c34, 1));
+      return S.Array(__S(1057, __c33, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          IntegrationSummaries: S.optional(__S(1090, __c34, 2)),
+          IntegrationSummaries: S.optional(__S(1058, __c33, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListS3TableIntegrationsOutput",
-      });
+      ).annotate({ identifier: "ListS3TableIntegrationsOutput" });
   }
 }
-function __c35(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3263,12 +3168,12 @@ function __c35(j: number): any {
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
     case 1:
-      return S.suspend(() => S.Struct({ Tags: __S(1952, __c61, 0) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: __S(1728, __c54, 0) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
   }
 }
-function __c36(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3282,29 +3187,27 @@ function __c36(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTelemetryPipelinesInput",
-      });
+      ).annotate({ identifier: "ListTelemetryPipelinesInput" });
     case 1:
       return S.suspend(() => S.Struct({ Type: S.optional(S.String) })).annotate({
         identifier: "Source",
       });
     case 2:
-      return S.Array(__S(1153, __c36, 1));
+      return S.Array(__S(1121, __c35, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String), Type: S.optional(S.String) }),
       ).annotate({ identifier: "DataSource" });
     case 4:
-      return S.Array(__S(1155, __c36, 3));
+      return S.Array(__S(1123, __c35, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Sources: S.optional(__S(1154, __c36, 2)),
-          DataSources: S.optional(__S(1156, __c36, 4)),
-          Processors: S.optional(__S(1824, __c57, 0)),
+          Sources: S.optional(__S(1122, __c35, 2)),
+          DataSources: S.optional(__S(1124, __c35, 4)),
+          Processors: S.optional(__S(1792, __c56, 0)),
           ProcessorCount: S.optional(S.Number),
-          Sinks: S.optional(__S(1824, __c57, 0)),
+          Sinks: S.optional(__S(1792, __c56, 0)),
         }),
       ).annotate({ identifier: "ConfigurationSummary" });
     case 6:
@@ -3315,24 +3218,22 @@ function __c36(j: number): any {
           Arn: S.optional(S.String),
           Name: S.optional(S.String),
           Status: S.optional(S.String),
-          Tags: S.optional(__S(1952, __c61, 0)),
-          ConfigurationSummary: S.optional(__S(1157, __c36, 5)),
+          Tags: S.optional(__S(1728, __c54, 0)),
+          ConfigurationSummary: S.optional(__S(1125, __c35, 5)),
         }),
       ).annotate({ identifier: "TelemetryPipelineSummary" });
     case 7:
-      return S.Array(__S(1158, __c36, 6));
+      return S.Array(__S(1126, __c35, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
-          PipelineSummaries: S.optional(__S(1159, __c36, 7)),
+          PipelineSummaries: S.optional(__S(1127, __c35, 7)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListTelemetryPipelinesOutput",
-      });
+      ).annotate({ identifier: "ListTelemetryPipelinesOutput" });
   }
 }
-function __c37(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3351,16 +3252,9 @@ function __c37(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListTelemetryRulesInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          TelemetryRuleSummaries: S.optional(__S(1217, __c38, 1)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListTelemetryRulesOutput" });
   }
 }
-function __c38(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3375,17 +3269,24 @@ function __c38(j: number): any {
         }),
       ).annotate({ identifier: "TelemetryRuleSummary" });
     case 1:
-      return S.Array(__S(1216, __c38, 0));
+      return S.Array(__S(1184, __c37, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          TelemetryRuleSummaries: S.optional(__S(1185, __c37, 1)),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListTelemetryRulesOutput" });
   }
 }
-function __c39(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           RuleNamePrefix: S.optional(S.String),
-          SourceAccountIds: S.optional(__S(1824, __c57, 0)),
-          SourceOrganizationUnitIds: S.optional(__S(1824, __c57, 0)),
+          SourceAccountIds: S.optional(__S(1792, __c56, 0)),
+          SourceOrganizationUnitIds: S.optional(__S(1792, __c56, 0)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -3398,21 +3299,10 @@ function __c39(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTelemetryRulesForOrganizationInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          TelemetryRuleSummaries: S.optional(__S(1217, __c38, 1)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListTelemetryRulesForOrganizationOutput",
-      });
+      ).annotate({ identifier: "ListTelemetryRulesForOrganizationInput" });
   }
 }
-function __c40(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3426,17 +3316,15 @@ function __c40(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartTelemetryEnrichmentRequest",
-      });
+      ).annotate({ identifier: "StartTelemetryEnrichmentRequest" });
   }
 }
-function __c41(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Regions: S.optional(__S(1824, __c57, 0)),
+          Regions: S.optional(__S(1792, __c56, 0)),
           AllRegions: S.optional(S.Boolean),
         }).pipe(
           T.all(
@@ -3448,17 +3336,15 @@ function __c41(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartTelemetryEvaluationInput",
-      });
+      ).annotate({ identifier: "StartTelemetryEvaluationInput" });
   }
 }
-function __c42(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Regions: S.optional(__S(1824, __c57, 0)),
+          Regions: S.optional(__S(1792, __c56, 0)),
           AllRegions: S.optional(S.Boolean),
         }).pipe(
           T.all(
@@ -3470,12 +3356,10 @@ function __c42(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartTelemetryEvaluationForOrganizationInput",
-      });
+      ).annotate({ identifier: "StartTelemetryEvaluationForOrganizationInput" });
   }
 }
-function __c43(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3489,16 +3373,14 @@ function __c43(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StopTelemetryEnrichmentRequest",
-      });
+      ).annotate({ identifier: "StopTelemetryEnrichmentRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
         identifier: "StopTelemetryEnrichmentOutput",
       });
   }
 }
-function __c44(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3512,12 +3394,10 @@ function __c44(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StopTelemetryEvaluationRequest",
-      });
+      ).annotate({ identifier: "StopTelemetryEvaluationRequest" });
   }
 }
-function __c45(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3531,33 +3411,31 @@ function __c45(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StopTelemetryEvaluationForOrganizationRequest",
-      });
+      ).annotate({ identifier: "StopTelemetryEvaluationForOrganizationRequest" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceARN: S.String, Tags: __S(1728, __c54, 0) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/TagResource" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceInput" });
   }
 }
 function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, Tags: __S(1952, __c61, 0) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/TagResource" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "TagResourceInput" });
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
         S.Struct({ Data: S.optional(S.String), Type: S.optional(S.String) }),
       ).annotate({ identifier: "Record" });
     case 1:
-      return S.Array(__S(1504, __c47, 0));
+      return S.Array(__S(1472, __c46, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Records: __S(1505, __c47, 1),
+          Records: __S(1473, __c46, 1),
           Configuration: __S(128, __c4, 0),
           SignalType: S.optional(S.String),
         }).pipe(
@@ -3570,9 +3448,7 @@ function __c47(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "TestTelemetryPipelineInput",
-      });
+      ).annotate({ identifier: "TestTelemetryPipelineInput" });
     case 3:
       return S.suspend(() => S.Struct({ Message: S.optional(S.String) })).annotate({
         identifier: "PipelineOutputError",
@@ -3580,33 +3456,33 @@ function __c47(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Record: S.optional(__S(1504, __c47, 0)),
-          Error: S.optional(__S(1507, __c47, 3)),
+          Record: S.optional(__S(1472, __c46, 0)),
+          Error: S.optional(__S(1475, __c46, 3)),
         }),
       ).annotate({ identifier: "PipelineOutput" });
     case 5:
-      return S.Array(__S(1508, __c47, 4));
+      return S.Array(__S(1476, __c46, 4));
     case 6:
-      return S.suspend(() => S.Struct({ Results: S.optional(__S(1509, __c47, 5)) })).annotate({
+      return S.suspend(() => S.Struct({ Results: S.optional(__S(1477, __c46, 5)) })).annotate({
         identifier: "TestTelemetryPipelineOutput",
       });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceARN: S.String, TagKeys: __S(1792, __c56, 0) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/UntagResource" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceInput" });
   }
 }
 function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: __S(1824, __c57, 0) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/UntagResource" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "UntagResourceInput" });
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ RuleIdentifier: S.String, Rule: __S(1931, __c60, 11) }).pipe(
+        S.Struct({ RuleIdentifier: S.String, Rule: __S(1899, __c59, 11) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/UpdateCentralizationRuleForOrganization" }),
             svc,
@@ -3616,12 +3492,10 @@ function __c49(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateCentralizationRuleForOrganizationInput",
-      });
+      ).annotate({ identifier: "UpdateCentralizationRuleForOrganizationInput" });
   }
 }
-function __c50(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3635,12 +3509,10 @@ function __c50(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateDatasetIntegrationInput",
-      });
+      ).annotate({ identifier: "UpdateDatasetIntegrationInput" });
   }
 }
-function __c51(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3654,12 +3526,10 @@ function __c51(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateTelemetryPipelineInput",
-      });
+      ).annotate({ identifier: "UpdateTelemetryPipelineInput" });
   }
 }
-function __c52(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3676,7 +3546,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "UpdateTelemetryRuleInput" });
   }
 }
-function __c53(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3690,12 +3560,10 @@ function __c53(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateTelemetryRuleForOrganizationInput",
-      });
+      ).annotate({ identifier: "UpdateTelemetryRuleForOrganizationInput" });
   }
 }
-function __c54(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3709,16 +3577,14 @@ function __c54(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ValidateTelemetryPipelineConfigurationInput",
-      });
+      ).annotate({ identifier: "ValidateTelemetryPipelineConfigurationInput" });
     case 1:
-      return S.suspend(() => S.Struct({ Errors: S.optional(__S(1762, __c55, 2)) })).annotate({
+      return S.suspend(() => S.Struct({ Errors: S.optional(__S(1730, __c54, 2)) })).annotate({
         identifier: "ValidateTelemetryPipelineConfigurationOutput",
       });
   }
 }
-function __c55(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
@@ -3727,21 +3593,21 @@ function __c55(j: number): any {
         S.Struct({
           Message: S.optional(S.String),
           Reason: S.optional(S.String),
-          FieldMap: S.optional(__S(1760, __c55, 0)),
+          FieldMap: S.optional(__S(1728, __c54, 0)),
         }),
       ).annotate({ identifier: "ValidationError" });
     case 2:
-      return S.Array(__S(1761, __c55, 1));
+      return S.Array(__S(1729, __c54, 1));
   }
 }
-function __c56(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           RuleName: S.String,
-          Rule: __S(1931, __c60, 11),
-          Tags: S.optional(__S(1952, __c61, 0)),
+          Rule: __S(1899, __c59, 11),
+          Tags: S.optional(__S(1728, __c54, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateCentralizationRuleForOrganization" }),
@@ -3752,18 +3618,16 @@ function __c56(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateCentralizationRuleForOrganizationInput",
-      });
+      ).annotate({ identifier: "CreateCentralizationRuleForOrganizationInput" });
   }
 }
-function __c57(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c58(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ RuleArn: S.optional(S.String) })).annotate({
@@ -3771,7 +3635,7 @@ function __c58(j: number): any {
       });
   }
 }
-function __c59(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
@@ -3779,7 +3643,7 @@ function __c59(j: number): any {
       });
   }
 }
-function __c60(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3791,18 +3655,16 @@ function __c60(j: number): any {
       ).annotate({ identifier: "SourceLogsConfiguration" });
     case 1:
       return S.suspend(() => S.Struct({ MetricsSelectionCriteria: S.optional(S.String) })).annotate(
-        {
-          identifier: "SourceMetricsConfiguration",
-        },
+        { identifier: "SourceMetricsConfiguration" },
       );
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Regions: __S(1824, __c57, 0),
+          Regions: __S(1792, __c56, 0),
           Scope: S.optional(S.String),
-          SourceLogsConfiguration: S.optional(__S(1920, __c60, 0)),
-          SourceMetricsConfiguration: S.optional(__S(1921, __c60, 1)),
-          SourceContextGraphConfiguration: S.optional(__S(1888, __c59, 0)),
+          SourceLogsConfiguration: S.optional(__S(1888, __c59, 0)),
+          SourceMetricsConfiguration: S.optional(__S(1889, __c59, 1)),
+          SourceContextGraphConfiguration: S.optional(__S(1856, __c58, 0)),
         }),
       ).annotate({ identifier: "CentralizationRuleSource" });
     case 3:
@@ -3813,9 +3675,7 @@ function __c60(j: number): any {
           EncryptionConflictResolutionStrategy: S.optional(S.String),
           EncryptionScope: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "LogsEncryptionConfiguration",
-      });
+      ).annotate({ identifier: "LogsEncryptionConfiguration" });
     case 4:
       return S.suspend(() =>
         S.Struct({ Region: S.String, KmsKeyArn: S.optional(S.String) }),
@@ -3830,58 +3690,44 @@ function __c60(j: number): any {
           DestinationRoleArn: S.String,
           TagConflictResolutionStrategy: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "TagPropagationConfiguration",
-      });
+      ).annotate({ identifier: "TagPropagationConfiguration" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          LogsEncryptionConfiguration: S.optional(__S(1923, __c60, 3)),
-          BackupConfiguration: S.optional(__S(1924, __c60, 4)),
-          LogGroupNameConfiguration: S.optional(__S(1925, __c60, 5)),
-          TagPropagationConfiguration: S.optional(__S(1926, __c60, 6)),
+          LogsEncryptionConfiguration: S.optional(__S(1891, __c59, 3)),
+          BackupConfiguration: S.optional(__S(1892, __c59, 4)),
+          LogGroupNameConfiguration: S.optional(__S(1893, __c59, 5)),
+          TagPropagationConfiguration: S.optional(__S(1894, __c59, 6)),
         }),
-      ).annotate({
-        identifier: "DestinationLogsConfiguration",
-      });
+      ).annotate({ identifier: "DestinationLogsConfiguration" });
     case 8:
       return S.suspend(() => S.Struct({ Region: S.String })).annotate({
         identifier: "MetricsBackupConfiguration",
       });
     case 9:
       return S.suspend(() =>
-        S.Struct({ BackupConfiguration: S.optional(__S(1928, __c60, 8)) }),
-      ).annotate({
-        identifier: "DestinationMetricsConfiguration",
-      });
+        S.Struct({ BackupConfiguration: S.optional(__S(1896, __c59, 8)) }),
+      ).annotate({ identifier: "DestinationMetricsConfiguration" });
     case 10:
       return S.suspend(() =>
         S.Struct({
           Region: S.String,
           Account: S.optional(S.String),
-          DestinationLogsConfiguration: S.optional(__S(1927, __c60, 7)),
-          DestinationMetricsConfiguration: S.optional(__S(1929, __c60, 9)),
+          DestinationLogsConfiguration: S.optional(__S(1895, __c59, 7)),
+          DestinationMetricsConfiguration: S.optional(__S(1897, __c59, 9)),
         }),
-      ).annotate({
-        identifier: "CentralizationRuleDestination",
-      });
+      ).annotate({ identifier: "CentralizationRuleDestination" });
     case 11:
       return S.suspend(() =>
-        S.Struct({ Source: __S(1922, __c60, 2), Destination: __S(1930, __c60, 10) }),
+        S.Struct({ Source: __S(1890, __c59, 2), Destination: __S(1898, __c59, 10) }),
       ).annotate({ identifier: "CentralizationRule" });
   }
 }
-function __c61(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c62(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ RoleArn: S.String, Tags: S.optional(__S(1952, __c61, 0)) }).pipe(
+        S.Struct({ RoleArn: S.String, Tags: S.optional(__S(1728, __c54, 0)) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateDatasetIntegration" }),
             svc,
@@ -3891,12 +3737,10 @@ function __c62(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateDatasetIntegrationInput",
-      });
+      ).annotate({ identifier: "CreateDatasetIntegrationInput" });
   }
 }
-function __c63(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3906,9 +3750,7 @@ function __c63(j: number): any {
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           UpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
-      ).annotate({
-        identifier: "CreateDatasetIntegrationOutput",
-      });
+      ).annotate({ identifier: "CreateDatasetIntegrationOutput" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

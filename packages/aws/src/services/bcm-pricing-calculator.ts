@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1027,13 +1027,13 @@ export const batchCreateBillScenarioCommitmentModification: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    362,
-    __c45,
+    346,
+    __c43,
     2,
   ) as any as S.Schema<BatchCreateBillScenarioCommitmentModificationRequest>,
   output: __S(
-    367,
-    __c45,
+    351,
+    __c43,
     7,
   ) as any as S.Schema<BatchCreateBillScenarioCommitmentModificationResponse>,
   errors: [ConflictException, DataUnavailableException, ResourceNotFoundException],
@@ -1059,8 +1059,8 @@ export const batchCreateBillScenarioUsageModification: API.OperationMethod<
   BatchCreateBillScenarioUsageModificationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(378, __c47, 2) as any as S.Schema<BatchCreateBillScenarioUsageModificationRequest>,
-  output: __S(383, __c47, 7) as any as S.Schema<BatchCreateBillScenarioUsageModificationResponse>,
+  input: __S(362, __c45, 2) as any as S.Schema<BatchCreateBillScenarioUsageModificationRequest>,
+  output: __S(367, __c45, 7) as any as S.Schema<BatchCreateBillScenarioUsageModificationResponse>,
   errors: [
     ConflictException,
     DataUnavailableException,
@@ -1089,8 +1089,8 @@ export const batchCreateWorkloadEstimateUsage: API.OperationMethod<
   BatchCreateWorkloadEstimateUsageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(426, __c53, 2) as any as S.Schema<BatchCreateWorkloadEstimateUsageRequest>,
-  output: __S(431, __c53, 7) as any as S.Schema<BatchCreateWorkloadEstimateUsageResponse>,
+  input: __S(410, __c51, 2) as any as S.Schema<BatchCreateWorkloadEstimateUsageRequest>,
+  output: __S(415, __c51, 7) as any as S.Schema<BatchCreateWorkloadEstimateUsageResponse>,
   errors: [
     ConflictException,
     DataUnavailableException,
@@ -1119,13 +1119,13 @@ export const batchDeleteBillScenarioCommitmentModification: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    440,
-    __c55,
+    424,
+    __c53,
     0,
   ) as any as S.Schema<BatchDeleteBillScenarioCommitmentModificationRequest>,
   output: __S(
-    443,
-    __c55,
+    427,
+    __c53,
     3,
   ) as any as S.Schema<BatchDeleteBillScenarioCommitmentModificationResponse>,
   errors: [ConflictException, DataUnavailableException, ResourceNotFoundException],
@@ -1151,8 +1151,8 @@ export const batchDeleteBillScenarioUsageModification: API.OperationMethod<
   BatchDeleteBillScenarioUsageModificationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c56, 0) as any as S.Schema<BatchDeleteBillScenarioUsageModificationRequest>,
-  output: __S(451, __c56, 3) as any as S.Schema<BatchDeleteBillScenarioUsageModificationResponse>,
+  input: __S(432, __c54, 0) as any as S.Schema<BatchDeleteBillScenarioUsageModificationRequest>,
+  output: __S(435, __c54, 3) as any as S.Schema<BatchDeleteBillScenarioUsageModificationResponse>,
   errors: [
     ConflictException,
     DataUnavailableException,
@@ -1180,8 +1180,8 @@ export const batchDeleteWorkloadEstimateUsage: API.OperationMethod<
   BatchDeleteWorkloadEstimateUsageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(456, __c57, 0) as any as S.Schema<BatchDeleteWorkloadEstimateUsageRequest>,
-  output: __S(459, __c57, 3) as any as S.Schema<BatchDeleteWorkloadEstimateUsageResponse>,
+  input: __S(440, __c55, 0) as any as S.Schema<BatchDeleteWorkloadEstimateUsageRequest>,
+  output: __S(443, __c55, 3) as any as S.Schema<BatchDeleteWorkloadEstimateUsageResponse>,
   errors: [DataUnavailableException, ResourceNotFoundException, ServiceQuotaExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1281,7 +1281,7 @@ export const createBillEstimate: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(48, __c6, 0) as any as S.Schema<CreateBillEstimateRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<CreateBillEstimateResponse>,
+  output: __S(75, __c9, 3) as any as S.Schema<CreateBillEstimateResponse>,
   errors: [ConflictException, DataUnavailableException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1302,8 +1302,8 @@ export const createBillScenario: API.OperationMethod<
   CreateBillScenarioError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<CreateBillScenarioRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<CreateBillScenarioResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<CreateBillScenarioRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<CreateBillScenarioResponse>,
   errors: [ConflictException, DataUnavailableException, ServiceQuotaExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1324,8 +1324,8 @@ export const createWorkloadEstimate: API.OperationMethod<
   CreateWorkloadEstimateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<CreateWorkloadEstimateRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<CreateWorkloadEstimateResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<CreateWorkloadEstimateRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<CreateWorkloadEstimateResponse>,
   errors: [ConflictException, DataUnavailableException, ServiceQuotaExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1342,8 +1342,8 @@ export const deleteBillEstimate: API.OperationMethod<
   DeleteBillEstimateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<DeleteBillEstimateRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<DeleteBillEstimateResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<DeleteBillEstimateRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeleteBillEstimateResponse>,
   errors: [ConflictException, DataUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1360,8 +1360,8 @@ export const deleteBillScenario: API.OperationMethod<
   DeleteBillScenarioError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<DeleteBillScenarioRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<DeleteBillScenarioResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<DeleteBillScenarioRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeleteBillScenarioResponse>,
   errors: [ConflictException, DataUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1378,8 +1378,8 @@ export const deleteWorkloadEstimate: API.OperationMethod<
   DeleteWorkloadEstimateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<DeleteWorkloadEstimateRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<DeleteWorkloadEstimateResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<DeleteWorkloadEstimateRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeleteWorkloadEstimateResponse>,
   errors: [DataUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1399,8 +1399,8 @@ export const getBillEstimate: API.OperationMethod<
   GetBillEstimateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<GetBillEstimateRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<GetBillEstimateResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetBillEstimateRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<GetBillEstimateResponse>,
   errors: [DataUnavailableException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1420,8 +1420,8 @@ export const getBillScenario: API.OperationMethod<
   GetBillScenarioError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<GetBillScenarioRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<GetBillScenarioResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetBillScenarioRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<GetBillScenarioResponse>,
   errors: [DataUnavailableException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1438,8 +1438,8 @@ export const getPreferences: API.OperationMethod<
   GetPreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<GetPreferencesRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<GetPreferencesResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<GetPreferencesRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<GetPreferencesResponse>,
   errors: [DataUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1459,8 +1459,8 @@ export const getWorkloadEstimate: API.OperationMethod<
   GetWorkloadEstimateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<GetWorkloadEstimateRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<GetWorkloadEstimateResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<GetWorkloadEstimateRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<GetWorkloadEstimateResponse>,
   errors: [DataUnavailableException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1481,8 +1481,8 @@ export const listBillEstimateCommitments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BillEstimateCommitmentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<ListBillEstimateCommitmentsRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<ListBillEstimateCommitmentsResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<ListBillEstimateCommitmentsRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<ListBillEstimateCommitmentsResponse>,
   errors: [DataUnavailableException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1509,10 +1509,10 @@ export const listBillEstimateInputCommitmentModifications: API.PaginatedOperatio
   Credentials | HttpClient.HttpClient,
   BillEstimateInputCommitmentModificationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<ListBillEstimateInputCommitmentModificationsRequest>,
+  input: __S(192, __c24, 0) as any as S.Schema<ListBillEstimateInputCommitmentModificationsRequest>,
   output: __S(
-    211,
-    __c26,
+    195,
+    __c24,
     3,
   ) as any as S.Schema<ListBillEstimateInputCommitmentModificationsResponse>,
   errors: [DataUnavailableException, ResourceNotFoundException],
@@ -1541,8 +1541,8 @@ export const listBillEstimateInputUsageModifications: API.PaginatedOperationMeth
   Credentials | HttpClient.HttpClient,
   BillEstimateInputUsageModificationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<ListBillEstimateInputUsageModificationsRequest>,
-  output: __S(224, __c28, 0) as any as S.Schema<ListBillEstimateInputUsageModificationsResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<ListBillEstimateInputUsageModificationsRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<ListBillEstimateInputUsageModificationsResponse>,
   errors: [DataUnavailableException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1569,8 +1569,8 @@ export const listBillEstimateLineItems: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BillEstimateLineItemSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<ListBillEstimateLineItemsRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<ListBillEstimateLineItemsResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<ListBillEstimateLineItemsRequest>,
+  output: __S(228, __c28, 4) as any as S.Schema<ListBillEstimateLineItemsResponse>,
   errors: [DataUnavailableException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1594,8 +1594,8 @@ export const listBillEstimates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BillEstimateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(250, __c31, 2) as any as S.Schema<ListBillEstimatesRequest>,
-  output: __S(253, __c31, 5) as any as S.Schema<ListBillEstimatesResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<ListBillEstimatesRequest>,
+  output: __S(235, __c29, 3) as any as S.Schema<ListBillEstimatesResponse>,
   errors: [DataUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1622,8 +1622,8 @@ export const listBillScenarioCommitmentModifications: API.PaginatedOperationMeth
   Credentials | HttpClient.HttpClient,
   BillScenarioCommitmentModificationItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<ListBillScenarioCommitmentModificationsRequest>,
-  output: __S(265, __c33, 1) as any as S.Schema<ListBillScenarioCommitmentModificationsResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<ListBillScenarioCommitmentModificationsRequest>,
+  output: __S(249, __c31, 1) as any as S.Schema<ListBillScenarioCommitmentModificationsResponse>,
   errors: [DataUnavailableException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1647,8 +1647,8 @@ export const listBillScenarios: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BillScenarioSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<ListBillScenariosRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<ListBillScenariosResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<ListBillScenariosRequest>,
+  output: __S(258, __c32, 2) as any as S.Schema<ListBillScenariosResponse>,
   errors: [DataUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1675,8 +1675,8 @@ export const listBillScenarioUsageModifications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BillScenarioUsageModificationItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<ListBillScenarioUsageModificationsRequest>,
-  output: __S(224, __c28, 0) as any as S.Schema<ListBillScenarioUsageModificationsResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<ListBillScenarioUsageModificationsRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<ListBillScenarioUsageModificationsResponse>,
   errors: [DataUnavailableException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1699,8 +1699,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(289, __c36, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(273, __c34, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1718,8 +1718,8 @@ export const listWorkloadEstimates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WorkloadEstimateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(298, __c37, 2) as any as S.Schema<ListWorkloadEstimatesRequest>,
-  output: __S(301, __c37, 5) as any as S.Schema<ListWorkloadEstimatesResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<ListWorkloadEstimatesRequest>,
+  output: __S(282, __c35, 2) as any as S.Schema<ListWorkloadEstimatesResponse>,
   errors: [DataUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1746,8 +1746,8 @@ export const listWorkloadEstimateUsage: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WorkloadEstimateUsageItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<ListWorkloadEstimateUsageRequest>,
-  output: __S(305, __c38, 1) as any as S.Schema<ListWorkloadEstimateUsageResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<ListWorkloadEstimateUsageRequest>,
+  output: __S(289, __c36, 1) as any as S.Schema<ListWorkloadEstimateUsageResponse>,
   errors: [DataUnavailableException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1773,8 +1773,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<TagResourceResponse>,
   errors: [ResourceNotFoundException, ServiceQuotaExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1791,8 +1791,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1813,8 +1813,8 @@ export const updateBillEstimate: API.OperationMethod<
   UpdateBillEstimateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<UpdateBillEstimateRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<UpdateBillEstimateResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<UpdateBillEstimateRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<UpdateBillEstimateResponse>,
   errors: [ConflictException, DataUnavailableException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1835,8 +1835,8 @@ export const updateBillScenario: API.OperationMethod<
   UpdateBillScenarioError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<UpdateBillScenarioRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<UpdateBillScenarioResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<UpdateBillScenarioRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<UpdateBillScenarioResponse>,
   errors: [ConflictException, DataUnavailableException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1856,8 +1856,8 @@ export const updatePreferences: API.OperationMethod<
   UpdatePreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<UpdatePreferencesRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<UpdatePreferencesResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<UpdatePreferencesRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<UpdatePreferencesResponse>,
   errors: [DataUnavailableException, ServiceQuotaExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1878,8 +1878,8 @@ export const updateWorkloadEstimate: API.OperationMethod<
   UpdateWorkloadEstimateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<UpdateWorkloadEstimateRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<UpdateWorkloadEstimateResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<UpdateWorkloadEstimateRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<UpdateWorkloadEstimateResponse>,
   errors: [ConflictException, DataUnavailableException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1897,13 +1897,10 @@ function __c0(j: number): any {
       return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          billScenarioId: S.String,
-          commitmentModifications: __S(1, __c0, 1),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "BatchUpdateBillScenarioCommitmentModificationRequest",
-      });
+        S.Struct({ billScenarioId: S.String, commitmentModifications: __S(1, __c0, 1) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "BatchUpdateBillScenarioCommitmentModificationRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1911,20 +1908,13 @@ function __c0(j: number): any {
           errorCode: S.optional(S.String),
           errorMessage: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchUpdateBillScenarioCommitmentModificationError",
-      });
+      ).annotate({ identifier: "BatchUpdateBillScenarioCommitmentModificationError" });
     case 4:
       return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(9, __c1, 1)),
-          errors: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "BatchUpdateBillScenarioCommitmentModificationResponse",
-      });
+        S.Struct({ items: S.optional(__S(9, __c1, 1)), errors: S.optional(__S(4, __c0, 4)) }),
+      ).annotate({ identifier: "BatchUpdateBillScenarioCommitmentModificationResponse" });
   }
 }
 function __c1(j: number): any {
@@ -1935,11 +1925,9 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           usageAccountId: S.optional(S.String),
           group: S.optional(S.String),
-          commitmentAction: S.optional(__S(372, __c46, 4)),
+          commitmentAction: S.optional(__S(356, __c44, 4)),
         }),
-      ).annotate({
-        identifier: "BillScenarioCommitmentModificationItem",
-      });
+      ).annotate({ identifier: "BillScenarioCommitmentModificationItem" });
     case 1:
       return S.Array(__S(8, __c1, 0));
   }
@@ -1951,22 +1939,17 @@ function __c2(j: number): any {
         S.Struct({
           id: S.String,
           group: S.optional(S.String),
-          amounts: S.optional(__S(385, __c48, 1)),
+          amounts: S.optional(__S(369, __c46, 1)),
         }),
-      ).annotate({
-        identifier: "BatchUpdateBillScenarioUsageModificationEntry",
-      });
+      ).annotate({ identifier: "BatchUpdateBillScenarioUsageModificationEntry" });
     case 1:
       return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          billScenarioId: S.String,
-          usageModifications: __S(17, __c2, 1),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "BatchUpdateBillScenarioUsageModificationRequest",
-      });
+        S.Struct({ billScenarioId: S.String, usageModifications: __S(17, __c2, 1) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "BatchUpdateBillScenarioUsageModificationRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1974,20 +1957,13 @@ function __c2(j: number): any {
           errorMessage: S.optional(S.String),
           errorCode: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchUpdateBillScenarioUsageModificationError",
-      });
+      ).annotate({ identifier: "BatchUpdateBillScenarioUsageModificationError" });
     case 4:
       return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(25, __c3, 1)),
-          errors: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({
-        identifier: "BatchUpdateBillScenarioUsageModificationResponse",
-      });
+        S.Struct({ items: S.optional(__S(25, __c3, 1)), errors: S.optional(__S(20, __c2, 4)) }),
+      ).annotate({ identifier: "BatchUpdateBillScenarioUsageModificationResponse" });
   }
 }
 function __c3(j: number): any {
@@ -2003,12 +1979,10 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           group: S.optional(S.String),
           usageAccountId: S.optional(S.String),
-          quantities: S.optional(__S(393, __c49, 1)),
-          historicalUsage: S.optional(__S(411, __c51, 3)),
+          quantities: S.optional(__S(377, __c47, 1)),
+          historicalUsage: S.optional(__S(395, __c49, 3)),
         }),
-      ).annotate({
-        identifier: "BillScenarioUsageModificationItem",
-      });
+      ).annotate({ identifier: "BillScenarioUsageModificationItem" });
     case 1:
       return S.Array(__S(24, __c3, 0));
   }
@@ -2018,9 +1992,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ id: S.String, group: S.optional(S.String), amount: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "BatchUpdateWorkloadEstimateUsageEntry",
-      });
+      ).annotate({ identifier: "BatchUpdateWorkloadEstimateUsageEntry" });
     case 1:
       return S.Array(__S(32, __c4, 0));
     case 2:
@@ -2028,9 +2000,7 @@ function __c4(j: number): any {
         S.Struct({ workloadEstimateId: S.String, usage: __S(33, __c4, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "BatchUpdateWorkloadEstimateUsageRequest",
-      });
+      ).annotate({ identifier: "BatchUpdateWorkloadEstimateUsageRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2038,20 +2008,13 @@ function __c4(j: number): any {
           errorMessage: S.optional(S.String),
           errorCode: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchUpdateWorkloadEstimateUsageError",
-      });
+      ).annotate({ identifier: "BatchUpdateWorkloadEstimateUsageError" });
     case 4:
       return S.Array(__S(35, __c4, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(41, __c5, 1)),
-          errors: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({
-        identifier: "BatchUpdateWorkloadEstimateUsageResponse",
-      });
+        S.Struct({ items: S.optional(__S(41, __c5, 1)), errors: S.optional(__S(36, __c4, 4)) }),
+      ).annotate({ identifier: "BatchUpdateWorkloadEstimateUsageResponse" });
   }
 }
 function __c5(j: number): any {
@@ -2066,15 +2029,13 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           usageAccountId: S.optional(S.String),
           group: S.optional(S.String),
-          quantity: S.optional(__S(432, __c54, 0)),
+          quantity: S.optional(__S(416, __c52, 0)),
           cost: S.optional(S.Number),
           currency: S.optional(S.String),
           status: S.optional(S.String),
-          historicalUsage: S.optional(__S(411, __c51, 3)),
+          historicalUsage: S.optional(__S(395, __c49, 3)),
         }),
-      ).annotate({
-        identifier: "WorkloadEstimateUsageItem",
-      });
+      ).annotate({ identifier: "WorkloadEstimateUsageItem" });
     case 1:
       return S.Array(__S(40, __c5, 0));
   }
@@ -2092,9 +2053,7 @@ function __c6(j: number): any {
           ),
           tags: S.optional(__S(56, __c7, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateBillEstimateRequest",
-      });
+      ).annotate({ identifier: "CreateBillEstimateRequest" });
   }
 }
 function __c7(j: number): any {
@@ -2129,18 +2088,14 @@ function __c9(j: number): any {
           serviceCostDifferences: S.optional(__S(73, __c9, 1)),
         }),
       ).annotate({ identifier: "BillEstimateCostSummary" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.optional(S.String),
           status: S.optional(S.String),
           failureMessage: S.optional(S.String),
-          billInterval: S.optional(__S(400, __c50, 0)),
+          billInterval: S.optional(__S(384, __c48, 0)),
           costSummary: S.optional(__S(74, __c9, 2)),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           expiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -2150,12 +2105,10 @@ function __c10(j: number): any {
             S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           ),
         }),
-      ).annotate({
-        identifier: "CreateBillEstimateResponse",
-      });
+      ).annotate({ identifier: "CreateBillEstimateResponse" });
   }
 }
-function __c11(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2169,19 +2122,17 @@ function __c11(j: number): any {
           groupSharingPreference: S.optional(S.String),
           costCategoryGroupSharingPreferenceArn: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateBillScenarioRequest",
-      });
+      ).annotate({ identifier: "CreateBillScenarioRequest" });
   }
 }
-function __c12(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.optional(S.String),
-          billInterval: S.optional(__S(400, __c50, 0)),
+          billInterval: S.optional(__S(384, __c48, 0)),
           status: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           expiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -2189,12 +2140,10 @@ function __c12(j: number): any {
           groupSharingPreference: S.optional(S.String),
           costCategoryGroupSharingPreferenceArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateBillScenarioResponse",
-      });
+      ).annotate({ identifier: "CreateBillScenarioResponse" });
   }
 }
-function __c13(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2207,12 +2156,10 @@ function __c13(j: number): any {
           rateType: S.optional(S.String),
           tags: S.optional(__S(56, __c7, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateWorkloadEstimateRequest",
-      });
+      ).annotate({ identifier: "CreateWorkloadEstimateRequest" });
   }
 }
-function __c14(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2228,29 +2175,33 @@ function __c14(j: number): any {
           costCurrency: S.optional(S.String),
           failureMessage: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateWorkloadEstimateResponse",
-      });
+      ).annotate({ identifier: "CreateWorkloadEstimateResponse" });
   }
 }
-function __c15(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ identifier: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteBillEstimateRequest",
-      });
+      ).annotate({ identifier: "DeleteBillEstimateRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteBillEstimateResponse" });
   }
 }
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteBillEstimateResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({ identifier: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteBillScenarioRequest" });
   }
 }
 function __c17(j: number): any {
@@ -2260,9 +2211,7 @@ function __c17(j: number): any {
         S.Struct({ identifier: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteBillScenarioRequest",
-      });
+      ).annotate({ identifier: "DeleteWorkloadEstimateRequest" });
   }
 }
 function __c18(j: number): any {
@@ -2272,9 +2221,7 @@ function __c18(j: number): any {
         S.Struct({ identifier: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteWorkloadEstimateRequest",
-      });
+      ).annotate({ identifier: "GetBillEstimateRequest" });
   }
 }
 function __c19(j: number): any {
@@ -2284,56 +2231,10 @@ function __c19(j: number): any {
         S.Struct({ identifier: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({ identifier: "GetBillEstimateRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.optional(S.String),
-          status: S.optional(S.String),
-          failureMessage: S.optional(S.String),
-          billInterval: S.optional(__S(400, __c50, 0)),
-          costSummary: S.optional(__S(74, __c9, 2)),
-          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          expiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          groupSharingPreference: S.optional(S.String),
-          costCategoryGroupSharingPreferenceArn: S.optional(S.String),
-          costCategoryGroupSharingPreferenceEffectiveDate: S.optional(
-            S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          ),
-        }),
-      ).annotate({ identifier: "GetBillEstimateResponse" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ identifier: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
       ).annotate({ identifier: "GetBillScenarioRequest" });
   }
 }
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.optional(S.String),
-          billInterval: S.optional(__S(400, __c50, 0)),
-          status: S.optional(S.String),
-          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          expiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          failureMessage: S.optional(S.String),
-          groupSharingPreference: S.optional(S.String),
-          costCategoryGroupSharingPreferenceArn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetBillScenarioResponse" });
-  }
-}
-function __c22(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2341,35 +2242,33 @@ function __c22(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetPreferencesRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          managementAccountRateTypeSelections: S.optional(__S(184, __c23, 0)),
-          memberAccountRateTypeSelections: S.optional(__S(184, __c23, 0)),
-          standaloneAccountRateTypeSelections: S.optional(__S(184, __c23, 0)),
+          managementAccountRateTypeSelections: S.optional(__S(168, __c21, 0)),
+          memberAccountRateTypeSelections: S.optional(__S(168, __c21, 0)),
+          standaloneAccountRateTypeSelections: S.optional(__S(168, __c21, 0)),
         }),
       ).annotate({ identifier: "GetPreferencesResponse" });
   }
 }
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-  }
-}
-function __c24(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ identifier: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetWorkloadEstimateRequest",
-      });
+      ).annotate({ identifier: "GetWorkloadEstimateRequest" });
   }
 }
-function __c25(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2378,9 +2277,7 @@ function __c25(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListBillEstimateCommitmentsRequest",
-      });
+      ).annotate({ identifier: "ListBillEstimateCommitmentsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2394,20 +2291,16 @@ function __c25(j: number): any {
           upfrontPayment: S.optional(__S(64, __c8, 0)),
           monthlyPayment: S.optional(__S(64, __c8, 0)),
         }),
-      ).annotate({
-        identifier: "BillEstimateCommitmentSummary",
-      });
+      ).annotate({ identifier: "BillEstimateCommitmentSummary" });
     case 2:
-      return S.Array(__S(201, __c25, 1));
+      return S.Array(__S(185, __c23, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(202, __c25, 2)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListBillEstimateCommitmentsResponse",
-      });
+        S.Struct({ items: S.optional(__S(186, __c23, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListBillEstimateCommitmentsResponse" });
   }
 }
-function __c26(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2416,46 +2309,53 @@ function __c26(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListBillEstimateInputCommitmentModificationsRequest",
-      });
+      ).annotate({ identifier: "ListBillEstimateInputCommitmentModificationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           group: S.optional(S.String),
           usageAccountId: S.optional(S.String),
-          commitmentAction: S.optional(__S(372, __c46, 4)),
+          commitmentAction: S.optional(__S(356, __c44, 4)),
         }),
-      ).annotate({
-        identifier: "BillEstimateInputCommitmentModificationSummary",
-      });
+      ).annotate({ identifier: "BillEstimateInputCommitmentModificationSummary" });
     case 2:
-      return S.Array(__S(209, __c26, 1));
+      return S.Array(__S(193, __c24, 1));
     case 3:
       return S.suspend(() =>
+        S.Struct({ items: S.optional(__S(194, __c24, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListBillEstimateInputCommitmentModificationsResponse" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(210, __c26, 2)),
+          billEstimateId: S.String,
+          filters: S.optional(__S(209, __c26, 1)),
           nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListBillEstimateInputCommitmentModificationsResponse",
-      });
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListBillEstimateInputUsageModificationsRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ name: S.String, values: __S(400, __c50, 0), matchOption: S.optional(S.String) }),
+      ).annotate({ identifier: "ListUsageFilter" });
+    case 1:
+      return S.Array(__S(208, __c26, 0));
   }
 }
 function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          billEstimateId: S.String,
-          filters: S.optional(__S(233, __c29, 1)),
-          nextToken: S.optional(S.String),
-          maxResults: S.optional(S.Number),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListBillEstimateInputUsageModificationsRequest",
-      });
+        S.Struct({ items: S.optional(__S(25, __c3, 1)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListBillEstimateInputUsageModificationsResponse" });
   }
 }
 function __c28(j: number): any {
@@ -2463,58 +2363,17 @@ function __c28(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(25, __c3, 1)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListBillEstimateInputUsageModificationsResponse",
-      });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          values: __S(416, __c52, 0),
-          matchOption: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListUsageFilter" });
-    case 1:
-      return S.Array(__S(232, __c29, 0));
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          values: __S(416, __c52, 0),
-          matchOption: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListBillEstimateLineItemsFilter",
-      });
-    case 1:
-      return S.Array(__S(240, __c30, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           billEstimateId: S.String,
-          filters: S.optional(__S(241, __c30, 1)),
+          filters: S.optional(__S(209, __c26, 1)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListBillEstimateLineItemsRequest",
-      });
-    case 3:
+      ).annotate({ identifier: "ListBillEstimateLineItemsRequest" });
+    case 1:
       return S.suspend(() =>
         S.Struct({ amount: S.optional(S.Number), unit: S.optional(S.String) }),
       ).annotate({ identifier: "UsageQuantityResult" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           serviceCode: S.String,
@@ -2527,69 +2386,53 @@ function __c30(j: number): any {
           lineItemType: S.optional(S.String),
           payerAccountId: S.optional(S.String),
           usageAccountId: S.optional(S.String),
-          estimatedUsageQuantity: S.optional(__S(243, __c30, 3)),
+          estimatedUsageQuantity: S.optional(__S(225, __c28, 1)),
           estimatedCost: S.optional(__S(64, __c8, 0)),
-          historicalUsageQuantity: S.optional(__S(243, __c30, 3)),
+          historicalUsageQuantity: S.optional(__S(225, __c28, 1)),
           historicalCost: S.optional(__S(64, __c8, 0)),
-          savingsPlanArns: S.optional(__S(416, __c52, 0)),
+          savingsPlanArns: S.optional(__S(400, __c50, 0)),
         }),
-      ).annotate({
-        identifier: "BillEstimateLineItemSummary",
-      });
-    case 5:
-      return S.Array(__S(244, __c30, 4));
-    case 6:
+      ).annotate({ identifier: "BillEstimateLineItemSummary" });
+    case 3:
+      return S.Array(__S(226, __c28, 2));
+    case 4:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(245, __c30, 5)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListBillEstimateLineItemsResponse",
-      });
+        S.Struct({ items: S.optional(__S(227, __c28, 3)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListBillEstimateLineItemsResponse" });
   }
 }
-function __c31(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.String,
-          values: __S(416, __c52, 0),
-          matchOption: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListBillEstimatesFilter" });
-    case 1:
-      return S.Array(__S(248, __c31, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          filters: S.optional(__S(249, __c31, 1)),
-          createdAtFilter: S.optional(__S(256, __c32, 0)),
-          expiresAtFilter: S.optional(__S(256, __c32, 0)),
+          filters: S.optional(__S(209, __c26, 1)),
+          createdAtFilter: S.optional(__S(240, __c30, 0)),
+          expiresAtFilter: S.optional(__S(240, __c30, 0)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListBillEstimatesRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.optional(S.String),
           status: S.optional(S.String),
-          billInterval: S.optional(__S(400, __c50, 0)),
+          billInterval: S.optional(__S(384, __c48, 0)),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           expiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "BillEstimateSummary" });
-    case 4:
-      return S.Array(__S(251, __c31, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(233, __c29, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(252, __c31, 4)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListBillEstimatesResponse",
-      });
+        S.Struct({ items: S.optional(__S(234, __c29, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListBillEstimatesResponse" });
   }
 }
-function __c32(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2600,7 +2443,7 @@ function __c32(j: number): any {
       ).annotate({ identifier: "FilterTimestamp" });
   }
 }
-function __c33(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2609,49 +2452,57 @@ function __c33(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListBillScenarioCommitmentModificationsRequest",
-      });
+      ).annotate({ identifier: "ListBillScenarioCommitmentModificationsRequest" });
     case 1:
       return S.suspend(() =>
+        S.Struct({ items: S.optional(__S(9, __c1, 1)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListBillScenarioCommitmentModificationsResponse" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(9, __c1, 1)),
+          filters: S.optional(__S(209, __c26, 1)),
+          createdAtFilter: S.optional(__S(240, __c30, 0)),
+          expiresAtFilter: S.optional(__S(240, __c30, 0)),
           nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListBillScenarioCommitmentModificationsResponse",
-      });
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListBillScenariosRequest" });
+    case 1:
+      return S.Array(__S(88, __c11, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ items: S.optional(__S(257, __c32, 1)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListBillScenariosResponse" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          billScenarioId: S.String,
+          filters: S.optional(__S(209, __c26, 1)),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListBillScenarioUsageModificationsRequest" });
   }
 }
 function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          values: __S(416, __c52, 0),
-          matchOption: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListBillScenariosFilter" });
+        S.Struct({ arn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.Array(__S(272, __c34, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          filters: S.optional(__S(273, __c34, 1)),
-          createdAtFilter: S.optional(__S(256, __c32, 0)),
-          expiresAtFilter: S.optional(__S(256, __c32, 0)),
-          nextToken: S.optional(S.String),
-          maxResults: S.optional(S.Number),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ListBillScenariosRequest" });
-    case 3:
-      return S.Array(__S(168, __c21, 0));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(275, __c34, 3)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListBillScenariosResponse",
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(56, __c7, 0)) })).annotate({
+        identifier: "ListTagsForResourceResponse",
       });
   }
 }
@@ -2660,105 +2511,39 @@ function __c35(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          billScenarioId: S.String,
-          filters: S.optional(__S(233, __c29, 1)),
+          createdAtFilter: S.optional(__S(240, __c30, 0)),
+          expiresAtFilter: S.optional(__S(240, __c30, 0)),
+          filters: S.optional(__S(209, __c26, 1)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListBillScenarioUsageModificationsRequest",
-      });
+      ).annotate({ identifier: "ListWorkloadEstimatesRequest" });
+    case 1:
+      return S.Array(__S(104, __c13, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ items: S.optional(__S(281, __c35, 1)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListWorkloadEstimatesResponse" });
   }
 }
 function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ arn: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(56, __c7, 0)) })).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          values: __S(416, __c52, 0),
-          matchOption: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListWorkloadEstimatesFilter",
-      });
-    case 1:
-      return S.Array(__S(296, __c37, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          createdAtFilter: S.optional(__S(256, __c32, 0)),
-          expiresAtFilter: S.optional(__S(256, __c32, 0)),
-          filters: S.optional(__S(297, __c37, 1)),
-          nextToken: S.optional(S.String),
-          maxResults: S.optional(S.Number),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListWorkloadEstimatesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.optional(S.String),
-          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          expiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          rateType: S.optional(S.String),
-          rateTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          status: S.optional(S.String),
-          totalCost: S.optional(S.Number),
-          costCurrency: S.optional(S.String),
-          failureMessage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WorkloadEstimateSummary" });
-    case 4:
-      return S.Array(__S(299, __c37, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(300, __c37, 4)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListWorkloadEstimatesResponse",
-      });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
         S.Struct({
           workloadEstimateId: S.String,
-          filters: S.optional(__S(233, __c29, 1)),
+          filters: S.optional(__S(209, __c26, 1)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListWorkloadEstimateUsageRequest",
-      });
+      ).annotate({ identifier: "ListWorkloadEstimateUsageRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ items: S.optional(__S(41, __c5, 1)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListWorkloadEstimateUsageResponse",
-      });
+      ).annotate({ identifier: "ListWorkloadEstimateUsageResponse" });
   }
 }
-function __c39(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2768,17 +2553,17 @@ function __c39(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c40(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ arn: S.String, tagKeys: __S(416, __c52, 0) }).pipe(
+        S.Struct({ arn: S.String, tagKeys: __S(400, __c50, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c41(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2787,12 +2572,10 @@ function __c41(j: number): any {
           name: S.optional(S.String),
           expiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateBillEstimateRequest",
-      });
+      ).annotate({ identifier: "UpdateBillEstimateRequest" });
   }
 }
-function __c42(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2803,34 +2586,22 @@ function __c42(j: number): any {
           groupSharingPreference: S.optional(S.String),
           costCategoryGroupSharingPreferenceArn: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateBillScenarioRequest",
-      });
+      ).annotate({ identifier: "UpdateBillScenarioRequest" });
   }
 }
-function __c43(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          managementAccountRateTypeSelections: S.optional(__S(184, __c23, 0)),
-          memberAccountRateTypeSelections: S.optional(__S(184, __c23, 0)),
-          standaloneAccountRateTypeSelections: S.optional(__S(184, __c23, 0)),
+          managementAccountRateTypeSelections: S.optional(__S(168, __c21, 0)),
+          memberAccountRateTypeSelections: S.optional(__S(168, __c21, 0)),
+          standaloneAccountRateTypeSelections: S.optional(__S(168, __c21, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdatePreferencesRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          managementAccountRateTypeSelections: S.optional(__S(184, __c23, 0)),
-          memberAccountRateTypeSelections: S.optional(__S(184, __c23, 0)),
-          standaloneAccountRateTypeSelections: S.optional(__S(184, __c23, 0)),
-        }),
-      ).annotate({
-        identifier: "UpdatePreferencesResponse",
-      });
   }
 }
-function __c44(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2839,12 +2610,10 @@ function __c44(j: number): any {
           name: S.optional(S.String),
           expiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateWorkloadEstimateRequest",
-      });
+      ).annotate({ identifier: "UpdateWorkloadEstimateRequest" });
   }
 }
-function __c45(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2852,26 +2621,22 @@ function __c45(j: number): any {
           key: S.String,
           group: S.optional(S.String),
           usageAccountId: S.String,
-          commitmentAction: __S(372, __c46, 4),
+          commitmentAction: __S(356, __c44, 4),
         }),
-      ).annotate({
-        identifier: "BatchCreateBillScenarioCommitmentModificationEntry",
-      });
+      ).annotate({ identifier: "BatchCreateBillScenarioCommitmentModificationEntry" });
     case 1:
-      return S.Array(__S(360, __c45, 0));
+      return S.Array(__S(344, __c43, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           billScenarioId: S.String,
-          commitmentModifications: __S(361, __c45, 1),
+          commitmentModifications: __S(345, __c43, 1),
           clientToken: S.optional(S.String).pipe(
             T.HttpHeader("X-Amzn-Client-Token"),
             T.IdempotencyToken(),
           ),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "BatchCreateBillScenarioCommitmentModificationRequest",
-      });
+      ).annotate({ identifier: "BatchCreateBillScenarioCommitmentModificationRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2879,13 +2644,11 @@ function __c45(j: number): any {
           id: S.optional(S.String),
           group: S.optional(S.String),
           usageAccountId: S.optional(S.String),
-          commitmentAction: S.optional(__S(372, __c46, 4)),
+          commitmentAction: S.optional(__S(356, __c44, 4)),
         }),
-      ).annotate({
-        identifier: "BatchCreateBillScenarioCommitmentModificationItem",
-      });
+      ).annotate({ identifier: "BatchCreateBillScenarioCommitmentModificationItem" });
     case 4:
-      return S.Array(__S(363, __c45, 3));
+      return S.Array(__S(347, __c43, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2893,23 +2656,16 @@ function __c45(j: number): any {
           errorMessage: S.optional(S.String),
           errorCode: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchCreateBillScenarioCommitmentModificationError",
-      });
+      ).annotate({ identifier: "BatchCreateBillScenarioCommitmentModificationError" });
     case 6:
-      return S.Array(__S(365, __c45, 5));
+      return S.Array(__S(349, __c43, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(364, __c45, 4)),
-          errors: S.optional(__S(366, __c45, 6)),
-        }),
-      ).annotate({
-        identifier: "BatchCreateBillScenarioCommitmentModificationResponse",
-      });
+        S.Struct({ items: S.optional(__S(348, __c43, 4)), errors: S.optional(__S(350, __c43, 6)) }),
+      ).annotate({ identifier: "BatchCreateBillScenarioCommitmentModificationResponse" });
   }
 }
-function __c46(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2917,9 +2673,7 @@ function __c46(j: number): any {
           reservedInstancesOfferingId: S.optional(S.String),
           instanceCount: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "AddReservedInstanceAction",
-      });
+      ).annotate({ identifier: "AddReservedInstanceAction" });
     case 1:
       return S.suspend(() =>
         S.Struct({ savingsPlanOfferingId: S.optional(S.String), commitment: S.optional(S.Number) }),
@@ -2934,14 +2688,14 @@ function __c46(j: number): any {
       });
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ addReservedInstanceAction: __S(368, __c46, 0) }),
-        /*@__PURE__*/ S.Struct({ addSavingsPlanAction: __S(369, __c46, 1) }),
-        /*@__PURE__*/ S.Struct({ negateReservedInstanceAction: __S(370, __c46, 2) }),
-        /*@__PURE__*/ S.Struct({ negateSavingsPlanAction: __S(371, __c46, 3) }),
+        /*@__PURE__*/ S.Struct({ addReservedInstanceAction: __S(352, __c44, 0) }),
+        /*@__PURE__*/ S.Struct({ addSavingsPlanAction: __S(353, __c44, 1) }),
+        /*@__PURE__*/ S.Struct({ negateReservedInstanceAction: __S(354, __c44, 2) }),
+        /*@__PURE__*/ S.Struct({ negateSavingsPlanAction: __S(355, __c44, 3) }),
       ]);
   }
 }
-function __c47(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2953,27 +2707,23 @@ function __c47(j: number): any {
           key: S.String,
           group: S.optional(S.String),
           usageAccountId: S.String,
-          amounts: S.optional(__S(385, __c48, 1)),
-          historicalUsage: S.optional(__S(411, __c51, 3)),
+          amounts: S.optional(__S(369, __c46, 1)),
+          historicalUsage: S.optional(__S(395, __c49, 3)),
         }),
-      ).annotate({
-        identifier: "BatchCreateBillScenarioUsageModificationEntry",
-      });
+      ).annotate({ identifier: "BatchCreateBillScenarioUsageModificationEntry" });
     case 1:
-      return S.Array(__S(376, __c47, 0));
+      return S.Array(__S(360, __c45, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           billScenarioId: S.String,
-          usageModifications: __S(377, __c47, 1),
+          usageModifications: __S(361, __c45, 1),
           clientToken: S.optional(S.String).pipe(
             T.HttpHeader("X-Amzn-Client-Token"),
             T.IdempotencyToken(),
           ),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "BatchCreateBillScenarioUsageModificationRequest",
-      });
+      ).annotate({ identifier: "BatchCreateBillScenarioUsageModificationRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2985,15 +2735,13 @@ function __c47(j: number): any {
           id: S.optional(S.String),
           group: S.optional(S.String),
           usageAccountId: S.optional(S.String),
-          quantities: S.optional(__S(393, __c49, 1)),
-          historicalUsage: S.optional(__S(411, __c51, 3)),
+          quantities: S.optional(__S(377, __c47, 1)),
+          historicalUsage: S.optional(__S(395, __c49, 3)),
           key: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchCreateBillScenarioUsageModificationItem",
-      });
+      ).annotate({ identifier: "BatchCreateBillScenarioUsageModificationItem" });
     case 4:
-      return S.Array(__S(379, __c47, 3));
+      return S.Array(__S(363, __c45, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3001,33 +2749,26 @@ function __c47(j: number): any {
           errorMessage: S.optional(S.String),
           errorCode: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchCreateBillScenarioUsageModificationError",
-      });
+      ).annotate({ identifier: "BatchCreateBillScenarioUsageModificationError" });
     case 6:
-      return S.Array(__S(381, __c47, 5));
+      return S.Array(__S(365, __c45, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(380, __c47, 4)),
-          errors: S.optional(__S(382, __c47, 6)),
-        }),
-      ).annotate({
-        identifier: "BatchCreateBillScenarioUsageModificationResponse",
-      });
+        S.Struct({ items: S.optional(__S(364, __c45, 4)), errors: S.optional(__S(366, __c45, 6)) }),
+      ).annotate({ identifier: "BatchCreateBillScenarioUsageModificationResponse" });
   }
 }
-function __c48(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ startHour: S.Date.pipe(T.TimestampFormat("epoch-seconds")), amount: S.Number }),
       ).annotate({ identifier: "UsageAmount" });
     case 1:
-      return S.Array(__S(384, __c48, 0));
+      return S.Array(__S(368, __c46, 0));
   }
 }
-function __c49(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3038,10 +2779,10 @@ function __c49(j: number): any {
         }),
       ).annotate({ identifier: "UsageQuantity" });
     case 1:
-      return S.Array(__S(392, __c49, 0));
+      return S.Array(__S(376, __c47, 0));
   }
 }
-function __c50(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3052,11 +2793,11 @@ function __c50(j: number): any {
       ).annotate({ identifier: "BillInterval" });
   }
 }
-function __c51(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<Expression> => __S(410, __c51, 2)).annotate({
+        /*@__PURE__*/ S.suspend((): S.Schema<Expression> => __S(394, __c49, 2)).annotate({
           identifier: "Expression",
         }),
       );
@@ -3064,27 +2805,27 @@ function __c51(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          matchOptions: S.optional(__S(416, __c52, 0)),
-          values: S.optional(__S(416, __c52, 0)),
+          matchOptions: S.optional(__S(400, __c50, 0)),
+          values: S.optional(__S(400, __c50, 0)),
         }),
       ).annotate({ identifier: "ExpressionFilter" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           and: S.optional(
-            S.suspend(() => __S(408, __c51, 0)).annotate({ identifier: "ExpressionList" }),
+            S.suspend(() => __S(392, __c49, 0)).annotate({ identifier: "ExpressionList" }),
           ),
           or: S.optional(
-            S.suspend(() => __S(408, __c51, 0)).annotate({ identifier: "ExpressionList" }),
+            S.suspend(() => __S(392, __c49, 0)).annotate({ identifier: "ExpressionList" }),
           ),
           not: S.optional(
-            S.suspend((): S.Schema<Expression> => __S(410, __c51, 2)).annotate({
+            S.suspend((): S.Schema<Expression> => __S(394, __c49, 2)).annotate({
               identifier: "Expression",
             }),
           ),
-          costCategories: S.optional(__S(409, __c51, 1)),
-          dimensions: S.optional(__S(409, __c51, 1)),
-          tags: S.optional(__S(409, __c51, 1)),
+          costCategories: S.optional(__S(393, __c49, 1)),
+          dimensions: S.optional(__S(393, __c49, 1)),
+          tags: S.optional(__S(393, __c49, 1)),
         }),
       ).annotate({ identifier: "Expression" });
     case 3:
@@ -3095,19 +2836,19 @@ function __c51(j: number): any {
           operation: S.String,
           location: S.optional(S.String),
           usageAccountId: S.String,
-          billInterval: __S(400, __c50, 0),
-          filterExpression: __S(410, __c51, 2),
+          billInterval: __S(384, __c48, 0),
+          filterExpression: __S(394, __c49, 2),
         }),
       ).annotate({ identifier: "HistoricalUsageEntity" });
   }
 }
-function __c52(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c53(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3119,26 +2860,22 @@ function __c53(j: number): any {
           group: S.optional(S.String),
           usageAccountId: S.String,
           amount: S.Number,
-          historicalUsage: S.optional(__S(411, __c51, 3)),
+          historicalUsage: S.optional(__S(395, __c49, 3)),
         }),
-      ).annotate({
-        identifier: "BatchCreateWorkloadEstimateUsageEntry",
-      });
+      ).annotate({ identifier: "BatchCreateWorkloadEstimateUsageEntry" });
     case 1:
-      return S.Array(__S(424, __c53, 0));
+      return S.Array(__S(408, __c51, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           workloadEstimateId: S.String,
-          usage: __S(425, __c53, 1),
+          usage: __S(409, __c51, 1),
           clientToken: S.optional(S.String).pipe(
             T.HttpHeader("X-Amzn-Client-Token"),
             T.IdempotencyToken(),
           ),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "BatchCreateWorkloadEstimateUsageRequest",
-      });
+      ).annotate({ identifier: "BatchCreateWorkloadEstimateUsageRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3149,18 +2886,16 @@ function __c53(j: number): any {
           id: S.optional(S.String),
           usageAccountId: S.optional(S.String),
           group: S.optional(S.String),
-          quantity: S.optional(__S(432, __c54, 0)),
+          quantity: S.optional(__S(416, __c52, 0)),
           cost: S.optional(S.Number),
           currency: S.optional(S.String),
           status: S.optional(S.String),
-          historicalUsage: S.optional(__S(411, __c51, 3)),
+          historicalUsage: S.optional(__S(395, __c49, 3)),
           key: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchCreateWorkloadEstimateUsageItem",
-      });
+      ).annotate({ identifier: "BatchCreateWorkloadEstimateUsageItem" });
     case 4:
-      return S.Array(__S(427, __c53, 3));
+      return S.Array(__S(411, __c51, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3168,19 +2903,44 @@ function __c53(j: number): any {
           errorCode: S.optional(S.String),
           errorMessage: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchCreateWorkloadEstimateUsageError",
-      });
+      ).annotate({ identifier: "BatchCreateWorkloadEstimateUsageError" });
     case 6:
-      return S.Array(__S(429, __c53, 5));
+      return S.Array(__S(413, __c51, 5));
     case 7:
       return S.suspend(() =>
+        S.Struct({ items: S.optional(__S(412, __c51, 4)), errors: S.optional(__S(414, __c51, 6)) }),
+      ).annotate({ identifier: "BatchCreateWorkloadEstimateUsageResponse" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ unit: S.optional(S.String), amount: S.optional(S.Number) }),
+      ).annotate({ identifier: "WorkloadEstimateUsageQuantity" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ billScenarioId: S.String, ids: __S(400, __c50, 0) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "BatchDeleteBillScenarioCommitmentModificationRequest" });
+    case 1:
+      return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(428, __c53, 4)),
-          errors: S.optional(__S(430, __c53, 6)),
+          id: S.optional(S.String),
+          errorCode: S.optional(S.String),
+          errorMessage: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchCreateWorkloadEstimateUsageResponse",
+      ).annotate({ identifier: "BatchDeleteBillScenarioCommitmentModificationError" });
+    case 2:
+      return S.Array(__S(425, __c53, 1));
+    case 3:
+      return S.suspend(() => S.Struct({ errors: S.optional(__S(426, __c53, 2)) })).annotate({
+        identifier: "BatchDeleteBillScenarioCommitmentModificationResponse",
       });
   }
 }
@@ -3188,9 +2948,23 @@ function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ unit: S.optional(S.String), amount: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "WorkloadEstimateUsageQuantity",
+        S.Struct({ billScenarioId: S.String, ids: __S(400, __c50, 0) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "BatchDeleteBillScenarioUsageModificationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+          errorCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BatchDeleteBillScenarioUsageModificationError" });
+    case 2:
+      return S.Array(__S(433, __c54, 1));
+    case 3:
+      return S.suspend(() => S.Struct({ errors: S.optional(__S(434, __c54, 2)) })).annotate({
+        identifier: "BatchDeleteBillScenarioUsageModificationResponse",
       });
   }
 }
@@ -3198,83 +2972,22 @@ function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          billScenarioId: S.String,
-          ids: __S(416, __c52, 0),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "BatchDeleteBillScenarioCommitmentModificationRequest",
-      });
+        S.Struct({ workloadEstimateId: S.String, ids: __S(400, __c50, 0) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "BatchDeleteWorkloadEstimateUsageRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          errorCode: S.optional(S.String),
           errorMessage: S.optional(S.String),
+          errorCode: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchDeleteBillScenarioCommitmentModificationError",
-      });
+      ).annotate({ identifier: "BatchDeleteWorkloadEstimateUsageError" });
     case 2:
       return S.Array(__S(441, __c55, 1));
     case 3:
       return S.suspend(() => S.Struct({ errors: S.optional(__S(442, __c55, 2)) })).annotate({
-        identifier: "BatchDeleteBillScenarioCommitmentModificationResponse",
-      });
-  }
-}
-function __c56(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ billScenarioId: S.String, ids: __S(416, __c52, 0) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "BatchDeleteBillScenarioUsageModificationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-          errorCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BatchDeleteBillScenarioUsageModificationError",
-      });
-    case 2:
-      return S.Array(__S(449, __c56, 1));
-    case 3:
-      return S.suspend(() => S.Struct({ errors: S.optional(__S(450, __c56, 2)) })).annotate({
-        identifier: "BatchDeleteBillScenarioUsageModificationResponse",
-      });
-  }
-}
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ workloadEstimateId: S.String, ids: __S(416, __c52, 0) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "BatchDeleteWorkloadEstimateUsageRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-          errorCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BatchDeleteWorkloadEstimateUsageError",
-      });
-    case 2:
-      return S.Array(__S(457, __c57, 1));
-    case 3:
-      return S.suspend(() => S.Struct({ errors: S.optional(__S(458, __c57, 2)) })).annotate({
         identifier: "BatchDeleteWorkloadEstimateUsageResponse",
       });
   }

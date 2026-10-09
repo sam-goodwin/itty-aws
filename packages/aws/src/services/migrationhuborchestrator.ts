@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -931,7 +931,7 @@ export const deleteWorkflowStepGroup: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(16, __c4, 0) as any as S.Schema<DeleteWorkflowStepGroupRequest>,
-  output: __S(17, __c4, 1) as any as S.Schema<DeleteWorkflowStepGroupResponse>,
+  output: __S(4, __c1, 0) as any as S.Schema<DeleteWorkflowStepGroupResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1636,9 +1636,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteTemplateResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteTemplateResponse" });
   }
 }
 function __c2(j: number): any {
@@ -1655,9 +1653,7 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteMigrationWorkflowRequest",
-      });
+      ).annotate({ identifier: "DeleteMigrationWorkflowRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1665,9 +1661,7 @@ function __c2(j: number): any {
           arn: S.optional(S.String),
           status: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DeleteMigrationWorkflowResponse",
-      });
+      ).annotate({ identifier: "DeleteMigrationWorkflowResponse" });
   }
 }
 function __c3(j: number): any {
@@ -1688,9 +1682,7 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteWorkflowStepRequest",
-      });
+      ).annotate({ identifier: "DeleteWorkflowStepRequest" });
   }
 }
 function __c4(j: number): any {
@@ -1710,13 +1702,7 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteWorkflowStepGroupRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteWorkflowStepGroupResponse",
-      });
+      ).annotate({ identifier: "DeleteWorkflowStepGroupRequest" });
   }
 }
 function __c5(j: number): any {
@@ -1733,9 +1719,7 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetMigrationWorkflowTemplateRequest",
-      });
+      ).annotate({ identifier: "GetMigrationWorkflowTemplateRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1762,9 +1746,7 @@ function __c5(j: number): any {
           templateClass: S.optional(S.String),
           tags: S.optional(__S(120, __c30, 0)),
         }),
-      ).annotate({
-        identifier: "GetMigrationWorkflowTemplateResponse",
-      });
+      ).annotate({ identifier: "GetMigrationWorkflowTemplateResponse" });
   }
 }
 function __c6(j: number): any {
@@ -1824,9 +1806,7 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetTemplateStepGroupRequest",
-      });
+      ).annotate({ identifier: "GetTemplateStepGroupRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1841,9 +1821,7 @@ function __c7(j: number): any {
           previous: S.optional(__S(132, __c33, 0)),
           next: S.optional(__S(132, __c33, 0)),
         }),
-      ).annotate({
-        identifier: "GetTemplateStepGroupResponse",
-      });
+      ).annotate({ identifier: "GetTemplateStepGroupResponse" });
   }
 }
 function __c8(j: number): any {
@@ -1860,9 +1838,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetMigrationWorkflowRequest",
-      });
+      ).annotate({ identifier: "GetMigrationWorkflowRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1887,9 +1863,7 @@ function __c8(j: number): any {
           tags: S.optional(__S(120, __c30, 0)),
           workflowBucket: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetMigrationWorkflowResponse",
-      });
+      ).annotate({ identifier: "GetMigrationWorkflowResponse" });
   }
 }
 function __c9(j: number): any {
@@ -1949,9 +1923,7 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetWorkflowStepGroupRequest",
-      });
+      ).annotate({ identifier: "GetWorkflowStepGroupRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1968,9 +1940,7 @@ function __c10(j: number): any {
           previous: S.optional(__S(132, __c33, 0)),
           next: S.optional(__S(132, __c33, 0)),
         }),
-      ).annotate({
-        identifier: "GetWorkflowStepGroupResponse",
-      });
+      ).annotate({ identifier: "GetWorkflowStepGroupResponse" });
   }
 }
 function __c11(j: number): any {
@@ -2015,9 +1985,7 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(120, __c30, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -2042,9 +2010,7 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListMigrationWorkflowTemplatesRequest",
-      });
+      ).annotate({ identifier: "ListMigrationWorkflowTemplatesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2059,9 +2025,7 @@ function __c13(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), templateSummary: __S(54, __c13, 2) }),
-      ).annotate({
-        identifier: "ListMigrationWorkflowTemplatesResponse",
-      });
+      ).annotate({ identifier: "ListMigrationWorkflowTemplatesResponse" });
   }
 }
 function __c14(j: number): any {
@@ -2082,9 +2046,7 @@ function __c14(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTemplateStepGroupsRequest",
-      });
+      ).annotate({ identifier: "ListTemplateStepGroupsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2098,13 +2060,8 @@ function __c14(j: number): any {
       return S.Array(__S(57, __c14, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String),
-          templateStepGroupSummary: __S(58, __c14, 2),
-        }),
-      ).annotate({
-        identifier: "ListTemplateStepGroupsResponse",
-      });
+        S.Struct({ nextToken: S.optional(S.String), templateStepGroupSummary: __S(58, __c14, 2) }),
+      ).annotate({ identifier: "ListTemplateStepGroupsResponse" });
   }
 }
 function __c15(j: number): any {
@@ -2142,9 +2099,7 @@ function __c15(j: number): any {
           nextToken: S.optional(S.String),
           templateStepSummaryList: S.optional(__S(62, __c15, 2)),
         }),
-      ).annotate({
-        identifier: "ListTemplateStepsResponse",
-      });
+      ).annotate({ identifier: "ListTemplateStepsResponse" });
   }
 }
 function __c16(j: number): any {
@@ -2170,9 +2125,7 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListMigrationWorkflowsRequest",
-      });
+      ).annotate({ identifier: "ListMigrationWorkflowsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2192,13 +2145,8 @@ function __c16(j: number): any {
       return S.Array(__S(65, __c16, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String),
-          migrationWorkflowSummary: __S(66, __c16, 2),
-        }),
-      ).annotate({
-        identifier: "ListMigrationWorkflowsResponse",
-      });
+        S.Struct({ nextToken: S.optional(S.String), migrationWorkflowSummary: __S(66, __c16, 2) }),
+      ).annotate({ identifier: "ListMigrationWorkflowsResponse" });
   }
 }
 function __c17(j: number): any {
@@ -2219,9 +2167,7 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListWorkflowStepGroupsRequest",
-      });
+      ).annotate({ identifier: "ListWorkflowStepGroupsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2237,13 +2183,8 @@ function __c17(j: number): any {
       return S.Array(__S(69, __c17, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String),
-          workflowStepGroupsSummary: __S(70, __c17, 2),
-        }),
-      ).annotate({
-        identifier: "ListWorkflowStepGroupsResponse",
-      });
+        S.Struct({ nextToken: S.optional(S.String), workflowStepGroupsSummary: __S(70, __c17, 2) }),
+      ).annotate({ identifier: "ListWorkflowStepGroupsResponse" });
   }
 }
 function __c18(j: number): any {
@@ -2292,9 +2233,7 @@ function __c18(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), workflowStepsSummary: __S(74, __c18, 2) }),
-      ).annotate({
-        identifier: "ListWorkflowStepsResponse",
-      });
+      ).annotate({ identifier: "ListWorkflowStepsResponse" });
   }
 }
 function __c19(j: number): any {
@@ -2324,9 +2263,7 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           status: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "RetryWorkflowStepResponse",
-      });
+      ).annotate({ identifier: "RetryWorkflowStepResponse" });
   }
 }
 function __c20(j: number): any {
@@ -2343,9 +2280,7 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartMigrationWorkflowRequest",
-      });
+      ).annotate({ identifier: "StartMigrationWorkflowRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2355,9 +2290,7 @@ function __c20(j: number): any {
           statusMessage: S.optional(S.String),
           lastStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "StartMigrationWorkflowResponse",
-      });
+      ).annotate({ identifier: "StartMigrationWorkflowResponse" });
   }
 }
 function __c21(j: number): any {
@@ -2374,9 +2307,7 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StopMigrationWorkflowRequest",
-      });
+      ).annotate({ identifier: "StopMigrationWorkflowRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2386,9 +2317,7 @@ function __c21(j: number): any {
           statusMessage: S.optional(S.String),
           lastStopTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "StopMigrationWorkflowResponse",
-      });
+      ).annotate({ identifier: "StopMigrationWorkflowResponse" });
   }
 }
 function __c22(j: number): any {
@@ -2466,9 +2395,7 @@ function __c25(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateMigrationWorkflowRequest",
-      });
+      ).annotate({ identifier: "UpdateMigrationWorkflowRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2485,9 +2412,7 @@ function __c25(j: number): any {
           lastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           tags: S.optional(__S(120, __c30, 0)),
         }),
-      ).annotate({
-        identifier: "UpdateMigrationWorkflowResponse",
-      });
+      ).annotate({ identifier: "UpdateMigrationWorkflowResponse" });
   }
 }
 function __c26(j: number): any {
@@ -2517,9 +2442,7 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateWorkflowStepRequest",
-      });
+      ).annotate({ identifier: "UpdateWorkflowStepRequest" });
   }
 }
 function __c27(j: number): any {
@@ -2543,9 +2466,7 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateWorkflowStepGroupRequest",
-      });
+      ).annotate({ identifier: "UpdateWorkflowStepGroupRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2558,9 +2479,7 @@ function __c27(j: number): any {
           previous: S.optional(__S(132, __c33, 0)),
           lastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "UpdateWorkflowStepGroupResponse",
-      });
+      ).annotate({ identifier: "UpdateWorkflowStepGroupResponse" });
   }
 }
 function __c28(j: number): any {
@@ -2619,9 +2538,7 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateMigrationWorkflowRequest",
-      });
+      ).annotate({ identifier: "CreateMigrationWorkflowRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2637,9 +2554,7 @@ function __c31(j: number): any {
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           tags: S.optional(__S(120, __c30, 0)),
         }),
-      ).annotate({
-        identifier: "CreateMigrationWorkflowResponse",
-      });
+      ).annotate({ identifier: "CreateMigrationWorkflowResponse" });
   }
 }
 function __c32(j: number): any {
@@ -2679,9 +2594,7 @@ function __c34(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/workflowstep" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateWorkflowStepRequest",
-      });
+      ).annotate({ identifier: "CreateWorkflowStepRequest" });
   }
 }
 function __c35(j: number): any {
@@ -2699,9 +2612,7 @@ function __c35(j: number): any {
           runEnvironment: S.optional(S.String),
           targetType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "WorkflowStepAutomationConfiguration",
-      });
+      ).annotate({ identifier: "WorkflowStepAutomationConfiguration" });
   }
 }
 function __c36(j: number): any {
@@ -2735,9 +2646,7 @@ function __c37(j: number): any {
           workflowId: S.optional(S.String),
           name: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateWorkflowStepResponse",
-      });
+      ).annotate({ identifier: "CreateWorkflowStepResponse" });
   }
 }
 function __c38(j: number): any {
@@ -2760,9 +2669,7 @@ function __c38(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateWorkflowStepGroupRequest",
-      });
+      ).annotate({ identifier: "CreateWorkflowStepGroupRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2775,9 +2682,7 @@ function __c38(j: number): any {
           previous: S.optional(__S(132, __c33, 0)),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "CreateWorkflowStepGroupResponse",
-      });
+      ).annotate({ identifier: "CreateWorkflowStepGroupResponse" });
   }
 }
 function __c39(j: number): any {

@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -107,9 +107,7 @@ export class ConflictException
       ResourceId: S.String,
       ResourceType: S.String,
       Reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({
-          identifier: "ConflictExceptionReason",
-        }),
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ConflictExceptionReason" }),
       ),
     },
     /*@__PURE__*/ T.HttpError(409),
@@ -169,7 +167,7 @@ export class ValidationException
         }),
       ),
       Fields: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(345, __c43, 1)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(337, __c42, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -995,8 +993,8 @@ export const associateAccounts: API.OperationMethod<
   AssociateAccountsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<AssociateAccountsInput>,
-  output: __S(360, __c45, 0) as any as S.Schema<AssociateAccountsOutput>,
+  input: __S(344, __c43, 0) as any as S.Schema<AssociateAccountsInput>,
+  output: __S(352, __c44, 0) as any as S.Schema<AssociateAccountsOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1029,8 +1027,8 @@ export const associatePricingRules: API.OperationMethod<
   AssociatePricingRulesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(376, __c47, 0) as any as S.Schema<AssociatePricingRulesInput>,
-  output: __S(384, __c48, 0) as any as S.Schema<AssociatePricingRulesOutput>,
+  input: __S(368, __c46, 0) as any as S.Schema<AssociatePricingRulesInput>,
+  output: __S(352, __c44, 0) as any as S.Schema<AssociatePricingRulesOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1063,8 +1061,8 @@ export const batchAssociateResourcesToCustomLineItem: API.OperationMethod<
   BatchAssociateResourcesToCustomLineItemError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<BatchAssociateResourcesToCustomLineItemInput>,
-  output: __S(393, __c49, 1) as any as S.Schema<BatchAssociateResourcesToCustomLineItemOutput>,
+  input: __S(376, __c47, 0) as any as S.Schema<BatchAssociateResourcesToCustomLineItemInput>,
+  output: __S(377, __c47, 1) as any as S.Schema<BatchAssociateResourcesToCustomLineItemOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1129,7 +1127,7 @@ export const createBillingGroup: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(9, __c1, 1) as any as S.Schema<CreateBillingGroupInput>,
-  output: __S(360, __c45, 0) as any as S.Schema<CreateBillingGroupOutput>,
+  output: __S(352, __c44, 0) as any as S.Schema<CreateBillingGroupOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1161,7 +1159,7 @@ export const createCustomLineItem: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(34, __c4, 2) as any as S.Schema<CreateCustomLineItemInput>,
-  output: __S(384, __c48, 0) as any as S.Schema<CreateCustomLineItemOutput>,
+  output: __S(352, __c44, 0) as any as S.Schema<CreateCustomLineItemOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1194,7 +1192,7 @@ export const createPricingPlan: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(64, __c8, 0) as any as S.Schema<CreatePricingPlanInput>,
-  output: __S(360, __c45, 0) as any as S.Schema<CreatePricingPlanOutput>,
+  output: __S(352, __c44, 0) as any as S.Schema<CreatePricingPlanOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1227,7 +1225,7 @@ export const createPricingRule: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(72, __c9, 0) as any as S.Schema<CreatePricingRuleInput>,
-  output: __S(360, __c45, 0) as any as S.Schema<CreatePricingRuleOutput>,
+  output: __S(352, __c44, 0) as any as S.Schema<CreatePricingRuleOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1256,8 +1254,8 @@ export const deleteBillingGroup: API.OperationMethod<
   DeleteBillingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<DeleteBillingGroupInput>,
-  output: __S(360, __c45, 0) as any as S.Schema<DeleteBillingGroupOutput>,
+  input: __S(88, __c11, 0) as any as S.Schema<DeleteBillingGroupInput>,
+  output: __S(352, __c44, 0) as any as S.Schema<DeleteBillingGroupOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1285,8 +1283,8 @@ export const deleteCustomLineItem: API.OperationMethod<
   DeleteCustomLineItemError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<DeleteCustomLineItemInput>,
-  output: __S(384, __c48, 0) as any as S.Schema<DeleteCustomLineItemOutput>,
+  input: __S(96, __c12, 0) as any as S.Schema<DeleteCustomLineItemInput>,
+  output: __S(352, __c44, 0) as any as S.Schema<DeleteCustomLineItemOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1315,8 +1313,8 @@ export const deletePricingPlan: API.OperationMethod<
   DeletePricingPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<DeletePricingPlanInput>,
-  output: __S(360, __c45, 0) as any as S.Schema<DeletePricingPlanOutput>,
+  input: __S(104, __c13, 0) as any as S.Schema<DeletePricingPlanInput>,
+  output: __S(352, __c44, 0) as any as S.Schema<DeletePricingPlanOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1345,8 +1343,8 @@ export const deletePricingRule: API.OperationMethod<
   DeletePricingRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<DeletePricingRuleInput>,
-  output: __S(360, __c45, 0) as any as S.Schema<DeletePricingRuleOutput>,
+  input: __S(112, __c14, 0) as any as S.Schema<DeletePricingRuleInput>,
+  output: __S(352, __c44, 0) as any as S.Schema<DeletePricingRuleOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1376,8 +1374,8 @@ export const disassociateAccounts: API.OperationMethod<
   DisassociateAccountsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<DisassociateAccountsInput>,
-  output: __S(384, __c48, 0) as any as S.Schema<DisassociateAccountsOutput>,
+  input: __S(120, __c15, 0) as any as S.Schema<DisassociateAccountsInput>,
+  output: __S(352, __c44, 0) as any as S.Schema<DisassociateAccountsOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1408,8 +1406,8 @@ export const disassociatePricingRules: API.OperationMethod<
   DisassociatePricingRulesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<DisassociatePricingRulesInput>,
-  output: __S(384, __c48, 0) as any as S.Schema<DisassociatePricingRulesOutput>,
+  input: __S(128, __c16, 0) as any as S.Schema<DisassociatePricingRulesInput>,
+  output: __S(352, __c44, 0) as any as S.Schema<DisassociatePricingRulesOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1440,8 +1438,8 @@ export const getBillingGroupCostReport: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BillingGroupCostReportResultElement
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<GetBillingGroupCostReportInput>,
-  output: __S(150, __c18, 6) as any as S.Schema<GetBillingGroupCostReportOutput>,
+  input: __S(137, __c17, 1) as any as S.Schema<GetBillingGroupCostReportInput>,
+  output: __S(142, __c17, 6) as any as S.Schema<GetBillingGroupCostReportOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1476,8 +1474,8 @@ export const getBillingTransferPreference: API.OperationMethod<
   GetBillingTransferPreferenceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<GetBillingTransferPreferenceInput>,
-  output: __S(153, __c19, 1) as any as S.Schema<GetBillingTransferPreferenceOutput>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetBillingTransferPreferenceInput>,
+  output: __S(145, __c18, 1) as any as S.Schema<GetBillingTransferPreferenceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1507,8 +1505,8 @@ export const listAccountAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AccountAssociationsListElement
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<ListAccountAssociationsInput>,
-  output: __S(172, __c21, 4) as any as S.Schema<ListAccountAssociationsOutput>,
+  input: __S(161, __c20, 1) as any as S.Schema<ListAccountAssociationsInput>,
+  output: __S(164, __c20, 4) as any as S.Schema<ListAccountAssociationsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1543,8 +1541,8 @@ export const listBillingGroupCostReports: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BillingGroupCostReportElement
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<ListBillingGroupCostReportsInput>,
-  output: __S(180, __c22, 4) as any as S.Schema<ListBillingGroupCostReportsOutput>,
+  input: __S(169, __c21, 1) as any as S.Schema<ListBillingGroupCostReportsInput>,
+  output: __S(172, __c21, 4) as any as S.Schema<ListBillingGroupCostReportsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1580,8 +1578,8 @@ export const listBillingGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BillingGroupListElement
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<ListBillingGroupsInput>,
-  output: __S(190, __c23, 6) as any as S.Schema<ListBillingGroupsOutput>,
+  input: __S(179, __c22, 3) as any as S.Schema<ListBillingGroupsInput>,
+  output: __S(182, __c22, 6) as any as S.Schema<ListBillingGroupsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1617,8 +1615,8 @@ export const listCustomLineItems: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CustomLineItemListElement
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<ListCustomLineItemsInput>,
-  output: __S(205, __c25, 5) as any as S.Schema<ListCustomLineItemsOutput>,
+  input: __S(194, __c24, 2) as any as S.Schema<ListCustomLineItemsInput>,
+  output: __S(197, __c24, 5) as any as S.Schema<ListCustomLineItemsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1653,8 +1651,8 @@ export const listCustomLineItemVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CustomLineItemVersionListElement
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<ListCustomLineItemVersionsInput>,
-  output: __S(221, __c27, 5) as any as S.Schema<ListCustomLineItemVersionsOutput>,
+  input: __S(210, __c26, 2) as any as S.Schema<ListCustomLineItemVersionsInput>,
+  output: __S(213, __c26, 5) as any as S.Schema<ListCustomLineItemVersionsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1688,8 +1686,8 @@ export const listPricingPlans: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PricingPlanListElement
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<ListPricingPlansInput>,
-  output: __S(227, __c28, 3) as any as S.Schema<ListPricingPlansOutput>,
+  input: __S(216, __c27, 0) as any as S.Schema<ListPricingPlansInput>,
+  output: __S(219, __c27, 3) as any as S.Schema<ListPricingPlansOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1724,8 +1722,8 @@ export const listPricingPlansAssociatedWithPricingRule: API.PaginatedOperationMe
   Credentials | HttpClient.HttpClient,
   PricingPlanArn
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<ListPricingPlansAssociatedWithPricingRuleInput>,
-  output: __S(241, __c30, 1) as any as S.Schema<ListPricingPlansAssociatedWithPricingRuleOutput>,
+  input: __S(232, __c29, 0) as any as S.Schema<ListPricingPlansAssociatedWithPricingRuleInput>,
+  output: __S(233, __c29, 1) as any as S.Schema<ListPricingPlansAssociatedWithPricingRuleOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1760,8 +1758,8 @@ export const listPricingRules: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PricingRuleListElement
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<ListPricingRulesInput>,
-  output: __S(252, __c31, 4) as any as S.Schema<ListPricingRulesOutput>,
+  input: __S(240, __c30, 0) as any as S.Schema<ListPricingRulesInput>,
+  output: __S(243, __c30, 3) as any as S.Schema<ListPricingRulesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1796,8 +1794,8 @@ export const listPricingRulesAssociatedToPricingPlan: API.PaginatedOperationMeth
   Credentials | HttpClient.HttpClient,
   PricingRuleArn
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<ListPricingRulesAssociatedToPricingPlanInput>,
-  output: __S(257, __c32, 1) as any as S.Schema<ListPricingRulesAssociatedToPricingPlanOutput>,
+  input: __S(248, __c31, 0) as any as S.Schema<ListPricingRulesAssociatedToPricingPlanInput>,
+  output: __S(249, __c31, 1) as any as S.Schema<ListPricingRulesAssociatedToPricingPlanOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1833,8 +1831,8 @@ export const listResourcesAssociatedToCustomLineItem: API.PaginatedOperationMeth
   Credentials | HttpClient.HttpClient,
   ListResourcesAssociatedToCustomLineItemResponseElement
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(265, __c33, 1) as any as S.Schema<ListResourcesAssociatedToCustomLineItemInput>,
-  output: __S(268, __c33, 4) as any as S.Schema<ListResourcesAssociatedToCustomLineItemOutput>,
+  input: __S(257, __c32, 1) as any as S.Schema<ListResourcesAssociatedToCustomLineItemInput>,
+  output: __S(260, __c32, 4) as any as S.Schema<ListResourcesAssociatedToCustomLineItemOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1869,8 +1867,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(273, __c34, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(265, __c33, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1899,8 +1897,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(280, __c35, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1929,8 +1927,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(280, __c35, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1960,8 +1958,8 @@ export const updateBillingGroup: API.OperationMethod<
   UpdateBillingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<UpdateBillingGroupInput>,
-  output: __S(305, __c38, 1) as any as S.Schema<UpdateBillingGroupOutput>,
+  input: __S(296, __c37, 0) as any as S.Schema<UpdateBillingGroupInput>,
+  output: __S(297, __c37, 1) as any as S.Schema<UpdateBillingGroupOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1994,8 +1992,8 @@ export const updateBillingTransferPreference: API.OperationMethod<
   UpdateBillingTransferPreferenceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<UpdateBillingTransferPreferenceInput>,
-  output: __S(313, __c39, 1) as any as S.Schema<UpdateBillingTransferPreferenceOutput>,
+  input: __S(304, __c38, 0) as any as S.Schema<UpdateBillingTransferPreferenceInput>,
+  output: __S(305, __c38, 1) as any as S.Schema<UpdateBillingTransferPreferenceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2026,8 +2024,8 @@ export const updateCustomLineItem: API.OperationMethod<
   UpdateCustomLineItemError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321, __c40, 1) as any as S.Schema<UpdateCustomLineItemInput>,
-  output: __S(322, __c40, 2) as any as S.Schema<UpdateCustomLineItemOutput>,
+  input: __S(313, __c39, 1) as any as S.Schema<UpdateCustomLineItemInput>,
+  output: __S(314, __c39, 2) as any as S.Schema<UpdateCustomLineItemOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2058,8 +2056,8 @@ export const updatePricingPlan: API.OperationMethod<
   UpdatePricingPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<UpdatePricingPlanInput>,
-  output: __S(329, __c41, 1) as any as S.Schema<UpdatePricingPlanOutput>,
+  input: __S(320, __c40, 0) as any as S.Schema<UpdatePricingPlanInput>,
+  output: __S(321, __c40, 1) as any as S.Schema<UpdatePricingPlanOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2090,8 +2088,8 @@ export const updatePricingRule: API.OperationMethod<
   UpdatePricingRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<UpdatePricingRuleInput>,
-  output: __S(337, __c42, 1) as any as S.Schema<UpdatePricingRuleOutput>,
+  input: __S(328, __c41, 0) as any as S.Schema<UpdatePricingRuleInput>,
+  output: __S(329, __c41, 1) as any as S.Schema<UpdatePricingRuleOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2112,8 +2110,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           TargetArn: S.String,
-          ResourceArns: __S(368, __c46, 0),
-          BillingPeriodRange: S.optional(__S(408, __c51, 0)),
+          ResourceArns: __S(360, __c45, 0),
+          BillingPeriodRange: S.optional(__S(392, __c49, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/batch-disassociate-resources-from-custom-line-item" }),
@@ -2124,18 +2122,14 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchDisassociateResourcesFromCustomLineItemInput",
-      });
+      ).annotate({ identifier: "BatchDisassociateResourcesFromCustomLineItemInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          SuccessfullyDisassociatedResources: S.optional(__S(402, __c50, 2)),
-          FailedDisassociatedResources: S.optional(__S(402, __c50, 2)),
+          SuccessfullyDisassociatedResources: S.optional(__S(386, __c48, 2)),
+          FailedDisassociatedResources: S.optional(__S(386, __c48, 2)),
         }),
-      ).annotate({
-        identifier: "BatchDisassociateResourcesFromCustomLineItemOutput",
-      });
+      ).annotate({ identifier: "BatchDisassociateResourcesFromCustomLineItemOutput" });
   }
 }
 function __c1(j: number): any {
@@ -2143,7 +2137,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          LinkedAccountIds: S.optional(__S(368, __c46, 0)),
+          LinkedAccountIds: S.optional(__S(360, __c45, 0)),
           AutoAssociate: S.optional(S.Boolean),
           ResponsibilityTransferArn: S.optional(S.String),
         }),
@@ -2192,13 +2186,8 @@ function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          PercentageValue: S.Number,
-          AssociatedValues: S.optional(__S(368, __c46, 0)),
-        }),
-      ).annotate({
-        identifier: "CustomLineItemPercentageChargeDetails",
-      });
+        S.Struct({ PercentageValue: S.Number, AssociatedValues: S.optional(__S(360, __c45, 0)) }),
+      ).annotate({ identifier: "CustomLineItemPercentageChargeDetails" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2207,9 +2196,7 @@ function __c4(j: number): any {
           Type: S.String,
           LineItemFilters: S.optional(__S(58, __c7, 2)),
         }),
-      ).annotate({
-        identifier: "CustomLineItemChargeDetails",
-      });
+      ).annotate({ identifier: "CustomLineItemChargeDetails" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2220,7 +2207,7 @@ function __c4(j: number): any {
           Name: SensitiveString,
           Description: SensitiveString,
           BillingGroupArn: S.String,
-          BillingPeriodRange: S.optional(__S(408, __c51, 0)),
+          BillingPeriodRange: S.optional(__S(392, __c49, 0)),
           Tags: S.optional(__S(16, __c2, 0)),
           ChargeDetails: __S(33, __c4, 1),
           AccountId: S.optional(S.String),
@@ -2236,9 +2223,7 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateCustomLineItemInput",
-      });
+      ).annotate({ identifier: "CreateCustomLineItemInput" });
   }
 }
 function __c5(j: number): any {
@@ -2267,7 +2252,7 @@ function __c7(j: number): any {
           Attribute: S.String,
           MatchOption: S.String,
           Values: S.optional(__S(40, __c5, 0)),
-          AttributeValues: S.optional(__S(368, __c46, 0)),
+          AttributeValues: S.optional(__S(360, __c45, 0)),
         }),
       ).annotate({ identifier: "LineItemFilter" });
     case 2:
@@ -2285,7 +2270,7 @@ function __c8(j: number): any {
           ),
           Name: SensitiveString,
           Description: S.optional(SensitiveString),
-          PricingRuleArns: S.optional(__S(368, __c46, 0)),
+          PricingRuleArns: S.optional(__S(360, __c45, 0)),
           Tags: S.optional(__S(16, __c2, 0)),
         }).pipe(
           T.all(
@@ -2317,7 +2302,7 @@ function __c9(j: number): any {
           Service: S.optional(S.String),
           Tags: S.optional(__S(16, __c2, 0)),
           BillingEntity: S.optional(S.String),
-          Tiering: S.optional(__S(88, __c11, 0)),
+          Tiering: S.optional(__S(83, __c10, 3)),
           UsageType: S.optional(S.String),
           Operation: S.optional(S.String),
         }).pipe(
@@ -2349,11 +2334,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "CustomTier" });
     case 2:
       return S.Array(__S(81, __c10, 1));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           FreeTier: S.optional(__S(80, __c10, 0)),
@@ -2362,7 +2343,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "CreateTieringInput" });
   }
 }
-function __c12(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2379,14 +2360,11 @@ function __c12(j: number): any {
       ).annotate({ identifier: "DeleteBillingGroupInput" });
   }
 }
-function __c13(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          Arn: S.String,
-          BillingPeriodRange: S.optional(__S(408, __c51, 0)),
-        }).pipe(
+        S.Struct({ Arn: S.String, BillingPeriodRange: S.optional(__S(392, __c49, 0)) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/delete-custom-line-item" }),
             svc,
@@ -2396,12 +2374,10 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteCustomLineItemInput",
-      });
+      ).annotate({ identifier: "DeleteCustomLineItemInput" });
   }
 }
-function __c14(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2418,7 +2394,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "DeletePricingPlanInput" });
   }
 }
-function __c15(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2435,11 +2411,11 @@ function __c15(j: number): any {
       ).annotate({ identifier: "DeletePricingRuleInput" });
   }
 }
-function __c16(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Arn: S.String, AccountIds: __S(368, __c46, 0) }).pipe(
+        S.Struct({ Arn: S.String, AccountIds: __S(360, __c45, 0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/disassociate-accounts" }),
             svc,
@@ -2449,16 +2425,14 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateAccountsInput",
-      });
+      ).annotate({ identifier: "DisassociateAccountsInput" });
   }
 }
-function __c17(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Arn: S.String, PricingRuleArns: __S(368, __c46, 0) }).pipe(
+        S.Struct({ Arn: S.String, PricingRuleArns: __S(360, __c45, 0) }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/disassociate-pricing-rules" }),
             svc,
@@ -2468,12 +2442,10 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociatePricingRulesInput",
-      });
+      ).annotate({ identifier: "DisassociatePricingRulesInput" });
   }
 }
-function __c18(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2483,7 +2455,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
-          BillingPeriodRange: S.optional(__S(144, __c18, 0)),
+          BillingPeriodRange: S.optional(__S(136, __c17, 0)),
           GroupBy: S.optional(__S(40, __c5, 0)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
@@ -2497,15 +2469,13 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetBillingGroupCostReportInput",
-      });
+      ).annotate({ identifier: "GetBillingGroupCostReportInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "Attribute" });
     case 3:
-      return S.Array(__S(146, __c18, 2));
+      return S.Array(__S(138, __c17, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2515,25 +2485,21 @@ function __c18(j: number): any {
           Margin: S.optional(S.String),
           MarginPercentage: S.optional(S.String),
           Currency: S.optional(S.String),
-          Attributes: S.optional(__S(147, __c18, 3)),
+          Attributes: S.optional(__S(139, __c17, 3)),
         }),
-      ).annotate({
-        identifier: "BillingGroupCostReportResultElement",
-      });
+      ).annotate({ identifier: "BillingGroupCostReportResultElement" });
     case 5:
-      return S.Array(__S(148, __c18, 4));
+      return S.Array(__S(140, __c17, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          BillingGroupCostReportResults: S.optional(__S(149, __c18, 5)),
+          BillingGroupCostReportResults: S.optional(__S(141, __c17, 5)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetBillingGroupCostReportOutput",
-      });
+      ).annotate({ identifier: "GetBillingGroupCostReportOutput" });
   }
 }
-function __c19(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2547,48 +2513,40 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetBillingTransferPreferenceInput",
-      });
+      ).annotate({ identifier: "GetBillingTransferPreferenceInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ResponsibilityTransferArn: S.String,
-          AutoBillingTransferBillingGroupCreation: __S(160, __c20, 0),
+          AutoBillingTransferBillingGroupCreation: __S(152, __c19, 0),
           LastModifiedTime: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "GetBillingTransferPreferenceOutput",
-      });
+      ).annotate({ identifier: "GetBillingTransferPreferenceOutput" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Enabled: S.Boolean, PricingPlanArn: S.optional(S.String) }),
+      ).annotate({ identifier: "AutoTransferBillingGroupCreationPreference" });
   }
 }
 function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Enabled: S.Boolean, PricingPlanArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "AutoTransferBillingGroupCreationPreference",
-      });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
         S.Struct({
           Association: S.optional(S.String),
           AccountId: S.optional(S.String),
-          AccountIds: S.optional(__S(368, __c46, 0)),
+          AccountIds: S.optional(__S(360, __c45, 0)),
         }),
-      ).annotate({
-        identifier: "ListAccountAssociationsFilter",
-      });
+      ).annotate({ identifier: "ListAccountAssociationsFilter" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           BillingPeriod: S.optional(S.String),
-          Filters: S.optional(__S(168, __c21, 0)),
+          Filters: S.optional(__S(160, __c20, 0)),
           NextToken: S.optional(S.String),
         }).pipe(
           T.all(
@@ -2600,9 +2558,7 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListAccountAssociationsInput",
-      });
+      ).annotate({ identifier: "ListAccountAssociationsInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2611,37 +2567,31 @@ function __c21(j: number): any {
           AccountName: S.optional(SensitiveString),
           AccountEmail: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "AccountAssociationsListElement",
-      });
+      ).annotate({ identifier: "AccountAssociationsListElement" });
     case 3:
-      return S.Array(__S(170, __c21, 2));
+      return S.Array(__S(162, __c20, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          LinkedAccounts: S.optional(__S(171, __c21, 3)),
+          LinkedAccounts: S.optional(__S(163, __c20, 3)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListAccountAssociationsOutput",
-      });
+      ).annotate({ identifier: "ListAccountAssociationsOutput" });
   }
 }
-function __c22(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ BillingGroupArns: S.optional(__S(368, __c46, 0)) }),
-      ).annotate({
-        identifier: "ListBillingGroupCostReportsFilter",
-      });
+        S.Struct({ BillingGroupArns: S.optional(__S(360, __c45, 0)) }),
+      ).annotate({ identifier: "ListBillingGroupCostReportsFilter" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           BillingPeriod: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Filters: S.optional(__S(176, __c22, 0)),
+          Filters: S.optional(__S(168, __c21, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/list-billing-group-cost-reports" }),
@@ -2652,9 +2602,7 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListBillingGroupCostReportsInput",
-      });
+      ).annotate({ identifier: "ListBillingGroupCostReportsInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2665,41 +2613,37 @@ function __c22(j: number): any {
           MarginPercentage: S.optional(S.String),
           Currency: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BillingGroupCostReportElement",
-      });
+      ).annotate({ identifier: "BillingGroupCostReportElement" });
     case 3:
-      return S.Array(__S(178, __c22, 2));
+      return S.Array(__S(170, __c21, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          BillingGroupCostReports: S.optional(__S(179, __c22, 3)),
+          BillingGroupCostReports: S.optional(__S(171, __c21, 3)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListBillingGroupCostReportsOutput",
-      });
+      ).annotate({ identifier: "ListBillingGroupCostReportsOutput" });
   }
 }
-function __c23(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ SearchOption: S.String, SearchValue: S.String })).annotate({
         identifier: "StringSearch",
       });
     case 1:
-      return S.Array(__S(184, __c23, 0));
+      return S.Array(__S(176, __c22, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Arns: S.optional(__S(368, __c46, 0)),
+          Arns: S.optional(__S(360, __c45, 0)),
           PricingPlan: S.optional(S.String),
           Statuses: S.optional(__S(40, __c5, 0)),
           AutoAssociate: S.optional(S.Boolean),
-          PrimaryAccountIds: S.optional(__S(368, __c46, 0)),
+          PrimaryAccountIds: S.optional(__S(360, __c45, 0)),
           BillingGroupTypes: S.optional(__S(40, __c5, 0)),
-          Names: S.optional(__S(185, __c23, 1)),
-          ResponsibilityTransferArns: S.optional(__S(368, __c46, 0)),
+          Names: S.optional(__S(177, __c22, 1)),
+          ResponsibilityTransferArns: S.optional(__S(360, __c45, 0)),
         }),
       ).annotate({ identifier: "ListBillingGroupsFilter" });
     case 3:
@@ -2708,7 +2652,7 @@ function __c23(j: number): any {
           BillingPeriod: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Filters: S.optional(__S(186, __c23, 2)),
+          Filters: S.optional(__S(178, __c22, 2)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/list-billing-groups" }),
@@ -2733,22 +2677,22 @@ function __c23(j: number): any {
           LastModifiedTime: S.optional(S.Number),
           Status: S.optional(S.String),
           StatusReason: S.optional(S.String),
-          AccountGrouping: S.optional(__S(192, __c24, 0)),
+          AccountGrouping: S.optional(__S(184, __c23, 0)),
           BillingGroupType: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillingGroupListElement" });
     case 5:
-      return S.Array(__S(188, __c23, 4));
+      return S.Array(__S(180, __c22, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          BillingGroups: S.optional(__S(189, __c23, 5)),
+          BillingGroups: S.optional(__S(181, __c22, 5)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListBillingGroupsOutput" });
   }
 }
-function __c24(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2756,33 +2700,29 @@ function __c24(j: number): any {
           AutoAssociate: S.optional(S.Boolean),
           ResponsibilityTransferArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListBillingGroupAccountGrouping",
-      });
+      ).annotate({ identifier: "ListBillingGroupAccountGrouping" });
   }
 }
-function __c25(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.Array(SensitiveString);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Names: S.optional(__S(200, __c25, 0)),
-          BillingGroups: S.optional(__S(368, __c46, 0)),
-          Arns: S.optional(__S(368, __c46, 0)),
-          AccountIds: S.optional(__S(368, __c46, 0)),
+          Names: S.optional(__S(192, __c24, 0)),
+          BillingGroups: S.optional(__S(360, __c45, 0)),
+          Arns: S.optional(__S(360, __c45, 0)),
+          AccountIds: S.optional(__S(360, __c45, 0)),
         }),
-      ).annotate({
-        identifier: "ListCustomLineItemsFilter",
-      });
+      ).annotate({ identifier: "ListCustomLineItemsFilter" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           BillingPeriod: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Filters: S.optional(__S(201, __c25, 1)),
+          Filters: S.optional(__S(193, __c24, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/list-custom-line-items" }),
@@ -2799,7 +2739,7 @@ function __c25(j: number): any {
         S.Struct({
           Arn: S.optional(S.String),
           Name: S.optional(SensitiveString),
-          ChargeDetails: S.optional(__S(209, __c26, 1)),
+          ChargeDetails: S.optional(__S(201, __c25, 1)),
           CurrencyCode: S.optional(S.String),
           Description: S.optional(SensitiveString),
           ProductCode: S.optional(S.String),
@@ -2811,23 +2751,19 @@ function __c25(j: number): any {
           ComputationRule: S.optional(S.String),
           PresentationDetails: S.optional(__S(48, __c6, 0)),
         }),
-      ).annotate({
-        identifier: "CustomLineItemListElement",
-      });
+      ).annotate({ identifier: "CustomLineItemListElement" });
     case 4:
-      return S.Array(__S(203, __c25, 3));
+      return S.Array(__S(195, __c24, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          CustomLineItems: S.optional(__S(204, __c25, 4)),
+          CustomLineItems: S.optional(__S(196, __c24, 4)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListCustomLineItemsOutput",
-      });
+      ).annotate({ identifier: "ListCustomLineItemsOutput" });
   }
 }
-function __c26(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ PercentageValue: S.Number })).annotate({
@@ -2837,16 +2773,14 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Flat: S.optional(__S(56, __c7, 0)),
-          Percentage: S.optional(__S(208, __c26, 0)),
+          Percentage: S.optional(__S(200, __c25, 0)),
           Type: S.String,
           LineItemFilters: S.optional(__S(58, __c7, 2)),
         }),
-      ).annotate({
-        identifier: "ListCustomLineItemChargeDetails",
-      });
+      ).annotate({ identifier: "ListCustomLineItemChargeDetails" });
   }
 }
-function __c27(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2854,22 +2788,18 @@ function __c27(j: number): any {
           StartBillingPeriod: S.optional(S.String),
           EndBillingPeriod: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListCustomLineItemVersionsBillingPeriodRangeFilter",
-      });
+      ).annotate({ identifier: "ListCustomLineItemVersionsBillingPeriodRangeFilter" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ BillingPeriodRange: S.optional(__S(216, __c27, 0)) }),
-      ).annotate({
-        identifier: "ListCustomLineItemVersionsFilter",
-      });
+        S.Struct({ BillingPeriodRange: S.optional(__S(208, __c26, 0)) }),
+      ).annotate({ identifier: "ListCustomLineItemVersionsFilter" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Filters: S.optional(__S(217, __c27, 1)),
+          Filters: S.optional(__S(209, __c26, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/list-custom-line-item-versions" }),
@@ -2880,14 +2810,12 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListCustomLineItemVersionsInput",
-      });
+      ).annotate({ identifier: "ListCustomLineItemVersionsInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(SensitiveString),
-          ChargeDetails: S.optional(__S(209, __c26, 1)),
+          ChargeDetails: S.optional(__S(201, __c25, 1)),
           CurrencyCode: S.optional(S.String),
           Description: S.optional(SensitiveString),
           ProductCode: S.optional(S.String),
@@ -2903,29 +2831,25 @@ function __c27(j: number): any {
           ComputationRule: S.optional(S.String),
           PresentationDetails: S.optional(__S(48, __c6, 0)),
         }),
-      ).annotate({
-        identifier: "CustomLineItemVersionListElement",
-      });
+      ).annotate({ identifier: "CustomLineItemVersionListElement" });
     case 4:
-      return S.Array(__S(219, __c27, 3));
+      return S.Array(__S(211, __c26, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          CustomLineItemVersions: S.optional(__S(220, __c27, 4)),
+          CustomLineItemVersions: S.optional(__S(212, __c26, 4)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListCustomLineItemVersionsOutput",
-      });
+      ).annotate({ identifier: "ListCustomLineItemVersionsOutput" });
   }
 }
-function __c28(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           BillingPeriod: S.optional(S.String),
-          Filters: S.optional(__S(232, __c29, 0)),
+          Filters: S.optional(__S(224, __c28, 0)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -2951,26 +2875,26 @@ function __c28(j: number): any {
         }),
       ).annotate({ identifier: "PricingPlanListElement" });
     case 2:
-      return S.Array(__S(225, __c28, 1));
+      return S.Array(__S(217, __c27, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           BillingPeriod: S.optional(S.String),
-          PricingPlans: S.optional(__S(226, __c28, 2)),
+          PricingPlans: S.optional(__S(218, __c27, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPricingPlansOutput" });
   }
 }
-function __c29(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Arns: S.optional(__S(368, __c46, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ Arns: S.optional(__S(360, __c45, 0)) })).annotate({
         identifier: "ListPricingPlansFilter",
       });
   }
 }
-function __c30(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2989,29 +2913,25 @@ function __c30(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListPricingPlansAssociatedWithPricingRuleInput",
-      });
+      ).annotate({ identifier: "ListPricingPlansAssociatedWithPricingRuleInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           BillingPeriod: S.optional(S.String),
           PricingRuleArn: S.optional(S.String),
-          PricingPlanArns: S.optional(__S(368, __c46, 0)),
+          PricingPlanArns: S.optional(__S(360, __c45, 0)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListPricingPlansAssociatedWithPricingRuleOutput",
-      });
+      ).annotate({ identifier: "ListPricingPlansAssociatedWithPricingRuleOutput" });
   }
 }
-function __c31(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           BillingPeriod: S.optional(S.String),
-          Filters: S.optional(__S(232, __c29, 0)),
+          Filters: S.optional(__S(224, __c28, 0)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -3028,13 +2948,6 @@ function __c31(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          FreeTier: S.optional(__S(80, __c10, 0)),
-          CustomTiers: S.optional(__S(82, __c10, 2)),
-        }),
-      ).annotate({ identifier: "Tiering" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           Name: S.optional(SensitiveString),
           Arn: S.optional(S.String),
           Description: S.optional(SensitiveString),
@@ -3046,24 +2959,24 @@ function __c31(j: number): any {
           CreationTime: S.optional(S.Number),
           LastModifiedTime: S.optional(S.Number),
           BillingEntity: S.optional(S.String),
-          Tiering: S.optional(__S(249, __c31, 1)),
+          Tiering: S.optional(__S(83, __c10, 3)),
           UsageType: S.optional(S.String),
           Operation: S.optional(S.String),
         }),
       ).annotate({ identifier: "PricingRuleListElement" });
+    case 2:
+      return S.Array(__S(241, __c30, 1));
     case 3:
-      return S.Array(__S(250, __c31, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           BillingPeriod: S.optional(S.String),
-          PricingRules: S.optional(__S(251, __c31, 3)),
+          PricingRules: S.optional(__S(242, __c30, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPricingRulesOutput" });
   }
 }
-function __c32(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3082,23 +2995,19 @@ function __c32(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListPricingRulesAssociatedToPricingPlanInput",
-      });
+      ).annotate({ identifier: "ListPricingRulesAssociatedToPricingPlanInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           BillingPeriod: S.optional(S.String),
           PricingPlanArn: S.optional(S.String),
-          PricingRuleArns: S.optional(__S(368, __c46, 0)),
+          PricingRuleArns: S.optional(__S(360, __c45, 0)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListPricingRulesAssociatedToPricingPlanOutput",
-      });
+      ).annotate({ identifier: "ListPricingRulesAssociatedToPricingPlanOutput" });
   }
 }
-function __c33(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Relationship: S.optional(S.String) })).annotate({
@@ -3111,7 +3020,7 @@ function __c33(j: number): any {
           Arn: S.String,
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Filters: S.optional(__S(264, __c33, 0)),
+          Filters: S.optional(__S(256, __c32, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/list-resources-associated-to-custom-line-item" }),
@@ -3122,9 +3031,7 @@ function __c33(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListResourcesAssociatedToCustomLineItemInput",
-      });
+      ).annotate({ identifier: "ListResourcesAssociatedToCustomLineItemInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3132,24 +3039,20 @@ function __c33(j: number): any {
           Relationship: S.optional(S.String),
           EndBillingPeriod: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListResourcesAssociatedToCustomLineItemResponseElement",
-      });
+      ).annotate({ identifier: "ListResourcesAssociatedToCustomLineItemResponseElement" });
     case 3:
-      return S.Array(__S(266, __c33, 2));
+      return S.Array(__S(258, __c32, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
-          AssociatedResources: S.optional(__S(267, __c33, 3)),
+          AssociatedResources: S.optional(__S(259, __c32, 3)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListResourcesAssociatedToCustomLineItemOutput",
-      });
+      ).annotate({ identifier: "ListResourcesAssociatedToCustomLineItemOutput" });
   }
 }
-function __c34(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3163,16 +3066,14 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(16, __c2, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c35(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3192,21 +3093,19 @@ function __c35(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c36(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TagResourceResponse" });
   }
 }
-function __c37(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: __S(368, __c46, 0).pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(360, __c45, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
@@ -3220,7 +3119,7 @@ function __c37(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c38(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3230,7 +3129,7 @@ function __c38(j: number): any {
           Status: S.optional(S.String),
           ComputationPreference: S.optional(__S(24, __c3, 0)),
           Description: S.optional(SensitiveString),
-          AccountGrouping: S.optional(__S(192, __c24, 0)),
+          AccountGrouping: S.optional(__S(184, __c23, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/update-billing-group" }),
@@ -3254,12 +3153,12 @@ function __c38(j: number): any {
           LastModifiedTime: S.optional(S.Number),
           Status: S.optional(S.String),
           StatusReason: S.optional(S.String),
-          AccountGrouping: S.optional(__S(192, __c24, 0)),
+          AccountGrouping: S.optional(__S(184, __c23, 0)),
         }),
       ).annotate({ identifier: "UpdateBillingGroupOutput" });
   }
 }
-function __c39(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3269,7 +3168,7 @@ function __c39(j: number): any {
             T.IdempotencyToken(),
           ),
           ResponsibilityTransferArn: S.String,
-          AutoBillingTransferBillingGroupCreation: __S(160, __c20, 0),
+          AutoBillingTransferBillingGroupCreation: __S(152, __c19, 0),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/update-billing-transfer-preference" }),
@@ -3280,41 +3179,35 @@ function __c39(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateBillingTransferPreferenceInput",
-      });
+      ).annotate({ identifier: "UpdateBillingTransferPreferenceInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ResponsibilityTransferArn: S.String,
-          AutoBillingTransferBillingGroupCreation: __S(160, __c20, 0),
+          AutoBillingTransferBillingGroupCreation: __S(152, __c19, 0),
           LastModifiedTime: S.Number,
         }),
-      ).annotate({
-        identifier: "UpdateBillingTransferPreferenceOutput",
-      });
+      ).annotate({ identifier: "UpdateBillingTransferPreferenceOutput" });
   }
 }
-function __c40(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           Flat: S.optional(__S(56, __c7, 0)),
-          Percentage: S.optional(__S(208, __c26, 0)),
+          Percentage: S.optional(__S(200, __c25, 0)),
           LineItemFilters: S.optional(__S(58, __c7, 2)),
         }),
-      ).annotate({
-        identifier: "UpdateCustomLineItemChargeDetails",
-      });
+      ).annotate({ identifier: "UpdateCustomLineItemChargeDetails" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
           Name: S.optional(SensitiveString),
           Description: S.optional(SensitiveString),
-          ChargeDetails: S.optional(__S(320, __c40, 0)),
-          BillingPeriodRange: S.optional(__S(408, __c51, 0)),
+          ChargeDetails: S.optional(__S(312, __c39, 0)),
+          BillingPeriodRange: S.optional(__S(392, __c49, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/update-custom-line-item" }),
@@ -3325,9 +3218,7 @@ function __c40(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateCustomLineItemInput",
-      });
+      ).annotate({ identifier: "UpdateCustomLineItemInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3335,16 +3226,14 @@ function __c40(j: number): any {
           BillingGroupArn: S.optional(S.String),
           Name: S.optional(SensitiveString),
           Description: S.optional(SensitiveString),
-          ChargeDetails: S.optional(__S(209, __c26, 1)),
+          ChargeDetails: S.optional(__S(201, __c25, 1)),
           LastModifiedTime: S.optional(S.Number),
           AssociationSize: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "UpdateCustomLineItemOutput",
-      });
+      ).annotate({ identifier: "UpdateCustomLineItemOutput" });
   }
 }
-function __c41(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3375,7 +3264,7 @@ function __c41(j: number): any {
       ).annotate({ identifier: "UpdatePricingPlanOutput" });
   }
 }
-function __c42(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3385,7 +3274,7 @@ function __c42(j: number): any {
           Description: S.optional(SensitiveString),
           Type: S.optional(S.String),
           ModifierPercentage: S.optional(S.Number),
-          Tiering: S.optional(__S(88, __c11, 0)),
+          Tiering: S.optional(__S(83, __c10, 3)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/update-pricing-rule" }),
@@ -3410,28 +3299,28 @@ function __c42(j: number): any {
           AssociatedPricingPlanCount: S.optional(S.Number),
           LastModifiedTime: S.optional(S.Number),
           BillingEntity: S.optional(S.String),
-          Tiering: S.optional(__S(88, __c11, 0)),
+          Tiering: S.optional(__S(83, __c10, 3)),
           UsageType: S.optional(S.String),
           Operation: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdatePricingRuleOutput" });
   }
 }
-function __c43(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Name: S.String, Message: S.String })).annotate({
         identifier: "ValidationExceptionField",
       });
     case 1:
-      return S.Array(__S(344, __c43, 0));
+      return S.Array(__S(336, __c42, 0));
   }
 }
-function __c44(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Arn: S.String, AccountIds: __S(368, __c46, 0) }).pipe(
+        S.Struct({ Arn: S.String, AccountIds: __S(360, __c45, 0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/associate-accounts" }),
             svc,
@@ -3444,7 +3333,7 @@ function __c44(j: number): any {
       ).annotate({ identifier: "AssociateAccountsInput" });
   }
 }
-function __c45(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Arn: S.optional(S.String) })).annotate({
@@ -3452,17 +3341,17 @@ function __c45(j: number): any {
       });
   }
 }
-function __c46(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c47(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Arn: S.String, PricingRuleArns: __S(368, __c46, 0) }).pipe(
+        S.Struct({ Arn: S.String, PricingRuleArns: __S(360, __c45, 0) }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/associate-pricing-rules" }),
             svc,
@@ -3472,27 +3361,17 @@ function __c47(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociatePricingRulesInput",
-      });
+      ).annotate({ identifier: "AssociatePricingRulesInput" });
   }
 }
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Arn: S.optional(S.String) })).annotate({
-        identifier: "AssociatePricingRulesOutput",
-      });
-  }
-}
-function __c49(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           TargetArn: S.String,
-          ResourceArns: __S(368, __c46, 0),
-          BillingPeriodRange: S.optional(__S(408, __c51, 0)),
+          ResourceArns: __S(360, __c45, 0),
+          BillingPeriodRange: S.optional(__S(392, __c49, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/batch-associate-resources-to-custom-line-item" }),
@@ -3503,21 +3382,17 @@ function __c49(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchAssociateResourcesToCustomLineItemInput",
-      });
+      ).annotate({ identifier: "BatchAssociateResourcesToCustomLineItemInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          SuccessfullyAssociatedResources: S.optional(__S(402, __c50, 2)),
-          FailedAssociatedResources: S.optional(__S(402, __c50, 2)),
+          SuccessfullyAssociatedResources: S.optional(__S(386, __c48, 2)),
+          FailedAssociatedResources: S.optional(__S(386, __c48, 2)),
         }),
-      ).annotate({
-        identifier: "BatchAssociateResourcesToCustomLineItemOutput",
-      });
+      ).annotate({ identifier: "BatchAssociateResourcesToCustomLineItemOutput" });
   }
 }
-function __c50(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3525,15 +3400,13 @@ function __c50(j: number): any {
       ).annotate({ identifier: "AssociateResourceError" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Arn: S.optional(S.String), Error: S.optional(__S(400, __c50, 0)) }),
-      ).annotate({
-        identifier: "AssociateResourceResponseElement",
-      });
+        S.Struct({ Arn: S.optional(S.String), Error: S.optional(__S(384, __c48, 0)) }),
+      ).annotate({ identifier: "AssociateResourceResponseElement" });
     case 2:
-      return S.Array(__S(401, __c50, 1));
+      return S.Array(__S(385, __c48, 1));
   }
 }
-function __c51(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3541,9 +3414,7 @@ function __c51(j: number): any {
           InclusiveStartBillingPeriod: S.String,
           ExclusiveEndBillingPeriod: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CustomLineItemBillingPeriodRange",
-      });
+      ).annotate({ identifier: "CustomLineItemBillingPeriodRange" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

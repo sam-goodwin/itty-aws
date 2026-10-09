@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -93,9 +93,7 @@ export class ValidationException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       errorCode: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({
-          identifier: "ValidationExceptionType",
-        }),
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ValidationExceptionType" }),
       ),
     },
     /*@__PURE__*/ T.all(
@@ -1139,16 +1137,12 @@ function __c0(j: number): any {
           ),
           metadata: S.optional(__S(1, __c0, 1)),
         }),
-      ).annotate({
-        identifier: "KeyspacesCellMapDefinition",
-      });
+      ).annotate({ identifier: "KeyspacesCellMapDefinition" });
     case 5:
       return S.Array(
         /*@__PURE__*/ S.suspend((): S.Schema<KeyspacesCellMapDefinition> =>
           __S(4, __c0, 4),
-        ).annotate({
-          identifier: "KeyspacesCellMapDefinition",
-        }),
+        ).annotate({ identifier: "KeyspacesCellMapDefinition" }),
       );
     case 6:
       return S.Record(

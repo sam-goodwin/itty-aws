@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1274,8 +1274,8 @@ export const batchCreateVariable: API.OperationMethod<
   BatchCreateVariableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2466, __c77, 2) as any as S.Schema<BatchCreateVariableRequest>,
-  output: __S(2469, __c77, 5) as any as S.Schema<BatchCreateVariableResult>,
+  input: __S(2370, __c74, 2) as any as S.Schema<BatchCreateVariableRequest>,
+  output: __S(2373, __c74, 5) as any as S.Schema<BatchCreateVariableResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1302,8 +1302,8 @@ export const batchGetVariable: API.OperationMethod<
   BatchGetVariableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2848, __c89, 0) as any as S.Schema<BatchGetVariableRequest>,
-  output: __S(2851, __c89, 3) as any as S.Schema<BatchGetVariableResult>,
+  input: __S(2752, __c86, 0) as any as S.Schema<BatchGetVariableRequest>,
+  output: __S(2755, __c86, 3) as any as S.Schema<BatchGetVariableResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1331,8 +1331,8 @@ export const cancelBatchImportJob: API.OperationMethod<
   CancelBatchImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2944, __c92, 0) as any as S.Schema<CancelBatchImportJobRequest>,
-  output: __S(2976, __c93, 0) as any as S.Schema<CancelBatchImportJobResult>,
+  input: __S(2848, __c89, 0) as any as S.Schema<CancelBatchImportJobRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<CancelBatchImportJobResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1362,7 +1362,7 @@ export const cancelBatchPredictionJob: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CancelBatchPredictionJobRequest>,
-  output: __S(2976, __c93, 0) as any as S.Schema<CancelBatchPredictionJobResult>,
+  output: __S(2880, __c90, 0) as any as S.Schema<CancelBatchPredictionJobResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1392,7 +1392,7 @@ export const createBatchImportJob: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(32, __c1, 0) as any as S.Schema<CreateBatchImportJobRequest>,
-  output: __S(2976, __c93, 0) as any as S.Schema<CreateBatchImportJobResult>,
+  output: __S(2880, __c90, 0) as any as S.Schema<CreateBatchImportJobResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1422,7 +1422,7 @@ export const createBatchPredictionJob: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(64, __c2, 0) as any as S.Schema<CreateBatchPredictionJobRequest>,
-  output: __S(2976, __c93, 0) as any as S.Schema<CreateBatchPredictionJobResult>,
+  output: __S(2880, __c90, 0) as any as S.Schema<CreateBatchPredictionJobResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1484,7 +1484,7 @@ export const createList: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(224, __c7, 0) as any as S.Schema<CreateListRequest>,
-  output: __S(256, __c8, 0) as any as S.Schema<CreateListResult>,
+  output: __S(2880, __c90, 0) as any as S.Schema<CreateListResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1511,8 +1511,8 @@ export const createModel: API.OperationMethod<
   CreateModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c10, 0) as any as S.Schema<CreateModelRequest>,
-  output: __S(256, __c8, 0) as any as S.Schema<CreateModelResult>,
+  input: __S(288, __c9, 0) as any as S.Schema<CreateModelRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<CreateModelResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1540,8 +1540,8 @@ export const createModelVersion: API.OperationMethod<
   CreateModelVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c11, 0) as any as S.Schema<CreateModelVersionRequest>,
-  output: __S(480, __c15, 0) as any as S.Schema<CreateModelVersionResult>,
+  input: __S(320, __c10, 0) as any as S.Schema<CreateModelVersionRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<CreateModelVersionResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1569,8 +1569,8 @@ export const createRule: API.OperationMethod<
   CreateRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c16, 0) as any as S.Schema<CreateRuleRequest>,
-  output: __S(544, __c17, 0) as any as S.Schema<CreateRuleResult>,
+  input: __S(480, __c15, 0) as any as S.Schema<CreateRuleRequest>,
+  output: __S(512, __c16, 0) as any as S.Schema<CreateRuleResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1597,8 +1597,8 @@ export const createVariable: API.OperationMethod<
   CreateVariableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c18, 0) as any as S.Schema<CreateVariableRequest>,
-  output: __S(256, __c8, 0) as any as S.Schema<CreateVariableResult>,
+  input: __S(544, __c17, 0) as any as S.Schema<CreateVariableRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<CreateVariableResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1625,8 +1625,8 @@ export const deleteBatchImportJob: API.OperationMethod<
   DeleteBatchImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c19, 0) as any as S.Schema<DeleteBatchImportJobRequest>,
-  output: __S(2976, __c93, 0) as any as S.Schema<DeleteBatchImportJobResult>,
+  input: __S(576, __c18, 0) as any as S.Schema<DeleteBatchImportJobRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<DeleteBatchImportJobResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1653,8 +1653,8 @@ export const deleteBatchPredictionJob: API.OperationMethod<
   DeleteBatchPredictionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c20, 0) as any as S.Schema<DeleteBatchPredictionJobRequest>,
-  output: __S(2976, __c93, 0) as any as S.Schema<DeleteBatchPredictionJobResult>,
+  input: __S(608, __c19, 0) as any as S.Schema<DeleteBatchPredictionJobRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<DeleteBatchPredictionJobResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1684,8 +1684,8 @@ export const deleteDetector: API.OperationMethod<
   DeleteDetectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c21, 0) as any as S.Schema<DeleteDetectorRequest>,
-  output: __S(256, __c8, 0) as any as S.Schema<DeleteDetectorResult>,
+  input: __S(640, __c20, 0) as any as S.Schema<DeleteDetectorRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<DeleteDetectorResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1717,8 +1717,8 @@ export const deleteDetectorVersion: API.OperationMethod<
   DeleteDetectorVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c22, 0) as any as S.Schema<DeleteDetectorVersionRequest>,
-  output: __S(2976, __c93, 0) as any as S.Schema<DeleteDetectorVersionResult>,
+  input: __S(672, __c21, 0) as any as S.Schema<DeleteDetectorVersionRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<DeleteDetectorVersionResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1752,8 +1752,8 @@ export const deleteEntityType: API.OperationMethod<
   DeleteEntityTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c23, 0) as any as S.Schema<DeleteEntityTypeRequest>,
-  output: __S(768, __c24, 0) as any as S.Schema<DeleteEntityTypeResult>,
+  input: __S(704, __c22, 0) as any as S.Schema<DeleteEntityTypeRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<DeleteEntityTypeResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1784,8 +1784,8 @@ export const deleteEvent: API.OperationMethod<
   DeleteEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c25, 0) as any as S.Schema<DeleteEventRequest>,
-  output: __S(256, __c8, 0) as any as S.Schema<DeleteEventResult>,
+  input: __S(736, __c23, 0) as any as S.Schema<DeleteEventRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<DeleteEventResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1814,8 +1814,8 @@ export const deleteEventsByEventType: API.OperationMethod<
   DeleteEventsByEventTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c26, 0) as any as S.Schema<DeleteEventsByEventTypeRequest>,
-  output: __S(833, __c26, 1) as any as S.Schema<DeleteEventsByEventTypeResult>,
+  input: __S(768, __c24, 0) as any as S.Schema<DeleteEventsByEventTypeRequest>,
+  output: __S(769, __c24, 1) as any as S.Schema<DeleteEventsByEventTypeResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1849,8 +1849,8 @@ export const deleteEventType: API.OperationMethod<
   DeleteEventTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c27, 0) as any as S.Schema<DeleteEventTypeRequest>,
-  output: __S(256, __c8, 0) as any as S.Schema<DeleteEventTypeResult>,
+  input: __S(800, __c25, 0) as any as S.Schema<DeleteEventTypeRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<DeleteEventTypeResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1881,8 +1881,8 @@ export const deleteExternalModel: API.OperationMethod<
   DeleteExternalModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c28, 0) as any as S.Schema<DeleteExternalModelRequest>,
-  output: __S(2976, __c93, 0) as any as S.Schema<DeleteExternalModelResult>,
+  input: __S(832, __c26, 0) as any as S.Schema<DeleteExternalModelRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<DeleteExternalModelResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1916,8 +1916,8 @@ export const deleteLabel: API.OperationMethod<
   DeleteLabelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c29, 0) as any as S.Schema<DeleteLabelRequest>,
-  output: __S(256, __c8, 0) as any as S.Schema<DeleteLabelResult>,
+  input: __S(864, __c27, 0) as any as S.Schema<DeleteLabelRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<DeleteLabelResult>,
   errors: [ConflictException, InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1942,8 +1942,8 @@ export const deleteList: API.OperationMethod<
   DeleteListError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c30, 0) as any as S.Schema<DeleteListRequest>,
-  output: __S(256, __c8, 0) as any as S.Schema<DeleteListResult>,
+  input: __S(896, __c28, 0) as any as S.Schema<DeleteListRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<DeleteListResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1976,8 +1976,8 @@ export const deleteModel: API.OperationMethod<
   DeleteModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c31, 0) as any as S.Schema<DeleteModelRequest>,
-  output: __S(256, __c8, 0) as any as S.Schema<DeleteModelResult>,
+  input: __S(928, __c29, 0) as any as S.Schema<DeleteModelRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<DeleteModelResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2010,8 +2010,8 @@ export const deleteModelVersion: API.OperationMethod<
   DeleteModelVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c32, 0) as any as S.Schema<DeleteModelVersionRequest>,
-  output: __S(1056, __c33, 0) as any as S.Schema<DeleteModelVersionResult>,
+  input: __S(960, __c30, 0) as any as S.Schema<DeleteModelVersionRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<DeleteModelVersionResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2044,8 +2044,8 @@ export const deleteOutcome: API.OperationMethod<
   DeleteOutcomeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c34, 0) as any as S.Schema<DeleteOutcomeRequest>,
-  output: __S(256, __c8, 0) as any as S.Schema<DeleteOutcomeResult>,
+  input: __S(992, __c31, 0) as any as S.Schema<DeleteOutcomeRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<DeleteOutcomeResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2076,8 +2076,8 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1120, __c35, 0) as any as S.Schema<DeleteRuleRequest>,
-  output: __S(256, __c8, 0) as any as S.Schema<DeleteRuleResult>,
+  input: __S(1024, __c32, 0) as any as S.Schema<DeleteRuleRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<DeleteRuleResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2112,8 +2112,8 @@ export const deleteVariable: API.OperationMethod<
   DeleteVariableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1152, __c36, 0) as any as S.Schema<DeleteVariableRequest>,
-  output: __S(256, __c8, 0) as any as S.Schema<DeleteVariableResult>,
+  input: __S(1056, __c33, 0) as any as S.Schema<DeleteVariableRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<DeleteVariableResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2142,8 +2142,8 @@ export const describeDetector: API.OperationMethod<
   DescribeDetectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1184, __c37, 0) as any as S.Schema<DescribeDetectorRequest>,
-  output: __S(1187, __c37, 3) as any as S.Schema<DescribeDetectorResult>,
+  input: __S(1088, __c34, 0) as any as S.Schema<DescribeDetectorRequest>,
+  output: __S(1091, __c34, 3) as any as S.Schema<DescribeDetectorResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2173,8 +2173,8 @@ export const describeModelVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1216, __c38, 0) as any as S.Schema<DescribeModelVersionsRequest>,
-  output: __S(1243, __c38, 27) as any as S.Schema<DescribeModelVersionsResult>,
+  input: __S(1120, __c35, 0) as any as S.Schema<DescribeModelVersionsRequest>,
+  output: __S(1147, __c35, 27) as any as S.Schema<DescribeModelVersionsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2212,8 +2212,8 @@ export const getBatchImportJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1248, __c39, 0) as any as S.Schema<GetBatchImportJobsRequest>,
-  output: __S(1251, __c39, 3) as any as S.Schema<GetBatchImportJobsResult>,
+  input: __S(1152, __c36, 0) as any as S.Schema<GetBatchImportJobsRequest>,
+  output: __S(1155, __c36, 3) as any as S.Schema<GetBatchImportJobsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2248,8 +2248,8 @@ export const getBatchPredictionJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1280, __c40, 0) as any as S.Schema<GetBatchPredictionJobsRequest>,
-  output: __S(1283, __c40, 3) as any as S.Schema<GetBatchPredictionJobsResult>,
+  input: __S(1184, __c37, 0) as any as S.Schema<GetBatchPredictionJobsRequest>,
+  output: __S(1187, __c37, 3) as any as S.Schema<GetBatchPredictionJobsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2283,8 +2283,8 @@ export const getDeleteEventsByEventTypeStatus: API.OperationMethod<
   GetDeleteEventsByEventTypeStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1312, __c41, 0) as any as S.Schema<GetDeleteEventsByEventTypeStatusRequest>,
-  output: __S(1313, __c41, 1) as any as S.Schema<GetDeleteEventsByEventTypeStatusResult>,
+  input: __S(1216, __c38, 0) as any as S.Schema<GetDeleteEventsByEventTypeStatusRequest>,
+  output: __S(1217, __c38, 1) as any as S.Schema<GetDeleteEventsByEventTypeStatusResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2319,8 +2319,8 @@ export const getDetectors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1344, __c42, 0) as any as S.Schema<GetDetectorsRequest>,
-  output: __S(1347, __c42, 3) as any as S.Schema<GetDetectorsResult>,
+  input: __S(1248, __c39, 0) as any as S.Schema<GetDetectorsRequest>,
+  output: __S(1251, __c39, 3) as any as S.Schema<GetDetectorsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2354,8 +2354,8 @@ export const getDetectorVersion: API.OperationMethod<
   GetDetectorVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1376, __c43, 0) as any as S.Schema<GetDetectorVersionRequest>,
-  output: __S(1377, __c43, 1) as any as S.Schema<GetDetectorVersionResult>,
+  input: __S(1280, __c40, 0) as any as S.Schema<GetDetectorVersionRequest>,
+  output: __S(1281, __c40, 1) as any as S.Schema<GetDetectorVersionResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2390,8 +2390,8 @@ export const getEntityTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1408, __c44, 0) as any as S.Schema<GetEntityTypesRequest>,
-  output: __S(1409, __c44, 1) as any as S.Schema<GetEntityTypesResult>,
+  input: __S(1312, __c41, 0) as any as S.Schema<GetEntityTypesRequest>,
+  output: __S(1313, __c41, 1) as any as S.Schema<GetEntityTypesResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2425,8 +2425,8 @@ export const getEvent: API.OperationMethod<
   GetEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1472, __c46, 0) as any as S.Schema<GetEventRequest>,
-  output: __S(1474, __c46, 2) as any as S.Schema<GetEventResult>,
+  input: __S(1376, __c43, 0) as any as S.Schema<GetEventRequest>,
+  output: __S(1378, __c43, 2) as any as S.Schema<GetEventResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2457,8 +2457,8 @@ export const getEventPrediction: API.OperationMethod<
   GetEventPredictionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1538, __c48, 2) as any as S.Schema<GetEventPredictionRequest>,
-  output: __S(1547, __c48, 11) as any as S.Schema<GetEventPredictionResult>,
+  input: __S(1442, __c45, 2) as any as S.Schema<GetEventPredictionRequest>,
+  output: __S(1451, __c45, 11) as any as S.Schema<GetEventPredictionResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2489,8 +2489,8 @@ export const getEventPredictionMetadata: API.OperationMethod<
   GetEventPredictionMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1600, __c50, 0) as any as S.Schema<GetEventPredictionMetadataRequest>,
-  output: __S(1616, __c50, 16) as any as S.Schema<GetEventPredictionMetadataResult>,
+  input: __S(1504, __c47, 0) as any as S.Schema<GetEventPredictionMetadataRequest>,
+  output: __S(1520, __c47, 16) as any as S.Schema<GetEventPredictionMetadataResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2525,8 +2525,8 @@ export const getEventTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1632, __c51, 0) as any as S.Schema<GetEventTypesRequest>,
-  output: __S(1636, __c51, 4) as any as S.Schema<GetEventTypesResult>,
+  input: __S(1536, __c48, 0) as any as S.Schema<GetEventTypesRequest>,
+  output: __S(1540, __c48, 4) as any as S.Schema<GetEventTypesResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2566,8 +2566,8 @@ export const getExternalModels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1696, __c53, 0) as any as S.Schema<GetExternalModelsRequest>,
-  output: __S(1699, __c53, 3) as any as S.Schema<GetExternalModelsResult>,
+  input: __S(1600, __c50, 0) as any as S.Schema<GetExternalModelsRequest>,
+  output: __S(1603, __c50, 3) as any as S.Schema<GetExternalModelsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2600,8 +2600,8 @@ export const getKMSEncryptionKey: API.OperationMethod<
   GetKMSEncryptionKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1760, __c55, 0) as any as S.Schema<GetKMSEncryptionKeyRequest>,
-  output: __S(1762, __c55, 2) as any as S.Schema<GetKMSEncryptionKeyResult>,
+  input: __S(1664, __c52, 0) as any as S.Schema<GetKMSEncryptionKeyRequest>,
+  output: __S(1666, __c52, 2) as any as S.Schema<GetKMSEncryptionKeyResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2635,8 +2635,8 @@ export const getLabels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1792, __c56, 0) as any as S.Schema<GetLabelsRequest>,
-  output: __S(1793, __c56, 1) as any as S.Schema<GetLabelsResult>,
+  input: __S(1696, __c53, 0) as any as S.Schema<GetLabelsRequest>,
+  output: __S(1697, __c53, 1) as any as S.Schema<GetLabelsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2671,8 +2671,8 @@ export const getListElements: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1824, __c57, 0) as any as S.Schema<GetListElementsRequest>,
-  output: __S(1825, __c57, 1) as any as S.Schema<GetListElementsResult>,
+  input: __S(1728, __c54, 0) as any as S.Schema<GetListElementsRequest>,
+  output: __S(1729, __c54, 1) as any as S.Schema<GetListElementsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2707,8 +2707,8 @@ export const getListsMetadata: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1856, __c58, 0) as any as S.Schema<GetListsMetadataRequest>,
-  output: __S(1859, __c58, 3) as any as S.Schema<GetListsMetadataResult>,
+  input: __S(1760, __c55, 0) as any as S.Schema<GetListsMetadataRequest>,
+  output: __S(1763, __c55, 3) as any as S.Schema<GetListsMetadataResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2750,8 +2750,8 @@ export const getModels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1888, __c59, 0) as any as S.Schema<GetModelsRequest>,
-  output: __S(1891, __c59, 3) as any as S.Schema<GetModelsResult>,
+  input: __S(1792, __c56, 0) as any as S.Schema<GetModelsRequest>,
+  output: __S(1795, __c56, 3) as any as S.Schema<GetModelsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2785,8 +2785,8 @@ export const getModelVersion: API.OperationMethod<
   GetModelVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1920, __c60, 0) as any as S.Schema<GetModelVersionRequest>,
-  output: __S(1921, __c60, 1) as any as S.Schema<GetModelVersionResult>,
+  input: __S(1824, __c57, 0) as any as S.Schema<GetModelVersionRequest>,
+  output: __S(1825, __c57, 1) as any as S.Schema<GetModelVersionResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2821,8 +2821,8 @@ export const getOutcomes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1952, __c61, 0) as any as S.Schema<GetOutcomesRequest>,
-  output: __S(1953, __c61, 1) as any as S.Schema<GetOutcomesResult>,
+  input: __S(1856, __c58, 0) as any as S.Schema<GetOutcomesRequest>,
+  output: __S(1857, __c58, 1) as any as S.Schema<GetOutcomesResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2859,8 +2859,8 @@ export const getRules: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1984, __c62, 0) as any as S.Schema<GetRulesRequest>,
-  output: __S(1987, __c62, 3) as any as S.Schema<GetRulesResult>,
+  input: __S(1888, __c59, 0) as any as S.Schema<GetRulesRequest>,
+  output: __S(1891, __c59, 3) as any as S.Schema<GetRulesResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2900,8 +2900,8 @@ export const getVariables: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2016, __c63, 0) as any as S.Schema<GetVariablesRequest>,
-  output: __S(2017, __c63, 1) as any as S.Schema<GetVariablesResult>,
+  input: __S(1920, __c60, 0) as any as S.Schema<GetVariablesRequest>,
+  output: __S(1921, __c60, 1) as any as S.Schema<GetVariablesResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2946,8 +2946,8 @@ export const listEventPredictions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2049, __c64, 1) as any as S.Schema<ListEventPredictionsRequest>,
-  output: __S(2052, __c64, 4) as any as S.Schema<ListEventPredictionsResult>,
+  input: __S(1953, __c61, 1) as any as S.Schema<ListEventPredictionsRequest>,
+  output: __S(1956, __c61, 4) as any as S.Schema<ListEventPredictionsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2982,8 +2982,8 @@ export const listTagsForResource: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2080, __c65, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(2081, __c65, 1) as any as S.Schema<ListTagsForResourceResult>,
+  input: __S(1984, __c62, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(1985, __c62, 1) as any as S.Schema<ListTagsForResourceResult>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -3016,8 +3016,8 @@ export const putDetector: API.OperationMethod<
   PutDetectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2112, __c66, 0) as any as S.Schema<PutDetectorRequest>,
-  output: __S(256, __c8, 0) as any as S.Schema<PutDetectorResult>,
+  input: __S(2016, __c63, 0) as any as S.Schema<PutDetectorRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<PutDetectorResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3046,8 +3046,8 @@ export const putEntityType: API.OperationMethod<
   PutEntityTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2144, __c67, 0) as any as S.Schema<PutEntityTypeRequest>,
-  output: __S(256, __c8, 0) as any as S.Schema<PutEntityTypeResult>,
+  input: __S(2048, __c64, 0) as any as S.Schema<PutEntityTypeRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<PutEntityTypeResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3076,8 +3076,8 @@ export const putEventType: API.OperationMethod<
   PutEventTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2176, __c68, 0) as any as S.Schema<PutEventTypeRequest>,
-  output: __S(256, __c8, 0) as any as S.Schema<PutEventTypeResult>,
+  input: __S(2080, __c65, 0) as any as S.Schema<PutEventTypeRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<PutEventTypeResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3106,8 +3106,8 @@ export const putExternalModel: API.OperationMethod<
   PutExternalModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2208, __c69, 0) as any as S.Schema<PutExternalModelRequest>,
-  output: __S(768, __c24, 0) as any as S.Schema<PutExternalModelResult>,
+  input: __S(2112, __c66, 0) as any as S.Schema<PutExternalModelRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<PutExternalModelResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3137,8 +3137,8 @@ export const putKMSEncryptionKey: API.OperationMethod<
   PutKMSEncryptionKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2240, __c70, 0) as any as S.Schema<PutKMSEncryptionKeyRequest>,
-  output: __S(2976, __c93, 0) as any as S.Schema<PutKMSEncryptionKeyResult>,
+  input: __S(2144, __c67, 0) as any as S.Schema<PutKMSEncryptionKeyRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<PutKMSEncryptionKeyResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3168,8 +3168,8 @@ export const putLabel: API.OperationMethod<
   PutLabelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2272, __c71, 0) as any as S.Schema<PutLabelRequest>,
-  output: __S(256, __c8, 0) as any as S.Schema<PutLabelResult>,
+  input: __S(2176, __c68, 0) as any as S.Schema<PutLabelRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<PutLabelResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3198,8 +3198,8 @@ export const putOutcome: API.OperationMethod<
   PutOutcomeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2304, __c72, 0) as any as S.Schema<PutOutcomeRequest>,
-  output: __S(256, __c8, 0) as any as S.Schema<PutOutcomeResult>,
+  input: __S(2208, __c69, 0) as any as S.Schema<PutOutcomeRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<PutOutcomeResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3229,8 +3229,8 @@ export const sendEvent: API.OperationMethod<
   SendEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2336, __c73, 0) as any as S.Schema<SendEventRequest>,
-  output: __S(256, __c8, 0) as any as S.Schema<SendEventResult>,
+  input: __S(2240, __c70, 0) as any as S.Schema<SendEventRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<SendEventResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3259,8 +3259,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2368, __c74, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(256, __c8, 0) as any as S.Schema<TagResourceResult>,
+  input: __S(2272, __c71, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<TagResourceResult>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -3287,8 +3287,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2400, __c75, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(256, __c8, 0) as any as S.Schema<UntagResourceResult>,
+  input: __S(2304, __c72, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<UntagResourceResult>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -3317,8 +3317,8 @@ export const updateDetectorVersion: API.OperationMethod<
   UpdateDetectorVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2432, __c76, 0) as any as S.Schema<UpdateDetectorVersionRequest>,
-  output: __S(2976, __c93, 0) as any as S.Schema<UpdateDetectorVersionResult>,
+  input: __S(2336, __c73, 0) as any as S.Schema<UpdateDetectorVersionRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<UpdateDetectorVersionResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3349,8 +3349,8 @@ export const updateDetectorVersionMetadata: API.OperationMethod<
   UpdateDetectorVersionMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2528, __c79, 0) as any as S.Schema<UpdateDetectorVersionMetadataRequest>,
-  output: __S(2976, __c93, 0) as any as S.Schema<UpdateDetectorVersionMetadataResult>,
+  input: __S(2432, __c76, 0) as any as S.Schema<UpdateDetectorVersionMetadataRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<UpdateDetectorVersionMetadataResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3381,8 +3381,8 @@ export const updateDetectorVersionStatus: API.OperationMethod<
   UpdateDetectorVersionStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2560, __c80, 0) as any as S.Schema<UpdateDetectorVersionStatusRequest>,
-  output: __S(2976, __c93, 0) as any as S.Schema<UpdateDetectorVersionStatusResult>,
+  input: __S(2464, __c77, 0) as any as S.Schema<UpdateDetectorVersionStatusRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<UpdateDetectorVersionStatusResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3413,8 +3413,8 @@ export const updateEventLabel: API.OperationMethod<
   UpdateEventLabelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2592, __c81, 0) as any as S.Schema<UpdateEventLabelRequest>,
-  output: __S(768, __c24, 0) as any as S.Schema<UpdateEventLabelResult>,
+  input: __S(2496, __c78, 0) as any as S.Schema<UpdateEventLabelRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<UpdateEventLabelResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3445,8 +3445,8 @@ export const updateList: API.OperationMethod<
   UpdateListError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2624, __c82, 0) as any as S.Schema<UpdateListRequest>,
-  output: __S(256, __c8, 0) as any as S.Schema<UpdateListResult>,
+  input: __S(2528, __c79, 0) as any as S.Schema<UpdateListRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<UpdateListResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3477,8 +3477,8 @@ export const updateModel: API.OperationMethod<
   UpdateModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2656, __c83, 0) as any as S.Schema<UpdateModelRequest>,
-  output: __S(256, __c8, 0) as any as S.Schema<UpdateModelResult>,
+  input: __S(2560, __c80, 0) as any as S.Schema<UpdateModelRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<UpdateModelResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3509,8 +3509,8 @@ export const updateModelVersion: API.OperationMethod<
   UpdateModelVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2688, __c84, 0) as any as S.Schema<UpdateModelVersionRequest>,
-  output: __S(480, __c15, 0) as any as S.Schema<UpdateModelVersionResult>,
+  input: __S(2592, __c81, 0) as any as S.Schema<UpdateModelVersionRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<UpdateModelVersionResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3549,8 +3549,8 @@ export const updateModelVersionStatus: API.OperationMethod<
   UpdateModelVersionStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2720, __c85, 0) as any as S.Schema<UpdateModelVersionStatusRequest>,
-  output: __S(2976, __c93, 0) as any as S.Schema<UpdateModelVersionStatusResult>,
+  input: __S(2624, __c82, 0) as any as S.Schema<UpdateModelVersionStatusRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<UpdateModelVersionStatusResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3581,8 +3581,8 @@ export const updateRuleMetadata: API.OperationMethod<
   UpdateRuleMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2752, __c86, 0) as any as S.Schema<UpdateRuleMetadataRequest>,
-  output: __S(1056, __c33, 0) as any as S.Schema<UpdateRuleMetadataResult>,
+  input: __S(2656, __c83, 0) as any as S.Schema<UpdateRuleMetadataRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<UpdateRuleMetadataResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3613,8 +3613,8 @@ export const updateRuleVersion: API.OperationMethod<
   UpdateRuleVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2784, __c87, 0) as any as S.Schema<UpdateRuleVersionRequest>,
-  output: __S(544, __c17, 0) as any as S.Schema<UpdateRuleVersionResult>,
+  input: __S(2688, __c84, 0) as any as S.Schema<UpdateRuleVersionRequest>,
+  output: __S(512, __c16, 0) as any as S.Schema<UpdateRuleVersionResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3645,8 +3645,8 @@ export const updateVariable: API.OperationMethod<
   UpdateVariableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2816, __c88, 0) as any as S.Schema<UpdateVariableRequest>,
-  output: __S(256, __c8, 0) as any as S.Schema<UpdateVariableResult>,
+  input: __S(2720, __c85, 0) as any as S.Schema<UpdateVariableRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<UpdateVariableResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3668,9 +3668,7 @@ function __c0(j: number): any {
         S.Struct({ jobId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CancelBatchPredictionJobRequest",
-      });
+      ).annotate({ identifier: "CancelBatchPredictionJobRequest" });
   }
 }
 function __c1(j: number): any {
@@ -3683,11 +3681,9 @@ function __c1(j: number): any {
           outputPath: S.String,
           eventTypeName: S.String,
           iamRoleArn: S.String,
-          tags: S.optional(__S(2497, __c78, 1)),
+          tags: S.optional(__S(2401, __c75, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateBatchImportJobRequest",
-      });
+      ).annotate({ identifier: "CreateBatchImportJobRequest" });
   }
 }
 function __c2(j: number): any {
@@ -3702,11 +3698,9 @@ function __c2(j: number): any {
           detectorName: S.String,
           detectorVersion: S.optional(S.String),
           iamRoleArn: S.String,
-          tags: S.optional(__S(2497, __c78, 1)),
+          tags: S.optional(__S(2401, __c75, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateBatchPredictionJobRequest",
-      });
+      ).annotate({ identifier: "CreateBatchPredictionJobRequest" });
   }
 }
 function __c3(j: number): any {
@@ -3716,15 +3710,13 @@ function __c3(j: number): any {
         S.Struct({
           detectorId: S.String,
           description: S.optional(S.String),
-          externalModelEndpoints: S.optional(__S(2880, __c90, 0)),
+          externalModelEndpoints: S.optional(__S(2784, __c87, 0)),
           rules: __S(192, __c6, 0),
           modelVersions: S.optional(__S(193, __c6, 1)),
           ruleExecutionMode: S.optional(S.String),
-          tags: S.optional(__S(2497, __c78, 1)),
+          tags: S.optional(__S(2401, __c75, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateDetectorVersionRequest",
-      });
+      ).annotate({ identifier: "CreateDetectorVersionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3732,9 +3724,7 @@ function __c3(j: number): any {
           detectorVersionId: S.optional(S.String),
           status: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateDetectorVersionResult",
-      });
+      ).annotate({ identifier: "CreateDetectorVersionResult" });
   }
 }
 function __c4(j: number): any {
@@ -3772,10 +3762,10 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          elements: S.optional(__S(288, __c9, 0)),
+          elements: S.optional(__S(256, __c8, 0)),
           variableType: S.optional(S.String),
           description: S.optional(S.String),
-          tags: S.optional(__S(2497, __c78, 1)),
+          tags: S.optional(__S(2401, __c75, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateListRequest" });
   }
@@ -3783,15 +3773,21 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "CreateListResult",
-      });
+      return S.Array(SensitiveString);
   }
 }
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SensitiveString);
+      return S.suspend(() =>
+        S.Struct({
+          modelId: S.String,
+          modelType: S.String,
+          description: S.optional(S.String),
+          eventTypeName: S.String,
+          tags: S.optional(__S(2401, __c75, 1)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateModelRequest" });
   }
 }
 function __c10(j: number): any {
@@ -3801,52 +3797,36 @@ function __c10(j: number): any {
         S.Struct({
           modelId: S.String,
           modelType: S.String,
-          description: S.optional(S.String),
-          eventTypeName: S.String,
-          tags: S.optional(__S(2497, __c78, 1)),
+          trainingDataSource: S.String,
+          trainingDataSchema: __S(354, __c11, 2),
+          externalEventsDetail: S.optional(__S(416, __c13, 0)),
+          ingestedEventsDetail: S.optional(__S(417, __c13, 1)),
+          tags: S.optional(__S(2401, __c75, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateModelRequest" });
+      ).annotate({ identifier: "CreateModelVersionRequest" });
   }
 }
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          modelId: S.String,
-          modelType: S.String,
-          trainingDataSource: S.String,
-          trainingDataSchema: __S(386, __c12, 2),
-          externalEventsDetail: S.optional(__S(448, __c14, 0)),
-          ingestedEventsDetail: S.optional(__S(449, __c14, 1)),
-          tags: S.optional(__S(2497, __c78, 1)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateModelVersionRequest",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ __S(2880, __c90, 0).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(2784, __c87, 0).pipe(S.optional));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          labelMapper: S.optional(__S(384, __c12, 0)),
+          labelMapper: S.optional(__S(352, __c11, 0)),
           unlabeledEventsTreatment: S.optional(S.String),
         }),
       ).annotate({ identifier: "LabelSchema" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          modelVariables: __S(2880, __c90, 0),
-          labelSchema: S.optional(__S(385, __c12, 1)),
+          modelVariables: __S(2784, __c87, 0),
+          labelSchema: S.optional(__S(353, __c11, 1)),
         }),
       ).annotate({ identifier: "TrainingDataSchema" });
   }
 }
-function __c13(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ startTime: S.String, endTime: S.String })).annotate({
@@ -3854,19 +3834,19 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ dataLocation: S.String, dataAccessRoleArn: S.String }),
       ).annotate({ identifier: "ExternalEventsDetail" });
     case 1:
-      return S.suspend(() => S.Struct({ ingestedEventsTimeWindow: __S(416, __c13, 0) })).annotate({
+      return S.suspend(() => S.Struct({ ingestedEventsTimeWindow: __S(384, __c12, 0) })).annotate({
         identifier: "IngestedEventsDetail",
       });
   }
 }
-function __c15(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3879,7 +3859,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "CreateModelVersionResult" });
   }
 }
-function __c16(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3889,13 +3869,13 @@ function __c16(j: number): any {
           description: S.optional(S.String),
           expression: SensitiveString,
           language: S.String,
-          outcomes: __S(2880, __c90, 0),
-          tags: S.optional(__S(2497, __c78, 1)),
+          outcomes: __S(2784, __c87, 0),
+          tags: S.optional(__S(2401, __c75, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateRuleRequest" });
   }
 }
-function __c17(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ rule: S.optional(__S(128, __c4, 0)) }).pipe(ns)).annotate({
@@ -3903,7 +3883,7 @@ function __c17(j: number): any {
       });
   }
 }
-function __c18(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3914,9 +3894,19 @@ function __c18(j: number): any {
           defaultValue: S.String,
           description: S.optional(S.String),
           variableType: S.optional(S.String),
-          tags: S.optional(__S(2497, __c78, 1)),
+          tags: S.optional(__S(2401, __c75, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateVariableRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ jobId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteBatchImportJobRequest" });
   }
 }
 function __c19(j: number): any {
@@ -3926,24 +3916,10 @@ function __c19(j: number): any {
         S.Struct({ jobId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteBatchImportJobRequest",
-      });
+      ).annotate({ identifier: "DeleteBatchPredictionJobRequest" });
   }
 }
 function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ jobId: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DeleteBatchPredictionJobRequest",
-      });
-  }
-}
-function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3953,19 +3929,17 @@ function __c21(j: number): any {
       ).annotate({ identifier: "DeleteDetectorRequest" });
   }
 }
-function __c22(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ detectorId: S.String, detectorVersionId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteDetectorVersionRequest",
-      });
+      ).annotate({ identifier: "DeleteDetectorVersionRequest" });
   }
 }
-function __c23(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3975,15 +3949,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "DeleteEntityTypeRequest" });
   }
 }
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeleteEntityTypeResult",
-      });
-  }
-}
-function __c25(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3995,28 +3961,24 @@ function __c25(j: number): any {
       ).annotate({ identifier: "DeleteEventRequest" });
   }
 }
-function __c26(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ eventTypeName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteEventsByEventTypeRequest",
-      });
+      ).annotate({ identifier: "DeleteEventsByEventTypeRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           eventTypeName: S.optional(S.String),
           eventsDeletionStatus: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteEventsByEventTypeResult",
-      });
+      ).annotate({ identifier: "DeleteEventsByEventTypeResult" });
   }
 }
-function __c27(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4026,19 +3988,17 @@ function __c27(j: number): any {
       ).annotate({ identifier: "DeleteEventTypeRequest" });
   }
 }
-function __c28(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ modelEndpoint: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteExternalModelRequest",
-      });
+      ).annotate({ identifier: "DeleteExternalModelRequest" });
   }
 }
-function __c29(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4048,7 +4008,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "DeleteLabelRequest" });
   }
 }
-function __c30(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4058,7 +4018,7 @@ function __c30(j: number): any {
       ).annotate({ identifier: "DeleteListRequest" });
   }
 }
-function __c31(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4068,27 +4028,17 @@ function __c31(j: number): any {
       ).annotate({ identifier: "DeleteModelRequest" });
   }
 }
-function __c32(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ modelId: S.String, modelType: S.String, modelVersionNumber: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteModelVersionRequest",
-      });
+      ).annotate({ identifier: "DeleteModelVersionRequest" });
   }
 }
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeleteModelVersionResult",
-      });
-  }
-}
-function __c34(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4098,7 +4048,7 @@ function __c34(j: number): any {
       ).annotate({ identifier: "DeleteOutcomeRequest" });
   }
 }
-function __c35(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4108,7 +4058,7 @@ function __c35(j: number): any {
       ).annotate({ identifier: "DeleteRuleRequest" });
   }
 }
-function __c36(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4118,7 +4068,7 @@ function __c36(j: number): any {
       ).annotate({ identifier: "DeleteVariableRequest" });
   }
 }
-function __c37(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4138,19 +4088,19 @@ function __c37(j: number): any {
         }),
       ).annotate({ identifier: "DetectorVersionSummary" });
     case 2:
-      return S.Array(__S(1185, __c37, 1));
+      return S.Array(__S(1089, __c34, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           detectorId: S.optional(S.String),
-          detectorVersionSummaries: S.optional(__S(1186, __c37, 2)),
+          detectorVersionSummaries: S.optional(__S(1090, __c34, 2)),
           nextToken: S.optional(S.String),
           arn: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeDetectorResult" });
   }
 }
-function __c38(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4161,9 +4111,7 @@ function __c38(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeModelVersionsRequest",
-      });
+      ).annotate({ identifier: "DescribeModelVersionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4173,7 +4121,7 @@ function __c38(j: number): any {
         }),
       ).annotate({ identifier: "FileValidationMessage" });
     case 2:
-      return S.Array(__S(1217, __c38, 1));
+      return S.Array(__S(1121, __c35, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4185,12 +4133,12 @@ function __c38(j: number): any {
         }),
       ).annotate({ identifier: "FieldValidationMessage" });
     case 4:
-      return S.Array(__S(1219, __c38, 3));
+      return S.Array(__S(1123, __c35, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          fileLevelMessages: S.optional(__S(1218, __c38, 2)),
-          fieldLevelMessages: S.optional(__S(1220, __c38, 4)),
+          fileLevelMessages: S.optional(__S(1122, __c35, 2)),
+          fieldLevelMessages: S.optional(__S(1124, __c35, 4)),
         }),
       ).annotate({ identifier: "DataValidationMetrics" });
     case 6:
@@ -4203,29 +4151,27 @@ function __c38(j: number): any {
         }),
       ).annotate({ identifier: "MetricDataPoint" });
     case 7:
-      return S.Array(__S(1222, __c38, 6));
+      return S.Array(__S(1126, __c35, 6));
     case 8:
       return S.suspend(() =>
-        S.Struct({ auc: S.optional(S.Number), metricDataPoints: S.optional(__S(1223, __c38, 7)) }),
+        S.Struct({ auc: S.optional(S.Number), metricDataPoints: S.optional(__S(1127, __c35, 7)) }),
       ).annotate({ identifier: "TrainingMetrics" });
     case 9:
       return S.suspend(() =>
         S.Struct({ variableName: S.String, variableType: S.String, variableImportance: S.Number }),
       ).annotate({ identifier: "LogOddsMetric" });
     case 10:
-      return S.Array(__S(1225, __c38, 9));
+      return S.Array(__S(1129, __c35, 9));
     case 11:
       return S.suspend(() =>
-        S.Struct({ logOddsMetrics: S.optional(__S(1226, __c38, 10)) }),
-      ).annotate({
-        identifier: "VariableImportanceMetrics",
-      });
+        S.Struct({ logOddsMetrics: S.optional(__S(1130, __c35, 10)) }),
+      ).annotate({ identifier: "VariableImportanceMetrics" });
     case 12:
       return S.suspend(() =>
         S.Struct({
-          dataValidationMetrics: S.optional(__S(1221, __c38, 5)),
-          trainingMetrics: S.optional(__S(1224, __c38, 8)),
-          variableImportanceMetrics: S.optional(__S(1227, __c38, 11)),
+          dataValidationMetrics: S.optional(__S(1125, __c35, 5)),
+          trainingMetrics: S.optional(__S(1128, __c35, 8)),
+          variableImportanceMetrics: S.optional(__S(1131, __c35, 11)),
         }),
       ).annotate({ identifier: "TrainingResult" });
     case 13:
@@ -4234,13 +4180,13 @@ function __c38(j: number): any {
       ).annotate({ identifier: "UncertaintyRange" });
     case 14:
       return S.suspend(() =>
-        S.Struct({ auc: S.optional(S.Number), uncertaintyRange: S.optional(__S(1229, __c38, 13)) }),
+        S.Struct({ auc: S.optional(S.Number), uncertaintyRange: S.optional(__S(1133, __c35, 13)) }),
       ).annotate({ identifier: "OFIModelPerformance" });
     case 15:
       return S.suspend(() =>
         S.Struct({
-          metricDataPoints: S.optional(__S(1223, __c38, 7)),
-          modelPerformance: S.optional(__S(1230, __c38, 14)),
+          metricDataPoints: S.optional(__S(1127, __c35, 7)),
+          modelPerformance: S.optional(__S(1134, __c35, 14)),
         }),
       ).annotate({ identifier: "OFITrainingMetricsValue" });
     case 16:
@@ -4253,7 +4199,7 @@ function __c38(j: number): any {
         }),
       ).annotate({ identifier: "ATIMetricDataPoint" });
     case 17:
-      return S.Array(__S(1232, __c38, 16));
+      return S.Array(__S(1136, __c35, 16));
     case 18:
       return S.suspend(() => S.Struct({ asi: S.optional(S.Number) })).annotate({
         identifier: "ATIModelPerformance",
@@ -4261,37 +4207,35 @@ function __c38(j: number): any {
     case 19:
       return S.suspend(() =>
         S.Struct({
-          metricDataPoints: S.optional(__S(1233, __c38, 17)),
-          modelPerformance: S.optional(__S(1234, __c38, 18)),
+          metricDataPoints: S.optional(__S(1137, __c35, 17)),
+          modelPerformance: S.optional(__S(1138, __c35, 18)),
         }),
       ).annotate({ identifier: "ATITrainingMetricsValue" });
     case 20:
       return S.suspend(() =>
         S.Struct({
-          ofi: S.optional(__S(1231, __c38, 15)),
-          tfi: S.optional(__S(1231, __c38, 15)),
-          ati: S.optional(__S(1235, __c38, 19)),
+          ofi: S.optional(__S(1135, __c35, 15)),
+          tfi: S.optional(__S(1135, __c35, 15)),
+          ati: S.optional(__S(1139, __c35, 19)),
         }),
       ).annotate({ identifier: "TrainingMetricsV2" });
     case 21:
       return S.suspend(() =>
-        S.Struct({ variableNames: __S(2880, __c90, 0), aggregatedVariablesImportance: S.Number }),
+        S.Struct({ variableNames: __S(2784, __c87, 0), aggregatedVariablesImportance: S.Number }),
       ).annotate({ identifier: "AggregatedLogOddsMetric" });
     case 22:
-      return S.Array(__S(1237, __c38, 21));
+      return S.Array(__S(1141, __c35, 21));
     case 23:
       return S.suspend(() =>
-        S.Struct({ logOddsMetrics: S.optional(__S(1238, __c38, 22)) }),
-      ).annotate({
-        identifier: "AggregatedVariablesImportanceMetrics",
-      });
+        S.Struct({ logOddsMetrics: S.optional(__S(1142, __c35, 22)) }),
+      ).annotate({ identifier: "AggregatedVariablesImportanceMetrics" });
     case 24:
       return S.suspend(() =>
         S.Struct({
-          dataValidationMetrics: S.optional(__S(1221, __c38, 5)),
-          trainingMetricsV2: S.optional(__S(1236, __c38, 20)),
-          variableImportanceMetrics: S.optional(__S(1227, __c38, 11)),
-          aggregatedVariablesImportanceMetrics: S.optional(__S(1239, __c38, 23)),
+          dataValidationMetrics: S.optional(__S(1125, __c35, 5)),
+          trainingMetricsV2: S.optional(__S(1140, __c35, 20)),
+          variableImportanceMetrics: S.optional(__S(1131, __c35, 11)),
+          aggregatedVariablesImportanceMetrics: S.optional(__S(1143, __c35, 23)),
         }),
       ).annotate({ identifier: "TrainingResultV2" });
     case 25:
@@ -4302,30 +4246,28 @@ function __c38(j: number): any {
           modelVersionNumber: S.optional(S.String),
           status: S.optional(S.String),
           trainingDataSource: S.optional(S.String),
-          trainingDataSchema: S.optional(__S(386, __c12, 2)),
-          externalEventsDetail: S.optional(__S(448, __c14, 0)),
-          ingestedEventsDetail: S.optional(__S(449, __c14, 1)),
-          trainingResult: S.optional(__S(1228, __c38, 12)),
+          trainingDataSchema: S.optional(__S(354, __c11, 2)),
+          externalEventsDetail: S.optional(__S(416, __c13, 0)),
+          ingestedEventsDetail: S.optional(__S(417, __c13, 1)),
+          trainingResult: S.optional(__S(1132, __c35, 12)),
           lastUpdatedTime: S.optional(S.String),
           createdTime: S.optional(S.String),
           arn: S.optional(S.String),
-          trainingResultV2: S.optional(__S(1240, __c38, 24)),
+          trainingResultV2: S.optional(__S(1144, __c35, 24)),
         }),
       ).annotate({ identifier: "ModelVersionDetail" });
     case 26:
-      return S.Array(__S(1241, __c38, 25));
+      return S.Array(__S(1145, __c35, 25));
     case 27:
       return S.suspend(() =>
         S.Struct({
-          modelVersionDetails: S.optional(__S(1242, __c38, 26)),
+          modelVersionDetails: S.optional(__S(1146, __c35, 26)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeModelVersionsResult",
-      });
+      ).annotate({ identifier: "DescribeModelVersionsResult" });
   }
 }
-function __c39(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4334,9 +4276,7 @@ function __c39(j: number): any {
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetBatchImportJobsRequest",
-      });
+      ).annotate({ identifier: "GetBatchImportJobsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4356,17 +4296,17 @@ function __c39(j: number): any {
         }),
       ).annotate({ identifier: "BatchImport" });
     case 2:
-      return S.Array(__S(1249, __c39, 1));
+      return S.Array(__S(1153, __c36, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          batchImports: S.optional(__S(1250, __c39, 2)),
+          batchImports: S.optional(__S(1154, __c36, 2)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetBatchImportJobsResult" });
   }
 }
-function __c40(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4375,9 +4315,7 @@ function __c40(j: number): any {
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetBatchPredictionJobsRequest",
-      });
+      ).annotate({ identifier: "GetBatchPredictionJobsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4399,40 +4337,34 @@ function __c40(j: number): any {
         }),
       ).annotate({ identifier: "BatchPrediction" });
     case 2:
-      return S.Array(__S(1281, __c40, 1));
+      return S.Array(__S(1185, __c37, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          batchPredictions: S.optional(__S(1282, __c40, 2)),
+          batchPredictions: S.optional(__S(1186, __c37, 2)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetBatchPredictionJobsResult",
-      });
+      ).annotate({ identifier: "GetBatchPredictionJobsResult" });
   }
 }
-function __c41(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ eventTypeName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetDeleteEventsByEventTypeStatusRequest",
-      });
+      ).annotate({ identifier: "GetDeleteEventsByEventTypeStatusRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           eventTypeName: S.optional(S.String),
           eventsDeletionStatus: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetDeleteEventsByEventTypeStatusResult",
-      });
+      ).annotate({ identifier: "GetDeleteEventsByEventTypeStatusResult" });
   }
 }
-function __c42(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4454,33 +4386,31 @@ function __c42(j: number): any {
         }),
       ).annotate({ identifier: "Detector" });
     case 2:
-      return S.Array(__S(1345, __c42, 1));
+      return S.Array(__S(1249, __c39, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          detectors: S.optional(__S(1346, __c42, 2)),
+          detectors: S.optional(__S(1250, __c39, 2)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetDetectorsResult" });
   }
 }
-function __c43(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ detectorId: S.String, detectorVersionId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetDetectorVersionRequest",
-      });
+      ).annotate({ identifier: "GetDetectorVersionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           detectorId: S.optional(S.String),
           detectorVersionId: S.optional(S.String),
           description: S.optional(S.String),
-          externalModelEndpoints: S.optional(__S(2880, __c90, 0)),
+          externalModelEndpoints: S.optional(__S(2784, __c87, 0)),
           modelVersions: S.optional(__S(193, __c6, 1)),
           rules: S.optional(__S(192, __c6, 0)),
           status: S.optional(S.String),
@@ -4492,7 +4422,7 @@ function __c43(j: number): any {
       ).annotate({ identifier: "GetDetectorVersionResult" });
   }
 }
-function __c44(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4505,13 +4435,13 @@ function __c44(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          entityTypes: S.optional(__S(1441, __c45, 1)),
+          entityTypes: S.optional(__S(1345, __c42, 1)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetEntityTypesResult" });
   }
 }
-function __c45(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4524,10 +4454,10 @@ function __c45(j: number): any {
         }),
       ).annotate({ identifier: "EntityType" });
     case 1:
-      return S.Array(__S(1440, __c45, 0));
+      return S.Array(__S(1344, __c42, 0));
   }
 }
-function __c46(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4541,19 +4471,19 @@ function __c46(j: number): any {
           eventId: S.optional(S.String),
           eventTypeName: S.optional(S.String),
           eventTimestamp: S.optional(S.String),
-          eventVariables: S.optional(__S(1504, __c47, 0)),
+          eventVariables: S.optional(__S(1408, __c44, 0)),
           currentLabel: S.optional(S.String),
           labelTimestamp: S.optional(S.String),
-          entities: S.optional(__S(1506, __c47, 2)),
+          entities: S.optional(__S(1410, __c44, 2)),
         }),
       ).annotate({ identifier: "Event" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ event: S.optional(__S(1473, __c46, 1)) }).pipe(ns),
+        S.Struct({ event: S.optional(__S(1377, __c43, 1)) }).pipe(ns),
       ).annotate({ identifier: "GetEventResult" });
   }
 }
-function __c47(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
@@ -4562,17 +4492,17 @@ function __c47(j: number): any {
         identifier: "Entity",
       });
     case 2:
-      return S.Array(__S(1505, __c47, 1));
+      return S.Array(__S(1409, __c44, 1));
   }
 }
-function __c48(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ byteBuffer: S.optional(T.Blob), contentType: S.optional(S.String) }),
       ).annotate({ identifier: "ModelEndpointDataBlob" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(1536, __c48, 0).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(1440, __c45, 0).pipe(S.optional));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4580,31 +4510,29 @@ function __c48(j: number): any {
           detectorVersionId: S.optional(S.String),
           eventId: S.String,
           eventTypeName: S.String,
-          entities: __S(1506, __c47, 2),
+          entities: __S(1410, __c44, 2),
           eventTimestamp: S.String,
-          eventVariables: __S(1504, __c47, 0),
-          externalModelEndpointDataBlobs: S.optional(__S(1537, __c48, 1)),
+          eventVariables: __S(1408, __c44, 0),
+          externalModelEndpointDataBlobs: S.optional(__S(1441, __c45, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetEventPredictionRequest",
-      });
+      ).annotate({ identifier: "GetEventPredictionRequest" });
     case 3:
       return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
     case 4:
       return S.suspend(() =>
         S.Struct({
           modelVersion: S.optional(__S(160, __c5, 0)),
-          scores: S.optional(__S(1539, __c48, 3)),
+          scores: S.optional(__S(1443, __c45, 3)),
         }),
       ).annotate({ identifier: "ModelScores" });
     case 5:
-      return S.Array(__S(1540, __c48, 4));
+      return S.Array(__S(1444, __c45, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({ ruleId: S.optional(S.String), outcomes: S.optional(__S(2880, __c90, 0)) }),
+        S.Struct({ ruleId: S.optional(S.String), outcomes: S.optional(__S(2784, __c87, 0)) }),
       ).annotate({ identifier: "RuleResult" });
     case 7:
-      return S.Array(__S(1542, __c48, 6));
+      return S.Array(__S(1446, __c45, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({ modelEndpoint: S.optional(S.String), modelSource: S.optional(S.String) }),
@@ -4612,29 +4540,29 @@ function __c48(j: number): any {
     case 9:
       return S.suspend(() =>
         S.Struct({
-          externalModel: S.optional(__S(1544, __c48, 8)),
-          outputs: S.optional(__S(1568, __c49, 0)),
+          externalModel: S.optional(__S(1448, __c45, 8)),
+          outputs: S.optional(__S(1472, __c46, 0)),
         }),
       ).annotate({ identifier: "ExternalModelOutputs" });
     case 10:
-      return S.Array(__S(1545, __c48, 9));
+      return S.Array(__S(1449, __c45, 9));
     case 11:
       return S.suspend(() =>
         S.Struct({
-          modelScores: S.optional(__S(1541, __c48, 5)),
-          ruleResults: S.optional(__S(1543, __c48, 7)),
-          externalModelOutputs: S.optional(__S(1546, __c48, 10)),
+          modelScores: S.optional(__S(1445, __c45, 5)),
+          ruleResults: S.optional(__S(1447, __c45, 7)),
+          externalModelOutputs: S.optional(__S(1450, __c45, 10)),
         }).pipe(ns),
       ).annotate({ identifier: "GetEventPredictionResult" });
   }
 }
-function __c49(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c50(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4645,9 +4573,7 @@ function __c50(j: number): any {
           detectorVersionId: S.String,
           predictionTimestamp: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetEventPredictionMetadataRequest",
-      });
+      ).annotate({ identifier: "GetEventPredictionMetadataRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4657,7 +4583,7 @@ function __c50(j: number): any {
         }),
       ).annotate({ identifier: "EventVariableSummary" });
     case 2:
-      return S.Array(__S(1601, __c50, 1));
+      return S.Array(__S(1505, __c47, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4665,13 +4591,13 @@ function __c50(j: number): any {
           ruleVersion: S.optional(S.String),
           expression: S.optional(SensitiveString),
           expressionWithValues: S.optional(SensitiveString),
-          outcomes: S.optional(__S(2880, __c90, 0)),
+          outcomes: S.optional(__S(2784, __c87, 0)),
           evaluated: S.optional(S.Boolean),
           matched: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "EvaluatedRule" });
     case 4:
-      return S.Array(__S(1603, __c50, 3));
+      return S.Array(__S(1507, __c47, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -4679,28 +4605,24 @@ function __c50(j: number): any {
           relativeImpact: S.optional(S.String),
           logOddsImpact: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "VariableImpactExplanation",
-      });
+      ).annotate({ identifier: "VariableImpactExplanation" });
     case 6:
-      return S.Array(__S(1605, __c50, 5));
+      return S.Array(__S(1509, __c47, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          eventVariableNames: S.optional(__S(2880, __c90, 0)),
+          eventVariableNames: S.optional(__S(2784, __c87, 0)),
           relativeImpact: S.optional(S.String),
           logOddsImpact: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "AggregatedVariablesImpactExplanation",
-      });
+      ).annotate({ identifier: "AggregatedVariablesImpactExplanation" });
     case 8:
-      return S.Array(__S(1607, __c50, 7));
+      return S.Array(__S(1511, __c47, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
-          variableImpactExplanations: S.optional(__S(1606, __c50, 6)),
-          aggregatedVariablesImpactExplanations: S.optional(__S(1608, __c50, 8)),
+          variableImpactExplanations: S.optional(__S(1510, __c47, 6)),
+          aggregatedVariablesImpactExplanations: S.optional(__S(1512, __c47, 8)),
         }),
       ).annotate({ identifier: "PredictionExplanations" });
     case 10:
@@ -4708,33 +4630,33 @@ function __c50(j: number): any {
         S.Struct({
           outputVariableName: S.optional(S.String),
           evaluationScore: S.optional(S.String),
-          predictionExplanations: S.optional(__S(1609, __c50, 9)),
+          predictionExplanations: S.optional(__S(1513, __c47, 9)),
         }),
       ).annotate({ identifier: "ModelVersionEvaluation" });
     case 11:
-      return S.Array(__S(1610, __c50, 10));
+      return S.Array(__S(1514, __c47, 10));
     case 12:
       return S.suspend(() =>
         S.Struct({
           modelId: S.optional(S.String),
           modelVersion: S.optional(S.String),
           modelType: S.optional(S.String),
-          evaluations: S.optional(__S(1611, __c50, 11)),
+          evaluations: S.optional(__S(1515, __c47, 11)),
         }),
       ).annotate({ identifier: "EvaluatedModelVersion" });
     case 13:
-      return S.Array(__S(1612, __c50, 12));
+      return S.Array(__S(1516, __c47, 12));
     case 14:
       return S.suspend(() =>
         S.Struct({
           modelEndpoint: S.optional(S.String),
           useEventVariables: S.optional(S.Boolean),
-          inputVariables: S.optional(__S(1568, __c49, 0)),
-          outputVariables: S.optional(__S(1568, __c49, 0)),
+          inputVariables: S.optional(__S(1472, __c46, 0)),
+          outputVariables: S.optional(__S(1472, __c46, 0)),
         }),
       ).annotate({ identifier: "EvaluatedExternalModel" });
     case 15:
-      return S.Array(__S(1614, __c50, 14));
+      return S.Array(__S(1518, __c47, 14));
     case 16:
       return S.suspend(() =>
         S.Struct({
@@ -4746,20 +4668,18 @@ function __c50(j: number): any {
           detectorId: S.optional(S.String),
           detectorVersionId: S.optional(S.String),
           detectorVersionStatus: S.optional(S.String),
-          eventVariables: S.optional(__S(1602, __c50, 2)),
-          rules: S.optional(__S(1604, __c50, 4)),
+          eventVariables: S.optional(__S(1506, __c47, 2)),
+          rules: S.optional(__S(1508, __c47, 4)),
           ruleExecutionMode: S.optional(S.String),
-          outcomes: S.optional(__S(2880, __c90, 0)),
-          evaluatedModelVersions: S.optional(__S(1613, __c50, 13)),
-          evaluatedExternalModels: S.optional(__S(1615, __c50, 15)),
+          outcomes: S.optional(__S(2784, __c87, 0)),
+          evaluatedModelVersions: S.optional(__S(1517, __c47, 13)),
+          evaluatedExternalModels: S.optional(__S(1519, __c47, 15)),
           predictionTimestamp: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetEventPredictionMetadataResult",
-      });
+      ).annotate({ identifier: "GetEventPredictionMetadataResult" });
   }
 }
-function __c51(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4784,29 +4704,29 @@ function __c51(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           description: S.optional(S.String),
-          eventVariables: S.optional(__S(2880, __c90, 0)),
-          labels: S.optional(__S(2880, __c90, 0)),
-          entityTypes: S.optional(__S(2880, __c90, 0)),
+          eventVariables: S.optional(__S(2784, __c87, 0)),
+          labels: S.optional(__S(2784, __c87, 0)),
+          entityTypes: S.optional(__S(2784, __c87, 0)),
           eventIngestion: S.optional(S.String),
-          ingestedEventStatistics: S.optional(__S(1633, __c51, 1)),
+          ingestedEventStatistics: S.optional(__S(1537, __c48, 1)),
           lastUpdatedTime: S.optional(S.String),
           createdTime: S.optional(S.String),
           arn: S.optional(S.String),
-          eventOrchestration: S.optional(__S(1664, __c52, 0)),
+          eventOrchestration: S.optional(__S(1568, __c49, 0)),
         }),
       ).annotate({ identifier: "EventType" });
     case 3:
-      return S.Array(__S(1634, __c51, 2));
+      return S.Array(__S(1538, __c48, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          eventTypes: S.optional(__S(1635, __c51, 3)),
+          eventTypes: S.optional(__S(1539, __c48, 3)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetEventTypesResult" });
   }
 }
-function __c52(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ eventBridgeEnabled: S.Boolean })).annotate({
@@ -4814,7 +4734,7 @@ function __c52(j: number): any {
       });
   }
 }
-function __c53(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4830,8 +4750,8 @@ function __c53(j: number): any {
           modelEndpoint: S.optional(S.String),
           modelSource: S.optional(S.String),
           invokeModelEndpointRoleArn: S.optional(S.String),
-          inputConfiguration: S.optional(__S(1728, __c54, 0)),
-          outputConfiguration: S.optional(__S(1729, __c54, 1)),
+          inputConfiguration: S.optional(__S(1632, __c51, 0)),
+          outputConfiguration: S.optional(__S(1633, __c51, 1)),
           modelEndpointStatus: S.optional(S.String),
           lastUpdatedTime: S.optional(S.String),
           createdTime: S.optional(S.String),
@@ -4839,17 +4759,17 @@ function __c53(j: number): any {
         }),
       ).annotate({ identifier: "ExternalModel" });
     case 2:
-      return S.Array(__S(1697, __c53, 1));
+      return S.Array(__S(1601, __c50, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          externalModels: S.optional(__S(1698, __c53, 2)),
+          externalModels: S.optional(__S(1602, __c50, 2)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetExternalModelsResult" });
   }
 }
-function __c54(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4865,35 +4785,31 @@ function __c54(j: number): any {
       return S.suspend(() =>
         S.Struct({
           format: S.String,
-          jsonKeyToVariableMap: S.optional(__S(1568, __c49, 0)),
-          csvIndexToVariableMap: S.optional(__S(1568, __c49, 0)),
+          jsonKeyToVariableMap: S.optional(__S(1472, __c46, 0)),
+          csvIndexToVariableMap: S.optional(__S(1472, __c46, 0)),
         }),
       ).annotate({ identifier: "ModelOutputConfiguration" });
   }
 }
-function __c55(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetKMSEncryptionKeyRequest",
-      });
+      ).annotate({ identifier: "GetKMSEncryptionKeyRequest" });
     case 1:
       return S.suspend(() => S.Struct({ kmsEncryptionKeyArn: S.optional(S.String) })).annotate({
         identifier: "KMSKey",
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ kmsKey: S.optional(__S(1761, __c55, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetKMSEncryptionKeyResult",
-      });
+        S.Struct({ kmsKey: S.optional(__S(1665, __c52, 1)) }).pipe(ns),
+      ).annotate({ identifier: "GetKMSEncryptionKeyResult" });
   }
 }
-function __c56(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4905,13 +4821,13 @@ function __c56(j: number): any {
       ).annotate({ identifier: "GetLabelsRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ labels: S.optional(__S(1441, __c45, 1)), nextToken: S.optional(S.String) }).pipe(
+        S.Struct({ labels: S.optional(__S(1345, __c42, 1)), nextToken: S.optional(S.String) }).pipe(
           ns,
         ),
       ).annotate({ identifier: "GetLabelsResult" });
   }
 }
-function __c57(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4923,13 +4839,13 @@ function __c57(j: number): any {
       ).annotate({ identifier: "GetListElementsRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ elements: S.optional(__S(288, __c9, 0)), nextToken: S.optional(S.String) }).pipe(
+        S.Struct({ elements: S.optional(__S(256, __c8, 0)), nextToken: S.optional(S.String) }).pipe(
           ns,
         ),
       ).annotate({ identifier: "GetListElementsResult" });
   }
 }
-function __c58(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4951,16 +4867,16 @@ function __c58(j: number): any {
         }),
       ).annotate({ identifier: "AllowDenyList" });
     case 2:
-      return S.Array(__S(1857, __c58, 1));
+      return S.Array(__S(1761, __c55, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ lists: S.optional(__S(1858, __c58, 2)), nextToken: S.optional(S.String) }).pipe(
+        S.Struct({ lists: S.optional(__S(1762, __c55, 2)), nextToken: S.optional(S.String) }).pipe(
           ns,
         ),
       ).annotate({ identifier: "GetListsMetadataResult" });
   }
 }
-function __c59(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4984,16 +4900,16 @@ function __c59(j: number): any {
         }),
       ).annotate({ identifier: "Model" });
     case 2:
-      return S.Array(__S(1889, __c59, 1));
+      return S.Array(__S(1793, __c56, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), models: S.optional(__S(1890, __c59, 2)) }).pipe(
+        S.Struct({ nextToken: S.optional(S.String), models: S.optional(__S(1794, __c56, 2)) }).pipe(
           ns,
         ),
       ).annotate({ identifier: "GetModelsResult" });
   }
 }
-function __c60(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5008,16 +4924,16 @@ function __c60(j: number): any {
           modelType: S.optional(S.String),
           modelVersionNumber: S.optional(S.String),
           trainingDataSource: S.optional(S.String),
-          trainingDataSchema: S.optional(__S(386, __c12, 2)),
-          externalEventsDetail: S.optional(__S(448, __c14, 0)),
-          ingestedEventsDetail: S.optional(__S(449, __c14, 1)),
+          trainingDataSchema: S.optional(__S(354, __c11, 2)),
+          externalEventsDetail: S.optional(__S(416, __c13, 0)),
+          ingestedEventsDetail: S.optional(__S(417, __c13, 1)),
           status: S.optional(S.String),
           arn: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetModelVersionResult" });
   }
 }
-function __c61(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5030,13 +4946,13 @@ function __c61(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          outcomes: S.optional(__S(1441, __c45, 1)),
+          outcomes: S.optional(__S(1345, __c42, 1)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetOutcomesResult" });
   }
 }
-function __c62(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5057,24 +4973,24 @@ function __c62(j: number): any {
           ruleVersion: S.optional(S.String),
           expression: S.optional(SensitiveString),
           language: S.optional(S.String),
-          outcomes: S.optional(__S(2880, __c90, 0)),
+          outcomes: S.optional(__S(2784, __c87, 0)),
           lastUpdatedTime: S.optional(S.String),
           createdTime: S.optional(S.String),
           arn: S.optional(S.String),
         }),
       ).annotate({ identifier: "RuleDetail" });
     case 2:
-      return S.Array(__S(1985, __c62, 1));
+      return S.Array(__S(1889, __c59, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ruleDetails: S.optional(__S(1986, __c62, 2)),
+          ruleDetails: S.optional(__S(1890, __c59, 2)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetRulesResult" });
   }
 }
-function __c63(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5087,13 +5003,13 @@ function __c63(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          variables: S.optional(__S(2913, __c91, 1)),
+          variables: S.optional(__S(2817, __c88, 1)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetVariablesResult" });
   }
 }
-function __c64(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ value: S.optional(S.String) })).annotate({
@@ -5102,17 +5018,15 @@ function __c64(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          eventId: S.optional(__S(2048, __c64, 0)),
-          eventType: S.optional(__S(2048, __c64, 0)),
-          detectorId: S.optional(__S(2048, __c64, 0)),
-          detectorVersionId: S.optional(__S(2048, __c64, 0)),
-          predictionTimeRange: S.optional(__S(416, __c13, 0)),
+          eventId: S.optional(__S(1952, __c61, 0)),
+          eventType: S.optional(__S(1952, __c61, 0)),
+          detectorId: S.optional(__S(1952, __c61, 0)),
+          detectorVersionId: S.optional(__S(1952, __c61, 0)),
+          predictionTimeRange: S.optional(__S(384, __c12, 0)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListEventPredictionsRequest",
-      });
+      ).annotate({ identifier: "ListEventPredictionsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5125,19 +5039,17 @@ function __c64(j: number): any {
         }),
       ).annotate({ identifier: "EventPredictionSummary" });
     case 3:
-      return S.Array(__S(2050, __c64, 2));
+      return S.Array(__S(1954, __c61, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          eventPredictionSummaries: S.optional(__S(2051, __c64, 3)),
+          eventPredictionSummaries: S.optional(__S(1955, __c61, 3)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListEventPredictionsResult",
-      });
+      ).annotate({ identifier: "ListEventPredictionsResult" });
   }
 }
-function __c65(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5146,20 +5058,16 @@ function __c65(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ tags: S.optional(__S(2497, __c78, 1)), nextToken: S.optional(S.String) }).pipe(
+        S.Struct({ tags: S.optional(__S(2401, __c75, 1)), nextToken: S.optional(S.String) }).pipe(
           ns,
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceResult",
-      });
+      ).annotate({ identifier: "ListTagsForResourceResult" });
   }
 }
-function __c66(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5167,21 +5075,64 @@ function __c66(j: number): any {
           detectorId: S.String,
           description: S.optional(S.String),
           eventTypeName: S.String,
-          tags: S.optional(__S(2497, __c78, 1)),
+          tags: S.optional(__S(2401, __c75, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutDetectorRequest" });
   }
 }
-function __c67(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          tags: S.optional(__S(2497, __c78, 1)),
+          tags: S.optional(__S(2401, __c75, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutEntityTypeRequest" });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(S.String),
+          eventVariables: __S(2784, __c87, 0),
+          labels: S.optional(__S(2784, __c87, 0)),
+          entityTypes: __S(2784, __c87, 0),
+          eventIngestion: S.optional(S.String),
+          tags: S.optional(__S(2401, __c75, 1)),
+          eventOrchestration: S.optional(__S(1568, __c49, 0)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "PutEventTypeRequest" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          modelEndpoint: S.String,
+          modelSource: S.String,
+          invokeModelEndpointRoleArn: S.String,
+          inputConfiguration: __S(1632, __c51, 0),
+          outputConfiguration: __S(1633, __c51, 1),
+          modelEndpointStatus: S.String,
+          tags: S.optional(__S(2401, __c75, 1)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "PutExternalModelRequest" });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ kmsEncryptionKeyArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "PutKMSEncryptionKeyRequest" });
   }
 }
 function __c68(j: number): any {
@@ -5191,14 +5142,9 @@ function __c68(j: number): any {
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          eventVariables: __S(2880, __c90, 0),
-          labels: S.optional(__S(2880, __c90, 0)),
-          entityTypes: __S(2880, __c90, 0),
-          eventIngestion: S.optional(S.String),
-          tags: S.optional(__S(2497, __c78, 1)),
-          eventOrchestration: S.optional(__S(1664, __c52, 0)),
+          tags: S.optional(__S(2401, __c75, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "PutEventTypeRequest" });
+      ).annotate({ identifier: "PutLabelRequest" });
   }
 }
 function __c69(j: number): any {
@@ -5206,54 +5152,14 @@ function __c69(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          modelEndpoint: S.String,
-          modelSource: S.String,
-          invokeModelEndpointRoleArn: S.String,
-          inputConfiguration: __S(1728, __c54, 0),
-          outputConfiguration: __S(1729, __c54, 1),
-          modelEndpointStatus: S.String,
-          tags: S.optional(__S(2497, __c78, 1)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "PutExternalModelRequest" });
-  }
-}
-function __c70(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ kmsEncryptionKeyArn: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "PutKMSEncryptionKeyRequest",
-      });
-  }
-}
-function __c71(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          tags: S.optional(__S(2497, __c78, 1)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "PutLabelRequest" });
-  }
-}
-function __c72(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.optional(S.String),
-          tags: S.optional(__S(2497, __c78, 1)),
+          tags: S.optional(__S(2401, __c75, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutOutcomeRequest" });
   }
 }
-function __c73(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5261,53 +5167,51 @@ function __c73(j: number): any {
           eventId: S.String,
           eventTypeName: S.String,
           eventTimestamp: S.String,
-          eventVariables: __S(1504, __c47, 0),
+          eventVariables: __S(1408, __c44, 0),
           assignedLabel: S.optional(S.String),
           labelTimestamp: S.optional(S.String),
-          entities: __S(1506, __c47, 2),
+          entities: __S(1410, __c44, 2),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "SendEventRequest" });
   }
 }
-function __c74(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ resourceARN: S.String, tags: __S(2497, __c78, 1) }).pipe(
+        S.Struct({ resourceARN: S.String, tags: __S(2401, __c75, 1) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c75(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ resourceARN: S.String, tagKeys: __S(2880, __c90, 0) }).pipe(
+        S.Struct({ resourceARN: S.String, tagKeys: __S(2784, __c87, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c76(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           detectorId: S.String,
           detectorVersionId: S.String,
-          externalModelEndpoints: __S(2880, __c90, 0),
+          externalModelEndpoints: __S(2784, __c87, 0),
           rules: __S(192, __c6, 0),
           description: S.optional(S.String),
           modelVersions: S.optional(__S(193, __c6, 1)),
           ruleExecutionMode: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateDetectorVersionRequest",
-      });
+      ).annotate({ identifier: "UpdateDetectorVersionRequest" });
   }
 }
-function __c77(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5321,16 +5225,14 @@ function __c77(j: number): any {
         }),
       ).annotate({ identifier: "VariableEntry" });
     case 1:
-      return S.Array(__S(2464, __c77, 0));
+      return S.Array(__S(2368, __c74, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          variableEntries: __S(2465, __c77, 1),
-          tags: S.optional(__S(2497, __c78, 1)),
+          variableEntries: __S(2369, __c74, 1),
+          tags: S.optional(__S(2401, __c75, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "BatchCreateVariableRequest",
-      });
+      ).annotate({ identifier: "BatchCreateVariableRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5338,56 +5240,46 @@ function __c77(j: number): any {
           code: S.optional(S.Number),
           message: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchCreateVariableError",
-      });
+      ).annotate({ identifier: "BatchCreateVariableError" });
     case 4:
-      return S.Array(__S(2467, __c77, 3));
+      return S.Array(__S(2371, __c74, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ errors: S.optional(__S(2468, __c77, 4)) }).pipe(ns),
-      ).annotate({
-        identifier: "BatchCreateVariableResult",
-      });
+        S.Struct({ errors: S.optional(__S(2372, __c74, 4)) }).pipe(ns),
+      ).annotate({ identifier: "BatchCreateVariableResult" });
   }
 }
-function __c78(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
         identifier: "Tag",
       });
     case 1:
-      return S.Array(__S(2496, __c78, 0));
+      return S.Array(__S(2400, __c75, 0));
   }
 }
-function __c79(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ detectorId: S.String, detectorVersionId: S.String, description: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateDetectorVersionMetadataRequest",
-      });
+      ).annotate({ identifier: "UpdateDetectorVersionMetadataRequest" });
   }
 }
-function __c80(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          detectorId: S.String,
-          detectorVersionId: S.String,
-          status: S.String,
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateDetectorVersionStatusRequest",
-      });
+        S.Struct({ detectorId: S.String, detectorVersionId: S.String, status: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UpdateDetectorVersionStatusRequest" });
   }
 }
-function __c81(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5400,13 +5292,13 @@ function __c81(j: number): any {
       ).annotate({ identifier: "UpdateEventLabelRequest" });
   }
 }
-function __c82(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          elements: S.optional(__S(288, __c9, 0)),
+          elements: S.optional(__S(256, __c8, 0)),
           description: S.optional(S.String),
           updateMode: S.optional(S.String),
           variableType: S.optional(S.String),
@@ -5414,7 +5306,7 @@ function __c82(j: number): any {
       ).annotate({ identifier: "UpdateListRequest" });
   }
 }
-function __c83(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5426,7 +5318,7 @@ function __c83(j: number): any {
       ).annotate({ identifier: "UpdateModelRequest" });
   }
 }
-function __c84(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5434,16 +5326,14 @@ function __c84(j: number): any {
           modelId: S.String,
           modelType: S.String,
           majorVersionNumber: S.String,
-          externalEventsDetail: S.optional(__S(448, __c14, 0)),
-          ingestedEventsDetail: S.optional(__S(449, __c14, 1)),
-          tags: S.optional(__S(2497, __c78, 1)),
+          externalEventsDetail: S.optional(__S(416, __c13, 0)),
+          ingestedEventsDetail: S.optional(__S(417, __c13, 1)),
+          tags: S.optional(__S(2401, __c75, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateModelVersionRequest",
-      });
+      ).annotate({ identifier: "UpdateModelVersionRequest" });
   }
 }
-function __c85(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5453,24 +5343,20 @@ function __c85(j: number): any {
           modelVersionNumber: S.String,
           status: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateModelVersionStatusRequest",
-      });
+      ).annotate({ identifier: "UpdateModelVersionStatusRequest" });
   }
 }
-function __c86(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ rule: __S(128, __c4, 0), description: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateRuleMetadataRequest",
-      });
+      ).annotate({ identifier: "UpdateRuleMetadataRequest" });
   }
 }
-function __c87(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5479,13 +5365,13 @@ function __c87(j: number): any {
           description: S.optional(S.String),
           expression: SensitiveString,
           language: S.String,
-          outcomes: __S(2880, __c90, 0),
-          tags: S.optional(__S(2497, __c78, 1)),
+          outcomes: __S(2784, __c87, 0),
+          tags: S.optional(__S(2401, __c75, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateRuleVersionRequest" });
   }
 }
-function __c88(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5498,11 +5384,11 @@ function __c88(j: number): any {
       ).annotate({ identifier: "UpdateVariableRequest" });
   }
 }
-function __c89(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ names: __S(2880, __c90, 0) }).pipe(
+        S.Struct({ names: __S(2784, __c87, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "BatchGetVariableRequest" });
@@ -5515,23 +5401,23 @@ function __c89(j: number): any {
         }),
       ).annotate({ identifier: "BatchGetVariableError" });
     case 2:
-      return S.Array(__S(2849, __c89, 1));
+      return S.Array(__S(2753, __c86, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          variables: S.optional(__S(2913, __c91, 1)),
-          errors: S.optional(__S(2850, __c89, 2)),
+          variables: S.optional(__S(2817, __c88, 1)),
+          errors: S.optional(__S(2754, __c86, 2)),
         }).pipe(ns),
       ).annotate({ identifier: "BatchGetVariableResult" });
   }
 }
-function __c90(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c91(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5548,22 +5434,20 @@ function __c91(j: number): any {
         }),
       ).annotate({ identifier: "Variable" });
     case 1:
-      return S.Array(__S(2912, __c91, 0));
+      return S.Array(__S(2816, __c88, 0));
   }
 }
-function __c92(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ jobId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CancelBatchImportJobRequest",
-      });
+      ).annotate({ identifier: "CancelBatchImportJobRequest" });
   }
 }
-function __c93(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({

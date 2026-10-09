@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -645,7 +645,7 @@ export const cancelRotateSecret: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(32, __c4, 0) as any as S.Schema<CancelRotateSecretRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<CancelRotateSecretResponse>,
+  output: __S(40, __c5, 0) as any as S.Schema<CancelRotateSecretResponse>,
   errors: [
     InternalServiceError,
     InvalidParameterException,
@@ -732,8 +732,8 @@ export const createSecret: API.OperationMethod<
   CreateSecretError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<CreateSecretRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<CreateSecretResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<CreateSecretRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<CreateSecretResponse>,
   errors: [
     DecryptionFailure,
     EncryptionFailure,
@@ -775,8 +775,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DeleteResourcePolicyRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<DeleteResourcePolicyResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<DeleteResourcePolicyRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<DeleteResourcePolicyResponse>,
   errors: [
     InternalServiceError,
     InvalidParameterException,
@@ -840,8 +840,8 @@ export const deleteSecret: API.OperationMethod<
   DeleteSecretError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<DeleteSecretRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteSecretResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<DeleteSecretRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<DeleteSecretResponse>,
   errors: [
     InternalServiceError,
     InvalidParameterException,
@@ -876,8 +876,8 @@ export const describeSecret: API.OperationMethod<
   DescribeSecretError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<DescribeSecretRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<DescribeSecretResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<DescribeSecretRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<DescribeSecretResponse>,
   errors: [InternalServiceError, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -911,8 +911,8 @@ export const getRandomPassword: API.OperationMethod<
   GetRandomPasswordError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<GetRandomPasswordRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<GetRandomPasswordResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<GetRandomPasswordRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<GetRandomPasswordResponse>,
   errors: [InternalServiceError, InvalidParameterException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -943,8 +943,8 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<GetResourcePolicyRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<GetResourcePolicyResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<GetResourcePolicyRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<GetResourcePolicyResponse>,
   errors: [
     InternalServiceError,
     InvalidParameterException,
@@ -993,7 +993,7 @@ export const getSecretValue: API.OperationMethod<
   GetSecretValueError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<GetSecretValueRequest>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetSecretValueRequest>,
   output: __S(16, __c2, 0) as any as S.Schema<GetSecretValueResponse>,
   errors: [
     DecryptionFailure,
@@ -1045,8 +1045,8 @@ export const listSecrets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<ListSecretsRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<ListSecretsResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<ListSecretsRequest>,
+  output: __S(155, __c19, 3) as any as S.Schema<ListSecretsResponse>,
   errors: [
     InternalServiceError,
     InvalidNextTokenException,
@@ -1091,8 +1091,8 @@ export const listSecretVersionIds: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<ListSecretVersionIdsRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<ListSecretVersionIdsResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<ListSecretVersionIdsRequest>,
+  output: __S(163, __c20, 3) as any as S.Schema<ListSecretVersionIdsResponse>,
   errors: [
     InternalServiceError,
     InvalidNextTokenException,
@@ -1137,8 +1137,8 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<PutResourcePolicyRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<PutResourcePolicyResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<PutResourcePolicyRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<PutResourcePolicyResponse>,
   errors: [
     InternalServiceError,
     InvalidParameterException,
@@ -1208,8 +1208,8 @@ export const putSecretValue: API.OperationMethod<
   PutSecretValueError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<PutSecretValueRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<PutSecretValueResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<PutSecretValueRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<PutSecretValueResponse>,
   errors: [
     DecryptionFailure,
     EncryptionFailure,
@@ -1250,8 +1250,8 @@ export const removeRegionsFromReplication: API.OperationMethod<
   RemoveRegionsFromReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<RemoveRegionsFromReplicationRequest>,
-  output: __S(184, __c23, 0) as any as S.Schema<RemoveRegionsFromReplicationResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<RemoveRegionsFromReplicationRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<RemoveRegionsFromReplicationResponse>,
   errors: [
     InternalServiceError,
     InvalidParameterException,
@@ -1291,8 +1291,8 @@ export const replicateSecretToRegions: API.OperationMethod<
   ReplicateSecretToRegionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<ReplicateSecretToRegionsRequest>,
-  output: __S(184, __c23, 0) as any as S.Schema<ReplicateSecretToRegionsResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<ReplicateSecretToRegionsRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<ReplicateSecretToRegionsResponse>,
   errors: [
     InternalServiceError,
     InvalidParameterException,
@@ -1328,8 +1328,8 @@ export const restoreSecret: API.OperationMethod<
   RestoreSecretError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<RestoreSecretRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<RestoreSecretResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<RestoreSecretRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<RestoreSecretResponse>,
   errors: [
     InternalServiceError,
     InvalidParameterException,
@@ -1381,8 +1381,8 @@ export const rotateSecret: API.OperationMethod<
   RotateSecretError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<RotateSecretRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<RotateSecretResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<RotateSecretRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<RotateSecretResponse>,
   errors: [
     InternalServiceError,
     InvalidParameterException,
@@ -1590,7 +1590,7 @@ export const updateSecret: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(256, __c32, 0) as any as S.Schema<UpdateSecretRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<UpdateSecretResponse>,
+  output: __S(40, __c5, 0) as any as S.Schema<UpdateSecretResponse>,
   errors: [
     DecryptionFailure,
     EncryptionFailure,
@@ -1652,7 +1652,7 @@ export const updateSecretVersionStage: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(264, __c33, 0) as any as S.Schema<UpdateSecretVersionStageRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<UpdateSecretVersionStageResponse>,
+  output: __S(88, __c11, 0) as any as S.Schema<UpdateSecretVersionStageResponse>,
   errors: [
     InternalServiceError,
     InvalidParameterException,
@@ -1726,9 +1726,7 @@ function __c0(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "BatchGetSecretValueRequest",
-      });
+      ).annotate({ identifier: "BatchGetSecretValueRequest" });
     case 1:
       return S.Array(__S(16, __c2, 0));
     case 2:
@@ -1748,9 +1746,7 @@ function __c0(j: number): any {
           NextToken: S.optional(S.String),
           Errors: S.optional(__S(3, __c0, 3)),
         }),
-      ).annotate({
-        identifier: "BatchGetSecretValueResponse",
-      });
+      ).annotate({ identifier: "BatchGetSecretValueResponse" });
   }
 }
 function __c1(j: number): any {
@@ -1792,22 +1788,22 @@ function __c4(j: number): any {
         S.Struct({ SecretId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CancelRotateSecretRequest",
-      });
-    case 1:
+      ).annotate({ identifier: "CancelRotateSecretRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ARN: S.optional(S.String),
           Name: S.optional(S.String),
           VersionId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CancelRotateSecretResponse",
-      });
+      ).annotate({ identifier: "CancelRotateSecretResponse" });
   }
 }
-function __c5(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1818,8 +1814,8 @@ function __c5(j: number): any {
           KmsKeyId: S.optional(S.String),
           SecretBinary: S.optional(SensitiveBlob),
           SecretString: S.optional(SensitiveString),
-          Tags: S.optional(__S(49, __c6, 1)),
-          AddReplicaRegions: S.optional(__S(65, __c8, 1)),
+          Tags: S.optional(__S(57, __c7, 1)),
+          AddReplicaRegions: S.optional(__S(73, __c9, 1)),
           ForceOverwriteReplicaSecret: S.optional(S.Boolean),
           Type: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -1830,22 +1826,22 @@ function __c5(j: number): any {
           ARN: S.optional(S.String),
           Name: S.optional(S.String),
           VersionId: S.optional(S.String),
-          ReplicationStatus: S.optional(__S(57, __c7, 1)),
+          ReplicationStatus: S.optional(__S(65, __c8, 1)),
         }),
       ).annotate({ identifier: "CreateSecretResponse" });
   }
 }
-function __c6(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "Tag" });
     case 1:
-      return S.Array(__S(48, __c6, 0));
+      return S.Array(__S(56, __c7, 0));
   }
 }
-function __c7(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1858,16 +1854,6 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "ReplicationStatusType" });
     case 1:
-      return S.Array(__S(56, __c7, 0));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ Region: S.optional(S.String), KmsKeyId: S.optional(S.String) }),
-      ).annotate({ identifier: "ReplicaRegionType" });
-    case 1:
       return S.Array(__S(64, __c8, 0));
   }
 }
@@ -1875,25 +1861,31 @@ function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ SecretId: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DeleteResourcePolicyRequest",
-      });
+        S.Struct({ Region: S.optional(S.String), KmsKeyId: S.optional(S.String) }),
+      ).annotate({ identifier: "ReplicaRegionType" });
+    case 1:
+      return S.Array(__S(72, __c9, 0));
   }
 }
 function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ARN: S.optional(S.String), Name: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DeleteResourcePolicyResponse",
-      });
+        S.Struct({ SecretId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteResourcePolicyRequest" });
   }
 }
 function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ARN: S.optional(S.String), Name: S.optional(S.String) }),
+      ).annotate({ identifier: "DeleteResourcePolicyResponse" });
+  }
+}
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1913,7 +1905,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "DeleteSecretResponse" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1931,31 +1923,31 @@ function __c12(j: number): any {
           KmsKeyId: S.optional(S.String),
           RotationEnabled: S.optional(S.Boolean),
           RotationLambdaARN: S.optional(S.String),
-          RotationRules: S.optional(__S(112, __c14, 0)),
-          ExternalSecretRotationMetadata: S.optional(__S(114, __c14, 2)),
+          RotationRules: S.optional(__S(120, __c15, 0)),
+          ExternalSecretRotationMetadata: S.optional(__S(57, __c7, 1)),
           ExternalSecretRotationRoleArn: S.optional(S.String),
           LastRotatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastChangedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastAccessedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           DeletedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           NextRotationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(__S(49, __c6, 1)),
-          VersionIdsToStages: S.optional(__S(104, __c13, 0)),
+          Tags: S.optional(__S(57, __c7, 1)),
+          VersionIdsToStages: S.optional(__S(112, __c14, 0)),
           OwningService: S.optional(S.String),
           CreatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           PrimaryRegion: S.optional(S.String),
-          ReplicationStatus: S.optional(__S(57, __c7, 1)),
+          ReplicationStatus: S.optional(__S(65, __c8, 1)),
         }),
       ).annotate({ identifier: "DescribeSecretResponse" });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ __S(8, __c1, 0).pipe(S.optional));
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1965,17 +1957,9 @@ function __c14(j: number): any {
           ScheduleExpression: S.optional(S.String),
         }),
       ).annotate({ identifier: "RotationRulesType" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ExternalSecretRotationMetadataItem",
-      });
-    case 2:
-      return S.Array(__S(113, __c14, 1));
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1996,7 +1980,7 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2011,12 +1995,10 @@ function __c16(j: number): any {
           Name: S.optional(S.String),
           ResourcePolicy: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetResourcePolicyResponse",
-      });
+      ).annotate({ identifier: "GetResourcePolicyResponse" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2028,7 +2010,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "GetSecretValueRequest" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2051,30 +2033,30 @@ function __c18(j: number): any {
           KmsKeyId: S.optional(S.String),
           RotationEnabled: S.optional(S.Boolean),
           RotationLambdaARN: S.optional(S.String),
-          RotationRules: S.optional(__S(112, __c14, 0)),
-          ExternalSecretRotationMetadata: S.optional(__S(114, __c14, 2)),
+          RotationRules: S.optional(__S(120, __c15, 0)),
+          ExternalSecretRotationMetadata: S.optional(__S(57, __c7, 1)),
           ExternalSecretRotationRoleArn: S.optional(S.String),
           LastRotatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastChangedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastAccessedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           DeletedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           NextRotationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(__S(49, __c6, 1)),
-          SecretVersionsToStages: S.optional(__S(104, __c13, 0)),
+          Tags: S.optional(__S(57, __c7, 1)),
+          SecretVersionsToStages: S.optional(__S(112, __c14, 0)),
           OwningService: S.optional(S.String),
           CreatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           PrimaryRegion: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecretListEntry" });
     case 2:
-      return S.Array(__S(145, __c18, 1));
+      return S.Array(__S(153, __c19, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ SecretList: S.optional(__S(146, __c18, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ SecretList: S.optional(__S(154, __c19, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListSecretsResponse" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2084,9 +2066,7 @@ function __c19(j: number): any {
           NextToken: S.optional(S.String),
           IncludeDeprecated: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListSecretVersionIdsRequest",
-      });
+      ).annotate({ identifier: "ListSecretVersionIdsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2098,21 +2078,19 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "SecretVersionsListEntry" });
     case 2:
-      return S.Array(__S(153, __c19, 1));
+      return S.Array(__S(161, __c20, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Versions: S.optional(__S(154, __c19, 2)),
+          Versions: S.optional(__S(162, __c20, 2)),
           NextToken: S.optional(S.String),
           ARN: S.optional(S.String),
           Name: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListSecretVersionIdsResponse",
-      });
+      ).annotate({ identifier: "ListSecretVersionIdsResponse" });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2124,7 +2102,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "PutResourcePolicyRequest" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2148,43 +2126,37 @@ function __c21(j: number): any {
       ).annotate({ identifier: "PutSecretValueResponse" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ SecretId: S.String, RemoveReplicaRegions: __S(8, __c1, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "RemoveRegionsFromReplicationRequest",
-      });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ARN: S.optional(S.String), ReplicationStatus: S.optional(__S(57, __c7, 1)) }),
-      ).annotate({
-        identifier: "RemoveRegionsFromReplicationResponse",
-      });
+      ).annotate({ identifier: "RemoveRegionsFromReplicationRequest" });
   }
 }
 function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          SecretId: S.String,
-          AddReplicaRegions: __S(65, __c8, 1),
-          ForceOverwriteReplicaSecret: S.optional(S.Boolean),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ReplicateSecretToRegionsRequest",
-      });
+        S.Struct({ ARN: S.optional(S.String), ReplicationStatus: S.optional(__S(65, __c8, 1)) }),
+      ).annotate({ identifier: "RemoveRegionsFromReplicationResponse" });
   }
 }
 function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          SecretId: S.String,
+          AddReplicaRegions: __S(73, __c9, 1),
+          ForceOverwriteReplicaSecret: S.optional(S.Boolean),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ReplicateSecretToRegionsRequest" });
+  }
+}
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2192,26 +2164,6 @@ function __c25(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "RestoreSecretRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ ARN: S.optional(S.String), Name: S.optional(S.String) }),
-      ).annotate({ identifier: "RestoreSecretResponse" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          SecretId: S.String,
-          ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          RotationLambdaARN: S.optional(S.String),
-          RotationRules: S.optional(__S(112, __c14, 0)),
-          ExternalSecretRotationMetadata: S.optional(__S(114, __c14, 2)),
-          ExternalSecretRotationRoleArn: S.optional(S.String),
-          RotateImmediately: S.optional(S.Boolean),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "RotateSecretRequest" });
   }
 }
 function __c27(j: number): any {
@@ -2219,11 +2171,15 @@ function __c27(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ARN: S.optional(S.String),
-          Name: S.optional(S.String),
-          VersionId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RotateSecretResponse" });
+          SecretId: S.String,
+          ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          RotationLambdaARN: S.optional(S.String),
+          RotationRules: S.optional(__S(120, __c15, 0)),
+          ExternalSecretRotationMetadata: S.optional(__S(57, __c7, 1)),
+          ExternalSecretRotationRoleArn: S.optional(S.String),
+          RotateImmediately: S.optional(S.Boolean),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "RotateSecretRequest" });
   }
 }
 function __c28(j: number): any {
@@ -2233,9 +2189,7 @@ function __c28(j: number): any {
         S.Struct({ SecretId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StopReplicationToReplicaRequest",
-      });
+      ).annotate({ identifier: "StopReplicationToReplicaRequest" });
     case 1:
       return S.suspend(() => S.Struct({ ARN: S.optional(S.String) })).annotate({
         identifier: "StopReplicationToReplicaResponse",
@@ -2246,7 +2200,7 @@ function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ SecretId: S.String, Tags: __S(49, __c6, 1) }).pipe(
+        S.Struct({ SecretId: S.String, Tags: __S(57, __c7, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
@@ -2255,9 +2209,7 @@ function __c29(j: number): any {
 function __c30(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TagResourceResponse" });
   }
 }
 function __c31(j: number): any {
@@ -2296,9 +2248,7 @@ function __c33(j: number): any {
           RemoveFromVersionId: S.optional(S.String),
           MoveToVersionId: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateSecretVersionStageRequest",
-      });
+      ).annotate({ identifier: "UpdateSecretVersionStageRequest" });
   }
 }
 function __c34(j: number): any {
@@ -2308,9 +2258,7 @@ function __c34(j: number): any {
         S.Struct({ SecretId: S.optional(S.String), ResourcePolicy: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ValidateResourcePolicyRequest",
-      });
+      ).annotate({ identifier: "ValidateResourcePolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ CheckName: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
@@ -2323,9 +2271,7 @@ function __c34(j: number): any {
           PolicyValidationPassed: S.optional(S.Boolean),
           ValidationErrors: S.optional(__S(274, __c34, 2)),
         }),
-      ).annotate({
-        identifier: "ValidateResourcePolicyResponse",
-      });
+      ).annotate({ identifier: "ValidateResourcePolicyResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

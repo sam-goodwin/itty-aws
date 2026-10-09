@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1493,8 +1493,8 @@ export const batchPutGeofence: API.OperationMethod<
   BatchPutGeofenceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c7, 2) as any as S.Schema<BatchPutGeofenceRequest>,
-  output: __S(118, __c7, 6) as any as S.Schema<BatchPutGeofenceResponse>,
+  input: __S(130, __c8, 2) as any as S.Schema<BatchPutGeofenceRequest>,
+  output: __S(134, __c8, 6) as any as S.Schema<BatchPutGeofenceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1530,8 +1530,8 @@ export const batchUpdateDevicePosition: API.OperationMethod<
   BatchUpdateDevicePositionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c12, 0) as any as S.Schema<BatchUpdateDevicePositionRequest>,
-  output: __S(195, __c12, 3) as any as S.Schema<BatchUpdateDevicePositionResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<BatchUpdateDevicePositionRequest>,
+  output: __S(211, __c13, 3) as any as S.Schema<BatchUpdateDevicePositionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1583,8 +1583,8 @@ export const calculateRoute: API.OperationMethod<
   CalculateRouteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c13, 0) as any as S.Schema<CalculateRouteRequest>,
-  output: __S(215, __c13, 7) as any as S.Schema<CalculateRouteResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<CalculateRouteRequest>,
+  output: __S(231, __c14, 7) as any as S.Schema<CalculateRouteResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1640,8 +1640,8 @@ export const calculateRouteMatrix: API.OperationMethod<
   CalculateRouteMatrixError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c15, 0) as any as S.Schema<CalculateRouteMatrixRequest>,
-  output: __S(246, __c15, 6) as any as S.Schema<CalculateRouteMatrixResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<CalculateRouteMatrixRequest>,
+  output: __S(262, __c16, 6) as any as S.Schema<CalculateRouteMatrixResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1673,8 +1673,8 @@ export const cancelJob: API.OperationMethod<
   CancelJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c16, 0) as any as S.Schema<CancelJobRequest>,
-  output: __S(257, __c16, 1) as any as S.Schema<CancelJobResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<CancelJobRequest>,
+  output: __S(273, __c17, 1) as any as S.Schema<CancelJobResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1705,8 +1705,8 @@ export const createGeofenceCollection: API.OperationMethod<
   CreateGeofenceCollectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c17, 0) as any as S.Schema<CreateGeofenceCollectionRequest>,
-  output: __S(273, __c17, 1) as any as S.Schema<CreateGeofenceCollectionResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<CreateGeofenceCollectionRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<CreateGeofenceCollectionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1984,7 +1984,7 @@ export const deleteKey: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(464, __c29, 0) as any as S.Schema<DeleteKeyRequest>,
-  output: __S(480, __c30, 0) as any as S.Schema<DeleteKeyResponse>,
+  output: __S(1312, __c82, 0) as any as S.Schema<DeleteKeyResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2028,8 +2028,8 @@ export const deleteMap: API.OperationMethod<
   DeleteMapError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<DeleteMapRequest>,
-  output: __S(480, __c30, 0) as any as S.Schema<DeleteMapResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<DeleteMapRequest>,
+  output: __S(1312, __c82, 0) as any as S.Schema<DeleteMapResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2073,8 +2073,8 @@ export const deletePlaceIndex: API.OperationMethod<
   DeletePlaceIndexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c32, 0) as any as S.Schema<DeletePlaceIndexRequest>,
-  output: __S(480, __c30, 0) as any as S.Schema<DeletePlaceIndexResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<DeletePlaceIndexRequest>,
+  output: __S(1312, __c82, 0) as any as S.Schema<DeletePlaceIndexResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2118,8 +2118,8 @@ export const deleteRouteCalculator: API.OperationMethod<
   DeleteRouteCalculatorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c33, 0) as any as S.Schema<DeleteRouteCalculatorRequest>,
-  output: __S(480, __c30, 0) as any as S.Schema<DeleteRouteCalculatorResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<DeleteRouteCalculatorRequest>,
+  output: __S(1312, __c82, 0) as any as S.Schema<DeleteRouteCalculatorResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2151,8 +2151,8 @@ export const deleteTracker: API.OperationMethod<
   DeleteTrackerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c34, 0) as any as S.Schema<DeleteTrackerRequest>,
-  output: __S(480, __c30, 0) as any as S.Schema<DeleteTrackerResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<DeleteTrackerRequest>,
+  output: __S(1312, __c82, 0) as any as S.Schema<DeleteTrackerResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2182,8 +2182,8 @@ export const describeGeofenceCollection: API.OperationMethod<
   DescribeGeofenceCollectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(560, __c35, 0) as any as S.Schema<DescribeGeofenceCollectionRequest>,
-  output: __S(561, __c35, 1) as any as S.Schema<DescribeGeofenceCollectionResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<DescribeGeofenceCollectionRequest>,
+  output: __S(545, __c34, 1) as any as S.Schema<DescribeGeofenceCollectionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2215,8 +2215,8 @@ export const describeKey: API.OperationMethod<
   DescribeKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c36, 0) as any as S.Schema<DescribeKeyRequest>,
-  output: __S(577, __c36, 1) as any as S.Schema<DescribeKeyResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<DescribeKeyRequest>,
+  output: __S(561, __c35, 1) as any as S.Schema<DescribeKeyResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2258,8 +2258,8 @@ export const describeMap: API.OperationMethod<
   DescribeMapError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c37, 0) as any as S.Schema<DescribeMapRequest>,
-  output: __S(593, __c37, 1) as any as S.Schema<DescribeMapResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<DescribeMapRequest>,
+  output: __S(577, __c36, 1) as any as S.Schema<DescribeMapResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2301,8 +2301,8 @@ export const describePlaceIndex: API.OperationMethod<
   DescribePlaceIndexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c38, 0) as any as S.Schema<DescribePlaceIndexRequest>,
-  output: __S(609, __c38, 1) as any as S.Schema<DescribePlaceIndexResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<DescribePlaceIndexRequest>,
+  output: __S(593, __c37, 1) as any as S.Schema<DescribePlaceIndexResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2344,8 +2344,8 @@ export const describeRouteCalculator: API.OperationMethod<
   DescribeRouteCalculatorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c39, 0) as any as S.Schema<DescribeRouteCalculatorRequest>,
-  output: __S(625, __c39, 1) as any as S.Schema<DescribeRouteCalculatorResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<DescribeRouteCalculatorRequest>,
+  output: __S(609, __c38, 1) as any as S.Schema<DescribeRouteCalculatorResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2375,8 +2375,8 @@ export const describeTracker: API.OperationMethod<
   DescribeTrackerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c40, 0) as any as S.Schema<DescribeTrackerRequest>,
-  output: __S(641, __c40, 1) as any as S.Schema<DescribeTrackerResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<DescribeTrackerRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<DescribeTrackerResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2408,7 +2408,7 @@ export const disassociateTrackerConsumer: API.OperationMethod<
   DisassociateTrackerConsumerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656, __c41, 0) as any as S.Schema<DisassociateTrackerConsumerRequest>,
+  input: __S(640, __c40, 0) as any as S.Schema<DisassociateTrackerConsumerRequest>,
   output: __S(1312, __c82, 0) as any as S.Schema<DisassociateTrackerConsumerResponse>,
   errors: [
     AccessDeniedException,
@@ -2448,8 +2448,8 @@ export const forecastGeofenceEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ForecastedEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(673, __c42, 1) as any as S.Schema<ForecastGeofenceEventsRequest>,
-  output: __S(676, __c42, 4) as any as S.Schema<ForecastGeofenceEventsResponse>,
+  input: __S(657, __c41, 1) as any as S.Schema<ForecastGeofenceEventsRequest>,
+  output: __S(660, __c41, 4) as any as S.Schema<ForecastGeofenceEventsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2487,8 +2487,8 @@ export const getDevicePosition: API.OperationMethod<
   GetDevicePositionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(688, __c43, 0) as any as S.Schema<GetDevicePositionRequest>,
-  output: __S(689, __c43, 1) as any as S.Schema<GetDevicePositionResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<GetDevicePositionRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<GetDevicePositionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2521,8 +2521,8 @@ export const getDevicePositionHistory: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DevicePosition
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(704, __c44, 0) as any as S.Schema<GetDevicePositionHistoryRequest>,
-  output: __S(705, __c44, 1) as any as S.Schema<GetDevicePositionHistoryResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<GetDevicePositionHistoryRequest>,
+  output: __S(689, __c43, 1) as any as S.Schema<GetDevicePositionHistoryResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2560,8 +2560,8 @@ export const getGeofence: API.OperationMethod<
   GetGeofenceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(720, __c45, 0) as any as S.Schema<GetGeofenceRequest>,
-  output: __S(721, __c45, 1) as any as S.Schema<GetGeofenceResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<GetGeofenceRequest>,
+  output: __S(720, __c45, 0) as any as S.Schema<GetGeofenceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2725,7 +2725,7 @@ export const getMapStyleDescriptor: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(832, __c52, 0) as any as S.Schema<GetMapStyleDescriptorRequest>,
-  output: __S(833, __c52, 1) as any as S.Schema<GetMapStyleDescriptorResponse>,
+  output: __S(800, __c50, 0) as any as S.Schema<GetMapStyleDescriptorResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2854,7 +2854,7 @@ export const listDevicePositions: API.PaginatedOperationMethod<
   ListDevicePositionsResponseEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(897, __c56, 1) as any as S.Schema<ListDevicePositionsRequest>,
-  output: __S(900, __c56, 4) as any as S.Schema<ListDevicePositionsResponse>,
+  output: __S(898, __c56, 2) as any as S.Schema<ListDevicePositionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2927,7 +2927,7 @@ export const listGeofences: API.PaginatedOperationMethod<
   ListGeofenceResponseEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(928, __c58, 0) as any as S.Schema<ListGeofencesRequest>,
-  output: __S(931, __c58, 3) as any as S.Schema<ListGeofencesResponse>,
+  output: __S(930, __c58, 2) as any as S.Schema<ListGeofencesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3290,7 +3290,7 @@ export const putGeofence: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1072, __c67, 0) as any as S.Schema<PutGeofenceRequest>,
-  output: __S(176, __c11, 0) as any as S.Schema<PutGeofenceResponse>,
+  output: __S(192, __c12, 0) as any as S.Schema<PutGeofenceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3492,7 +3492,7 @@ export const tagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1168, __c73, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(480, __c30, 0) as any as S.Schema<TagResourceResponse>,
+  output: __S(1312, __c82, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3523,7 +3523,7 @@ export const untagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1184, __c74, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(480, __c30, 0) as any as S.Schema<UntagResourceResponse>,
+  output: __S(1312, __c82, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3813,9 +3813,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchEvaluateGeofencesRequest",
-      });
+      ).annotate({ identifier: "BatchEvaluateGeofencesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3823,9 +3821,7 @@ function __c0(j: number): any {
           SampleTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           Error: __S(1360, __c85, 0),
         }),
-      ).annotate({
-        identifier: "BatchEvaluateGeofencesError",
-      });
+      ).annotate({ identifier: "BatchEvaluateGeofencesError" });
     case 2:
       return S.Array(__S(1, __c0, 1));
     case 3:
@@ -3887,23 +3883,17 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchGetDevicePositionRequest",
-      });
+      ).annotate({ identifier: "BatchGetDevicePositionRequest" });
     case 1:
       return S.suspend(() => S.Struct({ DeviceId: S.String, Error: __S(1360, __c85, 0) })).annotate(
-        {
-          identifier: "BatchGetDevicePositionError",
-        },
+        { identifier: "BatchGetDevicePositionError" },
       );
     case 2:
       return S.Array(__S(81, __c5, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Errors: __S(82, __c5, 2), DevicePositions: __S(97, __c6, 1) }),
-      ).annotate({
-        identifier: "BatchGetDevicePositionResponse",
-      });
+        S.Struct({ Errors: __S(82, __c5, 2), DevicePositions: __S(112, __c7, 0) }),
+      ).annotate({ identifier: "BatchGetDevicePositionResponse" });
   }
 }
 function __c6(j: number): any {
@@ -3919,29 +3909,31 @@ function __c6(j: number): any {
           PositionProperties: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "DevicePosition" });
-    case 1:
-      return S.Array(__S(96, __c6, 0));
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(96, __c6, 0));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GeofenceId: S.String,
-          Geometry: __S(162, __c10, 2),
+          Geometry: __S(178, __c11, 2),
           GeofenceProperties: S.optional(__S(32, __c2, 0)),
         }),
-      ).annotate({
-        identifier: "BatchPutGeofenceRequestEntry",
-      });
+      ).annotate({ identifier: "BatchPutGeofenceRequestEntry" });
     case 1:
-      return S.Array(__S(112, __c7, 0));
+      return S.Array(__S(128, __c8, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           CollectionName: S.String.pipe(T.HttpLabel("CollectionName")),
-          Entries: __S(113, __c7, 1),
+          Entries: __S(129, __c8, 1),
         }).pipe(
           T.all(
             T.Http({
@@ -3957,51 +3949,51 @@ function __c7(j: number): any {
         ),
       ).annotate({ identifier: "BatchPutGeofenceRequest" });
     case 3:
-      return S.Array(__S(176, __c11, 0));
+      return S.Array(__S(192, __c12, 0));
     case 4:
       return S.suspend(() =>
         S.Struct({ GeofenceId: S.String, Error: __S(1360, __c85, 0) }),
       ).annotate({ identifier: "BatchPutGeofenceError" });
     case 5:
-      return S.Array(__S(116, __c7, 4));
+      return S.Array(__S(132, __c8, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({ Successes: __S(115, __c7, 3), Errors: __S(117, __c7, 5) }),
+        S.Struct({ Successes: __S(131, __c8, 3), Errors: __S(133, __c8, 5) }),
       ).annotate({ identifier: "BatchPutGeofenceResponse" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(16, __c1, 0));
   }
 }
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(128, __c8, 0));
+      return S.Array(__S(16, __c1, 0));
   }
 }
 function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(144, __c9, 0));
+  }
+}
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Center: __S(16, __c1, 0), Radius: S.Number })).annotate({
         identifier: "Circle",
       });
     case 1:
-      return S.Array(__S(144, __c9, 0));
+      return S.Array(__S(160, __c10, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Polygon: S.optional(__S(144, __c9, 0)),
-          Circle: S.optional(__S(160, __c10, 0)),
+          Polygon: S.optional(__S(160, __c10, 0)),
+          Circle: S.optional(__S(176, __c11, 0)),
           Geobuf: S.optional(SensitiveBlob),
-          MultiPolygon: S.optional(__S(161, __c10, 1)),
+          MultiPolygon: S.optional(__S(177, __c11, 1)),
         }),
       ).annotate({ identifier: "GeofenceGeometry" });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4013,7 +4005,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "BatchPutGeofenceSuccess" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4030,9 +4022,7 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchUpdateDevicePositionRequest",
-      });
+      ).annotate({ identifier: "BatchUpdateDevicePositionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4040,18 +4030,16 @@ function __c12(j: number): any {
           SampleTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           Error: __S(1360, __c85, 0),
         }),
-      ).annotate({
-        identifier: "BatchUpdateDevicePositionError",
-      });
+      ).annotate({ identifier: "BatchUpdateDevicePositionError" });
     case 2:
-      return S.Array(__S(193, __c12, 1));
+      return S.Array(__S(209, __c13, 1));
     case 3:
-      return S.suspend(() => S.Struct({ Errors: __S(194, __c12, 2) })).annotate({
+      return S.suspend(() => S.Struct({ Errors: __S(210, __c13, 2) })).annotate({
         identifier: "BatchUpdateDevicePositionResponse",
       });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4059,14 +4047,14 @@ function __c13(j: number): any {
           CalculatorName: S.String.pipe(T.HttpLabel("CalculatorName")),
           DeparturePosition: __S(16, __c1, 0),
           DestinationPosition: __S(16, __c1, 0),
-          WaypointPositions: S.optional(__S(128, __c8, 0)),
+          WaypointPositions: S.optional(__S(144, __c9, 0)),
           TravelMode: S.optional(S.String),
           DepartureTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           DepartNow: S.optional(S.Boolean),
           DistanceUnit: S.optional(S.String),
           IncludeLegGeometry: S.optional(S.Boolean),
-          CarModeOptions: S.optional(__S(224, __c14, 0)),
-          TruckModeOptions: S.optional(__S(227, __c14, 3)),
+          CarModeOptions: S.optional(__S(240, __c15, 0)),
+          TruckModeOptions: S.optional(__S(243, __c15, 3)),
           ArrivalTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           OptimizeFor: S.optional(S.String),
           Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
@@ -4085,7 +4073,7 @@ function __c13(j: number): any {
         ),
       ).annotate({ identifier: "CalculateRouteRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ LineString: S.optional(__S(128, __c8, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ LineString: S.optional(__S(144, __c9, 0)) })).annotate({
         identifier: "LegGeometry",
       });
     case 2:
@@ -4099,7 +4087,7 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "Step" });
     case 3:
-      return S.Array(__S(210, __c13, 2));
+      return S.Array(__S(226, __c14, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4107,12 +4095,12 @@ function __c13(j: number): any {
           EndPosition: __S(16, __c1, 0),
           Distance: S.Number,
           DurationSeconds: S.Number,
-          Geometry: S.optional(__S(209, __c13, 1)),
-          Steps: __S(211, __c13, 3),
+          Geometry: S.optional(__S(225, __c14, 1)),
+          Steps: __S(227, __c14, 3),
         }),
       ).annotate({ identifier: "Leg" });
     case 5:
-      return S.Array(__S(212, __c13, 4));
+      return S.Array(__S(228, __c14, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -4125,18 +4113,16 @@ function __c13(j: number): any {
       ).annotate({ identifier: "CalculateRouteSummary" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ Legs: __S(213, __c13, 5), Summary: __S(214, __c13, 6) }),
+        S.Struct({ Legs: __S(229, __c14, 5), Summary: __S(230, __c14, 6) }),
       ).annotate({ identifier: "CalculateRouteResponse" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ AvoidFerries: S.optional(S.Boolean), AvoidTolls: S.optional(S.Boolean) }),
-      ).annotate({
-        identifier: "CalculateRouteCarModeOptions",
-      });
+      ).annotate({ identifier: "CalculateRouteCarModeOptions" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4155,28 +4141,26 @@ function __c14(j: number): any {
         S.Struct({
           AvoidFerries: S.optional(S.Boolean),
           AvoidTolls: S.optional(S.Boolean),
-          Dimensions: S.optional(__S(225, __c14, 1)),
-          Weight: S.optional(__S(226, __c14, 2)),
+          Dimensions: S.optional(__S(241, __c15, 1)),
+          Weight: S.optional(__S(242, __c15, 2)),
         }),
-      ).annotate({
-        identifier: "CalculateRouteTruckModeOptions",
-      });
+      ).annotate({ identifier: "CalculateRouteTruckModeOptions" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           CalculatorName: S.String.pipe(T.HttpLabel("CalculatorName")),
-          DeparturePositions: __S(128, __c8, 0),
-          DestinationPositions: __S(128, __c8, 0),
+          DeparturePositions: __S(144, __c9, 0),
+          DestinationPositions: __S(144, __c9, 0),
           TravelMode: S.optional(S.String),
           DepartureTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           DepartNow: S.optional(S.Boolean),
           DistanceUnit: S.optional(S.String),
-          CarModeOptions: S.optional(__S(224, __c14, 0)),
-          TruckModeOptions: S.optional(__S(227, __c14, 3)),
+          CarModeOptions: S.optional(__S(240, __c15, 0)),
+          TruckModeOptions: S.optional(__S(243, __c15, 3)),
           Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
         }).pipe(
           T.all(
@@ -4191,9 +4175,7 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CalculateRouteMatrixRequest",
-      });
+      ).annotate({ identifier: "CalculateRouteMatrixRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Code: S.String, Message: S.optional(S.String) })).annotate({
         identifier: "RouteMatrixEntryError",
@@ -4203,13 +4185,13 @@ function __c15(j: number): any {
         S.Struct({
           Distance: S.optional(S.Number),
           DurationSeconds: S.optional(S.Number),
-          Error: S.optional(__S(241, __c15, 1)),
+          Error: S.optional(__S(257, __c16, 1)),
         }),
       ).annotate({ identifier: "RouteMatrixEntry" });
     case 3:
-      return S.Array(__S(242, __c15, 2));
+      return S.Array(__S(258, __c16, 2));
     case 4:
-      return S.Array(__S(243, __c15, 3));
+      return S.Array(__S(259, __c16, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -4218,23 +4200,19 @@ function __c15(j: number): any {
           ErrorCount: S.Number,
           DistanceUnit: S.String,
         }),
-      ).annotate({
-        identifier: "CalculateRouteMatrixSummary",
-      });
+      ).annotate({ identifier: "CalculateRouteMatrixSummary" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          RouteMatrix: __S(244, __c15, 4),
-          SnappedDeparturePositions: S.optional(__S(128, __c8, 0)),
-          SnappedDestinationPositions: S.optional(__S(128, __c8, 0)),
-          Summary: __S(245, __c15, 5),
+          RouteMatrix: __S(260, __c16, 4),
+          SnappedDeparturePositions: S.optional(__S(144, __c9, 0)),
+          SnappedDestinationPositions: S.optional(__S(144, __c9, 0)),
+          Summary: __S(261, __c16, 5),
         }),
-      ).annotate({
-        identifier: "CalculateRouteMatrixResponse",
-      });
+      ).annotate({ identifier: "CalculateRouteMatrixResponse" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4255,7 +4233,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "CancelJobResponse" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4264,7 +4242,7 @@ function __c17(j: number): any {
           PricingPlan: S.optional(S.String),
           PricingPlanDataSource: S.optional(S.String),
           Description: S.optional(S.String),
-          Tags: S.optional(__S(288, __c18, 0)),
+          Tags: S.optional(__S(32, __c2, 0)),
           KmsKeyId: S.optional(S.String),
         }).pipe(
           T.all(
@@ -4276,9 +4254,7 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateGeofenceCollectionRequest",
-      });
+      ).annotate({ identifier: "CreateGeofenceCollectionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4286,15 +4262,7 @@ function __c17(j: number): any {
           CollectionArn: S.String,
           CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "CreateGeofenceCollectionResponse",
-      });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+      ).annotate({ identifier: "CreateGeofenceCollectionResponse" });
   }
 }
 function __c19(j: number): any {
@@ -4307,7 +4275,7 @@ function __c19(j: number): any {
           Description: S.optional(S.String),
           ExpireTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           NoExpiry: S.optional(S.Boolean),
-          Tags: S.optional(__S(288, __c18, 0)),
+          Tags: S.optional(__S(32, __c2, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/metadata/v0/keys" }), svc, auth, proto, ver, rules),
         ),
@@ -4338,9 +4306,7 @@ function __c21(j: number): any {
     case 1:
       return S.Array(__S(336, __c21, 0));
     case 2:
-      return S.suspend(() => S.Struct({ BundleId: S.String })).annotate({
-        identifier: "AppleApp",
-      });
+      return S.suspend(() => S.Struct({ BundleId: S.String })).annotate({ identifier: "AppleApp" });
     case 3:
       return S.Array(__S(338, __c21, 2));
     case 4:
@@ -4364,7 +4330,7 @@ function __c22(j: number): any {
           Configuration: __S(368, __c23, 0),
           PricingPlan: S.optional(S.String),
           Description: S.optional(S.String),
-          Tags: S.optional(__S(288, __c18, 0)),
+          Tags: S.optional(__S(32, __c2, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/maps/v0/maps" }), svc, auth, proto, ver, rules),
         ),
@@ -4401,7 +4367,7 @@ function __c24(j: number): any {
           PricingPlan: S.optional(S.String),
           Description: S.optional(S.String),
           DataSourceConfiguration: S.optional(__S(400, __c25, 0)),
-          Tags: S.optional(__S(288, __c18, 0)),
+          Tags: S.optional(__S(32, __c2, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/places/v0/indexes" }),
@@ -4440,7 +4406,7 @@ function __c26(j: number): any {
           DataSource: S.String,
           PricingPlan: S.optional(S.String),
           Description: S.optional(S.String),
-          Tags: S.optional(__S(288, __c18, 0)),
+          Tags: S.optional(__S(32, __c2, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/routes/v0/calculators" }),
@@ -4451,9 +4417,7 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateRouteCalculatorRequest",
-      });
+      ).annotate({ identifier: "CreateRouteCalculatorRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4461,9 +4425,7 @@ function __c26(j: number): any {
           CalculatorArn: S.String,
           CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "CreateRouteCalculatorResponse",
-      });
+      ).annotate({ identifier: "CreateRouteCalculatorResponse" });
   }
 }
 function __c27(j: number): any {
@@ -4476,7 +4438,7 @@ function __c27(j: number): any {
           KmsKeyId: S.optional(S.String),
           PricingPlanDataSource: S.optional(S.String),
           Description: S.optional(S.String),
-          Tags: S.optional(__S(288, __c18, 0)),
+          Tags: S.optional(__S(32, __c2, 0)),
           PositionFiltering: S.optional(S.String),
           EventBridgeEnabled: S.optional(S.Boolean),
           KmsKeyEnableGeospatialQueries: S.optional(S.Boolean),
@@ -4515,9 +4477,7 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteGeofenceCollectionRequest",
-      });
+      ).annotate({ identifier: "DeleteGeofenceCollectionRequest" });
   }
 }
 function __c29(j: number): any {
@@ -4543,14 +4503,6 @@ function __c29(j: number): any {
 function __c30(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteKeyResponse",
-      });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({ MapName: S.String.pipe(T.HttpLabel("MapName")) }).pipe(
           T.all(
@@ -4565,7 +4517,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "DeleteMapRequest" });
   }
 }
-function __c32(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4582,7 +4534,7 @@ function __c32(j: number): any {
       ).annotate({ identifier: "DeletePlaceIndexRequest" });
   }
 }
-function __c33(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4596,12 +4548,10 @@ function __c33(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteRouteCalculatorRequest",
-      });
+      ).annotate({ identifier: "DeleteRouteCalculatorRequest" });
   }
 }
-function __c34(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4618,7 +4568,7 @@ function __c34(j: number): any {
       ).annotate({ identifier: "DeleteTrackerRequest" });
   }
 }
-function __c35(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4632,9 +4582,7 @@ function __c35(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeGeofenceCollectionRequest",
-      });
+      ).annotate({ identifier: "DescribeGeofenceCollectionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4644,17 +4592,15 @@ function __c35(j: number): any {
           PricingPlan: S.optional(S.String),
           PricingPlanDataSource: S.optional(S.String),
           KmsKeyId: S.optional(S.String),
-          Tags: S.optional(__S(288, __c18, 0)),
+          Tags: S.optional(__S(32, __c2, 0)),
           CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           UpdateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           GeofenceCount: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "DescribeGeofenceCollectionResponse",
-      });
+      ).annotate({ identifier: "DescribeGeofenceCollectionResponse" });
   }
 }
-function __c36(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4680,12 +4626,12 @@ function __c36(j: number): any {
           ExpireTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           UpdateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           Description: S.optional(S.String),
-          Tags: S.optional(__S(288, __c18, 0)),
+          Tags: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "DescribeKeyResponse" });
   }
 }
-function __c37(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4709,14 +4655,14 @@ function __c37(j: number): any {
           DataSource: S.String,
           Configuration: __S(368, __c23, 0),
           Description: S.optional(S.String),
-          Tags: S.optional(__S(288, __c18, 0)),
+          Tags: S.optional(__S(32, __c2, 0)),
           CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           UpdateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "DescribeMapResponse" });
   }
 }
-function __c38(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4730,9 +4676,7 @@ function __c38(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribePlaceIndexRequest",
-      });
+      ).annotate({ identifier: "DescribePlaceIndexRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4744,14 +4688,12 @@ function __c38(j: number): any {
           UpdateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           DataSource: S.String,
           DataSourceConfiguration: __S(400, __c25, 0),
-          Tags: S.optional(__S(288, __c18, 0)),
+          Tags: S.optional(__S(32, __c2, 0)),
         }),
-      ).annotate({
-        identifier: "DescribePlaceIndexResponse",
-      });
+      ).annotate({ identifier: "DescribePlaceIndexResponse" });
   }
 }
-function __c39(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4765,9 +4707,7 @@ function __c39(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeRouteCalculatorRequest",
-      });
+      ).annotate({ identifier: "DescribeRouteCalculatorRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4778,14 +4718,12 @@ function __c39(j: number): any {
           CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           UpdateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           DataSource: S.String,
-          Tags: S.optional(__S(288, __c18, 0)),
+          Tags: S.optional(__S(32, __c2, 0)),
         }),
-      ).annotate({
-        identifier: "DescribeRouteCalculatorResponse",
-      });
+      ).annotate({ identifier: "DescribeRouteCalculatorResponse" });
   }
 }
-function __c40(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4808,7 +4746,7 @@ function __c40(j: number): any {
           Description: S.optional(S.String),
           PricingPlan: S.optional(S.String),
           PricingPlanDataSource: S.optional(S.String),
-          Tags: S.optional(__S(288, __c18, 0)),
+          Tags: S.optional(__S(32, __c2, 0)),
           CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           UpdateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           KmsKeyId: S.optional(S.String),
@@ -4819,7 +4757,7 @@ function __c40(j: number): any {
       ).annotate({ identifier: "DescribeTrackerResponse" });
   }
 }
-function __c41(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4839,24 +4777,20 @@ function __c41(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateTrackerConsumerRequest",
-      });
+      ).annotate({ identifier: "DisassociateTrackerConsumerRequest" });
   }
 }
-function __c42(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ Position: __S(16, __c1, 0), Speed: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "ForecastGeofenceEventsDeviceState",
-      });
+      ).annotate({ identifier: "ForecastGeofenceEventsDeviceState" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           CollectionName: S.String.pipe(T.HttpLabel("CollectionName")),
-          DeviceState: __S(672, __c42, 0),
+          DeviceState: __S(656, __c41, 0),
           TimeHorizonMinutes: S.optional(S.Number),
           DistanceUnit: S.optional(S.String),
           SpeedUnit: S.optional(S.String),
@@ -4875,9 +4809,7 @@ function __c42(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ForecastGeofenceEventsRequest",
-      });
+      ).annotate({ identifier: "ForecastGeofenceEventsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4891,21 +4823,19 @@ function __c42(j: number): any {
         }),
       ).annotate({ identifier: "ForecastedEvent" });
     case 3:
-      return S.Array(__S(674, __c42, 2));
+      return S.Array(__S(658, __c41, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ForecastedEvents: __S(675, __c42, 3),
+          ForecastedEvents: __S(659, __c41, 3),
           NextToken: S.optional(S.String),
           DistanceUnit: S.String,
           SpeedUnit: S.String,
         }),
-      ).annotate({
-        identifier: "ForecastGeofenceEventsResponse",
-      });
+      ).annotate({ identifier: "ForecastGeofenceEventsResponse" });
   }
 }
-function __c43(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4926,22 +4856,9 @@ function __c43(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetDevicePositionRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          DeviceId: S.optional(S.String),
-          SampleTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          ReceivedTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          Position: __S(16, __c1, 0),
-          Accuracy: S.optional(__S(48, __c3, 0)),
-          PositionProperties: S.optional(__S(32, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "GetDevicePositionResponse",
-      });
   }
 }
-function __c44(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4965,18 +4882,14 @@ function __c44(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDevicePositionHistoryRequest",
-      });
+      ).annotate({ identifier: "GetDevicePositionHistoryRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ DevicePositions: __S(97, __c6, 1), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetDevicePositionHistoryResponse",
-      });
+        S.Struct({ DevicePositions: __S(112, __c7, 0), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "GetDevicePositionHistoryResponse" });
   }
 }
-function __c45(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4997,11 +4910,15 @@ function __c45(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetGeofenceRequest" });
-    case 1:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GeofenceId: S.String,
-          Geometry: __S(162, __c10, 2),
+          Geometry: __S(178, __c11, 2),
           Status: S.String,
           CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           UpdateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -5041,7 +4958,7 @@ function __c46(j: number): any {
           OutputOptions: __S(771, __c48, 3),
           Status: S.String,
           UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          Tags: S.optional(__S(288, __c18, 0)),
+          Tags: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "GetJobResponse" });
   }
@@ -5059,9 +4976,7 @@ function __c48(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ AdditionalFeatures: S.optional(__S(1376, __c86, 0)) }),
-      ).annotate({
-        identifier: "ValidateAddressActionOptions",
-      });
+      ).annotate({ identifier: "ValidateAddressActionOptions" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ValidateAddress: S.optional(__S(768, __c48, 0)) }),
@@ -5151,19 +5066,7 @@ function __c52(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetMapStyleDescriptorRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Blob: S.optional(T.Blob).pipe(T.HttpPayload()),
-          ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-          CacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-        }),
-      ).annotate({
-        identifier: "GetMapStyleDescriptorResponse",
-      });
+      ).annotate({ identifier: "GetMapStyleDescriptorRequest" });
   }
 }
 function __c53(j: number): any {
@@ -5252,7 +5155,7 @@ function __c55(j: number): any {
 function __c56(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Polygon: S.optional(__S(144, __c9, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ Polygon: S.optional(__S(160, __c10, 0)) })).annotate({
         identifier: "TrackingFilterGeometry",
       });
     case 1:
@@ -5272,29 +5175,11 @@ function __c56(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDevicePositionsRequest",
-      });
+      ).annotate({ identifier: "ListDevicePositionsRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          DeviceId: S.String,
-          SampleTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          Position: __S(16, __c1, 0),
-          Accuracy: S.optional(__S(48, __c3, 0)),
-          PositionProperties: S.optional(__S(32, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "ListDevicePositionsResponseEntry",
-      });
-    case 3:
-      return S.Array(__S(898, __c56, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Entries: __S(899, __c56, 3), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListDevicePositionsResponse",
-      });
+        S.Struct({ Entries: __S(65, __c4, 1), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListDevicePositionsResponse" });
   }
 }
 function __c57(j: number): any {
@@ -5311,9 +5196,7 @@ function __c57(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListGeofenceCollectionsRequest",
-      });
+      ).annotate({ identifier: "ListGeofenceCollectionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5324,17 +5207,13 @@ function __c57(j: number): any {
           CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           UpdateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "ListGeofenceCollectionsResponseEntry",
-      });
+      ).annotate({ identifier: "ListGeofenceCollectionsResponseEntry" });
     case 2:
       return S.Array(__S(913, __c57, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ Entries: __S(914, __c57, 2), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListGeofenceCollectionsResponse",
-      });
+      ).annotate({ identifier: "ListGeofenceCollectionsResponse" });
   }
 }
 function __c58(j: number): any {
@@ -5360,23 +5239,10 @@ function __c58(j: number): any {
         ),
       ).annotate({ identifier: "ListGeofencesRequest" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          GeofenceId: S.String,
-          Geometry: __S(162, __c10, 2),
-          Status: S.String,
-          CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          UpdateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          GeofenceProperties: S.optional(__S(32, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "ListGeofenceResponseEntry",
-      });
+      return S.Array(__S(720, __c45, 0));
     case 2:
-      return S.Array(__S(929, __c58, 1));
-    case 3:
       return S.suspend(() =>
-        S.Struct({ Entries: __S(930, __c58, 2), NextToken: S.optional(S.String) }),
+        S.Struct({ Entries: __S(929, __c58, 1), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListGeofencesResponse" });
   }
 }
@@ -5530,9 +5396,7 @@ function __c62(j: number): any {
           CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           UpdateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "ListPlaceIndexesResponseEntry",
-      });
+      ).annotate({ identifier: "ListPlaceIndexesResponseEntry" });
     case 2:
       return S.Array(__S(993, __c62, 1));
     case 3:
@@ -5555,9 +5419,7 @@ function __c63(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListRouteCalculatorsRequest",
-      });
+      ).annotate({ identifier: "ListRouteCalculatorsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5568,17 +5430,13 @@ function __c63(j: number): any {
           CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           UpdateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "ListRouteCalculatorsResponseEntry",
-      });
+      ).annotate({ identifier: "ListRouteCalculatorsResponseEntry" });
     case 2:
       return S.Array(__S(1009, __c63, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ Entries: __S(1010, __c63, 2), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListRouteCalculatorsResponse",
-      });
+      ).annotate({ identifier: "ListRouteCalculatorsResponse" });
   }
 }
 function __c64(j: number): any {
@@ -5595,11 +5453,9 @@ function __c64(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(288, __c18, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(32, __c2, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
@@ -5622,15 +5478,11 @@ function __c65(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTrackerConsumersRequest",
-      });
+      ).annotate({ identifier: "ListTrackerConsumersRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ConsumerArns: __S(1376, __c86, 0), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListTrackerConsumersResponse",
-      });
+      ).annotate({ identifier: "ListTrackerConsumersResponse" });
   }
 }
 function __c66(j: number): any {
@@ -5658,9 +5510,7 @@ function __c66(j: number): any {
           CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           UpdateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "ListTrackersResponseEntry",
-      });
+      ).annotate({ identifier: "ListTrackersResponseEntry" });
     case 2:
       return S.Array(__S(1057, __c66, 1));
     case 3:
@@ -5676,7 +5526,7 @@ function __c67(j: number): any {
         S.Struct({
           CollectionName: S.String.pipe(T.HttpLabel("CollectionName")),
           GeofenceId: S.String.pipe(T.HttpLabel("GeofenceId")),
-          Geometry: __S(162, __c10, 2),
+          Geometry: __S(178, __c11, 2),
           GeofenceProperties: S.optional(__S(32, __c2, 0)),
         }).pipe(
           T.all(
@@ -5714,9 +5564,7 @@ function __c68(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SearchPlaceIndexForPositionRequest",
-      });
+      ).annotate({ identifier: "SearchPlaceIndexForPositionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5725,9 +5573,7 @@ function __c68(j: number): any {
           DataSource: S.String,
           Language: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SearchPlaceIndexForPositionSummary",
-      });
+      ).annotate({ identifier: "SearchPlaceIndexForPositionSummary" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5741,9 +5587,7 @@ function __c68(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({ Summary: __S(1089, __c68, 1), Results: __S(1091, __c68, 3) }),
-      ).annotate({
-        identifier: "SearchPlaceIndexForPositionResponse",
-      });
+      ).annotate({ identifier: "SearchPlaceIndexForPositionResponse" });
   }
 }
 function __c69(j: number): any {
@@ -5770,9 +5614,7 @@ function __c69(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SearchPlaceIndexForSuggestionsRequest",
-      });
+      ).annotate({ identifier: "SearchPlaceIndexForSuggestionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5785,9 +5627,7 @@ function __c69(j: number): any {
           Language: S.optional(S.String),
           FilterCategories: S.optional(__S(320, __c20, 0)),
         }),
-      ).annotate({
-        identifier: "SearchPlaceIndexForSuggestionsSummary",
-      });
+      ).annotate({ identifier: "SearchPlaceIndexForSuggestionsSummary" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5796,20 +5636,13 @@ function __c69(j: number): any {
           Categories: S.optional(__S(320, __c20, 0)),
           SupplementalCategories: S.optional(__S(320, __c20, 0)),
         }),
-      ).annotate({
-        identifier: "SearchForSuggestionsResult",
-      });
+      ).annotate({ identifier: "SearchForSuggestionsResult" });
     case 3:
       return S.Array(__S(1106, __c69, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({
-          Summary: __S(1105, __c69, 1),
-          Results: __S(1107, __c69, 3),
-        }),
-      ).annotate({
-        identifier: "SearchPlaceIndexForSuggestionsResponse",
-      });
+        S.Struct({ Summary: __S(1105, __c69, 1), Results: __S(1107, __c69, 3) }),
+      ).annotate({ identifier: "SearchPlaceIndexForSuggestionsResponse" });
   }
 }
 function __c70(j: number): any {
@@ -5848,9 +5681,7 @@ function __c71(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SearchPlaceIndexForTextRequest",
-      });
+      ).annotate({ identifier: "SearchPlaceIndexForTextRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5864,9 +5695,7 @@ function __c71(j: number): any {
           Language: S.optional(S.String),
           FilterCategories: S.optional(__S(320, __c20, 0)),
         }),
-      ).annotate({
-        identifier: "SearchPlaceIndexForTextSummary",
-      });
+      ).annotate({ identifier: "SearchPlaceIndexForTextSummary" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5881,9 +5710,7 @@ function __c71(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({ Summary: __S(1137, __c71, 1), Results: __S(1139, __c71, 3) }),
-      ).annotate({
-        identifier: "SearchPlaceIndexForTextResponse",
-      });
+      ).annotate({ identifier: "SearchPlaceIndexForTextResponse" });
   }
 }
 function __c72(j: number): any {
@@ -5898,7 +5725,7 @@ function __c72(j: number): any {
           InputOptions: __S(770, __c48, 2),
           Name: S.optional(S.String),
           OutputOptions: __S(771, __c48, 3),
-          Tags: S.optional(__S(288, __c18, 0)),
+          Tags: S.optional(__S(32, __c2, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/metadata/v0/jobs" }), svc, auth, proto, ver, rules),
         ),
@@ -5920,7 +5747,7 @@ function __c73(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          Tags: __S(288, __c18, 0),
+          Tags: __S(32, __c2, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
@@ -5973,9 +5800,7 @@ function __c75(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateGeofenceCollectionRequest",
-      });
+      ).annotate({ identifier: "UpdateGeofenceCollectionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5983,9 +5808,7 @@ function __c75(j: number): any {
           CollectionArn: S.String,
           UpdateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "UpdateGeofenceCollectionResponse",
-      });
+      ).annotate({ identifier: "UpdateGeofenceCollectionResponse" });
   }
 }
 function __c76(j: number): any {
@@ -6105,9 +5928,7 @@ function __c79(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateRouteCalculatorRequest",
-      });
+      ).annotate({ identifier: "UpdateRouteCalculatorRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6115,9 +5936,7 @@ function __c79(j: number): any {
           CalculatorArn: S.String,
           UpdateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "UpdateRouteCalculatorResponse",
-      });
+      ).annotate({ identifier: "UpdateRouteCalculatorResponse" });
   }
 }
 function __c80(j: number): any {
@@ -6170,9 +5989,7 @@ function __c81(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateTrackerConsumerRequest",
-      });
+      ).annotate({ identifier: "AssociateTrackerConsumerRequest" });
   }
 }
 function __c82(j: number): any {
@@ -6256,9 +6073,7 @@ function __c83(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "VerifyDevicePositionRequest",
-      });
+      ).annotate({ identifier: "VerifyDevicePositionRequest" });
     case 10:
       return S.suspend(() =>
         S.Struct({
@@ -6277,9 +6092,7 @@ function __c83(j: number): any {
           ReceivedTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           DistanceUnit: S.String,
         }),
-      ).annotate({
-        identifier: "VerifyDevicePositionResponse",
-      });
+      ).annotate({ identifier: "VerifyDevicePositionResponse" });
   }
 }
 function __c84(j: number): any {
@@ -6299,14 +6112,10 @@ function __c84(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchDeleteDevicePositionHistoryRequest",
-      });
+      ).annotate({ identifier: "BatchDeleteDevicePositionHistoryRequest" });
     case 1:
       return S.suspend(() => S.Struct({ DeviceId: S.String, Error: __S(1360, __c85, 0) })).annotate(
-        {
-          identifier: "BatchDeleteDevicePositionHistoryError",
-        },
+        { identifier: "BatchDeleteDevicePositionHistoryError" },
       );
     case 2:
       return S.Array(__S(1345, __c84, 1));
@@ -6350,15 +6159,11 @@ function __c87(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchDeleteGeofenceRequest",
-      });
+      ).annotate({ identifier: "BatchDeleteGeofenceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ GeofenceId: S.String, Error: __S(1360, __c85, 0) }),
-      ).annotate({
-        identifier: "BatchDeleteGeofenceError",
-      });
+      ).annotate({ identifier: "BatchDeleteGeofenceError" });
     case 2:
       return S.Array(__S(1393, __c87, 1));
     case 3:

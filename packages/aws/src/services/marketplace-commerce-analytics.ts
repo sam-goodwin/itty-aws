@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
@@ -166,7 +166,7 @@ export const generateDataSet: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GenerateDataSetRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GenerateDataSetResult>,
+  output: __S(3, __c1, 1) as any as S.Schema<GenerateDataSetResult>,
   errors: [MarketplaceCommerceAnalyticsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -191,7 +191,7 @@ export const startSupportDataExport: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(4, __c2, 0) as any as S.Schema<StartSupportDataExportRequest>,
-  output: __S(5, __c2, 1) as any as S.Schema<StartSupportDataExportResult>,
+  output: __S(3, __c1, 1) as any as S.Schema<StartSupportDataExportResult>,
   errors: [MarketplaceCommerceAnalyticsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -213,16 +213,16 @@ function __c0(j: number): any {
           customerDefinedValues: S.optional(__S(2, __c1, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GenerateDataSetRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({ dataSetRequestId: S.optional(S.String) })).annotate({
-        identifier: "GenerateDataSetResult",
-      });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 1:
+      return S.suspend(() => S.Struct({ dataSetRequestId: S.optional(S.String) })).annotate({
+        identifier: "GenerateDataSetResult",
+      });
   }
 }
 function __c2(j: number): any {
@@ -238,13 +238,7 @@ function __c2(j: number): any {
           snsTopicArn: S.String,
           customerDefinedValues: S.optional(__S(2, __c1, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartSupportDataExportRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ dataSetRequestId: S.optional(S.String) })).annotate({
-        identifier: "StartSupportDataExportResult",
-      });
+      ).annotate({ identifier: "StartSupportDataExportRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

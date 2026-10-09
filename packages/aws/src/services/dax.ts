@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -782,7 +782,7 @@ export const decreaseReplicationFactor: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c12, 0) as any as S.Schema<DecreaseReplicationFactorRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<DecreaseReplicationFactorResponse>,
+  output: __S(32, __c4, 0) as any as S.Schema<DecreaseReplicationFactorResponse>,
   errors: [
     ClusterNotFoundFault,
     InvalidClusterStateFault,
@@ -816,7 +816,7 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<DeleteClusterRequest>,
+  input: __S(104, __c13, 0) as any as S.Schema<DeleteClusterRequest>,
   output: __S(32, __c4, 0) as any as S.Schema<DeleteClusterResponse>,
   errors: [
     ClusterNotFoundFault,
@@ -847,8 +847,8 @@ export const deleteParameterGroup: API.OperationMethod<
   DeleteParameterGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<DeleteParameterGroupRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<DeleteParameterGroupResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<DeleteParameterGroupRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeleteParameterGroupResponse>,
   errors: [
     InvalidParameterCombinationException,
     InvalidParameterGroupStateFault,
@@ -878,8 +878,8 @@ export const deleteSubnetGroup: API.OperationMethod<
   DeleteSubnetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<DeleteSubnetGroupRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<DeleteSubnetGroupResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<DeleteSubnetGroupRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeleteSubnetGroupResponse>,
   errors: [ServiceLinkedRoleNotFoundFault, SubnetGroupInUseFault, SubnetGroupNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -917,8 +917,8 @@ export const describeClusters: API.OperationMethod<
   DescribeClustersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<DescribeClustersRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<DescribeClustersResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<DescribeClustersRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<DescribeClustersResponse>,
   errors: [
     ClusterNotFoundFault,
     InvalidParameterCombinationException,
@@ -945,8 +945,8 @@ export const describeDefaultParameters: API.OperationMethod<
   DescribeDefaultParametersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<DescribeDefaultParametersRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<DescribeDefaultParametersResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<DescribeDefaultParametersRequest>,
+  output: __S(156, __c19, 4) as any as S.Schema<DescribeDefaultParametersResponse>,
   errors: [
     InvalidParameterCombinationException,
     InvalidParameterValueException,
@@ -976,8 +976,8 @@ export const describeEvents: API.OperationMethod<
   DescribeEventsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<DescribeEventsRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<DescribeEventsResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<DescribeEventsRequest>,
+  output: __S(163, __c20, 3) as any as S.Schema<DescribeEventsResponse>,
   errors: [
     InvalidParameterCombinationException,
     InvalidParameterValueException,
@@ -1004,8 +1004,8 @@ export const describeParameterGroups: API.OperationMethod<
   DescribeParameterGroupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<DescribeParameterGroupsRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<DescribeParameterGroupsResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<DescribeParameterGroupsRequest>,
+  output: __S(170, __c21, 2) as any as S.Schema<DescribeParameterGroupsResponse>,
   errors: [
     InvalidParameterCombinationException,
     InvalidParameterValueException,
@@ -1032,8 +1032,8 @@ export const describeParameters: API.OperationMethod<
   DescribeParametersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<DescribeParametersRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<DescribeParametersResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<DescribeParametersRequest>,
+  output: __S(156, __c19, 4) as any as S.Schema<DescribeParametersResponse>,
   errors: [
     InvalidParameterCombinationException,
     InvalidParameterValueException,
@@ -1059,8 +1059,8 @@ export const describeSubnetGroups: API.OperationMethod<
   DescribeSubnetGroupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<DescribeSubnetGroupsRequest>,
-  output: __S(194, __c24, 2) as any as S.Schema<DescribeSubnetGroupsResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<DescribeSubnetGroupsRequest>,
+  output: __S(186, __c23, 2) as any as S.Schema<DescribeSubnetGroupsResponse>,
   errors: [ServiceLinkedRoleNotFoundFault, SubnetGroupNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1087,8 +1087,8 @@ export const increaseReplicationFactor: API.OperationMethod<
   IncreaseReplicationFactorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<IncreaseReplicationFactorRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<IncreaseReplicationFactorResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<IncreaseReplicationFactorRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<IncreaseReplicationFactorResponse>,
   errors: [
     ClusterNotFoundFault,
     InsufficientClusterCapacityFault,
@@ -1123,8 +1123,8 @@ export const listTags: API.OperationMethod<
   ListTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<ListTagsRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<ListTagsResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<ListTagsRequest>,
+  output: __S(201, __c25, 1) as any as S.Schema<ListTagsResponse>,
   errors: [
     ClusterNotFoundFault,
     InvalidARNFault,
@@ -1160,7 +1160,7 @@ export const rebootNode: API.OperationMethod<
   RebootNodeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<RebootNodeRequest>,
+  input: __S(208, __c26, 0) as any as S.Schema<RebootNodeRequest>,
   output: __S(32, __c4, 0) as any as S.Schema<RebootNodeResponse>,
   errors: [
     ClusterNotFoundFault,
@@ -1195,8 +1195,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(232, __c29, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     ClusterNotFoundFault,
     InvalidARNFault,
@@ -1230,8 +1230,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(232, __c29, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     ClusterNotFoundFault,
     InvalidARNFault,
@@ -1266,7 +1266,7 @@ export const updateCluster: API.OperationMethod<
   UpdateClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<UpdateClusterRequest>,
+  input: __S(240, __c30, 0) as any as S.Schema<UpdateClusterRequest>,
   output: __S(32, __c4, 0) as any as S.Schema<UpdateClusterResponse>,
   errors: [
     ClusterNotFoundFault,
@@ -1299,7 +1299,7 @@ export const updateParameterGroup: API.OperationMethod<
   UpdateParameterGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258, __c32, 2) as any as S.Schema<UpdateParameterGroupRequest>,
+  input: __S(250, __c31, 2) as any as S.Schema<UpdateParameterGroupRequest>,
   output: __S(64, __c8, 0) as any as S.Schema<UpdateParameterGroupResponse>,
   errors: [
     InvalidParameterCombinationException,
@@ -1330,7 +1330,7 @@ export const updateSubnetGroup: API.OperationMethod<
   UpdateSubnetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<UpdateSubnetGroupRequest>,
+  input: __S(256, __c32, 0) as any as S.Schema<UpdateSubnetGroupRequest>,
   output: __S(88, __c11, 0) as any as S.Schema<UpdateSubnetGroupResponse>,
   errors: [
     InvalidSubnet,
@@ -1410,9 +1410,7 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ TopicArn: S.optional(S.String), TopicStatus: S.optional(S.String) }),
-      ).annotate({
-        identifier: "NotificationConfiguration",
-      });
+      ).annotate({ identifier: "NotificationConfiguration" });
     case 3:
       return S.suspend(() =>
         S.Struct({ SecurityGroupIdentifier: S.optional(S.String), Status: S.optional(S.String) }),
@@ -1482,9 +1480,7 @@ function __c6(j: number): any {
         S.Struct({ ParameterGroupName: S.String, Description: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateParameterGroupRequest",
-      });
+      ).annotate({ identifier: "CreateParameterGroupRequest" });
   }
 }
 function __c7(j: number): any {
@@ -1500,9 +1496,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ ParameterGroup: S.optional(__S(56, __c7, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateParameterGroupResponse",
-      });
+      ).annotate({ identifier: "CreateParameterGroupResponse" });
   }
 }
 function __c9(j: number): any {
@@ -1548,9 +1542,7 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ SubnetGroup: S.optional(__S(83, __c10, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateSubnetGroupResponse",
-      });
+      ).annotate({ identifier: "CreateSubnetGroupResponse" });
   }
 }
 function __c12(j: number): any {
@@ -1563,22 +1555,10 @@ function __c12(j: number): any {
           AvailabilityZones: S.optional(__S(16, __c2, 0)),
           NodeIdsToRemove: S.optional(__S(16, __c2, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DecreaseReplicationFactorRequest",
-      });
+      ).annotate({ identifier: "DecreaseReplicationFactorRequest" });
   }
 }
 function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Cluster: S.optional(__S(31, __c3, 7)) }).pipe(ns)).annotate(
-        {
-          identifier: "DecreaseReplicationFactorResponse",
-        },
-      );
-  }
-}
-function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1588,29 +1568,25 @@ function __c14(j: number): any {
       ).annotate({ identifier: "DeleteClusterRequest" });
   }
 }
-function __c15(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ ParameterGroupName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteParameterGroupRequest",
-      });
+      ).annotate({ identifier: "DeleteParameterGroupRequest" });
   }
 }
-function __c16(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ DeletionMessage: S.optional(S.String) }).pipe(ns)).annotate(
-        {
-          identifier: "DeleteParameterGroupResponse",
-        },
+        { identifier: "DeleteParameterGroupResponse" },
       );
   }
 }
-function __c17(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1620,7 +1596,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "DeleteSubnetGroupRequest" });
   }
 }
-function __c18(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1636,38 +1612,36 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          Clusters: S.optional(__S(145, __c18, 1)),
+          Clusters: S.optional(__S(137, __c17, 1)),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeClustersResponse" });
   }
 }
-function __c19(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeDefaultParametersRequest",
-      });
+      ).annotate({ identifier: "DescribeDefaultParametersRequest" });
   }
 }
-function __c20(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ NodeType: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "NodeTypeSpecificValue" });
     case 1:
-      return S.Array(__S(160, __c20, 0));
+      return S.Array(__S(152, __c19, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           ParameterName: S.optional(S.String),
           ParameterType: S.optional(S.String),
           ParameterValue: S.optional(S.String),
-          NodeTypeSpecificValues: S.optional(__S(161, __c20, 1)),
+          NodeTypeSpecificValues: S.optional(__S(153, __c19, 1)),
           Description: S.optional(S.String),
           Source: S.optional(S.String),
           DataType: S.optional(S.String),
@@ -1677,19 +1651,17 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "Parameter" });
     case 3:
-      return S.Array(__S(162, __c20, 2));
+      return S.Array(__S(154, __c19, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          Parameters: S.optional(__S(163, __c20, 3)),
+          Parameters: S.optional(__S(155, __c19, 3)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeDefaultParametersResponse",
-      });
+      ).annotate({ identifier: "DescribeDefaultParametersResponse" });
   }
 }
-function __c21(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1713,16 +1685,16 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "Event" });
     case 2:
-      return S.Array(__S(169, __c21, 1));
+      return S.Array(__S(161, __c20, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Events: S.optional(__S(170, __c21, 2)) }).pipe(
+        S.Struct({ NextToken: S.optional(S.String), Events: S.optional(__S(162, __c20, 2)) }).pipe(
           ns,
         ),
       ).annotate({ identifier: "DescribeEventsResponse" });
   }
 }
-function __c22(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1731,23 +1703,19 @@ function __c22(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeParameterGroupsRequest",
-      });
+      ).annotate({ identifier: "DescribeParameterGroupsRequest" });
     case 1:
       return S.Array(__S(56, __c7, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          ParameterGroups: S.optional(__S(177, __c22, 1)),
+          ParameterGroups: S.optional(__S(169, __c21, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeParameterGroupsResponse",
-      });
+      ).annotate({ identifier: "DescribeParameterGroupsResponse" });
   }
 }
-function __c23(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1757,12 +1725,10 @@ function __c23(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeParametersRequest",
-      });
+      ).annotate({ identifier: "DescribeParametersRequest" });
   }
 }
-function __c24(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1771,23 +1737,19 @@ function __c24(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeSubnetGroupsRequest",
-      });
+      ).annotate({ identifier: "DescribeSubnetGroupsRequest" });
     case 1:
       return S.Array(__S(83, __c10, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          SubnetGroups: S.optional(__S(193, __c24, 1)),
+          SubnetGroups: S.optional(__S(185, __c23, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeSubnetGroupsResponse",
-      });
+      ).annotate({ identifier: "DescribeSubnetGroupsResponse" });
   }
 }
-function __c25(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1796,12 +1758,10 @@ function __c25(j: number): any {
           NewReplicationFactor: S.Number,
           AvailabilityZones: S.optional(__S(16, __c2, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "IncreaseReplicationFactorRequest",
-      });
+      ).annotate({ identifier: "IncreaseReplicationFactorRequest" });
   }
 }
-function __c26(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1815,7 +1775,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "ListTagsResponse" });
   }
 }
-function __c27(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1825,7 +1785,7 @@ function __c27(j: number): any {
       ).annotate({ identifier: "RebootNodeRequest" });
   }
 }
-function __c28(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1835,7 +1795,7 @@ function __c28(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c29(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(41, __c5, 1)) }).pipe(ns)).annotate({
@@ -1843,7 +1803,7 @@ function __c29(j: number): any {
       });
   }
 }
-function __c30(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1853,7 +1813,7 @@ function __c30(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c31(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1869,25 +1829,23 @@ function __c31(j: number): any {
       ).annotate({ identifier: "UpdateClusterRequest" });
   }
 }
-function __c32(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ ParameterName: S.optional(S.String), ParameterValue: S.optional(S.String) }),
       ).annotate({ identifier: "ParameterNameValue" });
     case 1:
-      return S.Array(__S(256, __c32, 0));
+      return S.Array(__S(248, __c31, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ ParameterGroupName: S.String, ParameterNameValues: __S(257, __c32, 1) }).pipe(
+        S.Struct({ ParameterGroupName: S.String, ParameterNameValues: __S(249, __c31, 1) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateParameterGroupRequest",
-      });
+      ).annotate({ identifier: "UpdateParameterGroupRequest" });
   }
 }
-function __c33(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

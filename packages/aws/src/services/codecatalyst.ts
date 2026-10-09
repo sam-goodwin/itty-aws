@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
@@ -736,8 +736,8 @@ export const createDevEnvironment: API.OperationMethod<
   CreateDevEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateDevEnvironmentRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CreateDevEnvironmentResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateDevEnvironmentRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<CreateDevEnvironmentResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -754,8 +754,8 @@ export const createProject: API.OperationMethod<
   CreateProjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<CreateProjectRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<CreateProjectResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<CreateProjectRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<CreateProjectResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -773,8 +773,8 @@ export const createSourceRepository: API.OperationMethod<
   CreateSourceRepositoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<CreateSourceRepositoryRequest>,
-  output: __S(249, __c31, 1) as any as S.Schema<CreateSourceRepositoryResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<CreateSourceRepositoryRequest>,
+  output: __S(257, __c32, 1) as any as S.Schema<CreateSourceRepositoryResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -793,8 +793,8 @@ export const createSourceRepositoryBranch: API.OperationMethod<
   CreateSourceRepositoryBranchError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<CreateSourceRepositoryBranchRequest>,
-  output: __S(328, __c41, 0) as any as S.Schema<CreateSourceRepositoryBranchResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<CreateSourceRepositoryBranchRequest>,
+  output: __S(336, __c42, 0) as any as S.Schema<CreateSourceRepositoryBranchResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -811,8 +811,8 @@ export const deleteAccessToken: API.OperationMethod<
   DeleteAccessTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<DeleteAccessTokenRequest>,
-  output: __S(344, __c43, 0) as any as S.Schema<DeleteAccessTokenResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<DeleteAccessTokenRequest>,
+  output: __S(352, __c44, 0) as any as S.Schema<DeleteAccessTokenResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -829,8 +829,8 @@ export const deleteDevEnvironment: API.OperationMethod<
   DeleteDevEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<DeleteDevEnvironmentRequest>,
-  output: __S(353, __c44, 1) as any as S.Schema<DeleteDevEnvironmentResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<DeleteDevEnvironmentRequest>,
+  output: __S(361, __c45, 1) as any as S.Schema<DeleteDevEnvironmentResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -847,8 +847,8 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<DeleteProjectRequest>,
-  output: __S(361, __c45, 1) as any as S.Schema<DeleteProjectResponse>,
+  input: __S(368, __c46, 0) as any as S.Schema<DeleteProjectRequest>,
+  output: __S(369, __c46, 1) as any as S.Schema<DeleteProjectResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -865,8 +865,8 @@ export const deleteSourceRepository: API.OperationMethod<
   DeleteSourceRepositoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<DeleteSourceRepositoryRequest>,
-  output: __S(369, __c46, 1) as any as S.Schema<DeleteSourceRepositoryResponse>,
+  input: __S(376, __c47, 0) as any as S.Schema<DeleteSourceRepositoryRequest>,
+  output: __S(377, __c47, 1) as any as S.Schema<DeleteSourceRepositoryResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -885,8 +885,8 @@ export const deleteSpace: API.OperationMethod<
   DeleteSpaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(376, __c47, 0) as any as S.Schema<DeleteSpaceRequest>,
-  output: __S(377, __c47, 1) as any as S.Schema<DeleteSpaceResponse>,
+  input: __S(384, __c48, 0) as any as S.Schema<DeleteSpaceRequest>,
+  output: __S(385, __c48, 1) as any as S.Schema<DeleteSpaceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -903,8 +903,8 @@ export const getDevEnvironment: API.OperationMethod<
   GetDevEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetDevEnvironmentRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetDevEnvironmentResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetDevEnvironmentRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<GetDevEnvironmentResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -922,7 +922,7 @@ export const getProject: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(40, __c5, 0) as any as S.Schema<GetProjectRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<GetProjectResponse>,
+  output: __S(144, __c18, 0) as any as S.Schema<GetProjectResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1032,7 +1032,7 @@ export const getWorkflow: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c12, 0) as any as S.Schema<GetWorkflowRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<GetWorkflowResponse>,
+  output: __S(97, __c12, 1) as any as S.Schema<GetWorkflowResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1049,8 +1049,8 @@ export const getWorkflowRun: API.OperationMethod<
   GetWorkflowRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<GetWorkflowRunRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<GetWorkflowRunResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetWorkflowRunRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<GetWorkflowRunResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1068,8 +1068,8 @@ export const listAccessTokens: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AccessTokenSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<ListAccessTokensRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<ListAccessTokensResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<ListAccessTokensRequest>,
+  output: __S(131, __c16, 3) as any as S.Schema<ListAccessTokensResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1093,8 +1093,8 @@ export const listDevEnvironments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DevEnvironmentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<ListDevEnvironmentsRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<ListDevEnvironmentsResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<ListDevEnvironmentsRequest>,
+  output: __S(155, __c19, 3) as any as S.Schema<ListDevEnvironmentsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1118,8 +1118,8 @@ export const listDevEnvironmentSessions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DevEnvironmentSessionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<ListDevEnvironmentSessionsRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<ListDevEnvironmentSessionsResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<ListDevEnvironmentSessionsRequest>,
+  output: __S(179, __c22, 3) as any as S.Schema<ListDevEnvironmentSessionsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1151,8 +1151,8 @@ export const listEventLogs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EventLogEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<ListEventLogsRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<ListEventLogsResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<ListEventLogsRequest>,
+  output: __S(190, __c23, 6) as any as S.Schema<ListEventLogsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1176,8 +1176,8 @@ export const listProjects: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProjectSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<ListProjectsRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<ListProjectsResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<ListProjectsRequest>,
+  output: __S(195, __c24, 3) as any as S.Schema<ListProjectsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1201,8 +1201,8 @@ export const listSourceRepositories: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListSourceRepositoriesItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<ListSourceRepositoriesRequest>,
-  output: __S(195, __c24, 3) as any as S.Schema<ListSourceRepositoriesResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<ListSourceRepositoriesRequest>,
+  output: __S(203, __c25, 3) as any as S.Schema<ListSourceRepositoriesResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1226,8 +1226,8 @@ export const listSourceRepositoryBranches: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListSourceRepositoryBranchesItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<ListSourceRepositoryBranchesRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<ListSourceRepositoryBranchesResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<ListSourceRepositoryBranchesRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<ListSourceRepositoryBranchesResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1251,8 +1251,8 @@ export const listSpaces: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SpaceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<ListSpacesRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<ListSpacesResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<ListSpacesRequest>,
+  output: __S(218, __c27, 2) as any as S.Schema<ListSpacesResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1271,8 +1271,8 @@ export const listWorkflowRuns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WorkflowRunSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<ListWorkflowRunsRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<ListWorkflowRunsResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<ListWorkflowRunsRequest>,
+  output: __S(227, __c28, 3) as any as S.Schema<ListWorkflowRunsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1296,8 +1296,8 @@ export const listWorkflows: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WorkflowSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<ListWorkflowsRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<ListWorkflowsResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<ListWorkflowsRequest>,
+  output: __S(235, __c29, 3) as any as S.Schema<ListWorkflowsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1320,8 +1320,8 @@ export const startDevEnvironment: API.OperationMethod<
   StartDevEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<StartDevEnvironmentRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<StartDevEnvironmentResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<StartDevEnvironmentRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<StartDevEnvironmentResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1338,8 +1338,8 @@ export const startDevEnvironmentSession: API.OperationMethod<
   StartDevEnvironmentSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258, __c32, 2) as any as S.Schema<StartDevEnvironmentSessionRequest>,
-  output: __S(260, __c32, 4) as any as S.Schema<StartDevEnvironmentSessionResponse>,
+  input: __S(266, __c33, 2) as any as S.Schema<StartDevEnvironmentSessionRequest>,
+  output: __S(268, __c33, 4) as any as S.Schema<StartDevEnvironmentSessionResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1356,8 +1356,8 @@ export const startWorkflowRun: API.OperationMethod<
   StartWorkflowRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<StartWorkflowRunRequest>,
-  output: __S(265, __c33, 1) as any as S.Schema<StartWorkflowRunResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<StartWorkflowRunRequest>,
+  output: __S(273, __c34, 1) as any as S.Schema<StartWorkflowRunResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1374,8 +1374,8 @@ export const stopDevEnvironment: API.OperationMethod<
   StopDevEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<StopDevEnvironmentRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<StopDevEnvironmentResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<StopDevEnvironmentRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<StopDevEnvironmentResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1392,8 +1392,8 @@ export const stopDevEnvironmentSession: API.OperationMethod<
   StopDevEnvironmentSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<StopDevEnvironmentSessionRequest>,
-  output: __S(281, __c35, 1) as any as S.Schema<StopDevEnvironmentSessionResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<StopDevEnvironmentSessionRequest>,
+  output: __S(289, __c36, 1) as any as S.Schema<StopDevEnvironmentSessionResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1410,8 +1410,8 @@ export const updateDevEnvironment: API.OperationMethod<
   UpdateDevEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<UpdateDevEnvironmentRequest>,
-  output: __S(289, __c36, 1) as any as S.Schema<UpdateDevEnvironmentResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<UpdateDevEnvironmentRequest>,
+  output: __S(297, __c37, 1) as any as S.Schema<UpdateDevEnvironmentResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1428,8 +1428,8 @@ export const updateProject: API.OperationMethod<
   UpdateProjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<UpdateProjectRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<UpdateProjectResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<UpdateProjectRequest>,
+  output: __S(305, __c38, 1) as any as S.Schema<UpdateProjectResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1446,8 +1446,8 @@ export const updateSpace: API.OperationMethod<
   UpdateSpaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<UpdateSpaceRequest>,
-  output: __S(305, __c38, 1) as any as S.Schema<UpdateSpaceResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<UpdateSpaceRequest>,
+  output: __S(313, __c39, 1) as any as S.Schema<UpdateSpaceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1464,8 +1464,8 @@ export const verifySession: API.OperationMethod<
   VerifySessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<VerifySessionRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<VerifySessionResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<VerifySessionRequest>,
+  output: __S(321, __c40, 1) as any as S.Schema<VerifySessionResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1492,35 +1492,23 @@ function __c0(j: number): any {
           expiresTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           accessTokenId: S.String,
         }),
-      ).annotate({
-        identifier: "CreateAccessTokenResponse",
-      });
+      ).annotate({ identifier: "CreateAccessTokenResponse" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ repositoryName: S.String, branchName: S.optional(S.String) }),
-      ).annotate({ identifier: "RepositoryInput" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() => S.Struct({ sizeInGiB: S.Number })).annotate({
-        identifier: "PersistentStorageConfiguration",
-      });
-    case 3:
-      return S.suspend(() =>
         S.Struct({
           spaceName: S.String.pipe(T.HttpLabel("spaceName")),
           projectName: S.String.pipe(T.HttpLabel("projectName")),
-          repositories: S.optional(__S(9, __c1, 1)),
+          repositories: S.optional(__S(17, __c2, 1)),
           clientToken: S.optional(S.String),
           alias: S.optional(S.String),
-          ides: S.optional(__S(17, __c2, 1)),
+          ides: S.optional(__S(25, __c3, 1)),
           instanceType: S.String,
           inactivityTimeoutMinutes: S.optional(S.Number),
-          persistentStorage: __S(10, __c1, 2),
+          persistentStorage: __S(18, __c2, 2),
           vpcConnectionName: S.optional(S.String),
         }).pipe(
           T.all(
@@ -1535,10 +1523,8 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateDevEnvironmentRequest",
-      });
-    case 4:
+      ).annotate({ identifier: "CreateDevEnvironmentRequest" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           spaceName: S.String,
@@ -1546,22 +1532,34 @@ function __c1(j: number): any {
           id: S.String,
           vpcConnectionName: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateDevEnvironmentResponse",
-      });
+      ).annotate({ identifier: "CreateDevEnvironmentResponse" });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ runtime: S.optional(S.String), name: S.optional(S.String) }),
-      ).annotate({ identifier: "IdeConfiguration" });
+        S.Struct({ repositoryName: S.String, branchName: S.optional(S.String) }),
+      ).annotate({ identifier: "RepositoryInput" });
     case 1:
       return S.Array(__S(16, __c2, 0));
+    case 2:
+      return S.suspend(() => S.Struct({ sizeInGiB: S.Number })).annotate({
+        identifier: "PersistentStorageConfiguration",
+      });
   }
 }
 function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ runtime: S.optional(S.String), name: S.optional(S.String) }),
+      ).annotate({ identifier: "IdeConfiguration" });
+    case 1:
+      return S.Array(__S(24, __c3, 0));
+  }
+}
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1593,33 +1591,15 @@ function __c3(j: number): any {
           creatorId: S.String,
           status: S.String,
           statusReason: S.optional(S.String),
-          repositories: __S(33, __c4, 1),
+          repositories: __S(17, __c2, 1),
           alias: S.optional(S.String),
-          ides: S.optional(__S(17, __c2, 1)),
+          ides: S.optional(__S(25, __c3, 1)),
           instanceType: S.String,
           inactivityTimeoutMinutes: S.Number,
-          persistentStorage: __S(34, __c4, 2),
+          persistentStorage: __S(18, __c2, 2),
           vpcConnectionName: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetDevEnvironmentResponse",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ repositoryName: S.String, branchName: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DevEnvironmentRepositorySummary",
-      });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() => S.Struct({ sizeInGiB: S.Number })).annotate({
-        identifier: "PersistentStorage",
-      });
+      ).annotate({ identifier: "GetDevEnvironmentResponse" });
   }
 }
 function __c5(j: number): any {
@@ -1663,9 +1643,7 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetSourceRepositoryRequest",
-      });
+      ).annotate({ identifier: "GetSourceRepositoryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1676,9 +1654,7 @@ function __c6(j: number): any {
           lastUpdatedTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           createdTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "GetSourceRepositoryResponse",
-      });
+      ).annotate({ identifier: "GetSourceRepositoryResponse" });
   }
 }
 function __c7(j: number): any {
@@ -1702,9 +1678,7 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetSourceRepositoryCloneUrlsRequest",
-      });
+      ).annotate({ identifier: "GetSourceRepositoryCloneUrlsRequest" });
     case 1:
       return S.suspend(() => S.Struct({ https: S.String })).annotate({
         identifier: "GetSourceRepositoryCloneUrlsResponse",
@@ -1812,10 +1786,6 @@ function __c12(j: number): any {
         ),
       ).annotate({ identifier: "GetWorkflowRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ path: S.String })).annotate({
-        identifier: "WorkflowDefinition",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           spaceName: S.String,
@@ -1824,7 +1794,7 @@ function __c12(j: number): any {
           name: S.String,
           sourceRepositoryName: S.optional(S.String),
           sourceBranchName: S.optional(S.String),
-          definition: __S(97, __c12, 1),
+          definition: __S(104, __c13, 0),
           createdTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           lastUpdatedTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           runMode: S.String,
@@ -1834,6 +1804,14 @@ function __c12(j: number): any {
   }
 }
 function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ path: S.String })).annotate({
+        identifier: "WorkflowDefinition",
+      });
+  }
+}
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1863,7 +1841,7 @@ function __c13(j: number): any {
           id: S.String,
           workflowId: S.String,
           status: S.String,
-          statusReasons: S.optional(__S(112, __c14, 0)),
+          statusReasons: S.optional(__S(120, __c15, 0)),
           startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           lastUpdatedTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1871,13 +1849,13 @@ function __c13(j: number): any {
       ).annotate({ identifier: "GetWorkflowRunResponse" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(344, __c43, 0));
+      return S.Array(__S(352, __c44, 0));
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1894,14 +1872,14 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "AccessTokenSummary" });
     case 2:
-      return S.Array(__S(121, __c15, 1));
+      return S.Array(__S(129, __c16, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ items: __S(122, __c15, 2), nextToken: S.optional(S.String) }),
+        S.Struct({ items: __S(130, __c16, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListAccessTokensResponse" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1922,7 +1900,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "CreateProjectRequest" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1935,14 +1913,14 @@ function __c17(j: number): any {
       ).annotate({ identifier: "CreateProjectResponse" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           spaceName: S.String.pipe(T.HttpLabel("spaceName")),
           projectName: S.optional(S.String),
-          filters: S.optional(__S(153, __c19, 1)),
+          filters: S.optional(__S(161, __c20, 1)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(
@@ -1955,9 +1933,7 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDevEnvironmentsRequest",
-      });
+      ).annotate({ identifier: "ListDevEnvironmentsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1968,46 +1944,44 @@ function __c18(j: number): any {
           creatorId: S.String,
           status: S.String,
           statusReason: S.optional(S.String),
-          repositories: __S(33, __c4, 1),
+          repositories: __S(17, __c2, 1),
           alias: S.optional(S.String),
-          ides: S.optional(__S(17, __c2, 1)),
+          ides: S.optional(__S(25, __c3, 1)),
           instanceType: S.String,
           inactivityTimeoutMinutes: S.Number,
-          persistentStorage: __S(34, __c4, 2),
+          persistentStorage: __S(18, __c2, 2),
           vpcConnectionName: S.optional(S.String),
         }),
       ).annotate({ identifier: "DevEnvironmentSummary" });
     case 2:
-      return S.Array(__S(145, __c18, 1));
+      return S.Array(__S(153, __c19, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ items: __S(146, __c18, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListDevEnvironmentsResponse",
-      });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          values: __S(160, __c20, 0),
-          comparisonOperator: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Filter" });
-    case 1:
-      return S.Array(__S(152, __c19, 0));
+        S.Struct({ items: __S(154, __c19, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListDevEnvironmentsResponse" });
   }
 }
 function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          values: __S(168, __c21, 0),
+          comparisonOperator: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Filter" });
+    case 1:
+      return S.Array(__S(160, __c20, 0));
   }
 }
 function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2030,9 +2004,7 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDevEnvironmentSessionsRequest",
-      });
+      ).annotate({ identifier: "ListDevEnvironmentSessionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2042,20 +2014,16 @@ function __c21(j: number): any {
           startedTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           id: S.String,
         }),
-      ).annotate({
-        identifier: "DevEnvironmentSessionSummary",
-      });
+      ).annotate({ identifier: "DevEnvironmentSessionSummary" });
     case 2:
-      return S.Array(__S(169, __c21, 1));
+      return S.Array(__S(177, __c22, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ items: __S(170, __c21, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListDevEnvironmentSessionsResponse",
-      });
+        S.Struct({ items: __S(178, __c22, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListDevEnvironmentSessionsResponse" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2104,25 +2072,25 @@ function __c22(j: number): any {
           eventSource: S.String,
           eventTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           operationType: S.String,
-          userIdentity: __S(177, __c22, 1),
-          projectInformation: S.optional(__S(178, __c22, 2)),
+          userIdentity: __S(185, __c23, 1),
+          projectInformation: S.optional(__S(186, __c23, 2)),
           requestId: S.optional(S.String),
-          requestPayload: S.optional(__S(179, __c22, 3)),
-          responsePayload: S.optional(__S(179, __c22, 3)),
+          requestPayload: S.optional(__S(187, __c23, 3)),
+          responsePayload: S.optional(__S(187, __c23, 3)),
           errorCode: S.optional(S.String),
           sourceIpAddress: S.optional(S.String),
           userAgent: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventLogEntry" });
     case 5:
-      return S.Array(__S(180, __c22, 4));
+      return S.Array(__S(188, __c23, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), items: __S(181, __c22, 5) }),
+        S.Struct({ nextToken: S.optional(S.String), items: __S(189, __c23, 5) }),
       ).annotate({ identifier: "ListEventLogsResponse" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2130,7 +2098,7 @@ function __c23(j: number): any {
           spaceName: S.String.pipe(T.HttpLabel("spaceName")),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          filters: S.optional(__S(153, __c19, 1)),
+          filters: S.optional(__S(161, __c20, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/spaces/{spaceName}/projects" }),
@@ -2151,14 +2119,14 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "ProjectSummary" });
     case 2:
-      return S.Array(__S(185, __c23, 1));
+      return S.Array(__S(193, __c24, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), items: S.optional(__S(186, __c23, 2)) }),
+        S.Struct({ nextToken: S.optional(S.String), items: S.optional(__S(194, __c24, 2)) }),
       ).annotate({ identifier: "ListProjectsResponse" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2180,9 +2148,7 @@ function __c24(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSourceRepositoriesRequest",
-      });
+      ).annotate({ identifier: "ListSourceRepositoriesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2192,20 +2158,16 @@ function __c24(j: number): any {
           lastUpdatedTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           createdTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "ListSourceRepositoriesItem",
-      });
+      ).annotate({ identifier: "ListSourceRepositoriesItem" });
     case 2:
-      return S.Array(__S(193, __c24, 1));
+      return S.Array(__S(201, __c25, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(194, __c24, 2)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListSourceRepositoriesResponse",
-      });
+        S.Struct({ items: S.optional(__S(202, __c25, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListSourceRepositoriesResponse" });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2228,20 +2190,16 @@ function __c25(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSourceRepositoryBranchesRequest",
-      });
+      ).annotate({ identifier: "ListSourceRepositoryBranchesRequest" });
     case 1:
-      return S.Array(__S(328, __c41, 0));
+      return S.Array(__S(336, __c42, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), items: __S(201, __c25, 1) }),
-      ).annotate({
-        identifier: "ListSourceRepositoryBranchesResponse",
-      });
+        S.Struct({ nextToken: S.optional(S.String), items: __S(209, __c26, 1) }),
+      ).annotate({ identifier: "ListSourceRepositoryBranchesResponse" });
   }
 }
-function __c26(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2253,11 +2211,11 @@ function __c26(j: number): any {
       return S.Array(__S(72, __c9, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), items: S.optional(__S(209, __c26, 1)) }),
+        S.Struct({ nextToken: S.optional(S.String), items: S.optional(__S(217, __c27, 1)) }),
       ).annotate({ identifier: "ListSpacesResponse" });
   }
 }
-function __c27(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2267,7 +2225,7 @@ function __c27(j: number): any {
           projectName: S.String.pipe(T.HttpLabel("projectName")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          sortBy: S.optional(__S(112, __c14, 0)),
+          sortBy: S.optional(__S(120, __c15, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -2289,21 +2247,21 @@ function __c27(j: number): any {
           workflowId: S.String,
           workflowName: S.String,
           status: S.String,
-          statusReasons: S.optional(__S(112, __c14, 0)),
+          statusReasons: S.optional(__S(120, __c15, 0)),
           startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           lastUpdatedTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "WorkflowRunSummary" });
     case 2:
-      return S.Array(__S(217, __c27, 1));
+      return S.Array(__S(225, __c28, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), items: S.optional(__S(218, __c27, 2)) }),
+        S.Struct({ nextToken: S.optional(S.String), items: S.optional(__S(226, __c28, 2)) }),
       ).annotate({ identifier: "ListWorkflowRunsResponse" });
   }
 }
-function __c28(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2312,7 +2270,7 @@ function __c28(j: number): any {
           projectName: S.String.pipe(T.HttpLabel("projectName")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          sortBy: S.optional(__S(112, __c14, 0)),
+          sortBy: S.optional(__S(120, __c15, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -2328,32 +2286,28 @@ function __c28(j: number): any {
         ),
       ).annotate({ identifier: "ListWorkflowsRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ path: S.String })).annotate({
-        identifier: "WorkflowDefinitionSummary",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           sourceRepositoryName: S.String,
           sourceBranchName: S.String,
-          definition: __S(225, __c28, 1),
+          definition: __S(104, __c13, 0),
           createdTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           lastUpdatedTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           runMode: S.String,
           status: S.String,
         }),
       ).annotate({ identifier: "WorkflowSummary" });
+    case 2:
+      return S.Array(__S(233, __c29, 1));
     case 3:
-      return S.Array(__S(226, __c28, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), items: S.optional(__S(227, __c28, 3)) }),
+        S.Struct({ nextToken: S.optional(S.String), items: S.optional(__S(234, __c29, 2)) }),
       ).annotate({ identifier: "ListWorkflowsResponse" });
   }
 }
-function __c29(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2361,7 +2315,7 @@ function __c29(j: number): any {
           spaceName: S.String.pipe(T.HttpLabel("spaceName")),
           projectName: S.String.pipe(T.HttpLabel("projectName")),
           id: S.String.pipe(T.HttpLabel("id")),
-          ides: S.optional(__S(17, __c2, 1)),
+          ides: S.optional(__S(25, __c3, 1)),
           instanceType: S.optional(S.String),
           inactivityTimeoutMinutes: S.optional(S.Number),
         }).pipe(
@@ -2377,22 +2331,18 @@ function __c29(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartDevEnvironmentRequest",
-      });
+      ).annotate({ identifier: "StartDevEnvironmentRequest" });
   }
 }
-function __c30(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ spaceName: S.String, projectName: S.String, id: S.String, status: S.String }),
-      ).annotate({
-        identifier: "StartDevEnvironmentResponse",
-      });
+      ).annotate({ identifier: "StartDevEnvironmentResponse" });
   }
 }
-function __c31(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2414,9 +2364,7 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateSourceRepositoryRequest",
-      });
+      ).annotate({ identifier: "CreateSourceRepositoryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2425,38 +2373,29 @@ function __c31(j: number): any {
           name: S.String,
           description: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateSourceRepositoryResponse",
-      });
+      ).annotate({ identifier: "CreateSourceRepositoryResponse" });
   }
 }
-function __c32(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          command: S.String,
-          arguments: S.optional(__S(160, __c20, 0)),
-        }),
-      ).annotate({
-        identifier: "ExecuteCommandSessionConfiguration",
-      });
+        S.Struct({ command: S.String, arguments: S.optional(__S(168, __c21, 0)) }),
+      ).annotate({ identifier: "ExecuteCommandSessionConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           sessionType: S.String,
-          executeCommandSessionConfiguration: S.optional(__S(256, __c32, 0)),
+          executeCommandSessionConfiguration: S.optional(__S(264, __c33, 0)),
         }),
-      ).annotate({
-        identifier: "DevEnvironmentSessionConfiguration",
-      });
+      ).annotate({ identifier: "DevEnvironmentSessionConfiguration" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           spaceName: S.String.pipe(T.HttpLabel("spaceName")),
           projectName: S.String.pipe(T.HttpLabel("projectName")),
           id: S.String.pipe(T.HttpLabel("id")),
-          sessionConfiguration: __S(257, __c32, 1),
+          sessionConfiguration: __S(265, __c33, 1),
         }).pipe(
           T.all(
             T.Http({
@@ -2470,30 +2409,24 @@ function __c32(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartDevEnvironmentSessionRequest",
-      });
+      ).annotate({ identifier: "StartDevEnvironmentSessionRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({ streamUrl: SensitiveString, tokenValue: SensitiveString }),
-      ).annotate({
-        identifier: "DevEnvironmentAccessDetails",
-      });
+      ).annotate({ identifier: "DevEnvironmentAccessDetails" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          accessDetails: __S(259, __c32, 3),
+          accessDetails: __S(267, __c33, 3),
           sessionId: S.optional(S.String),
           spaceName: S.String,
           projectName: S.String,
           id: S.String,
         }),
-      ).annotate({
-        identifier: "StartDevEnvironmentSessionResponse",
-      });
+      ).annotate({ identifier: "StartDevEnvironmentSessionResponse" });
   }
 }
-function __c33(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2527,7 +2460,7 @@ function __c33(j: number): any {
       ).annotate({ identifier: "StartWorkflowRunResponse" });
   }
 }
-function __c34(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2548,12 +2481,10 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StopDevEnvironmentRequest",
-      });
+      ).annotate({ identifier: "StopDevEnvironmentRequest" });
   }
 }
-function __c35(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2575,18 +2506,14 @@ function __c35(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StopDevEnvironmentSessionRequest",
-      });
+      ).annotate({ identifier: "StopDevEnvironmentSessionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ spaceName: S.String, projectName: S.String, id: S.String, sessionId: S.String }),
-      ).annotate({
-        identifier: "StopDevEnvironmentSessionResponse",
-      });
+      ).annotate({ identifier: "StopDevEnvironmentSessionResponse" });
   }
 }
-function __c36(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2595,7 +2522,7 @@ function __c36(j: number): any {
           projectName: S.String.pipe(T.HttpLabel("projectName")),
           id: S.String.pipe(T.HttpLabel("id")),
           alias: S.optional(S.String),
-          ides: S.optional(__S(17, __c2, 1)),
+          ides: S.optional(__S(25, __c3, 1)),
           instanceType: S.optional(S.String),
           inactivityTimeoutMinutes: S.optional(S.Number),
           clientToken: S.optional(S.String),
@@ -2612,9 +2539,7 @@ function __c36(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateDevEnvironmentRequest",
-      });
+      ).annotate({ identifier: "UpdateDevEnvironmentRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2622,17 +2547,15 @@ function __c36(j: number): any {
           spaceName: S.String,
           projectName: S.String,
           alias: S.optional(S.String),
-          ides: S.optional(__S(17, __c2, 1)),
+          ides: S.optional(__S(25, __c3, 1)),
           instanceType: S.optional(S.String),
           inactivityTimeoutMinutes: S.optional(S.Number),
           clientToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "UpdateDevEnvironmentResponse",
-      });
+      ).annotate({ identifier: "UpdateDevEnvironmentResponse" });
   }
 }
-function __c37(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2662,7 +2585,7 @@ function __c37(j: number): any {
       ).annotate({ identifier: "UpdateProjectResponse" });
   }
 }
-function __c38(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2690,7 +2613,7 @@ function __c38(j: number): any {
       ).annotate({ identifier: "UpdateSpaceResponse" });
   }
 }
-function __c39(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2704,7 +2627,7 @@ function __c39(j: number): any {
       });
   }
 }
-function __c40(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2727,12 +2650,10 @@ function __c40(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateSourceRepositoryBranchRequest",
-      });
+      ).annotate({ identifier: "CreateSourceRepositoryBranchRequest" });
   }
 }
-function __c41(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2742,12 +2663,10 @@ function __c41(j: number): any {
           lastUpdatedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           headCommitId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateSourceRepositoryBranchResponse",
-      });
+      ).annotate({ identifier: "CreateSourceRepositoryBranchResponse" });
   }
 }
-function __c42(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2764,15 +2683,13 @@ function __c42(j: number): any {
       ).annotate({ identifier: "DeleteAccessTokenRequest" });
   }
 }
-function __c43(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAccessTokenResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteAccessTokenResponse" });
   }
 }
-function __c44(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2793,18 +2710,14 @@ function __c44(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteDevEnvironmentRequest",
-      });
+      ).annotate({ identifier: "DeleteDevEnvironmentRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ spaceName: S.String, projectName: S.String, id: S.String }),
-      ).annotate({
-        identifier: "DeleteDevEnvironmentResponse",
-      });
+      ).annotate({ identifier: "DeleteDevEnvironmentResponse" });
   }
 }
-function __c45(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2828,7 +2741,7 @@ function __c45(j: number): any {
       ).annotate({ identifier: "DeleteProjectResponse" });
   }
 }
-function __c46(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2849,18 +2762,14 @@ function __c46(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteSourceRepositoryRequest",
-      });
+      ).annotate({ identifier: "DeleteSourceRepositoryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ spaceName: S.String, projectName: S.String, name: S.String }),
-      ).annotate({
-        identifier: "DeleteSourceRepositoryResponse",
-      });
+      ).annotate({ identifier: "DeleteSourceRepositoryResponse" });
   }
 }
-function __c47(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

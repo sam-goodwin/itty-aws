@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -2386,7 +2386,7 @@ export const deleteDashboard: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(576, __c72, 0) as any as S.Schema<DeleteDashboardRequest>,
-  output: __S(577, __c72, 1) as any as S.Schema<DeleteDashboardResponse>,
+  output: __S(464, __c58, 0) as any as S.Schema<DeleteDashboardResponse>,
   errors: [ConflictException, ResourceNotFoundException, UnsupportedOperationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2432,7 +2432,7 @@ export const deleteEventDataStore: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(584, __c73, 0) as any as S.Schema<DeleteEventDataStoreRequest>,
-  output: __S(592, __c74, 0) as any as S.Schema<DeleteEventDataStoreResponse>,
+  output: __S(464, __c58, 0) as any as S.Schema<DeleteEventDataStoreResponse>,
   errors: [
     ChannelExistsForEDSException,
     ConflictException,
@@ -2472,8 +2472,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(600, __c75, 0) as any as S.Schema<DeleteResourcePolicyRequest>,
-  output: __S(592, __c74, 0) as any as S.Schema<DeleteResourcePolicyResponse>,
+  input: __S(592, __c74, 0) as any as S.Schema<DeleteResourcePolicyRequest>,
+  output: __S(464, __c58, 0) as any as S.Schema<DeleteResourcePolicyResponse>,
   errors: [
     ConflictException,
     OperationNotPermittedException,
@@ -2522,7 +2522,7 @@ export const deleteTrail: API.OperationMethod<
   DeleteTrailError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c76, 0) as any as S.Schema<DeleteTrailRequest>,
+  input: __S(600, __c75, 0) as any as S.Schema<DeleteTrailRequest>,
   output: __S(464, __c58, 0) as any as S.Schema<DeleteTrailResponse>,
   errors: [
     CloudTrailARNInvalidException,
@@ -2565,8 +2565,8 @@ export const deregisterOrganizationDelegatedAdmin: API.OperationMethod<
   DeregisterOrganizationDelegatedAdminError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(616, __c77, 0) as any as S.Schema<DeregisterOrganizationDelegatedAdminRequest>,
-  output: __S(592, __c74, 0) as any as S.Schema<DeregisterOrganizationDelegatedAdminResponse>,
+  input: __S(608, __c76, 0) as any as S.Schema<DeregisterOrganizationDelegatedAdminRequest>,
+  output: __S(464, __c58, 0) as any as S.Schema<DeregisterOrganizationDelegatedAdminResponse>,
   errors: [
     AccountNotFoundException,
     AccountNotRegisteredException,
@@ -2613,8 +2613,8 @@ export const describeQuery: API.OperationMethod<
   DescribeQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c78, 0) as any as S.Schema<DescribeQueryRequest>,
-  output: __S(626, __c78, 2) as any as S.Schema<DescribeQueryResponse>,
+  input: __S(616, __c77, 0) as any as S.Schema<DescribeQueryRequest>,
+  output: __S(618, __c77, 2) as any as S.Schema<DescribeQueryResponse>,
   errors: [
     EventDataStoreARNInvalidException,
     EventDataStoreNotFoundException,
@@ -4066,7 +4066,7 @@ export const registerOrganizationDelegatedAdmin: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(320, __c40, 0) as any as S.Schema<RegisterOrganizationDelegatedAdminRequest>,
-  output: __S(592, __c74, 0) as any as S.Schema<RegisterOrganizationDelegatedAdminResponse>,
+  output: __S(464, __c58, 0) as any as S.Schema<RegisterOrganizationDelegatedAdminResponse>,
   errors: [
     AccountNotFoundException,
     AccountRegisteredException,
@@ -4279,7 +4279,7 @@ export const startEventDataStoreIngestion: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(360, __c45, 0) as any as S.Schema<StartEventDataStoreIngestionRequest>,
-  output: __S(592, __c74, 0) as any as S.Schema<StartEventDataStoreIngestionResponse>,
+  output: __S(464, __c58, 0) as any as S.Schema<StartEventDataStoreIngestionResponse>,
   errors: [
     ConflictException,
     EventDataStoreARNInvalidException,
@@ -4488,7 +4488,7 @@ export const stopEventDataStoreIngestion: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(392, __c49, 0) as any as S.Schema<StopEventDataStoreIngestionRequest>,
-  output: __S(592, __c74, 0) as any as S.Schema<StopEventDataStoreIngestionResponse>,
+  output: __S(464, __c58, 0) as any as S.Schema<StopEventDataStoreIngestionResponse>,
   errors: [
     ConflictException,
     EventDataStoreARNInvalidException,
@@ -4898,9 +4898,7 @@ function __c2(j: number): any {
           EventDataStoreArn: S.optional(S.String),
           FederationStatus: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisableFederationResponse",
-      });
+      ).annotate({ identifier: "DisableFederationResponse" });
   }
 }
 function __c3(j: number): any {
@@ -5009,9 +5007,7 @@ function __c7(j: number): any {
         S.Struct({ TrailName: S.optional(S.String), EventDataStore: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetEventConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetEventConfigurationRequest" });
   }
 }
 function __c8(j: number): any {
@@ -5043,9 +5039,7 @@ function __c9(j: number): any {
           ContextKeySelectors: S.optional(__S(73, __c9, 1)),
           AggregationConfigurations: S.optional(__S(75, __c9, 3)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetEventConfigurationResponse",
-      });
+      ).annotate({ identifier: "GetEventConfigurationResponse" });
   }
 }
 function __c10(j: number): any {
@@ -5081,9 +5075,7 @@ function __c10(j: number): any {
           FederationRoleArn: S.optional(S.String),
           PartitionKeys: S.optional(__S(82, __c10, 2)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetEventDataStoreResponse",
-      });
+      ).annotate({ identifier: "GetEventDataStoreResponse" });
   }
 }
 function __c11(j: number): any {
@@ -5122,9 +5114,7 @@ function __c12(j: number): any {
           EventSelectors: S.optional(__S(99, __c12, 3)),
           AdvancedEventSelectors: S.optional(__S(547, __c68, 3)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetEventSelectorsResponse",
-      });
+      ).annotate({ identifier: "GetEventSelectorsResponse" });
   }
 }
 function __c13(j: number): any {
@@ -5188,9 +5178,7 @@ function __c16(j: number): any {
         S.Struct({ TrailName: S.optional(S.String), EventDataStore: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetInsightSelectorsRequest",
-      });
+      ).annotate({ identifier: "GetInsightSelectorsRequest" });
   }
 }
 function __c17(j: number): any {
@@ -5212,9 +5200,7 @@ function __c17(j: number): any {
           EventDataStoreArn: S.optional(S.String),
           InsightsDestination: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetInsightSelectorsResponse",
-      });
+      ).annotate({ identifier: "GetInsightSelectorsResponse" });
   }
 }
 function __c18(j: number): any {
@@ -5272,9 +5258,7 @@ function __c20(j: number): any {
           ResourcePolicy: S.optional(S.String),
           DelegatedAdminResourcePolicy: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetResourcePolicyResponse",
-      });
+      ).annotate({ identifier: "GetResourcePolicyResponse" });
   }
 }
 function __c21(j: number): any {
@@ -5381,9 +5365,7 @@ function __c25(j: number): any {
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListEventDataStoresRequest",
-      });
+      ).annotate({ identifier: "ListEventDataStoresRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5407,9 +5389,7 @@ function __c25(j: number): any {
           EventDataStores: S.optional(__S(202, __c25, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListEventDataStoresResponse",
-      });
+      ).annotate({ identifier: "ListEventDataStoresResponse" });
   }
 }
 function __c26(j: number): any {
@@ -5421,9 +5401,7 @@ function __c26(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListImportFailuresRequest",
-      });
+      ).annotate({ identifier: "ListImportFailuresRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5442,9 +5420,7 @@ function __c26(j: number): any {
           Failures: S.optional(__S(210, __c26, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListImportFailuresResponse",
-      });
+      ).annotate({ identifier: "ListImportFailuresResponse" });
   }
 }
 function __c27(j: number): any {
@@ -5545,9 +5521,7 @@ function __c30(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListInsightsMetricDataRequest",
-      });
+      ).annotate({ identifier: "ListInsightsMetricDataRequest" });
     case 1:
       return S.Array(/*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")));
     case 2:
@@ -5564,9 +5538,7 @@ function __c30(j: number): any {
           Values: S.optional(__S(242, __c30, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListInsightsMetricDataResponse",
-      });
+      ).annotate({ identifier: "ListInsightsMetricDataResponse" });
   }
 }
 function __c31(j: number): any {
@@ -5711,9 +5683,7 @@ function __c36(j: number): any {
           ContextKeySelectors: S.optional(__S(73, __c9, 1)),
           AggregationConfigurations: S.optional(__S(75, __c9, 3)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PutEventConfigurationRequest",
-      });
+      ).annotate({ identifier: "PutEventConfigurationRequest" });
   }
 }
 function __c37(j: number): any {
@@ -5738,9 +5708,7 @@ function __c38(j: number): any {
           EventDataStore: S.optional(S.String),
           InsightsDestination: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PutInsightSelectorsRequest",
-      });
+      ).annotate({ identifier: "PutInsightSelectorsRequest" });
   }
 }
 function __c39(j: number): any {
@@ -5760,9 +5728,7 @@ function __c40(j: number): any {
         S.Struct({ MemberAccountId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "RegisterOrganizationDelegatedAdminRequest",
-      });
+      ).annotate({ identifier: "RegisterOrganizationDelegatedAdminRequest" });
   }
 }
 function __c41(j: number): any {
@@ -5782,9 +5748,7 @@ function __c42(j: number): any {
         S.Struct({ EventDataStore: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "RestoreEventDataStoreRequest",
-      });
+      ).annotate({ identifier: "RestoreEventDataStoreRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5801,9 +5765,7 @@ function __c42(j: number): any {
           KmsKeyId: S.optional(S.String),
           BillingMode: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "RestoreEventDataStoreResponse",
-      });
+      ).annotate({ identifier: "RestoreEventDataStoreResponse" });
   }
 }
 function __c43(j: number): any {
@@ -5815,9 +5777,7 @@ function __c43(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SearchSampleQueriesRequest",
-      });
+      ).annotate({ identifier: "SearchSampleQueriesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5826,9 +5786,7 @@ function __c43(j: number): any {
           SQL: S.optional(S.String),
           Relevance: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "SearchSampleQueriesSearchResult",
-      });
+      ).annotate({ identifier: "SearchSampleQueriesSearchResult" });
     case 2:
       return S.Array(__S(345, __c43, 1));
     case 3:
@@ -5837,9 +5795,7 @@ function __c43(j: number): any {
           SearchResults: S.optional(__S(346, __c43, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "SearchSampleQueriesResponse",
-      });
+      ).annotate({ identifier: "SearchSampleQueriesResponse" });
   }
 }
 function __c44(j: number): any {
@@ -5850,9 +5806,7 @@ function __c44(j: number): any {
           DashboardId: S.String,
           QueryParameterValues: S.optional(__S(504, __c63, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartDashboardRefreshRequest",
-      });
+      ).annotate({ identifier: "StartDashboardRefreshRequest" });
     case 1:
       return S.suspend(() => S.Struct({ RefreshId: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "StartDashboardRefreshResponse",
@@ -5866,9 +5820,7 @@ function __c45(j: number): any {
         S.Struct({ EventDataStore: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StartEventDataStoreIngestionRequest",
-      });
+      ).annotate({ identifier: "StartEventDataStoreIngestionRequest" });
   }
 }
 function __c46(j: number): any {
@@ -5936,9 +5888,7 @@ function __c49(j: number): any {
         S.Struct({ EventDataStore: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StopEventDataStoreIngestionRequest",
-      });
+      ).annotate({ identifier: "StopEventDataStoreIngestionRequest" });
   }
 }
 function __c50(j: number): any {
@@ -6037,9 +5987,7 @@ function __c54(j: number): any {
           KmsKeyId: S.optional(S.String),
           BillingMode: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateEventDataStoreRequest",
-      });
+      ).annotate({ identifier: "UpdateEventDataStoreRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6058,9 +6006,7 @@ function __c54(j: number): any {
           FederationStatus: S.optional(S.String),
           FederationRoleArn: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateEventDataStoreResponse",
-      });
+      ).annotate({ identifier: "UpdateEventDataStoreResponse" });
   }
 }
 function __c55(j: number): any {
@@ -6107,9 +6053,7 @@ function __c57(j: number): any {
 function __c58(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "AddTagsResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "AddTagsResponse" });
   }
 }
 function __c59(j: number): any {
@@ -6260,9 +6204,7 @@ function __c67(j: number): any {
           StartIngestion: S.optional(S.Boolean),
           BillingMode: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateEventDataStoreRequest",
-      });
+      ).annotate({ identifier: "CreateEventDataStoreRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6280,9 +6222,7 @@ function __c67(j: number): any {
           KmsKeyId: S.optional(S.String),
           BillingMode: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateEventDataStoreResponse",
-      });
+      ).annotate({ identifier: "CreateEventDataStoreResponse" });
   }
 }
 function __c68(j: number): any {
@@ -6372,10 +6312,6 @@ function __c72(j: number): any {
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteDashboardRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeleteDashboardResponse",
-      });
   }
 }
 function __c73(j: number): any {
@@ -6385,32 +6321,20 @@ function __c73(j: number): any {
         S.Struct({ EventDataStore: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteEventDataStoreRequest",
-      });
+      ).annotate({ identifier: "DeleteEventDataStoreRequest" });
   }
 }
 function __c74(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeleteEventDataStoreResponse",
-      });
-  }
-}
-function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteResourcePolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteResourcePolicyRequest" });
   }
 }
-function __c76(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6420,19 +6344,17 @@ function __c76(j: number): any {
       ).annotate({ identifier: "DeleteTrailRequest" });
   }
 }
-function __c77(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ DelegatedAdminAccountId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeregisterOrganizationDelegatedAdminRequest",
-      });
+      ).annotate({ identifier: "DeregisterOrganizationDelegatedAdminRequest" });
   }
 }
-function __c78(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6453,16 +6375,14 @@ function __c78(j: number): any {
           ExecutionTimeInMillis: S.optional(S.Number),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "QueryStatisticsForDescribeQuery",
-      });
+      ).annotate({ identifier: "QueryStatisticsForDescribeQuery" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           QueryId: S.optional(S.String),
           QueryString: S.optional(S.String),
           QueryStatus: S.optional(S.String),
-          QueryStatistics: S.optional(__S(625, __c78, 1)),
+          QueryStatistics: S.optional(__S(617, __c77, 1)),
           ErrorMessage: S.optional(S.String),
           DeliveryS3Uri: S.optional(S.String),
           DeliveryStatus: S.optional(S.String),

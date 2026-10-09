@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials as Creds } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -6318,9 +6318,7 @@ function __c0(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "PutAccessPointPolicyForObjectLambdaRequest",
-      });
+      ).annotate({ identifier: "PutAccessPointPolicyForObjectLambdaRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutAccessPointPolicyForObjectLambdaResponse",
@@ -6354,9 +6352,7 @@ function __c1(j: number): any {
             }),
           ),
         ),
-      ).annotate({
-        identifier: "PutAccessPointScopeRequest",
-      });
+      ).annotate({ identifier: "PutAccessPointScopeRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutAccessPointScopeResponse",
@@ -6393,9 +6389,7 @@ function __c2(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "PutBucketLifecycleConfigurationRequest",
-      });
+      ).annotate({ identifier: "PutBucketLifecycleConfigurationRequest" });
     case 2:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutBucketLifecycleConfigurationResponse",
@@ -6462,9 +6456,7 @@ function __c4(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "PutBucketReplicationRequest",
-      });
+      ).annotate({ identifier: "PutBucketReplicationRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutBucketReplicationResponse",
@@ -6486,9 +6478,9 @@ function __c5(j: number): any {
             T.HostLabel(),
           ),
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Tagging: __S(160, __c5, 0).pipe(T.HttpPayload(), T.XmlName("Tagging")).annotate({
-            identifier: "Tagging",
-          }),
+          Tagging: __S(160, __c5, 0)
+            .pipe(T.HttpPayload(), T.XmlName("Tagging"))
+            .annotate({ identifier: "Tagging" }),
         }).pipe(
           T.all(
             ns,
@@ -6542,9 +6534,7 @@ function __c6(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "PutBucketVersioningRequest",
-      });
+      ).annotate({ identifier: "PutBucketVersioningRequest" });
     case 2:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutBucketVersioningResponse",
@@ -6577,9 +6567,7 @@ function __c7(j: number): any {
         ),
       ).annotate({ identifier: "PutJobTaggingRequest" });
     case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutJobTaggingResult",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "PutJobTaggingResult" });
   }
 }
 function __c8(j: number): any {
@@ -6606,14 +6594,10 @@ function __c8(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "PutMultiRegionAccessPointPolicyRequest",
-      });
+      ).annotate({ identifier: "PutMultiRegionAccessPointPolicyRequest" });
     case 1:
       return S.suspend(() => S.Struct({ RequestTokenARN: S.optional(S.String) }).pipe(ns)).annotate(
-        {
-          identifier: "PutMultiRegionAccessPointPolicyResult",
-        },
+        { identifier: "PutMultiRegionAccessPointPolicyResult" },
       );
   }
 }
@@ -6642,9 +6626,7 @@ function __c9(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "PutPublicAccessBlockRequest",
-      });
+      ).annotate({ identifier: "PutPublicAccessBlockRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutPublicAccessBlockResponse",
@@ -6676,9 +6658,7 @@ function __c10(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "PutStorageLensConfigurationRequest",
-      });
+      ).annotate({ identifier: "PutStorageLensConfigurationRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutStorageLensConfigurationResponse",
@@ -6709,9 +6689,7 @@ function __c11(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "PutStorageLensConfigurationTaggingRequest",
-      });
+      ).annotate({ identifier: "PutStorageLensConfigurationTaggingRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutStorageLensConfigurationTaggingResult",
@@ -6742,9 +6720,7 @@ function __c12(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "SubmitMultiRegionAccessPointRoutesRequest",
-      });
+      ).annotate({ identifier: "SubmitMultiRegionAccessPointRoutesRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "SubmitMultiRegionAccessPointRoutesResult",
@@ -6777,9 +6753,7 @@ function __c13(j: number): any {
         ),
       ).annotate({ identifier: "TagResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "TagResourceResult",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "TagResourceResult" });
   }
 }
 function __c14(j: number): any {
@@ -6810,9 +6784,7 @@ function __c14(j: number): any {
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
     case 2:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "UntagResourceResult",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "UntagResourceResult" });
   }
 }
 function __c15(j: number): any {
@@ -6842,9 +6814,7 @@ function __c15(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "UpdateAccessGrantsLocationRequest",
-      });
+      ).annotate({ identifier: "UpdateAccessGrantsLocationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6854,9 +6824,7 @@ function __c15(j: number): any {
           LocationScope: S.optional(S.String),
           IAMRoleArn: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateAccessGrantsLocationResult",
-      });
+      ).annotate({ identifier: "UpdateAccessGrantsLocationResult" });
   }
 }
 function __c16(j: number): any {
@@ -6950,9 +6918,7 @@ function __c18(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "UpdateStorageLensGroupRequest",
-      });
+      ).annotate({ identifier: "UpdateStorageLensGroupRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "UpdateStorageLensGroupResponse",
@@ -6982,9 +6948,7 @@ function __c19(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "AssociateAccessGrantsIdentityCenterRequest",
-      });
+      ).annotate({ identifier: "AssociateAccessGrantsIdentityCenterRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "AssociateAccessGrantsIdentityCenterResponse",
@@ -7099,9 +7063,7 @@ function __c25(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "CreateAccessGrantsInstanceRequest",
-      });
+      ).annotate({ identifier: "CreateAccessGrantsInstanceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7112,9 +7074,7 @@ function __c25(j: number): any {
           IdentityCenterInstanceArn: S.optional(S.String),
           IdentityCenterApplicationArn: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateAccessGrantsInstanceResult",
-      });
+      ).annotate({ identifier: "CreateAccessGrantsInstanceResult" });
   }
 }
 function __c26(j: number): any {
@@ -7142,9 +7102,7 @@ function __c26(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "CreateAccessGrantsLocationRequest",
-      });
+      ).annotate({ identifier: "CreateAccessGrantsLocationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7154,9 +7112,7 @@ function __c26(j: number): any {
           LocationScope: S.optional(S.String),
           IAMRoleArn: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateAccessGrantsLocationResult",
-      });
+      ).annotate({ identifier: "CreateAccessGrantsLocationResult" });
   }
 }
 function __c27(j: number): any {
@@ -7205,9 +7161,7 @@ function __c28(j: number): any {
           BlockPublicPolicy: S.optional(S.Boolean).pipe(T.XmlName("BlockPublicPolicy")),
           RestrictPublicBuckets: S.optional(S.Boolean).pipe(T.XmlName("RestrictPublicBuckets")),
         }),
-      ).annotate({
-        identifier: "PublicAccessBlockConfiguration",
-      });
+      ).annotate({ identifier: "PublicAccessBlockConfiguration" });
   }
 }
 function __c29(j: number): any {
@@ -7257,18 +7211,14 @@ function __c31(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "CreateAccessPointForObjectLambdaRequest",
-      });
+      ).annotate({ identifier: "CreateAccessPointForObjectLambdaRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ObjectLambdaAccessPointArn: S.optional(S.String),
           Alias: S.optional(__S(1056, __c33, 0)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateAccessPointForObjectLambdaResult",
-      });
+      ).annotate({ identifier: "CreateAccessPointForObjectLambdaResult" });
   }
 }
 function __c32(j: number): any {
@@ -7285,20 +7235,13 @@ function __c32(j: number): any {
       return S.Union([/*@__PURE__*/ S.Struct({ AwsLambda: __S(1026, __c32, 2) })]);
     case 4:
       return S.suspend(() =>
-        S.Struct({
-          Actions: __S(1025, __c32, 1),
-          ContentTransformation: __S(1027, __c32, 3),
-        }),
-      ).annotate({
-        identifier: "ObjectLambdaTransformationConfiguration",
-      });
+        S.Struct({ Actions: __S(1025, __c32, 1), ContentTransformation: __S(1027, __c32, 3) }),
+      ).annotate({ identifier: "ObjectLambdaTransformationConfiguration" });
     case 5:
       return S.Array(
         /*@__PURE__*/ __S(1028, __c32, 4)
           .pipe(/*@__PURE__*/ T.XmlName("TransformationConfiguration"))
-          .annotate({
-            identifier: "ObjectLambdaTransformationConfiguration",
-          }),
+          .annotate({ identifier: "ObjectLambdaTransformationConfiguration" }),
       );
     case 6:
       return S.suspend(() =>
@@ -7308,9 +7251,7 @@ function __c32(j: number): any {
           AllowedFeatures: S.optional(__S(1024, __c32, 0)),
           TransformationConfigurations: __S(1029, __c32, 5),
         }),
-      ).annotate({
-        identifier: "ObjectLambdaConfiguration",
-      });
+      ).annotate({ identifier: "ObjectLambdaConfiguration" });
   }
 }
 function __c33(j: number): any {
@@ -7318,9 +7259,7 @@ function __c33(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ Value: S.optional(S.String), Status: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ObjectLambdaAccessPointAlias",
-      });
+      ).annotate({ identifier: "ObjectLambdaAccessPointAlias" });
   }
 }
 function __c34(j: number): any {
@@ -7464,9 +7403,7 @@ function __c37(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({ Days: S.optional(S.Number), Years: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "S3ObjectLockEventHoldDuration",
-      });
+      ).annotate({ identifier: "S3ObjectLockEventHoldDuration" });
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -7522,13 +7459,8 @@ function __c37(j: number): any {
       });
     case 15:
       return S.suspend(() =>
-        S.Struct({
-          ExpirationInDays: S.optional(S.Number),
-          GlacierJobTier: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "S3InitiateRestoreObjectOperation",
-      });
+        S.Struct({ ExpirationInDays: S.optional(S.Number), GlacierJobTier: S.optional(S.String) }),
+      ).annotate({ identifier: "S3InitiateRestoreObjectOperation" });
     case 16:
       return S.suspend(() => S.Struct({ Status: S.String })).annotate({
         identifier: "S3ObjectLockLegalHold",
@@ -7540,9 +7472,7 @@ function __c37(j: number): any {
     case 18:
       return S.suspend(() =>
         S.Struct({ Days: S.optional(S.Number), Years: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "S3ObjectLockRetentionEventHoldDuration",
-      });
+      ).annotate({ identifier: "S3ObjectLockRetentionEventHoldDuration" });
     case 19:
       return S.suspend(() =>
         S.Struct({
@@ -7558,30 +7488,19 @@ function __c37(j: number): any {
           BypassGovernanceRetention: S.optional(S.Boolean),
           Retention: __S(1203, __c37, 19),
         }),
-      ).annotate({
-        identifier: "S3SetObjectRetentionOperation",
-      });
+      ).annotate({ identifier: "S3SetObjectRetentionOperation" });
     case 21:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "S3ReplicateObjectOperation",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "S3ReplicateObjectOperation" });
     case 22:
       return S.suspend(() =>
-        S.Struct({
-          ChecksumAlgorithm: S.optional(S.String),
-          ChecksumType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "S3ComputeObjectChecksumOperation",
-      });
+        S.Struct({ ChecksumAlgorithm: S.optional(S.String), ChecksumType: S.optional(S.String) }),
+      ).annotate({ identifier: "S3ComputeObjectChecksumOperation" });
     case 23:
       return S.suspend(() =>
         S.Struct({ KMSKeyArn: S.String, BucketKeyEnabled: S.optional(S.Boolean) }).pipe(
           T.XmlName("SSE-KMS"),
         ),
-      ).annotate({
-        identifier: "S3UpdateObjectEncryptionSSEKMS",
-      });
+      ).annotate({ identifier: "S3UpdateObjectEncryptionSSEKMS" });
     case 24:
       return S.suspend(() =>
         S.Struct({
@@ -7593,9 +7512,7 @@ function __c37(j: number): any {
     case 25:
       return S.suspend(() =>
         S.Struct({ ObjectEncryption: S.optional(__S(1208, __c37, 24)) }),
-      ).annotate({
-        identifier: "S3UpdateObjectEncryptionOperation",
-      });
+      ).annotate({ identifier: "S3UpdateObjectEncryptionOperation" });
     case 26:
       return S.suspend(() =>
         S.Struct({
@@ -7659,9 +7576,7 @@ function __c38(j: number): any {
             .pipe(T.XmlName("SSE-KMS"))
             .annotate({ identifier: "SSEKMSEncryption" }),
         }),
-      ).annotate({
-        identifier: "GeneratedManifestEncryption",
-      });
+      ).annotate({ identifier: "GeneratedManifestEncryption" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -7687,9 +7602,7 @@ function __c38(j: number): any {
     case 7:
       return S.Array(S.String);
     case 8:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "SSES3Filter",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "SSES3Filter" });
     case 9:
       return S.suspend(() =>
         S.Struct({ KmsKeyArn: S.optional(S.String), BucketKeyEnabled: S.optional(S.Boolean) }),
@@ -7699,47 +7612,35 @@ function __c38(j: number): any {
         identifier: "DSSEKMSFilter",
       });
     case 11:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "SSECFilter",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "SSECFilter" });
     case 12:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "NotSSEFilter",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "NotSSEFilter" });
     case 13:
       return S.Union([
         /*@__PURE__*/ S.Struct({
           SSES3: /*@__PURE__*/ __S(1224, __c38, 8)
             .pipe(/*@__PURE__*/ T.XmlName("SSE-S3"))
-            .annotate({
-              identifier: "SSES3Filter",
-            }),
+            .annotate({ identifier: "SSES3Filter" }),
         }),
         /*@__PURE__*/ S.Struct({
           SSEKMS: /*@__PURE__*/ __S(1225, __c38, 9)
             .pipe(/*@__PURE__*/ T.XmlName("SSE-KMS"))
-            .annotate({
-              identifier: "SSEKMSFilter",
-            }),
+            .annotate({ identifier: "SSEKMSFilter" }),
         }),
         /*@__PURE__*/ S.Struct({
           DSSEKMS: /*@__PURE__*/ __S(1226, __c38, 10)
             .pipe(/*@__PURE__*/ T.XmlName("DSSE-KMS"))
-            .annotate({
-              identifier: "DSSEKMSFilter",
-            }),
+            .annotate({ identifier: "DSSEKMSFilter" }),
         }),
         /*@__PURE__*/ S.Struct({
-          SSEC: /*@__PURE__*/ __S(1227, __c38, 11).pipe(/*@__PURE__*/ T.XmlName("SSE-C")).annotate({
-            identifier: "SSECFilter",
-          }),
+          SSEC: /*@__PURE__*/ __S(1227, __c38, 11)
+            .pipe(/*@__PURE__*/ T.XmlName("SSE-C"))
+            .annotate({ identifier: "SSECFilter" }),
         }),
         /*@__PURE__*/ S.Struct({
           NOTSSE: /*@__PURE__*/ __S(1228, __c38, 12)
             .pipe(/*@__PURE__*/ T.XmlName("NOT-SSE"))
-            .annotate({
-              identifier: "NotSSEFilter",
-            }),
+            .annotate({ identifier: "NotSSEFilter" }),
         }),
       ]);
     case 14:
@@ -7759,9 +7660,7 @@ function __c38(j: number): any {
           MatchAnyStorageClass: S.optional(__S(1223, __c38, 7)),
           MatchAnyObjectEncryption: S.optional(__S(1230, __c38, 14)),
         }),
-      ).annotate({
-        identifier: "JobManifestGeneratorFilter",
-      });
+      ).annotate({ identifier: "JobManifestGeneratorFilter" });
     case 16:
       return S.suspend(() =>
         S.Struct({
@@ -7806,14 +7705,10 @@ function __c40(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "CreateMultiRegionAccessPointRequest",
-      });
+      ).annotate({ identifier: "CreateMultiRegionAccessPointRequest" });
     case 1:
       return S.suspend(() => S.Struct({ RequestTokenARN: S.optional(S.String) }).pipe(ns)).annotate(
-        {
-          identifier: "CreateMultiRegionAccessPointResult",
-        },
+        { identifier: "CreateMultiRegionAccessPointResult" },
       );
   }
 }
@@ -7832,9 +7727,7 @@ function __c41(j: number): any {
           PublicAccessBlock: S.optional(__S(896, __c28, 0)),
           Regions: __S(1312, __c41, 0),
         }),
-      ).annotate({
-        identifier: "CreateMultiRegionAccessPointInput",
-      });
+      ).annotate({ identifier: "CreateMultiRegionAccessPointInput" });
   }
 }
 function __c42(j: number): any {
@@ -7861,9 +7754,7 @@ function __c42(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "CreateStorageLensGroupRequest",
-      });
+      ).annotate({ identifier: "CreateStorageLensGroupRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateStorageLensGroupResponse",
@@ -7899,9 +7790,7 @@ function __c43(j: number): any {
           MatchObjectAge: S.optional(__S(1379, __c43, 3)),
           MatchObjectSize: S.optional(__S(1380, __c43, 4)),
         }),
-      ).annotate({
-        identifier: "StorageLensGroupAndOperator",
-      });
+      ).annotate({ identifier: "StorageLensGroupAndOperator" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -7911,9 +7800,7 @@ function __c43(j: number): any {
           MatchObjectAge: S.optional(__S(1379, __c43, 3)),
           MatchObjectSize: S.optional(__S(1380, __c43, 4)),
         }),
-      ).annotate({
-        identifier: "StorageLensGroupOrOperator",
-      });
+      ).annotate({ identifier: "StorageLensGroupOrOperator" });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -7991,9 +7878,7 @@ function __c45(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteAccessGrantsInstanceRequest",
-      });
+      ).annotate({ identifier: "DeleteAccessGrantsInstanceRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteAccessGrantsInstanceResponse",
@@ -8022,9 +7907,7 @@ function __c46(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteAccessGrantsInstanceResourcePolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteAccessGrantsInstanceResourcePolicyRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteAccessGrantsInstanceResourcePolicyResponse",
@@ -8057,9 +7940,7 @@ function __c47(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteAccessGrantsLocationRequest",
-      });
+      ).annotate({ identifier: "DeleteAccessGrantsLocationRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteAccessGrantsLocationResponse",
@@ -8119,9 +8000,7 @@ function __c49(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteAccessPointForObjectLambdaRequest",
-      });
+      ).annotate({ identifier: "DeleteAccessPointForObjectLambdaRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteAccessPointForObjectLambdaResponse",
@@ -8151,9 +8030,7 @@ function __c50(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteAccessPointPolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteAccessPointPolicyRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteAccessPointPolicyResponse",
@@ -8186,9 +8063,7 @@ function __c51(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteAccessPointPolicyForObjectLambdaRequest",
-      });
+      ).annotate({ identifier: "DeleteAccessPointPolicyForObjectLambdaRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteAccessPointPolicyForObjectLambdaResponse",
@@ -8221,9 +8096,7 @@ function __c52(j: number): any {
             }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteAccessPointScopeRequest",
-      });
+      ).annotate({ identifier: "DeleteAccessPointScopeRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteAccessPointScopeResponse",
@@ -8283,9 +8156,7 @@ function __c54(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteBucketLifecycleConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteBucketLifecycleConfigurationRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketLifecycleConfigurationResponse",
@@ -8315,9 +8186,7 @@ function __c55(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteBucketPolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteBucketPolicyRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketPolicyResponse",
@@ -8347,9 +8216,7 @@ function __c56(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteBucketReplicationRequest",
-      });
+      ).annotate({ identifier: "DeleteBucketReplicationRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketReplicationResponse",
@@ -8379,9 +8246,7 @@ function __c57(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteBucketTaggingRequest",
-      });
+      ).annotate({ identifier: "DeleteBucketTaggingRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketTaggingResponse",
@@ -8442,14 +8307,10 @@ function __c59(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteMultiRegionAccessPointRequest",
-      });
+      ).annotate({ identifier: "DeleteMultiRegionAccessPointRequest" });
     case 1:
       return S.suspend(() => S.Struct({ RequestTokenARN: S.optional(S.String) }).pipe(ns)).annotate(
-        {
-          identifier: "DeleteMultiRegionAccessPointResult",
-        },
+        { identifier: "DeleteMultiRegionAccessPointResult" },
       );
   }
 }
@@ -8483,9 +8344,7 @@ function __c61(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeletePublicAccessBlockRequest",
-      });
+      ).annotate({ identifier: "DeletePublicAccessBlockRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeletePublicAccessBlockResponse",
@@ -8515,9 +8374,7 @@ function __c62(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteStorageLensConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteStorageLensConfigurationRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteStorageLensConfigurationResponse",
@@ -8547,9 +8404,7 @@ function __c63(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteStorageLensConfigurationTaggingRequest",
-      });
+      ).annotate({ identifier: "DeleteStorageLensConfigurationTaggingRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteStorageLensConfigurationTaggingResult",
@@ -8579,9 +8434,7 @@ function __c64(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DeleteStorageLensGroupRequest",
-      });
+      ).annotate({ identifier: "DeleteStorageLensGroupRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteStorageLensGroupResponse",
@@ -8620,13 +8473,8 @@ function __c65(j: number): any {
       return S.Array(__S(2081, __c65, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          Format: S.optional(S.String),
-          Location: S.optional(__S(1214, __c37, 30)),
-        }),
-      ).annotate({
-        identifier: "S3GeneratedManifestDescriptor",
-      });
+        S.Struct({ Format: S.optional(S.String), Location: S.optional(__S(1214, __c37, 30)) }),
+      ).annotate({ identifier: "S3GeneratedManifestDescriptor" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -8697,9 +8545,7 @@ function __c67(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DescribeMultiRegionAccessPointOperationRequest",
-      });
+      ).annotate({ identifier: "DescribeMultiRegionAccessPointOperationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8711,14 +8557,12 @@ function __c67(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String), RequestStatus: S.optional(S.String) }),
-      ).annotate({
-        identifier: "MultiRegionAccessPointRegionalResponse",
-      });
+      ).annotate({ identifier: "MultiRegionAccessPointRegionalResponse" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(2146, __c67, 2).pipe(/*@__PURE__*/ T.XmlName("Region")).annotate({
-          identifier: "MultiRegionAccessPointRegionalResponse",
-        }),
+        /*@__PURE__*/ __S(2146, __c67, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("Region"))
+          .annotate({ identifier: "MultiRegionAccessPointRegionalResponse" }),
       );
     case 4:
       return S.suspend(() => S.Struct({ Regions: S.optional(__S(2147, __c67, 3)) })).annotate({
@@ -8754,9 +8598,7 @@ function __c67(j: number): any {
     case 8:
       return S.suspend(() =>
         S.Struct({ AsyncOperation: S.optional(__S(2151, __c67, 7)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeMultiRegionAccessPointOperationResult",
-      });
+      ).annotate({ identifier: "DescribeMultiRegionAccessPointOperationResult" });
   }
 }
 function __c68(j: number): any {
@@ -8789,9 +8631,7 @@ function __c69(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "DissociateAccessGrantsIdentityCenterRequest",
-      });
+      ).annotate({ identifier: "DissociateAccessGrantsIdentityCenterRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DissociateAccessGrantsIdentityCenterResponse",
@@ -8860,9 +8700,7 @@ function __c71(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetAccessGrantsInstanceRequest",
-      });
+      ).annotate({ identifier: "GetAccessGrantsInstanceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8873,9 +8711,7 @@ function __c71(j: number): any {
           IdentityCenterApplicationArn: S.optional(S.String),
           CreatedAt: S.optional(T.DateFromString),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetAccessGrantsInstanceResult",
-      });
+      ).annotate({ identifier: "GetAccessGrantsInstanceResult" });
   }
 }
 function __c72(j: number): any {
@@ -8901,18 +8737,14 @@ function __c72(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetAccessGrantsInstanceForPrefixRequest",
-      });
+      ).annotate({ identifier: "GetAccessGrantsInstanceForPrefixRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           AccessGrantsInstanceArn: S.optional(S.String),
           AccessGrantsInstanceId: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetAccessGrantsInstanceForPrefixResult",
-      });
+      ).annotate({ identifier: "GetAccessGrantsInstanceForPrefixResult" });
   }
 }
 function __c73(j: number): any {
@@ -8937,9 +8769,7 @@ function __c73(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetAccessGrantsInstanceResourcePolicyRequest",
-      });
+      ).annotate({ identifier: "GetAccessGrantsInstanceResourcePolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8947,9 +8777,7 @@ function __c73(j: number): any {
           Organization: S.optional(S.String),
           CreatedAt: S.optional(T.DateFromString),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetAccessGrantsInstanceResourcePolicyResult",
-      });
+      ).annotate({ identifier: "GetAccessGrantsInstanceResourcePolicyResult" });
   }
 }
 function __c74(j: number): any {
@@ -8978,9 +8806,7 @@ function __c74(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetAccessGrantsLocationRequest",
-      });
+      ).annotate({ identifier: "GetAccessGrantsLocationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8990,9 +8816,7 @@ function __c74(j: number): any {
           LocationScope: S.optional(S.String),
           IAMRoleArn: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetAccessGrantsLocationResult",
-      });
+      ).annotate({ identifier: "GetAccessGrantsLocationResult" });
   }
 }
 function __c75(j: number): any {
@@ -9066,15 +8890,11 @@ function __c76(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetAccessPointConfigurationForObjectLambdaRequest",
-      });
+      ).annotate({ identifier: "GetAccessPointConfigurationForObjectLambdaRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Configuration: S.optional(__S(1030, __c32, 6)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetAccessPointConfigurationForObjectLambdaResult",
-      });
+      ).annotate({ identifier: "GetAccessPointConfigurationForObjectLambdaResult" });
   }
 }
 function __c77(j: number): any {
@@ -9100,9 +8920,7 @@ function __c77(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetAccessPointForObjectLambdaRequest",
-      });
+      ).annotate({ identifier: "GetAccessPointForObjectLambdaRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9111,9 +8929,7 @@ function __c77(j: number): any {
           CreationDate: S.optional(T.DateFromString),
           Alias: S.optional(__S(1056, __c33, 0)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetAccessPointForObjectLambdaResult",
-      });
+      ).annotate({ identifier: "GetAccessPointForObjectLambdaResult" });
   }
 }
 function __c78(j: number): any {
@@ -9139,9 +8955,7 @@ function __c78(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetAccessPointPolicyRequest",
-      });
+      ).annotate({ identifier: "GetAccessPointPolicyRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Policy: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "GetAccessPointPolicyResult",
@@ -9171,9 +8985,7 @@ function __c79(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetAccessPointPolicyForObjectLambdaRequest",
-      });
+      ).annotate({ identifier: "GetAccessPointPolicyForObjectLambdaRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Policy: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "GetAccessPointPolicyForObjectLambdaResult",
@@ -9203,15 +9015,11 @@ function __c80(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetAccessPointPolicyStatusRequest",
-      });
+      ).annotate({ identifier: "GetAccessPointPolicyStatusRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ PolicyStatus: S.optional(__S(2592, __c81, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetAccessPointPolicyStatusResult",
-      });
+      ).annotate({ identifier: "GetAccessPointPolicyStatusResult" });
   }
 }
 function __c81(j: number): any {
@@ -9248,15 +9056,11 @@ function __c82(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetAccessPointPolicyStatusForObjectLambdaRequest",
-      });
+      ).annotate({ identifier: "GetAccessPointPolicyStatusForObjectLambdaRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ PolicyStatus: S.optional(__S(2592, __c81, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetAccessPointPolicyStatusForObjectLambdaResult",
-      });
+      ).annotate({ identifier: "GetAccessPointPolicyStatusForObjectLambdaResult" });
   }
 }
 function __c83(j: number): any {
@@ -9285,14 +9089,10 @@ function __c83(j: number): any {
             }),
           ),
         ),
-      ).annotate({
-        identifier: "GetAccessPointScopeRequest",
-      });
+      ).annotate({ identifier: "GetAccessPointScopeRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Scope: S.optional(__S(962, __c30, 2)) }).pipe(ns)).annotate(
-        {
-          identifier: "GetAccessPointScopeResult",
-        },
+        { identifier: "GetAccessPointScopeResult" },
       );
   }
 }
@@ -9353,15 +9153,11 @@ function __c85(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetBucketLifecycleConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetBucketLifecycleConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Rules: S.optional(__S(2762, __c86, 10)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetBucketLifecycleConfigurationResult",
-      });
+      ).annotate({ identifier: "GetBucketLifecycleConfigurationResult" });
   }
 }
 function __c86(j: number): any {
@@ -9403,26 +9199,19 @@ function __c86(j: number): any {
       ).annotate({ identifier: "Transition" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(2755, __c86, 3).pipe(/*@__PURE__*/ T.XmlName("Transition")).annotate({
-          identifier: "Transition",
-        }),
+        /*@__PURE__*/ __S(2755, __c86, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("Transition"))
+          .annotate({ identifier: "Transition" }),
       );
     case 5:
       return S.suspend(() =>
-        S.Struct({
-          NoncurrentDays: S.optional(S.Number),
-          StorageClass: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NoncurrentVersionTransition",
-      });
+        S.Struct({ NoncurrentDays: S.optional(S.Number), StorageClass: S.optional(S.String) }),
+      ).annotate({ identifier: "NoncurrentVersionTransition" });
     case 6:
       return S.Array(
         /*@__PURE__*/ __S(2757, __c86, 5)
           .pipe(/*@__PURE__*/ T.XmlName("NoncurrentVersionTransition"))
-          .annotate({
-            identifier: "NoncurrentVersionTransition",
-          }),
+          .annotate({ identifier: "NoncurrentVersionTransition" }),
       );
     case 7:
       return S.suspend(() =>
@@ -9430,9 +9219,7 @@ function __c86(j: number): any {
           NoncurrentDays: S.optional(S.Number),
           NewerNoncurrentVersions: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "NoncurrentVersionExpiration",
-      });
+      ).annotate({ identifier: "NoncurrentVersionExpiration" });
     case 8:
       return S.suspend(() => S.Struct({ DaysAfterInitiation: S.optional(S.Number) })).annotate({
         identifier: "AbortIncompleteMultipartUpload",
@@ -9452,9 +9239,9 @@ function __c86(j: number): any {
       ).annotate({ identifier: "LifecycleRule" });
     case 10:
       return S.Array(
-        /*@__PURE__*/ __S(2761, __c86, 9).pipe(/*@__PURE__*/ T.XmlName("Rule")).annotate({
-          identifier: "LifecycleRule",
-        }),
+        /*@__PURE__*/ __S(2761, __c86, 9)
+          .pipe(/*@__PURE__*/ T.XmlName("Rule"))
+          .annotate({ identifier: "LifecycleRule" }),
       );
   }
 }
@@ -9511,15 +9298,11 @@ function __c88(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetBucketReplicationRequest",
-      });
+      ).annotate({ identifier: "GetBucketReplicationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ReplicationConfiguration: S.optional(__S(2863, __c89, 15)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetBucketReplicationResult",
-      });
+      ).annotate({ identifier: "GetBucketReplicationResult" });
   }
 }
 function __c89(j: number): any {
@@ -9527,9 +9310,7 @@ function __c89(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ Prefix: S.optional(S.String), Tags: S.optional(__S(1248, __c39, 0)) }),
-      ).annotate({
-        identifier: "ReplicationRuleAndOperator",
-      });
+      ).annotate({ identifier: "ReplicationRuleAndOperator" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9610,9 +9391,9 @@ function __c89(j: number): any {
       ).annotate({ identifier: "ReplicationRule" });
     case 14:
       return S.Array(
-        /*@__PURE__*/ __S(2861, __c89, 13).pipe(/*@__PURE__*/ T.XmlName("Rule")).annotate({
-          identifier: "ReplicationRule",
-        }),
+        /*@__PURE__*/ __S(2861, __c89, 13)
+          .pipe(/*@__PURE__*/ T.XmlName("Rule"))
+          .annotate({ identifier: "ReplicationRule" }),
       );
     case 15:
       return S.suspend(() => S.Struct({ Role: S.String, Rules: __S(2862, __c89, 14) })).annotate({
@@ -9673,18 +9454,14 @@ function __c91(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetBucketVersioningRequest",
-      });
+      ).annotate({ identifier: "GetBucketVersioningRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String),
           MFADelete: S.optional(S.String).pipe(T.XmlName("MfaDelete")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetBucketVersioningResult",
-      });
+      ).annotate({ identifier: "GetBucketVersioningResult" });
   }
 }
 function __c92(j: number): any {
@@ -9788,15 +9565,11 @@ function __c94(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetMultiRegionAccessPointRequest",
-      });
+      ).annotate({ identifier: "GetMultiRegionAccessPointRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ AccessPoint: S.optional(__S(3042, __c95, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetMultiRegionAccessPointResult",
-      });
+      ).annotate({ identifier: "GetMultiRegionAccessPointResult" });
   }
 }
 function __c95(j: number): any {
@@ -9811,9 +9584,9 @@ function __c95(j: number): any {
       ).annotate({ identifier: "RegionReport" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(3040, __c95, 0).pipe(/*@__PURE__*/ T.XmlName("Region")).annotate({
-          identifier: "RegionReport",
-        }),
+        /*@__PURE__*/ __S(3040, __c95, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("Region"))
+          .annotate({ identifier: "RegionReport" }),
       );
     case 2:
       return S.suspend(() =>
@@ -9825,9 +9598,7 @@ function __c95(j: number): any {
           Status: S.optional(S.String),
           Regions: S.optional(__S(3041, __c95, 1)),
         }),
-      ).annotate({
-        identifier: "MultiRegionAccessPointReport",
-      });
+      ).annotate({ identifier: "MultiRegionAccessPointReport" });
   }
 }
 function __c96(j: number): any {
@@ -9853,9 +9624,7 @@ function __c96(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetMultiRegionAccessPointPolicyRequest",
-      });
+      ).annotate({ identifier: "GetMultiRegionAccessPointPolicyRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Policy: S.optional(S.String) })).annotate({
         identifier: "EstablishedMultiRegionAccessPointPolicy",
@@ -9870,15 +9639,11 @@ function __c96(j: number): any {
           Established: S.optional(__S(3073, __c96, 1)),
           Proposed: S.optional(__S(3074, __c96, 2)),
         }),
-      ).annotate({
-        identifier: "MultiRegionAccessPointPolicyDocument",
-      });
+      ).annotate({ identifier: "MultiRegionAccessPointPolicyDocument" });
     case 4:
       return S.suspend(() =>
         S.Struct({ Policy: S.optional(__S(3075, __c96, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetMultiRegionAccessPointPolicyResult",
-      });
+      ).annotate({ identifier: "GetMultiRegionAccessPointPolicyResult" });
   }
 }
 function __c97(j: number): any {
@@ -9904,15 +9669,11 @@ function __c97(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetMultiRegionAccessPointPolicyStatusRequest",
-      });
+      ).annotate({ identifier: "GetMultiRegionAccessPointPolicyStatusRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Established: S.optional(__S(2592, __c81, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetMultiRegionAccessPointPolicyStatusResult",
-      });
+      ).annotate({ identifier: "GetMultiRegionAccessPointPolicyStatusResult" });
   }
 }
 function __c98(j: number): any {
@@ -9938,15 +9699,11 @@ function __c98(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetMultiRegionAccessPointRoutesRequest",
-      });
+      ).annotate({ identifier: "GetMultiRegionAccessPointRoutesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Mrap: S.optional(S.String), Routes: S.optional(__S(3169, __c99, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetMultiRegionAccessPointRoutesResult",
-      });
+      ).annotate({ identifier: "GetMultiRegionAccessPointRoutesResult" });
   }
 }
 function __c99(j: number): any {
@@ -9958,14 +9715,12 @@ function __c99(j: number): any {
           Region: S.optional(S.String),
           TrafficDialPercentage: S.Number,
         }),
-      ).annotate({
-        identifier: "MultiRegionAccessPointRoute",
-      });
+      ).annotate({ identifier: "MultiRegionAccessPointRoute" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(3168, __c99, 0).pipe(/*@__PURE__*/ T.XmlName("Route")).annotate({
-          identifier: "MultiRegionAccessPointRoute",
-        }),
+        /*@__PURE__*/ __S(3168, __c99, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("Route"))
+          .annotate({ identifier: "MultiRegionAccessPointRoute" }),
       );
   }
 }
@@ -9991,9 +9746,7 @@ function __c100(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetPublicAccessBlockRequest",
-      });
+      ).annotate({ identifier: "GetPublicAccessBlockRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10001,9 +9754,7 @@ function __c100(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "PublicAccessBlockConfiguration" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetPublicAccessBlockOutput",
-      });
+      ).annotate({ identifier: "GetPublicAccessBlockOutput" });
   }
 }
 function __c101(j: number): any {
@@ -10029,9 +9780,7 @@ function __c101(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetStorageLensConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetStorageLensConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10039,9 +9788,7 @@ function __c101(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "StorageLensConfiguration" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetStorageLensConfigurationResult",
-      });
+      ).annotate({ identifier: "GetStorageLensConfigurationResult" });
   }
 }
 function __c102(j: number): any {
@@ -10064,9 +9811,7 @@ function __c102(j: number): any {
           IsEnabled: S.optional(S.Boolean),
           SelectionCriteria: S.optional(__S(3265, __c102, 1)),
         }),
-      ).annotate({
-        identifier: "PrefixLevelStorageMetrics",
-      });
+      ).annotate({ identifier: "PrefixLevelStorageMetrics" });
     case 3:
       return S.suspend(() => S.Struct({ StorageMetrics: __S(3266, __c102, 2) })).annotate({
         identifier: "PrefixLevel",
@@ -10108,9 +9853,7 @@ function __c102(j: number): any {
           Include: S.optional(__S(3273, __c102, 9)),
           Exclude: S.optional(__S(3274, __c102, 10)),
         }),
-      ).annotate({
-        identifier: "StorageLensGroupLevelSelectionCriteria",
-      });
+      ).annotate({ identifier: "StorageLensGroupLevelSelectionCriteria" });
     case 12:
       return S.suspend(() =>
         S.Struct({ SelectionCriteria: S.optional(__S(3275, __c102, 11)) }),
@@ -10163,9 +9906,7 @@ function __c102(j: number): any {
             .pipe(T.XmlName("SSE-KMS"))
             .annotate({ identifier: "SSEKMS" }),
         }),
-      ).annotate({
-        identifier: "StorageLensDataExportEncryption",
-      });
+      ).annotate({ identifier: "StorageLensDataExportEncryption" });
     case 21:
       return S.suspend(() =>
         S.Struct({
@@ -10184,9 +9925,7 @@ function __c102(j: number): any {
     case 23:
       return S.suspend(() =>
         S.Struct({ IsEnabled: S.Boolean, Encryption: S.optional(__S(3284, __c102, 20)) }),
-      ).annotate({
-        identifier: "StorageLensTableDestination",
-      });
+      ).annotate({ identifier: "StorageLensTableDestination" });
     case 24:
       return S.suspend(() =>
         S.Struct({
@@ -10201,9 +9940,7 @@ function __c102(j: number): any {
           S3BucketDestination: S.optional(__S(3285, __c102, 21)),
           StorageLensTableDestination: S.optional(__S(3287, __c102, 23)),
         }),
-      ).annotate({
-        identifier: "StorageLensExpandedPrefixesDataExport",
-      });
+      ).annotate({ identifier: "StorageLensExpandedPrefixesDataExport" });
     case 26:
       return S.suspend(() => S.Struct({ Arn: S.String })).annotate({
         identifier: "StorageLensAwsOrg",
@@ -10248,15 +9985,11 @@ function __c103(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetStorageLensConfigurationTaggingRequest",
-      });
+      ).annotate({ identifier: "GetStorageLensConfigurationTaggingRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Tags: S.optional(__S(3329, __c104, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetStorageLensConfigurationTaggingResult",
-      });
+      ).annotate({ identifier: "GetStorageLensConfigurationTaggingResult" });
   }
 }
 function __c104(j: number): any {
@@ -10267,9 +10000,9 @@ function __c104(j: number): any {
       });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(3328, __c104, 0).pipe(/*@__PURE__*/ T.XmlName("Tag")).annotate({
-          identifier: "StorageLensTag",
-        }),
+        /*@__PURE__*/ __S(3328, __c104, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("Tag"))
+          .annotate({ identifier: "StorageLensTag" }),
       );
   }
 }
@@ -10296,9 +10029,7 @@ function __c105(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "GetStorageLensGroupRequest",
-      });
+      ).annotate({ identifier: "GetStorageLensGroupRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10306,9 +10037,7 @@ function __c105(j: number): any {
             .pipe(T.HttpPayload())
             .annotate({ identifier: "StorageLensGroup" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetStorageLensGroupResult",
-      });
+      ).annotate({ identifier: "GetStorageLensGroupResult" });
   }
 }
 function __c106(j: number): any {
@@ -10357,9 +10086,9 @@ function __c106(j: number): any {
       ).annotate({ identifier: "ListAccessGrantEntry" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(3393, __c106, 1).pipe(/*@__PURE__*/ T.XmlName("AccessGrant")).annotate({
-          identifier: "ListAccessGrantEntry",
-        }),
+        /*@__PURE__*/ __S(3393, __c106, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("AccessGrant"))
+          .annotate({ identifier: "ListAccessGrantEntry" }),
       );
     case 3:
       return S.suspend(() =>
@@ -10394,9 +10123,7 @@ function __c107(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "ListAccessGrantsInstancesRequest",
-      });
+      ).annotate({ identifier: "ListAccessGrantsInstancesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10407,16 +10134,12 @@ function __c107(j: number): any {
           IdentityCenterInstanceArn: S.optional(S.String),
           IdentityCenterApplicationArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListAccessGrantsInstanceEntry",
-      });
+      ).annotate({ identifier: "ListAccessGrantsInstanceEntry" });
     case 2:
       return S.Array(
         /*@__PURE__*/ __S(3425, __c107, 1)
           .pipe(/*@__PURE__*/ T.XmlName("AccessGrantsInstance"))
-          .annotate({
-            identifier: "ListAccessGrantsInstanceEntry",
-          }),
+          .annotate({ identifier: "ListAccessGrantsInstanceEntry" }),
       );
     case 3:
       return S.suspend(() =>
@@ -10424,9 +10147,7 @@ function __c107(j: number): any {
           NextToken: S.optional(S.String),
           AccessGrantsInstancesList: S.optional(__S(3426, __c107, 2)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListAccessGrantsInstancesResult",
-      });
+      ).annotate({ identifier: "ListAccessGrantsInstancesResult" });
   }
 }
 function __c108(j: number): any {
@@ -10454,9 +10175,7 @@ function __c108(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "ListAccessGrantsLocationsRequest",
-      });
+      ).annotate({ identifier: "ListAccessGrantsLocationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10466,16 +10185,12 @@ function __c108(j: number): any {
           LocationScope: S.optional(S.String),
           IAMRoleArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListAccessGrantsLocationsEntry",
-      });
+      ).annotate({ identifier: "ListAccessGrantsLocationsEntry" });
     case 2:
       return S.Array(
         /*@__PURE__*/ __S(3457, __c108, 1)
           .pipe(/*@__PURE__*/ T.XmlName("AccessGrantsLocation"))
-          .annotate({
-            identifier: "ListAccessGrantsLocationsEntry",
-          }),
+          .annotate({ identifier: "ListAccessGrantsLocationsEntry" }),
       );
     case 3:
       return S.suspend(() =>
@@ -10483,9 +10198,7 @@ function __c108(j: number): any {
           NextToken: S.optional(S.String),
           AccessGrantsLocationsList: S.optional(__S(3458, __c108, 2)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListAccessGrantsLocationsResult",
-      });
+      ).annotate({ identifier: "ListAccessGrantsLocationsResult" });
   }
 }
 function __c109(j: number): any {
@@ -10543,9 +10256,9 @@ function __c110(j: number): any {
       ).annotate({ identifier: "AccessPoint" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(3520, __c110, 0).pipe(/*@__PURE__*/ T.XmlName("AccessPoint")).annotate({
-          identifier: "AccessPoint",
-        }),
+        /*@__PURE__*/ __S(3520, __c110, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("AccessPoint"))
+          .annotate({ identifier: "AccessPoint" }),
       );
   }
 }
@@ -10577,18 +10290,14 @@ function __c111(j: number): any {
             }),
           ),
         ),
-      ).annotate({
-        identifier: "ListAccessPointsForDirectoryBucketsRequest",
-      });
+      ).annotate({ identifier: "ListAccessPointsForDirectoryBucketsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           AccessPointList: S.optional(__S(3521, __c110, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListAccessPointsForDirectoryBucketsResult",
-      });
+      ).annotate({ identifier: "ListAccessPointsForDirectoryBucketsResult" });
   }
 }
 function __c112(j: number): any {
@@ -10615,9 +10324,7 @@ function __c112(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "ListAccessPointsForObjectLambdaRequest",
-      });
+      ).annotate({ identifier: "ListAccessPointsForObjectLambdaRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10630,9 +10337,7 @@ function __c112(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(3585, __c112, 1)
           .pipe(/*@__PURE__*/ T.XmlName("ObjectLambdaAccessPoint"))
-          .annotate({
-            identifier: "ObjectLambdaAccessPoint",
-          }),
+          .annotate({ identifier: "ObjectLambdaAccessPoint" }),
       );
     case 3:
       return S.suspend(() =>
@@ -10640,9 +10345,7 @@ function __c112(j: number): any {
           ObjectLambdaAccessPointList: S.optional(__S(3586, __c112, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListAccessPointsForObjectLambdaResult",
-      });
+      ).annotate({ identifier: "ListAccessPointsForObjectLambdaResult" });
   }
 }
 function __c113(j: number): any {
@@ -10671,9 +10374,7 @@ function __c113(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "ListCallerAccessGrantsRequest",
-      });
+      ).annotate({ identifier: "ListCallerAccessGrantsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10681,14 +10382,12 @@ function __c113(j: number): any {
           GrantScope: S.optional(S.String),
           ApplicationArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListCallerAccessGrantsEntry",
-      });
+      ).annotate({ identifier: "ListCallerAccessGrantsEntry" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(3617, __c113, 1).pipe(/*@__PURE__*/ T.XmlName("AccessGrant")).annotate({
-          identifier: "ListCallerAccessGrantsEntry",
-        }),
+        /*@__PURE__*/ __S(3617, __c113, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("AccessGrant"))
+          .annotate({ identifier: "ListCallerAccessGrantsEntry" }),
       );
     case 3:
       return S.suspend(() =>
@@ -10696,9 +10395,7 @@ function __c113(j: number): any {
           NextToken: S.optional(S.String),
           CallerAccessGrantsList: S.optional(__S(3618, __c113, 2)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListCallerAccessGrantsResult",
-      });
+      ).annotate({ identifier: "ListCallerAccessGrantsResult" });
   }
 }
 function __c114(j: number): any {
@@ -10776,14 +10473,12 @@ function __c115(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "ListMultiRegionAccessPointsRequest",
-      });
+      ).annotate({ identifier: "ListMultiRegionAccessPointsRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(3042, __c95, 2).pipe(/*@__PURE__*/ T.XmlName("AccessPoint")).annotate({
-          identifier: "MultiRegionAccessPointReport",
-        }),
+        /*@__PURE__*/ __S(3042, __c95, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("AccessPoint"))
+          .annotate({ identifier: "MultiRegionAccessPointReport" }),
       );
     case 2:
       return S.suspend(() =>
@@ -10791,9 +10486,7 @@ function __c115(j: number): any {
           AccessPoints: S.optional(__S(3681, __c115, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListMultiRegionAccessPointsResult",
-      });
+      ).annotate({ identifier: "ListMultiRegionAccessPointsResult" });
   }
 }
 function __c116(j: number): any {
@@ -10824,9 +10517,7 @@ function __c116(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "ListRegionalBucketsRequest",
-      });
+      ).annotate({ identifier: "ListRegionalBucketsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10841,9 +10532,7 @@ function __c116(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(3713, __c116, 1)
           .pipe(/*@__PURE__*/ T.XmlName("RegionalBucket"))
-          .annotate({
-            identifier: "RegionalBucket",
-          }),
+          .annotate({ identifier: "RegionalBucket" }),
       );
     case 3:
       return S.suspend(() =>
@@ -10851,9 +10540,7 @@ function __c116(j: number): any {
           RegionalBucketList: S.optional(__S(3714, __c116, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListRegionalBucketsResult",
-      });
+      ).annotate({ identifier: "ListRegionalBucketsResult" });
   }
 }
 function __c117(j: number): any {
@@ -10879,9 +10566,7 @@ function __c117(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "ListStorageLensConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListStorageLensConfigurationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10890,16 +10575,12 @@ function __c117(j: number): any {
           HomeRegion: S.String,
           IsEnabled: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "ListStorageLensConfigurationEntry",
-      });
+      ).annotate({ identifier: "ListStorageLensConfigurationEntry" });
     case 2:
       return S.Array(
         /*@__PURE__*/ __S(3745, __c117, 1)
           .pipe(/*@__PURE__*/ T.XmlName("StorageLensConfiguration"))
-          .annotate({
-            identifier: "ListStorageLensConfigurationEntry",
-          }),
+          .annotate({ identifier: "ListStorageLensConfigurationEntry" }),
       );
     case 3:
       return S.suspend(() =>
@@ -10910,9 +10591,7 @@ function __c117(j: number): any {
             T.XmlFlattened(),
           ),
         }).pipe(T.all(T.XmlName("ListStorageLensConfigurationResult"), ns)),
-      ).annotate({
-        identifier: "ListStorageLensConfigurationsResult",
-      });
+      ).annotate({ identifier: "ListStorageLensConfigurationsResult" });
   }
 }
 function __c118(j: number): any {
@@ -10938,22 +10617,16 @@ function __c118(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "ListStorageLensGroupsRequest",
-      });
+      ).annotate({ identifier: "ListStorageLensGroupsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Name: S.String, StorageLensGroupArn: S.String, HomeRegion: S.String }),
-      ).annotate({
-        identifier: "ListStorageLensGroupEntry",
-      });
+      ).annotate({ identifier: "ListStorageLensGroupEntry" });
     case 2:
       return S.Array(
         /*@__PURE__*/ __S(3777, __c118, 1)
           .pipe(/*@__PURE__*/ T.XmlName("StorageLensGroup"))
-          .annotate({
-            identifier: "ListStorageLensGroupEntry",
-          }),
+          .annotate({ identifier: "ListStorageLensGroupEntry" }),
       );
     case 3:
       return S.suspend(() =>
@@ -10964,9 +10637,7 @@ function __c118(j: number): any {
             T.XmlFlattened(),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListStorageLensGroupsResult",
-      });
+      ).annotate({ identifier: "ListStorageLensGroupsResult" });
   }
 }
 function __c119(j: number): any {
@@ -10992,9 +10663,7 @@ function __c119(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(705, __c22, 1)) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourceResult",
@@ -11025,9 +10694,7 @@ function __c120(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "PutAccessGrantsInstanceResourcePolicyRequest",
-      });
+      ).annotate({ identifier: "PutAccessGrantsInstanceResourcePolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11035,9 +10702,7 @@ function __c120(j: number): any {
           Organization: S.optional(S.String),
           CreatedAt: S.optional(T.DateFromString),
         }).pipe(ns),
-      ).annotate({
-        identifier: "PutAccessGrantsInstanceResourcePolicyResult",
-      });
+      ).annotate({ identifier: "PutAccessGrantsInstanceResourcePolicyResult" });
   }
 }
 function __c121(j: number): any {
@@ -11067,9 +10732,7 @@ function __c121(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "PutAccessPointConfigurationForObjectLambdaRequest",
-      });
+      ).annotate({ identifier: "PutAccessPointConfigurationForObjectLambdaRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutAccessPointConfigurationForObjectLambdaResponse",
@@ -11100,9 +10763,7 @@ function __c122(j: number): any {
             T.StaticContextParams({ RequiresAccountId: { value: true } }),
           ),
         ),
-      ).annotate({
-        identifier: "PutAccessPointPolicyRequest",
-      });
+      ).annotate({ identifier: "PutAccessPointPolicyRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutAccessPointPolicyResponse",

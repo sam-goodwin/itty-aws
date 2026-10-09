@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -170,7 +170,7 @@ export type ConnectorConfiguration = { [key: string]: string | undefined };
 export type __stringMax1024 = string;
 export type __stringMin1Max128 = string;
 export type __listOf__string = string[];
-const __listOf__string = /*@__PURE__*/ __L.at(__c25, 0);
+const __listOf__string = /*@__PURE__*/ __L.at(__c24, 0);
 export interface Vpc {
   securityGroups?: string[];
   subnets: string[];
@@ -221,7 +221,7 @@ export interface Plugin {
   customPlugin: CustomPlugin;
 }
 export type __listOfPlugin = Plugin[];
-const __listOfPlugin = /*@__PURE__*/ __L.at(__c23, 15);
+const __listOfPlugin = /*@__PURE__*/ __L.at(__c23, 14);
 export interface WorkerConfiguration {
   revision: number;
   workerConfigurationArn: string;
@@ -661,8 +661,8 @@ export const createConnector: API.OperationMethod<
   CreateConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(753, __c23, 17) as any as S.Schema<CreateConnectorRequest>,
-  output: __S(754, __c23, 18) as any as S.Schema<CreateConnectorResponse>,
+  input: __S(752, __c23, 16) as any as S.Schema<CreateConnectorRequest>,
+  output: __S(753, __c23, 17) as any as S.Schema<CreateConnectorResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -697,8 +697,8 @@ export const createCustomPlugin: API.OperationMethod<
   CreateCustomPluginError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(898, __c28, 2) as any as S.Schema<CreateCustomPluginRequest>,
-  output: __S(899, __c28, 3) as any as S.Schema<CreateCustomPluginResponse>,
+  input: __S(866, __c27, 2) as any as S.Schema<CreateCustomPluginRequest>,
+  output: __S(867, __c27, 3) as any as S.Schema<CreateCustomPluginResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1308,8 +1308,8 @@ export const updateConnector: API.OperationMethod<
   UpdateConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(707, __c22, 3) as any as S.Schema<UpdateConnectorRequest>,
-  output: __S(708, __c22, 4) as any as S.Schema<UpdateConnectorResponse>,
+  input: __S(706, __c22, 2) as any as S.Schema<UpdateConnectorRequest>,
+  output: __S(707, __c22, 3) as any as S.Schema<UpdateConnectorResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1333,7 +1333,7 @@ function __c0(j: number): any {
           description: S.optional(S.String),
           name: S.String,
           propertiesFileContent: SensitiveString,
-          tags: S.optional(__S(864, __c27, 0)),
+          tags: S.optional(__S(832, __c26, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/worker-configurations" }),
@@ -1344,9 +1344,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateWorkerConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateWorkerConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1356,9 +1354,7 @@ function __c0(j: number): any {
           workerConfigurationArn: S.optional(S.String),
           workerConfigurationState: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateWorkerConfigurationResponse",
-      });
+      ).annotate({ identifier: "CreateWorkerConfigurationResponse" });
   }
 }
 function __c1(j: number): any {
@@ -1370,9 +1366,7 @@ function __c1(j: number): any {
           description: S.optional(S.String),
           revision: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "WorkerConfigurationRevisionSummary",
-      });
+      ).annotate({ identifier: "WorkerConfigurationRevisionSummary" });
   }
 }
 function __c2(j: number): any {
@@ -1413,18 +1407,14 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteCustomPluginRequest",
-      });
+      ).annotate({ identifier: "DeleteCustomPluginRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           customPluginArn: S.optional(S.String),
           customPluginState: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DeleteCustomPluginResponse",
-      });
+      ).annotate({ identifier: "DeleteCustomPluginResponse" });
   }
 }
 function __c4(j: number): any {
@@ -1443,18 +1433,14 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteWorkerConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteWorkerConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           workerConfigurationArn: S.optional(S.String),
           workerConfigurationState: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DeleteWorkerConfigurationResponse",
-      });
+      ).annotate({ identifier: "DeleteWorkerConfigurationResponse" });
   }
 }
 function __c5(j: number): any {
@@ -1475,9 +1461,9 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          capacity: S.optional(__S(228, __c7, 4)),
+          capacity: S.optional(__S(227, __c7, 3)),
           connectorArn: S.optional(S.String),
-          connectorConfiguration: S.optional(__S(768, __c24, 0)),
+          connectorConfiguration: S.optional(__S(832, __c26, 0)),
           connectorDescription: S.optional(S.String),
           connectorName: S.optional(S.String),
           connectorState: S.optional(S.String),
@@ -1494,9 +1480,7 @@ function __c5(j: number): any {
           workerConfiguration: S.optional(__S(269, __c8, 13)),
           stateDescription: S.optional(__S(192, __c6, 0)),
         }),
-      ).annotate({
-        identifier: "DescribeConnectorResponse",
-      });
+      ).annotate({ identifier: "DescribeConnectorResponse" });
   }
 }
 function __c6(j: number): any {
@@ -1514,33 +1498,25 @@ function __c7(j: number): any {
         { identifier: "ScaleInPolicyDescription" },
       );
     case 1:
-      return S.suspend(() => S.Struct({ cpuUtilizationPercentage: S.optional(S.Number) })).annotate(
-        {
-          identifier: "ScaleOutPolicyDescription",
-        },
-      );
-    case 2:
       return S.suspend(() =>
         S.Struct({
           maxWorkerCount: S.optional(S.Number),
           mcuCount: S.optional(S.Number),
           minWorkerCount: S.optional(S.Number),
           scaleInPolicy: S.optional(__S(224, __c7, 0)),
-          scaleOutPolicy: S.optional(__S(225, __c7, 1)),
+          scaleOutPolicy: S.optional(__S(224, __c7, 0)),
           maxAutoscalingTaskCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AutoScalingDescription" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({ mcuCount: S.optional(S.Number), workerCount: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "ProvisionedCapacityDescription",
-      });
-    case 4:
+      ).annotate({ identifier: "ProvisionedCapacityDescription" });
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          autoScaling: S.optional(__S(226, __c7, 2)),
-          provisionedCapacity: S.optional(__S(227, __c7, 3)),
+          autoScaling: S.optional(__S(225, __c7, 1)),
+          provisionedCapacity: S.optional(__S(226, __c7, 2)),
         }),
       ).annotate({ identifier: "CapacityDescription" });
   }
@@ -1557,9 +1533,7 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ bootstrapServers: S.optional(S.String), vpc: S.optional(__S(256, __c8, 0)) }),
-      ).annotate({
-        identifier: "ApacheKafkaClusterDescription",
-      });
+      ).annotate({ identifier: "ApacheKafkaClusterDescription" });
     case 2:
       return S.suspend(() =>
         S.Struct({ apacheKafkaCluster: S.optional(__S(257, __c8, 1)) }),
@@ -1575,15 +1549,11 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({ enabled: S.optional(S.Boolean), logGroup: S.optional(S.String) }),
-      ).annotate({
-        identifier: "CloudWatchLogsLogDeliveryDescription",
-      });
+      ).annotate({ identifier: "CloudWatchLogsLogDeliveryDescription" });
     case 6:
       return S.suspend(() =>
         S.Struct({ deliveryStream: S.optional(S.String), enabled: S.optional(S.Boolean) }),
-      ).annotate({
-        identifier: "FirehoseLogDeliveryDescription",
-      });
+      ).annotate({ identifier: "FirehoseLogDeliveryDescription" });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1599,9 +1569,7 @@ function __c8(j: number): any {
           firehose: S.optional(__S(262, __c8, 6)),
           s3: S.optional(__S(263, __c8, 7)),
         }),
-      ).annotate({
-        identifier: "WorkerLogDeliveryDescription",
-      });
+      ).annotate({ identifier: "WorkerLogDeliveryDescription" });
     case 9:
       return S.suspend(() =>
         S.Struct({ workerLogDelivery: S.optional(__S(264, __c8, 8)) }),
@@ -1619,9 +1587,7 @@ function __c8(j: number): any {
     case 13:
       return S.suspend(() =>
         S.Struct({ revision: S.optional(S.Number), workerConfigurationArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "WorkerConfigurationDescription",
-      });
+      ).annotate({ identifier: "WorkerConfigurationDescription" });
   }
 }
 function __c9(j: number): any {
@@ -1640,9 +1606,7 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeConnectorOperationRequest",
-      });
+      ).annotate({ identifier: "DescribeConnectorOperationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ stepType: S.optional(S.String), stepState: S.optional(S.String) }),
@@ -1650,7 +1614,7 @@ function __c9(j: number): any {
     case 2:
       return S.Array(__S(289, __c9, 1));
     case 3:
-      return S.suspend(() => S.Struct({ capacity: S.optional(__S(228, __c7, 4)) })).annotate({
+      return S.suspend(() => S.Struct({ capacity: S.optional(__S(227, __c7, 3)) })).annotate({
         identifier: "WorkerSetting",
       });
     case 4:
@@ -1662,16 +1626,14 @@ function __c9(j: number): any {
           connectorOperationType: S.optional(S.String),
           operationSteps: S.optional(__listOfConnectorOperationStep),
           originWorkerSetting: S.optional(__S(291, __c9, 3)),
-          originConnectorConfiguration: S.optional(__S(768, __c24, 0)),
+          originConnectorConfiguration: S.optional(__S(832, __c26, 0)),
           targetWorkerSetting: S.optional(__S(291, __c9, 3)),
-          targetConnectorConfiguration: S.optional(__S(768, __c24, 0)),
+          targetConnectorConfiguration: S.optional(__S(832, __c26, 0)),
           errorInfo: S.optional(__S(192, __c6, 0)),
           creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "DescribeConnectorOperationResponse",
-      });
+      ).annotate({ identifier: "DescribeConnectorOperationResponse" });
   }
 }
 function __c10(j: number): any {
@@ -1688,9 +1650,7 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeCustomPluginRequest",
-      });
+      ).annotate({ identifier: "DescribeCustomPluginRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1702,9 +1662,7 @@ function __c10(j: number): any {
           name: S.optional(S.String),
           stateDescription: S.optional(__S(192, __c6, 0)),
         }),
-      ).annotate({
-        identifier: "DescribeCustomPluginResponse",
-      });
+      ).annotate({ identifier: "DescribeCustomPluginResponse" });
   }
 }
 function __c11(j: number): any {
@@ -1712,9 +1670,7 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ fileMd5: S.optional(S.String), fileSize: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "CustomPluginFileDescription",
-      });
+      ).annotate({ identifier: "CustomPluginFileDescription" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1737,9 +1693,7 @@ function __c11(j: number): any {
           location: S.optional(__S(354, __c11, 2)),
           revision: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "CustomPluginRevisionSummary",
-      });
+      ).annotate({ identifier: "CustomPluginRevisionSummary" });
   }
 }
 function __c12(j: number): any {
@@ -1758,9 +1712,7 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeWorkerConfigurationRequest",
-      });
+      ).annotate({ identifier: "DescribeWorkerConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1769,9 +1721,7 @@ function __c12(j: number): any {
           propertiesFileContent: S.optional(SensitiveString),
           revision: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "WorkerConfigurationRevisionDescription",
-      });
+      ).annotate({ identifier: "WorkerConfigurationRevisionDescription" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1782,9 +1732,7 @@ function __c12(j: number): any {
           workerConfigurationArn: S.optional(S.String),
           workerConfigurationState: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeWorkerConfigurationResponse",
-      });
+      ).annotate({ identifier: "DescribeWorkerConfigurationResponse" });
   }
 }
 function __c13(j: number): any {
@@ -1805,9 +1753,7 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListConnectorOperationsRequest",
-      });
+      ).annotate({ identifier: "ListConnectorOperationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1817,9 +1763,7 @@ function __c13(j: number): any {
           creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "ConnectorOperationSummary",
-      });
+      ).annotate({ identifier: "ConnectorOperationSummary" });
     case 2:
       return S.Array(__S(417, __c13, 1));
     case 3:
@@ -1828,9 +1772,7 @@ function __c13(j: number): any {
           connectorOperations: S.optional(__listOfConnectorOperationSummary),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListConnectorOperationsResponse",
-      });
+      ).annotate({ identifier: "ListConnectorOperationsResponse" });
   }
 }
 function __c14(j: number): any {
@@ -1848,7 +1790,7 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          capacity: S.optional(__S(228, __c7, 4)),
+          capacity: S.optional(__S(227, __c7, 3)),
           connectorArn: S.optional(S.String),
           connectorDescription: S.optional(S.String),
           connectorName: S.optional(S.String),
@@ -1908,9 +1850,7 @@ function __c15(j: number): any {
           customPlugins: S.optional(__listOfCustomPluginSummary),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListCustomPluginsResponse",
-      });
+      ).annotate({ identifier: "ListCustomPluginsResponse" });
   }
 }
 function __c16(j: number): any {
@@ -1927,11 +1867,9 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(864, __c27, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(832, __c26, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
@@ -1954,9 +1892,7 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListWorkerConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListWorkerConfigurationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1967,9 +1903,7 @@ function __c17(j: number): any {
           workerConfigurationArn: S.optional(S.String),
           workerConfigurationState: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "WorkerConfigurationSummary",
-      });
+      ).annotate({ identifier: "WorkerConfigurationSummary" });
     case 2:
       return S.Array(__S(545, __c17, 1));
     case 3:
@@ -1978,9 +1912,7 @@ function __c17(j: number): any {
           nextToken: S.optional(S.String),
           workerConfigurations: S.optional(__listOfWorkerConfigurationSummary),
         }),
-      ).annotate({
-        identifier: "ListWorkerConfigurationsResponse",
-      });
+      ).annotate({ identifier: "ListWorkerConfigurationsResponse" });
   }
 }
 function __c18(j: number): any {
@@ -2016,7 +1948,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(864, __c27, 0),
+          tags: __S(832, __c26, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/tags/{resourceArn}" }),
@@ -2033,9 +1965,7 @@ function __c19(j: number): any {
 function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TagResourceResponse" });
   }
 }
 function __c21(j: number): any {
@@ -2066,27 +1996,23 @@ function __c22(j: number): any {
           maxWorkerCount: S.Number,
           mcuCount: S.Number,
           minWorkerCount: S.Number,
-          scaleInPolicy: __S(832, __c26, 0),
-          scaleOutPolicy: __S(832, __c26, 0),
+          scaleInPolicy: __S(800, __c25, 0),
+          scaleOutPolicy: __S(800, __c25, 0),
           maxAutoscalingTaskCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AutoScalingUpdate" });
     case 1:
-      return S.suspend(() => S.Struct({ mcuCount: S.Number, workerCount: S.Number })).annotate({
-        identifier: "ProvisionedCapacityUpdate",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           autoScaling: S.optional(__S(704, __c22, 0)),
-          provisionedCapacity: S.optional(__S(705, __c22, 1)),
+          provisionedCapacity: S.optional(__S(801, __c25, 1)),
         }),
       ).annotate({ identifier: "CapacityUpdate" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          capacity: S.optional(__S(706, __c22, 2)),
-          connectorConfiguration: S.optional(__S(768, __c24, 0)),
+          capacity: S.optional(__S(705, __c22, 1)),
+          connectorConfiguration: S.optional(__S(832, __c26, 0)),
           connectorArn: S.String.pipe(T.HttpLabel("connectorArn")),
           currentVersion: S.String.pipe(T.HttpQuery("currentVersion")),
         }).pipe(
@@ -2100,7 +2026,7 @@ function __c22(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateConnectorRequest" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           connectorArn: S.optional(S.String),
@@ -2118,53 +2044,47 @@ function __c23(j: number): any {
           maxWorkerCount: S.Number,
           mcuCount: S.Number,
           minWorkerCount: S.Number,
-          scaleInPolicy: S.optional(__S(832, __c26, 0)),
-          scaleOutPolicy: S.optional(__S(832, __c26, 0)),
+          scaleInPolicy: S.optional(__S(800, __c25, 0)),
+          scaleOutPolicy: S.optional(__S(800, __c25, 0)),
           maxAutoscalingTaskCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AutoScaling" });
     case 1:
-      return S.suspend(() => S.Struct({ mcuCount: S.Number, workerCount: S.Number })).annotate({
-        identifier: "ProvisionedCapacity",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           autoScaling: S.optional(__S(736, __c23, 0)),
-          provisionedCapacity: S.optional(__S(737, __c23, 1)),
+          provisionedCapacity: S.optional(__S(801, __c25, 1)),
         }),
       ).annotate({ identifier: "Capacity" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({ securityGroups: S.optional(__listOf__string), subnets: __listOf__string }),
       ).annotate({ identifier: "Vpc" });
-    case 4:
+    case 3:
       return S.suspend(() =>
-        S.Struct({ bootstrapServers: S.String, vpc: __S(739, __c23, 3) }),
+        S.Struct({ bootstrapServers: S.String, vpc: __S(738, __c23, 2) }),
       ).annotate({ identifier: "ApacheKafkaCluster" });
-    case 5:
-      return S.suspend(() => S.Struct({ apacheKafkaCluster: __S(740, __c23, 4) })).annotate({
+    case 4:
+      return S.suspend(() => S.Struct({ apacheKafkaCluster: __S(739, __c23, 3) })).annotate({
         identifier: "KafkaCluster",
       });
-    case 6:
+    case 5:
       return S.suspend(() => S.Struct({ authenticationType: S.String })).annotate({
         identifier: "KafkaClusterClientAuthentication",
       });
-    case 7:
+    case 6:
       return S.suspend(() => S.Struct({ encryptionType: S.String })).annotate({
         identifier: "KafkaClusterEncryptionInTransit",
       });
-    case 8:
+    case 7:
       return S.suspend(() =>
         S.Struct({ enabled: S.Boolean, logGroup: S.optional(S.String) }),
-      ).annotate({
-        identifier: "CloudWatchLogsLogDelivery",
-      });
-    case 9:
+      ).annotate({ identifier: "CloudWatchLogsLogDelivery" });
+    case 8:
       return S.suspend(() =>
         S.Struct({ deliveryStream: S.optional(S.String), enabled: S.Boolean }),
       ).annotate({ identifier: "FirehoseLogDelivery" });
-    case 10:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           bucket: S.optional(S.String),
@@ -2172,54 +2092,54 @@ function __c23(j: number): any {
           prefix: S.optional(S.String),
         }),
       ).annotate({ identifier: "S3LogDelivery" });
-    case 11:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          cloudWatchLogs: S.optional(__S(744, __c23, 8)),
-          firehose: S.optional(__S(745, __c23, 9)),
-          s3: S.optional(__S(746, __c23, 10)),
+          cloudWatchLogs: S.optional(__S(743, __c23, 7)),
+          firehose: S.optional(__S(744, __c23, 8)),
+          s3: S.optional(__S(745, __c23, 9)),
         }),
       ).annotate({ identifier: "WorkerLogDelivery" });
-    case 12:
-      return S.suspend(() => S.Struct({ workerLogDelivery: __S(747, __c23, 11) })).annotate({
+    case 11:
+      return S.suspend(() => S.Struct({ workerLogDelivery: __S(746, __c23, 10) })).annotate({
         identifier: "LogDelivery",
       });
-    case 13:
+    case 12:
       return S.suspend(() => S.Struct({ customPluginArn: S.String, revision: S.Number })).annotate({
         identifier: "CustomPlugin",
       });
-    case 14:
-      return S.suspend(() => S.Struct({ customPlugin: __S(749, __c23, 13) })).annotate({
+    case 13:
+      return S.suspend(() => S.Struct({ customPlugin: __S(748, __c23, 12) })).annotate({
         identifier: "Plugin",
       });
+    case 14:
+      return S.Array(__S(749, __c23, 13));
     case 15:
-      return S.Array(__S(750, __c23, 14));
-    case 16:
       return S.suspend(() =>
         S.Struct({ revision: S.Number, workerConfigurationArn: S.String }),
       ).annotate({ identifier: "WorkerConfiguration" });
-    case 17:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          capacity: __S(738, __c23, 2),
-          connectorConfiguration: __S(768, __c24, 0),
+          capacity: __S(737, __c23, 1),
+          connectorConfiguration: __S(832, __c26, 0),
           connectorDescription: S.optional(S.String),
           connectorName: S.String,
-          kafkaCluster: __S(741, __c23, 5),
-          kafkaClusterClientAuthentication: __S(742, __c23, 6),
-          kafkaClusterEncryptionInTransit: __S(743, __c23, 7),
+          kafkaCluster: __S(740, __c23, 4),
+          kafkaClusterClientAuthentication: __S(741, __c23, 5),
+          kafkaClusterEncryptionInTransit: __S(742, __c23, 6),
           kafkaConnectVersion: S.String,
-          logDelivery: S.optional(__S(748, __c23, 12)),
+          logDelivery: S.optional(__S(747, __c23, 11)),
           networkType: S.optional(S.String),
           plugins: __listOfPlugin,
           serviceExecutionRoleArn: S.String,
-          workerConfiguration: S.optional(__S(752, __c23, 16)),
-          tags: S.optional(__S(864, __c27, 0)),
+          workerConfiguration: S.optional(__S(751, __c23, 15)),
+          tags: S.optional(__S(832, __c26, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/v1/connectors" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateConnectorRequest" });
-    case 18:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           connectorArn: S.optional(S.String),
@@ -2232,37 +2152,35 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+      return S.Array(S.String);
   }
 }
 function __c25(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.suspend(() => S.Struct({ cpuUtilizationPercentage: S.Number })).annotate({
+        identifier: "ScaleInPolicy",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ mcuCount: S.Number, workerCount: S.Number })).annotate({
+        identifier: "ProvisionedCapacity",
+      });
   }
 }
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ cpuUtilizationPercentage: S.Number })).annotate({
-        identifier: "ScaleInPolicy",
-      });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c28(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ bucketArn: S.String, fileKey: S.String, objectVersion: S.optional(S.String) }),
       ).annotate({ identifier: "S3Location" });
     case 1:
-      return S.suspend(() => S.Struct({ s3Location: __S(896, __c28, 0) })).annotate({
+      return S.suspend(() => S.Struct({ s3Location: __S(864, __c27, 0) })).annotate({
         identifier: "CustomPluginLocation",
       });
     case 2:
@@ -2270,9 +2188,9 @@ function __c28(j: number): any {
         S.Struct({
           contentType: S.String,
           description: S.optional(S.String),
-          location: __S(897, __c28, 1),
+          location: __S(865, __c27, 1),
           name: S.String,
-          tags: S.optional(__S(864, __c27, 0)),
+          tags: S.optional(__S(832, __c26, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/custom-plugins" }),
@@ -2283,9 +2201,7 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateCustomPluginRequest",
-      });
+      ).annotate({ identifier: "CreateCustomPluginRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2294,9 +2210,7 @@ function __c28(j: number): any {
           name: S.optional(S.String),
           revision: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "CreateCustomPluginResponse",
-      });
+      ).annotate({ identifier: "CreateCustomPluginResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

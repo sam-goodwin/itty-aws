@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -934,8 +934,8 @@ export const addPolicyStatement: API.OperationMethod<
   AddPolicyStatementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c46, 0) as any as S.Schema<AddPolicyStatementInput>,
-  output: __S(752, __c47, 0) as any as S.Schema<AddPolicyStatementOutput>,
+  input: __S(720, __c45, 0) as any as S.Schema<AddPolicyStatementInput>,
+  output: __S(736, __c46, 0) as any as S.Schema<AddPolicyStatementOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -963,8 +963,8 @@ export const batchDeleteUniqueId: API.OperationMethod<
   BatchDeleteUniqueIdError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(784, __c49, 0) as any as S.Schema<BatchDeleteUniqueIdInput>,
-  output: __S(789, __c49, 5) as any as S.Schema<BatchDeleteUniqueIdOutput>,
+  input: __S(768, __c48, 0) as any as S.Schema<BatchDeleteUniqueIdInput>,
+  output: __S(773, __c48, 5) as any as S.Schema<BatchDeleteUniqueIdOutput>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -990,8 +990,8 @@ export const createIdMappingWorkflow: API.OperationMethod<
   CreateIdMappingWorkflowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c50, 0) as any as S.Schema<CreateIdMappingWorkflowInput>,
-  output: __S(880, __c55, 0) as any as S.Schema<CreateIdMappingWorkflowOutput>,
+  input: __S(784, __c49, 0) as any as S.Schema<CreateIdMappingWorkflowInput>,
+  output: __S(864, __c54, 0) as any as S.Schema<CreateIdMappingWorkflowOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1153,7 +1153,7 @@ export const deleteIdNamespace: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(160, __c10, 0) as any as S.Schema<DeleteIdNamespaceInput>,
-  output: __S(161, __c10, 1) as any as S.Schema<DeleteIdNamespaceOutput>,
+  output: __S(144, __c9, 0) as any as S.Schema<DeleteIdNamespaceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1217,7 +1217,7 @@ export const deletePolicyStatement: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(192, __c12, 0) as any as S.Schema<DeletePolicyStatementInput>,
-  output: __S(193, __c12, 1) as any as S.Schema<DeletePolicyStatementOutput>,
+  output: __S(736, __c46, 0) as any as S.Schema<DeletePolicyStatementOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1311,8 +1311,8 @@ export const getIdMappingJob: API.OperationMethod<
   GetIdMappingJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c16, 0) as any as S.Schema<GetIdMappingJobInput>,
-  output: __S(258, __c16, 2) as any as S.Schema<GetIdMappingJobOutput>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetIdMappingJobInput>,
+  output: __S(242, __c15, 2) as any as S.Schema<GetIdMappingJobOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1341,8 +1341,8 @@ export const getIdMappingWorkflow: API.OperationMethod<
   GetIdMappingWorkflowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c19, 0) as any as S.Schema<GetIdMappingWorkflowInput>,
-  output: __S(305, __c19, 1) as any as S.Schema<GetIdMappingWorkflowOutput>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetIdMappingWorkflowInput>,
+  output: __S(289, __c18, 1) as any as S.Schema<GetIdMappingWorkflowOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1371,7 +1371,7 @@ export const getIdNamespace: API.OperationMethod<
   GetIdNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c20, 0) as any as S.Schema<GetIdNamespaceInput>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetIdNamespaceInput>,
   output: __S(16, __c1, 0) as any as S.Schema<GetIdNamespaceOutput>,
   errors: [
     AccessDeniedException,
@@ -1403,8 +1403,8 @@ export const getMatchId: API.OperationMethod<
   GetMatchIdError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<GetMatchIdInput>,
-  output: __S(337, __c21, 1) as any as S.Schema<GetMatchIdOutput>,
+  input: __S(320, __c20, 0) as any as S.Schema<GetMatchIdInput>,
+  output: __S(321, __c20, 1) as any as S.Schema<GetMatchIdOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1433,8 +1433,8 @@ export const getMatchingJob: API.OperationMethod<
   GetMatchingJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c22, 0) as any as S.Schema<GetMatchingJobInput>,
-  output: __S(354, __c22, 2) as any as S.Schema<GetMatchingJobOutput>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetMatchingJobInput>,
+  output: __S(338, __c21, 2) as any as S.Schema<GetMatchingJobOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1463,8 +1463,8 @@ export const getMatchingWorkflow: API.OperationMethod<
   GetMatchingWorkflowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c23, 0) as any as S.Schema<GetMatchingWorkflowInput>,
-  output: __S(369, __c23, 1) as any as S.Schema<GetMatchingWorkflowOutput>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetMatchingWorkflowInput>,
+  output: __S(353, __c22, 1) as any as S.Schema<GetMatchingWorkflowOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1493,8 +1493,8 @@ export const getPolicy: API.OperationMethod<
   GetPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<GetPolicyInput>,
-  output: __S(752, __c47, 0) as any as S.Schema<GetPolicyOutput>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetPolicyInput>,
+  output: __S(736, __c46, 0) as any as S.Schema<GetPolicyOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1523,8 +1523,8 @@ export const getProviderService: API.OperationMethod<
   GetProviderServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c25, 0) as any as S.Schema<GetProviderServiceInput>,
-  output: __S(409, __c25, 9) as any as S.Schema<GetProviderServiceOutput>,
+  input: __S(384, __c24, 0) as any as S.Schema<GetProviderServiceInput>,
+  output: __S(393, __c24, 9) as any as S.Schema<GetProviderServiceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1553,8 +1553,8 @@ export const getSchemaMapping: API.OperationMethod<
   GetSchemaMappingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c26, 0) as any as S.Schema<GetSchemaMappingInput>,
-  output: __S(417, __c26, 1) as any as S.Schema<GetSchemaMappingOutput>,
+  input: __S(400, __c25, 0) as any as S.Schema<GetSchemaMappingInput>,
+  output: __S(401, __c25, 1) as any as S.Schema<GetSchemaMappingOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1584,8 +1584,8 @@ export const listIdMappingJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   JobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(432, __c27, 0) as any as S.Schema<ListIdMappingJobsInput>,
-  output: __S(450, __c28, 2) as any as S.Schema<ListIdMappingJobsOutput>,
+  input: __S(416, __c26, 0) as any as S.Schema<ListIdMappingJobsInput>,
+  output: __S(434, __c27, 2) as any as S.Schema<ListIdMappingJobsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1620,8 +1620,8 @@ export const listIdMappingWorkflows: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   IdMappingWorkflowSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(464, __c29, 0) as any as S.Schema<ListIdMappingWorkflowsInput>,
-  output: __S(467, __c29, 3) as any as S.Schema<ListIdMappingWorkflowsOutput>,
+  input: __S(448, __c28, 0) as any as S.Schema<ListIdMappingWorkflowsInput>,
+  output: __S(451, __c28, 3) as any as S.Schema<ListIdMappingWorkflowsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1655,8 +1655,8 @@ export const listIdNamespaces: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   IdNamespaceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<ListIdNamespacesInput>,
-  output: __S(485, __c30, 5) as any as S.Schema<ListIdNamespacesOutput>,
+  input: __S(464, __c29, 0) as any as S.Schema<ListIdNamespacesInput>,
+  output: __S(469, __c29, 5) as any as S.Schema<ListIdNamespacesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1691,8 +1691,8 @@ export const listMatchingJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   JobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<ListMatchingJobsInput>,
-  output: __S(450, __c28, 2) as any as S.Schema<ListMatchingJobsOutput>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListMatchingJobsInput>,
+  output: __S(434, __c27, 2) as any as S.Schema<ListMatchingJobsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1727,8 +1727,8 @@ export const listMatchingWorkflows: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MatchingWorkflowSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(512, __c32, 0) as any as S.Schema<ListMatchingWorkflowsInput>,
-  output: __S(515, __c32, 3) as any as S.Schema<ListMatchingWorkflowsOutput>,
+  input: __S(496, __c31, 0) as any as S.Schema<ListMatchingWorkflowsInput>,
+  output: __S(499, __c31, 3) as any as S.Schema<ListMatchingWorkflowsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1762,8 +1762,8 @@ export const listProviderServices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProviderServiceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(528, __c33, 0) as any as S.Schema<ListProviderServicesInput>,
-  output: __S(531, __c33, 3) as any as S.Schema<ListProviderServicesOutput>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListProviderServicesInput>,
+  output: __S(515, __c32, 3) as any as S.Schema<ListProviderServicesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1797,8 +1797,8 @@ export const listSchemaMappings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SchemaMappingSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(544, __c34, 0) as any as S.Schema<ListSchemaMappingsInput>,
-  output: __S(547, __c34, 3) as any as S.Schema<ListSchemaMappingsOutput>,
+  input: __S(528, __c33, 0) as any as S.Schema<ListSchemaMappingsInput>,
+  output: __S(531, __c33, 3) as any as S.Schema<ListSchemaMappingsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1830,8 +1830,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(560, __c35, 0) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(561, __c35, 1) as any as S.Schema<ListTagsForResourceOutput>,
+  input: __S(544, __c34, 0) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(545, __c34, 1) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1855,8 +1855,8 @@ export const putPolicy: API.OperationMethod<
   PutPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c36, 0) as any as S.Schema<PutPolicyInput>,
-  output: __S(752, __c47, 0) as any as S.Schema<PutPolicyOutput>,
+  input: __S(560, __c35, 0) as any as S.Schema<PutPolicyInput>,
+  output: __S(736, __c46, 0) as any as S.Schema<PutPolicyOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1888,8 +1888,8 @@ export const startIdMappingJob: API.OperationMethod<
   StartIdMappingJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c37, 0) as any as S.Schema<StartIdMappingJobInput>,
-  output: __S(593, __c37, 1) as any as S.Schema<StartIdMappingJobOutput>,
+  input: __S(576, __c36, 0) as any as S.Schema<StartIdMappingJobInput>,
+  output: __S(577, __c36, 1) as any as S.Schema<StartIdMappingJobOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1922,8 +1922,8 @@ export const startMatchingJob: API.OperationMethod<
   StartMatchingJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c38, 0) as any as S.Schema<StartMatchingJobInput>,
-  output: __S(609, __c38, 1) as any as S.Schema<StartMatchingJobOutput>,
+  input: __S(592, __c37, 0) as any as S.Schema<StartMatchingJobInput>,
+  output: __S(593, __c37, 1) as any as S.Schema<StartMatchingJobOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1952,8 +1952,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c39, 0) as any as S.Schema<TagResourceInput>,
-  output: __S(640, __c40, 0) as any as S.Schema<TagResourceOutput>,
+  input: __S(608, __c38, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(624, __c39, 0) as any as S.Schema<TagResourceOutput>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1970,8 +1970,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656, __c41, 0) as any as S.Schema<UntagResourceInput>,
-  output: __S(640, __c40, 0) as any as S.Schema<UntagResourceOutput>,
+  input: __S(640, __c40, 0) as any as S.Schema<UntagResourceInput>,
+  output: __S(624, __c39, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1996,8 +1996,8 @@ export const updateIdMappingWorkflow: API.OperationMethod<
   UpdateIdMappingWorkflowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c42, 0) as any as S.Schema<UpdateIdMappingWorkflowInput>,
-  output: __S(880, __c55, 0) as any as S.Schema<UpdateIdMappingWorkflowOutput>,
+  input: __S(656, __c41, 0) as any as S.Schema<UpdateIdMappingWorkflowInput>,
+  output: __S(864, __c54, 0) as any as S.Schema<UpdateIdMappingWorkflowOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2026,8 +2026,8 @@ export const updateIdNamespace: API.OperationMethod<
   UpdateIdNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(688, __c43, 0) as any as S.Schema<UpdateIdNamespaceInput>,
-  output: __S(689, __c43, 1) as any as S.Schema<UpdateIdNamespaceOutput>,
+  input: __S(672, __c42, 0) as any as S.Schema<UpdateIdNamespaceInput>,
+  output: __S(673, __c42, 1) as any as S.Schema<UpdateIdNamespaceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2058,8 +2058,8 @@ export const updateMatchingWorkflow: API.OperationMethod<
   UpdateMatchingWorkflowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c44, 0) as any as S.Schema<UpdateMatchingWorkflowInput>,
-  output: __S(705, __c44, 1) as any as S.Schema<UpdateMatchingWorkflowOutput>,
+  input: __S(688, __c43, 0) as any as S.Schema<UpdateMatchingWorkflowInput>,
+  output: __S(689, __c43, 1) as any as S.Schema<UpdateMatchingWorkflowOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2091,7 +2091,7 @@ export const updateSchemaMapping: API.OperationMethod<
   UpdateSchemaMappingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(720, __c45, 0) as any as S.Schema<UpdateSchemaMappingInput>,
+  input: __S(704, __c44, 0) as any as S.Schema<UpdateSchemaMappingInput>,
   output: __S(112, __c7, 0) as any as S.Schema<UpdateSchemaMappingOutput>,
   errors: [
     AccessDeniedException,
@@ -2115,10 +2115,10 @@ function __c0(j: number): any {
           idNamespaceName: S.String,
           description: S.optional(S.String),
           inputSourceConfig: S.optional(__S(33, __c2, 1)),
-          idMappingWorkflowProperties: S.optional(__S(39, __c2, 7)),
+          idMappingWorkflowProperties: S.optional(__S(38, __c2, 6)),
           type: S.String,
           roleArn: S.optional(S.String),
-          tags: S.optional(__S(816, __c51, 0)),
+          tags: S.optional(__S(800, __c50, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/idnamespaces" }), svc, auth, proto, ver, rules),
         ),
@@ -2134,12 +2134,12 @@ function __c1(j: number): any {
           idNamespaceArn: S.String,
           description: S.optional(S.String),
           inputSourceConfig: S.optional(__S(33, __c2, 1)),
-          idMappingWorkflowProperties: S.optional(__S(39, __c2, 7)),
+          idMappingWorkflowProperties: S.optional(__S(38, __c2, 6)),
           type: S.String,
           roleArn: S.optional(S.String),
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          tags: S.optional(__S(816, __c51, 0)),
+          tags: S.optional(__S(800, __c50, 0)),
         }),
       ).annotate({ identifier: "CreateIdNamespaceOutput" });
   }
@@ -2155,36 +2155,28 @@ function __c2(j: number): any {
     case 2:
       return S.Array(S.String);
     case 3:
-      return S.Array(S.String);
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(__S(833, __c52, 1)),
+          rules: S.optional(__S(817, __c51, 1)),
           ruleDefinitionTypes: S.optional(__S(34, __c2, 2)),
           attributeMatchingModel: S.optional(S.String),
-          recordMatchingModels: S.optional(__S(35, __c2, 3)),
+          recordMatchingModels: S.optional(__S(34, __c2, 2)),
         }),
-      ).annotate({
-        identifier: "NamespaceRuleBasedProperties",
-      });
-    case 5:
+      ).annotate({ identifier: "NamespaceRuleBasedProperties" });
+    case 4:
       return S.suspend(() =>
         S.Struct({ providerServiceArn: S.String, providerConfiguration: S.optional(S.Any) }),
-      ).annotate({
-        identifier: "NamespaceProviderProperties",
-      });
-    case 6:
+      ).annotate({ identifier: "NamespaceProviderProperties" });
+    case 5:
       return S.suspend(() =>
         S.Struct({
           idMappingType: S.String,
-          ruleBasedProperties: S.optional(__S(36, __c2, 4)),
-          providerProperties: S.optional(__S(37, __c2, 5)),
+          ruleBasedProperties: S.optional(__S(35, __c2, 3)),
+          providerProperties: S.optional(__S(36, __c2, 4)),
         }),
-      ).annotate({
-        identifier: "IdNamespaceIdMappingWorkflowProperties",
-      });
-    case 7:
-      return S.Array(__S(38, __c2, 6));
+      ).annotate({ identifier: "IdNamespaceIdMappingWorkflowProperties" });
+    case 6:
+      return S.Array(__S(37, __c2, 5));
   }
 }
 function __c3(j: number): any {
@@ -2197,9 +2189,9 @@ function __c3(j: number): any {
           inputSourceConfig: __S(65, __c4, 1),
           outputSourceConfig: __S(70, __c4, 6),
           resolutionTechniques: __S(76, __c4, 12),
-          incrementalRunConfig: S.optional(__S(77, __c4, 13)),
+          incrementalRunConfig: S.optional(__S(834, __c52, 2)),
           roleArn: S.String,
-          tags: S.optional(__S(816, __c51, 0)),
+          tags: S.optional(__S(800, __c50, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/matchingworkflows" }),
@@ -2210,9 +2202,7 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateMatchingWorkflowInput",
-      });
+      ).annotate({ identifier: "CreateMatchingWorkflowInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2222,12 +2212,10 @@ function __c3(j: number): any {
           inputSourceConfig: __S(65, __c4, 1),
           outputSourceConfig: __S(70, __c4, 6),
           resolutionTechniques: __S(76, __c4, 12),
-          incrementalRunConfig: S.optional(__S(77, __c4, 13)),
+          incrementalRunConfig: S.optional(__S(834, __c52, 2)),
           roleArn: S.String,
         }),
-      ).annotate({
-        identifier: "CreateMatchingWorkflowOutput",
-      });
+      ).annotate({ identifier: "CreateMatchingWorkflowOutput" });
   }
 }
 function __c4(j: number): any {
@@ -2267,7 +2255,7 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          rules: __S(833, __c52, 1),
+          rules: __S(817, __c51, 1),
           attributeMatchingModel: S.String,
           matchPurpose: S.optional(S.String),
         }),
@@ -2293,13 +2281,9 @@ function __c4(j: number): any {
           ruleBasedProperties: S.optional(__S(71, __c4, 7)),
           ruleConditionProperties: S.optional(__S(75, __c4, 11)),
           enableRealTimeMatching: S.optional(S.Boolean),
-          providerProperties: S.optional(__S(849, __c53, 1)),
+          providerProperties: S.optional(__S(833, __c52, 1)),
         }),
       ).annotate({ identifier: "ResolutionTechniques" });
-    case 13:
-      return S.suspend(() => S.Struct({ incrementalRunType: S.optional(S.String) })).annotate({
-        identifier: "IncrementalRunConfig",
-      });
   }
 }
 function __c5(j: number): any {
@@ -2310,7 +2294,7 @@ function __c5(j: number): any {
           schemaName: S.String,
           description: S.optional(S.String),
           mappedInputFields: __S(97, __c6, 1),
-          tags: S.optional(__S(816, __c51, 0)),
+          tags: S.optional(__S(800, __c50, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/schemas" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateSchemaMappingInput" });
   }
@@ -2342,9 +2326,7 @@ function __c7(j: number): any {
           description: S.optional(S.String),
           mappedInputFields: __S(97, __c6, 1),
         }),
-      ).annotate({
-        identifier: "CreateSchemaMappingOutput",
-      });
+      ).annotate({ identifier: "CreateSchemaMappingOutput" });
   }
 }
 function __c8(j: number): any {
@@ -2361,9 +2343,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteIdMappingWorkflowInput",
-      });
+      ).annotate({ identifier: "DeleteIdMappingWorkflowInput" });
   }
 }
 function __c9(j: number): any {
@@ -2389,10 +2369,6 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteIdNamespaceInput" });
-    case 1:
-      return S.suspend(() => S.Struct({ message: S.String })).annotate({
-        identifier: "DeleteIdNamespaceOutput",
-      });
   }
 }
 function __c11(j: number): any {
@@ -2409,9 +2385,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteMatchingWorkflowInput",
-      });
+      ).annotate({ identifier: "DeleteMatchingWorkflowInput" });
   }
 }
 function __c12(j: number): any {
@@ -2431,15 +2405,7 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeletePolicyStatementInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ arn: S.String, token: S.String, policy: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DeletePolicyStatementOutput",
-      });
+      ).annotate({ identifier: "DeletePolicyStatementInput" });
   }
 }
 function __c13(j: number): any {
@@ -2466,7 +2432,7 @@ function __c14(j: number): any {
         S.Struct({
           inputSourceARN: S.String,
           uniqueId: S.String,
-          recordAttributeMap: __S(240, __c15, 0),
+          recordAttributeMap: __S(800, __c50, 0),
         }),
       ).annotate({ identifier: "Record" });
     case 1:
@@ -2515,12 +2481,6 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           workflowName: S.String.pipe(T.HttpLabel("workflowName")),
@@ -2563,15 +2523,15 @@ function __c16(j: number): any {
           status: S.String,
           startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          metrics: S.optional(__S(257, __c16, 1)),
-          errorDetails: S.optional(__S(272, __c17, 0)),
-          outputSourceConfig: S.optional(__S(289, __c18, 1)),
+          metrics: S.optional(__S(241, __c15, 1)),
+          errorDetails: S.optional(__S(256, __c16, 0)),
+          outputSourceConfig: S.optional(__S(273, __c17, 1)),
           jobType: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetIdMappingJobOutput" });
   }
 }
-function __c17(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ errorMessage: S.optional(S.String) })).annotate({
@@ -2579,17 +2539,17 @@ function __c17(j: number): any {
       });
   }
 }
-function __c18(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ roleArn: S.String, outputS3Path: S.String, KMSArn: S.optional(S.String) }),
       ).annotate({ identifier: "IdMappingJobOutputSource" });
     case 1:
-      return S.Array(__S(288, __c18, 0));
+      return S.Array(__S(272, __c17, 0));
   }
 }
-function __c19(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2603,30 +2563,26 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetIdMappingWorkflowInput",
-      });
+      ).annotate({ identifier: "GetIdMappingWorkflowInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           workflowName: S.String,
           workflowArn: S.String,
           description: S.optional(S.String),
-          inputSourceConfig: __S(865, __c54, 1),
-          outputSourceConfig: S.optional(__S(867, __c54, 3)),
-          idMappingTechniques: __S(869, __c54, 5),
+          inputSourceConfig: __S(849, __c53, 1),
+          outputSourceConfig: S.optional(__S(851, __c53, 3)),
+          idMappingTechniques: __S(853, __c53, 5),
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          incrementalRunConfig: S.optional(__S(870, __c54, 6)),
+          incrementalRunConfig: S.optional(__S(834, __c52, 2)),
           roleArn: S.optional(S.String),
-          tags: S.optional(__S(816, __c51, 0)),
+          tags: S.optional(__S(800, __c50, 0)),
         }),
-      ).annotate({
-        identifier: "GetIdMappingWorkflowOutput",
-      });
+      ).annotate({ identifier: "GetIdMappingWorkflowOutput" });
   }
 }
-function __c20(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2643,13 +2599,13 @@ function __c20(j: number): any {
       ).annotate({ identifier: "GetIdNamespaceInput" });
   }
 }
-function __c21(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           workflowName: S.String.pipe(T.HttpLabel("workflowName")),
-          record: __S(240, __c15, 0),
+          record: __S(800, __c50, 0),
           applyNormalization: S.optional(S.Boolean),
         }).pipe(
           T.all(
@@ -2668,7 +2624,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "GetMatchIdOutput" });
   }
 }
-function __c22(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2703,14 +2659,14 @@ function __c22(j: number): any {
           status: S.String,
           startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          metrics: S.optional(__S(353, __c22, 1)),
-          errorDetails: S.optional(__S(272, __c17, 0)),
-          outputSourceConfig: S.optional(__S(289, __c18, 1)),
+          metrics: S.optional(__S(337, __c21, 1)),
+          errorDetails: S.optional(__S(256, __c16, 0)),
+          outputSourceConfig: S.optional(__S(273, __c17, 1)),
         }),
       ).annotate({ identifier: "GetMatchingJobOutput" });
   }
 }
-function __c23(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2736,16 +2692,14 @@ function __c23(j: number): any {
           resolutionTechniques: __S(76, __c4, 12),
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          incrementalRunConfig: S.optional(__S(77, __c4, 13)),
+          incrementalRunConfig: S.optional(__S(834, __c52, 2)),
           roleArn: S.String,
-          tags: S.optional(__S(816, __c51, 0)),
+          tags: S.optional(__S(800, __c50, 0)),
         }),
-      ).annotate({
-        identifier: "GetMatchingWorkflowOutput",
-      });
+      ).annotate({ identifier: "GetMatchingWorkflowOutput" });
   }
 }
-function __c24(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2755,7 +2709,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "GetPolicyInput" });
   }
 }
-function __c25(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2783,9 +2737,7 @@ function __c25(j: number): any {
           providerTargetConfigurationDefinition: S.optional(S.Any),
           providerSourceConfigurationDefinition: S.optional(S.Any),
         }),
-      ).annotate({
-        identifier: "ProviderIdNameSpaceConfiguration",
-      });
+      ).annotate({ identifier: "ProviderIdNameSpaceConfiguration" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2794,22 +2746,18 @@ function __c25(j: number): any {
           assetId: S.String,
           listingId: S.String,
         }),
-      ).annotate({
-        identifier: "ProviderMarketplaceConfiguration",
-      });
+      ).annotate({ identifier: "ProviderMarketplaceConfiguration" });
     case 3:
-      return S.Union([/*@__PURE__*/ S.Struct({ marketplaceConfiguration: __S(402, __c25, 2) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ marketplaceConfiguration: __S(386, __c24, 2) })]);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          awsAccountIds: S.optional(__S(768, __c48, 0)),
-          requiredBucketActions: S.optional(__S(768, __c48, 0)),
+          awsAccountIds: S.optional(__S(752, __c47, 0)),
+          requiredBucketActions: S.optional(__S(752, __c47, 0)),
         }),
-      ).annotate({
-        identifier: "ProviderIntermediateDataAccessConfiguration",
-      });
+      ).annotate({ identifier: "ProviderIntermediateDataAccessConfiguration" });
     case 5:
-      return S.Array(__S(768, __c48, 0));
+      return S.Array(__S(752, __c47, 0));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2820,12 +2768,12 @@ function __c25(j: number): any {
         }),
       ).annotate({ identifier: "ProviderSchemaAttribute" });
     case 7:
-      return S.Array(__S(406, __c25, 6));
+      return S.Array(__S(390, __c24, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
-          schemas: S.optional(__S(405, __c25, 5)),
-          providerSchemaAttributes: S.optional(__S(407, __c25, 7)),
+          schemas: S.optional(__S(389, __c24, 5)),
+          providerSchemaAttributes: S.optional(__S(391, __c24, 7)),
         }),
       ).annotate({ identifier: "ProviderComponentSchema" });
     case 9:
@@ -2837,18 +2785,18 @@ function __c25(j: number): any {
           providerServiceType: S.String,
           providerServiceArn: S.String,
           providerConfigurationDefinition: S.optional(S.Any),
-          providerIdNameSpaceConfiguration: S.optional(__S(401, __c25, 1)),
+          providerIdNameSpaceConfiguration: S.optional(__S(385, __c24, 1)),
           providerJobConfiguration: S.optional(S.Any),
-          providerEndpointConfiguration: __S(403, __c25, 3),
+          providerEndpointConfiguration: __S(387, __c24, 3),
           anonymizedOutput: S.Boolean,
           providerEntityOutputDefinition: S.Any,
-          providerIntermediateDataAccessConfiguration: S.optional(__S(404, __c25, 4)),
-          providerComponentSchema: S.optional(__S(408, __c25, 8)),
+          providerIntermediateDataAccessConfiguration: S.optional(__S(388, __c24, 4)),
+          providerComponentSchema: S.optional(__S(392, __c24, 8)),
         }),
       ).annotate({ identifier: "GetProviderServiceOutput" });
   }
 }
-function __c26(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2872,13 +2820,13 @@ function __c26(j: number): any {
           mappedInputFields: __S(97, __c6, 1),
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          tags: S.optional(__S(816, __c51, 0)),
+          tags: S.optional(__S(800, __c50, 0)),
           hasWorkflows: S.Boolean,
         }),
       ).annotate({ identifier: "GetSchemaMappingOutput" });
   }
 }
-function __c27(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2899,7 +2847,7 @@ function __c27(j: number): any {
       ).annotate({ identifier: "ListIdMappingJobsInput" });
   }
 }
-function __c28(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2911,14 +2859,14 @@ function __c28(j: number): any {
         }),
       ).annotate({ identifier: "JobSummary" });
     case 1:
-      return S.Array(__S(448, __c28, 0));
+      return S.Array(__S(432, __c27, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ jobs: S.optional(__S(449, __c28, 1)), nextToken: S.optional(S.String) }),
+        S.Struct({ jobs: S.optional(__S(433, __c27, 1)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListIdMappingJobsOutput" });
   }
 }
-function __c29(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2935,9 +2883,7 @@ function __c29(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListIdMappingWorkflowsInput",
-      });
+      ).annotate({ identifier: "ListIdMappingWorkflowsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2948,19 +2894,17 @@ function __c29(j: number): any {
         }),
       ).annotate({ identifier: "IdMappingWorkflowSummary" });
     case 2:
-      return S.Array(__S(465, __c29, 1));
+      return S.Array(__S(449, __c28, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          workflowSummaries: S.optional(__S(466, __c29, 2)),
+          workflowSummaries: S.optional(__S(450, __c28, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListIdMappingWorkflowsOutput",
-      });
+      ).annotate({ identifier: "ListIdMappingWorkflowsOutput" });
   }
 }
-function __c30(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2976,31 +2920,31 @@ function __c30(j: number): any {
         identifier: "IdNamespaceIdMappingWorkflowMetadata",
       });
     case 2:
-      return S.Array(__S(481, __c30, 1));
+      return S.Array(__S(465, __c29, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           idNamespaceName: S.String,
           idNamespaceArn: S.String,
           description: S.optional(S.String),
-          idMappingWorkflowProperties: S.optional(__S(482, __c30, 2)),
+          idMappingWorkflowProperties: S.optional(__S(466, __c29, 2)),
           type: S.String,
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "IdNamespaceSummary" });
     case 4:
-      return S.Array(__S(483, __c30, 3));
+      return S.Array(__S(467, __c29, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          idNamespaceSummaries: S.optional(__S(484, __c30, 4)),
+          idNamespaceSummaries: S.optional(__S(468, __c29, 4)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListIdNamespacesOutput" });
   }
 }
-function __c31(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3021,7 +2965,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "ListMatchingJobsInput" });
   }
 }
-function __c32(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3031,9 +2975,7 @@ function __c32(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/matchingworkflows" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListMatchingWorkflowsInput",
-      });
+      ).annotate({ identifier: "ListMatchingWorkflowsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3045,19 +2987,17 @@ function __c32(j: number): any {
         }),
       ).annotate({ identifier: "MatchingWorkflowSummary" });
     case 2:
-      return S.Array(__S(513, __c32, 1));
+      return S.Array(__S(497, __c31, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          workflowSummaries: S.optional(__S(514, __c32, 2)),
+          workflowSummaries: S.optional(__S(498, __c31, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListMatchingWorkflowsOutput",
-      });
+      ).annotate({ identifier: "ListMatchingWorkflowsOutput" });
   }
 }
-function __c33(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3068,9 +3008,7 @@ function __c33(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/providerservices" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListProviderServicesInput",
-      });
+      ).annotate({ identifier: "ListProviderServicesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3082,19 +3020,17 @@ function __c33(j: number): any {
         }),
       ).annotate({ identifier: "ProviderServiceSummary" });
     case 2:
-      return S.Array(__S(529, __c33, 1));
+      return S.Array(__S(513, __c32, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          providerServiceSummaries: S.optional(__S(530, __c33, 2)),
+          providerServiceSummaries: S.optional(__S(514, __c32, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListProviderServicesOutput",
-      });
+      ).annotate({ identifier: "ListProviderServicesOutput" });
   }
 }
-function __c34(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3114,14 +3050,14 @@ function __c34(j: number): any {
         }),
       ).annotate({ identifier: "SchemaMappingSummary" });
     case 2:
-      return S.Array(__S(545, __c34, 1));
+      return S.Array(__S(529, __c33, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ schemaList: S.optional(__S(546, __c34, 2)), nextToken: S.optional(S.String) }),
+        S.Struct({ schemaList: S.optional(__S(530, __c33, 2)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListSchemaMappingsOutput" });
   }
 }
-function __c35(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3137,12 +3073,12 @@ function __c35(j: number): any {
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: __S(816, __c51, 0) })).annotate({
+      return S.suspend(() => S.Struct({ tags: __S(800, __c50, 0) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
   }
 }
-function __c36(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3156,13 +3092,13 @@ function __c36(j: number): any {
       ).annotate({ identifier: "PutPolicyInput" });
   }
 }
-function __c37(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           workflowName: S.String.pipe(T.HttpLabel("workflowName")),
-          outputSourceConfig: S.optional(__S(289, __c18, 1)),
+          outputSourceConfig: S.optional(__S(273, __c17, 1)),
           jobType: S.optional(S.String),
         }).pipe(
           T.all(
@@ -3179,13 +3115,13 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           jobId: S.String,
-          outputSourceConfig: S.optional(__S(289, __c18, 1)),
+          outputSourceConfig: S.optional(__S(273, __c17, 1)),
           jobType: S.optional(S.String),
         }),
       ).annotate({ identifier: "StartIdMappingJobOutput" });
   }
 }
-function __c38(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3206,13 +3142,13 @@ function __c38(j: number): any {
       });
   }
 }
-function __c39(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(816, __c51, 0),
+          tags: __S(800, __c50, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -3226,21 +3162,19 @@ function __c39(j: number): any {
       ).annotate({ identifier: "TagResourceInput" });
   }
 }
-function __c40(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceOutput",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TagResourceOutput" });
   }
 }
-function __c41(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(768, __c48, 0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(752, __c47, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -3254,17 +3188,17 @@ function __c41(j: number): any {
       ).annotate({ identifier: "UntagResourceInput" });
   }
 }
-function __c42(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           workflowName: S.String.pipe(T.HttpLabel("workflowName")),
           description: S.optional(S.String),
-          inputSourceConfig: __S(865, __c54, 1),
-          outputSourceConfig: S.optional(__S(867, __c54, 3)),
-          idMappingTechniques: __S(869, __c54, 5),
-          incrementalRunConfig: S.optional(__S(870, __c54, 6)),
+          inputSourceConfig: __S(849, __c53, 1),
+          outputSourceConfig: S.optional(__S(851, __c53, 3)),
+          idMappingTechniques: __S(853, __c53, 5),
+          incrementalRunConfig: S.optional(__S(834, __c52, 2)),
           roleArn: S.optional(S.String),
         }).pipe(
           T.all(
@@ -3276,12 +3210,10 @@ function __c42(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateIdMappingWorkflowInput",
-      });
+      ).annotate({ identifier: "UpdateIdMappingWorkflowInput" });
   }
 }
-function __c43(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3289,7 +3221,7 @@ function __c43(j: number): any {
           idNamespaceName: S.String.pipe(T.HttpLabel("idNamespaceName")),
           description: S.optional(S.String),
           inputSourceConfig: S.optional(__S(33, __c2, 1)),
-          idMappingWorkflowProperties: S.optional(__S(39, __c2, 7)),
+          idMappingWorkflowProperties: S.optional(__S(38, __c2, 6)),
           roleArn: S.optional(S.String),
         }).pipe(
           T.all(
@@ -3309,7 +3241,7 @@ function __c43(j: number): any {
           idNamespaceArn: S.String,
           description: S.optional(S.String),
           inputSourceConfig: S.optional(__S(33, __c2, 1)),
-          idMappingWorkflowProperties: S.optional(__S(39, __c2, 7)),
+          idMappingWorkflowProperties: S.optional(__S(38, __c2, 6)),
           type: S.String,
           roleArn: S.optional(S.String),
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -3318,7 +3250,7 @@ function __c43(j: number): any {
       ).annotate({ identifier: "UpdateIdNamespaceOutput" });
   }
 }
-function __c44(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3328,7 +3260,7 @@ function __c44(j: number): any {
           inputSourceConfig: __S(65, __c4, 1),
           outputSourceConfig: __S(70, __c4, 6),
           resolutionTechniques: __S(76, __c4, 12),
-          incrementalRunConfig: S.optional(__S(77, __c4, 13)),
+          incrementalRunConfig: S.optional(__S(834, __c52, 2)),
           roleArn: S.String,
         }).pipe(
           T.all(
@@ -3340,9 +3272,7 @@ function __c44(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateMatchingWorkflowInput",
-      });
+      ).annotate({ identifier: "UpdateMatchingWorkflowInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3351,15 +3281,13 @@ function __c44(j: number): any {
           inputSourceConfig: __S(65, __c4, 1),
           outputSourceConfig: __S(70, __c4, 6),
           resolutionTechniques: __S(76, __c4, 12),
-          incrementalRunConfig: S.optional(__S(77, __c4, 13)),
+          incrementalRunConfig: S.optional(__S(834, __c52, 2)),
           roleArn: S.String,
         }),
-      ).annotate({
-        identifier: "UpdateMatchingWorkflowOutput",
-      });
+      ).annotate({ identifier: "UpdateMatchingWorkflowOutput" });
   }
 }
-function __c45(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3380,7 +3308,7 @@ function __c45(j: number): any {
       ).annotate({ identifier: "UpdateSchemaMappingInput" });
   }
 }
-function __c46(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3388,8 +3316,8 @@ function __c46(j: number): any {
           arn: S.String.pipe(T.HttpLabel("arn")),
           statementId: S.String.pipe(T.HttpLabel("statementId")),
           effect: S.String,
-          action: __S(768, __c48, 0),
-          principal: __S(768, __c48, 0),
+          action: __S(752, __c47, 0),
+          principal: __S(752, __c47, 0),
           condition: S.optional(S.String),
         }).pipe(
           T.all(
@@ -3404,7 +3332,7 @@ function __c46(j: number): any {
       ).annotate({ identifier: "AddPolicyStatementInput" });
   }
 }
-function __c47(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3412,20 +3340,20 @@ function __c47(j: number): any {
       ).annotate({ identifier: "AddPolicyStatementOutput" });
   }
 }
-function __c48(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c49(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           workflowName: S.String.pipe(T.HttpLabel("workflowName")),
           inputSource: S.optional(S.String).pipe(T.HttpHeader("inputSource")),
-          uniqueIds: __S(768, __c48, 0).pipe(T.HttpHeader("uniqueIds")),
+          uniqueIds: __S(752, __c47, 0).pipe(T.HttpHeader("uniqueIds")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/matchingworkflows/{workflowName}/uniqueids" }),
@@ -3442,39 +3370,37 @@ function __c49(j: number): any {
         identifier: "DeleteUniqueIdError",
       });
     case 2:
-      return S.Array(__S(785, __c49, 1));
+      return S.Array(__S(769, __c48, 1));
     case 3:
       return S.suspend(() => S.Struct({ uniqueId: S.String })).annotate({
         identifier: "DeletedUniqueId",
       });
     case 4:
-      return S.Array(__S(787, __c49, 3));
+      return S.Array(__S(771, __c48, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
-          errors: S.optional(__S(786, __c49, 2)),
-          deleted: S.optional(__S(788, __c49, 4)),
-          disconnectedUniqueIds: S.optional(__S(768, __c48, 0)),
+          errors: S.optional(__S(770, __c48, 2)),
+          deleted: S.optional(__S(772, __c48, 4)),
+          disconnectedUniqueIds: S.optional(__S(752, __c47, 0)),
         }),
-      ).annotate({
-        identifier: "BatchDeleteUniqueIdOutput",
-      });
+      ).annotate({ identifier: "BatchDeleteUniqueIdOutput" });
   }
 }
-function __c50(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           workflowName: S.String,
           description: S.optional(S.String),
-          inputSourceConfig: __S(865, __c54, 1),
-          outputSourceConfig: S.optional(__S(867, __c54, 3)),
-          idMappingTechniques: __S(869, __c54, 5),
-          incrementalRunConfig: S.optional(__S(870, __c54, 6)),
+          inputSourceConfig: __S(849, __c53, 1),
+          outputSourceConfig: S.optional(__S(851, __c53, 3)),
+          idMappingTechniques: __S(853, __c53, 5),
+          incrementalRunConfig: S.optional(__S(834, __c52, 2)),
           roleArn: S.optional(S.String),
-          tags: S.optional(__S(816, __c51, 0)),
+          tags: S.optional(__S(800, __c50, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/idmappingworkflows" }),
@@ -3485,28 +3411,26 @@ function __c50(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateIdMappingWorkflowInput",
-      });
+      ).annotate({ identifier: "CreateIdMappingWorkflowInput" });
   }
 }
-function __c51(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c52(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ruleName: S.String, matchingKeys: __S(768, __c48, 0) }),
+        S.Struct({ ruleName: S.String, matchingKeys: __S(752, __c47, 0) }),
       ).annotate({ identifier: "Rule" });
     case 1:
-      return S.Array(__S(832, __c52, 0));
+      return S.Array(__S(816, __c51, 0));
   }
 }
-function __c53(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ intermediateS3Path: S.String })).annotate({
@@ -3517,12 +3441,16 @@ function __c53(j: number): any {
         S.Struct({
           providerServiceArn: S.String,
           providerConfiguration: S.optional(S.Any),
-          intermediateSourceConfiguration: S.optional(__S(848, __c53, 0)),
+          intermediateSourceConfiguration: S.optional(__S(832, __c52, 0)),
         }),
       ).annotate({ identifier: "ProviderProperties" });
+    case 2:
+      return S.suspend(() => S.Struct({ incrementalRunType: S.optional(S.String) })).annotate({
+        identifier: "IdMappingIncrementalRunConfig",
+      });
   }
 }
-function __c54(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3531,45 +3459,35 @@ function __c54(j: number): any {
           schemaName: S.optional(S.String),
           type: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "IdMappingWorkflowInputSource",
-      });
+      ).annotate({ identifier: "IdMappingWorkflowInputSource" });
     case 1:
-      return S.Array(__S(864, __c54, 0));
+      return S.Array(__S(848, __c53, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ KMSArn: S.optional(S.String), outputS3Path: S.String }),
-      ).annotate({
-        identifier: "IdMappingWorkflowOutputSource",
-      });
+      ).annotate({ identifier: "IdMappingWorkflowOutputSource" });
     case 3:
-      return S.Array(__S(866, __c54, 2));
+      return S.Array(__S(850, __c53, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(__S(833, __c52, 1)),
+          rules: S.optional(__S(817, __c51, 1)),
           ruleDefinitionType: S.String,
           attributeMatchingModel: S.String,
           recordMatchingModel: S.String,
         }),
-      ).annotate({
-        identifier: "IdMappingRuleBasedProperties",
-      });
+      ).annotate({ identifier: "IdMappingRuleBasedProperties" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           idMappingType: S.String,
-          ruleBasedProperties: S.optional(__S(868, __c54, 4)),
-          providerProperties: S.optional(__S(849, __c53, 1)),
+          ruleBasedProperties: S.optional(__S(852, __c53, 4)),
+          providerProperties: S.optional(__S(833, __c52, 1)),
         }),
       ).annotate({ identifier: "IdMappingTechniques" });
-    case 6:
-      return S.suspend(() => S.Struct({ incrementalRunType: S.optional(S.String) })).annotate({
-        identifier: "IdMappingIncrementalRunConfig",
-      });
   }
 }
-function __c55(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3577,15 +3495,13 @@ function __c55(j: number): any {
           workflowName: S.String,
           workflowArn: S.String,
           description: S.optional(S.String),
-          inputSourceConfig: __S(865, __c54, 1),
-          outputSourceConfig: S.optional(__S(867, __c54, 3)),
-          idMappingTechniques: __S(869, __c54, 5),
-          incrementalRunConfig: S.optional(__S(870, __c54, 6)),
+          inputSourceConfig: __S(849, __c53, 1),
+          outputSourceConfig: S.optional(__S(851, __c53, 3)),
+          idMappingTechniques: __S(853, __c53, 5),
+          incrementalRunConfig: S.optional(__S(834, __c52, 2)),
           roleArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateIdMappingWorkflowOutput",
-      });
+      ).annotate({ identifier: "CreateIdMappingWorkflowOutput" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

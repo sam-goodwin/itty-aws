@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -559,9 +559,7 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), emailContacts: __S(9, __c2, 1) }),
-      ).annotate({
-        identifier: "ListEmailContactsResponse",
-      });
+      ).annotate({ identifier: "ListEmailContactsResponse" });
   }
 }
 function __c3(j: number): any {
@@ -571,9 +569,7 @@ function __c3(j: number): any {
         S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
           T.all(T.Http({ method: "GET", uri: "/tags/{arn}" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(44, __c11, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -594,9 +590,7 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SendActivationCodeRequest",
-      });
+      ).annotate({ identifier: "SendActivationCodeRequest" });
   }
 }
 function __c5(j: number): any {
@@ -651,17 +645,13 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ActivateEmailContactRequest",
-      });
+      ).annotate({ identifier: "ActivateEmailContactRequest" });
   }
 }
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ActivateEmailContactResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "ActivateEmailContactResponse" });
   }
 }
 function __c10(j: number): any {
@@ -682,9 +672,7 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateEmailContactRequest",
-      });
+      ).annotate({ identifier: "CreateEmailContactRequest" });
     case 1:
       return S.suspend(() => S.Struct({ arn: S.String })).annotate({
         identifier: "CreateEmailContactResponse",
@@ -711,9 +699,7 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteEmailContactRequest",
-      });
+      ).annotate({ identifier: "DeleteEmailContactRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

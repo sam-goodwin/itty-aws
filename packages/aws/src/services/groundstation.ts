@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1490,7 +1490,7 @@ export const describeContact: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(160, __c10, 0) as any as S.Schema<DescribeContactRequest>,
-  output: __S(161, __c10, 1) as any as S.Schema<DescribeContactResponse>,
+  output: __S(183, __c11, 7) as any as S.Schema<DescribeContactResponse>,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1512,7 +1512,7 @@ export const describeContactVersion: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(240, __c15, 0) as any as S.Schema<DescribeContactVersionRequest>,
-  output: __S(241, __c15, 1) as any as S.Schema<DescribeContactVersionResponse>,
+  output: __S(183, __c11, 7) as any as S.Schema<DescribeContactVersionResponse>,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2347,9 +2347,7 @@ function __c3(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/missionprofile" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateMissionProfileRequest",
-      });
+      ).annotate({ identifier: "CreateMissionProfileRequest" });
   }
 }
 function __c4(j: number): any {
@@ -2408,9 +2406,7 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteDataflowEndpointGroupRequest",
-      });
+      ).annotate({ identifier: "DeleteDataflowEndpointGroupRequest" });
   }
 }
 function __c8(j: number): any {
@@ -2444,9 +2440,7 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteMissionProfileRequest",
-      });
+      ).annotate({ identifier: "DeleteMissionProfileRequest" });
   }
 }
 function __c10(j: number): any {
@@ -2464,30 +2458,6 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DescribeContactRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          contactId: S.optional(S.String),
-          missionProfileArn: S.optional(S.String),
-          satelliteArn: S.optional(S.String),
-          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          prePassStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          postPassEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          groundStation: S.optional(S.String),
-          contactStatus: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-          maximumElevation: S.optional(__S(192, __c12, 0)),
-          tags: S.optional(__S(816, __c51, 0)),
-          region: S.optional(S.String),
-          dataflowList: S.optional(__S(182, __c11, 6)),
-          visibilityStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          visibilityEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          trackingOverrides: S.optional(__S(226, __c14, 2)),
-          ephemeris: S.optional(__S(193, __c12, 1)),
-          version: S.optional(__S(208, __c13, 0)),
-        }),
-      ).annotate({ identifier: "DescribeContactResponse" });
   }
 }
 function __c11(j: number): any {
@@ -2534,6 +2504,30 @@ function __c11(j: number): any {
       ).annotate({ identifier: "DataflowDetail" });
     case 6:
       return S.Array(__S(181, __c11, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          contactId: S.optional(S.String),
+          missionProfileArn: S.optional(S.String),
+          satelliteArn: S.optional(S.String),
+          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          prePassStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          postPassEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          groundStation: S.optional(S.String),
+          contactStatus: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+          maximumElevation: S.optional(__S(192, __c12, 0)),
+          tags: S.optional(__S(816, __c51, 0)),
+          region: S.optional(S.String),
+          dataflowList: S.optional(__S(182, __c11, 6)),
+          visibilityStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          visibilityEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          trackingOverrides: S.optional(__S(226, __c14, 2)),
+          ephemeris: S.optional(__S(193, __c12, 1)),
+          version: S.optional(__S(208, __c13, 0)),
+        }),
+      ).annotate({ identifier: "DescribeContactResponse" });
   }
 }
 function __c12(j: number): any {
@@ -2600,35 +2594,7 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeContactVersionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          contactId: S.optional(S.String),
-          missionProfileArn: S.optional(S.String),
-          satelliteArn: S.optional(S.String),
-          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          prePassStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          postPassEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          groundStation: S.optional(S.String),
-          contactStatus: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-          maximumElevation: S.optional(__S(192, __c12, 0)),
-          tags: S.optional(__S(816, __c51, 0)),
-          region: S.optional(S.String),
-          dataflowList: S.optional(__S(182, __c11, 6)),
-          visibilityStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          visibilityEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          trackingOverrides: S.optional(__S(226, __c14, 2)),
-          ephemeris: S.optional(__S(193, __c12, 1)),
-          version: S.optional(__S(208, __c13, 0)),
-        }),
-      ).annotate({
-        identifier: "DescribeContactVersionResponse",
-      });
+      ).annotate({ identifier: "DescribeContactVersionRequest" });
   }
 }
 function __c16(j: number): any {
@@ -2680,9 +2646,7 @@ function __c16(j: number): any {
           invalidReason: S.optional(S.String),
           errorReasons: S.optional(__S(260, __c16, 4)),
         }),
-      ).annotate({
-        identifier: "DescribeEphemerisResponse",
-      });
+      ).annotate({ identifier: "DescribeEphemerisResponse" });
   }
 }
 function __c17(j: number): any {
@@ -2699,15 +2663,11 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAgentConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetAgentConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ agentId: S.optional(S.String), taskingDocument: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetAgentConfigurationResponse",
-      });
+      ).annotate({ identifier: "GetAgentConfigurationResponse" });
   }
 }
 function __c18(j: number): any {
@@ -2727,15 +2687,11 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAgentTaskResponseUrlRequest",
-      });
+      ).annotate({ identifier: "GetAgentTaskResponseUrlRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ agentId: S.String, taskId: S.String, presignedLogUrl: S.String }),
-      ).annotate({
-        identifier: "GetAgentTaskResponseUrlResponse",
-      });
+      ).annotate({ identifier: "GetAgentTaskResponseUrlResponse" });
   }
 }
 function __c19(j: number): any {
@@ -2785,9 +2741,7 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDataflowEndpointGroupRequest",
-      });
+      ).annotate({ identifier: "GetDataflowEndpointGroupRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2798,9 +2752,7 @@ function __c20(j: number): any {
           contactPrePassDurationSeconds: S.optional(S.Number),
           contactPostPassDurationSeconds: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "GetDataflowEndpointGroupResponse",
-      });
+      ).annotate({ identifier: "GetDataflowEndpointGroupResponse" });
   }
 }
 function __c21(j: number): any {
@@ -2855,9 +2807,7 @@ function __c22(j: number): any {
           streamsKmsKey: S.optional(__S(81, __c5, 1)),
           streamsKmsRole: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetMissionProfileResponse",
-      });
+      ).annotate({ identifier: "GetMissionProfileResponse" });
   }
 }
 function __c23(j: number): any {
@@ -3027,9 +2977,7 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListContactVersionsRequest",
-      });
+      ).annotate({ identifier: "ListContactVersionsRequest" });
     case 1:
       return S.Array(__S(208, __c13, 0));
     case 2:
@@ -3038,9 +2986,7 @@ function __c28(j: number): any {
           nextToken: S.optional(S.String),
           contactVersionsList: S.optional(__S(449, __c28, 1)),
         }),
-      ).annotate({
-        identifier: "ListContactVersionsResponse",
-      });
+      ).annotate({ identifier: "ListContactVersionsResponse" });
   }
 }
 function __c29(j: number): any {
@@ -3060,9 +3006,7 @@ function __c29(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDataflowEndpointGroupsRequest",
-      });
+      ).annotate({ identifier: "ListDataflowEndpointGroupsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3078,9 +3022,7 @@ function __c29(j: number): any {
           nextToken: S.optional(S.String),
           dataflowEndpointGroupList: S.optional(__S(466, __c29, 2)),
         }),
-      ).annotate({
-        identifier: "ListDataflowEndpointGroupsResponse",
-      });
+      ).annotate({ identifier: "ListDataflowEndpointGroupsResponse" });
   }
 }
 function __c30(j: number): any {
@@ -3141,9 +3083,7 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListGroundStationReservationsRequest",
-      });
+      ).annotate({ identifier: "ListGroundStationReservationsRequest" });
     case 1:
       return S.suspend(() => S.Struct({ maintenanceType: S.String })).annotate({
         identifier: "MaintenanceReservationDetails",
@@ -3167,17 +3107,13 @@ function __c31(j: number): any {
           endTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           reservationDetails: __S(499, __c31, 3),
         }),
-      ).annotate({
-        identifier: "GroundStationReservationListItem",
-      });
+      ).annotate({ identifier: "GroundStationReservationListItem" });
     case 5:
       return S.Array(__S(500, __c31, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({ reservationList: __S(501, __c31, 5), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListGroundStationReservationsResponse",
-      });
+      ).annotate({ identifier: "ListGroundStationReservationsResponse" });
   }
 }
 function __c32(j: number): any {
@@ -3191,9 +3127,7 @@ function __c32(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/groundstation" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListGroundStationsRequest",
-      });
+      ).annotate({ identifier: "ListGroundStationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3210,9 +3144,7 @@ function __c32(j: number): any {
           nextToken: S.optional(S.String),
           groundStationList: S.optional(__S(514, __c32, 2)),
         }),
-      ).annotate({
-        identifier: "ListGroundStationsResponse",
-      });
+      ).annotate({ identifier: "ListGroundStationsResponse" });
   }
 }
 function __c33(j: number): any {
@@ -3225,9 +3157,7 @@ function __c33(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/missionprofile" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListMissionProfilesRequest",
-      });
+      ).annotate({ identifier: "ListMissionProfilesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3245,9 +3175,7 @@ function __c33(j: number): any {
           nextToken: S.optional(S.String),
           missionProfileList: S.optional(__S(530, __c33, 2)),
         }),
-      ).annotate({
-        identifier: "ListMissionProfilesResponse",
-      });
+      ).annotate({ identifier: "ListMissionProfilesResponse" });
   }
 }
 function __c34(j: number): any {
@@ -3281,9 +3209,7 @@ function __c35(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(816, __c51, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -3372,9 +3298,7 @@ function __c38(j: number): any {
 function __c39(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TagResourceResponse" });
   }
 }
 function __c40(j: number): any {
@@ -3527,9 +3451,7 @@ function __c45(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateMissionProfileRequest",
-      });
+      ).annotate({ identifier: "UpdateMissionProfileRequest" });
   }
 }
 function __c46(j: number): any {
@@ -3618,9 +3540,7 @@ function __c50(j: number): any {
           demodulationConfig: __S(805, __c50, 5),
           decodeConfig: __S(805, __c50, 5),
         }),
-      ).annotate({
-        identifier: "AntennaDownlinkDemodDecodeConfig",
-      });
+      ).annotate({ identifier: "AntennaDownlinkDemodDecodeConfig" });
     case 7:
       return S.suspend(() =>
         S.Struct({ centerFrequency: __S(800, __c50, 0), polarization: S.optional(S.String) }),
@@ -3689,9 +3609,7 @@ function __c52(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateDataflowEndpointGroupRequest",
-      });
+      ).annotate({ identifier: "CreateDataflowEndpointGroupRequest" });
   }
 }
 function __c53(j: number): any {
@@ -3728,9 +3646,7 @@ function __c54(j: number): any {
           agentStatus: S.optional(S.String),
           auditResults: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "AwsGroundStationAgentEndpoint",
-      });
+      ).annotate({ identifier: "AwsGroundStationAgentEndpoint" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3739,9 +3655,7 @@ function __c54(j: number): any {
           agentStatus: S.optional(S.String),
           auditResults: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "UplinkAwsGroundStationAgentEndpointDetails",
-      });
+      ).annotate({ identifier: "UplinkAwsGroundStationAgentEndpointDetails" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3750,9 +3664,7 @@ function __c54(j: number): any {
           agentStatus: S.optional(S.String),
           auditResults: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DownlinkAwsGroundStationAgentEndpointDetails",
-      });
+      ).annotate({ identifier: "DownlinkAwsGroundStationAgentEndpointDetails" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3824,9 +3736,7 @@ function __c58(j: number): any {
           agentIpAndPortAddress: __S(932, __c58, 4),
           egressAddressAndPort: __S(929, __c58, 1),
         }),
-      ).annotate({
-        identifier: "DownlinkConnectionDetails",
-      });
+      ).annotate({ identifier: "DownlinkConnectionDetails" });
     case 8:
       return S.Union([/*@__PURE__*/ S.Struct({ agentConnectionDetails: __S(935, __c58, 7) })]);
   }
@@ -3836,23 +3746,15 @@ function __c59(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ name: S.String, dataflowDetails: __S(934, __c58, 6) }),
-      ).annotate({
-        identifier: "UplinkAwsGroundStationAgentEndpoint",
-      });
+      ).annotate({ identifier: "UplinkAwsGroundStationAgentEndpoint" });
     case 1:
       return S.suspend(() =>
         S.Struct({ name: S.String, dataflowDetails: __S(936, __c58, 8) }),
-      ).annotate({
-        identifier: "DownlinkAwsGroundStationAgentEndpoint",
-      });
+      ).annotate({ identifier: "DownlinkAwsGroundStationAgentEndpoint" });
     case 2:
       return S.Union([
-        /*@__PURE__*/ S.Struct({
-          uplinkAwsGroundStationAgentEndpoint: __S(944, __c59, 0),
-        }),
-        /*@__PURE__*/ S.Struct({
-          downlinkAwsGroundStationAgentEndpoint: __S(945, __c59, 1),
-        }),
+        /*@__PURE__*/ S.Struct({ uplinkAwsGroundStationAgentEndpoint: __S(944, __c59, 0) }),
+        /*@__PURE__*/ S.Struct({ downlinkAwsGroundStationAgentEndpoint: __S(945, __c59, 1) }),
       ]);
     case 3:
       return S.Array(__S(946, __c59, 2));
@@ -3873,9 +3775,7 @@ function __c59(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateDataflowEndpointGroupV2Request",
-      });
+      ).annotate({ identifier: "CreateDataflowEndpointGroupV2Request" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

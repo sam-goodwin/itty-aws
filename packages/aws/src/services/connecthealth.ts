@@ -1,9 +1,9 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
-import * as stream from "effect/Stream";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
+import type * as stream from "effect/Stream";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -761,7 +761,7 @@ export const getSubscription: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(224, __c7, 0) as any as S.Schema<GetSubscriptionInput>,
-  output: __S(225, __c7, 1) as any as S.Schema<GetSubscriptionOutput>,
+  output: __S(544, __c17, 0) as any as S.Schema<GetSubscriptionOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -974,9 +974,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeactivateSubscriptionInput",
-      });
+      ).annotate({ identifier: "DeactivateSubscriptionInput" });
   }
 }
 function __c1(j: number): any {
@@ -1046,9 +1044,7 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetMedicalScribeListeningSessionInput",
-      });
+      ).annotate({ identifier: "GetMedicalScribeListeningSessionInput" });
     case 1:
       return S.suspend(() => S.Struct({ templateType: S.optional(S.String) })).annotate({
         identifier: "ManagedTemplateResponse",
@@ -1061,18 +1057,11 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ noteTemplateSettings: S.optional(__S(98, __c3, 2)) }),
-      ).annotate({
-        identifier: "ClinicalNoteGenerationSettingsResponse",
-      });
+      ).annotate({ identifier: "ClinicalNoteGenerationSettingsResponse" });
     case 4:
       return S.suspend(() =>
-        S.Struct({
-          outputS3Uri: S.String,
-          clinicalNoteGenerationSettings: __S(99, __c3, 3),
-        }),
-      ).annotate({
-        identifier: "MedicalScribePostStreamActionSettingsResponse",
-      });
+        S.Struct({ outputS3Uri: S.String, clinicalNoteGenerationSettings: __S(99, __c3, 3) }),
+      ).annotate({ identifier: "MedicalScribePostStreamActionSettingsResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1088,15 +1077,11 @@ function __c3(j: number): any {
           transcriptResult: S.optional(__S(101, __c3, 5)),
           afterVisitSummaryResult: S.optional(__S(101, __c3, 5)),
         }),
-      ).annotate({
-        identifier: "ClinicalNoteGenerationResult",
-      });
+      ).annotate({ identifier: "ClinicalNoteGenerationResult" });
     case 7:
       return S.suspend(() =>
         S.Struct({ clinicalNoteGenerationResult: S.optional(__S(102, __c3, 6)) }),
-      ).annotate({
-        identifier: "MedicalScribePostStreamActionsResult",
-      });
+      ).annotate({ identifier: "MedicalScribePostStreamActionsResult" });
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -1114,26 +1099,18 @@ function __c3(j: number): any {
           streamCreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           streamEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "MedicalScribeListeningSessionDetails",
-      });
+      ).annotate({ identifier: "MedicalScribeListeningSessionDetails" });
     case 9:
       return S.suspend(() =>
-        S.Struct({
-          medicalScribeListeningSessionDetails: S.optional(__S(104, __c3, 8)),
-        }),
-      ).annotate({
-        identifier: "GetMedicalScribeListeningSessionOutput",
-      });
+        S.Struct({ medicalScribeListeningSessionDetails: S.optional(__S(104, __c3, 8)) }),
+      ).annotate({ identifier: "GetMedicalScribeListeningSessionOutput" });
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ channelId: S.Number, participantRole: S.String })).annotate(
-        {
-          identifier: "MedicalScribeChannelDefinition",
-        },
+        { identifier: "MedicalScribeChannelDefinition" },
       );
     case 1:
       return S.Array(__S(128, __c4, 0));
@@ -1156,9 +1133,7 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetPatientInsightsJobRequest",
-      });
+      ).annotate({ identifier: "GetPatientInsightsJobRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1176,9 +1151,7 @@ function __c5(j: number): any {
           inputDataConfig: __S(199, __c6, 7),
           outputDataConfig: __S(200, __c6, 8),
         }),
-      ).annotate({
-        identifier: "GetPatientInsightsJobResponse",
-      });
+      ).annotate({ identifier: "GetPatientInsightsJobResponse" });
   }
 }
 function __c6(j: number): any {
@@ -1194,9 +1167,7 @@ function __c6(j: number): any {
           dateOfBirth: S.optional(SensitiveString),
           pronouns: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "PatientInsightsPatientContext",
-      });
+      ).annotate({ identifier: "PatientInsightsPatientContext" });
     case 2:
       return S.suspend(() => S.Struct({ insightsType: S.String })).annotate({
         identifier: "InsightsContext",
@@ -1246,10 +1217,6 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetSubscriptionInput" });
-    case 1:
-      return S.suspend(() => S.Struct({ subscription: S.optional(__S(576, __c18, 0)) })).annotate({
-        identifier: "GetSubscriptionOutput",
-      });
   }
 }
 function __c8(j: number): any {
@@ -1349,9 +1316,7 @@ function __c11(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({ sectionHeader: SensitiveString, sectionInstruction: SensitiveString }),
-      ).annotate({
-        identifier: "TemplateSectionInstruction",
-      });
+      ).annotate({ identifier: "TemplateSectionInstruction" });
     case 5:
       return S.Array(__S(356, __c11, 4));
     case 6:
@@ -1369,13 +1334,8 @@ function __c11(j: number): any {
       });
     case 9:
       return S.suspend(() =>
-        S.Struct({
-          outputS3Uri: S.String,
-          clinicalNoteGenerationSettings: __S(360, __c11, 8),
-        }),
-      ).annotate({
-        identifier: "MedicalScribePostStreamActionSettings",
-      });
+        S.Struct({ outputS3Uri: S.String, clinicalNoteGenerationSettings: __S(360, __c11, 8) }),
+      ).annotate({ identifier: "MedicalScribePostStreamActionSettings" });
     case 10:
       return S.suspend(() =>
         S.Struct({ unstructuredContext: S.optional(SensitiveString) }),
@@ -1387,9 +1347,7 @@ function __c11(j: number): any {
           channelDefinitions: S.optional(__S(129, __c4, 1)),
           encounterContext: S.optional(__S(362, __c11, 10)),
         }),
-      ).annotate({
-        identifier: "MedicalScribeConfigurationEvent",
-      });
+      ).annotate({ identifier: "MedicalScribeConfigurationEvent" });
     case 12:
       return T.InputEventStream(
         /*@__PURE__*/ S.Union([
@@ -1419,9 +1377,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartMedicalScribeListeningSessionInput",
-      });
+      ).annotate({ identifier: "StartMedicalScribeListeningSessionInput" });
     case 14:
       return S.suspend(() =>
         S.Struct({
@@ -1432,15 +1388,11 @@ function __c11(j: number): any {
           channelId: S.optional(S.String),
           content: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "MedicalScribeTranscriptSegment",
-      });
+      ).annotate({ identifier: "MedicalScribeTranscriptSegment" });
     case 15:
       return S.suspend(() =>
         S.Struct({ transcriptSegment: S.optional(__S(366, __c11, 14)) }),
-      ).annotate({
-        identifier: "MedicalScribeTranscriptEvent",
-      });
+      ).annotate({ identifier: "MedicalScribeTranscriptEvent" });
     case 16:
       return T.EventStream(
         /*@__PURE__*/ S.Union([
@@ -1448,9 +1400,7 @@ function __c11(j: number): any {
           /*@__PURE__*/ S.Struct({
             internalFailureException: /*@__PURE__*/ S.suspend(
               () => InternalServerException,
-            ).annotate({
-              identifier: "InternalServerException",
-            }),
+            ).annotate({ identifier: "InternalServerException" }),
           }),
           /*@__PURE__*/ S.Struct({
             validationException: /*@__PURE__*/ S.suspend(() => ValidationException).annotate({
@@ -1475,9 +1425,7 @@ function __c11(j: number): any {
           mediaEncoding: S.optional(S.String).pipe(T.HttpHeader("x-amzn-medscribe-media-encoding")),
           responseStream: S.optional(__S(368, __c11, 16)).pipe(T.HttpPayload()),
         }),
-      ).annotate({
-        identifier: "StartMedicalScribeListeningSessionOutput",
-      });
+      ).annotate({ identifier: "StartMedicalScribeListeningSessionOutput" });
   }
 }
 function __c12(j: number): any {
@@ -1503,9 +1451,7 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartPatientInsightsJobRequest",
-      });
+      ).annotate({ identifier: "StartPatientInsightsJobRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1513,9 +1459,7 @@ function __c12(j: number): any {
           jobId: S.String,
           creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "StartPatientInsightsJobResponse",
-      });
+      ).annotate({ identifier: "StartPatientInsightsJobResponse" });
   }
 }
 function __c13(j: number): any {
@@ -1541,9 +1485,7 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TagResourceResponse" });
   }
 }
 function __c15(j: number): any {
@@ -1588,9 +1530,7 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ActivateSubscriptionInput",
-      });
+      ).annotate({ identifier: "ActivateSubscriptionInput" });
   }
 }
 function __c17(j: number): any {
@@ -1623,9 +1563,7 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ ehrRole: S.String, idcInstanceId: S.String, idcRegion: S.String }),
-      ).annotate({
-        identifier: "CreateWebAppConfiguration",
-      });
+      ).annotate({ identifier: "CreateWebAppConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({

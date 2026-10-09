@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -3108,7 +3108,7 @@ export const tagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1056, __c66, 0) as any as S.Schema<TagResourceInput>,
-  output: __S(1072, __c67, 0) as any as S.Schema<TagResourceOutput>,
+  output: __S(48, __c3, 0) as any as S.Schema<TagResourceOutput>,
   errors: [
     ApplicationDoesNotExistException,
     ArnNotSupportedException,
@@ -3145,8 +3145,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c68, 0) as any as S.Schema<UntagResourceInput>,
-  output: __S(1072, __c67, 0) as any as S.Schema<UntagResourceOutput>,
+  input: __S(1072, __c67, 0) as any as S.Schema<UntagResourceInput>,
+  output: __S(48, __c3, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [
     ApplicationDoesNotExistException,
     ArnNotSupportedException,
@@ -3177,7 +3177,7 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1104, __c69, 0) as any as S.Schema<UpdateApplicationInput>,
+  input: __S(1088, __c68, 0) as any as S.Schema<UpdateApplicationInput>,
   output: __S(48, __c3, 0) as any as S.Schema<UpdateApplicationResponse>,
   errors: [
     ApplicationAlreadyExistsException,
@@ -3232,7 +3232,7 @@ export const updateDeploymentGroup: API.OperationMethod<
   UpdateDeploymentGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1120, __c70, 0) as any as S.Schema<UpdateDeploymentGroupInput>,
+  input: __S(1104, __c69, 0) as any as S.Schema<UpdateDeploymentGroupInput>,
   output: __S(608, __c38, 0) as any as S.Schema<UpdateDeploymentGroupOutput>,
   errors: [
     AlarmsLimitExceededException,
@@ -3280,9 +3280,7 @@ function __c0(j: number): any {
         S.Struct({ tags: __S(33, __c2, 1), instanceNames: __S(16, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "AddTagsToOnPremisesInstancesInput",
-      });
+      ).annotate({ identifier: "AddTagsToOnPremisesInstancesInput" });
   }
 }
 function __c1(j: number): any {
@@ -3316,9 +3314,7 @@ function __c4(j: number): any {
         S.Struct({ applicationName: S.String, revisions: __S(112, __c7, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "BatchGetApplicationRevisionsInput",
-      });
+      ).annotate({ identifier: "BatchGetApplicationRevisionsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3335,9 +3331,7 @@ function __c4(j: number): any {
           errorMessage: S.optional(S.String),
           revisions: S.optional(__S(66, __c4, 2)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "BatchGetApplicationRevisionsOutput",
-      });
+      ).annotate({ identifier: "BatchGetApplicationRevisionsOutput" });
   }
 }
 function __c5(j: number): any {
@@ -3399,17 +3393,13 @@ function __c8(j: number): any {
         S.Struct({ applicationNames: __S(16, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "BatchGetApplicationsInput",
-      });
+      ).annotate({ identifier: "BatchGetApplicationsInput" });
     case 1:
       return S.Array(__S(144, __c9, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ applicationsInfo: S.optional(__S(129, __c8, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "BatchGetApplicationsOutput",
-      });
+      ).annotate({ identifier: "BatchGetApplicationsOutput" });
   }
 }
 function __c9(j: number): any {
@@ -3434,9 +3424,7 @@ function __c10(j: number): any {
         S.Struct({ applicationName: S.String, deploymentGroupNames: __S(16, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "BatchGetDeploymentGroupsInput",
-      });
+      ).annotate({ identifier: "BatchGetDeploymentGroupsInput" });
     case 1:
       return S.Array(__S(289, __c18, 1));
     case 2:
@@ -3445,9 +3433,7 @@ function __c10(j: number): any {
           deploymentGroupsInfo: S.optional(__S(161, __c10, 1)),
           errorMessage: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "BatchGetDeploymentGroupsOutput",
-      });
+      ).annotate({ identifier: "BatchGetDeploymentGroupsOutput" });
   }
 }
 function __c11(j: number): any {
@@ -3493,9 +3479,7 @@ function __c14(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ enabled: S.optional(S.Boolean), events: S.optional(__S(192, __c12, 0)) }),
-      ).annotate({
-        identifier: "AutoRollbackConfiguration",
-      });
+      ).annotate({ identifier: "AutoRollbackConfiguration" });
     case 3:
       return S.Array(__S(209, __c13, 1));
     case 4:
@@ -3508,10 +3492,7 @@ function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          deploymentType: S.optional(S.String),
-          deploymentOption: S.optional(S.String),
-        }),
+        S.Struct({ deploymentType: S.optional(S.String), deploymentOption: S.optional(S.String) }),
       ).annotate({ identifier: "DeploymentStyle" });
     case 1:
       return S.suspend(() =>
@@ -3519,9 +3500,7 @@ function __c15(j: number): any {
           action: S.optional(S.String),
           terminationWaitTimeInMinutes: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "BlueInstanceTerminationOption",
-      });
+      ).annotate({ identifier: "BlueInstanceTerminationOption" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3540,9 +3519,7 @@ function __c15(j: number): any {
           deploymentReadyOption: S.optional(__S(242, __c15, 2)),
           greenFleetProvisioningOption: S.optional(__S(243, __c15, 3)),
         }),
-      ).annotate({
-        identifier: "BlueGreenDeploymentConfiguration",
-      });
+      ).annotate({ identifier: "BlueGreenDeploymentConfiguration" });
     case 5:
       return S.suspend(() => S.Struct({ listenerArns: S.optional(__S(16, __c1, 0)) })).annotate({
         identifier: "TrafficRoute",
@@ -3653,9 +3630,7 @@ function __c19(j: number): any {
         S.Struct({ deploymentId: S.String, instanceIds: __S(16, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "BatchGetDeploymentInstancesInput",
-      });
+      ).annotate({ identifier: "BatchGetDeploymentInstancesInput" });
     case 1:
       return S.Array(__S(336, __c21, 0));
     case 2:
@@ -3664,9 +3639,7 @@ function __c19(j: number): any {
           instancesSummary: S.optional(__S(305, __c19, 1)),
           errorMessage: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "BatchGetDeploymentInstancesOutput",
-      });
+      ).annotate({ identifier: "BatchGetDeploymentInstancesOutput" });
   }
 }
 function __c20(j: number): any {
@@ -3722,9 +3695,7 @@ function __c22(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ deploymentsInfo: S.optional(__S(353, __c22, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "BatchGetDeploymentsOutput",
-      });
+      ).annotate({ identifier: "BatchGetDeploymentsOutput" });
   }
 }
 function __c23(j: number): any {
@@ -3816,17 +3787,13 @@ function __c25(j: number): any {
         S.Struct({ deploymentId: S.String, targetIds: __S(16, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "BatchGetDeploymentTargetsInput",
-      });
+      ).annotate({ identifier: "BatchGetDeploymentTargetsInput" });
     case 1:
       return S.Array(__S(423, __c26, 7));
     case 2:
       return S.suspend(() =>
         S.Struct({ deploymentTargets: S.optional(__S(401, __c25, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "BatchGetDeploymentTargetsOutput",
-      });
+      ).annotate({ identifier: "BatchGetDeploymentTargetsOutput" });
   }
 }
 function __c26(j: number): any {
@@ -3923,17 +3890,13 @@ function __c27(j: number): any {
         S.Struct({ instanceNames: __S(16, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "BatchGetOnPremisesInstancesInput",
-      });
+      ).annotate({ identifier: "BatchGetOnPremisesInstancesInput" });
     case 1:
       return S.Array(__S(448, __c28, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ instanceInfos: S.optional(__S(433, __c27, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "BatchGetOnPremisesInstancesOutput",
-      });
+      ).annotate({ identifier: "BatchGetOnPremisesInstancesOutput" });
   }
 }
 function __c28(j: number): any {
@@ -4013,17 +3976,13 @@ function __c32(j: number): any {
           minimumHealthyHosts: S.optional(__S(528, __c33, 0)),
           trafficRoutingConfig: S.optional(__S(531, __c33, 3)),
           computePlatform: S.optional(S.String),
-          zonalConfig: S.optional(__S(533, __c33, 5)),
+          zonalConfig: S.optional(__S(532, __c33, 4)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateDeploymentConfigInput",
-      });
+      ).annotate({ identifier: "CreateDeploymentConfigInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ deploymentConfigId: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateDeploymentConfigOutput",
-      });
+      ).annotate({ identifier: "CreateDeploymentConfigOutput" });
   }
 }
 function __c33(j: number): any {
@@ -4050,16 +4009,10 @@ function __c33(j: number): any {
       ).annotate({ identifier: "TrafficRoutingConfig" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ type: S.optional(S.String), value: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "MinimumHealthyHostsPerZone",
-      });
-    case 5:
-      return S.suspend(() =>
         S.Struct({
           firstZoneMonitorDurationInSeconds: S.optional(S.Number),
           monitorDurationInSeconds: S.optional(S.Number),
-          minimumHealthyHostsPerZone: S.optional(__S(532, __c33, 4)),
+          minimumHealthyHostsPerZone: S.optional(__S(528, __c33, 0)),
         }),
       ).annotate({ identifier: "ZonalConfig" });
   }
@@ -4089,15 +4042,11 @@ function __c34(j: number): any {
           tags: S.optional(__S(33, __c2, 1)),
           terminationHookEnabled: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateDeploymentGroupInput",
-      });
+      ).annotate({ identifier: "CreateDeploymentGroupInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ deploymentGroupId: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateDeploymentGroupOutput",
-      });
+      ).annotate({ identifier: "CreateDeploymentGroupOutput" });
   }
 }
 function __c35(j: number): any {
@@ -4117,9 +4066,7 @@ function __c36(j: number): any {
         S.Struct({ deploymentConfigName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteDeploymentConfigInput",
-      });
+      ).annotate({ identifier: "DeleteDeploymentConfigInput" });
   }
 }
 function __c37(j: number): any {
@@ -4129,9 +4076,7 @@ function __c37(j: number): any {
         S.Struct({ applicationName: S.String, deploymentGroupName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteDeploymentGroupInput",
-      });
+      ).annotate({ identifier: "DeleteDeploymentGroupInput" });
   }
 }
 function __c38(j: number): any {
@@ -4139,9 +4084,7 @@ function __c38(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ hooksNotCleanedUp: S.optional(__S(273, __c17, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteDeploymentGroupOutput",
-      });
+      ).annotate({ identifier: "DeleteDeploymentGroupOutput" });
   }
 }
 function __c39(j: number): any {
@@ -4151,9 +4094,7 @@ function __c39(j: number): any {
         S.Struct({ tokenName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteGitHubAccountTokenInput",
-      });
+      ).annotate({ identifier: "DeleteGitHubAccountTokenInput" });
     case 1:
       return S.suspend(() => S.Struct({ tokenName: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "DeleteGitHubAccountTokenOutput",
@@ -4167,9 +4108,7 @@ function __c40(j: number): any {
         S.Struct({ externalId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteResourcesByExternalIdInput",
-      });
+      ).annotate({ identifier: "DeleteResourcesByExternalIdInput" });
   }
 }
 function __c41(j: number): any {
@@ -4179,9 +4118,7 @@ function __c41(j: number): any {
         S.Struct({ instanceName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeregisterOnPremisesInstanceInput",
-      });
+      ).annotate({ identifier: "DeregisterOnPremisesInstanceInput" });
   }
 }
 function __c42(j: number): any {
@@ -4205,9 +4142,7 @@ function __c43(j: number): any {
         S.Struct({ applicationName: S.String, revision: __S(83, __c5, 3) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetApplicationRevisionInput",
-      });
+      ).annotate({ identifier: "GetApplicationRevisionInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4215,9 +4150,7 @@ function __c43(j: number): any {
           revision: S.optional(__S(83, __c5, 3)),
           revisionInfo: S.optional(__S(96, __c6, 0)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetApplicationRevisionOutput",
-      });
+      ).annotate({ identifier: "GetApplicationRevisionOutput" });
   }
 }
 function __c44(j: number): any {
@@ -4251,15 +4184,13 @@ function __c45(j: number): any {
           createTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           computePlatform: S.optional(S.String),
           trafficRoutingConfig: S.optional(__S(531, __c33, 3)),
-          zonalConfig: S.optional(__S(533, __c33, 5)),
+          zonalConfig: S.optional(__S(532, __c33, 4)),
         }),
       ).annotate({ identifier: "DeploymentConfigInfo" });
     case 2:
       return S.suspend(() =>
         S.Struct({ deploymentConfigInfo: S.optional(__S(721, __c45, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetDeploymentConfigOutput",
-      });
+      ).annotate({ identifier: "GetDeploymentConfigOutput" });
   }
 }
 function __c46(j: number): any {
@@ -4283,15 +4214,11 @@ function __c47(j: number): any {
         S.Struct({ deploymentId: S.String, instanceId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetDeploymentInstanceInput",
-      });
+      ).annotate({ identifier: "GetDeploymentInstanceInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ instanceSummary: S.optional(__S(336, __c21, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetDeploymentInstanceOutput",
-      });
+      ).annotate({ identifier: "GetDeploymentInstanceOutput" });
   }
 }
 function __c48(j: number): any {
@@ -4305,9 +4232,7 @@ function __c48(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ deploymentTarget: S.optional(__S(423, __c26, 7)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetDeploymentTargetOutput",
-      });
+      ).annotate({ identifier: "GetDeploymentTargetOutput" });
   }
 }
 function __c49(j: number): any {
@@ -4317,15 +4242,11 @@ function __c49(j: number): any {
         S.Struct({ instanceName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetOnPremisesInstanceInput",
-      });
+      ).annotate({ identifier: "GetOnPremisesInstanceInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ instanceInfo: S.optional(__S(448, __c28, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetOnPremisesInstanceOutput",
-      });
+      ).annotate({ identifier: "GetOnPremisesInstanceOutput" });
   }
 }
 function __c50(j: number): any {
@@ -4341,18 +4262,14 @@ function __c50(j: number): any {
           deployed: S.optional(S.String),
           nextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListApplicationRevisionsInput",
-      });
+      ).annotate({ identifier: "ListApplicationRevisionsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           revisions: S.optional(__S(112, __c7, 0)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListApplicationRevisionsOutput",
-      });
+      ).annotate({ identifier: "ListApplicationRevisionsOutput" });
   }
 }
 function __c51(j: number): any {
@@ -4379,18 +4296,14 @@ function __c52(j: number): any {
         S.Struct({ nextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListDeploymentConfigsInput",
-      });
+      ).annotate({ identifier: "ListDeploymentConfigsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           deploymentConfigsList: S.optional(__S(16, __c1, 0)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListDeploymentConfigsOutput",
-      });
+      ).annotate({ identifier: "ListDeploymentConfigsOutput" });
   }
 }
 function __c53(j: number): any {
@@ -4400,9 +4313,7 @@ function __c53(j: number): any {
         S.Struct({ applicationName: S.String, nextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListDeploymentGroupsInput",
-      });
+      ).annotate({ identifier: "ListDeploymentGroupsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4410,9 +4321,7 @@ function __c53(j: number): any {
           deploymentGroups: S.optional(__S(16, __c1, 0)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListDeploymentGroupsOutput",
-      });
+      ).annotate({ identifier: "ListDeploymentGroupsOutput" });
   }
 }
 function __c54(j: number): any {
@@ -4425,18 +4334,14 @@ function __c54(j: number): any {
           instanceStatusFilter: S.optional(__S(192, __c12, 0)),
           instanceTypeFilter: S.optional(__S(192, __c12, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListDeploymentInstancesInput",
-      });
+      ).annotate({ identifier: "ListDeploymentInstancesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           instancesList: S.optional(__S(16, __c1, 0)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListDeploymentInstancesOutput",
-      });
+      ).annotate({ identifier: "ListDeploymentInstancesOutput" });
   }
 }
 function __c55(j: number): any {
@@ -4479,17 +4384,13 @@ function __c56(j: number): any {
           nextToken: S.optional(S.String),
           targetFilters: S.optional(__S(896, __c56, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListDeploymentTargetsInput",
-      });
+      ).annotate({ identifier: "ListDeploymentTargetsInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({ targetIds: S.optional(__S(16, __c1, 0)), nextToken: S.optional(S.String) }).pipe(
           ns,
         ),
-      ).annotate({
-        identifier: "ListDeploymentTargetsOutput",
-      });
+      ).annotate({ identifier: "ListDeploymentTargetsOutput" });
   }
 }
 function __c57(j: number): any {
@@ -4499,18 +4400,14 @@ function __c57(j: number): any {
         S.Struct({ nextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListGitHubAccountTokenNamesInput",
-      });
+      ).annotate({ identifier: "ListGitHubAccountTokenNamesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           tokenNameList: S.optional(__S(16, __c1, 0)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListGitHubAccountTokenNamesOutput",
-      });
+      ).annotate({ identifier: "ListGitHubAccountTokenNamesOutput" });
   }
 }
 function __c58(j: number): any {
@@ -4522,18 +4419,14 @@ function __c58(j: number): any {
           tagFilters: S.optional(__S(209, __c13, 1)),
           nextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListOnPremisesInstancesInput",
-      });
+      ).annotate({ identifier: "ListOnPremisesInstancesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           instanceNames: S.optional(__S(16, __c1, 0)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListOnPremisesInstancesOutput",
-      });
+      ).annotate({ identifier: "ListOnPremisesInstancesOutput" });
   }
 }
 function __c59(j: number): any {
@@ -4547,9 +4440,7 @@ function __c59(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ Tags: S.optional(__S(33, __c2, 1)), NextToken: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "ListTagsForResourceOutput",
-      });
+      ).annotate({ identifier: "ListTagsForResourceOutput" });
   }
 }
 function __c60(j: number): any {
@@ -4561,15 +4452,11 @@ function __c60(j: number): any {
           lifecycleEventHookExecutionId: S.optional(S.String),
           status: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PutLifecycleEventHookExecutionStatusInput",
-      });
+      ).annotate({ identifier: "PutLifecycleEventHookExecutionStatusInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ lifecycleEventHookExecutionId: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "PutLifecycleEventHookExecutionStatusOutput",
-      });
+      ).annotate({ identifier: "PutLifecycleEventHookExecutionStatusOutput" });
   }
 }
 function __c61(j: number): any {
@@ -4581,9 +4468,7 @@ function __c61(j: number): any {
           description: S.optional(S.String),
           revision: __S(83, __c5, 3),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RegisterApplicationRevisionInput",
-      });
+      ).annotate({ identifier: "RegisterApplicationRevisionInput" });
   }
 }
 function __c62(j: number): any {
@@ -4595,9 +4480,7 @@ function __c62(j: number): any {
           iamSessionArn: S.optional(S.String),
           iamUserArn: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RegisterOnPremisesInstanceInput",
-      });
+      ).annotate({ identifier: "RegisterOnPremisesInstanceInput" });
   }
 }
 function __c63(j: number): any {
@@ -4607,9 +4490,7 @@ function __c63(j: number): any {
         S.Struct({ tags: __S(33, __c2, 1), instanceNames: __S(16, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "RemoveTagsFromOnPremisesInstancesInput",
-      });
+      ).annotate({ identifier: "RemoveTagsFromOnPremisesInstancesInput" });
   }
 }
 function __c64(j: number): any {
@@ -4619,9 +4500,7 @@ function __c64(j: number): any {
         S.Struct({ deploymentId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "SkipWaitTimeForInstanceTerminationInput",
-      });
+      ).annotate({ identifier: "SkipWaitTimeForInstanceTerminationInput" });
   }
 }
 function __c65(j: number): any {
@@ -4651,14 +4530,6 @@ function __c66(j: number): any {
 function __c67(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "TagResourceOutput",
-      });
-  }
-}
-function __c68(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String, TagKeys: __S(16, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4666,7 +4537,7 @@ function __c68(j: number): any {
       ).annotate({ identifier: "UntagResourceInput" });
   }
 }
-function __c69(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4677,7 +4548,7 @@ function __c69(j: number): any {
       ).annotate({ identifier: "UpdateApplicationInput" });
   }
 }
-function __c70(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4702,9 +4573,7 @@ function __c70(j: number): any {
           onPremisesTagSet: S.optional(__S(258, __c16, 2)),
           terminationHookEnabled: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateDeploymentGroupInput",
-      });
+      ).annotate({ identifier: "UpdateDeploymentGroupInput" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

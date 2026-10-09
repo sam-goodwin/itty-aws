@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -219,7 +219,7 @@ export const approvePaidSubscription: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(24, __c6, 0) as any as S.Schema<ApprovePaidSubscriptionInput>,
-  output: __S(28, __c7, 0) as any as S.Schema<ApprovePaidSubscriptionOutput>,
+  output: __S(33, __c8, 1) as any as S.Schema<ApprovePaidSubscriptionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -252,8 +252,8 @@ export const associateResourcesToSubscription: API.OperationMethod<
   AssociateResourcesToSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c10, 0) as any as S.Schema<AssociateResourcesToSubscriptionInput>,
-  output: __S(28, __c7, 0) as any as S.Schema<AssociateResourcesToSubscriptionOutput>,
+  input: __S(36, __c9, 0) as any as S.Schema<AssociateResourcesToSubscriptionInput>,
+  output: __S(33, __c8, 1) as any as S.Schema<AssociateResourcesToSubscriptionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -288,8 +288,8 @@ export const cancelSubscription: API.OperationMethod<
   CancelSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c11, 0) as any as S.Schema<CancelSubscriptionInput>,
-  output: __S(48, __c12, 0) as any as S.Schema<CancelSubscriptionOutput>,
+  input: __S(40, __c10, 0) as any as S.Schema<CancelSubscriptionInput>,
+  output: __S(33, __c8, 1) as any as S.Schema<CancelSubscriptionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -323,7 +323,7 @@ export const cancelSubscriptionChange: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CancelSubscriptionChangeInput>,
-  output: __S(28, __c7, 0) as any as S.Schema<CancelSubscriptionChangeOutput>,
+  output: __S(33, __c8, 1) as any as S.Schema<CancelSubscriptionChangeOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -360,7 +360,7 @@ export const createSubscription: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(4, __c1, 0) as any as S.Schema<CreateSubscriptionInput>,
-  output: __S(48, __c12, 0) as any as S.Schema<CreateSubscriptionOutput>,
+  output: __S(33, __c8, 1) as any as S.Schema<CreateSubscriptionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -395,7 +395,7 @@ export const disassociateResourcesFromSubscription: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(8, __c2, 0) as any as S.Schema<DisassociateResourcesFromSubscriptionInput>,
-  output: __S(28, __c7, 0) as any as S.Schema<DisassociateResourcesFromSubscriptionOutput>,
+  output: __S(33, __c8, 1) as any as S.Schema<DisassociateResourcesFromSubscriptionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -426,7 +426,7 @@ export const getSubscription: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(12, __c3, 0) as any as S.Schema<GetSubscriptionInput>,
-  output: __S(48, __c12, 0) as any as S.Schema<GetSubscriptionOutput>,
+  output: __S(33, __c8, 1) as any as S.Schema<GetSubscriptionOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -498,7 +498,7 @@ export const updateSubscription: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(20, __c5, 0) as any as S.Schema<UpdateSubscriptionInput>,
-  output: __S(48, __c12, 0) as any as S.Schema<UpdateSubscriptionOutput>,
+  output: __S(33, __c8, 1) as any as S.Schema<UpdateSubscriptionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -532,9 +532,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CancelSubscriptionChangeInput",
-      });
+      ).annotate({ identifier: "CancelSubscriptionChangeInput" });
   }
 }
 function __c1(j: number): any {
@@ -545,7 +543,7 @@ function __c1(j: number): any {
           planFamily: S.String,
           planTier: S.String,
           usageLevel: S.optional(S.String),
-          resourceArns: __S(33, __c8, 1),
+          resourceArns: __S(29, __c7, 1),
           approvalMode: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -567,7 +565,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
-          resourceArns: __S(33, __c8, 1),
+          resourceArns: __S(29, __c7, 1),
           ifMatch: S.String.pipe(T.HttpHeader("If-Match")),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -580,9 +578,7 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateResourcesFromSubscriptionInput",
-      });
+      ).annotate({ identifier: "DisassociateResourcesFromSubscriptionInput" });
   }
 }
 function __c3(j: number): any {
@@ -624,10 +620,10 @@ function __c4(j: number): any {
           planFamily: S.String,
           planTier: S.String,
           usageLevel: S.optional(S.String),
-          scheduledChange: S.optional(__S(32, __c8, 0)),
+          scheduledChange: S.optional(__S(28, __c7, 0)),
           status: S.String,
           statusReason: S.optional(S.String),
-          resourceArns: __S(33, __c8, 1),
+          resourceArns: __S(29, __c7, 1),
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           eTag: S.String,
@@ -682,27 +678,10 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ApprovePaidSubscriptionInput",
-      });
+      ).annotate({ identifier: "ApprovePaidSubscriptionInput" });
   }
 }
 function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscription: __S(36, __c9, 0)
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "Subscription" }),
-          eTag: S.String.pipe(T.HttpHeader("ETag")),
-        }),
-      ).annotate({
-        identifier: "ApprovePaidSubscriptionOutput",
-      });
-  }
-}
-function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -717,7 +696,7 @@ function __c8(j: number): any {
       return S.Array(S.String);
   }
 }
-function __c9(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -726,23 +705,32 @@ function __c9(j: number): any {
           planFamily: S.String,
           planTier: S.String,
           usageLevel: S.optional(S.String),
-          scheduledChange: S.optional(__S(32, __c8, 0)),
+          scheduledChange: S.optional(__S(28, __c7, 0)),
           status: S.String,
           statusReason: S.optional(S.String),
-          resourceArns: __S(33, __c8, 1),
+          resourceArns: __S(29, __c7, 1),
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "Subscription" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscription: __S(32, __c8, 0)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "Subscription" }),
+          eTag: S.String.pipe(T.HttpHeader("ETag")),
+        }),
+      ).annotate({ identifier: "ApprovePaidSubscriptionOutput" });
   }
 }
-function __c10(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
-          resourceArns: __S(33, __c8, 1),
+          resourceArns: __S(29, __c7, 1),
           ifMatch: S.String.pipe(T.HttpHeader("If-Match")),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -755,12 +743,10 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateResourcesToSubscriptionInput",
-      });
+      ).annotate({ identifier: "AssociateResourcesToSubscriptionInput" });
   }
 }
-function __c11(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -779,19 +765,6 @@ function __c11(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CancelSubscriptionInput" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscription: __S(36, __c9, 0)
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "Subscription" }),
-          eTag: S.String.pipe(T.HttpHeader("ETag")),
-        }),
-      ).annotate({ identifier: "CancelSubscriptionOutput" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -863,7 +863,7 @@ export const deleteNamespace: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(44, __c11, 0) as any as S.Schema<DeleteNamespaceRequest>,
-  output: __S(48, __c12, 0) as any as S.Schema<DeleteNamespaceResponse>,
+  output: __S(8, __c2, 0) as any as S.Schema<DeleteNamespaceResponse>,
   errors: [DuplicateRequest, InvalidInput, NamespaceNotFound, ResourceInUse],
   protocol: AwsProtocol,
   retry: Retry,
@@ -881,8 +881,8 @@ export const deleteService: API.OperationMethod<
   DeleteServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c13, 0) as any as S.Schema<DeleteServiceRequest>,
-  output: __S(56, __c14, 0) as any as S.Schema<DeleteServiceResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<DeleteServiceRequest>,
+  output: __S(52, __c13, 0) as any as S.Schema<DeleteServiceResponse>,
   errors: [InvalidInput, ResourceInUse, ServiceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -899,8 +899,8 @@ export const deleteServiceAttributes: API.OperationMethod<
   DeleteServiceAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c15, 0) as any as S.Schema<DeleteServiceAttributesRequest>,
-  output: __S(68, __c17, 0) as any as S.Schema<DeleteServiceAttributesResponse>,
+  input: __S(56, __c14, 0) as any as S.Schema<DeleteServiceAttributesRequest>,
+  output: __S(52, __c13, 0) as any as S.Schema<DeleteServiceAttributesResponse>,
   errors: [InvalidInput, ServiceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -924,7 +924,7 @@ export const deregisterInstance: API.OperationMethod<
   DeregisterInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c18, 0) as any as S.Schema<DeregisterInstanceRequest>,
+  input: __S(64, __c16, 0) as any as S.Schema<DeregisterInstanceRequest>,
   output: __S(8, __c2, 0) as any as S.Schema<DeregisterInstanceResponse>,
   errors: [DuplicateRequest, InstanceNotFound, InvalidInput, ResourceInUse, ServiceNotFound],
   protocol: AwsProtocol,
@@ -951,8 +951,8 @@ export const discoverInstances: API.OperationMethod<
   DiscoverInstancesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c19, 0) as any as S.Schema<DiscoverInstancesRequest>,
-  output: __S(79, __c19, 3) as any as S.Schema<DiscoverInstancesResponse>,
+  input: __S(68, __c17, 0) as any as S.Schema<DiscoverInstancesRequest>,
+  output: __S(71, __c17, 3) as any as S.Schema<DiscoverInstancesResponse>,
   errors: [InvalidInput, NamespaceNotFound, RequestLimitExceeded, ServiceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -975,8 +975,8 @@ export const discoverInstancesRevision: API.OperationMethod<
   DiscoverInstancesRevisionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c21, 0) as any as S.Schema<DiscoverInstancesRevisionRequest>,
-  output: __S(85, __c21, 1) as any as S.Schema<DiscoverInstancesRevisionResponse>,
+  input: __S(76, __c19, 0) as any as S.Schema<DiscoverInstancesRevisionRequest>,
+  output: __S(77, __c19, 1) as any as S.Schema<DiscoverInstancesRevisionResponse>,
   errors: [InvalidInput, NamespaceNotFound, RequestLimitExceeded, ServiceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -994,8 +994,8 @@ export const getInstance: API.OperationMethod<
   GetInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c22, 0) as any as S.Schema<GetInstanceRequest>,
-  output: __S(90, __c22, 2) as any as S.Schema<GetInstanceResponse>,
+  input: __S(80, __c20, 0) as any as S.Schema<GetInstanceRequest>,
+  output: __S(82, __c20, 2) as any as S.Schema<GetInstanceResponse>,
   errors: [InstanceNotFound, InvalidInput, ServiceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1022,8 +1022,8 @@ export const getInstancesHealthStatus: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(93, __c23, 1) as any as S.Schema<GetInstancesHealthStatusRequest>,
-  output: __S(95, __c23, 3) as any as S.Schema<GetInstancesHealthStatusResponse>,
+  input: __S(85, __c21, 1) as any as S.Schema<GetInstancesHealthStatusRequest>,
+  output: __S(87, __c21, 3) as any as S.Schema<GetInstancesHealthStatusResponse>,
   errors: [InstanceNotFound, InvalidInput, ServiceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1045,8 +1045,8 @@ export const getNamespace: API.OperationMethod<
   GetNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c24, 0) as any as S.Schema<GetNamespaceRequest>,
-  output: __S(98, __c24, 2) as any as S.Schema<GetNamespaceResponse>,
+  input: __S(88, __c22, 0) as any as S.Schema<GetNamespaceRequest>,
+  output: __S(90, __c22, 2) as any as S.Schema<GetNamespaceResponse>,
   errors: [InvalidInput, NamespaceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1066,8 +1066,8 @@ export const getOperation: API.OperationMethod<
   GetOperationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c26, 0) as any as S.Schema<GetOperationRequest>,
-  output: __S(107, __c26, 3) as any as S.Schema<GetOperationResponse>,
+  input: __S(96, __c24, 0) as any as S.Schema<GetOperationRequest>,
+  output: __S(99, __c24, 3) as any as S.Schema<GetOperationResponse>,
   errors: [InvalidInput, OperationNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1084,7 +1084,7 @@ export const getService: API.OperationMethod<
   GetServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c27, 0) as any as S.Schema<GetServiceRequest>,
+  input: __S(100, __c25, 0) as any as S.Schema<GetServiceRequest>,
   output: __S(33, __c8, 1) as any as S.Schema<GetServiceResponse>,
   errors: [InvalidInput, ServiceNotFound],
   protocol: AwsProtocol,
@@ -1102,8 +1102,8 @@ export const getServiceAttributes: API.OperationMethod<
   GetServiceAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c28, 0) as any as S.Schema<GetServiceAttributesRequest>,
-  output: __S(114, __c28, 2) as any as S.Schema<GetServiceAttributesResponse>,
+  input: __S(104, __c26, 0) as any as S.Schema<GetServiceAttributesRequest>,
+  output: __S(106, __c26, 2) as any as S.Schema<GetServiceAttributesResponse>,
   errors: [InvalidInput, ServiceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1122,8 +1122,8 @@ export const listInstances: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(120, __c30, 0) as any as S.Schema<ListInstancesRequest>,
-  output: __S(123, __c30, 3) as any as S.Schema<ListInstancesResponse>,
+  input: __S(108, __c27, 0) as any as S.Schema<ListInstancesRequest>,
+  output: __S(111, __c27, 3) as any as S.Schema<ListInstancesResponse>,
   errors: [InvalidInput, ServiceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1146,8 +1146,8 @@ export const listNamespaces: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(124, __c31, 0) as any as S.Schema<ListNamespacesRequest>,
-  output: __S(127, __c31, 3) as any as S.Schema<ListNamespacesResponse>,
+  input: __S(112, __c28, 0) as any as S.Schema<ListNamespacesRequest>,
+  output: __S(115, __c28, 3) as any as S.Schema<ListNamespacesResponse>,
   errors: [InvalidInput],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1170,8 +1170,8 @@ export const listOperations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(132, __c33, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(135, __c33, 3) as any as S.Schema<ListOperationsResponse>,
+  input: __S(120, __c30, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(123, __c30, 3) as any as S.Schema<ListOperationsResponse>,
   errors: [InvalidInput],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1195,8 +1195,8 @@ export const listServices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(136, __c34, 0) as any as S.Schema<ListServicesRequest>,
-  output: __S(139, __c34, 3) as any as S.Schema<ListServicesResponse>,
+  input: __S(124, __c31, 0) as any as S.Schema<ListServicesRequest>,
+  output: __S(127, __c31, 3) as any as S.Schema<ListServicesResponse>,
   errors: [InvalidInput],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1218,8 +1218,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c35, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(141, __c35, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(128, __c32, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(129, __c32, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InvalidInput, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1274,8 +1274,8 @@ export const registerInstance: API.OperationMethod<
   RegisterInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c36, 0) as any as S.Schema<RegisterInstanceRequest>,
-  output: __S(48, __c12, 0) as any as S.Schema<RegisterInstanceResponse>,
+  input: __S(132, __c33, 0) as any as S.Schema<RegisterInstanceRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<RegisterInstanceResponse>,
   errors: [DuplicateRequest, InvalidInput, ResourceInUse, ResourceLimitExceeded, ServiceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1296,8 +1296,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c37, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(56, __c14, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(136, __c34, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(52, __c13, 0) as any as S.Schema<TagResourceResponse>,
   errors: [InvalidInput, ResourceNotFoundException, TooManyTagsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1314,8 +1314,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c38, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(56, __c14, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(140, __c35, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(52, __c13, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [InvalidInput, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1338,7 +1338,7 @@ export const updateHttpNamespace: API.OperationMethod<
   UpdateHttpNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c39, 1) as any as S.Schema<UpdateHttpNamespaceRequest>,
+  input: __S(145, __c36, 1) as any as S.Schema<UpdateHttpNamespaceRequest>,
   output: __S(8, __c2, 0) as any as S.Schema<UpdateHttpNamespaceResponse>,
   errors: [DuplicateRequest, InvalidInput, NamespaceNotFound, ResourceInUse],
   protocol: AwsProtocol,
@@ -1369,8 +1369,8 @@ export const updateInstanceCustomHealthStatus: API.OperationMethod<
   UpdateInstanceCustomHealthStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c40, 0) as any as S.Schema<UpdateInstanceCustomHealthStatusRequest>,
-  output: __S(161, __c40, 1) as any as S.Schema<UpdateInstanceCustomHealthStatusResponse>,
+  input: __S(148, __c37, 0) as any as S.Schema<UpdateInstanceCustomHealthStatusRequest>,
+  output: __S(52, __c13, 0) as any as S.Schema<UpdateInstanceCustomHealthStatusResponse>,
   errors: [CustomHealthNotFound, InstanceNotFound, InvalidInput, ServiceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1393,7 +1393,7 @@ export const updatePrivateDnsNamespace: API.OperationMethod<
   UpdatePrivateDnsNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c41, 1) as any as S.Schema<UpdatePrivateDnsNamespaceRequest>,
+  input: __S(152, __c38, 0) as any as S.Schema<UpdatePrivateDnsNamespaceRequest>,
   output: __S(8, __c2, 0) as any as S.Schema<UpdatePrivateDnsNamespaceResponse>,
   errors: [DuplicateRequest, InvalidInput, NamespaceNotFound, ResourceInUse],
   protocol: AwsProtocol,
@@ -1416,7 +1416,7 @@ export const updatePublicDnsNamespace: API.OperationMethod<
   UpdatePublicDnsNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c43, 1) as any as S.Schema<UpdatePublicDnsNamespaceRequest>,
+  input: __S(160, __c40, 0) as any as S.Schema<UpdatePublicDnsNamespaceRequest>,
   output: __S(8, __c2, 0) as any as S.Schema<UpdatePublicDnsNamespaceResponse>,
   errors: [DuplicateRequest, InvalidInput, NamespaceNotFound, ResourceInUse],
   protocol: AwsProtocol,
@@ -1462,8 +1462,8 @@ export const updateService: API.OperationMethod<
   UpdateServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c44, 2) as any as S.Schema<UpdateServiceRequest>,
-  output: __S(48, __c12, 0) as any as S.Schema<UpdateServiceResponse>,
+  input: __S(166, __c41, 2) as any as S.Schema<UpdateServiceRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<UpdateServiceResponse>,
   errors: [DuplicateRequest, InvalidInput, ServiceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1484,8 +1484,8 @@ export const updateServiceAttributes: API.OperationMethod<
   UpdateServiceAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c45, 0) as any as S.Schema<UpdateServiceAttributesRequest>,
-  output: __S(68, __c17, 0) as any as S.Schema<UpdateServiceAttributesResponse>,
+  input: __S(168, __c42, 0) as any as S.Schema<UpdateServiceAttributesRequest>,
+  output: __S(52, __c13, 0) as any as S.Schema<UpdateServiceAttributesResponse>,
   errors: [InvalidInput, ServiceAttributesLimitExceededException, ServiceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1503,9 +1503,7 @@ function __c0(j: number): any {
           Description: S.optional(S.String),
           Tags: S.optional(__S(5, __c1, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateHttpNamespaceRequest",
-      });
+      ).annotate({ identifier: "CreateHttpNamespaceRequest" });
   }
 }
 function __c1(j: number): any {
@@ -1538,9 +1536,7 @@ function __c3(j: number): any {
           Tags: S.optional(__S(5, __c1, 1)),
           Properties: S.optional(__S(17, __c4, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreatePrivateDnsNamespaceRequest",
-      });
+      ).annotate({ identifier: "CreatePrivateDnsNamespaceRequest" });
   }
 }
 function __c4(j: number): any {
@@ -1574,9 +1570,7 @@ function __c6(j: number): any {
           Tags: S.optional(__S(5, __c1, 1)),
           Properties: S.optional(__S(17, __c4, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreatePublicDnsNamespaceRequest",
-      });
+      ).annotate({ identifier: "CreatePublicDnsNamespaceRequest" });
   }
 }
 function __c7(j: number): any {
@@ -1671,14 +1665,6 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ OperationId: S.optional(S.String) })).annotate({
-        identifier: "DeleteNamespaceResponse",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({ Id: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1686,53 +1672,39 @@ function __c13(j: number): any {
       ).annotate({ identifier: "DeleteServiceRequest" });
   }
 }
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteServiceResponse" });
+  }
+}
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteServiceResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({ ServiceId: S.String, Attributes: __S(60, __c15, 0) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteServiceAttributesRequest" });
   }
 }
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ ServiceId: S.String, Attributes: __S(64, __c16, 0) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DeleteServiceAttributesRequest",
-      });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
       return S.Array(S.String);
   }
 }
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteServiceAttributesResponse",
-      });
-  }
-}
-function __c18(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ ServiceId: S.String, InstanceId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeregisterInstanceRequest",
-      });
+      ).annotate({ identifier: "DeregisterInstanceRequest" });
   }
 }
-function __c19(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1740,8 +1712,8 @@ function __c19(j: number): any {
           NamespaceName: S.String,
           ServiceName: S.String,
           MaxResults: S.optional(S.Number),
-          QueryParameters: S.optional(__S(80, __c20, 0)),
-          OptionalParameters: S.optional(__S(80, __c20, 0)),
+          QueryParameters: S.optional(__S(72, __c18, 0)),
+          OptionalParameters: S.optional(__S(72, __c18, 0)),
           HealthStatus: S.optional(S.String),
           OwnerAccount: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -1753,29 +1725,27 @@ function __c19(j: number): any {
           NamespaceName: S.optional(S.String),
           ServiceName: S.optional(S.String),
           HealthStatus: S.optional(S.String),
-          Attributes: S.optional(__S(80, __c20, 0)),
+          Attributes: S.optional(__S(72, __c18, 0)),
         }),
       ).annotate({ identifier: "HttpInstanceSummary" });
     case 2:
-      return S.Array(__S(77, __c19, 1));
+      return S.Array(__S(69, __c17, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Instances: S.optional(__S(78, __c19, 2)),
+          Instances: S.optional(__S(70, __c17, 2)),
           InstancesRevision: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "DiscoverInstancesResponse",
-      });
+      ).annotate({ identifier: "DiscoverInstancesResponse" });
   }
 }
-function __c20(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c21(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1784,16 +1754,14 @@ function __c21(j: number): any {
           ServiceName: S.String,
           OwnerAccount: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DiscoverInstancesRevisionRequest",
-      });
+      ).annotate({ identifier: "DiscoverInstancesRevisionRequest" });
     case 1:
       return S.suspend(() => S.Struct({ InstancesRevision: S.optional(S.Number) })).annotate({
         identifier: "DiscoverInstancesRevisionResponse",
       });
   }
 }
-function __c22(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1806,17 +1774,17 @@ function __c22(j: number): any {
         S.Struct({
           Id: S.String,
           CreatorRequestId: S.optional(S.String),
-          Attributes: S.optional(__S(80, __c20, 0)),
+          Attributes: S.optional(__S(72, __c18, 0)),
           CreatedByAccount: S.optional(S.String),
         }),
       ).annotate({ identifier: "Instance" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ ResourceOwner: S.optional(S.String), Instance: S.optional(__S(89, __c22, 1)) }),
+        S.Struct({ ResourceOwner: S.optional(S.String), Instance: S.optional(__S(81, __c20, 1)) }),
       ).annotate({ identifier: "GetInstanceResponse" });
   }
 }
-function __c23(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("InstanceId")));
@@ -1824,24 +1792,20 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ServiceId: S.String,
-          Instances: S.optional(__S(92, __c23, 0)),
+          Instances: S.optional(__S(84, __c21, 0)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetInstancesHealthStatusRequest",
-      });
+      ).annotate({ identifier: "GetInstancesHealthStatusRequest" });
     case 2:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Status: S.optional(__S(94, __c23, 2)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetInstancesHealthStatusResponse",
-      });
+        S.Struct({ Status: S.optional(__S(86, __c21, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "GetInstancesHealthStatusResponse" });
   }
 }
-function __c24(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1859,18 +1823,18 @@ function __c24(j: number): any {
           Type: S.optional(S.String),
           Description: S.optional(S.String),
           ServiceCount: S.optional(S.Number),
-          Properties: S.optional(__S(102, __c25, 2)),
+          Properties: S.optional(__S(94, __c23, 2)),
           CreateDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatorRequestId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Namespace" });
     case 2:
-      return S.suspend(() => S.Struct({ Namespace: S.optional(__S(97, __c24, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ Namespace: S.optional(__S(89, __c22, 1)) })).annotate({
         identifier: "GetNamespaceResponse",
       });
   }
 }
-function __c25(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1883,13 +1847,13 @@ function __c25(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          DnsProperties: S.optional(__S(100, __c25, 0)),
-          HttpProperties: S.optional(__S(101, __c25, 1)),
+          DnsProperties: S.optional(__S(92, __c23, 0)),
+          HttpProperties: S.optional(__S(93, __c23, 1)),
         }),
       ).annotate({ identifier: "NamespaceProperties" });
   }
 }
-function __c26(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1910,16 +1874,16 @@ function __c26(j: number): any {
           ErrorCode: S.optional(S.String),
           CreateDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpdateDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Targets: S.optional(__S(105, __c26, 1)),
+          Targets: S.optional(__S(97, __c24, 1)),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.suspend(() => S.Struct({ Operation: S.optional(__S(106, __c26, 2)) })).annotate({
+      return S.suspend(() => S.Struct({ Operation: S.optional(__S(98, __c24, 2)) })).annotate({
         identifier: "GetOperationResponse",
       });
   }
 }
-function __c27(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1929,39 +1893,29 @@ function __c27(j: number): any {
       ).annotate({ identifier: "GetServiceRequest" });
   }
 }
-function __c28(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ ServiceId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetServiceAttributesRequest",
-      });
+      ).annotate({ identifier: "GetServiceAttributesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ServiceArn: S.optional(S.String),
           ResourceOwner: S.optional(S.String),
-          Attributes: S.optional(__S(116, __c29, 0)),
+          Attributes: S.optional(__S(72, __c18, 0)),
         }),
       ).annotate({ identifier: "ServiceAttributes" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ ServiceAttributes: S.optional(__S(113, __c28, 1)) }),
-      ).annotate({
-        identifier: "GetServiceAttributesResponse",
-      });
+        S.Struct({ ServiceAttributes: S.optional(__S(105, __c26, 1)) }),
+      ).annotate({ identifier: "GetServiceAttributesResponse" });
   }
 }
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c30(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1975,34 +1929,34 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
-          Attributes: S.optional(__S(80, __c20, 0)),
+          Attributes: S.optional(__S(72, __c18, 0)),
           CreatedByAccount: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstanceSummary" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(121, __c30, 1).pipe(/*@__PURE__*/ T.XmlName("InstanceSummary")).annotate({
-          identifier: "InstanceSummary",
-        }),
+        /*@__PURE__*/ __S(109, __c27, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("InstanceSummary"))
+          .annotate({ identifier: "InstanceSummary" }),
       );
     case 3:
       return S.suspend(() =>
         S.Struct({
           ResourceOwner: S.optional(S.String),
-          Instances: S.optional(__S(122, __c30, 2)),
+          Instances: S.optional(__S(110, __c27, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListInstancesResponse" });
   }
 }
-function __c31(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          Filters: S.optional(__S(130, __c32, 2)),
+          Filters: S.optional(__S(118, __c29, 2)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListNamespacesRequest" });
     case 1:
@@ -2015,46 +1969,42 @@ function __c31(j: number): any {
           Type: S.optional(S.String),
           Description: S.optional(S.String),
           ServiceCount: S.optional(S.Number),
-          Properties: S.optional(__S(102, __c25, 2)),
+          Properties: S.optional(__S(94, __c23, 2)),
           CreateDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "NamespaceSummary" });
     case 2:
-      return S.Array(__S(125, __c31, 1));
+      return S.Array(__S(113, __c28, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Namespaces: S.optional(__S(126, __c31, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ Namespaces: S.optional(__S(114, __c28, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListNamespacesResponse" });
   }
 }
-function __c32(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")));
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          Name: S.String,
-          Values: __S(128, __c32, 0),
-          Condition: S.optional(S.String),
-        }),
+        S.Struct({ Name: S.String, Values: __S(116, __c29, 0), Condition: S.optional(S.String) }),
       ).annotate({ identifier: "NamespaceFilter" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(129, __c32, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "NamespaceFilter",
-        }),
+        /*@__PURE__*/ __S(117, __c29, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "NamespaceFilter" }),
       );
   }
 }
-function __c33(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          Filters: S.optional(__S(130, __c32, 2)),
+          Filters: S.optional(__S(118, __c29, 2)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListOperationsRequest" });
     case 1:
@@ -2063,26 +2013,24 @@ function __c33(j: number): any {
       ).annotate({ identifier: "OperationSummary" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(133, __c33, 1)
+        /*@__PURE__*/ __S(121, __c30, 1)
           .pipe(/*@__PURE__*/ T.XmlName("OperationSummary"))
-          .annotate({
-            identifier: "OperationSummary",
-          }),
+          .annotate({ identifier: "OperationSummary" }),
       );
     case 3:
       return S.suspend(() =>
-        S.Struct({ Operations: S.optional(__S(134, __c33, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ Operations: S.optional(__S(122, __c30, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c34(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          Filters: S.optional(__S(130, __c32, 2)),
+          Filters: S.optional(__S(118, __c29, 2)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListServicesRequest" });
     case 1:
@@ -2103,30 +2051,28 @@ function __c34(j: number): any {
         }),
       ).annotate({ identifier: "ServiceSummary" });
     case 2:
-      return S.Array(__S(137, __c34, 1));
+      return S.Array(__S(125, __c31, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Services: S.optional(__S(138, __c34, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ Services: S.optional(__S(126, __c31, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListServicesResponse" });
   }
 }
-function __c35(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ ResourceARN: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(5, __c1, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c36(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2134,12 +2080,12 @@ function __c36(j: number): any {
           ServiceId: S.String,
           InstanceId: S.String,
           CreatorRequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Attributes: __S(80, __c20, 0),
+          Attributes: __S(72, __c18, 0),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "RegisterInstanceRequest" });
   }
 }
-function __c37(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2149,17 +2095,17 @@ function __c37(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c38(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: __S(64, __c16, 0) }).pipe(
+        S.Struct({ ResourceARN: S.String, TagKeys: __S(60, __c15, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c39(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Description: S.String })).annotate({
@@ -2170,90 +2116,64 @@ function __c39(j: number): any {
         S.Struct({
           Id: S.String,
           UpdaterRequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Namespace: __S(156, __c39, 0),
+          Namespace: __S(144, __c36, 0),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateHttpNamespaceRequest",
-      });
+      ).annotate({ identifier: "UpdateHttpNamespaceRequest" });
   }
 }
-function __c40(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ ServiceId: S.String, InstanceId: S.String, Status: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateInstanceCustomHealthStatusRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UpdateInstanceCustomHealthStatusResponse",
-      });
+      ).annotate({ identifier: "UpdateInstanceCustomHealthStatusRequest" });
   }
 }
-function __c41(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Description: S.optional(S.String),
-          Properties: S.optional(__S(170, __c42, 2)),
-        }),
-      ).annotate({
-        identifier: "PrivateDnsNamespaceChange",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           Id: S.String,
           UpdaterRequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Namespace: __S(164, __c41, 0),
+          Namespace: __S(159, __c39, 3),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdatePrivateDnsNamespaceRequest",
-      });
+      ).annotate({ identifier: "UpdatePrivateDnsNamespaceRequest" });
   }
 }
-function __c42(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ TTL: S.Number })).annotate({
-        identifier: "SOAChange",
-      });
+      return S.suspend(() => S.Struct({ TTL: S.Number })).annotate({ identifier: "SOAChange" });
     case 1:
-      return S.suspend(() => S.Struct({ SOA: __S(168, __c42, 0) })).annotate({
+      return S.suspend(() => S.Struct({ SOA: __S(156, __c39, 0) })).annotate({
         identifier: "PrivateDnsPropertiesMutableChange",
       });
     case 2:
-      return S.suspend(() => S.Struct({ DnsProperties: __S(169, __c42, 1) })).annotate({
+      return S.suspend(() => S.Struct({ DnsProperties: __S(157, __c39, 1) })).annotate({
         identifier: "PrivateDnsNamespacePropertiesChange",
       });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Description: S.optional(S.String), Properties: S.optional(__S(158, __c39, 2)) }),
+      ).annotate({ identifier: "PrivateDnsNamespaceChange" });
   }
 }
-function __c43(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Description: S.optional(S.String),
-          Properties: S.optional(__S(170, __c42, 2)),
-        }),
-      ).annotate({ identifier: "PublicDnsNamespaceChange" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           Id: S.String,
           UpdaterRequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Namespace: __S(172, __c43, 0),
+          Namespace: __S(159, __c39, 3),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdatePublicDnsNamespaceRequest",
-      });
+      ).annotate({ identifier: "UpdatePublicDnsNamespaceRequest" });
   }
 }
-function __c44(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ DnsRecords: __S(41, __c10, 1) })).annotate({
@@ -2263,28 +2183,26 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Description: S.optional(S.String),
-          DnsConfig: S.optional(__S(176, __c44, 0)),
+          DnsConfig: S.optional(__S(164, __c41, 0)),
           HealthCheckConfig: S.optional(__S(42, __c10, 2)),
         }),
       ).annotate({ identifier: "ServiceChange" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Id: S.String, Service: __S(177, __c44, 1) }).pipe(
+        S.Struct({ Id: S.String, Service: __S(165, __c41, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateServiceRequest" });
   }
 }
-function __c45(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ServiceId: S.String, Attributes: __S(116, __c29, 0) }).pipe(
+        S.Struct({ ServiceId: S.String, Attributes: __S(72, __c18, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateServiceAttributesRequest",
-      });
+      ).annotate({ identifier: "UpdateServiceAttributesRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

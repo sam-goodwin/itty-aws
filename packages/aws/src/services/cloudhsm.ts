@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
@@ -482,7 +482,7 @@ export const deleteHapg: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(46, __c23, 0) as any as S.Schema<DeleteHapgRequest>,
-  output: __S(48, __c24, 0) as any as S.Schema<DeleteHapgResponse>,
+  output: __S(32, __c16, 0) as any as S.Schema<DeleteHapgResponse>,
   errors: [CloudHsmInternalException, CloudHsmServiceException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -515,8 +515,8 @@ export const deleteHsm: API.OperationMethod<
   DeleteHsmError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c25, 0) as any as S.Schema<DeleteHsmRequest>,
-  output: __S(48, __c24, 0) as any as S.Schema<DeleteHsmResponse>,
+  input: __S(48, __c24, 0) as any as S.Schema<DeleteHsmRequest>,
+  output: __S(32, __c16, 0) as any as S.Schema<DeleteHsmResponse>,
   errors: [CloudHsmInternalException, CloudHsmServiceException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -548,8 +548,8 @@ export const deleteLunaClient: API.OperationMethod<
   DeleteLunaClientError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c26, 0) as any as S.Schema<DeleteLunaClientRequest>,
-  output: __S(48, __c24, 0) as any as S.Schema<DeleteLunaClientResponse>,
+  input: __S(50, __c25, 0) as any as S.Schema<DeleteLunaClientRequest>,
+  output: __S(32, __c16, 0) as any as S.Schema<DeleteLunaClientResponse>,
   errors: [CloudHsmInternalException, CloudHsmServiceException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1085,9 +1085,7 @@ function __c3(j: number): any {
           ClientArn: S.optional(S.String),
           CertificateFingerprint: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeLunaClientRequest",
-      });
+      ).annotate({ identifier: "DescribeLunaClientRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1097,9 +1095,7 @@ function __c3(j: number): any {
           LastModifiedTimestamp: S.optional(S.String),
           Label: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeLunaClientResponse",
-      });
+      ).annotate({ identifier: "DescribeLunaClientResponse" });
   }
 }
 function __c4(j: number): any {
@@ -1127,9 +1123,7 @@ function __c5(j: number): any {
         S.Struct({}).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListAvailableZonesRequest",
-      });
+      ).annotate({ identifier: "ListAvailableZonesRequest" });
     case 1:
       return S.suspend(() => S.Struct({ AZList: S.optional(__S(2, __c1, 0)) })).annotate({
         identifier: "ListAvailableZonesResponse",
@@ -1185,9 +1179,7 @@ function __c9(j: number): any {
         S.Struct({ ResourceArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ TagList: __S(31, __c15, 1) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -1248,9 +1240,7 @@ function __c13(j: number): any {
         S.Struct({ ResourceArn: S.String, TagKeyList: __S(2, __c1, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "RemoveTagsFromResourceRequest",
-      });
+      ).annotate({ identifier: "RemoveTagsFromResourceRequest" });
   }
 }
 function __c14(j: number): any {
@@ -1365,14 +1355,6 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Status: S.String })).annotate({
-        identifier: "DeleteHapgResponse",
-      });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({ HsmArn: S.String.pipe(T.XmlName("HsmArn")) }).pipe(
           T.all(
@@ -1388,7 +1370,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "DeleteHsmRequest" });
   }
 }
-function __c26(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

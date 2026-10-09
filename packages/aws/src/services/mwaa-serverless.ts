@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1142,9 +1142,7 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(144, __c18, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -1188,9 +1186,7 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ TaskInstances: S.optional(__S(50, __c6, 2)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListTaskInstancesResponse",
-      });
+      ).annotate({ identifier: "ListTaskInstancesResponse" });
   }
 }
 function __c7(j: number): any {
@@ -1288,9 +1284,7 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListWorkflowVersionsRequest",
-      });
+      ).annotate({ identifier: "ListWorkflowVersionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1312,9 +1306,7 @@ function __c9(j: number): any {
           WorkflowVersions: S.optional(__S(74, __c9, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListWorkflowVersionsResponse",
-      });
+      ).annotate({ identifier: "ListWorkflowVersionsResponse" });
   }
 }
 function __c10(j: number): any {
@@ -1399,9 +1391,7 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TagResourceResponse" });
   }
 }
 function __c14(j: number): any {

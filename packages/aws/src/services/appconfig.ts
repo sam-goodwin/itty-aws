@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -88,9 +88,7 @@ export class BadRequestException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       Reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({
-          identifier: "BadRequestReason",
-        }),
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "BadRequestReason" }),
       ),
       Details: /*@__PURE__*/ S.optional(
         /*@__PURE__*/ S.suspend(() => __S(2, __c0, 2)).annotate({
@@ -1008,8 +1006,8 @@ export const createApplication: API.OperationMethod<
   CreateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c66, 0) as any as S.Schema<CreateApplicationRequest>,
-  output: __S(536, __c67, 0) as any as S.Schema<Application>,
+  input: __S(512, __c64, 0) as any as S.Schema<CreateApplicationRequest>,
+  output: __S(520, __c65, 0) as any as S.Schema<Application>,
   errors: [BadRequestException, InternalServerException, ServiceQuotaExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1059,8 +1057,8 @@ export const createConfigurationProfile: API.OperationMethod<
   CreateConfigurationProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(568, __c71, 0) as any as S.Schema<CreateConfigurationProfileRequest>,
-  output: __S(578, __c72, 2) as any as S.Schema<ConfigurationProfile>,
+  input: __S(552, __c69, 0) as any as S.Schema<CreateConfigurationProfileRequest>,
+  output: __S(562, __c70, 2) as any as S.Schema<ConfigurationProfile>,
   errors: [
     BadRequestException,
     InternalServerException,
@@ -1089,8 +1087,8 @@ export const createDeploymentStrategy: API.OperationMethod<
   CreateDeploymentStrategyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(584, __c73, 0) as any as S.Schema<CreateDeploymentStrategyRequest>,
-  output: __S(592, __c74, 0) as any as S.Schema<DeploymentStrategy>,
+  input: __S(568, __c71, 0) as any as S.Schema<CreateDeploymentStrategyRequest>,
+  output: __S(576, __c72, 0) as any as S.Schema<DeploymentStrategy>,
   errors: [BadRequestException, InternalServerException, ServiceQuotaExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1119,8 +1117,8 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(600, __c75, 0) as any as S.Schema<CreateEnvironmentRequest>,
-  output: __S(610, __c76, 2) as any as S.Schema<Environment>,
+  input: __S(584, __c73, 0) as any as S.Schema<CreateEnvironmentRequest>,
+  output: __S(594, __c74, 2) as any as S.Schema<Environment>,
   errors: [
     BadRequestException,
     InternalServerException,
@@ -1237,7 +1235,7 @@ export const createExtensionAssociation: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(64, __c8, 0) as any as S.Schema<CreateExtensionAssociationRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<ExtensionAssociation>,
+  output: __S(72, __c9, 0) as any as S.Schema<ExtensionAssociation>,
   errors: [
     BadRequestException,
     InternalServerException,
@@ -1269,8 +1267,8 @@ export const createHostedConfigurationVersion: API.OperationMethod<
   CreateHostedConfigurationVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<CreateHostedConfigurationVersionRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<HostedConfigurationVersion>,
+  input: __S(80, __c10, 0) as any as S.Schema<CreateHostedConfigurationVersionRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<HostedConfigurationVersion>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1298,8 +1296,8 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<DeleteApplicationResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<DeleteApplicationRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<DeleteApplicationResponse>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1325,8 +1323,8 @@ export const deleteConfigurationProfile: API.OperationMethod<
   DeleteConfigurationProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<DeleteConfigurationProfileRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<DeleteConfigurationProfileResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<DeleteConfigurationProfileRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<DeleteConfigurationProfileResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1352,8 +1350,8 @@ export const deleteDeploymentStrategy: API.OperationMethod<
   DeleteDeploymentStrategyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<DeleteDeploymentStrategyRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<DeleteDeploymentStrategyResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<DeleteDeploymentStrategyRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<DeleteDeploymentStrategyResponse>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1378,8 +1376,8 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<DeleteEnvironmentRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<DeleteEnvironmentResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<DeleteEnvironmentRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<DeleteEnvironmentResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1406,8 +1404,8 @@ export const deleteExperimentDefinition: API.OperationMethod<
   DeleteExperimentDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<DeleteExperimentDefinitionRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<DeleteExperimentDefinitionResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<DeleteExperimentDefinitionRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<DeleteExperimentDefinitionResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1434,8 +1432,8 @@ export const deleteExtension: API.OperationMethod<
   DeleteExtensionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<DeleteExtensionRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<DeleteExtensionResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<DeleteExtensionRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<DeleteExtensionResponse>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1457,8 +1455,8 @@ export const deleteExtensionAssociation: API.OperationMethod<
   DeleteExtensionAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<DeleteExtensionAssociationRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<DeleteExtensionAssociationResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<DeleteExtensionAssociationRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<DeleteExtensionAssociationResponse>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1480,8 +1478,8 @@ export const deleteHostedConfigurationVersion: API.OperationMethod<
   DeleteHostedConfigurationVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<DeleteHostedConfigurationVersionRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<DeleteHostedConfigurationVersionResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<DeleteHostedConfigurationVersionRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<DeleteHostedConfigurationVersionResponse>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1499,8 +1497,8 @@ export const getAccountSettings: API.OperationMethod<
   GetAccountSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<GetAccountSettingsRequest>,
-  output: __S(194, __c24, 2) as any as S.Schema<AccountSettings>,
+  input: __S(168, __c21, 0) as any as S.Schema<GetAccountSettingsRequest>,
+  output: __S(178, __c22, 2) as any as S.Schema<AccountSettings>,
   errors: [BadRequestException, InternalServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1521,8 +1519,8 @@ export const getApplication: API.OperationMethod<
   GetApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<GetApplicationRequest>,
-  output: __S(536, __c67, 0) as any as S.Schema<Application>,
+  input: __S(184, __c23, 0) as any as S.Schema<GetApplicationRequest>,
+  output: __S(520, __c65, 0) as any as S.Schema<Application>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1551,8 +1549,8 @@ export const getConfiguration: API.OperationMethod<
   GetConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<GetConfigurationRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<Configuration>,
+  input: __S(192, __c24, 0) as any as S.Schema<GetConfigurationRequest>,
+  output: __S(193, __c24, 1) as any as S.Schema<Configuration>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1573,8 +1571,8 @@ export const getConfigurationProfile: API.OperationMethod<
   GetConfigurationProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<GetConfigurationProfileRequest>,
-  output: __S(578, __c72, 2) as any as S.Schema<ConfigurationProfile>,
+  input: __S(200, __c25, 0) as any as S.Schema<GetConfigurationProfileRequest>,
+  output: __S(562, __c70, 2) as any as S.Schema<ConfigurationProfile>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1595,8 +1593,8 @@ export const getDeployment: API.OperationMethod<
   GetDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<GetDeploymentRequest>,
-  output: __S(238, __c29, 6) as any as S.Schema<Deployment>,
+  input: __S(208, __c26, 0) as any as S.Schema<GetDeploymentRequest>,
+  output: __S(222, __c27, 6) as any as S.Schema<Deployment>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1621,8 +1619,8 @@ export const getDeploymentStrategy: API.OperationMethod<
   GetDeploymentStrategyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<GetDeploymentStrategyRequest>,
-  output: __S(592, __c74, 0) as any as S.Schema<DeploymentStrategy>,
+  input: __S(224, __c28, 0) as any as S.Schema<GetDeploymentStrategyRequest>,
+  output: __S(576, __c72, 0) as any as S.Schema<DeploymentStrategy>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1648,8 +1646,8 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<GetEnvironmentRequest>,
-  output: __S(610, __c76, 2) as any as S.Schema<Environment>,
+  input: __S(232, __c29, 0) as any as S.Schema<GetEnvironmentRequest>,
+  output: __S(594, __c74, 2) as any as S.Schema<Environment>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1670,7 +1668,7 @@ export const getExperimentDefinition: API.OperationMethod<
   GetExperimentDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<GetExperimentDefinitionRequest>,
+  input: __S(240, __c30, 0) as any as S.Schema<GetExperimentDefinitionRequest>,
   output: __S(32, __c4, 0) as any as S.Schema<ExperimentDefinition>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
@@ -1692,8 +1690,8 @@ export const getExperimentRun: API.OperationMethod<
   GetExperimentRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<GetExperimentRunRequest>,
-  output: __S(282, __c35, 2) as any as S.Schema<ExperimentRun>,
+  input: __S(248, __c31, 0) as any as S.Schema<GetExperimentRunRequest>,
+  output: __S(266, __c33, 2) as any as S.Schema<ExperimentRun>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1714,7 +1712,7 @@ export const getExtension: API.OperationMethod<
   GetExtensionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<GetExtensionRequest>,
+  input: __S(272, __c34, 0) as any as S.Schema<GetExtensionRequest>,
   output: __S(61, __c7, 5) as any as S.Schema<Extension>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
@@ -1738,8 +1736,8 @@ export const getExtensionAssociation: API.OperationMethod<
   GetExtensionAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<GetExtensionAssociationRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<ExtensionAssociation>,
+  input: __S(280, __c35, 0) as any as S.Schema<GetExtensionAssociationRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<ExtensionAssociation>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1760,8 +1758,8 @@ export const getHostedConfigurationVersion: API.OperationMethod<
   GetHostedConfigurationVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<GetHostedConfigurationVersionRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<HostedConfigurationVersion>,
+  input: __S(288, __c36, 0) as any as S.Schema<GetHostedConfigurationVersionRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<HostedConfigurationVersion>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1779,8 +1777,8 @@ export const listApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Application
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<ListApplicationsRequest>,
-  output: __S(314, __c39, 2) as any as S.Schema<Applications>,
+  input: __S(296, __c37, 0) as any as S.Schema<ListApplicationsRequest>,
+  output: __S(298, __c37, 2) as any as S.Schema<Applications>,
   errors: [BadRequestException, InternalServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1808,8 +1806,8 @@ export const listConfigurationProfiles: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ConfigurationProfileSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<ListConfigurationProfilesRequest>,
-  output: __S(324, __c40, 4) as any as S.Schema<ConfigurationProfiles>,
+  input: __S(304, __c38, 0) as any as S.Schema<ListConfigurationProfilesRequest>,
+  output: __S(308, __c38, 4) as any as S.Schema<ConfigurationProfiles>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1837,8 +1835,8 @@ export const listDeployments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DeploymentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<ListDeploymentsRequest>,
-  output: __S(331, __c41, 3) as any as S.Schema<Deployments>,
+  input: __S(312, __c39, 0) as any as S.Schema<ListDeploymentsRequest>,
+  output: __S(315, __c39, 3) as any as S.Schema<Deployments>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1865,8 +1863,8 @@ export const listDeploymentStrategies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DeploymentStrategy
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<ListDeploymentStrategiesRequest>,
-  output: __S(338, __c42, 2) as any as S.Schema<DeploymentStrategies>,
+  input: __S(320, __c40, 0) as any as S.Schema<ListDeploymentStrategiesRequest>,
+  output: __S(322, __c40, 2) as any as S.Schema<DeploymentStrategies>,
   errors: [BadRequestException, InternalServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1894,8 +1892,8 @@ export const listEnvironments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Environment
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<ListEnvironmentsRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<Environments>,
+  input: __S(328, __c41, 0) as any as S.Schema<ListEnvironmentsRequest>,
+  output: __S(330, __c41, 2) as any as S.Schema<Environments>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1923,8 +1921,8 @@ export const listExperimentDefinitions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExperimentDefinitionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<ListExperimentDefinitionsRequest>,
-  output: __S(355, __c44, 3) as any as S.Schema<ExperimentDefinitions>,
+  input: __S(336, __c42, 0) as any as S.Schema<ListExperimentDefinitionsRequest>,
+  output: __S(339, __c42, 3) as any as S.Schema<ExperimentDefinitions>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1952,8 +1950,8 @@ export const listExperimentRunEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExperimentRunEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<ListExperimentRunEventsRequest>,
-  output: __S(363, __c45, 3) as any as S.Schema<ExperimentRunEvents>,
+  input: __S(344, __c43, 0) as any as S.Schema<ListExperimentRunEventsRequest>,
+  output: __S(347, __c43, 3) as any as S.Schema<ExperimentRunEvents>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1981,8 +1979,8 @@ export const listExperimentRuns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExperimentRunSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<ListExperimentRunsRequest>,
-  output: __S(371, __c46, 3) as any as S.Schema<ExperimentRuns>,
+  input: __S(352, __c44, 0) as any as S.Schema<ListExperimentRunsRequest>,
+  output: __S(355, __c44, 3) as any as S.Schema<ExperimentRuns>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2011,8 +2009,8 @@ export const listExtensionAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExtensionAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(376, __c47, 0) as any as S.Schema<ListExtensionAssociationsRequest>,
-  output: __S(379, __c47, 3) as any as S.Schema<ExtensionAssociations>,
+  input: __S(360, __c45, 0) as any as S.Schema<ListExtensionAssociationsRequest>,
+  output: __S(363, __c45, 3) as any as S.Schema<ExtensionAssociations>,
   errors: [BadRequestException, InternalServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2038,8 +2036,8 @@ export const listExtensions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExtensionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(384, __c48, 0) as any as S.Schema<ListExtensionsRequest>,
-  output: __S(387, __c48, 3) as any as S.Schema<Extensions>,
+  input: __S(368, __c46, 0) as any as S.Schema<ListExtensionsRequest>,
+  output: __S(371, __c46, 3) as any as S.Schema<Extensions>,
   errors: [BadRequestException, InternalServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2068,8 +2066,8 @@ export const listHostedConfigurationVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   HostedConfigurationVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<ListHostedConfigurationVersionsRequest>,
-  output: __S(395, __c49, 3) as any as S.Schema<HostedConfigurationVersions>,
+  input: __S(376, __c47, 0) as any as S.Schema<ListHostedConfigurationVersionsRequest>,
+  output: __S(379, __c47, 3) as any as S.Schema<HostedConfigurationVersions>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2096,8 +2094,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c50, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(401, __c50, 1) as any as S.Schema<ResourceTags>,
+  input: __S(384, __c48, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(385, __c48, 1) as any as S.Schema<ResourceTags>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2121,8 +2119,8 @@ export const startDeployment: API.OperationMethod<
   StartDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(408, __c51, 0) as any as S.Schema<StartDeploymentRequest>,
-  output: __S(238, __c29, 6) as any as S.Schema<Deployment>,
+  input: __S(392, __c49, 0) as any as S.Schema<StartDeploymentRequest>,
+  output: __S(222, __c27, 6) as any as S.Schema<Deployment>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2151,8 +2149,8 @@ export const startExperimentRun: API.OperationMethod<
   StartExperimentRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<StartExperimentRunRequest>,
-  output: __S(282, __c35, 2) as any as S.Schema<ExperimentRun>,
+  input: __S(400, __c50, 0) as any as S.Schema<StartExperimentRunRequest>,
+  output: __S(266, __c33, 2) as any as S.Schema<ExperimentRun>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2183,8 +2181,8 @@ export const stopDeployment: API.OperationMethod<
   StopDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c54, 0) as any as S.Schema<StopDeploymentRequest>,
-  output: __S(238, __c29, 6) as any as S.Schema<Deployment>,
+  input: __S(416, __c52, 0) as any as S.Schema<StopDeploymentRequest>,
+  output: __S(222, __c27, 6) as any as S.Schema<Deployment>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2206,8 +2204,8 @@ export const stopExperimentRun: API.OperationMethod<
   StopExperimentRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(440, __c55, 0) as any as S.Schema<StopExperimentRunRequest>,
-  output: __S(282, __c35, 2) as any as S.Schema<ExperimentRun>,
+  input: __S(424, __c53, 0) as any as S.Schema<StopExperimentRunRequest>,
+  output: __S(266, __c33, 2) as any as S.Schema<ExperimentRun>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2235,8 +2233,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c56, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(432, __c54, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<TagResourceResponse>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2257,8 +2255,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(456, __c57, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(440, __c55, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2278,8 +2276,8 @@ export const updateAccountSettings: API.OperationMethod<
   UpdateAccountSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c58, 0) as any as S.Schema<UpdateAccountSettingsRequest>,
-  output: __S(194, __c24, 2) as any as S.Schema<AccountSettings>,
+  input: __S(448, __c56, 0) as any as S.Schema<UpdateAccountSettingsRequest>,
+  output: __S(178, __c22, 2) as any as S.Schema<AccountSettings>,
   errors: [BadRequestException, InternalServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2300,8 +2298,8 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(472, __c59, 0) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(536, __c67, 0) as any as S.Schema<Application>,
+  input: __S(456, __c57, 0) as any as S.Schema<UpdateApplicationRequest>,
+  output: __S(520, __c65, 0) as any as S.Schema<Application>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2322,8 +2320,8 @@ export const updateConfigurationProfile: API.OperationMethod<
   UpdateConfigurationProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c60, 0) as any as S.Schema<UpdateConfigurationProfileRequest>,
-  output: __S(578, __c72, 2) as any as S.Schema<ConfigurationProfile>,
+  input: __S(464, __c58, 0) as any as S.Schema<UpdateConfigurationProfileRequest>,
+  output: __S(562, __c70, 2) as any as S.Schema<ConfigurationProfile>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2344,8 +2342,8 @@ export const updateDeploymentStrategy: API.OperationMethod<
   UpdateDeploymentStrategyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(488, __c61, 0) as any as S.Schema<UpdateDeploymentStrategyRequest>,
-  output: __S(592, __c74, 0) as any as S.Schema<DeploymentStrategy>,
+  input: __S(472, __c59, 0) as any as S.Schema<UpdateDeploymentStrategyRequest>,
+  output: __S(576, __c72, 0) as any as S.Schema<DeploymentStrategy>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2366,8 +2364,8 @@ export const updateEnvironment: API.OperationMethod<
   UpdateEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c62, 0) as any as S.Schema<UpdateEnvironmentRequest>,
-  output: __S(610, __c76, 2) as any as S.Schema<Environment>,
+  input: __S(480, __c60, 0) as any as S.Schema<UpdateEnvironmentRequest>,
+  output: __S(594, __c74, 2) as any as S.Schema<Environment>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2389,7 +2387,7 @@ export const updateExperimentDefinition: API.OperationMethod<
   UpdateExperimentDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(504, __c63, 0) as any as S.Schema<UpdateExperimentDefinitionRequest>,
+  input: __S(488, __c61, 0) as any as S.Schema<UpdateExperimentDefinitionRequest>,
   output: __S(32, __c4, 0) as any as S.Schema<ExperimentDefinition>,
   errors: [
     BadRequestException,
@@ -2417,8 +2415,8 @@ export const updateExperimentRun: API.OperationMethod<
   UpdateExperimentRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c64, 0) as any as S.Schema<UpdateExperimentRunRequest>,
-  output: __S(282, __c35, 2) as any as S.Schema<ExperimentRun>,
+  input: __S(496, __c62, 0) as any as S.Schema<UpdateExperimentRunRequest>,
+  output: __S(266, __c33, 2) as any as S.Schema<ExperimentRun>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2447,7 +2445,7 @@ export const updateExtension: API.OperationMethod<
   UpdateExtensionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(520, __c65, 0) as any as S.Schema<UpdateExtensionRequest>,
+  input: __S(504, __c63, 0) as any as S.Schema<UpdateExtensionRequest>,
   output: __S(61, __c7, 5) as any as S.Schema<Extension>,
   errors: [
     BadRequestException,
@@ -2476,8 +2474,8 @@ export const updateExtensionAssociation: API.OperationMethod<
   UpdateExtensionAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(552, __c69, 0) as any as S.Schema<UpdateExtensionAssociationRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<ExtensionAssociation>,
+  input: __S(536, __c67, 0) as any as S.Schema<UpdateExtensionAssociationRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<ExtensionAssociation>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2498,8 +2496,8 @@ export const validateConfiguration: API.OperationMethod<
   ValidateConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(560, __c70, 0) as any as S.Schema<ValidateConfigurationRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<ValidateConfigurationResponse>,
+  input: __S(544, __c68, 0) as any as S.Schema<ValidateConfigurationRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<ValidateConfigurationResponse>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2518,9 +2516,7 @@ function __c0(j: number): any {
           Type: S.optional(S.String),
           Value: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "InvalidConfigurationDetail",
-      });
+      ).annotate({ identifier: "InvalidConfigurationDetail" });
     case 1:
       return S.Array(__S(0, __c0, 0));
     case 2:
@@ -2543,7 +2539,7 @@ function __c1(j: number): any {
           Hypothesis: S.optional(S.String),
           AudienceDescription: S.optional(S.String),
           LaunchCriteria: S.optional(S.String),
-          Tags: S.optional(__S(544, __c68, 0)),
+          Tags: S.optional(__S(528, __c66, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -2557,9 +2553,7 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateExperimentDefinitionRequest",
-      });
+      ).annotate({ identifier: "CreateExperimentDefinitionRequest" });
   }
 }
 function __c2(j: number): any {
@@ -2647,7 +2641,7 @@ function __c6(j: number): any {
           Description: S.optional(S.String),
           Actions: __S(58, __c7, 2),
           Parameters: S.optional(__S(60, __c7, 4)),
-          Tags: S.optional(__S(544, __c68, 0)),
+          Tags: S.optional(__S(528, __c66, 0)),
           LatestVersionNumber: S.optional(S.Number).pipe(T.HttpHeader("Latest-Version-Number")),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/extensions" }), svc, auth, proto, ver, rules),
@@ -2702,8 +2696,8 @@ function __c8(j: number): any {
           ExtensionIdentifier: S.String,
           ExtensionVersionNumber: S.optional(S.Number),
           ResourceIdentifier: S.String,
-          Parameters: S.optional(__S(72, __c9, 0)),
-          Tags: S.optional(__S(544, __c68, 0)),
+          Parameters: S.optional(__S(528, __c66, 0)),
+          Tags: S.optional(__S(528, __c66, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/extensionassociations" }),
@@ -2714,18 +2708,10 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateExtensionAssociationRequest",
-      });
+      ).annotate({ identifier: "CreateExtensionAssociationRequest" });
   }
 }
 function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2734,13 +2720,13 @@ function __c10(j: number): any {
           ExtensionArn: S.optional(S.String),
           ResourceArn: S.optional(S.String),
           Arn: S.optional(S.String),
-          Parameters: S.optional(__S(72, __c9, 0)),
+          Parameters: S.optional(__S(528, __c66, 0)),
           ExtensionVersionNumber: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ExtensionAssociation" });
   }
 }
-function __c11(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2765,12 +2751,10 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateHostedConfigurationVersionRequest",
-      });
+      ).annotate({ identifier: "CreateHostedConfigurationVersionRequest" });
   }
 }
-function __c12(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2786,12 +2770,10 @@ function __c12(j: number): any {
           VersionLabel: S.optional(S.String).pipe(T.HttpHeader("VersionLabel")),
           KmsKeyArn: S.optional(S.String).pipe(T.HttpHeader("KmsKeyArn")),
         }),
-      ).annotate({
-        identifier: "HostedConfigurationVersion",
-      });
+      ).annotate({ identifier: "HostedConfigurationVersion" });
   }
 }
-function __c13(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2808,15 +2790,13 @@ function __c13(j: number): any {
       ).annotate({ identifier: "DeleteApplicationRequest" });
   }
 }
-function __c14(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteApplicationResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteApplicationResponse" });
   }
 }
-function __c15(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2839,20 +2819,10 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteConfigurationProfileRequest",
-      });
+      ).annotate({ identifier: "DeleteConfigurationProfileRequest" });
   }
 }
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteConfigurationProfileResponse",
-      });
-  }
-}
-function __c17(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2866,12 +2836,10 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteDeploymentStrategyRequest",
-      });
+      ).annotate({ identifier: "DeleteDeploymentStrategyRequest" });
   }
 }
-function __c18(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2897,7 +2865,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "DeleteEnvironmentRequest" });
   }
 }
-function __c19(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2920,12 +2888,10 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteExperimentDefinitionRequest",
-      });
+      ).annotate({ identifier: "DeleteExperimentDefinitionRequest" });
   }
 }
-function __c20(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2945,7 +2911,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "DeleteExtensionRequest" });
   }
 }
-function __c21(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2961,12 +2927,10 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteExtensionAssociationRequest",
-      });
+      ).annotate({ identifier: "DeleteExtensionAssociationRequest" });
   }
 }
-function __c22(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2987,24 +2951,20 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteHostedConfigurationVersionRequest",
-      });
+      ).annotate({ identifier: "DeleteHostedConfigurationVersionRequest" });
   }
 }
-function __c23(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "GET", uri: "/settings" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetAccountSettingsRequest",
-      });
+      ).annotate({ identifier: "GetAccountSettingsRequest" });
   }
 }
-function __c24(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3012,9 +2972,7 @@ function __c24(j: number): any {
           Enabled: S.optional(S.Boolean),
           ProtectionPeriodInMinutes: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "DeletionProtectionSettings",
-      });
+      ).annotate({ identifier: "DeletionProtectionSettings" });
     case 1:
       return S.suspend(() => S.Struct({ Enabled: S.optional(S.Boolean) })).annotate({
         identifier: "VendedMetricsSettings",
@@ -3022,13 +2980,13 @@ function __c24(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          DeletionProtection: S.optional(__S(192, __c24, 0)),
-          VendedMetrics: S.optional(__S(193, __c24, 1)),
+          DeletionProtection: S.optional(__S(176, __c22, 0)),
+          VendedMetrics: S.optional(__S(177, __c22, 1)),
         }),
       ).annotate({ identifier: "AccountSettings" });
   }
 }
-function __c25(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3045,7 +3003,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "GetApplicationRequest" });
   }
 }
-function __c26(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3081,7 +3039,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "Configuration" });
   }
 }
-function __c27(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3101,12 +3059,10 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetConfigurationProfileRequest",
-      });
+      ).annotate({ identifier: "GetConfigurationProfileRequest" });
   }
 }
-function __c28(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3130,7 +3086,7 @@ function __c28(j: number): any {
       ).annotate({ identifier: "GetDeploymentRequest" });
   }
 }
-function __c29(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3145,30 +3101,30 @@ function __c29(j: number): any {
         }),
       ).annotate({ identifier: "ActionInvocation" });
     case 1:
-      return S.Array(__S(232, __c29, 0));
+      return S.Array(__S(216, __c27, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           EventType: S.optional(S.String),
           TriggeredBy: S.optional(S.String),
           Description: S.optional(S.String),
-          ActionInvocations: S.optional(__S(233, __c29, 1)),
+          ActionInvocations: S.optional(__S(217, __c27, 1)),
           OccurredAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "DeploymentEvent" });
     case 3:
-      return S.Array(__S(234, __c29, 2));
+      return S.Array(__S(218, __c27, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           ExtensionId: S.optional(S.String),
           ExtensionAssociationId: S.optional(S.String),
           VersionNumber: S.optional(S.Number),
-          Parameters: S.optional(__S(72, __c9, 0)),
+          Parameters: S.optional(__S(528, __c66, 0)),
         }),
       ).annotate({ identifier: "AppliedExtension" });
     case 5:
-      return S.Array(__S(236, __c29, 4));
+      return S.Array(__S(220, __c27, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3186,11 +3142,11 @@ function __c29(j: number): any {
           GrowthFactor: S.optional(S.Number),
           FinalBakeTimeInMinutes: S.optional(S.Number),
           State: S.optional(S.String),
-          EventLog: S.optional(__S(235, __c29, 3)),
+          EventLog: S.optional(__S(219, __c27, 3)),
           PercentageComplete: S.optional(S.Number),
           StartedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           CompletedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          AppliedExtensions: S.optional(__S(237, __c29, 5)),
+          AppliedExtensions: S.optional(__S(221, __c27, 5)),
           KmsKeyArn: S.optional(S.String),
           KmsKeyIdentifier: S.optional(S.String),
           VersionLabel: S.optional(S.String),
@@ -3198,7 +3154,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "Deployment" });
   }
 }
-function __c30(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3212,12 +3168,10 @@ function __c30(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDeploymentStrategyRequest",
-      });
+      ).annotate({ identifier: "GetDeploymentStrategyRequest" });
   }
 }
-function __c31(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3240,7 +3194,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "GetEnvironmentRequest" });
   }
 }
-function __c32(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3262,12 +3216,10 @@ function __c32(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetExperimentDefinitionRequest",
-      });
+      ).annotate({ identifier: "GetExperimentDefinitionRequest" });
   }
 }
-function __c33(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3293,13 +3245,13 @@ function __c33(j: number): any {
       ).annotate({ identifier: "GetExperimentRunRequest" });
   }
 }
-function __c34(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
-      return S.Union([/*@__PURE__*/ S.Struct({ Inline: __S(72, __c9, 0) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ Inline: __S(528, __c66, 0) })]);
   }
 }
-function __c35(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3325,9 +3277,7 @@ function __c35(j: number): any {
           Treatments: S.optional(__S(29, __c3, 5)),
           Control: S.optional(__S(28, __c3, 4)),
         }),
-      ).annotate({
-        identifier: "ExperimentDefinitionSnapshot",
-      });
+      ).annotate({ identifier: "ExperimentDefinitionSnapshot" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3337,17 +3287,17 @@ function __c35(j: number): any {
           Description: S.optional(S.String),
           Status: S.optional(S.String),
           ExposurePercentage: S.optional(S.Number),
-          TreatmentOverrides: S.optional(__S(272, __c34, 0)),
-          Result: S.optional(__S(280, __c35, 0)),
+          TreatmentOverrides: S.optional(__S(256, __c32, 0)),
+          Result: S.optional(__S(264, __c33, 0)),
           StartedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           EndedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          ExperimentDefinitionSnapshot: S.optional(__S(281, __c35, 1)),
+          ExperimentDefinitionSnapshot: S.optional(__S(265, __c33, 1)),
         }),
       ).annotate({ identifier: "ExperimentRun" });
   }
 }
-function __c36(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3367,7 +3317,7 @@ function __c36(j: number): any {
       ).annotate({ identifier: "GetExtensionRequest" });
   }
 }
-function __c37(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3383,12 +3333,10 @@ function __c37(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetExtensionAssociationRequest",
-      });
+      ).annotate({ identifier: "GetExtensionAssociationRequest" });
   }
 }
-function __c38(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3409,12 +3357,10 @@ function __c38(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetHostedConfigurationVersionRequest",
-      });
+      ).annotate({ identifier: "GetHostedConfigurationVersionRequest" });
   }
 }
-function __c39(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3426,14 +3372,14 @@ function __c39(j: number): any {
         ),
       ).annotate({ identifier: "ListApplicationsRequest" });
     case 1:
-      return S.Array(__S(536, __c67, 0));
+      return S.Array(__S(520, __c65, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(313, __c39, 1)), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(297, __c37, 1)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "Applications" });
   }
 }
-function __c40(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3452,9 +3398,7 @@ function __c40(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListConfigurationProfilesRequest",
-      });
+      ).annotate({ identifier: "ListConfigurationProfilesRequest" });
     case 1:
       return S.Array(S.String);
     case 2:
@@ -3464,21 +3408,19 @@ function __c40(j: number): any {
           Id: S.optional(S.String),
           Name: S.optional(S.String),
           LocationUri: S.optional(S.String),
-          ValidatorTypes: S.optional(__S(321, __c40, 1)),
+          ValidatorTypes: S.optional(__S(305, __c38, 1)),
           Type: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ConfigurationProfileSummary",
-      });
+      ).annotate({ identifier: "ConfigurationProfileSummary" });
     case 3:
-      return S.Array(__S(322, __c40, 2));
+      return S.Array(__S(306, __c38, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(323, __c40, 3)), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(307, __c38, 3)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ConfigurationProfiles" });
   }
 }
-function __c41(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3521,14 +3463,14 @@ function __c41(j: number): any {
         }),
       ).annotate({ identifier: "DeploymentSummary" });
     case 2:
-      return S.Array(__S(329, __c41, 1));
+      return S.Array(__S(313, __c39, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(330, __c41, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(314, __c39, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "Deployments" });
   }
 }
-function __c42(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3545,18 +3487,16 @@ function __c42(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDeploymentStrategiesRequest",
-      });
+      ).annotate({ identifier: "ListDeploymentStrategiesRequest" });
     case 1:
-      return S.Array(__S(592, __c74, 0));
+      return S.Array(__S(576, __c72, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(337, __c42, 1)), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(321, __c40, 1)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "DeploymentStrategies" });
   }
 }
-function __c43(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3576,14 +3516,14 @@ function __c43(j: number): any {
         ),
       ).annotate({ identifier: "ListEnvironmentsRequest" });
     case 1:
-      return S.Array(__S(610, __c76, 2));
+      return S.Array(__S(594, __c74, 2));
     case 2:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(345, __c43, 1)), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(329, __c41, 1)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "Environments" });
   }
 }
-function __c44(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3606,9 +3546,7 @@ function __c44(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListExperimentDefinitionsRequest",
-      });
+      ).annotate({ identifier: "ListExperimentDefinitionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3623,18 +3561,16 @@ function __c44(j: number): any {
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "ExperimentDefinitionSummary",
-      });
+      ).annotate({ identifier: "ExperimentDefinitionSummary" });
     case 2:
-      return S.Array(__S(353, __c44, 1));
+      return S.Array(__S(337, __c42, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(354, __c44, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(338, __c42, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ExperimentDefinitions" });
   }
 }
-function __c45(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3659,9 +3595,7 @@ function __c45(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListExperimentRunEventsRequest",
-      });
+      ).annotate({ identifier: "ListExperimentRunEventsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3671,18 +3605,18 @@ function __c45(j: number): any {
           OccurredAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           TriggeredBy: S.optional(S.String),
           ExposurePercentage: S.optional(S.Number),
-          TreatmentOverrides: S.optional(__S(272, __c34, 0)),
+          TreatmentOverrides: S.optional(__S(256, __c32, 0)),
         }),
       ).annotate({ identifier: "ExperimentRunEvent" });
     case 2:
-      return S.Array(__S(361, __c45, 1));
+      return S.Array(__S(345, __c43, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(362, __c45, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(346, __c43, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ExperimentRunEvents" });
   }
 }
-function __c46(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3707,9 +3641,7 @@ function __c46(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListExperimentRunsRequest",
-      });
+      ).annotate({ identifier: "ListExperimentRunsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3723,14 +3655,14 @@ function __c46(j: number): any {
         }),
       ).annotate({ identifier: "ExperimentRunSummary" });
     case 2:
-      return S.Array(__S(369, __c46, 1));
+      return S.Array(__S(353, __c44, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(370, __c46, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(354, __c44, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ExperimentRuns" });
   }
 }
-function __c47(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3752,9 +3684,7 @@ function __c47(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListExtensionAssociationsRequest",
-      });
+      ).annotate({ identifier: "ListExtensionAssociationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3762,18 +3692,16 @@ function __c47(j: number): any {
           ExtensionArn: S.optional(S.String),
           ResourceArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ExtensionAssociationSummary",
-      });
+      ).annotate({ identifier: "ExtensionAssociationSummary" });
     case 2:
-      return S.Array(__S(377, __c47, 1));
+      return S.Array(__S(361, __c45, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(378, __c47, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(362, __c45, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ExtensionAssociations" });
   }
 }
-function __c48(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3794,14 +3722,14 @@ function __c48(j: number): any {
         }),
       ).annotate({ identifier: "ExtensionSummary" });
     case 2:
-      return S.Array(__S(385, __c48, 1));
+      return S.Array(__S(369, __c46, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(386, __c48, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(370, __c46, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "Extensions" });
   }
 }
-function __c49(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3824,9 +3752,7 @@ function __c49(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListHostedConfigurationVersionsRequest",
-      });
+      ).annotate({ identifier: "ListHostedConfigurationVersionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3838,23 +3764,16 @@ function __c49(j: number): any {
           VersionLabel: S.optional(S.String),
           KmsKeyArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "HostedConfigurationVersionSummary",
-      });
+      ).annotate({ identifier: "HostedConfigurationVersionSummary" });
     case 2:
-      return S.Array(__S(393, __c49, 1));
+      return S.Array(__S(377, __c47, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          Items: S.optional(__S(394, __c49, 2)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "HostedConfigurationVersions",
-      });
+        S.Struct({ Items: S.optional(__S(378, __c47, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "HostedConfigurationVersions" });
   }
 }
-function __c50(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3868,16 +3787,14 @@ function __c50(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(544, __c68, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(528, __c66, 0)) })).annotate({
         identifier: "ResourceTags",
       });
   }
 }
-function __c51(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3888,9 +3805,9 @@ function __c51(j: number): any {
           ConfigurationProfileId: S.String,
           ConfigurationVersion: S.String,
           Description: S.optional(S.String),
-          Tags: S.optional(__S(544, __c68, 0)),
+          Tags: S.optional(__S(528, __c66, 0)),
           KmsKeyIdentifier: S.optional(S.String),
-          DynamicExtensionParameters: S.optional(__S(72, __c9, 0)),
+          DynamicExtensionParameters: S.optional(__S(528, __c66, 0)),
           LatestDeploymentNumber: S.optional(S.Number),
         }).pipe(
           T.all(
@@ -3908,7 +3825,7 @@ function __c51(j: number): any {
       ).annotate({ identifier: "StartDeploymentRequest" });
   }
 }
-function __c52(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3919,9 +3836,9 @@ function __c52(j: number): any {
           ),
           Description: S.optional(S.String),
           ExposurePercentage: S.optional(S.Number),
-          TreatmentOverrides: S.optional(__S(272, __c34, 0)),
-          Tags: S.optional(__S(544, __c68, 0)),
-          DeploymentParameters: S.optional(__S(424, __c53, 0)),
+          TreatmentOverrides: S.optional(__S(256, __c32, 0)),
+          Tags: S.optional(__S(528, __c66, 0)),
+          DeploymentParameters: S.optional(__S(408, __c51, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -3935,23 +3852,21 @@ function __c52(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartExperimentRunRequest",
-      });
+      ).annotate({ identifier: "StartExperimentRunRequest" });
   }
 }
-function __c53(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          DynamicExtensionParameters: S.optional(__S(72, __c9, 0)),
-          Tags: S.optional(__S(544, __c68, 0)),
+          DynamicExtensionParameters: S.optional(__S(528, __c66, 0)),
+          Tags: S.optional(__S(528, __c66, 0)),
         }),
       ).annotate({ identifier: "DeploymentParameters" });
   }
 }
-function __c54(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3976,7 +3891,7 @@ function __c54(j: number): any {
       ).annotate({ identifier: "StopDeploymentRequest" });
   }
 }
-function __c55(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3986,8 +3901,8 @@ function __c55(j: number): any {
             T.HttpLabel("ExperimentDefinitionIdentifier"),
           ),
           Run: S.Number.pipe(T.HttpLabel("Run")),
-          Result: S.optional(__S(280, __c35, 0)),
-          DeploymentParameters: S.optional(__S(424, __c53, 0)),
+          Result: S.optional(__S(264, __c33, 0)),
+          DeploymentParameters: S.optional(__S(408, __c51, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -4004,13 +3919,13 @@ function __c55(j: number): any {
       ).annotate({ identifier: "StopExperimentRunRequest" });
   }
 }
-function __c56(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          Tags: __S(544, __c68, 0),
+          Tags: __S(528, __c66, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
@@ -4024,7 +3939,7 @@ function __c56(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c57(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4044,20 +3959,18 @@ function __c57(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c58(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          DeletionProtection: S.optional(__S(192, __c24, 0)),
-          VendedMetrics: S.optional(__S(193, __c24, 1)),
+          DeletionProtection: S.optional(__S(176, __c22, 0)),
+          VendedMetrics: S.optional(__S(177, __c22, 1)),
         }).pipe(T.all(T.Http({ method: "PATCH", uri: "/settings" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateAccountSettingsRequest",
-      });
+      ).annotate({ identifier: "UpdateAccountSettingsRequest" });
   }
 }
-function __c59(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4078,7 +3991,7 @@ function __c59(j: number): any {
       ).annotate({ identifier: "UpdateApplicationRequest" });
   }
 }
-function __c60(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4088,7 +4001,7 @@ function __c60(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           RetrievalRoleArn: S.optional(S.String),
-          Validators: S.optional(__S(577, __c72, 1)),
+          Validators: S.optional(__S(561, __c70, 1)),
           KmsKeyIdentifier: S.optional(S.String),
         }).pipe(
           T.all(
@@ -4103,12 +4016,10 @@ function __c60(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateConfigurationProfileRequest",
-      });
+      ).annotate({ identifier: "UpdateConfigurationProfileRequest" });
   }
 }
-function __c61(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4129,12 +4040,10 @@ function __c61(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateDeploymentStrategyRequest",
-      });
+      ).annotate({ identifier: "UpdateDeploymentStrategyRequest" });
   }
 }
-function __c62(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4143,7 +4052,7 @@ function __c62(j: number): any {
           EnvironmentId: S.String.pipe(T.HttpLabel("EnvironmentId")),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          Monitors: S.optional(__S(609, __c76, 1)),
+          Monitors: S.optional(__S(593, __c74, 1)),
         }).pipe(
           T.all(
             T.Http({
@@ -4160,7 +4069,7 @@ function __c62(j: number): any {
       ).annotate({ identifier: "UpdateEnvironmentRequest" });
   }
 }
-function __c63(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4188,12 +4097,10 @@ function __c63(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateExperimentDefinitionRequest",
-      });
+      ).annotate({ identifier: "UpdateExperimentDefinitionRequest" });
   }
 }
-function __c64(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4205,8 +4112,8 @@ function __c64(j: number): any {
           Run: S.Number.pipe(T.HttpLabel("Run")),
           Description: S.optional(S.String),
           ExposurePercentage: S.optional(S.Number),
-          TreatmentOverrides: S.optional(__S(272, __c34, 0)),
-          DeploymentParameters: S.optional(__S(424, __c53, 0)),
+          TreatmentOverrides: S.optional(__S(256, __c32, 0)),
+          DeploymentParameters: S.optional(__S(408, __c51, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -4220,12 +4127,10 @@ function __c64(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateExperimentRunRequest",
-      });
+      ).annotate({ identifier: "UpdateExperimentRunRequest" });
   }
 }
-function __c65(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4248,21 +4153,21 @@ function __c65(j: number): any {
       ).annotate({ identifier: "UpdateExtensionRequest" });
   }
 }
-function __c66(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           Description: S.optional(S.String),
-          Tags: S.optional(__S(544, __c68, 0)),
+          Tags: S.optional(__S(528, __c66, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/applications" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateApplicationRequest" });
   }
 }
-function __c67(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4274,19 +4179,19 @@ function __c67(j: number): any {
       ).annotate({ identifier: "Application" });
   }
 }
-function __c68(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c69(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ExtensionAssociationId: S.String.pipe(T.HttpLabel("ExtensionAssociationId")),
-          Parameters: S.optional(__S(72, __c9, 0)),
+          Parameters: S.optional(__S(528, __c66, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/extensionassociations/{ExtensionAssociationId}" }),
@@ -4297,12 +4202,10 @@ function __c69(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateExtensionAssociationRequest",
-      });
+      ).annotate({ identifier: "UpdateExtensionAssociationRequest" });
   }
 }
-function __c70(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4323,12 +4226,10 @@ function __c70(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ValidateConfigurationRequest",
-      });
+      ).annotate({ identifier: "ValidateConfigurationRequest" });
   }
 }
-function __c71(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4338,8 +4239,8 @@ function __c71(j: number): any {
           Description: S.optional(S.String),
           LocationUri: S.String,
           RetrievalRoleArn: S.optional(S.String),
-          Validators: S.optional(__S(577, __c72, 1)),
-          Tags: S.optional(__S(544, __c68, 0)),
+          Validators: S.optional(__S(561, __c70, 1)),
+          Tags: S.optional(__S(528, __c66, 0)),
           Type: S.optional(S.String),
           KmsKeyIdentifier: S.optional(S.String),
         }).pipe(
@@ -4352,19 +4253,17 @@ function __c71(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateConfigurationProfileRequest",
-      });
+      ).annotate({ identifier: "CreateConfigurationProfileRequest" });
   }
 }
-function __c72(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Type: S.String, Content: SensitiveString })).annotate({
         identifier: "Validator",
       });
     case 1:
-      return S.Array(__S(576, __c72, 0));
+      return S.Array(__S(560, __c70, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4374,7 +4273,7 @@ function __c72(j: number): any {
           Description: S.optional(S.String),
           LocationUri: S.optional(S.String),
           RetrievalRoleArn: S.optional(S.String),
-          Validators: S.optional(__S(577, __c72, 1)),
+          Validators: S.optional(__S(561, __c70, 1)),
           Type: S.optional(S.String),
           KmsKeyArn: S.optional(S.String),
           KmsKeyIdentifier: S.optional(S.String),
@@ -4382,7 +4281,7 @@ function __c72(j: number): any {
       ).annotate({ identifier: "ConfigurationProfile" });
   }
 }
-function __c73(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4394,7 +4293,7 @@ function __c73(j: number): any {
           GrowthFactor: S.Number,
           GrowthType: S.optional(S.String),
           ReplicateTo: S.optional(S.String),
-          Tags: S.optional(__S(544, __c68, 0)),
+          Tags: S.optional(__S(528, __c66, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/deploymentstrategies" }),
@@ -4405,12 +4304,10 @@ function __c73(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateDeploymentStrategyRequest",
-      });
+      ).annotate({ identifier: "CreateDeploymentStrategyRequest" });
   }
 }
-function __c74(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4427,7 +4324,7 @@ function __c74(j: number): any {
       ).annotate({ identifier: "DeploymentStrategy" });
   }
 }
-function __c75(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4435,8 +4332,8 @@ function __c75(j: number): any {
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
           Name: S.String,
           Description: S.optional(S.String),
-          Monitors: S.optional(__S(609, __c76, 1)),
-          Tags: S.optional(__S(544, __c68, 0)),
+          Monitors: S.optional(__S(593, __c74, 1)),
+          Tags: S.optional(__S(528, __c66, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/applications/{ApplicationId}/environments" }),
@@ -4450,14 +4347,14 @@ function __c75(j: number): any {
       ).annotate({ identifier: "CreateEnvironmentRequest" });
   }
 }
-function __c76(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ AlarmArn: S.String, AlarmRoleArn: S.optional(S.String) }),
       ).annotate({ identifier: "Monitor" });
     case 1:
-      return S.Array(__S(608, __c76, 0));
+      return S.Array(__S(592, __c74, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4466,7 +4363,7 @@ function __c76(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           State: S.optional(S.String),
-          Monitors: S.optional(__S(609, __c76, 1)),
+          Monitors: S.optional(__S(593, __c74, 1)),
         }),
       ).annotate({ identifier: "Environment" });
   }

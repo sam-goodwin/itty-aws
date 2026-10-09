@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -2890,7 +2890,7 @@ export const cancelMetadataModelCreation: API.OperationMethod<
   CancelMetadataModelCreationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1888, __c59, 0) as any as S.Schema<CancelMetadataModelCreationMessage>,
+  input: __S(1920, __c60, 0) as any as S.Schema<CancelMetadataModelCreationMessage>,
   output: __S(1824, __c57, 0) as any as S.Schema<CancelMetadataModelCreationResponse>,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
@@ -2916,8 +2916,8 @@ export const cancelReplicationTaskAssessmentRun: API.OperationMethod<
   CancelReplicationTaskAssessmentRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1920, __c60, 0) as any as S.Schema<CancelReplicationTaskAssessmentRunMessage>,
-  output: __S(1984, __c62, 0) as any as S.Schema<CancelReplicationTaskAssessmentRunResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<CancelReplicationTaskAssessmentRunMessage>,
+  output: __S(2016, __c63, 0) as any as S.Schema<CancelReplicationTaskAssessmentRunResponse>,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2940,8 +2940,8 @@ export const createDataMigration: API.OperationMethod<
   CreateDataMigrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2048, __c64, 0) as any as S.Schema<CreateDataMigrationMessage>,
-  output: __S(2112, __c66, 0) as any as S.Schema<CreateDataMigrationResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<CreateDataMigrationMessage>,
+  output: __S(2144, __c67, 0) as any as S.Schema<CreateDataMigrationResponse>,
   errors: [
     FailedDependencyFault,
     InvalidOperationFault,
@@ -2974,8 +2974,8 @@ export const createDataProvider: API.OperationMethod<
   CreateDataProviderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2176, __c68, 0) as any as S.Schema<CreateDataProviderMessage>,
-  output: __S(2208, __c69, 0) as any as S.Schema<CreateDataProviderResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<CreateDataProviderMessage>,
+  output: __S(2240, __c70, 0) as any as S.Schema<CreateDataProviderResponse>,
   errors: [
     AccessDeniedFault,
     FailedDependencyFault,
@@ -3012,8 +3012,8 @@ export const createEndpoint: API.OperationMethod<
   CreateEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2272, __c71, 0) as any as S.Schema<CreateEndpointMessage>,
-  output: __S(2304, __c72, 0) as any as S.Schema<CreateEndpointResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<CreateEndpointMessage>,
+  output: __S(2336, __c73, 0) as any as S.Schema<CreateEndpointResponse>,
   errors: [
     AccessDeniedFault,
     InvalidResourceStateFault,
@@ -3064,8 +3064,8 @@ export const createEventSubscription: API.OperationMethod<
   CreateEventSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2336, __c73, 0) as any as S.Schema<CreateEventSubscriptionMessage>,
-  output: __S(2368, __c74, 0) as any as S.Schema<CreateEventSubscriptionResponse>,
+  input: __S(2368, __c74, 0) as any as S.Schema<CreateEventSubscriptionMessage>,
+  output: __S(2400, __c75, 0) as any as S.Schema<CreateEventSubscriptionResponse>,
   errors: [
     KMSAccessDeniedFault,
     KMSDisabledFault,
@@ -3101,8 +3101,8 @@ export const createFleetAdvisorCollector: API.OperationMethod<
   CreateFleetAdvisorCollectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2464, __c77, 0) as any as S.Schema<CreateFleetAdvisorCollectorRequest>,
-  output: __S(2465, __c77, 1) as any as S.Schema<CreateFleetAdvisorCollectorResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<CreateFleetAdvisorCollectorRequest>,
+  output: __S(2497, __c78, 1) as any as S.Schema<CreateFleetAdvisorCollectorResponse>,
   errors: [
     AccessDeniedFault,
     InvalidResourceStateFault,
@@ -3139,8 +3139,8 @@ export const createInstanceProfile: API.OperationMethod<
   CreateInstanceProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2496, __c78, 0) as any as S.Schema<CreateInstanceProfileMessage>,
-  output: __S(2528, __c79, 0) as any as S.Schema<CreateInstanceProfileResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<CreateInstanceProfileMessage>,
+  output: __S(2560, __c80, 0) as any as S.Schema<CreateInstanceProfileResponse>,
   errors: [
     AccessDeniedFault,
     FailedDependencyFault,
@@ -3182,8 +3182,8 @@ export const createMigrationProject: API.OperationMethod<
   CreateMigrationProjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2592, __c81, 0) as any as S.Schema<CreateMigrationProjectMessage>,
-  output: __S(2656, __c83, 0) as any as S.Schema<CreateMigrationProjectResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<CreateMigrationProjectMessage>,
+  output: __S(2688, __c84, 0) as any as S.Schema<CreateMigrationProjectResponse>,
   errors: [
     AccessDeniedFault,
     FailedDependencyFault,
@@ -3219,8 +3219,8 @@ export const createReplicationConfig: API.OperationMethod<
   CreateReplicationConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2720, __c85, 0) as any as S.Schema<CreateReplicationConfigMessage>,
-  output: __S(2752, __c86, 0) as any as S.Schema<CreateReplicationConfigResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<CreateReplicationConfigMessage>,
+  output: __S(2784, __c87, 0) as any as S.Schema<CreateReplicationConfigResponse>,
   errors: [
     AccessDeniedFault,
     InvalidResourceStateFault,
@@ -3266,8 +3266,8 @@ export const createReplicationInstance: API.OperationMethod<
   CreateReplicationInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2816, __c88, 0) as any as S.Schema<CreateReplicationInstanceMessage>,
-  output: __S(2912, __c91, 0) as any as S.Schema<CreateReplicationInstanceResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<CreateReplicationInstanceMessage>,
+  output: __S(2944, __c92, 0) as any as S.Schema<CreateReplicationInstanceResponse>,
   errors: [
     AccessDeniedFault,
     InsufficientResourceCapacityFault,
@@ -3312,8 +3312,8 @@ export const createReplicationSubnetGroup: API.OperationMethod<
   CreateReplicationSubnetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2976, __c93, 0) as any as S.Schema<CreateReplicationSubnetGroupMessage>,
-  output: __S(3009, __c94, 1) as any as S.Schema<CreateReplicationSubnetGroupResponse>,
+  input: __S(3008, __c94, 0) as any as S.Schema<CreateReplicationSubnetGroupMessage>,
+  output: __S(3041, __c95, 1) as any as S.Schema<CreateReplicationSubnetGroupResponse>,
   errors: [
     AccessDeniedFault,
     InvalidSubnet,
@@ -3344,8 +3344,8 @@ export const createReplicationTask: API.OperationMethod<
   CreateReplicationTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3040, __c95, 0) as any as S.Schema<CreateReplicationTaskMessage>,
-  output: __S(3104, __c97, 0) as any as S.Schema<CreateReplicationTaskResponse>,
+  input: __S(3072, __c96, 0) as any as S.Schema<CreateReplicationTaskMessage>,
+  output: __S(3136, __c98, 0) as any as S.Schema<CreateReplicationTaskResponse>,
   errors: [
     AccessDeniedFault,
     InvalidResourceStateFault,
@@ -3372,8 +3372,8 @@ export const deleteCertificate: API.OperationMethod<
   DeleteCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3168, __c99, 0) as any as S.Schema<DeleteCertificateMessage>,
-  output: __S(3200, __c100, 0) as any as S.Schema<DeleteCertificateResponse>,
+  input: __S(3200, __c100, 0) as any as S.Schema<DeleteCertificateMessage>,
+  output: __S(3232, __c101, 0) as any as S.Schema<DeleteCertificateResponse>,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3394,8 +3394,8 @@ export const deleteConnection: API.OperationMethod<
   DeleteConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3264, __c102, 0) as any as S.Schema<DeleteConnectionMessage>,
-  output: __S(3296, __c103, 0) as any as S.Schema<DeleteConnectionResponse>,
+  input: __S(3296, __c103, 0) as any as S.Schema<DeleteConnectionMessage>,
+  output: __S(3328, __c104, 0) as any as S.Schema<DeleteConnectionResponse>,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3416,8 +3416,8 @@ export const deleteDataMigration: API.OperationMethod<
   DeleteDataMigrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3360, __c105, 0) as any as S.Schema<DeleteDataMigrationMessage>,
-  output: __S(2112, __c66, 0) as any as S.Schema<DeleteDataMigrationResponse>,
+  input: __S(3392, __c106, 0) as any as S.Schema<DeleteDataMigrationMessage>,
+  output: __S(2144, __c67, 0) as any as S.Schema<DeleteDataMigrationResponse>,
   errors: [FailedDependencyFault, InvalidResourceStateFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3446,8 +3446,8 @@ export const deleteDataProvider: API.OperationMethod<
   DeleteDataProviderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3392, __c106, 0) as any as S.Schema<DeleteDataProviderMessage>,
-  output: __S(2208, __c69, 0) as any as S.Schema<DeleteDataProviderResponse>,
+  input: __S(3424, __c107, 0) as any as S.Schema<DeleteDataProviderMessage>,
+  output: __S(2240, __c70, 0) as any as S.Schema<DeleteDataProviderResponse>,
   errors: [
     AccessDeniedFault,
     FailedDependencyFault,
@@ -3472,8 +3472,8 @@ export const deleteEndpoint: API.OperationMethod<
   DeleteEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3424, __c107, 0) as any as S.Schema<DeleteEndpointMessage>,
-  output: __S(2304, __c72, 0) as any as S.Schema<DeleteEndpointResponse>,
+  input: __S(3456, __c108, 0) as any as S.Schema<DeleteEndpointMessage>,
+  output: __S(2336, __c73, 0) as any as S.Schema<DeleteEndpointResponse>,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3494,8 +3494,8 @@ export const deleteEventSubscription: API.OperationMethod<
   DeleteEventSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3456, __c108, 0) as any as S.Schema<DeleteEventSubscriptionMessage>,
-  output: __S(2368, __c74, 0) as any as S.Schema<DeleteEventSubscriptionResponse>,
+  input: __S(3488, __c109, 0) as any as S.Schema<DeleteEventSubscriptionMessage>,
+  output: __S(2400, __c75, 0) as any as S.Schema<DeleteEventSubscriptionResponse>,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3518,7 +3518,7 @@ export const deleteFleetAdvisorCollector: API.OperationMethod<
   DeleteFleetAdvisorCollectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3488, __c109, 0) as any as S.Schema<DeleteCollectorRequest>,
+  input: __S(3520, __c110, 0) as any as S.Schema<DeleteCollectorRequest>,
   output: __S(1632, __c51, 0) as any as S.Schema<DeleteFleetAdvisorCollectorResponse>,
   errors: [AccessDeniedFault, CollectorNotFoundFault, InvalidResourceStateFault],
   protocol: AwsProtocol,
@@ -3542,8 +3542,8 @@ export const deleteFleetAdvisorDatabases: API.OperationMethod<
   DeleteFleetAdvisorDatabasesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3520, __c110, 0) as any as S.Schema<DeleteFleetAdvisorDatabasesRequest>,
-  output: __S(3521, __c110, 1) as any as S.Schema<DeleteFleetAdvisorDatabasesResponse>,
+  input: __S(3552, __c111, 0) as any as S.Schema<DeleteFleetAdvisorDatabasesRequest>,
+  output: __S(3553, __c111, 1) as any as S.Schema<DeleteFleetAdvisorDatabasesResponse>,
   errors: [AccessDeniedFault, InvalidOperationFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3572,8 +3572,8 @@ export const deleteInstanceProfile: API.OperationMethod<
   DeleteInstanceProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3552, __c111, 0) as any as S.Schema<DeleteInstanceProfileMessage>,
-  output: __S(2528, __c79, 0) as any as S.Schema<DeleteInstanceProfileResponse>,
+  input: __S(3584, __c112, 0) as any as S.Schema<DeleteInstanceProfileMessage>,
+  output: __S(2560, __c80, 0) as any as S.Schema<DeleteInstanceProfileResponse>,
   errors: [
     AccessDeniedFault,
     FailedDependencyFault,
@@ -3606,8 +3606,8 @@ export const deleteMigrationProject: API.OperationMethod<
   DeleteMigrationProjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3584, __c112, 0) as any as S.Schema<DeleteMigrationProjectMessage>,
-  output: __S(2656, __c83, 0) as any as S.Schema<DeleteMigrationProjectResponse>,
+  input: __S(3616, __c113, 0) as any as S.Schema<DeleteMigrationProjectMessage>,
+  output: __S(2688, __c84, 0) as any as S.Schema<DeleteMigrationProjectResponse>,
   errors: [
     AccessDeniedFault,
     FailedDependencyFault,
@@ -3636,8 +3636,8 @@ export const deleteReplicationConfig: API.OperationMethod<
   DeleteReplicationConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3616, __c113, 0) as any as S.Schema<DeleteReplicationConfigMessage>,
-  output: __S(2752, __c86, 0) as any as S.Schema<DeleteReplicationConfigResponse>,
+  input: __S(3648, __c114, 0) as any as S.Schema<DeleteReplicationConfigMessage>,
+  output: __S(2784, __c87, 0) as any as S.Schema<DeleteReplicationConfigResponse>,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3660,8 +3660,8 @@ export const deleteReplicationInstance: API.OperationMethod<
   DeleteReplicationInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3648, __c114, 0) as any as S.Schema<DeleteReplicationInstanceMessage>,
-  output: __S(2912, __c91, 0) as any as S.Schema<DeleteReplicationInstanceResponse>,
+  input: __S(3680, __c115, 0) as any as S.Schema<DeleteReplicationInstanceMessage>,
+  output: __S(2944, __c92, 0) as any as S.Schema<DeleteReplicationInstanceResponse>,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3682,7 +3682,7 @@ export const deleteReplicationSubnetGroup: API.OperationMethod<
   DeleteReplicationSubnetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3680, __c115, 0) as any as S.Schema<DeleteReplicationSubnetGroupMessage>,
+  input: __S(3712, __c116, 0) as any as S.Schema<DeleteReplicationSubnetGroupMessage>,
   output: __S(1632, __c51, 0) as any as S.Schema<DeleteReplicationSubnetGroupResponse>,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
@@ -3703,8 +3703,8 @@ export const deleteReplicationTask: API.OperationMethod<
   DeleteReplicationTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3712, __c116, 0) as any as S.Schema<DeleteReplicationTaskMessage>,
-  output: __S(3104, __c97, 0) as any as S.Schema<DeleteReplicationTaskResponse>,
+  input: __S(3744, __c117, 0) as any as S.Schema<DeleteReplicationTaskMessage>,
+  output: __S(3136, __c98, 0) as any as S.Schema<DeleteReplicationTaskResponse>,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3729,8 +3729,8 @@ export const deleteReplicationTaskAssessmentRun: API.OperationMethod<
   DeleteReplicationTaskAssessmentRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3744, __c117, 0) as any as S.Schema<DeleteReplicationTaskAssessmentRunMessage>,
-  output: __S(1984, __c62, 0) as any as S.Schema<DeleteReplicationTaskAssessmentRunResponse>,
+  input: __S(3776, __c118, 0) as any as S.Schema<DeleteReplicationTaskAssessmentRunMessage>,
+  output: __S(2016, __c63, 0) as any as S.Schema<DeleteReplicationTaskAssessmentRunResponse>,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3754,8 +3754,8 @@ export const describeAccountAttributes: API.OperationMethod<
   DescribeAccountAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3776, __c118, 0) as any as S.Schema<DescribeAccountAttributesMessage>,
-  output: __S(3779, __c118, 3) as any as S.Schema<DescribeAccountAttributesResponse>,
+  input: __S(3808, __c119, 0) as any as S.Schema<DescribeAccountAttributesMessage>,
+  output: __S(3811, __c119, 3) as any as S.Schema<DescribeAccountAttributesResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3795,8 +3795,8 @@ export const describeApplicableIndividualAssessments: API.PaginatedOperationMeth
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3808, __c119, 0) as any as S.Schema<DescribeApplicableIndividualAssessmentsMessage>,
-  output: __S(3809, __c119, 1) as any as S.Schema<DescribeApplicableIndividualAssessmentsResponse>,
+  input: __S(3840, __c120, 0) as any as S.Schema<DescribeApplicableIndividualAssessmentsMessage>,
+  output: __S(3841, __c120, 1) as any as S.Schema<DescribeApplicableIndividualAssessmentsResponse>,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3815,8 +3815,8 @@ export const describeCertificates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3840, __c120, 0) as any as S.Schema<DescribeCertificatesMessage>,
-  output: __S(3842, __c120, 2) as any as S.Schema<DescribeCertificatesResponse>,
+  input: __S(3872, __c121, 0) as any as S.Schema<DescribeCertificatesMessage>,
+  output: __S(3874, __c121, 2) as any as S.Schema<DescribeCertificatesResponse>,
   errors: [ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3836,8 +3836,8 @@ export const describeConnections: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3904, __c122, 0) as any as S.Schema<DescribeConnectionsMessage>,
-  output: __S(3906, __c122, 2) as any as S.Schema<DescribeConnectionsResponse>,
+  input: __S(3936, __c123, 0) as any as S.Schema<DescribeConnectionsMessage>,
+  output: __S(3938, __c123, 2) as any as S.Schema<DescribeConnectionsResponse>,
   errors: [ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3859,8 +3859,8 @@ export const describeConversionConfiguration: API.OperationMethod<
   DescribeConversionConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3936, __c123, 0) as any as S.Schema<DescribeConversionConfigurationMessage>,
-  output: __S(3937, __c123, 1) as any as S.Schema<DescribeConversionConfigurationResponse>,
+  input: __S(3968, __c124, 0) as any as S.Schema<DescribeConversionConfigurationMessage>,
+  output: __S(3969, __c124, 1) as any as S.Schema<DescribeConversionConfigurationResponse>,
   errors: [ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3882,8 +3882,8 @@ export const describeDataMigrations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataMigration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3968, __c124, 0) as any as S.Schema<DescribeDataMigrationsMessage>,
-  output: __S(3970, __c124, 2) as any as S.Schema<DescribeDataMigrationsResponse>,
+  input: __S(4000, __c125, 0) as any as S.Schema<DescribeDataMigrationsMessage>,
+  output: __S(4002, __c125, 2) as any as S.Schema<DescribeDataMigrationsResponse>,
   errors: [FailedDependencyFault, InvalidResourceStateFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3916,8 +3916,8 @@ export const describeDataProviders: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4000, __c125, 0) as any as S.Schema<DescribeDataProvidersMessage>,
-  output: __S(4002, __c125, 2) as any as S.Schema<DescribeDataProvidersResponse>,
+  input: __S(4032, __c126, 0) as any as S.Schema<DescribeDataProvidersMessage>,
+  output: __S(4034, __c126, 2) as any as S.Schema<DescribeDataProvidersResponse>,
   errors: [AccessDeniedFault, FailedDependencyFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3936,8 +3936,8 @@ export const describeEndpoints: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4032, __c126, 0) as any as S.Schema<DescribeEndpointsMessage>,
-  output: __S(4034, __c126, 2) as any as S.Schema<DescribeEndpointsResponse>,
+  input: __S(4064, __c127, 0) as any as S.Schema<DescribeEndpointsMessage>,
+  output: __S(4066, __c127, 2) as any as S.Schema<DescribeEndpointsResponse>,
   errors: [ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3957,8 +3957,8 @@ export const describeEndpointSettings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4064, __c127, 0) as any as S.Schema<DescribeEndpointSettingsMessage>,
-  output: __S(4067, __c127, 3) as any as S.Schema<DescribeEndpointSettingsResponse>,
+  input: __S(4096, __c128, 0) as any as S.Schema<DescribeEndpointSettingsMessage>,
+  output: __S(4099, __c128, 3) as any as S.Schema<DescribeEndpointSettingsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3977,8 +3977,8 @@ export const describeEndpointTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4096, __c128, 0) as any as S.Schema<DescribeEndpointTypesMessage>,
-  output: __S(4099, __c128, 3) as any as S.Schema<DescribeEndpointTypesResponse>,
+  input: __S(4128, __c129, 0) as any as S.Schema<DescribeEndpointTypesMessage>,
+  output: __S(4131, __c129, 3) as any as S.Schema<DescribeEndpointTypesResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3997,8 +3997,8 @@ export const describeEngineVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4128, __c129, 0) as any as S.Schema<DescribeEngineVersionsMessage>,
-  output: __S(4131, __c129, 3) as any as S.Schema<DescribeEngineVersionsResponse>,
+  input: __S(4160, __c130, 0) as any as S.Schema<DescribeEngineVersionsMessage>,
+  output: __S(4163, __c130, 3) as any as S.Schema<DescribeEngineVersionsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4018,8 +4018,8 @@ export const describeEventCategories: API.OperationMethod<
   DescribeEventCategoriesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4160, __c130, 0) as any as S.Schema<DescribeEventCategoriesMessage>,
-  output: __S(4163, __c130, 3) as any as S.Schema<DescribeEventCategoriesResponse>,
+  input: __S(4192, __c131, 0) as any as S.Schema<DescribeEventCategoriesMessage>,
+  output: __S(4195, __c131, 3) as any as S.Schema<DescribeEventCategoriesResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4039,8 +4039,8 @@ export const describeEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4192, __c131, 0) as any as S.Schema<DescribeEventsMessage>,
-  output: __S(4195, __c131, 3) as any as S.Schema<DescribeEventsResponse>,
+  input: __S(4224, __c132, 0) as any as S.Schema<DescribeEventsMessage>,
+  output: __S(4227, __c132, 3) as any as S.Schema<DescribeEventsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4065,8 +4065,8 @@ export const describeEventSubscriptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4224, __c132, 0) as any as S.Schema<DescribeEventSubscriptionsMessage>,
-  output: __S(4226, __c132, 2) as any as S.Schema<DescribeEventSubscriptionsResponse>,
+  input: __S(4256, __c133, 0) as any as S.Schema<DescribeEventSubscriptionsMessage>,
+  output: __S(4258, __c133, 2) as any as S.Schema<DescribeEventSubscriptionsResponse>,
   errors: [ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4091,8 +4091,8 @@ export const describeExtensionPackAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4256, __c133, 0) as any as S.Schema<DescribeExtensionPackAssociationsMessage>,
-  output: __S(4289, __c134, 1) as any as S.Schema<DescribeExtensionPackAssociationsResponse>,
+  input: __S(4288, __c134, 0) as any as S.Schema<DescribeExtensionPackAssociationsMessage>,
+  output: __S(4321, __c135, 1) as any as S.Schema<DescribeExtensionPackAssociationsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4113,8 +4113,8 @@ export const describeFleetAdvisorCollectors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4320, __c135, 0) as any as S.Schema<DescribeFleetAdvisorCollectorsRequest>,
-  output: __S(4325, __c135, 5) as any as S.Schema<DescribeFleetAdvisorCollectorsResponse>,
+  input: __S(4352, __c136, 0) as any as S.Schema<DescribeFleetAdvisorCollectorsRequest>,
+  output: __S(4357, __c136, 5) as any as S.Schema<DescribeFleetAdvisorCollectorsResponse>,
   errors: [InvalidResourceStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4139,8 +4139,8 @@ export const describeFleetAdvisorDatabases: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4352, __c136, 0) as any as S.Schema<DescribeFleetAdvisorDatabasesRequest>,
-  output: __S(4358, __c136, 6) as any as S.Schema<DescribeFleetAdvisorDatabasesResponse>,
+  input: __S(4384, __c137, 0) as any as S.Schema<DescribeFleetAdvisorDatabasesRequest>,
+  output: __S(4390, __c137, 6) as any as S.Schema<DescribeFleetAdvisorDatabasesResponse>,
   errors: [InvalidResourceStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4166,8 +4166,8 @@ export const describeFleetAdvisorLsaAnalysis: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4416, __c138, 0) as any as S.Schema<DescribeFleetAdvisorLsaAnalysisRequest>,
-  output: __S(4419, __c138, 3) as any as S.Schema<DescribeFleetAdvisorLsaAnalysisResponse>,
+  input: __S(4448, __c139, 0) as any as S.Schema<DescribeFleetAdvisorLsaAnalysisRequest>,
+  output: __S(4451, __c139, 3) as any as S.Schema<DescribeFleetAdvisorLsaAnalysisResponse>,
   errors: [InvalidResourceStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4193,8 +4193,8 @@ export const describeFleetAdvisorSchemaObjectSummary: API.PaginatedOperationMeth
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4448, __c139, 0) as any as S.Schema<DescribeFleetAdvisorSchemaObjectSummaryRequest>,
-  output: __S(4451, __c139, 3) as any as S.Schema<DescribeFleetAdvisorSchemaObjectSummaryResponse>,
+  input: __S(4480, __c140, 0) as any as S.Schema<DescribeFleetAdvisorSchemaObjectSummaryRequest>,
+  output: __S(4483, __c140, 3) as any as S.Schema<DescribeFleetAdvisorSchemaObjectSummaryResponse>,
   errors: [InvalidResourceStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4219,8 +4219,8 @@ export const describeFleetAdvisorSchemas: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4480, __c140, 0) as any as S.Schema<DescribeFleetAdvisorSchemasRequest>,
-  output: __S(4485, __c140, 5) as any as S.Schema<DescribeFleetAdvisorSchemasResponse>,
+  input: __S(4512, __c141, 0) as any as S.Schema<DescribeFleetAdvisorSchemasRequest>,
+  output: __S(4517, __c141, 5) as any as S.Schema<DescribeFleetAdvisorSchemasResponse>,
   errors: [InvalidResourceStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4252,8 +4252,8 @@ export const describeInstanceProfiles: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4512, __c141, 0) as any as S.Schema<DescribeInstanceProfilesMessage>,
-  output: __S(4514, __c141, 2) as any as S.Schema<DescribeInstanceProfilesResponse>,
+  input: __S(4544, __c142, 0) as any as S.Schema<DescribeInstanceProfilesMessage>,
+  output: __S(4546, __c142, 2) as any as S.Schema<DescribeInstanceProfilesResponse>,
   errors: [AccessDeniedFault, FailedDependencyFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4275,8 +4275,8 @@ export const describeMetadataModel: API.OperationMethod<
   DescribeMetadataModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4544, __c142, 0) as any as S.Schema<DescribeMetadataModelMessage>,
-  output: __S(4545, __c142, 1) as any as S.Schema<DescribeMetadataModelResponse>,
+  input: __S(4576, __c143, 0) as any as S.Schema<DescribeMetadataModelMessage>,
+  output: __S(4577, __c143, 1) as any as S.Schema<DescribeMetadataModelResponse>,
   errors: [AccessDeniedFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4300,8 +4300,8 @@ export const describeMetadataModelAssessments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4608, __c144, 0) as any as S.Schema<DescribeMetadataModelAssessmentsMessage>,
-  output: __S(4289, __c134, 1) as any as S.Schema<DescribeMetadataModelAssessmentsResponse>,
+  input: __S(4640, __c145, 0) as any as S.Schema<DescribeMetadataModelAssessmentsMessage>,
+  output: __S(4321, __c135, 1) as any as S.Schema<DescribeMetadataModelAssessmentsResponse>,
   errors: [ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4327,8 +4327,8 @@ export const describeMetadataModelChildren: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MetadataModelReference
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4640, __c145, 0) as any as S.Schema<DescribeMetadataModelChildrenMessage>,
-  output: __S(4641, __c145, 1) as any as S.Schema<DescribeMetadataModelChildrenResponse>,
+  input: __S(4672, __c146, 0) as any as S.Schema<DescribeMetadataModelChildrenMessage>,
+  output: __S(4673, __c146, 1) as any as S.Schema<DescribeMetadataModelChildrenResponse>,
   errors: [AccessDeniedFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4361,8 +4361,8 @@ export const describeMetadataModelConversions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4672, __c146, 0) as any as S.Schema<DescribeMetadataModelConversionsMessage>,
-  output: __S(4289, __c134, 1) as any as S.Schema<DescribeMetadataModelConversionsResponse>,
+  input: __S(4704, __c147, 0) as any as S.Schema<DescribeMetadataModelConversionsMessage>,
+  output: __S(4321, __c135, 1) as any as S.Schema<DescribeMetadataModelConversionsResponse>,
   errors: [ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4393,8 +4393,8 @@ export const describeMetadataModelCreations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SchemaConversionRequest
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4704, __c147, 0) as any as S.Schema<DescribeMetadataModelCreationsMessage>,
-  output: __S(4289, __c134, 1) as any as S.Schema<DescribeMetadataModelCreationsResponse>,
+  input: __S(4736, __c148, 0) as any as S.Schema<DescribeMetadataModelCreationsMessage>,
+  output: __S(4321, __c135, 1) as any as S.Schema<DescribeMetadataModelCreationsResponse>,
   errors: [AccessDeniedFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4424,8 +4424,8 @@ export const describeMetadataModelExportsAsScript: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4736, __c148, 0) as any as S.Schema<DescribeMetadataModelExportsAsScriptMessage>,
-  output: __S(4289, __c134, 1) as any as S.Schema<DescribeMetadataModelExportsAsScriptResponse>,
+  input: __S(4768, __c149, 0) as any as S.Schema<DescribeMetadataModelExportsAsScriptMessage>,
+  output: __S(4321, __c135, 1) as any as S.Schema<DescribeMetadataModelExportsAsScriptResponse>,
   errors: [ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4450,8 +4450,8 @@ export const describeMetadataModelExportsToTarget: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4768, __c149, 0) as any as S.Schema<DescribeMetadataModelExportsToTargetMessage>,
-  output: __S(4289, __c134, 1) as any as S.Schema<DescribeMetadataModelExportsToTargetResponse>,
+  input: __S(4800, __c150, 0) as any as S.Schema<DescribeMetadataModelExportsToTargetMessage>,
+  output: __S(4321, __c135, 1) as any as S.Schema<DescribeMetadataModelExportsToTargetResponse>,
   errors: [ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4476,8 +4476,8 @@ export const describeMetadataModelImports: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4800, __c150, 0) as any as S.Schema<DescribeMetadataModelImportsMessage>,
-  output: __S(4289, __c134, 1) as any as S.Schema<DescribeMetadataModelImportsResponse>,
+  input: __S(4832, __c151, 0) as any as S.Schema<DescribeMetadataModelImportsMessage>,
+  output: __S(4321, __c135, 1) as any as S.Schema<DescribeMetadataModelImportsResponse>,
   errors: [ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4505,8 +4505,8 @@ export const describeMigrationProjects: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4832, __c151, 0) as any as S.Schema<DescribeMigrationProjectsMessage>,
-  output: __S(4834, __c151, 2) as any as S.Schema<DescribeMigrationProjectsResponse>,
+  input: __S(4864, __c152, 0) as any as S.Schema<DescribeMigrationProjectsMessage>,
+  output: __S(4866, __c152, 2) as any as S.Schema<DescribeMigrationProjectsResponse>,
   errors: [AccessDeniedFault, FailedDependencyFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4526,8 +4526,8 @@ export const describeOrderableReplicationInstances: API.PaginatedOperationMethod
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4864, __c152, 0) as any as S.Schema<DescribeOrderableReplicationInstancesMessage>,
-  output: __S(4867, __c152, 3) as any as S.Schema<DescribeOrderableReplicationInstancesResponse>,
+  input: __S(4896, __c153, 0) as any as S.Schema<DescribeOrderableReplicationInstancesMessage>,
+  output: __S(4899, __c153, 3) as any as S.Schema<DescribeOrderableReplicationInstancesResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4547,8 +4547,8 @@ export const describePendingMaintenanceActions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4896, __c153, 0) as any as S.Schema<DescribePendingMaintenanceActionsMessage>,
-  output: __S(4898, __c153, 2) as any as S.Schema<DescribePendingMaintenanceActionsResponse>,
+  input: __S(4928, __c154, 0) as any as S.Schema<DescribePendingMaintenanceActionsMessage>,
+  output: __S(4930, __c154, 2) as any as S.Schema<DescribePendingMaintenanceActionsResponse>,
   errors: [ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4573,8 +4573,8 @@ export const describeRecommendationLimitations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4928, __c154, 0) as any as S.Schema<DescribeRecommendationLimitationsRequest>,
-  output: __S(4931, __c154, 3) as any as S.Schema<DescribeRecommendationLimitationsResponse>,
+  input: __S(4960, __c155, 0) as any as S.Schema<DescribeRecommendationLimitationsRequest>,
+  output: __S(4963, __c155, 3) as any as S.Schema<DescribeRecommendationLimitationsResponse>,
   errors: [AccessDeniedFault, InvalidResourceStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4603,8 +4603,8 @@ export const describeRecommendations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4960, __c155, 0) as any as S.Schema<DescribeRecommendationsRequest>,
-  output: __S(4967, __c155, 7) as any as S.Schema<DescribeRecommendationsResponse>,
+  input: __S(4992, __c156, 0) as any as S.Schema<DescribeRecommendationsRequest>,
+  output: __S(4999, __c156, 7) as any as S.Schema<DescribeRecommendationsResponse>,
   errors: [AccessDeniedFault, InvalidResourceStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4629,8 +4629,8 @@ export const describeRefreshSchemasStatus: API.OperationMethod<
   DescribeRefreshSchemasStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4992, __c156, 0) as any as S.Schema<DescribeRefreshSchemasStatusMessage>,
-  output: __S(4993, __c156, 1) as any as S.Schema<DescribeRefreshSchemasStatusResponse>,
+  input: __S(5024, __c157, 0) as any as S.Schema<DescribeRefreshSchemasStatusMessage>,
+  output: __S(5057, __c158, 1) as any as S.Schema<DescribeRefreshSchemasStatusResponse>,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4649,8 +4649,8 @@ export const describeReplicationConfigs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(5056, __c158, 0) as any as S.Schema<DescribeReplicationConfigsMessage>,
-  output: __S(5058, __c158, 2) as any as S.Schema<DescribeReplicationConfigsResponse>,
+  input: __S(5088, __c159, 0) as any as S.Schema<DescribeReplicationConfigsMessage>,
+  output: __S(5090, __c159, 2) as any as S.Schema<DescribeReplicationConfigsResponse>,
   errors: [ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4670,8 +4670,8 @@ export const describeReplicationInstances: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(5088, __c159, 0) as any as S.Schema<DescribeReplicationInstancesMessage>,
-  output: __S(5090, __c159, 2) as any as S.Schema<DescribeReplicationInstancesResponse>,
+  input: __S(5120, __c160, 0) as any as S.Schema<DescribeReplicationInstancesMessage>,
+  output: __S(5122, __c160, 2) as any as S.Schema<DescribeReplicationInstancesResponse>,
   errors: [ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4693,8 +4693,8 @@ export const describeReplicationInstanceTaskLogs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(5120, __c160, 0) as any as S.Schema<DescribeReplicationInstanceTaskLogsMessage>,
-  output: __S(5123, __c160, 3) as any as S.Schema<DescribeReplicationInstanceTaskLogsResponse>,
+  input: __S(5152, __c161, 0) as any as S.Schema<DescribeReplicationInstanceTaskLogsMessage>,
+  output: __S(5155, __c161, 3) as any as S.Schema<DescribeReplicationInstanceTaskLogsResponse>,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4714,8 +4714,8 @@ export const describeReplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(5152, __c161, 0) as any as S.Schema<DescribeReplicationsMessage>,
-  output: __S(5154, __c161, 2) as any as S.Schema<DescribeReplicationsResponse>,
+  input: __S(5184, __c162, 0) as any as S.Schema<DescribeReplicationsMessage>,
+  output: __S(5186, __c162, 2) as any as S.Schema<DescribeReplicationsResponse>,
   errors: [ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4734,8 +4734,8 @@ export const describeReplicationSubnetGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(5216, __c163, 0) as any as S.Schema<DescribeReplicationSubnetGroupsMessage>,
-  output: __S(5218, __c163, 2) as any as S.Schema<DescribeReplicationSubnetGroupsResponse>,
+  input: __S(5248, __c164, 0) as any as S.Schema<DescribeReplicationSubnetGroupsMessage>,
+  output: __S(5250, __c164, 2) as any as S.Schema<DescribeReplicationSubnetGroupsResponse>,
   errors: [ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4758,8 +4758,8 @@ export const describeReplicationTableStatistics: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(5248, __c164, 0) as any as S.Schema<DescribeReplicationTableStatisticsMessage>,
-  output: __S(5249, __c164, 1) as any as S.Schema<DescribeReplicationTableStatisticsResponse>,
+  input: __S(5280, __c165, 0) as any as S.Schema<DescribeReplicationTableStatisticsMessage>,
+  output: __S(5281, __c165, 1) as any as S.Schema<DescribeReplicationTableStatisticsResponse>,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4782,8 +4782,8 @@ export const describeReplicationTaskAssessmentResults: API.PaginatedOperationMet
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(5312, __c166, 0) as any as S.Schema<DescribeReplicationTaskAssessmentResultsMessage>,
-  output: __S(5315, __c166, 3) as any as S.Schema<DescribeReplicationTaskAssessmentResultsResponse>,
+  input: __S(5344, __c167, 0) as any as S.Schema<DescribeReplicationTaskAssessmentResultsMessage>,
+  output: __S(5347, __c167, 3) as any as S.Schema<DescribeReplicationTaskAssessmentResultsResponse>,
   errors: [ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4930,7 +4930,7 @@ export const exportMetadataModelAssessment: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(161, __c5, 1) as any as S.Schema<ExportMetadataModelAssessmentMessage>,
-  output: __S(163, __c5, 3) as any as S.Schema<ExportMetadataModelAssessmentResponse>,
+  output: __S(162, __c5, 2) as any as S.Schema<ExportMetadataModelAssessmentResponse>,
   errors: [ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4979,7 +4979,7 @@ export const importCertificate: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(224, __c7, 0) as any as S.Schema<ImportCertificateMessage>,
-  output: __S(3200, __c100, 0) as any as S.Schema<ImportCertificateResponse>,
+  output: __S(3232, __c101, 0) as any as S.Schema<ImportCertificateResponse>,
   errors: [
     InvalidCertificateFault,
     KMSKeyNotAccessibleFault,
@@ -5056,7 +5056,7 @@ export const modifyDataMigration: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(320, __c10, 0) as any as S.Schema<ModifyDataMigrationMessage>,
-  output: __S(2112, __c66, 0) as any as S.Schema<ModifyDataMigrationResponse>,
+  output: __S(2144, __c67, 0) as any as S.Schema<ModifyDataMigrationResponse>,
   errors: [FailedDependencyFault, InvalidResourceStateFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5086,7 +5086,7 @@ export const modifyDataProvider: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(352, __c11, 0) as any as S.Schema<ModifyDataProviderMessage>,
-  output: __S(2208, __c69, 0) as any as S.Schema<ModifyDataProviderResponse>,
+  output: __S(2240, __c70, 0) as any as S.Schema<ModifyDataProviderResponse>,
   errors: [
     AccessDeniedFault,
     FailedDependencyFault,
@@ -5122,7 +5122,7 @@ export const modifyEndpoint: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(384, __c12, 0) as any as S.Schema<ModifyEndpointMessage>,
-  output: __S(2304, __c72, 0) as any as S.Schema<ModifyEndpointResponse>,
+  output: __S(2336, __c73, 0) as any as S.Schema<ModifyEndpointResponse>,
   errors: [
     AccessDeniedFault,
     InvalidResourceStateFault,
@@ -5157,7 +5157,7 @@ export const modifyEventSubscription: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(416, __c13, 0) as any as S.Schema<ModifyEventSubscriptionMessage>,
-  output: __S(2368, __c74, 0) as any as S.Schema<ModifyEventSubscriptionResponse>,
+  output: __S(2400, __c75, 0) as any as S.Schema<ModifyEventSubscriptionResponse>,
   errors: [
     AccessDeniedFault,
     KMSAccessDeniedFault,
@@ -5201,7 +5201,7 @@ export const modifyInstanceProfile: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(448, __c14, 0) as any as S.Schema<ModifyInstanceProfileMessage>,
-  output: __S(2528, __c79, 0) as any as S.Schema<ModifyInstanceProfileResponse>,
+  output: __S(2560, __c80, 0) as any as S.Schema<ModifyInstanceProfileResponse>,
   errors: [
     AccessDeniedFault,
     FailedDependencyFault,
@@ -5240,7 +5240,7 @@ export const modifyMigrationProject: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(480, __c15, 0) as any as S.Schema<ModifyMigrationProjectMessage>,
-  output: __S(2656, __c83, 0) as any as S.Schema<ModifyMigrationProjectResponse>,
+  output: __S(2688, __c84, 0) as any as S.Schema<ModifyMigrationProjectResponse>,
   errors: [
     AccessDeniedFault,
     FailedDependencyFault,
@@ -5280,7 +5280,7 @@ export const modifyReplicationConfig: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(512, __c16, 0) as any as S.Schema<ModifyReplicationConfigMessage>,
-  output: __S(2752, __c86, 0) as any as S.Schema<ModifyReplicationConfigResponse>,
+  output: __S(2784, __c87, 0) as any as S.Schema<ModifyReplicationConfigResponse>,
   errors: [
     AccessDeniedFault,
     InvalidResourceStateFault,
@@ -5316,7 +5316,7 @@ export const modifyReplicationInstance: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(544, __c17, 0) as any as S.Schema<ModifyReplicationInstanceMessage>,
-  output: __S(2912, __c91, 0) as any as S.Schema<ModifyReplicationInstanceResponse>,
+  output: __S(2944, __c92, 0) as any as S.Schema<ModifyReplicationInstanceResponse>,
   errors: [
     AccessDeniedFault,
     InsufficientResourceCapacityFault,
@@ -5349,7 +5349,7 @@ export const modifyReplicationSubnetGroup: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(576, __c18, 0) as any as S.Schema<ModifyReplicationSubnetGroupMessage>,
-  output: __S(3009, __c94, 1) as any as S.Schema<ModifyReplicationSubnetGroupResponse>,
+  output: __S(3041, __c95, 1) as any as S.Schema<ModifyReplicationSubnetGroupResponse>,
   errors: [
     AccessDeniedFault,
     InvalidSubnet,
@@ -5384,7 +5384,7 @@ export const modifyReplicationTask: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(608, __c19, 0) as any as S.Schema<ModifyReplicationTaskMessage>,
-  output: __S(3104, __c97, 0) as any as S.Schema<ModifyReplicationTaskResponse>,
+  output: __S(3136, __c98, 0) as any as S.Schema<ModifyReplicationTaskResponse>,
   errors: [
     InvalidResourceStateFault,
     KMSKeyNotAccessibleFault,
@@ -5415,7 +5415,7 @@ export const moveReplicationTask: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(640, __c20, 0) as any as S.Schema<MoveReplicationTaskMessage>,
-  output: __S(3104, __c97, 0) as any as S.Schema<MoveReplicationTaskResponse>,
+  output: __S(3136, __c98, 0) as any as S.Schema<MoveReplicationTaskResponse>,
   errors: [
     AccessDeniedFault,
     InvalidResourceStateFault,
@@ -5443,7 +5443,7 @@ export const rebootReplicationInstance: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(672, __c21, 0) as any as S.Schema<RebootReplicationInstanceMessage>,
-  output: __S(2912, __c91, 0) as any as S.Schema<RebootReplicationInstanceResponse>,
+  output: __S(2944, __c92, 0) as any as S.Schema<RebootReplicationInstanceResponse>,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5468,7 +5468,7 @@ export const refreshSchemas: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(704, __c22, 0) as any as S.Schema<RefreshSchemasMessage>,
-  output: __S(705, __c22, 1) as any as S.Schema<RefreshSchemasResponse>,
+  output: __S(5057, __c158, 1) as any as S.Schema<RefreshSchemasResponse>,
   errors: [
     InvalidResourceStateFault,
     KMSKeyNotAccessibleFault,
@@ -5591,7 +5591,7 @@ export const startDataMigration: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(896, __c28, 0) as any as S.Schema<StartDataMigrationMessage>,
-  output: __S(2112, __c66, 0) as any as S.Schema<StartDataMigrationResponse>,
+  output: __S(2144, __c67, 0) as any as S.Schema<StartDataMigrationResponse>,
   errors: [
     FailedDependencyFault,
     InvalidOperationFault,
@@ -6073,7 +6073,7 @@ export const startReplicationTask: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1280, __c40, 0) as any as S.Schema<StartReplicationTaskMessage>,
-  output: __S(3104, __c97, 0) as any as S.Schema<StartReplicationTaskResponse>,
+  output: __S(3136, __c98, 0) as any as S.Schema<StartReplicationTaskResponse>,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6107,7 +6107,7 @@ export const startReplicationTaskAssessment: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1312, __c41, 0) as any as S.Schema<StartReplicationTaskAssessmentMessage>,
-  output: __S(3104, __c97, 0) as any as S.Schema<StartReplicationTaskAssessmentResponse>,
+  output: __S(3136, __c98, 0) as any as S.Schema<StartReplicationTaskAssessmentResponse>,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6145,7 +6145,7 @@ export const startReplicationTaskAssessmentRun: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1344, __c42, 0) as any as S.Schema<StartReplicationTaskAssessmentRunMessage>,
-  output: __S(1984, __c62, 0) as any as S.Schema<StartReplicationTaskAssessmentRunResponse>,
+  output: __S(2016, __c63, 0) as any as S.Schema<StartReplicationTaskAssessmentRunResponse>,
   errors: [
     AccessDeniedFault,
     InvalidResourceStateFault,
@@ -6180,7 +6180,7 @@ export const stopDataMigration: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1376, __c43, 0) as any as S.Schema<StopDataMigrationMessage>,
-  output: __S(2112, __c66, 0) as any as S.Schema<StopDataMigrationResponse>,
+  output: __S(2144, __c67, 0) as any as S.Schema<StopDataMigrationResponse>,
   errors: [FailedDependencyFault, InvalidResourceStateFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6225,7 +6225,7 @@ export const stopReplicationTask: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1440, __c45, 0) as any as S.Schema<StopReplicationTaskMessage>,
-  output: __S(3104, __c97, 0) as any as S.Schema<StopReplicationTaskResponse>,
+  output: __S(3136, __c98, 0) as any as S.Schema<StopReplicationTaskResponse>,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6249,7 +6249,7 @@ export const testConnection: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1472, __c46, 0) as any as S.Schema<TestConnectionMessage>,
-  output: __S(3296, __c103, 0) as any as S.Schema<TestConnectionResponse>,
+  output: __S(3328, __c104, 0) as any as S.Schema<TestConnectionResponse>,
   errors: [
     AccessDeniedFault,
     InvalidResourceStateFault,
@@ -6300,24 +6300,20 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(3874, __c121, 2)),
+          Filters: S.optional(__S(3906, __c122, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeReplicationTaskAssessmentRunsMessage",
-      });
+      ).annotate({ identifier: "DescribeReplicationTaskAssessmentRunsMessage" });
     case 1:
-      return S.Array(__S(1952, __c61, 0));
+      return S.Array(__S(1984, __c62, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
           ReplicationTaskAssessmentRuns: S.optional(__S(1, __c0, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeReplicationTaskAssessmentRunsResponse",
-      });
+      ).annotate({ identifier: "DescribeReplicationTaskAssessmentRunsResponse" });
   }
 }
 function __c1(j: number): any {
@@ -6325,13 +6321,11 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(3874, __c121, 2)),
+          Filters: S.optional(__S(3906, __c122, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeReplicationTaskIndividualAssessmentsMessage",
-      });
+      ).annotate({ identifier: "DescribeReplicationTaskIndividualAssessmentsMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6343,9 +6337,7 @@ function __c1(j: number): any {
             S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           ),
         }),
-      ).annotate({
-        identifier: "ReplicationTaskIndividualAssessment",
-      });
+      ).annotate({ identifier: "ReplicationTaskIndividualAssessment" });
     case 2:
       return S.Array(__S(33, __c1, 1));
     case 3:
@@ -6354,9 +6346,7 @@ function __c1(j: number): any {
           Marker: S.optional(S.String),
           ReplicationTaskIndividualAssessments: S.optional(__S(34, __c1, 2)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeReplicationTaskIndividualAssessmentsResponse",
-      });
+      ).annotate({ identifier: "DescribeReplicationTaskIndividualAssessmentsResponse" });
   }
 }
 function __c2(j: number): any {
@@ -6364,21 +6354,17 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(3874, __c121, 2)),
+          Filters: S.optional(__S(3906, __c122, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
           WithoutSettings: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeReplicationTasksMessage",
-      });
+      ).annotate({ identifier: "DescribeReplicationTasksMessage" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(3072, __c96, 0)
+        /*@__PURE__*/ __S(3104, __c97, 0)
           .pipe(/*@__PURE__*/ T.XmlName("ReplicationTask"))
-          .annotate({
-            identifier: "ReplicationTask",
-          }),
+          .annotate({ identifier: "ReplicationTask" }),
       );
     case 2:
       return S.suspend(() =>
@@ -6386,9 +6372,7 @@ function __c2(j: number): any {
           Marker: S.optional(S.String),
           ReplicationTasks: S.optional(__S(65, __c2, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeReplicationTasksResponse",
-      });
+      ).annotate({ identifier: "DescribeReplicationTasksResponse" });
   }
 }
 function __c3(j: number): any {
@@ -6403,7 +6387,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "DescribeSchemasMessage" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Marker: S.optional(S.String), Schemas: S.optional(__S(2080, __c65, 0)) }).pipe(
+        S.Struct({ Marker: S.optional(S.String), Schemas: S.optional(__S(2112, __c66, 0)) }).pipe(
           ns,
         ),
       ).annotate({ identifier: "DescribeSchemasResponse" });
@@ -6417,21 +6401,17 @@ function __c4(j: number): any {
           ReplicationTaskArn: S.String,
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
-          Filters: S.optional(__S(3874, __c121, 2)),
+          Filters: S.optional(__S(3906, __c122, 2)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeTableStatisticsMessage",
-      });
+      ).annotate({ identifier: "DescribeTableStatisticsMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ReplicationTaskArn: S.optional(S.String),
-          TableStatistics: S.optional(__S(5281, __c165, 1)),
+          TableStatistics: S.optional(__S(5313, __c166, 1)),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeTableStatisticsResponse",
-      });
+      ).annotate({ identifier: "DescribeTableStatisticsResponse" });
   }
 }
 function __c5(j: number): any {
@@ -6446,24 +6426,14 @@ function __c5(j: number): any {
           FileName: S.optional(S.String),
           AssessmentReportTypes: S.optional(__S(160, __c5, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ExportMetadataModelAssessmentMessage",
-      });
+      ).annotate({ identifier: "ExportMetadataModelAssessmentMessage" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ S3ObjectKey: S.optional(S.String), ObjectURL: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ExportMetadataModelAssessmentResultEntry",
-      });
-    case 3:
-      return S.suspend(() =>
         S.Struct({
-          PdfReport: S.optional(__S(162, __c5, 2)),
-          CsvReport: S.optional(__S(162, __c5, 2)),
+          PdfReport: S.optional(__S(1888, __c59, 0)),
+          CsvReport: S.optional(__S(1888, __c59, 0)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ExportMetadataModelAssessmentResponse",
-      });
+      ).annotate({ identifier: "ExportMetadataModelAssessmentResponse" });
   }
 }
 function __c6(j: number): any {
@@ -6473,15 +6443,11 @@ function __c6(j: number): any {
         S.Struct({ MigrationProjectIdentifier: S.String, SelectionRules: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetTargetSelectionRulesMessage",
-      });
+      ).annotate({ identifier: "GetTargetSelectionRulesMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ TargetSelectionRules: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "GetTargetSelectionRulesResponse",
-      });
+      ).annotate({ identifier: "GetTargetSelectionRulesResponse" });
   }
 }
 function __c7(j: number): any {
@@ -6504,17 +6470,13 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.optional(S.String),
-          ResourceArnList: S.optional(__S(2080, __c65, 0)),
+          ResourceArnList: S.optional(__S(2112, __c66, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListTagsForResourceMessage",
-      });
+      ).annotate({ identifier: "ListTagsForResourceMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ TagList: S.optional(__S(1601, __c50, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
+      ).annotate({ identifier: "ListTagsForResourceResponse" });
   }
 }
 function __c9(j: number): any {
@@ -6524,15 +6486,11 @@ function __c9(j: number): any {
         S.Struct({ MigrationProjectIdentifier: S.String, ConversionConfiguration: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ModifyConversionConfigurationMessage",
-      });
+      ).annotate({ identifier: "ModifyConversionConfigurationMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ MigrationProjectIdentifier: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyConversionConfigurationResponse",
-      });
+      ).annotate({ identifier: "ModifyConversionConfigurationResponse" });
   }
 }
 function __c10(j: number): any {
@@ -6545,14 +6503,12 @@ function __c10(j: number): any {
           EnableCloudwatchLogs: S.optional(S.Boolean),
           ServiceAccessRoleArn: S.optional(S.String),
           DataMigrationType: S.optional(S.String),
-          SourceDataSettings: S.optional(__S(2145, __c67, 1)),
-          TargetDataSettings: S.optional(__S(2147, __c67, 3)),
+          SourceDataSettings: S.optional(__S(2177, __c68, 1)),
+          TargetDataSettings: S.optional(__S(2179, __c68, 3)),
           NumberOfJobs: S.optional(S.Number),
           SelectionRules: S.optional(SensitiveString),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyDataMigrationMessage",
-      });
+      ).annotate({ identifier: "ModifyDataMigrationMessage" });
   }
 }
 function __c11(j: number): any {
@@ -6566,11 +6522,9 @@ function __c11(j: number): any {
           Engine: S.optional(S.String),
           Virtual: S.optional(S.Boolean),
           ExactSettings: S.optional(S.Boolean),
-          Settings: S.optional(__S(2248, __c70, 8)),
+          Settings: S.optional(__S(2280, __c71, 8)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyDataProviderMessage",
-      });
+      ).annotate({ identifier: "ModifyDataProviderMessage" });
   }
 }
 function __c12(j: number): any {
@@ -6624,12 +6578,10 @@ function __c13(j: number): any {
           SubscriptionName: S.String,
           SnsTopicArn: S.optional(S.String),
           SourceType: S.optional(S.String),
-          EventCategories: S.optional(__S(2400, __c75, 0)),
+          EventCategories: S.optional(__S(2432, __c76, 0)),
           Enabled: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyEventSubscriptionMessage",
-      });
+      ).annotate({ identifier: "ModifyEventSubscriptionMessage" });
   }
 }
 function __c14(j: number): any {
@@ -6645,11 +6597,9 @@ function __c14(j: number): any {
           InstanceProfileName: S.optional(S.String),
           Description: S.optional(S.String),
           SubnetGroupIdentifier: S.optional(S.String),
-          VpcSecurityGroups: S.optional(__S(2080, __c65, 0)),
+          VpcSecurityGroups: S.optional(__S(2112, __c66, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyInstanceProfileMessage",
-      });
+      ).annotate({ identifier: "ModifyInstanceProfileMessage" });
   }
 }
 function __c15(j: number): any {
@@ -6659,16 +6609,14 @@ function __c15(j: number): any {
         S.Struct({
           MigrationProjectIdentifier: S.String,
           MigrationProjectName: S.optional(S.String),
-          SourceDataProviderDescriptors: S.optional(__S(2625, __c82, 1)),
-          TargetDataProviderDescriptors: S.optional(__S(2625, __c82, 1)),
+          SourceDataProviderDescriptors: S.optional(__S(2657, __c83, 1)),
+          TargetDataProviderDescriptors: S.optional(__S(2657, __c83, 1)),
           InstanceProfileIdentifier: S.optional(S.String),
           TransformationRules: S.optional(S.String),
           Description: S.optional(S.String),
-          SchemaConversionApplicationAttributes: S.optional(__S(2688, __c84, 0)),
+          SchemaConversionApplicationAttributes: S.optional(__S(2720, __c85, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyMigrationProjectMessage",
-      });
+      ).annotate({ identifier: "ModifyMigrationProjectMessage" });
   }
 }
 function __c16(j: number): any {
@@ -6682,13 +6630,11 @@ function __c16(j: number): any {
           TableMappings: S.optional(S.String),
           ReplicationSettings: S.optional(S.String),
           SupplementalSettings: S.optional(S.String),
-          ComputeConfig: S.optional(__S(2784, __c87, 0)),
+          ComputeConfig: S.optional(__S(2816, __c88, 0)),
           SourceEndpointArn: S.optional(S.String),
           TargetEndpointArn: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyReplicationConfigMessage",
-      });
+      ).annotate({ identifier: "ModifyReplicationConfigMessage" });
   }
 }
 function __c17(j: number): any {
@@ -6700,7 +6646,7 @@ function __c17(j: number): any {
           AllocatedStorage: S.optional(S.Number),
           ApplyImmediately: S.optional(S.Boolean),
           ReplicationInstanceClass: S.optional(S.String),
-          VpcSecurityGroupIds: S.optional(__S(2848, __c89, 0)),
+          VpcSecurityGroupIds: S.optional(__S(2880, __c90, 0)),
           PreferredMaintenanceWindow: S.optional(S.String),
           MultiAZ: S.optional(S.Boolean),
           EngineVersion: S.optional(S.String),
@@ -6708,11 +6654,9 @@ function __c17(j: number): any {
           AutoMinorVersionUpgrade: S.optional(S.Boolean),
           ReplicationInstanceIdentifier: S.optional(S.String),
           NetworkType: S.optional(S.String),
-          KerberosAuthenticationSettings: S.optional(__S(2944, __c92, 0)),
+          KerberosAuthenticationSettings: S.optional(__S(2976, __c93, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyReplicationInstanceMessage",
-      });
+      ).annotate({ identifier: "ModifyReplicationInstanceMessage" });
   }
 }
 function __c18(j: number): any {
@@ -6722,11 +6666,9 @@ function __c18(j: number): any {
         S.Struct({
           ReplicationSubnetGroupIdentifier: S.String,
           ReplicationSubnetGroupDescription: S.optional(S.String),
-          SubnetIds: __S(3008, __c94, 0),
+          SubnetIds: __S(3040, __c95, 0),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyReplicationSubnetGroupMessage",
-      });
+      ).annotate({ identifier: "ModifyReplicationSubnetGroupMessage" });
   }
 }
 function __c19(j: number): any {
@@ -6744,9 +6686,7 @@ function __c19(j: number): any {
           CdcStopPosition: S.optional(S.String),
           TaskData: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyReplicationTaskMessage",
-      });
+      ).annotate({ identifier: "ModifyReplicationTaskMessage" });
   }
 }
 function __c20(j: number): any {
@@ -6756,9 +6696,7 @@ function __c20(j: number): any {
         S.Struct({ ReplicationTaskArn: S.String, TargetReplicationInstanceArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "MoveReplicationTaskMessage",
-      });
+      ).annotate({ identifier: "MoveReplicationTaskMessage" });
   }
 }
 function __c21(j: number): any {
@@ -6770,9 +6708,7 @@ function __c21(j: number): any {
           ForceFailover: S.optional(S.Boolean),
           ForcePlannedFailover: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RebootReplicationInstanceMessage",
-      });
+      ).annotate({ identifier: "RebootReplicationInstanceMessage" });
   }
 }
 function __c22(j: number): any {
@@ -6783,10 +6719,6 @@ function __c22(j: number): any {
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "RefreshSchemasMessage" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ RefreshSchemasStatus: S.optional(__S(5024, __c157, 0)) }).pipe(ns),
-      ).annotate({ identifier: "RefreshSchemasResponse" });
   }
 }
 function __c23(j: number): any {
@@ -6798,15 +6730,11 @@ function __c23(j: number): any {
           TablesToReload: __S(769, __c24, 1),
           ReloadOption: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ReloadReplicationTablesMessage",
-      });
+      ).annotate({ identifier: "ReloadReplicationTablesMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ReplicationConfigArn: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "ReloadReplicationTablesResponse",
-      });
+      ).annotate({ identifier: "ReloadReplicationTablesResponse" });
   }
 }
 function __c24(j: number): any {
@@ -6839,12 +6767,10 @@ function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, TagKeys: __S(2080, __c65, 0) }).pipe(
+        S.Struct({ ResourceArn: S.String, TagKeys: __S(2112, __c66, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "RemoveTagsFromResourceMessage",
-      });
+      ).annotate({ identifier: "RemoveTagsFromResourceMessage" });
   }
 }
 function __c27(j: number): any {
@@ -6854,28 +6780,21 @@ function __c27(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "RunFleetAdvisorLsaAnalysisRequest",
-      });
+      ).annotate({ identifier: "RunFleetAdvisorLsaAnalysisRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ LsaAnalysisId: S.optional(S.String), Status: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "RunFleetAdvisorLsaAnalysisResponse",
-      });
+      ).annotate({ identifier: "RunFleetAdvisorLsaAnalysisResponse" });
   }
 }
 function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          DataMigrationIdentifier: S.String,
-          StartType: S.String,
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartDataMigrationMessage",
-      });
+        S.Struct({ DataMigrationIdentifier: S.String, StartType: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "StartDataMigrationMessage" });
   }
 }
 function __c29(j: number): any {
@@ -6885,9 +6804,7 @@ function __c29(j: number): any {
         S.Struct({ MigrationProjectIdentifier: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StartExtensionPackAssociationMessage",
-      });
+      ).annotate({ identifier: "StartExtensionPackAssociationMessage" });
   }
 }
 function __c30(j: number): any {
@@ -6895,9 +6812,7 @@ function __c30(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ RequestIdentifier: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "StartExtensionPackAssociationResponse",
-      });
+      ).annotate({ identifier: "StartExtensionPackAssociationResponse" });
   }
 }
 function __c31(j: number): any {
@@ -6907,9 +6822,7 @@ function __c31(j: number): any {
         S.Struct({ MigrationProjectIdentifier: S.String, SelectionRules: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StartMetadataModelAssessmentMessage",
-      });
+      ).annotate({ identifier: "StartMetadataModelAssessmentMessage" });
   }
 }
 function __c32(j: number): any {
@@ -6919,9 +6832,7 @@ function __c32(j: number): any {
         S.Struct({ MigrationProjectIdentifier: S.String, SelectionRules: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StartMetadataModelConversionMessage",
-      });
+      ).annotate({ identifier: "StartMetadataModelConversionMessage" });
   }
 }
 function __c33(j: number): any {
@@ -6940,9 +6851,7 @@ function __c33(j: number): any {
           MetadataModelName: S.String,
           Properties: __S(1057, __c33, 1),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartMetadataModelCreationMessage",
-      });
+      ).annotate({ identifier: "StartMetadataModelCreationMessage" });
   }
 }
 function __c34(j: number): any {
@@ -6955,9 +6864,7 @@ function __c34(j: number): any {
           Origin: S.String,
           FileName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartMetadataModelExportAsScriptMessage",
-      });
+      ).annotate({ identifier: "StartMetadataModelExportAsScriptMessage" });
   }
 }
 function __c35(j: number): any {
@@ -6969,9 +6876,7 @@ function __c35(j: number): any {
           SelectionRules: S.String,
           OverwriteExtensionPack: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartMetadataModelExportToTargetMessage",
-      });
+      ).annotate({ identifier: "StartMetadataModelExportToTargetMessage" });
   }
 }
 function __c36(j: number): any {
@@ -6984,9 +6889,7 @@ function __c36(j: number): any {
           Origin: S.String,
           Refresh: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartMetadataModelImportMessage",
-      });
+      ).annotate({ identifier: "StartMetadataModelImportMessage" });
   }
 }
 function __c37(j: number): any {
@@ -6996,9 +6899,7 @@ function __c37(j: number): any {
         S.Struct({ DatabaseId: S.String, Settings: __S(1760, __c55, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StartRecommendationsRequest",
-      });
+      ).annotate({ identifier: "StartRecommendationsRequest" });
   }
 }
 function __c38(j: number): any {
@@ -7020,7 +6921,7 @@ function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Replication: S.optional(__S(5187, __c162, 3)) }).pipe(ns),
+        S.Struct({ Replication: S.optional(__S(5219, __c163, 3)) }).pipe(ns),
       ).annotate({ identifier: "StartReplicationResponse" });
   }
 }
@@ -7035,9 +6936,7 @@ function __c40(j: number): any {
           CdcStartPosition: S.optional(S.String),
           CdcStopPosition: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartReplicationTaskMessage",
-      });
+      ).annotate({ identifier: "StartReplicationTaskMessage" });
   }
 }
 function __c41(j: number): any {
@@ -7047,9 +6946,7 @@ function __c41(j: number): any {
         S.Struct({ ReplicationTaskArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StartReplicationTaskAssessmentMessage",
-      });
+      ).annotate({ identifier: "StartReplicationTaskAssessmentMessage" });
   }
 }
 function __c42(j: number): any {
@@ -7064,13 +6961,11 @@ function __c42(j: number): any {
           ResultEncryptionMode: S.optional(S.String),
           ResultKmsKeyArn: S.optional(S.String),
           AssessmentRunName: S.String,
-          IncludeOnly: S.optional(__S(2080, __c65, 0)),
-          Exclude: S.optional(__S(2080, __c65, 0)),
+          IncludeOnly: S.optional(__S(2112, __c66, 0)),
+          Exclude: S.optional(__S(2112, __c66, 0)),
           Tags: S.optional(__S(1601, __c50, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartReplicationTaskAssessmentRunMessage",
-      });
+      ).annotate({ identifier: "StartReplicationTaskAssessmentRunMessage" });
   }
 }
 function __c43(j: number): any {
@@ -7100,9 +6995,7 @@ function __c45(j: number): any {
         S.Struct({ ReplicationTaskArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StopReplicationTaskMessage",
-      });
+      ).annotate({ identifier: "StopReplicationTaskMessage" });
   }
 }
 function __c46(j: number): any {
@@ -7122,9 +7015,7 @@ function __c47(j: number): any {
         S.Struct({ ForceMove: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateSubscriptionsToEventBridgeMessage",
-      });
+      ).annotate({ identifier: "UpdateSubscriptionsToEventBridgeMessage" });
     case 1:
       return S.suspend(() => S.Struct({ Result: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "UpdateSubscriptionsToEventBridgeResponse",
@@ -7457,9 +7348,7 @@ function __c49(j: number): any {
           ForceLobLookup: S.optional(S.Boolean),
           AuthenticationMethod: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "MicrosoftSQLServerSettings",
-      });
+      ).annotate({ identifier: "MicrosoftSQLServerSettings" });
     case 15:
       return S.suspend(() =>
         S.Struct({
@@ -7622,17 +7511,11 @@ function __c52(j: number): any {
           ApplyAction: S.String,
           OptInType: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ApplyPendingMaintenanceActionMessage",
-      });
+      ).annotate({ identifier: "ApplyPendingMaintenanceActionMessage" });
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          ResourcePendingMaintenanceActions: S.optional(__S(1698, __c53, 2)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "ApplyPendingMaintenanceActionResponse",
-      });
+        S.Struct({ ResourcePendingMaintenanceActions: S.optional(__S(1698, __c53, 2)) }).pipe(ns),
+      ).annotate({ identifier: "ApplyPendingMaintenanceActionResponse" });
   }
 }
 function __c53(j: number): any {
@@ -7652,9 +7535,7 @@ function __c53(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(1696, __c53, 0)
           .pipe(/*@__PURE__*/ T.XmlName("PendingMaintenanceAction"))
-          .annotate({
-            identifier: "PendingMaintenanceAction",
-          }),
+          .annotate({ identifier: "PendingMaintenanceAction" }),
       );
     case 2:
       return S.suspend(() =>
@@ -7662,9 +7543,7 @@ function __c53(j: number): any {
           ResourceIdentifier: S.optional(S.String),
           PendingMaintenanceActionDetails: S.optional(__S(1697, __c53, 1)),
         }),
-      ).annotate({
-        identifier: "ResourcePendingMaintenanceActions",
-      });
+      ).annotate({ identifier: "ResourcePendingMaintenanceActions" });
   }
 }
 function __c54(j: number): any {
@@ -7672,9 +7551,7 @@ function __c54(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ DatabaseId: S.String, Settings: __S(1760, __c55, 0) }),
-      ).annotate({
-        identifier: "StartRecommendationsRequestEntry",
-      });
+      ).annotate({ identifier: "StartRecommendationsRequestEntry" });
     case 1:
       return S.Array(__S(1728, __c54, 0));
     case 2:
@@ -7682,9 +7559,7 @@ function __c54(j: number): any {
         S.Struct({ Data: S.optional(__S(1729, __c54, 1)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "BatchStartRecommendationsRequest",
-      });
+      ).annotate({ identifier: "BatchStartRecommendationsRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -7692,17 +7567,13 @@ function __c54(j: number): any {
           Message: S.optional(S.String),
           Code: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchStartRecommendationsErrorEntry",
-      });
+      ).annotate({ identifier: "BatchStartRecommendationsErrorEntry" });
     case 4:
       return S.Array(__S(1731, __c54, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({ ErrorEntries: S.optional(__S(1732, __c54, 4)) }).pipe(ns),
-      ).annotate({
-        identifier: "BatchStartRecommendationsResponse",
-      });
+      ).annotate({ identifier: "BatchStartRecommendationsResponse" });
   }
 }
 function __c55(j: number): any {
@@ -7720,19 +7591,15 @@ function __c56(j: number): any {
         S.Struct({ MigrationProjectIdentifier: S.String, RequestIdentifier: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CancelMetadataModelConversionMessage",
-      });
+      ).annotate({ identifier: "CancelMetadataModelConversionMessage" });
   }
 }
 function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Request: S.optional(__S(1861, __c58, 5)) }).pipe(ns),
-      ).annotate({
-        identifier: "CancelMetadataModelConversionResponse",
-      });
+        S.Struct({ Request: S.optional(__S(1860, __c58, 4)) }).pipe(ns),
+      ).annotate({ identifier: "CancelMetadataModelConversionResponse" });
   }
 }
 function __c58(j: number): any {
@@ -7745,34 +7612,30 @@ function __c58(j: number): any {
       return S.Union([/*@__PURE__*/ S.Struct({ defaultErrorDetails: __S(1856, __c58, 0) })]);
     case 2:
       return S.suspend(() =>
-        S.Struct({ S3ObjectKey: S.optional(S.String), ObjectURL: S.optional(S.String) }),
-      ).annotate({ identifier: "ExportSqlDetails" });
-    case 3:
-      return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           Type: S.optional(S.String),
           EndpointType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProcessedObject" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ProgressPercent: S.optional(S.Number),
           TotalObjects: S.optional(S.Number),
           ProgressStep: S.optional(S.String),
-          ProcessedObject: S.optional(__S(1859, __c58, 3)),
+          ProcessedObject: S.optional(__S(1858, __c58, 2)),
         }),
       ).annotate({ identifier: "Progress" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String),
           RequestIdentifier: S.optional(S.String),
           MigrationProjectArn: S.optional(S.String),
           Error: S.optional(__S(1857, __c58, 1)),
-          ExportSqlDetails: S.optional(__S(1858, __c58, 2)),
-          Progress: S.optional(__S(1860, __c58, 4)),
+          ExportSqlDetails: S.optional(__S(1888, __c59, 0)),
+          Progress: S.optional(__S(1859, __c58, 3)),
         }),
       ).annotate({ identifier: "SchemaConversionRequest" });
   }
@@ -7781,27 +7644,31 @@ function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ MigrationProjectIdentifier: S.String, RequestIdentifier: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "CancelMetadataModelCreationMessage",
-      });
+        S.Struct({ S3ObjectKey: S.optional(S.String), ObjectURL: S.optional(S.String) }),
+      ).annotate({ identifier: "ExportSqlDetails" });
   }
 }
 function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ReplicationTaskAssessmentRunArn: S.String }).pipe(
+        S.Struct({ MigrationProjectIdentifier: S.String, RequestIdentifier: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CancelReplicationTaskAssessmentRunMessage",
-      });
+      ).annotate({ identifier: "CancelMetadataModelCreationMessage" });
   }
 }
 function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ReplicationTaskAssessmentRunArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CancelReplicationTaskAssessmentRunMessage" });
+  }
+}
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7812,7 +7679,7 @@ function __c61(j: number): any {
           ReplicationTaskAssessmentRunCreationDate: S.optional(
             S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           ),
-          AssessmentProgress: S.optional(__S(2016, __c63, 0)),
+          AssessmentProgress: S.optional(__S(2048, __c64, 0)),
           LastFailureMessage: S.optional(S.String),
           ServiceAccessRoleArn: S.optional(S.String),
           ResultLocationBucket: S.optional(S.String),
@@ -7821,24 +7688,20 @@ function __c61(j: number): any {
           ResultKmsKeyArn: S.optional(S.String),
           AssessmentRunName: S.optional(S.String),
           IsLatestTaskAssessmentRun: S.optional(S.Boolean),
-          ResultStatistic: S.optional(__S(2017, __c63, 1)),
+          ResultStatistic: S.optional(__S(2049, __c64, 1)),
         }),
-      ).annotate({
-        identifier: "ReplicationTaskAssessmentRun",
-      });
-  }
-}
-function __c62(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ReplicationTaskAssessmentRun: S.optional(__S(1952, __c61, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "CancelReplicationTaskAssessmentRunResponse",
-      });
+      ).annotate({ identifier: "ReplicationTaskAssessmentRun" });
   }
 }
 function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ReplicationTaskAssessmentRun: S.optional(__S(1984, __c62, 0)) }).pipe(ns),
+      ).annotate({ identifier: "CancelReplicationTaskAssessmentRunResponse" });
+  }
+}
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7846,9 +7709,7 @@ function __c63(j: number): any {
           IndividualAssessmentCount: S.optional(S.Number),
           IndividualAssessmentCompletedCount: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "ReplicationTaskAssessmentRunProgress",
-      });
+      ).annotate({ identifier: "ReplicationTaskAssessmentRunProgress" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7859,12 +7720,10 @@ function __c63(j: number): any {
           Cancelled: S.optional(S.Number),
           Skipped: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "ReplicationTaskAssessmentRunResultStatistic",
-      });
+      ).annotate({ identifier: "ReplicationTaskAssessmentRunResultStatistic" });
   }
 }
-function __c64(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7874,34 +7733,30 @@ function __c64(j: number): any {
           DataMigrationType: S.String,
           ServiceAccessRoleArn: S.String,
           EnableCloudwatchLogs: S.optional(S.Boolean),
-          SourceDataSettings: S.optional(__S(2145, __c67, 1)),
-          TargetDataSettings: S.optional(__S(2147, __c67, 3)),
+          SourceDataSettings: S.optional(__S(2177, __c68, 1)),
+          TargetDataSettings: S.optional(__S(2179, __c68, 3)),
           NumberOfJobs: S.optional(S.Number),
           Tags: S.optional(__S(1601, __c50, 1)),
           SelectionRules: S.optional(SensitiveString),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateDataMigrationMessage",
-      });
-  }
-}
-function __c65(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
+      ).annotate({ identifier: "CreateDataMigrationMessage" });
   }
 }
 function __c66(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ DataMigration: S.optional(__S(2150, __c67, 6)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateDataMigrationResponse",
-      });
+      return S.Array(S.String);
   }
 }
 function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DataMigration: S.optional(__S(2182, __c68, 6)) }).pipe(ns),
+      ).annotate({ identifier: "CreateDataMigrationResponse" });
+  }
+}
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7913,13 +7768,13 @@ function __c67(j: number): any {
         }),
       ).annotate({ identifier: "SourceDataSetting" });
     case 1:
-      return S.Array(__S(2144, __c67, 0));
+      return S.Array(__S(2176, __c68, 0));
     case 2:
       return S.suspend(() => S.Struct({ TablePreparationMode: S.optional(S.String) })).annotate({
         identifier: "TargetDataSetting",
       });
     case 3:
-      return S.Array(__S(2146, __c67, 2));
+      return S.Array(__S(2178, __c68, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -7955,20 +7810,20 @@ function __c67(j: number): any {
           ServiceAccessRoleArn: S.optional(S.String),
           MigrationProjectArn: S.optional(S.String),
           DataMigrationType: S.optional(S.String),
-          DataMigrationSettings: S.optional(__S(2148, __c67, 4)),
-          SourceDataSettings: S.optional(__S(2145, __c67, 1)),
-          TargetDataSettings: S.optional(__S(2147, __c67, 3)),
-          DataMigrationStatistics: S.optional(__S(2149, __c67, 5)),
+          DataMigrationSettings: S.optional(__S(2180, __c68, 4)),
+          SourceDataSettings: S.optional(__S(2177, __c68, 1)),
+          TargetDataSettings: S.optional(__S(2179, __c68, 3)),
+          DataMigrationStatistics: S.optional(__S(2181, __c68, 5)),
           DataMigrationStatus: S.optional(S.String),
-          PublicIpAddresses: S.optional(__S(2080, __c65, 0)),
-          DataMigrationCidrBlocks: S.optional(__S(2080, __c65, 0)),
+          PublicIpAddresses: S.optional(__S(2112, __c66, 0)),
+          DataMigrationCidrBlocks: S.optional(__S(2112, __c66, 0)),
           LastFailureMessage: S.optional(S.String),
           StopReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataMigration" });
   }
 }
-function __c68(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7977,25 +7832,21 @@ function __c68(j: number): any {
           Description: S.optional(S.String),
           Engine: S.String,
           Virtual: S.optional(S.Boolean),
-          Settings: __S(2248, __c70, 8),
+          Settings: __S(2280, __c71, 8),
           Tags: S.optional(__S(1601, __c50, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateDataProviderMessage",
-      });
-  }
-}
-function __c69(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ DataProvider: S.optional(__S(2249, __c70, 9)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateDataProviderResponse",
-      });
+      ).annotate({ identifier: "CreateDataProviderMessage" });
   }
 }
 function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DataProvider: S.optional(__S(2281, __c71, 9)) }).pipe(ns),
+      ).annotate({ identifier: "CreateDataProviderResponse" });
+  }
+}
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8006,9 +7857,7 @@ function __c70(j: number): any {
           S3Path: S.optional(S.String),
           S3AccessRoleArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "RedshiftDataProviderSettings",
-      });
+      ).annotate({ identifier: "RedshiftDataProviderSettings" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8020,9 +7869,7 @@ function __c70(j: number): any {
           S3Path: S.optional(S.String),
           S3AccessRoleArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "PostgreSqlDataProviderSettings",
-      });
+      ).annotate({ identifier: "PostgreSqlDataProviderSettings" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -8033,9 +7880,7 @@ function __c70(j: number): any {
           S3Path: S.optional(S.String),
           S3AccessRoleArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "MySqlDataProviderSettings",
-      });
+      ).annotate({ identifier: "MySqlDataProviderSettings" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -8052,9 +7897,7 @@ function __c70(j: number): any {
           S3Path: S.optional(S.String),
           S3AccessRoleArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "OracleDataProviderSettings",
-      });
+      ).annotate({ identifier: "OracleDataProviderSettings" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -8065,9 +7908,7 @@ function __c70(j: number): any {
           EncryptPassword: S.optional(S.Boolean),
           CertificateArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SybaseAseDataProviderSettings",
-      });
+      ).annotate({ identifier: "SybaseAseDataProviderSettings" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -8077,9 +7918,7 @@ function __c70(j: number): any {
           SslMode: S.optional(S.String),
           CertificateArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DocDbDataProviderSettings",
-      });
+      ).annotate({ identifier: "DocDbDataProviderSettings" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -8093,9 +7932,7 @@ function __c70(j: number): any {
           S3Path: S.optional(S.String),
           S3AccessRoleArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "IbmDb2LuwDataProviderSettings",
-      });
+      ).annotate({ identifier: "IbmDb2LuwDataProviderSettings" });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -8108,22 +7945,20 @@ function __c70(j: number): any {
           AuthSource: S.optional(S.String),
           AuthMechanism: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "MongoDbDataProviderSettings",
-      });
+      ).annotate({ identifier: "MongoDbDataProviderSettings" });
     case 8:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ RedshiftSettings: __S(2240, __c70, 0) }),
-        /*@__PURE__*/ S.Struct({ PostgreSqlSettings: __S(2241, __c70, 1) }),
-        /*@__PURE__*/ S.Struct({ MySqlSettings: __S(2242, __c70, 2) }),
-        /*@__PURE__*/ S.Struct({ OracleSettings: __S(2243, __c70, 3) }),
-        /*@__PURE__*/ S.Struct({ SybaseAseSettings: __S(2244, __c70, 4) }),
-        /*@__PURE__*/ S.Struct({ MicrosoftSqlServerSettings: __S(2241, __c70, 1) }),
-        /*@__PURE__*/ S.Struct({ DocDbSettings: __S(2245, __c70, 5) }),
-        /*@__PURE__*/ S.Struct({ MariaDbSettings: __S(2242, __c70, 2) }),
-        /*@__PURE__*/ S.Struct({ IbmDb2LuwSettings: __S(2246, __c70, 6) }),
-        /*@__PURE__*/ S.Struct({ IbmDb2zOsSettings: __S(2241, __c70, 1) }),
-        /*@__PURE__*/ S.Struct({ MongoDbSettings: __S(2247, __c70, 7) }),
+        /*@__PURE__*/ S.Struct({ RedshiftSettings: __S(2272, __c71, 0) }),
+        /*@__PURE__*/ S.Struct({ PostgreSqlSettings: __S(2273, __c71, 1) }),
+        /*@__PURE__*/ S.Struct({ MySqlSettings: __S(2274, __c71, 2) }),
+        /*@__PURE__*/ S.Struct({ OracleSettings: __S(2275, __c71, 3) }),
+        /*@__PURE__*/ S.Struct({ SybaseAseSettings: __S(2276, __c71, 4) }),
+        /*@__PURE__*/ S.Struct({ MicrosoftSqlServerSettings: __S(2273, __c71, 1) }),
+        /*@__PURE__*/ S.Struct({ DocDbSettings: __S(2277, __c71, 5) }),
+        /*@__PURE__*/ S.Struct({ MariaDbSettings: __S(2274, __c71, 2) }),
+        /*@__PURE__*/ S.Struct({ IbmDb2LuwSettings: __S(2278, __c71, 6) }),
+        /*@__PURE__*/ S.Struct({ IbmDb2zOsSettings: __S(2273, __c71, 1) }),
+        /*@__PURE__*/ S.Struct({ MongoDbSettings: __S(2279, __c71, 7) }),
       ]);
     case 9:
       return S.suspend(() =>
@@ -8136,12 +7971,12 @@ function __c70(j: number): any {
           Description: S.optional(S.String),
           Engine: S.optional(S.String),
           Virtual: S.optional(S.Boolean),
-          Settings: S.optional(__S(2248, __c70, 8)),
+          Settings: S.optional(__S(2280, __c71, 8)),
         }),
       ).annotate({ identifier: "DataProvider" });
   }
 }
-function __c71(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8185,7 +8020,7 @@ function __c71(j: number): any {
       ).annotate({ identifier: "CreateEndpointMessage" });
   }
 }
-function __c72(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Endpoint: S.optional(Endpoint) }).pipe(ns)).annotate({
@@ -8193,7 +8028,7 @@ function __c72(j: number): any {
       });
   }
 }
-function __c73(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8201,33 +8036,29 @@ function __c73(j: number): any {
           SubscriptionName: S.String,
           SnsTopicArn: S.String,
           SourceType: S.optional(S.String),
-          EventCategories: S.optional(__S(2400, __c75, 0)),
-          SourceIds: S.optional(__S(2432, __c76, 0)),
+          EventCategories: S.optional(__S(2432, __c76, 0)),
+          SourceIds: S.optional(__S(2464, __c77, 0)),
           Enabled: S.optional(S.Boolean),
           Tags: S.optional(__S(1601, __c50, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateEventSubscriptionMessage",
-      });
-  }
-}
-function __c74(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ EventSubscription: S.optional(__S(2433, __c76, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateEventSubscriptionResponse",
-      });
+      ).annotate({ identifier: "CreateEventSubscriptionMessage" });
   }
 }
 function __c75(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("EventCategory")));
+      return S.suspend(() =>
+        S.Struct({ EventSubscription: S.optional(__S(2465, __c77, 1)) }).pipe(ns),
+      ).annotate({ identifier: "CreateEventSubscriptionResponse" });
   }
 }
 function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("EventCategory")));
+  }
+}
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("SourceId")));
@@ -8240,14 +8071,14 @@ function __c76(j: number): any {
           Status: S.optional(S.String),
           SubscriptionCreationTime: S.optional(S.String),
           SourceType: S.optional(S.String),
-          SourceIdsList: S.optional(__S(2432, __c76, 0)),
-          EventCategoriesList: S.optional(__S(2400, __c75, 0)),
+          SourceIdsList: S.optional(__S(2464, __c77, 0)),
+          EventCategoriesList: S.optional(__S(2432, __c76, 0)),
           Enabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "EventSubscription" });
   }
 }
-function __c77(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8257,9 +8088,7 @@ function __c77(j: number): any {
           ServiceAccessRoleArn: S.String,
           S3BucketName: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateFleetAdvisorCollectorRequest",
-      });
+      ).annotate({ identifier: "CreateFleetAdvisorCollectorRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8269,12 +8098,10 @@ function __c77(j: number): any {
           ServiceAccessRoleArn: S.optional(S.String),
           S3BucketName: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateFleetAdvisorCollectorResponse",
-      });
+      ).annotate({ identifier: "CreateFleetAdvisorCollectorResponse" });
   }
 }
-function __c78(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8287,24 +8114,20 @@ function __c78(j: number): any {
           InstanceProfileName: S.optional(S.String),
           Description: S.optional(S.String),
           SubnetGroupIdentifier: S.optional(S.String),
-          VpcSecurityGroups: S.optional(__S(2080, __c65, 0)),
+          VpcSecurityGroups: S.optional(__S(2112, __c66, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateInstanceProfileMessage",
-      });
-  }
-}
-function __c79(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ InstanceProfile: S.optional(__S(2560, __c80, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateInstanceProfileResponse",
-      });
+      ).annotate({ identifier: "CreateInstanceProfileMessage" });
   }
 }
 function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ InstanceProfile: S.optional(__S(2592, __c81, 0)) }).pipe(ns),
+      ).annotate({ identifier: "CreateInstanceProfileResponse" });
+  }
+}
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8320,31 +8143,29 @@ function __c80(j: number): any {
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ),
           SubnetGroupIdentifier: S.optional(S.String),
-          VpcSecurityGroups: S.optional(__S(2080, __c65, 0)),
+          VpcSecurityGroups: S.optional(__S(2112, __c66, 0)),
         }),
       ).annotate({ identifier: "InstanceProfile" });
   }
 }
-function __c81(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           MigrationProjectName: S.optional(S.String),
-          SourceDataProviderDescriptors: __S(2625, __c82, 1),
-          TargetDataProviderDescriptors: __S(2625, __c82, 1),
+          SourceDataProviderDescriptors: __S(2657, __c83, 1),
+          TargetDataProviderDescriptors: __S(2657, __c83, 1),
           InstanceProfileIdentifier: S.String,
           TransformationRules: S.optional(S.String),
           Description: S.optional(S.String),
           Tags: S.optional(__S(1601, __c50, 1)),
-          SchemaConversionApplicationAttributes: S.optional(__S(2688, __c84, 0)),
+          SchemaConversionApplicationAttributes: S.optional(__S(2720, __c85, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateMigrationProjectMessage",
-      });
+      ).annotate({ identifier: "CreateMigrationProjectMessage" });
   }
 }
-function __c82(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8353,24 +8174,20 @@ function __c82(j: number): any {
           SecretsManagerSecretId: S.optional(S.String),
           SecretsManagerAccessRoleArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DataProviderDescriptorDefinition",
-      });
+      ).annotate({ identifier: "DataProviderDescriptorDefinition" });
     case 1:
-      return S.Array(__S(2624, __c82, 0));
-  }
-}
-function __c83(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ MigrationProject: S.optional(__S(2691, __c84, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateMigrationProjectResponse",
-      });
+      return S.Array(__S(2656, __c83, 0));
   }
 }
 function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ MigrationProject: S.optional(__S(2723, __c85, 3)) }).pipe(ns),
+      ).annotate({ identifier: "CreateMigrationProjectResponse" });
+  }
+}
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8386,7 +8203,7 @@ function __c84(j: number): any {
         }),
       ).annotate({ identifier: "DataProviderDescriptor" });
     case 2:
-      return S.Array(__S(2689, __c84, 1));
+      return S.Array(__S(2721, __c85, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -8395,18 +8212,18 @@ function __c84(j: number): any {
           MigrationProjectCreationTime: S.optional(
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ),
-          SourceDataProviderDescriptors: S.optional(__S(2690, __c84, 2)),
-          TargetDataProviderDescriptors: S.optional(__S(2690, __c84, 2)),
+          SourceDataProviderDescriptors: S.optional(__S(2722, __c85, 2)),
+          TargetDataProviderDescriptors: S.optional(__S(2722, __c85, 2)),
           InstanceProfileArn: S.optional(S.String),
           InstanceProfileName: S.optional(S.String),
           TransformationRules: S.optional(S.String),
           Description: S.optional(S.String),
-          SchemaConversionApplicationAttributes: S.optional(__S(2688, __c84, 0)),
+          SchemaConversionApplicationAttributes: S.optional(__S(2720, __c85, 0)),
         }),
       ).annotate({ identifier: "MigrationProject" });
   }
 }
-function __c85(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8414,7 +8231,7 @@ function __c85(j: number): any {
           ReplicationConfigIdentifier: S.String,
           SourceEndpointArn: S.String,
           TargetEndpointArn: S.String,
-          ComputeConfig: __S(2784, __c87, 0),
+          ComputeConfig: __S(2816, __c88, 0),
           ReplicationType: S.String,
           TableMappings: S.String,
           ReplicationSettings: S.optional(S.String),
@@ -8422,22 +8239,18 @@ function __c85(j: number): any {
           ResourceIdentifier: S.optional(S.String),
           Tags: S.optional(__S(1601, __c50, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateReplicationConfigMessage",
-      });
-  }
-}
-function __c86(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ReplicationConfig: S.optional(__S(2785, __c87, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateReplicationConfigResponse",
-      });
+      ).annotate({ identifier: "CreateReplicationConfigMessage" });
   }
 }
 function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ReplicationConfig: S.optional(__S(2817, __c88, 1)) }).pipe(ns),
+      ).annotate({ identifier: "CreateReplicationConfigResponse" });
+  }
+}
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8450,7 +8263,7 @@ function __c87(j: number): any {
           MultiAZ: S.optional(S.Boolean),
           PreferredMaintenanceWindow: S.optional(S.String),
           ReplicationSubnetGroupId: S.optional(S.String),
-          VpcSecurityGroupIds: S.optional(__S(2080, __c65, 0)),
+          VpcSecurityGroupIds: S.optional(__S(2112, __c66, 0)),
         }),
       ).annotate({ identifier: "ComputeConfig" });
     case 1:
@@ -8461,7 +8274,7 @@ function __c87(j: number): any {
           SourceEndpointArn: S.optional(S.String),
           TargetEndpointArn: S.optional(S.String),
           ReplicationType: S.optional(S.String),
-          ComputeConfig: S.optional(__S(2784, __c87, 0)),
+          ComputeConfig: S.optional(__S(2816, __c88, 0)),
           ReplicationSettings: S.optional(S.String),
           SupplementalSettings: S.optional(S.String),
           TableMappings: S.optional(S.String),
@@ -8472,7 +8285,7 @@ function __c87(j: number): any {
       ).annotate({ identifier: "ReplicationConfig" });
   }
 }
-function __c88(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8480,7 +8293,7 @@ function __c88(j: number): any {
           ReplicationInstanceIdentifier: S.String,
           AllocatedStorage: S.optional(S.Number),
           ReplicationInstanceClass: S.String,
-          VpcSecurityGroupIds: S.optional(__S(2848, __c89, 0)),
+          VpcSecurityGroupIds: S.optional(__S(2880, __c90, 0)),
           AvailabilityZone: S.optional(S.String),
           ReplicationSubnetGroupIdentifier: S.optional(S.String),
           PreferredMaintenanceWindow: S.optional(S.String),
@@ -8493,20 +8306,18 @@ function __c88(j: number): any {
           DnsNameServers: S.optional(S.String),
           ResourceIdentifier: S.optional(S.String),
           NetworkType: S.optional(S.String),
-          KerberosAuthenticationSettings: S.optional(__S(2944, __c92, 0)),
+          KerberosAuthenticationSettings: S.optional(__S(2976, __c93, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateReplicationInstanceMessage",
-      });
+      ).annotate({ identifier: "CreateReplicationInstanceMessage" });
   }
 }
-function __c89(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("VpcSecurityGroupId")));
   }
 }
-function __c90(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Name: S.optional(S.String) })).annotate({
@@ -8516,13 +8327,13 @@ function __c90(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SubnetIdentifier: S.optional(S.String),
-          SubnetAvailabilityZone: S.optional(__S(2880, __c90, 0)),
+          SubnetAvailabilityZone: S.optional(__S(2912, __c91, 0)),
           SubnetStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "Subnet" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(2881, __c90, 1)
+        /*@__PURE__*/ __S(2913, __c91, 1)
           .pipe(/*@__PURE__*/ T.XmlName("Subnet"))
           .annotate({ identifier: "Subnet" }),
       );
@@ -8533,24 +8344,22 @@ function __c90(j: number): any {
           ReplicationSubnetGroupDescription: S.optional(S.String),
           VpcId: S.optional(S.String),
           SubnetGroupStatus: S.optional(S.String),
-          Subnets: S.optional(__S(2882, __c90, 2)),
-          SupportedNetworkTypes: S.optional(__S(2080, __c65, 0)),
+          Subnets: S.optional(__S(2914, __c91, 2)),
+          SupportedNetworkTypes: S.optional(__S(2112, __c66, 0)),
           IsReadOnly: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ReplicationSubnetGroup" });
   }
 }
-function __c91(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ReplicationInstance: S.optional(__S(2948, __c92, 4)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateReplicationInstanceResponse",
-      });
+        S.Struct({ ReplicationInstance: S.optional(__S(2980, __c93, 4)) }).pipe(ns),
+      ).annotate({ identifier: "CreateReplicationInstanceResponse" });
   }
 }
-function __c92(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8559,22 +8368,16 @@ function __c92(j: number): any {
           KeyCacheSecretIamArn: S.optional(S.String),
           Krb5FileContents: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "KerberosAuthenticationSettings",
-      });
+      ).annotate({ identifier: "KerberosAuthenticationSettings" });
     case 1:
       return S.suspend(() =>
         S.Struct({ VpcSecurityGroupId: S.optional(S.String), Status: S.optional(S.String) }),
-      ).annotate({
-        identifier: "VpcSecurityGroupMembership",
-      });
+      ).annotate({ identifier: "VpcSecurityGroupMembership" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(2945, __c92, 1)
+        /*@__PURE__*/ __S(2977, __c93, 1)
           .pipe(/*@__PURE__*/ T.XmlName("VpcSecurityGroupMembership"))
-          .annotate({
-            identifier: "VpcSecurityGroupMembership",
-          }),
+          .annotate({ identifier: "VpcSecurityGroupMembership" }),
       );
     case 3:
       return S.suspend(() =>
@@ -8585,9 +8388,7 @@ function __c92(j: number): any {
           EngineVersion: S.optional(S.String),
           NetworkType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ReplicationPendingModifiedValues",
-      });
+      ).annotate({ identifier: "ReplicationPendingModifiedValues" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -8596,11 +8397,11 @@ function __c92(j: number): any {
           ReplicationInstanceStatus: S.optional(S.String),
           AllocatedStorage: S.optional(S.Number),
           InstanceCreateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          VpcSecurityGroups: S.optional(__S(2946, __c92, 2)),
+          VpcSecurityGroups: S.optional(__S(2978, __c93, 2)),
           AvailabilityZone: S.optional(S.String),
-          ReplicationSubnetGroup: S.optional(__S(2883, __c90, 3)),
+          ReplicationSubnetGroup: S.optional(__S(2915, __c91, 3)),
           PreferredMaintenanceWindow: S.optional(S.String),
-          PendingModifiedValues: S.optional(__S(2947, __c92, 3)),
+          PendingModifiedValues: S.optional(__S(2979, __c93, 3)),
           MultiAZ: S.optional(S.Boolean),
           EngineVersion: S.optional(S.String),
           AutoMinorVersionUpgrade: S.optional(S.Boolean),
@@ -8608,47 +8409,43 @@ function __c92(j: number): any {
           ReplicationInstanceArn: S.optional(S.String),
           ReplicationInstancePublicIpAddress: S.optional(S.String),
           ReplicationInstancePrivateIpAddress: S.optional(S.String),
-          ReplicationInstancePublicIpAddresses: S.optional(__S(2080, __c65, 0)),
-          ReplicationInstancePrivateIpAddresses: S.optional(__S(2080, __c65, 0)),
-          ReplicationInstanceIpv6Addresses: S.optional(__S(2080, __c65, 0)),
+          ReplicationInstancePublicIpAddresses: S.optional(__S(2112, __c66, 0)),
+          ReplicationInstancePrivateIpAddresses: S.optional(__S(2112, __c66, 0)),
+          ReplicationInstanceIpv6Addresses: S.optional(__S(2112, __c66, 0)),
           PubliclyAccessible: S.optional(S.Boolean),
           SecondaryAvailabilityZone: S.optional(S.String),
           FreeUntil: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           DnsNameServers: S.optional(S.String),
           NetworkType: S.optional(S.String),
-          KerberosAuthenticationSettings: S.optional(__S(2944, __c92, 0)),
+          KerberosAuthenticationSettings: S.optional(__S(2976, __c93, 0)),
         }),
       ).annotate({ identifier: "ReplicationInstance" });
   }
 }
-function __c93(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ReplicationSubnetGroupIdentifier: S.String,
           ReplicationSubnetGroupDescription: S.String,
-          SubnetIds: __S(3008, __c94, 0),
+          SubnetIds: __S(3040, __c95, 0),
           Tags: S.optional(__S(1601, __c50, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateReplicationSubnetGroupMessage",
-      });
+      ).annotate({ identifier: "CreateReplicationSubnetGroupMessage" });
   }
 }
-function __c94(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("SubnetIdentifier")));
     case 1:
       return S.suspend(() =>
-        S.Struct({ ReplicationSubnetGroup: S.optional(__S(2883, __c90, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateReplicationSubnetGroupResponse",
-      });
+        S.Struct({ ReplicationSubnetGroup: S.optional(__S(2915, __c91, 3)) }).pipe(ns),
+      ).annotate({ identifier: "CreateReplicationSubnetGroupResponse" });
   }
 }
-function __c95(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8667,12 +8464,10 @@ function __c95(j: number): any {
           TaskData: S.optional(S.String),
           ResourceIdentifier: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateReplicationTaskMessage",
-      });
+      ).annotate({ identifier: "CreateReplicationTaskMessage" });
   }
 }
-function __c96(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8693,24 +8488,22 @@ function __c96(j: number): any {
           CdcStopPosition: S.optional(S.String),
           RecoveryCheckpoint: S.optional(S.String),
           ReplicationTaskArn: S.optional(S.String),
-          ReplicationTaskStats: S.optional(__S(3136, __c98, 0)),
+          ReplicationTaskStats: S.optional(__S(3168, __c99, 0)),
           TaskData: S.optional(S.String),
           TargetReplicationInstanceArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReplicationTask" });
   }
 }
-function __c97(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ReplicationTask: S.optional(__S(3072, __c96, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateReplicationTaskResponse",
-      });
+        S.Struct({ ReplicationTask: S.optional(__S(3104, __c97, 0)) }).pipe(ns),
+      ).annotate({ identifier: "CreateReplicationTaskResponse" });
   }
 }
-function __c98(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8730,7 +8523,7 @@ function __c98(j: number): any {
       ).annotate({ identifier: "ReplicationTaskStats" });
   }
 }
-function __c99(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8740,17 +8533,15 @@ function __c99(j: number): any {
       ).annotate({ identifier: "DeleteCertificateMessage" });
   }
 }
-function __c100(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Certificate: S.optional(__S(3232, __c101, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteCertificateResponse",
-      });
+        S.Struct({ Certificate: S.optional(__S(3264, __c102, 0)) }).pipe(ns),
+      ).annotate({ identifier: "DeleteCertificateResponse" });
   }
 }
-function __c101(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8770,7 +8561,7 @@ function __c101(j: number): any {
       ).annotate({ identifier: "Certificate" });
   }
 }
-function __c102(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8780,15 +8571,15 @@ function __c102(j: number): any {
       ).annotate({ identifier: "DeleteConnectionMessage" });
   }
 }
-function __c103(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Connection: S.optional(__S(3328, __c104, 0)) }).pipe(ns),
+        S.Struct({ Connection: S.optional(__S(3360, __c105, 0)) }).pipe(ns),
       ).annotate({ identifier: "DeleteConnectionResponse" });
   }
 }
-function __c104(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8803,31 +8594,27 @@ function __c104(j: number): any {
       ).annotate({ identifier: "Connection" });
   }
 }
-function __c105(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ DataMigrationIdentifier: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteDataMigrationMessage",
-      });
+      ).annotate({ identifier: "DeleteDataMigrationMessage" });
   }
 }
-function __c106(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ DataProviderIdentifier: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteDataProviderMessage",
-      });
+      ).annotate({ identifier: "DeleteDataProviderMessage" });
   }
 }
-function __c107(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8837,19 +8624,17 @@ function __c107(j: number): any {
       ).annotate({ identifier: "DeleteEndpointMessage" });
   }
 }
-function __c108(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ SubscriptionName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteEventSubscriptionMessage",
-      });
+      ).annotate({ identifier: "DeleteEventSubscriptionMessage" });
   }
 }
-function __c109(j: number): any {
+function __c110(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8859,118 +8644,98 @@ function __c109(j: number): any {
       ).annotate({ identifier: "DeleteCollectorRequest" });
   }
 }
-function __c110(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ DatabaseIds: __S(2080, __c65, 0) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DeleteFleetAdvisorDatabasesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ DatabaseIds: S.optional(__S(2080, __c65, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteFleetAdvisorDatabasesResponse",
-      });
-  }
-}
 function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ InstanceProfileIdentifier: S.String }).pipe(
+        S.Struct({ DatabaseIds: __S(2112, __c66, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteInstanceProfileMessage",
-      });
+      ).annotate({ identifier: "DeleteFleetAdvisorDatabasesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DatabaseIds: S.optional(__S(2112, __c66, 0)) }).pipe(ns),
+      ).annotate({ identifier: "DeleteFleetAdvisorDatabasesResponse" });
   }
 }
 function __c112(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ MigrationProjectIdentifier: S.String }).pipe(
+        S.Struct({ InstanceProfileIdentifier: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteMigrationProjectMessage",
-      });
+      ).annotate({ identifier: "DeleteInstanceProfileMessage" });
   }
 }
 function __c113(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ReplicationConfigArn: S.String }).pipe(
+        S.Struct({ MigrationProjectIdentifier: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteReplicationConfigMessage",
-      });
+      ).annotate({ identifier: "DeleteMigrationProjectMessage" });
   }
 }
 function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ReplicationInstanceArn: S.String }).pipe(
+        S.Struct({ ReplicationConfigArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteReplicationInstanceMessage",
-      });
+      ).annotate({ identifier: "DeleteReplicationConfigMessage" });
   }
 }
 function __c115(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ReplicationSubnetGroupIdentifier: S.String }).pipe(
+        S.Struct({ ReplicationInstanceArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteReplicationSubnetGroupMessage",
-      });
+      ).annotate({ identifier: "DeleteReplicationInstanceMessage" });
   }
 }
 function __c116(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ReplicationTaskArn: S.String }).pipe(
+        S.Struct({ ReplicationSubnetGroupIdentifier: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteReplicationTaskMessage",
-      });
+      ).annotate({ identifier: "DeleteReplicationSubnetGroupMessage" });
   }
 }
 function __c117(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ReplicationTaskAssessmentRunArn: S.String }).pipe(
+        S.Struct({ ReplicationTaskArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteReplicationTaskAssessmentRunMessage",
-      });
+      ).annotate({ identifier: "DeleteReplicationTaskMessage" });
   }
 }
 function __c118(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({ ReplicationTaskAssessmentRunArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteReplicationTaskAssessmentRunMessage" });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeAccountAttributesMessage",
-      });
+      ).annotate({ identifier: "DescribeAccountAttributesMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8981,22 +8746,20 @@ function __c118(j: number): any {
       ).annotate({ identifier: "AccountQuota" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(3777, __c118, 1).pipe(/*@__PURE__*/ T.XmlName("AccountQuota")).annotate({
-          identifier: "AccountQuota",
-        }),
+        /*@__PURE__*/ __S(3809, __c119, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("AccountQuota"))
+          .annotate({ identifier: "AccountQuota" }),
       );
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AccountQuotas: S.optional(__S(3778, __c118, 2)),
+          AccountQuotas: S.optional(__S(3810, __c119, 2)),
           UniqueAccountIdentifier: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeAccountAttributesResponse",
-      });
+      ).annotate({ identifier: "DescribeAccountAttributesResponse" });
   }
 }
-function __c119(j: number): any {
+function __c120(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9010,140 +8773,97 @@ function __c119(j: number): any {
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeApplicableIndividualAssessmentsMessage",
-      });
+      ).annotate({ identifier: "DescribeApplicableIndividualAssessmentsMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          IndividualAssessmentNames: S.optional(__S(2080, __c65, 0)),
+          IndividualAssessmentNames: S.optional(__S(2112, __c66, 0)),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeApplicableIndividualAssessmentsResponse",
-      });
-  }
-}
-function __c120(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Filters: S.optional(__S(3874, __c121, 2)),
-          MaxRecords: S.optional(S.Number),
-          Marker: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeCertificatesMessage",
-      });
-    case 1:
-      return S.Array(
-        /*@__PURE__*/ __S(3232, __c101, 0).pipe(/*@__PURE__*/ T.XmlName("Certificate")).annotate({
-          identifier: "Certificate",
-        }),
-      );
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Marker: S.optional(S.String),
-          Certificates: S.optional(__S(3841, __c120, 1)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeCertificatesResponse",
-      });
+      ).annotate({ identifier: "DescribeApplicableIndividualAssessmentsResponse" });
   }
 }
 function __c121(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Value")));
+      return S.suspend(() =>
+        S.Struct({
+          Filters: S.optional(__S(3906, __c122, 2)),
+          MaxRecords: S.optional(S.Number),
+          Marker: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DescribeCertificatesMessage" });
     case 1:
-      return S.suspend(() => S.Struct({ Name: S.String, Values: __S(3872, __c121, 0) })).annotate({
-        identifier: "Filter",
-      });
-    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(3873, __c121, 1)
-          .pipe(/*@__PURE__*/ T.XmlName("Filter"))
-          .annotate({ identifier: "Filter" }),
+        /*@__PURE__*/ __S(3264, __c102, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("Certificate"))
+          .annotate({ identifier: "Certificate" }),
       );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Marker: S.optional(S.String),
+          Certificates: S.optional(__S(3873, __c121, 1)),
+        }).pipe(ns),
+      ).annotate({ identifier: "DescribeCertificatesResponse" });
   }
 }
 function __c122(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Filters: S.optional(__S(3874, __c121, 2)),
-          MaxRecords: S.optional(S.Number),
-          Marker: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeConnectionsMessage",
-      });
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Value")));
     case 1:
-      return S.Array(
-        /*@__PURE__*/ __S(3328, __c104, 0).pipe(/*@__PURE__*/ T.XmlName("Connection")).annotate({
-          identifier: "Connection",
-        }),
-      );
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Marker: S.optional(S.String),
-          Connections: S.optional(__S(3905, __c122, 1)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeConnectionsResponse",
+      return S.suspend(() => S.Struct({ Name: S.String, Values: __S(3904, __c122, 0) })).annotate({
+        identifier: "Filter",
       });
+    case 2:
+      return S.Array(
+        /*@__PURE__*/ __S(3905, __c122, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("Filter"))
+          .annotate({ identifier: "Filter" }),
+      );
   }
 }
 function __c123(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ MigrationProjectIdentifier: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DescribeConversionConfigurationMessage",
-      });
+        S.Struct({
+          Filters: S.optional(__S(3906, __c122, 2)),
+          MaxRecords: S.optional(S.Number),
+          Marker: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DescribeConnectionsMessage" });
     case 1:
+      return S.Array(
+        /*@__PURE__*/ __S(3360, __c105, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("Connection"))
+          .annotate({ identifier: "Connection" }),
+      );
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          MigrationProjectIdentifier: S.optional(S.String),
-          ConversionConfiguration: S.optional(S.String),
+          Marker: S.optional(S.String),
+          Connections: S.optional(__S(3937, __c123, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeConversionConfigurationResponse",
-      });
+      ).annotate({ identifier: "DescribeConnectionsResponse" });
   }
 }
 function __c124(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          Filters: S.optional(__S(3874, __c121, 2)),
-          MaxRecords: S.optional(S.Number),
-          Marker: S.optional(S.String),
-          WithoutSettings: S.optional(S.Boolean),
-          WithoutStatistics: S.optional(S.Boolean),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeDataMigrationsMessage",
-      });
+        S.Struct({ MigrationProjectIdentifier: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DescribeConversionConfigurationMessage" });
     case 1:
-      return S.Array(__S(2150, __c67, 6));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          DataMigrations: S.optional(__S(3969, __c124, 1)),
-          Marker: S.optional(S.String),
+          MigrationProjectIdentifier: S.optional(S.String),
+          ConversionConfiguration: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeDataMigrationsResponse",
-      });
+      ).annotate({ identifier: "DescribeConversionConfigurationResponse" });
   }
 }
 function __c125(j: number): any {
@@ -9151,28 +8871,22 @@ function __c125(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(3874, __c121, 2)),
+          Filters: S.optional(__S(3906, __c122, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
+          WithoutSettings: S.optional(S.Boolean),
+          WithoutStatistics: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeDataProvidersMessage",
-      });
+      ).annotate({ identifier: "DescribeDataMigrationsMessage" });
     case 1:
-      return S.Array(
-        /*@__PURE__*/ __S(2249, __c70, 9).pipe(/*@__PURE__*/ T.XmlName("DataProvider")).annotate({
-          identifier: "DataProvider",
-        }),
-      );
+      return S.Array(__S(2182, __c68, 6));
     case 2:
       return S.suspend(() =>
         S.Struct({
+          DataMigrations: S.optional(__S(4001, __c125, 1)),
           Marker: S.optional(S.String),
-          DataProviders: S.optional(__S(4001, __c125, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeDataProvidersResponse",
-      });
+      ).annotate({ identifier: "DescribeDataMigrationsResponse" });
   }
 }
 function __c126(j: number): any {
@@ -9180,7 +8894,32 @@ function __c126(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(3874, __c121, 2)),
+          Filters: S.optional(__S(3906, __c122, 2)),
+          MaxRecords: S.optional(S.Number),
+          Marker: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DescribeDataProvidersMessage" });
+    case 1:
+      return S.Array(
+        /*@__PURE__*/ __S(2281, __c71, 9)
+          .pipe(/*@__PURE__*/ T.XmlName("DataProvider"))
+          .annotate({ identifier: "DataProvider" }),
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Marker: S.optional(S.String),
+          DataProviders: S.optional(__S(4033, __c126, 1)),
+        }).pipe(ns),
+      ).annotate({ identifier: "DescribeDataProvidersResponse" });
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Filters: S.optional(__S(3906, __c122, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -9195,14 +8934,12 @@ function __c126(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          Endpoints: S.optional(__S(4033, __c126, 1)),
+          Endpoints: S.optional(__S(4065, __c127, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeEndpointsResponse",
-      });
+      ).annotate({ identifier: "DescribeEndpointsResponse" });
   }
 }
-function __c127(j: number): any {
+function __c128(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9211,15 +8948,13 @@ function __c127(j: number): any {
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeEndpointSettingsMessage",
-      });
+      ).annotate({ identifier: "DescribeEndpointSettingsMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           Type: S.optional(S.String),
-          EnumValues: S.optional(__S(2080, __c65, 0)),
+          EnumValues: S.optional(__S(2112, __c66, 0)),
           Sensitive: S.optional(S.Boolean),
           Units: S.optional(S.String),
           Applicability: S.optional(S.String),
@@ -9229,30 +8964,26 @@ function __c127(j: number): any {
         }),
       ).annotate({ identifier: "EndpointSetting" });
     case 2:
-      return S.Array(__S(4065, __c127, 1));
+      return S.Array(__S(4097, __c128, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          EndpointSettings: S.optional(__S(4066, __c127, 2)),
+          EndpointSettings: S.optional(__S(4098, __c128, 2)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeEndpointSettingsResponse",
-      });
+      ).annotate({ identifier: "DescribeEndpointSettingsResponse" });
   }
 }
-function __c128(j: number): any {
+function __c129(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(3874, __c121, 2)),
+          Filters: S.optional(__S(3906, __c122, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeEndpointTypesMessage",
-      });
+      ).annotate({ identifier: "DescribeEndpointTypesMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9265,33 +8996,27 @@ function __c128(j: number): any {
       ).annotate({ identifier: "SupportedEndpointType" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(4097, __c128, 1)
+        /*@__PURE__*/ __S(4129, __c129, 1)
           .pipe(/*@__PURE__*/ T.XmlName("SupportedEndpointType"))
-          .annotate({
-            identifier: "SupportedEndpointType",
-          }),
+          .annotate({ identifier: "SupportedEndpointType" }),
       );
     case 3:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          SupportedEndpointTypes: S.optional(__S(4098, __c128, 2)),
+          SupportedEndpointTypes: S.optional(__S(4130, __c129, 2)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeEndpointTypesResponse",
-      });
+      ).annotate({ identifier: "DescribeEndpointTypesResponse" });
   }
 }
-function __c129(j: number): any {
+function __c130(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ MaxRecords: S.optional(S.Number), Marker: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeEngineVersionsMessage",
-      });
+      ).annotate({ identifier: "DescribeEngineVersionsMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9302,61 +9027,53 @@ function __c129(j: number): any {
           AutoUpgradeDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           DeprecationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ForceUpgradeDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AvailableUpgrades: S.optional(__S(2080, __c65, 0)),
+          AvailableUpgrades: S.optional(__S(2112, __c66, 0)),
         }),
       ).annotate({ identifier: "EngineVersion" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(4129, __c129, 1).pipe(/*@__PURE__*/ T.XmlName("EngineVersion")).annotate({
-          identifier: "EngineVersion",
-        }),
+        /*@__PURE__*/ __S(4161, __c130, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("EngineVersion"))
+          .annotate({ identifier: "EngineVersion" }),
       );
     case 3:
       return S.suspend(() =>
         S.Struct({
-          EngineVersions: S.optional(__S(4130, __c129, 2)),
+          EngineVersions: S.optional(__S(4162, __c130, 2)),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeEngineVersionsResponse",
-      });
+      ).annotate({ identifier: "DescribeEngineVersionsResponse" });
   }
 }
-function __c130(j: number): any {
+function __c131(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           SourceType: S.optional(S.String),
-          Filters: S.optional(__S(3874, __c121, 2)),
+          Filters: S.optional(__S(3906, __c122, 2)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeEventCategoriesMessage",
-      });
+      ).annotate({ identifier: "DescribeEventCategoriesMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           SourceType: S.optional(S.String),
-          EventCategories: S.optional(__S(2400, __c75, 0)),
+          EventCategories: S.optional(__S(2432, __c76, 0)),
         }),
       ).annotate({ identifier: "EventCategoryGroup" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(4161, __c130, 1)
+        /*@__PURE__*/ __S(4193, __c131, 1)
           .pipe(/*@__PURE__*/ T.XmlName("EventCategoryGroup"))
-          .annotate({
-            identifier: "EventCategoryGroup",
-          }),
+          .annotate({ identifier: "EventCategoryGroup" }),
       );
     case 3:
       return S.suspend(() =>
-        S.Struct({ EventCategoryGroupList: S.optional(__S(4162, __c130, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeEventCategoriesResponse",
-      });
+        S.Struct({ EventCategoryGroupList: S.optional(__S(4194, __c131, 2)) }).pipe(ns),
+      ).annotate({ identifier: "DescribeEventCategoriesResponse" });
   }
 }
-function __c131(j: number): any {
+function __c132(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9366,8 +9083,8 @@ function __c131(j: number): any {
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Duration: S.optional(S.Number),
-          EventCategories: S.optional(__S(2400, __c75, 0)),
-          Filters: S.optional(__S(3874, __c121, 2)),
+          EventCategories: S.optional(__S(2432, __c76, 0)),
+          Filters: S.optional(__S(3906, __c122, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -9378,54 +9095,22 @@ function __c131(j: number): any {
           SourceIdentifier: S.optional(S.String),
           SourceType: S.optional(S.String),
           Message: S.optional(S.String),
-          EventCategories: S.optional(__S(2400, __c75, 0)),
+          EventCategories: S.optional(__S(2432, __c76, 0)),
           Date: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Event" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(4193, __c131, 1)
+        /*@__PURE__*/ __S(4225, __c132, 1)
           .pipe(/*@__PURE__*/ T.XmlName("Event"))
           .annotate({ identifier: "Event" }),
       );
     case 3:
       return S.suspend(() =>
-        S.Struct({ Marker: S.optional(S.String), Events: S.optional(__S(4194, __c131, 2)) }).pipe(
+        S.Struct({ Marker: S.optional(S.String), Events: S.optional(__S(4226, __c132, 2)) }).pipe(
           ns,
         ),
       ).annotate({ identifier: "DescribeEventsResponse" });
-  }
-}
-function __c132(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          SubscriptionName: S.optional(S.String),
-          Filters: S.optional(__S(3874, __c121, 2)),
-          MaxRecords: S.optional(S.Number),
-          Marker: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeEventSubscriptionsMessage",
-      });
-    case 1:
-      return S.Array(
-        /*@__PURE__*/ __S(2433, __c76, 1)
-          .pipe(/*@__PURE__*/ T.XmlName("EventSubscription"))
-          .annotate({
-            identifier: "EventSubscription",
-          }),
-      );
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Marker: S.optional(S.String),
-          EventSubscriptionsList: S.optional(__S(4225, __c132, 1)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeEventSubscriptionsResponse",
-      });
   }
 }
 function __c133(j: number): any {
@@ -9433,43 +9118,62 @@ function __c133(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          MigrationProjectIdentifier: S.String,
-          Filters: S.optional(__S(3874, __c121, 2)),
-          Marker: S.optional(S.String),
+          SubscriptionName: S.optional(S.String),
+          Filters: S.optional(__S(3906, __c122, 2)),
           MaxRecords: S.optional(S.Number),
+          Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeExtensionPackAssociationsMessage",
-      });
+      ).annotate({ identifier: "DescribeEventSubscriptionsMessage" });
+    case 1:
+      return S.Array(
+        /*@__PURE__*/ __S(2465, __c77, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("EventSubscription"))
+          .annotate({ identifier: "EventSubscription" }),
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Marker: S.optional(S.String),
+          EventSubscriptionsList: S.optional(__S(4257, __c133, 1)),
+        }).pipe(ns),
+      ).annotate({ identifier: "DescribeEventSubscriptionsResponse" });
   }
 }
 function __c134(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1861, __c58, 5));
-    case 1:
       return S.suspend(() =>
         S.Struct({
+          MigrationProjectIdentifier: S.String,
+          Filters: S.optional(__S(3906, __c122, 2)),
           Marker: S.optional(S.String),
-          Requests: S.optional(__S(4288, __c134, 0)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeExtensionPackAssociationsResponse",
-      });
+          MaxRecords: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DescribeExtensionPackAssociationsMessage" });
   }
 }
 function __c135(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(1860, __c58, 4));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Marker: S.optional(S.String), Requests: S.optional(__S(4320, __c135, 0)) }).pipe(
+          ns,
+        ),
+      ).annotate({ identifier: "DescribeExtensionPackAssociationsResponse" });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(3874, __c121, 2)),
+          Filters: S.optional(__S(3906, __c122, 2)),
           MaxRecords: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeFleetAdvisorCollectorsRequest",
-      });
+      ).annotate({ identifier: "DescribeFleetAdvisorCollectorsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9496,39 +9200,35 @@ function __c135(j: number): any {
           Description: S.optional(S.String),
           S3BucketName: S.optional(S.String),
           ServiceAccessRoleArn: S.optional(S.String),
-          CollectorHealthCheck: S.optional(__S(4321, __c135, 1)),
+          CollectorHealthCheck: S.optional(__S(4353, __c136, 1)),
           LastDataReceived: S.optional(S.String),
           RegisteredDate: S.optional(S.String),
           CreatedDate: S.optional(S.String),
           ModifiedDate: S.optional(S.String),
-          InventoryData: S.optional(__S(4322, __c135, 2)),
+          InventoryData: S.optional(__S(4354, __c136, 2)),
         }),
       ).annotate({ identifier: "CollectorResponse" });
     case 4:
-      return S.Array(__S(4323, __c135, 3));
+      return S.Array(__S(4355, __c136, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Collectors: S.optional(__S(4324, __c135, 4)),
+          Collectors: S.optional(__S(4356, __c136, 4)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeFleetAdvisorCollectorsResponse",
-      });
+      ).annotate({ identifier: "DescribeFleetAdvisorCollectorsResponse" });
   }
 }
-function __c136(j: number): any {
+function __c137(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(3874, __c121, 2)),
+          Filters: S.optional(__S(3906, __c122, 2)),
           MaxRecords: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeFleetAdvisorDatabasesRequest",
-      });
+      ).annotate({ identifier: "DescribeFleetAdvisorDatabasesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9540,20 +9240,16 @@ function __c136(j: number): any {
           OsArchitecture: S.optional(S.Number),
           Tooltip: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DatabaseInstanceSoftwareDetailsResponse",
-      });
+      ).annotate({ identifier: "DatabaseInstanceSoftwareDetailsResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           CollectorReferencedId: S.optional(S.String),
           CollectorName: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CollectorShortInfoResponse",
-      });
+      ).annotate({ identifier: "CollectorShortInfoResponse" });
     case 3:
-      return S.Array(__S(4354, __c136, 2));
+      return S.Array(__S(4386, __c137, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -9561,25 +9257,23 @@ function __c136(j: number): any {
           DatabaseName: S.optional(S.String),
           IpAddress: S.optional(S.String),
           NumberOfSchemas: S.optional(S.Number),
-          Server: S.optional(__S(4384, __c137, 0)),
-          SoftwareDetails: S.optional(__S(4353, __c136, 1)),
-          Collectors: S.optional(__S(4355, __c136, 3)),
+          Server: S.optional(__S(4416, __c138, 0)),
+          SoftwareDetails: S.optional(__S(4385, __c137, 1)),
+          Collectors: S.optional(__S(4387, __c137, 3)),
         }),
       ).annotate({ identifier: "DatabaseResponse" });
     case 5:
-      return S.Array(__S(4356, __c136, 4));
+      return S.Array(__S(4388, __c137, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Databases: S.optional(__S(4357, __c136, 5)),
+          Databases: S.optional(__S(4389, __c137, 5)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeFleetAdvisorDatabasesResponse",
-      });
+      ).annotate({ identifier: "DescribeFleetAdvisorDatabasesResponse" });
   }
 }
-function __c137(j: number): any {
+function __c138(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9591,47 +9285,39 @@ function __c137(j: number): any {
       ).annotate({ identifier: "ServerShortInfoResponse" });
   }
 }
-function __c138(j: number): any {
+function __c139(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ MaxRecords: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeFleetAdvisorLsaAnalysisRequest",
-      });
+      ).annotate({ identifier: "DescribeFleetAdvisorLsaAnalysisRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ LsaAnalysisId: S.optional(S.String), Status: S.optional(S.String) }),
-      ).annotate({
-        identifier: "FleetAdvisorLsaAnalysisResponse",
-      });
+      ).annotate({ identifier: "FleetAdvisorLsaAnalysisResponse" });
     case 2:
-      return S.Array(__S(4417, __c138, 1));
+      return S.Array(__S(4449, __c139, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Analysis: S.optional(__S(4418, __c138, 2)),
+          Analysis: S.optional(__S(4450, __c139, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeFleetAdvisorLsaAnalysisResponse",
-      });
+      ).annotate({ identifier: "DescribeFleetAdvisorLsaAnalysisResponse" });
   }
 }
-function __c139(j: number): any {
+function __c140(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(3874, __c121, 2)),
+          Filters: S.optional(__S(3906, __c122, 2)),
           MaxRecords: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeFleetAdvisorSchemaObjectSummaryRequest",
-      });
+      ).annotate({ identifier: "DescribeFleetAdvisorSchemaObjectSummaryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9641,34 +9327,28 @@ function __c139(j: number): any {
           CodeLineCount: S.optional(S.Number),
           CodeSize: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "FleetAdvisorSchemaObjectResponse",
-      });
+      ).annotate({ identifier: "FleetAdvisorSchemaObjectResponse" });
     case 2:
-      return S.Array(__S(4449, __c139, 1));
+      return S.Array(__S(4481, __c140, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          FleetAdvisorSchemaObjects: S.optional(__S(4450, __c139, 2)),
+          FleetAdvisorSchemaObjects: S.optional(__S(4482, __c140, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeFleetAdvisorSchemaObjectSummaryResponse",
-      });
+      ).annotate({ identifier: "DescribeFleetAdvisorSchemaObjectSummaryResponse" });
   }
 }
-function __c140(j: number): any {
+function __c141(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(3874, __c121, 2)),
+          Filters: S.optional(__S(3906, __c122, 2)),
           MaxRecords: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeFleetAdvisorSchemasRequest",
-      });
+      ).annotate({ identifier: "DescribeFleetAdvisorSchemasRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9677,9 +9357,7 @@ function __c140(j: number): any {
           DatabaseIpAddress: S.optional(S.String),
           DatabaseEngine: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DatabaseShortInfoResponse",
-      });
+      ).annotate({ identifier: "DatabaseShortInfoResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -9696,56 +9374,23 @@ function __c140(j: number): any {
           CodeLineCount: S.optional(S.Number),
           CodeSize: S.optional(S.Number),
           Complexity: S.optional(S.String),
-          Server: S.optional(__S(4384, __c137, 0)),
-          DatabaseInstance: S.optional(__S(4481, __c140, 1)),
+          Server: S.optional(__S(4416, __c138, 0)),
+          DatabaseInstance: S.optional(__S(4513, __c141, 1)),
           SchemaId: S.optional(S.String),
           SchemaName: S.optional(S.String),
-          OriginalSchema: S.optional(__S(4482, __c140, 2)),
+          OriginalSchema: S.optional(__S(4514, __c141, 2)),
           Similarity: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SchemaResponse" });
     case 4:
-      return S.Array(__S(4483, __c140, 3));
+      return S.Array(__S(4515, __c141, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          FleetAdvisorSchemas: S.optional(__S(4484, __c140, 4)),
+          FleetAdvisorSchemas: S.optional(__S(4516, __c141, 4)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeFleetAdvisorSchemasResponse",
-      });
-  }
-}
-function __c141(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Filters: S.optional(__S(3874, __c121, 2)),
-          MaxRecords: S.optional(S.Number),
-          Marker: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeInstanceProfilesMessage",
-      });
-    case 1:
-      return S.Array(
-        /*@__PURE__*/ __S(2560, __c80, 0)
-          .pipe(/*@__PURE__*/ T.XmlName("InstanceProfile"))
-          .annotate({
-            identifier: "InstanceProfile",
-          }),
-      );
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Marker: S.optional(S.String),
-          InstanceProfiles: S.optional(__S(4513, __c141, 1)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeInstanceProfilesResponse",
-      });
+      ).annotate({ identifier: "DescribeFleetAdvisorSchemasResponse" });
   }
 }
 function __c142(j: number): any {
@@ -9753,49 +9398,55 @@ function __c142(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          SelectionRules: S.String,
-          MigrationProjectIdentifier: S.String,
-          Origin: S.String,
+          Filters: S.optional(__S(3906, __c122, 2)),
+          MaxRecords: S.optional(S.Number),
+          Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeMetadataModelMessage",
-      });
+      ).annotate({ identifier: "DescribeInstanceProfilesMessage" });
     case 1:
+      return S.Array(
+        /*@__PURE__*/ __S(2592, __c81, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("InstanceProfile"))
+          .annotate({ identifier: "InstanceProfile" }),
+      );
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          MetadataModelName: S.optional(S.String),
-          MetadataModelType: S.optional(S.String),
-          TargetMetadataModels: S.optional(__S(4577, __c143, 1)),
-          Definition: S.optional(S.String),
+          Marker: S.optional(S.String),
+          InstanceProfiles: S.optional(__S(4545, __c142, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeMetadataModelResponse",
-      });
+      ).annotate({ identifier: "DescribeInstanceProfilesResponse" });
   }
 }
 function __c143(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ MetadataModelName: S.optional(S.String), SelectionRules: S.optional(S.String) }),
-      ).annotate({ identifier: "MetadataModelReference" });
+        S.Struct({
+          SelectionRules: S.String,
+          MigrationProjectIdentifier: S.String,
+          Origin: S.String,
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DescribeMetadataModelMessage" });
     case 1:
-      return S.Array(__S(4576, __c143, 0));
+      return S.suspend(() =>
+        S.Struct({
+          MetadataModelName: S.optional(S.String),
+          MetadataModelType: S.optional(S.String),
+          TargetMetadataModels: S.optional(__S(4609, __c144, 1)),
+          Definition: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "DescribeMetadataModelResponse" });
   }
 }
 function __c144(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          MigrationProjectIdentifier: S.String,
-          Filters: S.optional(__S(3874, __c121, 2)),
-          Marker: S.optional(S.String),
-          MaxRecords: S.optional(S.Number),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeMetadataModelAssessmentsMessage",
-      });
+        S.Struct({ MetadataModelName: S.optional(S.String), SelectionRules: S.optional(S.String) }),
+      ).annotate({ identifier: "MetadataModelReference" });
+    case 1:
+      return S.Array(__S(4608, __c144, 0));
   }
 }
 function __c145(j: number): any {
@@ -9803,24 +9454,12 @@ function __c145(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          SelectionRules: S.String,
           MigrationProjectIdentifier: S.String,
-          Origin: S.String,
+          Filters: S.optional(__S(3906, __c122, 2)),
           Marker: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeMetadataModelChildrenMessage",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Marker: S.optional(S.String),
-          MetadataModelChildren: S.optional(__S(4577, __c143, 1)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeMetadataModelChildrenResponse",
-      });
+      ).annotate({ identifier: "DescribeMetadataModelAssessmentsMessage" });
   }
 }
 function __c146(j: number): any {
@@ -9828,14 +9467,20 @@ function __c146(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          SelectionRules: S.String,
           MigrationProjectIdentifier: S.String,
-          Filters: S.optional(__S(3874, __c121, 2)),
+          Origin: S.String,
           Marker: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeMetadataModelConversionsMessage",
-      });
+      ).annotate({ identifier: "DescribeMetadataModelChildrenMessage" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Marker: S.optional(S.String),
+          MetadataModelChildren: S.optional(__S(4609, __c144, 1)),
+        }).pipe(ns),
+      ).annotate({ identifier: "DescribeMetadataModelChildrenResponse" });
   }
 }
 function __c147(j: number): any {
@@ -9843,14 +9488,12 @@ function __c147(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(3874, __c121, 2)),
+          MigrationProjectIdentifier: S.String,
+          Filters: S.optional(__S(3906, __c122, 2)),
           Marker: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
-          MigrationProjectIdentifier: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeMetadataModelCreationsMessage",
-      });
+      ).annotate({ identifier: "DescribeMetadataModelConversionsMessage" });
   }
 }
 function __c148(j: number): any {
@@ -9858,14 +9501,12 @@ function __c148(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          MigrationProjectIdentifier: S.String,
-          Filters: S.optional(__S(3874, __c121, 2)),
+          Filters: S.optional(__S(3906, __c122, 2)),
           Marker: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
+          MigrationProjectIdentifier: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeMetadataModelExportsAsScriptMessage",
-      });
+      ).annotate({ identifier: "DescribeMetadataModelCreationsMessage" });
   }
 }
 function __c149(j: number): any {
@@ -9874,13 +9515,11 @@ function __c149(j: number): any {
       return S.suspend(() =>
         S.Struct({
           MigrationProjectIdentifier: S.String,
-          Filters: S.optional(__S(3874, __c121, 2)),
+          Filters: S.optional(__S(3906, __c122, 2)),
           Marker: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeMetadataModelExportsToTargetMessage",
-      });
+      ).annotate({ identifier: "DescribeMetadataModelExportsAsScriptMessage" });
   }
 }
 function __c150(j: number): any {
@@ -9889,13 +9528,11 @@ function __c150(j: number): any {
       return S.suspend(() =>
         S.Struct({
           MigrationProjectIdentifier: S.String,
-          Filters: S.optional(__S(3874, __c121, 2)),
+          Filters: S.optional(__S(3906, __c122, 2)),
           Marker: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeMetadataModelImportsMessage",
-      });
+      ).annotate({ identifier: "DescribeMetadataModelExportsToTargetMessage" });
   }
 }
 function __c151(j: number): any {
@@ -9903,42 +9540,47 @@ function __c151(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(3874, __c121, 2)),
+          MigrationProjectIdentifier: S.String,
+          Filters: S.optional(__S(3906, __c122, 2)),
+          Marker: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
-          Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeMigrationProjectsMessage",
-      });
-    case 1:
-      return S.Array(
-        /*@__PURE__*/ __S(2691, __c84, 3)
-          .pipe(/*@__PURE__*/ T.XmlName("MigrationProject"))
-          .annotate({
-            identifier: "MigrationProject",
-          }),
-      );
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Marker: S.optional(S.String),
-          MigrationProjects: S.optional(__S(4833, __c151, 1)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeMigrationProjectsResponse",
-      });
+      ).annotate({ identifier: "DescribeMetadataModelImportsMessage" });
   }
 }
 function __c152(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({
+          Filters: S.optional(__S(3906, __c122, 2)),
+          MaxRecords: S.optional(S.Number),
+          Marker: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DescribeMigrationProjectsMessage" });
+    case 1:
+      return S.Array(
+        /*@__PURE__*/ __S(2723, __c85, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("MigrationProject"))
+          .annotate({ identifier: "MigrationProject" }),
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Marker: S.optional(S.String),
+          MigrationProjects: S.optional(__S(4865, __c152, 1)),
+        }).pipe(ns),
+      ).annotate({ identifier: "DescribeMigrationProjectsResponse" });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({ MaxRecords: S.optional(S.Number), Marker: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeOrderableReplicationInstancesMessage",
-      });
+      ).annotate({ identifier: "DescribeOrderableReplicationInstancesMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9949,61 +9591,23 @@ function __c152(j: number): any {
           MaxAllocatedStorage: S.optional(S.Number),
           DefaultAllocatedStorage: S.optional(S.Number),
           IncludedAllocatedStorage: S.optional(S.Number),
-          AvailabilityZones: S.optional(__S(2080, __c65, 0)),
+          AvailabilityZones: S.optional(__S(2112, __c66, 0)),
           ReleaseStatus: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "OrderableReplicationInstance",
-      });
+      ).annotate({ identifier: "OrderableReplicationInstance" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(4865, __c152, 1)
+        /*@__PURE__*/ __S(4897, __c153, 1)
           .pipe(/*@__PURE__*/ T.XmlName("OrderableReplicationInstance"))
-          .annotate({
-            identifier: "OrderableReplicationInstance",
-          }),
+          .annotate({ identifier: "OrderableReplicationInstance" }),
       );
     case 3:
       return S.suspend(() =>
         S.Struct({
-          OrderableReplicationInstances: S.optional(__S(4866, __c152, 2)),
+          OrderableReplicationInstances: S.optional(__S(4898, __c153, 2)),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeOrderableReplicationInstancesResponse",
-      });
-  }
-}
-function __c153(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ReplicationInstanceArn: S.optional(S.String),
-          Filters: S.optional(__S(3874, __c121, 2)),
-          Marker: S.optional(S.String),
-          MaxRecords: S.optional(S.Number),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribePendingMaintenanceActionsMessage",
-      });
-    case 1:
-      return S.Array(
-        /*@__PURE__*/ __S(1698, __c53, 2)
-          .pipe(/*@__PURE__*/ T.XmlName("ResourcePendingMaintenanceActions"))
-          .annotate({
-            identifier: "ResourcePendingMaintenanceActions",
-          }),
-      );
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          PendingMaintenanceActions: S.optional(__S(4897, __c153, 1)),
-          Marker: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "DescribePendingMaintenanceActionsResponse",
-      });
+      ).annotate({ identifier: "DescribeOrderableReplicationInstancesResponse" });
   }
 }
 function __c154(j: number): any {
@@ -10011,13 +9615,37 @@ function __c154(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(3874, __c121, 2)),
+          ReplicationInstanceArn: S.optional(S.String),
+          Filters: S.optional(__S(3906, __c122, 2)),
+          Marker: S.optional(S.String),
+          MaxRecords: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DescribePendingMaintenanceActionsMessage" });
+    case 1:
+      return S.Array(
+        /*@__PURE__*/ __S(1698, __c53, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("ResourcePendingMaintenanceActions"))
+          .annotate({ identifier: "ResourcePendingMaintenanceActions" }),
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          PendingMaintenanceActions: S.optional(__S(4929, __c154, 1)),
+          Marker: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "DescribePendingMaintenanceActionsResponse" });
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Filters: S.optional(__S(3906, __c122, 2)),
           MaxRecords: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeRecommendationLimitationsRequest",
-      });
+      ).annotate({ identifier: "DescribeRecommendationLimitationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10030,30 +9658,26 @@ function __c154(j: number): any {
         }),
       ).annotate({ identifier: "Limitation" });
     case 2:
-      return S.Array(__S(4929, __c154, 1));
+      return S.Array(__S(4961, __c155, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          Limitations: S.optional(__S(4930, __c154, 2)),
+          Limitations: S.optional(__S(4962, __c155, 2)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeRecommendationLimitationsResponse",
-      });
+      ).annotate({ identifier: "DescribeRecommendationLimitationsResponse" });
   }
 }
-function __c155(j: number): any {
+function __c156(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(3874, __c121, 2)),
+          Filters: S.optional(__S(3906, __c122, 2)),
           MaxRecords: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeRecommendationsRequest",
-      });
+      ).annotate({ identifier: "DescribeRecommendationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10083,12 +9707,12 @@ function __c155(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          RequirementsToTarget: S.optional(__S(4961, __c155, 1)),
-          TargetConfiguration: S.optional(__S(4962, __c155, 2)),
+          RequirementsToTarget: S.optional(__S(4993, __c156, 1)),
+          TargetConfiguration: S.optional(__S(4994, __c156, 2)),
         }),
       ).annotate({ identifier: "RdsRecommendation" });
     case 4:
-      return S.suspend(() => S.Struct({ RdsEngine: S.optional(__S(4963, __c155, 3)) })).annotate({
+      return S.suspend(() => S.Struct({ RdsEngine: S.optional(__S(4995, __c156, 3)) })).annotate({
         identifier: "RecommendationData",
       });
     case 5:
@@ -10100,41 +9724,31 @@ function __c155(j: number): any {
           Status: S.optional(S.String),
           Preferred: S.optional(S.Boolean),
           Settings: S.optional(__S(1760, __c55, 0)),
-          Data: S.optional(__S(4964, __c155, 4)),
+          Data: S.optional(__S(4996, __c156, 4)),
         }),
       ).annotate({ identifier: "Recommendation" });
     case 6:
-      return S.Array(__S(4965, __c155, 5));
+      return S.Array(__S(4997, __c156, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          Recommendations: S.optional(__S(4966, __c155, 6)),
+          Recommendations: S.optional(__S(4998, __c156, 6)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeRecommendationsResponse",
-      });
+      ).annotate({ identifier: "DescribeRecommendationsResponse" });
   }
 }
-function __c156(j: number): any {
+function __c157(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ EndpointArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeRefreshSchemasStatusMessage",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ RefreshSchemasStatus: S.optional(__S(5024, __c157, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeRefreshSchemasStatusResponse",
-      });
+      ).annotate({ identifier: "DescribeRefreshSchemasStatusMessage" });
   }
 }
-function __c157(j: number): any {
+function __c158(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10146,37 +9760,10 @@ function __c157(j: number): any {
           LastFailureMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "RefreshSchemasStatus" });
-  }
-}
-function __c158(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Filters: S.optional(__S(3874, __c121, 2)),
-          MaxRecords: S.optional(S.Number),
-          Marker: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeReplicationConfigsMessage",
-      });
     case 1:
-      return S.Array(
-        /*@__PURE__*/ __S(2785, __c87, 1)
-          .pipe(/*@__PURE__*/ T.XmlName("ReplicationConfig"))
-          .annotate({
-            identifier: "ReplicationConfig",
-          }),
-      );
-    case 2:
       return S.suspend(() =>
-        S.Struct({
-          Marker: S.optional(S.String),
-          ReplicationConfigs: S.optional(__S(5057, __c158, 1)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeReplicationConfigsResponse",
-      });
+        S.Struct({ RefreshSchemasStatus: S.optional(__S(5056, __c158, 0)) }).pipe(ns),
+      ).annotate({ identifier: "DescribeRefreshSchemasStatusResponse" });
   }
 }
 function __c159(j: number): any {
@@ -10184,33 +9771,52 @@ function __c159(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(3874, __c121, 2)),
+          Filters: S.optional(__S(3906, __c122, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeReplicationInstancesMessage",
-      });
+      ).annotate({ identifier: "DescribeReplicationConfigsMessage" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(2948, __c92, 4)
-          .pipe(/*@__PURE__*/ T.XmlName("ReplicationInstance"))
-          .annotate({
-            identifier: "ReplicationInstance",
-          }),
+        /*@__PURE__*/ __S(2817, __c88, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("ReplicationConfig"))
+          .annotate({ identifier: "ReplicationConfig" }),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          ReplicationInstances: S.optional(__S(5089, __c159, 1)),
+          ReplicationConfigs: S.optional(__S(5089, __c159, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeReplicationInstancesResponse",
-      });
+      ).annotate({ identifier: "DescribeReplicationConfigsResponse" });
   }
 }
 function __c160(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Filters: S.optional(__S(3906, __c122, 2)),
+          MaxRecords: S.optional(S.Number),
+          Marker: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DescribeReplicationInstancesMessage" });
+    case 1:
+      return S.Array(
+        /*@__PURE__*/ __S(2980, __c93, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("ReplicationInstance"))
+          .annotate({ identifier: "ReplicationInstance" }),
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Marker: S.optional(S.String),
+          ReplicationInstances: S.optional(__S(5121, __c160, 1)),
+        }).pipe(ns),
+      ).annotate({ identifier: "DescribeReplicationInstancesResponse" });
+  }
+}
+function __c161(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10219,9 +9825,7 @@ function __c160(j: number): any {
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeReplicationInstanceTaskLogsMessage",
-      });
+      ).annotate({ identifier: "DescribeReplicationInstanceTaskLogsMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10229,53 +9833,45 @@ function __c160(j: number): any {
           ReplicationTaskArn: S.optional(S.String),
           ReplicationInstanceTaskLogSize: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "ReplicationInstanceTaskLog",
-      });
+      ).annotate({ identifier: "ReplicationInstanceTaskLog" });
     case 2:
-      return S.Array(__S(5121, __c160, 1));
+      return S.Array(__S(5153, __c161, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           ReplicationInstanceArn: S.optional(S.String),
-          ReplicationInstanceTaskLogs: S.optional(__S(5122, __c160, 2)),
+          ReplicationInstanceTaskLogs: S.optional(__S(5154, __c161, 2)),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeReplicationInstanceTaskLogsResponse",
-      });
+      ).annotate({ identifier: "DescribeReplicationInstanceTaskLogsResponse" });
   }
 }
-function __c161(j: number): any {
+function __c162(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(3874, __c121, 2)),
+          Filters: S.optional(__S(3906, __c122, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeReplicationsMessage",
-      });
+      ).annotate({ identifier: "DescribeReplicationsMessage" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(5187, __c162, 3).pipe(/*@__PURE__*/ T.XmlName("Replication")).annotate({
-          identifier: "Replication",
-        }),
+        /*@__PURE__*/ __S(5219, __c163, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("Replication"))
+          .annotate({ identifier: "Replication" }),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          Replications: S.optional(__S(5153, __c161, 1)),
+          Replications: S.optional(__S(5185, __c162, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeReplicationsResponse",
-      });
+      ).annotate({ identifier: "DescribeReplicationsResponse" });
   }
 }
-function __c162(j: number): any {
+function __c163(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10299,19 +9895,17 @@ function __c162(j: number): any {
           PremigrationAssessmentRunCreationDate: S.optional(
             S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           ),
-          AssessmentProgress: S.optional(__S(2016, __c63, 0)),
+          AssessmentProgress: S.optional(__S(2048, __c64, 0)),
           LastFailureMessage: S.optional(S.String),
           ResultLocationBucket: S.optional(S.String),
           ResultLocationFolder: S.optional(S.String),
           ResultEncryptionMode: S.optional(S.String),
           ResultKmsKeyArn: S.optional(S.String),
-          ResultStatistic: S.optional(__S(2017, __c63, 1)),
+          ResultStatistic: S.optional(__S(2049, __c64, 1)),
         }),
-      ).annotate({
-        identifier: "PremigrationAssessmentStatus",
-      });
+      ).annotate({ identifier: "PremigrationAssessmentStatus" });
     case 2:
-      return S.Array(__S(5185, __c162, 1));
+      return S.Array(__S(5217, __c163, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -10321,11 +9915,11 @@ function __c162(j: number): any {
           TargetEndpointArn: S.optional(S.String),
           ReplicationType: S.optional(S.String),
           Status: S.optional(S.String),
-          ProvisionData: S.optional(__S(5184, __c162, 0)),
-          PremigrationAssessmentStatuses: S.optional(__S(5186, __c162, 2)),
+          ProvisionData: S.optional(__S(5216, __c163, 0)),
+          PremigrationAssessmentStatuses: S.optional(__S(5218, __c163, 2)),
           StopReason: S.optional(S.String),
-          FailureMessages: S.optional(__S(2080, __c65, 0)),
-          ReplicationStats: S.optional(__S(3136, __c98, 0)),
+          FailureMessages: S.optional(__S(2112, __c66, 0)),
+          ReplicationStats: S.optional(__S(3168, __c99, 0)),
           StartReplicationType: S.optional(S.String),
           CdcStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CdcStartPosition: S.optional(S.String),
@@ -10340,38 +9934,32 @@ function __c162(j: number): any {
       ).annotate({ identifier: "Replication" });
   }
 }
-function __c163(j: number): any {
+function __c164(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(3874, __c121, 2)),
+          Filters: S.optional(__S(3906, __c122, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeReplicationSubnetGroupsMessage",
-      });
+      ).annotate({ identifier: "DescribeReplicationSubnetGroupsMessage" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(2883, __c90, 3)
+        /*@__PURE__*/ __S(2915, __c91, 3)
           .pipe(/*@__PURE__*/ T.XmlName("ReplicationSubnetGroup"))
-          .annotate({
-            identifier: "ReplicationSubnetGroup",
-          }),
+          .annotate({ identifier: "ReplicationSubnetGroup" }),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          ReplicationSubnetGroups: S.optional(__S(5217, __c163, 1)),
+          ReplicationSubnetGroups: S.optional(__S(5249, __c164, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeReplicationSubnetGroupsResponse",
-      });
+      ).annotate({ identifier: "DescribeReplicationSubnetGroupsResponse" });
   }
 }
-function __c164(j: number): any {
+function __c165(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10379,24 +9967,20 @@ function __c164(j: number): any {
           ReplicationConfigArn: S.String,
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
-          Filters: S.optional(__S(3874, __c121, 2)),
+          Filters: S.optional(__S(3906, __c122, 2)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeReplicationTableStatisticsMessage",
-      });
+      ).annotate({ identifier: "DescribeReplicationTableStatisticsMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ReplicationConfigArn: S.optional(S.String),
           Marker: S.optional(S.String),
-          ReplicationTableStatistics: S.optional(__S(5281, __c165, 1)),
+          ReplicationTableStatistics: S.optional(__S(5313, __c166, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeReplicationTableStatisticsResponse",
-      });
+      ).annotate({ identifier: "DescribeReplicationTableStatisticsResponse" });
   }
 }
-function __c165(j: number): any {
+function __c166(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10432,10 +10016,10 @@ function __c165(j: number): any {
         }),
       ).annotate({ identifier: "TableStatistics" });
     case 1:
-      return S.Array(__S(5280, __c165, 0));
+      return S.Array(__S(5312, __c166, 0));
   }
 }
-function __c166(j: number): any {
+function __c167(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10444,9 +10028,7 @@ function __c166(j: number): any {
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeReplicationTaskAssessmentResultsMessage",
-      });
+      ).annotate({ identifier: "DescribeReplicationTaskAssessmentResultsMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10460,27 +10042,21 @@ function __c166(j: number): any {
           AssessmentResults: S.optional(S.String),
           S3ObjectUrl: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "ReplicationTaskAssessmentResult",
-      });
+      ).annotate({ identifier: "ReplicationTaskAssessmentResult" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(5313, __c166, 1)
+        /*@__PURE__*/ __S(5345, __c167, 1)
           .pipe(/*@__PURE__*/ T.XmlName("ReplicationTaskAssessmentResult"))
-          .annotate({
-            identifier: "ReplicationTaskAssessmentResult",
-          }),
+          .annotate({ identifier: "ReplicationTaskAssessmentResult" }),
       );
     case 3:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
           BucketName: S.optional(S.String),
-          ReplicationTaskAssessmentResults: S.optional(__S(5314, __c166, 2)),
+          ReplicationTaskAssessmentResults: S.optional(__S(5346, __c167, 2)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeReplicationTaskAssessmentResultsResponse",
-      });
+      ).annotate({ identifier: "DescribeReplicationTaskAssessmentResultsResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

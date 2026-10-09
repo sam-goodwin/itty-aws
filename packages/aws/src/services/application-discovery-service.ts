@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -832,7 +832,7 @@ export const createTags: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(48, __c6, 0) as any as S.Schema<CreateTagsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<CreateTagsResponse>,
+  output: __S(16, __c2, 0) as any as S.Schema<CreateTagsResponse>,
   errors: [
     AuthorizationErrorException,
     HomeRegionNotSetException,
@@ -896,7 +896,7 @@ export const deleteTags: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(72, __c9, 0) as any as S.Schema<DeleteTagsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<DeleteTagsResponse>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteTagsResponse>,
   errors: [
     AuthorizationErrorException,
     HomeRegionNotSetException,
@@ -1012,7 +1012,7 @@ export const describeConfigurations: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(112, __c14, 0) as any as S.Schema<DescribeConfigurationsRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<DescribeConfigurationsResponse>,
+  output: __S(113, __c14, 1) as any as S.Schema<DescribeConfigurationsResponse>,
   errors: [
     AuthorizationErrorException,
     HomeRegionNotSetException,
@@ -1046,8 +1046,8 @@ export const describeContinuousExports: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ContinuousExportDescription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<DescribeContinuousExportsRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<DescribeContinuousExportsResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<DescribeContinuousExportsRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<DescribeContinuousExportsResponse>,
   errors: [
     AuthorizationErrorException,
     HomeRegionNotSetException,
@@ -1086,8 +1086,8 @@ export const describeExportConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExportInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<DescribeExportConfigurationsRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<DescribeExportConfigurationsResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<DescribeExportConfigurationsRequest>,
+  output: __S(154, __c19, 2) as any as S.Schema<DescribeExportConfigurationsResponse>,
   errors: [
     AuthorizationErrorException,
     HomeRegionNotSetException,
@@ -1125,8 +1125,8 @@ export const describeExportTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExportInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<DescribeExportTasksRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<DescribeExportTasksResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<DescribeExportTasksRequest>,
+  output: __S(154, __c19, 2) as any as S.Schema<DescribeExportTasksResponse>,
   errors: [
     AuthorizationErrorException,
     HomeRegionNotSetException,
@@ -1163,8 +1163,8 @@ export const describeImportTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ImportTask
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<DescribeImportTasksRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<DescribeImportTasksResponse>,
+  input: __S(170, __c21, 2) as any as S.Schema<DescribeImportTasksRequest>,
+  output: __S(172, __c21, 4) as any as S.Schema<DescribeImportTasksResponse>,
   errors: [
     AuthorizationErrorException,
     HomeRegionNotSetException,
@@ -1213,8 +1213,8 @@ export const describeTags: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ConfigurationTag
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<DescribeTagsRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<DescribeTagsResponse>,
+  input: __S(186, __c23, 2) as any as S.Schema<DescribeTagsRequest>,
+  output: __S(189, __c23, 5) as any as S.Schema<DescribeTagsResponse>,
   errors: [
     AuthorizationErrorException,
     HomeRegionNotSetException,
@@ -1251,8 +1251,8 @@ export const disassociateConfigurationItemsFromApplication: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    184,
-    __c23,
+    192,
+    __c24,
     0,
   ) as any as S.Schema<DisassociateConfigurationItemsFromApplicationRequest>,
   output: __S(
@@ -1295,8 +1295,8 @@ export const exportConfigurations: API.OperationMethod<
   ExportConfigurationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<ExportConfigurationsRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<ExportConfigurationsResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<ExportConfigurationsRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<ExportConfigurationsResponse>,
   errors: [
     AuthorizationErrorException,
     HomeRegionNotSetException,
@@ -1329,8 +1329,8 @@ export const getDiscoverySummary: API.OperationMethod<
   GetDiscoverySummaryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<GetDiscoverySummaryRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<GetDiscoverySummaryResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<GetDiscoverySummaryRequest>,
+  output: __S(221, __c27, 5) as any as S.Schema<GetDiscoverySummaryResponse>,
   errors: [
     AuthorizationErrorException,
     HomeRegionNotSetException,
@@ -1363,8 +1363,8 @@ export const listConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   { [key: string]: string | undefined }
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<ListConfigurationsRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<ListConfigurationsResponse>,
+  input: __S(226, __c28, 2) as any as S.Schema<ListConfigurationsRequest>,
+  output: __S(227, __c28, 3) as any as S.Schema<ListConfigurationsResponse>,
   errors: [
     AuthorizationErrorException,
     HomeRegionNotSetException,
@@ -1401,8 +1401,8 @@ export const listServerNeighbors: API.OperationMethod<
   ListServerNeighborsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<ListServerNeighborsRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<ListServerNeighborsResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<ListServerNeighborsRequest>,
+  output: __S(235, __c29, 3) as any as S.Schema<ListServerNeighborsResponse>,
   errors: [
     AuthorizationErrorException,
     HomeRegionNotSetException,
@@ -1434,8 +1434,8 @@ export const startBatchDeleteConfigurationTask: API.OperationMethod<
   StartBatchDeleteConfigurationTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<StartBatchDeleteConfigurationTaskRequest>,
-  output: __S(225, __c28, 1) as any as S.Schema<StartBatchDeleteConfigurationTaskResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<StartBatchDeleteConfigurationTaskRequest>,
+  output: __S(241, __c30, 1) as any as S.Schema<StartBatchDeleteConfigurationTaskResponse>,
   errors: [
     AuthorizationErrorException,
     HomeRegionNotSetException,
@@ -1469,8 +1469,8 @@ export const startContinuousExport: API.OperationMethod<
   StartContinuousExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<StartContinuousExportRequest>,
-  output: __S(233, __c29, 1) as any as S.Schema<StartContinuousExportResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<StartContinuousExportRequest>,
+  output: __S(249, __c31, 1) as any as S.Schema<StartContinuousExportResponse>,
   errors: [
     AuthorizationErrorException,
     ConflictErrorException,
@@ -1502,8 +1502,8 @@ export const startDataCollectionByAgentIds: API.OperationMethod<
   StartDataCollectionByAgentIdsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<StartDataCollectionByAgentIdsRequest>,
-  output: __S(250, __c31, 2) as any as S.Schema<StartDataCollectionByAgentIdsResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<StartDataCollectionByAgentIdsRequest>,
+  output: __S(266, __c33, 2) as any as S.Schema<StartDataCollectionByAgentIdsResponse>,
   errors: [
     AuthorizationErrorException,
     HomeRegionNotSetException,
@@ -1556,8 +1556,8 @@ export const startExportTask: API.OperationMethod<
   StartExportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261, __c32, 5) as any as S.Schema<StartExportTaskRequest>,
-  output: __S(262, __c32, 6) as any as S.Schema<StartExportTaskResponse>,
+  input: __S(277, __c34, 5) as any as S.Schema<StartExportTaskRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<StartExportTaskResponse>,
   errors: [
     AuthorizationErrorException,
     HomeRegionNotSetException,
@@ -1615,8 +1615,8 @@ export const startImportTask: API.OperationMethod<
   StartImportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<StartImportTaskRequest>,
-  output: __S(265, __c33, 1) as any as S.Schema<StartImportTaskResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<StartImportTaskRequest>,
+  output: __S(281, __c35, 1) as any as S.Schema<StartImportTaskResponse>,
   errors: [
     AuthorizationErrorException,
     HomeRegionNotSetException,
@@ -1649,8 +1649,8 @@ export const stopContinuousExport: API.OperationMethod<
   StopContinuousExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<StopContinuousExportRequest>,
-  output: __S(273, __c34, 1) as any as S.Schema<StopContinuousExportResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<StopContinuousExportRequest>,
+  output: __S(289, __c36, 1) as any as S.Schema<StopContinuousExportResponse>,
   errors: [
     AuthorizationErrorException,
     HomeRegionNotSetException,
@@ -1682,8 +1682,8 @@ export const stopDataCollectionByAgentIds: API.OperationMethod<
   StopDataCollectionByAgentIdsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<StopDataCollectionByAgentIdsRequest>,
-  output: __S(250, __c31, 2) as any as S.Schema<StopDataCollectionByAgentIdsResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<StopDataCollectionByAgentIdsRequest>,
+  output: __S(266, __c33, 2) as any as S.Schema<StopDataCollectionByAgentIdsResponse>,
   errors: [
     AuthorizationErrorException,
     HomeRegionNotSetException,
@@ -1712,7 +1712,7 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<UpdateApplicationRequest>,
+  input: __S(304, __c38, 0) as any as S.Schema<UpdateApplicationRequest>,
   output: __S(16, __c2, 0) as any as S.Schema<UpdateApplicationResponse>,
   errors: [
     AuthorizationErrorException,
@@ -1734,9 +1734,7 @@ function __c0(j: number): any {
         S.Struct({ applicationConfigurationId: S.String, configurationIds: __S(8, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "AssociateConfigurationItemsToApplicationRequest",
-      });
+      ).annotate({ identifier: "AssociateConfigurationItemsToApplicationRequest" });
   }
 }
 function __c1(j: number): any {
@@ -1786,9 +1784,7 @@ function __c4(j: number): any {
         S.Struct({ importTaskIds: __S(8, __c1, 0), deleteHistory: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "BatchDeleteImportDataRequest",
-      });
+      ).annotate({ identifier: "BatchDeleteImportDataRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1796,9 +1792,7 @@ function __c4(j: number): any {
           errorCode: S.optional(S.String),
           errorDescription: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchDeleteImportDataError",
-      });
+      ).annotate({ identifier: "BatchDeleteImportDataError" });
     case 2:
       return S.Array(__S(33, __c4, 1));
     case 3:
@@ -1819,9 +1813,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "CreateApplicationRequest" });
     case 1:
       return S.suspend(() => S.Struct({ configurationId: S.optional(S.String) }).pipe(ns)).annotate(
-        {
-          identifier: "CreateApplicationResponse",
-        },
+        { identifier: "CreateApplicationResponse" },
       );
   }
 }
@@ -1847,10 +1839,6 @@ function __c7(j: number): any {
           .pipe(/*@__PURE__*/ T.XmlName("item"))
           .annotate({ identifier: "Tag" }),
       );
-    case 2:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "CreateTagsResponse",
-      });
   }
 }
 function __c8(j: number): any {
@@ -1860,9 +1848,7 @@ function __c8(j: number): any {
         S.Struct({ configurationIds: __S(8, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteApplicationsRequest",
-      });
+      ).annotate({ identifier: "DeleteApplicationsRequest" });
   }
 }
 function __c9(j: number): any {
@@ -1941,9 +1927,7 @@ function __c13(j: number): any {
         S.Struct({ taskId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeBatchDeleteConfigurationTaskRequest",
-      });
+      ).annotate({ identifier: "DescribeBatchDeleteConfigurationTaskRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1977,9 +1961,7 @@ function __c13(j: number): any {
           failedConfigurations: S.optional(__S(106, __c13, 2)),
           deletionWarnings: S.optional(__S(108, __c13, 4)),
         }),
-      ).annotate({
-        identifier: "BatchDeleteConfigurationTask",
-      });
+      ).annotate({ identifier: "BatchDeleteConfigurationTask" });
     case 6:
       return S.suspend(() => S.Struct({ task: S.optional(__S(109, __c13, 5)) }).pipe(ns)).annotate({
         identifier: "DescribeBatchDeleteConfigurationTaskResponse",
@@ -1993,17 +1975,11 @@ function __c14(j: number): any {
         S.Struct({ configurationIds: __S(8, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeConfigurationsRequest",
-      });
+      ).annotate({ identifier: "DescribeConfigurationsRequest" });
     case 1:
-      return S.Array(__S(120, __c15, 0));
-    case 2:
       return S.suspend(() =>
-        S.Struct({ configurations: S.optional(__S(113, __c14, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeConfigurationsResponse",
-      });
+        S.Struct({ configurations: S.optional(__S(128, __c16, 0)) }).pipe(ns),
+      ).annotate({ identifier: "DescribeConfigurationsResponse" });
   }
 }
 function __c15(j: number): any {
@@ -2015,15 +1991,19 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(120, __c15, 0));
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           exportIds: S.optional(__S(8, __c1, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeContinuousExportsRequest",
-      });
+      ).annotate({ identifier: "DescribeContinuousExportsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2036,23 +2016,19 @@ function __c16(j: number): any {
           dataSource: S.optional(S.String),
           schemaStorageConfig: S.optional(__S(120, __c15, 0)),
         }),
-      ).annotate({
-        identifier: "ContinuousExportDescription",
-      });
+      ).annotate({ identifier: "ContinuousExportDescription" });
     case 2:
-      return S.Array(__S(129, __c16, 1));
+      return S.Array(__S(137, __c17, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          descriptions: S.optional(__S(130, __c16, 2)),
+          descriptions: S.optional(__S(138, __c17, 2)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeContinuousExportsResponse",
-      });
+      ).annotate({ identifier: "DescribeContinuousExportsResponse" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2061,12 +2037,10 @@ function __c17(j: number): any {
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeExportConfigurationsRequest",
-      });
+      ).annotate({ identifier: "DescribeExportConfigurationsRequest" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2082,19 +2056,17 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "ExportInfo" });
     case 1:
-      return S.Array(__S(144, __c18, 0));
+      return S.Array(__S(152, __c19, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          exportsInfo: S.optional(__S(145, __c18, 1)),
+          exportsInfo: S.optional(__S(153, __c19, 1)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeExportConfigurationsResponse",
-      });
+      ).annotate({ identifier: "DescribeExportConfigurationsResponse" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2104,45 +2076,36 @@ function __c19(j: number): any {
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeExportTasksRequest",
-      });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          values: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "ImportTaskFilter" });
-    case 1:
-      return S.Array(__S(160, __c20, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          filters: S.optional(__S(161, __c20, 1)),
-          maxResults: S.optional(S.Number),
-          nextToken: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeImportTasksRequest",
-      });
-    case 3:
-      return S.Array(__S(168, __c21, 0));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), tasks: S.optional(__S(163, __c20, 3)) }).pipe(
-          ns,
-        ),
-      ).annotate({
-        identifier: "DescribeImportTasksResponse",
-      });
+      ).annotate({ identifier: "DescribeExportTasksRequest" });
   }
 }
 function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ name: S.optional(S.String), values: S.optional(__S(8, __c1, 0)) }),
+      ).annotate({ identifier: "ImportTaskFilter" });
+    case 1:
+      return S.Array(__S(168, __c21, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          filters: S.optional(__S(169, __c21, 1)),
+          maxResults: S.optional(S.Number),
+          nextToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DescribeImportTasksRequest" });
+    case 3:
+      return S.Array(__S(176, __c22, 0));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), tasks: S.optional(__S(171, __c21, 3)) }).pipe(
+          ns,
+        ),
+      ).annotate({ identifier: "DescribeImportTasksResponse" });
+  }
+}
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2165,18 +2128,18 @@ function __c21(j: number): any {
       ).annotate({ identifier: "ImportTask" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ name: S.String, values: __S(88, __c11, 0) })).annotate({
         identifier: "TagFilter",
       });
     case 1:
-      return S.Array(__S(176, __c22, 0));
+      return S.Array(__S(184, __c23, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(177, __c22, 1)),
+          filters: S.optional(__S(185, __c23, 1)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -2193,44 +2156,26 @@ function __c22(j: number): any {
       ).annotate({ identifier: "ConfigurationTag" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(179, __c22, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ConfigurationTag",
-        }),
+        /*@__PURE__*/ __S(187, __c23, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ConfigurationTag" }),
       );
     case 5:
       return S.suspend(() =>
-        S.Struct({ tags: S.optional(__S(180, __c22, 4)), nextToken: S.optional(S.String) }).pipe(
+        S.Struct({ tags: S.optional(__S(188, __c23, 4)), nextToken: S.optional(S.String) }).pipe(
           ns,
         ),
       ).annotate({ identifier: "DescribeTagsResponse" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ applicationConfigurationId: S.String, configurationIds: __S(8, __c1, 0) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DisassociateConfigurationItemsFromApplicationRequest",
-      });
   }
 }
 function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({ applicationConfigurationId: S.String, configurationIds: __S(8, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ExportConfigurationsRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ exportId: S.optional(S.String) }).pipe(ns)).annotate({
-        identifier: "ExportConfigurationsResponse",
-      });
+      ).annotate({ identifier: "DisassociateConfigurationItemsFromApplicationRequest" });
   }
 }
 function __c25(j: number): any {
@@ -2240,9 +2185,25 @@ function __c25(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetDiscoverySummaryRequest",
+      ).annotate({ identifier: "ExportConfigurationsRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ exportId: S.optional(S.String) }).pipe(ns)).annotate({
+        identifier: "ExportConfigurationsResponse",
       });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetDiscoverySummaryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2290,9 +2251,7 @@ function __c25(j: number): any {
           totalAgentlessCollectors: S.Number,
           unknownAgentlessCollectors: S.Number,
         }),
-      ).annotate({
-        identifier: "CustomerAgentlessCollectorInfo",
-      });
+      ).annotate({ identifier: "CustomerAgentlessCollectorInfo" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2300,24 +2259,22 @@ function __c25(j: number): any {
           applications: S.optional(S.Number),
           serversMappedToApplications: S.optional(S.Number),
           serversMappedtoTags: S.optional(S.Number),
-          agentSummary: S.optional(__S(201, __c25, 1)),
-          connectorSummary: S.optional(__S(202, __c25, 2)),
-          meCollectorSummary: S.optional(__S(203, __c25, 3)),
-          agentlessCollectorSummary: S.optional(__S(204, __c25, 4)),
+          agentSummary: S.optional(__S(217, __c27, 1)),
+          connectorSummary: S.optional(__S(218, __c27, 2)),
+          meCollectorSummary: S.optional(__S(219, __c27, 3)),
+          agentlessCollectorSummary: S.optional(__S(220, __c27, 4)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetDiscoverySummaryResponse",
-      });
+      ).annotate({ identifier: "GetDiscoverySummaryResponse" });
   }
 }
-function __c26(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ fieldName: S.String, sortOrder: S.optional(S.String) }),
       ).annotate({ identifier: "OrderByElement" });
     case 1:
-      return S.Array(__S(208, __c26, 0));
+      return S.Array(__S(224, __c28, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2325,25 +2282,19 @@ function __c26(j: number): any {
           filters: S.optional(__S(97, __c12, 1)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
-          orderBy: S.optional(__S(209, __c26, 1)),
+          orderBy: S.optional(__S(225, __c28, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListConfigurationsRequest" });
     case 3:
-      return S.Array(__S(120, __c15, 0));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          configurations: S.optional(__S(211, __c26, 3)),
+          configurations: S.optional(__S(128, __c16, 0)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListConfigurationsResponse",
-      });
+      ).annotate({ identifier: "ListConfigurationsResponse" });
   }
 }
-function __c27(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2354,9 +2305,7 @@ function __c27(j: number): any {
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListServerNeighborsRequest",
-      });
+      ).annotate({ identifier: "ListServerNeighborsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2368,46 +2317,39 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "NeighborConnectionDetail" });
     case 2:
-      return S.Array(__S(217, __c27, 1));
+      return S.Array(__S(233, __c29, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          neighbors: __S(218, __c27, 2),
+          neighbors: __S(234, __c29, 2),
           nextToken: S.optional(S.String),
           knownDependencyCount: S.optional(S.Number),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListServerNeighborsResponse",
-      });
+      ).annotate({ identifier: "ListServerNeighborsResponse" });
   }
 }
-function __c28(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          configurationType: S.String,
-          configurationIds: __S(8, __c1, 0),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartBatchDeleteConfigurationTaskRequest",
-      });
+        S.Struct({ configurationType: S.String, configurationIds: __S(8, __c1, 0) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "StartBatchDeleteConfigurationTaskRequest" });
     case 1:
       return S.suspend(() => S.Struct({ taskId: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "StartBatchDeleteConfigurationTaskResponse",
       });
   }
 }
-function __c29(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StartContinuousExportRequest",
-      });
+      ).annotate({ identifier: "StartContinuousExportRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2417,24 +2359,20 @@ function __c29(j: number): any {
           dataSource: S.optional(S.String),
           schemaStorageConfig: S.optional(__S(120, __c15, 0)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "StartContinuousExportResponse",
-      });
+      ).annotate({ identifier: "StartContinuousExportResponse" });
   }
 }
-function __c30(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ agentIds: __S(8, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StartDataCollectionByAgentIdsRequest",
-      });
+      ).annotate({ identifier: "StartDataCollectionByAgentIdsRequest" });
   }
 }
-function __c31(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2445,16 +2383,14 @@ function __c31(j: number): any {
         }),
       ).annotate({ identifier: "AgentConfigurationStatus" });
     case 1:
-      return S.Array(__S(248, __c31, 0));
+      return S.Array(__S(264, __c33, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ agentsConfigurationStatus: S.optional(__S(249, __c31, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "StartDataCollectionByAgentIdsResponse",
-      });
+        S.Struct({ agentsConfigurationStatus: S.optional(__S(265, __c33, 1)) }).pipe(ns),
+      ).annotate({ identifier: "StartDataCollectionByAgentIdsResponse" });
   }
 }
-function __c32(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
@@ -2464,47 +2400,37 @@ function __c32(j: number): any {
       ).annotate({ identifier: "UsageMetricBasis" });
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          purchasingOption: S.String,
-          offeringClass: S.String,
-          termLength: S.String,
-        }),
+        S.Struct({ purchasingOption: S.String, offeringClass: S.String, termLength: S.String }),
       ).annotate({ identifier: "ReservedInstanceOptions" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          cpuPerformanceMetricBasis: S.optional(__S(257, __c32, 1)),
-          ramPerformanceMetricBasis: S.optional(__S(257, __c32, 1)),
+          cpuPerformanceMetricBasis: S.optional(__S(273, __c34, 1)),
+          ramPerformanceMetricBasis: S.optional(__S(273, __c34, 1)),
           tenancy: S.optional(S.String),
           excludedInstanceTypes: S.optional(__S(8, __c1, 0)),
           preferredRegion: S.optional(S.String),
-          reservedInstanceOptions: S.optional(__S(258, __c32, 2)),
+          reservedInstanceOptions: S.optional(__S(274, __c34, 2)),
         }),
-      ).annotate({
-        identifier: "Ec2RecommendationsExportPreferences",
-      });
+      ).annotate({ identifier: "Ec2RecommendationsExportPreferences" });
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ ec2RecommendationsPreferences: __S(259, __c32, 3) }),
+        /*@__PURE__*/ S.Struct({ ec2RecommendationsPreferences: __S(275, __c34, 3) }),
       ]);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          exportDataFormat: S.optional(__S(256, __c32, 0)),
+          exportDataFormat: S.optional(__S(272, __c34, 0)),
           filters: S.optional(__S(97, __c12, 1)),
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          preferences: S.optional(__S(260, __c32, 4)),
+          preferences: S.optional(__S(276, __c34, 4)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartExportTaskRequest" });
-    case 6:
-      return S.suspend(() => S.Struct({ exportId: S.optional(S.String) }).pipe(ns)).annotate({
-        identifier: "StartExportTaskResponse",
-      });
   }
 }
-function __c33(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2515,45 +2441,39 @@ function __c33(j: number): any {
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartImportTaskRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ task: S.optional(__S(168, __c21, 0)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ task: S.optional(__S(176, __c22, 0)) }).pipe(ns)).annotate({
         identifier: "StartImportTaskResponse",
       });
   }
 }
-function __c34(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ exportId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StopContinuousExportRequest",
-      });
+      ).annotate({ identifier: "StopContinuousExportRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           stopTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }).pipe(ns),
-      ).annotate({
-        identifier: "StopContinuousExportResponse",
-      });
+      ).annotate({ identifier: "StopContinuousExportResponse" });
   }
 }
-function __c35(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ agentIds: __S(8, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StopDataCollectionByAgentIdsRequest",
-      });
+      ).annotate({ identifier: "StopDataCollectionByAgentIdsRequest" });
   }
 }
-function __c36(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

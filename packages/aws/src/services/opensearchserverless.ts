@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -923,7 +923,7 @@ export const batchGetCollection: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(400, __c50, 0) as any as S.Schema<BatchGetCollectionRequest>,
-  output: __S(406, __c50, 6) as any as S.Schema<BatchGetCollectionResponse>,
+  output: __S(404, __c50, 4) as any as S.Schema<BatchGetCollectionResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -943,8 +943,8 @@ export const batchGetCollectionGroup: API.OperationMethod<
   BatchGetCollectionGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<BatchGetCollectionGroupRequest>,
-  output: __S(431, __c53, 7) as any as S.Schema<BatchGetCollectionGroupResponse>,
+  input: __S(432, __c54, 0) as any as S.Schema<BatchGetCollectionGroupRequest>,
+  output: __S(437, __c54, 5) as any as S.Schema<BatchGetCollectionGroupResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -964,8 +964,8 @@ export const batchGetEffectiveLifecyclePolicy: API.OperationMethod<
   BatchGetEffectiveLifecyclePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(450, __c56, 2) as any as S.Schema<BatchGetEffectiveLifecyclePolicyRequest>,
-  output: __S(455, __c56, 7) as any as S.Schema<BatchGetEffectiveLifecyclePolicyResponse>,
+  input: __S(458, __c57, 2) as any as S.Schema<BatchGetEffectiveLifecyclePolicyRequest>,
+  output: __S(463, __c57, 7) as any as S.Schema<BatchGetEffectiveLifecyclePolicyResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -985,8 +985,8 @@ export const batchGetLifecyclePolicy: API.OperationMethod<
   BatchGetLifecyclePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(458, __c57, 2) as any as S.Schema<BatchGetLifecyclePolicyRequest>,
-  output: __S(462, __c57, 6) as any as S.Schema<BatchGetLifecyclePolicyResponse>,
+  input: __S(466, __c58, 2) as any as S.Schema<BatchGetLifecyclePolicyRequest>,
+  output: __S(470, __c58, 6) as any as S.Schema<BatchGetLifecyclePolicyResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1472,7 +1472,7 @@ export const getAccessPolicy: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(184, __c23, 0) as any as S.Schema<GetAccessPolicyRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<GetAccessPolicyResponse>,
+  output: __S(16, __c2, 0) as any as S.Schema<GetAccessPolicyResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2049,20 +2049,18 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ids: __S(416, __c52, 0) }).pipe(
+        S.Struct({ ids: __S(424, __c53, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "BatchGetVpcEndpointRequest",
-      });
+      ).annotate({ identifier: "BatchGetVpcEndpointRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           vpcId: S.optional(S.String),
-          subnetIds: S.optional(__S(416, __c52, 0)),
-          securityGroupIds: S.optional(__S(416, __c52, 0)),
+          subnetIds: S.optional(__S(424, __c53, 0)),
+          securityGroupIds: S.optional(__S(424, __c53, 0)),
           status: S.optional(S.String),
           createdDate: S.optional(S.Number),
           failureCode: S.optional(S.String),
@@ -2087,9 +2085,7 @@ function __c0(j: number): any {
           vpcEndpointDetails: S.optional(__S(2, __c0, 2)),
           vpcEndpointErrorDetails: S.optional(__S(4, __c0, 4)),
         }),
-      ).annotate({
-        identifier: "BatchGetVpcEndpointResponse",
-      });
+      ).annotate({ identifier: "BatchGetVpcEndpointResponse" });
   }
 }
 function __c1(j: number): any {
@@ -2103,19 +2099,15 @@ function __c1(j: number): any {
           policy: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateAccessPolicyRequest",
-      });
+      ).annotate({ identifier: "CreateAccessPolicyRequest" });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ accessPolicyDetail: S.optional(__S(464, __c58, 0)) }),
-      ).annotate({
-        identifier: "CreateAccessPolicyResponse",
-      });
+        S.Struct({ accessPolicyDetail: S.optional(__S(472, __c59, 0)) }),
+      ).annotate({ identifier: "CreateAccessPolicyResponse" });
   }
 }
 function __c3(j: number): any {
@@ -2130,7 +2122,7 @@ function __c3(j: number): any {
           name: S.String,
           type: S.optional(S.String),
           description: S.optional(S.String),
-          tags: S.optional(__S(433, __c54, 1)),
+          tags: S.optional(__S(441, __c55, 1)),
           standbyReplicas: S.optional(S.String),
           vectorOptions: S.optional(__S(408, __c51, 0)),
           collectionGroupName: S.optional(S.String),
@@ -2171,14 +2163,12 @@ function __c4(j: number): any {
           name: S.String,
           standbyReplicas: S.String,
           description: S.optional(S.String),
-          tags: S.optional(__S(433, __c54, 1)),
-          capacityLimits: S.optional(__S(440, __c55, 0)),
+          tags: S.optional(__S(441, __c55, 1)),
+          capacityLimits: S.optional(__S(448, __c56, 0)),
           generation: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateCollectionGroupRequest",
-      });
+      ).annotate({ identifier: "CreateCollectionGroupRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2187,20 +2177,16 @@ function __c4(j: number): any {
           name: S.optional(S.String),
           standbyReplicas: S.optional(S.String),
           description: S.optional(S.String),
-          tags: S.optional(__S(433, __c54, 1)),
+          tags: S.optional(__S(441, __c55, 1)),
           createdDate: S.optional(S.Number),
-          capacityLimits: S.optional(__S(440, __c55, 0)),
+          capacityLimits: S.optional(__S(448, __c56, 0)),
           generation: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateCollectionGroupDetail",
-      });
+      ).annotate({ identifier: "CreateCollectionGroupDetail" });
     case 2:
       return S.suspend(() =>
         S.Struct({ createCollectionGroupDetail: S.optional(__S(33, __c4, 1)) }),
-      ).annotate({
-        identifier: "CreateCollectionGroupResponse",
-      });
+      ).annotate({ identifier: "CreateCollectionGroupResponse" });
   }
 }
 function __c5(j: number): any {
@@ -2216,9 +2202,7 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateIndexResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "CreateIndexResponse" });
   }
 }
 function __c7(j: number): any {
@@ -2232,19 +2216,15 @@ function __c7(j: number): any {
           policy: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateLifecyclePolicyRequest",
-      });
+      ).annotate({ identifier: "CreateLifecyclePolicyRequest" });
   }
 }
 function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ lifecyclePolicyDetail: S.optional(__S(464, __c58, 0)) }),
-      ).annotate({
-        identifier: "CreateLifecyclePolicyResponse",
-      });
+        S.Struct({ lifecyclePolicyDetail: S.optional(__S(472, __c59, 0)) }),
+      ).annotate({ identifier: "CreateLifecyclePolicyResponse" });
   }
 }
 function __c9(j: number): any {
@@ -2256,9 +2236,7 @@ function __c9(j: number): any {
           userAttribute: S.optional(S.String),
           groupAttribute: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateIamIdentityCenterConfigOptions",
-      });
+      ).annotate({ identifier: "CreateIamIdentityCenterConfigOptions" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2270,9 +2248,7 @@ function __c9(j: number): any {
           iamFederationOptions: S.optional(__S(81, __c10, 1)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateSecurityConfigRequest",
-      });
+      ).annotate({ identifier: "CreateSecurityConfigRequest" });
   }
 }
 function __c10(j: number): any {
@@ -2290,9 +2266,7 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ groupAttribute: S.optional(S.String), userAttribute: S.optional(S.String) }),
-      ).annotate({
-        identifier: "IamFederationConfigOptions",
-      });
+      ).annotate({ identifier: "IamFederationConfigOptions" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2303,9 +2277,7 @@ function __c10(j: number): any {
           userAttribute: S.optional(S.String),
           groupAttribute: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "IamIdentityCenterConfigOptions",
-      });
+      ).annotate({ identifier: "IamIdentityCenterConfigOptions" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2323,9 +2295,7 @@ function __c10(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({ securityConfigDetail: S.optional(__S(83, __c10, 3)) }),
-      ).annotate({
-        identifier: "CreateSecurityConfigResponse",
-      });
+      ).annotate({ identifier: "CreateSecurityConfigResponse" });
   }
 }
 function __c11(j: number): any {
@@ -2339,19 +2309,15 @@ function __c11(j: number): any {
           policy: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateSecurityPolicyRequest",
-      });
+      ).annotate({ identifier: "CreateSecurityPolicyRequest" });
   }
 }
 function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ securityPolicyDetail: S.optional(__S(464, __c58, 0)) }),
-      ).annotate({
-        identifier: "CreateSecurityPolicyResponse",
-      });
+        S.Struct({ securityPolicyDetail: S.optional(__S(472, __c59, 0)) }),
+      ).annotate({ identifier: "CreateSecurityPolicyResponse" });
   }
 }
 function __c13(j: number): any {
@@ -2361,17 +2327,15 @@ function __c13(j: number): any {
         S.Struct({
           name: S.String,
           vpcId: S.String,
-          subnetIds: __S(416, __c52, 0),
-          securityGroupIds: S.optional(__S(416, __c52, 0)),
+          subnetIds: __S(424, __c53, 0),
+          securityGroupIds: S.optional(__S(424, __c53, 0)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateVpcEndpointRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ createVpcEndpointDetail: S.optional(__S(112, __c14, 0)) }),
-      ).annotate({
-        identifier: "CreateVpcEndpointResponse",
-      });
+      ).annotate({ identifier: "CreateVpcEndpointResponse" });
   }
 }
 function __c14(j: number): any {
@@ -2395,9 +2359,7 @@ function __c15(j: number): any {
           name: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteAccessPolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteAccessPolicyRequest" });
   }
 }
 function __c16(j: number): any {
@@ -2432,9 +2394,7 @@ function __c17(j: number): any {
           id: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteCollectionGroupRequest",
-      });
+      ).annotate({ identifier: "DeleteCollectionGroupRequest" });
   }
 }
 function __c18(j: number): any {
@@ -2456,9 +2416,7 @@ function __c19(j: number): any {
           name: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteLifecyclePolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteLifecyclePolicyRequest" });
   }
 }
 function __c20(j: number): any {
@@ -2469,9 +2427,7 @@ function __c20(j: number): any {
           id: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteSecurityConfigRequest",
-      });
+      ).annotate({ identifier: "DeleteSecurityConfigRequest" });
   }
 }
 function __c21(j: number): any {
@@ -2483,9 +2439,7 @@ function __c21(j: number): any {
           name: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteSecurityPolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteSecurityPolicyRequest" });
   }
 }
 function __c22(j: number): any {
@@ -2500,9 +2454,7 @@ function __c22(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ deleteVpcEndpointDetail: S.optional(__S(112, __c14, 0)) }),
-      ).annotate({
-        identifier: "DeleteVpcEndpointResponse",
-      });
+      ).annotate({ identifier: "DeleteVpcEndpointResponse" });
   }
 }
 function __c23(j: number): any {
@@ -2513,10 +2465,6 @@ function __c23(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetAccessPolicyRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ accessPolicyDetail: S.optional(__S(464, __c58, 0)) }),
-      ).annotate({ identifier: "GetAccessPolicyResponse" });
   }
 }
 function __c24(j: number): any {
@@ -2526,9 +2474,7 @@ function __c24(j: number): any {
         S.Struct({}).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetAccountSettingsRequest",
-      });
+      ).annotate({ identifier: "GetAccountSettingsRequest" });
   }
 }
 function __c25(j: number): any {
@@ -2547,9 +2493,7 @@ function __c25(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ accountSettingsDetail: S.optional(__S(201, __c25, 1)) }),
-      ).annotate({
-        identifier: "GetAccountSettingsResponse",
-      });
+      ).annotate({ identifier: "GetAccountSettingsResponse" });
   }
 }
 function __c26(j: number): any {
@@ -2631,22 +2575,18 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          resource: S.optional(__S(416, __c52, 0)),
+          resource: S.optional(__S(424, __c53, 0)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListAccessPoliciesRequest",
-      });
+      ).annotate({ identifier: "ListAccessPoliciesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           accessPolicySummaries: S.optional(__S(249, __c31, 1)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListAccessPoliciesResponse",
-      });
+      ).annotate({ identifier: "ListAccessPoliciesResponse" });
   }
 }
 function __c31(j: number): any {
@@ -2673,9 +2613,7 @@ function __c32(j: number): any {
         S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListCollectionGroupsRequest",
-      });
+      ).annotate({ identifier: "ListCollectionGroupsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2684,7 +2622,7 @@ function __c32(j: number): any {
           name: S.optional(S.String),
           numberOfCollections: S.optional(S.Number),
           createdDate: S.optional(S.Number),
-          capacityLimits: S.optional(__S(440, __c55, 0)),
+          capacityLimits: S.optional(__S(448, __c56, 0)),
           generation: S.optional(S.String),
         }),
       ).annotate({ identifier: "CollectionGroupSummary" });
@@ -2696,9 +2634,7 @@ function __c32(j: number): any {
           collectionGroupSummaries: S.optional(__S(258, __c32, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListCollectionGroupsResponse",
-      });
+      ).annotate({ identifier: "ListCollectionGroupsResponse" });
   }
 }
 function __c33(j: number): any {
@@ -2747,22 +2683,18 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          resources: S.optional(__S(416, __c52, 0)),
+          resources: S.optional(__S(424, __c53, 0)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListLifecyclePoliciesRequest",
-      });
+      ).annotate({ identifier: "ListLifecyclePoliciesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           lifecyclePolicySummaries: S.optional(__S(249, __c31, 1)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListLifecyclePoliciesResponse",
-      });
+      ).annotate({ identifier: "ListLifecyclePoliciesResponse" });
   }
 }
 function __c35(j: number): any {
@@ -2774,9 +2706,7 @@ function __c35(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListSecurityConfigsRequest",
-      });
+      ).annotate({ identifier: "ListSecurityConfigsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2796,9 +2726,7 @@ function __c35(j: number): any {
           securityConfigSummaries: S.optional(__S(282, __c35, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListSecurityConfigsResponse",
-      });
+      ).annotate({ identifier: "ListSecurityConfigsResponse" });
   }
 }
 function __c36(j: number): any {
@@ -2807,22 +2735,18 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          resource: S.optional(__S(416, __c52, 0)),
+          resource: S.optional(__S(424, __c53, 0)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListSecurityPoliciesRequest",
-      });
+      ).annotate({ identifier: "ListSecurityPoliciesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           securityPolicySummaries: S.optional(__S(249, __c31, 1)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListSecurityPoliciesResponse",
-      });
+      ).annotate({ identifier: "ListSecurityPoliciesResponse" });
   }
 }
 function __c37(j: number): any {
@@ -2832,11 +2756,9 @@ function __c37(j: number): any {
         S.Struct({ resourceArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(433, __c54, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(441, __c55, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
@@ -2870,7 +2792,7 @@ function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tags: __S(433, __c54, 1) }).pipe(
+        S.Struct({ resourceArn: S.String, tags: __S(441, __c55, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
@@ -2880,7 +2802,7 @@ function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tagKeys: __S(416, __c52, 0) }).pipe(
+        S.Struct({ resourceArn: S.String, tagKeys: __S(424, __c53, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
@@ -2898,9 +2820,7 @@ function __c41(j: number): any {
           policy: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateAccessPolicyRequest",
-      });
+      ).annotate({ identifier: "UpdateAccessPolicyRequest" });
   }
 }
 function __c42(j: number): any {
@@ -2910,9 +2830,7 @@ function __c42(j: number): any {
         S.Struct({ capacityLimits: S.optional(__S(200, __c25, 0)) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateAccountSettingsRequest",
-      });
+      ).annotate({ identifier: "UpdateAccountSettingsRequest" });
   }
 }
 function __c43(j: number): any {
@@ -2955,12 +2873,10 @@ function __c44(j: number): any {
         S.Struct({
           id: S.String,
           description: S.optional(S.String),
-          capacityLimits: S.optional(__S(440, __c55, 0)),
+          capacityLimits: S.optional(__S(448, __c56, 0)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateCollectionGroupRequest",
-      });
+      ).annotate({ identifier: "UpdateCollectionGroupRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2968,20 +2884,16 @@ function __c44(j: number): any {
           arn: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          capacityLimits: S.optional(__S(440, __c55, 0)),
+          capacityLimits: S.optional(__S(448, __c56, 0)),
           createdDate: S.optional(S.Number),
           lastModifiedDate: S.optional(S.Number),
           generation: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "UpdateCollectionGroupDetail",
-      });
+      ).annotate({ identifier: "UpdateCollectionGroupDetail" });
     case 2:
       return S.suspend(() =>
         S.Struct({ updateCollectionGroupDetail: S.optional(__S(353, __c44, 1)) }),
-      ).annotate({
-        identifier: "UpdateCollectionGroupResponse",
-      });
+      ).annotate({ identifier: "UpdateCollectionGroupResponse" });
   }
 }
 function __c45(j: number): any {
@@ -3006,9 +2918,7 @@ function __c46(j: number): any {
           policy: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateLifecyclePolicyRequest",
-      });
+      ).annotate({ identifier: "UpdateLifecyclePolicyRequest" });
   }
 }
 function __c47(j: number): any {
@@ -3016,9 +2926,7 @@ function __c47(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ userAttribute: S.optional(S.String), groupAttribute: S.optional(S.String) }),
-      ).annotate({
-        identifier: "UpdateIamIdentityCenterConfigOptions",
-      });
+      ).annotate({ identifier: "UpdateIamIdentityCenterConfigOptions" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3030,9 +2938,7 @@ function __c47(j: number): any {
           iamFederationOptions: S.optional(__S(81, __c10, 1)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateSecurityConfigRequest",
-      });
+      ).annotate({ identifier: "UpdateSecurityConfigRequest" });
   }
 }
 function __c48(j: number): any {
@@ -3047,9 +2953,7 @@ function __c48(j: number): any {
           policy: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateSecurityPolicyRequest",
-      });
+      ).annotate({ identifier: "UpdateSecurityPolicyRequest" });
   }
 }
 function __c49(j: number): any {
@@ -3058,10 +2962,10 @@ function __c49(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          addSubnetIds: S.optional(__S(416, __c52, 0)),
-          removeSubnetIds: S.optional(__S(416, __c52, 0)),
-          addSecurityGroupIds: S.optional(__S(416, __c52, 0)),
-          removeSecurityGroupIds: S.optional(__S(416, __c52, 0)),
+          addSubnetIds: S.optional(__S(424, __c53, 0)),
+          removeSubnetIds: S.optional(__S(424, __c53, 0)),
+          addSecurityGroupIds: S.optional(__S(424, __c53, 0)),
+          removeSecurityGroupIds: S.optional(__S(424, __c53, 0)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateVpcEndpointRequest" });
@@ -3071,17 +2975,15 @@ function __c49(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           status: S.optional(S.String),
-          subnetIds: S.optional(__S(416, __c52, 0)),
-          securityGroupIds: S.optional(__S(416, __c52, 0)),
+          subnetIds: S.optional(__S(424, __c53, 0)),
+          securityGroupIds: S.optional(__S(424, __c53, 0)),
           lastModifiedDate: S.optional(S.Number),
         }),
       ).annotate({ identifier: "UpdateVpcEndpointDetail" });
     case 2:
       return S.suspend(() =>
         S.Struct({ UpdateVpcEndpointDetail: S.optional(__S(393, __c49, 1)) }),
-      ).annotate({
-        identifier: "UpdateVpcEndpointResponse",
-      });
+      ).annotate({ identifier: "UpdateVpcEndpointResponse" });
   }
 }
 function __c50(j: number): any {
@@ -3089,12 +2991,10 @@ function __c50(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ids: S.optional(__S(416, __c52, 0)),
-          names: S.optional(__S(416, __c52, 0)),
+          ids: S.optional(__S(424, __c53, 0)),
+          names: S.optional(__S(424, __c53, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "BatchGetCollectionRequest",
-      });
+      ).annotate({ identifier: "BatchGetCollectionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3130,23 +3030,10 @@ function __c50(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-          errorCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CollectionErrorDetail" });
-    case 5:
-      return S.Array(__S(404, __c50, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
           collectionDetails: S.optional(__S(403, __c50, 3)),
-          collectionErrorDetails: S.optional(__S(405, __c50, 5)),
+          collectionErrorDetails: S.optional(__S(417, __c52, 1)),
         }),
-      ).annotate({
-        identifier: "BatchGetCollectionResponse",
-      });
+      ).annotate({ identifier: "BatchGetCollectionResponse" });
   }
 }
 function __c51(j: number): any {
@@ -3160,20 +3047,33 @@ function __c51(j: number): any {
 function __c52(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+          errorCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CollectionErrorDetail" });
+    case 1:
+      return S.Array(__S(416, __c52, 0));
   }
 }
 function __c53(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.String);
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          ids: S.optional(__S(416, __c52, 0)),
-          names: S.optional(__S(416, __c52, 0)),
+          ids: S.optional(__S(424, __c53, 0)),
+          names: S.optional(__S(424, __c53, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "BatchGetCollectionGroupRequest",
-      });
+      ).annotate({ identifier: "BatchGetCollectionGroupRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ capacityInOcu: S.optional(S.Number), autoscalingStatus: S.optional(S.String) }),
@@ -3181,8 +3081,8 @@ function __c53(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          search: S.optional(__S(425, __c53, 1)),
-          indexing: S.optional(__S(425, __c53, 1)),
+          search: S.optional(__S(433, __c54, 1)),
+          indexing: S.optional(__S(433, __c54, 1)),
         }),
       ).annotate({ identifier: "CurrentCapacity" });
     case 3:
@@ -3193,51 +3093,36 @@ function __c53(j: number): any {
           name: S.optional(S.String),
           standbyReplicas: S.optional(S.String),
           description: S.optional(S.String),
-          tags: S.optional(__S(433, __c54, 1)),
+          tags: S.optional(__S(441, __c55, 1)),
           createdDate: S.optional(S.Number),
-          capacityLimits: S.optional(__S(440, __c55, 0)),
-          currentCapacity: S.optional(__S(426, __c53, 2)),
+          capacityLimits: S.optional(__S(448, __c56, 0)),
+          currentCapacity: S.optional(__S(434, __c54, 2)),
           numberOfCollections: S.optional(S.Number),
           generation: S.optional(S.String),
         }),
       ).annotate({ identifier: "CollectionGroupDetail" });
     case 4:
-      return S.Array(__S(427, __c53, 3));
+      return S.Array(__S(435, __c54, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-          errorCode: S.optional(S.String),
+          collectionGroupDetails: S.optional(__S(436, __c54, 4)),
+          collectionGroupErrorDetails: S.optional(__S(417, __c52, 1)),
         }),
-      ).annotate({
-        identifier: "CollectionGroupErrorDetail",
-      });
-    case 6:
-      return S.Array(__S(429, __c53, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          collectionGroupDetails: S.optional(__S(428, __c53, 4)),
-          collectionGroupErrorDetails: S.optional(__S(430, __c53, 6)),
-        }),
-      ).annotate({
-        identifier: "BatchGetCollectionGroupResponse",
-      });
+      ).annotate({ identifier: "BatchGetCollectionGroupResponse" });
   }
 }
-function __c54(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
         identifier: "Tag",
       });
     case 1:
-      return S.Array(__S(432, __c54, 0));
+      return S.Array(__S(440, __c55, 0));
   }
 }
-function __c55(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3247,27 +3132,23 @@ function __c55(j: number): any {
           minIndexingCapacityInOCU: S.optional(S.Number),
           minSearchCapacityInOCU: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "CollectionGroupCapacityLimits",
-      });
+      ).annotate({ identifier: "CollectionGroupCapacityLimits" });
   }
 }
-function __c56(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ type: S.String, resource: S.String })).annotate({
         identifier: "LifecyclePolicyResourceIdentifier",
       });
     case 1:
-      return S.Array(__S(448, __c56, 0));
+      return S.Array(__S(456, __c57, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ resourceIdentifiers: __S(449, __c56, 1) }).pipe(
+        S.Struct({ resourceIdentifiers: __S(457, __c57, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "BatchGetEffectiveLifecyclePolicyRequest",
-      });
+      ).annotate({ identifier: "BatchGetEffectiveLifecyclePolicyRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3278,11 +3159,9 @@ function __c56(j: number): any {
           retentionPeriod: S.optional(S.String),
           noMinRetentionPeriod: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "EffectiveLifecyclePolicyDetail",
-      });
+      ).annotate({ identifier: "EffectiveLifecyclePolicyDetail" });
     case 4:
-      return S.Array(__S(451, __c56, 3));
+      return S.Array(__S(459, __c57, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3291,40 +3170,34 @@ function __c56(j: number): any {
           errorMessage: S.optional(S.String),
           errorCode: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "EffectiveLifecyclePolicyErrorDetail",
-      });
+      ).annotate({ identifier: "EffectiveLifecyclePolicyErrorDetail" });
     case 6:
-      return S.Array(__S(453, __c56, 5));
+      return S.Array(__S(461, __c57, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          effectiveLifecyclePolicyDetails: S.optional(__S(452, __c56, 4)),
-          effectiveLifecyclePolicyErrorDetails: S.optional(__S(454, __c56, 6)),
+          effectiveLifecyclePolicyDetails: S.optional(__S(460, __c57, 4)),
+          effectiveLifecyclePolicyErrorDetails: S.optional(__S(462, __c57, 6)),
         }),
-      ).annotate({
-        identifier: "BatchGetEffectiveLifecyclePolicyResponse",
-      });
+      ).annotate({ identifier: "BatchGetEffectiveLifecyclePolicyResponse" });
   }
 }
-function __c57(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ type: S.String, name: S.String })).annotate({
         identifier: "LifecyclePolicyIdentifier",
       });
     case 1:
-      return S.Array(__S(456, __c57, 0));
+      return S.Array(__S(464, __c58, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ identifiers: __S(457, __c57, 1) }).pipe(
+        S.Struct({ identifiers: __S(465, __c58, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "BatchGetLifecyclePolicyRequest",
-      });
+      ).annotate({ identifier: "BatchGetLifecyclePolicyRequest" });
     case 3:
-      return S.Array(__S(464, __c58, 0));
+      return S.Array(__S(472, __c59, 0));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3333,23 +3206,19 @@ function __c57(j: number): any {
           errorMessage: S.optional(S.String),
           errorCode: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "LifecyclePolicyErrorDetail",
-      });
+      ).annotate({ identifier: "LifecyclePolicyErrorDetail" });
     case 5:
-      return S.Array(__S(460, __c57, 4));
+      return S.Array(__S(468, __c58, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          lifecyclePolicyDetails: S.optional(__S(459, __c57, 3)),
-          lifecyclePolicyErrorDetails: S.optional(__S(461, __c57, 5)),
+          lifecyclePolicyDetails: S.optional(__S(467, __c58, 3)),
+          lifecyclePolicyErrorDetails: S.optional(__S(469, __c58, 5)),
         }),
-      ).annotate({
-        identifier: "BatchGetLifecyclePolicyResponse",
-      });
+      ).annotate({ identifier: "BatchGetLifecyclePolicyResponse" });
   }
 }
-function __c58(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

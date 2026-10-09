@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -719,9 +719,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteEnvironmentOutput",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteEnvironmentOutput" });
   }
 }
 function __c2(j: number): any {
@@ -746,9 +744,7 @@ function __c2(j: number): any {
           LogLevel: S.optional(S.String),
           CloudWatchLogGroupArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ModuleLoggingConfiguration",
-      });
+      ).annotate({ identifier: "ModuleLoggingConfiguration" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1113,9 +1109,7 @@ function __c16(j: number): any {
           WorkerLogs: S.optional(__S(128, __c16, 0)),
           TaskLogs: S.optional(__S(128, __c16, 0)),
         }),
-      ).annotate({
-        identifier: "LoggingConfigurationInput",
-      });
+      ).annotate({ identifier: "LoggingConfigurationInput" });
     case 2:
       return S.suspend(() => S.Struct({ Arn: S.optional(S.String) })).annotate({
         identifier: "CreateEnvironmentOutput",
@@ -1129,9 +1123,7 @@ function __c17(j: number): any {
         S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/webtoken/{Name}" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateWebLoginTokenRequest",
-      });
+      ).annotate({ identifier: "CreateWebLoginTokenRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1140,9 +1132,7 @@ function __c17(j: number): any {
           IamIdentity: S.optional(S.String),
           AirflowIdentity: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateWebLoginTokenResponse",
-      });
+      ).annotate({ identifier: "CreateWebLoginTokenResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

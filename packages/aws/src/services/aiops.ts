@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -280,8 +280,8 @@ export const createInvestigationGroup: API.OperationMethod<
   CreateInvestigationGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c10, 0) as any as S.Schema<CreateInvestigationGroupInput>,
-  output: __S(41, __c10, 1) as any as S.Schema<CreateInvestigationGroupOutput>,
+  input: __S(36, __c9, 0) as any as S.Schema<CreateInvestigationGroupInput>,
+  output: __S(37, __c9, 1) as any as S.Schema<CreateInvestigationGroupOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -312,8 +312,8 @@ export const deleteInvestigationGroup: API.OperationMethod<
   DeleteInvestigationGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c14, 0) as any as S.Schema<DeleteInvestigationGroupRequest>,
-  output: __S(60, __c15, 0) as any as S.Schema<DeleteInvestigationGroupResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<DeleteInvestigationGroupRequest>,
+  output: __S(56, __c14, 0) as any as S.Schema<DeleteInvestigationGroupResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -344,7 +344,7 @@ export const deleteInvestigationGroupPolicy: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteInvestigationGroupPolicyRequest>,
-  output: __S(60, __c15, 0) as any as S.Schema<DeleteInvestigationGroupPolicyOutput>,
+  output: __S(56, __c14, 0) as any as S.Schema<DeleteInvestigationGroupPolicyOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -543,7 +543,7 @@ export const tagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(24, __c6, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(28, __c7, 0) as any as S.Schema<TagResourceResponse>,
+  output: __S(56, __c14, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -574,8 +574,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c8, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(28, __c7, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(56, __c14, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -607,8 +607,8 @@ export const updateInvestigationGroup: API.OperationMethod<
   UpdateInvestigationGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c9, 0) as any as S.Schema<UpdateInvestigationGroupRequest>,
-  output: __S(28, __c7, 0) as any as S.Schema<UpdateInvestigationGroupOutput>,
+  input: __S(32, __c8, 0) as any as S.Schema<UpdateInvestigationGroupRequest>,
+  output: __S(56, __c14, 0) as any as S.Schema<UpdateInvestigationGroupOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -638,9 +638,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteInvestigationGroupPolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteInvestigationGroupPolicyRequest" });
   }
 }
 function __c1(j: number): any {
@@ -657,9 +655,7 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetInvestigationGroupRequest",
-      });
+      ).annotate({ identifier: "GetInvestigationGroupRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -670,16 +666,14 @@ function __c1(j: number): any {
           name: S.optional(S.String),
           arn: S.optional(S.String),
           roleArn: S.optional(S.String),
-          encryptionConfiguration: S.optional(__S(48, __c12, 0)),
+          encryptionConfiguration: S.optional(__S(44, __c11, 0)),
           retentionInDays: S.optional(S.Number),
-          chatbotNotificationChannel: S.optional(__S(49, __c12, 1)),
-          tagKeyBoundaries: S.optional(__S(44, __c11, 0)),
+          chatbotNotificationChannel: S.optional(__S(45, __c11, 1)),
+          tagKeyBoundaries: S.optional(__S(40, __c10, 0)),
           isCloudTrailEventHistoryEnabled: S.optional(S.Boolean),
-          crossAccountConfigurations: S.optional(__S(51, __c12, 3)),
+          crossAccountConfigurations: S.optional(__S(47, __c11, 3)),
         }),
-      ).annotate({
-        identifier: "GetInvestigationGroupResponse",
-      });
+      ).annotate({ identifier: "GetInvestigationGroupResponse" });
   }
 }
 function __c2(j: number): any {
@@ -696,15 +690,11 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetInvestigationGroupPolicyRequest",
-      });
+      ).annotate({ identifier: "GetInvestigationGroupPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ investigationGroupArn: S.optional(S.String), policy: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetInvestigationGroupPolicyResponse",
-      });
+      ).annotate({ identifier: "GetInvestigationGroupPolicyResponse" });
   }
 }
 function __c3(j: number): any {
@@ -724,15 +714,11 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListInvestigationGroupsInput",
-      });
+      ).annotate({ identifier: "ListInvestigationGroupsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ arn: S.optional(S.String), name: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListInvestigationGroupsModel",
-      });
+      ).annotate({ identifier: "ListInvestigationGroupsModel" });
     case 2:
       return S.Array(__S(13, __c3, 1));
     case 3:
@@ -741,9 +727,7 @@ function __c3(j: number): any {
           nextToken: S.optional(SensitiveString),
           investigationGroups: S.optional(__S(14, __c3, 2)),
         }),
-      ).annotate({
-        identifier: "ListInvestigationGroupsOutput",
-      });
+      ).annotate({ identifier: "ListInvestigationGroupsOutput" });
   }
 }
 function __c4(j: number): any {
@@ -760,11 +744,9 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(52, __c13, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(48, __c12, 0)) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
   }
@@ -783,9 +765,7 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutInvestigationGroupPolicyRequest",
-      });
+      ).annotate({ identifier: "PutInvestigationGroupPolicyRequest" });
     case 1:
       return S.suspend(() => S.Struct({ investigationGroupArn: S.optional(S.String) })).annotate({
         identifier: "PutInvestigationGroupPolicyResponse",
@@ -798,7 +778,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(52, __c13, 0),
+          tags: __S(48, __c12, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -815,18 +795,10 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(44, __c11, 0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(40, __c10, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -840,18 +812,18 @@ function __c8(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c9(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           identifier: S.String.pipe(T.HttpLabel("identifier")),
           roleArn: S.optional(S.String),
-          encryptionConfiguration: S.optional(__S(48, __c12, 0)),
-          tagKeyBoundaries: S.optional(__S(44, __c11, 0)),
-          chatbotNotificationChannel: S.optional(__S(49, __c12, 1)),
+          encryptionConfiguration: S.optional(__S(44, __c11, 0)),
+          tagKeyBoundaries: S.optional(__S(40, __c10, 0)),
+          chatbotNotificationChannel: S.optional(__S(45, __c11, 1)),
           isCloudTrailEventHistoryEnabled: S.optional(S.Boolean),
-          crossAccountConfigurations: S.optional(__S(51, __c12, 3)),
+          crossAccountConfigurations: S.optional(__S(47, __c11, 3)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/investigationGroups/{identifier}" }),
@@ -862,25 +834,23 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateInvestigationGroupRequest",
-      });
+      ).annotate({ identifier: "UpdateInvestigationGroupRequest" });
   }
 }
-function __c10(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           roleArn: S.String,
-          encryptionConfiguration: S.optional(__S(48, __c12, 0)),
+          encryptionConfiguration: S.optional(__S(44, __c11, 0)),
           retentionInDays: S.optional(S.Number),
-          tags: S.optional(__S(52, __c13, 0)),
-          tagKeyBoundaries: S.optional(__S(44, __c11, 0)),
-          chatbotNotificationChannel: S.optional(__S(49, __c12, 1)),
+          tags: S.optional(__S(48, __c12, 0)),
+          tagKeyBoundaries: S.optional(__S(40, __c10, 0)),
+          chatbotNotificationChannel: S.optional(__S(45, __c11, 1)),
           isCloudTrailEventHistoryEnabled: S.optional(S.Boolean),
-          crossAccountConfigurations: S.optional(__S(51, __c12, 3)),
+          crossAccountConfigurations: S.optional(__S(47, __c11, 3)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/investigationGroups" }),
@@ -891,44 +861,42 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateInvestigationGroupInput",
-      });
+      ).annotate({ identifier: "CreateInvestigationGroupInput" });
     case 1:
       return S.suspend(() => S.Struct({ arn: S.optional(S.String) })).annotate({
         identifier: "CreateInvestigationGroupOutput",
       });
   }
 }
-function __c11(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c12(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ type: S.optional(S.String), kmsKeyId: S.optional(S.String) }),
       ).annotate({ identifier: "EncryptionConfiguration" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(44, __c11, 0).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(40, __c10, 0).pipe(S.optional));
     case 2:
       return S.suspend(() => S.Struct({ sourceRoleArn: S.optional(S.String) })).annotate({
         identifier: "CrossAccountConfiguration",
       });
     case 3:
-      return S.Array(__S(50, __c12, 2));
+      return S.Array(__S(46, __c11, 2));
   }
 }
-function __c13(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c14(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -942,12 +910,10 @@ function __c14(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteInvestigationGroupRequest",
-      });
+      ).annotate({ identifier: "DeleteInvestigationGroupRequest" });
   }
 }
-function __c15(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({

@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -463,9 +463,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeJobExecutionRequest",
-      });
+      ).annotate({ identifier: "DescribeJobExecutionRequest" });
   }
 }
 function __c1(j: number): any {
@@ -512,9 +510,7 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetPendingJobExecutionsRequest",
-      });
+      ).annotate({ identifier: "GetPendingJobExecutionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -534,9 +530,7 @@ function __c3(j: number): any {
           inProgressJobs: S.optional(__S(14, __c3, 2)),
           queuedJobs: S.optional(__S(14, __c3, 2)),
         }),
-      ).annotate({
-        identifier: "GetPendingJobExecutionsResponse",
-      });
+      ).annotate({ identifier: "GetPendingJobExecutionsResponse" });
   }
 }
 function __c4(j: number): any {
@@ -573,9 +567,7 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartCommandExecutionRequest",
-      });
+      ).annotate({ identifier: "StartCommandExecutionRequest" });
     case 3:
       return S.suspend(() => S.Struct({ executionId: S.optional(S.String) })).annotate({
         identifier: "StartCommandExecutionResponse",
@@ -600,9 +592,7 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartNextPendingJobExecutionRequest",
-      });
+      ).annotate({ identifier: "StartNextPendingJobExecutionRequest" });
   }
 }
 function __c6(j: number): any {
@@ -629,9 +619,7 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateJobExecutionRequest",
-      });
+      ).annotate({ identifier: "UpdateJobExecutionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -646,9 +634,7 @@ function __c6(j: number): any {
           executionState: S.optional(__S(25, __c6, 1)),
           jobDocument: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "UpdateJobExecutionResponse",
-      });
+      ).annotate({ identifier: "UpdateJobExecutionResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

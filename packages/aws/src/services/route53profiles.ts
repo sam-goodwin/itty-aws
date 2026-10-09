@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -331,7 +331,7 @@ export const associateProfile: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AssociateProfileRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AssociateProfileResponse>,
+  output: __S(8, __c2, 0) as any as S.Schema<AssociateProfileResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -366,8 +366,8 @@ export const associateResourceToProfile: API.OperationMethod<
   AssociateResourceToProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c3, 0) as any as S.Schema<AssociateResourceToProfileRequest>,
-  output: __S(20, __c5, 0) as any as S.Schema<AssociateResourceToProfileResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<AssociateResourceToProfileRequest>,
+  output: __S(24, __c6, 0) as any as S.Schema<AssociateResourceToProfileResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -399,8 +399,8 @@ export const createProfile: API.OperationMethod<
   CreateProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c6, 0) as any as S.Schema<CreateProfileRequest>,
-  output: __S(29, __c7, 1) as any as S.Schema<CreateProfileResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<CreateProfileRequest>,
+  output: __S(33, __c8, 1) as any as S.Schema<CreateProfileResponse>,
   errors: [
     AccessDeniedException,
     InvalidParameterException,
@@ -429,8 +429,8 @@ export const deleteProfile: API.OperationMethod<
   DeleteProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c8, 0) as any as S.Schema<DeleteProfileRequest>,
-  output: __S(29, __c7, 1) as any as S.Schema<DeleteProfileResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<DeleteProfileRequest>,
+  output: __S(33, __c8, 1) as any as S.Schema<DeleteProfileResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -460,8 +460,8 @@ export const disassociateProfile: API.OperationMethod<
   DisassociateProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c9, 0) as any as S.Schema<DisassociateProfileRequest>,
-  output: __S(40, __c10, 0) as any as S.Schema<DisassociateProfileResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<DisassociateProfileRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<DisassociateProfileResponse>,
   errors: [
     AccessDeniedException,
     InvalidParameterException,
@@ -495,7 +495,7 @@ export const disassociateResourceFromProfile: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(44, __c11, 0) as any as S.Schema<DisassociateResourceFromProfileRequest>,
-  output: __S(20, __c5, 0) as any as S.Schema<DisassociateResourceFromProfileResponse>,
+  output: __S(24, __c6, 0) as any as S.Schema<DisassociateResourceFromProfileResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -527,7 +527,7 @@ export const getProfile: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(48, __c12, 0) as any as S.Schema<GetProfileRequest>,
-  output: __S(29, __c7, 1) as any as S.Schema<GetProfileResponse>,
+  output: __S(33, __c8, 1) as any as S.Schema<GetProfileResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -555,7 +555,7 @@ export const getProfileAssociation: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(52, __c13, 0) as any as S.Schema<GetProfileAssociationRequest>,
-  output: __S(40, __c10, 0) as any as S.Schema<GetProfileAssociationResponse>,
+  output: __S(8, __c2, 0) as any as S.Schema<GetProfileAssociationResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -584,7 +584,7 @@ export const getProfileResourceAssociation: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(56, __c14, 0) as any as S.Schema<GetProfileResourceAssociationRequest>,
-  output: __S(20, __c5, 0) as any as S.Schema<GetProfileResourceAssociationResponse>,
+  output: __S(24, __c6, 0) as any as S.Schema<GetProfileResourceAssociationResponse>,
   errors: [
     AccessDeniedException,
     InvalidParameterException,
@@ -820,7 +820,7 @@ export const updateProfileResourceAssociation: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(92, __c23, 0) as any as S.Schema<UpdateProfileResourceAssociationRequest>,
-  output: __S(20, __c5, 0) as any as S.Schema<UpdateProfileResourceAssociationResponse>,
+  output: __S(24, __c6, 0) as any as S.Schema<UpdateProfileResourceAssociationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -857,10 +857,6 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "AssociateProfileRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ ProfileAssociation: S.optional(__S(8, __c2, 0)) }),
-      ).annotate({ identifier: "AssociateProfileResponse" });
   }
 }
 function __c1(j: number): any {
@@ -874,6 +870,14 @@ function __c1(j: number): any {
   }
 }
 function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ProfileAssociation: S.optional(__S(12, __c3, 0)) }),
+      ).annotate({ identifier: "AssociateProfileResponse" });
+  }
+}
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -891,7 +895,7 @@ function __c2(j: number): any {
       ).annotate({ identifier: "ProfileAssociation" });
   }
 }
-function __c3(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -910,12 +914,10 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateResourceToProfileRequest",
-      });
+      ).annotate({ identifier: "AssociateResourceToProfileRequest" });
   }
 }
-function __c4(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -932,22 +934,18 @@ function __c4(j: number): any {
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ModificationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "ProfileResourceAssociation",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ProfileResourceAssociation: S.optional(__S(16, __c4, 0)) }),
-      ).annotate({
-        identifier: "AssociateResourceToProfileResponse",
-      });
+      ).annotate({ identifier: "ProfileResourceAssociation" });
   }
 }
 function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ProfileResourceAssociation: S.optional(__S(20, __c5, 0)) }),
+      ).annotate({ identifier: "AssociateResourceToProfileResponse" });
+  }
+}
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -959,7 +957,7 @@ function __c6(j: number): any {
       ).annotate({ identifier: "CreateProfileRequest" });
   }
 }
-function __c7(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -977,12 +975,12 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "Profile" });
     case 1:
-      return S.suspend(() => S.Struct({ Profile: S.optional(__S(28, __c7, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ Profile: S.optional(__S(32, __c8, 0)) })).annotate({
         identifier: "CreateProfileResponse",
       });
   }
 }
-function __c8(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -999,7 +997,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "DeleteProfileRequest" });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1019,19 +1017,7 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateProfileRequest",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ProfileAssociation: S.optional(__S(8, __c2, 0)) }),
-      ).annotate({
-        identifier: "DisassociateProfileResponse",
-      });
+      ).annotate({ identifier: "DisassociateProfileRequest" });
   }
 }
 function __c11(j: number): any {
@@ -1054,9 +1040,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateResourceFromProfileRequest",
-      });
+      ).annotate({ identifier: "DisassociateResourceFromProfileRequest" });
   }
 }
 function __c12(j: number): any {
@@ -1090,9 +1074,7 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetProfileAssociationRequest",
-      });
+      ).annotate({ identifier: "GetProfileAssociationRequest" });
   }
 }
 function __c14(j: number): any {
@@ -1114,9 +1096,7 @@ function __c14(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetProfileResourceAssociationRequest",
-      });
+      ).annotate({ identifier: "GetProfileResourceAssociationRequest" });
   }
 }
 function __c15(j: number): any {
@@ -1138,20 +1118,16 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListProfileAssociationsRequest",
-      });
+      ).annotate({ identifier: "ListProfileAssociationsRequest" });
     case 1:
-      return S.Array(__S(8, __c2, 0));
+      return S.Array(__S(12, __c3, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           ProfileAssociations: S.optional(__S(61, __c15, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListProfileAssociationsResponse",
-      });
+      ).annotate({ identifier: "ListProfileAssociationsResponse" });
   }
 }
 function __c16(j: number): any {
@@ -1173,20 +1149,16 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListProfileResourceAssociationsRequest",
-      });
+      ).annotate({ identifier: "ListProfileResourceAssociationsRequest" });
     case 1:
-      return S.Array(__S(16, __c4, 0));
+      return S.Array(__S(20, __c5, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           ProfileResourceAssociations: S.optional(__S(65, __c16, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListProfileResourceAssociationsResponse",
-      });
+      ).annotate({ identifier: "ListProfileResourceAssociationsResponse" });
   }
 }
 function __c17(j: number): any {
@@ -1232,9 +1204,7 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: __S(76, __c19, 0) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -1270,9 +1240,7 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TagResourceResponse" });
   }
 }
 function __c22(j: number): any {
@@ -1318,9 +1286,7 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateProfileResourceAssociationRequest",
-      });
+      ).annotate({ identifier: "UpdateProfileResourceAssociationRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

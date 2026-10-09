@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -2027,17 +2027,13 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CancelTraceRetrievalRequest",
-      });
+      ).annotate({ identifier: "CancelTraceRetrievalRequest" });
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelTraceRetrievalResult",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "CancelTraceRetrievalResult" });
   }
 }
 function __c5(j: number): any {
@@ -2107,9 +2103,7 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateSamplingRuleRequest",
-      });
+      ).annotate({ identifier: "CreateSamplingRuleRequest" });
   }
 }
 function __c10(j: number): any {
@@ -2181,9 +2175,7 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteResourcePolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteResourcePolicyRequest" });
   }
 }
 function __c14(j: number): any {
@@ -2200,9 +2192,7 @@ function __c14(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteSamplingRuleRequest",
-      });
+      ).annotate({ identifier: "DeleteSamplingRuleRequest" });
   }
 }
 function __c15(j: number): any {
@@ -2212,9 +2202,7 @@ function __c15(j: number): any {
         S.Struct({}).pipe(
           T.all(T.Http({ method: "POST", uri: "/EncryptionConfig" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetEncryptionConfigRequest",
-      });
+      ).annotate({ identifier: "GetEncryptionConfigRequest" });
   }
 }
 function __c16(j: number): any {
@@ -2230,9 +2218,7 @@ function __c16(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ EncryptionConfig: S.optional(__S(512, __c16, 0)) }),
-      ).annotate({
-        identifier: "GetEncryptionConfigResult",
-      });
+      ).annotate({ identifier: "GetEncryptionConfigResult" });
   }
 }
 function __c17(j: number): any {
@@ -2421,9 +2407,7 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetInsightImpactGraphRequest",
-      });
+      ).annotate({ identifier: "GetInsightImpactGraphRequest" });
     case 1:
       return S.suspend(() => S.Struct({ ReferenceId: S.optional(S.Number) })).annotate({
         identifier: "InsightImpactGraphEdge",
@@ -2440,9 +2424,7 @@ function __c26(j: number): any {
           AccountId: S.optional(S.String),
           Edges: S.optional(__S(834, __c26, 2)),
         }),
-      ).annotate({
-        identifier: "InsightImpactGraphService",
-      });
+      ).annotate({ identifier: "InsightImpactGraphService" });
     case 4:
       return S.Array(__S(835, __c26, 3));
     case 5:
@@ -2456,9 +2438,7 @@ function __c26(j: number): any {
           Services: S.optional(__S(836, __c26, 4)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetInsightImpactGraphResult",
-      });
+      ).annotate({ identifier: "GetInsightImpactGraphResult" });
   }
 }
 function __c27(j: number): any {
@@ -2476,9 +2456,7 @@ function __c27(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/InsightSummaries" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetInsightSummariesRequest",
-      });
+      ).annotate({ identifier: "GetInsightSummariesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2505,9 +2483,7 @@ function __c27(j: number): any {
           InsightSummaries: S.optional(__S(866, __c27, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetInsightSummariesResult",
-      });
+      ).annotate({ identifier: "GetInsightSummariesResult" });
   }
 }
 function __c28(j: number): any {
@@ -2524,9 +2500,7 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetRetrievedTracesGraphRequest",
-      });
+      ).annotate({ identifier: "GetRetrievedTracesGraphRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2553,9 +2527,7 @@ function __c28(j: number): any {
           Services: S.optional(__S(900, __c28, 4)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetRetrievedTracesGraphResult",
-      });
+      ).annotate({ identifier: "GetRetrievedTracesGraphResult" });
   }
 }
 function __c29(j: number): any {
@@ -2670,9 +2642,7 @@ function __c32(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetSamplingStatisticSummariesRequest",
-      });
+      ).annotate({ identifier: "GetSamplingStatisticSummariesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2691,9 +2661,7 @@ function __c32(j: number): any {
           SamplingStatisticSummaries: S.optional(__S(1026, __c32, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetSamplingStatisticSummariesResult",
-      });
+      ).annotate({ identifier: "GetSamplingStatisticSummariesResult" });
   }
 }
 function __c33(j: number): any {
@@ -2708,9 +2676,7 @@ function __c33(j: number): any {
           SampledCount: S.Number,
           BorrowCount: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "SamplingStatisticsDocument",
-      });
+      ).annotate({ identifier: "SamplingStatisticsDocument" });
     case 1:
       return S.Array(__S(1056, __c33, 0));
     case 2:
@@ -2723,9 +2689,7 @@ function __c33(j: number): any {
           TotalCount: S.Number,
           SampledAnomalyCount: S.Number,
         }),
-      ).annotate({
-        identifier: "SamplingBoostStatisticsDocument",
-      });
+      ).annotate({ identifier: "SamplingBoostStatisticsDocument" });
     case 3:
       return S.Array(__S(1058, __c33, 2));
     case 4:
@@ -2736,9 +2700,7 @@ function __c33(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/SamplingTargets" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetSamplingTargetsRequest",
-      });
+      ).annotate({ identifier: "GetSamplingTargetsRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2835,9 +2797,7 @@ function __c36(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetTimeSeriesServiceStatisticsRequest",
-      });
+      ).annotate({ identifier: "GetTimeSeriesServiceStatisticsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ FaultCountHigh: S.optional(S.Number), FaultCountLow: S.optional(S.Number) }),
@@ -2851,9 +2811,7 @@ function __c36(j: number): any {
           ServiceForecastStatistics: S.optional(__S(1153, __c36, 1)),
           ResponseTimeHistogram: S.optional(__S(932, __c29, 4)),
         }),
-      ).annotate({
-        identifier: "TimeSeriesServiceStatistics",
-      });
+      ).annotate({ identifier: "TimeSeriesServiceStatistics" });
     case 3:
       return S.Array(__S(1154, __c36, 2));
     case 4:
@@ -2863,9 +2821,7 @@ function __c36(j: number): any {
           ContainsOldGroupVersions: S.optional(S.Boolean),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetTimeSeriesServiceStatisticsResult",
-      });
+      ).annotate({ identifier: "GetTimeSeriesServiceStatisticsResult" });
   }
 }
 function __c37(j: number): any {
@@ -2896,22 +2852,15 @@ function __c38(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetTraceSegmentDestinationRequest",
-      });
+      ).annotate({ identifier: "GetTraceSegmentDestinationRequest" });
   }
 }
 function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          Destination: S.optional(S.String),
-          Status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetTraceSegmentDestinationResult",
-      });
+        S.Struct({ Destination: S.optional(S.String), Status: S.optional(S.String) }),
+      ).annotate({ identifier: "GetTraceSegmentDestinationResult" });
   }
 }
 function __c40(j: number): any {
@@ -3032,9 +2981,7 @@ function __c40(j: number): any {
           Coverage: S.optional(S.Number),
           Remote: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "ResponseTimeRootCauseEntity",
-      });
+      ).annotate({ identifier: "ResponseTimeRootCauseEntity" });
     case 25:
       return S.Array(__S(1304, __c40, 24));
     case 26:
@@ -3047,9 +2994,7 @@ function __c40(j: number): any {
           EntityPath: S.optional(__S(1305, __c40, 25)),
           Inferred: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "ResponseTimeRootCauseService",
-      });
+      ).annotate({ identifier: "ResponseTimeRootCauseService" });
     case 27:
       return S.Array(__S(1306, __c40, 26));
     case 28:
@@ -3118,9 +3063,7 @@ function __c42(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListResourcePoliciesRequest",
-      });
+      ).annotate({ identifier: "ListResourcePoliciesRequest" });
     case 1:
       return S.Array(__S(1376, __c43, 0));
     case 2:
@@ -3129,9 +3072,7 @@ function __c42(j: number): any {
           ResourcePolicies: S.optional(__S(1345, __c42, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListResourcePoliciesResult",
-      });
+      ).annotate({ identifier: "ListResourcePoliciesResult" });
   }
 }
 function __c43(j: number): any {
@@ -3165,9 +3106,7 @@ function __c44(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListRetrievedTracesRequest",
-      });
+      ).annotate({ identifier: "ListRetrievedTracesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3186,9 +3125,7 @@ function __c44(j: number): any {
           Traces: S.optional(__S(1410, __c44, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListRetrievedTracesResult",
-      });
+      ).annotate({ identifier: "ListRetrievedTracesResult" });
   }
 }
 function __c45(j: number): any {
@@ -3205,15 +3142,11 @@ function __c45(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Tags: S.optional(__S(193, __c6, 1)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
+      ).annotate({ identifier: "ListTagsForResourceResponse" });
   }
 }
 function __c46(j: number): any {
@@ -3230,9 +3163,7 @@ function __c46(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutEncryptionConfigRequest",
-      });
+      ).annotate({ identifier: "PutEncryptionConfigRequest" });
   }
 }
 function __c47(j: number): any {
@@ -3297,9 +3228,7 @@ function __c48(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/TelemetryRecords" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "PutTelemetryRecordsRequest",
-      });
+      ).annotate({ identifier: "PutTelemetryRecordsRequest" });
   }
 }
 function __c49(j: number): any {
@@ -3344,9 +3273,7 @@ function __c50(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartTraceRetrievalRequest",
-      });
+      ).annotate({ identifier: "StartTraceRetrievalRequest" });
     case 1:
       return S.suspend(() => S.Struct({ RetrievalToken: S.optional(S.String) })).annotate({
         identifier: "StartTraceRetrievalResult",
@@ -3408,9 +3335,7 @@ function __c54(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateIndexingRuleRequest",
-      });
+      ).annotate({ identifier: "UpdateIndexingRuleRequest" });
     case 3:
       return S.suspend(() => S.Struct({ IndexingRule: S.optional(__S(642, __c20, 2)) })).annotate({
         identifier: "UpdateIndexingRuleResult",
@@ -3449,9 +3374,7 @@ function __c55(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateSamplingRuleRequest",
-      });
+      ).annotate({ identifier: "UpdateSamplingRuleRequest" });
   }
 }
 function __c56(j: number): any {
@@ -3468,9 +3391,7 @@ function __c56(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateTraceSegmentDestinationRequest",
-      });
+      ).annotate({ identifier: "UpdateTraceSegmentDestinationRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

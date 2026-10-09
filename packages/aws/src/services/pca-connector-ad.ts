@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -802,8 +802,8 @@ export const createConnector: API.OperationMethod<
   CreateConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c27, 0) as any as S.Schema<CreateConnectorRequest>,
-  output: __S(865, __c27, 1) as any as S.Schema<CreateConnectorResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<CreateConnectorRequest>,
+  output: __S(929, __c29, 1) as any as S.Schema<CreateConnectorResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -836,8 +836,8 @@ export const createDirectoryRegistration: API.OperationMethod<
   CreateDirectoryRegistrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c31, 0) as any as S.Schema<CreateDirectoryRegistrationRequest>,
-  output: __S(993, __c31, 1) as any as S.Schema<CreateDirectoryRegistrationResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<CreateDirectoryRegistrationRequest>,
+  output: __S(1057, __c33, 1) as any as S.Schema<CreateDirectoryRegistrationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -870,8 +870,8 @@ export const createServicePrincipalName: API.OperationMethod<
   CreateServicePrincipalNameError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c32, 0) as any as S.Schema<CreateServicePrincipalNameRequest>,
-  output: __S(1056, __c33, 0) as any as S.Schema<CreateServicePrincipalNameResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<CreateServicePrincipalNameRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<CreateServicePrincipalNameResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -940,7 +940,7 @@ export const createTemplateGroupAccessControlEntry: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(64, __c2, 0) as any as S.Schema<CreateTemplateGroupAccessControlEntryRequest>,
-  output: __S(1056, __c33, 0) as any as S.Schema<CreateTemplateGroupAccessControlEntryResponse>,
+  output: __S(1120, __c35, 0) as any as S.Schema<CreateTemplateGroupAccessControlEntryResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -977,7 +977,7 @@ export const deleteConnector: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(128, __c4, 0) as any as S.Schema<DeleteConnectorRequest>,
-  output: __S(160, __c5, 0) as any as S.Schema<DeleteConnectorResponse>,
+  output: __S(1120, __c35, 0) as any as S.Schema<DeleteConnectorResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1008,8 +1008,8 @@ export const deleteDirectoryRegistration: API.OperationMethod<
   DeleteDirectoryRegistrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c6, 0) as any as S.Schema<DeleteDirectoryRegistrationRequest>,
-  output: __S(1056, __c33, 0) as any as S.Schema<DeleteDirectoryRegistrationResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<DeleteDirectoryRegistrationRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<DeleteDirectoryRegistrationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1039,8 +1039,8 @@ export const deleteServicePrincipalName: API.OperationMethod<
   DeleteServicePrincipalNameError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c7, 0) as any as S.Schema<DeleteServicePrincipalNameRequest>,
-  output: __S(1056, __c33, 0) as any as S.Schema<DeleteServicePrincipalNameResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<DeleteServicePrincipalNameRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<DeleteServicePrincipalNameResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1071,8 +1071,8 @@ export const deleteTemplate: API.OperationMethod<
   DeleteTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c8, 0) as any as S.Schema<DeleteTemplateRequest>,
-  output: __S(160, __c5, 0) as any as S.Schema<DeleteTemplateResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<DeleteTemplateRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<DeleteTemplateResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1103,8 +1103,8 @@ export const deleteTemplateGroupAccessControlEntry: API.OperationMethod<
   DeleteTemplateGroupAccessControlEntryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c9, 0) as any as S.Schema<DeleteTemplateGroupAccessControlEntryRequest>,
-  output: __S(1056, __c33, 0) as any as S.Schema<DeleteTemplateGroupAccessControlEntryResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<DeleteTemplateGroupAccessControlEntryRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<DeleteTemplateGroupAccessControlEntryResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1135,8 +1135,8 @@ export const getConnector: API.OperationMethod<
   GetConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c10, 0) as any as S.Schema<GetConnectorRequest>,
-  output: __S(321, __c10, 1) as any as S.Schema<GetConnectorResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetConnectorRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<GetConnectorResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1165,8 +1165,8 @@ export const getDirectoryRegistration: API.OperationMethod<
   GetDirectoryRegistrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c12, 0) as any as S.Schema<GetDirectoryRegistrationRequest>,
-  output: __S(386, __c12, 2) as any as S.Schema<GetDirectoryRegistrationResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetDirectoryRegistrationRequest>,
+  output: __S(353, __c11, 1) as any as S.Schema<GetDirectoryRegistrationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1197,7 +1197,7 @@ export const getServicePrincipalName: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(416, __c13, 0) as any as S.Schema<GetServicePrincipalNameRequest>,
-  output: __S(418, __c13, 2) as any as S.Schema<GetServicePrincipalNameResponse>,
+  output: __S(417, __c13, 1) as any as S.Schema<GetServicePrincipalNameResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1227,8 +1227,8 @@ export const getTemplate: API.OperationMethod<
   GetTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c14, 0) as any as S.Schema<GetTemplateRequest>,
-  output: __S(449, __c14, 1) as any as S.Schema<GetTemplateResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetTemplateRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<GetTemplateResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1257,8 +1257,8 @@ export const getTemplateGroupAccessControlEntry: API.OperationMethod<
   GetTemplateGroupAccessControlEntryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c16, 0) as any as S.Schema<GetTemplateGroupAccessControlEntryRequest>,
-  output: __S(514, __c16, 2) as any as S.Schema<GetTemplateGroupAccessControlEntryResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetTemplateGroupAccessControlEntryRequest>,
+  output: __S(545, __c17, 1) as any as S.Schema<GetTemplateGroupAccessControlEntryResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1287,8 +1287,8 @@ export const listConnectors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ConnectorSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(544, __c17, 0) as any as S.Schema<ListConnectorsRequest>,
-  output: __S(546, __c17, 2) as any as S.Schema<ListConnectorsResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<ListConnectorsRequest>,
+  output: __S(610, __c19, 2) as any as S.Schema<ListConnectorsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1323,8 +1323,8 @@ export const listDirectoryRegistrations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DirectoryRegistrationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(576, __c18, 0) as any as S.Schema<ListDirectoryRegistrationsRequest>,
-  output: __S(579, __c18, 3) as any as S.Schema<ListDirectoryRegistrationsResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<ListDirectoryRegistrationsRequest>,
+  output: __S(642, __c20, 2) as any as S.Schema<ListDirectoryRegistrationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1360,8 +1360,8 @@ export const listServicePrincipalNames: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ServicePrincipalNameSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(608, __c19, 0) as any as S.Schema<ListServicePrincipalNamesRequest>,
-  output: __S(611, __c19, 3) as any as S.Schema<ListServicePrincipalNamesResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<ListServicePrincipalNamesRequest>,
+  output: __S(674, __c21, 2) as any as S.Schema<ListServicePrincipalNamesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1396,8 +1396,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c20, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(641, __c20, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(705, __c22, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1427,8 +1427,8 @@ export const listTemplateGroupAccessControlEntries: API.PaginatedOperationMethod
   Credentials | HttpClient.HttpClient,
   AccessControlEntrySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(672, __c21, 0) as any as S.Schema<ListTemplateGroupAccessControlEntriesRequest>,
-  output: __S(675, __c21, 3) as any as S.Schema<ListTemplateGroupAccessControlEntriesResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<ListTemplateGroupAccessControlEntriesRequest>,
+  output: __S(738, __c23, 2) as any as S.Schema<ListTemplateGroupAccessControlEntriesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1464,8 +1464,8 @@ export const listTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(704, __c22, 0) as any as S.Schema<ListTemplatesRequest>,
-  output: __S(706, __c22, 2) as any as S.Schema<ListTemplatesResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<ListTemplatesRequest>,
+  output: __S(770, __c24, 2) as any as S.Schema<ListTemplatesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1500,8 +1500,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c23, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(160, __c5, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1530,8 +1530,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c24, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(160, __c5, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1561,8 +1561,8 @@ export const updateTemplate: API.OperationMethod<
   UpdateTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c25, 0) as any as S.Schema<UpdateTemplateRequest>,
-  output: __S(160, __c5, 0) as any as S.Schema<UpdateTemplateResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<UpdateTemplateRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<UpdateTemplateResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1593,8 +1593,8 @@ export const updateTemplateGroupAccessControlEntry: API.OperationMethod<
   UpdateTemplateGroupAccessControlEntryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c26, 0) as any as S.Schema<UpdateTemplateGroupAccessControlEntryRequest>,
-  output: __S(1056, __c33, 0) as any as S.Schema<UpdateTemplateGroupAccessControlEntryResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<UpdateTemplateGroupAccessControlEntryRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<UpdateTemplateGroupAccessControlEntryResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1618,7 +1618,7 @@ function __c0(j: number): any {
           Name: S.String,
           Definition: __S(54, __c1, 22),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(960, __c30, 0)),
+          Tags: S.optional(__S(1024, __c32, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/templates" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateTemplateRequest" });
     case 1:
@@ -1642,7 +1642,7 @@ function __c1(j: number): any {
         S.Struct({
           MinimalKeyLength: S.Number,
           KeySpec: S.String,
-          CryptoProviders: S.optional(__S(896, __c28, 0)),
+          CryptoProviders: S.optional(__S(960, __c30, 0)),
         }),
       ).annotate({ identifier: "PrivateKeyAttributesV2" });
     case 3:
@@ -1718,7 +1718,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           CertificateValidity: __S(33, __c1, 1),
-          SupersededTemplates: S.optional(__S(896, __c28, 0)),
+          SupersededTemplates: S.optional(__S(960, __c30, 0)),
           PrivateKeyAttributes: __S(34, __c1, 2),
           PrivateKeyFlags: __S(35, __c1, 3),
           EnrollmentFlags: __S(36, __c1, 4),
@@ -1745,7 +1745,7 @@ function __c1(j: number): any {
         S.Struct({
           MinimalKeyLength: S.Number,
           KeySpec: S.String,
-          CryptoProviders: S.optional(__S(896, __c28, 0)),
+          CryptoProviders: S.optional(__S(960, __c30, 0)),
           KeyUsageProperty: __S(47, __c1, 15),
           Algorithm: S.String,
         }),
@@ -1763,7 +1763,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           CertificateValidity: __S(33, __c1, 1),
-          SupersededTemplates: S.optional(__S(896, __c28, 0)),
+          SupersededTemplates: S.optional(__S(960, __c30, 0)),
           PrivateKeyAttributes: __S(48, __c1, 16),
           PrivateKeyFlags: __S(49, __c1, 17),
           EnrollmentFlags: __S(36, __c1, 4),
@@ -1778,7 +1778,7 @@ function __c1(j: number): any {
         S.Struct({
           MinimalKeyLength: S.Number,
           KeySpec: S.String,
-          CryptoProviders: S.optional(__S(896, __c28, 0)),
+          CryptoProviders: S.optional(__S(960, __c30, 0)),
           KeyUsageProperty: S.optional(__S(47, __c1, 15)),
           Algorithm: S.optional(S.String),
         }),
@@ -1798,7 +1798,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           CertificateValidity: __S(33, __c1, 1),
-          SupersededTemplates: S.optional(__S(896, __c28, 0)),
+          SupersededTemplates: S.optional(__S(960, __c30, 0)),
           PrivateKeyAttributes: __S(51, __c1, 19),
           PrivateKeyFlags: __S(52, __c1, 20),
           EnrollmentFlags: __S(36, __c1, 4),
@@ -1836,9 +1836,7 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateTemplateGroupAccessControlEntryRequest",
-      });
+      ).annotate({ identifier: "CreateTemplateGroupAccessControlEntryRequest" });
   }
 }
 function __c3(j: number): any {
@@ -1869,14 +1867,6 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteConnectorResponse",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           DirectoryRegistrationArn: S.String.pipe(T.HttpLabel("DirectoryRegistrationArn")),
@@ -1890,12 +1880,10 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteDirectoryRegistrationRequest",
-      });
+      ).annotate({ identifier: "DeleteDirectoryRegistrationRequest" });
   }
 }
-function __c7(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1915,12 +1903,10 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteServicePrincipalNameRequest",
-      });
+      ).annotate({ identifier: "DeleteServicePrincipalNameRequest" });
   }
 }
-function __c8(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1937,7 +1923,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "DeleteTemplateRequest" });
   }
 }
-function __c9(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1957,12 +1943,10 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteTemplateGroupAccessControlEntryRequest",
-      });
+      ).annotate({ identifier: "DeleteTemplateGroupAccessControlEntryRequest" });
   }
 }
-function __c10(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1978,12 +1962,12 @@ function __c10(j: number): any {
         ),
       ).annotate({ identifier: "GetConnectorRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ Connector: S.optional(__S(352, __c11, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ Connector: S.optional(__S(320, __c10, 0)) })).annotate({
         identifier: "GetConnectorResponse",
       });
   }
 }
-function __c11(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1992,7 +1976,7 @@ function __c11(j: number): any {
           CertificateAuthorityArn: S.optional(S.String),
           CertificateEnrollmentPolicyServerEndpoint: S.optional(S.String),
           DirectoryId: S.optional(S.String),
-          VpcInformation: S.optional(__S(928, __c29, 0)),
+          VpcInformation: S.optional(__S(992, __c31, 0)),
           Status: S.optional(S.String),
           StatusReason: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -2001,7 +1985,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "Connector" });
   }
 }
-function __c12(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2017,10 +2001,16 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDirectoryRegistrationRequest",
-      });
+      ).annotate({ identifier: "GetDirectoryRegistrationRequest" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({ DirectoryRegistration: S.optional(__S(384, __c12, 0)) }),
+      ).annotate({ identifier: "GetDirectoryRegistrationResponse" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -2031,12 +2021,6 @@ function __c12(j: number): any {
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "DirectoryRegistration" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ DirectoryRegistration: S.optional(__S(385, __c12, 1)) }),
-      ).annotate({
-        identifier: "GetDirectoryRegistrationResponse",
-      });
   }
 }
 function __c13(j: number): any {
@@ -2059,10 +2043,16 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetServicePrincipalNameRequest",
-      });
+      ).annotate({ identifier: "GetServicePrincipalNameRequest" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({ ServicePrincipalName: S.optional(__S(448, __c14, 0)) }),
+      ).annotate({ identifier: "GetServicePrincipalNameResponse" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DirectoryRegistrationArn: S.optional(S.String),
@@ -2073,15 +2063,9 @@ function __c13(j: number): any {
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ServicePrincipalName" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ ServicePrincipalName: S.optional(__S(417, __c13, 1)) }),
-      ).annotate({
-        identifier: "GetServicePrincipalNameResponse",
-      });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2097,12 +2081,12 @@ function __c14(j: number): any {
         ),
       ).annotate({ identifier: "GetTemplateRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ Template: S.optional(__S(481, __c15, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ Template: S.optional(__S(513, __c16, 1)) })).annotate({
         identifier: "GetTemplateResponse",
       });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2118,14 +2102,14 @@ function __c15(j: number): any {
           ObjectIdentifier: S.optional(S.String),
           PolicySchema: S.optional(S.Number),
           Status: S.optional(S.String),
-          Revision: S.optional(__S(480, __c15, 0)),
+          Revision: S.optional(__S(512, __c16, 0)),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Template" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2145,10 +2129,16 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetTemplateGroupAccessControlEntryRequest",
-      });
+      ).annotate({ identifier: "GetTemplateGroupAccessControlEntryRequest" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({ AccessControlEntry: S.optional(__S(576, __c18, 0)) }),
+      ).annotate({ identifier: "GetTemplateGroupAccessControlEntryResponse" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GroupDisplayName: S.optional(S.String),
@@ -2159,15 +2149,9 @@ function __c16(j: number): any {
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "AccessControlEntry" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ AccessControlEntry: S.optional(__S(513, __c16, 1)) }),
-      ).annotate({
-        identifier: "GetTemplateGroupAccessControlEntryResponse",
-      });
   }
 }
-function __c17(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2177,14 +2161,14 @@ function __c17(j: number): any {
         }).pipe(T.all(T.Http({ method: "GET", uri: "/connectors" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListConnectorsRequest" });
     case 1:
-      return S.Array(__S(352, __c11, 0));
+      return S.Array(__S(320, __c10, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ Connectors: S.optional(__S(545, __c17, 1)), NextToken: S.optional(S.String) }),
+        S.Struct({ Connectors: S.optional(__S(609, __c19, 1)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListConnectorsResponse" });
   }
 }
-function __c18(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2201,36 +2185,19 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDirectoryRegistrationsRequest",
-      });
+      ).annotate({ identifier: "ListDirectoryRegistrationsRequest" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.optional(S.String),
-          DirectoryId: S.optional(S.String),
-          Status: S.optional(S.String),
-          StatusReason: S.optional(S.String),
-          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({
-        identifier: "DirectoryRegistrationSummary",
-      });
+      return S.Array(__S(384, __c12, 0));
     case 2:
-      return S.Array(__S(577, __c18, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          DirectoryRegistrations: S.optional(__S(578, __c18, 2)),
+          DirectoryRegistrations: S.optional(__S(641, __c20, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListDirectoryRegistrationsResponse",
-      });
+      ).annotate({ identifier: "ListDirectoryRegistrationsResponse" });
   }
 }
-function __c19(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2251,36 +2218,19 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListServicePrincipalNamesRequest",
-      });
+      ).annotate({ identifier: "ListServicePrincipalNamesRequest" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          DirectoryRegistrationArn: S.optional(S.String),
-          ConnectorArn: S.optional(S.String),
-          Status: S.optional(S.String),
-          StatusReason: S.optional(S.String),
-          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({
-        identifier: "ServicePrincipalNameSummary",
-      });
+      return S.Array(__S(448, __c14, 0));
     case 2:
-      return S.Array(__S(609, __c19, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          ServicePrincipalNames: S.optional(__S(610, __c19, 2)),
+          ServicePrincipalNames: S.optional(__S(673, __c21, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListServicePrincipalNamesResponse",
-      });
+      ).annotate({ identifier: "ListServicePrincipalNamesResponse" });
   }
 }
-function __c20(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2294,16 +2244,14 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(960, __c30, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(1024, __c32, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c21(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2321,36 +2269,19 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTemplateGroupAccessControlEntriesRequest",
-      });
+      ).annotate({ identifier: "ListTemplateGroupAccessControlEntriesRequest" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          GroupDisplayName: S.optional(S.String),
-          GroupSecurityIdentifier: S.optional(S.String),
-          AccessRights: S.optional(__S(96, __c3, 0)),
-          TemplateArn: S.optional(S.String),
-          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({
-        identifier: "AccessControlEntrySummary",
-      });
+      return S.Array(__S(576, __c18, 0));
     case 2:
-      return S.Array(__S(673, __c21, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          AccessControlEntries: S.optional(__S(674, __c21, 2)),
+          AccessControlEntries: S.optional(__S(737, __c23, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListTemplateGroupAccessControlEntriesResponse",
-      });
+      ).annotate({ identifier: "ListTemplateGroupAccessControlEntriesResponse" });
   }
 }
-function __c22(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2361,20 +2292,20 @@ function __c22(j: number): any {
         }).pipe(T.all(T.Http({ method: "GET", uri: "/templates" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListTemplatesRequest" });
     case 1:
-      return S.Array(__S(481, __c15, 1));
+      return S.Array(__S(513, __c16, 1));
     case 2:
       return S.suspend(() =>
-        S.Struct({ Templates: S.optional(__S(705, __c22, 1)), NextToken: S.optional(S.String) }),
+        S.Struct({ Templates: S.optional(__S(769, __c24, 1)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListTemplatesResponse" });
   }
 }
-function __c23(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          Tags: __S(960, __c30, 0),
+          Tags: __S(1024, __c32, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
@@ -2388,13 +2319,13 @@ function __c23(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c24(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: __S(896, __c28, 0).pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(960, __c30, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
@@ -2408,7 +2339,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c25(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2429,7 +2360,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "UpdateTemplateRequest" });
   }
 }
-function __c26(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2451,21 +2382,19 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateTemplateGroupAccessControlEntryRequest",
-      });
+      ).annotate({ identifier: "UpdateTemplateGroupAccessControlEntryRequest" });
   }
 }
-function __c27(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.String,
           CertificateAuthorityArn: S.String,
-          VpcInformation: __S(928, __c29, 0),
+          VpcInformation: __S(992, __c31, 0),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(960, __c30, 0)),
+          Tags: S.optional(__S(1024, __c32, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/connectors" }), svc, auth, proto, ver, rules),
         ),
@@ -2476,34 +2405,34 @@ function __c27(j: number): any {
       });
   }
 }
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ IpAddressType: S.optional(S.String), SecurityGroupIds: __S(896, __c28, 0) }),
-      ).annotate({ identifier: "VpcInformation" });
-  }
-}
 function __c30(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+      return S.Array(S.String);
   }
 }
 function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({ IpAddressType: S.optional(S.String), SecurityGroupIds: __S(960, __c30, 0) }),
+      ).annotate({ identifier: "VpcInformation" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({
           DirectoryId: S.String,
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(960, __c30, 0)),
+          Tags: S.optional(__S(1024, __c32, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/directoryRegistrations" }),
@@ -2514,18 +2443,14 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateDirectoryRegistrationRequest",
-      });
+      ).annotate({ identifier: "CreateDirectoryRegistrationRequest" });
     case 1:
       return S.suspend(() => S.Struct({ DirectoryRegistrationArn: S.optional(S.String) })).annotate(
-        {
-          identifier: "CreateDirectoryRegistrationResponse",
-        },
+        { identifier: "CreateDirectoryRegistrationResponse" },
       );
   }
 }
-function __c32(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2546,12 +2471,10 @@ function __c32(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateServicePrincipalNameRequest",
-      });
+      ).annotate({ identifier: "CreateServicePrincipalNameRequest" });
   }
 }
-function __c33(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({

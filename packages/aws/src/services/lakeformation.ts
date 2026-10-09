@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1443,7 +1443,7 @@ export const createLakeFormationOptIn: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(216, __c27, 0) as any as S.Schema<CreateLakeFormationOptInRequest>,
-  output: __S(224, __c28, 0) as any as S.Schema<CreateLakeFormationOptInResponse>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateLakeFormationOptInResponse>,
   errors: [
     AccessDeniedException,
     ConcurrentModificationException,
@@ -1476,7 +1476,7 @@ export const createLFTag: API.OperationMethod<
   CreateLFTagError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<CreateLFTagRequest>,
+  input: __S(224, __c28, 0) as any as S.Schema<CreateLFTagRequest>,
   output: __S(8, __c1, 0) as any as S.Schema<CreateLFTagResponse>,
   errors: [
     AccessDeniedException,
@@ -1516,7 +1516,7 @@ export const createLFTagExpression: API.OperationMethod<
   CreateLFTagExpressionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<CreateLFTagExpressionRequest>,
+  input: __S(232, __c29, 0) as any as S.Schema<CreateLFTagExpressionRequest>,
   output: __S(8, __c1, 0) as any as S.Schema<CreateLFTagExpressionResponse>,
   errors: [
     AccessDeniedException,
@@ -1547,7 +1547,7 @@ export const deleteDataCellsFilter: API.OperationMethod<
   DeleteDataCellsFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<DeleteDataCellsFilterRequest>,
+  input: __S(240, __c30, 0) as any as S.Schema<DeleteDataCellsFilterRequest>,
   output: __S(8, __c1, 0) as any as S.Schema<DeleteDataCellsFilterResponse>,
   errors: [
     AccessDeniedException,
@@ -1579,13 +1579,13 @@ export const deleteLakeFormationIdentityCenterConfiguration: API.OperationMethod
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    256,
-    __c32,
+    248,
+    __c31,
     0,
   ) as any as S.Schema<DeleteLakeFormationIdentityCenterConfigurationRequest>,
   output: __S(
-    224,
-    __c28,
+    8,
+    __c1,
     0,
   ) as any as S.Schema<DeleteLakeFormationIdentityCenterConfigurationResponse>,
   errors: [
@@ -1619,8 +1619,8 @@ export const deleteLakeFormationOptIn: API.OperationMethod<
   DeleteLakeFormationOptInError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<DeleteLakeFormationOptInRequest>,
-  output: __S(224, __c28, 0) as any as S.Schema<DeleteLakeFormationOptInResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<DeleteLakeFormationOptInRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteLakeFormationOptInResponse>,
   errors: [
     AccessDeniedException,
     ConcurrentModificationException,
@@ -1657,7 +1657,7 @@ export const deleteLFTag: API.OperationMethod<
   DeleteLFTagError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<DeleteLFTagRequest>,
+  input: __S(264, __c33, 0) as any as S.Schema<DeleteLFTagRequest>,
   output: __S(8, __c1, 0) as any as S.Schema<DeleteLFTagResponse>,
   errors: [
     AccessDeniedException,
@@ -1688,7 +1688,7 @@ export const deleteLFTagExpression: API.OperationMethod<
   DeleteLFTagExpressionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<DeleteLFTagExpressionRequest>,
+  input: __S(272, __c34, 0) as any as S.Schema<DeleteLFTagExpressionRequest>,
   output: __S(8, __c1, 0) as any as S.Schema<DeleteLFTagExpressionResponse>,
   errors: [
     AccessDeniedException,
@@ -1726,7 +1726,7 @@ export const deleteObjectsOnCancel: API.OperationMethod<
   DeleteObjectsOnCancelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(290, __c36, 2) as any as S.Schema<DeleteObjectsOnCancelRequest>,
+  input: __S(282, __c35, 2) as any as S.Schema<DeleteObjectsOnCancelRequest>,
   output: __S(8, __c1, 0) as any as S.Schema<DeleteObjectsOnCancelResponse>,
   errors: [
     ConcurrentModificationException,
@@ -1761,7 +1761,7 @@ export const deregisterResource: API.OperationMethod<
   DeregisterResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<DeregisterResourceRequest>,
+  input: __S(288, __c36, 0) as any as S.Schema<DeregisterResourceRequest>,
   output: __S(8, __c1, 0) as any as S.Schema<DeregisterResourceResponse>,
   errors: [
     EntityNotFoundException,
@@ -1792,13 +1792,13 @@ export const describeLakeFormationIdentityCenterConfiguration: API.OperationMeth
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    304,
-    __c38,
+    296,
+    __c37,
     0,
   ) as any as S.Schema<DescribeLakeFormationIdentityCenterConfigurationRequest>,
   output: __S(
-    305,
-    __c38,
+    297,
+    __c37,
     1,
   ) as any as S.Schema<DescribeLakeFormationIdentityCenterConfigurationResponse>,
   errors: [
@@ -1828,8 +1828,8 @@ export const describeResource: API.OperationMethod<
   DescribeResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<DescribeResourceRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<DescribeResourceResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<DescribeResourceRequest>,
+  output: __S(305, __c38, 1) as any as S.Schema<DescribeResourceResponse>,
   errors: [
     EntityNotFoundException,
     InternalServiceException,
@@ -1856,8 +1856,8 @@ export const describeTransaction: API.OperationMethod<
   DescribeTransactionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<DescribeTransactionRequest>,
-  output: __S(329, __c41, 1) as any as S.Schema<DescribeTransactionResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<DescribeTransactionRequest>,
+  output: __S(321, __c40, 1) as any as S.Schema<DescribeTransactionResponse>,
   errors: [
     EntityNotFoundException,
     InternalServiceException,
@@ -1889,7 +1889,7 @@ export const extendTransaction: API.OperationMethod<
   ExtendTransactionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<ExtendTransactionRequest>,
+  input: __S(336, __c42, 0) as any as S.Schema<ExtendTransactionRequest>,
   output: __S(8, __c1, 0) as any as S.Schema<ExtendTransactionResponse>,
   errors: [
     EntityNotFoundException,
@@ -1921,8 +1921,8 @@ export const getDataCellsFilter: API.OperationMethod<
   GetDataCellsFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<GetDataCellsFilterRequest>,
-  output: __S(353, __c44, 1) as any as S.Schema<GetDataCellsFilterResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<GetDataCellsFilterRequest>,
+  output: __S(345, __c43, 1) as any as S.Schema<GetDataCellsFilterResponse>,
   errors: [
     AccessDeniedException,
     EntityNotFoundException,
@@ -1949,8 +1949,8 @@ export const getDataLakePrincipal: API.OperationMethod<
   GetDataLakePrincipalError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<GetDataLakePrincipalRequest>,
-  output: __S(361, __c45, 1) as any as S.Schema<GetDataLakePrincipalResponse>,
+  input: __S(352, __c44, 0) as any as S.Schema<GetDataLakePrincipalRequest>,
+  output: __S(353, __c44, 1) as any as S.Schema<GetDataLakePrincipalResponse>,
   errors: [AccessDeniedException, InternalServiceException, OperationTimeoutException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1971,8 +1971,8 @@ export const getDataLakeSettings: API.OperationMethod<
   GetDataLakeSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<GetDataLakeSettingsRequest>,
-  output: __S(369, __c46, 1) as any as S.Schema<GetDataLakeSettingsResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<GetDataLakeSettingsRequest>,
+  output: __S(361, __c45, 1) as any as S.Schema<GetDataLakeSettingsResponse>,
   errors: [EntityNotFoundException, InternalServiceException, InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1996,8 +1996,8 @@ export const getEffectivePermissionsForPath: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<GetEffectivePermissionsForPathRequest>,
-  output: __S(393, __c49, 1) as any as S.Schema<GetEffectivePermissionsForPathResponse>,
+  input: __S(384, __c48, 0) as any as S.Schema<GetEffectivePermissionsForPathRequest>,
+  output: __S(385, __c48, 1) as any as S.Schema<GetEffectivePermissionsForPathResponse>,
   errors: [
     EntityNotFoundException,
     InternalServiceException,
@@ -2030,8 +2030,8 @@ export const getLFTag: API.OperationMethod<
   GetLFTagError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(408, __c51, 0) as any as S.Schema<GetLFTagRequest>,
-  output: __S(409, __c51, 1) as any as S.Schema<GetLFTagResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<GetLFTagRequest>,
+  output: __S(401, __c50, 1) as any as S.Schema<GetLFTagResponse>,
   errors: [
     AccessDeniedException,
     EntityNotFoundException,
@@ -2060,8 +2060,8 @@ export const getLFTagExpression: API.OperationMethod<
   GetLFTagExpressionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<GetLFTagExpressionRequest>,
-  output: __S(417, __c52, 1) as any as S.Schema<GetLFTagExpressionResponse>,
+  input: __S(408, __c51, 0) as any as S.Schema<GetLFTagExpressionRequest>,
+  output: __S(416, __c52, 0) as any as S.Schema<GetLFTagExpressionResponse>,
   errors: [
     AccessDeniedException,
     EntityNotFoundException,
@@ -2240,7 +2240,7 @@ export const getTemporaryDataLocationCredentials: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(464, __c58, 0) as any as S.Schema<GetTemporaryDataLocationCredentialsRequest>,
-  output: __S(466, __c58, 2) as any as S.Schema<GetTemporaryDataLocationCredentialsResponse>,
+  output: __S(465, __c58, 1) as any as S.Schema<GetTemporaryDataLocationCredentialsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2511,7 +2511,7 @@ export const listLFTagExpressions: API.PaginatedOperationMethod<
   LFTagExpression
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(536, __c67, 0) as any as S.Schema<ListLFTagExpressionsRequest>,
-  output: __S(539, __c67, 3) as any as S.Schema<ListLFTagExpressionsResponse>,
+  output: __S(538, __c67, 2) as any as S.Schema<ListLFTagExpressionsResponse>,
   errors: [
     AccessDeniedException,
     EntityNotFoundException,
@@ -3015,8 +3015,8 @@ export const updateLakeFormationIdentityCenterConfiguration: API.OperationMethod
     0,
   ) as any as S.Schema<UpdateLakeFormationIdentityCenterConfigurationRequest>,
   output: __S(
-    224,
-    __c28,
+    8,
+    __c1,
     0,
   ) as any as S.Schema<UpdateLakeFormationIdentityCenterConfigurationResponse>,
   errors: [
@@ -3210,17 +3210,13 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AddLFTagsToResourceRequest",
-      });
+      ).annotate({ identifier: "AddLFTagsToResourceRequest" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TableWildcard",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TableWildcard" });
   }
 }
 function __c2(j: number): any {
@@ -3381,9 +3377,7 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssumeDecoratedRoleWithSAMLRequest",
-      });
+      ).annotate({ identifier: "AssumeDecoratedRoleWithSAMLRequest" });
   }
 }
 function __c13(j: number): any {
@@ -3396,9 +3390,7 @@ function __c13(j: number): any {
           SessionToken: S.optional(SensitiveString),
           Expiration: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "AssumeDecoratedRoleWithSAMLResponse",
-      });
+      ).annotate({ identifier: "AssumeDecoratedRoleWithSAMLResponse" });
   }
 }
 function __c14(j: number): any {
@@ -3415,9 +3407,7 @@ function __c14(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchGrantPermissionsRequest",
-      });
+      ).annotate({ identifier: "BatchGrantPermissionsRequest" });
   }
 }
 function __c15(j: number): any {
@@ -3432,9 +3422,7 @@ function __c15(j: number): any {
           Condition: S.optional(__S(136, __c17, 0)),
           PermissionsWithGrantOption: S.optional(__S(144, __c18, 0)),
         }),
-      ).annotate({
-        identifier: "BatchPermissionsRequestEntry",
-      });
+      ).annotate({ identifier: "BatchPermissionsRequestEntry" });
     case 1:
       return S.Array(__S(120, __c15, 0));
     case 2:
@@ -3443,9 +3431,7 @@ function __c15(j: number): any {
           RequestEntry: S.optional(__S(120, __c15, 0)),
           Error: S.optional(__S(72, __c9, 0)),
         }),
-      ).annotate({
-        identifier: "BatchPermissionsFailureEntry",
-      });
+      ).annotate({ identifier: "BatchPermissionsFailureEntry" });
     case 3:
       return S.Array(__S(122, __c15, 2));
     case 4:
@@ -3490,9 +3476,7 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchRevokePermissionsRequest",
-      });
+      ).annotate({ identifier: "BatchRevokePermissionsRequest" });
   }
 }
 function __c20(j: number): any {
@@ -3547,9 +3531,7 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateDataCellsFilterRequest",
-      });
+      ).annotate({ identifier: "CreateDataCellsFilterRequest" });
   }
 }
 function __c23(j: number): any {
@@ -3596,9 +3578,7 @@ function __c24(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateLakeFormationIdentityCenterConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateLakeFormationIdentityCenterConfigurationRequest" });
     case 1:
       return S.suspend(() => S.Struct({ ApplicationArn: S.optional(S.String) })).annotate({
         identifier: "CreateLakeFormationIdentityCenterConfigurationResponse",
@@ -3616,9 +3596,7 @@ function __c26(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ Status: S.String, AuthorizedTargets: __S(16, __c2, 0) }),
-      ).annotate({
-        identifier: "ExternalFilteringConfiguration",
-      });
+      ).annotate({ identifier: "ExternalFilteringConfiguration" });
     case 1:
       return S.suspend(() => S.Struct({ Authorization: S.String })).annotate({
         identifier: "RedshiftConnect",
@@ -3651,20 +3629,10 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateLakeFormationOptInRequest",
-      });
+      ).annotate({ identifier: "CreateLakeFormationOptInRequest" });
   }
 }
 function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateLakeFormationOptInResponse",
-      });
-  }
-}
-function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3678,7 +3646,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "CreateLFTagRequest" });
   }
 }
-function __c30(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3697,12 +3665,10 @@ function __c30(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateLFTagExpressionRequest",
-      });
+      ).annotate({ identifier: "CreateLFTagExpressionRequest" });
   }
 }
-function __c31(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3721,12 +3687,10 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteDataCellsFilterRequest",
-      });
+      ).annotate({ identifier: "DeleteDataCellsFilterRequest" });
   }
 }
-function __c32(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3740,12 +3704,10 @@ function __c32(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteLakeFormationIdentityCenterConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteLakeFormationIdentityCenterConfigurationRequest" });
   }
 }
-function __c33(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3763,12 +3725,10 @@ function __c33(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteLakeFormationOptInRequest",
-      });
+      ).annotate({ identifier: "DeleteLakeFormationOptInRequest" });
   }
 }
-function __c34(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3778,7 +3738,7 @@ function __c34(j: number): any {
       ).annotate({ identifier: "DeleteLFTagRequest" });
   }
 }
-function __c35(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3792,19 +3752,17 @@ function __c35(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteLFTagExpressionRequest",
-      });
+      ).annotate({ identifier: "DeleteLFTagExpressionRequest" });
   }
 }
-function __c36(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Uri: S.String, ETag: S.optional(S.String) })).annotate({
         identifier: "VirtualObject",
       });
     case 1:
-      return S.Array(__S(288, __c36, 0));
+      return S.Array(__S(280, __c35, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3812,7 +3770,7 @@ function __c36(j: number): any {
           DatabaseName: S.String,
           TableName: S.String,
           TransactionId: S.String,
-          Objects: __S(289, __c36, 1),
+          Objects: __S(281, __c35, 1),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/DeleteObjectsOnCancel" }),
@@ -3823,12 +3781,10 @@ function __c36(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteObjectsOnCancelRequest",
-      });
+      ).annotate({ identifier: "DeleteObjectsOnCancelRequest" });
   }
 }
-function __c37(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3842,12 +3798,10 @@ function __c37(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeregisterResourceRequest",
-      });
+      ).annotate({ identifier: "DeregisterResourceRequest" });
   }
 }
-function __c38(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3861,9 +3815,7 @@ function __c38(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeLakeFormationIdentityCenterConfigurationRequest",
-      });
+      ).annotate({ identifier: "DescribeLakeFormationIdentityCenterConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3875,12 +3827,10 @@ function __c38(j: number): any {
           ServiceIntegrations: S.optional(__S(213, __c26, 5)),
           ResourceShare: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeLakeFormationIdentityCenterConfigurationResponse",
-      });
+      ).annotate({ identifier: "DescribeLakeFormationIdentityCenterConfigurationResponse" });
   }
 }
-function __c39(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3889,12 +3839,12 @@ function __c39(j: number): any {
         ),
       ).annotate({ identifier: "DescribeResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ ResourceInfo: S.optional(__S(320, __c40, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ ResourceInfo: S.optional(__S(312, __c39, 0)) })).annotate({
         identifier: "DescribeResourceResponse",
       });
   }
 }
-function __c40(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3911,7 +3861,7 @@ function __c40(j: number): any {
       ).annotate({ identifier: "ResourceInfo" });
   }
 }
-function __c41(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3925,18 +3875,14 @@ function __c41(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeTransactionRequest",
-      });
+      ).annotate({ identifier: "DescribeTransactionRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ TransactionDescription: S.optional(__S(336, __c42, 0)) }),
-      ).annotate({
-        identifier: "DescribeTransactionResponse",
-      });
+        S.Struct({ TransactionDescription: S.optional(__S(328, __c41, 0)) }),
+      ).annotate({ identifier: "DescribeTransactionResponse" });
   }
 }
-function __c42(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3949,7 +3895,7 @@ function __c42(j: number): any {
       ).annotate({ identifier: "TransactionDescription" });
   }
 }
-function __c43(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3966,7 +3912,7 @@ function __c43(j: number): any {
       ).annotate({ identifier: "ExtendTransactionRequest" });
   }
 }
-function __c44(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3985,18 +3931,14 @@ function __c44(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDataCellsFilterRequest",
-      });
+      ).annotate({ identifier: "GetDataCellsFilterRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ DataCellsFilter: S.optional(__S(185, __c23, 1)) }),
-      ).annotate({
-        identifier: "GetDataCellsFilterResponse",
-      });
+      ).annotate({ identifier: "GetDataCellsFilterResponse" });
   }
 }
-function __c45(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4010,16 +3952,14 @@ function __c45(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDataLakePrincipalRequest",
-      });
+      ).annotate({ identifier: "GetDataLakePrincipalRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Identity: S.optional(S.String) })).annotate({
         identifier: "GetDataLakePrincipalResponse",
       });
   }
 }
-function __c46(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4033,24 +3973,20 @@ function __c46(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDataLakeSettingsRequest",
-      });
+      ).annotate({ identifier: "GetDataLakeSettingsRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ DataLakeSettings: S.optional(__S(386, __c48, 2)) }),
-      ).annotate({
-        identifier: "GetDataLakeSettingsResponse",
-      });
+        S.Struct({ DataLakeSettings: S.optional(__S(378, __c47, 2)) }),
+      ).annotate({ identifier: "GetDataLakeSettingsResponse" });
   }
 }
-function __c47(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c48(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4060,15 +3996,15 @@ function __c48(j: number): any {
         }),
       ).annotate({ identifier: "PrincipalPermissions" });
     case 1:
-      return S.Array(__S(384, __c48, 0));
+      return S.Array(__S(376, __c47, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           DataLakeAdmins: S.optional(__S(200, __c25, 0)),
           ReadOnlyAdmins: S.optional(__S(200, __c25, 0)),
-          CreateDatabaseDefaultPermissions: S.optional(__S(385, __c48, 1)),
-          CreateTableDefaultPermissions: S.optional(__S(385, __c48, 1)),
-          Parameters: S.optional(__S(376, __c47, 0)),
+          CreateDatabaseDefaultPermissions: S.optional(__S(377, __c47, 1)),
+          CreateTableDefaultPermissions: S.optional(__S(377, __c47, 1)),
+          Parameters: S.optional(__S(368, __c46, 0)),
           TrustedResourceOwners: S.optional(__S(16, __c2, 0)),
           AllowExternalDataFiltering: S.optional(S.Boolean),
           AllowFullTableExternalDataAccess: S.optional(S.Boolean),
@@ -4078,7 +4014,7 @@ function __c48(j: number): any {
       ).annotate({ identifier: "DataLakeSettings" });
   }
 }
-function __c49(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4097,21 +4033,14 @@ function __c49(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetEffectivePermissionsForPathRequest",
-      });
+      ).annotate({ identifier: "GetEffectivePermissionsForPathRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          Permissions: S.optional(__S(402, __c50, 2)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetEffectivePermissionsForPathResponse",
-      });
+        S.Struct({ Permissions: S.optional(__S(394, __c49, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "GetEffectivePermissionsForPathResponse" });
   }
 }
-function __c50(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ ResourceShare: S.optional(__S(16, __c2, 0)) })).annotate({
@@ -4125,18 +4054,16 @@ function __c50(j: number): any {
           Condition: S.optional(__S(136, __c17, 0)),
           Permissions: S.optional(__S(144, __c18, 0)),
           PermissionsWithGrantOption: S.optional(__S(144, __c18, 0)),
-          AdditionalDetails: S.optional(__S(400, __c50, 0)),
+          AdditionalDetails: S.optional(__S(392, __c49, 0)),
           LastUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedBy: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "PrincipalResourcePermissions",
-      });
+      ).annotate({ identifier: "PrincipalResourcePermissions" });
     case 2:
-      return S.Array(__S(401, __c50, 1));
+      return S.Array(__S(393, __c49, 1));
   }
 }
-function __c51(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4154,7 +4081,7 @@ function __c51(j: number): any {
       ).annotate({ identifier: "GetLFTagResponse" });
   }
 }
-function __c52(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4168,10 +4095,12 @@ function __c52(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetLFTagExpressionRequest",
-      });
-    case 1:
+      ).annotate({ identifier: "GetLFTagExpressionRequest" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -4179,9 +4108,7 @@ function __c52(j: number): any {
           CatalogId: S.optional(S.String),
           Expression: S.optional(__S(33, __c4, 1)),
         }),
-      ).annotate({
-        identifier: "GetLFTagExpressionResponse",
-      });
+      ).annotate({ identifier: "GetLFTagExpressionResponse" });
   }
 }
 function __c53(j: number): any {
@@ -4212,9 +4139,7 @@ function __c54(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetQueryStatisticsRequest",
-      });
+      ).annotate({ identifier: "GetQueryStatisticsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4239,9 +4164,7 @@ function __c54(j: number): any {
           PlanningStatistics: S.optional(__S(434, __c54, 2)),
           QuerySubmissionTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "GetQueryStatisticsResponse",
-      });
+      ).annotate({ identifier: "GetQueryStatisticsResponse" });
   }
 }
 function __c55(j: number): any {
@@ -4270,9 +4193,7 @@ function __c55(j: number): any {
           LFTagsOnTable: S.optional(__S(80, __c10, 0)),
           LFTagsOnColumns: S.optional(__S(449, __c56, 1)),
         }),
-      ).annotate({
-        identifier: "GetResourceLFTagsResponse",
-      });
+      ).annotate({ identifier: "GetResourceLFTagsResponse" });
   }
 }
 function __c56(j: number): any {
@@ -4346,28 +4267,15 @@ function __c58(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetTemporaryDataLocationCredentialsRequest",
-      });
+      ).annotate({ identifier: "GetTemporaryDataLocationCredentialsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          AccessKeyId: S.optional(S.String),
-          SecretAccessKey: S.optional(SensitiveString),
-          SessionToken: S.optional(SensitiveString),
-          Expiration: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "TemporaryCredentials" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Credentials: S.optional(__S(465, __c58, 1)),
+          Credentials: S.optional(__S(104, __c13, 0)),
           AccessibleDataLocations: S.optional(__S(16, __c2, 0)),
           CredentialsScope: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetTemporaryDataLocationCredentialsResponse",
-      });
+      ).annotate({ identifier: "GetTemporaryDataLocationCredentialsResponse" });
   }
 }
 function __c59(j: number): any {
@@ -4403,9 +4311,7 @@ function __c60(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetTemporaryGluePartitionCredentialsRequest",
-      });
+      ).annotate({ identifier: "GetTemporaryGluePartitionCredentialsRequest" });
   }
 }
 function __c61(j: number): any {
@@ -4417,7 +4323,7 @@ function __c61(j: number): any {
           QueryStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ClusterId: S.optional(S.String),
           QueryAuthorizationId: S.optional(S.String),
-          AdditionalContext: S.optional(__S(376, __c47, 0)),
+          AdditionalContext: S.optional(__S(368, __c46, 0)),
         }),
       ).annotate({ identifier: "QuerySessionContext" });
     case 1:
@@ -4440,9 +4346,7 @@ function __c61(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetTemporaryGlueTableCredentialsRequest",
-      });
+      ).annotate({ identifier: "GetTemporaryGlueTableCredentialsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4452,9 +4356,7 @@ function __c61(j: number): any {
           Expiration: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           VendedS3Path: S.optional(__S(16, __c2, 0)),
         }),
-      ).annotate({
-        identifier: "GetTemporaryGlueTableCredentialsResponse",
-      });
+      ).annotate({ identifier: "GetTemporaryGlueTableCredentialsResponse" });
   }
 }
 function __c62(j: number): any {
@@ -4471,15 +4373,11 @@ function __c62(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetWorkUnitResultsRequest",
-      });
+      ).annotate({ identifier: "GetWorkUnitResultsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ResultStream: S.optional(T.StreamingOutput).pipe(T.HttpPayload()) }),
-      ).annotate({
-        identifier: "GetWorkUnitResultsResponse",
-      });
+      ).annotate({ identifier: "GetWorkUnitResultsResponse" });
   }
 }
 function __c63(j: number): any {
@@ -4545,9 +4443,7 @@ function __c65(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDataCellsFilterRequest",
-      });
+      ).annotate({ identifier: "ListDataCellsFilterRequest" });
     case 1:
       return S.Array(__S(185, __c23, 1));
     case 2:
@@ -4556,9 +4452,7 @@ function __c65(j: number): any {
           DataCellsFilters: S.optional(__S(521, __c65, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListDataCellsFilterResponse",
-      });
+      ).annotate({ identifier: "ListDataCellsFilterResponse" });
   }
 }
 function __c66(j: number): any {
@@ -4580,9 +4474,7 @@ function __c66(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListLakeFormationOptInsRequest",
-      });
+      ).annotate({ identifier: "ListLakeFormationOptInsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4601,9 +4493,7 @@ function __c66(j: number): any {
           LakeFormationOptInsInfoList: S.optional(__S(530, __c66, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListLakeFormationOptInsResponse",
-      });
+      ).annotate({ identifier: "ListLakeFormationOptInsResponse" });
   }
 }
 function __c67(j: number): any {
@@ -4624,29 +4514,16 @@ function __c67(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListLFTagExpressionsRequest",
-      });
+      ).annotate({ identifier: "ListLFTagExpressionsRequest" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Description: S.optional(S.String),
-          CatalogId: S.optional(S.String),
-          Expression: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "LFTagExpression" });
+      return S.Array(__S(416, __c52, 0));
     case 2:
-      return S.Array(__S(537, __c67, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          LFTagExpressions: S.optional(__S(538, __c67, 2)),
+          LFTagExpressions: S.optional(__S(537, __c67, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListLFTagExpressionsResponse",
-      });
+      ).annotate({ identifier: "ListLFTagExpressionsResponse" });
   }
 }
 function __c68(j: number): any {
@@ -4687,7 +4564,7 @@ function __c69(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          PrincipalResourcePermissions: S.optional(__S(402, __c50, 2)),
+          PrincipalResourcePermissions: S.optional(__S(394, __c49, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPermissionsResponse" });
@@ -4716,7 +4593,7 @@ function __c70(j: number): any {
         ),
       ).annotate({ identifier: "ListResourcesRequest" });
     case 3:
-      return S.Array(__S(320, __c40, 0));
+      return S.Array(__S(312, __c39, 0));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4747,14 +4624,12 @@ function __c71(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTableStorageOptimizersRequest",
-      });
+      ).annotate({ identifier: "ListTableStorageOptimizersRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           StorageOptimizerType: S.optional(S.String),
-          Config: S.optional(__S(376, __c47, 0)),
+          Config: S.optional(__S(368, __c46, 0)),
           ErrorMessage: S.optional(S.String),
           Warnings: S.optional(S.String),
           LastRunDetails: S.optional(S.String),
@@ -4768,9 +4643,7 @@ function __c71(j: number): any {
           StorageOptimizerList: S.optional(__S(570, __c71, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListTableStorageOptimizersResponse",
-      });
+      ).annotate({ identifier: "ListTableStorageOptimizersResponse" });
   }
 }
 function __c72(j: number): any {
@@ -4787,13 +4660,10 @@ function __c72(j: number): any {
         ),
       ).annotate({ identifier: "ListTransactionsRequest" });
     case 1:
-      return S.Array(__S(336, __c42, 0));
+      return S.Array(__S(328, __c41, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          Transactions: S.optional(__S(577, __c72, 1)),
-          NextToken: S.optional(S.String),
-        }),
+        S.Struct({ Transactions: S.optional(__S(577, __c72, 1)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListTransactionsResponse" });
   }
 }
@@ -4801,7 +4671,7 @@ function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ CatalogId: S.optional(S.String), DataLakeSettings: __S(386, __c48, 2) }).pipe(
+        S.Struct({ CatalogId: S.optional(S.String), DataLakeSettings: __S(378, __c47, 2) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/PutDataLakeSettings" }),
             svc,
@@ -4811,9 +4681,7 @@ function __c73(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutDataLakeSettingsRequest",
-      });
+      ).annotate({ identifier: "PutDataLakeSettingsRequest" });
   }
 }
 function __c74(j: number): any {
@@ -4852,9 +4720,7 @@ function __c75(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RemoveLFTagsFromResourceRequest",
-      });
+      ).annotate({ identifier: "RemoveLFTagsFromResourceRequest" });
   }
 }
 function __c76(j: number): any {
@@ -4900,9 +4766,7 @@ function __c77(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SearchDatabasesByLFTagsRequest",
-      });
+      ).annotate({ identifier: "SearchDatabasesByLFTagsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Database: S.optional(__S(64, __c8, 0)), LFTags: S.optional(__S(80, __c10, 0)) }),
@@ -4912,9 +4776,7 @@ function __c77(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), DatabaseList: S.optional(__S(618, __c77, 2)) }),
-      ).annotate({
-        identifier: "SearchDatabasesByLFTagsResponse",
-      });
+      ).annotate({ identifier: "SearchDatabasesByLFTagsResponse" });
   }
 }
 function __c78(j: number): any {
@@ -4936,9 +4798,7 @@ function __c78(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SearchTablesByLFTagsRequest",
-      });
+      ).annotate({ identifier: "SearchTablesByLFTagsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4953,9 +4813,7 @@ function __c78(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), TableList: S.optional(__S(626, __c78, 2)) }),
-      ).annotate({
-        identifier: "SearchTablesByLFTagsResponse",
-      });
+      ).annotate({ identifier: "SearchTablesByLFTagsResponse" });
   }
 }
 function __c79(j: number): any {
@@ -4966,7 +4824,7 @@ function __c79(j: number): any {
           CatalogId: S.optional(S.String),
           DatabaseName: S.String,
           QueryAsOfTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          QueryParameters: S.optional(__S(376, __c47, 0)),
+          QueryParameters: S.optional(__S(368, __c46, 0)),
           TransactionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "QueryPlanningContext" });
@@ -4982,9 +4840,7 @@ function __c79(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartQueryPlanningRequest",
-      });
+      ).annotate({ identifier: "StartQueryPlanningRequest" });
     case 2:
       return S.suspend(() => S.Struct({ QueryId: S.String })).annotate({
         identifier: "StartQueryPlanningResponse",
@@ -5019,9 +4875,7 @@ function __c81(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateDataCellsFilterRequest",
-      });
+      ).annotate({ identifier: "UpdateDataCellsFilterRequest" });
   }
 }
 function __c82(j: number): any {
@@ -5044,9 +4898,7 @@ function __c82(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateLakeFormationIdentityCenterConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateLakeFormationIdentityCenterConfigurationRequest" });
   }
 }
 function __c83(j: number): any {
@@ -5083,9 +4935,7 @@ function __c84(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateLFTagExpressionRequest",
-      });
+      ).annotate({ identifier: "UpdateLFTagExpressionRequest" });
   }
 }
 function __c85(j: number): any {
@@ -5150,15 +5000,13 @@ function __c86(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateTableObjectsRequest",
-      });
+      ).annotate({ identifier: "UpdateTableObjectsRequest" });
   }
 }
 function __c87(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ __S(376, __c47, 0).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(368, __c46, 0).pipe(S.optional));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5176,9 +5024,7 @@ function __c87(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateTableStorageOptimizerRequest",
-      });
+      ).annotate({ identifier: "UpdateTableStorageOptimizerRequest" });
     case 2:
       return S.suspend(() => S.Struct({ Result: S.optional(S.String) })).annotate({
         identifier: "UpdateTableStorageOptimizerResponse",

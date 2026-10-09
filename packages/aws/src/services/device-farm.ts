@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1724,7 +1724,7 @@ export const deleteDevicePool: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(272, __c34, 0) as any as S.Schema<DeleteDevicePoolRequest>,
-  output: __S(273, __c34, 1) as any as S.Schema<DeleteDevicePoolResult>,
+  output: __S(280, __c35, 0) as any as S.Schema<DeleteDevicePoolResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1746,8 +1746,8 @@ export const deleteInstanceProfile: API.OperationMethod<
   DeleteInstanceProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<DeleteInstanceProfileRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<DeleteInstanceProfileResult>,
+  input: __S(288, __c36, 0) as any as S.Schema<DeleteInstanceProfileRequest>,
+  output: __S(280, __c35, 0) as any as S.Schema<DeleteInstanceProfileResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1770,7 +1770,7 @@ export const deleteNetworkProfile: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(296, __c37, 0) as any as S.Schema<DeleteNetworkProfileRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<DeleteNetworkProfileResult>,
+  output: __S(280, __c35, 0) as any as S.Schema<DeleteNetworkProfileResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1795,7 +1795,7 @@ export const deleteProject: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(304, __c38, 0) as any as S.Schema<DeleteProjectRequest>,
-  output: __S(312, __c39, 0) as any as S.Schema<DeleteProjectResult>,
+  output: __S(280, __c35, 0) as any as S.Schema<DeleteProjectResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1819,8 +1819,8 @@ export const deleteRemoteAccessSession: API.OperationMethod<
   DeleteRemoteAccessSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<DeleteRemoteAccessSessionRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<DeleteRemoteAccessSessionResult>,
+  input: __S(312, __c39, 0) as any as S.Schema<DeleteRemoteAccessSessionRequest>,
+  output: __S(280, __c35, 0) as any as S.Schema<DeleteRemoteAccessSessionResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1844,8 +1844,8 @@ export const deleteRun: API.OperationMethod<
   DeleteRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<DeleteRunRequest>,
-  output: __S(312, __c39, 0) as any as S.Schema<DeleteRunResult>,
+  input: __S(320, __c40, 0) as any as S.Schema<DeleteRunRequest>,
+  output: __S(280, __c35, 0) as any as S.Schema<DeleteRunResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1869,8 +1869,8 @@ export const deleteTestGridProject: API.OperationMethod<
   DeleteTestGridProjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<DeleteTestGridProjectRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<DeleteTestGridProjectResult>,
+  input: __S(328, __c41, 0) as any as S.Schema<DeleteTestGridProjectRequest>,
+  output: __S(280, __c35, 0) as any as S.Schema<DeleteTestGridProjectResult>,
   errors: [ArgumentException, CannotDeleteException, InternalServiceException, NotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1892,8 +1892,8 @@ export const deleteUpload: API.OperationMethod<
   DeleteUploadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<DeleteUploadRequest>,
-  output: __S(312, __c39, 0) as any as S.Schema<DeleteUploadResult>,
+  input: __S(336, __c42, 0) as any as S.Schema<DeleteUploadRequest>,
+  output: __S(280, __c35, 0) as any as S.Schema<DeleteUploadResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1915,8 +1915,8 @@ export const deleteVPCEConfiguration: API.OperationMethod<
   DeleteVPCEConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<DeleteVPCEConfigurationRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<DeleteVPCEConfigurationResult>,
+  input: __S(344, __c43, 0) as any as S.Schema<DeleteVPCEConfigurationRequest>,
+  output: __S(280, __c35, 0) as any as S.Schema<DeleteVPCEConfigurationResult>,
   errors: [
     ArgumentException,
     InvalidOperationException,
@@ -1944,8 +1944,8 @@ export const getAccountSettings: API.OperationMethod<
   GetAccountSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<GetAccountSettingsRequest>,
-  output: __S(365, __c45, 5) as any as S.Schema<GetAccountSettingsResult>,
+  input: __S(352, __c44, 0) as any as S.Schema<GetAccountSettingsRequest>,
+  output: __S(357, __c44, 5) as any as S.Schema<GetAccountSettingsResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1967,8 +1967,8 @@ export const getDevice: API.OperationMethod<
   GetDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<GetDeviceRequest>,
-  output: __S(369, __c46, 1) as any as S.Schema<GetDeviceResult>,
+  input: __S(360, __c45, 0) as any as S.Schema<GetDeviceRequest>,
+  output: __S(361, __c45, 1) as any as S.Schema<GetDeviceResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1990,8 +1990,8 @@ export const getDeviceInstance: API.OperationMethod<
   GetDeviceInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(376, __c47, 0) as any as S.Schema<GetDeviceInstanceRequest>,
-  output: __S(377, __c47, 1) as any as S.Schema<GetDeviceInstanceResult>,
+  input: __S(368, __c46, 0) as any as S.Schema<GetDeviceInstanceRequest>,
+  output: __S(376, __c47, 0) as any as S.Schema<GetDeviceInstanceResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2060,7 +2060,7 @@ export const getInstanceProfile: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(416, __c52, 0) as any as S.Schema<GetInstanceProfileRequest>,
-  output: __S(417, __c52, 1) as any as S.Schema<GetInstanceProfileResult>,
+  output: __S(48, __c6, 0) as any as S.Schema<GetInstanceProfileResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2106,7 +2106,7 @@ export const getNetworkProfile: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(456, __c57, 0) as any as S.Schema<GetNetworkProfileRequest>,
-  output: __S(457, __c57, 1) as any as S.Schema<GetNetworkProfileResult>,
+  output: __S(72, __c9, 0) as any as S.Schema<GetNetworkProfileResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2278,7 +2278,7 @@ export const getTestGridProject: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(560, __c70, 0) as any as S.Schema<GetTestGridProjectRequest>,
-  output: __S(561, __c70, 1) as any as S.Schema<GetTestGridProjectResult>,
+  output: __S(208, __c26, 0) as any as S.Schema<GetTestGridProjectResult>,
   errors: [ArgumentException, InternalServiceException, NotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3193,7 +3193,7 @@ export const tagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(880, __c110, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(312, __c39, 0) as any as S.Schema<TagResourceResponse>,
+  output: __S(280, __c35, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     ArgumentException,
     NotFoundException,
@@ -3221,7 +3221,7 @@ export const untagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(888, __c111, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(312, __c39, 0) as any as S.Schema<UntagResourceResponse>,
+  output: __S(280, __c35, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [ArgumentException, NotFoundException, TagOperationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3244,7 +3244,7 @@ export const updateDeviceInstance: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(896, __c112, 0) as any as S.Schema<UpdateDeviceInstanceRequest>,
-  output: __S(897, __c112, 1) as any as S.Schema<UpdateDeviceInstanceResult>,
+  output: __S(376, __c47, 0) as any as S.Schema<UpdateDeviceInstanceResult>,
   errors: [ArgumentException, LimitExceededException, NotFoundException, ServiceAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3479,9 +3479,7 @@ function __c3(j: number): any {
           excludeAppPackagesFromCleanup: S.optional(__S(32, __c4, 0)),
           rebootAfterUse: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateInstanceProfileRequest",
-      });
+      ).annotate({ identifier: "CreateInstanceProfileRequest" });
   }
 }
 function __c4(j: number): any {
@@ -3510,9 +3508,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ instanceProfile: S.optional(__S(40, __c5, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateInstanceProfileResult",
-      });
+      ).annotate({ identifier: "CreateInstanceProfileResult" });
   }
 }
 function __c7(j: number): any {
@@ -3533,9 +3529,7 @@ function __c7(j: number): any {
           uplinkLossPercent: S.optional(S.Number),
           downlinkLossPercent: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateNetworkProfileRequest",
-      });
+      ).annotate({ identifier: "CreateNetworkProfileRequest" });
   }
 }
 function __c8(j: number): any {
@@ -3564,9 +3558,7 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ networkProfile: S.optional(__S(64, __c8, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateNetworkProfileResult",
-      });
+      ).annotate({ identifier: "CreateNetworkProfileResult" });
   }
 }
 function __c10(j: number): any {
@@ -3640,9 +3632,7 @@ function __c15(j: number): any {
           deviceProxy: S.optional(__S(152, __c19, 0)),
           parameters: S.optional(__S(160, __c20, 0)),
         }),
-      ).annotate({
-        identifier: "CreateRemoteAccessSessionConfiguration",
-      });
+      ).annotate({ identifier: "CreateRemoteAccessSessionConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3655,9 +3645,7 @@ function __c15(j: number): any {
           interactionMode: S.optional(S.String),
           skipAppResign: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateRemoteAccessSessionRequest",
-      });
+      ).annotate({ identifier: "CreateRemoteAccessSessionRequest" });
   }
 }
 function __c16(j: number): any {
@@ -3790,9 +3778,7 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ remoteAccessSession: S.optional(__S(177, __c22, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateRemoteAccessSessionResult",
-      });
+      ).annotate({ identifier: "CreateRemoteAccessSessionResult" });
   }
 }
 function __c24(j: number): any {
@@ -3804,9 +3790,7 @@ function __c24(j: number): any {
           description: S.optional(S.String),
           vpcConfig: S.optional(__S(88, __c11, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateTestGridProjectRequest",
-      });
+      ).annotate({ identifier: "CreateTestGridProjectRequest" });
   }
 }
 function __c25(j: number): any {
@@ -3828,9 +3812,7 @@ function __c26(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ testGridProject: S.optional(__S(200, __c25, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateTestGridProjectResult",
-      });
+      ).annotate({ identifier: "CreateTestGridProjectResult" });
   }
 }
 function __c27(j: number): any {
@@ -3900,9 +3882,7 @@ function __c31(j: number): any {
           serviceDnsName: S.String,
           vpceConfigurationDescription: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateVPCEConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateVPCEConfigurationRequest" });
   }
 }
 function __c32(j: number): any {
@@ -3924,9 +3904,7 @@ function __c33(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ vpceConfiguration: S.optional(__S(256, __c32, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateVPCEConfigurationResult",
-      });
+      ).annotate({ identifier: "CreateVPCEConfigurationResult" });
   }
 }
 function __c34(j: number): any {
@@ -3937,30 +3915,24 @@ function __c34(j: number): any {
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteDevicePoolRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeleteDevicePoolResult",
-      });
   }
 }
 function __c35(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ arn: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DeleteInstanceProfileRequest",
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteDevicePoolResult",
       });
   }
 }
 function __c36(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeleteInstanceProfileResult",
-      });
+      return S.suspend(() =>
+        S.Struct({ arn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteInstanceProfileRequest" });
   }
 }
 function __c37(j: number): any {
@@ -3970,9 +3942,7 @@ function __c37(j: number): any {
         S.Struct({ arn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteNetworkProfileRequest",
-      });
+      ).annotate({ identifier: "DeleteNetworkProfileRequest" });
   }
 }
 function __c38(j: number): any {
@@ -3988,9 +3958,11 @@ function __c38(j: number): any {
 function __c39(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeleteProjectResult",
-      });
+      return S.suspend(() =>
+        S.Struct({ arn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteRemoteAccessSessionRequest" });
   }
 }
 function __c40(j: number): any {
@@ -4000,34 +3972,20 @@ function __c40(j: number): any {
         S.Struct({ arn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteRemoteAccessSessionRequest",
-      });
+      ).annotate({ identifier: "DeleteRunRequest" });
   }
 }
 function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ arn: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DeleteRunRequest" });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
         S.Struct({ projectArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteTestGridProjectRequest",
-      });
+      ).annotate({ identifier: "DeleteTestGridProjectRequest" });
   }
 }
-function __c43(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4037,28 +3995,24 @@ function __c43(j: number): any {
       ).annotate({ identifier: "DeleteUploadRequest" });
   }
 }
-function __c44(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ arn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteVPCEConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteVPCEConfigurationRequest" });
   }
 }
-function __c45(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetAccountSettingsRequest",
-      });
+      ).annotate({ identifier: "GetAccountSettingsRequest" });
     case 1:
       return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
     case 2:
@@ -4071,22 +4025,22 @@ function __c45(j: number): any {
       return S.suspend(() =>
         S.Struct({
           awsAccountNumber: S.optional(S.String),
-          unmeteredDevices: S.optional(__S(361, __c45, 1)),
-          unmeteredRemoteAccessDevices: S.optional(__S(361, __c45, 1)),
+          unmeteredDevices: S.optional(__S(353, __c44, 1)),
+          unmeteredRemoteAccessDevices: S.optional(__S(353, __c44, 1)),
           maxJobTimeoutMinutes: S.optional(S.Number),
-          trialMinutes: S.optional(__S(362, __c45, 2)),
-          maxSlots: S.optional(__S(363, __c45, 3)),
+          trialMinutes: S.optional(__S(354, __c44, 2)),
+          maxSlots: S.optional(__S(355, __c44, 3)),
           defaultJobTimeoutMinutes: S.optional(S.Number),
           skipAppResign: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AccountSettings" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ accountSettings: S.optional(__S(364, __c45, 4)) }).pipe(ns),
+        S.Struct({ accountSettings: S.optional(__S(356, __c44, 4)) }).pipe(ns),
       ).annotate({ identifier: "GetAccountSettingsResult" });
   }
 }
-function __c46(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4100,7 +4054,7 @@ function __c46(j: number): any {
       ).annotate({ identifier: "GetDeviceResult" });
   }
 }
-function __c47(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4108,7 +4062,11 @@ function __c47(j: number): any {
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetDeviceInstanceRequest" });
-    case 1:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ deviceInstance: S.optional(__S(128, __c16, 0)) }).pipe(ns),
       ).annotate({ identifier: "GetDeviceInstanceResult" });
@@ -4136,9 +4094,7 @@ function __c49(j: number): any {
           configuration: S.optional(__S(409, __c51, 1)),
           projectArn: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetDevicePoolCompatibilityRequest",
-      });
+      ).annotate({ identifier: "GetDevicePoolCompatibilityRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ message: S.optional(S.String), type: S.optional(S.String) }),
@@ -4152,9 +4108,7 @@ function __c49(j: number): any {
           compatible: S.optional(S.Boolean),
           incompatibilityMessages: S.optional(__S(394, __c49, 2)),
         }),
-      ).annotate({
-        identifier: "DevicePoolCompatibilityResult",
-      });
+      ).annotate({ identifier: "DevicePoolCompatibilityResult" });
     case 4:
       return S.Array(__S(395, __c49, 3));
     case 5:
@@ -4163,9 +4117,7 @@ function __c49(j: number): any {
           compatibleDevices: S.optional(__S(396, __c49, 4)),
           incompatibleDevices: S.optional(__S(396, __c49, 4)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetDevicePoolCompatibilityResult",
-      });
+      ).annotate({ identifier: "GetDevicePoolCompatibilityResult" });
   }
 }
 function __c50(j: number): any {
@@ -4234,13 +4186,7 @@ function __c52(j: number): any {
         S.Struct({ arn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetInstanceProfileRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ instanceProfile: S.optional(__S(40, __c5, 0)) }).pipe(ns),
-      ).annotate({ identifier: "GetInstanceProfileResult" });
+      ).annotate({ identifier: "GetInstanceProfileRequest" });
   }
 }
 function __c53(j: number): any {
@@ -4336,10 +4282,6 @@ function __c57(j: number): any {
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetNetworkProfileRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ networkProfile: S.optional(__S(64, __c8, 0)) }).pipe(ns),
-      ).annotate({ identifier: "GetNetworkProfileResult" });
   }
 }
 function __c58(j: number): any {
@@ -4416,9 +4358,7 @@ function __c62(j: number): any {
         S.Struct({ arn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetRemoteAccessSessionRequest",
-      });
+      ).annotate({ identifier: "GetRemoteAccessSessionRequest" });
   }
 }
 function __c63(j: number): any {
@@ -4435,11 +4375,7 @@ function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          attribute: S.String,
-          operator: S.String,
-          values: __S(32, __c4, 0),
-        }),
+        S.Struct({ attribute: S.String, operator: S.String, values: __S(32, __c4, 0) }),
       ).annotate({ identifier: "DeviceFilter" });
     case 1:
       return S.Array(__S(512, __c64, 0));
@@ -4589,13 +4525,7 @@ function __c70(j: number): any {
         S.Struct({ projectArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetTestGridProjectRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ testGridProject: S.optional(__S(200, __c25, 0)) }).pipe(ns),
-      ).annotate({ identifier: "GetTestGridProjectResult" });
+      ).annotate({ identifier: "GetTestGridProjectRequest" });
   }
 }
 function __c71(j: number): any {
@@ -4607,9 +4537,7 @@ function __c71(j: number): any {
           sessionId: S.optional(S.String),
           sessionArn: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetTestGridSessionRequest",
-      });
+      ).annotate({ identifier: "GetTestGridSessionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ testGridSession: S.optional(__S(576, __c72, 0)) }).pipe(ns),
@@ -4648,9 +4576,7 @@ function __c74(j: number): any {
         S.Struct({ arn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetVPCEConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetVPCEConfigurationRequest" });
   }
 }
 function __c75(j: number): any {
@@ -4660,15 +4586,11 @@ function __c75(j: number): any {
         S.Struct({ remoteAccessSessionArn: S.String, appArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "InstallToRemoteAccessSessionRequest",
-      });
+      ).annotate({ identifier: "InstallToRemoteAccessSessionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ appUpload: S.optional(__S(232, __c29, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "InstallToRemoteAccessSessionResult",
-      });
+      ).annotate({ identifier: "InstallToRemoteAccessSessionResult" });
   }
 }
 function __c76(j: number): any {
@@ -4707,18 +4629,14 @@ function __c77(j: number): any {
         S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListDeviceInstancesRequest",
-      });
+      ).annotate({ identifier: "ListDeviceInstancesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           deviceInstances: S.optional(__S(136, __c17, 0)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListDeviceInstancesResult",
-      });
+      ).annotate({ identifier: "ListDeviceInstancesResult" });
   }
 }
 function __c78(j: number): any {
@@ -4769,9 +4687,7 @@ function __c80(j: number): any {
         S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListInstanceProfilesRequest",
-      });
+      ).annotate({ identifier: "ListInstanceProfilesRequest" });
     case 1:
       return S.Array(__S(40, __c5, 0));
     case 2:
@@ -4780,9 +4696,7 @@ function __c80(j: number): any {
           instanceProfiles: S.optional(__S(641, __c80, 1)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListInstanceProfilesResult",
-      });
+      ).annotate({ identifier: "ListInstanceProfilesResult" });
   }
 }
 function __c81(j: number): any {
@@ -4812,9 +4726,7 @@ function __c82(j: number): any {
           type: S.optional(S.String),
           nextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListNetworkProfilesRequest",
-      });
+      ).annotate({ identifier: "ListNetworkProfilesRequest" });
     case 1:
       return S.Array(__S(64, __c8, 0));
     case 2:
@@ -4823,9 +4735,7 @@ function __c82(j: number): any {
           networkProfiles: S.optional(__S(657, __c82, 1)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListNetworkProfilesResult",
-      });
+      ).annotate({ identifier: "ListNetworkProfilesResult" });
   }
 }
 function __c83(j: number): any {
@@ -4835,9 +4745,7 @@ function __c83(j: number): any {
         S.Struct({ nextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListOfferingPromotionsRequest",
-      });
+      ).annotate({ identifier: "ListOfferingPromotionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ id: S.optional(S.String), description: S.optional(S.String) }),
@@ -4850,9 +4758,7 @@ function __c83(j: number): any {
           offeringPromotions: S.optional(__S(666, __c83, 2)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListOfferingPromotionsResult",
-      });
+      ).annotate({ identifier: "ListOfferingPromotionsResult" });
   }
 }
 function __c84(j: number): any {
@@ -4881,9 +4787,7 @@ function __c85(j: number): any {
         S.Struct({ nextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListOfferingTransactionsRequest",
-      });
+      ).annotate({ identifier: "ListOfferingTransactionsRequest" });
     case 1:
       return S.Array(__S(688, __c86, 0));
     case 2:
@@ -4892,9 +4796,7 @@ function __c85(j: number): any {
           offeringTransactions: S.optional(__S(681, __c85, 1)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListOfferingTransactionsResult",
-      });
+      ).annotate({ identifier: "ListOfferingTransactionsResult" });
   }
 }
 function __c86(j: number): any {
@@ -4937,9 +4839,7 @@ function __c88(j: number): any {
         S.Struct({ arn: S.String, nextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListRemoteAccessSessionsRequest",
-      });
+      ).annotate({ identifier: "ListRemoteAccessSessionsRequest" });
     case 1:
       return S.Array(__S(177, __c22, 1));
     case 2:
@@ -4948,9 +4848,7 @@ function __c88(j: number): any {
           remoteAccessSessions: S.optional(__S(705, __c88, 1)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListRemoteAccessSessionsResult",
-      });
+      ).annotate({ identifier: "ListRemoteAccessSessionsResult" });
   }
 }
 function __c89(j: number): any {
@@ -5026,9 +4924,7 @@ function __c93(j: number): any {
         S.Struct({ ResourceARN: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(753, __c94, 1)) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -5052,9 +4948,7 @@ function __c95(j: number): any {
         S.Struct({ maxResult: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTestGridProjectsRequest",
-      });
+      ).annotate({ identifier: "ListTestGridProjectsRequest" });
     case 1:
       return S.Array(__S(200, __c25, 0));
     case 2:
@@ -5063,9 +4957,7 @@ function __c95(j: number): any {
           testGridProjects: S.optional(__S(761, __c95, 1)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListTestGridProjectsResult",
-      });
+      ).annotate({ identifier: "ListTestGridProjectsResult" });
   }
 }
 function __c96(j: number): any {
@@ -5077,9 +4969,7 @@ function __c96(j: number): any {
           maxResult: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListTestGridSessionActionsRequest",
-      });
+      ).annotate({ identifier: "ListTestGridSessionActionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5097,9 +4987,7 @@ function __c96(j: number): any {
         S.Struct({ actions: S.optional(__S(770, __c96, 2)), nextToken: S.optional(S.String) }).pipe(
           ns,
         ),
-      ).annotate({
-        identifier: "ListTestGridSessionActionsResult",
-      });
+      ).annotate({ identifier: "ListTestGridSessionActionsResult" });
   }
 }
 function __c97(j: number): any {
@@ -5112,9 +5000,7 @@ function __c97(j: number): any {
           maxResult: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListTestGridSessionArtifactsRequest",
-      });
+      ).annotate({ identifier: "ListTestGridSessionArtifactsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5131,9 +5017,7 @@ function __c97(j: number): any {
           artifacts: S.optional(__S(778, __c97, 2)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListTestGridSessionArtifactsResult",
-      });
+      ).annotate({ identifier: "ListTestGridSessionArtifactsResult" });
   }
 }
 function __c98(j: number): any {
@@ -5150,9 +5034,7 @@ function __c98(j: number): any {
           maxResult: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListTestGridSessionsRequest",
-      });
+      ).annotate({ identifier: "ListTestGridSessionsRequest" });
     case 1:
       return S.Array(__S(576, __c72, 0));
     case 2:
@@ -5161,9 +5043,7 @@ function __c98(j: number): any {
           testGridSessions: S.optional(__S(785, __c98, 1)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListTestGridSessionsResult",
-      });
+      ).annotate({ identifier: "ListTestGridSessionsResult" });
   }
 }
 function __c99(j: number): any {
@@ -5189,9 +5069,7 @@ function __c100(j: number): any {
         S.Struct({ arn: S.String, nextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListUniqueProblemsRequest",
-      });
+      ).annotate({ identifier: "ListUniqueProblemsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ arn: S.optional(S.String), name: S.optional(S.String) }),
@@ -5255,9 +5133,7 @@ function __c102(j: number): any {
         S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListVPCEConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListVPCEConfigurationsRequest" });
     case 1:
       return S.Array(__S(256, __c32, 0));
     case 2:
@@ -5266,9 +5142,7 @@ function __c102(j: number): any {
           vpceConfigurations: S.optional(__S(817, __c102, 1)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListVPCEConfigurationsResult",
-      });
+      ).annotate({ identifier: "ListVPCEConfigurationsResult" });
   }
 }
 function __c103(j: number): any {
@@ -5306,9 +5180,7 @@ function __c106(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ filters: __S(513, __c64, 1), maxDevices: S.Number }),
-      ).annotate({
-        identifier: "DeviceSelectionConfiguration",
-      });
+      ).annotate({ identifier: "DeviceSelectionConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5351,9 +5223,7 @@ function __c108(j: number): any {
         S.Struct({ arn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StopRemoteAccessSessionRequest",
-      });
+      ).annotate({ identifier: "StopRemoteAccessSessionRequest" });
   }
 }
 function __c109(j: number): any {
@@ -5395,15 +5265,7 @@ function __c112(j: number): any {
           profileArn: S.optional(S.String),
           labels: S.optional(__S(32, __c4, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateDeviceInstanceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ deviceInstance: S.optional(__S(128, __c16, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateDeviceInstanceResult",
-      });
+      ).annotate({ identifier: "UpdateDeviceInstanceRequest" });
   }
 }
 function __c113(j: number): any {
@@ -5433,9 +5295,7 @@ function __c114(j: number): any {
           excludeAppPackagesFromCleanup: S.optional(__S(32, __c4, 0)),
           rebootAfterUse: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateInstanceProfileRequest",
-      });
+      ).annotate({ identifier: "UpdateInstanceProfileRequest" });
   }
 }
 function __c115(j: number): any {
@@ -5456,9 +5316,7 @@ function __c115(j: number): any {
           uplinkLossPercent: S.optional(S.Number),
           downlinkLossPercent: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateNetworkProfileRequest",
-      });
+      ).annotate({ identifier: "UpdateNetworkProfileRequest" });
   }
 }
 function __c116(j: number): any {
@@ -5486,9 +5344,7 @@ function __c117(j: number): any {
           description: S.optional(S.String),
           vpcConfig: S.optional(__S(88, __c11, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateTestGridProjectRequest",
-      });
+      ).annotate({ identifier: "UpdateTestGridProjectRequest" });
   }
 }
 function __c118(j: number): any {
@@ -5515,9 +5371,7 @@ function __c119(j: number): any {
           serviceDnsName: S.optional(S.String),
           vpceConfigurationDescription: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateVPCEConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateVPCEConfigurationRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -2082,9 +2082,7 @@ function __c0(j: number): any {
           HumanLoopActivationReasons: S.optional(__S(96, __c6, 0)),
           HumanLoopActivationConditionsEvaluationResults: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "HumanLoopActivationOutput",
-      });
+      ).annotate({ identifier: "HumanLoopActivationOutput" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2401,24 +2399,18 @@ function __c16(j: number): any {
           OutputConfig: __S(288, __c18, 0),
           Tags: S.optional(__S(240, __c15, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateAdapterVersionRequest",
-      });
+      ).annotate({ identifier: "CreateAdapterVersionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ AdapterId: S.optional(S.String), AdapterVersion: S.optional(S.String) }),
-      ).annotate({
-        identifier: "CreateAdapterVersionResponse",
-      });
+      ).annotate({ identifier: "CreateAdapterVersionResponse" });
   }
 }
 function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ ManifestS3Object: S.optional(__S(32, __c2, 0)) })).annotate(
-        {
-          identifier: "AdapterVersionDatasetConfig",
-        },
+        { identifier: "AdapterVersionDatasetConfig" },
       );
   }
 }
@@ -2443,9 +2435,7 @@ function __c19(j: number): any {
 function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAdapterResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteAdapterResponse" });
   }
 }
 function __c21(j: number): any {
@@ -2455,9 +2445,7 @@ function __c21(j: number): any {
         S.Struct({ AdapterId: S.String, AdapterVersion: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteAdapterVersionRequest",
-      });
+      ).annotate({ identifier: "DeleteAdapterVersionRequest" });
   }
 }
 function __c22(j: number): any {
@@ -2467,9 +2455,7 @@ function __c22(j: number): any {
         S.Struct({ Document: __S(48, __c3, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DetectDocumentTextRequest",
-      });
+      ).annotate({ identifier: "DetectDocumentTextRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2477,9 +2463,7 @@ function __c22(j: number): any {
           Blocks: S.optional(__S(71, __c4, 7)),
           DetectDocumentTextModelVersion: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DetectDocumentTextResponse",
-      });
+      ).annotate({ identifier: "DetectDocumentTextResponse" });
   }
 }
 function __c23(j: number): any {
@@ -2527,9 +2511,7 @@ function __c24(j: number): any {
           AdapterVersion: S.optional(__S(385, __c24, 1)),
           FeatureType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "AdapterVersionEvaluationMetric",
-      });
+      ).annotate({ identifier: "AdapterVersionEvaluationMetric" });
     case 3:
       return S.Array(__S(386, __c24, 2));
     case 4:
@@ -2547,9 +2529,7 @@ function __c24(j: number): any {
           EvaluationMetrics: S.optional(__S(387, __c24, 3)),
           Tags: S.optional(__S(240, __c15, 0)),
         }),
-      ).annotate({
-        identifier: "GetAdapterVersionResponse",
-      });
+      ).annotate({ identifier: "GetAdapterVersionResponse" });
   }
 }
 function __c25(j: number): any {
@@ -2561,9 +2541,7 @@ function __c25(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetDocumentAnalysisRequest",
-      });
+      ).annotate({ identifier: "GetDocumentAnalysisRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2575,9 +2553,7 @@ function __c25(j: number): any {
           StatusMessage: S.optional(S.String),
           AnalyzeDocumentModelVersion: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetDocumentAnalysisResponse",
-      });
+      ).annotate({ identifier: "GetDocumentAnalysisResponse" });
   }
 }
 function __c26(j: number): any {
@@ -2601,9 +2577,7 @@ function __c27(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetDocumentTextDetectionRequest",
-      });
+      ).annotate({ identifier: "GetDocumentTextDetectionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2615,9 +2589,7 @@ function __c27(j: number): any {
           StatusMessage: S.optional(S.String),
           DetectDocumentTextModelVersion: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetDocumentTextDetectionResponse",
-      });
+      ).annotate({ identifier: "GetDocumentTextDetectionResponse" });
   }
 }
 function __c28(j: number): any {
@@ -2629,9 +2601,7 @@ function __c28(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetExpenseAnalysisRequest",
-      });
+      ).annotate({ identifier: "GetExpenseAnalysisRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2643,9 +2613,7 @@ function __c28(j: number): any {
           StatusMessage: S.optional(S.String),
           AnalyzeExpenseModelVersion: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetExpenseAnalysisResponse",
-      });
+      ).annotate({ identifier: "GetExpenseAnalysisResponse" });
   }
 }
 function __c29(j: number): any {
@@ -2657,9 +2625,7 @@ function __c29(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetLendingAnalysisRequest",
-      });
+      ).annotate({ identifier: "GetLendingAnalysisRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Value: S.optional(S.String), Confidence: S.optional(S.Number) }),
@@ -2735,9 +2701,7 @@ function __c29(j: number): any {
           StatusMessage: S.optional(S.String),
           AnalyzeLendingModelVersion: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetLendingAnalysisResponse",
-      });
+      ).annotate({ identifier: "GetLendingAnalysisResponse" });
   }
 }
 function __c30(j: number): any {
@@ -2747,9 +2711,7 @@ function __c30(j: number): any {
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetLendingAnalysisSummaryRequest",
-      });
+      ).annotate({ identifier: "GetLendingAnalysisSummaryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Index: S.optional(S.Number), Pages: S.optional(__S(416, __c26, 0)) }),
@@ -2790,9 +2752,7 @@ function __c30(j: number): any {
           StatusMessage: S.optional(S.String),
           AnalyzeLendingModelVersion: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetLendingAnalysisSummaryResponse",
-      });
+      ).annotate({ identifier: "GetLendingAnalysisSummaryResponse" });
   }
 }
 function __c31(j: number): any {
@@ -2834,9 +2794,7 @@ function __c32(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListAdapterVersionsRequest",
-      });
+      ).annotate({ identifier: "ListAdapterVersionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2856,9 +2814,7 @@ function __c32(j: number): any {
           AdapterVersions: S.optional(__S(514, __c32, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListAdapterVersionsResponse",
-      });
+      ).annotate({ identifier: "ListAdapterVersionsResponse" });
   }
 }
 function __c33(j: number): any {
@@ -2868,9 +2824,7 @@ function __c33(j: number): any {
         S.Struct({ ResourceARN: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(240, __c15, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -2892,9 +2846,7 @@ function __c34(j: number): any {
           QueriesConfig: S.optional(__S(129, __c8, 1)),
           AdaptersConfig: S.optional(__S(132, __c8, 4)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartDocumentAnalysisRequest",
-      });
+      ).annotate({ identifier: "StartDocumentAnalysisRequest" });
   }
 }
 function __c35(j: number): any {
@@ -2925,9 +2877,7 @@ function __c36(j: number): any {
           OutputConfig: S.optional(__S(288, __c18, 0)),
           KMSKeyId: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartDocumentTextDetectionRequest",
-      });
+      ).annotate({ identifier: "StartDocumentTextDetectionRequest" });
   }
 }
 function __c37(j: number): any {
@@ -2942,9 +2892,7 @@ function __c37(j: number): any {
           OutputConfig: S.optional(__S(288, __c18, 0)),
           KMSKeyId: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartExpenseAnalysisRequest",
-      });
+      ).annotate({ identifier: "StartExpenseAnalysisRequest" });
   }
 }
 function __c38(j: number): any {
@@ -2959,9 +2907,7 @@ function __c38(j: number): any {
           OutputConfig: S.optional(__S(288, __c18, 0)),
           KMSKeyId: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartLendingAnalysisRequest",
-      });
+      ).annotate({ identifier: "StartLendingAnalysisRequest" });
   }
 }
 function __c39(j: number): any {

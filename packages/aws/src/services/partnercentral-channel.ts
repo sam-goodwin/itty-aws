@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -815,7 +815,7 @@ export const deleteProgramManagementAccount: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(48, __c3, 0) as any as S.Schema<DeleteProgramManagementAccountRequest>,
-  output: __S(49, __c3, 1) as any as S.Schema<DeleteProgramManagementAccountResponse>,
+  output: __S(64, __c4, 0) as any as S.Schema<DeleteProgramManagementAccountResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -846,8 +846,8 @@ export const deleteRelationship: API.OperationMethod<
   DeleteRelationshipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c4, 0) as any as S.Schema<DeleteRelationshipRequest>,
-  output: __S(80, __c5, 0) as any as S.Schema<DeleteRelationshipResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<DeleteRelationshipRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<DeleteRelationshipResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -945,8 +945,8 @@ export const listProgramManagementAccounts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProgramManagementAccountSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(161, __c10, 1) as any as S.Schema<ListProgramManagementAccountsRequest>,
-  output: __S(164, __c10, 4) as any as S.Schema<ListProgramManagementAccountsResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<ListProgramManagementAccountsRequest>,
+  output: __S(163, __c10, 3) as any as S.Schema<ListProgramManagementAccountsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1080,7 +1080,7 @@ export const tagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(224, __c14, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(80, __c5, 0) as any as S.Schema<TagResourceResponse>,
+  output: __S(64, __c4, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1112,7 +1112,7 @@ export const untagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(240, __c15, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(80, __c5, 0) as any as S.Schema<UntagResourceResponse>,
+  output: __S(64, __c4, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1212,15 +1212,11 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateProgramManagementAccountRequest",
-      });
+      ).annotate({ identifier: "CreateProgramManagementAccountRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ programManagementAccountDetail: S.optional(__S(368, __c23, 0)) }),
-      ).annotate({
-        identifier: "CreateProgramManagementAccountResponse",
-      });
+      ).annotate({ identifier: "CreateProgramManagementAccountResponse" });
   }
 }
 function __c1(j: number): any {
@@ -1248,9 +1244,7 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateRelationshipRequest",
-      });
+      ).annotate({ identifier: "CreateRelationshipRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ arn: S.optional(S.String), id: S.optional(S.String) }),
@@ -1258,9 +1252,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ relationshipDetail: S.optional(__S(17, __c1, 1)) }),
-      ).annotate({
-        identifier: "CreateRelationshipResponse",
-      });
+      ).annotate({ identifier: "CreateRelationshipResponse" });
   }
 }
 function __c2(j: number): any {
@@ -1303,16 +1295,18 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteProgramManagementAccountRequest",
-      });
-    case 1:
+      ).annotate({ identifier: "DeleteProgramManagementAccountRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteProgramManagementAccountResponse",
       });
   }
 }
-function __c4(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1331,17 +1325,7 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteRelationshipRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteRelationshipResponse",
-      });
+      ).annotate({ identifier: "DeleteRelationshipRequest" });
   }
 }
 function __c6(j: number): any {
@@ -1385,9 +1369,7 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ servicePeriodTypes: S.optional(__S(128, __c8, 0)) }),
-      ).annotate({
-        identifier: "StartServicePeriodTypeFilters",
-      });
+      ).annotate({ identifier: "StartServicePeriodTypeFilters" });
     case 1:
       return S.suspend(() => S.Struct({ programs: S.optional(__S(128, __c8, 0)) })).annotate({
         identifier: "ProgramManagementAccountTypeFilters",
@@ -1396,9 +1378,7 @@ function __c7(j: number): any {
       return S.Union([
         /*@__PURE__*/ S.Struct({ startServicePeriodTypeFilters: __S(112, __c7, 0) }),
         /*@__PURE__*/ S.Struct({ revokeServicePeriodTypeFilters: __S(112, __c7, 0) }),
-        /*@__PURE__*/ S.Struct({
-          programManagementAccountTypeFilters: __S(113, __c7, 1),
-        }),
+        /*@__PURE__*/ S.Struct({ programManagementAccountTypeFilters: __S(113, __c7, 1) }),
       ]);
     case 3:
       return S.Union([
@@ -1428,9 +1408,7 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListChannelHandshakesRequest",
-      });
+      ).annotate({ identifier: "ListChannelHandshakesRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1440,9 +1418,7 @@ function __c7(j: number): any {
           startDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           endDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "StartServicePeriodHandshakeDetail",
-      });
+      ).annotate({ identifier: "StartServicePeriodHandshakeDetail" });
     case 6:
       return S.suspend(() => S.Struct({ program: S.optional(S.String) })).annotate({
         identifier: "ProgramManagementAccountHandshakeDetail",
@@ -1450,12 +1426,8 @@ function __c7(j: number): any {
     case 7:
       return S.Union([
         /*@__PURE__*/ S.Struct({ startServicePeriodHandshakeDetail: __S(117, __c7, 5) }),
-        /*@__PURE__*/ S.Struct({
-          revokeServicePeriodHandshakeDetail: __S(117, __c7, 5),
-        }),
-        /*@__PURE__*/ S.Struct({
-          programManagementAccountHandshakeDetail: __S(118, __c7, 6),
-        }),
+        /*@__PURE__*/ S.Struct({ revokeServicePeriodHandshakeDetail: __S(117, __c7, 5) }),
+        /*@__PURE__*/ S.Struct({ programManagementAccountHandshakeDetail: __S(118, __c7, 6) }),
       ]);
     case 8:
       return S.suspend(() =>
@@ -1480,9 +1452,7 @@ function __c7(j: number): any {
     case 10:
       return S.suspend(() =>
         S.Struct({ items: S.optional(__S(121, __c7, 9)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListChannelHandshakesResponse",
-      });
+      ).annotate({ identifier: "ListChannelHandshakesResponse" });
   }
 }
 function __c8(j: number): any {
@@ -1504,8 +1474,6 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           catalog: S.String,
@@ -1513,7 +1481,7 @@ function __c10(j: number): any {
           displayNames: S.optional(__S(144, __c9, 0)),
           programs: S.optional(__S(128, __c8, 0)),
           accountIds: S.optional(__S(144, __c9, 0)),
-          statuses: S.optional(__S(160, __c10, 0)),
+          statuses: S.optional(__S(128, __c8, 0)),
           sort: S.optional(__S(129, __c8, 1)),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -1526,10 +1494,8 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListProgramManagementAccountsRequest",
-      });
-    case 2:
+      ).annotate({ identifier: "ListProgramManagementAccountsRequest" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1544,20 +1510,13 @@ function __c10(j: number): any {
           startDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           status: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ProgramManagementAccountSummary",
-      });
+      ).annotate({ identifier: "ProgramManagementAccountSummary" });
+    case 2:
+      return S.Array(__S(161, __c10, 1));
     case 3:
-      return S.Array(__S(162, __c10, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(163, __c10, 3)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListProgramManagementAccountsResponse",
-      });
+        S.Struct({ items: S.optional(__S(162, __c10, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListProgramManagementAccountsResponse" });
   }
 }
 function __c11(j: number): any {
@@ -1606,9 +1565,7 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ items: S.optional(__S(178, __c11, 2)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListRelationshipsResponse",
-      });
+      ).annotate({ identifier: "ListRelationshipsResponse" });
   }
 }
 function __c12(j: number): any {
@@ -1625,9 +1582,7 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(385, __c24, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -1648,9 +1603,7 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RejectChannelHandshakeRequest",
-      });
+      ).annotate({ identifier: "RejectChannelHandshakeRequest" });
   }
 }
 function __c14(j: number): any {
@@ -1692,9 +1645,7 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateProgramManagementAccountRequest",
-      });
+      ).annotate({ identifier: "UpdateProgramManagementAccountRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1703,15 +1654,11 @@ function __c16(j: number): any {
           revision: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "UpdateProgramManagementAccountDetail",
-      });
+      ).annotate({ identifier: "UpdateProgramManagementAccountDetail" });
     case 2:
       return S.suspend(() =>
         S.Struct({ programManagementAccountDetail: S.optional(__S(257, __c16, 1)) }),
-      ).annotate({
-        identifier: "UpdateProgramManagementAccountResponse",
-      });
+      ).annotate({ identifier: "UpdateProgramManagementAccountResponse" });
   }
 }
 function __c17(j: number): any {
@@ -1735,9 +1682,7 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateRelationshipRequest",
-      });
+      ).annotate({ identifier: "UpdateRelationshipRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1750,9 +1695,7 @@ function __c17(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ relationshipDetail: S.optional(__S(273, __c17, 1)) }),
-      ).annotate({
-        identifier: "UpdateRelationshipResponse",
-      });
+      ).annotate({ identifier: "UpdateRelationshipResponse" });
   }
 }
 function __c18(j: number): any {
@@ -1779,9 +1722,7 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AcceptChannelHandshakeRequest",
-      });
+      ).annotate({ identifier: "AcceptChannelHandshakeRequest" });
   }
 }
 function __c20(j: number): any {
@@ -1793,15 +1734,11 @@ function __c20(j: number): any {
           arn: S.optional(S.String),
           status: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "AcceptChannelHandshakeDetail",
-      });
+      ).annotate({ identifier: "AcceptChannelHandshakeDetail" });
     case 1:
       return S.suspend(() =>
         S.Struct({ channelHandshakeDetail: S.optional(__S(320, __c20, 0)) }),
-      ).annotate({
-        identifier: "AcceptChannelHandshakeResponse",
-      });
+      ).annotate({ identifier: "AcceptChannelHandshakeResponse" });
   }
 }
 function __c21(j: number): any {
@@ -1818,9 +1755,7 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CancelChannelHandshakeRequest",
-      });
+      ).annotate({ identifier: "CancelChannelHandshakeRequest" });
   }
 }
 function __c22(j: number): any {
@@ -1834,15 +1769,11 @@ function __c22(j: number): any {
           minimumNoticeDays: S.optional(S.String),
           endDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "StartServicePeriodPayload",
-      });
+      ).annotate({ identifier: "StartServicePeriodPayload" });
     case 1:
       return S.suspend(() =>
         S.Struct({ programManagementAccountIdentifier: S.String, note: S.optional(S.String) }),
-      ).annotate({
-        identifier: "RevokeServicePeriodPayload",
-      });
+      ).annotate({ identifier: "RevokeServicePeriodPayload" });
     case 2:
       return S.Union([
         /*@__PURE__*/ S.Struct({ startServicePeriodPayload: __S(352, __c22, 0) }),
@@ -1867,15 +1798,11 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateChannelHandshakeRequest",
-      });
+      ).annotate({ identifier: "CreateChannelHandshakeRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({ channelHandshakeDetail: S.optional(__S(368, __c23, 0)) }),
-      ).annotate({
-        identifier: "CreateChannelHandshakeResponse",
-      });
+      ).annotate({ identifier: "CreateChannelHandshakeResponse" });
   }
 }
 function __c23(j: number): any {
@@ -1883,9 +1810,7 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ id: S.optional(S.String), arn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "CreateChannelHandshakeDetail",
-      });
+      ).annotate({ identifier: "CreateChannelHandshakeDetail" });
   }
 }
 function __c24(j: number): any {

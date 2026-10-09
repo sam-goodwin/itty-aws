@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -341,8 +341,8 @@ export const getClip: API.OperationMethod<
   GetClipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetClipInput>,
-  output: __S(50, __c6, 2) as any as S.Schema<GetClipOutput>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetClipInput>,
+  output: __S(56, __c7, 0) as any as S.Schema<GetClipOutput>,
   errors: [
     ClientLimitExceededException,
     InvalidArgumentException,
@@ -500,8 +500,8 @@ export const getDASHStreamingSessionURL: API.OperationMethod<
   GetDASHStreamingSessionURLError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<GetDASHStreamingSessionURLInput>,
-  output: __S(2, __c0, 2) as any as S.Schema<GetDASHStreamingSessionURLOutput>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetDASHStreamingSessionURLInput>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetDASHStreamingSessionURLOutput>,
   errors: [
     ClientLimitExceededException,
     InvalidArgumentException,
@@ -698,8 +698,8 @@ export const getHLSStreamingSessionURL: API.OperationMethod<
   GetHLSStreamingSessionURLError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetHLSStreamingSessionURLInput>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetHLSStreamingSessionURLOutput>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetHLSStreamingSessionURLInput>,
+  output: __S(17, __c2, 1) as any as S.Schema<GetHLSStreamingSessionURLOutput>,
   errors: [
     ClientLimitExceededException,
     InvalidArgumentException,
@@ -796,7 +796,7 @@ export const getMediaForFragmentList: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(33, __c4, 1) as any as S.Schema<GetMediaForFragmentListInput>,
-  output: __S(34, __c4, 2) as any as S.Schema<GetMediaForFragmentListOutput>,
+  output: __S(56, __c7, 0) as any as S.Schema<GetMediaForFragmentListOutput>,
   errors: [
     ClientLimitExceededException,
     InvalidArgumentException,
@@ -853,8 +853,8 @@ export const listFragments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Fragment
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ListFragmentsInput>,
-  output: __S(44, __c5, 4) as any as S.Schema<ListFragmentsOutput>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListFragmentsInput>,
+  output: __S(43, __c5, 3) as any as S.Schema<ListFragmentsOutput>,
   errors: [
     ClientLimitExceededException,
     InvalidArgumentException,
@@ -878,19 +878,12 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          FragmentSelectorType: S.optional(S.String),
-          TimestampRange: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "DASHFragmentSelector" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           StreamName: S.optional(S.String),
           StreamARN: S.optional(S.String),
           PlaybackMode: S.optional(S.String),
           DisplayFragmentTimestamp: S.optional(S.String),
           DisplayFragmentNumber: S.optional(S.String),
-          DASHFragmentSelector: S.optional(__S(0, __c0, 0)),
+          DASHFragmentSelector: S.optional(__S(9, __c1, 1)),
           Expires: S.optional(S.Number),
           MaxManifestFragmentResults: S.optional(S.Number),
         }).pipe(
@@ -903,10 +896,8 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDASHStreamingSessionURLInput",
-      });
-    case 2:
+      ).annotate({ identifier: "GetDASHStreamingSessionURLInput" });
+    case 1:
       return S.suspend(() => S.Struct({ DASHStreamingSessionURL: S.optional(S.String) })).annotate({
         identifier: "GetDASHStreamingSessionURLOutput",
       });
@@ -921,6 +912,13 @@ function __c1(j: number): any {
           EndTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "DASHTimestampRange" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          FragmentSelectorType: S.optional(S.String),
+          TimestampRange: S.optional(__S(8, __c1, 0)),
+        }),
+      ).annotate({ identifier: "DASHFragmentSelector" });
   }
 }
 function __c2(j: number): any {
@@ -928,17 +926,10 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          FragmentSelectorType: S.optional(S.String),
-          TimestampRange: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "HLSFragmentSelector" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           StreamName: S.optional(S.String),
           StreamARN: S.optional(S.String),
           PlaybackMode: S.optional(S.String),
-          HLSFragmentSelector: S.optional(__S(16, __c2, 0)),
+          HLSFragmentSelector: S.optional(__S(9, __c1, 1)),
           ContainerFormat: S.optional(S.String),
           DiscontinuityMode: S.optional(S.String),
           DisplayFragmentTimestamp: S.optional(S.String),
@@ -954,10 +945,8 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetHLSStreamingSessionURLInput",
-      });
-    case 2:
+      ).annotate({ identifier: "GetHLSStreamingSessionURLInput" });
+    case 1:
       return S.suspend(() => S.Struct({ HLSStreamingSessionURL: S.optional(S.String) })).annotate({
         identifier: "GetHLSStreamingSessionURLOutput",
       });
@@ -1020,39 +1009,24 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetMediaForFragmentListInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-          Payload: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
-        }),
-      ).annotate({
-        identifier: "GetMediaForFragmentListOutput",
-      });
+      ).annotate({ identifier: "GetMediaForFragmentListInput" });
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ FragmentSelectorType: S.String, TimestampRange: __S(56, __c7, 0) }),
-      ).annotate({ identifier: "FragmentSelector" });
-    case 1:
-      return S.suspend(() =>
         S.Struct({
           StreamName: S.optional(S.String),
           StreamARN: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          FragmentSelector: S.optional(__S(40, __c5, 0)),
+          FragmentSelector: S.optional(__S(65, __c8, 1)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/listFragments" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListFragmentsInput" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           FragmentNumber: S.optional(S.String),
@@ -1062,11 +1036,11 @@ function __c5(j: number): any {
           FragmentLengthInMilliseconds: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Fragment" });
+    case 2:
+      return S.Array(__S(41, __c5, 1));
     case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({ Fragments: S.optional(__S(43, __c5, 3)), NextToken: S.optional(S.String) }),
+        S.Struct({ Fragments: S.optional(__S(42, __c5, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListFragmentsOutput" });
   }
 }
@@ -1074,17 +1048,17 @@ function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ FragmentSelectorType: S.String, TimestampRange: __S(56, __c7, 0) }),
-      ).annotate({ identifier: "ClipFragmentSelector" });
-    case 1:
-      return S.suspend(() =>
         S.Struct({
           StreamName: S.optional(S.String),
           StreamARN: S.optional(S.String),
-          ClipFragmentSelector: __S(48, __c6, 0),
+          ClipFragmentSelector: __S(65, __c8, 1),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/getClip" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetClipInput" });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
@@ -1093,7 +1067,7 @@ function __c6(j: number): any {
       ).annotate({ identifier: "GetClipOutput" });
   }
 }
-function __c7(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1102,6 +1076,10 @@ function __c7(j: number): any {
           EndTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "ClipTimestampRange" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ FragmentSelectorType: S.String, TimestampRange: __S(64, __c8, 0) }),
+      ).annotate({ identifier: "ClipFragmentSelector" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

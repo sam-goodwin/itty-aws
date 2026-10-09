@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -489,7 +489,7 @@ export const createUploadUrl: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(272, __c17, 0) as any as S.Schema<CreateUploadUrlRequest>,
-  output: __S(274, __c17, 2) as any as S.Schema<CreateUploadUrlResponse>,
+  output: __S(273, __c17, 1) as any as S.Schema<CreateUploadUrlResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -898,9 +898,7 @@ function __c2(j: number): any {
           high: S.optional(S.Number),
           critical: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "FindingMetricsValuePerSeverity",
-      });
+      ).annotate({ identifier: "FindingMetricsValuePerSeverity" });
   }
 }
 function __c3(j: number): any {
@@ -942,9 +940,7 @@ function __c4(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/metrics/findings" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListFindingsMetricsRequest",
-      });
+      ).annotate({ identifier: "ListFindingsMetricsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -963,9 +959,7 @@ function __c4(j: number): any {
           findingsMetrics: S.optional(__S(66, __c4, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListFindingsMetricsResponse",
-      });
+      ).annotate({ identifier: "ListFindingsMetricsResponse" });
   }
 }
 function __c5(j: number): any {
@@ -1010,9 +1004,7 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(256, __c16, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -1042,9 +1034,7 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TagResourceResponse" });
   }
 }
 function __c9(j: number): any {
@@ -1081,9 +1071,7 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateAccountConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateAccountConfigurationRequest" });
   }
 }
 function __c11(j: number): any {
@@ -1249,12 +1237,10 @@ function __c17(j: number): any {
         ),
       ).annotate({ identifier: "CreateUploadUrlRequest" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           s3Url: SensitiveString,
-          requestHeaders: __S(273, __c17, 1),
+          requestHeaders: __S(256, __c16, 0),
           codeArtifactId: S.String,
         }),
       ).annotate({ identifier: "CreateUploadUrlResponse" });
@@ -1274,9 +1260,7 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAccountConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetAccountConfigurationRequest" });
   }
 }
 function __c19(j: number): any {

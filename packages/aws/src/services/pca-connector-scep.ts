@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -721,9 +721,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteChallengeResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteChallengeResponse" });
   }
 }
 function __c2(j: number): any {
@@ -757,15 +755,11 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetChallengeMetadataRequest",
-      });
+      ).annotate({ identifier: "GetChallengeMetadataRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ChallengeMetadata: S.optional(__S(16, __c4, 0)) }),
-      ).annotate({
-        identifier: "GetChallengeMetadataResponse",
-      });
+      ).annotate({ identifier: "GetChallengeMetadataResponse" });
   }
 }
 function __c4(j: number): any {
@@ -795,9 +789,7 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetChallengePasswordRequest",
-      });
+      ).annotate({ identifier: "GetChallengePasswordRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Password: S.optional(SensitiveString) })).annotate({
         identifier: "GetChallengePasswordResponse",
@@ -863,17 +855,13 @@ function __c8(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/challengeMetadata" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListChallengeMetadataRequest",
-      });
+      ).annotate({ identifier: "ListChallengeMetadataRequest" });
     case 1:
       return S.Array(__S(16, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ Challenges: S.optional(__S(33, __c8, 1)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListChallengeMetadataResponse",
-      });
+      ).annotate({ identifier: "ListChallengeMetadataResponse" });
   }
 }
 function __c9(j: number): any {
@@ -907,9 +895,7 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(56, __c14, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",

@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -547,7 +547,7 @@ export const createScheduledReport: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(673, __c21, 1) as any as S.Schema<CreateScheduledReportRequest>,
-  output: __S(704, __c22, 0) as any as S.Schema<CreateScheduledReportResponse>,
+  output: __S(640, __c20, 0) as any as S.Schema<CreateScheduledReportResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -576,7 +576,7 @@ export const deleteDashboard: API.OperationMethod<
   DeleteDashboardError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c24, 0) as any as S.Schema<DeleteDashboardRequest>,
+  input: __S(736, __c23, 0) as any as S.Schema<DeleteDashboardRequest>,
   output: __S(640, __c20, 0) as any as S.Schema<DeleteDashboardResponse>,
   errors: [
     AccessDeniedException,
@@ -606,7 +606,7 @@ export const deleteScheduledReport: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteScheduledReportRequest>,
-  output: __S(704, __c22, 0) as any as S.Schema<DeleteScheduledReportResponse>,
+  output: __S(640, __c20, 0) as any as S.Schema<DeleteScheduledReportResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -945,7 +945,7 @@ export const updateScheduledReport: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(384, __c12, 0) as any as S.Schema<UpdateScheduledReportRequest>,
-  output: __S(704, __c22, 0) as any as S.Schema<UpdateScheduledReportResponse>,
+  output: __S(640, __c20, 0) as any as S.Schema<UpdateScheduledReportResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -967,9 +967,7 @@ function __c0(j: number): any {
         S.Struct({ arn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteScheduledReportRequest",
-      });
+      ).annotate({ identifier: "DeleteScheduledReportRequest" });
   }
 }
 function __c1(j: number): any {
@@ -984,18 +982,14 @@ function __c1(j: number): any {
           ),
           dryRun: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ExecuteScheduledReportRequest",
-      });
+      ).annotate({ identifier: "ExecuteScheduledReportRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           healthStatus: S.optional(__S(64, __c2, 0)),
           executionTriggered: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "ExecuteScheduledReportResponse",
-      });
+      ).annotate({ identifier: "ExecuteScheduledReportResponse" });
   }
 }
 function __c2(j: number): any {
@@ -1043,9 +1037,7 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String, policyDocument: S.String }),
-      ).annotate({
-        identifier: "GetResourcePolicyResponse",
-      });
+      ).annotate({ identifier: "GetResourcePolicyResponse" });
   }
 }
 function __c5(j: number): any {
@@ -1055,9 +1047,7 @@ function __c5(j: number): any {
         S.Struct({ arn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetScheduledReportRequest",
-      });
+      ).annotate({ identifier: "GetScheduledReportRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1065,7 +1055,7 @@ function __c5(j: number): any {
           name: S.String,
           dashboardArn: S.String,
           scheduledReportExecutionRoleArn: S.String,
-          scheduleConfig: __S(737, __c23, 1),
+          scheduleConfig: __S(705, __c22, 1),
           description: S.optional(S.String),
           widgetIds: S.optional(__S(544, __c17, 0)),
           widgetDateRangeOverride: S.optional(__S(577, __c18, 1)),
@@ -1115,9 +1105,7 @@ function __c7(j: number): any {
         S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListScheduledReportsRequest",
-      });
+      ).annotate({ identifier: "ListScheduledReportsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1136,9 +1124,7 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ scheduledReports: __S(226, __c7, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListScheduledReportsResponse",
-      });
+      ).annotate({ identifier: "ListScheduledReportsResponse" });
   }
 }
 function __c8(j: number): any {
@@ -1148,9 +1134,7 @@ function __c8(j: number): any {
         S.Struct({ resourceArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ resourceTags: S.optional(__S(609, __c19, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -1200,15 +1184,13 @@ function __c12(j: number): any {
           description: S.optional(S.String),
           dashboardArn: S.optional(S.String),
           scheduledReportExecutionRoleArn: S.optional(S.String),
-          scheduleConfig: S.optional(__S(737, __c23, 1)),
+          scheduleConfig: S.optional(__S(705, __c22, 1)),
           widgetIds: S.optional(__S(544, __c17, 0)),
           widgetDateRangeOverride: S.optional(__S(577, __c18, 1)),
           clearWidgetIds: S.optional(S.Boolean),
           clearWidgetDateRangeOverride: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateScheduledReportRequest",
-      });
+      ).annotate({ identifier: "UpdateScheduledReportRequest" });
   }
 }
 function __c13(j: number): any {
@@ -1233,9 +1215,7 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TableDisplayConfigStruct",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TableDisplayConfigStruct" });
   }
 }
 function __c16(j: number): any {
@@ -1306,9 +1286,7 @@ function __c16(j: number): any {
           groupBy: S.optional(__S(513, __c16, 1)),
           filter: S.optional(__S(517, __c16, 5)),
         }),
-      ).annotate({
-        identifier: "SavingsPlansCoverageQuery",
-      });
+      ).annotate({ identifier: "SavingsPlansCoverageQuery" });
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -1316,9 +1294,7 @@ function __c16(j: number): any {
           granularity: S.optional(S.String),
           filter: S.optional(__S(517, __c16, 5)),
         }),
-      ).annotate({
-        identifier: "SavingsPlansUtilizationQuery",
-      });
+      ).annotate({ identifier: "SavingsPlansUtilizationQuery" });
     case 9:
       return S.suspend(() =>
         S.Struct({
@@ -1337,9 +1313,7 @@ function __c16(j: number): any {
           granularity: S.optional(S.String),
           filter: S.optional(__S(517, __c16, 5)),
         }),
-      ).annotate({
-        identifier: "ReservationUtilizationQuery",
-      });
+      ).annotate({ identifier: "ReservationUtilizationQuery" });
     case 11:
       return S.Union([
         /*@__PURE__*/ S.Struct({ costAndUsage: __S(518, __c16, 6) }),
@@ -1425,7 +1399,7 @@ function __c21(j: number): any {
           name: S.String,
           dashboardArn: S.String,
           scheduledReportExecutionRoleArn: S.String,
-          scheduleConfig: __S(737, __c23, 1),
+          scheduleConfig: __S(705, __c22, 1),
           description: S.optional(S.String),
           widgetIds: S.optional(__S(544, __c17, 0)),
           widgetDateRangeOverride: S.optional(__S(577, __c18, 1)),
@@ -1441,20 +1415,10 @@ function __c21(j: number): any {
             T.IdempotencyToken(),
           ),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateScheduledReportRequest",
-      });
+      ).annotate({ identifier: "CreateScheduledReportRequest" });
   }
 }
 function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ arn: S.String })).annotate({
-        identifier: "CreateScheduledReportResponse",
-      });
-  }
-}
-function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1468,13 +1432,13 @@ function __c23(j: number): any {
         S.Struct({
           scheduleExpression: S.optional(S.String),
           scheduleExpressionTimeZone: S.optional(S.String),
-          schedulePeriod: S.optional(__S(736, __c23, 0)),
+          schedulePeriod: S.optional(__S(704, __c22, 0)),
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScheduleConfig" });
   }
 }
-function __c24(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

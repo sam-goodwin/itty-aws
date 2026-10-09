@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -728,9 +728,7 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateLifecyclePolicyRequest",
-      });
+      ).annotate({ identifier: "UpdateLifecyclePolicyRequest" });
   }
 }
 function __c3(j: number): any {
@@ -751,9 +749,7 @@ function __c3(j: number): any {
           CrossRegionCopyTargets: S.optional(__S(217, __c6, 25)),
           Exclusions: S.optional(__S(218, __c6, 26)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/policies" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateLifecyclePolicyRequest",
-      });
+      ).annotate({ identifier: "CreateLifecyclePolicyRequest" });
     case 1:
       return S.suspend(() => S.Struct({ PolicyId: S.optional(S.String) })).annotate({
         identifier: "CreateLifecyclePolicyResponse",
@@ -824,13 +820,8 @@ function __c6(j: number): any {
       ).annotate({ identifier: "FastRestoreRule" });
     case 7:
       return S.suspend(() =>
-        S.Struct({
-          Interval: S.optional(S.Number),
-          IntervalUnit: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CrossRegionCopyRetainRule",
-      });
+        S.Struct({ Interval: S.optional(S.Number), IntervalUnit: S.optional(S.String) }),
+      ).annotate({ identifier: "CrossRegionCopyRetainRule" });
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -972,9 +963,7 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteLifecyclePolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteLifecyclePolicyRequest" });
   }
 }
 function __c8(j: number): any {
@@ -997,9 +986,7 @@ function __c9(j: number): any {
           TagsToAdd: S.optional(__S(0, __c0, 0)).pipe(T.HttpQuery("tagsToAdd")),
           DefaultPolicyType: S.optional(S.String).pipe(T.HttpQuery("defaultPolicyType")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/policies" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetLifecyclePoliciesRequest",
-      });
+      ).annotate({ identifier: "GetLifecyclePoliciesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1033,9 +1020,7 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetLifecyclePolicyRequest",
-      });
+      ).annotate({ identifier: "GetLifecyclePolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1072,9 +1057,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(160, __c5, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",

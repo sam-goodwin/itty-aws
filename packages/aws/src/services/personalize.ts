@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1348,8 +1348,8 @@ export const createBatchInferenceJob: API.OperationMethod<
   CreateBatchInferenceJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1408, __c88, 0) as any as S.Schema<CreateBatchInferenceJobRequest>,
-  output: __S(1409, __c88, 1) as any as S.Schema<CreateBatchInferenceJobResponse>,
+  input: __S(1392, __c87, 0) as any as S.Schema<CreateBatchInferenceJobRequest>,
+  output: __S(1393, __c87, 1) as any as S.Schema<CreateBatchInferenceJobResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -1382,8 +1382,8 @@ export const createBatchSegmentJob: API.OperationMethod<
   CreateBatchSegmentJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1536, __c96, 0) as any as S.Schema<CreateBatchSegmentJobRequest>,
-  output: __S(1537, __c96, 1) as any as S.Schema<CreateBatchSegmentJobResponse>,
+  input: __S(1520, __c95, 0) as any as S.Schema<CreateBatchSegmentJobRequest>,
+  output: __S(1521, __c95, 1) as any as S.Schema<CreateBatchSegmentJobResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -2362,7 +2362,7 @@ export const deleteMetricAttribution: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(528, __c33, 0) as any as S.Schema<DeleteMetricAttributionRequest>,
-  output: __S(529, __c33, 1) as any as S.Schema<DeleteMetricAttributionResponse>,
+  output: __S(448, __c28, 0) as any as S.Schema<DeleteMetricAttributionResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3410,7 +3410,7 @@ export const startRecommender: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1232, __c77, 0) as any as S.Schema<StartRecommenderRequest>,
-  output: __S(1248, __c78, 0) as any as S.Schema<StartRecommenderResponse>,
+  output: __S(320, __c20, 0) as any as S.Schema<StartRecommenderResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3431,8 +3431,8 @@ export const stopRecommender: API.OperationMethod<
   StopRecommenderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1264, __c79, 0) as any as S.Schema<StopRecommenderRequest>,
-  output: __S(1248, __c78, 0) as any as S.Schema<StopRecommenderResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<StopRecommenderRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<StopRecommenderResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3464,8 +3464,8 @@ export const stopSolutionVersionCreation: API.OperationMethod<
   StopSolutionVersionCreationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1280, __c80, 0) as any as S.Schema<StopSolutionVersionCreationRequest>,
-  output: __S(1281, __c80, 1) as any as S.Schema<StopSolutionVersionCreationResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<StopSolutionVersionCreationRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<StopSolutionVersionCreationResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3488,7 +3488,7 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1296, __c81, 0) as any as S.Schema<TagResourceRequest>,
+  input: __S(1280, __c80, 0) as any as S.Schema<TagResourceRequest>,
   output: __S(448, __c28, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     InvalidInputException,
@@ -3517,7 +3517,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1313, __c82, 1) as any as S.Schema<UntagResourceRequest>,
+  input: __S(1297, __c81, 1) as any as S.Schema<UntagResourceRequest>,
   output: __S(448, __c28, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     InvalidInputException,
@@ -3561,7 +3561,7 @@ export const updateCampaign: API.OperationMethod<
   UpdateCampaignError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1328, __c83, 0) as any as S.Schema<UpdateCampaignRequest>,
+  input: __S(1312, __c82, 0) as any as S.Schema<UpdateCampaignRequest>,
   output: __S(32, __c2, 0) as any as S.Schema<UpdateCampaignResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
@@ -3583,7 +3583,7 @@ export const updateDataset: API.OperationMethod<
   UpdateDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1344, __c84, 0) as any as S.Schema<UpdateDatasetRequest>,
+  input: __S(1328, __c83, 0) as any as S.Schema<UpdateDatasetRequest>,
   output: __S(96, __c6, 0) as any as S.Schema<UpdateDatasetResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
@@ -3606,7 +3606,7 @@ export const updateMetricAttribution: API.OperationMethod<
   UpdateMetricAttributionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1360, __c85, 0) as any as S.Schema<UpdateMetricAttributionRequest>,
+  input: __S(1344, __c84, 0) as any as S.Schema<UpdateMetricAttributionRequest>,
   output: __S(240, __c15, 0) as any as S.Schema<UpdateMetricAttributionResponse>,
   errors: [
     InvalidInputException,
@@ -3639,7 +3639,7 @@ export const updateRecommender: API.OperationMethod<
   UpdateRecommenderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1376, __c86, 0) as any as S.Schema<UpdateRecommenderRequest>,
+  input: __S(1360, __c85, 0) as any as S.Schema<UpdateRecommenderRequest>,
   output: __S(320, __c20, 0) as any as S.Schema<UpdateRecommenderResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
@@ -3674,7 +3674,7 @@ export const updateSolution: API.OperationMethod<
   UpdateSolutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1392, __c87, 0) as any as S.Schema<UpdateSolutionRequest>,
+  input: __S(1376, __c86, 0) as any as S.Schema<UpdateSolutionRequest>,
   output: __S(400, __c25, 0) as any as S.Schema<UpdateSolutionResponse>,
   errors: [
     InvalidInputException,
@@ -3697,7 +3697,7 @@ function __c0(j: number): any {
           solutionVersionArn: S.String,
           minProvisionedTPS: S.optional(S.Number),
           campaignConfig: S.optional(__S(16, __c1, 0)),
-          tags: S.optional(__S(1473, __c92, 1)),
+          tags: S.optional(__S(1457, __c91, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateCampaignRequest" });
   }
@@ -3707,10 +3707,10 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          itemExplorationConfig: S.optional(__S(1424, __c89, 0)),
+          itemExplorationConfig: S.optional(__S(1408, __c88, 0)),
           enableMetadataWithRecommendations: S.optional(S.Boolean),
           syncWithLatestSolutionVersion: S.optional(S.Boolean),
-          rankingInfluence: S.optional(__S(1440, __c90, 0)),
+          rankingInfluence: S.optional(__S(1424, __c89, 0)),
         }),
       ).annotate({ identifier: "CampaignConfig" });
   }
@@ -3732,11 +3732,9 @@ function __c3(j: number): any {
           datasetGroupArn: S.String,
           dataSource: __S(64, __c4, 0),
           roleArn: S.String,
-          tags: S.optional(__S(1473, __c92, 1)),
+          tags: S.optional(__S(1457, __c91, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateDataDeletionJobRequest",
-      });
+      ).annotate({ identifier: "CreateDataDeletionJobRequest" });
     case 1:
       return S.suspend(() => S.Struct({ dataDeletionJobArn: S.optional(S.String) })).annotate({
         identifier: "CreateDataDeletionJobResponse",
@@ -3760,7 +3758,7 @@ function __c5(j: number): any {
           schemaArn: S.String,
           datasetGroupArn: S.String,
           datasetType: S.String,
-          tags: S.optional(__S(1473, __c92, 1)),
+          tags: S.optional(__S(1457, __c91, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateDatasetRequest" });
   }
@@ -3782,12 +3780,10 @@ function __c7(j: number): any {
           datasetArn: S.String,
           ingestionMode: S.optional(S.String),
           roleArn: S.String,
-          jobOutput: __S(1504, __c94, 0),
-          tags: S.optional(__S(1473, __c92, 1)),
+          jobOutput: __S(1488, __c93, 0),
+          tags: S.optional(__S(1457, __c91, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateDatasetExportJobRequest",
-      });
+      ).annotate({ identifier: "CreateDatasetExportJobRequest" });
     case 1:
       return S.suspend(() => S.Struct({ datasetExportJobArn: S.optional(S.String) })).annotate({
         identifier: "CreateDatasetExportJobResponse",
@@ -3803,17 +3799,13 @@ function __c8(j: number): any {
           roleArn: S.optional(S.String),
           kmsKeyArn: S.optional(S.String),
           domain: S.optional(S.String),
-          tags: S.optional(__S(1473, __c92, 1)),
+          tags: S.optional(__S(1457, __c91, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateDatasetGroupRequest",
-      });
+      ).annotate({ identifier: "CreateDatasetGroupRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ datasetGroupArn: S.optional(S.String), domain: S.optional(S.String) }),
-      ).annotate({
-        identifier: "CreateDatasetGroupResponse",
-      });
+      ).annotate({ identifier: "CreateDatasetGroupResponse" });
   }
 }
 function __c9(j: number): any {
@@ -3825,13 +3817,11 @@ function __c9(j: number): any {
           datasetArn: S.String,
           dataSource: __S(64, __c4, 0),
           roleArn: S.optional(S.String),
-          tags: S.optional(__S(1473, __c92, 1)),
+          tags: S.optional(__S(1457, __c91, 1)),
           importMode: S.optional(S.String),
           publishAttributionMetricsToS3: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateDatasetImportJobRequest",
-      });
+      ).annotate({ identifier: "CreateDatasetImportJobRequest" });
     case 1:
       return S.suspend(() => S.Struct({ datasetImportJobArn: S.optional(S.String) })).annotate({
         identifier: "CreateDatasetImportJobResponse",
@@ -3845,17 +3835,13 @@ function __c10(j: number): any {
         S.Struct({
           name: S.String,
           datasetGroupArn: S.String,
-          tags: S.optional(__S(1473, __c92, 1)),
+          tags: S.optional(__S(1457, __c91, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateEventTrackerRequest",
-      });
+      ).annotate({ identifier: "CreateEventTrackerRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ eventTrackerArn: S.optional(S.String), trackingId: S.optional(S.String) }),
-      ).annotate({
-        identifier: "CreateEventTrackerResponse",
-      });
+      ).annotate({ identifier: "CreateEventTrackerResponse" });
   }
 }
 function __c11(j: number): any {
@@ -3866,7 +3852,7 @@ function __c11(j: number): any {
           name: S.String,
           datasetGroupArn: S.String,
           filterExpression: SensitiveString,
-          tags: S.optional(__S(1473, __c92, 1)),
+          tags: S.optional(__S(1457, __c91, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateFilterRequest" });
     case 1:
@@ -3885,16 +3871,14 @@ function __c12(j: number): any {
           metrics: __S(225, __c14, 1),
           metricsOutputConfig: __S(208, __c13, 0),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateMetricAttributionRequest",
-      });
+      ).annotate({ identifier: "CreateMetricAttributionRequest" });
   }
 }
 function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ s3DataDestination: S.optional(__S(1488, __c93, 0)), roleArn: S.String }),
+        S.Struct({ s3DataDestination: S.optional(__S(1472, __c92, 0)), roleArn: S.String }),
       ).annotate({ identifier: "MetricAttributionOutput" });
   }
 }
@@ -3925,7 +3909,7 @@ function __c16(j: number): any {
           datasetGroupArn: S.String,
           recipeArn: S.String,
           recommenderConfig: S.optional(__S(304, __c19, 0)),
-          tags: S.optional(__S(1473, __c92, 1)),
+          tags: S.optional(__S(1457, __c91, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateRecommenderRequest" });
   }
@@ -3954,7 +3938,7 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          itemExplorationConfig: S.optional(__S(1424, __c89, 0)),
+          itemExplorationConfig: S.optional(__S(1408, __c88, 0)),
           minRecommendationRequestsPerSecond: S.optional(S.Number),
           trainingDataConfig: S.optional(__S(289, __c18, 1)),
           enableMetadataWithRecommendations: S.optional(S.Boolean),
@@ -3998,7 +3982,7 @@ function __c22(j: number): any {
           datasetGroupArn: S.String,
           eventType: S.optional(S.String),
           solutionConfig: S.optional(__S(378, __c23, 10)),
-          tags: S.optional(__S(1473, __c92, 1)),
+          tags: S.optional(__S(1457, __c91, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateSolutionRequest" });
   }
@@ -4027,17 +4011,13 @@ function __c23(j: number): any {
           minValue: S.optional(S.Number),
           maxValue: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "IntegerHyperParameterRange",
-      });
+      ).annotate({ identifier: "IntegerHyperParameterRange" });
     case 3:
       return S.Array(__S(370, __c23, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({ name: S.optional(S.String), values: S.optional(__S(272, __c17, 0)) }),
-      ).annotate({
-        identifier: "CategoricalHyperParameterRange",
-      });
+      ).annotate({ identifier: "CategoricalHyperParameterRange" });
     case 5:
       return S.Array(__S(372, __c23, 4));
     case 6:
@@ -4072,8 +4052,8 @@ function __c23(j: number): any {
         S.Struct({
           eventValueThreshold: S.optional(S.String),
           hpoConfig: S.optional(__S(375, __c23, 7)),
-          algorithmHyperParameters: S.optional(__S(1424, __c89, 0)),
-          featureTransformationParameters: S.optional(__S(1424, __c89, 0)),
+          algorithmHyperParameters: S.optional(__S(1408, __c88, 0)),
+          featureTransformationParameters: S.optional(__S(1408, __c88, 0)),
           autoMLConfig: S.optional(__S(376, __c23, 8)),
           eventsConfig: S.optional(__S(386, __c24, 2)),
           optimizationObjective: S.optional(__S(377, __c23, 9)),
@@ -4121,11 +4101,9 @@ function __c26(j: number): any {
           name: S.optional(S.String),
           solutionArn: S.String,
           trainingMode: S.optional(S.String),
-          tags: S.optional(__S(1473, __c92, 1)),
+          tags: S.optional(__S(1457, __c91, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateSolutionVersionRequest",
-      });
+      ).annotate({ identifier: "CreateSolutionVersionRequest" });
     case 1:
       return S.suspend(() => S.Struct({ solutionVersionArn: S.optional(S.String) })).annotate({
         identifier: "CreateSolutionVersionResponse",
@@ -4145,9 +4123,7 @@ function __c27(j: number): any {
 function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteCampaignResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteCampaignResponse" });
   }
 }
 function __c29(j: number): any {
@@ -4167,9 +4143,7 @@ function __c30(j: number): any {
         S.Struct({ datasetGroupArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteDatasetGroupRequest",
-      });
+      ).annotate({ identifier: "DeleteDatasetGroupRequest" });
   }
 }
 function __c31(j: number): any {
@@ -4179,9 +4153,7 @@ function __c31(j: number): any {
         S.Struct({ eventTrackerArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteEventTrackerRequest",
-      });
+      ).annotate({ identifier: "DeleteEventTrackerRequest" });
   }
 }
 function __c32(j: number): any {
@@ -4201,13 +4173,7 @@ function __c33(j: number): any {
         S.Struct({ metricAttributionArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteMetricAttributionRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteMetricAttributionResponse",
-      });
+      ).annotate({ identifier: "DeleteMetricAttributionRequest" });
   }
 }
 function __c34(j: number): any {
@@ -4260,9 +4226,7 @@ function __c37(j: number): any {
           maxValue: S.optional(S.Number),
           isTunable: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "DefaultIntegerHyperParameterRange",
-      });
+      ).annotate({ identifier: "DefaultIntegerHyperParameterRange" });
     case 3:
       return S.Array(__S(594, __c37, 2));
     case 4:
@@ -4272,9 +4236,7 @@ function __c37(j: number): any {
           values: S.optional(__S(272, __c17, 0)),
           isTunable: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "DefaultCategoricalHyperParameterRange",
-      });
+      ).annotate({ identifier: "DefaultCategoricalHyperParameterRange" });
     case 5:
       return S.Array(__S(596, __c37, 4));
     case 6:
@@ -4284,18 +4246,16 @@ function __c37(j: number): any {
           continuousHyperParameterRanges: S.optional(__S(595, __c37, 3)),
           categoricalHyperParameterRanges: S.optional(__S(597, __c37, 5)),
         }),
-      ).annotate({
-        identifier: "DefaultHyperParameterRanges",
-      });
+      ).annotate({ identifier: "DefaultHyperParameterRanges" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           algorithmArn: S.optional(S.String),
           algorithmImage: S.optional(__S(593, __c37, 1)),
-          defaultHyperParameters: S.optional(__S(1424, __c89, 0)),
+          defaultHyperParameters: S.optional(__S(1408, __c88, 0)),
           defaultHyperParameterRanges: S.optional(__S(598, __c37, 6)),
-          defaultResourceConfig: S.optional(__S(1424, __c89, 0)),
+          defaultResourceConfig: S.optional(__S(1408, __c88, 0)),
           trainingInputMode: S.optional(S.String),
           roleArn: S.optional(S.String),
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4315,9 +4275,7 @@ function __c38(j: number): any {
         S.Struct({ batchInferenceJobArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeBatchInferenceJobRequest",
-      });
+      ).annotate({ identifier: "DescribeBatchInferenceJobRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4327,12 +4285,12 @@ function __c38(j: number): any {
           failureReason: S.optional(S.String),
           solutionVersionArn: S.optional(S.String),
           numResults: S.optional(S.Number),
-          jobInput: S.optional(__S(1520, __c95, 0)),
-          jobOutput: S.optional(__S(1504, __c94, 0)),
-          batchInferenceJobConfig: S.optional(__S(1456, __c91, 0)),
+          jobInput: S.optional(__S(1504, __c94, 0)),
+          jobOutput: S.optional(__S(1488, __c93, 0)),
+          batchInferenceJobConfig: S.optional(__S(1440, __c90, 0)),
           roleArn: S.optional(S.String),
           batchInferenceJobMode: S.optional(S.String),
-          themeGenerationConfig: S.optional(__S(1458, __c91, 2)),
+          themeGenerationConfig: S.optional(__S(1442, __c90, 2)),
           status: S.optional(S.String),
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4341,9 +4299,7 @@ function __c38(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ batchInferenceJob: S.optional(__S(609, __c38, 1)) }),
-      ).annotate({
-        identifier: "DescribeBatchInferenceJobResponse",
-      });
+      ).annotate({ identifier: "DescribeBatchInferenceJobResponse" });
   }
 }
 function __c39(j: number): any {
@@ -4353,9 +4309,7 @@ function __c39(j: number): any {
         S.Struct({ batchSegmentJobArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeBatchSegmentJobRequest",
-      });
+      ).annotate({ identifier: "DescribeBatchSegmentJobRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4365,8 +4319,8 @@ function __c39(j: number): any {
           failureReason: S.optional(S.String),
           solutionVersionArn: S.optional(S.String),
           numResults: S.optional(S.Number),
-          jobInput: S.optional(__S(1520, __c95, 0)),
-          jobOutput: S.optional(__S(1504, __c94, 0)),
+          jobInput: S.optional(__S(1504, __c94, 0)),
+          jobOutput: S.optional(__S(1488, __c93, 0)),
           roleArn: S.optional(S.String),
           status: S.optional(S.String),
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4376,9 +4330,7 @@ function __c39(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ batchSegmentJob: S.optional(__S(625, __c39, 1)) }),
-      ).annotate({
-        identifier: "DescribeBatchSegmentJobResponse",
-      });
+      ).annotate({ identifier: "DescribeBatchSegmentJobResponse" });
   }
 }
 function __c40(j: number): any {
@@ -4429,9 +4381,7 @@ function __c41(j: number): any {
         S.Struct({ dataDeletionJobArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeDataDeletionJobRequest",
-      });
+      ).annotate({ identifier: "DescribeDataDeletionJobRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4450,9 +4400,7 @@ function __c41(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ dataDeletionJob: S.optional(__S(657, __c41, 1)) }),
-      ).annotate({
-        identifier: "DescribeDataDeletionJobResponse",
-      });
+      ).annotate({ identifier: "DescribeDataDeletionJobResponse" });
   }
 }
 function __c42(j: number): any {
@@ -4501,9 +4449,7 @@ function __c43(j: number): any {
         S.Struct({ datasetExportJobArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeDatasetExportJobRequest",
-      });
+      ).annotate({ identifier: "DescribeDatasetExportJobRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4513,7 +4459,7 @@ function __c43(j: number): any {
           ingestionMode: S.optional(S.String),
           roleArn: S.optional(S.String),
           status: S.optional(S.String),
-          jobOutput: S.optional(__S(1504, __c94, 0)),
+          jobOutput: S.optional(__S(1488, __c93, 0)),
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           failureReason: S.optional(S.String),
@@ -4522,9 +4468,7 @@ function __c43(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ datasetExportJob: S.optional(__S(689, __c43, 1)) }),
-      ).annotate({
-        identifier: "DescribeDatasetExportJobResponse",
-      });
+      ).annotate({ identifier: "DescribeDatasetExportJobResponse" });
   }
 }
 function __c44(j: number): any {
@@ -4534,9 +4478,7 @@ function __c44(j: number): any {
         S.Struct({ datasetGroupArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeDatasetGroupRequest",
-      });
+      ).annotate({ identifier: "DescribeDatasetGroupRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4564,9 +4506,7 @@ function __c45(j: number): any {
         S.Struct({ datasetImportJobArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeDatasetImportJobRequest",
-      });
+      ).annotate({ identifier: "DescribeDatasetImportJobRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4586,9 +4526,7 @@ function __c45(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ datasetImportJob: S.optional(__S(721, __c45, 1)) }),
-      ).annotate({
-        identifier: "DescribeDatasetImportJobResponse",
-      });
+      ).annotate({ identifier: "DescribeDatasetImportJobResponse" });
   }
 }
 function __c46(j: number): any {
@@ -4598,9 +4536,7 @@ function __c46(j: number): any {
         S.Struct({ eventTrackerArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeEventTrackerRequest",
-      });
+      ).annotate({ identifier: "DescribeEventTrackerRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4627,15 +4563,13 @@ function __c47(j: number): any {
         S.Struct({ featureTransformationArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeFeatureTransformationRequest",
-      });
+      ).annotate({ identifier: "DescribeFeatureTransformationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           featureTransformationArn: S.optional(S.String),
-          defaultParameters: S.optional(__S(1424, __c89, 0)),
+          defaultParameters: S.optional(__S(1408, __c88, 0)),
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           status: S.optional(S.String),
@@ -4644,9 +4578,7 @@ function __c47(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ featureTransformation: S.optional(__S(753, __c47, 1)) }),
-      ).annotate({
-        identifier: "DescribeFeatureTransformationResponse",
-      });
+      ).annotate({ identifier: "DescribeFeatureTransformationResponse" });
   }
 }
 function __c48(j: number): any {
@@ -4683,9 +4615,7 @@ function __c49(j: number): any {
         S.Struct({ metricAttributionArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeMetricAttributionRequest",
-      });
+      ).annotate({ identifier: "DescribeMetricAttributionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4702,9 +4632,7 @@ function __c49(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ metricAttribution: S.optional(__S(785, __c49, 1)) }),
-      ).annotate({
-        identifier: "DescribeMetricAttributionResponse",
-      });
+      ).annotate({ identifier: "DescribeMetricAttributionResponse" });
   }
 }
 function __c50(j: number): any {
@@ -4742,9 +4670,7 @@ function __c51(j: number): any {
         S.Struct({ recommenderArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeRecommenderRequest",
-      });
+      ).annotate({ identifier: "DescribeRecommenderRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4893,12 +4819,10 @@ function __c57(j: number): any {
         S.Struct({ solutionVersionArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeSolutionVersionRequest",
-      });
+      ).annotate({ identifier: "DescribeSolutionVersionRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ algorithmHyperParameters: S.optional(__S(1424, __c89, 0)) }),
+        S.Struct({ algorithmHyperParameters: S.optional(__S(1408, __c88, 0)) }),
       ).annotate({ identifier: "TunedHPOParams" });
     case 2:
       return S.suspend(() =>
@@ -4926,9 +4850,7 @@ function __c57(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ solutionVersion: S.optional(__S(914, __c57, 2)) }),
-      ).annotate({
-        identifier: "DescribeSolutionVersionResponse",
-      });
+      ).annotate({ identifier: "DescribeSolutionVersionResponse" });
   }
 }
 function __c58(j: number): any {
@@ -4938,18 +4860,14 @@ function __c58(j: number): any {
         S.Struct({ solutionVersionArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetSolutionMetricsRequest",
-      });
+      ).annotate({ identifier: "GetSolutionMetricsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           solutionVersionArn: S.optional(S.String),
           metrics: S.optional(__S(832, __c52, 0)),
         }),
-      ).annotate({
-        identifier: "GetSolutionMetricsResponse",
-      });
+      ).annotate({ identifier: "GetSolutionMetricsResponse" });
   }
 }
 function __c59(j: number): any {
@@ -4961,9 +4879,7 @@ function __c59(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListBatchInferenceJobsRequest",
-      });
+      ).annotate({ identifier: "ListBatchInferenceJobsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4985,9 +4901,7 @@ function __c59(j: number): any {
           batchInferenceJobs: S.optional(__S(946, __c59, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListBatchInferenceJobsResponse",
-      });
+      ).annotate({ identifier: "ListBatchInferenceJobsResponse" });
   }
 }
 function __c60(j: number): any {
@@ -4999,9 +4913,7 @@ function __c60(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListBatchSegmentJobsRequest",
-      });
+      ).annotate({ identifier: "ListBatchSegmentJobsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5022,9 +4934,7 @@ function __c60(j: number): any {
           batchSegmentJobs: S.optional(__S(962, __c60, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListBatchSegmentJobsResponse",
-      });
+      ).annotate({ identifier: "ListBatchSegmentJobsResponse" });
   }
 }
 function __c61(j: number): any {
@@ -5065,9 +4975,7 @@ function __c62(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListDataDeletionJobsRequest",
-      });
+      ).annotate({ identifier: "ListDataDeletionJobsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5088,9 +4996,7 @@ function __c62(j: number): any {
           dataDeletionJobs: S.optional(__S(994, __c62, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListDataDeletionJobsResponse",
-      });
+      ).annotate({ identifier: "ListDataDeletionJobsResponse" });
   }
 }
 function __c63(j: number): any {
@@ -5102,9 +5008,7 @@ function __c63(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListDatasetExportJobsRequest",
-      });
+      ).annotate({ identifier: "ListDatasetExportJobsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5124,9 +5028,7 @@ function __c63(j: number): any {
           datasetExportJobs: S.optional(__S(1010, __c63, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListDatasetExportJobsResponse",
-      });
+      ).annotate({ identifier: "ListDatasetExportJobsResponse" });
   }
 }
 function __c64(j: number): any {
@@ -5157,9 +5059,7 @@ function __c64(j: number): any {
           datasetGroups: S.optional(__S(1026, __c64, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListDatasetGroupsResponse",
-      });
+      ).annotate({ identifier: "ListDatasetGroupsResponse" });
   }
 }
 function __c65(j: number): any {
@@ -5171,9 +5071,7 @@ function __c65(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListDatasetImportJobsRequest",
-      });
+      ).annotate({ identifier: "ListDatasetImportJobsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5194,9 +5092,7 @@ function __c65(j: number): any {
           datasetImportJobs: S.optional(__S(1042, __c65, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListDatasetImportJobsResponse",
-      });
+      ).annotate({ identifier: "ListDatasetImportJobsResponse" });
   }
 }
 function __c66(j: number): any {
@@ -5256,9 +5152,7 @@ function __c67(j: number): any {
           eventTrackers: S.optional(__S(1074, __c67, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListEventTrackersResponse",
-      });
+      ).annotate({ identifier: "ListEventTrackersResponse" });
   }
 }
 function __c68(j: number): any {
@@ -5300,15 +5194,11 @@ function __c69(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListMetricAttributionMetricsRequest",
-      });
+      ).annotate({ identifier: "ListMetricAttributionMetricsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ metrics: S.optional(__S(225, __c14, 1)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListMetricAttributionMetricsResponse",
-      });
+      ).annotate({ identifier: "ListMetricAttributionMetricsResponse" });
   }
 }
 function __c70(j: number): any {
@@ -5320,9 +5210,7 @@ function __c70(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListMetricAttributionsRequest",
-      });
+      ).annotate({ identifier: "ListMetricAttributionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5342,9 +5230,7 @@ function __c70(j: number): any {
           metricAttributions: S.optional(__S(1122, __c70, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListMetricAttributionsResponse",
-      });
+      ).annotate({ identifier: "ListMetricAttributionsResponse" });
   }
 }
 function __c71(j: number): any {
@@ -5475,9 +5361,7 @@ function __c75(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListSolutionVersionsRequest",
-      });
+      ).annotate({ identifier: "ListSolutionVersionsRequest" });
     case 1:
       return S.Array(__S(880, __c55, 0));
     case 2:
@@ -5486,9 +5370,7 @@ function __c75(j: number): any {
           solutionVersions: S.optional(__S(1201, __c75, 1)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListSolutionVersionsResponse",
-      });
+      ).annotate({ identifier: "ListSolutionVersionsResponse" });
   }
 }
 function __c76(j: number): any {
@@ -5498,11 +5380,9 @@ function __c76(j: number): any {
         S.Struct({ resourceArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(1473, __c92, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(1457, __c91, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
@@ -5520,14 +5400,6 @@ function __c77(j: number): any {
 function __c78(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ recommenderArn: S.optional(S.String) })).annotate({
-        identifier: "StartRecommenderResponse",
-      });
-  }
-}
-function __c79(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({ recommenderArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5535,45 +5407,39 @@ function __c79(j: number): any {
       ).annotate({ identifier: "StopRecommenderRequest" });
   }
 }
-function __c80(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ solutionVersionArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StopSolutionVersionCreationRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "StopSolutionVersionCreationResponse",
-      });
+      ).annotate({ identifier: "StopSolutionVersionCreationRequest" });
   }
 }
-function __c81(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tags: __S(1473, __c92, 1) }).pipe(
+        S.Struct({ resourceArn: S.String, tags: __S(1457, __c91, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c82(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.Array(SensitiveString);
     case 1:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tagKeys: __S(1312, __c82, 0) }).pipe(
+        S.Struct({ resourceArn: S.String, tagKeys: __S(1296, __c81, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c83(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5586,7 +5452,7 @@ function __c83(j: number): any {
       ).annotate({ identifier: "UpdateCampaignRequest" });
   }
 }
-function __c84(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5596,7 +5462,7 @@ function __c84(j: number): any {
       ).annotate({ identifier: "UpdateDatasetRequest" });
   }
 }
-function __c85(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5606,12 +5472,10 @@ function __c85(j: number): any {
           metricsOutputConfig: S.optional(__S(208, __c13, 0)),
           metricAttributionArn: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateMetricAttributionRequest",
-      });
+      ).annotate({ identifier: "UpdateMetricAttributionRequest" });
   }
 }
-function __c86(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5621,7 +5485,7 @@ function __c86(j: number): any {
       ).annotate({ identifier: "UpdateRecommenderRequest" });
   }
 }
-function __c87(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5634,7 +5498,7 @@ function __c87(j: number): any {
       ).annotate({ identifier: "UpdateSolutionRequest" });
   }
 }
-function __c88(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5643,42 +5507,40 @@ function __c88(j: number): any {
           solutionVersionArn: S.String,
           filterArn: S.optional(S.String),
           numResults: S.optional(S.Number),
-          jobInput: __S(1520, __c95, 0),
-          jobOutput: __S(1504, __c94, 0),
+          jobInput: __S(1504, __c94, 0),
+          jobOutput: __S(1488, __c93, 0),
           roleArn: S.String,
-          batchInferenceJobConfig: S.optional(__S(1456, __c91, 0)),
-          tags: S.optional(__S(1473, __c92, 1)),
+          batchInferenceJobConfig: S.optional(__S(1440, __c90, 0)),
+          tags: S.optional(__S(1457, __c91, 1)),
           batchInferenceJobMode: S.optional(S.String),
-          themeGenerationConfig: S.optional(__S(1458, __c91, 2)),
+          themeGenerationConfig: S.optional(__S(1442, __c90, 2)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateBatchInferenceJobRequest",
-      });
+      ).annotate({ identifier: "CreateBatchInferenceJobRequest" });
     case 1:
       return S.suspend(() => S.Struct({ batchInferenceJobArn: S.optional(S.String) })).annotate({
         identifier: "CreateBatchInferenceJobResponse",
       });
   }
 }
-function __c89(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c90(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
   }
 }
-function __c91(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          itemExplorationConfig: S.optional(__S(1424, __c89, 0)),
-          rankingInfluence: S.optional(__S(1440, __c90, 0)),
+          itemExplorationConfig: S.optional(__S(1408, __c88, 0)),
+          rankingInfluence: S.optional(__S(1424, __c89, 0)),
         }),
       ).annotate({ identifier: "BatchInferenceJobConfig" });
     case 1:
@@ -5686,22 +5548,22 @@ function __c91(j: number): any {
         identifier: "FieldsForThemeGeneration",
       });
     case 2:
-      return S.suspend(() => S.Struct({ fieldsForThemeGeneration: __S(1457, __c91, 1) })).annotate({
+      return S.suspend(() => S.Struct({ fieldsForThemeGeneration: __S(1441, __c90, 1) })).annotate({
         identifier: "ThemeGenerationConfig",
       });
   }
 }
-function __c92(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ tagKey: SensitiveString, tagValue: SensitiveString }),
       ).annotate({ identifier: "Tag" });
     case 1:
-      return S.Array(__S(1472, __c92, 0));
+      return S.Array(__S(1456, __c91, 0));
   }
 }
-function __c93(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5709,23 +5571,23 @@ function __c93(j: number): any {
       ).annotate({ identifier: "S3DataConfig" });
   }
 }
-function __c94(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ s3DataDestination: __S(1488, __c93, 0) })).annotate({
+      return S.suspend(() => S.Struct({ s3DataDestination: __S(1472, __c92, 0) })).annotate({
         identifier: "BatchInferenceJobOutput",
       });
   }
 }
-function __c95(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ s3DataSource: __S(1488, __c93, 0) })).annotate({
+      return S.suspend(() => S.Struct({ s3DataSource: __S(1472, __c92, 0) })).annotate({
         identifier: "BatchInferenceJobInput",
       });
   }
 }
-function __c96(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5734,14 +5596,12 @@ function __c96(j: number): any {
           solutionVersionArn: S.String,
           filterArn: S.optional(S.String),
           numResults: S.optional(S.Number),
-          jobInput: __S(1520, __c95, 0),
-          jobOutput: __S(1504, __c94, 0),
+          jobInput: __S(1504, __c94, 0),
+          jobOutput: __S(1488, __c93, 0),
           roleArn: S.String,
-          tags: S.optional(__S(1473, __c92, 1)),
+          tags: S.optional(__S(1457, __c91, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateBatchSegmentJobRequest",
-      });
+      ).annotate({ identifier: "CreateBatchSegmentJobRequest" });
     case 1:
       return S.suspend(() => S.Struct({ batchSegmentJobArn: S.optional(S.String) })).annotate({
         identifier: "CreateBatchSegmentJobResponse",

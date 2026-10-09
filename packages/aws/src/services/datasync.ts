@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1169,8 +1169,8 @@ export const cancelTaskExecution: API.OperationMethod<
   CancelTaskExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1008, __c63, 0) as any as S.Schema<CancelTaskExecutionRequest>,
-  output: __S(1024, __c64, 0) as any as S.Schema<CancelTaskExecutionResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<CancelTaskExecutionRequest>,
+  output: __S(992, __c62, 0) as any as S.Schema<CancelTaskExecutionResponse>,
   errors: [InternalException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1191,8 +1191,8 @@ export const createAgent: API.OperationMethod<
   CreateAgentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1040, __c65, 0) as any as S.Schema<CreateAgentRequest>,
-  output: __S(1041, __c65, 1) as any as S.Schema<CreateAgentResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<CreateAgentRequest>,
+  output: __S(1009, __c63, 1) as any as S.Schema<CreateAgentResponse>,
   errors: [InternalException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1217,8 +1217,8 @@ export const createLocationAzureBlob: API.OperationMethod<
   CreateLocationAzureBlobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c68, 0) as any as S.Schema<CreateLocationAzureBlobRequest>,
-  output: __S(1136, __c71, 0) as any as S.Schema<CreateLocationAzureBlobResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<CreateLocationAzureBlobRequest>,
+  output: __S(1104, __c69, 0) as any as S.Schema<CreateLocationAzureBlobResponse>,
   errors: [InternalException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1246,8 +1246,8 @@ export const createLocationEfs: API.OperationMethod<
   CreateLocationEfsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1152, __c72, 0) as any as S.Schema<CreateLocationEfsRequest>,
-  output: __S(1136, __c71, 0) as any as S.Schema<CreateLocationEfsResponse>,
+  input: __S(1120, __c70, 0) as any as S.Schema<CreateLocationEfsRequest>,
+  output: __S(1104, __c69, 0) as any as S.Schema<CreateLocationEfsResponse>,
   errors: [
     InternalException,
     InvalidRequestException,
@@ -1278,7 +1278,7 @@ export const createLocationFsxLustre: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateLocationFsxLustreRequest>,
-  output: __S(1136, __c71, 0) as any as S.Schema<CreateLocationFsxLustreResponse>,
+  output: __S(1104, __c69, 0) as any as S.Schema<CreateLocationFsxLustreResponse>,
   errors: [InternalException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1304,7 +1304,7 @@ export const createLocationFsxOntap: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(16, __c1, 0) as any as S.Schema<CreateLocationFsxOntapRequest>,
-  output: __S(1136, __c71, 0) as any as S.Schema<CreateLocationFsxOntapResponse>,
+  output: __S(1104, __c69, 0) as any as S.Schema<CreateLocationFsxOntapResponse>,
   errors: [InternalException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1334,7 +1334,7 @@ export const createLocationFsxOpenZfs: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c6, 0) as any as S.Schema<CreateLocationFsxOpenZfsRequest>,
-  output: __S(1136, __c71, 0) as any as S.Schema<CreateLocationFsxOpenZfsResponse>,
+  output: __S(1104, __c69, 0) as any as S.Schema<CreateLocationFsxOpenZfsResponse>,
   errors: [InternalException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1361,7 +1361,7 @@ export const createLocationFsxWindows: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(112, __c7, 0) as any as S.Schema<CreateLocationFsxWindowsRequest>,
-  output: __S(1136, __c71, 0) as any as S.Schema<CreateLocationFsxWindowsResponse>,
+  output: __S(1104, __c69, 0) as any as S.Schema<CreateLocationFsxWindowsResponse>,
   errors: [InternalException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1385,7 +1385,7 @@ export const createLocationHdfs: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(128, __c8, 0) as any as S.Schema<CreateLocationHdfsRequest>,
-  output: __S(1136, __c71, 0) as any as S.Schema<CreateLocationHdfsResponse>,
+  output: __S(1104, __c69, 0) as any as S.Schema<CreateLocationHdfsResponse>,
   errors: [InternalException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1409,7 +1409,7 @@ export const createLocationNfs: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(160, __c10, 0) as any as S.Schema<CreateLocationNfsRequest>,
-  output: __S(1136, __c71, 0) as any as S.Schema<CreateLocationNfsResponse>,
+  output: __S(1104, __c69, 0) as any as S.Schema<CreateLocationNfsResponse>,
   errors: [InternalException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1434,7 +1434,7 @@ export const createLocationObjectStorage: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(192, __c12, 0) as any as S.Schema<CreateLocationObjectStorageRequest>,
-  output: __S(1136, __c71, 0) as any as S.Schema<CreateLocationObjectStorageResponse>,
+  output: __S(1104, __c69, 0) as any as S.Schema<CreateLocationObjectStorageResponse>,
   errors: [InternalException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1469,7 +1469,7 @@ export const createLocationS3: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(208, __c13, 0) as any as S.Schema<CreateLocationS3Request>,
-  output: __S(209, __c13, 1) as any as S.Schema<CreateLocationS3Response>,
+  output: __S(1104, __c69, 0) as any as S.Schema<CreateLocationS3Response>,
   errors: [
     InternalException,
     InvalidRequestException,
@@ -1497,7 +1497,7 @@ export const createLocationSmb: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(240, __c15, 0) as any as S.Schema<CreateLocationSmbRequest>,
-  output: __S(1136, __c71, 0) as any as S.Schema<CreateLocationSmbResponse>,
+  output: __S(1104, __c69, 0) as any as S.Schema<CreateLocationSmbResponse>,
   errors: [InternalException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1551,7 +1551,7 @@ export const deleteAgent: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(320, __c20, 0) as any as S.Schema<DeleteAgentRequest>,
-  output: __S(1024, __c64, 0) as any as S.Schema<DeleteAgentResponse>,
+  output: __S(992, __c62, 0) as any as S.Schema<DeleteAgentResponse>,
   errors: [InternalException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1573,7 +1573,7 @@ export const deleteLocation: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(336, __c21, 0) as any as S.Schema<DeleteLocationRequest>,
-  output: __S(1024, __c64, 0) as any as S.Schema<DeleteLocationResponse>,
+  output: __S(992, __c62, 0) as any as S.Schema<DeleteLocationResponse>,
   errors: [InternalException, InvalidRequestException, LocationNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1595,7 +1595,7 @@ export const deleteTask: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(352, __c22, 0) as any as S.Schema<DeleteTaskRequest>,
-  output: __S(1024, __c64, 0) as any as S.Schema<DeleteTaskResponse>,
+  output: __S(992, __c62, 0) as any as S.Schema<DeleteTaskResponse>,
   errors: [InternalException, InvalidRequestException, TaskNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2089,7 +2089,7 @@ export const tagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(720, __c45, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(1024, __c64, 0) as any as S.Schema<TagResourceResponse>,
+  output: __S(992, __c62, 0) as any as S.Schema<TagResourceResponse>,
   errors: [InternalException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2107,7 +2107,7 @@ export const untagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(736, __c46, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(1024, __c64, 0) as any as S.Schema<UntagResourceResponse>,
+  output: __S(992, __c62, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2125,7 +2125,7 @@ export const updateAgent: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(752, __c47, 0) as any as S.Schema<UpdateAgentRequest>,
-  output: __S(1024, __c64, 0) as any as S.Schema<UpdateAgentResponse>,
+  output: __S(992, __c62, 0) as any as S.Schema<UpdateAgentResponse>,
   errors: [InternalException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2149,7 +2149,7 @@ export const updateLocationAzureBlob: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(768, __c48, 0) as any as S.Schema<UpdateLocationAzureBlobRequest>,
-  output: __S(784, __c49, 0) as any as S.Schema<UpdateLocationAzureBlobResponse>,
+  output: __S(992, __c62, 0) as any as S.Schema<UpdateLocationAzureBlobResponse>,
   errors: [InternalException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2170,8 +2170,8 @@ export const updateLocationEfs: API.OperationMethod<
   UpdateLocationEfsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c50, 0) as any as S.Schema<UpdateLocationEfsRequest>,
-  output: __S(1024, __c64, 0) as any as S.Schema<UpdateLocationEfsResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<UpdateLocationEfsRequest>,
+  output: __S(992, __c62, 0) as any as S.Schema<UpdateLocationEfsResponse>,
   errors: [InternalException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2195,8 +2195,8 @@ export const updateLocationFsxLustre: API.OperationMethod<
   UpdateLocationFsxLustreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(816, __c51, 0) as any as S.Schema<UpdateLocationFsxLustreRequest>,
-  output: __S(784, __c49, 0) as any as S.Schema<UpdateLocationFsxLustreResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<UpdateLocationFsxLustreRequest>,
+  output: __S(992, __c62, 0) as any as S.Schema<UpdateLocationFsxLustreResponse>,
   errors: [InternalException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2220,8 +2220,8 @@ export const updateLocationFsxOntap: API.OperationMethod<
   UpdateLocationFsxOntapError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(834, __c52, 2) as any as S.Schema<UpdateLocationFsxOntapRequest>,
-  output: __S(1024, __c64, 0) as any as S.Schema<UpdateLocationFsxOntapResponse>,
+  input: __S(818, __c51, 2) as any as S.Schema<UpdateLocationFsxOntapRequest>,
+  output: __S(992, __c62, 0) as any as S.Schema<UpdateLocationFsxOntapResponse>,
   errors: [InternalException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2248,8 +2248,8 @@ export const updateLocationFsxOpenZfs: API.OperationMethod<
   UpdateLocationFsxOpenZfsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(848, __c53, 0) as any as S.Schema<UpdateLocationFsxOpenZfsRequest>,
-  output: __S(864, __c54, 0) as any as S.Schema<UpdateLocationFsxOpenZfsResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<UpdateLocationFsxOpenZfsRequest>,
+  output: __S(992, __c62, 0) as any as S.Schema<UpdateLocationFsxOpenZfsResponse>,
   errors: [InternalException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2273,8 +2273,8 @@ export const updateLocationFsxWindows: API.OperationMethod<
   UpdateLocationFsxWindowsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(880, __c55, 0) as any as S.Schema<UpdateLocationFsxWindowsRequest>,
-  output: __S(864, __c54, 0) as any as S.Schema<UpdateLocationFsxWindowsResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<UpdateLocationFsxWindowsRequest>,
+  output: __S(992, __c62, 0) as any as S.Schema<UpdateLocationFsxWindowsResponse>,
   errors: [InternalException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2295,8 +2295,8 @@ export const updateLocationHdfs: API.OperationMethod<
   UpdateLocationHdfsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c56, 0) as any as S.Schema<UpdateLocationHdfsRequest>,
-  output: __S(1024, __c64, 0) as any as S.Schema<UpdateLocationHdfsResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<UpdateLocationHdfsRequest>,
+  output: __S(992, __c62, 0) as any as S.Schema<UpdateLocationHdfsResponse>,
   errors: [InternalException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2317,8 +2317,8 @@ export const updateLocationNfs: API.OperationMethod<
   UpdateLocationNfsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(912, __c57, 0) as any as S.Schema<UpdateLocationNfsRequest>,
-  output: __S(1024, __c64, 0) as any as S.Schema<UpdateLocationNfsResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<UpdateLocationNfsRequest>,
+  output: __S(992, __c62, 0) as any as S.Schema<UpdateLocationNfsResponse>,
   errors: [InternalException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2342,8 +2342,8 @@ export const updateLocationObjectStorage: API.OperationMethod<
   UpdateLocationObjectStorageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c58, 0) as any as S.Schema<UpdateLocationObjectStorageRequest>,
-  output: __S(864, __c54, 0) as any as S.Schema<UpdateLocationObjectStorageResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<UpdateLocationObjectStorageRequest>,
+  output: __S(992, __c62, 0) as any as S.Schema<UpdateLocationObjectStorageResponse>,
   errors: [InternalException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2368,8 +2368,8 @@ export const updateLocationS3: API.OperationMethod<
   UpdateLocationS3Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(944, __c59, 0) as any as S.Schema<UpdateLocationS3Request>,
-  output: __S(1024, __c64, 0) as any as S.Schema<UpdateLocationS3Response>,
+  input: __S(912, __c57, 0) as any as S.Schema<UpdateLocationS3Request>,
+  output: __S(992, __c62, 0) as any as S.Schema<UpdateLocationS3Response>,
   errors: [InternalException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2390,8 +2390,8 @@ export const updateLocationSmb: API.OperationMethod<
   UpdateLocationSmbError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c60, 0) as any as S.Schema<UpdateLocationSmbRequest>,
-  output: __S(1024, __c64, 0) as any as S.Schema<UpdateLocationSmbResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<UpdateLocationSmbRequest>,
+  output: __S(992, __c62, 0) as any as S.Schema<UpdateLocationSmbResponse>,
   errors: [InternalException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2413,8 +2413,8 @@ export const updateTask: API.OperationMethod<
   UpdateTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(976, __c61, 0) as any as S.Schema<UpdateTaskRequest>,
-  output: __S(1024, __c64, 0) as any as S.Schema<UpdateTaskResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<UpdateTaskRequest>,
+  output: __S(992, __c62, 0) as any as S.Schema<UpdateTaskResponse>,
   errors: [InternalException, InvalidRequestException, TaskNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2437,8 +2437,8 @@ export const updateTaskExecution: API.OperationMethod<
   UpdateTaskExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c62, 0) as any as S.Schema<UpdateTaskExecutionRequest>,
-  output: __S(1024, __c64, 0) as any as S.Schema<UpdateTaskExecutionResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<UpdateTaskExecutionRequest>,
+  output: __S(992, __c62, 0) as any as S.Schema<UpdateTaskExecutionResponse>,
   errors: [InternalException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2452,13 +2452,11 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           FsxFilesystemArn: S.String,
-          SecurityGroupArns: __S(1072, __c67, 0),
+          SecurityGroupArns: __S(1040, __c65, 0),
           Subdirectory: S.optional(S.String),
-          Tags: S.optional(__S(1057, __c66, 1)),
+          Tags: S.optional(__S(1025, __c64, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateLocationFsxLustreRequest",
-      });
+      ).annotate({ identifier: "CreateLocationFsxLustreRequest" });
   }
 }
 function __c1(j: number): any {
@@ -2467,14 +2465,12 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Protocol: __S(81, __c5, 1),
-          SecurityGroupArns: __S(1072, __c67, 0),
+          SecurityGroupArns: __S(1040, __c65, 0),
           StorageVirtualMachineArn: S.String,
           Subdirectory: S.optional(S.String),
-          Tags: S.optional(__S(1057, __c66, 1)),
+          Tags: S.optional(__S(1025, __c64, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateLocationFsxOntapRequest",
-      });
+      ).annotate({ identifier: "CreateLocationFsxOntapRequest" });
   }
 }
 function __c2(j: number): any {
@@ -2511,8 +2507,8 @@ function __c5(j: number): any {
           Password: S.optional(SensitiveString),
           User: S.String,
           ManagedSecretConfig: S.optional(__S(48, __c3, 0)),
-          CmkSecretConfig: S.optional(__S(1104, __c69, 0)),
-          CustomSecretConfig: S.optional(__S(1105, __c69, 1)),
+          CmkSecretConfig: S.optional(__S(1072, __c67, 0)),
+          CustomSecretConfig: S.optional(__S(1073, __c67, 1)),
         }),
       ).annotate({ identifier: "FsxProtocolSmb" });
     case 1:
@@ -2528,13 +2524,11 @@ function __c6(j: number): any {
         S.Struct({
           FsxFilesystemArn: S.String,
           Protocol: __S(81, __c5, 1),
-          SecurityGroupArns: __S(1072, __c67, 0),
+          SecurityGroupArns: __S(1040, __c65, 0),
           Subdirectory: S.optional(S.String),
-          Tags: S.optional(__S(1057, __c66, 1)),
+          Tags: S.optional(__S(1025, __c64, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateLocationFsxOpenZfsRequest",
-      });
+      ).annotate({ identifier: "CreateLocationFsxOpenZfsRequest" });
   }
 }
 function __c7(j: number): any {
@@ -2544,17 +2538,15 @@ function __c7(j: number): any {
         S.Struct({
           Subdirectory: S.optional(S.String),
           FsxFilesystemArn: S.String,
-          SecurityGroupArns: __S(1072, __c67, 0),
-          Tags: S.optional(__S(1057, __c66, 1)),
+          SecurityGroupArns: __S(1040, __c65, 0),
+          Tags: S.optional(__S(1025, __c64, 1)),
           User: S.String,
           Domain: S.optional(S.String),
           Password: S.optional(SensitiveString),
-          CmkSecretConfig: S.optional(__S(1104, __c69, 0)),
-          CustomSecretConfig: S.optional(__S(1105, __c69, 1)),
+          CmkSecretConfig: S.optional(__S(1072, __c67, 0)),
+          CustomSecretConfig: S.optional(__S(1073, __c67, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateLocationFsxWindowsRequest",
-      });
+      ).annotate({ identifier: "CreateLocationFsxWindowsRequest" });
   }
 }
 function __c8(j: number): any {
@@ -2573,14 +2565,12 @@ function __c8(j: number): any {
           KerberosPrincipal: S.optional(S.String),
           KerberosKeytab: S.optional(T.Blob),
           KerberosKrb5Conf: S.optional(T.Blob),
-          AgentArns: __S(1072, __c67, 0),
-          Tags: S.optional(__S(1057, __c66, 1)),
-          CmkSecretConfig: S.optional(__S(1104, __c69, 0)),
-          CustomSecretConfig: S.optional(__S(1105, __c69, 1)),
+          AgentArns: __S(1040, __c65, 0),
+          Tags: S.optional(__S(1025, __c64, 1)),
+          CmkSecretConfig: S.optional(__S(1072, __c67, 0)),
+          CustomSecretConfig: S.optional(__S(1073, __c67, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateLocationHdfsRequest",
-      });
+      ).annotate({ identifier: "CreateLocationHdfsRequest" });
   }
 }
 function __c9(j: number): any {
@@ -2609,7 +2599,7 @@ function __c10(j: number): any {
           ServerHostname: S.String,
           OnPremConfig: __S(176, __c11, 0),
           MountOptions: S.optional(__S(32, __c2, 0)),
-          Tags: S.optional(__S(1057, __c66, 1)),
+          Tags: S.optional(__S(1025, __c64, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateLocationNfsRequest" });
   }
@@ -2617,7 +2607,7 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ AgentArns: __S(1072, __c67, 0) })).annotate({
+      return S.suspend(() => S.Struct({ AgentArns: __S(1040, __c65, 0) })).annotate({
         identifier: "OnPremConfig",
       });
   }
@@ -2634,15 +2624,13 @@ function __c12(j: number): any {
           BucketName: S.String,
           AccessKey: S.optional(S.String),
           SecretKey: S.optional(SensitiveString),
-          AgentArns: S.optional(__S(1072, __c67, 0)),
-          Tags: S.optional(__S(1057, __c66, 1)),
+          AgentArns: S.optional(__S(1040, __c65, 0)),
+          Tags: S.optional(__S(1025, __c64, 1)),
           ServerCertificate: S.optional(T.Blob),
-          CmkSecretConfig: S.optional(__S(1104, __c69, 0)),
-          CustomSecretConfig: S.optional(__S(1105, __c69, 1)),
+          CmkSecretConfig: S.optional(__S(1072, __c67, 0)),
+          CustomSecretConfig: S.optional(__S(1073, __c67, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateLocationObjectStorageRequest",
-      });
+      ).annotate({ identifier: "CreateLocationObjectStorageRequest" });
   }
 }
 function __c13(j: number): any {
@@ -2654,14 +2642,10 @@ function __c13(j: number): any {
           S3BucketArn: S.String,
           S3StorageClass: S.optional(S.String),
           S3Config: __S(224, __c14, 0),
-          AgentArns: S.optional(__S(1072, __c67, 0)),
-          Tags: S.optional(__S(1057, __c66, 1)),
+          AgentArns: S.optional(__S(1040, __c65, 0)),
+          Tags: S.optional(__S(1025, __c64, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateLocationS3Request" });
-    case 1:
-      return S.suspend(() => S.Struct({ LocationArn: S.optional(S.String) })).annotate({
-        identifier: "CreateLocationS3Response",
-      });
   }
 }
 function __c14(j: number): any {
@@ -2682,13 +2666,13 @@ function __c15(j: number): any {
           User: S.optional(S.String),
           Domain: S.optional(S.String),
           Password: S.optional(SensitiveString),
-          CmkSecretConfig: S.optional(__S(1104, __c69, 0)),
-          CustomSecretConfig: S.optional(__S(1105, __c69, 1)),
-          AgentArns: __S(1072, __c67, 0),
+          CmkSecretConfig: S.optional(__S(1072, __c67, 0)),
+          CustomSecretConfig: S.optional(__S(1073, __c67, 1)),
+          AgentArns: __S(1040, __c65, 0),
           MountOptions: S.optional(__S(32, __c2, 0)),
-          Tags: S.optional(__S(1057, __c66, 1)),
+          Tags: S.optional(__S(1025, __c64, 1)),
           AuthenticationType: S.optional(S.String),
-          DnsIpAddresses: S.optional(__S(1072, __c67, 0)),
+          DnsIpAddresses: S.optional(__S(1040, __c65, 0)),
           KerberosPrincipal: S.optional(S.String),
           KerberosKeytab: S.optional(T.Blob),
           KerberosKrb5Conf: S.optional(T.Blob),
@@ -2708,7 +2692,7 @@ function __c16(j: number): any {
           Options: S.optional(__S(288, __c18, 0)),
           Excludes: S.optional(__S(273, __c17, 1)),
           Schedule: S.optional(__S(304, __c19, 0)),
-          Tags: S.optional(__S(1057, __c66, 1)),
+          Tags: S.optional(__S(1025, __c64, 1)),
           Includes: S.optional(__S(273, __c17, 1)),
           ManifestConfig: S.optional(__S(276, __c17, 4)),
           TaskReportConfig: S.optional(__S(281, __c17, 9)),
@@ -2862,8 +2846,8 @@ function __c23(j: number): any {
         S.Struct({
           VpcEndpointId: S.optional(S.String),
           PrivateLinkEndpoint: S.optional(S.String),
-          SubnetArns: S.optional(__S(1072, __c67, 0)),
-          SecurityGroupArns: S.optional(__S(1072, __c67, 0)),
+          SubnetArns: S.optional(__S(1040, __c65, 0)),
+          SecurityGroupArns: S.optional(__S(1040, __c65, 0)),
         }),
       ).annotate({ identifier: "PrivateLinkConfig" });
     case 2:
@@ -2896,9 +2880,7 @@ function __c25(j: number): any {
         S.Struct({ LocationArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeLocationAzureBlobRequest",
-      });
+      ).annotate({ identifier: "DescribeLocationAzureBlobRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2907,15 +2889,13 @@ function __c25(j: number): any {
           AuthenticationType: S.optional(S.String),
           BlobType: S.optional(S.String),
           AccessTier: S.optional(S.String),
-          AgentArns: S.optional(__S(1072, __c67, 0)),
+          AgentArns: S.optional(__S(1040, __c65, 0)),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ManagedSecretConfig: S.optional(__S(48, __c3, 0)),
-          CmkSecretConfig: S.optional(__S(1104, __c69, 0)),
-          CustomSecretConfig: S.optional(__S(1105, __c69, 1)),
+          CmkSecretConfig: S.optional(__S(1072, __c67, 0)),
+          CustomSecretConfig: S.optional(__S(1073, __c67, 1)),
         }),
-      ).annotate({
-        identifier: "DescribeLocationAzureBlobResponse",
-      });
+      ).annotate({ identifier: "DescribeLocationAzureBlobResponse" });
   }
 }
 function __c26(j: number): any {
@@ -2925,23 +2905,19 @@ function __c26(j: number): any {
         S.Struct({ LocationArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeLocationEfsRequest",
-      });
+      ).annotate({ identifier: "DescribeLocationEfsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           LocationArn: S.optional(S.String),
           LocationUri: S.optional(S.String),
-          Ec2Config: S.optional(__S(1168, __c73, 0)),
+          Ec2Config: S.optional(__S(1136, __c71, 0)),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           AccessPointArn: S.optional(S.String),
           FileSystemAccessRoleArn: S.optional(S.String),
           InTransitEncryption: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeLocationEfsResponse",
-      });
+      ).annotate({ identifier: "DescribeLocationEfsResponse" });
   }
 }
 function __c27(j: number): any {
@@ -2951,20 +2927,16 @@ function __c27(j: number): any {
         S.Struct({ LocationArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeLocationFsxLustreRequest",
-      });
+      ).annotate({ identifier: "DescribeLocationFsxLustreRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           LocationArn: S.optional(S.String),
           LocationUri: S.optional(S.String),
-          SecurityGroupArns: S.optional(__S(1072, __c67, 0)),
+          SecurityGroupArns: S.optional(__S(1040, __c65, 0)),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "DescribeLocationFsxLustreResponse",
-      });
+      ).annotate({ identifier: "DescribeLocationFsxLustreResponse" });
   }
 }
 function __c28(j: number): any {
@@ -2974,9 +2946,7 @@ function __c28(j: number): any {
         S.Struct({ LocationArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeLocationFsxOntapRequest",
-      });
+      ).annotate({ identifier: "DescribeLocationFsxOntapRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2984,13 +2954,11 @@ function __c28(j: number): any {
           LocationArn: S.optional(S.String),
           LocationUri: S.optional(S.String),
           Protocol: S.optional(__S(81, __c5, 1)),
-          SecurityGroupArns: S.optional(__S(1072, __c67, 0)),
+          SecurityGroupArns: S.optional(__S(1040, __c65, 0)),
           StorageVirtualMachineArn: S.optional(S.String),
           FsxFilesystemArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeLocationFsxOntapResponse",
-      });
+      ).annotate({ identifier: "DescribeLocationFsxOntapResponse" });
   }
 }
 function __c29(j: number): any {
@@ -3000,21 +2968,17 @@ function __c29(j: number): any {
         S.Struct({ LocationArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeLocationFsxOpenZfsRequest",
-      });
+      ).annotate({ identifier: "DescribeLocationFsxOpenZfsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           LocationArn: S.optional(S.String),
           LocationUri: S.optional(S.String),
-          SecurityGroupArns: S.optional(__S(1072, __c67, 0)),
+          SecurityGroupArns: S.optional(__S(1040, __c65, 0)),
           Protocol: S.optional(__S(81, __c5, 1)),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "DescribeLocationFsxOpenZfsResponse",
-      });
+      ).annotate({ identifier: "DescribeLocationFsxOpenZfsResponse" });
   }
 }
 function __c30(j: number): any {
@@ -3024,25 +2988,21 @@ function __c30(j: number): any {
         S.Struct({ LocationArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeLocationFsxWindowsRequest",
-      });
+      ).annotate({ identifier: "DescribeLocationFsxWindowsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           LocationArn: S.optional(S.String),
           LocationUri: S.optional(S.String),
-          SecurityGroupArns: S.optional(__S(1072, __c67, 0)),
+          SecurityGroupArns: S.optional(__S(1040, __c65, 0)),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           User: S.optional(S.String),
           Domain: S.optional(S.String),
           ManagedSecretConfig: S.optional(__S(48, __c3, 0)),
-          CmkSecretConfig: S.optional(__S(1104, __c69, 0)),
-          CustomSecretConfig: S.optional(__S(1105, __c69, 1)),
+          CmkSecretConfig: S.optional(__S(1072, __c67, 0)),
+          CustomSecretConfig: S.optional(__S(1073, __c67, 1)),
         }),
-      ).annotate({
-        identifier: "DescribeLocationFsxWindowsResponse",
-      });
+      ).annotate({ identifier: "DescribeLocationFsxWindowsResponse" });
   }
 }
 function __c31(j: number): any {
@@ -3052,9 +3012,7 @@ function __c31(j: number): any {
         S.Struct({ LocationArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeLocationHdfsRequest",
-      });
+      ).annotate({ identifier: "DescribeLocationHdfsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3068,15 +3026,13 @@ function __c31(j: number): any {
           AuthenticationType: S.optional(S.String),
           SimpleUser: S.optional(S.String),
           KerberosPrincipal: S.optional(S.String),
-          AgentArns: S.optional(__S(1072, __c67, 0)),
+          AgentArns: S.optional(__S(1040, __c65, 0)),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ManagedSecretConfig: S.optional(__S(48, __c3, 0)),
-          CmkSecretConfig: S.optional(__S(1104, __c69, 0)),
-          CustomSecretConfig: S.optional(__S(1105, __c69, 1)),
+          CmkSecretConfig: S.optional(__S(1072, __c67, 0)),
+          CustomSecretConfig: S.optional(__S(1073, __c67, 1)),
         }),
-      ).annotate({
-        identifier: "DescribeLocationHdfsResponse",
-      });
+      ).annotate({ identifier: "DescribeLocationHdfsResponse" });
   }
 }
 function __c32(j: number): any {
@@ -3086,9 +3042,7 @@ function __c32(j: number): any {
         S.Struct({ LocationArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeLocationNfsRequest",
-      });
+      ).annotate({ identifier: "DescribeLocationNfsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3098,9 +3052,7 @@ function __c32(j: number): any {
           MountOptions: S.optional(__S(32, __c2, 0)),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "DescribeLocationNfsResponse",
-      });
+      ).annotate({ identifier: "DescribeLocationNfsResponse" });
   }
 }
 function __c33(j: number): any {
@@ -3110,9 +3062,7 @@ function __c33(j: number): any {
         S.Struct({ LocationArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeLocationObjectStorageRequest",
-      });
+      ).annotate({ identifier: "DescribeLocationObjectStorageRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3121,16 +3071,14 @@ function __c33(j: number): any {
           AccessKey: S.optional(S.String),
           ServerPort: S.optional(S.Number),
           ServerProtocol: S.optional(S.String),
-          AgentArns: S.optional(__S(1072, __c67, 0)),
+          AgentArns: S.optional(__S(1040, __c65, 0)),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ServerCertificate: S.optional(T.Blob),
           ManagedSecretConfig: S.optional(__S(48, __c3, 0)),
-          CmkSecretConfig: S.optional(__S(1104, __c69, 0)),
-          CustomSecretConfig: S.optional(__S(1105, __c69, 1)),
+          CmkSecretConfig: S.optional(__S(1072, __c67, 0)),
+          CustomSecretConfig: S.optional(__S(1073, __c67, 1)),
         }),
-      ).annotate({
-        identifier: "DescribeLocationObjectStorageResponse",
-      });
+      ).annotate({ identifier: "DescribeLocationObjectStorageResponse" });
   }
 }
 function __c34(j: number): any {
@@ -3140,9 +3088,7 @@ function __c34(j: number): any {
         S.Struct({ LocationArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeLocationS3Request",
-      });
+      ).annotate({ identifier: "DescribeLocationS3Request" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3150,12 +3096,10 @@ function __c34(j: number): any {
           LocationUri: S.optional(S.String),
           S3StorageClass: S.optional(S.String),
           S3Config: S.optional(__S(224, __c14, 0)),
-          AgentArns: S.optional(__S(1072, __c67, 0)),
+          AgentArns: S.optional(__S(1040, __c65, 0)),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "DescribeLocationS3Response",
-      });
+      ).annotate({ identifier: "DescribeLocationS3Response" });
   }
 }
 function __c35(j: number): any {
@@ -3165,29 +3109,25 @@ function __c35(j: number): any {
         S.Struct({ LocationArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeLocationSmbRequest",
-      });
+      ).annotate({ identifier: "DescribeLocationSmbRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           LocationArn: S.optional(S.String),
           LocationUri: S.optional(S.String),
-          AgentArns: S.optional(__S(1072, __c67, 0)),
+          AgentArns: S.optional(__S(1040, __c65, 0)),
           User: S.optional(S.String),
           Domain: S.optional(S.String),
           MountOptions: S.optional(__S(32, __c2, 0)),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          DnsIpAddresses: S.optional(__S(1072, __c67, 0)),
+          DnsIpAddresses: S.optional(__S(1040, __c65, 0)),
           KerberosPrincipal: S.optional(S.String),
           AuthenticationType: S.optional(S.String),
           ManagedSecretConfig: S.optional(__S(48, __c3, 0)),
-          CmkSecretConfig: S.optional(__S(1104, __c69, 0)),
-          CustomSecretConfig: S.optional(__S(1105, __c69, 1)),
+          CmkSecretConfig: S.optional(__S(1072, __c67, 0)),
+          CustomSecretConfig: S.optional(__S(1073, __c67, 1)),
         }),
-      ).annotate({
-        identifier: "DescribeLocationSmbResponse",
-      });
+      ).annotate({ identifier: "DescribeLocationSmbResponse" });
   }
 }
 function __c36(j: number): any {
@@ -3216,8 +3156,8 @@ function __c36(j: number): any {
           SourceLocationArn: S.optional(S.String),
           DestinationLocationArn: S.optional(S.String),
           CloudWatchLogGroupArn: S.optional(S.String),
-          SourceNetworkInterfaceArns: S.optional(__S(1072, __c67, 0)),
-          DestinationNetworkInterfaceArns: S.optional(__S(1072, __c67, 0)),
+          SourceNetworkInterfaceArns: S.optional(__S(1040, __c65, 0)),
+          DestinationNetworkInterfaceArns: S.optional(__S(1040, __c65, 0)),
           Options: S.optional(__S(288, __c18, 0)),
           Excludes: S.optional(__S(273, __c17, 1)),
           Schedule: S.optional(__S(304, __c19, 0)),
@@ -3240,9 +3180,7 @@ function __c37(j: number): any {
         S.Struct({ TaskExecutionArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeTaskExecutionRequest",
-      });
+      ).annotate({ identifier: "DescribeTaskExecutionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3256,9 +3194,7 @@ function __c37(j: number): any {
           ErrorCode: S.optional(S.String),
           ErrorDetail: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "TaskExecutionResultDetail",
-      });
+      ).annotate({ identifier: "TaskExecutionResultDetail" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3270,9 +3206,7 @@ function __c37(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ AtSource: S.optional(S.Number), AtDestinationForDelete: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "TaskExecutionFilesListedDetail",
-      });
+      ).annotate({ identifier: "TaskExecutionFilesListedDetail" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3281,9 +3215,7 @@ function __c37(j: number): any {
           Verify: S.optional(S.Number),
           Delete: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "TaskExecutionFilesFailedDetail",
-      });
+      ).annotate({ identifier: "TaskExecutionFilesFailedDetail" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3293,9 +3225,7 @@ function __c37(j: number): any {
           Verify: S.optional(S.Number),
           Delete: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "TaskExecutionFoldersFailedDetail",
-      });
+      ).annotate({ identifier: "TaskExecutionFoldersFailedDetail" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3335,9 +3265,7 @@ function __c37(j: number): any {
           LaunchTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "DescribeTaskExecutionResponse",
-      });
+      ).annotate({ identifier: "DescribeTaskExecutionResponse" });
   }
 }
 function __c38(j: number): any {
@@ -3391,7 +3319,7 @@ function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Name: S.String, Values: __S(1072, __c67, 0), Operator: S.String }),
+        S.Struct({ Name: S.String, Values: __S(1040, __c65, 0), Operator: S.String }),
       ).annotate({ identifier: "LocationFilter" });
     case 1:
       return S.Array(__S(640, __c40, 0));
@@ -3406,15 +3334,11 @@ function __c41(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Tags: S.optional(__S(1057, __c66, 1)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
+        S.Struct({ Tags: S.optional(__S(1025, __c64, 1)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListTagsForResourceResponse" });
   }
 }
 function __c42(j: number): any {
@@ -3426,9 +3350,7 @@ function __c42(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListTaskExecutionsRequest",
-      });
+      ).annotate({ identifier: "ListTaskExecutionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3445,9 +3367,7 @@ function __c42(j: number): any {
           TaskExecutions: S.optional(__S(674, __c42, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListTaskExecutionsResponse",
-      });
+      ).annotate({ identifier: "ListTaskExecutionsResponse" });
   }
 }
 function __c43(j: number): any {
@@ -3488,11 +3408,9 @@ function __c44(j: number): any {
           Excludes: S.optional(__S(273, __c17, 1)),
           ManifestConfig: S.optional(__S(276, __c17, 4)),
           TaskReportConfig: S.optional(__S(281, __c17, 9)),
-          Tags: S.optional(__S(1057, __c66, 1)),
+          Tags: S.optional(__S(1025, __c64, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartTaskExecutionRequest",
-      });
+      ).annotate({ identifier: "StartTaskExecutionRequest" });
     case 1:
       return S.suspend(() => S.Struct({ TaskExecutionArn: S.optional(S.String) })).annotate({
         identifier: "StartTaskExecutionResponse",
@@ -3503,7 +3421,7 @@ function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Tags: __S(1057, __c66, 1) }).pipe(
+        S.Struct({ ResourceArn: S.String, Tags: __S(1025, __c64, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
@@ -3513,7 +3431,7 @@ function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Keys: __S(1072, __c67, 0) }).pipe(
+        S.Struct({ ResourceArn: S.String, Keys: __S(1040, __c65, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
@@ -3537,27 +3455,17 @@ function __c48(j: number): any {
           LocationArn: S.String,
           Subdirectory: S.optional(S.String),
           AuthenticationType: S.optional(S.String),
-          SasConfiguration: S.optional(__S(1120, __c70, 0)),
+          SasConfiguration: S.optional(__S(1088, __c68, 0)),
           BlobType: S.optional(S.String),
           AccessTier: S.optional(S.String),
-          AgentArns: S.optional(__S(1072, __c67, 0)),
-          CmkSecretConfig: S.optional(__S(1104, __c69, 0)),
-          CustomSecretConfig: S.optional(__S(1105, __c69, 1)),
+          AgentArns: S.optional(__S(1040, __c65, 0)),
+          CmkSecretConfig: S.optional(__S(1072, __c67, 0)),
+          CustomSecretConfig: S.optional(__S(1073, __c67, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateLocationAzureBlobRequest",
-      });
+      ).annotate({ identifier: "UpdateLocationAzureBlobRequest" });
   }
 }
 function __c49(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UpdateLocationAzureBlobResponse",
-      });
-  }
-}
-function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3571,19 +3479,17 @@ function __c50(j: number): any {
       ).annotate({ identifier: "UpdateLocationEfsRequest" });
   }
 }
-function __c51(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ LocationArn: S.String, Subdirectory: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateLocationFsxLustreRequest",
-      });
+      ).annotate({ identifier: "UpdateLocationFsxLustreRequest" });
   }
 }
-function __c52(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3592,27 +3498,25 @@ function __c52(j: number): any {
           MountOptions: S.optional(__S(32, __c2, 0)),
           Password: S.optional(SensitiveString),
           User: S.optional(S.String),
-          CmkSecretConfig: S.optional(__S(1104, __c69, 0)),
-          CustomSecretConfig: S.optional(__S(1105, __c69, 1)),
+          CmkSecretConfig: S.optional(__S(1072, __c67, 0)),
+          CustomSecretConfig: S.optional(__S(1073, __c67, 1)),
         }),
       ).annotate({ identifier: "FsxUpdateProtocolSmb" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ NFS: S.optional(__S(64, __c4, 0)), SMB: S.optional(__S(832, __c52, 0)) }),
+        S.Struct({ NFS: S.optional(__S(64, __c4, 0)), SMB: S.optional(__S(816, __c51, 0)) }),
       ).annotate({ identifier: "FsxUpdateProtocol" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           LocationArn: S.String,
-          Protocol: S.optional(__S(833, __c52, 1)),
+          Protocol: S.optional(__S(817, __c51, 1)),
           Subdirectory: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateLocationFsxOntapRequest",
-      });
+      ).annotate({ identifier: "UpdateLocationFsxOntapRequest" });
   }
 }
-function __c53(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3621,20 +3525,10 @@ function __c53(j: number): any {
           Protocol: S.optional(__S(81, __c5, 1)),
           Subdirectory: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateLocationFsxOpenZfsRequest",
-      });
+      ).annotate({ identifier: "UpdateLocationFsxOpenZfsRequest" });
   }
 }
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UpdateLocationFsxOpenZfsResponse",
-      });
-  }
-}
-function __c55(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3644,15 +3538,13 @@ function __c55(j: number): any {
           Domain: S.optional(S.String),
           User: S.optional(S.String),
           Password: S.optional(SensitiveString),
-          CmkSecretConfig: S.optional(__S(1104, __c69, 0)),
-          CustomSecretConfig: S.optional(__S(1105, __c69, 1)),
+          CmkSecretConfig: S.optional(__S(1072, __c67, 0)),
+          CustomSecretConfig: S.optional(__S(1073, __c67, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateLocationFsxWindowsRequest",
-      });
+      ).annotate({ identifier: "UpdateLocationFsxWindowsRequest" });
   }
 }
-function __c56(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3669,16 +3561,14 @@ function __c56(j: number): any {
           KerberosPrincipal: S.optional(S.String),
           KerberosKeytab: S.optional(T.Blob),
           KerberosKrb5Conf: S.optional(T.Blob),
-          AgentArns: S.optional(__S(1072, __c67, 0)),
-          CmkSecretConfig: S.optional(__S(1104, __c69, 0)),
-          CustomSecretConfig: S.optional(__S(1105, __c69, 1)),
+          AgentArns: S.optional(__S(1040, __c65, 0)),
+          CmkSecretConfig: S.optional(__S(1072, __c67, 0)),
+          CustomSecretConfig: S.optional(__S(1073, __c67, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateLocationHdfsRequest",
-      });
+      ).annotate({ identifier: "UpdateLocationHdfsRequest" });
   }
 }
-function __c57(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3692,7 +3582,7 @@ function __c57(j: number): any {
       ).annotate({ identifier: "UpdateLocationNfsRequest" });
   }
 }
-function __c58(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3704,17 +3594,15 @@ function __c58(j: number): any {
           ServerHostname: S.optional(S.String),
           AccessKey: S.optional(S.String),
           SecretKey: S.optional(SensitiveString),
-          AgentArns: S.optional(__S(1072, __c67, 0)),
+          AgentArns: S.optional(__S(1040, __c65, 0)),
           ServerCertificate: S.optional(T.Blob),
-          CmkSecretConfig: S.optional(__S(1104, __c69, 0)),
-          CustomSecretConfig: S.optional(__S(1105, __c69, 1)),
+          CmkSecretConfig: S.optional(__S(1072, __c67, 0)),
+          CustomSecretConfig: S.optional(__S(1073, __c67, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateLocationObjectStorageRequest",
-      });
+      ).annotate({ identifier: "UpdateLocationObjectStorageRequest" });
   }
 }
-function __c59(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3727,7 +3615,7 @@ function __c59(j: number): any {
       ).annotate({ identifier: "UpdateLocationS3Request" });
   }
 }
-function __c60(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3738,12 +3626,12 @@ function __c60(j: number): any {
           User: S.optional(S.String),
           Domain: S.optional(S.String),
           Password: S.optional(SensitiveString),
-          CmkSecretConfig: S.optional(__S(1104, __c69, 0)),
-          CustomSecretConfig: S.optional(__S(1105, __c69, 1)),
-          AgentArns: S.optional(__S(1072, __c67, 0)),
+          CmkSecretConfig: S.optional(__S(1072, __c67, 0)),
+          CustomSecretConfig: S.optional(__S(1073, __c67, 1)),
+          AgentArns: S.optional(__S(1040, __c65, 0)),
           MountOptions: S.optional(__S(32, __c2, 0)),
           AuthenticationType: S.optional(S.String),
-          DnsIpAddresses: S.optional(__S(1072, __c67, 0)),
+          DnsIpAddresses: S.optional(__S(1040, __c65, 0)),
           KerberosPrincipal: S.optional(S.String),
           KerberosKeytab: S.optional(T.Blob),
           KerberosKrb5Conf: S.optional(T.Blob),
@@ -3751,7 +3639,7 @@ function __c60(j: number): any {
       ).annotate({ identifier: "UpdateLocationSmbRequest" });
   }
 }
-function __c61(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3769,49 +3657,43 @@ function __c61(j: number): any {
       ).annotate({ identifier: "UpdateTaskRequest" });
   }
 }
-function __c62(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ TaskExecutionArn: S.String, Options: __S(288, __c18, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateTaskExecutionRequest",
-      });
+      ).annotate({ identifier: "UpdateTaskExecutionRequest" });
   }
 }
-function __c63(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ TaskExecutionArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CancelTaskExecutionRequest",
-      });
+      ).annotate({ identifier: "CancelTaskExecutionRequest" });
   }
 }
-function __c64(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelTaskExecutionResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "CancelTaskExecutionResponse" });
   }
 }
-function __c65(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ActivationKey: S.String,
           AgentName: S.optional(S.String),
-          Tags: S.optional(__S(1057, __c66, 1)),
+          Tags: S.optional(__S(1025, __c64, 1)),
           VpcEndpointId: S.optional(S.String),
-          SubnetArns: S.optional(__S(1072, __c67, 0)),
-          SecurityGroupArns: S.optional(__S(1072, __c67, 0)),
+          SubnetArns: S.optional(__S(1040, __c65, 0)),
+          SecurityGroupArns: S.optional(__S(1040, __c65, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateAgentRequest" });
     case 1:
@@ -3820,44 +3702,42 @@ function __c65(j: number): any {
       });
   }
 }
-function __c66(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Key: S.String, Value: S.optional(S.String) })).annotate({
         identifier: "TagListEntry",
       });
     case 1:
-      return S.Array(__S(1056, __c66, 0));
+      return S.Array(__S(1024, __c64, 0));
   }
 }
-function __c67(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c68(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ContainerUrl: S.String,
           AuthenticationType: S.String,
-          SasConfiguration: S.optional(__S(1120, __c70, 0)),
+          SasConfiguration: S.optional(__S(1088, __c68, 0)),
           BlobType: S.optional(S.String),
           AccessTier: S.optional(S.String),
           Subdirectory: S.optional(S.String),
-          AgentArns: S.optional(__S(1072, __c67, 0)),
-          Tags: S.optional(__S(1057, __c66, 1)),
-          CmkSecretConfig: S.optional(__S(1104, __c69, 0)),
-          CustomSecretConfig: S.optional(__S(1105, __c69, 1)),
+          AgentArns: S.optional(__S(1040, __c65, 0)),
+          Tags: S.optional(__S(1025, __c64, 1)),
+          CmkSecretConfig: S.optional(__S(1072, __c67, 0)),
+          CustomSecretConfig: S.optional(__S(1073, __c67, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateLocationAzureBlobRequest",
-      });
+      ).annotate({ identifier: "CreateLocationAzureBlobRequest" });
   }
 }
-function __c69(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3869,7 +3749,7 @@ function __c69(j: number): any {
       ).annotate({ identifier: "CustomSecretConfig" });
   }
 }
-function __c70(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Token: SensitiveString })).annotate({
@@ -3877,7 +3757,7 @@ function __c70(j: number): any {
       });
   }
 }
-function __c71(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ LocationArn: S.optional(S.String) })).annotate({
@@ -3885,15 +3765,15 @@ function __c71(j: number): any {
       });
   }
 }
-function __c72(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           Subdirectory: S.optional(S.String),
           EfsFilesystemArn: S.String,
-          Ec2Config: __S(1168, __c73, 0),
-          Tags: S.optional(__S(1057, __c66, 1)),
+          Ec2Config: __S(1136, __c71, 0),
+          Tags: S.optional(__S(1025, __c64, 1)),
           AccessPointArn: S.optional(S.String),
           FileSystemAccessRoleArn: S.optional(S.String),
           InTransitEncryption: S.optional(S.String),
@@ -3901,11 +3781,11 @@ function __c72(j: number): any {
       ).annotate({ identifier: "CreateLocationEfsRequest" });
   }
 }
-function __c73(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ SubnetArn: S.String, SecurityGroupArns: __S(1072, __c67, 0) }),
+        S.Struct({ SubnetArn: S.String, SecurityGroupArns: __S(1040, __c65, 0) }),
       ).annotate({ identifier: "Ec2Config" });
   }
 }

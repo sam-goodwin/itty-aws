@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -2535,9 +2535,7 @@ function __c2(j: number): any {
         S.Struct({ phoneNumber: SensitiveString }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CheckIfPhoneNumberIsOptedOutInput",
-      });
+      ).annotate({ identifier: "CheckIfPhoneNumberIsOptedOutInput" });
     case 1:
       return S.suspend(() => S.Struct({ isOptedOut: S.optional(S.Boolean) }).pipe(ns)).annotate({
         identifier: "CheckIfPhoneNumberIsOptedOutResponse",
@@ -2556,9 +2554,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "ConfirmSubscriptionInput" });
     case 1:
       return S.suspend(() => S.Struct({ SubscriptionArn: S.optional(S.String) }).pipe(ns)).annotate(
-        {
-          identifier: "ConfirmSubscriptionResponse",
-        },
+        { identifier: "ConfirmSubscriptionResponse" },
       );
   }
 }
@@ -2569,15 +2565,11 @@ function __c4(j: number): any {
         S.Struct({ Name: S.String, Platform: S.String, Attributes: __S(8, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreatePlatformApplicationInput",
-      });
+      ).annotate({ identifier: "CreatePlatformApplicationInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ PlatformApplicationArn: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "CreatePlatformApplicationResponse",
-      });
+      ).annotate({ identifier: "CreatePlatformApplicationResponse" });
   }
 }
 function __c5(j: number): any {
@@ -2590,9 +2582,7 @@ function __c5(j: number): any {
           CustomUserData: S.optional(S.String),
           Attributes: S.optional(__S(8, __c1, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreatePlatformEndpointInput",
-      });
+      ).annotate({ identifier: "CreatePlatformEndpointInput" });
     case 1:
       return S.suspend(() => S.Struct({ EndpointArn: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "CreateEndpointResponse",
@@ -2606,9 +2596,7 @@ function __c6(j: number): any {
         S.Struct({ PhoneNumber: SensitiveString, LanguageCode: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateSMSSandboxPhoneNumberInput",
-      });
+      ).annotate({ identifier: "CreateSMSSandboxPhoneNumberInput" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateSMSSandboxPhoneNumberResult",
@@ -2669,9 +2657,7 @@ function __c11(j: number): any {
         S.Struct({ PlatformApplicationArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeletePlatformApplicationInput",
-      });
+      ).annotate({ identifier: "DeletePlatformApplicationInput" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeletePlatformApplicationResponse",
@@ -2685,9 +2671,7 @@ function __c12(j: number): any {
         S.Struct({ PhoneNumber: SensitiveString }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteSMSSandboxPhoneNumberInput",
-      });
+      ).annotate({ identifier: "DeleteSMSSandboxPhoneNumberInput" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteSMSSandboxPhoneNumberResult",
@@ -2703,9 +2687,7 @@ function __c13(j: number): any {
         ),
       ).annotate({ identifier: "DeleteTopicInput" });
     case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeleteTopicResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "DeleteTopicResponse" });
   }
 }
 function __c14(j: number): any {
@@ -2715,15 +2697,11 @@ function __c14(j: number): any {
         S.Struct({ ResourceArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetDataProtectionPolicyInput",
-      });
+      ).annotate({ identifier: "GetDataProtectionPolicyInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ DataProtectionPolicy: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "GetDataProtectionPolicyResponse",
-      });
+      ).annotate({ identifier: "GetDataProtectionPolicyResponse" });
   }
 }
 function __c15(j: number): any {
@@ -2733,15 +2711,11 @@ function __c15(j: number): any {
         S.Struct({ EndpointArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetEndpointAttributesInput",
-      });
+      ).annotate({ identifier: "GetEndpointAttributesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Attributes: S.optional(__S(8, __c1, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetEndpointAttributesResponse",
-      });
+      ).annotate({ identifier: "GetEndpointAttributesResponse" });
   }
 }
 function __c16(j: number): any {
@@ -2751,15 +2725,11 @@ function __c16(j: number): any {
         S.Struct({ PlatformApplicationArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetPlatformApplicationAttributesInput",
-      });
+      ).annotate({ identifier: "GetPlatformApplicationAttributesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Attributes: S.optional(__S(8, __c1, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetPlatformApplicationAttributesResponse",
-      });
+      ).annotate({ identifier: "GetPlatformApplicationAttributesResponse" });
   }
 }
 function __c17(j: number): any {
@@ -2785,9 +2755,7 @@ function __c18(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetSMSSandboxAccountStatusInput",
-      });
+      ).annotate({ identifier: "GetSMSSandboxAccountStatusInput" });
     case 1:
       return S.suspend(() => S.Struct({ IsInSandbox: S.Boolean }).pipe(ns)).annotate({
         identifier: "GetSMSSandboxAccountStatusResult",
@@ -2801,15 +2769,11 @@ function __c19(j: number): any {
         S.Struct({ SubscriptionArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetSubscriptionAttributesInput",
-      });
+      ).annotate({ identifier: "GetSubscriptionAttributesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Attributes: S.optional(__S(160, __c20, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetSubscriptionAttributesResponse",
-      });
+      ).annotate({ identifier: "GetSubscriptionAttributesResponse" });
   }
 }
 function __c20(j: number): any {
@@ -2829,9 +2793,7 @@ function __c21(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ Attributes: S.optional(__S(64, __c8, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetTopicAttributesResponse",
-      });
+      ).annotate({ identifier: "GetTopicAttributesResponse" });
   }
 }
 function __c22(j: number): any {
@@ -2841,9 +2803,7 @@ function __c22(j: number): any {
         S.Struct({ PlatformApplicationArn: S.String, NextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListEndpointsByPlatformApplicationInput",
-      });
+      ).annotate({ identifier: "ListEndpointsByPlatformApplicationInput" });
     case 1:
       return S.Array(Endpoint);
     case 2:
@@ -2852,9 +2812,7 @@ function __c22(j: number): any {
           Endpoints: S.optional(__S(177, __c22, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListEndpointsByPlatformApplicationResponse",
-      });
+      ).annotate({ identifier: "ListEndpointsByPlatformApplicationResponse" });
   }
 }
 function __c23(j: number): any {
@@ -2864,9 +2822,7 @@ function __c23(j: number): any {
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListOriginationNumbersRequest",
-      });
+      ).annotate({ identifier: "ListOriginationNumbersRequest" });
     case 1:
       return S.Array(S.String);
     case 2:
@@ -2888,9 +2844,7 @@ function __c23(j: number): any {
           NextToken: S.optional(S.String),
           PhoneNumbers: S.optional(__S(187, __c23, 3)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListOriginationNumbersResult",
-      });
+      ).annotate({ identifier: "ListOriginationNumbersResult" });
   }
 }
 function __c24(j: number): any {
@@ -2900,9 +2854,7 @@ function __c24(j: number): any {
         S.Struct({ nextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListPhoneNumbersOptedOutInput",
-      });
+      ).annotate({ identifier: "ListPhoneNumbersOptedOutInput" });
     case 1:
       return S.Array(SensitiveString);
     case 2:
@@ -2911,9 +2863,7 @@ function __c24(j: number): any {
           phoneNumbers: S.optional(__S(193, __c24, 1)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListPhoneNumbersOptedOutResponse",
-      });
+      ).annotate({ identifier: "ListPhoneNumbersOptedOutResponse" });
   }
 }
 function __c25(j: number): any {
@@ -2923,9 +2873,7 @@ function __c25(j: number): any {
         S.Struct({ NextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListPlatformApplicationsInput",
-      });
+      ).annotate({ identifier: "ListPlatformApplicationsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2941,9 +2889,7 @@ function __c25(j: number): any {
           PlatformApplications: S.optional(__S(202, __c25, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListPlatformApplicationsResponse",
-      });
+      ).annotate({ identifier: "ListPlatformApplicationsResponse" });
   }
 }
 function __c26(j: number): any {
@@ -2953,24 +2899,17 @@ function __c26(j: number): any {
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListSMSSandboxPhoneNumbersInput",
-      });
+      ).annotate({ identifier: "ListSMSSandboxPhoneNumbersInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          PhoneNumber: S.optional(SensitiveString),
-          Status: S.optional(S.String),
-        }),
+        S.Struct({ PhoneNumber: S.optional(SensitiveString), Status: S.optional(S.String) }),
       ).annotate({ identifier: "SMSSandboxPhoneNumber" });
     case 2:
       return S.Array(__S(209, __c26, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ PhoneNumbers: __S(210, __c26, 2), NextToken: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "ListSMSSandboxPhoneNumbersResult",
-      });
+      ).annotate({ identifier: "ListSMSSandboxPhoneNumbersResult" });
   }
 }
 function __c27(j: number): any {
@@ -2987,9 +2926,7 @@ function __c27(j: number): any {
           Subscriptions: S.optional(__S(225, __c28, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListSubscriptionsResponse",
-      });
+      ).annotate({ identifier: "ListSubscriptionsResponse" });
   }
 }
 function __c28(j: number): any {
@@ -3015,18 +2952,14 @@ function __c29(j: number): any {
         S.Struct({ TopicArn: S.String, NextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListSubscriptionsByTopicInput",
-      });
+      ).annotate({ identifier: "ListSubscriptionsByTopicInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Subscriptions: S.optional(__S(225, __c28, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListSubscriptionsByTopicResponse",
-      });
+      ).annotate({ identifier: "ListSubscriptionsByTopicResponse" });
   }
 }
 function __c30(j: number): any {
@@ -3036,9 +2969,7 @@ function __c30(j: number): any {
         S.Struct({ ResourceArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(73, __c9, 1)) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -3184,9 +3115,7 @@ function __c36(j: number): any {
         S.Struct({ ResourceArn: S.String, DataProtectionPolicy: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "PutDataProtectionPolicyInput",
-      });
+      ).annotate({ identifier: "PutDataProtectionPolicyInput" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutDataProtectionPolicyResponse",
@@ -3214,9 +3143,7 @@ function __c38(j: number): any {
         S.Struct({ EndpointArn: S.String, Attributes: __S(8, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "SetEndpointAttributesInput",
-      });
+      ).annotate({ identifier: "SetEndpointAttributesInput" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "SetEndpointAttributesResponse",
@@ -3230,9 +3157,7 @@ function __c39(j: number): any {
         S.Struct({ PlatformApplicationArn: S.String, Attributes: __S(8, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "SetPlatformApplicationAttributesInput",
-      });
+      ).annotate({ identifier: "SetPlatformApplicationAttributesInput" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "SetPlatformApplicationAttributesResponse",
@@ -3262,9 +3187,7 @@ function __c41(j: number): any {
           AttributeName: S.String,
           AttributeValue: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SetSubscriptionAttributesInput",
-      });
+      ).annotate({ identifier: "SetSubscriptionAttributesInput" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "SetSubscriptionAttributesResponse",
@@ -3314,9 +3237,7 @@ function __c44(j: number): any {
         ),
       ).annotate({ identifier: "TagResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "TagResourceResponse" });
   }
 }
 function __c45(j: number): any {
@@ -3328,9 +3249,7 @@ function __c45(j: number): any {
         ),
       ).annotate({ identifier: "UnsubscribeInput" });
     case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "UnsubscribeResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "UnsubscribeResponse" });
   }
 }
 function __c46(j: number): any {
@@ -3356,9 +3275,7 @@ function __c47(j: number): any {
         S.Struct({ PhoneNumber: SensitiveString, OneTimePassword: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "VerifySMSSandboxPhoneNumberInput",
-      });
+      ).annotate({ identifier: "VerifySMSSandboxPhoneNumberInput" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "VerifySMSSandboxPhoneNumberResult",

@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -319,7 +319,7 @@ export const createSupportPermit: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(80, __c10, 0) as any as S.Schema<CreateSupportPermitInput>,
-  output: __S(81, __c10, 1) as any as S.Schema<CreateSupportPermitOutput>,
+  output: __S(88, __c11, 0) as any as S.Schema<CreateSupportPermitOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -349,8 +349,8 @@ export const deleteSupportPermit: API.OperationMethod<
   DeleteSupportPermitError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<DeleteSupportPermitInput>,
-  output: __S(121, __c15, 1) as any as S.Schema<DeleteSupportPermitOutput>,
+  input: __S(128, __c16, 0) as any as S.Schema<DeleteSupportPermitInput>,
+  output: __S(129, __c16, 1) as any as S.Schema<DeleteSupportPermitOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -379,8 +379,8 @@ export const getAction: API.OperationMethod<
   GetActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<GetActionInput>,
-  output: __S(136, __c17, 0) as any as S.Schema<GetActionOutput>,
+  input: __S(136, __c17, 0) as any as S.Schema<GetActionInput>,
+  output: __S(144, __c18, 0) as any as S.Schema<GetActionOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -410,7 +410,7 @@ export const getSupportPermit: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetSupportPermitInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetSupportPermitOutput>,
+  output: __S(88, __c11, 0) as any as S.Schema<GetSupportPermitOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -668,20 +668,6 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetSupportPermitInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          arn: S.String,
-          description: S.optional(S.String),
-          permit: __S(100, __c12, 4),
-          status: S.String,
-          signingKeyInfo: __S(112, __c14, 0),
-          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          supportCaseDisplayId: S.optional(S.String),
-          tags: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({ identifier: "GetSupportPermitOutput" });
   }
 }
 function __c1(j: number): any {
@@ -695,7 +681,7 @@ function __c1(j: number): any {
         }).pipe(T.all(T.Http({ method: "GET", uri: "/actions" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListActionsInput" });
     case 1:
-      return S.Array(__S(136, __c17, 0));
+      return S.Array(__S(144, __c18, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ actionSummaries: __S(9, __c1, 1), nextToken: S.optional(S.String) }),
@@ -720,14 +706,12 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSupportPermitRequestsInput",
-      });
+      ).annotate({ identifier: "ListSupportPermitRequestsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           requestArn: S.String,
-          permit: __S(100, __c12, 4),
+          permit: __S(108, __c13, 4),
           supportCaseDisplayId: S.String,
           status: S.String,
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -739,9 +723,7 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ supportPermitRequests: __S(18, __c2, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListSupportPermitRequestsOutput",
-      });
+      ).annotate({ identifier: "ListSupportPermitRequestsOutput" });
   }
 }
 function __c3(j: number): any {
@@ -765,9 +747,9 @@ function __c3(j: number): any {
         S.Struct({
           name: S.String,
           arn: S.String,
-          permit: __S(100, __c12, 4),
+          permit: __S(108, __c13, 4),
           status: S.String,
-          signingKeyInfo: __S(112, __c14, 0),
+          signingKeyInfo: __S(120, __c15, 0),
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           supportCaseDisplayId: S.optional(S.String),
         }),
@@ -796,7 +778,7 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(88, __c11, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(96, __c12, 0)) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
   }
@@ -815,9 +797,7 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RejectSupportPermitRequestInput",
-      });
+      ).annotate({ identifier: "RejectSupportPermitRequestInput" });
     case 1:
       return S.suspend(() => S.Struct({ requestArn: S.String })).annotate({
         identifier: "RejectSupportPermitRequestOutput",
@@ -830,7 +810,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(88, __c11, 0),
+          tags: __S(96, __c12, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -847,9 +827,7 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceOutput",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TagResourceOutput" });
   }
 }
 function __c8(j: number): any {
@@ -858,7 +836,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(104, __c13, 0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(112, __c14, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -887,52 +865,54 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          permit: __S(100, __c12, 4),
+          permit: __S(108, __c13, 4),
           name: S.String,
           description: S.optional(S.String),
-          signingKeyInfo: __S(112, __c14, 0),
+          signingKeyInfo: __S(120, __c15, 0),
           supportCaseDisplayId: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(88, __c11, 0)),
+          tags: S.optional(__S(96, __c12, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/support-permits" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateSupportPermitInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          arn: S.String,
-          description: S.optional(S.String),
-          permit: __S(100, __c12, 4),
-          status: S.String,
-          signingKeyInfo: __S(112, __c14, 0),
-          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          supportCaseDisplayId: S.optional(S.String),
-          tags: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({
-        identifier: "CreateSupportPermitOutput",
-      });
   }
 }
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          arn: S.String,
+          description: S.optional(S.String),
+          permit: __S(108, __c13, 4),
+          status: S.String,
+          signingKeyInfo: __S(120, __c15, 0),
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          supportCaseDisplayId: S.optional(S.String),
+          tags: S.optional(__S(96, __c12, 0)),
+        }),
+      ).annotate({ identifier: "CreateSupportPermitOutput" });
   }
 }
 function __c12(j: number): any {
   switch (j) {
     case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.Union([
         /*@__PURE__*/ S.Struct({ allActions: /*@__PURE__*/ S.Struct({}) }),
-        /*@__PURE__*/ S.Struct({ actions: __S(104, __c13, 0) }),
+        /*@__PURE__*/ S.Struct({ actions: __S(112, __c14, 0) }),
       ]);
     case 1:
       return S.Union([
         /*@__PURE__*/ S.Struct({ allResourcesInRegion: /*@__PURE__*/ S.Struct({}) }),
-        /*@__PURE__*/ S.Struct({ resources: __S(104, __c13, 0) }),
+        /*@__PURE__*/ S.Struct({ resources: __S(112, __c14, 0) }),
       ]);
     case 2:
       return S.Union([
@@ -944,30 +924,30 @@ function __c12(j: number): any {
         }),
       ]);
     case 3:
-      return S.Array(__S(98, __c12, 2));
+      return S.Array(__S(106, __c13, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(96, __c12, 0),
-          resources: __S(97, __c12, 1),
-          conditions: S.optional(__S(99, __c12, 3)),
+          actions: __S(104, __c13, 0),
+          resources: __S(105, __c13, 1),
+          conditions: S.optional(__S(107, __c13, 3)),
         }),
       ).annotate({ identifier: "Permit" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
   }
 }
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Union([/*@__PURE__*/ S.Struct({ kmsKey: S.String })]);
+      return S.Array(S.String);
   }
 }
 function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([/*@__PURE__*/ S.Struct({ kmsKey: S.String })]);
+  }
+}
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -990,18 +970,16 @@ function __c15(j: number): any {
           name: S.String,
           arn: S.String,
           description: S.optional(S.String),
-          permit: __S(100, __c12, 4),
+          permit: __S(108, __c13, 4),
           status: S.String,
-          signingKeyInfo: __S(112, __c14, 0),
+          signingKeyInfo: __S(120, __c15, 0),
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           supportCaseDisplayId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DeleteSupportPermitOutput",
-      });
+      ).annotate({ identifier: "DeleteSupportPermitOutput" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1011,7 +989,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "GetActionInput" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

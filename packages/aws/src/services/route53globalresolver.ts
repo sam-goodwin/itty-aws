@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -127,7 +127,7 @@ export class ValidationException
         identifier: "ValidationExceptionReason",
       }),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(449, __c56, 1)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(441, __c55, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -1128,8 +1128,8 @@ export const associateHostedZone: API.OperationMethod<
   AssociateHostedZoneError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(456, __c57, 0) as any as S.Schema<AssociateHostedZoneInput>,
-  output: __S(464, __c58, 0) as any as S.Schema<AssociateHostedZoneOutput>,
+  input: __S(448, __c56, 0) as any as S.Schema<AssociateHostedZoneInput>,
+  output: __S(456, __c57, 0) as any as S.Schema<AssociateHostedZoneOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1161,8 +1161,8 @@ export const batchCreateFirewallRule: API.OperationMethod<
   BatchCreateFirewallRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(474, __c59, 2) as any as S.Schema<BatchCreateFirewallRuleInput>,
-  output: __S(478, __c59, 6) as any as S.Schema<BatchCreateFirewallRuleOutput>,
+  input: __S(466, __c58, 2) as any as S.Schema<BatchCreateFirewallRuleInput>,
+  output: __S(470, __c58, 6) as any as S.Schema<BatchCreateFirewallRuleOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1191,8 +1191,8 @@ export const batchDeleteFirewallRule: API.OperationMethod<
   BatchDeleteFirewallRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(482, __c60, 2) as any as S.Schema<BatchDeleteFirewallRuleInput>,
-  output: __S(486, __c60, 6) as any as S.Schema<BatchDeleteFirewallRuleOutput>,
+  input: __S(474, __c59, 2) as any as S.Schema<BatchDeleteFirewallRuleInput>,
+  output: __S(478, __c59, 6) as any as S.Schema<BatchDeleteFirewallRuleOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1708,7 +1708,7 @@ export const disassociateHostedZone: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(160, __c20, 0) as any as S.Schema<DisassociateHostedZoneInput>,
-  output: __S(464, __c58, 0) as any as S.Schema<DisassociateHostedZoneOutput>,
+  output: __S(456, __c57, 0) as any as S.Schema<DisassociateHostedZoneOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1937,7 +1937,7 @@ export const getGlobalResolver: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(216, __c27, 0) as any as S.Schema<GetGlobalResolverInput>,
-  output: __S(224, __c28, 0) as any as S.Schema<GetGlobalResolverOutput>,
+  output: __S(144, __c18, 0) as any as S.Schema<GetGlobalResolverOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1968,8 +1968,8 @@ export const getHostedZoneAssociation: API.OperationMethod<
   GetHostedZoneAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<GetHostedZoneAssociationInput>,
-  output: __S(464, __c58, 0) as any as S.Schema<GetHostedZoneAssociationOutput>,
+  input: __S(224, __c28, 0) as any as S.Schema<GetHostedZoneAssociationInput>,
+  output: __S(456, __c57, 0) as any as S.Schema<GetHostedZoneAssociationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2000,8 +2000,8 @@ export const getManagedFirewallDomainList: API.OperationMethod<
   GetManagedFirewallDomainListError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<GetManagedFirewallDomainListInput>,
-  output: __S(248, __c31, 0) as any as S.Schema<GetManagedFirewallDomainListOutput>,
+  input: __S(232, __c29, 0) as any as S.Schema<GetManagedFirewallDomainListInput>,
+  output: __S(240, __c30, 0) as any as S.Schema<GetManagedFirewallDomainListOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2034,8 +2034,8 @@ export const importFirewallDomains: API.OperationMethod<
   ImportFirewallDomainsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<ImportFirewallDomainsInput>,
-  output: __S(264, __c33, 0) as any as S.Schema<ImportFirewallDomainsOutput>,
+  input: __S(248, __c31, 0) as any as S.Schema<ImportFirewallDomainsInput>,
+  output: __S(256, __c32, 0) as any as S.Schema<ImportFirewallDomainsOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2068,8 +2068,8 @@ export const listAccessSources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AccessSourcesItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<ListAccessSourcesInput>,
-  output: __S(274, __c34, 2) as any as S.Schema<ListAccessSourcesOutput>,
+  input: __S(264, __c33, 0) as any as S.Schema<ListAccessSourcesInput>,
+  output: __S(266, __c33, 2) as any as S.Schema<ListAccessSourcesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2106,8 +2106,8 @@ export const listAccessTokens: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AccessTokenItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<ListAccessTokensInput>,
-  output: __S(291, __c36, 3) as any as S.Schema<ListAccessTokensOutput>,
+  input: __S(280, __c35, 0) as any as S.Schema<ListAccessTokensInput>,
+  output: __S(283, __c35, 3) as any as S.Schema<ListAccessTokensOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2145,8 +2145,8 @@ export const listDNSViews: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DNSViewSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<ListDNSViewsInput>,
-  output: __S(299, __c37, 3) as any as S.Schema<ListDNSViewsOutput>,
+  input: __S(288, __c36, 0) as any as S.Schema<ListDNSViewsInput>,
+  output: __S(291, __c36, 3) as any as S.Schema<ListDNSViewsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2184,8 +2184,8 @@ export const listFirewallDomainLists: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FirewallDomainListsItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<ListFirewallDomainListsInput>,
-  output: __S(307, __c38, 3) as any as S.Schema<ListFirewallDomainListsOutput>,
+  input: __S(296, __c37, 0) as any as S.Schema<ListFirewallDomainListsInput>,
+  output: __S(299, __c37, 3) as any as S.Schema<ListFirewallDomainListsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2223,8 +2223,8 @@ export const listFirewallDomains: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Domain
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<ListFirewallDomainsInput>,
-  output: __S(313, __c39, 1) as any as S.Schema<ListFirewallDomainsOutput>,
+  input: __S(304, __c38, 0) as any as S.Schema<ListFirewallDomainsInput>,
+  output: __S(305, __c38, 1) as any as S.Schema<ListFirewallDomainsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2262,8 +2262,8 @@ export const listFirewallRules: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FirewallRulesItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<ListFirewallRulesInput>,
-  output: __S(322, __c40, 2) as any as S.Schema<ListFirewallRulesOutput>,
+  input: __S(312, __c39, 0) as any as S.Schema<ListFirewallRulesInput>,
+  output: __S(314, __c39, 2) as any as S.Schema<ListFirewallRulesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2300,8 +2300,8 @@ export const listGlobalResolvers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GlobalResolversItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<ListGlobalResolversInput>,
-  output: __S(330, __c41, 2) as any as S.Schema<ListGlobalResolversOutput>,
+  input: __S(320, __c40, 0) as any as S.Schema<ListGlobalResolversInput>,
+  output: __S(322, __c40, 2) as any as S.Schema<ListGlobalResolversOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2338,8 +2338,8 @@ export const listHostedZoneAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   HostedZoneAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<ListHostedZoneAssociationsInput>,
-  output: __S(338, __c42, 2) as any as S.Schema<ListHostedZoneAssociationsOutput>,
+  input: __S(328, __c41, 0) as any as S.Schema<ListHostedZoneAssociationsInput>,
+  output: __S(330, __c41, 2) as any as S.Schema<ListHostedZoneAssociationsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2376,8 +2376,8 @@ export const listManagedFirewallDomainLists: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ManagedFirewallDomainListsItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<ListManagedFirewallDomainListsInput>,
-  output: __S(346, __c43, 2) as any as S.Schema<ListManagedFirewallDomainListsOutput>,
+  input: __S(336, __c42, 0) as any as S.Schema<ListManagedFirewallDomainListsInput>,
+  output: __S(338, __c42, 2) as any as S.Schema<ListManagedFirewallDomainListsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2413,8 +2413,8 @@ export const listSharedDNSViews: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SharedDNSViewSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<ListSharedDNSViewsInput>,
-  output: __S(355, __c44, 3) as any as S.Schema<ListSharedDNSViewsOutput>,
+  input: __S(344, __c43, 0) as any as S.Schema<ListSharedDNSViewsInput>,
+  output: __S(347, __c43, 3) as any as S.Schema<ListSharedDNSViewsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2444,8 +2444,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(361, __c45, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(352, __c44, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(353, __c44, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2468,8 +2468,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(376, __c47, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<TagResourceResponse>,
   errors: [ResourceNotFoundException, ServiceQuotaExceededException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2488,8 +2488,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c48, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(376, __c47, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(376, __c47, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2516,7 +2516,7 @@ export const updateAccessSource: API.OperationMethod<
   UpdateAccessSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<UpdateAccessSourceInput>,
+  input: __S(384, __c48, 0) as any as S.Schema<UpdateAccessSourceInput>,
   output: __S(24, __c3, 0) as any as S.Schema<UpdateAccessSourceOutput>,
   errors: [
     AccessDeniedException,
@@ -2552,8 +2552,8 @@ export const updateAccessToken: API.OperationMethod<
   UpdateAccessTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c50, 0) as any as S.Schema<UpdateAccessTokenInput>,
-  output: __S(401, __c50, 1) as any as S.Schema<UpdateAccessTokenOutput>,
+  input: __S(392, __c49, 0) as any as S.Schema<UpdateAccessTokenInput>,
+  output: __S(393, __c49, 1) as any as S.Schema<UpdateAccessTokenOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2588,7 +2588,7 @@ export const updateDNSView: API.OperationMethod<
   UpdateDNSViewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(408, __c51, 0) as any as S.Schema<UpdateDNSViewInput>,
+  input: __S(400, __c50, 0) as any as S.Schema<UpdateDNSViewInput>,
   output: __S(48, __c6, 0) as any as S.Schema<UpdateDNSViewOutput>,
   errors: [
     AccessDeniedException,
@@ -2624,8 +2624,8 @@ export const updateFirewallDomains: API.OperationMethod<
   UpdateFirewallDomainsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<UpdateFirewallDomainsInput>,
-  output: __S(264, __c33, 0) as any as S.Schema<UpdateFirewallDomainsOutput>,
+  input: __S(408, __c51, 0) as any as S.Schema<UpdateFirewallDomainsInput>,
+  output: __S(256, __c32, 0) as any as S.Schema<UpdateFirewallDomainsOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2660,7 +2660,7 @@ export const updateFirewallRule: API.OperationMethod<
   UpdateFirewallRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<UpdateFirewallRuleInput>,
+  input: __S(416, __c52, 0) as any as S.Schema<UpdateFirewallRuleInput>,
   output: __S(72, __c9, 0) as any as S.Schema<UpdateFirewallRuleOutput>,
   errors: [
     AccessDeniedException,
@@ -2696,7 +2696,7 @@ export const updateGlobalResolver: API.OperationMethod<
   UpdateGlobalResolverError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c54, 0) as any as S.Schema<UpdateGlobalResolverInput>,
+  input: __S(424, __c53, 0) as any as S.Schema<UpdateGlobalResolverInput>,
   output: __S(144, __c18, 0) as any as S.Schema<UpdateGlobalResolverOutput>,
   errors: [
     AccessDeniedException,
@@ -2732,8 +2732,8 @@ export const updateHostedZoneAssociation: API.OperationMethod<
   UpdateHostedZoneAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(440, __c55, 0) as any as S.Schema<UpdateHostedZoneAssociationInput>,
-  output: __S(464, __c58, 0) as any as S.Schema<UpdateHostedZoneAssociationOutput>,
+  input: __S(432, __c54, 0) as any as S.Schema<UpdateHostedZoneAssociationInput>,
+  output: __S(456, __c57, 0) as any as S.Schema<UpdateHostedZoneAssociationOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2766,9 +2766,7 @@ function __c0(j: number): any {
           name: S.optional(S.String),
           priority: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "BatchUpdateFirewallRuleInputItem",
-      });
+      ).annotate({ identifier: "BatchUpdateFirewallRuleInputItem" });
     case 1:
       return S.Array(__S(0, __c0, 0));
     case 2:
@@ -2783,9 +2781,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchUpdateFirewallRuleInput",
-      });
+      ).annotate({ identifier: "BatchUpdateFirewallRuleInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2808,30 +2804,17 @@ function __c0(j: number): any {
           status: S.optional(S.String),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "BatchUpdateFirewallRuleResult",
-      });
+      ).annotate({ identifier: "BatchUpdateFirewallRuleResult" });
     case 4:
       return S.suspend(() =>
-        S.Struct({
-          firewallRule: __S(3, __c0, 3),
-          code: S.Number,
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BatchUpdateFirewallRuleOutputItem",
-      });
+        S.Struct({ firewallRule: __S(3, __c0, 3), code: S.Number, message: S.optional(S.String) }),
+      ).annotate({ identifier: "BatchUpdateFirewallRuleOutputItem" });
     case 5:
       return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({
-          failures: __S(5, __c0, 5),
-          successes: __S(5, __c0, 5),
-        }),
-      ).annotate({
-        identifier: "BatchUpdateFirewallRuleOutput",
-      });
+        S.Struct({ failures: __S(5, __c0, 5), successes: __S(5, __c0, 5) }),
+      ).annotate({ identifier: "BatchUpdateFirewallRuleOutput" });
   }
 }
 function __c1(j: number): any {
@@ -2981,9 +2964,7 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateFirewallDomainListInput",
-      });
+      ).annotate({ identifier: "CreateFirewallDomainListInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2997,9 +2978,7 @@ function __c7(j: number): any {
           status: S.String,
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "CreateFirewallDomainListOutput",
-      });
+      ).annotate({ identifier: "CreateFirewallDomainListOutput" });
   }
 }
 function __c8(j: number): any {
@@ -3068,9 +3047,7 @@ function __c10(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/global-resolver" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateGlobalResolverInput",
-      });
+      ).annotate({ identifier: "CreateGlobalResolverInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3089,9 +3066,7 @@ function __c10(j: number): any {
           status: S.String,
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "CreateGlobalResolverOutput",
-      });
+      ).annotate({ identifier: "CreateGlobalResolverOutput" });
   }
 }
 function __c11(j: number): any {
@@ -3173,15 +3148,11 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteFirewallDomainListInput",
-      });
+      ).annotate({ identifier: "DeleteFirewallDomainListInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ arn: S.String, id: S.String, name: S.String, status: S.String }),
-      ).annotate({
-        identifier: "DeleteFirewallDomainListOutput",
-      });
+      ).annotate({ identifier: "DeleteFirewallDomainListOutput" });
   }
 }
 function __c16(j: number): any {
@@ -3215,9 +3186,7 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteGlobalResolverInput",
-      });
+      ).annotate({ identifier: "DeleteGlobalResolverInput" });
   }
 }
 function __c18(j: number): any {
@@ -3240,9 +3209,7 @@ function __c18(j: number): any {
           ipv6Addresses: S.optional(__S(88, __c11, 0)),
           ipAddressType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DeleteGlobalResolverOutput",
-      });
+      ).annotate({ identifier: "DeleteGlobalResolverOutput" });
   }
 }
 function __c19(j: number): any {
@@ -3282,9 +3249,7 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateHostedZoneInput",
-      });
+      ).annotate({ identifier: "DisassociateHostedZoneInput" });
   }
 }
 function __c21(j: number): any {
@@ -3385,9 +3350,7 @@ function __c25(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetFirewallDomainListInput",
-      });
+      ).annotate({ identifier: "GetFirewallDomainListInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3403,9 +3366,7 @@ function __c25(j: number): any {
           statusMessage: S.optional(S.String),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "GetFirewallDomainListOutput",
-      });
+      ).annotate({ identifier: "GetFirewallDomainListOutput" });
   }
 }
 function __c26(j: number): any {
@@ -3447,29 +3408,6 @@ function __c28(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.String,
-          arn: S.String,
-          clientToken: S.String,
-          dnsName: S.String,
-          observabilityRegion: S.optional(S.String),
-          name: S.String,
-          description: S.optional(S.String),
-          regions: __S(88, __c11, 0),
-          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          status: S.String,
-          ipv4Addresses: __S(88, __c11, 0),
-          ipv6Addresses: S.optional(__S(88, __c11, 0)),
-          ipAddressType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetGlobalResolverOutput" });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
           hostedZoneAssociationId: S.String.pipe(T.HttpLabel("hostedZoneAssociationId")),
         }).pipe(
           T.all(
@@ -3481,12 +3419,10 @@ function __c29(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetHostedZoneAssociationInput",
-      });
+      ).annotate({ identifier: "GetHostedZoneAssociationInput" });
   }
 }
-function __c30(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3505,12 +3441,10 @@ function __c30(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetManagedFirewallDomainListInput",
-      });
+      ).annotate({ identifier: "GetManagedFirewallDomainListInput" });
   }
 }
-function __c31(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3520,12 +3454,10 @@ function __c31(j: number): any {
           name: S.String,
           managedListType: S.String,
         }),
-      ).annotate({
-        identifier: "GetManagedFirewallDomainListOutput",
-      });
+      ).annotate({ identifier: "GetManagedFirewallDomainListOutput" });
   }
 }
-function __c32(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3546,29 +3478,25 @@ function __c32(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ImportFirewallDomainsInput",
-      });
+      ).annotate({ identifier: "ImportFirewallDomainsInput" });
   }
 }
-function __c33(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ id: S.String, name: S.String, status: S.String })).annotate(
-        {
-          identifier: "ImportFirewallDomainsOutput",
-        },
+        { identifier: "ImportFirewallDomainsOutput" },
       );
   }
 }
-function __c34(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("max_results")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("next_token")),
-          filters: S.optional(__S(280, __c35, 0)).pipe(T.HttpQueryParams()),
+          filters: S.optional(__S(272, __c34, 0)).pipe(T.HttpQueryParams()),
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/access-sources" }), svc, auth, proto, ver, rules),
         ),
@@ -3577,17 +3505,17 @@ function __c34(j: number): any {
       return S.Array(__S(24, __c3, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), accessSources: __S(273, __c34, 1) }),
+        S.Struct({ nextToken: S.optional(S.String), accessSources: __S(265, __c33, 1) }),
       ).annotate({ identifier: "ListAccessSourcesOutput" });
   }
 }
-function __c35(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ __S(88, __c11, 0).pipe(S.optional));
   }
 }
-function __c36(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3595,7 +3523,7 @@ function __c36(j: number): any {
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("max_results")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("next_token")),
           dnsViewId: S.String.pipe(T.HttpLabel("dnsViewId")),
-          filters: S.optional(__S(280, __c35, 0)).pipe(T.HttpQueryParams()),
+          filters: S.optional(__S(272, __c34, 0)).pipe(T.HttpQueryParams()),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/tokens/dns-view/{dnsViewId}" }),
@@ -3622,14 +3550,14 @@ function __c36(j: number): any {
         }),
       ).annotate({ identifier: "AccessTokenItem" });
     case 2:
-      return S.Array(__S(289, __c36, 1));
+      return S.Array(__S(281, __c35, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), accessTokens: S.optional(__S(290, __c36, 2)) }),
+        S.Struct({ nextToken: S.optional(S.String), accessTokens: S.optional(__S(282, __c35, 2)) }),
       ).annotate({ identifier: "ListAccessTokensOutput" });
   }
 }
-function __c37(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3666,14 +3594,14 @@ function __c37(j: number): any {
         }),
       ).annotate({ identifier: "DNSViewSummary" });
     case 2:
-      return S.Array(__S(297, __c37, 1));
+      return S.Array(__S(289, __c36, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), dnsViews: __S(298, __c37, 2) }),
+        S.Struct({ nextToken: S.optional(S.String), dnsViews: __S(290, __c36, 2) }),
       ).annotate({ identifier: "ListDNSViewsOutput" });
   }
 }
-function __c38(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3691,9 +3619,7 @@ function __c38(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListFirewallDomainListsInput",
-      });
+      ).annotate({ identifier: "ListFirewallDomainListsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3708,16 +3634,14 @@ function __c38(j: number): any {
         }),
       ).annotate({ identifier: "FirewallDomainListsItem" });
     case 2:
-      return S.Array(__S(305, __c38, 1));
+      return S.Array(__S(297, __c37, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), firewallDomainLists: __S(306, __c38, 2) }),
-      ).annotate({
-        identifier: "ListFirewallDomainListsOutput",
-      });
+        S.Struct({ nextToken: S.optional(S.String), firewallDomainLists: __S(298, __c37, 2) }),
+      ).annotate({ identifier: "ListFirewallDomainListsOutput" });
   }
 }
-function __c39(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3739,12 +3663,10 @@ function __c39(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), domains: __S(88, __c11, 0) }),
-      ).annotate({
-        identifier: "ListFirewallDomainsOutput",
-      });
+      ).annotate({ identifier: "ListFirewallDomainsOutput" });
   }
 }
-function __c40(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3752,7 +3674,7 @@ function __c40(j: number): any {
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("max_results")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("next_token")),
           dnsViewId: S.String.pipe(T.HttpQuery("dnsview_id")),
-          filters: S.optional(__S(280, __c35, 0)).pipe(T.HttpQueryParams()),
+          filters: S.optional(__S(272, __c34, 0)).pipe(T.HttpQueryParams()),
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/firewall-rules" }), svc, auth, proto, ver, rules),
         ),
@@ -3761,11 +3683,11 @@ function __c40(j: number): any {
       return S.Array(__S(72, __c9, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), firewallRules: __S(321, __c40, 1) }),
+        S.Struct({ nextToken: S.optional(S.String), firewallRules: __S(313, __c39, 1) }),
       ).annotate({ identifier: "ListFirewallRulesOutput" });
   }
 }
-function __c41(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3777,16 +3699,14 @@ function __c41(j: number): any {
         ),
       ).annotate({ identifier: "ListGlobalResolversInput" });
     case 1:
-      return S.Array(__S(224, __c28, 0));
+      return S.Array(__S(144, __c18, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), globalResolvers: __S(329, __c41, 1) }),
-      ).annotate({
-        identifier: "ListGlobalResolversOutput",
-      });
+        S.Struct({ nextToken: S.optional(S.String), globalResolvers: __S(321, __c40, 1) }),
+      ).annotate({ identifier: "ListGlobalResolversOutput" });
   }
 }
-function __c42(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3804,20 +3724,16 @@ function __c42(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListHostedZoneAssociationsInput",
-      });
+      ).annotate({ identifier: "ListHostedZoneAssociationsInput" });
     case 1:
-      return S.Array(__S(464, __c58, 0));
+      return S.Array(__S(456, __c57, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), hostedZoneAssociations: __S(337, __c42, 1) }),
-      ).annotate({
-        identifier: "ListHostedZoneAssociationsOutput",
-      });
+        S.Struct({ nextToken: S.optional(S.String), hostedZoneAssociations: __S(329, __c41, 1) }),
+      ).annotate({ identifier: "ListHostedZoneAssociationsOutput" });
   }
 }
-function __c43(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3840,23 +3756,19 @@ function __c43(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListManagedFirewallDomainListsInput",
-      });
+      ).annotate({ identifier: "ListManagedFirewallDomainListsInput" });
     case 1:
-      return S.Array(__S(248, __c31, 0));
+      return S.Array(__S(240, __c30, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          managedFirewallDomainLists: __S(345, __c43, 1),
+          managedFirewallDomainLists: __S(337, __c42, 1),
         }),
-      ).annotate({
-        identifier: "ListManagedFirewallDomainListsOutput",
-      });
+      ).annotate({ identifier: "ListManagedFirewallDomainListsOutput" });
   }
 }
-function __c44(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3886,30 +3798,28 @@ function __c44(j: number): any {
         }),
       ).annotate({ identifier: "SharedDNSViewSummary" });
     case 2:
-      return S.Array(__S(353, __c44, 1));
+      return S.Array(__S(345, __c43, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), dnsViews: __S(354, __c44, 2) }),
+        S.Struct({ nextToken: S.optional(S.String), dnsViews: __S(346, __c43, 2) }),
       ).annotate({ identifier: "ListSharedDNSViewsOutput" });
   }
 }
-function __c45(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/get-all-tags" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(16, __c2, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c46(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3919,15 +3829,13 @@ function __c46(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c47(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TagResourceResponse" });
   }
 }
-function __c48(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3937,7 +3845,7 @@ function __c48(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c49(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3960,7 +3868,7 @@ function __c49(j: number): any {
       ).annotate({ identifier: "UpdateAccessSourceInput" });
   }
 }
-function __c50(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3984,7 +3892,7 @@ function __c50(j: number): any {
       });
   }
 }
-function __c51(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4008,7 +3916,7 @@ function __c51(j: number): any {
       ).annotate({ identifier: "UpdateDNSViewInput" });
   }
 }
-function __c52(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4029,12 +3937,10 @@ function __c52(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateFirewallDomainsInput",
-      });
+      ).annotate({ identifier: "UpdateFirewallDomainsInput" });
   }
 }
-function __c53(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4064,7 +3970,7 @@ function __c53(j: number): any {
       ).annotate({ identifier: "UpdateFirewallRuleInput" });
   }
 }
-function __c54(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4085,12 +3991,10 @@ function __c54(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateGlobalResolverInput",
-      });
+      ).annotate({ identifier: "UpdateGlobalResolverInput" });
   }
 }
-function __c55(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4107,22 +4011,20 @@ function __c55(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateHostedZoneAssociationInput",
-      });
+      ).annotate({ identifier: "UpdateHostedZoneAssociationInput" });
   }
 }
-function __c56(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
         identifier: "ValidationExceptionField",
       });
     case 1:
-      return S.Array(__S(448, __c56, 0));
+      return S.Array(__S(440, __c55, 0));
   }
 }
-function __c57(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4143,7 +4045,7 @@ function __c57(j: number): any {
       ).annotate({ identifier: "AssociateHostedZoneInput" });
   }
 }
-function __c58(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4157,12 +4059,10 @@ function __c58(j: number): any {
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           status: S.String,
         }),
-      ).annotate({
-        identifier: "AssociateHostedZoneOutput",
-      });
+      ).annotate({ identifier: "AssociateHostedZoneOutput" });
   }
 }
-function __c59(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4182,14 +4082,12 @@ function __c59(j: number): any {
           dnsViewId: S.String,
           qType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchCreateFirewallRuleInputItem",
-      });
+      ).annotate({ identifier: "BatchCreateFirewallRuleInputItem" });
     case 1:
-      return S.Array(__S(472, __c59, 0));
+      return S.Array(__S(464, __c58, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ firewallRules: __S(473, __c59, 1) }).pipe(
+        S.Struct({ firewallRules: __S(465, __c58, 1) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/firewall-rules/batch-create" }),
             svc,
@@ -4199,9 +4097,7 @@ function __c59(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchCreateFirewallRuleInput",
-      });
+      ).annotate({ identifier: "BatchCreateFirewallRuleInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4225,43 +4121,34 @@ function __c59(j: number): any {
           status: S.optional(S.String),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "BatchCreateFirewallRuleResult",
-      });
+      ).annotate({ identifier: "BatchCreateFirewallRuleResult" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          firewallRule: __S(475, __c59, 3),
+          firewallRule: __S(467, __c58, 3),
           code: S.Number,
           message: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchCreateFirewallRuleOutputItem",
-      });
+      ).annotate({ identifier: "BatchCreateFirewallRuleOutputItem" });
     case 5:
-      return S.Array(__S(476, __c59, 4));
+      return S.Array(__S(468, __c58, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({
-          failures: __S(477, __c59, 5),
-          successes: __S(477, __c59, 5),
-        }),
-      ).annotate({
-        identifier: "BatchCreateFirewallRuleOutput",
-      });
+        S.Struct({ failures: __S(469, __c58, 5), successes: __S(469, __c58, 5) }),
+      ).annotate({ identifier: "BatchCreateFirewallRuleOutput" });
   }
 }
-function __c60(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ firewallRuleId: S.String })).annotate({
         identifier: "BatchDeleteFirewallRuleInputItem",
       });
     case 1:
-      return S.Array(__S(480, __c60, 0));
+      return S.Array(__S(472, __c59, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ firewallRules: __S(481, __c60, 1) }).pipe(
+        S.Struct({ firewallRules: __S(473, __c59, 1) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/firewall-rules/batch-delete" }),
             svc,
@@ -4271,9 +4158,7 @@ function __c60(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchDeleteFirewallRuleInput",
-      });
+      ).annotate({ identifier: "BatchDeleteFirewallRuleInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4282,30 +4167,21 @@ function __c60(j: number): any {
           name: S.optional(S.String),
           status: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchDeleteFirewallRuleResult",
-      });
+      ).annotate({ identifier: "BatchDeleteFirewallRuleResult" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          firewallRule: __S(483, __c60, 3),
+          firewallRule: __S(475, __c59, 3),
           code: S.Number,
           message: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchDeleteFirewallRuleOutputItem",
-      });
+      ).annotate({ identifier: "BatchDeleteFirewallRuleOutputItem" });
     case 5:
-      return S.Array(__S(484, __c60, 4));
+      return S.Array(__S(476, __c59, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({
-          failures: __S(485, __c60, 5),
-          successes: __S(485, __c60, 5),
-        }),
-      ).annotate({
-        identifier: "BatchDeleteFirewallRuleOutput",
-      });
+        S.Struct({ failures: __S(477, __c59, 5), successes: __S(477, __c59, 5) }),
+      ).annotate({ identifier: "BatchDeleteFirewallRuleOutput" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -159,7 +159,7 @@ export class ValidationException
       code: /*@__PURE__*/ S.optional(S.String),
       reason: /*@__PURE__*/ S.optional(S.String),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(1345, __c84, 1)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(1313, __c82, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -1423,8 +1423,8 @@ export const associateSourceNetworkStack: API.OperationMethod<
   AssociateSourceNetworkStackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1488, __c93, 0) as any as S.Schema<AssociateSourceNetworkStackRequest>,
-  output: __S(1552, __c97, 0) as any as S.Schema<AssociateSourceNetworkStackResponse>,
+  input: __S(1456, __c91, 0) as any as S.Schema<AssociateSourceNetworkStackRequest>,
+  output: __S(1520, __c95, 0) as any as S.Schema<AssociateSourceNetworkStackResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1457,8 +1457,8 @@ export const cancelRecoveryPlanExecution: API.OperationMethod<
   CancelRecoveryPlanExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1584, __c99, 0) as any as S.Schema<CancelRecoveryPlanExecutionRequest>,
-  output: __S(1617, __c101, 1) as any as S.Schema<CancelRecoveryPlanExecutionResponse>,
+  input: __S(1552, __c97, 0) as any as S.Schema<CancelRecoveryPlanExecutionRequest>,
+  output: __S(1585, __c99, 1) as any as S.Schema<CancelRecoveryPlanExecutionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1492,7 +1492,7 @@ export const createExtendedSourceServer: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateExtendedSourceServerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateExtendedSourceServerResponse>,
+  output: __S(64, __c4, 0) as any as S.Schema<CreateExtendedSourceServerResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1524,8 +1524,8 @@ export const createLaunchConfigurationTemplate: API.OperationMethod<
   CreateLaunchConfigurationTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c4, 0) as any as S.Schema<CreateLaunchConfigurationTemplateRequest>,
-  output: __S(112, __c7, 0) as any as S.Schema<CreateLaunchConfigurationTemplateResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<CreateLaunchConfigurationTemplateRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<CreateLaunchConfigurationTemplateResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1557,8 +1557,8 @@ export const createRecoveryPlan: API.OperationMethod<
   CreateRecoveryPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c8, 0) as any as S.Schema<CreateRecoveryPlanRequest>,
-  output: __S(160, __c10, 0) as any as S.Schema<CreateRecoveryPlanResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<CreateRecoveryPlanRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<CreateRecoveryPlanResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1752,7 +1752,7 @@ export const deleteLaunchConfigurationTemplate: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(368, __c23, 0) as any as S.Schema<DeleteLaunchConfigurationTemplateRequest>,
-  output: __S(384, __c24, 0) as any as S.Schema<DeleteLaunchConfigurationTemplateResponse>,
+  output: __S(336, __c21, 0) as any as S.Schema<DeleteLaunchConfigurationTemplateResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1781,7 +1781,7 @@ export const deleteRecoveryInstance: API.OperationMethod<
   DeleteRecoveryInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c25, 0) as any as S.Schema<DeleteRecoveryInstanceRequest>,
+  input: __S(384, __c24, 0) as any as S.Schema<DeleteRecoveryInstanceRequest>,
   output: __S(336, __c21, 0) as any as S.Schema<DeleteRecoveryInstanceResponse>,
   errors: [
     AccessDeniedException,
@@ -1813,8 +1813,8 @@ export const deleteRecoveryPlan: API.OperationMethod<
   DeleteRecoveryPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c26, 0) as any as S.Schema<DeleteRecoveryPlanRequest>,
-  output: __S(417, __c26, 1) as any as S.Schema<DeleteRecoveryPlanResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<DeleteRecoveryPlanRequest>,
+  output: __S(401, __c25, 1) as any as S.Schema<DeleteRecoveryPlanResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1847,8 +1847,8 @@ export const deleteRecoveryPlanExecution: API.OperationMethod<
   DeleteRecoveryPlanExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c27, 0) as any as S.Schema<DeleteRecoveryPlanExecutionRequest>,
-  output: __S(433, __c27, 1) as any as S.Schema<DeleteRecoveryPlanExecutionResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<DeleteRecoveryPlanExecutionRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<DeleteRecoveryPlanExecutionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1881,8 +1881,8 @@ export const deleteRecoveryPlanStep: API.OperationMethod<
   DeleteRecoveryPlanStepError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<DeleteRecoveryPlanStepRequest>,
-  output: __S(449, __c28, 1) as any as S.Schema<DeleteRecoveryPlanStepResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<DeleteRecoveryPlanStepRequest>,
+  output: __S(433, __c27, 1) as any as S.Schema<DeleteRecoveryPlanStepResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1913,8 +1913,8 @@ export const deleteReplicationConfigurationTemplate: API.OperationMethod<
   DeleteReplicationConfigurationTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c29, 0) as any as S.Schema<DeleteReplicationConfigurationTemplateRequest>,
-  output: __S(384, __c24, 0) as any as S.Schema<DeleteReplicationConfigurationTemplateResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<DeleteReplicationConfigurationTemplateRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<DeleteReplicationConfigurationTemplateResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1943,7 +1943,7 @@ export const deleteSourceNetwork: API.OperationMethod<
   DeleteSourceNetworkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<DeleteSourceNetworkRequest>,
+  input: __S(464, __c29, 0) as any as S.Schema<DeleteSourceNetworkRequest>,
   output: __S(336, __c21, 0) as any as S.Schema<DeleteSourceNetworkResponse>,
   errors: [
     ConflictException,
@@ -1973,7 +1973,7 @@ export const deleteSourceServer: API.OperationMethod<
   DeleteSourceServerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<DeleteSourceServerRequest>,
+  input: __S(480, __c30, 0) as any as S.Schema<DeleteSourceServerRequest>,
   output: __S(336, __c21, 0) as any as S.Schema<DeleteSourceServerResponse>,
   errors: [
     ConflictException,
@@ -2003,8 +2003,8 @@ export const describeJobLogItems: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   JobLog
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(512, __c32, 0) as any as S.Schema<DescribeJobLogItemsRequest>,
-  output: __S(525, __c32, 13) as any as S.Schema<DescribeJobLogItemsResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<DescribeJobLogItemsRequest>,
+  output: __S(508, __c31, 12) as any as S.Schema<DescribeJobLogItemsResponse>,
   errors: [
     InternalServerException,
     ThrottlingException,
@@ -2038,8 +2038,8 @@ export const describeJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Job
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(529, __c33, 1) as any as S.Schema<DescribeJobsRequest>,
-  output: __S(531, __c33, 3) as any as S.Schema<DescribeJobsResponse>,
+  input: __S(513, __c32, 1) as any as S.Schema<DescribeJobsRequest>,
+  output: __S(515, __c32, 3) as any as S.Schema<DescribeJobsResponse>,
   errors: [
     InternalServerException,
     ThrottlingException,
@@ -2074,8 +2074,8 @@ export const describeLaunchConfigurationTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LaunchConfigurationTemplate
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(544, __c34, 0) as any as S.Schema<DescribeLaunchConfigurationTemplatesRequest>,
-  output: __S(546, __c34, 2) as any as S.Schema<DescribeLaunchConfigurationTemplatesResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<DescribeLaunchConfigurationTemplatesRequest>,
+  output: __S(530, __c33, 2) as any as S.Schema<DescribeLaunchConfigurationTemplatesResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -2110,8 +2110,8 @@ export const describeRecoveryInstances: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecoveryInstance
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(561, __c35, 1) as any as S.Schema<DescribeRecoveryInstancesRequest>,
-  output: __S(574, __c35, 14) as any as S.Schema<DescribeRecoveryInstancesResponse>,
+  input: __S(545, __c34, 1) as any as S.Schema<DescribeRecoveryInstancesRequest>,
+  output: __S(556, __c34, 12) as any as S.Schema<DescribeRecoveryInstancesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2146,8 +2146,8 @@ export const describeRecoverySnapshots: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecoverySnapshot
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(577, __c36, 1) as any as S.Schema<DescribeRecoverySnapshotsRequest>,
-  output: __S(580, __c36, 4) as any as S.Schema<DescribeRecoverySnapshotsResponse>,
+  input: __S(561, __c35, 1) as any as S.Schema<DescribeRecoverySnapshotsRequest>,
+  output: __S(564, __c35, 4) as any as S.Schema<DescribeRecoverySnapshotsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2183,8 +2183,8 @@ export const describeReplicationConfigurationTemplates: API.PaginatedOperationMe
   Credentials | HttpClient.HttpClient,
   ReplicationConfigurationTemplate
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(592, __c37, 0) as any as S.Schema<DescribeReplicationConfigurationTemplatesRequest>,
-  output: __S(594, __c37, 2) as any as S.Schema<DescribeReplicationConfigurationTemplatesResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<DescribeReplicationConfigurationTemplatesRequest>,
+  output: __S(578, __c36, 2) as any as S.Schema<DescribeReplicationConfigurationTemplatesResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -2219,8 +2219,8 @@ export const describeSourceNetworks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SourceNetwork
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(609, __c38, 1) as any as S.Schema<DescribeSourceNetworksRequest>,
-  output: __S(611, __c38, 3) as any as S.Schema<DescribeSourceNetworksResponse>,
+  input: __S(593, __c37, 1) as any as S.Schema<DescribeSourceNetworksRequest>,
+  output: __S(595, __c37, 3) as any as S.Schema<DescribeSourceNetworksResponse>,
   errors: [
     InternalServerException,
     ThrottlingException,
@@ -2254,8 +2254,8 @@ export const describeSourceServers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SourceServer
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(641, __c40, 1) as any as S.Schema<DescribeSourceServersRequest>,
-  output: __S(643, __c40, 3) as any as S.Schema<DescribeSourceServersResponse>,
+  input: __S(625, __c39, 1) as any as S.Schema<DescribeSourceServersRequest>,
+  output: __S(627, __c39, 3) as any as S.Schema<DescribeSourceServersResponse>,
   errors: [
     InternalServerException,
     ThrottlingException,
@@ -2290,8 +2290,8 @@ export const disconnectRecoveryInstance: API.OperationMethod<
   DisconnectRecoveryInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656, __c41, 0) as any as S.Schema<DisconnectRecoveryInstanceRequest>,
-  output: __S(384, __c24, 0) as any as S.Schema<DisconnectRecoveryInstanceResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<DisconnectRecoveryInstanceRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<DisconnectRecoveryInstanceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2321,8 +2321,8 @@ export const disconnectSourceServer: API.OperationMethod<
   DisconnectSourceServerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c42, 0) as any as S.Schema<DisconnectSourceServerRequest>,
-  output: __S(62, __c3, 14) as any as S.Schema<SourceServer>,
+  input: __S(656, __c41, 0) as any as S.Schema<DisconnectSourceServerRequest>,
+  output: __S(60, __c3, 12) as any as S.Schema<SourceServer>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2352,8 +2352,8 @@ export const exportSourceNetworkCfnTemplate: API.OperationMethod<
   ExportSourceNetworkCfnTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(688, __c43, 0) as any as S.Schema<ExportSourceNetworkCfnTemplateRequest>,
-  output: __S(689, __c43, 1) as any as S.Schema<ExportSourceNetworkCfnTemplateResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<ExportSourceNetworkCfnTemplateRequest>,
+  output: __S(673, __c42, 1) as any as S.Schema<ExportSourceNetworkCfnTemplateResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2382,8 +2382,8 @@ export const getFailbackReplicationConfiguration: API.OperationMethod<
   GetFailbackReplicationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c44, 0) as any as S.Schema<GetFailbackReplicationConfigurationRequest>,
-  output: __S(705, __c44, 1) as any as S.Schema<GetFailbackReplicationConfigurationResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<GetFailbackReplicationConfigurationRequest>,
+  output: __S(689, __c43, 1) as any as S.Schema<GetFailbackReplicationConfigurationResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -2410,8 +2410,8 @@ export const getLaunchConfiguration: API.OperationMethod<
   GetLaunchConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(720, __c45, 0) as any as S.Schema<GetLaunchConfigurationRequest>,
-  output: __S(737, __c46, 1) as any as S.Schema<LaunchConfiguration>,
+  input: __S(704, __c44, 0) as any as S.Schema<GetLaunchConfigurationRequest>,
+  output: __S(721, __c45, 1) as any as S.Schema<LaunchConfiguration>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -2440,8 +2440,8 @@ export const getRecoveryPlan: API.OperationMethod<
   GetRecoveryPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(752, __c47, 0) as any as S.Schema<GetRecoveryPlanRequest>,
-  output: __S(753, __c47, 1) as any as S.Schema<GetRecoveryPlanResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<GetRecoveryPlanRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<GetRecoveryPlanResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2472,8 +2472,8 @@ export const getRecoveryPlanExecution: API.OperationMethod<
   GetRecoveryPlanExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c48, 0) as any as S.Schema<GetRecoveryPlanExecutionRequest>,
-  output: __S(1617, __c101, 1) as any as S.Schema<GetRecoveryPlanExecutionResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<GetRecoveryPlanExecutionRequest>,
+  output: __S(1585, __c99, 1) as any as S.Schema<GetRecoveryPlanExecutionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2504,8 +2504,8 @@ export const getRecoveryPlanExecutionStep: API.OperationMethod<
   GetRecoveryPlanExecutionStepError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(784, __c49, 0) as any as S.Schema<GetRecoveryPlanExecutionStepRequest>,
-  output: __S(817, __c51, 1) as any as S.Schema<GetRecoveryPlanExecutionStepResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<GetRecoveryPlanExecutionStepRequest>,
+  output: __S(801, __c50, 1) as any as S.Schema<GetRecoveryPlanExecutionStepResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2536,7 +2536,7 @@ export const getRecoveryPlanStep: API.OperationMethod<
   GetRecoveryPlanStepError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c52, 0) as any as S.Schema<GetRecoveryPlanStepRequest>,
+  input: __S(816, __c51, 0) as any as S.Schema<GetRecoveryPlanStepRequest>,
   output: __S(240, __c15, 0) as any as S.Schema<GetRecoveryPlanStepResponse>,
   errors: [
     AccessDeniedException,
@@ -2567,8 +2567,8 @@ export const getReplicationConfiguration: API.OperationMethod<
   GetReplicationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(848, __c53, 0) as any as S.Schema<GetReplicationConfigurationRequest>,
-  output: __S(866, __c54, 2) as any as S.Schema<ReplicationConfiguration>,
+  input: __S(832, __c52, 0) as any as S.Schema<GetReplicationConfigurationRequest>,
+  output: __S(850, __c53, 2) as any as S.Schema<ReplicationConfiguration>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2596,7 +2596,7 @@ export const initializeService: API.OperationMethod<
   InitializeServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(880, __c55, 0) as any as S.Schema<InitializeServiceRequest>,
+  input: __S(864, __c54, 0) as any as S.Schema<InitializeServiceRequest>,
   output: __S(336, __c21, 0) as any as S.Schema<InitializeServiceResponse>,
   errors: [
     AccessDeniedException,
@@ -2626,8 +2626,8 @@ export const listExtensibleSourceServers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   StagingSourceServer
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(896, __c56, 0) as any as S.Schema<ListExtensibleSourceServersRequest>,
-  output: __S(899, __c56, 3) as any as S.Schema<ListExtensibleSourceServersResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<ListExtensibleSourceServersRequest>,
+  output: __S(883, __c55, 3) as any as S.Schema<ListExtensibleSourceServersResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2663,8 +2663,8 @@ export const listLaunchActions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LaunchAction
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(913, __c57, 1) as any as S.Schema<ListLaunchActionsRequest>,
-  output: __S(915, __c57, 3) as any as S.Schema<ListLaunchActionsResponse>,
+  input: __S(897, __c56, 1) as any as S.Schema<ListLaunchActionsRequest>,
+  output: __S(899, __c56, 3) as any as S.Schema<ListLaunchActionsResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -2700,8 +2700,8 @@ export const listRecoveryPlanExecutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecoveryPlanExecutionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(928, __c58, 0) as any as S.Schema<ListRecoveryPlanExecutionsRequest>,
-  output: __S(931, __c58, 3) as any as S.Schema<ListRecoveryPlanExecutionsResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<ListRecoveryPlanExecutionsRequest>,
+  output: __S(915, __c57, 3) as any as S.Schema<ListRecoveryPlanExecutionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2738,8 +2738,8 @@ export const listRecoveryPlanExecutionSteps: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecoveryPlanExecutionStepSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(945, __c59, 1) as any as S.Schema<ListRecoveryPlanExecutionStepsRequest>,
-  output: __S(948, __c59, 4) as any as S.Schema<ListRecoveryPlanExecutionStepsResponse>,
+  input: __S(929, __c58, 1) as any as S.Schema<ListRecoveryPlanExecutionStepsRequest>,
+  output: __S(932, __c58, 4) as any as S.Schema<ListRecoveryPlanExecutionStepsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2776,8 +2776,8 @@ export const listRecoveryPlans: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecoveryPlanSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(960, __c60, 0) as any as S.Schema<ListRecoveryPlansRequest>,
-  output: __S(963, __c60, 3) as any as S.Schema<ListRecoveryPlansResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<ListRecoveryPlansRequest>,
+  output: __S(947, __c59, 3) as any as S.Schema<ListRecoveryPlansResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2814,8 +2814,8 @@ export const listRecoveryPlanSteps: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecoveryPlanStep
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(976, __c61, 0) as any as S.Schema<ListRecoveryPlanStepsRequest>,
-  output: __S(977, __c61, 1) as any as S.Schema<ListRecoveryPlanStepsResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<ListRecoveryPlanStepsRequest>,
+  output: __S(961, __c60, 1) as any as S.Schema<ListRecoveryPlanStepsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2852,8 +2852,8 @@ export const listStagingAccounts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Account
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1008, __c63, 0) as any as S.Schema<ListStagingAccountsRequest>,
-  output: __S(1011, __c63, 3) as any as S.Schema<ListStagingAccountsResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<ListStagingAccountsRequest>,
+  output: __S(995, __c62, 3) as any as S.Schema<ListStagingAccountsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2888,8 +2888,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c64, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(1025, __c64, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(1009, __c63, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2919,8 +2919,8 @@ export const putLaunchAction: API.OperationMethod<
   PutLaunchActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1040, __c65, 0) as any as S.Schema<PutLaunchActionRequest>,
-  output: __S(1041, __c65, 1) as any as S.Schema<PutLaunchActionResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<PutLaunchActionRequest>,
+  output: __S(1025, __c64, 1) as any as S.Schema<PutLaunchActionResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2952,8 +2952,8 @@ export const reorderRecoveryPlanSteps: API.OperationMethod<
   ReorderRecoveryPlanStepsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c66, 0) as any as S.Schema<ReorderRecoveryPlanStepsRequest>,
-  output: __S(1057, __c66, 1) as any as S.Schema<ReorderRecoveryPlanStepsResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<ReorderRecoveryPlanStepsRequest>,
+  output: __S(1041, __c65, 1) as any as S.Schema<ReorderRecoveryPlanStepsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2984,8 +2984,8 @@ export const retryDataReplication: API.OperationMethod<
   RetryDataReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1072, __c67, 0) as any as S.Schema<RetryDataReplicationRequest>,
-  output: __S(62, __c3, 14) as any as S.Schema<SourceServer>,
+  input: __S(1056, __c66, 0) as any as S.Schema<RetryDataReplicationRequest>,
+  output: __S(60, __c3, 12) as any as S.Schema<SourceServer>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -3016,8 +3016,8 @@ export const retryRecoveryPlanExecutionStep: API.OperationMethod<
   RetryRecoveryPlanExecutionStepError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c68, 0) as any as S.Schema<RetryRecoveryPlanExecutionStepRequest>,
-  output: __S(817, __c51, 1) as any as S.Schema<RetryRecoveryPlanExecutionStepResponse>,
+  input: __S(1072, __c67, 0) as any as S.Schema<RetryRecoveryPlanExecutionStepRequest>,
+  output: __S(801, __c50, 1) as any as S.Schema<RetryRecoveryPlanExecutionStepResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3050,8 +3050,8 @@ export const reverseReplication: API.OperationMethod<
   ReverseReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1104, __c69, 0) as any as S.Schema<ReverseReplicationRequest>,
-  output: __S(1105, __c69, 1) as any as S.Schema<ReverseReplicationResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<ReverseReplicationRequest>,
+  output: __S(1089, __c68, 1) as any as S.Schema<ReverseReplicationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3083,8 +3083,8 @@ export const startFailbackLaunch: API.OperationMethod<
   StartFailbackLaunchError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1120, __c70, 0) as any as S.Schema<StartFailbackLaunchRequest>,
-  output: __S(1552, __c97, 0) as any as S.Schema<StartFailbackLaunchResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<StartFailbackLaunchRequest>,
+  output: __S(1520, __c95, 0) as any as S.Schema<StartFailbackLaunchResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -3114,8 +3114,8 @@ export const startRecovery: API.OperationMethod<
   StartRecoveryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1138, __c71, 2) as any as S.Schema<StartRecoveryRequest>,
-  output: __S(1139, __c71, 3) as any as S.Schema<StartRecoveryResponse>,
+  input: __S(1122, __c70, 2) as any as S.Schema<StartRecoveryRequest>,
+  output: __S(1520, __c95, 0) as any as S.Schema<StartRecoveryResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -3147,8 +3147,8 @@ export const startRecoveryPlanExecution: API.OperationMethod<
   StartRecoveryPlanExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1154, __c72, 2) as any as S.Schema<StartRecoveryPlanExecutionRequest>,
-  output: __S(1617, __c101, 1) as any as S.Schema<StartRecoveryPlanExecutionResponse>,
+  input: __S(1138, __c71, 2) as any as S.Schema<StartRecoveryPlanExecutionRequest>,
+  output: __S(1585, __c99, 1) as any as S.Schema<StartRecoveryPlanExecutionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3180,8 +3180,8 @@ export const startReplication: API.OperationMethod<
   StartReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1168, __c73, 0) as any as S.Schema<StartReplicationRequest>,
-  output: __S(1184, __c74, 0) as any as S.Schema<StartReplicationResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<StartReplicationRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<StartReplicationResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -3211,8 +3211,8 @@ export const startSourceNetworkRecovery: API.OperationMethod<
   StartSourceNetworkRecoveryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1202, __c75, 2) as any as S.Schema<StartSourceNetworkRecoveryRequest>,
-  output: __S(1552, __c97, 0) as any as S.Schema<StartSourceNetworkRecoveryResponse>,
+  input: __S(1170, __c73, 2) as any as S.Schema<StartSourceNetworkRecoveryRequest>,
+  output: __S(1520, __c95, 0) as any as S.Schema<StartSourceNetworkRecoveryResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -3242,8 +3242,8 @@ export const startSourceNetworkReplication: API.OperationMethod<
   StartSourceNetworkReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1216, __c76, 0) as any as S.Schema<StartSourceNetworkReplicationRequest>,
-  output: __S(1232, __c77, 0) as any as S.Schema<StartSourceNetworkReplicationResponse>,
+  input: __S(1184, __c74, 0) as any as S.Schema<StartSourceNetworkReplicationRequest>,
+  output: __S(1200, __c75, 0) as any as S.Schema<StartSourceNetworkReplicationResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -3271,7 +3271,7 @@ export const stopFailback: API.OperationMethod<
   StopFailbackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1248, __c78, 0) as any as S.Schema<StopFailbackRequest>,
+  input: __S(1216, __c76, 0) as any as S.Schema<StopFailbackRequest>,
   output: __S(336, __c21, 0) as any as S.Schema<StopFailbackResponse>,
   errors: [
     InternalServerException,
@@ -3300,8 +3300,8 @@ export const stopReplication: API.OperationMethod<
   StopReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1264, __c79, 0) as any as S.Schema<StopReplicationRequest>,
-  output: __S(1184, __c74, 0) as any as S.Schema<StopReplicationResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<StopReplicationRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<StopReplicationResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -3331,8 +3331,8 @@ export const stopSourceNetworkReplication: API.OperationMethod<
   StopSourceNetworkReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1280, __c80, 0) as any as S.Schema<StopSourceNetworkReplicationRequest>,
-  output: __S(1232, __c77, 0) as any as S.Schema<StopSourceNetworkReplicationResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<StopSourceNetworkReplicationRequest>,
+  output: __S(1200, __c75, 0) as any as S.Schema<StopSourceNetworkReplicationResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -3362,7 +3362,7 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1296, __c81, 0) as any as S.Schema<TagResourceRequest>,
+  input: __S(1264, __c79, 0) as any as S.Schema<TagResourceRequest>,
   output: __S(336, __c21, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
@@ -3392,8 +3392,8 @@ export const terminateRecoveryInstances: API.OperationMethod<
   TerminateRecoveryInstancesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1312, __c82, 0) as any as S.Schema<TerminateRecoveryInstancesRequest>,
-  output: __S(1552, __c97, 0) as any as S.Schema<TerminateRecoveryInstancesResponse>,
+  input: __S(1280, __c80, 0) as any as S.Schema<TerminateRecoveryInstancesRequest>,
+  output: __S(1520, __c95, 0) as any as S.Schema<TerminateRecoveryInstancesResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -3422,7 +3422,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1328, __c83, 0) as any as S.Schema<UntagResourceRequest>,
+  input: __S(1296, __c81, 0) as any as S.Schema<UntagResourceRequest>,
   output: __S(336, __c21, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
@@ -3452,8 +3452,8 @@ export const updateFailbackReplicationConfiguration: API.OperationMethod<
   UpdateFailbackReplicationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1360, __c85, 0) as any as S.Schema<UpdateFailbackReplicationConfigurationRequest>,
-  output: __S(384, __c24, 0) as any as S.Schema<UpdateFailbackReplicationConfigurationResponse>,
+  input: __S(1328, __c83, 0) as any as S.Schema<UpdateFailbackReplicationConfigurationRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<UpdateFailbackReplicationConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3483,8 +3483,8 @@ export const updateLaunchConfiguration: API.OperationMethod<
   UpdateLaunchConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1376, __c86, 0) as any as S.Schema<UpdateLaunchConfigurationRequest>,
-  output: __S(737, __c46, 1) as any as S.Schema<LaunchConfiguration>,
+  input: __S(1344, __c84, 0) as any as S.Schema<UpdateLaunchConfigurationRequest>,
+  output: __S(721, __c45, 1) as any as S.Schema<LaunchConfiguration>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -3515,8 +3515,8 @@ export const updateLaunchConfigurationTemplate: API.OperationMethod<
   UpdateLaunchConfigurationTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1392, __c87, 0) as any as S.Schema<UpdateLaunchConfigurationTemplateRequest>,
-  output: __S(112, __c7, 0) as any as S.Schema<UpdateLaunchConfigurationTemplateResponse>,
+  input: __S(1360, __c85, 0) as any as S.Schema<UpdateLaunchConfigurationTemplateRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<UpdateLaunchConfigurationTemplateResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3548,8 +3548,8 @@ export const updateRecoveryPlan: API.OperationMethod<
   UpdateRecoveryPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1408, __c88, 0) as any as S.Schema<UpdateRecoveryPlanRequest>,
-  output: __S(160, __c10, 0) as any as S.Schema<UpdateRecoveryPlanResponse>,
+  input: __S(1376, __c86, 0) as any as S.Schema<UpdateRecoveryPlanRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<UpdateRecoveryPlanResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3582,8 +3582,8 @@ export const updateRecoveryPlanExecutionStep: API.OperationMethod<
   UpdateRecoveryPlanExecutionStepError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1424, __c89, 0) as any as S.Schema<UpdateRecoveryPlanExecutionStepRequest>,
-  output: __S(817, __c51, 1) as any as S.Schema<UpdateRecoveryPlanExecutionStepResponse>,
+  input: __S(1392, __c87, 0) as any as S.Schema<UpdateRecoveryPlanExecutionStepRequest>,
+  output: __S(801, __c50, 1) as any as S.Schema<UpdateRecoveryPlanExecutionStepResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3616,7 +3616,7 @@ export const updateRecoveryPlanStep: API.OperationMethod<
   UpdateRecoveryPlanStepError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c90, 0) as any as S.Schema<UpdateRecoveryPlanStepRequest>,
+  input: __S(1408, __c88, 0) as any as S.Schema<UpdateRecoveryPlanStepRequest>,
   output: __S(240, __c15, 0) as any as S.Schema<UpdateRecoveryPlanStepResponse>,
   errors: [
     AccessDeniedException,
@@ -3650,8 +3650,8 @@ export const updateReplicationConfiguration: API.OperationMethod<
   UpdateReplicationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1456, __c91, 0) as any as S.Schema<UpdateReplicationConfigurationRequest>,
-  output: __S(866, __c54, 2) as any as S.Schema<ReplicationConfiguration>,
+  input: __S(1424, __c89, 0) as any as S.Schema<UpdateReplicationConfigurationRequest>,
+  output: __S(850, __c53, 2) as any as S.Schema<ReplicationConfiguration>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3683,7 +3683,7 @@ export const updateReplicationConfigurationTemplate: API.OperationMethod<
   UpdateReplicationConfigurationTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1472, __c92, 0) as any as S.Schema<UpdateReplicationConfigurationTemplateRequest>,
+  input: __S(1440, __c90, 0) as any as S.Schema<UpdateReplicationConfigurationTemplateRequest>,
   output: __S(288, __c18, 0) as any as S.Schema<ReplicationConfigurationTemplate>,
   errors: [
     AccessDeniedException,
@@ -3703,7 +3703,7 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ sourceServerArn: S.String, tags: S.optional(__S(1568, __c98, 0)) }).pipe(
+        S.Struct({ sourceServerArn: S.String, tags: S.optional(__S(1536, __c96, 0)) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateExtendedSourceServer" }),
             svc,
@@ -3713,13 +3713,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateExtendedSourceServerRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ sourceServer: S.optional(__S(62, __c3, 14)) })).annotate({
-        identifier: "CreateExtendedSourceServerResponse",
-      });
+      ).annotate({ identifier: "CreateExtendedSourceServerRequest" });
   }
 }
 function __c1(j: number): any {
@@ -3733,10 +3727,14 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ name: S.optional(S.String), status: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DataReplicationInitiationStep",
-      });
+      ).annotate({ identifier: "DataReplicationInitiationStep" });
     case 1:
+      return S.Array(__S(32, __c2, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ error: S.optional(S.String), rawError: S.optional(S.String) }),
+      ).annotate({ identifier: "DataReplicationError" });
+    case 3:
       return S.suspend(() =>
         S.Struct({
           fqdn: S.optional(S.String),
@@ -3745,7 +3743,7 @@ function __c2(j: number): any {
           awsInstanceID: S.optional(S.String),
         }),
       ).annotate({ identifier: "IdentificationHints" });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           macAddress: S.optional(S.String),
@@ -3753,15 +3751,15 @@ function __c2(j: number): any {
           isPrimary: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "NetworkInterface" });
-    case 3:
-      return S.Array(__S(34, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ cores: S.optional(S.Number), modelName: S.optional(S.String) }),
-      ).annotate({ identifier: "CPU" });
     case 5:
       return S.Array(__S(36, __c2, 4));
     case 6:
+      return S.suspend(() =>
+        S.Struct({ cores: S.optional(S.Number), modelName: S.optional(S.String) }),
+      ).annotate({ identifier: "CPU" });
+    case 7:
+      return S.Array(__S(38, __c2, 6));
+    case 8:
       return S.suspend(() => S.Struct({ fullString: S.optional(S.String) })).annotate({
         identifier: "OS",
       });
@@ -3779,86 +3777,74 @@ function __c3(j: number): any {
           backloggedStorageBytes: S.optional(S.Number),
           volumeStatus: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DataReplicationInfoReplicatedDisk",
-      });
+      ).annotate({ identifier: "DataReplicationInfoReplicatedDisk" });
     case 1:
       return S.Array(__S(48, __c3, 0));
     case 2:
-      return S.Array(__S(32, __c2, 0));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           startDateTime: S.optional(S.String),
           nextAttemptDateTime: S.optional(S.String),
-          steps: S.optional(__S(50, __c3, 2)),
+          steps: S.optional(__S(33, __c2, 1)),
         }),
-      ).annotate({
-        identifier: "DataReplicationInitiation",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ error: S.optional(S.String), rawError: S.optional(S.String) }),
-      ).annotate({ identifier: "DataReplicationError" });
-    case 5:
+      ).annotate({ identifier: "DataReplicationInitiation" });
+    case 3:
       return S.suspend(() =>
         S.Struct({
           lagDuration: S.optional(S.String),
           etaDateTime: S.optional(S.String),
           replicatedDisks: S.optional(__S(49, __c3, 1)),
           dataReplicationState: S.optional(S.String),
-          dataReplicationInitiation: S.optional(__S(51, __c3, 3)),
-          dataReplicationError: S.optional(__S(52, __c3, 4)),
+          dataReplicationInitiation: S.optional(__S(50, __c3, 2)),
+          dataReplicationError: S.optional(__S(34, __c2, 2)),
           stagingAvailabilityZone: S.optional(S.String),
           stagingOutpostArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataReplicationInfo" });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           apiCallDateTime: S.optional(S.String),
           jobID: S.optional(S.String),
           type: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "LifeCycleLastLaunchInitiated",
-      });
-    case 7:
+      ).annotate({ identifier: "LifeCycleLastLaunchInitiated" });
+    case 5:
       return S.suspend(() =>
-        S.Struct({ initiated: S.optional(__S(54, __c3, 6)), status: S.optional(S.String) }),
+        S.Struct({ initiated: S.optional(__S(52, __c3, 4)), status: S.optional(S.String) }),
       ).annotate({ identifier: "LifeCycleLastLaunch" });
-    case 8:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           addedToServiceDateTime: S.optional(S.String),
           firstByteDateTime: S.optional(S.String),
           elapsedReplicationDuration: S.optional(S.String),
           lastSeenByServiceDateTime: S.optional(S.String),
-          lastLaunch: S.optional(__S(55, __c3, 7)),
+          lastLaunch: S.optional(__S(53, __c3, 5)),
         }),
       ).annotate({ identifier: "LifeCycle" });
-    case 9:
+    case 7:
       return S.suspend(() =>
         S.Struct({ deviceName: S.optional(S.String), bytes: S.optional(S.Number) }),
       ).annotate({ identifier: "Disk" });
-    case 10:
-      return S.Array(__S(57, __c3, 9));
-    case 11:
+    case 8:
+      return S.Array(__S(55, __c3, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           lastUpdatedDateTime: S.optional(S.String),
           recommendedInstanceType: S.optional(S.String),
-          identificationHints: S.optional(__S(33, __c2, 1)),
-          networkInterfaces: S.optional(__S(35, __c2, 3)),
-          disks: S.optional(__S(58, __c3, 10)),
-          cpus: S.optional(__S(37, __c2, 5)),
+          identificationHints: S.optional(__S(35, __c2, 3)),
+          networkInterfaces: S.optional(__S(37, __c2, 5)),
+          disks: S.optional(__S(56, __c3, 8)),
+          cpus: S.optional(__S(39, __c2, 7)),
           ramBytes: S.optional(S.Number),
-          os: S.optional(__S(38, __c2, 6)),
+          os: S.optional(__S(40, __c2, 8)),
           supportsNitroInstances: S.optional(S.Boolean),
           architecture: S.optional(S.String),
         }),
       ).annotate({ identifier: "SourceProperties" });
-    case 12:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -3867,7 +3853,7 @@ function __c3(j: number): any {
           errorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "StagingArea" });
-    case 13:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           originAccountID: S.optional(S.String),
@@ -3876,19 +3862,19 @@ function __c3(j: number): any {
           sourceOutpostArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "SourceCloudProperties" });
-    case 14:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           sourceServerID: S.optional(S.String),
           arn: S.optional(S.String),
-          tags: S.optional(__S(1568, __c98, 0)),
+          tags: S.optional(__S(1536, __c96, 0)),
           recoveryInstanceId: S.optional(S.String),
           lastLaunchResult: S.optional(S.String),
-          dataReplicationInfo: S.optional(__S(53, __c3, 5)),
-          lifeCycle: S.optional(__S(56, __c3, 8)),
-          sourceProperties: S.optional(__S(59, __c3, 11)),
-          stagingArea: S.optional(__S(60, __c3, 12)),
-          sourceCloudProperties: S.optional(__S(61, __c3, 13)),
+          dataReplicationInfo: S.optional(__S(51, __c3, 3)),
+          lifeCycle: S.optional(__S(54, __c3, 6)),
+          sourceProperties: S.optional(__S(57, __c3, 9)),
+          stagingArea: S.optional(__S(58, __c3, 10)),
+          sourceCloudProperties: S.optional(__S(59, __c3, 11)),
           replicationDirection: S.optional(S.String),
           reversedDirectionSourceServerArn: S.optional(S.String),
           sourceNetworkID: S.optional(S.String),
@@ -3900,14 +3886,22 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() => S.Struct({ sourceServer: S.optional(__S(60, __c3, 12)) })).annotate({
+        identifier: "CreateExtendedSourceServerResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(1568, __c98, 0)),
+          tags: S.optional(__S(1536, __c96, 0)),
           launchDisposition: S.optional(S.String),
           targetInstanceTypeRightSizingMethod: S.optional(S.String),
           copyPrivateIp: S.optional(S.Boolean),
           copyTags: S.optional(S.Boolean),
-          licensing: S.optional(__S(80, __c5, 0)),
+          licensing: S.optional(__S(96, __c6, 0)),
           exportBucketArn: S.optional(S.String),
           postLaunchEnabled: S.optional(S.Boolean),
           launchIntoSourceInstance: S.optional(S.Boolean),
@@ -3922,12 +3916,10 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateLaunchConfigurationTemplateRequest",
-      });
+      ).annotate({ identifier: "CreateLaunchConfigurationTemplateRequest" });
   }
 }
-function __c5(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ osByol: S.optional(S.Boolean) })).annotate({
@@ -3935,40 +3927,36 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           launchConfigurationTemplateID: S.optional(S.String),
           arn: S.optional(S.String),
-          tags: S.optional(__S(1568, __c98, 0)),
+          tags: S.optional(__S(1536, __c96, 0)),
           launchDisposition: S.optional(S.String),
           targetInstanceTypeRightSizingMethod: S.optional(S.String),
           copyPrivateIp: S.optional(S.Boolean),
           copyTags: S.optional(S.Boolean),
-          licensing: S.optional(__S(80, __c5, 0)),
+          licensing: S.optional(__S(96, __c6, 0)),
           exportBucketArn: S.optional(S.String),
           postLaunchEnabled: S.optional(S.Boolean),
           launchIntoSourceInstance: S.optional(S.Boolean),
           recoveryMode: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "LaunchConfigurationTemplate",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ launchConfigurationTemplate: S.optional(__S(96, __c6, 0)) }),
-      ).annotate({
-        identifier: "CreateLaunchConfigurationTemplateResponse",
-      });
+      ).annotate({ identifier: "LaunchConfigurationTemplate" });
   }
 }
 function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ launchConfigurationTemplate: S.optional(__S(112, __c7, 0)) }),
+      ).annotate({ identifier: "CreateLaunchConfigurationTemplateResponse" });
+  }
+}
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3976,7 +3964,7 @@ function __c8(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(1568, __c98, 0)),
+          tags: S.optional(__S(1536, __c96, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateRecoveryPlan" }),
@@ -3987,12 +3975,10 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateRecoveryPlanRequest",
-      });
+      ).annotate({ identifier: "CreateRecoveryPlanRequest" });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4003,15 +3989,11 @@ function __c9(j: number): any {
           status: S.String,
           createdAt: S.String,
           updatedAt: S.String,
-          tags: S.optional(__S(1568, __c98, 0)),
+          tags: S.optional(__S(1536, __c96, 0)),
         }),
       ).annotate({ identifier: "RecoveryPlan" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ recoveryPlan: __S(144, __c9, 0) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ recoveryPlan: __S(160, __c10, 0) })).annotate({
         identifier: "CreateRecoveryPlanResponse",
       });
   }
@@ -4036,9 +4018,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateRecoveryPlanStepRequest",
-      });
+      ).annotate({ identifier: "CreateRecoveryPlanStepRequest" });
   }
 }
 function __c12(j: number): any {
@@ -4107,9 +4087,9 @@ function __c16(j: number): any {
           bandwidthThrottling: S.Number,
           dataPlaneRouting: S.optional(S.String),
           createPublicIP: S.optional(S.Boolean),
-          stagingAreaTags: __S(1568, __c98, 0),
+          stagingAreaTags: __S(1536, __c96, 0),
           pitPolicy: __S(273, __c17, 1),
-          tags: S.optional(__S(1568, __c98, 0)),
+          tags: S.optional(__S(1536, __c96, 0)),
           autoReplicateNewDisks: S.optional(S.Boolean),
           internetProtocol: S.optional(S.String),
         }).pipe(
@@ -4122,9 +4102,7 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateReplicationConfigurationTemplateRequest",
-      });
+      ).annotate({ identifier: "CreateReplicationConfigurationTemplateRequest" });
   }
 }
 function __c17(j: number): any {
@@ -4161,15 +4139,13 @@ function __c18(j: number): any {
           bandwidthThrottling: S.optional(S.Number),
           dataPlaneRouting: S.optional(S.String),
           createPublicIP: S.optional(S.Boolean),
-          stagingAreaTags: S.optional(__S(1568, __c98, 0)),
-          tags: S.optional(__S(1568, __c98, 0)),
+          stagingAreaTags: S.optional(__S(1536, __c96, 0)),
+          tags: S.optional(__S(1536, __c96, 0)),
           pitPolicy: S.optional(__S(273, __c17, 1)),
           autoReplicateNewDisks: S.optional(S.Boolean),
           internetProtocol: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ReplicationConfigurationTemplate",
-      });
+      ).annotate({ identifier: "ReplicationConfigurationTemplate" });
   }
 }
 function __c19(j: number): any {
@@ -4180,7 +4156,7 @@ function __c19(j: number): any {
           vpcID: S.String,
           originAccountID: S.String,
           originRegion: S.String,
-          tags: S.optional(__S(1568, __c98, 0)),
+          tags: S.optional(__S(1536, __c96, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateSourceNetwork" }),
@@ -4191,9 +4167,7 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateSourceNetworkRequest",
-      });
+      ).annotate({ identifier: "CreateSourceNetworkRequest" });
     case 1:
       return S.suspend(() => S.Struct({ sourceNetworkID: S.optional(S.String) })).annotate({
         identifier: "CreateSourceNetworkResponse",
@@ -4213,9 +4187,7 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteJobResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteJobResponse" });
   }
 }
 function __c22(j: number): any {
@@ -4232,9 +4204,7 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteLaunchActionRequest",
-      });
+      ).annotate({ identifier: "DeleteLaunchActionRequest" });
   }
 }
 function __c23(j: number): any {
@@ -4251,20 +4221,10 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteLaunchConfigurationTemplateRequest",
-      });
+      ).annotate({ identifier: "DeleteLaunchConfigurationTemplateRequest" });
   }
 }
 function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteLaunchConfigurationTemplateResponse",
-      });
-  }
-}
-function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4278,12 +4238,10 @@ function __c25(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteRecoveryInstanceRequest",
-      });
+      ).annotate({ identifier: "DeleteRecoveryInstanceRequest" });
   }
 }
-function __c26(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4297,16 +4255,14 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteRecoveryPlanRequest",
-      });
+      ).annotate({ identifier: "DeleteRecoveryPlanRequest" });
     case 1:
       return S.suspend(() => S.Struct({ recoveryPlanArn: S.String })).annotate({
         identifier: "DeleteRecoveryPlanResponse",
       });
   }
 }
-function __c27(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4320,16 +4276,14 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteRecoveryPlanExecutionRequest",
-      });
+      ).annotate({ identifier: "DeleteRecoveryPlanExecutionRequest" });
     case 1:
       return S.suspend(() => S.Struct({ recoveryPlanExecutionArn: S.String })).annotate({
         identifier: "DeleteRecoveryPlanExecutionResponse",
       });
   }
 }
-function __c28(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4343,16 +4297,14 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteRecoveryPlanStepRequest",
-      });
+      ).annotate({ identifier: "DeleteRecoveryPlanStepRequest" });
     case 1:
       return S.suspend(() => S.Struct({ recoveryPlanStepArn: S.String })).annotate({
         identifier: "DeleteRecoveryPlanStepResponse",
       });
   }
 }
-function __c29(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4366,12 +4318,10 @@ function __c29(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteReplicationConfigurationTemplateRequest",
-      });
+      ).annotate({ identifier: "DeleteReplicationConfigurationTemplateRequest" });
   }
 }
-function __c30(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4385,12 +4335,10 @@ function __c30(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteSourceNetworkRequest",
-      });
+      ).annotate({ identifier: "DeleteSourceNetworkRequest" });
   }
 }
-function __c31(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4404,12 +4352,10 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteSourceServerRequest",
-      });
+      ).annotate({ identifier: "DeleteSourceServerRequest" });
   }
 }
-function __c32(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4427,35 +4373,31 @@ function __c32(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeJobLogItemsRequest",
-      });
+      ).annotate({ identifier: "DescribeJobLogItemsRequest" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(1536, __c96, 0).pipe(S.optional));
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(513, __c32, 1).pipe(S.optional));
-    case 3:
       return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({ productCodeId: S.optional(S.String), productCodeMode: S.optional(S.String) }),
       ).annotate({ identifier: "ProductCode" });
+    case 4:
+      return S.Array(__S(499, __c31, 3));
     case 5:
-      return S.Array(__S(516, __c32, 4));
+      return S.Record(S.String, /*@__PURE__*/ __S(500, __c31, 4).pipe(S.optional));
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ __S(517, __c32, 5).pipe(S.optional));
-    case 7:
       return S.suspend(() =>
         S.Struct({
-          volumeToConversionMap: S.optional(__S(514, __c32, 2)),
+          volumeToConversionMap: S.optional(__S(497, __c31, 1)),
           rootVolumeName: S.optional(S.String),
           forceUefi: S.optional(S.Boolean),
           dataTimestamp: S.optional(S.String),
-          volumeToVolumeSize: S.optional(__S(515, __c32, 3)),
-          volumeToProductCodes: S.optional(__S(518, __c32, 6)),
+          volumeToVolumeSize: S.optional(__S(498, __c31, 2)),
+          volumeToProductCodes: S.optional(__S(501, __c31, 5)),
         }),
       ).annotate({ identifier: "ConversionProperties" });
-    case 8:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           sourceNetworkID: S.optional(S.String),
@@ -4464,40 +4406,38 @@ function __c32(j: number): any {
           stackName: S.optional(S.String),
         }),
       ).annotate({ identifier: "SourceNetworkData" });
+    case 8:
+      return S.Union([/*@__PURE__*/ S.Struct({ sourceNetworkData: __S(503, __c31, 7) })]);
     case 9:
-      return S.Union([/*@__PURE__*/ S.Struct({ sourceNetworkData: __S(520, __c32, 8) })]);
-    case 10:
       return S.suspend(() =>
         S.Struct({
           sourceServerID: S.optional(S.String),
           conversionServerID: S.optional(S.String),
           targetInstanceID: S.optional(S.String),
           rawError: S.optional(S.String),
-          conversionProperties: S.optional(__S(519, __c32, 7)),
-          eventResourceData: S.optional(__S(521, __c32, 9)),
+          conversionProperties: S.optional(__S(502, __c31, 6)),
+          eventResourceData: S.optional(__S(504, __c31, 8)),
           attemptCount: S.optional(S.Number),
           maxAttemptsCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "JobLogEventData" });
-    case 11:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           logDateTime: S.optional(S.String),
           event: S.optional(S.String),
-          eventData: S.optional(__S(522, __c32, 10)),
+          eventData: S.optional(__S(505, __c31, 9)),
         }),
       ).annotate({ identifier: "JobLog" });
+    case 11:
+      return S.Array(__S(506, __c31, 10));
     case 12:
-      return S.Array(__S(523, __c32, 11));
-    case 13:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(524, __c32, 12)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DescribeJobLogItemsResponse",
-      });
+        S.Struct({ items: S.optional(__S(507, __c31, 11)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "DescribeJobLogItemsResponse" });
   }
 }
-function __c33(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4506,13 +4446,11 @@ function __c33(j: number): any {
           fromDate: S.optional(S.String),
           toDate: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeJobsRequestFilters",
-      });
+      ).annotate({ identifier: "DescribeJobsRequestFilters" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(528, __c33, 0)),
+          filters: S.optional(__S(512, __c32, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -4520,14 +4458,14 @@ function __c33(j: number): any {
         ),
       ).annotate({ identifier: "DescribeJobsRequest" });
     case 2:
-      return S.Array(__S(1544, __c96, 8));
+      return S.Array(__S(1512, __c94, 8));
     case 3:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(530, __c33, 2)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(__S(514, __c32, 2)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "DescribeJobsResponse" });
   }
 }
-function __c34(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4545,20 +4483,16 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeLaunchConfigurationTemplatesRequest",
-      });
+      ).annotate({ identifier: "DescribeLaunchConfigurationTemplatesRequest" });
     case 1:
-      return S.Array(__S(96, __c6, 0));
+      return S.Array(__S(112, __c7, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(545, __c34, 1)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DescribeLaunchConfigurationTemplatesResponse",
-      });
+        S.Struct({ items: S.optional(__S(529, __c33, 1)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "DescribeLaunchConfigurationTemplatesResponse" });
   }
 }
-function __c35(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4566,13 +4500,11 @@ function __c35(j: number): any {
           recoveryInstanceIDs: S.optional(__S(16, __c1, 0)),
           sourceServerIDs: S.optional(__S(16, __c1, 0)),
         }),
-      ).annotate({
-        identifier: "DescribeRecoveryInstancesRequestFilters",
-      });
+      ).annotate({ identifier: "DescribeRecoveryInstancesRequestFilters" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(560, __c35, 0)),
+          filters: S.optional(__S(544, __c34, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -4585,9 +4517,7 @@ function __c35(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeRecoveryInstancesRequest",
-      });
+      ).annotate({ identifier: "DescribeRecoveryInstancesRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4612,44 +4542,27 @@ function __c35(j: number): any {
           rescannedStorageBytes: S.optional(S.Number),
           backloggedStorageBytes: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "RecoveryInstanceDataReplicationInfoReplicatedDisk",
-      });
+      ).annotate({ identifier: "RecoveryInstanceDataReplicationInfoReplicatedDisk" });
     case 4:
-      return S.Array(__S(563, __c35, 3));
+      return S.Array(__S(547, __c34, 3));
     case 5:
-      return S.Array(__S(32, __c2, 0));
+      return S.suspend(() =>
+        S.Struct({ startDateTime: S.optional(S.String), steps: S.optional(__S(33, __c2, 1)) }),
+      ).annotate({ identifier: "RecoveryInstanceDataReplicationInitiation" });
     case 6:
-      return S.suspend(() =>
-        S.Struct({
-          startDateTime: S.optional(S.String),
-          steps: S.optional(__S(565, __c35, 5)),
-        }),
-      ).annotate({
-        identifier: "RecoveryInstanceDataReplicationInitiation",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ error: S.optional(S.String), rawError: S.optional(S.String) }),
-      ).annotate({
-        identifier: "RecoveryInstanceDataReplicationError",
-      });
-    case 8:
       return S.suspend(() =>
         S.Struct({
           lagDuration: S.optional(S.String),
           etaDateTime: S.optional(S.String),
-          replicatedDisks: S.optional(__S(564, __c35, 4)),
+          replicatedDisks: S.optional(__S(548, __c34, 4)),
           dataReplicationState: S.optional(S.String),
-          dataReplicationInitiation: S.optional(__S(566, __c35, 6)),
-          dataReplicationError: S.optional(__S(567, __c35, 7)),
+          dataReplicationInitiation: S.optional(__S(549, __c34, 5)),
+          dataReplicationError: S.optional(__S(34, __c2, 2)),
           stagingAvailabilityZone: S.optional(S.String),
           stagingOutpostArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "RecoveryInstanceDataReplicationInfo",
-      });
-    case 9:
+      ).annotate({ identifier: "RecoveryInstanceDataReplicationInfo" });
+    case 7:
       return S.suspend(() =>
         S.Struct({
           internalDeviceName: S.optional(S.String),
@@ -4657,23 +4570,21 @@ function __c35(j: number): any {
           ebsVolumeID: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecoveryInstanceDisk" });
-    case 10:
-      return S.Array(__S(569, __c35, 9));
-    case 11:
+    case 8:
+      return S.Array(__S(551, __c34, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           lastUpdatedDateTime: S.optional(S.String),
-          identificationHints: S.optional(__S(33, __c2, 1)),
-          networkInterfaces: S.optional(__S(35, __c2, 3)),
-          disks: S.optional(__S(570, __c35, 10)),
-          cpus: S.optional(__S(37, __c2, 5)),
+          identificationHints: S.optional(__S(35, __c2, 3)),
+          networkInterfaces: S.optional(__S(37, __c2, 5)),
+          disks: S.optional(__S(552, __c34, 8)),
+          cpus: S.optional(__S(39, __c2, 7)),
           ramBytes: S.optional(S.Number),
-          os: S.optional(__S(38, __c2, 6)),
+          os: S.optional(__S(40, __c2, 8)),
         }),
-      ).annotate({
-        identifier: "RecoveryInstanceProperties",
-      });
-    case 12:
+      ).annotate({ identifier: "RecoveryInstanceProperties" });
+    case 10:
       return S.suspend(() =>
         S.Struct({
           ec2InstanceID: S.optional(S.String),
@@ -4682,10 +4593,10 @@ function __c35(j: number): any {
           recoveryInstanceID: S.optional(S.String),
           sourceServerID: S.optional(S.String),
           arn: S.optional(S.String),
-          tags: S.optional(__S(1568, __c98, 0)),
-          failback: S.optional(__S(562, __c35, 2)),
-          dataReplicationInfo: S.optional(__S(568, __c35, 8)),
-          recoveryInstanceProperties: S.optional(__S(571, __c35, 11)),
+          tags: S.optional(__S(1536, __c96, 0)),
+          failback: S.optional(__S(546, __c34, 2)),
+          dataReplicationInfo: S.optional(__S(550, __c34, 6)),
+          recoveryInstanceProperties: S.optional(__S(553, __c34, 9)),
           pointInTimeSnapshotDateTime: S.optional(S.String),
           isDrill: S.optional(S.Boolean),
           originEnvironment: S.optional(S.String),
@@ -4694,29 +4605,25 @@ function __c35(j: number): any {
           sourceOutpostArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecoveryInstance" });
-    case 13:
-      return S.Array(__S(572, __c35, 12));
-    case 14:
+    case 11:
+      return S.Array(__S(554, __c34, 10));
+    case 12:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), items: S.optional(__S(573, __c35, 13)) }),
-      ).annotate({
-        identifier: "DescribeRecoveryInstancesResponse",
-      });
+        S.Struct({ nextToken: S.optional(S.String), items: S.optional(__S(555, __c34, 11)) }),
+      ).annotate({ identifier: "DescribeRecoveryInstancesResponse" });
   }
 }
-function __c36(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ fromDateTime: S.optional(S.String), toDateTime: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DescribeRecoverySnapshotsRequestFilters",
-      });
+      ).annotate({ identifier: "DescribeRecoverySnapshotsRequestFilters" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           sourceServerID: S.String,
-          filters: S.optional(__S(576, __c36, 0)),
+          filters: S.optional(__S(560, __c35, 0)),
           order: S.optional(S.String),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
@@ -4730,9 +4637,7 @@ function __c36(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeRecoverySnapshotsRequest",
-      });
+      ).annotate({ identifier: "DescribeRecoverySnapshotsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4744,16 +4649,14 @@ function __c36(j: number): any {
         }),
       ).annotate({ identifier: "RecoverySnapshot" });
     case 3:
-      return S.Array(__S(578, __c36, 2));
+      return S.Array(__S(562, __c35, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(579, __c36, 3)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DescribeRecoverySnapshotsResponse",
-      });
+        S.Struct({ items: S.optional(__S(563, __c35, 3)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "DescribeRecoverySnapshotsResponse" });
   }
 }
-function __c37(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4771,23 +4674,16 @@ function __c37(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeReplicationConfigurationTemplatesRequest",
-      });
+      ).annotate({ identifier: "DescribeReplicationConfigurationTemplatesRequest" });
     case 1:
       return S.Array(__S(288, __c18, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(593, __c37, 1)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DescribeReplicationConfigurationTemplatesResponse",
-      });
+        S.Struct({ items: S.optional(__S(577, __c36, 1)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "DescribeReplicationConfigurationTemplatesResponse" });
   }
 }
-function __c38(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4796,13 +4692,11 @@ function __c38(j: number): any {
           originAccountID: S.optional(S.String),
           originRegion: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeSourceNetworksRequestFilters",
-      });
+      ).annotate({ identifier: "DescribeSourceNetworksRequestFilters" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(608, __c38, 0)),
+          filters: S.optional(__S(592, __c37, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -4815,20 +4709,16 @@ function __c38(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeSourceNetworksRequest",
-      });
+      ).annotate({ identifier: "DescribeSourceNetworksRequest" });
     case 2:
-      return S.Array(__S(625, __c39, 1));
+      return S.Array(__S(609, __c38, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(610, __c38, 2)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DescribeSourceNetworksResponse",
-      });
+        S.Struct({ items: S.optional(__S(594, __c37, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "DescribeSourceNetworksResponse" });
   }
 }
-function __c39(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4844,19 +4734,19 @@ function __c39(j: number): any {
           sourceNetworkID: S.optional(S.String),
           sourceVpcID: S.optional(S.String),
           arn: S.optional(S.String),
-          tags: S.optional(__S(1568, __c98, 0)),
+          tags: S.optional(__S(1536, __c96, 0)),
           replicationStatus: S.optional(S.String),
           replicationStatusDetails: S.optional(SensitiveString),
           cfnStackName: S.optional(SensitiveString),
           sourceRegion: S.optional(S.String),
           sourceAccountID: S.optional(S.String),
-          lastRecovery: S.optional(__S(624, __c39, 0)),
+          lastRecovery: S.optional(__S(608, __c38, 0)),
           launchedVpcID: S.optional(S.String),
         }),
       ).annotate({ identifier: "SourceNetwork" });
   }
 }
-function __c40(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4865,13 +4755,11 @@ function __c40(j: number): any {
           hardwareId: S.optional(S.String),
           stagingAccountIDs: S.optional(__S(16, __c1, 0)),
         }),
-      ).annotate({
-        identifier: "DescribeSourceServersRequestFilters",
-      });
+      ).annotate({ identifier: "DescribeSourceServersRequestFilters" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(640, __c40, 0)),
+          filters: S.optional(__S(624, __c39, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -4884,20 +4772,16 @@ function __c40(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeSourceServersRequest",
-      });
+      ).annotate({ identifier: "DescribeSourceServersRequest" });
     case 2:
-      return S.Array(__S(62, __c3, 14));
+      return S.Array(__S(60, __c3, 12));
     case 3:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(642, __c40, 2)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DescribeSourceServersResponse",
-      });
+        S.Struct({ items: S.optional(__S(626, __c39, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "DescribeSourceServersResponse" });
   }
 }
-function __c41(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4911,12 +4795,10 @@ function __c41(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisconnectRecoveryInstanceRequest",
-      });
+      ).annotate({ identifier: "DisconnectRecoveryInstanceRequest" });
   }
 }
-function __c42(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4930,12 +4812,10 @@ function __c42(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisconnectSourceServerRequest",
-      });
+      ).annotate({ identifier: "DisconnectSourceServerRequest" });
   }
 }
-function __c43(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4949,16 +4829,14 @@ function __c43(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ExportSourceNetworkCfnTemplateRequest",
-      });
+      ).annotate({ identifier: "ExportSourceNetworkCfnTemplateRequest" });
     case 1:
       return S.suspend(() => S.Struct({ s3DestinationUrl: S.optional(S.String) })).annotate({
         identifier: "ExportSourceNetworkCfnTemplateResponse",
       });
   }
 }
-function __c44(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4972,9 +4850,7 @@ function __c44(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetFailbackReplicationConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetFailbackReplicationConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4984,12 +4860,10 @@ function __c44(j: number): any {
           usePrivateIP: S.optional(S.Boolean),
           internetProtocol: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetFailbackReplicationConfigurationResponse",
-      });
+      ).annotate({ identifier: "GetFailbackReplicationConfigurationResponse" });
   }
 }
-function __c45(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5003,12 +4877,10 @@ function __c45(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetLaunchConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetLaunchConfigurationRequest" });
   }
 }
-function __c46(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ launchIntoEC2InstanceID: S.optional(S.String) })).annotate({
@@ -5024,15 +4896,15 @@ function __c46(j: number): any {
           targetInstanceTypeRightSizingMethod: S.optional(S.String),
           copyPrivateIp: S.optional(S.Boolean),
           copyTags: S.optional(S.Boolean),
-          licensing: S.optional(__S(80, __c5, 0)),
+          licensing: S.optional(__S(96, __c6, 0)),
           postLaunchEnabled: S.optional(S.Boolean),
-          launchIntoInstanceProperties: S.optional(__S(736, __c46, 0)),
+          launchIntoInstanceProperties: S.optional(__S(720, __c45, 0)),
           recoveryMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "LaunchConfiguration" });
   }
 }
-function __c47(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5040,13 +4912,9 @@ function __c47(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/GetRecoveryPlan" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetRecoveryPlanRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({ recoveryPlan: __S(144, __c9, 0) })).annotate({
-        identifier: "GetRecoveryPlanResponse",
-      });
   }
 }
-function __c48(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5060,12 +4928,10 @@ function __c48(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetRecoveryPlanExecutionRequest",
-      });
+      ).annotate({ identifier: "GetRecoveryPlanExecutionRequest" });
   }
 }
-function __c49(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5079,12 +4945,10 @@ function __c49(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetRecoveryPlanExecutionStepRequest",
-      });
+      ).annotate({ identifier: "GetRecoveryPlanExecutionStepRequest" });
   }
 }
-function __c50(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5093,23 +4957,21 @@ function __c50(j: number): any {
           impactLevel: S.optional(S.String),
           jobID: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "RecoveryPlanExecutionServer",
-      });
+      ).annotate({ identifier: "RecoveryPlanExecutionServer" });
     case 1:
-      return S.Array(__S(800, __c50, 0));
+      return S.Array(__S(784, __c49, 0));
     case 2:
-      return S.suspend(() => S.Struct({ servers: __S(801, __c50, 1) })).annotate({
+      return S.suspend(() => S.Struct({ servers: __S(785, __c49, 1) })).annotate({
         identifier: "ExecutionServerStepConfiguration",
       });
     case 3:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ executionServerStepConfiguration: __S(802, __c50, 2) }),
+        /*@__PURE__*/ S.Struct({ executionServerStepConfiguration: __S(786, __c49, 2) }),
         /*@__PURE__*/ S.Struct({ waitStepConfiguration: __S(192, __c12, 0) }),
       ]);
   }
 }
-function __c51(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5118,22 +4980,20 @@ function __c51(j: number): any {
           stepIndex: S.Number,
           status: S.String,
           stepName: S.String,
-          configuration: __S(803, __c50, 3),
-          errorDetail: S.optional(__S(1600, __c100, 0)),
+          configuration: __S(787, __c49, 3),
+          errorDetail: S.optional(__S(1568, __c98, 0)),
           attempt: S.Number,
           createdAt: S.String,
           updatedAt: S.String,
         }),
-      ).annotate({
-        identifier: "RecoveryPlanExecutionStep",
-      });
+      ).annotate({ identifier: "RecoveryPlanExecutionStep" });
     case 1:
-      return S.suspend(() => S.Struct({ recoveryPlanExecutionStep: __S(816, __c51, 0) })).annotate({
+      return S.suspend(() => S.Struct({ recoveryPlanExecutionStep: __S(800, __c50, 0) })).annotate({
         identifier: "GetRecoveryPlanExecutionStepResponse",
       });
   }
 }
-function __c52(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5147,12 +5007,10 @@ function __c52(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetRecoveryPlanStepRequest",
-      });
+      ).annotate({ identifier: "GetRecoveryPlanStepRequest" });
   }
 }
-function __c53(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5166,12 +5024,10 @@ function __c53(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetReplicationConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetReplicationConfigurationRequest" });
   }
 }
-function __c54(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5183,11 +5039,9 @@ function __c54(j: number): any {
           throughput: S.optional(S.Number),
           optimizedStagingDiskType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ReplicationConfigurationReplicatedDisk",
-      });
+      ).annotate({ identifier: "ReplicationConfigurationReplicatedDisk" });
     case 1:
-      return S.Array(__S(864, __c54, 0));
+      return S.Array(__S(848, __c53, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5199,13 +5053,13 @@ function __c54(j: number): any {
           replicationServerInstanceType: S.optional(S.String),
           useDedicatedReplicationServer: S.optional(S.Boolean),
           defaultLargeStagingDiskType: S.optional(S.String),
-          replicatedDisks: S.optional(__S(865, __c54, 1)),
+          replicatedDisks: S.optional(__S(849, __c53, 1)),
           ebsEncryption: S.optional(S.String),
           ebsEncryptionKeyArn: S.optional(S.String),
           bandwidthThrottling: S.optional(S.Number),
           dataPlaneRouting: S.optional(S.String),
           createPublicIP: S.optional(S.Boolean),
-          stagingAreaTags: S.optional(__S(1568, __c98, 0)),
+          stagingAreaTags: S.optional(__S(1536, __c96, 0)),
           pitPolicy: S.optional(__S(273, __c17, 1)),
           autoReplicateNewDisks: S.optional(S.Boolean),
           internetProtocol: S.optional(S.String),
@@ -5213,7 +5067,7 @@ function __c54(j: number): any {
       ).annotate({ identifier: "ReplicationConfiguration" });
   }
 }
-function __c55(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5230,7 +5084,7 @@ function __c55(j: number): any {
       ).annotate({ identifier: "InitializeServiceRequest" });
   }
 }
-function __c56(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5248,28 +5102,24 @@ function __c56(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListExtensibleSourceServersRequest",
-      });
+      ).annotate({ identifier: "ListExtensibleSourceServersRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           hostname: S.optional(S.String),
           arn: S.optional(S.String),
-          tags: S.optional(__S(1568, __c98, 0)),
+          tags: S.optional(__S(1536, __c96, 0)),
         }),
       ).annotate({ identifier: "StagingSourceServer" });
     case 2:
-      return S.Array(__S(897, __c56, 1));
+      return S.Array(__S(881, __c55, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(898, __c56, 2)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListExtensibleSourceServersResponse",
-      });
+        S.Struct({ items: S.optional(__S(882, __c55, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListExtensibleSourceServersResponse" });
   }
 }
-function __c57(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ actionIds: S.optional(__S(16, __c1, 0)) })).annotate({
@@ -5279,7 +5129,7 @@ function __c57(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String,
-          filters: S.optional(__S(912, __c57, 0)),
+          filters: S.optional(__S(896, __c56, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -5294,16 +5144,14 @@ function __c57(j: number): any {
         ),
       ).annotate({ identifier: "ListLaunchActionsRequest" });
     case 2:
-      return S.Array(__S(1520, __c95, 0));
+      return S.Array(__S(1488, __c93, 0));
     case 3:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(914, __c57, 2)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListLaunchActionsResponse",
-      });
+        S.Struct({ items: S.optional(__S(898, __c56, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListLaunchActionsResponse" });
   }
 }
-function __c58(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5322,9 +5170,7 @@ function __c58(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListRecoveryPlanExecutionsRequest",
-      });
+      ).annotate({ identifier: "ListRecoveryPlanExecutionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5333,25 +5179,18 @@ function __c58(j: number): any {
           mode: S.String,
           status: S.String,
           startedAt: S.String,
-          errorDetail: S.optional(__S(1600, __c100, 0)),
+          errorDetail: S.optional(__S(1568, __c98, 0)),
         }),
-      ).annotate({
-        identifier: "RecoveryPlanExecutionSummary",
-      });
+      ).annotate({ identifier: "RecoveryPlanExecutionSummary" });
     case 2:
-      return S.Array(__S(929, __c58, 1));
+      return S.Array(__S(913, __c57, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          recoveryPlanExecutions: __S(930, __c58, 2),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListRecoveryPlanExecutionsResponse",
-      });
+        S.Struct({ recoveryPlanExecutions: __S(914, __c57, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListRecoveryPlanExecutionsResponse" });
   }
 }
-function __c59(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ status: S.optional(S.String) })).annotate({
@@ -5361,7 +5200,7 @@ function __c59(j: number): any {
       return S.suspend(() =>
         S.Struct({
           recoveryPlanExecutionArn: S.String,
-          filter: S.optional(__S(944, __c59, 0)),
+          filter: S.optional(__S(928, __c58, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -5374,9 +5213,7 @@ function __c59(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListRecoveryPlanExecutionStepsRequest",
-      });
+      ).annotate({ identifier: "ListRecoveryPlanExecutionStepsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5384,26 +5221,22 @@ function __c59(j: number): any {
           stepName: S.String,
           stepIndex: S.Number,
           status: S.String,
-          configuration: __S(803, __c50, 3),
-          errorDetail: S.optional(__S(1600, __c100, 0)),
+          configuration: __S(787, __c49, 3),
+          errorDetail: S.optional(__S(1568, __c98, 0)),
         }),
-      ).annotate({
-        identifier: "RecoveryPlanExecutionStepSummary",
-      });
+      ).annotate({ identifier: "RecoveryPlanExecutionStepSummary" });
     case 3:
-      return S.Array(__S(946, __c59, 2));
+      return S.Array(__S(930, __c58, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          recoveryPlanExecutionSteps: __S(947, __c59, 3),
+          recoveryPlanExecutionSteps: __S(931, __c58, 3),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListRecoveryPlanExecutionStepsResponse",
-      });
+      ).annotate({ identifier: "ListRecoveryPlanExecutionStepsResponse" });
   }
 }
-function __c60(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5429,16 +5262,14 @@ function __c60(j: number): any {
         }),
       ).annotate({ identifier: "RecoveryPlanSummary" });
     case 2:
-      return S.Array(__S(961, __c60, 1));
+      return S.Array(__S(945, __c59, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ recoveryPlans: __S(962, __c60, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListRecoveryPlansResponse",
-      });
+        S.Struct({ recoveryPlans: __S(946, __c59, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListRecoveryPlansResponse" });
   }
 }
-function __c61(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5456,24 +5287,20 @@ function __c61(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListRecoveryPlanStepsRequest",
-      });
+      ).annotate({ identifier: "ListRecoveryPlanStepsRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ recoveryPlanSteps: __S(992, __c62, 0), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListRecoveryPlanStepsResponse",
-      });
+        S.Struct({ recoveryPlanSteps: __S(976, __c61, 0), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListRecoveryPlanStepsResponse" });
   }
 }
-function __c62(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(226, __c14, 2));
   }
 }
-function __c63(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5490,24 +5317,20 @@ function __c63(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListStagingAccountsRequest",
-      });
+      ).annotate({ identifier: "ListStagingAccountsRequest" });
     case 1:
       return S.suspend(() => S.Struct({ accountID: S.optional(S.String) })).annotate({
         identifier: "Account",
       });
     case 2:
-      return S.Array(__S(1009, __c63, 1));
+      return S.Array(__S(993, __c62, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ accounts: S.optional(__S(1010, __c63, 2)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListStagingAccountsResponse",
-      });
+        S.Struct({ accounts: S.optional(__S(994, __c62, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListStagingAccountsResponse" });
   }
 }
-function __c64(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5521,16 +5344,14 @@ function __c64(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(1568, __c98, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(1536, __c96, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c65(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5544,7 +5365,7 @@ function __c65(j: number): any {
           name: S.String,
           actionVersion: S.String,
           category: S.String,
-          parameters: S.optional(__S(1505, __c94, 1)),
+          parameters: S.optional(__S(1473, __c92, 1)),
           description: S.String,
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/PutLaunchAction" }), svc, auth, proto, ver, rules),
@@ -5562,14 +5383,14 @@ function __c65(j: number): any {
           order: S.optional(S.Number),
           actionVersion: S.optional(S.String),
           optional: S.optional(S.Boolean),
-          parameters: S.optional(__S(1505, __c94, 1)),
+          parameters: S.optional(__S(1473, __c92, 1)),
           description: S.optional(S.String),
           category: S.optional(S.String),
         }),
       ).annotate({ identifier: "PutLaunchActionResponse" });
   }
 }
-function __c66(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5583,16 +5404,14 @@ function __c66(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ReorderRecoveryPlanStepsRequest",
-      });
+      ).annotate({ identifier: "ReorderRecoveryPlanStepsRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ recoveryPlanSteps: __S(992, __c62, 0) })).annotate({
+      return S.suspend(() => S.Struct({ recoveryPlanSteps: __S(976, __c61, 0) })).annotate({
         identifier: "ReorderRecoveryPlanStepsResponse",
       });
   }
 }
-function __c67(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5606,12 +5425,10 @@ function __c67(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RetryDataReplicationRequest",
-      });
+      ).annotate({ identifier: "RetryDataReplicationRequest" });
   }
 }
-function __c68(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5625,12 +5442,10 @@ function __c68(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RetryRecoveryPlanExecutionStepRequest",
-      });
+      ).annotate({ identifier: "RetryRecoveryPlanExecutionStepRequest" });
   }
 }
-function __c69(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5644,24 +5459,20 @@ function __c69(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ReverseReplicationRequest",
-      });
+      ).annotate({ identifier: "ReverseReplicationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ reversedDirectionSourceServerArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ReverseReplicationResponse",
-      });
+      ).annotate({ identifier: "ReverseReplicationResponse" });
   }
 }
-function __c70(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           recoveryInstanceIDs: __S(16, __c1, 0),
-          tags: S.optional(__S(1568, __c98, 0)),
+          tags: S.optional(__S(1536, __c96, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/StartFailbackLaunch" }),
@@ -5672,55 +5483,45 @@ function __c70(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartFailbackLaunchRequest",
-      });
+      ).annotate({ identifier: "StartFailbackLaunchRequest" });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ sourceServerID: S.String, recoverySnapshotID: S.optional(S.String) }),
+      ).annotate({ identifier: "StartRecoveryRequestSourceServer" });
+    case 1:
+      return S.Array(__S(1120, __c70, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          sourceServers: __S(1121, __c70, 1),
+          isDrill: S.optional(S.Boolean),
+          tags: S.optional(__S(1536, __c96, 0)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/StartRecovery" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "StartRecoveryRequest" });
   }
 }
 function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ sourceServerID: S.String, recoverySnapshotID: S.optional(S.String) }),
-      ).annotate({
-        identifier: "StartRecoveryRequestSourceServer",
-      });
+        S.Struct({ sourceServerID: S.String, recoverySnapshotID: S.String }),
+      ).annotate({ identifier: "RecoveryPlanExecutionSourceServer" });
     case 1:
       return S.Array(__S(1136, __c71, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sourceServers: __S(1137, __c71, 1),
-          isDrill: S.optional(S.Boolean),
-          tags: S.optional(__S(1568, __c98, 0)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/StartRecovery" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "StartRecoveryRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({ job: S.optional(__S(1544, __c96, 8)) })).annotate({
-        identifier: "StartRecoveryResponse",
-      });
-  }
-}
-function __c72(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ sourceServerID: S.String, recoverySnapshotID: S.String }),
-      ).annotate({
-        identifier: "RecoveryPlanExecutionSourceServer",
-      });
-    case 1:
-      return S.Array(__S(1152, __c72, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           recoveryPlanArn: S.String,
           mode: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          sourceServers: S.optional(__S(1153, __c72, 1)),
-          tags: S.optional(__S(1568, __c98, 0)),
+          sourceServers: S.optional(__S(1137, __c71, 1)),
+          tags: S.optional(__S(1536, __c96, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/StartRecoveryPlanExecution" }),
@@ -5731,12 +5532,10 @@ function __c72(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartRecoveryPlanExecutionRequest",
-      });
+      ).annotate({ identifier: "StartRecoveryPlanExecutionRequest" });
   }
 }
-function __c73(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5746,30 +5545,20 @@ function __c73(j: number): any {
       ).annotate({ identifier: "StartReplicationRequest" });
   }
 }
-function __c74(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ sourceServer: S.optional(__S(62, __c3, 14)) })).annotate({
-        identifier: "StartReplicationResponse",
-      });
-  }
-}
-function __c75(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ sourceNetworkID: S.String, cfnStackName: S.optional(SensitiveString) }),
-      ).annotate({
-        identifier: "StartSourceNetworkRecoveryRequestNetworkEntry",
-      });
+      ).annotate({ identifier: "StartSourceNetworkRecoveryRequestNetworkEntry" });
     case 1:
-      return S.Array(__S(1200, __c75, 0));
+      return S.Array(__S(1168, __c73, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sourceNetworks: __S(1201, __c75, 1),
+          sourceNetworks: __S(1169, __c73, 1),
           deployAsNew: S.optional(S.Boolean),
-          tags: S.optional(__S(1568, __c98, 0)),
+          tags: S.optional(__S(1536, __c96, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/StartSourceNetworkRecovery" }),
@@ -5780,12 +5569,10 @@ function __c75(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartSourceNetworkRecoveryRequest",
-      });
+      ).annotate({ identifier: "StartSourceNetworkRecoveryRequest" });
   }
 }
-function __c76(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5799,20 +5586,18 @@ function __c76(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartSourceNetworkReplicationRequest",
-      });
+      ).annotate({ identifier: "StartSourceNetworkReplicationRequest" });
   }
 }
-function __c77(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ sourceNetwork: S.optional(__S(625, __c39, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ sourceNetwork: S.optional(__S(609, __c38, 1)) })).annotate({
         identifier: "StartSourceNetworkReplicationResponse",
       });
   }
 }
-function __c78(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5822,7 +5607,7 @@ function __c78(j: number): any {
       ).annotate({ identifier: "StopFailbackRequest" });
   }
 }
-function __c79(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5832,7 +5617,7 @@ function __c79(j: number): any {
       ).annotate({ identifier: "StopReplicationRequest" });
   }
 }
-function __c80(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5846,18 +5631,16 @@ function __c80(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StopSourceNetworkReplicationRequest",
-      });
+      ).annotate({ identifier: "StopSourceNetworkReplicationRequest" });
   }
 }
-function __c81(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(1568, __c98, 0),
+          tags: __S(1536, __c96, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -5871,7 +5654,7 @@ function __c81(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c82(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5885,12 +5668,10 @@ function __c82(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "TerminateRecoveryInstancesRequest",
-      });
+      ).annotate({ identifier: "TerminateRecoveryInstancesRequest" });
   }
 }
-function __c83(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5910,17 +5691,17 @@ function __c83(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c84(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ name: S.optional(S.String), message: S.optional(S.String) }),
       ).annotate({ identifier: "ValidationExceptionField" });
     case 1:
-      return S.Array(__S(1344, __c84, 0));
+      return S.Array(__S(1312, __c82, 0));
   }
 }
-function __c85(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5940,12 +5721,10 @@ function __c85(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateFailbackReplicationConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateFailbackReplicationConfigurationRequest" });
   }
 }
-function __c86(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5956,9 +5735,9 @@ function __c86(j: number): any {
           targetInstanceTypeRightSizingMethod: S.optional(S.String),
           copyPrivateIp: S.optional(S.Boolean),
           copyTags: S.optional(S.Boolean),
-          licensing: S.optional(__S(80, __c5, 0)),
+          licensing: S.optional(__S(96, __c6, 0)),
           postLaunchEnabled: S.optional(S.Boolean),
-          launchIntoInstanceProperties: S.optional(__S(736, __c46, 0)),
+          launchIntoInstanceProperties: S.optional(__S(720, __c45, 0)),
           recoveryMode: S.optional(S.String),
         }).pipe(
           T.all(
@@ -5970,12 +5749,10 @@ function __c86(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateLaunchConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateLaunchConfigurationRequest" });
   }
 }
-function __c87(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5985,7 +5762,7 @@ function __c87(j: number): any {
           targetInstanceTypeRightSizingMethod: S.optional(S.String),
           copyPrivateIp: S.optional(S.Boolean),
           copyTags: S.optional(S.Boolean),
-          licensing: S.optional(__S(80, __c5, 0)),
+          licensing: S.optional(__S(96, __c6, 0)),
           exportBucketArn: S.optional(S.String),
           postLaunchEnabled: S.optional(S.Boolean),
           launchIntoSourceInstance: S.optional(S.Boolean),
@@ -6000,12 +5777,10 @@ function __c87(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateLaunchConfigurationTemplateRequest",
-      });
+      ).annotate({ identifier: "UpdateLaunchConfigurationTemplateRequest" });
   }
 }
-function __c88(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6023,12 +5798,10 @@ function __c88(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateRecoveryPlanRequest",
-      });
+      ).annotate({ identifier: "UpdateRecoveryPlanRequest" });
   }
 }
-function __c89(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6047,12 +5820,10 @@ function __c89(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateRecoveryPlanExecutionStepRequest",
-      });
+      ).annotate({ identifier: "UpdateRecoveryPlanExecutionStepRequest" });
   }
 }
-function __c90(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6070,12 +5841,10 @@ function __c90(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateRecoveryPlanStepRequest",
-      });
+      ).annotate({ identifier: "UpdateRecoveryPlanStepRequest" });
   }
 }
-function __c91(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6088,13 +5857,13 @@ function __c91(j: number): any {
           replicationServerInstanceType: S.optional(S.String),
           useDedicatedReplicationServer: S.optional(S.Boolean),
           defaultLargeStagingDiskType: S.optional(S.String),
-          replicatedDisks: S.optional(__S(865, __c54, 1)),
+          replicatedDisks: S.optional(__S(849, __c53, 1)),
           ebsEncryption: S.optional(S.String),
           ebsEncryptionKeyArn: S.optional(S.String),
           bandwidthThrottling: S.optional(S.Number),
           dataPlaneRouting: S.optional(S.String),
           createPublicIP: S.optional(S.Boolean),
-          stagingAreaTags: S.optional(__S(1568, __c98, 0)),
+          stagingAreaTags: S.optional(__S(1536, __c96, 0)),
           pitPolicy: S.optional(__S(273, __c17, 1)),
           autoReplicateNewDisks: S.optional(S.Boolean),
           internetProtocol: S.optional(S.String),
@@ -6108,12 +5877,10 @@ function __c91(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateReplicationConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateReplicationConfigurationRequest" });
   }
 }
-function __c92(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6131,7 +5898,7 @@ function __c92(j: number): any {
           bandwidthThrottling: S.optional(S.Number),
           dataPlaneRouting: S.optional(S.String),
           createPublicIP: S.optional(S.Boolean),
-          stagingAreaTags: S.optional(__S(1568, __c98, 0)),
+          stagingAreaTags: S.optional(__S(1536, __c96, 0)),
           pitPolicy: S.optional(__S(273, __c17, 1)),
           autoReplicateNewDisks: S.optional(S.Boolean),
           internetProtocol: S.optional(S.String),
@@ -6145,12 +5912,10 @@ function __c92(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateReplicationConfigurationTemplateRequest",
-      });
+      ).annotate({ identifier: "UpdateReplicationConfigurationTemplateRequest" });
   }
 }
-function __c93(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6164,22 +5929,20 @@ function __c93(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateSourceNetworkStackRequest",
-      });
+      ).annotate({ identifier: "AssociateSourceNetworkStackRequest" });
   }
 }
-function __c94(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ value: S.optional(S.String), type: S.optional(S.String) }),
       ).annotate({ identifier: "LaunchActionParameter" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(1504, __c94, 0).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(1472, __c92, 0).pipe(S.optional));
   }
 }
-function __c95(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6192,31 +5955,31 @@ function __c95(j: number): any {
           order: S.optional(S.Number),
           actionVersion: S.optional(S.String),
           optional: S.optional(S.Boolean),
-          parameters: S.optional(__S(1505, __c94, 1)),
+          parameters: S.optional(__S(1473, __c92, 1)),
           description: S.optional(S.String),
           category: S.optional(S.String),
         }),
       ).annotate({ identifier: "LaunchAction" });
   }
 }
-function __c96(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(__S(1520, __c95, 0)),
+          action: S.optional(__S(1488, __c93, 0)),
           runId: S.optional(S.String),
           status: S.optional(S.String),
           failureReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "LaunchActionRun" });
     case 1:
-      return S.Array(__S(1536, __c96, 0));
+      return S.Array(__S(1504, __c94, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           ssmAgentDiscoveryDatetime: S.optional(S.String),
-          runs: S.optional(__S(1537, __c96, 1)),
+          runs: S.optional(__S(1505, __c94, 1)),
         }),
       ).annotate({ identifier: "LaunchActionsStatus" });
     case 3:
@@ -6225,22 +5988,22 @@ function __c96(j: number): any {
           sourceServerID: S.optional(S.String),
           recoveryInstanceID: S.optional(S.String),
           launchStatus: S.optional(S.String),
-          launchActionsStatus: S.optional(__S(1538, __c96, 2)),
+          launchActionsStatus: S.optional(__S(1506, __c94, 2)),
         }),
       ).annotate({ identifier: "ParticipatingServer" });
     case 4:
-      return S.Array(__S(1539, __c96, 3));
+      return S.Array(__S(1507, __c94, 3));
     case 5:
       return S.Union([/*@__PURE__*/ S.Struct({ sourceNetworkID: S.String })]);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          participatingResourceID: S.optional(__S(1541, __c96, 5)),
+          participatingResourceID: S.optional(__S(1509, __c94, 5)),
           launchStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "ParticipatingResource" });
     case 7:
-      return S.Array(__S(1542, __c96, 6));
+      return S.Array(__S(1510, __c94, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -6251,28 +6014,28 @@ function __c96(j: number): any {
           creationDateTime: S.optional(S.String),
           endDateTime: S.optional(S.String),
           status: S.optional(S.String),
-          participatingServers: S.optional(__S(1540, __c96, 4)),
-          tags: S.optional(__S(1568, __c98, 0)),
-          participatingResources: S.optional(__S(1543, __c96, 7)),
+          participatingServers: S.optional(__S(1508, __c94, 4)),
+          tags: S.optional(__S(1536, __c96, 0)),
+          participatingResources: S.optional(__S(1511, __c94, 7)),
         }),
       ).annotate({ identifier: "Job" });
   }
 }
-function __c97(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ job: S.optional(__S(1544, __c96, 8)) })).annotate({
+      return S.suspend(() => S.Struct({ job: S.optional(__S(1512, __c94, 8)) })).annotate({
         identifier: "AssociateSourceNetworkStackResponse",
       });
   }
 }
-function __c98(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c99(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6286,12 +6049,10 @@ function __c99(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CancelRecoveryPlanExecutionRequest",
-      });
+      ).annotate({ identifier: "CancelRecoveryPlanExecutionRequest" });
   }
 }
-function __c100(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ message: S.String, code: S.String })).annotate({
@@ -6299,7 +6060,7 @@ function __c100(j: number): any {
       });
   }
 }
-function __c101(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6310,12 +6071,12 @@ function __c101(j: number): any {
           status: S.String,
           startedAt: S.String,
           completedAt: S.optional(S.String),
-          errorDetail: S.optional(__S(1600, __c100, 0)),
-          tags: S.optional(__S(1568, __c98, 0)),
+          errorDetail: S.optional(__S(1568, __c98, 0)),
+          tags: S.optional(__S(1536, __c96, 0)),
         }),
       ).annotate({ identifier: "RecoveryPlanExecution" });
     case 1:
-      return S.suspend(() => S.Struct({ recoveryPlanExecution: __S(1616, __c101, 0) })).annotate({
+      return S.suspend(() => S.Struct({ recoveryPlanExecution: __S(1584, __c99, 0) })).annotate({
         identifier: "CancelRecoveryPlanExecutionResponse",
       });
   }

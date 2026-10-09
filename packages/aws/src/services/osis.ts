@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -494,8 +494,8 @@ export const createPipeline: API.OperationMethod<
   CreatePipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c25, 0) as any as S.Schema<CreatePipelineRequest>,
-  output: __S(475, __c29, 11) as any as S.Schema<CreatePipelineResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<CreatePipelineRequest>,
+  output: __S(459, __c28, 11) as any as S.Schema<CreatePipelineResponse>,
   errors: [
     AccessDeniedException,
     DisabledOperationException,
@@ -562,7 +562,7 @@ export const deletePipeline: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(32, __c2, 0) as any as S.Schema<DeletePipelineRequest>,
-  output: __S(33, __c2, 1) as any as S.Schema<DeletePipelineResponse>,
+  output: __S(48, __c3, 0) as any as S.Schema<DeletePipelineResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -591,8 +591,8 @@ export const deletePipelineEndpoint: API.OperationMethod<
   DeletePipelineEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c3, 0) as any as S.Schema<DeletePipelineEndpointRequest>,
-  output: __S(64, __c4, 0) as any as S.Schema<DeletePipelineEndpointResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<DeletePipelineEndpointRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<DeletePipelineEndpointResponse>,
   errors: [
     AccessDeniedException,
     DisabledOperationException,
@@ -622,7 +622,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(80, __c5, 0) as any as S.Schema<DeleteResourcePolicyRequest>,
-  output: __S(64, __c4, 0) as any as S.Schema<DeleteResourcePolicyResponse>,
+  output: __S(48, __c3, 0) as any as S.Schema<DeleteResourcePolicyResponse>,
   errors: [
     AccessDeniedException,
     DisabledOperationException,
@@ -653,7 +653,7 @@ export const getPipeline: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c6, 0) as any as S.Schema<GetPipelineRequest>,
-  output: __S(475, __c29, 11) as any as S.Schema<GetPipelineResponse>,
+  output: __S(459, __c28, 11) as any as S.Schema<GetPipelineResponse>,
   errors: [
     AccessDeniedException,
     DisabledOperationException,
@@ -1021,7 +1021,7 @@ export const startPipeline: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(288, __c18, 0) as any as S.Schema<StartPipelineRequest>,
-  output: __S(475, __c29, 11) as any as S.Schema<StartPipelineResponse>,
+  output: __S(459, __c28, 11) as any as S.Schema<StartPipelineResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1054,7 +1054,7 @@ export const stopPipeline: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(304, __c19, 0) as any as S.Schema<StopPipelineRequest>,
-  output: __S(475, __c29, 11) as any as S.Schema<StopPipelineResponse>,
+  output: __S(459, __c28, 11) as any as S.Schema<StopPipelineResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1087,7 +1087,7 @@ export const tagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(320, __c20, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(336, __c21, 0) as any as S.Schema<TagResourceResponse>,
+  output: __S(48, __c3, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     DisabledOperationException,
@@ -1118,8 +1118,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c22, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(336, __c21, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     DisabledOperationException,
@@ -1150,8 +1150,8 @@ export const updatePipeline: API.OperationMethod<
   UpdatePipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c23, 0) as any as S.Schema<UpdatePipelineRequest>,
-  output: __S(475, __c29, 11) as any as S.Schema<UpdatePipelineResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<UpdatePipelineRequest>,
+  output: __S(459, __c28, 11) as any as S.Schema<UpdatePipelineResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1182,8 +1182,8 @@ export const validatePipeline: API.OperationMethod<
   ValidatePipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<ValidatePipelineRequest>,
-  output: __S(387, __c24, 3) as any as S.Schema<ValidatePipelineResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<ValidatePipelineRequest>,
+  output: __S(371, __c23, 3) as any as S.Schema<ValidatePipelineResponse>,
   errors: [
     AccessDeniedException,
     DisabledOperationException,
@@ -1211,9 +1211,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreatePipelineEndpointRequest",
-      });
+      ).annotate({ identifier: "CreatePipelineEndpointRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1222,9 +1220,7 @@ function __c0(j: number): any {
           Status: S.optional(S.String),
           VpcId: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreatePipelineEndpointResponse",
-      });
+      ).annotate({ identifier: "CreatePipelineEndpointResponse" });
   }
 }
 function __c1(j: number): any {
@@ -1232,12 +1228,10 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          SubnetIds: S.optional(__S(416, __c26, 0)),
-          SecurityGroupIds: S.optional(__S(416, __c26, 0)),
+          SubnetIds: S.optional(__S(400, __c25, 0)),
+          SecurityGroupIds: S.optional(__S(400, __c25, 0)),
         }),
-      ).annotate({
-        identifier: "PipelineEndpointVpcOptions",
-      });
+      ).annotate({ identifier: "PipelineEndpointVpcOptions" });
   }
 }
 function __c2(j: number): any {
@@ -1256,13 +1250,17 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeletePipelineRequest" });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeletePipelineResponse",
       });
   }
 }
-function __c3(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1280,17 +1278,7 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeletePipelineEndpointRequest",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeletePipelineEndpointResponse",
-      });
+      ).annotate({ identifier: "DeletePipelineEndpointRequest" });
   }
 }
 function __c5(j: number): any {
@@ -1308,9 +1296,7 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteResourcePolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteResourcePolicyRequest" });
   }
 }
 function __c6(j: number): any {
@@ -1349,9 +1335,7 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetPipelineBlueprintRequest",
-      });
+      ).annotate({ identifier: "GetPipelineBlueprintRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1368,9 +1352,7 @@ function __c7(j: number): any {
         S.Struct({ Blueprint: S.optional(__S(113, __c7, 1)), Format: S.optional(S.String) }).pipe(
           ns,
         ),
-      ).annotate({
-        identifier: "GetPipelineBlueprintResponse",
-      });
+      ).annotate({ identifier: "GetPipelineBlueprintResponse" });
   }
 }
 function __c8(j: number): any {
@@ -1391,9 +1373,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetPipelineChangeProgressRequest",
-      });
+      ).annotate({ identifier: "GetPipelineChangeProgressRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1419,9 +1399,7 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({ ChangeProgressStatuses: S.optional(__S(132, __c8, 4)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetPipelineChangeProgressResponse",
-      });
+      ).annotate({ identifier: "GetPipelineChangeProgressResponse" });
   }
 }
 function __c9(j: number): any {
@@ -1447,9 +1425,7 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.optional(S.String), Policy: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "GetResourcePolicyResponse",
-      });
+      ).annotate({ identifier: "GetResourcePolicyResponse" });
   }
 }
 function __c11(j: number): any {
@@ -1467,9 +1443,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListPipelineBlueprintsRequest",
-      });
+      ).annotate({ identifier: "ListPipelineBlueprintsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1485,9 +1459,7 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ Blueprints: S.optional(__S(178, __c11, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "ListPipelineBlueprintsResponse",
-      });
+      ).annotate({ identifier: "ListPipelineBlueprintsResponse" });
   }
 }
 function __c12(j: number): any {
@@ -1508,9 +1480,7 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListPipelineEndpointConnectionsRequest",
-      });
+      ).annotate({ identifier: "ListPipelineEndpointConnectionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1519,9 +1489,7 @@ function __c12(j: number): any {
           Status: S.optional(S.String),
           VpcEndpointOwner: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "PipelineEndpointConnection",
-      });
+      ).annotate({ identifier: "PipelineEndpointConnection" });
     case 2:
       return S.Array(__S(193, __c12, 1));
     case 3:
@@ -1530,9 +1498,7 @@ function __c12(j: number): any {
           NextToken: S.optional(S.String),
           PipelineEndpointConnections: S.optional(__S(194, __c12, 2)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListPipelineEndpointConnectionsResponse",
-      });
+      ).annotate({ identifier: "ListPipelineEndpointConnectionsResponse" });
   }
 }
 function __c13(j: number): any {
@@ -1553,9 +1519,7 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListPipelineEndpointsRequest",
-      });
+      ).annotate({ identifier: "ListPipelineEndpointsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1575,9 +1539,7 @@ function __c13(j: number): any {
           NextToken: S.optional(S.String),
           PipelineEndpoints: S.optional(__S(210, __c13, 2)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListPipelineEndpointsResponse",
-      });
+      ).annotate({ identifier: "ListPipelineEndpointsResponse" });
   }
 }
 function __c14(j: number): any {
@@ -1603,15 +1565,15 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String),
-          StatusReason: S.optional(__S(448, __c28, 0)),
+          StatusReason: S.optional(__S(432, __c27, 0)),
           PipelineName: S.optional(S.String),
           PipelineArn: S.optional(S.String),
           MinUnits: S.optional(S.Number),
           MaxUnits: S.optional(S.Number),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Destinations: S.optional(__S(450, __c28, 2)),
-          Tags: S.optional(__S(433, __c27, 1)),
+          Destinations: S.optional(__S(434, __c27, 2)),
+          Tags: S.optional(__S(417, __c26, 1)),
         }),
       ).annotate({ identifier: "PipelineSummary" });
     case 2:
@@ -1640,11 +1602,9 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(433, __c27, 1)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(417, __c26, 1)) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
@@ -1671,7 +1631,7 @@ function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ PipelineArn: S.String, EndpointIds: __S(416, __c26, 0) }).pipe(
+        S.Struct({ PipelineArn: S.String, EndpointIds: __S(400, __c25, 0) }).pipe(
           T.all(
             ns,
             T.Http({ method: "POST", uri: "/2022-01-01/osis/revokePipelineEndpointConnections" }),
@@ -1682,9 +1642,7 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RevokePipelineEndpointConnectionsRequest",
-      });
+      ).annotate({ identifier: "RevokePipelineEndpointConnectionsRequest" });
     case 1:
       return S.suspend(() => S.Struct({ PipelineArn: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "RevokePipelineEndpointConnectionsResponse",
@@ -1731,7 +1689,7 @@ function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Arn: S.String.pipe(T.HttpQuery("arn")), Tags: __S(433, __c27, 1) }).pipe(
+        S.Struct({ Arn: S.String.pipe(T.HttpQuery("arn")), Tags: __S(417, __c26, 1) }).pipe(
           T.all(
             ns,
             T.Http({ method: "POST", uri: "/2022-01-01/osis/tagResource" }),
@@ -1748,16 +1706,8 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "TagResourceResponse",
-      });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
-        S.Struct({ Arn: S.String.pipe(T.HttpQuery("arn")), TagKeys: __S(416, __c26, 0) }).pipe(
+        S.Struct({ Arn: S.String.pipe(T.HttpQuery("arn")), TagKeys: __S(400, __c25, 0) }).pipe(
           T.all(
             ns,
             T.Http({ method: "POST", uri: "/2022-01-01/osis/untagResource" }),
@@ -1771,7 +1721,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c23(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1780,9 +1730,9 @@ function __c23(j: number): any {
           MinUnits: S.optional(S.Number),
           MaxUnits: S.optional(S.Number),
           PipelineConfigurationBody: S.optional(S.String),
-          LogPublishingOptions: S.optional(__S(465, __c29, 1)),
-          BufferOptions: S.optional(__S(468, __c29, 4)),
-          EncryptionAtRestOptions: S.optional(__S(469, __c29, 5)),
+          LogPublishingOptions: S.optional(__S(449, __c28, 1)),
+          BufferOptions: S.optional(__S(452, __c28, 4)),
+          EncryptionAtRestOptions: S.optional(__S(453, __c28, 5)),
           PipelineRoleArn: S.optional(S.String),
         }).pipe(
           T.all(
@@ -1798,7 +1748,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "UpdatePipelineRequest" });
   }
 }
-function __c24(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1819,16 +1769,16 @@ function __c24(j: number): any {
         identifier: "ValidationMessage",
       });
     case 2:
-      return S.Array(__S(385, __c24, 1));
+      return S.Array(__S(369, __c23, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ isValid: S.optional(S.Boolean), Errors: S.optional(__S(386, __c24, 2)) }).pipe(
+        S.Struct({ isValid: S.optional(S.Boolean), Errors: S.optional(__S(370, __c23, 2)) }).pipe(
           ns,
         ),
       ).annotate({ identifier: "ValidatePipelineResponse" });
   }
 }
-function __c25(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1837,11 +1787,11 @@ function __c25(j: number): any {
           MinUnits: S.Number,
           MaxUnits: S.Number,
           PipelineConfigurationBody: S.String,
-          LogPublishingOptions: S.optional(__S(465, __c29, 1)),
-          VpcOptions: S.optional(__S(467, __c29, 3)),
-          BufferOptions: S.optional(__S(468, __c29, 4)),
-          EncryptionAtRestOptions: S.optional(__S(469, __c29, 5)),
-          Tags: S.optional(__S(433, __c27, 1)),
+          LogPublishingOptions: S.optional(__S(449, __c28, 1)),
+          VpcOptions: S.optional(__S(451, __c28, 3)),
+          BufferOptions: S.optional(__S(452, __c28, 4)),
+          EncryptionAtRestOptions: S.optional(__S(453, __c28, 5)),
+          Tags: S.optional(__S(417, __c26, 1)),
           PipelineRoleArn: S.optional(S.String),
         }).pipe(
           T.all(
@@ -1857,23 +1807,23 @@ function __c25(j: number): any {
       ).annotate({ identifier: "CreatePipelineRequest" });
   }
 }
-function __c26(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c27(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
         identifier: "Tag",
       });
     case 1:
-      return S.Array(__S(432, __c27, 0));
+      return S.Array(__S(416, __c26, 0));
   }
 }
-function __c28(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Description: S.optional(S.String) })).annotate({
@@ -1884,10 +1834,10 @@ function __c28(j: number): any {
         S.Struct({ ServiceName: S.optional(S.String), Endpoint: S.optional(S.String) }),
       ).annotate({ identifier: "PipelineDestination" });
     case 2:
-      return S.Array(__S(449, __c28, 1));
+      return S.Array(__S(433, __c27, 1));
   }
 }
-function __c29(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ LogGroup: S.String })).annotate({
@@ -1897,7 +1847,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           IsLoggingEnabled: S.optional(S.Boolean),
-          CloudWatchLogDestination: S.optional(__S(464, __c29, 0)),
+          CloudWatchLogDestination: S.optional(__S(448, __c28, 0)),
         }),
       ).annotate({ identifier: "LogPublishingOptions" });
     case 2:
@@ -1907,9 +1857,9 @@ function __c29(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          SubnetIds: __S(416, __c26, 0),
-          SecurityGroupIds: S.optional(__S(416, __c26, 0)),
-          VpcAttachmentOptions: S.optional(__S(466, __c29, 2)),
+          SubnetIds: __S(400, __c25, 0),
+          SecurityGroupIds: S.optional(__S(400, __c25, 0)),
+          VpcAttachmentOptions: S.optional(__S(450, __c28, 2)),
           VpcEndpointManagement: S.optional(S.String),
         }),
       ).annotate({ identifier: "VpcOptions" });
@@ -1926,20 +1876,17 @@ function __c29(j: number): any {
         S.Struct({
           VpcEndpointId: S.optional(S.String),
           VpcId: S.optional(S.String),
-          VpcOptions: S.optional(__S(467, __c29, 3)),
+          VpcOptions: S.optional(__S(451, __c28, 3)),
         }),
       ).annotate({ identifier: "VpcEndpoint" });
     case 7:
-      return S.Array(__S(470, __c29, 6));
+      return S.Array(__S(454, __c28, 6));
     case 8:
       return S.suspend(() =>
-        S.Struct({
-          ServiceName: S.optional(S.String),
-          VpcEndpointId: S.optional(S.String),
-        }),
+        S.Struct({ ServiceName: S.optional(S.String), VpcEndpointId: S.optional(S.String) }),
       ).annotate({ identifier: "ServiceVpcEndpoint" });
     case 9:
-      return S.Array(__S(472, __c29, 8));
+      return S.Array(__S(456, __c28, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
@@ -1948,25 +1895,25 @@ function __c29(j: number): any {
           MinUnits: S.optional(S.Number),
           MaxUnits: S.optional(S.Number),
           Status: S.optional(S.String),
-          StatusReason: S.optional(__S(448, __c28, 0)),
+          StatusReason: S.optional(__S(432, __c27, 0)),
           PipelineConfigurationBody: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          IngestEndpointUrls: S.optional(__S(416, __c26, 0)),
-          LogPublishingOptions: S.optional(__S(465, __c29, 1)),
-          VpcEndpoints: S.optional(__S(471, __c29, 7)),
-          BufferOptions: S.optional(__S(468, __c29, 4)),
-          EncryptionAtRestOptions: S.optional(__S(469, __c29, 5)),
+          IngestEndpointUrls: S.optional(__S(400, __c25, 0)),
+          LogPublishingOptions: S.optional(__S(449, __c28, 1)),
+          VpcEndpoints: S.optional(__S(455, __c28, 7)),
+          BufferOptions: S.optional(__S(452, __c28, 4)),
+          EncryptionAtRestOptions: S.optional(__S(453, __c28, 5)),
           VpcEndpointService: S.optional(S.String),
-          ServiceVpcEndpoints: S.optional(__S(473, __c29, 9)),
-          Destinations: S.optional(__S(450, __c28, 2)),
-          Tags: S.optional(__S(433, __c27, 1)),
+          ServiceVpcEndpoints: S.optional(__S(457, __c28, 9)),
+          Destinations: S.optional(__S(434, __c27, 2)),
+          Tags: S.optional(__S(417, __c26, 1)),
           PipelineRoleArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "Pipeline" });
     case 11:
       return S.suspend(() =>
-        S.Struct({ Pipeline: S.optional(__S(474, __c29, 10)) }).pipe(ns),
+        S.Struct({ Pipeline: S.optional(__S(458, __c28, 10)) }).pipe(ns),
       ).annotate({ identifier: "CreatePipelineResponse" });
   }
 }

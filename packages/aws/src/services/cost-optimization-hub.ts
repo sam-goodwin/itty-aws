@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1391,7 +1391,7 @@ export const getPreferences: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(128, __c4, 0) as any as S.Schema<GetPreferencesRequest>,
-  output: __S(129, __c4, 1) as any as S.Schema<GetPreferencesResponse>,
+  output: __S(161, __c5, 1) as any as S.Schema<GetPreferencesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1422,7 +1422,7 @@ export const getRecommendation: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(192, __c6, 0) as any as S.Schema<GetRecommendationRequest>,
-  output: __S(247, __c7, 23) as any as S.Schema<GetRecommendationResponse>,
+  output: __S(244, __c7, 20) as any as S.Schema<GetRecommendationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1627,7 +1627,7 @@ export const updatePreferences: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(64, __c2, 0) as any as S.Schema<UpdatePreferencesRequest>,
-  output: __S(65, __c2, 1) as any as S.Schema<UpdatePreferencesResponse>,
+  output: __S(161, __c5, 1) as any as S.Schema<UpdatePreferencesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1651,9 +1651,7 @@ function __c0(j: number): any {
           metrics: S.optional(__S(416, __c13, 0)),
           nextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListRecommendationSummariesRequest",
-      });
+      ).annotate({ identifier: "ListRecommendationSummariesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1678,9 +1676,7 @@ function __c0(j: number): any {
           metrics: S.optional(__S(3, __c0, 3)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListRecommendationSummariesResponse",
-      });
+      ).annotate({ identifier: "ListRecommendationSummariesResponse" });
   }
 }
 function __c1(j: number): any {
@@ -1690,9 +1686,7 @@ function __c1(j: number): any {
         S.Struct({ status: S.String, includeMemberAccounts: S.optional(S.Boolean) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateEnrollmentStatusRequest",
-      });
+      ).annotate({ identifier: "UpdateEnrollmentStatusRequest" });
     case 1:
       return S.suspend(() => S.Struct({ status: S.optional(S.String) })).annotate({
         identifier: "UpdateEnrollmentStatusResponse",
@@ -1709,16 +1703,6 @@ function __c2(j: number): any {
           preferredCommitment: S.optional(__S(160, __c5, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdatePreferencesRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          savingsEstimationMode: S.optional(S.String),
-          memberAccountDiscountVisibility: S.optional(S.String),
-          preferredCommitment: S.optional(__S(160, __c5, 0)),
-        }),
-      ).annotate({
-        identifier: "UpdatePreferencesResponse",
-      });
   }
 }
 function __c3(j: number): any {
@@ -1739,14 +1723,6 @@ function __c4(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetPreferencesRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          savingsEstimationMode: S.optional(S.String),
-          memberAccountDiscountVisibility: S.optional(S.String),
-          preferredCommitment: S.optional(__S(160, __c5, 0)),
-        }),
-      ).annotate({ identifier: "GetPreferencesResponse" });
   }
 }
 function __c5(j: number): any {
@@ -1755,6 +1731,14 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({ term: S.optional(S.String), paymentOption: S.optional(S.String) }),
       ).annotate({ identifier: "PreferredCommitment" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          savingsEstimationMode: S.optional(S.String),
+          memberAccountDiscountVisibility: S.optional(S.String),
+          preferredCommitment: S.optional(__S(160, __c5, 0)),
+        }),
+      ).annotate({ identifier: "GetPreferencesResponse" });
   }
 }
 function __c6(j: number): any {
@@ -1819,81 +1803,62 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "LambdaFunction" });
     case 9:
-      return S.suspend(() => S.Struct({ compute: S.optional(__S(193, __c6, 1)) })).annotate({
-        identifier: "EcsServiceConfiguration",
-      });
-    case 10:
-      return S.suspend(() =>
-        S.Struct({
-          configuration: S.optional(__S(201, __c6, 9)),
-          costCalculation: S.optional(__S(199, __c6, 7)),
-        }),
-      ).annotate({ identifier: "EcsService" });
-    case 11:
       return S.suspend(() => S.Struct({ type: S.optional(S.String) })).annotate({
         identifier: "InstanceConfiguration",
       });
-    case 12:
-      return S.suspend(() => S.Struct({ instance: S.optional(__S(203, __c6, 11)) })).annotate({
+    case 10:
+      return S.suspend(() => S.Struct({ instance: S.optional(__S(201, __c6, 9)) })).annotate({
         identifier: "Ec2InstanceConfiguration",
       });
-    case 13:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(204, __c6, 12)),
+          configuration: S.optional(__S(202, __c6, 10)),
           costCalculation: S.optional(__S(199, __c6, 7)),
         }),
       ).annotate({ identifier: "Ec2Instance" });
-    case 14:
+    case 12:
       return S.suspend(() =>
         S.Struct({ type: S.optional(S.String), sizeInGb: S.optional(S.Number) }),
       ).annotate({ identifier: "StorageConfiguration" });
-    case 15:
+    case 13:
       return S.suspend(() =>
         S.Struct({ iops: S.optional(S.Number), throughput: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "BlockStoragePerformanceConfiguration",
-      });
-    case 16:
+      ).annotate({ identifier: "BlockStoragePerformanceConfiguration" });
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          storage: S.optional(__S(206, __c6, 14)),
-          performance: S.optional(__S(207, __c6, 15)),
+          storage: S.optional(__S(204, __c6, 12)),
+          performance: S.optional(__S(205, __c6, 13)),
           attachmentState: S.optional(S.String),
         }),
       ).annotate({ identifier: "EbsVolumeConfiguration" });
-    case 17:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(208, __c6, 16)),
+          configuration: S.optional(__S(206, __c6, 14)),
           costCalculation: S.optional(__S(199, __c6, 7)),
         }),
       ).annotate({ identifier: "EbsVolume" });
-    case 18:
-      return S.suspend(() => S.Struct({ type: S.optional(S.String) })).annotate({
-        identifier: "MixedInstanceConfiguration",
-      });
-    case 19:
-      return S.Array(__S(210, __c6, 18));
-    case 20:
+    case 16:
+      return S.Array(__S(201, __c6, 9));
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          instance: S.optional(__S(203, __c6, 11)),
-          mixedInstances: S.optional(__S(211, __c6, 19)),
+          instance: S.optional(__S(201, __c6, 9)),
+          mixedInstances: S.optional(__S(208, __c6, 16)),
           type: S.optional(S.String),
           allocationStrategy: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "Ec2AutoScalingGroupConfiguration",
-      });
-    case 21:
+      ).annotate({ identifier: "Ec2AutoScalingGroupConfiguration" });
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(212, __c6, 20)),
+          configuration: S.optional(__S(209, __c6, 17)),
           costCalculation: S.optional(__S(199, __c6, 7)),
         }),
       ).annotate({ identifier: "Ec2AutoScalingGroup" });
-    case 22:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           accountScope: S.optional(S.String),
@@ -1913,10 +1878,8 @@ function __c6(j: number): any {
           tenancy: S.optional(S.String),
           sizeFlexEligible: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "Ec2ReservedInstancesConfiguration",
-      });
-    case 23:
+      ).annotate({ identifier: "Ec2ReservedInstancesConfiguration" });
+    case 20:
       return S.suspend(() =>
         S.Struct({
           estimatedOnDemandCost: S.optional(S.Number),
@@ -1925,18 +1888,18 @@ function __c6(j: number): any {
           estimatedMonthlyAmortizedReservationCost: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ReservedInstancesPricing" });
-    case 24:
-      return S.suspend(() => S.Struct({ pricing: S.optional(__S(215, __c6, 23)) })).annotate({
+    case 21:
+      return S.suspend(() => S.Struct({ pricing: S.optional(__S(212, __c6, 20)) })).annotate({
         identifier: "ReservedInstancesCostCalculation",
       });
-    case 25:
+    case 22:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(214, __c6, 22)),
-          costCalculation: S.optional(__S(216, __c6, 24)),
+          configuration: S.optional(__S(211, __c6, 19)),
+          costCalculation: S.optional(__S(213, __c6, 21)),
         }),
       ).annotate({ identifier: "Ec2ReservedInstances" });
-    case 26:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           accountScope: S.optional(S.String),
@@ -1957,80 +1920,66 @@ function __c6(j: number): any {
           databaseEngine: S.optional(S.String),
           deploymentOption: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "RdsReservedInstancesConfiguration",
-      });
+      ).annotate({ identifier: "RdsReservedInstancesConfiguration" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          configuration: S.optional(__S(215, __c6, 23)),
+          costCalculation: S.optional(__S(213, __c6, 21)),
+        }),
+      ).annotate({ identifier: "RdsReservedInstances" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          accountScope: S.optional(S.String),
+          service: S.optional(S.String),
+          term: S.optional(S.String),
+          paymentOption: S.optional(S.String),
+          reservedInstancesRegion: S.optional(S.String),
+          upfrontCost: S.optional(S.String),
+          monthlyRecurringCost: S.optional(S.String),
+          normalizedUnitsToPurchase: S.optional(S.String),
+          numberOfInstancesToPurchase: S.optional(S.String),
+          instanceFamily: S.optional(S.String),
+          instanceType: S.optional(S.String),
+          currentGeneration: S.optional(S.String),
+          sizeFlexEligible: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ElastiCacheReservedInstancesConfiguration" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          configuration: S.optional(__S(217, __c6, 25)),
+          costCalculation: S.optional(__S(213, __c6, 21)),
+        }),
+      ).annotate({ identifier: "ElastiCacheReservedInstances" });
     case 27:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(218, __c6, 26)),
-          costCalculation: S.optional(__S(216, __c6, 24)),
+          accountScope: S.optional(S.String),
+          service: S.optional(S.String),
+          term: S.optional(S.String),
+          paymentOption: S.optional(S.String),
+          reservedInstancesRegion: S.optional(S.String),
+          upfrontCost: S.optional(S.String),
+          monthlyRecurringCost: S.optional(S.String),
+          normalizedUnitsToPurchase: S.optional(S.String),
+          numberOfInstancesToPurchase: S.optional(S.String),
+          instanceType: S.optional(S.String),
+          currentGeneration: S.optional(S.String),
+          sizeFlexEligible: S.optional(S.Boolean),
         }),
-      ).annotate({ identifier: "RdsReservedInstances" });
+      ).annotate({ identifier: "OpenSearchReservedInstancesConfiguration" });
     case 28:
       return S.suspend(() =>
         S.Struct({
-          accountScope: S.optional(S.String),
-          service: S.optional(S.String),
-          term: S.optional(S.String),
-          paymentOption: S.optional(S.String),
-          reservedInstancesRegion: S.optional(S.String),
-          upfrontCost: S.optional(S.String),
-          monthlyRecurringCost: S.optional(S.String),
-          normalizedUnitsToPurchase: S.optional(S.String),
-          numberOfInstancesToPurchase: S.optional(S.String),
-          instanceFamily: S.optional(S.String),
-          instanceType: S.optional(S.String),
-          currentGeneration: S.optional(S.String),
-          sizeFlexEligible: S.optional(S.Boolean),
+          configuration: S.optional(__S(219, __c6, 27)),
+          costCalculation: S.optional(__S(213, __c6, 21)),
         }),
-      ).annotate({
-        identifier: "ElastiCacheReservedInstancesConfiguration",
-      });
+      ).annotate({ identifier: "OpenSearchReservedInstances" });
     case 29:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(220, __c6, 28)),
-          costCalculation: S.optional(__S(216, __c6, 24)),
-        }),
-      ).annotate({
-        identifier: "ElastiCacheReservedInstances",
-      });
-    case 30:
-      return S.suspend(() =>
-        S.Struct({
-          accountScope: S.optional(S.String),
-          service: S.optional(S.String),
-          term: S.optional(S.String),
-          paymentOption: S.optional(S.String),
-          reservedInstancesRegion: S.optional(S.String),
-          upfrontCost: S.optional(S.String),
-          monthlyRecurringCost: S.optional(S.String),
-          normalizedUnitsToPurchase: S.optional(S.String),
-          numberOfInstancesToPurchase: S.optional(S.String),
-          instanceType: S.optional(S.String),
-          currentGeneration: S.optional(S.String),
-          sizeFlexEligible: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "OpenSearchReservedInstancesConfiguration",
-      });
-    case 31:
-      return S.suspend(() =>
-        S.Struct({
-          configuration: S.optional(__S(222, __c6, 30)),
-          costCalculation: S.optional(__S(216, __c6, 24)),
-        }),
-      ).annotate({
-        identifier: "OpenSearchReservedInstances",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
           accountScope: S.optional(S.String),
           service: S.optional(S.String),
           term: S.optional(S.String),
@@ -2045,19 +1994,15 @@ function __c7(j: number): any {
           sizeFlexEligible: S.optional(S.Boolean),
           currentGeneration: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "RedshiftReservedInstancesConfiguration",
-      });
-    case 1:
+      ).annotate({ identifier: "RedshiftReservedInstancesConfiguration" });
+    case 30:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(224, __c7, 0)),
-          costCalculation: S.optional(__S(216, __c6, 24)),
+          configuration: S.optional(__S(221, __c6, 29)),
+          costCalculation: S.optional(__S(213, __c6, 21)),
         }),
-      ).annotate({
-        identifier: "RedshiftReservedInstances",
-      });
-    case 2:
+      ).annotate({ identifier: "RedshiftReservedInstances" });
+    case 31:
       return S.suspend(() =>
         S.Struct({
           accountScope: S.optional(S.String),
@@ -2067,10 +2012,12 @@ function __c7(j: number): any {
           instanceFamily: S.optional(S.String),
           savingsPlansRegion: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "Ec2InstanceSavingsPlansConfiguration",
-      });
-    case 3:
+      ).annotate({ identifier: "Ec2InstanceSavingsPlansConfiguration" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           monthlySavingsPlansEligibleCost: S.optional(S.Number),
@@ -2079,18 +2026,18 @@ function __c7(j: number): any {
           estimatedOnDemandCost: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SavingsPlansPricing" });
-    case 4:
-      return S.suspend(() => S.Struct({ pricing: S.optional(__S(227, __c7, 3)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ pricing: S.optional(__S(224, __c7, 0)) })).annotate({
         identifier: "SavingsPlansCostCalculation",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(226, __c7, 2)),
-          costCalculation: S.optional(__S(228, __c7, 4)),
+          configuration: S.optional(__S(223, __c6, 31)),
+          costCalculation: S.optional(__S(225, __c7, 1)),
         }),
       ).annotate({ identifier: "Ec2InstanceSavingsPlans" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           accountScope: S.optional(S.String),
@@ -2098,32 +2045,30 @@ function __c7(j: number): any {
           paymentOption: S.optional(S.String),
           hourlyCommitment: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ComputeSavingsPlansConfiguration",
+      ).annotate({ identifier: "ComputeSavingsPlansConfiguration" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          configuration: S.optional(__S(227, __c7, 3)),
+          costCalculation: S.optional(__S(225, __c7, 1)),
+        }),
+      ).annotate({ identifier: "ComputeSavingsPlans" });
+    case 5:
+      return S.suspend(() => S.Struct({ dbInstanceClass: S.optional(S.String) })).annotate({
+        identifier: "DbInstanceConfiguration",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ instance: S.optional(__S(229, __c7, 5)) })).annotate({
+        identifier: "RdsDbInstanceConfiguration",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
           configuration: S.optional(__S(230, __c7, 6)),
-          costCalculation: S.optional(__S(228, __c7, 4)),
-        }),
-      ).annotate({ identifier: "ComputeSavingsPlans" });
-    case 8:
-      return S.suspend(() => S.Struct({ dbInstanceClass: S.optional(S.String) })).annotate({
-        identifier: "DbInstanceConfiguration",
-      });
-    case 9:
-      return S.suspend(() => S.Struct({ instance: S.optional(__S(232, __c7, 8)) })).annotate({
-        identifier: "RdsDbInstanceConfiguration",
-      });
-    case 10:
-      return S.suspend(() =>
-        S.Struct({
-          configuration: S.optional(__S(233, __c7, 9)),
           costCalculation: S.optional(__S(199, __c6, 7)),
         }),
       ).annotate({ identifier: "RdsDbInstance" });
-    case 11:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           storageType: S.optional(S.String),
@@ -2131,28 +2076,26 @@ function __c7(j: number): any {
           iops: S.optional(S.Number),
           storageThroughput: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "RdsDbInstanceStorageConfiguration",
-      });
-    case 12:
+      ).annotate({ identifier: "RdsDbInstanceStorageConfiguration" });
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(235, __c7, 11)),
+          configuration: S.optional(__S(232, __c7, 8)),
           costCalculation: S.optional(__S(199, __c6, 7)),
         }),
       ).annotate({ identifier: "RdsDbInstanceStorage" });
-    case 13:
+    case 10:
       return S.suspend(() => S.Struct({ storageType: S.optional(S.String) })).annotate({
         identifier: "AuroraDbClusterStorageConfiguration",
       });
-    case 14:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(237, __c7, 13)),
+          configuration: S.optional(__S(234, __c7, 10)),
           costCalculation: S.optional(__S(199, __c6, 7)),
         }),
       ).annotate({ identifier: "AuroraDbClusterStorage" });
-    case 15:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           accountScope: S.optional(S.String),
@@ -2165,17 +2108,15 @@ function __c7(j: number): any {
           numberOfCapacityUnitsToPurchase: S.optional(S.String),
           capacityUnits: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DynamoDbReservedCapacityConfiguration",
-      });
-    case 16:
+      ).annotate({ identifier: "DynamoDbReservedCapacityConfiguration" });
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(239, __c7, 15)),
-          costCalculation: S.optional(__S(216, __c6, 24)),
+          configuration: S.optional(__S(236, __c7, 12)),
+          costCalculation: S.optional(__S(213, __c6, 21)),
         }),
       ).annotate({ identifier: "DynamoDbReservedCapacity" });
-    case 17:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           accountScope: S.optional(S.String),
@@ -2192,19 +2133,15 @@ function __c7(j: number): any {
           sizeFlexEligible: S.optional(S.Boolean),
           currentGeneration: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "MemoryDbReservedInstancesConfiguration",
-      });
-    case 18:
+      ).annotate({ identifier: "MemoryDbReservedInstancesConfiguration" });
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(241, __c7, 17)),
-          costCalculation: S.optional(__S(216, __c6, 24)),
+          configuration: S.optional(__S(238, __c7, 14)),
+          costCalculation: S.optional(__S(213, __c6, 21)),
         }),
-      ).annotate({
-        identifier: "MemoryDbReservedInstances",
-      });
-    case 19:
+      ).annotate({ identifier: "MemoryDbReservedInstances" });
+    case 16:
       return S.suspend(() =>
         S.Struct({
           activeConnectionCount: S.optional(S.Number),
@@ -2212,46 +2149,46 @@ function __c7(j: number): any {
           packetsInFromDestination: S.optional(S.Number),
         }),
       ).annotate({ identifier: "NatGatewayConfiguration" });
-    case 20:
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(243, __c7, 19)),
+          configuration: S.optional(__S(240, __c7, 16)),
           costCalculation: S.optional(__S(199, __c6, 7)),
         }),
       ).annotate({ identifier: "NatGateway" });
-    case 21:
+    case 18:
       return S.suspend(() => S.Struct({ costCalculation: S.optional(__S(199, __c6, 7)) })).annotate(
         { identifier: "DynamoDbTable" },
       );
-    case 22:
+    case 19:
       return S.Union([
         /*@__PURE__*/ S.Struct({ lambdaFunction: __S(200, __c6, 8) }),
-        /*@__PURE__*/ S.Struct({ ecsService: __S(202, __c6, 10) }),
-        /*@__PURE__*/ S.Struct({ ec2Instance: __S(205, __c6, 13) }),
-        /*@__PURE__*/ S.Struct({ ebsVolume: __S(209, __c6, 17) }),
-        /*@__PURE__*/ S.Struct({ ec2AutoScalingGroup: __S(213, __c6, 21) }),
-        /*@__PURE__*/ S.Struct({ ec2ReservedInstances: __S(217, __c6, 25) }),
-        /*@__PURE__*/ S.Struct({ rdsReservedInstances: __S(219, __c6, 27) }),
-        /*@__PURE__*/ S.Struct({ elastiCacheReservedInstances: __S(221, __c6, 29) }),
-        /*@__PURE__*/ S.Struct({ openSearchReservedInstances: __S(223, __c6, 31) }),
-        /*@__PURE__*/ S.Struct({ redshiftReservedInstances: __S(225, __c7, 1) }),
-        /*@__PURE__*/ S.Struct({ ec2InstanceSavingsPlans: __S(229, __c7, 5) }),
-        /*@__PURE__*/ S.Struct({ computeSavingsPlans: __S(231, __c7, 7) }),
-        /*@__PURE__*/ S.Struct({ sageMakerSavingsPlans: __S(231, __c7, 7) }),
-        /*@__PURE__*/ S.Struct({ rdsDbInstance: __S(234, __c7, 10) }),
-        /*@__PURE__*/ S.Struct({ rdsDbInstanceStorage: __S(236, __c7, 12) }),
-        /*@__PURE__*/ S.Struct({ auroraDbClusterStorage: __S(238, __c7, 14) }),
-        /*@__PURE__*/ S.Struct({ dynamoDbReservedCapacity: __S(240, __c7, 16) }),
-        /*@__PURE__*/ S.Struct({ memoryDbReservedInstances: __S(242, __c7, 18) }),
-        /*@__PURE__*/ S.Struct({ natGateway: __S(244, __c7, 20) }),
-        /*@__PURE__*/ S.Struct({ dynamoDbTable: __S(245, __c7, 21) }),
-        /*@__PURE__*/ S.Struct({ elastiCacheCluster: __S(245, __c7, 21) }),
-        /*@__PURE__*/ S.Struct({ memoryDbCluster: __S(245, __c7, 21) }),
-        /*@__PURE__*/ S.Struct({ documentDbCluster: __S(245, __c7, 21) }),
-        /*@__PURE__*/ S.Struct({ workSpaces: __S(245, __c7, 21) }),
-        /*@__PURE__*/ S.Struct({ sageMakerEndpoint: __S(245, __c7, 21) }),
+        /*@__PURE__*/ S.Struct({ ecsService: __S(200, __c6, 8) }),
+        /*@__PURE__*/ S.Struct({ ec2Instance: __S(203, __c6, 11) }),
+        /*@__PURE__*/ S.Struct({ ebsVolume: __S(207, __c6, 15) }),
+        /*@__PURE__*/ S.Struct({ ec2AutoScalingGroup: __S(210, __c6, 18) }),
+        /*@__PURE__*/ S.Struct({ ec2ReservedInstances: __S(214, __c6, 22) }),
+        /*@__PURE__*/ S.Struct({ rdsReservedInstances: __S(216, __c6, 24) }),
+        /*@__PURE__*/ S.Struct({ elastiCacheReservedInstances: __S(218, __c6, 26) }),
+        /*@__PURE__*/ S.Struct({ openSearchReservedInstances: __S(220, __c6, 28) }),
+        /*@__PURE__*/ S.Struct({ redshiftReservedInstances: __S(222, __c6, 30) }),
+        /*@__PURE__*/ S.Struct({ ec2InstanceSavingsPlans: __S(226, __c7, 2) }),
+        /*@__PURE__*/ S.Struct({ computeSavingsPlans: __S(228, __c7, 4) }),
+        /*@__PURE__*/ S.Struct({ sageMakerSavingsPlans: __S(228, __c7, 4) }),
+        /*@__PURE__*/ S.Struct({ rdsDbInstance: __S(231, __c7, 7) }),
+        /*@__PURE__*/ S.Struct({ rdsDbInstanceStorage: __S(233, __c7, 9) }),
+        /*@__PURE__*/ S.Struct({ auroraDbClusterStorage: __S(235, __c7, 11) }),
+        /*@__PURE__*/ S.Struct({ dynamoDbReservedCapacity: __S(237, __c7, 13) }),
+        /*@__PURE__*/ S.Struct({ memoryDbReservedInstances: __S(239, __c7, 15) }),
+        /*@__PURE__*/ S.Struct({ natGateway: __S(241, __c7, 17) }),
+        /*@__PURE__*/ S.Struct({ dynamoDbTable: __S(242, __c7, 18) }),
+        /*@__PURE__*/ S.Struct({ elastiCacheCluster: __S(242, __c7, 18) }),
+        /*@__PURE__*/ S.Struct({ memoryDbCluster: __S(242, __c7, 18) }),
+        /*@__PURE__*/ S.Struct({ documentDbCluster: __S(242, __c7, 18) }),
+        /*@__PURE__*/ S.Struct({ workSpaces: __S(242, __c7, 18) }),
+        /*@__PURE__*/ S.Struct({ sageMakerEndpoint: __S(242, __c7, 18) }),
       ]);
-    case 23:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           recommendationId: S.optional(S.String),
@@ -2274,13 +2211,11 @@ function __c7(j: number): any {
           restartNeeded: S.optional(S.Boolean),
           actionType: S.optional(S.String),
           rollbackPossible: S.optional(S.Boolean),
-          currentResourceDetails: S.optional(__S(246, __c7, 22)),
-          recommendedResourceDetails: S.optional(__S(246, __c7, 22)),
+          currentResourceDetails: S.optional(__S(243, __c7, 19)),
+          recommendedResourceDetails: S.optional(__S(243, __c7, 19)),
           tags: S.optional(__S(257, __c8, 1)),
         }),
-      ).annotate({
-        identifier: "GetRecommendationResponse",
-      });
+      ).annotate({ identifier: "GetRecommendationResponse" });
   }
 }
 function __c8(j: number): any {
@@ -2309,9 +2244,7 @@ function __c9(j: number): any {
           orderBy: S.optional(__S(320, __c10, 0)),
           nextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListEfficiencyMetricsRequest",
-      });
+      ).annotate({ identifier: "ListEfficiencyMetricsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2339,9 +2272,7 @@ function __c9(j: number): any {
           efficiencyMetricsByGroup: S.optional(__S(293, __c9, 5)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListEfficiencyMetricsResponse",
-      });
+      ).annotate({ identifier: "ListEfficiencyMetricsResponse" });
   }
 }
 function __c10(j: number): any {
@@ -2362,9 +2293,7 @@ function __c11(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListEnrollmentStatusesRequest",
-      });
+      ).annotate({ identifier: "ListEnrollmentStatusesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2383,9 +2312,7 @@ function __c11(j: number): any {
           includeMemberAccounts: S.optional(S.Boolean),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListEnrollmentStatusesResponse",
-      });
+      ).annotate({ identifier: "ListEnrollmentStatusesResponse" });
   }
 }
 function __c12(j: number): any {
@@ -2399,9 +2326,7 @@ function __c12(j: number): any {
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListRecommendationsRequest",
-      });
+      ).annotate({ identifier: "ListRecommendationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2433,9 +2358,7 @@ function __c12(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ items: S.optional(__S(386, __c12, 2)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListRecommendationsResponse",
-      });
+      ).annotate({ identifier: "ListRecommendationsResponse" });
   }
 }
 function __c13(j: number): any {

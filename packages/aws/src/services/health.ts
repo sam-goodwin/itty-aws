@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
@@ -621,8 +621,8 @@ export const describeAffectedEntitiesForOrganization: API.PaginatedOperationMeth
   Credentials | HttpClient.HttpClient,
   AffectedEntity
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<DescribeAffectedEntitiesForOrganizationRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<DescribeAffectedEntitiesForOrganizationResponse>,
+  input: __S(138, __c17, 2) as any as S.Schema<DescribeAffectedEntitiesForOrganizationRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<DescribeAffectedEntitiesForOrganizationResponse>,
   errors: [InvalidPaginationToken, UnsupportedLocale],
   protocol: AwsProtocol,
   retry: Retry,
@@ -645,8 +645,8 @@ export const describeEntityAggregates: API.OperationMethod<
   DescribeEntityAggregatesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<DescribeEntityAggregatesRequest>,
-  output: __S(163, __c20, 3) as any as S.Schema<DescribeEntityAggregatesResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<DescribeEntityAggregatesRequest>,
+  output: __S(155, __c19, 3) as any as S.Schema<DescribeEntityAggregatesResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -663,8 +663,8 @@ export const describeEntityAggregatesForOrganization: API.OperationMethod<
   DescribeEntityAggregatesForOrganizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<DescribeEntityAggregatesForOrganizationRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<DescribeEntityAggregatesForOrganizationResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<DescribeEntityAggregatesForOrganizationRequest>,
+  output: __S(173, __c21, 5) as any as S.Schema<DescribeEntityAggregatesForOrganizationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -686,8 +686,8 @@ export const describeEventAggregates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EventAggregate
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<DescribeEventAggregatesRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<DescribeEventAggregatesResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<DescribeEventAggregatesRequest>,
+  output: __S(179, __c22, 3) as any as S.Schema<DescribeEventAggregatesResponse>,
   errors: [InvalidPaginationToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -719,8 +719,8 @@ export const describeEventDetails: API.OperationMethod<
   DescribeEventDetailsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<DescribeEventDetailsRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<DescribeEventDetailsResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<DescribeEventDetailsRequest>,
+  output: __S(197, __c24, 5) as any as S.Schema<DescribeEventDetailsResponse>,
   errors: [UnsupportedLocale],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1018,19 +1018,17 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          organizationEventDetailFilters: __S(153, __c19, 1),
+          organizationEventDetailFilters: __S(145, __c18, 1),
           locale: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeEventDetailsForOrganizationRequest",
-      });
+      ).annotate({ identifier: "DescribeEventDetailsForOrganizationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           awsAccountId: S.optional(S.String),
-          event: S.optional(__S(216, __c27, 0)),
-          eventDescription: S.optional(__S(208, __c26, 0)),
-          eventMetadata: S.optional(__S(120, __c15, 0)),
+          event: S.optional(__S(208, __c26, 0)),
+          eventDescription: S.optional(__S(200, __c25, 0)),
+          eventMetadata: S.optional(__S(104, __c13, 0)),
         }),
       ).annotate({ identifier: "OrganizationEventDetails" });
     case 2:
@@ -1039,11 +1037,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           successfulSet: S.optional(__S(2, __c0, 2)),
-          failedSet: S.optional(__S(155, __c19, 3)),
+          failedSet: S.optional(__S(147, __c18, 3)),
         }),
-      ).annotate({
-        identifier: "DescribeEventDetailsForOrganizationResponse",
-      });
+      ).annotate({ identifier: "DescribeEventDetailsForOrganizationResponse" });
   }
 }
 function __c1(j: number): any {
@@ -1051,14 +1047,14 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          filter: S.optional(__S(192, __c24, 0)),
+          filter: S.optional(__S(184, __c23, 0)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
           locale: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeEventsRequest" });
     case 1:
-      return S.Array(__S(216, __c27, 0));
+      return S.Array(__S(208, __c26, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ events: S.optional(__S(9, __c1, 1)), nextToken: S.optional(S.String) }),
@@ -1075,9 +1071,9 @@ function __c2(j: number): any {
           awsAccountIds: S.optional(__S(80, __c10, 0)),
           services: S.optional(__S(80, __c10, 0)),
           regions: S.optional(__S(80, __c10, 0)),
-          startTime: S.optional(__S(136, __c17, 0)),
-          endTime: S.optional(__S(136, __c17, 0)),
-          lastUpdatedTime: S.optional(__S(136, __c17, 0)),
+          startTime: S.optional(__S(128, __c16, 0)),
+          endTime: S.optional(__S(128, __c16, 0)),
+          lastUpdatedTime: S.optional(__S(128, __c16, 0)),
           entityArns: S.optional(__S(80, __c10, 0)),
           entityValues: S.optional(__S(80, __c10, 0)),
           eventTypeCategories: S.optional(__S(112, __c14, 0)),
@@ -1093,9 +1089,7 @@ function __c2(j: number): any {
           maxResults: S.optional(S.Number),
           locale: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeEventsForOrganizationRequest",
-      });
+      ).annotate({ identifier: "DescribeEventsForOrganizationRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1118,9 +1112,7 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({ events: S.optional(__S(19, __c2, 3)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DescribeEventsForOrganizationResponse",
-      });
+      ).annotate({ identifier: "DescribeEventsForOrganizationResponse" });
   }
 }
 function __c3(j: number): any {
@@ -1143,9 +1135,7 @@ function __c3(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeEventTypesRequest",
-      });
+      ).annotate({ identifier: "DescribeEventTypesRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1161,9 +1151,7 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({ eventTypes: S.optional(__S(27, __c3, 3)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DescribeEventTypesResponse",
-      });
+      ).annotate({ identifier: "DescribeEventTypesResponse" });
   }
 }
 function __c4(j: number): any {
@@ -1173,15 +1161,11 @@ function __c4(j: number): any {
         S.Struct({}).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeHealthServiceStatusForOrganizationRequest",
-      });
+      ).annotate({ identifier: "DescribeHealthServiceStatusForOrganizationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ healthServiceAccessStatusForOrganization: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DescribeHealthServiceStatusForOrganizationResponse",
-      });
+      ).annotate({ identifier: "DescribeHealthServiceStatusForOrganizationResponse" });
   }
 }
 function __c5(j: number): any {
@@ -1197,9 +1181,7 @@ function __c5(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeServiceLifecycleRequest",
-      });
+      ).annotate({ identifier: "DescribeServiceLifecycleRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1230,9 +1212,7 @@ function __c5(j: number): any {
           serviceLifecycles: S.optional(__S(45, __c5, 5)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeServiceLifecycleResponse",
-      });
+      ).annotate({ identifier: "DescribeServiceLifecycleResponse" });
   }
 }
 function __c6(j: number): any {
@@ -1242,9 +1222,7 @@ function __c6(j: number): any {
         S.Struct({}).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DisableHealthServiceAccessForOrganizationRequest",
-      });
+      ).annotate({ identifier: "DisableHealthServiceAccessForOrganizationRequest" });
   }
 }
 function __c7(j: number): any {
@@ -1262,9 +1240,7 @@ function __c8(j: number): any {
         S.Struct({}).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "EnableHealthServiceAccessForOrganizationRequest",
-      });
+      ).annotate({ identifier: "EnableHealthServiceAccessForOrganizationRequest" });
   }
 }
 function __c9(j: number): any {
@@ -1276,9 +1252,7 @@ function __c9(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeAffectedAccountsForOrganizationRequest",
-      });
+      ).annotate({ identifier: "DescribeAffectedAccountsForOrganizationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1286,9 +1260,7 @@ function __c9(j: number): any {
           eventScopeCode: S.optional(S.String),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeAffectedAccountsForOrganizationResponse",
-      });
+      ).annotate({ identifier: "DescribeAffectedAccountsForOrganizationResponse" });
   }
 }
 function __c10(j: number): any {
@@ -1305,8 +1277,8 @@ function __c11(j: number): any {
           eventArns: __S(80, __c10, 0),
           entityArns: S.optional(__S(80, __c10, 0)),
           entityValues: S.optional(__S(80, __c10, 0)),
-          lastUpdatedTimes: S.optional(__S(128, __c16, 0)),
-          tags: S.optional(__S(129, __c16, 1)),
+          lastUpdatedTimes: S.optional(__S(120, __c15, 0)),
+          tags: S.optional(__S(121, __c15, 1)),
           statusCodes: S.optional(__S(112, __c14, 0)),
         }),
       ).annotate({ identifier: "EntityFilter" });
@@ -1318,15 +1290,11 @@ function __c11(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeAffectedEntitiesRequest",
-      });
+      ).annotate({ identifier: "DescribeAffectedEntitiesRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({ entities: S.optional(__S(97, __c12, 1)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DescribeAffectedEntitiesResponse",
-      });
+      ).annotate({ identifier: "DescribeAffectedEntitiesResponse" });
   }
 }
 function __c12(j: number): any {
@@ -1342,7 +1310,7 @@ function __c12(j: number): any {
           lastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           statusCode: S.optional(S.String),
           tags: S.optional(__S(104, __c13, 0)),
-          entityMetadata: S.optional(__S(120, __c15, 0)),
+          entityMetadata: S.optional(__S(104, __c13, 0)),
         }),
       ).annotate({ identifier: "AffectedEntity" });
     case 1:
@@ -1364,18 +1332,12 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(136, __c17, 0));
+      return S.Array(__S(128, __c16, 0));
     case 1:
       return S.Array(__S(104, __c13, 0));
   }
 }
-function __c17(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1386,7 +1348,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "DateTimeRange" });
   }
 }
-function __c18(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1397,39 +1359,35 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "EntityAccountFilter" });
     case 1:
-      return S.Array(__S(144, __c18, 0));
+      return S.Array(__S(136, __c17, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          organizationEntityFilters: S.optional(__S(153, __c19, 1)),
+          organizationEntityFilters: S.optional(__S(145, __c18, 1)),
           locale: S.optional(S.String),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          organizationEntityAccountFilters: S.optional(__S(145, __c18, 1)),
+          organizationEntityAccountFilters: S.optional(__S(137, __c17, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeAffectedEntitiesForOrganizationRequest",
-      });
+      ).annotate({ identifier: "DescribeAffectedEntitiesForOrganizationRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           entities: S.optional(__S(97, __c12, 1)),
-          failedSet: S.optional(__S(155, __c19, 3)),
+          failedSet: S.optional(__S(147, __c18, 3)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeAffectedEntitiesForOrganizationResponse",
-      });
+      ).annotate({ identifier: "DescribeAffectedEntitiesForOrganizationResponse" });
   }
 }
-function __c19(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ eventArn: S.String, awsAccountId: S.optional(S.String) }),
       ).annotate({ identifier: "EventAccountFilter" });
     case 1:
-      return S.Array(__S(152, __c19, 0));
+      return S.Array(__S(144, __c18, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1438,48 +1396,42 @@ function __c19(j: number): any {
           errorName: S.optional(S.String),
           errorMessage: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "OrganizationAffectedEntitiesErrorItem",
-      });
+      ).annotate({ identifier: "OrganizationAffectedEntitiesErrorItem" });
     case 3:
-      return S.Array(__S(154, __c19, 2));
+      return S.Array(__S(146, __c18, 2));
   }
 }
-function __c20(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ eventArns: S.optional(__S(80, __c10, 0)) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeEntityAggregatesRequest",
-      });
+      ).annotate({ identifier: "DescribeEntityAggregatesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           eventArn: S.optional(S.String),
           count: S.optional(S.Number),
-          statuses: S.optional(__S(168, __c21, 0)),
+          statuses: S.optional(__S(160, __c20, 0)),
         }),
       ).annotate({ identifier: "EntityAggregate" });
     case 2:
-      return S.Array(__S(161, __c20, 1));
+      return S.Array(__S(153, __c19, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ entityAggregates: S.optional(__S(162, __c20, 2)) }),
-      ).annotate({
-        identifier: "DescribeEntityAggregatesResponse",
-      });
+        S.Struct({ entityAggregates: S.optional(__S(154, __c19, 2)) }),
+      ).annotate({ identifier: "DescribeEntityAggregatesResponse" });
   }
 }
-function __c21(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
   }
 }
-function __c22(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1487,71 +1439,61 @@ function __c22(j: number): any {
           eventArns: __S(80, __c10, 0),
           awsAccountIds: S.optional(__S(80, __c10, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeEntityAggregatesForOrganizationRequest",
-      });
+      ).annotate({ identifier: "DescribeEntityAggregatesForOrganizationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.optional(S.String),
           count: S.optional(S.Number),
-          statuses: S.optional(__S(168, __c21, 0)),
+          statuses: S.optional(__S(160, __c20, 0)),
         }),
       ).annotate({ identifier: "AccountEntityAggregate" });
     case 2:
-      return S.Array(__S(177, __c22, 1));
+      return S.Array(__S(169, __c21, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           eventArn: S.optional(S.String),
           count: S.optional(S.Number),
-          statuses: S.optional(__S(168, __c21, 0)),
-          accounts: S.optional(__S(178, __c22, 2)),
+          statuses: S.optional(__S(160, __c20, 0)),
+          accounts: S.optional(__S(170, __c21, 2)),
         }),
-      ).annotate({
-        identifier: "OrganizationEntityAggregate",
-      });
+      ).annotate({ identifier: "OrganizationEntityAggregate" });
     case 4:
-      return S.Array(__S(179, __c22, 3));
+      return S.Array(__S(171, __c21, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ organizationEntityAggregates: S.optional(__S(180, __c22, 4)) }),
-      ).annotate({
-        identifier: "DescribeEntityAggregatesForOrganizationResponse",
-      });
+        S.Struct({ organizationEntityAggregates: S.optional(__S(172, __c21, 4)) }),
+      ).annotate({ identifier: "DescribeEntityAggregatesForOrganizationResponse" });
   }
 }
-function __c23(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          filter: S.optional(__S(192, __c24, 0)),
+          filter: S.optional(__S(184, __c23, 0)),
           aggregateField: S.String,
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeEventAggregatesRequest",
-      });
+      ).annotate({ identifier: "DescribeEventAggregatesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ aggregateValue: S.optional(S.String), count: S.optional(S.Number) }),
       ).annotate({ identifier: "EventAggregate" });
     case 2:
-      return S.Array(__S(185, __c23, 1));
+      return S.Array(__S(177, __c22, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          eventAggregates: S.optional(__S(186, __c23, 2)),
+          eventAggregates: S.optional(__S(178, __c22, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeEventAggregatesResponse",
-      });
+      ).annotate({ identifier: "DescribeEventAggregatesResponse" });
   }
 }
-function __c24(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1562,39 +1504,37 @@ function __c24(j: number): any {
           services: S.optional(__S(80, __c10, 0)),
           regions: S.optional(__S(80, __c10, 0)),
           availabilityZones: S.optional(__S(80, __c10, 0)),
-          startTimes: S.optional(__S(128, __c16, 0)),
-          endTimes: S.optional(__S(128, __c16, 0)),
-          lastUpdatedTimes: S.optional(__S(128, __c16, 0)),
+          startTimes: S.optional(__S(120, __c15, 0)),
+          endTimes: S.optional(__S(120, __c15, 0)),
+          lastUpdatedTimes: S.optional(__S(120, __c15, 0)),
           entityArns: S.optional(__S(80, __c10, 0)),
           entityValues: S.optional(__S(80, __c10, 0)),
           eventTypeCategories: S.optional(__S(112, __c14, 0)),
-          tags: S.optional(__S(129, __c16, 1)),
+          tags: S.optional(__S(121, __c15, 1)),
           eventStatusCodes: S.optional(__S(112, __c14, 0)),
           personas: S.optional(__S(112, __c14, 0)),
         }),
       ).annotate({ identifier: "EventFilter" });
   }
 }
-function __c25(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ eventArns: __S(80, __c10, 0), locale: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeEventDetailsRequest",
-      });
+      ).annotate({ identifier: "DescribeEventDetailsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          event: S.optional(__S(216, __c27, 0)),
-          eventDescription: S.optional(__S(208, __c26, 0)),
-          eventMetadata: S.optional(__S(120, __c15, 0)),
+          event: S.optional(__S(208, __c26, 0)),
+          eventDescription: S.optional(__S(200, __c25, 0)),
+          eventMetadata: S.optional(__S(104, __c13, 0)),
         }),
       ).annotate({ identifier: "EventDetails" });
     case 2:
-      return S.Array(__S(201, __c25, 1));
+      return S.Array(__S(193, __c24, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1604,19 +1544,17 @@ function __c25(j: number): any {
         }),
       ).annotate({ identifier: "EventDetailsErrorItem" });
     case 4:
-      return S.Array(__S(203, __c25, 3));
+      return S.Array(__S(195, __c24, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          successfulSet: S.optional(__S(202, __c25, 2)),
-          failedSet: S.optional(__S(204, __c25, 4)),
+          successfulSet: S.optional(__S(194, __c24, 2)),
+          failedSet: S.optional(__S(196, __c24, 4)),
         }),
-      ).annotate({
-        identifier: "DescribeEventDetailsResponse",
-      });
+      ).annotate({ identifier: "DescribeEventDetailsResponse" });
   }
 }
-function __c26(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ latestDescription: S.optional(S.String) })).annotate({
@@ -1624,7 +1562,7 @@ function __c26(j: number): any {
       });
   }
 }
-function __c27(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

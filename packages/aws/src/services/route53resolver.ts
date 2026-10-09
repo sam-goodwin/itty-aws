@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -2568,7 +2568,7 @@ export const getResolverRule: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(520, __c65, 0) as any as S.Schema<GetResolverRuleRequest>,
-  output: __S(521, __c65, 1) as any as S.Schema<GetResolverRuleResponse>,
+  output: __S(280, __c35, 0) as any as S.Schema<GetResolverRuleResponse>,
   errors: [
     InternalServiceErrorException,
     InvalidParameterException,
@@ -3813,9 +3813,7 @@ function __c0(j: number): any {
           MutationProtection: S.optional(S.String),
           Tags: S.optional(__S(9, __c1, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssociateFirewallRuleGroupRequest",
-      });
+      ).annotate({ identifier: "AssociateFirewallRuleGroupRequest" });
   }
 }
 function __c1(j: number): any {
@@ -3847,9 +3845,7 @@ function __c2(j: number): any {
           CreationTime: S.optional(S.String),
           ModificationTime: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "FirewallRuleGroupAssociation",
-      });
+      ).annotate({ identifier: "FirewallRuleGroupAssociation" });
   }
 }
 function __c3(j: number): any {
@@ -3857,9 +3853,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ FirewallRuleGroupAssociation: S.optional(__S(16, __c2, 0)) }),
-      ).annotate({
-        identifier: "AssociateFirewallRuleGroupResponse",
-      });
+      ).annotate({ identifier: "AssociateFirewallRuleGroupResponse" });
   }
 }
 function __c4(j: number): any {
@@ -3869,9 +3863,7 @@ function __c4(j: number): any {
         S.Struct({ ResolverEndpointId: S.String, IpAddress: __S(64, __c8, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "AssociateResolverEndpointIpAddressRequest",
-      });
+      ).annotate({ identifier: "AssociateResolverEndpointIpAddressRequest" });
   }
 }
 function __c5(j: number): any {
@@ -3915,9 +3907,7 @@ function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ ResolverEndpoint: S.optional(__S(49, __c6, 1)) })).annotate(
-        {
-          identifier: "AssociateResolverEndpointIpAddressResponse",
-        },
+        { identifier: "AssociateResolverEndpointIpAddressResponse" },
       );
   }
 }
@@ -3941,9 +3931,7 @@ function __c9(j: number): any {
         S.Struct({ ResolverQueryLogConfigId: S.String, ResourceId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "AssociateResolverQueryLogConfigRequest",
-      });
+      ).annotate({ identifier: "AssociateResolverQueryLogConfigRequest" });
   }
 }
 function __c10(j: number): any {
@@ -3951,9 +3939,7 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ ResolverQueryLogConfigAssociation: S.optional(__S(88, __c11, 0)) }),
-      ).annotate({
-        identifier: "AssociateResolverQueryLogConfigResponse",
-      });
+      ).annotate({ identifier: "AssociateResolverQueryLogConfigResponse" });
   }
 }
 function __c11(j: number): any {
@@ -3969,9 +3955,7 @@ function __c11(j: number): any {
           ErrorMessage: S.optional(S.String),
           CreationTime: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ResolverQueryLogConfigAssociation",
-      });
+      ).annotate({ identifier: "ResolverQueryLogConfigAssociation" });
   }
 }
 function __c12(j: number): any {
@@ -3981,9 +3965,7 @@ function __c12(j: number): any {
         S.Struct({ ResolverRuleId: S.String, Name: S.optional(S.String), VPCId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "AssociateResolverRuleRequest",
-      });
+      ).annotate({ identifier: "AssociateResolverRuleRequest" });
   }
 }
 function __c13(j: number): any {
@@ -3991,9 +3973,7 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ ResolverRuleAssociation: S.optional(__S(112, __c14, 0)) }),
-      ).annotate({
-        identifier: "AssociateResolverRuleResponse",
-      });
+      ).annotate({ identifier: "AssociateResolverRuleResponse" });
   }
 }
 function __c14(j: number): any {
@@ -4040,9 +4020,7 @@ function __c15(j: number): any {
         S.Struct({ CreateFirewallRuleEntries: __S(121, __c15, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "BatchCreateFirewallRuleRequest",
-      });
+      ).annotate({ identifier: "BatchCreateFirewallRuleRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4050,9 +4028,7 @@ function __c15(j: number): any {
           Code: S.optional(S.String),
           Message: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchCreateFirewallRuleError",
-      });
+      ).annotate({ identifier: "BatchCreateFirewallRuleError" });
     case 4:
       return S.Array(__S(123, __c15, 3));
     case 5:
@@ -4061,9 +4037,7 @@ function __c15(j: number): any {
           CreatedFirewallRules: S.optional(__S(136, __c17, 0)),
           CreateErrors: S.optional(__S(124, __c15, 4)),
         }),
-      ).annotate({
-        identifier: "BatchCreateFirewallRuleResponse",
-      });
+      ).annotate({ identifier: "BatchCreateFirewallRuleResponse" });
   }
 }
 function __c16(j: number): any {
@@ -4078,9 +4052,7 @@ function __c16(j: number): any {
       });
     case 2:
       return S.suspend(() => S.Struct({ Value: S.String, ConfidenceThreshold: S.String })).annotate(
-        {
-          identifier: "DnsThreatProtectionRuleTypeConfig",
-        },
+        { identifier: "DnsThreatProtectionRuleTypeConfig" },
       );
     case 3:
       return S.suspend(() =>
@@ -4142,9 +4114,7 @@ function __c18(j: number): any {
         S.Struct({ DeleteFirewallRuleEntries: __S(145, __c18, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "BatchDeleteFirewallRuleRequest",
-      });
+      ).annotate({ identifier: "BatchDeleteFirewallRuleRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4152,9 +4122,7 @@ function __c18(j: number): any {
           Code: S.optional(S.String),
           Message: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchDeleteFirewallRuleError",
-      });
+      ).annotate({ identifier: "BatchDeleteFirewallRuleError" });
     case 4:
       return S.Array(__S(147, __c18, 3));
     case 5:
@@ -4163,9 +4131,7 @@ function __c18(j: number): any {
           DeletedFirewallRules: S.optional(__S(136, __c17, 0)),
           DeleteErrors: S.optional(__S(148, __c18, 4)),
         }),
-      ).annotate({
-        identifier: "BatchDeleteFirewallRuleResponse",
-      });
+      ).annotate({ identifier: "BatchDeleteFirewallRuleResponse" });
   }
 }
 function __c19(j: number): any {
@@ -4197,9 +4163,7 @@ function __c19(j: number): any {
         S.Struct({ UpdateFirewallRuleEntries: __S(153, __c19, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "BatchUpdateFirewallRuleRequest",
-      });
+      ).annotate({ identifier: "BatchUpdateFirewallRuleRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4207,9 +4171,7 @@ function __c19(j: number): any {
           Code: S.optional(S.String),
           Message: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchUpdateFirewallRuleError",
-      });
+      ).annotate({ identifier: "BatchUpdateFirewallRuleError" });
     case 4:
       return S.Array(__S(155, __c19, 3));
     case 5:
@@ -4218,9 +4180,7 @@ function __c19(j: number): any {
           UpdatedFirewallRules: S.optional(__S(136, __c17, 0)),
           UpdateErrors: S.optional(__S(156, __c19, 4)),
         }),
-      ).annotate({
-        identifier: "BatchUpdateFirewallRuleResponse",
-      });
+      ).annotate({ identifier: "BatchUpdateFirewallRuleResponse" });
   }
 }
 function __c20(j: number): any {
@@ -4232,9 +4192,7 @@ function __c20(j: number): any {
           Name: S.String,
           Tags: S.optional(__S(9, __c1, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateFirewallDomainListRequest",
-      });
+      ).annotate({ identifier: "CreateFirewallDomainListRequest" });
   }
 }
 function __c21(j: number): any {
@@ -4259,9 +4217,7 @@ function __c21(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ FirewallDomainList: S.optional(__S(168, __c21, 0)) }),
-      ).annotate({
-        identifier: "CreateFirewallDomainListResponse",
-      });
+      ).annotate({ identifier: "CreateFirewallDomainListResponse" });
   }
 }
 function __c22(j: number): any {
@@ -4285,9 +4241,7 @@ function __c22(j: number): any {
           ConfidenceThreshold: S.optional(S.String),
           FirewallRuleType: S.optional(__S(131, __c16, 3)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateFirewallRuleRequest",
-      });
+      ).annotate({ identifier: "CreateFirewallRuleRequest" });
   }
 }
 function __c23(j: number): any {
@@ -4307,9 +4261,7 @@ function __c24(j: number): any {
           Name: S.String,
           Tags: S.optional(__S(9, __c1, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateFirewallRuleGroupRequest",
-      });
+      ).annotate({ identifier: "CreateFirewallRuleGroupRequest" });
   }
 }
 function __c25(j: number): any {
@@ -4333,9 +4285,7 @@ function __c25(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ FirewallRuleGroup: S.optional(__S(200, __c25, 0)) }),
-      ).annotate({
-        identifier: "CreateFirewallRuleGroupResponse",
-      });
+      ).annotate({ identifier: "CreateFirewallRuleGroupResponse" });
   }
 }
 function __c26(j: number): any {
@@ -4350,9 +4300,7 @@ function __c26(j: number): any {
           OutpostArn: S.String,
           Tags: S.optional(__S(9, __c1, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateOutpostResolverRequest",
-      });
+      ).annotate({ identifier: "CreateOutpostResolverRequest" });
   }
 }
 function __c27(j: number): any {
@@ -4380,9 +4328,7 @@ function __c28(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ OutpostResolver: S.optional(__S(216, __c27, 0)) }),
-      ).annotate({
-        identifier: "CreateOutpostResolverResponse",
-      });
+      ).annotate({ identifier: "CreateOutpostResolverResponse" });
   }
 }
 function __c29(j: number): any {
@@ -4411,9 +4357,7 @@ function __c29(j: number): any {
           Dns64Enabled: S.optional(S.Boolean),
           Ipv6InternetAccessEnabled: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateResolverEndpointRequest",
-      });
+      ).annotate({ identifier: "CreateResolverEndpointRequest" });
   }
 }
 function __c30(j: number): any {
@@ -4426,9 +4370,7 @@ function __c30(j: number): any {
           CreatorRequestId: S.String.pipe(T.IdempotencyToken()),
           Tags: S.optional(__S(9, __c1, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateResolverQueryLogConfigRequest",
-      });
+      ).annotate({ identifier: "CreateResolverQueryLogConfigRequest" });
   }
 }
 function __c31(j: number): any {
@@ -4436,9 +4378,7 @@ function __c31(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ ResolverQueryLogConfig: S.optional(__S(256, __c32, 0)) }),
-      ).annotate({
-        identifier: "CreateResolverQueryLogConfigResponse",
-      });
+      ).annotate({ identifier: "CreateResolverQueryLogConfigResponse" });
   }
 }
 function __c32(j: number): any {
@@ -4474,9 +4414,7 @@ function __c33(j: number): any {
           Tags: S.optional(__S(9, __c1, 1)),
           DelegationRecord: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateResolverRuleRequest",
-      });
+      ).annotate({ identifier: "CreateResolverRuleRequest" });
   }
 }
 function __c34(j: number): any {
@@ -4530,9 +4468,7 @@ function __c36(j: number): any {
         S.Struct({ FirewallDomainListId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteFirewallDomainListRequest",
-      });
+      ).annotate({ identifier: "DeleteFirewallDomainListRequest" });
   }
 }
 function __c37(j: number): any {
@@ -4545,9 +4481,7 @@ function __c37(j: number): any {
           FirewallThreatProtectionId: S.optional(S.String),
           Qtype: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteFirewallRuleRequest",
-      });
+      ).annotate({ identifier: "DeleteFirewallRuleRequest" });
   }
 }
 function __c38(j: number): any {
@@ -4557,9 +4491,7 @@ function __c38(j: number): any {
         S.Struct({ FirewallRuleGroupId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteFirewallRuleGroupRequest",
-      });
+      ).annotate({ identifier: "DeleteFirewallRuleGroupRequest" });
   }
 }
 function __c39(j: number): any {
@@ -4569,9 +4501,7 @@ function __c39(j: number): any {
         S.Struct({ Id: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteOutpostResolverRequest",
-      });
+      ).annotate({ identifier: "DeleteOutpostResolverRequest" });
   }
 }
 function __c40(j: number): any {
@@ -4581,9 +4511,7 @@ function __c40(j: number): any {
         S.Struct({ ResolverEndpointId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteResolverEndpointRequest",
-      });
+      ).annotate({ identifier: "DeleteResolverEndpointRequest" });
   }
 }
 function __c41(j: number): any {
@@ -4593,9 +4521,7 @@ function __c41(j: number): any {
         S.Struct({ ResolverQueryLogConfigId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteResolverQueryLogConfigRequest",
-      });
+      ).annotate({ identifier: "DeleteResolverQueryLogConfigRequest" });
   }
 }
 function __c42(j: number): any {
@@ -4605,9 +4531,7 @@ function __c42(j: number): any {
         S.Struct({ ResolverRuleId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteResolverRuleRequest",
-      });
+      ).annotate({ identifier: "DeleteResolverRuleRequest" });
   }
 }
 function __c43(j: number): any {
@@ -4617,9 +4541,7 @@ function __c43(j: number): any {
         S.Struct({ FirewallRuleGroupAssociationId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DisassociateFirewallRuleGroupRequest",
-      });
+      ).annotate({ identifier: "DisassociateFirewallRuleGroupRequest" });
   }
 }
 function __c44(j: number): any {
@@ -4629,9 +4551,7 @@ function __c44(j: number): any {
         S.Struct({ ResolverEndpointId: S.String, IpAddress: __S(64, __c8, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DisassociateResolverEndpointIpAddressRequest",
-      });
+      ).annotate({ identifier: "DisassociateResolverEndpointIpAddressRequest" });
   }
 }
 function __c45(j: number): any {
@@ -4641,9 +4561,7 @@ function __c45(j: number): any {
         S.Struct({ ResolverQueryLogConfigId: S.String, ResourceId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DisassociateResolverQueryLogConfigRequest",
-      });
+      ).annotate({ identifier: "DisassociateResolverQueryLogConfigRequest" });
   }
 }
 function __c46(j: number): any {
@@ -4653,9 +4571,7 @@ function __c46(j: number): any {
         S.Struct({ VPCId: S.String, ResolverRuleId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DisassociateResolverRuleRequest",
-      });
+      ).annotate({ identifier: "DisassociateResolverRuleRequest" });
   }
 }
 function __c47(j: number): any {
@@ -4685,9 +4601,7 @@ function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ FirewallConfig: S.optional(__S(384, __c48, 0)) })).annotate(
-        {
-          identifier: "GetFirewallConfigResponse",
-        },
+        { identifier: "GetFirewallConfigResponse" },
       );
   }
 }
@@ -4698,9 +4612,7 @@ function __c50(j: number): any {
         S.Struct({ FirewallDomainListId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetFirewallDomainListRequest",
-      });
+      ).annotate({ identifier: "GetFirewallDomainListRequest" });
   }
 }
 function __c51(j: number): any {
@@ -4710,9 +4622,7 @@ function __c51(j: number): any {
         S.Struct({ FirewallRuleGroupId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetFirewallRuleGroupRequest",
-      });
+      ).annotate({ identifier: "GetFirewallRuleGroupRequest" });
   }
 }
 function __c52(j: number): any {
@@ -4722,9 +4632,7 @@ function __c52(j: number): any {
         S.Struct({ FirewallRuleGroupAssociationId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetFirewallRuleGroupAssociationRequest",
-      });
+      ).annotate({ identifier: "GetFirewallRuleGroupAssociationRequest" });
   }
 }
 function __c53(j: number): any {
@@ -4734,9 +4642,7 @@ function __c53(j: number): any {
         S.Struct({ Arn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetFirewallRuleGroupPolicyRequest",
-      });
+      ).annotate({ identifier: "GetFirewallRuleGroupPolicyRequest" });
     case 1:
       return S.suspend(() => S.Struct({ FirewallRuleGroupPolicy: S.optional(S.String) })).annotate({
         identifier: "GetFirewallRuleGroupPolicyResponse",
@@ -4750,9 +4656,7 @@ function __c54(j: number): any {
         S.Struct({ Id: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetOutpostResolverRequest",
-      });
+      ).annotate({ identifier: "GetOutpostResolverRequest" });
   }
 }
 function __c55(j: number): any {
@@ -4782,9 +4686,7 @@ function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ ResolverConfig: S.optional(__S(448, __c56, 0)) })).annotate(
-        {
-          identifier: "GetResolverConfigResponse",
-        },
+        { identifier: "GetResolverConfigResponse" },
       );
   }
 }
@@ -4795,9 +4697,7 @@ function __c58(j: number): any {
         S.Struct({ ResourceId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetResolverDnssecConfigRequest",
-      });
+      ).annotate({ identifier: "GetResolverDnssecConfigRequest" });
   }
 }
 function __c59(j: number): any {
@@ -4818,9 +4718,7 @@ function __c60(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ ResolverDNSSECConfig: S.optional(__S(472, __c59, 0)) }),
-      ).annotate({
-        identifier: "GetResolverDnssecConfigResponse",
-      });
+      ).annotate({ identifier: "GetResolverDnssecConfigResponse" });
   }
 }
 function __c61(j: number): any {
@@ -4830,9 +4728,7 @@ function __c61(j: number): any {
         S.Struct({ ResolverEndpointId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetResolverEndpointRequest",
-      });
+      ).annotate({ identifier: "GetResolverEndpointRequest" });
   }
 }
 function __c62(j: number): any {
@@ -4842,9 +4738,7 @@ function __c62(j: number): any {
         S.Struct({ ResolverQueryLogConfigId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetResolverQueryLogConfigRequest",
-      });
+      ).annotate({ identifier: "GetResolverQueryLogConfigRequest" });
   }
 }
 function __c63(j: number): any {
@@ -4854,9 +4748,7 @@ function __c63(j: number): any {
         S.Struct({ ResolverQueryLogConfigAssociationId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetResolverQueryLogConfigAssociationRequest",
-      });
+      ).annotate({ identifier: "GetResolverQueryLogConfigAssociationRequest" });
   }
 }
 function __c64(j: number): any {
@@ -4866,15 +4758,11 @@ function __c64(j: number): any {
         S.Struct({ Arn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetResolverQueryLogConfigPolicyRequest",
-      });
+      ).annotate({ identifier: "GetResolverQueryLogConfigPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ResolverQueryLogConfigPolicy: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetResolverQueryLogConfigPolicyResponse",
-      });
+      ).annotate({ identifier: "GetResolverQueryLogConfigPolicyResponse" });
   }
 }
 function __c65(j: number): any {
@@ -4885,10 +4773,6 @@ function __c65(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetResolverRuleRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({ ResolverRule: S.optional(__S(274, __c34, 2)) })).annotate({
-        identifier: "GetResolverRuleResponse",
-      });
   }
 }
 function __c66(j: number): any {
@@ -4898,9 +4782,7 @@ function __c66(j: number): any {
         S.Struct({ ResolverRuleAssociationId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetResolverRuleAssociationRequest",
-      });
+      ).annotate({ identifier: "GetResolverRuleAssociationRequest" });
   }
 }
 function __c67(j: number): any {
@@ -4910,9 +4792,7 @@ function __c67(j: number): any {
         S.Struct({ Arn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetResolverRulePolicyRequest",
-      });
+      ).annotate({ identifier: "GetResolverRulePolicyRequest" });
     case 1:
       return S.suspend(() => S.Struct({ ResolverRulePolicy: S.optional(S.String) })).annotate({
         identifier: "GetResolverRulePolicyResponse",
@@ -4928,9 +4808,7 @@ function __c68(j: number): any {
           Operation: S.String,
           DomainFileUrl: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ImportFirewallDomainsRequest",
-      });
+      ).annotate({ identifier: "ImportFirewallDomainsRequest" });
   }
 }
 function __c69(j: number): any {
@@ -4943,9 +4821,7 @@ function __c69(j: number): any {
           Status: S.optional(S.String),
           StatusMessage: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ImportFirewallDomainsResponse",
-      });
+      ).annotate({ identifier: "ImportFirewallDomainsResponse" });
   }
 }
 function __c70(j: number): any {
@@ -4955,9 +4831,7 @@ function __c70(j: number): any {
         S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListFirewallConfigsRequest",
-      });
+      ).annotate({ identifier: "ListFirewallConfigsRequest" });
     case 1:
       return S.Array(__S(384, __c48, 0));
     case 2:
@@ -4966,9 +4840,7 @@ function __c70(j: number): any {
           NextToken: S.optional(S.String),
           FirewallConfigs: S.optional(__S(561, __c70, 1)),
         }),
-      ).annotate({
-        identifier: "ListFirewallConfigsResponse",
-      });
+      ).annotate({ identifier: "ListFirewallConfigsResponse" });
   }
 }
 function __c71(j: number): any {
@@ -4978,9 +4850,7 @@ function __c71(j: number): any {
         S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListFirewallDomainListsRequest",
-      });
+      ).annotate({ identifier: "ListFirewallDomainListsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4992,9 +4862,7 @@ function __c71(j: number): any {
           ManagedListType: S.optional(S.String),
           Category: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "FirewallDomainListMetadata",
-      });
+      ).annotate({ identifier: "FirewallDomainListMetadata" });
     case 2:
       return S.Array(__S(569, __c71, 1));
     case 3:
@@ -5003,9 +4871,7 @@ function __c71(j: number): any {
           NextToken: S.optional(S.String),
           FirewallDomainLists: S.optional(__S(570, __c71, 2)),
         }),
-      ).annotate({
-        identifier: "ListFirewallDomainListsResponse",
-      });
+      ).annotate({ identifier: "ListFirewallDomainListsResponse" });
   }
 }
 function __c72(j: number): any {
@@ -5017,15 +4883,11 @@ function __c72(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListFirewallDomainsRequest",
-      });
+      ).annotate({ identifier: "ListFirewallDomainsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), Domains: S.optional(__S(40, __c5, 0)) }),
-      ).annotate({
-        identifier: "ListFirewallDomainsResponse",
-      });
+      ).annotate({ identifier: "ListFirewallDomainsResponse" });
   }
 }
 function __c73(j: number): any {
@@ -5040,9 +4902,7 @@ function __c73(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListFirewallRuleGroupAssociationsRequest",
-      });
+      ).annotate({ identifier: "ListFirewallRuleGroupAssociationsRequest" });
     case 1:
       return S.Array(__S(16, __c2, 0));
     case 2:
@@ -5051,9 +4911,7 @@ function __c73(j: number): any {
           NextToken: S.optional(S.String),
           FirewallRuleGroupAssociations: S.optional(__S(585, __c73, 1)),
         }),
-      ).annotate({
-        identifier: "ListFirewallRuleGroupAssociationsResponse",
-      });
+      ).annotate({ identifier: "ListFirewallRuleGroupAssociationsResponse" });
   }
 }
 function __c74(j: number): any {
@@ -5063,9 +4921,7 @@ function __c74(j: number): any {
         S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListFirewallRuleGroupsRequest",
-      });
+      ).annotate({ identifier: "ListFirewallRuleGroupsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5076,9 +4932,7 @@ function __c74(j: number): any {
           CreatorRequestId: S.optional(S.String),
           ShareStatus: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "FirewallRuleGroupMetadata",
-      });
+      ).annotate({ identifier: "FirewallRuleGroupMetadata" });
     case 2:
       return S.Array(__S(593, __c74, 1));
     case 3:
@@ -5087,9 +4941,7 @@ function __c74(j: number): any {
           NextToken: S.optional(S.String),
           FirewallRuleGroups: S.optional(__S(594, __c74, 2)),
         }),
-      ).annotate({
-        identifier: "ListFirewallRuleGroupsResponse",
-      });
+      ).annotate({ identifier: "ListFirewallRuleGroupsResponse" });
   }
 }
 function __c75(j: number): any {
@@ -5110,9 +4962,7 @@ function __c75(j: number): any {
           NextToken: S.optional(S.String),
           FirewallRules: S.optional(__S(136, __c17, 0)),
         }),
-      ).annotate({
-        identifier: "ListFirewallRulesResponse",
-      });
+      ).annotate({ identifier: "ListFirewallRulesResponse" });
   }
 }
 function __c76(j: number): any {
@@ -5124,9 +4974,7 @@ function __c76(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListFirewallRuleTypesRequest",
-      });
+      ).annotate({ identifier: "ListFirewallRuleTypesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ VendorName: S.optional(S.String), ProductId: S.optional(S.String) }),
@@ -5140,9 +4988,7 @@ function __c76(j: number): any {
           Description: S.optional(S.String),
           SubscriptionInfo: S.optional(__S(609, __c76, 1)),
         }),
-      ).annotate({
-        identifier: "FirewallRuleTypeDefinition",
-      });
+      ).annotate({ identifier: "FirewallRuleTypeDefinition" });
     case 3:
       return S.Array(__S(610, __c76, 2));
     case 4:
@@ -5151,9 +4997,7 @@ function __c76(j: number): any {
           FirewallRuleTypes: S.optional(__S(611, __c76, 3)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListFirewallRuleTypesResponse",
-      });
+      ).annotate({ identifier: "ListFirewallRuleTypesResponse" });
   }
 }
 function __c77(j: number): any {
@@ -5165,9 +5009,7 @@ function __c77(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListOutpostResolversRequest",
-      });
+      ).annotate({ identifier: "ListOutpostResolversRequest" });
     case 1:
       return S.Array(__S(216, __c27, 0));
     case 2:
@@ -5176,9 +5018,7 @@ function __c77(j: number): any {
           OutpostResolvers: S.optional(__S(617, __c77, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListOutpostResolversResponse",
-      });
+      ).annotate({ identifier: "ListOutpostResolversResponse" });
   }
 }
 function __c78(j: number): any {
@@ -5188,9 +5028,7 @@ function __c78(j: number): any {
         S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListResolverConfigsRequest",
-      });
+      ).annotate({ identifier: "ListResolverConfigsRequest" });
     case 1:
       return S.Array(__S(448, __c56, 0));
     case 2:
@@ -5199,9 +5037,7 @@ function __c78(j: number): any {
           NextToken: S.optional(S.String),
           ResolverConfigs: S.optional(__S(625, __c78, 1)),
         }),
-      ).annotate({
-        identifier: "ListResolverConfigsResponse",
-      });
+      ).annotate({ identifier: "ListResolverConfigsResponse" });
   }
 }
 function __c79(j: number): any {
@@ -5213,9 +5049,7 @@ function __c79(j: number): any {
           NextToken: S.optional(S.String),
           Filters: S.optional(__S(641, __c80, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListResolverDnssecConfigsRequest",
-      });
+      ).annotate({ identifier: "ListResolverDnssecConfigsRequest" });
     case 1:
       return S.Array(__S(472, __c59, 0));
     case 2:
@@ -5224,9 +5058,7 @@ function __c79(j: number): any {
           NextToken: S.optional(S.String),
           ResolverDnssecConfigs: S.optional(__S(633, __c79, 1)),
         }),
-      ).annotate({
-        identifier: "ListResolverDnssecConfigsResponse",
-      });
+      ).annotate({ identifier: "ListResolverDnssecConfigsResponse" });
   }
 }
 function __c80(j: number): any {
@@ -5248,9 +5080,7 @@ function __c81(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListResolverEndpointIpAddressesRequest",
-      });
+      ).annotate({ identifier: "ListResolverEndpointIpAddressesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5273,9 +5103,7 @@ function __c81(j: number): any {
           MaxResults: S.optional(S.Number),
           IpAddresses: S.optional(__S(650, __c81, 2)),
         }),
-      ).annotate({
-        identifier: "ListResolverEndpointIpAddressesResponse",
-      });
+      ).annotate({ identifier: "ListResolverEndpointIpAddressesResponse" });
   }
 }
 function __c82(j: number): any {
@@ -5287,9 +5115,7 @@ function __c82(j: number): any {
           NextToken: S.optional(S.String),
           Filters: S.optional(__S(641, __c80, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListResolverEndpointsRequest",
-      });
+      ).annotate({ identifier: "ListResolverEndpointsRequest" });
     case 1:
       return S.Array(__S(49, __c6, 1));
     case 2:
@@ -5299,9 +5125,7 @@ function __c82(j: number): any {
           MaxResults: S.optional(S.Number),
           ResolverEndpoints: S.optional(__S(657, __c82, 1)),
         }),
-      ).annotate({
-        identifier: "ListResolverEndpointsResponse",
-      });
+      ).annotate({ identifier: "ListResolverEndpointsResponse" });
   }
 }
 function __c83(j: number): any {
@@ -5315,9 +5139,7 @@ function __c83(j: number): any {
           SortBy: S.optional(S.String),
           SortOrder: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListResolverQueryLogConfigAssociationsRequest",
-      });
+      ).annotate({ identifier: "ListResolverQueryLogConfigAssociationsRequest" });
     case 1:
       return S.Array(__S(88, __c11, 0));
     case 2:
@@ -5328,9 +5150,7 @@ function __c83(j: number): any {
           TotalFilteredCount: S.optional(S.Number),
           ResolverQueryLogConfigAssociations: S.optional(__S(665, __c83, 1)),
         }),
-      ).annotate({
-        identifier: "ListResolverQueryLogConfigAssociationsResponse",
-      });
+      ).annotate({ identifier: "ListResolverQueryLogConfigAssociationsResponse" });
   }
 }
 function __c84(j: number): any {
@@ -5344,9 +5164,7 @@ function __c84(j: number): any {
           SortBy: S.optional(S.String),
           SortOrder: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListResolverQueryLogConfigsRequest",
-      });
+      ).annotate({ identifier: "ListResolverQueryLogConfigsRequest" });
     case 1:
       return S.Array(__S(256, __c32, 0));
     case 2:
@@ -5357,9 +5175,7 @@ function __c84(j: number): any {
           TotalFilteredCount: S.optional(S.Number),
           ResolverQueryLogConfigs: S.optional(__S(673, __c84, 1)),
         }),
-      ).annotate({
-        identifier: "ListResolverQueryLogConfigsResponse",
-      });
+      ).annotate({ identifier: "ListResolverQueryLogConfigsResponse" });
   }
 }
 function __c85(j: number): any {
@@ -5371,9 +5187,7 @@ function __c85(j: number): any {
           NextToken: S.optional(S.String),
           Filters: S.optional(__S(641, __c80, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListResolverRuleAssociationsRequest",
-      });
+      ).annotate({ identifier: "ListResolverRuleAssociationsRequest" });
     case 1:
       return S.Array(__S(112, __c14, 0));
     case 2:
@@ -5383,9 +5197,7 @@ function __c85(j: number): any {
           MaxResults: S.optional(S.Number),
           ResolverRuleAssociations: S.optional(__S(681, __c85, 1)),
         }),
-      ).annotate({
-        identifier: "ListResolverRuleAssociationsResponse",
-      });
+      ).annotate({ identifier: "ListResolverRuleAssociationsResponse" });
   }
 }
 function __c86(j: number): any {
@@ -5407,9 +5219,7 @@ function __c86(j: number): any {
           MaxResults: S.optional(S.Number),
           ResolverRules: S.optional(__S(689, __c86, 1)),
         }),
-      ).annotate({
-        identifier: "ListResolverRulesResponse",
-      });
+      ).annotate({ identifier: "ListResolverRulesResponse" });
   }
 }
 function __c87(j: number): any {
@@ -5421,15 +5231,11 @@ function __c87(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Tags: S.optional(__S(9, __c1, 1)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
+      ).annotate({ identifier: "ListTagsForResourceResponse" });
   }
 }
 function __c88(j: number): any {
@@ -5439,9 +5245,7 @@ function __c88(j: number): any {
         S.Struct({ Arn: S.String, FirewallRuleGroupPolicy: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "PutFirewallRuleGroupPolicyRequest",
-      });
+      ).annotate({ identifier: "PutFirewallRuleGroupPolicyRequest" });
   }
 }
 function __c89(j: number): any {
@@ -5459,9 +5263,7 @@ function __c90(j: number): any {
         S.Struct({ Arn: S.String, ResolverQueryLogConfigPolicy: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "PutResolverQueryLogConfigPolicyRequest",
-      });
+      ).annotate({ identifier: "PutResolverQueryLogConfigPolicyRequest" });
   }
 }
 function __c91(j: number): any {
@@ -5471,9 +5273,7 @@ function __c91(j: number): any {
         S.Struct({ Arn: S.String, ResolverRulePolicy: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "PutResolverRulePolicyRequest",
-      });
+      ).annotate({ identifier: "PutResolverRulePolicyRequest" });
   }
 }
 function __c92(j: number): any {
@@ -5489,9 +5289,7 @@ function __c92(j: number): any {
 function __c93(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TagResourceResponse" });
   }
 }
 function __c94(j: number): any {
@@ -5511,9 +5309,7 @@ function __c95(j: number): any {
         S.Struct({ ResourceId: S.String, FirewallFailOpen: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateFirewallConfigRequest",
-      });
+      ).annotate({ identifier: "UpdateFirewallConfigRequest" });
   }
 }
 function __c96(j: number): any {
@@ -5525,9 +5321,7 @@ function __c96(j: number): any {
           Operation: S.String,
           Domains: __S(40, __c5, 0),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateFirewallDomainsRequest",
-      });
+      ).annotate({ identifier: "UpdateFirewallDomainsRequest" });
   }
 }
 function __c97(j: number): any {
@@ -5551,9 +5345,7 @@ function __c97(j: number): any {
           ConfidenceThreshold: S.optional(S.String),
           FirewallRuleType: S.optional(__S(131, __c16, 3)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateFirewallRuleRequest",
-      });
+      ).annotate({ identifier: "UpdateFirewallRuleRequest" });
   }
 }
 function __c98(j: number): any {
@@ -5566,9 +5358,7 @@ function __c98(j: number): any {
           MutationProtection: S.optional(S.String),
           Name: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateFirewallRuleGroupAssociationRequest",
-      });
+      ).annotate({ identifier: "UpdateFirewallRuleGroupAssociationRequest" });
   }
 }
 function __c99(j: number): any {
@@ -5581,9 +5371,7 @@ function __c99(j: number): any {
           InstanceCount: S.optional(S.Number),
           PreferredInstanceType: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateOutpostResolverRequest",
-      });
+      ).annotate({ identifier: "UpdateOutpostResolverRequest" });
   }
 }
 function __c100(j: number): any {
@@ -5593,9 +5381,7 @@ function __c100(j: number): any {
         S.Struct({ ResourceId: S.String, AutodefinedReverseFlag: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateResolverConfigRequest",
-      });
+      ).annotate({ identifier: "UpdateResolverConfigRequest" });
   }
 }
 function __c101(j: number): any {
@@ -5605,9 +5391,7 @@ function __c101(j: number): any {
         S.Struct({ ResourceId: S.String, Validation: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateResolverDnssecConfigRequest",
-      });
+      ).annotate({ identifier: "UpdateResolverDnssecConfigRequest" });
   }
 }
 function __c102(j: number): any {
@@ -5631,9 +5415,7 @@ function __c102(j: number): any {
           Dns64Enabled: S.optional(S.Boolean),
           Ipv6InternetAccessEnabled: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateResolverEndpointRequest",
-      });
+      ).annotate({ identifier: "UpdateResolverEndpointRequest" });
   }
 }
 function __c103(j: number): any {
@@ -5651,9 +5433,7 @@ function __c103(j: number): any {
         S.Struct({ ResolverRuleId: S.String, Config: __S(824, __c103, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateResolverRuleRequest",
-      });
+      ).annotate({ identifier: "UpdateResolverRuleRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

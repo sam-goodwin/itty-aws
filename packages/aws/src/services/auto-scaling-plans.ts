@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -567,9 +567,7 @@ function __c0(j: number): any {
           StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetScalingPlanResourceForecastDataRequest",
-      });
+      ).annotate({ identifier: "GetScalingPlanResourceForecastDataRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -619,9 +617,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ PredefinedScalingMetricType: S.String, ResourceLabel: S.optional(S.String) }),
-      ).annotate({
-        identifier: "PredefinedScalingMetricSpecification",
-      });
+      ).annotate({ identifier: "PredefinedScalingMetricSpecification" });
     case 1:
       return S.suspend(() => S.Struct({ Name: S.String, Value: S.String })).annotate({
         identifier: "MetricDimension",
@@ -637,9 +633,7 @@ function __c3(j: number): any {
           Statistic: S.String,
           Unit: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CustomizedScalingMetricSpecification",
-      });
+      ).annotate({ identifier: "CustomizedScalingMetricSpecification" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -651,9 +645,7 @@ function __c3(j: number): any {
           ScaleInCooldown: S.optional(S.Number),
           EstimatedInstanceWarmup: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "TargetTrackingConfiguration",
-      });
+      ).annotate({ identifier: "TargetTrackingConfiguration" });
   }
 }
 function __c4(j: number): any {
@@ -678,9 +670,7 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({ PredefinedLoadMetricType: S.String, ResourceLabel: S.optional(S.String) }),
-      ).annotate({
-        identifier: "PredefinedLoadMetricSpecification",
-      });
+      ).annotate({ identifier: "PredefinedLoadMetricSpecification" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -717,9 +707,7 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteScalingPlanResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteScalingPlanResponse" });
   }
 }
 function __c7(j: number): any {
@@ -732,9 +720,7 @@ function __c7(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeScalingPlanResourcesRequest",
-      });
+      ).annotate({ identifier: "DescribeScalingPlanResourcesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -766,9 +752,7 @@ function __c7(j: number): any {
           ScalingPlanResources: S.optional(__S(60, __c7, 4)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeScalingPlanResourcesResponse",
-      });
+      ).annotate({ identifier: "DescribeScalingPlanResourcesResponse" });
   }
 }
 function __c8(j: number): any {
@@ -784,9 +768,7 @@ function __c8(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeScalingPlansRequest",
-      });
+      ).annotate({ identifier: "DescribeScalingPlansRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -805,9 +787,7 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({ ScalingPlans: S.optional(__S(67, __c8, 3)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DescribeScalingPlansResponse",
-      });
+      ).annotate({ identifier: "DescribeScalingPlansResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

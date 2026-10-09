@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1168,9 +1168,7 @@ function __c0(j: number): any {
           ClientToken: S.String.pipe(T.IdempotencyToken()),
           Tags: S.optional(__S(17, __c4, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateParallelDataRequest",
-      });
+      ).annotate({ identifier: "CreateParallelDataRequest" });
   }
 }
 function __c1(j: number): any {
@@ -1178,9 +1176,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String), Status: S.optional(S.String) }),
-      ).annotate({
-        identifier: "CreateParallelDataResponse",
-      });
+      ).annotate({ identifier: "CreateParallelDataResponse" });
   }
 }
 function __c2(j: number): any {
@@ -1216,9 +1212,7 @@ function __c5(j: number): any {
         S.Struct({ Name: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteParallelDataRequest",
-      });
+      ).annotate({ identifier: "DeleteParallelDataRequest" });
   }
 }
 function __c6(j: number): any {
@@ -1234,9 +1228,7 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteTerminologyResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteTerminologyResponse" });
   }
 }
 function __c8(j: number): any {
@@ -1246,15 +1238,11 @@ function __c8(j: number): any {
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeTextTranslationJobRequest",
-      });
+      ).annotate({ identifier: "DescribeTextTranslationJobRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ TextTranslationJobProperties: S.optional(__S(41, __c10, 1)) }),
-      ).annotate({
-        identifier: "DescribeTextTranslationJobResponse",
-      });
+      ).annotate({ identifier: "DescribeTextTranslationJobResponse" });
   }
 }
 function __c9(j: number): any {
@@ -1292,9 +1280,7 @@ function __c10(j: number): any {
           DataAccessRoleArn: S.optional(S.String),
           Settings: S.optional(__S(48, __c12, 0)),
         }),
-      ).annotate({
-        identifier: "TextTranslationJobProperties",
-      });
+      ).annotate({ identifier: "TextTranslationJobProperties" });
   }
 }
 function __c11(j: number): any {
@@ -1419,11 +1405,7 @@ function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          File: SensitiveBlob,
-          Format: S.String,
-          Directionality: S.optional(S.String),
-        }),
+        S.Struct({ File: SensitiveBlob, Format: S.String, Directionality: S.optional(S.String) }),
       ).annotate({ identifier: "TerminologyData" });
     case 1:
       return S.suspend(() =>
@@ -1442,9 +1424,7 @@ function __c18(j: number): any {
           TerminologyProperties: S.optional(__S(68, __c17, 0)),
           AuxiliaryDataLocation: S.optional(__S(56, __c14, 0)),
         }),
-      ).annotate({
-        identifier: "ImportTerminologyResponse",
-      });
+      ).annotate({ identifier: "ImportTerminologyResponse" });
   }
 }
 function __c19(j: number): any {
@@ -1499,9 +1479,7 @@ function __c21(j: number): any {
         S.Struct({ ResourceArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(17, __c4, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -1524,9 +1502,7 @@ function __c22(j: number): any {
           TerminologyPropertiesList: S.optional(__S(89, __c22, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListTerminologiesResponse",
-      });
+      ).annotate({ identifier: "ListTerminologiesResponse" });
   }
 }
 function __c23(j: number): any {
@@ -1547,9 +1523,7 @@ function __c23(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListTextTranslationJobsRequest",
-      });
+      ).annotate({ identifier: "ListTextTranslationJobsRequest" });
     case 2:
       return S.Array(__S(41, __c10, 1));
     case 3:
@@ -1558,9 +1532,7 @@ function __c23(j: number): any {
           TextTranslationJobPropertiesList: S.optional(__S(94, __c23, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListTextTranslationJobsResponse",
-      });
+      ).annotate({ identifier: "ListTextTranslationJobsResponse" });
   }
 }
 function __c24(j: number): any {
@@ -1579,9 +1551,7 @@ function __c24(j: number): any {
           ClientToken: S.String.pipe(T.IdempotencyToken()),
           Settings: S.optional(__S(48, __c12, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartTextTranslationJobRequest",
-      });
+      ).annotate({ identifier: "StartTextTranslationJobRequest" });
   }
 }
 function __c25(j: number): any {
@@ -1589,9 +1559,7 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ JobId: S.optional(S.String), JobStatus: S.optional(S.String) }),
-      ).annotate({
-        identifier: "StartTextTranslationJobResponse",
-      });
+      ).annotate({ identifier: "StartTextTranslationJobResponse" });
   }
 }
 function __c26(j: number): any {
@@ -1601,9 +1569,7 @@ function __c26(j: number): any {
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StopTextTranslationJobRequest",
-      });
+      ).annotate({ identifier: "StopTextTranslationJobRequest" });
   }
 }
 function __c27(j: number): any {
@@ -1645,9 +1611,7 @@ function __c28(j: number): any {
           AppliedTerminologies: S.optional(__S(119, __c29, 3)),
           AppliedSettings: S.optional(__S(48, __c12, 0)),
         }),
-      ).annotate({
-        identifier: "TranslateDocumentResponse",
-      });
+      ).annotate({ identifier: "TranslateDocumentResponse" });
   }
 }
 function __c29(j: number): any {
@@ -1710,9 +1674,7 @@ function __c32(j: number): any {
           ParallelDataConfig: __S(12, __c3, 0),
           ClientToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateParallelDataRequest",
-      });
+      ).annotate({ identifier: "UpdateParallelDataRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1721,9 +1683,7 @@ function __c32(j: number): any {
           LatestUpdateAttemptStatus: S.optional(S.String),
           LatestUpdateAttemptAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "UpdateParallelDataResponse",
-      });
+      ).annotate({ identifier: "UpdateParallelDataResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

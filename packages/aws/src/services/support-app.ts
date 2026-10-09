@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -268,7 +268,7 @@ export const deleteAccountAlias: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(32, __c8, 0) as any as S.Schema<DeleteAccountAliasRequest>,
-  output: __S(36, __c9, 0) as any as S.Schema<DeleteAccountAliasResult>,
+  output: __S(28, __c7, 0) as any as S.Schema<DeleteAccountAliasResult>,
   errors: [AccessDeniedException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -292,7 +292,7 @@ export const deleteSlackChannelConfiguration: API.OperationMethod<
   DeleteSlackChannelConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c10, 0) as any as S.Schema<DeleteSlackChannelConfigurationRequest>,
+  input: __S(36, __c9, 0) as any as S.Schema<DeleteSlackChannelConfigurationRequest>,
   output: __S(28, __c7, 0) as any as S.Schema<DeleteSlackChannelConfigurationResult>,
   errors: [
     AccessDeniedException,
@@ -323,7 +323,7 @@ export const deleteSlackWorkspaceConfiguration: API.OperationMethod<
   DeleteSlackWorkspaceConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c11, 0) as any as S.Schema<DeleteSlackWorkspaceConfigurationRequest>,
+  input: __S(40, __c10, 0) as any as S.Schema<DeleteSlackWorkspaceConfigurationRequest>,
   output: __S(28, __c7, 0) as any as S.Schema<DeleteSlackWorkspaceConfigurationResult>,
   errors: [
     AccessDeniedException,
@@ -419,7 +419,7 @@ export const putAccountAlias: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(12, __c3, 0) as any as S.Schema<PutAccountAliasRequest>,
-  output: __S(36, __c9, 0) as any as S.Schema<PutAccountAliasResult>,
+  output: __S(28, __c7, 0) as any as S.Schema<PutAccountAliasResult>,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -546,9 +546,7 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSlackChannelConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListSlackChannelConfigurationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -561,20 +559,13 @@ function __c1(j: number): any {
           notifyOnCaseSeverity: S.optional(S.String),
           channelRoleArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SlackChannelConfiguration",
-      });
+      ).annotate({ identifier: "SlackChannelConfiguration" });
     case 2:
       return S.Array(__S(5, __c1, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String),
-          slackChannelConfigurations: __S(6, __c1, 2),
-        }),
-      ).annotate({
-        identifier: "ListSlackChannelConfigurationsResult",
-      });
+        S.Struct({ nextToken: S.optional(S.String), slackChannelConfigurations: __S(6, __c1, 2) }),
+      ).annotate({ identifier: "ListSlackChannelConfigurationsResult" });
   }
 }
 function __c2(j: number): any {
@@ -591,9 +582,7 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSlackWorkspaceConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListSlackWorkspaceConfigurationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -601,9 +590,7 @@ function __c2(j: number): any {
           teamName: S.optional(S.String),
           allowOrganizationMemberAccount: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "SlackWorkspaceConfiguration",
-      });
+      ).annotate({ identifier: "SlackWorkspaceConfiguration" });
     case 2:
       return S.Array(__S(9, __c2, 1));
     case 3:
@@ -612,9 +599,7 @@ function __c2(j: number): any {
           nextToken: S.optional(S.String),
           slackWorkspaceConfigurations: S.optional(__S(10, __c2, 2)),
         }),
-      ).annotate({
-        identifier: "ListSlackWorkspaceConfigurationsResult",
-      });
+      ).annotate({ identifier: "ListSlackWorkspaceConfigurationsResult" });
   }
 }
 function __c3(j: number): any {
@@ -648,9 +633,7 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RegisterSlackWorkspaceForOrganizationRequest",
-      });
+      ).annotate({ identifier: "RegisterSlackWorkspaceForOrganizationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -658,9 +641,7 @@ function __c4(j: number): any {
           teamName: S.optional(S.String),
           accountType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "RegisterSlackWorkspaceForOrganizationResult",
-      });
+      ).annotate({ identifier: "RegisterSlackWorkspaceForOrganizationResult" });
   }
 }
 function __c5(j: number): any {
@@ -686,9 +667,7 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateSlackChannelConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateSlackChannelConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -701,9 +680,7 @@ function __c5(j: number): any {
           notifyOnCaseSeverity: S.optional(S.String),
           channelRoleArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "UpdateSlackChannelConfigurationResult",
-      });
+      ).annotate({ identifier: "UpdateSlackChannelConfigurationResult" });
   }
 }
 function __c6(j: number): any {
@@ -729,9 +706,7 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateSlackChannelConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateSlackChannelConfigurationRequest" });
   }
 }
 function __c7(j: number): any {
@@ -756,20 +731,10 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteAccountAliasRequest",
-      });
+      ).annotate({ identifier: "DeleteAccountAliasRequest" });
   }
 }
 function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAccountAliasResult",
-      });
-  }
-}
-function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -783,12 +748,10 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteSlackChannelConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteSlackChannelConfigurationRequest" });
   }
 }
-function __c11(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -802,9 +765,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteSlackWorkspaceConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteSlackWorkspaceConfigurationRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -560,7 +560,7 @@ export const createApplication: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(240, __c30, 0) as any as S.Schema<CreateApplicationRequest>,
-  output: __S(257, __c32, 1) as any as S.Schema<CreateApplicationResponse>,
+  output: __S(249, __c31, 1) as any as S.Schema<CreateApplicationResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -591,8 +591,8 @@ export const createAttributeGroup: API.OperationMethod<
   CreateAttributeGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<CreateAttributeGroupRequest>,
-  output: __S(281, __c35, 1) as any as S.Schema<CreateAttributeGroupResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<CreateAttributeGroupRequest>,
+  output: __S(273, __c34, 1) as any as S.Schema<CreateAttributeGroupResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1131,7 +1131,7 @@ export const updateApplication: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(192, __c24, 0) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(257, __c32, 1) as any as S.Schema<UpdateApplicationResponse>,
+  output: __S(249, __c31, 1) as any as S.Schema<UpdateApplicationResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1160,7 +1160,7 @@ export const updateAttributeGroup: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(200, __c25, 0) as any as S.Schema<UpdateAttributeGroupRequest>,
-  output: __S(281, __c35, 1) as any as S.Schema<UpdateAttributeGroupResponse>,
+  output: __S(273, __c34, 1) as any as S.Schema<UpdateAttributeGroupResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1223,9 +1223,7 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteAttributeGroupRequest",
-      });
+      ).annotate({ identifier: "DeleteAttributeGroupRequest" });
     case 1:
       return S.suspend(() => S.Struct({ attributeGroup: S.optional(__S(24, __c3, 0)) })).annotate({
         identifier: "DeleteAttributeGroupResponse",
@@ -1268,9 +1266,7 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateAttributeGroupRequest",
-      });
+      ).annotate({ identifier: "DisassociateAttributeGroupRequest" });
   }
 }
 function __c5(j: number): any {
@@ -1294,15 +1290,11 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateResourceRequest",
-      });
+      ).annotate({ identifier: "DisassociateResourceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ applicationArn: S.optional(S.String), resourceArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DisassociateResourceResponse",
-      });
+      ).annotate({ identifier: "DisassociateResourceResponse" });
   }
 }
 function __c6(j: number): any {
@@ -1337,9 +1329,9 @@ function __c6(j: number): any {
           creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           lastUpdateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           associatedResourceCount: S.optional(S.Number),
-          tags: S.optional(__S(264, __c33, 0)),
+          tags: S.optional(__S(256, __c32, 0)),
           integrations: S.optional(__S(49, __c6, 1)),
-          applicationTag: S.optional(__S(248, __c31, 0)),
+          applicationTag: S.optional(__S(256, __c32, 0)),
         }),
       ).annotate({ identifier: "GetApplicationResponse" });
   }
@@ -1380,9 +1372,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAssociatedResourceRequest",
-      });
+      ).annotate({ identifier: "GetAssociatedResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ resourceGroup: S.optional(__S(56, __c7, 0)) })).annotate({
         identifier: "ResourceIntegrations",
@@ -1423,9 +1413,7 @@ function __c8(j: number): any {
           options: S.optional(__S(232, __c29, 0)),
           applicationTagResult: S.optional(__S(69, __c8, 5)),
         }),
-      ).annotate({
-        identifier: "GetAssociatedResourceResponse",
-      });
+      ).annotate({ identifier: "GetAssociatedResourceResponse" });
   }
 }
 function __c9(j: number): any {
@@ -1453,12 +1441,10 @@ function __c9(j: number): any {
           attributes: S.optional(S.String),
           creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           lastUpdateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          tags: S.optional(__S(264, __c33, 0)),
+          tags: S.optional(__S(256, __c32, 0)),
           createdBy: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetAttributeGroupResponse",
-      });
+      ).annotate({ identifier: "GetAttributeGroupResponse" });
   }
 }
 function __c10(j: number): any {
@@ -1524,18 +1510,14 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListAssociatedAttributeGroupsRequest",
-      });
+      ).annotate({ identifier: "ListAssociatedAttributeGroupsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           attributeGroups: S.optional(__S(112, __c14, 0)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListAssociatedAttributeGroupsResponse",
-      });
+      ).annotate({ identifier: "ListAssociatedAttributeGroupsResponse" });
   }
 }
 function __c14(j: number): any {
@@ -1562,9 +1544,7 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListAssociatedResourcesRequest",
-      });
+      ).annotate({ identifier: "ListAssociatedResourcesRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tagValue: S.optional(S.String) })).annotate({
         identifier: "ResourceDetails",
@@ -1584,9 +1564,7 @@ function __c15(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({ resources: S.optional(__S(123, __c15, 3)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListAssociatedResourcesResponse",
-      });
+      ).annotate({ identifier: "ListAssociatedResourcesResponse" });
   }
 }
 function __c16(j: number): any {
@@ -1599,9 +1577,7 @@ function __c16(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/attribute-groups" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListAttributeGroupsRequest",
-      });
+      ).annotate({ identifier: "ListAttributeGroupsRequest" });
     case 1:
       return S.Array(__S(24, __c3, 0));
     case 2:
@@ -1610,9 +1586,7 @@ function __c16(j: number): any {
           attributeGroups: S.optional(__S(129, __c16, 1)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListAttributeGroupsResponse",
-      });
+      ).annotate({ identifier: "ListAttributeGroupsResponse" });
   }
 }
 function __c17(j: number): any {
@@ -1633,9 +1607,7 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListAttributeGroupsForApplicationRequest",
-      });
+      ).annotate({ identifier: "ListAttributeGroupsForApplicationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1653,9 +1625,7 @@ function __c17(j: number): any {
           attributeGroupsDetails: S.optional(__S(138, __c17, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListAttributeGroupsForApplicationResponse",
-      });
+      ).annotate({ identifier: "ListAttributeGroupsForApplicationResponse" });
   }
 }
 function __c18(j: number): any {
@@ -1672,11 +1642,9 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(264, __c33, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(256, __c32, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
@@ -1694,9 +1662,7 @@ function __c19(j: number): any {
 function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "PutConfigurationResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "PutConfigurationResponse" });
   }
 }
 function __c21(j: number): any {
@@ -1733,7 +1699,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(264, __c33, 0),
+          tags: __S(256, __c32, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -1807,9 +1773,7 @@ function __c25(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateAttributeGroupRequest",
-      });
+      ).annotate({ identifier: "UpdateAttributeGroupRequest" });
   }
 }
 function __c26(j: number): any {
@@ -1832,9 +1796,7 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateAttributeGroupRequest",
-      });
+      ).annotate({ identifier: "AssociateAttributeGroupRequest" });
   }
 }
 function __c27(j: number): any {
@@ -1842,9 +1804,7 @@ function __c27(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ applicationArn: S.optional(S.String), attributeGroupArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "AssociateAttributeGroupResponse",
-      });
+      ).annotate({ identifier: "AssociateAttributeGroupResponse" });
   }
 }
 function __c28(j: number): any {
@@ -1877,9 +1837,7 @@ function __c28(j: number): any {
           resourceArn: S.optional(S.String),
           options: S.optional(__S(232, __c29, 0)),
         }),
-      ).annotate({
-        identifier: "AssociateResourceResponse",
-      });
+      ).annotate({ identifier: "AssociateResourceResponse" });
   }
 }
 function __c29(j: number): any {
@@ -1895,7 +1853,7 @@ function __c30(j: number): any {
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          tags: S.optional(__S(264, __c33, 0)),
+          tags: S.optional(__S(256, __c32, 0)),
           clientToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/applications" }), svc, auth, proto, ver, rules),
@@ -1906,12 +1864,6 @@ function __c30(j: number): any {
 function __c31(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1920,23 +1872,23 @@ function __c32(j: number): any {
           description: S.optional(S.String),
           creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           lastUpdateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          tags: S.optional(__S(264, __c33, 0)),
-          applicationTag: S.optional(__S(248, __c31, 0)),
+          tags: S.optional(__S(256, __c32, 0)),
+          applicationTag: S.optional(__S(256, __c32, 0)),
         }),
       ).annotate({ identifier: "Application" });
     case 1:
-      return S.suspend(() => S.Struct({ application: S.optional(__S(256, __c32, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ application: S.optional(__S(248, __c31, 0)) })).annotate({
         identifier: "CreateApplicationResponse",
       });
   }
 }
-function __c33(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c34(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1944,17 +1896,15 @@ function __c34(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           attributes: S.String,
-          tags: S.optional(__S(264, __c33, 0)),
+          tags: S.optional(__S(256, __c32, 0)),
           clientToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/attribute-groups" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateAttributeGroupRequest",
-      });
+      ).annotate({ identifier: "CreateAttributeGroupRequest" });
   }
 }
-function __c35(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1965,14 +1915,12 @@ function __c35(j: number): any {
           description: S.optional(S.String),
           creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           lastUpdateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          tags: S.optional(__S(264, __c33, 0)),
+          tags: S.optional(__S(256, __c32, 0)),
         }),
       ).annotate({ identifier: "AttributeGroup" });
     case 1:
-      return S.suspend(() => S.Struct({ attributeGroup: S.optional(__S(280, __c35, 0)) })).annotate(
-        {
-          identifier: "CreateAttributeGroupResponse",
-        },
+      return S.suspend(() => S.Struct({ attributeGroup: S.optional(__S(272, __c34, 0)) })).annotate(
+        { identifier: "CreateAttributeGroupResponse" },
       );
   }
 }

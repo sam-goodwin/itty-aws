@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1164,9 +1164,7 @@ function __c2(j: number): any {
           KmsKeyId: S.optional(S.String),
           ErrorReportConfiguration: __S(81, __c5, 1),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateScheduledQueryRequest",
-      });
+      ).annotate({ identifier: "CreateScheduledQueryRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Arn: S.String })).annotate({
         identifier: "CreateScheduledQueryResponse",
@@ -1204,9 +1202,7 @@ function __c4(j: number): any {
           TargetMultiMeasureAttributeName: S.optional(S.String),
           MeasureValueType: S.String,
         }),
-      ).annotate({
-        identifier: "MultiMeasureAttributeMapping",
-      });
+      ).annotate({ identifier: "MultiMeasureAttributeMapping" });
     case 5:
       return S.Array(__S(68, __c4, 4));
     case 6:
@@ -1279,17 +1275,13 @@ function __c7(j: number): any {
         S.Struct({ ScheduledQueryArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteScheduledQueryRequest",
-      });
+      ).annotate({ identifier: "DeleteScheduledQueryRequest" });
   }
 }
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteScheduledQueryResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteScheduledQueryResponse" });
   }
 }
 function __c9(j: number): any {
@@ -1299,9 +1291,7 @@ function __c9(j: number): any {
         S.Struct({}).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeAccountSettingsRequest",
-      });
+      ).annotate({ identifier: "DescribeAccountSettingsRequest" });
   }
 }
 function __c10(j: number): any {
@@ -1309,9 +1299,7 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ SnsConfiguration: S.optional(__S(48, __c3, 0)), RoleArn: S.String }),
-      ).annotate({
-        identifier: "AccountSettingsNotificationConfiguration",
-      });
+      ).annotate({ identifier: "AccountSettingsNotificationConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1327,9 +1315,7 @@ function __c10(j: number): any {
           NotificationConfiguration: S.optional(__S(160, __c10, 0)),
           LastUpdate: S.optional(__S(161, __c10, 1)),
         }),
-      ).annotate({
-        identifier: "ProvisionedCapacityResponse",
-      });
+      ).annotate({ identifier: "ProvisionedCapacityResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1344,9 +1330,7 @@ function __c10(j: number): any {
           QueryPricingModel: S.optional(S.String),
           QueryCompute: S.optional(__S(163, __c10, 3)),
         }),
-      ).annotate({
-        identifier: "DescribeAccountSettingsResponse",
-      });
+      ).annotate({ identifier: "DescribeAccountSettingsResponse" });
   }
 }
 function __c11(j: number): any {
@@ -1372,9 +1356,7 @@ function __c12(j: number): any {
         S.Struct({ ScheduledQueryArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeScheduledQueryRequest",
-      });
+      ).annotate({ identifier: "DescribeScheduledQueryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1395,9 +1377,7 @@ function __c12(j: number): any {
           OutputRows: S.optional(S.Number),
           OutputBytes: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "ScheduledQueryInsightsResponse",
-      });
+      ).annotate({ identifier: "ScheduledQueryInsightsResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({ BucketName: S.optional(S.String), ObjectKey: S.optional(S.String) }),
@@ -1439,9 +1419,7 @@ function __c12(j: number): any {
           LastRunSummary: S.optional(__S(197, __c12, 5)),
           RecentlyFailedRuns: S.optional(__S(198, __c12, 6)),
         }),
-      ).annotate({
-        identifier: "ScheduledQueryDescription",
-      });
+      ).annotate({ identifier: "ScheduledQueryDescription" });
     case 8:
       return S.suspend(() => S.Struct({ ScheduledQuery: __S(199, __c12, 7) })).annotate({
         identifier: "DescribeScheduledQueryResponse",
@@ -1488,9 +1466,7 @@ function __c15(j: number): any {
           ClientToken: S.optional(SensitiveString).pipe(T.IdempotencyToken()),
           QueryInsights: S.optional(__S(256, __c16, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ExecuteScheduledQueryRequest",
-      });
+      ).annotate({ identifier: "ExecuteScheduledQueryRequest" });
   }
 }
 function __c16(j: number): any {
@@ -1508,9 +1484,7 @@ function __c17(j: number): any {
         S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListScheduledQueriesRequest",
-      });
+      ).annotate({ identifier: "ListScheduledQueriesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ DatabaseName: S.optional(S.String), TableName: S.optional(S.String) }),
@@ -1538,9 +1512,7 @@ function __c17(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({ ScheduledQueries: __S(276, __c17, 4), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListScheduledQueriesResponse",
-      });
+      ).annotate({ identifier: "ListScheduledQueriesResponse" });
   }
 }
 function __c18(j: number): any {
@@ -1552,15 +1524,11 @@ function __c18(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Tags: __S(97, __c6, 1), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
+      ).annotate({ identifier: "ListTagsForResourceResponse" });
   }
 }
 function __c19(j: number): any {
@@ -1760,9 +1728,7 @@ function __c24(j: number): any {
           TargetQueryTCU: S.Number,
           NotificationConfiguration: S.optional(__S(160, __c10, 0)),
         }),
-      ).annotate({
-        identifier: "ProvisionedCapacityRequest",
-      });
+      ).annotate({ identifier: "ProvisionedCapacityRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1777,9 +1743,7 @@ function __c24(j: number): any {
           QueryPricingModel: S.optional(S.String),
           QueryCompute: S.optional(__S(385, __c24, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateAccountSettingsRequest",
-      });
+      ).annotate({ identifier: "UpdateAccountSettingsRequest" });
   }
 }
 function __c25(j: number): any {
@@ -1789,9 +1753,7 @@ function __c25(j: number): any {
         S.Struct({ ScheduledQueryArn: S.String, State: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateScheduledQueryRequest",
-      });
+      ).annotate({ identifier: "UpdateScheduledQueryRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -978,9 +978,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeregisterIdentityProviderRequest",
-      });
+      ).annotate({ identifier: "DeregisterIdentityProviderRequest" });
   }
 }
 function __c1(j: number): any {
@@ -1052,20 +1050,13 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListIdentityProvidersRequest",
-      });
+      ).annotate({ identifier: "ListIdentityProvidersRequest" });
     case 1:
       return S.Array(__S(9, __c1, 1));
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          IdentityProviderSummaries: __S(33, __c4, 1),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListIdentityProvidersResponse",
-      });
+        S.Struct({ IdentityProviderSummaries: __S(33, __c4, 1), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListIdentityProvidersResponse" });
   }
 }
 function __c5(j: number): any {
@@ -1142,9 +1133,7 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListLicenseServerEndpointsRequest",
-      });
+      ).annotate({ identifier: "ListLicenseServerEndpointsRequest" });
     case 1:
       return S.Array(__S(235, __c29, 3));
     case 2:
@@ -1153,9 +1142,7 @@ function __c7(j: number): any {
           LicenseServerEndpoints: S.optional(__S(57, __c7, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListLicenseServerEndpointsResponse",
-      });
+      ).annotate({ identifier: "ListLicenseServerEndpointsResponse" });
   }
 }
 function __c8(j: number): any {
@@ -1178,9 +1165,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListProductSubscriptionsRequest",
-      });
+      ).annotate({ identifier: "ListProductSubscriptionsRequest" });
     case 1:
       return S.Array(__S(72, __c9, 0));
     case 2:
@@ -1189,9 +1174,7 @@ function __c8(j: number): any {
           ProductUserSummaries: S.optional(__S(65, __c8, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListProductSubscriptionsResponse",
-      });
+      ).annotate({ identifier: "ListProductSubscriptionsResponse" });
   }
 }
 function __c9(j: number): any {
@@ -1227,9 +1210,7 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(208, __c26, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -1256,9 +1237,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListUserAssociationsRequest",
-      });
+      ).annotate({ identifier: "ListUserAssociationsRequest" });
     case 1:
       return S.Array(__S(192, __c24, 0));
     case 2:
@@ -1267,9 +1246,7 @@ function __c11(j: number): any {
           InstanceUserSummaries: S.optional(__S(89, __c11, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListUserAssociationsResponse",
-      });
+      ).annotate({ identifier: "ListUserAssociationsResponse" });
   }
 }
 function __c12(j: number): any {
@@ -1291,9 +1268,7 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RegisterIdentityProviderRequest",
-      });
+      ).annotate({ identifier: "RegisterIdentityProviderRequest" });
   }
 }
 function __c13(j: number): any {
@@ -1316,9 +1291,7 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartProductSubscriptionRequest",
-      });
+      ).annotate({ identifier: "StartProductSubscriptionRequest" });
   }
 }
 function __c14(j: number): any {
@@ -1349,9 +1322,7 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StopProductSubscriptionRequest",
-      });
+      ).annotate({ identifier: "StopProductSubscriptionRequest" });
   }
 }
 function __c16(j: number): any {
@@ -1377,9 +1348,7 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TagResourceResponse" });
   }
 }
 function __c18(j: number): any {
@@ -1429,9 +1398,7 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateIdentityProviderSettingsRequest",
-      });
+      ).annotate({ identifier: "UpdateIdentityProviderSettingsRequest" });
   }
 }
 function __c20(j: number): any {
@@ -1487,9 +1454,7 @@ function __c22(j: number): any {
           ActiveDirectoryType: S.optional(S.String),
           IsSharedActiveDirectory: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "ActiveDirectoryIdentityProvider",
-      });
+      ).annotate({ identifier: "ActiveDirectoryIdentityProvider" });
     case 3:
       return S.Union([
         /*@__PURE__*/ S.Struct({ ActiveDirectoryIdentityProvider: __S(178, __c22, 2) }),
@@ -1568,18 +1533,14 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateLicenseServerEndpointRequest",
-      });
+      ).annotate({ identifier: "CreateLicenseServerEndpointRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           IdentityProviderArn: S.optional(S.String),
           LicenseServerEndpointArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateLicenseServerEndpointResponse",
-      });
+      ).annotate({ identifier: "CreateLicenseServerEndpointResponse" });
   }
 }
 function __c28(j: number): any {
@@ -1596,15 +1557,11 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteLicenseServerEndpointRequest",
-      });
+      ).annotate({ identifier: "DeleteLicenseServerEndpointRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ LicenseServerEndpoint: S.optional(__S(235, __c29, 3)) }),
-      ).annotate({
-        identifier: "DeleteLicenseServerEndpointResponse",
-      });
+      ).annotate({ identifier: "DeleteLicenseServerEndpointResponse" });
   }
 }
 function __c29(j: number): any {

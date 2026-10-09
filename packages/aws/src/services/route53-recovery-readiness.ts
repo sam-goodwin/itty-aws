@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -115,7 +115,7 @@ export class ValidationException
     /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type __listOf__string = string[];
-const __listOf__string = /*@__PURE__*/ __L.at(__c38, 0);
+const __listOf__string = /*@__PURE__*/ __L.at(__c35, 0);
 export type Tags = { [key: string]: string | undefined };
 export interface CreateCellRequest {
   CellName?: string;
@@ -231,7 +231,7 @@ export interface Recommendation {
   RecommendationText?: string;
 }
 export type __listOfRecommendation = Recommendation[];
-const __listOfRecommendation = /*@__PURE__*/ __L.at(__c9, 2);
+const __listOfRecommendation = /*@__PURE__*/ __L.at(__c8, 2);
 export interface GetArchitectureRecommendationsResponse {
   LastAuditTimestamp?: Date;
   NextToken?: string;
@@ -258,7 +258,7 @@ export interface ReadinessCheckSummary {
   ReadinessCheckName?: string;
 }
 export type __listOfReadinessCheckSummary = ReadinessCheckSummary[];
-const __listOfReadinessCheckSummary = /*@__PURE__*/ __L.at(__c12, 1);
+const __listOfReadinessCheckSummary = /*@__PURE__*/ __L.at(__c11, 1);
 export interface GetCellReadinessSummaryResponse {
   NextToken?: string;
   Readiness?: Readiness;
@@ -284,7 +284,7 @@ export interface Message {
   MessageText?: string;
 }
 export type __listOfMessage = Message[];
-const __listOfMessage = /*@__PURE__*/ __L.at(__c15, 1);
+const __listOfMessage = /*@__PURE__*/ __L.at(__c14, 1);
 export interface RuleResult {
   LastCheckedTimestamp?: Date;
   Messages?: Message[];
@@ -292,7 +292,7 @@ export interface RuleResult {
   RuleId?: string;
 }
 export type __listOfRuleResult = RuleResult[];
-const __listOfRuleResult = /*@__PURE__*/ __L.at(__c14, 2);
+const __listOfRuleResult = /*@__PURE__*/ __L.at(__c13, 2);
 export interface GetReadinessCheckResourceStatusResponse {
   NextToken?: string;
   Readiness?: Readiness;
@@ -315,7 +315,7 @@ export interface ResourceResult {
   ResourceArn?: string;
 }
 export type __listOfResourceResult = ResourceResult[];
-const __listOfResourceResult = /*@__PURE__*/ __L.at(__c16, 2);
+const __listOfResourceResult = /*@__PURE__*/ __L.at(__c15, 2);
 export interface GetReadinessCheckStatusResponse {
   Messages?: Message[];
   NextToken?: string;
@@ -366,7 +366,7 @@ export interface CellOutput {
   Tags?: { [key: string]: string | undefined };
 }
 export type __listOfCellOutput = CellOutput[];
-const __listOfCellOutput = /*@__PURE__*/ __L.at(__c22, 1);
+const __listOfCellOutput = /*@__PURE__*/ __L.at(__c19, 1);
 export interface ListCellsResponse {
   Cells?: (CellOutput & {
     CellArn: __stringMax256;
@@ -398,7 +398,7 @@ export interface ReadinessCheckOutput {
   Tags?: { [key: string]: string | undefined };
 }
 export type __listOfReadinessCheckOutput = ReadinessCheckOutput[];
-const __listOfReadinessCheckOutput = /*@__PURE__*/ __L.at(__c24, 2);
+const __listOfReadinessCheckOutput = /*@__PURE__*/ __L.at(__c21, 1);
 export interface ListReadinessChecksResponse {
   NextToken?: string;
   ReadinessChecks?: (ReadinessCheckOutput & {
@@ -417,7 +417,7 @@ export interface RecoveryGroupOutput {
   Tags?: { [key: string]: string | undefined };
 }
 export type __listOfRecoveryGroupOutput = RecoveryGroupOutput[];
-const __listOfRecoveryGroupOutput = /*@__PURE__*/ __L.at(__c25, 1);
+const __listOfRecoveryGroupOutput = /*@__PURE__*/ __L.at(__c22, 1);
 export interface ListRecoveryGroupsResponse {
   NextToken?: string;
   RecoveryGroups?: (RecoveryGroupOutput & {
@@ -438,7 +438,7 @@ export interface ResourceSetOutput {
   Tags?: { [key: string]: string | undefined };
 }
 export type __listOfResourceSetOutput = ResourceSetOutput[];
-const __listOfResourceSetOutput = /*@__PURE__*/ __L.at(__c26, 1);
+const __listOfResourceSetOutput = /*@__PURE__*/ __L.at(__c23, 1);
 export interface ListResourceSetsResponse {
   NextToken?: string;
   ResourceSets?: (ResourceSetOutput & {
@@ -460,7 +460,7 @@ export interface ListRulesOutput {
   RuleId?: string;
 }
 export type __listOfListRulesOutput = ListRulesOutput[];
-const __listOfListRulesOutput = /*@__PURE__*/ __L.at(__c27, 2);
+const __listOfListRulesOutput = /*@__PURE__*/ __L.at(__c24, 2);
 export interface ListRulesResponse {
   NextToken?: string;
   Rules?: (ListRulesOutput & {
@@ -544,8 +544,8 @@ export const createCell: API.OperationMethod<
   CreateCellError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<CreateCellRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<CreateCellResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<CreateCellRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<CreateCellResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -574,8 +574,8 @@ export const createCrossAccountAuthorization: API.OperationMethod<
   CreateCrossAccountAuthorizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<CreateCrossAccountAuthorizationRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<CreateCrossAccountAuthorizationResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<CreateCrossAccountAuthorizationRequest>,
+  output: __S(289, __c36, 1) as any as S.Schema<CreateCrossAccountAuthorizationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -604,8 +604,8 @@ export const createReadinessCheck: API.OperationMethod<
   CreateReadinessCheckError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<CreateReadinessCheckRequest>,
-  output: __S(328, __c41, 0) as any as S.Schema<CreateReadinessCheckResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<CreateReadinessCheckRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<CreateReadinessCheckResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -634,8 +634,8 @@ export const createRecoveryGroup: API.OperationMethod<
   CreateRecoveryGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<CreateRecoveryGroupRequest>,
-  output: __S(344, __c43, 0) as any as S.Schema<CreateRecoveryGroupResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<CreateRecoveryGroupRequest>,
+  output: __S(320, __c40, 0) as any as S.Schema<CreateRecoveryGroupResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -665,7 +665,7 @@ export const createResourceSet: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateResourceSetRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<CreateResourceSetResponse>,
+  output: __S(14, __c1, 6) as any as S.Schema<CreateResourceSetResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -694,8 +694,8 @@ export const deleteCell: API.OperationMethod<
   DeleteCellError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeleteCellRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteCellResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteCellRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteCellResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -723,8 +723,8 @@ export const deleteCrossAccountAuthorization: API.OperationMethod<
   DeleteCrossAccountAuthorizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DeleteCrossAccountAuthorizationRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<DeleteCrossAccountAuthorizationResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<DeleteCrossAccountAuthorizationRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteCrossAccountAuthorizationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -752,8 +752,8 @@ export const deleteReadinessCheck: API.OperationMethod<
   DeleteReadinessCheckError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<DeleteReadinessCheckRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteReadinessCheckResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<DeleteReadinessCheckRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteReadinessCheckResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -782,8 +782,8 @@ export const deleteRecoveryGroup: API.OperationMethod<
   DeleteRecoveryGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<DeleteRecoveryGroupRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteRecoveryGroupResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<DeleteRecoveryGroupRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteRecoveryGroupResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -812,8 +812,8 @@ export const deleteResourceSet: API.OperationMethod<
   DeleteResourceSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<DeleteResourceSetRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteResourceSetResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<DeleteResourceSetRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteResourceSetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -842,8 +842,8 @@ export const getArchitectureRecommendations: API.OperationMethod<
   GetArchitectureRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<GetArchitectureRecommendationsRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<GetArchitectureRecommendationsResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetArchitectureRecommendationsRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<GetArchitectureRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -872,8 +872,8 @@ export const getCell: API.OperationMethod<
   GetCellError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<GetCellRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<GetCellResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetCellRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<GetCellResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -903,8 +903,8 @@ export const getCellReadinessSummary: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReadinessCheckSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<GetCellReadinessSummaryRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<GetCellReadinessSummaryResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetCellReadinessSummaryRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<GetCellReadinessSummaryResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -939,8 +939,8 @@ export const getReadinessCheck: API.OperationMethod<
   GetReadinessCheckError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<GetReadinessCheckRequest>,
-  output: __S(328, __c41, 0) as any as S.Schema<GetReadinessCheckResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetReadinessCheckRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<GetReadinessCheckResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -970,8 +970,8 @@ export const getReadinessCheckResourceStatus: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RuleResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<GetReadinessCheckResourceStatusRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<GetReadinessCheckResourceStatusResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetReadinessCheckResourceStatusRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<GetReadinessCheckResourceStatusResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1007,8 +1007,8 @@ export const getReadinessCheckStatus: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<GetReadinessCheckStatusRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<GetReadinessCheckStatusResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetReadinessCheckStatusRequest>,
+  output: __S(123, __c15, 3) as any as S.Schema<GetReadinessCheckStatusResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1043,8 +1043,8 @@ export const getRecoveryGroup: API.OperationMethod<
   GetRecoveryGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<GetRecoveryGroupRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<GetRecoveryGroupResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<GetRecoveryGroupRequest>,
+  output: __S(320, __c40, 0) as any as S.Schema<GetRecoveryGroupResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1074,8 +1074,8 @@ export const getRecoveryGroupReadinessSummary: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReadinessCheckSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<GetRecoveryGroupReadinessSummaryRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<GetRecoveryGroupReadinessSummaryResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<GetRecoveryGroupReadinessSummaryRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<GetRecoveryGroupReadinessSummaryResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1110,8 +1110,8 @@ export const getResourceSet: API.OperationMethod<
   GetResourceSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<GetResourceSetRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<GetResourceSetResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetResourceSetRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<GetResourceSetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1140,8 +1140,8 @@ export const listCells: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CellOutput
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<ListCellsRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<ListCellsResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<ListCellsRequest>,
+  output: __S(154, __c19, 2) as any as S.Schema<ListCellsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1175,8 +1175,8 @@ export const listCrossAccountAuthorizations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CrossAccountAuthorization
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<ListCrossAccountAuthorizationsRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<ListCrossAccountAuthorizationsResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<ListCrossAccountAuthorizationsRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<ListCrossAccountAuthorizationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1210,8 +1210,8 @@ export const listReadinessChecks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReadinessCheckOutput
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<ListReadinessChecksRequest>,
-  output: __S(195, __c24, 3) as any as S.Schema<ListReadinessChecksResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<ListReadinessChecksRequest>,
+  output: __S(170, __c21, 2) as any as S.Schema<ListReadinessChecksResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1245,8 +1245,8 @@ export const listRecoveryGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecoveryGroupOutput
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<ListRecoveryGroupsRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<ListRecoveryGroupsResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<ListRecoveryGroupsRequest>,
+  output: __S(178, __c22, 2) as any as S.Schema<ListRecoveryGroupsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1280,8 +1280,8 @@ export const listResourceSets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceSetOutput
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<ListResourceSetsRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<ListResourceSetsResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<ListResourceSetsRequest>,
+  output: __S(186, __c23, 2) as any as S.Schema<ListResourceSetsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1315,8 +1315,8 @@ export const listRules: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListRulesOutput
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<ListRulesRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<ListRulesResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<ListRulesRequest>,
+  output: __S(195, __c24, 3) as any as S.Schema<ListRulesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1348,8 +1348,8 @@ export const listTagsForResources: API.OperationMethod<
   ListTagsForResourcesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<ListTagsForResourcesRequest>,
-  output: __S(225, __c28, 1) as any as S.Schema<ListTagsForResourcesResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<ListTagsForResourcesRequest>,
+  output: __S(201, __c25, 1) as any as S.Schema<ListTagsForResourcesResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1370,8 +1370,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<TagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1392,8 +1392,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1416,8 +1416,8 @@ export const updateCell: API.OperationMethod<
   UpdateCellError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<UpdateCellRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<UpdateCellResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<UpdateCellRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<UpdateCellResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1446,8 +1446,8 @@ export const updateReadinessCheck: API.OperationMethod<
   UpdateReadinessCheckError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<UpdateReadinessCheckRequest>,
-  output: __S(328, __c41, 0) as any as S.Schema<UpdateReadinessCheckResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<UpdateReadinessCheckRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<UpdateReadinessCheckResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1476,8 +1476,8 @@ export const updateRecoveryGroup: API.OperationMethod<
   UpdateRecoveryGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<UpdateRecoveryGroupRequest>,
-  output: __S(344, __c43, 0) as any as S.Schema<UpdateRecoveryGroupResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<UpdateRecoveryGroupRequest>,
+  output: __S(320, __c40, 0) as any as S.Schema<UpdateRecoveryGroupResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1506,8 +1506,8 @@ export const updateResourceSet: API.OperationMethod<
   UpdateResourceSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<UpdateResourceSetRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<UpdateResourceSetResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<UpdateResourceSetRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<UpdateResourceSetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1529,7 +1529,7 @@ function __c0(j: number): any {
           ResourceSetName: S.optional(S.String),
           ResourceSetType: S.optional(S.String),
           Resources: S.optional(__listOfResource),
-          Tags: S.optional(__S(296, __c37, 0)),
+          Tags: S.optional(__S(272, __c34, 0)),
         })
           .pipe(
             S.encodeKeys({
@@ -1600,18 +1600,14 @@ function __c1(j: number): any {
       ).annotate({ identifier: "Resource" });
     case 5:
       return S.Array(__S(12, __c1, 4));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           ResourceSetArn: S.optional(S.String),
           ResourceSetName: S.optional(S.String),
           ResourceSetType: S.optional(S.String),
           Resources: S.optional(__listOfResource),
-          Tags: S.optional(__S(296, __c37, 0)),
+          Tags: S.optional(__S(272, __c34, 0)),
         }).pipe(
           S.encodeKeys({
             ResourceSetArn: "resourceSetArn",
@@ -1621,12 +1617,10 @@ function __c2(j: number): any {
             Tags: "tags",
           }),
         ),
-      ).annotate({
-        identifier: "CreateResourceSetResponse",
-      });
+      ).annotate({ identifier: "CreateResourceSetResponse" });
   }
 }
-function __c3(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1643,15 +1637,13 @@ function __c3(j: number): any {
       ).annotate({ identifier: "DeleteCellRequest" });
   }
 }
-function __c4(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteCellResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteCellResponse" });
   }
 }
-function __c5(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1670,16 +1662,10 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteCrossAccountAuthorizationRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteCrossAccountAuthorizationResponse",
-      });
+      ).annotate({ identifier: "DeleteCrossAccountAuthorizationRequest" });
   }
 }
-function __c6(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1693,12 +1679,10 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteReadinessCheckRequest",
-      });
+      ).annotate({ identifier: "DeleteReadinessCheckRequest" });
   }
 }
-function __c7(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1712,12 +1696,10 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteRecoveryGroupRequest",
-      });
+      ).annotate({ identifier: "DeleteRecoveryGroupRequest" });
   }
 }
-function __c8(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1734,7 +1716,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "DeleteResourceSetRequest" });
   }
 }
-function __c9(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1755,9 +1737,7 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetArchitectureRecommendationsRequest",
-      });
+      ).annotate({ identifier: "GetArchitectureRecommendationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ RecommendationText: S.optional(S.String) }).pipe(
@@ -1765,7 +1745,7 @@ function __c9(j: number): any {
         ),
       ).annotate({ identifier: "Recommendation" });
     case 2:
-      return S.Array(__S(73, __c9, 1));
+      return S.Array(__S(65, __c8, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1779,12 +1759,10 @@ function __c9(j: number): any {
             Recommendations: "recommendations",
           }),
         ),
-      ).annotate({
-        identifier: "GetArchitectureRecommendationsResponse",
-      });
+      ).annotate({ identifier: "GetArchitectureRecommendationsResponse" });
   }
 }
-function __c10(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1794,7 +1772,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "GetCellRequest" });
   }
 }
-function __c11(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1812,12 +1790,10 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetCellReadinessSummaryRequest",
-      });
+      ).annotate({ identifier: "GetCellReadinessSummaryRequest" });
   }
 }
-function __c12(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1827,7 +1803,7 @@ function __c12(j: number): any {
         }).pipe(S.encodeKeys({ Readiness: "readiness", ReadinessCheckName: "readinessCheckName" })),
       ).annotate({ identifier: "ReadinessCheckSummary" });
     case 1:
-      return S.Array(__S(96, __c12, 0));
+      return S.Array(__S(88, __c11, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1841,12 +1817,10 @@ function __c12(j: number): any {
             ReadinessChecks: "readinessChecks",
           }),
         ),
-      ).annotate({
-        identifier: "GetCellReadinessSummaryResponse",
-      });
+      ).annotate({ identifier: "GetCellReadinessSummaryResponse" });
   }
 }
-function __c13(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1863,7 +1837,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "GetReadinessCheckRequest" });
   }
 }
-function __c14(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1885,9 +1859,7 @@ function __c14(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetReadinessCheckResourceStatusRequest",
-      });
+      ).annotate({ identifier: "GetReadinessCheckResourceStatusRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1905,7 +1877,7 @@ function __c14(j: number): any {
         ),
       ).annotate({ identifier: "RuleResult" });
     case 2:
-      return S.Array(__S(113, __c14, 1));
+      return S.Array(__S(105, __c13, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1913,12 +1885,10 @@ function __c14(j: number): any {
           Readiness: S.optional(S.String),
           Rules: S.optional(__listOfRuleResult),
         }).pipe(S.encodeKeys({ NextToken: "nextToken", Readiness: "readiness", Rules: "rules" })),
-      ).annotate({
-        identifier: "GetReadinessCheckResourceStatusResponse",
-      });
+      ).annotate({ identifier: "GetReadinessCheckResourceStatusResponse" });
   }
 }
-function __c15(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1927,10 +1897,10 @@ function __c15(j: number): any {
         ),
       ).annotate({ identifier: "Message" });
     case 1:
-      return S.Array(__S(120, __c15, 0));
+      return S.Array(__S(112, __c14, 0));
   }
 }
-function __c16(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1948,9 +1918,7 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetReadinessCheckStatusRequest",
-      });
+      ).annotate({ identifier: "GetReadinessCheckStatusRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1968,7 +1936,7 @@ function __c16(j: number): any {
         ),
       ).annotate({ identifier: "ResourceResult" });
     case 2:
-      return S.Array(__S(129, __c16, 1));
+      return S.Array(__S(121, __c15, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1984,12 +1952,10 @@ function __c16(j: number): any {
             Resources: "resources",
           }),
         ),
-      ).annotate({
-        identifier: "GetReadinessCheckStatusResponse",
-      });
+      ).annotate({ identifier: "GetReadinessCheckStatusResponse" });
   }
 }
-function __c17(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2006,27 +1972,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "GetRecoveryGroupRequest" });
   }
 }
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Cells: S.optional(__listOf__string),
-          RecoveryGroupArn: S.optional(S.String),
-          RecoveryGroupName: S.optional(S.String),
-          Tags: S.optional(__S(296, __c37, 0)),
-        }).pipe(
-          S.encodeKeys({
-            Cells: "cells",
-            RecoveryGroupArn: "recoveryGroupArn",
-            RecoveryGroupName: "recoveryGroupName",
-            Tags: "tags",
-          }),
-        ),
-      ).annotate({ identifier: "GetRecoveryGroupResponse" });
-  }
-}
-function __c19(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2044,12 +1990,10 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetRecoveryGroupReadinessSummaryRequest",
-      });
+      ).annotate({ identifier: "GetRecoveryGroupReadinessSummaryRequest" });
   }
 }
-function __c20(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2066,29 +2010,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "GetResourceSetRequest" });
   }
 }
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ResourceSetArn: S.optional(S.String),
-          ResourceSetName: S.optional(S.String),
-          ResourceSetType: S.optional(S.String),
-          Resources: S.optional(__listOfResource),
-          Tags: S.optional(__S(296, __c37, 0)),
-        }).pipe(
-          S.encodeKeys({
-            ResourceSetArn: "resourceSetArn",
-            ResourceSetName: "resourceSetName",
-            ResourceSetType: "resourceSetType",
-            Resources: "resources",
-            Tags: "tags",
-          }),
-        ),
-      ).annotate({ identifier: "GetResourceSetResponse" });
-  }
-}
-function __c22(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2098,7 +2020,7 @@ function __c22(j: number): any {
         }).pipe(T.all(T.Http({ method: "GET", uri: "/cells" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListCellsRequest" });
     case 1:
-      return S.Array(__S(288, __c36, 0));
+      return S.Array(__S(264, __c33, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ Cells: S.optional(__listOfCellOutput), NextToken: S.optional(S.String) }).pipe(
@@ -2107,7 +2029,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "ListCellsResponse" });
   }
 }
-function __c23(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2124,9 +2046,7 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListCrossAccountAuthorizationsRequest",
-      });
+      ).annotate({ identifier: "ListCrossAccountAuthorizationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2138,12 +2058,10 @@ function __c23(j: number): any {
             NextToken: "nextToken",
           }),
         ),
-      ).annotate({
-        identifier: "ListCrossAccountAuthorizationsResponse",
-      });
+      ).annotate({ identifier: "ListCrossAccountAuthorizationsResponse" });
   }
 }
-function __c24(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2153,39 +2071,19 @@ function __c24(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/readinesschecks" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListReadinessChecksRequest",
-      });
+      ).annotate({ identifier: "ListReadinessChecksRequest" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ReadinessCheckArn: S.optional(S.String),
-          ReadinessCheckName: S.optional(S.String),
-          ResourceSet: S.optional(S.String),
-          Tags: S.optional(__S(296, __c37, 0)),
-        }).pipe(
-          S.encodeKeys({
-            ReadinessCheckArn: "readinessCheckArn",
-            ReadinessCheckName: "readinessCheckName",
-            ResourceSet: "resourceSet",
-            Tags: "tags",
-          }),
-        ),
-      ).annotate({ identifier: "ReadinessCheckOutput" });
+      return S.Array(__S(304, __c38, 0));
     case 2:
-      return S.Array(__S(193, __c24, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           ReadinessChecks: S.optional(__listOfReadinessCheckOutput),
         }).pipe(S.encodeKeys({ NextToken: "nextToken", ReadinessChecks: "readinessChecks" })),
-      ).annotate({
-        identifier: "ListReadinessChecksResponse",
-      });
+      ).annotate({ identifier: "ListReadinessChecksResponse" });
   }
 }
-function __c25(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2195,23 +2093,19 @@ function __c25(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/recoverygroups" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListRecoveryGroupsRequest",
-      });
+      ).annotate({ identifier: "ListRecoveryGroupsRequest" });
     case 1:
-      return S.Array(__S(144, __c18, 0));
+      return S.Array(__S(320, __c40, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           RecoveryGroups: S.optional(__listOfRecoveryGroupOutput),
         }).pipe(S.encodeKeys({ NextToken: "nextToken", RecoveryGroups: "recoveryGroups" })),
-      ).annotate({
-        identifier: "ListRecoveryGroupsResponse",
-      });
+      ).annotate({ identifier: "ListRecoveryGroupsResponse" });
   }
 }
-function __c26(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2223,7 +2117,7 @@ function __c26(j: number): any {
         ),
       ).annotate({ identifier: "ListResourceSetsRequest" });
     case 1:
-      return S.Array(__S(168, __c21, 0));
+      return S.Array(__S(14, __c1, 6));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2233,7 +2127,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "ListResourceSetsResponse" });
   }
 }
-function __c27(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2258,7 +2152,7 @@ function __c27(j: number): any {
         ),
       ).annotate({ identifier: "ListRulesOutput" });
     case 2:
-      return S.Array(__S(217, __c27, 1));
+      return S.Array(__S(193, __c24, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2268,7 +2162,7 @@ function __c27(j: number): any {
       ).annotate({ identifier: "ListRulesResponse" });
   }
 }
-function __c28(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2282,24 +2176,20 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourcesRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourcesRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Tags: S.optional(__S(296, __c37, 0)) }).pipe(S.encodeKeys({ Tags: "tags" })),
-      ).annotate({
-        identifier: "ListTagsForResourcesResponse",
-      });
+        S.Struct({ Tags: S.optional(__S(272, __c34, 0)) }).pipe(S.encodeKeys({ Tags: "tags" })),
+      ).annotate({ identifier: "ListTagsForResourcesResponse" });
   }
 }
-function __c29(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          Tags: S.optional(__S(296, __c37, 0)),
+          Tags: S.optional(__S(272, __c34, 0)),
         })
           .pipe(S.encodeKeys({ Tags: "tags" }))
           .pipe(
@@ -2315,7 +2205,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c30(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2335,7 +2225,7 @@ function __c30(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c31(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2357,7 +2247,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "UpdateCellRequest" });
   }
 }
-function __c32(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2376,12 +2266,10 @@ function __c32(j: number): any {
               rules,
             ),
           ),
-      ).annotate({
-        identifier: "UpdateReadinessCheckRequest",
-      });
+      ).annotate({ identifier: "UpdateReadinessCheckRequest" });
   }
 }
-function __c33(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2400,12 +2288,10 @@ function __c33(j: number): any {
               rules,
             ),
           ),
-      ).annotate({
-        identifier: "UpdateRecoveryGroupRequest",
-      });
+      ).annotate({ identifier: "UpdateRecoveryGroupRequest" });
   }
 }
-function __c34(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2428,21 +2314,21 @@ function __c34(j: number): any {
       ).annotate({ identifier: "UpdateResourceSetRequest" });
   }
 }
-function __c35(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           CellName: S.optional(S.String),
           Cells: S.optional(__listOf__string),
-          Tags: S.optional(__S(296, __c37, 0)),
+          Tags: S.optional(__S(272, __c34, 0)),
         })
           .pipe(S.encodeKeys({ CellName: "cellName", Cells: "cells", Tags: "tags" }))
           .pipe(T.all(T.Http({ method: "POST", uri: "/cells" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateCellRequest" });
   }
 }
-function __c36(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2451,7 +2337,7 @@ function __c36(j: number): any {
           CellName: S.optional(S.String),
           Cells: S.optional(__listOf__string),
           ParentReadinessScopes: S.optional(__listOf__string),
-          Tags: S.optional(__S(296, __c37, 0)),
+          Tags: S.optional(__S(272, __c34, 0)),
         }).pipe(
           S.encodeKeys({
             CellArn: "cellArn",
@@ -2464,19 +2350,19 @@ function __c36(j: number): any {
       ).annotate({ identifier: "CreateCellResponse" });
   }
 }
-function __c37(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c38(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c39(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2492,27 +2378,23 @@ function __c39(j: number): any {
               rules,
             ),
           ),
-      ).annotate({
-        identifier: "CreateCrossAccountAuthorizationRequest",
-      });
+      ).annotate({ identifier: "CreateCrossAccountAuthorizationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ CrossAccountAuthorization: S.optional(S.String) }).pipe(
           S.encodeKeys({ CrossAccountAuthorization: "crossAccountAuthorization" }),
         ),
-      ).annotate({
-        identifier: "CreateCrossAccountAuthorizationResponse",
-      });
+      ).annotate({ identifier: "CreateCrossAccountAuthorizationResponse" });
   }
 }
-function __c40(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ReadinessCheckName: S.optional(S.String),
           ResourceSetName: S.optional(S.String),
-          Tags: S.optional(__S(296, __c37, 0)),
+          Tags: S.optional(__S(272, __c34, 0)),
         })
           .pipe(
             S.encodeKeys({
@@ -2531,12 +2413,10 @@ function __c40(j: number): any {
               rules,
             ),
           ),
-      ).annotate({
-        identifier: "CreateReadinessCheckRequest",
-      });
+      ).annotate({ identifier: "CreateReadinessCheckRequest" });
   }
 }
-function __c41(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2544,7 +2424,7 @@ function __c41(j: number): any {
           ReadinessCheckArn: S.optional(S.String),
           ReadinessCheckName: S.optional(S.String),
           ResourceSet: S.optional(S.String),
-          Tags: S.optional(__S(296, __c37, 0)),
+          Tags: S.optional(__S(272, __c34, 0)),
         }).pipe(
           S.encodeKeys({
             ReadinessCheckArn: "readinessCheckArn",
@@ -2553,19 +2433,17 @@ function __c41(j: number): any {
             Tags: "tags",
           }),
         ),
-      ).annotate({
-        identifier: "CreateReadinessCheckResponse",
-      });
+      ).annotate({ identifier: "CreateReadinessCheckResponse" });
   }
 }
-function __c42(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           Cells: S.optional(__listOf__string),
           RecoveryGroupName: S.optional(S.String),
-          Tags: S.optional(__S(296, __c37, 0)),
+          Tags: S.optional(__S(272, __c34, 0)),
         })
           .pipe(
             S.encodeKeys({ Cells: "cells", RecoveryGroupName: "recoveryGroupName", Tags: "tags" }),
@@ -2573,12 +2451,10 @@ function __c42(j: number): any {
           .pipe(
             T.all(T.Http({ method: "POST", uri: "/recoverygroups" }), svc, auth, proto, ver, rules),
           ),
-      ).annotate({
-        identifier: "CreateRecoveryGroupRequest",
-      });
+      ).annotate({ identifier: "CreateRecoveryGroupRequest" });
   }
 }
-function __c43(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2586,7 +2462,7 @@ function __c43(j: number): any {
           Cells: S.optional(__listOf__string),
           RecoveryGroupArn: S.optional(S.String),
           RecoveryGroupName: S.optional(S.String),
-          Tags: S.optional(__S(296, __c37, 0)),
+          Tags: S.optional(__S(272, __c34, 0)),
         }).pipe(
           S.encodeKeys({
             Cells: "cells",
@@ -2595,9 +2471,7 @@ function __c43(j: number): any {
             Tags: "tags",
           }),
         ),
-      ).annotate({
-        identifier: "CreateRecoveryGroupResponse",
-      });
+      ).annotate({ identifier: "CreateRecoveryGroupResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

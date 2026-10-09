@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -829,8 +829,8 @@ export const acceptLink: API.OperationMethod<
   AcceptLinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656, __c41, 0) as any as S.Schema<AcceptLinkRequest>,
-  output: __S(704, __c44, 0) as any as S.Schema<AcceptLinkResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<AcceptLinkRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<AcceptLinkResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1136,7 +1136,7 @@ export const deleteLink: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(160, __c10, 0) as any as S.Schema<DeleteLinkRequest>,
-  output: __S(176, __c11, 0) as any as S.Schema<DeleteLinkResponse>,
+  output: __S(144, __c9, 0) as any as S.Schema<DeleteLinkResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1167,8 +1167,8 @@ export const deleteLinkRoutingRule: API.OperationMethod<
   DeleteLinkRoutingRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c12, 0) as any as S.Schema<DeleteLinkRoutingRuleRequest>,
-  output: __S(193, __c12, 1) as any as S.Schema<DeleteLinkRoutingRuleResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<DeleteLinkRoutingRuleRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<DeleteLinkRoutingRuleResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1199,7 +1199,7 @@ export const deleteOutboundExternalLink: API.OperationMethod<
   DeleteOutboundExternalLinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c13, 0) as any as S.Schema<DeleteOutboundExternalLinkRequest>,
+  input: __S(192, __c12, 0) as any as S.Schema<DeleteOutboundExternalLinkRequest>,
   output: __S(144, __c9, 0) as any as S.Schema<DeleteOutboundExternalLinkResponse>,
   errors: [
     AccessDeniedException,
@@ -1231,8 +1231,8 @@ export const deleteRequesterGateway: API.OperationMethod<
   DeleteRequesterGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c14, 0) as any as S.Schema<DeleteRequesterGatewayRequest>,
-  output: __S(240, __c15, 0) as any as S.Schema<DeleteRequesterGatewayResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<DeleteRequesterGatewayRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<DeleteRequesterGatewayResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1263,8 +1263,8 @@ export const deleteResponderGateway: API.OperationMethod<
   DeleteResponderGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c16, 0) as any as S.Schema<DeleteResponderGatewayRequest>,
-  output: __S(240, __c15, 0) as any as S.Schema<DeleteResponderGatewayResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<DeleteResponderGatewayRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<DeleteResponderGatewayResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1296,7 +1296,7 @@ export const disassociateCertificate: API.OperationMethod<
   DisassociateCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c17, 0) as any as S.Schema<DisassociateCertificateRequest>,
+  input: __S(256, __c16, 0) as any as S.Schema<DisassociateCertificateRequest>,
   output: __S(768, __c48, 0) as any as S.Schema<DisassociateCertificateResponse>,
   errors: [
     AccessDeniedException,
@@ -1328,8 +1328,8 @@ export const getCertificateAssociation: API.OperationMethod<
   GetCertificateAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c18, 0) as any as S.Schema<GetCertificateAssociationRequest>,
-  output: __S(289, __c18, 1) as any as S.Schema<GetCertificateAssociationResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<GetCertificateAssociationRequest>,
+  output: __S(273, __c17, 1) as any as S.Schema<GetCertificateAssociationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1358,8 +1358,8 @@ export const getInboundExternalLink: API.OperationMethod<
   GetInboundExternalLinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c19, 0) as any as S.Schema<GetInboundExternalLinkRequest>,
-  output: __S(305, __c19, 1) as any as S.Schema<GetInboundExternalLinkResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetInboundExternalLinkRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<GetInboundExternalLinkResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1391,8 +1391,8 @@ export const getLink: API.OperationMethod<
   GetLinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c20, 0) as any as S.Schema<GetLinkRequest>,
-  output: __S(321, __c20, 1) as any as S.Schema<GetLinkResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetLinkRequest>,
+  output: __S(305, __c19, 1) as any as S.Schema<GetLinkResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1422,8 +1422,8 @@ export const getLinkRoutingRule: API.OperationMethod<
   GetLinkRoutingRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<GetLinkRoutingRuleRequest>,
-  output: __S(337, __c21, 1) as any as S.Schema<GetLinkRoutingRuleResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<GetLinkRoutingRuleRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<GetLinkRoutingRuleResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1452,8 +1452,8 @@ export const getOutboundExternalLink: API.OperationMethod<
   GetOutboundExternalLinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c22, 0) as any as S.Schema<GetOutboundExternalLinkRequest>,
-  output: __S(353, __c22, 1) as any as S.Schema<GetOutboundExternalLinkResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetOutboundExternalLinkRequest>,
+  output: __S(337, __c21, 1) as any as S.Schema<GetOutboundExternalLinkResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1482,8 +1482,8 @@ export const getRequesterGateway: API.OperationMethod<
   GetRequesterGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c23, 0) as any as S.Schema<GetRequesterGatewayRequest>,
-  output: __S(369, __c23, 1) as any as S.Schema<GetRequesterGatewayResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetRequesterGatewayRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<GetRequesterGatewayResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1512,8 +1512,8 @@ export const getResponderGateway: API.OperationMethod<
   GetResponderGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<GetResponderGatewayRequest>,
-  output: __S(385, __c24, 1) as any as S.Schema<GetResponderGatewayResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetResponderGatewayRequest>,
+  output: __S(369, __c23, 1) as any as S.Schema<GetResponderGatewayResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1543,8 +1543,8 @@ export const listCertificateAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CertificateAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(400, __c25, 0) as any as S.Schema<ListCertificateAssociationsRequest>,
-  output: __S(403, __c25, 3) as any as S.Schema<ListCertificateAssociationsResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<ListCertificateAssociationsRequest>,
+  output: __S(387, __c24, 3) as any as S.Schema<ListCertificateAssociationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1580,8 +1580,8 @@ export const listLinkRoutingRules: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LinkRoutingRuleSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(416, __c26, 0) as any as S.Schema<ListLinkRoutingRulesRequest>,
-  output: __S(419, __c26, 3) as any as S.Schema<ListLinkRoutingRulesResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<ListLinkRoutingRulesRequest>,
+  output: __S(403, __c25, 3) as any as S.Schema<ListLinkRoutingRulesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1619,8 +1619,8 @@ export const listLinks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListLinksResponseStructure
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(432, __c27, 0) as any as S.Schema<ListLinksRequest>,
-  output: __S(435, __c27, 3) as any as S.Schema<ListLinksResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<ListLinksRequest>,
+  output: __S(419, __c26, 3) as any as S.Schema<ListLinksResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1653,8 +1653,8 @@ export const listRequesterGateways: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GatewayId
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<ListRequesterGatewaysRequest>,
-  output: __S(464, __c29, 0) as any as S.Schema<ListRequesterGatewaysResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<ListRequesterGatewaysRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<ListRequesterGatewaysResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1681,8 +1681,8 @@ export const listResponderGateways: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GatewayId
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<ListResponderGatewaysRequest>,
-  output: __S(464, __c29, 0) as any as S.Schema<ListResponderGatewaysResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<ListResponderGatewaysRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<ListResponderGatewaysResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1711,8 +1711,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(497, __c31, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(481, __c30, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1744,8 +1744,8 @@ export const rejectLink: API.OperationMethod<
   RejectLinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c32, 0) as any as S.Schema<RejectLinkRequest>,
-  output: __S(704, __c44, 0) as any as S.Schema<RejectLinkResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<RejectLinkRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<RejectLinkResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1775,8 +1775,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c33, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(544, __c34, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(528, __c33, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1805,8 +1805,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(560, __c35, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(544, __c34, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(528, __c33, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1838,8 +1838,8 @@ export const updateLink: API.OperationMethod<
   UpdateLinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c36, 0) as any as S.Schema<UpdateLinkRequest>,
-  output: __S(176, __c11, 0) as any as S.Schema<UpdateLinkResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<UpdateLinkRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<UpdateLinkResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1871,7 +1871,7 @@ export const updateLinkModuleFlow: API.OperationMethod<
   UpdateLinkModuleFlowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c37, 0) as any as S.Schema<UpdateLinkModuleFlowRequest>,
+  input: __S(576, __c36, 0) as any as S.Schema<UpdateLinkModuleFlowRequest>,
   output: __S(64, __c4, 0) as any as S.Schema<UpdateLinkModuleFlowResponse>,
   errors: [
     AccessDeniedException,
@@ -1904,8 +1904,8 @@ export const updateLinkRoutingRule: API.OperationMethod<
   UpdateLinkRoutingRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c38, 0) as any as S.Schema<UpdateLinkRoutingRuleRequest>,
-  output: __S(609, __c38, 1) as any as S.Schema<UpdateLinkRoutingRuleResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<UpdateLinkRoutingRuleRequest>,
+  output: __S(593, __c37, 1) as any as S.Schema<UpdateLinkRoutingRuleResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1936,8 +1936,8 @@ export const updateRequesterGateway: API.OperationMethod<
   UpdateRequesterGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c39, 0) as any as S.Schema<UpdateRequesterGatewayRequest>,
-  output: __S(240, __c15, 0) as any as S.Schema<UpdateRequesterGatewayResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<UpdateRequesterGatewayRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<UpdateRequesterGatewayResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1970,8 +1970,8 @@ export const updateResponderGateway: API.OperationMethod<
   UpdateResponderGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c40, 0) as any as S.Schema<UpdateResponderGatewayRequest>,
-  output: __S(641, __c40, 1) as any as S.Schema<UpdateResponderGatewayResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<UpdateResponderGatewayRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<UpdateResponderGatewayResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1993,7 +1993,7 @@ function __c0(j: number): any {
         S.Struct({
           gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
           peerGatewayId: S.String,
-          attributes: S.optional(__S(723, __c45, 3)),
+          attributes: S.optional(__S(722, __c45, 2)),
           httpResponderAllowed: S.optional(S.Boolean),
           tags: S.optional(__S(800, __c50, 0)),
           logSettings: __S(738, __c46, 2),
@@ -2018,9 +2018,9 @@ function __c0(j: number): any {
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           direction: S.optional(S.String),
-          flowModules: S.optional(__S(700, __c43, 12)),
-          pendingFlowModules: S.optional(__S(700, __c43, 12)),
-          attributes: S.optional(__S(723, __c45, 3)),
+          flowModules: S.optional(__S(684, __c42, 12)),
+          pendingFlowModules: S.optional(__S(684, __c42, 12)),
+          attributes: S.optional(__S(722, __c45, 2)),
           logSettings: S.optional(__S(738, __c46, 2)),
           connectivityType: S.optional(S.String),
           linkId: S.String,
@@ -2053,9 +2053,7 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateLinkRoutingRuleRequest",
-      });
+      ).annotate({ identifier: "CreateLinkRoutingRuleRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2063,9 +2061,7 @@ function __c1(j: number): any {
           status: S.String,
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
-      ).annotate({
-        identifier: "CreateLinkRoutingRuleResponse",
-      });
+      ).annotate({ identifier: "CreateLinkRoutingRuleResponse" });
   }
 }
 function __c2(j: number): any {
@@ -2094,7 +2090,7 @@ function __c3(j: number): any {
         S.Struct({
           clientToken: S.String.pipe(T.IdempotencyToken()),
           gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
-          attributes: S.optional(__S(723, __c45, 3)),
+          attributes: S.optional(__S(722, __c45, 2)),
           publicEndpoint: S.String,
           logSettings: __S(738, __c46, 2),
           tags: S.optional(__S(800, __c50, 0)),
@@ -2111,9 +2107,7 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateOutboundExternalLinkRequest",
-      });
+      ).annotate({ identifier: "CreateOutboundExternalLinkRequest" });
   }
 }
 function __c4(j: number): any {
@@ -2121,9 +2115,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ gatewayId: S.String, linkId: S.String, status: S.String }),
-      ).annotate({
-        identifier: "CreateOutboundExternalLinkResponse",
-      });
+      ).annotate({ identifier: "CreateOutboundExternalLinkResponse" });
   }
 }
 function __c5(j: number): any {
@@ -2132,8 +2124,8 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           vpcId: S.String,
-          subnetIds: __S(672, __c42, 0),
-          securityGroupIds: __S(672, __c42, 0),
+          subnetIds: __S(656, __c41, 0),
+          securityGroupIds: __S(656, __c41, 0),
           clientToken: S.String.pipe(T.IdempotencyToken()),
           description: S.optional(S.String),
           tags: S.optional(__S(800, __c50, 0)),
@@ -2147,15 +2139,11 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateRequesterGatewayRequest",
-      });
+      ).annotate({ identifier: "CreateRequesterGatewayRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ gatewayId: S.String, domainName: S.String, status: S.String }),
-      ).annotate({
-        identifier: "CreateRequesterGatewayResponse",
-      });
+      ).annotate({ identifier: "CreateRequesterGatewayResponse" });
   }
 }
 function __c6(j: number): any {
@@ -2164,14 +2152,14 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           vpcId: S.String,
-          subnetIds: __S(672, __c42, 0),
-          securityGroupIds: __S(672, __c42, 0),
+          subnetIds: __S(656, __c41, 0),
+          securityGroupIds: __S(656, __c41, 0),
           domainName: S.optional(S.String),
           port: S.Number,
           protocol: S.String,
-          listenerConfig: S.optional(__S(113, __c7, 1)),
-          trustStoreConfiguration: S.optional(__S(115, __c7, 3)),
-          managedEndpointConfiguration: S.optional(__S(119, __c7, 7)),
+          listenerConfig: S.optional(__S(112, __c7, 0)),
+          trustStoreConfiguration: S.optional(__S(114, __c7, 2)),
+          managedEndpointConfiguration: S.optional(__S(118, __c7, 6)),
           clientToken: S.String.pipe(T.IdempotencyToken()),
           description: S.optional(S.String),
           tags: S.optional(__S(800, __c50, 0)),
@@ -2187,38 +2175,32 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateResponderGatewayRequest",
-      });
+      ).annotate({ identifier: "CreateResponderGatewayRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           gatewayId: S.String,
           status: S.String,
-          listenerConfig: S.optional(__S(113, __c7, 1)),
+          listenerConfig: S.optional(__S(112, __c7, 0)),
           externalInboundEndpoint: S.optional(S.String),
           clientRoutingPolicy: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateResponderGatewayResponse",
-      });
+      ).annotate({ identifier: "CreateResponderGatewayResponse" });
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() => S.Struct({ protocols: __S(112, __c7, 0) })).annotate({
+      return S.suspend(() => S.Struct({ protocols: __S(704, __c44, 0) })).annotate({
         identifier: "ListenerConfig",
       });
-    case 2:
+    case 1:
       return S.Array(SensitiveString);
-    case 3:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ certificateAuthorityCertificates: __S(114, __c7, 2) }),
+        S.Struct({ certificateAuthorityCertificates: __S(113, __c7, 1) }),
       ).annotate({ identifier: "TrustStoreConfiguration" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           port: S.Number,
@@ -2231,17 +2213,15 @@ function __c7(j: number): any {
           unhealthyThresholdCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "HealthCheckConfig" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          autoScalingGroupNames: __S(672, __c42, 0),
+          autoScalingGroupNames: __S(656, __c41, 0),
           roleArn: S.String,
-          healthCheckConfig: S.optional(__S(116, __c7, 4)),
+          healthCheckConfig: S.optional(__S(115, __c7, 3)),
         }),
-      ).annotate({
-        identifier: "AutoScalingGroupsConfiguration",
-      });
-    case 6:
+      ).annotate({ identifier: "AutoScalingGroupsConfiguration" });
+    case 5:
       return S.suspend(() =>
         S.Struct({
           endpointsResourceName: S.String,
@@ -2251,13 +2231,11 @@ function __c7(j: number): any {
           clusterName: S.String,
           roleArn: S.String,
         }),
-      ).annotate({
-        identifier: "EksEndpointsConfiguration",
-      });
-    case 7:
+      ).annotate({ identifier: "EksEndpointsConfiguration" });
+    case 6:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ autoScalingGroups: __S(117, __c7, 5) }),
-        /*@__PURE__*/ S.Struct({ eksEndpoints: __S(118, __c7, 6) }),
+        /*@__PURE__*/ S.Struct({ autoScalingGroups: __S(116, __c7, 4) }),
+        /*@__PURE__*/ S.Struct({ eksEndpoints: __S(117, __c7, 5) }),
       ]);
   }
 }
@@ -2281,9 +2259,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteInboundExternalLinkRequest",
-      });
+      ).annotate({ identifier: "DeleteInboundExternalLinkRequest" });
   }
 }
 function __c9(j: number): any {
@@ -2317,14 +2293,6 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ linkId: S.String, status: S.String })).annotate({
-        identifier: "DeleteLinkResponse",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
@@ -2343,16 +2311,14 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteLinkRoutingRuleRequest",
-      });
+      ).annotate({ identifier: "DeleteLinkRoutingRuleRequest" });
     case 1:
       return S.suspend(() => S.Struct({ ruleId: S.String, status: S.String })).annotate({
         identifier: "DeleteLinkRoutingRuleResponse",
       });
   }
 }
-function __c13(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2372,12 +2338,10 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteOutboundExternalLinkRequest",
-      });
+      ).annotate({ identifier: "DeleteOutboundExternalLinkRequest" });
   }
 }
-function __c14(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2391,12 +2355,10 @@ function __c14(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteRequesterGatewayRequest",
-      });
+      ).annotate({ identifier: "DeleteRequesterGatewayRequest" });
   }
 }
-function __c15(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ gatewayId: S.String, status: S.String })).annotate({
@@ -2404,7 +2366,7 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2418,12 +2380,10 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteResponderGatewayRequest",
-      });
+      ).annotate({ identifier: "DeleteResponderGatewayRequest" });
   }
 }
-function __c17(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2440,12 +2400,10 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateCertificateRequest",
-      });
+      ).annotate({ identifier: "DisassociateCertificateRequest" });
   }
 }
-function __c18(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2462,9 +2420,7 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetCertificateAssociationRequest",
-      });
+      ).annotate({ identifier: "GetCertificateAssociationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2474,12 +2430,10 @@ function __c18(j: number): any {
           associatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "GetCertificateAssociationResponse",
-      });
+      ).annotate({ identifier: "GetCertificateAssociationResponse" });
   }
 }
-function __c19(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2499,9 +2453,7 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetInboundExternalLinkRequest",
-      });
+      ).annotate({ identifier: "GetInboundExternalLinkRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2509,21 +2461,19 @@ function __c19(j: number): any {
           linkId: S.String,
           status: S.String,
           domainName: S.String,
-          flowModules: S.optional(__S(700, __c43, 12)),
-          pendingFlowModules: S.optional(__S(700, __c43, 12)),
-          attributes: S.optional(__S(723, __c45, 3)),
+          flowModules: S.optional(__S(684, __c42, 12)),
+          pendingFlowModules: S.optional(__S(684, __c42, 12)),
+          attributes: S.optional(__S(722, __c45, 2)),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           tags: S.optional(__S(800, __c50, 0)),
           logSettings: S.optional(__S(738, __c46, 2)),
           connectivityType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetInboundExternalLinkResponse",
-      });
+      ).annotate({ identifier: "GetInboundExternalLinkResponse" });
   }
 }
-function __c20(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2550,9 +2500,9 @@ function __c20(j: number): any {
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           direction: S.optional(S.String),
-          flowModules: S.optional(__S(700, __c43, 12)),
-          pendingFlowModules: S.optional(__S(700, __c43, 12)),
-          attributes: S.optional(__S(723, __c45, 3)),
+          flowModules: S.optional(__S(684, __c42, 12)),
+          pendingFlowModules: S.optional(__S(684, __c42, 12)),
+          attributes: S.optional(__S(722, __c45, 2)),
           logSettings: S.optional(__S(738, __c46, 2)),
           connectivityType: S.optional(S.String),
           linkId: S.String,
@@ -2563,7 +2513,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "GetLinkResponse" });
   }
 }
-function __c21(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2584,9 +2534,7 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetLinkRoutingRuleRequest",
-      });
+      ).annotate({ identifier: "GetLinkRoutingRuleRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2600,12 +2548,10 @@ function __c21(j: number): any {
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           tags: S.optional(__S(800, __c50, 0)),
         }),
-      ).annotate({
-        identifier: "GetLinkRoutingRuleResponse",
-      });
+      ).annotate({ identifier: "GetLinkRoutingRuleResponse" });
   }
 }
-function __c22(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2625,9 +2571,7 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetOutboundExternalLinkRequest",
-      });
+      ).annotate({ identifier: "GetOutboundExternalLinkRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2635,21 +2579,19 @@ function __c22(j: number): any {
           linkId: S.String,
           status: S.String,
           publicEndpoint: S.String,
-          flowModules: S.optional(__S(700, __c43, 12)),
-          pendingFlowModules: S.optional(__S(700, __c43, 12)),
-          attributes: S.optional(__S(723, __c45, 3)),
+          flowModules: S.optional(__S(684, __c42, 12)),
+          pendingFlowModules: S.optional(__S(684, __c42, 12)),
+          attributes: S.optional(__S(722, __c45, 2)),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           tags: S.optional(__S(800, __c50, 0)),
           logSettings: S.optional(__S(738, __c46, 2)),
           connectivityType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetOutboundExternalLinkResponse",
-      });
+      ).annotate({ identifier: "GetOutboundExternalLinkResponse" });
   }
 }
-function __c23(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2663,9 +2605,7 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetRequesterGatewayRequest",
-      });
+      ).annotate({ identifier: "GetRequesterGatewayRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2675,19 +2615,17 @@ function __c23(j: number): any {
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           vpcId: S.String,
-          subnetIds: __S(672, __c42, 0),
-          securityGroupIds: __S(672, __c42, 0),
+          subnetIds: __S(656, __c41, 0),
+          securityGroupIds: __S(656, __c41, 0),
           gatewayId: S.String,
           tags: S.optional(__S(800, __c50, 0)),
           activeLinksCount: S.optional(S.Number),
           totalLinksCount: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "GetRequesterGatewayResponse",
-      });
+      ).annotate({ identifier: "GetRequesterGatewayResponse" });
   }
 }
-function __c24(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2701,15 +2639,13 @@ function __c24(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetResponderGatewayRequest",
-      });
+      ).annotate({ identifier: "GetResponderGatewayRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           vpcId: S.String,
-          subnetIds: __S(672, __c42, 0),
-          securityGroupIds: __S(672, __c42, 0),
+          subnetIds: __S(656, __c41, 0),
+          securityGroupIds: __S(656, __c41, 0),
           status: S.String,
           description: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -2717,9 +2653,9 @@ function __c24(j: number): any {
           domainName: S.optional(S.String),
           port: S.Number,
           protocol: S.String,
-          listenerConfig: S.optional(__S(113, __c7, 1)),
-          trustStoreConfiguration: S.optional(__S(115, __c7, 3)),
-          managedEndpointConfiguration: S.optional(__S(119, __c7, 7)),
+          listenerConfig: S.optional(__S(112, __c7, 0)),
+          trustStoreConfiguration: S.optional(__S(114, __c7, 2)),
+          managedEndpointConfiguration: S.optional(__S(118, __c7, 6)),
           gatewayId: S.String,
           tags: S.optional(__S(800, __c50, 0)),
           activeLinksCount: S.optional(S.Number),
@@ -2729,12 +2665,10 @@ function __c24(j: number): any {
           externalInboundEndpoint: S.optional(S.String),
           clientRoutingPolicy: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetResponderGatewayResponse",
-      });
+      ).annotate({ identifier: "GetResponderGatewayResponse" });
   }
 }
-function __c25(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2752,9 +2686,7 @@ function __c25(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListCertificateAssociationsRequest",
-      });
+      ).annotate({ identifier: "ListCertificateAssociationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2763,23 +2695,16 @@ function __c25(j: number): any {
           associatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "CertificateAssociationSummary",
-      });
+      ).annotate({ identifier: "CertificateAssociationSummary" });
     case 2:
-      return S.Array(__S(401, __c25, 1));
+      return S.Array(__S(385, __c24, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          certificateAssociations: __S(402, __c25, 2),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListCertificateAssociationsResponse",
-      });
+        S.Struct({ certificateAssociations: __S(386, __c24, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListCertificateAssociationsResponse" });
   }
 }
-function __c26(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2801,9 +2726,7 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListLinkRoutingRulesRequest",
-      });
+      ).annotate({ identifier: "ListLinkRoutingRulesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2816,16 +2739,14 @@ function __c26(j: number): any {
         }),
       ).annotate({ identifier: "LinkRoutingRuleSummary" });
     case 2:
-      return S.Array(__S(417, __c26, 1));
+      return S.Array(__S(401, __c25, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ rules: S.optional(__S(418, __c26, 2)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListLinkRoutingRulesResponse",
-      });
+        S.Struct({ rules: S.optional(__S(402, __c25, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListLinkRoutingRulesResponse" });
   }
 }
-function __c27(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2853,27 +2774,25 @@ function __c27(j: number): any {
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           direction: S.optional(S.String),
-          flowModules: S.optional(__S(700, __c43, 12)),
-          pendingFlowModules: S.optional(__S(700, __c43, 12)),
-          attributes: S.optional(__S(723, __c45, 3)),
+          flowModules: S.optional(__S(684, __c42, 12)),
+          pendingFlowModules: S.optional(__S(684, __c42, 12)),
+          attributes: S.optional(__S(722, __c45, 2)),
           logSettings: S.optional(__S(738, __c46, 2)),
           connectivityType: S.optional(S.String),
           linkId: S.String,
           tags: S.optional(__S(800, __c50, 0)),
           publicEndpoint: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListLinksResponseStructure",
-      });
+      ).annotate({ identifier: "ListLinksResponseStructure" });
     case 2:
-      return S.Array(__S(433, __c27, 1));
+      return S.Array(__S(417, __c26, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ links: S.optional(__S(434, __c27, 2)), nextToken: S.optional(S.String) }),
+        S.Struct({ links: S.optional(__S(418, __c26, 2)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListLinksResponse" });
   }
 }
-function __c28(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2890,22 +2809,18 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListRequesterGatewaysRequest",
-      });
+      ).annotate({ identifier: "ListRequesterGatewaysRequest" });
   }
 }
-function __c29(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ gatewayIds: S.optional(__S(672, __c42, 0)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListRequesterGatewaysResponse",
-      });
+        S.Struct({ gatewayIds: S.optional(__S(656, __c41, 0)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListRequesterGatewaysResponse" });
   }
 }
-function __c30(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2922,12 +2837,10 @@ function __c30(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListResponderGatewaysRequest",
-      });
+      ).annotate({ identifier: "ListResponderGatewaysRequest" });
   }
 }
-function __c31(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2941,16 +2854,14 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(800, __c50, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c32(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2970,7 +2881,7 @@ function __c32(j: number): any {
       ).annotate({ identifier: "RejectLinkRequest" });
   }
 }
-function __c33(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2990,21 +2901,19 @@ function __c33(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c34(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TagResourceResponse" });
   }
 }
-function __c35(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(672, __c42, 0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(656, __c41, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -3018,7 +2927,7 @@ function __c35(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c36(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3040,7 +2949,7 @@ function __c36(j: number): any {
       ).annotate({ identifier: "UpdateLinkRequest" });
   }
 }
-function __c37(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3048,7 +2957,7 @@ function __c37(j: number): any {
           clientToken: S.String.pipe(T.IdempotencyToken()),
           gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
           linkId: S.String.pipe(T.HttpLabel("linkId")),
-          modules: __S(700, __c43, 12),
+          modules: __S(684, __c42, 12),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/gateway/{gatewayId}/link/{linkId}/module-flow" }),
@@ -3059,12 +2968,10 @@ function __c37(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateLinkModuleFlowRequest",
-      });
+      ).annotate({ identifier: "UpdateLinkModuleFlowRequest" });
   }
 }
-function __c38(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3087,9 +2994,7 @@ function __c38(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateLinkRoutingRuleRequest",
-      });
+      ).annotate({ identifier: "UpdateLinkRoutingRuleRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3097,12 +3002,10 @@ function __c38(j: number): any {
           status: S.String,
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
-      ).annotate({
-        identifier: "UpdateLinkRoutingRuleResponse",
-      });
+      ).annotate({ identifier: "UpdateLinkRoutingRuleResponse" });
   }
 }
-function __c39(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3120,12 +3023,10 @@ function __c39(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateRequesterGatewayRequest",
-      });
+      ).annotate({ identifier: "UpdateRequesterGatewayRequest" });
   }
 }
-function __c40(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3133,9 +3034,9 @@ function __c40(j: number): any {
           domainName: S.optional(S.String),
           port: S.Number,
           protocol: S.String,
-          listenerConfig: S.optional(__S(113, __c7, 1)),
-          trustStoreConfiguration: S.optional(__S(115, __c7, 3)),
-          managedEndpointConfiguration: S.optional(__S(119, __c7, 7)),
+          listenerConfig: S.optional(__S(112, __c7, 0)),
+          trustStoreConfiguration: S.optional(__S(114, __c7, 2)),
+          managedEndpointConfiguration: S.optional(__S(118, __c7, 6)),
           clientToken: S.String.pipe(T.IdempotencyToken()),
           gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
           description: S.optional(S.String),
@@ -3150,9 +3051,7 @@ function __c40(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateResponderGatewayRequest",
-      });
+      ).annotate({ identifier: "UpdateResponderGatewayRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3160,19 +3059,17 @@ function __c40(j: number): any {
           status: S.String,
           clientRoutingPolicy: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "UpdateResponderGatewayResponse",
-      });
+      ).annotate({ identifier: "UpdateResponderGatewayResponse" });
   }
 }
-function __c41(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
           linkId: S.String.pipe(T.HttpLabel("linkId")),
-          attributes: S.optional(__S(723, __c45, 3)),
+          attributes: S.optional(__S(722, __c45, 2)),
           logSettings: __S(738, __c46, 2),
           timeoutInMillis: S.optional(S.Number),
         }).pipe(
@@ -3188,13 +3085,13 @@ function __c41(j: number): any {
       ).annotate({ identifier: "AcceptLinkRequest" });
   }
 }
-function __c42(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c43(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3205,17 +3102,17 @@ function __c43(j: number): any {
         }),
       ).annotate({ identifier: "NoBidModuleParameters" });
     case 1:
-      return S.suspend(() => S.Struct({ path: S.String, values: __S(672, __c42, 0) })).annotate({
+      return S.suspend(() => S.Struct({ path: S.String, values: __S(656, __c41, 0) })).annotate({
         identifier: "FilterCriterion",
       });
     case 2:
-      return S.Array(__S(689, __c43, 1));
+      return S.Array(__S(673, __c42, 1));
     case 3:
-      return S.suspend(() => S.Struct({ criteria: __S(690, __c43, 2) })).annotate({
+      return S.suspend(() => S.Struct({ criteria: __S(674, __c42, 2) })).annotate({
         identifier: "Filter",
       });
     case 4:
-      return S.Array(__S(691, __c43, 3));
+      return S.Array(__S(675, __c42, 3));
     case 5:
       return S.suspend(() => S.Struct({ noBidReasonCode: S.optional(S.Number) })).annotate({
         identifier: "NoBidAction",
@@ -3226,44 +3123,42 @@ function __c43(j: number): any {
       });
     case 7:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ noBid: __S(693, __c43, 5) }),
-        /*@__PURE__*/ S.Struct({ headerTag: __S(694, __c43, 6) }),
+        /*@__PURE__*/ S.Struct({ noBid: __S(677, __c42, 5) }),
+        /*@__PURE__*/ S.Struct({ headerTag: __S(678, __c42, 6) }),
       ]);
     case 8:
       return S.suspend(() =>
         S.Struct({
           filterType: S.String,
-          filterConfiguration: __S(692, __c43, 4),
-          action: __S(695, __c43, 7),
+          filterConfiguration: __S(676, __c42, 4),
+          action: __S(679, __c42, 7),
           holdbackPercentage: S.Number,
         }),
-      ).annotate({
-        identifier: "OpenRtbAttributeModuleParameters",
-      });
+      ).annotate({ identifier: "OpenRtbAttributeModuleParameters" });
     case 9:
       return S.suspend(() => S.Struct({ tps: S.optional(S.Number) })).annotate({
         identifier: "RateLimiterModuleParameters",
       });
     case 10:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ noBid: __S(688, __c43, 0) }),
-        /*@__PURE__*/ S.Struct({ openRtbAttribute: __S(696, __c43, 8) }),
-        /*@__PURE__*/ S.Struct({ rateLimiter: __S(697, __c43, 9) }),
+        /*@__PURE__*/ S.Struct({ noBid: __S(672, __c42, 0) }),
+        /*@__PURE__*/ S.Struct({ openRtbAttribute: __S(680, __c42, 8) }),
+        /*@__PURE__*/ S.Struct({ rateLimiter: __S(681, __c42, 9) }),
       ]);
     case 11:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
           name: S.String,
-          dependsOn: S.optional(__S(672, __c42, 0)),
-          moduleParameters: S.optional(__S(698, __c43, 10)),
+          dependsOn: S.optional(__S(656, __c41, 0)),
+          moduleParameters: S.optional(__S(682, __c42, 10)),
         }),
       ).annotate({ identifier: "ModuleConfiguration" });
     case 12:
-      return S.Array(__S(699, __c43, 11));
+      return S.Array(__S(683, __c42, 11));
   }
 }
-function __c44(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3274,9 +3169,9 @@ function __c44(j: number): any {
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           direction: S.optional(S.String),
-          flowModules: S.optional(__S(700, __c43, 12)),
-          pendingFlowModules: S.optional(__S(700, __c43, 12)),
-          attributes: S.optional(__S(723, __c45, 3)),
+          flowModules: S.optional(__S(684, __c42, 12)),
+          pendingFlowModules: S.optional(__S(684, __c42, 12)),
+          attributes: S.optional(__S(722, __c45, 2)),
           logSettings: S.optional(__S(738, __c46, 2)),
           connectivityType: S.optional(S.String),
           linkId: S.String,
@@ -3284,27 +3179,29 @@ function __c44(j: number): any {
       ).annotate({ identifier: "AcceptLinkResponse" });
   }
 }
-function __c45(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
-    case 1:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           httpCode: S.String,
           action: S.String,
-          loggingTypes: __S(720, __c45, 0),
+          loggingTypes: __S(704, __c44, 0),
           responseLoggingPercentage: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "ResponderErrorMaskingForHttpCode",
-      });
+      ).annotate({ identifier: "ResponderErrorMaskingForHttpCode" });
+    case 1:
+      return S.Array(__S(720, __c45, 0));
     case 2:
-      return S.Array(__S(721, __c45, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          responderErrorMasking: S.optional(__S(722, __c45, 2)),
+          responderErrorMasking: S.optional(__S(721, __c45, 1)),
           customerProvidedId: S.optional(S.String),
         }),
       ).annotate({ identifier: "LinkAttributes" });
@@ -3344,23 +3241,15 @@ function __c47(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateCertificateRequest",
-      });
+      ).annotate({ identifier: "AssociateCertificateRequest" });
   }
 }
 function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          gatewayId: S.String,
-          acmCertificateArn: S.String,
-          status: S.String,
-        }),
-      ).annotate({
-        identifier: "AssociateCertificateResponse",
-      });
+        S.Struct({ gatewayId: S.String, acmCertificateArn: S.String, status: S.String }),
+      ).annotate({ identifier: "AssociateCertificateResponse" });
   }
 }
 function __c49(j: number): any {
@@ -3370,7 +3259,7 @@ function __c49(j: number): any {
         S.Struct({
           clientToken: S.String.pipe(T.IdempotencyToken()),
           gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
-          attributes: S.optional(__S(723, __c45, 3)),
+          attributes: S.optional(__S(722, __c45, 2)),
           logSettings: __S(738, __c46, 2),
           tags: S.optional(__S(800, __c50, 0)),
         }).pipe(
@@ -3383,15 +3272,11 @@ function __c49(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateInboundExternalLinkRequest",
-      });
+      ).annotate({ identifier: "CreateInboundExternalLinkRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ gatewayId: S.String, linkId: S.String, status: S.String, domainName: S.String }),
-      ).annotate({
-        identifier: "CreateInboundExternalLinkResponse",
-      });
+      ).annotate({ identifier: "CreateInboundExternalLinkResponse" });
   }
 }
 function __c50(j: number): any {

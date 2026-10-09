@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -169,7 +169,7 @@ export const joinStorageSession: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<JoinStorageSessionInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<JoinStorageSessionResponse>,
+  output: __S(2, __c1, 0) as any as S.Schema<JoinStorageSessionResponse>,
   errors: [
     AccessDeniedException,
     ClientLimitExceededException,
@@ -212,8 +212,8 @@ export const joinStorageSessionAsViewer: API.OperationMethod<
   JoinStorageSessionAsViewerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c1, 0) as any as S.Schema<JoinStorageSessionAsViewerInput>,
-  output: __S(3, __c1, 1) as any as S.Schema<JoinStorageSessionAsViewerResponse>,
+  input: __S(4, __c2, 0) as any as S.Schema<JoinStorageSessionAsViewerInput>,
+  output: __S(2, __c1, 0) as any as S.Schema<JoinStorageSessionAsViewerResponse>,
   errors: [
     AccessDeniedException,
     ClientLimitExceededException,
@@ -241,13 +241,15 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "JoinStorageSessionInput" });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "JoinStorageSessionResponse",
-      });
   }
 }
 function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "JoinStorageSessionResponse" });
+  }
+}
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -261,13 +263,7 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "JoinStorageSessionAsViewerInput",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "JoinStorageSessionAsViewerResponse",
-      });
+      ).annotate({ identifier: "JoinStorageSessionAsViewerInput" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -128,7 +128,7 @@ export class EntityNotExistsException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       EntityIds: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(960, __c60, 0)).annotate({ identifier: "EntityIdList" }),
+        /*@__PURE__*/ S.suspend(() => __S(928, __c58, 0)).annotate({ identifier: "EntityIdList" }),
       ),
     },
     /*@__PURE__*/ T.HttpError(404),
@@ -1299,7 +1299,7 @@ export const createLabels: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(192, __c12, 0) as any as S.Schema<CreateLabelsRequest>,
-  output: __S(208, __c13, 0) as any as S.Schema<CreateLabelsResponse>,
+  output: __S(16, __c1, 0) as any as S.Schema<CreateLabelsResponse>,
   errors: [
     EntityNotExistsException,
     FailedDependencyException,
@@ -1332,8 +1332,8 @@ export const createNotificationSubscription: API.OperationMethod<
   CreateNotificationSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c14, 0) as any as S.Schema<CreateNotificationSubscriptionRequest>,
-  output: __S(225, __c14, 1) as any as S.Schema<CreateNotificationSubscriptionResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<CreateNotificationSubscriptionRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<CreateNotificationSubscriptionResponse>,
   errors: [
     InvalidArgumentException,
     ServiceUnavailableException,
@@ -1362,7 +1362,7 @@ export const createUser: API.OperationMethod<
   CreateUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c16, 0) as any as S.Schema<CreateUserRequest>,
+  input: __S(240, __c15, 0) as any as S.Schema<CreateUserRequest>,
   output: __S(64, __c4, 0) as any as S.Schema<CreateUserResponse>,
   errors: [
     EntityAlreadyExistsException,
@@ -1393,8 +1393,8 @@ export const deactivateUser: API.OperationMethod<
   DeactivateUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c17, 0) as any as S.Schema<DeactivateUserRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<DeactivateUserResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<DeactivateUserRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeactivateUserResponse>,
   errors: [
     EntityNotExistsException,
     FailedDependencyException,
@@ -1425,8 +1425,8 @@ export const deleteComment: API.OperationMethod<
   DeleteCommentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c19, 0) as any as S.Schema<DeleteCommentRequest>,
-  output: __S(208, __c13, 0) as any as S.Schema<DeleteCommentResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<DeleteCommentRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteCommentResponse>,
   errors: [
     DocumentLockedForCommentsException,
     EntityNotExistsException,
@@ -1458,7 +1458,7 @@ export const deleteCustomMetadata: API.OperationMethod<
   DeleteCustomMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c20, 0) as any as S.Schema<DeleteCustomMetadataRequest>,
+  input: __S(288, __c18, 0) as any as S.Schema<DeleteCustomMetadataRequest>,
   output: __S(16, __c1, 0) as any as S.Schema<DeleteCustomMetadataResponse>,
   errors: [
     EntityNotExistsException,
@@ -1493,8 +1493,8 @@ export const deleteDocument: API.OperationMethod<
   DeleteDocumentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<DeleteDocumentRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<DeleteDocumentResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<DeleteDocumentRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteDocumentResponse>,
   errors: [
     ConcurrentModificationException,
     ConflictingOperationException,
@@ -1530,7 +1530,7 @@ export const deleteDocumentVersion: API.OperationMethod<
   DeleteDocumentVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c22, 0) as any as S.Schema<DeleteDocumentVersionRequest>,
+  input: __S(320, __c20, 0) as any as S.Schema<DeleteDocumentVersionRequest>,
   output: __S(16, __c1, 0) as any as S.Schema<DeleteDocumentVersionResponse>,
   errors: [
     ConcurrentModificationException,
@@ -1567,8 +1567,8 @@ export const deleteFolder: API.OperationMethod<
   DeleteFolderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c23, 0) as any as S.Schema<DeleteFolderRequest>,
-  output: __S(208, __c13, 0) as any as S.Schema<DeleteFolderResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<DeleteFolderRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteFolderResponse>,
   errors: [
     ConcurrentModificationException,
     ConflictingOperationException,
@@ -1603,7 +1603,7 @@ export const deleteFolderContents: API.OperationMethod<
   DeleteFolderContentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<DeleteFolderContentsRequest>,
+  input: __S(352, __c22, 0) as any as S.Schema<DeleteFolderContentsRequest>,
   output: __S(16, __c1, 0) as any as S.Schema<DeleteFolderContentsResponse>,
   errors: [
     ConflictingOperationException,
@@ -1636,8 +1636,8 @@ export const deleteLabels: API.OperationMethod<
   DeleteLabelsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c25, 0) as any as S.Schema<DeleteLabelsRequest>,
-  output: __S(208, __c13, 0) as any as S.Schema<DeleteLabelsResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<DeleteLabelsRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteLabelsResponse>,
   errors: [
     EntityNotExistsException,
     FailedDependencyException,
@@ -1666,7 +1666,7 @@ export const deleteNotificationSubscription: API.OperationMethod<
   DeleteNotificationSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c26, 0) as any as S.Schema<DeleteNotificationSubscriptionRequest>,
+  input: __S(384, __c24, 0) as any as S.Schema<DeleteNotificationSubscriptionRequest>,
   output: __S(16, __c1, 0) as any as S.Schema<DeleteNotificationSubscriptionResponse>,
   errors: [
     EntityNotExistsException,
@@ -1697,8 +1697,8 @@ export const deleteUser: API.OperationMethod<
   DeleteUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c27, 0) as any as S.Schema<DeleteUserRequest>,
-  output: __S(208, __c13, 0) as any as S.Schema<DeleteUserResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<DeleteUserRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteUserResponse>,
   errors: [
     EntityNotExistsException,
     FailedDependencyException,
@@ -1728,8 +1728,8 @@ export const describeActivities: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Activity
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<DescribeActivitiesRequest>,
-  output: __S(455, __c28, 7) as any as S.Schema<DescribeActivitiesResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<DescribeActivitiesRequest>,
+  output: __S(423, __c26, 7) as any as S.Schema<DescribeActivitiesResponse>,
   errors: [
     FailedDependencyException,
     InvalidArgumentException,
@@ -1766,8 +1766,8 @@ export const describeComments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Comment
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<DescribeCommentsRequest>,
-  output: __S(498, __c31, 2) as any as S.Schema<DescribeCommentsResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<DescribeCommentsRequest>,
+  output: __S(466, __c29, 2) as any as S.Schema<DescribeCommentsResponse>,
   errors: [
     EntityNotExistsException,
     FailedDependencyException,
@@ -1809,8 +1809,8 @@ export const describeDocumentVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DocumentVersionMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(512, __c32, 0) as any as S.Schema<DescribeDocumentVersionsRequest>,
-  output: __S(514, __c32, 2) as any as S.Schema<DescribeDocumentVersionsResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<DescribeDocumentVersionsRequest>,
+  output: __S(482, __c30, 2) as any as S.Schema<DescribeDocumentVersionsResponse>,
   errors: [
     EntityNotExistsException,
     FailedDependencyException,
@@ -1856,8 +1856,8 @@ export const describeFolderContents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(544, __c34, 0) as any as S.Schema<DescribeFolderContentsRequest>,
-  output: __S(545, __c34, 1) as any as S.Schema<DescribeFolderContentsResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<DescribeFolderContentsRequest>,
+  output: __S(561, __c35, 1) as any as S.Schema<DescribeFolderContentsResponse>,
   errors: [
     EntityNotExistsException,
     FailedDependencyException,
@@ -1889,8 +1889,8 @@ export const describeGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GroupMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(608, __c38, 0) as any as S.Schema<DescribeGroupsRequest>,
-  output: __S(609, __c38, 1) as any as S.Schema<DescribeGroupsResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<DescribeGroupsRequest>,
+  output: __S(577, __c36, 1) as any as S.Schema<DescribeGroupsResponse>,
   errors: [
     FailedDependencyException,
     ServiceUnavailableException,
@@ -1923,8 +1923,8 @@ export const describeNotificationSubscriptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Subscription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(624, __c39, 0) as any as S.Schema<DescribeNotificationSubscriptionsRequest>,
-  output: __S(626, __c39, 2) as any as S.Schema<DescribeNotificationSubscriptionsResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<DescribeNotificationSubscriptionsRequest>,
+  output: __S(594, __c37, 2) as any as S.Schema<DescribeNotificationSubscriptionsResponse>,
   errors: [
     EntityNotExistsException,
     ServiceUnavailableException,
@@ -1958,8 +1958,8 @@ export const describeResourcePermissions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Principal
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(640, __c40, 0) as any as S.Schema<DescribeResourcePermissionsRequest>,
-  output: __S(645, __c40, 5) as any as S.Schema<DescribeResourcePermissionsResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<DescribeResourcePermissionsRequest>,
+  output: __S(613, __c38, 5) as any as S.Schema<DescribeResourcePermissionsResponse>,
   errors: [
     FailedDependencyException,
     InvalidArgumentException,
@@ -2004,8 +2004,8 @@ export const describeRootFolders: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FolderMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(656, __c41, 0) as any as S.Schema<DescribeRootFoldersRequest>,
-  output: __S(657, __c41, 1) as any as S.Schema<DescribeRootFoldersResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<DescribeRootFoldersRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<DescribeRootFoldersResponse>,
   errors: [
     FailedDependencyException,
     InvalidArgumentException,
@@ -2048,8 +2048,8 @@ export const describeUsers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   User
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(672, __c42, 0) as any as S.Schema<DescribeUsersRequest>,
-  output: __S(674, __c42, 2) as any as S.Schema<DescribeUsersResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<DescribeUsersRequest>,
+  output: __S(642, __c40, 2) as any as S.Schema<DescribeUsersResponse>,
   errors: [
     EntityNotExistsException,
     FailedDependencyException,
@@ -2093,7 +2093,7 @@ export const getCurrentUser: API.OperationMethod<
   GetCurrentUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(688, __c43, 0) as any as S.Schema<GetCurrentUserRequest>,
+  input: __S(656, __c41, 0) as any as S.Schema<GetCurrentUserRequest>,
   output: __S(64, __c4, 0) as any as S.Schema<GetCurrentUserResponse>,
   errors: [
     EntityNotExistsException,
@@ -2125,8 +2125,8 @@ export const getDocument: API.OperationMethod<
   GetDocumentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c44, 0) as any as S.Schema<GetDocumentRequest>,
-  output: __S(705, __c44, 1) as any as S.Schema<GetDocumentResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<GetDocumentRequest>,
+  output: __S(673, __c42, 1) as any as S.Schema<GetDocumentResponse>,
   errors: [
     EntityNotExistsException,
     FailedDependencyException,
@@ -2163,8 +2163,8 @@ export const getDocumentPath: API.OperationMethod<
   GetDocumentPathError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(720, __c45, 0) as any as S.Schema<GetDocumentPathRequest>,
-  output: __S(739, __c46, 3) as any as S.Schema<GetDocumentPathResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<GetDocumentPathRequest>,
+  output: __S(707, __c44, 3) as any as S.Schema<GetDocumentPathResponse>,
   errors: [
     EntityNotExistsException,
     FailedDependencyException,
@@ -2195,8 +2195,8 @@ export const getDocumentVersion: API.OperationMethod<
   GetDocumentVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(752, __c47, 0) as any as S.Schema<GetDocumentVersionRequest>,
-  output: __S(753, __c47, 1) as any as S.Schema<GetDocumentVersionResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<GetDocumentVersionRequest>,
+  output: __S(721, __c45, 1) as any as S.Schema<GetDocumentVersionResponse>,
   errors: [
     EntityNotExistsException,
     FailedDependencyException,
@@ -2229,8 +2229,8 @@ export const getFolder: API.OperationMethod<
   GetFolderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c48, 0) as any as S.Schema<GetFolderRequest>,
-  output: __S(769, __c48, 1) as any as S.Schema<GetFolderResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<GetFolderRequest>,
+  output: __S(737, __c46, 1) as any as S.Schema<GetFolderResponse>,
   errors: [
     EntityNotExistsException,
     FailedDependencyException,
@@ -2267,8 +2267,8 @@ export const getFolderPath: API.OperationMethod<
   GetFolderPathError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(784, __c49, 0) as any as S.Schema<GetFolderPathRequest>,
-  output: __S(739, __c46, 3) as any as S.Schema<GetFolderPathResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<GetFolderPathRequest>,
+  output: __S(707, __c44, 3) as any as S.Schema<GetFolderPathResponse>,
   errors: [
     EntityNotExistsException,
     FailedDependencyException,
@@ -2298,8 +2298,8 @@ export const getResources: API.OperationMethod<
   GetResourcesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c50, 0) as any as S.Schema<GetResourcesRequest>,
-  output: __S(801, __c50, 1) as any as S.Schema<GetResourcesResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<GetResourcesRequest>,
+  output: __S(561, __c35, 1) as any as S.Schema<GetResourcesResponse>,
   errors: [
     FailedDependencyException,
     InvalidArgumentException,
@@ -2344,8 +2344,8 @@ export const initiateDocumentVersionUpload: API.OperationMethod<
   InitiateDocumentVersionUploadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(816, __c51, 0) as any as S.Schema<InitiateDocumentVersionUploadRequest>,
-  output: __S(818, __c51, 2) as any as S.Schema<InitiateDocumentVersionUploadResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<InitiateDocumentVersionUploadRequest>,
+  output: __S(786, __c49, 2) as any as S.Schema<InitiateDocumentVersionUploadResponse>,
   errors: [
     DraftUploadOutOfSyncException,
     EntityAlreadyExistsException,
@@ -2382,7 +2382,7 @@ export const removeAllResourcePermissions: API.OperationMethod<
   RemoveAllResourcePermissionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c52, 0) as any as S.Schema<RemoveAllResourcePermissionsRequest>,
+  input: __S(800, __c50, 0) as any as S.Schema<RemoveAllResourcePermissionsRequest>,
   output: __S(16, __c1, 0) as any as S.Schema<RemoveAllResourcePermissionsResponse>,
   errors: [
     FailedDependencyException,
@@ -2411,7 +2411,7 @@ export const removeResourcePermission: API.OperationMethod<
   RemoveResourcePermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(848, __c53, 0) as any as S.Schema<RemoveResourcePermissionRequest>,
+  input: __S(816, __c51, 0) as any as S.Schema<RemoveResourcePermissionRequest>,
   output: __S(16, __c1, 0) as any as S.Schema<RemoveResourcePermissionResponse>,
   errors: [
     FailedDependencyException,
@@ -2443,7 +2443,7 @@ export const restoreDocumentVersions: API.OperationMethod<
   RestoreDocumentVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c54, 0) as any as S.Schema<RestoreDocumentVersionsRequest>,
+  input: __S(832, __c52, 0) as any as S.Schema<RestoreDocumentVersionsRequest>,
   output: __S(16, __c1, 0) as any as S.Schema<RestoreDocumentVersionsResponse>,
   errors: [
     ConcurrentModificationException,
@@ -2476,8 +2476,8 @@ export const searchResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResponseItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(888, __c55, 8) as any as S.Schema<SearchResourcesRequest>,
-  output: __S(891, __c55, 11) as any as S.Schema<SearchResourcesResponse>,
+  input: __S(856, __c53, 8) as any as S.Schema<SearchResourcesRequest>,
+  output: __S(859, __c53, 11) as any as S.Schema<SearchResourcesResponse>,
   errors: [
     InvalidArgumentException,
     ServiceUnavailableException,
@@ -2517,8 +2517,8 @@ export const updateDocument: API.OperationMethod<
   UpdateDocumentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c56, 0) as any as S.Schema<UpdateDocumentRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<UpdateDocumentResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<UpdateDocumentRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<UpdateDocumentResponse>,
   errors: [
     ConcurrentModificationException,
     ConflictingOperationException,
@@ -2559,7 +2559,7 @@ export const updateDocumentVersion: API.OperationMethod<
   UpdateDocumentVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(912, __c57, 0) as any as S.Schema<UpdateDocumentVersionRequest>,
+  input: __S(880, __c55, 0) as any as S.Schema<UpdateDocumentVersionRequest>,
   output: __S(16, __c1, 0) as any as S.Schema<UpdateDocumentVersionResponse>,
   errors: [
     ConcurrentModificationException,
@@ -2598,8 +2598,8 @@ export const updateFolder: API.OperationMethod<
   UpdateFolderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c58, 0) as any as S.Schema<UpdateFolderRequest>,
-  output: __S(208, __c13, 0) as any as S.Schema<UpdateFolderResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<UpdateFolderRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<UpdateFolderResponse>,
   errors: [
     ConcurrentModificationException,
     ConflictingOperationException,
@@ -2638,7 +2638,7 @@ export const updateUser: API.OperationMethod<
   UpdateUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(944, __c59, 0) as any as S.Schema<UpdateUserRequest>,
+  input: __S(912, __c57, 0) as any as S.Schema<UpdateUserRequest>,
   output: __S(64, __c4, 0) as any as S.Schema<UpdateUserResponse>,
   errors: [
     DeactivatingLastSystemUserException,
@@ -2679,9 +2679,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AbortDocumentVersionUploadRequest",
-      });
+      ).annotate({ identifier: "AbortDocumentVersionUploadRequest" });
   }
 }
 function __c1(j: number): any {
@@ -2789,9 +2787,7 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AddResourcePermissionsRequest",
-      });
+      ).annotate({ identifier: "AddResourcePermissionsRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2808,9 +2804,7 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({ ShareResults: S.optional(__S(85, __c5, 5)) }).pipe(ns),
-      ).annotate({
-        identifier: "AddResourcePermissionsResponse",
-      });
+      ).annotate({ identifier: "AddResourcePermissionsResponse" });
   }
 }
 function __c6(j: number): any {
@@ -2885,9 +2879,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateCustomMetadataRequest",
-      });
+      ).annotate({ identifier: "CreateCustomMetadataRequest" });
   }
 }
 function __c9(j: number): any {
@@ -2935,7 +2927,7 @@ function __c11(j: number): any {
           ModifiedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ResourceState: S.optional(S.String),
           Signature: S.optional(S.String),
-          Labels: S.optional(__S(960, __c60, 0)),
+          Labels: S.optional(__S(928, __c58, 0)),
           Size: S.optional(S.Number),
           LatestVersionSize: S.optional(S.Number),
         }),
@@ -2948,7 +2940,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
-          Labels: __S(960, __c60, 0),
+          Labels: __S(928, __c58, 0),
           AuthenticationToken: S.optional(SensitiveString).pipe(T.HttpHeader("Authentication")),
         }).pipe(
           T.all(
@@ -2965,14 +2957,6 @@ function __c12(j: number): any {
   }
 }
 function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "CreateLabelsResponse",
-      });
-  }
-}
-function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2992,18 +2976,14 @@ function __c14(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateNotificationSubscriptionRequest",
-      });
+      ).annotate({ identifier: "CreateNotificationSubscriptionRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Subscription: S.optional(__S(240, __c15, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateNotificationSubscriptionResponse",
-      });
+        S.Struct({ Subscription: S.optional(__S(224, __c14, 0)) }).pipe(ns),
+      ).annotate({ identifier: "CreateNotificationSubscriptionResponse" });
   }
 }
-function __c15(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3015,7 +2995,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "Subscription" });
   }
 }
-function __c16(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3035,7 +3015,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "CreateUserRequest" });
   }
 }
-function __c17(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3056,15 +3036,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "DeactivateUserRequest" });
   }
 }
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeactivateUserResponse",
-      });
-  }
-}
-function __c19(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3090,7 +3062,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "DeleteCommentRequest" });
   }
 }
-function __c20(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3098,7 +3070,7 @@ function __c20(j: number): any {
           AuthenticationToken: S.optional(SensitiveString).pipe(T.HttpHeader("Authentication")),
           ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
           VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
-          Keys: S.optional(__S(960, __c60, 0)).pipe(T.HttpQuery("keys")),
+          Keys: S.optional(__S(928, __c58, 0)).pipe(T.HttpQuery("keys")),
           DeleteAll: S.optional(S.Boolean).pipe(T.HttpQuery("deleteAll")),
         }).pipe(
           T.all(
@@ -3111,12 +3083,10 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteCustomMetadataRequest",
-      });
+      ).annotate({ identifier: "DeleteCustomMetadataRequest" });
   }
 }
-function __c21(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3137,7 +3107,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "DeleteDocumentRequest" });
   }
 }
-function __c22(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3160,12 +3130,10 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteDocumentVersionRequest",
-      });
+      ).annotate({ identifier: "DeleteDocumentVersionRequest" });
   }
 }
-function __c23(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3186,7 +3154,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "DeleteFolderRequest" });
   }
 }
-function __c24(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3204,19 +3172,17 @@ function __c24(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteFolderContentsRequest",
-      });
+      ).annotate({ identifier: "DeleteFolderContentsRequest" });
   }
 }
-function __c25(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
           AuthenticationToken: S.optional(SensitiveString).pipe(T.HttpHeader("Authentication")),
-          Labels: S.optional(__S(960, __c60, 0)).pipe(T.HttpQuery("labels")),
+          Labels: S.optional(__S(928, __c58, 0)).pipe(T.HttpQuery("labels")),
           DeleteAll: S.optional(S.Boolean).pipe(T.HttpQuery("deleteAll")),
         }).pipe(
           T.all(
@@ -3232,7 +3198,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "DeleteLabelsRequest" });
   }
 }
-function __c26(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3253,12 +3219,10 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteNotificationSubscriptionRequest",
-      });
+      ).annotate({ identifier: "DeleteNotificationSubscriptionRequest" });
   }
 }
-function __c27(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3279,7 +3243,7 @@ function __c27(j: number): any {
       ).annotate({ identifier: "DeleteUserRequest" });
   }
 }
-function __c28(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3311,9 +3275,7 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeActivitiesRequest",
-      });
+      ).annotate({ identifier: "DescribeActivitiesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3325,10 +3287,10 @@ function __c28(j: number): any {
         }),
       ).annotate({ identifier: "UserMetadata" });
     case 2:
-      return S.Array(__S(449, __c28, 1));
+      return S.Array(__S(417, __c26, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Users: S.optional(__S(450, __c28, 2)), Groups: S.optional(__S(465, __c29, 1)) }),
+        S.Struct({ Users: S.optional(__S(418, __c26, 2)), Groups: S.optional(__S(433, __c27, 1)) }),
       ).annotate({ identifier: "Participants" });
     case 4:
       return S.suspend(() =>
@@ -3338,7 +3300,7 @@ function __c28(j: number): any {
           OriginalName: S.optional(SensitiveString),
           Id: S.optional(S.String),
           VersionId: S.optional(S.String),
-          Owner: S.optional(__S(449, __c28, 1)),
+          Owner: S.optional(__S(417, __c26, 1)),
           ParentId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceMetadata" });
@@ -3349,37 +3311,35 @@ function __c28(j: number): any {
           TimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           IsIndirectActivity: S.optional(S.Boolean),
           OrganizationId: S.optional(S.String),
-          Initiator: S.optional(__S(449, __c28, 1)),
-          Participants: S.optional(__S(451, __c28, 3)),
-          ResourceMetadata: S.optional(__S(452, __c28, 4)),
-          OriginalParent: S.optional(__S(452, __c28, 4)),
-          CommentMetadata: S.optional(__S(480, __c30, 0)),
+          Initiator: S.optional(__S(417, __c26, 1)),
+          Participants: S.optional(__S(419, __c26, 3)),
+          ResourceMetadata: S.optional(__S(420, __c26, 4)),
+          OriginalParent: S.optional(__S(420, __c26, 4)),
+          CommentMetadata: S.optional(__S(448, __c28, 0)),
         }),
       ).annotate({ identifier: "Activity" });
     case 6:
-      return S.Array(__S(453, __c28, 5));
+      return S.Array(__S(421, __c26, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          UserActivities: S.optional(__S(454, __c28, 6)),
+          UserActivities: S.optional(__S(422, __c26, 6)),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeActivitiesResponse",
-      });
+      ).annotate({ identifier: "DescribeActivitiesResponse" });
   }
 }
-function __c29(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ Id: S.optional(S.String), Name: S.optional(S.String) }),
       ).annotate({ identifier: "GroupMetadata" });
     case 1:
-      return S.Array(__S(464, __c29, 0));
+      return S.Array(__S(432, __c27, 0));
   }
 }
-function __c30(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3394,7 +3354,7 @@ function __c30(j: number): any {
       ).annotate({ identifier: "CommentMetadata" });
   }
 }
-function __c31(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3423,13 +3383,13 @@ function __c31(j: number): any {
       return S.Array(__S(112, __c7, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ Comments: S.optional(__S(497, __c31, 1)), Marker: S.optional(S.String) }).pipe(
+        S.Struct({ Comments: S.optional(__S(465, __c29, 1)), Marker: S.optional(S.String) }).pipe(
           ns,
         ),
       ).annotate({ identifier: "DescribeCommentsResponse" });
   }
 }
-function __c32(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3451,23 +3411,19 @@ function __c32(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeDocumentVersionsRequest",
-      });
+      ).annotate({ identifier: "DescribeDocumentVersionsRequest" });
     case 1:
-      return S.Array(__S(529, __c33, 1));
+      return S.Array(__S(497, __c31, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          DocumentVersions: S.optional(__S(513, __c32, 1)),
+          DocumentVersions: S.optional(__S(481, __c30, 1)),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeDocumentVersionsResponse",
-      });
+      ).annotate({ identifier: "DescribeDocumentVersionsResponse" });
   }
 }
-function __c33(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
@@ -3485,13 +3441,13 @@ function __c33(j: number): any {
           ContentCreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ContentModifiedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatorId: S.optional(S.String),
-          Thumbnail: S.optional(__S(528, __c33, 0)),
-          Source: S.optional(__S(528, __c33, 0)),
+          Thumbnail: S.optional(__S(496, __c31, 0)),
+          Source: S.optional(__S(496, __c31, 0)),
         }),
       ).annotate({ identifier: "DocumentVersionMetadata" });
   }
 }
-function __c34(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3515,28 +3471,16 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeFolderContentsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Folders: S.optional(__S(560, __c35, 0)),
-          Documents: S.optional(__S(592, __c37, 0)),
-          Marker: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeFolderContentsResponse",
-      });
+      ).annotate({ identifier: "DescribeFolderContentsRequest" });
   }
 }
-function __c35(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(176, __c11, 0));
   }
 }
-function __c36(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3546,20 +3490,28 @@ function __c36(j: number): any {
           ParentFolderId: S.optional(S.String),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ModifiedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          LatestVersionMetadata: S.optional(__S(529, __c33, 1)),
+          LatestVersionMetadata: S.optional(__S(497, __c31, 1)),
           ResourceState: S.optional(S.String),
-          Labels: S.optional(__S(960, __c60, 0)),
+          Labels: S.optional(__S(928, __c58, 0)),
         }),
       ).annotate({ identifier: "DocumentMetadata" });
   }
 }
-function __c37(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(576, __c36, 0));
+      return S.Array(__S(544, __c34, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Folders: S.optional(__S(528, __c33, 0)),
+          Documents: S.optional(__S(560, __c35, 0)),
+          Marker: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "DescribeFolderContentsResponse" });
   }
 }
-function __c38(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3575,11 +3527,11 @@ function __c38(j: number): any {
       ).annotate({ identifier: "DescribeGroupsRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Groups: S.optional(__S(465, __c29, 1)), Marker: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Groups: S.optional(__S(433, __c27, 1)), Marker: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "DescribeGroupsResponse" });
   }
 }
-function __c39(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3598,23 +3550,19 @@ function __c39(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeNotificationSubscriptionsRequest",
-      });
+      ).annotate({ identifier: "DescribeNotificationSubscriptionsRequest" });
     case 1:
-      return S.Array(__S(240, __c15, 0));
+      return S.Array(__S(224, __c14, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Subscriptions: S.optional(__S(625, __c39, 1)),
+          Subscriptions: S.optional(__S(593, __c37, 1)),
           Marker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeNotificationSubscriptionsResponse",
-      });
+      ).annotate({ identifier: "DescribeNotificationSubscriptionsResponse" });
   }
 }
-function __c40(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3635,36 +3583,32 @@ function __c40(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeResourcePermissionsRequest",
-      });
+      ).annotate({ identifier: "DescribeResourcePermissionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Role: S.optional(S.String), Type: S.optional(S.String) }),
       ).annotate({ identifier: "PermissionInfo" });
     case 2:
-      return S.Array(__S(641, __c40, 1));
+      return S.Array(__S(609, __c38, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
           Type: S.optional(S.String),
-          Roles: S.optional(__S(642, __c40, 2)),
+          Roles: S.optional(__S(610, __c38, 2)),
         }),
       ).annotate({ identifier: "Principal" });
     case 4:
-      return S.Array(__S(643, __c40, 3));
+      return S.Array(__S(611, __c38, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ Principals: S.optional(__S(644, __c40, 4)), Marker: S.optional(S.String) }).pipe(
+        S.Struct({ Principals: S.optional(__S(612, __c38, 4)), Marker: S.optional(S.String) }).pipe(
           ns,
         ),
-      ).annotate({
-        identifier: "DescribeResourcePermissionsResponse",
-      });
+      ).annotate({ identifier: "DescribeResourcePermissionsResponse" });
   }
 }
-function __c41(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3683,20 +3627,16 @@ function __c41(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeRootFoldersRequest",
-      });
+      ).annotate({ identifier: "DescribeRootFoldersRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Folders: S.optional(__S(560, __c35, 0)), Marker: S.optional(S.String) }).pipe(
+        S.Struct({ Folders: S.optional(__S(528, __c33, 0)), Marker: S.optional(S.String) }).pipe(
           ns,
         ),
-      ).annotate({
-        identifier: "DescribeRootFoldersResponse",
-      });
+      ).annotate({ identifier: "DescribeRootFoldersResponse" });
   }
 }
-function __c42(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3720,14 +3660,14 @@ function __c42(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Users: S.optional(__S(673, __c42, 1)),
+          Users: S.optional(__S(641, __c40, 1)),
           TotalNumberOfUsers: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeUsersResponse" });
   }
 }
-function __c43(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3739,7 +3679,7 @@ function __c43(j: number): any {
       ).annotate({ identifier: "GetCurrentUserRequest" });
   }
 }
-function __c44(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3762,13 +3702,13 @@ function __c44(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Metadata: S.optional(__S(576, __c36, 0)),
+          Metadata: S.optional(__S(544, __c34, 0)),
           CustomMetadata: S.optional(__S(144, __c9, 0)),
         }).pipe(ns),
       ).annotate({ identifier: "GetDocumentResponse" });
   }
 }
-function __c45(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3792,25 +3732,25 @@ function __c45(j: number): any {
       ).annotate({ identifier: "GetDocumentPathRequest" });
   }
 }
-function __c46(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ Id: S.optional(S.String), Name: S.optional(SensitiveString) }),
       ).annotate({ identifier: "ResourcePathComponent" });
     case 1:
-      return S.Array(__S(736, __c46, 0));
+      return S.Array(__S(704, __c44, 0));
     case 2:
-      return S.suspend(() => S.Struct({ Components: S.optional(__S(737, __c46, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ Components: S.optional(__S(705, __c44, 1)) })).annotate({
         identifier: "ResourcePath",
       });
     case 3:
-      return S.suspend(() => S.Struct({ Path: S.optional(__S(738, __c46, 2)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Path: S.optional(__S(706, __c44, 2)) }).pipe(ns)).annotate({
         identifier: "GetDocumentPathResponse",
       });
   }
 }
-function __c47(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3831,21 +3771,17 @@ function __c47(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDocumentVersionRequest",
-      });
+      ).annotate({ identifier: "GetDocumentVersionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Metadata: S.optional(__S(529, __c33, 1)),
+          Metadata: S.optional(__S(497, __c31, 1)),
           CustomMetadata: S.optional(__S(144, __c9, 0)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetDocumentVersionResponse",
-      });
+      ).annotate({ identifier: "GetDocumentVersionResponse" });
   }
 }
-function __c48(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3874,7 +3810,7 @@ function __c48(j: number): any {
       ).annotate({ identifier: "GetFolderResponse" });
   }
 }
-function __c49(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3898,7 +3834,7 @@ function __c49(j: number): any {
       ).annotate({ identifier: "GetFolderPathRequest" });
   }
 }
-function __c50(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3920,17 +3856,9 @@ function __c50(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetResourcesRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Folders: S.optional(__S(560, __c35, 0)),
-          Documents: S.optional(__S(592, __c37, 0)),
-          Marker: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({ identifier: "GetResourcesResponse" });
   }
 }
-function __c51(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3954,9 +3882,7 @@ function __c51(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "InitiateDocumentVersionUploadRequest",
-      });
+      ).annotate({ identifier: "InitiateDocumentVersionUploadRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3967,15 +3893,13 @@ function __c51(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Metadata: S.optional(__S(576, __c36, 0)),
-          UploadMetadata: S.optional(__S(817, __c51, 1)),
+          Metadata: S.optional(__S(544, __c34, 0)),
+          UploadMetadata: S.optional(__S(785, __c49, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "InitiateDocumentVersionUploadResponse",
-      });
+      ).annotate({ identifier: "InitiateDocumentVersionUploadResponse" });
   }
 }
-function __c52(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3993,12 +3917,10 @@ function __c52(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RemoveAllResourcePermissionsRequest",
-      });
+      ).annotate({ identifier: "RemoveAllResourcePermissionsRequest" });
   }
 }
-function __c53(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4021,12 +3943,10 @@ function __c53(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RemoveResourcePermissionRequest",
-      });
+      ).annotate({ identifier: "RemoveResourcePermissionRequest" });
   }
 }
-function __c54(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4044,21 +3964,19 @@ function __c54(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RestoreDocumentVersionsRequest",
-      });
+      ).annotate({ identifier: "RestoreDocumentVersionsRequest" });
   }
 }
-function __c55(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
     case 1:
       return S.suspend(() =>
-        S.Struct({ Id: S.String, Roles: S.optional(__S(880, __c55, 0)) }),
+        S.Struct({ Id: S.String, Roles: S.optional(__S(848, __c53, 0)) }),
       ).annotate({ identifier: "SearchPrincipalType" });
     case 2:
-      return S.Array(__S(881, __c55, 1));
+      return S.Array(__S(849, __c53, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ StartValue: S.optional(S.Number), EndValue: S.optional(S.Number) }),
@@ -4073,16 +3991,16 @@ function __c55(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          TextLocales: S.optional(__S(880, __c55, 0)),
-          ContentCategories: S.optional(__S(880, __c55, 0)),
-          ResourceTypes: S.optional(__S(880, __c55, 0)),
-          Labels: S.optional(__S(960, __c60, 0)),
-          Principals: S.optional(__S(882, __c55, 2)),
-          AncestorIds: S.optional(__S(960, __c60, 0)),
-          SearchCollectionTypes: S.optional(__S(880, __c55, 0)),
-          SizeRange: S.optional(__S(883, __c55, 3)),
-          CreatedRange: S.optional(__S(884, __c55, 4)),
-          ModifiedRange: S.optional(__S(884, __c55, 4)),
+          TextLocales: S.optional(__S(848, __c53, 0)),
+          ContentCategories: S.optional(__S(848, __c53, 0)),
+          ResourceTypes: S.optional(__S(848, __c53, 0)),
+          Labels: S.optional(__S(928, __c58, 0)),
+          Principals: S.optional(__S(850, __c53, 2)),
+          AncestorIds: S.optional(__S(928, __c58, 0)),
+          SearchCollectionTypes: S.optional(__S(848, __c53, 0)),
+          SizeRange: S.optional(__S(851, __c53, 3)),
+          CreatedRange: S.optional(__S(852, __c53, 4)),
+          ModifiedRange: S.optional(__S(852, __c53, 4)),
         }),
       ).annotate({ identifier: "Filters" });
     case 6:
@@ -4090,17 +4008,17 @@ function __c55(j: number): any {
         S.Struct({ Field: S.optional(S.String), Order: S.optional(S.String) }),
       ).annotate({ identifier: "SearchSortResult" });
     case 7:
-      return S.Array(__S(886, __c55, 6));
+      return S.Array(__S(854, __c53, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
           AuthenticationToken: S.optional(SensitiveString).pipe(T.HttpHeader("Authentication")),
           QueryText: S.optional(SensitiveString),
-          QueryScopes: S.optional(__S(880, __c55, 0)),
+          QueryScopes: S.optional(__S(848, __c53, 0)),
           OrganizationId: S.optional(S.String),
-          AdditionalResponseFields: S.optional(__S(880, __c55, 0)),
-          Filters: S.optional(__S(885, __c55, 5)),
-          OrderBy: S.optional(__S(887, __c55, 7)),
+          AdditionalResponseFields: S.optional(__S(848, __c53, 0)),
+          Filters: S.optional(__S(853, __c53, 5)),
+          OrderBy: S.optional(__S(855, __c53, 7)),
           Limit: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(
@@ -4120,21 +4038,21 @@ function __c55(j: number): any {
         S.Struct({
           ResourceType: S.optional(S.String),
           WebUrl: S.optional(SensitiveString),
-          DocumentMetadata: S.optional(__S(576, __c36, 0)),
+          DocumentMetadata: S.optional(__S(544, __c34, 0)),
           FolderMetadata: S.optional(__S(176, __c11, 0)),
-          CommentMetadata: S.optional(__S(480, __c30, 0)),
-          DocumentVersionMetadata: S.optional(__S(529, __c33, 1)),
+          CommentMetadata: S.optional(__S(448, __c28, 0)),
+          DocumentVersionMetadata: S.optional(__S(497, __c31, 1)),
         }),
       ).annotate({ identifier: "ResponseItem" });
     case 10:
-      return S.Array(__S(889, __c55, 9));
+      return S.Array(__S(857, __c53, 9));
     case 11:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(890, __c55, 10)), Marker: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Items: S.optional(__S(858, __c53, 10)), Marker: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "SearchResourcesResponse" });
   }
 }
-function __c56(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4158,7 +4076,7 @@ function __c56(j: number): any {
       ).annotate({ identifier: "UpdateDocumentRequest" });
   }
 }
-function __c57(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4178,12 +4096,10 @@ function __c57(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateDocumentVersionRequest",
-      });
+      ).annotate({ identifier: "UpdateDocumentVersionRequest" });
   }
 }
-function __c58(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4207,7 +4123,7 @@ function __c58(j: number): any {
       ).annotate({ identifier: "UpdateFolderRequest" });
   }
 }
-function __c59(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4235,7 +4151,7 @@ function __c59(j: number): any {
       ).annotate({ identifier: "UpdateUserRequest" });
   }
 }
-function __c60(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);

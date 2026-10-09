@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -150,9 +150,7 @@ function __c0(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/revocations" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetRevocationStatusRequest",
-      });
+      ).annotate({ identifier: "GetRevocationStatusRequest" });
     case 2:
       return S.suspend(() => S.Struct({ revokedEntities: S.optional(__S(0, __c0, 0)) })).annotate({
         identifier: "GetRevocationStatusResponse",

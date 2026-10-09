@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -557,7 +557,7 @@ export const createCodeReview: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(138, __c17, 2) as any as S.Schema<CreateCodeReviewRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<CreateCodeReviewResponse>,
+  output: __S(145, __c18, 1) as any as S.Schema<CreateCodeReviewResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -588,7 +588,7 @@ export const describeCodeReview: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(168, __c21, 0) as any as S.Schema<DescribeCodeReviewRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<DescribeCodeReviewResponse>,
+  output: __S(145, __c18, 1) as any as S.Schema<DescribeCodeReviewResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -871,7 +871,7 @@ export const putRecommendationFeedback: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(72, __c9, 0) as any as S.Schema<PutRecommendationFeedbackRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<PutRecommendationFeedbackResponse>,
+  output: __S(80, __c10, 0) as any as S.Schema<PutRecommendationFeedbackResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -898,8 +898,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<TagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -921,7 +921,7 @@ export const untagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c12, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<UntagResourceResponse>,
+  output: __S(80, __c10, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -947,9 +947,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeRecommendationFeedbackRequest",
-      });
+      ).annotate({ identifier: "DescribeRecommendationFeedbackRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -964,9 +962,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ RecommendationFeedback: S.optional(__S(1, __c0, 1)) }),
-      ).annotate({
-        identifier: "DescribeRecommendationFeedbackResponse",
-      });
+      ).annotate({ identifier: "DescribeRecommendationFeedbackResponse" });
   }
 }
 function __c1(j: number): any {
@@ -983,9 +979,7 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeRepositoryAssociationRequest",
-      });
+      ).annotate({ identifier: "DescribeRepositoryAssociationRequest" });
   }
 }
 function __c2(j: number): any {
@@ -1002,9 +996,7 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateRepositoryRequest",
-      });
+      ).annotate({ identifier: "DisassociateRepositoryRequest" });
   }
 }
 function __c3(j: number): any {
@@ -1076,9 +1068,7 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListRecommendationFeedbackRequest",
-      });
+      ).annotate({ identifier: "ListRecommendationFeedbackRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1086,9 +1076,7 @@ function __c5(j: number): any {
           Reactions: S.optional(__S(152, __c19, 0)),
           UserId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "RecommendationFeedbackSummary",
-      });
+      ).annotate({ identifier: "RecommendationFeedbackSummary" });
     case 2:
       return S.Array(__S(41, __c5, 1));
     case 3:
@@ -1097,9 +1085,7 @@ function __c5(j: number): any {
           RecommendationFeedbackSummaries: S.optional(__S(42, __c5, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListRecommendationFeedbackResponse",
-      });
+      ).annotate({ identifier: "ListRecommendationFeedbackResponse" });
   }
 }
 function __c6(j: number): any {
@@ -1120,9 +1106,7 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListRecommendationsRequest",
-      });
+      ).annotate({ identifier: "ListRecommendationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1154,9 +1138,7 @@ function __c6(j: number): any {
           RecommendationSummaries: S.optional(__S(51, __c6, 3)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListRecommendationsResponse",
-      });
+      ).annotate({ identifier: "ListRecommendationsResponse" });
   }
 }
 function __c7(j: number): any {
@@ -1173,9 +1155,7 @@ function __c7(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/associations" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListRepositoryAssociationsRequest",
-      });
+      ).annotate({ identifier: "ListRepositoryAssociationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1188,9 +1168,7 @@ function __c7(j: number): any {
           ProviderType: S.optional(S.String),
           State: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "RepositoryAssociationSummary",
-      });
+      ).annotate({ identifier: "RepositoryAssociationSummary" });
     case 2:
       return S.Array(__S(57, __c7, 1));
     case 3:
@@ -1199,9 +1177,7 @@ function __c7(j: number): any {
           RepositoryAssociationSummaries: S.optional(__S(58, __c7, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListRepositoryAssociationsResponse",
-      });
+      ).annotate({ identifier: "ListRepositoryAssociationsResponse" });
   }
 }
 function __c8(j: number): any {
@@ -1218,9 +1194,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(120, __c15, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -1236,16 +1210,18 @@ function __c9(j: number): any {
           RecommendationId: S.String,
           Reactions: __S(152, __c19, 0),
         }).pipe(T.all(T.Http({ method: "PUT", uri: "/feedback" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PutRecommendationFeedbackRequest",
-      });
-    case 1:
+      ).annotate({ identifier: "PutRecommendationFeedbackRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "PutRecommendationFeedbackResponse",
       });
   }
 }
-function __c10(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1263,14 +1239,6 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
   }
 }
 function __c12(j: number): any {
@@ -1302,9 +1270,7 @@ function __c13(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ Name: S.String, ConnectionArn: S.String, Owner: S.String }),
-      ).annotate({
-        identifier: "ThirdPartySourceRepository",
-      });
+      ).annotate({ identifier: "ThirdPartySourceRepository" });
     case 2:
       return S.suspend(() => S.Struct({ Name: S.String, BucketName: S.String })).annotate({
         identifier: "S3Repository",
@@ -1328,9 +1294,7 @@ function __c13(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/associations" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "AssociateRepositoryRequest",
-      });
+      ).annotate({ identifier: "AssociateRepositoryRequest" });
   }
 }
 function __c14(j: number): any {
@@ -1362,9 +1326,7 @@ function __c14(j: number): any {
           RepositoryAssociation: S.optional(__S(113, __c14, 1)),
           Tags: S.optional(__S(120, __c15, 0)),
         }),
-      ).annotate({
-        identifier: "AssociateRepositoryResponse",
-      });
+      ).annotate({ identifier: "AssociateRepositoryResponse" });
   }
 }
 function __c15(j: number): any {
@@ -1418,10 +1380,6 @@ function __c17(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/codereviews" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateCodeReviewRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({ CodeReview: S.optional(__S(144, __c18, 0)) })).annotate({
-        identifier: "CreateCodeReviewResponse",
-      });
   }
 }
 function __c18(j: number): any {
@@ -1447,6 +1405,10 @@ function __c18(j: number): any {
           ConfigFileState: S.optional(S.String),
         }),
       ).annotate({ identifier: "CodeReview" });
+    case 1:
+      return S.suspend(() => S.Struct({ CodeReview: S.optional(__S(144, __c18, 0)) })).annotate({
+        identifier: "CreateCodeReviewResponse",
+      });
   }
 }
 function __c19(j: number): any {
@@ -1524,13 +1486,7 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeCodeReviewRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ CodeReview: S.optional(__S(144, __c18, 0)) })).annotate({
-        identifier: "DescribeCodeReviewResponse",
-      });
+      ).annotate({ identifier: "DescribeCodeReviewRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

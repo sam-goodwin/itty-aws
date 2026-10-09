@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -901,9 +901,7 @@ function __c5(j: number): any {
         }).pipe(T.all(T.Http({ method: "GET", uri: "/schedules" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListSchedulesInput" });
     case 1:
-      return S.suspend(() => S.Struct({ Arn: S.String })).annotate({
-        identifier: "TargetSummary",
-      });
+      return S.suspend(() => S.Struct({ Arn: S.String })).annotate({ identifier: "TargetSummary" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1071,9 +1069,7 @@ function __c12(j: number): any {
           weight: S.optional(S.Number),
           base: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "CapacityProviderStrategyItem",
-      });
+      ).annotate({ identifier: "CapacityProviderStrategyItem" });
     case 5:
       return S.Array(__S(388, __c12, 4));
     case 6:
@@ -1128,9 +1124,7 @@ function __c12(j: number): any {
     case 17:
       return S.suspend(() =>
         S.Struct({ PipelineParameterList: S.optional(__S(400, __c12, 16)) }),
-      ).annotate({
-        identifier: "SageMakerPipelineParameters",
-      });
+      ).annotate({ identifier: "SageMakerPipelineParameters" });
     case 18:
       return S.suspend(() => S.Struct({ MessageGroupId: S.optional(S.String) })).annotate({
         identifier: "SqsParameters",
@@ -1223,9 +1217,7 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteScheduleOutput",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteScheduleOutput" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

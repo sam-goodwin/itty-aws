@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -183,7 +183,7 @@ export interface EncryptionContractConfiguration {
   PresetSpeke20Video?: PresetSpeke20Video;
 }
 export type __listOf__string = string[];
-const __listOf__string = /*@__PURE__*/ __L.at(__c24, 0);
+const __listOf__string = /*@__PURE__*/ __L.at(__c23, 0);
 export interface SpekeKeyProvider {
   EncryptionContractConfiguration?: EncryptionContractConfiguration;
   RoleArn?: string;
@@ -214,7 +214,7 @@ export interface HlsManifest {
   StreamSelection?: StreamSelection;
 }
 export type __listOfHlsManifest = HlsManifest[];
-const __listOfHlsManifest = /*@__PURE__*/ __L.at(__c23, 5);
+const __listOfHlsManifest = /*@__PURE__*/ __L.at(__c22, 5);
 export interface CmafPackage {
   Encryption?: CmafEncryption;
   HlsManifests?: HlsManifest[];
@@ -233,7 +233,7 @@ export interface DashManifest {
   StreamSelection?: StreamSelection;
 }
 export type __listOfDashManifest = DashManifest[];
-const __listOfDashManifest = /*@__PURE__*/ __L.at(__c23, 8);
+const __listOfDashManifest = /*@__PURE__*/ __L.at(__c22, 8);
 export interface DashEncryption {
   SpekeKeyProvider?: SpekeKeyProvider;
 }
@@ -241,7 +241,7 @@ export type __PeriodTriggersElement = "ADS" | (string & {});
 const __PeriodTriggersElement = S.String;
 
 export type __listOf__PeriodTriggersElement = __PeriodTriggersElement[];
-const __listOf__PeriodTriggersElement = /*@__PURE__*/ __L.at(__c23, 10);
+const __listOf__PeriodTriggersElement = /*@__PURE__*/ __L.at(__c22, 10);
 export type SegmentTemplateFormat =
   | "NUMBER_WITH_TIMELINE"
   | "TIME_WITH_TIMELINE"
@@ -277,7 +277,7 @@ export interface MssManifest {
   StreamSelection?: StreamSelection;
 }
 export type __listOfMssManifest = MssManifest[];
-const __listOfMssManifest = /*@__PURE__*/ __L.at(__c23, 15);
+const __listOfMssManifest = /*@__PURE__*/ __L.at(__c22, 15);
 export interface MssPackage {
   Encryption?: MssEncryption;
   MssManifests?: MssManifest[];
@@ -514,7 +514,7 @@ export interface PackagingConfiguration {
   Tags?: { [key: string]: string | undefined };
 }
 export type __listOfPackagingConfiguration = PackagingConfiguration[];
-const __listOfPackagingConfiguration = /*@__PURE__*/ __L.at(__c9, 2);
+const __listOfPackagingConfiguration = /*@__PURE__*/ __L.at(__c9, 1);
 export interface ListPackagingConfigurationsResponse {
   NextToken?: string;
   PackagingConfigurations?: (PackagingConfiguration & {
@@ -591,7 +591,7 @@ export interface PackagingGroup {
   Tags?: { [key: string]: string | undefined };
 }
 export type __listOfPackagingGroup = PackagingGroup[];
-const __listOfPackagingGroup = /*@__PURE__*/ __L.at(__c10, 2);
+const __listOfPackagingGroup = /*@__PURE__*/ __L.at(__c10, 1);
 export interface ListPackagingGroupsResponse {
   NextToken?: string;
   PackagingGroups?: (PackagingGroup & {
@@ -602,7 +602,7 @@ export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
 export type __mapOf__string = { [key: string]: string | undefined };
-const __mapOf__string = /*@__PURE__*/ __L.at(__c12, 0);
+const __mapOf__string = __S(512, __c16, 0) as any as S.Schema<__mapOf__string>;
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
@@ -647,8 +647,8 @@ export const configureLogs: API.OperationMethod<
   ConfigureLogsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c16, 0) as any as S.Schema<ConfigureLogsRequest>,
-  output: __S(513, __c16, 1) as any as S.Schema<ConfigureLogsResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<ConfigureLogsRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<ConfigureLogsResponse>,
   errors: [
     ForbiddenException,
     InternalServerErrorException,
@@ -712,7 +712,7 @@ export const createPackagingConfiguration: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(672, __c21, 0) as any as S.Schema<CreatePackagingConfigurationRequest>,
-  output: __S(704, __c22, 0) as any as S.Schema<CreatePackagingConfigurationResponse>,
+  output: __S(721, __c22, 17) as any as S.Schema<CreatePackagingConfigurationResponse>,
   errors: [
     ForbiddenException,
     InternalServerErrorException,
@@ -743,8 +743,8 @@ export const createPackagingGroup: API.OperationMethod<
   CreatePackagingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c25, 0) as any as S.Schema<CreatePackagingGroupRequest>,
-  output: __S(801, __c25, 1) as any as S.Schema<CreatePackagingGroupResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<CreatePackagingGroupRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<CreatePackagingGroupResponse>,
   errors: [
     ForbiddenException,
     InternalServerErrorException,
@@ -808,7 +808,7 @@ export const deletePackagingConfiguration: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(64, __c2, 0) as any as S.Schema<DeletePackagingConfigurationRequest>,
-  output: __S(65, __c2, 1) as any as S.Schema<DeletePackagingConfigurationResponse>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeletePackagingConfigurationResponse>,
   errors: [
     ForbiddenException,
     InternalServerErrorException,
@@ -904,7 +904,7 @@ export const describePackagingConfiguration: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(160, __c5, 0) as any as S.Schema<DescribePackagingConfigurationRequest>,
-  output: __S(704, __c22, 0) as any as S.Schema<DescribePackagingConfigurationResponse>,
+  output: __S(721, __c22, 17) as any as S.Schema<DescribePackagingConfigurationResponse>,
   errors: [
     ForbiddenException,
     InternalServerErrorException,
@@ -1008,7 +1008,7 @@ export const listPackagingConfigurations: API.PaginatedOperationMethod<
   PackagingConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(288, __c9, 0) as any as S.Schema<ListPackagingConfigurationsRequest>,
-  output: __S(291, __c9, 3) as any as S.Schema<ListPackagingConfigurationsResponse>,
+  output: __S(290, __c9, 2) as any as S.Schema<ListPackagingConfigurationsResponse>,
   errors: [
     ForbiddenException,
     InternalServerErrorException,
@@ -1047,7 +1047,7 @@ export const listPackagingGroups: API.PaginatedOperationMethod<
   PackagingGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(320, __c10, 0) as any as S.Schema<ListPackagingGroupsRequest>,
-  output: __S(323, __c10, 3) as any as S.Schema<ListPackagingGroupsResponse>,
+  output: __S(322, __c10, 2) as any as S.Schema<ListPackagingGroupsResponse>,
   errors: [
     ForbiddenException,
     InternalServerErrorException,
@@ -1095,7 +1095,7 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c13, 0) as any as S.Schema<TagResourceRequest>,
+  input: __S(384, __c12, 0) as any as S.Schema<TagResourceRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<TagResourceResponse>,
   errors: [],
   protocol: AwsProtocol,
@@ -1113,7 +1113,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c14, 0) as any as S.Schema<UntagResourceRequest>,
+  input: __S(416, __c13, 0) as any as S.Schema<UntagResourceRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [],
   protocol: AwsProtocol,
@@ -1138,7 +1138,7 @@ export const updatePackagingGroup: API.OperationMethod<
   UpdatePackagingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c15, 0) as any as S.Schema<UpdatePackagingGroupRequest>,
+  input: __S(448, __c14, 0) as any as S.Schema<UpdatePackagingGroupRequest>,
   output: __S(224, __c7, 0) as any as S.Schema<UpdatePackagingGroupResponse>,
   errors: [
     ForbiddenException,
@@ -1167,9 +1167,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAssetResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteAssetResponse" });
   }
 }
 function __c2(j: number): any {
@@ -1186,13 +1184,7 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeletePackagingConfigurationRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeletePackagingConfigurationResponse",
-      });
+      ).annotate({ identifier: "DeletePackagingConfigurationRequest" });
   }
 }
 function __c3(j: number): any {
@@ -1209,9 +1201,7 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeletePackagingGroupRequest",
-      });
+      ).annotate({ identifier: "DeletePackagingGroupRequest" });
   }
 }
 function __c4(j: number): any {
@@ -1238,9 +1228,7 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribePackagingConfigurationRequest",
-      });
+      ).annotate({ identifier: "DescribePackagingConfigurationRequest" });
   }
 }
 function __c6(j: number): any {
@@ -1257,9 +1245,7 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribePackagingGroupRequest",
-      });
+      ).annotate({ identifier: "DescribePackagingGroupRequest" });
   }
 }
 function __c7(j: number): any {
@@ -1274,7 +1260,7 @@ function __c7(j: number): any {
           DomainName: S.optional(S.String),
           EgressAccessLogs: S.optional(__S(576, __c18, 0)),
           Id: S.optional(S.String),
-          Tags: S.optional(__S(544, __c17, 0)),
+          Tags: S.optional(__S(512, __c16, 0)),
         }).pipe(
           S.encodeKeys({
             ApproximateAssetCount: "approximateAssetCount",
@@ -1287,9 +1273,7 @@ function __c7(j: number): any {
             Tags: "tags",
           }),
         ),
-      ).annotate({
-        identifier: "DescribePackagingGroupResponse",
-      });
+      ).annotate({ identifier: "DescribePackagingGroupResponse" });
   }
 }
 function __c8(j: number): any {
@@ -1312,7 +1296,7 @@ function __c8(j: number): any {
           ResourceId: S.optional(S.String),
           SourceArn: S.optional(S.String),
           SourceRoleArn: S.optional(S.String),
-          Tags: S.optional(__S(544, __c17, 0)),
+          Tags: S.optional(__S(512, __c16, 0)),
         }).pipe(
           S.encodeKeys({
             Arn: "arn",
@@ -1355,38 +1339,10 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListPackagingConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListPackagingConfigurationsRequest" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.optional(S.String),
-          CmafPackage: S.optional(__S(742, __c23, 6)),
-          CreatedAt: S.optional(S.String),
-          DashPackage: S.optional(__S(747, __c23, 11)),
-          HlsPackage: S.optional(__S(749, __c23, 13)),
-          Id: S.optional(S.String),
-          MssPackage: S.optional(__S(752, __c23, 16)),
-          PackagingGroupId: S.optional(S.String),
-          Tags: S.optional(__S(544, __c17, 0)),
-        }).pipe(
-          S.encodeKeys({
-            Arn: "arn",
-            CmafPackage: "cmafPackage",
-            CreatedAt: "createdAt",
-            DashPackage: "dashPackage",
-            HlsPackage: "hlsPackage",
-            Id: "id",
-            MssPackage: "mssPackage",
-            PackagingGroupId: "packagingGroupId",
-            Tags: "tags",
-          }),
-        ),
-      ).annotate({ identifier: "PackagingConfiguration" });
+      return S.Array(__S(721, __c22, 17));
     case 2:
-      return S.Array(__S(289, __c9, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
@@ -1397,9 +1353,7 @@ function __c9(j: number): any {
             PackagingConfigurations: "packagingConfigurations",
           }),
         ),
-      ).annotate({
-        identifier: "ListPackagingConfigurationsResponse",
-      });
+      ).annotate({ identifier: "ListPackagingConfigurationsResponse" });
   }
 }
 function __c10(j: number): any {
@@ -1412,44 +1366,16 @@ function __c10(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/packaging_groups" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListPackagingGroupsRequest",
-      });
+      ).annotate({ identifier: "ListPackagingGroupsRequest" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ApproximateAssetCount: S.optional(S.Number),
-          Arn: S.optional(S.String),
-          Authorization: S.optional(__S(577, __c18, 1)),
-          CreatedAt: S.optional(S.String),
-          DomainName: S.optional(S.String),
-          EgressAccessLogs: S.optional(__S(576, __c18, 0)),
-          Id: S.optional(S.String),
-          Tags: S.optional(__S(544, __c17, 0)),
-        }).pipe(
-          S.encodeKeys({
-            ApproximateAssetCount: "approximateAssetCount",
-            Arn: "arn",
-            Authorization: "authorization",
-            CreatedAt: "createdAt",
-            DomainName: "domainName",
-            EgressAccessLogs: "egressAccessLogs",
-            Id: "id",
-            Tags: "tags",
-          }),
-        ),
-      ).annotate({ identifier: "PackagingGroup" });
+      return S.Array(__S(224, __c7, 0));
     case 2:
-      return S.Array(__S(321, __c10, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           PackagingGroups: S.optional(__listOfPackagingGroup),
         }).pipe(S.encodeKeys({ NextToken: "nextToken", PackagingGroups: "packagingGroups" })),
-      ).annotate({
-        identifier: "ListPackagingGroupsResponse",
-      });
+      ).annotate({ identifier: "ListPackagingGroupsResponse" });
   }
 }
 function __c11(j: number): any {
@@ -1466,24 +1392,14 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Tags: S.optional(__mapOf__string) }).pipe(S.encodeKeys({ Tags: "tags" })),
-      ).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
+      ).annotate({ identifier: "ListTagsForResourceResponse" });
   }
 }
 function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1505,7 +1421,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c14(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1525,7 +1441,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c15(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1544,12 +1460,10 @@ function __c15(j: number): any {
               rules,
             ),
           ),
-      ).annotate({
-        identifier: "UpdatePackagingGroupRequest",
-      });
+      ).annotate({ identifier: "UpdatePackagingGroupRequest" });
   }
 }
-function __c16(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1569,7 +1483,17 @@ function __c16(j: number): any {
             ),
           ),
       ).annotate({ identifier: "ConfigureLogsRequest" });
-    case 1:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -1578,7 +1502,7 @@ function __c16(j: number): any {
           DomainName: S.optional(S.String),
           EgressAccessLogs: S.optional(__S(576, __c18, 0)),
           Id: S.optional(S.String),
-          Tags: S.optional(__S(544, __c17, 0)),
+          Tags: S.optional(__S(512, __c16, 0)),
         }).pipe(
           S.encodeKeys({
             Arn: "arn",
@@ -1591,12 +1515,6 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ConfigureLogsResponse" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
 function __c18(j: number): any {
@@ -1631,7 +1549,7 @@ function __c19(j: number): any {
           ResourceId: S.optional(S.String),
           SourceArn: S.optional(S.String),
           SourceRoleArn: S.optional(S.String),
-          Tags: S.optional(__S(544, __c17, 0)),
+          Tags: S.optional(__S(512, __c16, 0)),
         })
           .pipe(
             S.encodeKeys({
@@ -1676,7 +1594,7 @@ function __c20(j: number): any {
           ResourceId: S.optional(S.String),
           SourceArn: S.optional(S.String),
           SourceRoleArn: S.optional(S.String),
-          Tags: S.optional(__S(544, __c17, 0)),
+          Tags: S.optional(__S(512, __c16, 0)),
         }).pipe(
           S.encodeKeys({
             Arn: "arn",
@@ -1698,13 +1616,13 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          CmafPackage: S.optional(__S(742, __c23, 6)),
-          DashPackage: S.optional(__S(747, __c23, 11)),
-          HlsPackage: S.optional(__S(749, __c23, 13)),
+          CmafPackage: S.optional(__S(710, __c22, 6)),
+          DashPackage: S.optional(__S(715, __c22, 11)),
+          HlsPackage: S.optional(__S(717, __c22, 13)),
           Id: S.optional(S.String),
-          MssPackage: S.optional(__S(752, __c23, 16)),
+          MssPackage: S.optional(__S(720, __c22, 16)),
           PackagingGroupId: S.optional(S.String),
-          Tags: S.optional(__S(544, __c17, 0)),
+          Tags: S.optional(__S(512, __c16, 0)),
         })
           .pipe(
             S.encodeKeys({
@@ -1727,44 +1645,10 @@ function __c21(j: number): any {
               rules,
             ),
           ),
-      ).annotate({
-        identifier: "CreatePackagingConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreatePackagingConfigurationRequest" });
   }
 }
 function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.optional(S.String),
-          CmafPackage: S.optional(__S(742, __c23, 6)),
-          CreatedAt: S.optional(S.String),
-          DashPackage: S.optional(__S(747, __c23, 11)),
-          HlsPackage: S.optional(__S(749, __c23, 13)),
-          Id: S.optional(S.String),
-          MssPackage: S.optional(__S(752, __c23, 16)),
-          PackagingGroupId: S.optional(S.String),
-          Tags: S.optional(__S(544, __c17, 0)),
-        }).pipe(
-          S.encodeKeys({
-            Arn: "arn",
-            CmafPackage: "cmafPackage",
-            CreatedAt: "createdAt",
-            DashPackage: "dashPackage",
-            HlsPackage: "hlsPackage",
-            Id: "id",
-            MssPackage: "mssPackage",
-            PackagingGroupId: "packagingGroupId",
-            Tags: "tags",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePackagingConfigurationResponse",
-      });
-  }
-}
-function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1777,13 +1661,11 @@ function __c23(j: number): any {
             PresetSpeke20Video: "presetSpeke20Video",
           }),
         ),
-      ).annotate({
-        identifier: "EncryptionContractConfiguration",
-      });
+      ).annotate({ identifier: "EncryptionContractConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          EncryptionContractConfiguration: S.optional(__S(736, __c23, 0)),
+          EncryptionContractConfiguration: S.optional(__S(704, __c22, 0)),
           RoleArn: S.optional(S.String),
           SystemIds: S.optional(__listOf__string),
           Url: S.optional(S.String),
@@ -1800,7 +1682,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ConstantInitializationVector: S.optional(S.String),
-          SpekeKeyProvider: S.optional(__S(737, __c23, 1)),
+          SpekeKeyProvider: S.optional(__S(705, __c22, 1)),
         }).pipe(
           S.encodeKeys({
             ConstantInitializationVector: "constantInitializationVector",
@@ -1830,7 +1712,7 @@ function __c23(j: number): any {
           ManifestName: S.optional(S.String),
           ProgramDateTimeIntervalSeconds: S.optional(S.Number),
           RepeatExtXKey: S.optional(S.Boolean),
-          StreamSelection: S.optional(__S(739, __c23, 3)),
+          StreamSelection: S.optional(__S(707, __c22, 3)),
         }).pipe(
           S.encodeKeys({
             AdMarkers: "adMarkers",
@@ -1843,11 +1725,11 @@ function __c23(j: number): any {
         ),
       ).annotate({ identifier: "HlsManifest" });
     case 5:
-      return S.Array(__S(740, __c23, 4));
+      return S.Array(__S(708, __c22, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Encryption: S.optional(__S(738, __c23, 2)),
+          Encryption: S.optional(__S(706, __c22, 2)),
           HlsManifests: S.optional(__listOfHlsManifest),
           IncludeEncoderConfigurationInSegments: S.optional(S.Boolean),
           SegmentDurationSeconds: S.optional(S.Number),
@@ -1868,7 +1750,7 @@ function __c23(j: number): any {
           MinBufferTimeSeconds: S.optional(S.Number),
           Profile: S.optional(S.String),
           ScteMarkersSource: S.optional(S.String),
-          StreamSelection: S.optional(__S(739, __c23, 3)),
+          StreamSelection: S.optional(__S(707, __c22, 3)),
         }).pipe(
           S.encodeKeys({
             ManifestLayout: "manifestLayout",
@@ -1881,10 +1763,10 @@ function __c23(j: number): any {
         ),
       ).annotate({ identifier: "DashManifest" });
     case 8:
-      return S.Array(__S(743, __c23, 7));
+      return S.Array(__S(711, __c22, 7));
     case 9:
       return S.suspend(() =>
-        S.Struct({ SpekeKeyProvider: S.optional(__S(737, __c23, 1)) }).pipe(
+        S.Struct({ SpekeKeyProvider: S.optional(__S(705, __c22, 1)) }).pipe(
           S.encodeKeys({ SpekeKeyProvider: "spekeKeyProvider" }),
         ),
       ).annotate({ identifier: "DashEncryption" });
@@ -1894,7 +1776,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DashManifests: S.optional(__listOfDashManifest),
-          Encryption: S.optional(__S(745, __c23, 9)),
+          Encryption: S.optional(__S(713, __c22, 9)),
           IncludeEncoderConfigurationInSegments: S.optional(S.Boolean),
           IncludeIframeOnlyStream: S.optional(S.Boolean),
           PeriodTriggers: S.optional(__listOf__PeriodTriggersElement),
@@ -1917,7 +1799,7 @@ function __c23(j: number): any {
         S.Struct({
           ConstantInitializationVector: S.optional(S.String),
           EncryptionMethod: S.optional(S.String),
-          SpekeKeyProvider: S.optional(__S(737, __c23, 1)),
+          SpekeKeyProvider: S.optional(__S(705, __c22, 1)),
         }).pipe(
           S.encodeKeys({
             ConstantInitializationVector: "constantInitializationVector",
@@ -1929,7 +1811,7 @@ function __c23(j: number): any {
     case 13:
       return S.suspend(() =>
         S.Struct({
-          Encryption: S.optional(__S(748, __c23, 12)),
+          Encryption: S.optional(__S(716, __c22, 12)),
           HlsManifests: S.optional(__listOfHlsManifest),
           IncludeDvbSubtitles: S.optional(S.Boolean),
           SegmentDurationSeconds: S.optional(S.Number),
@@ -1948,15 +1830,15 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ManifestName: S.optional(S.String),
-          StreamSelection: S.optional(__S(739, __c23, 3)),
+          StreamSelection: S.optional(__S(707, __c22, 3)),
         }).pipe(S.encodeKeys({ ManifestName: "manifestName", StreamSelection: "streamSelection" })),
       ).annotate({ identifier: "MssManifest" });
     case 15:
-      return S.Array(__S(750, __c23, 14));
+      return S.Array(__S(718, __c22, 14));
     case 16:
       return S.suspend(() =>
         S.Struct({
-          Encryption: S.optional(__S(745, __c23, 9)),
+          Encryption: S.optional(__S(713, __c22, 9)),
           MssManifests: S.optional(__listOfMssManifest),
           SegmentDurationSeconds: S.optional(S.Number),
         }).pipe(
@@ -1967,15 +1849,41 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "MssPackage" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          CmafPackage: S.optional(__S(710, __c22, 6)),
+          CreatedAt: S.optional(S.String),
+          DashPackage: S.optional(__S(715, __c22, 11)),
+          HlsPackage: S.optional(__S(717, __c22, 13)),
+          Id: S.optional(S.String),
+          MssPackage: S.optional(__S(720, __c22, 16)),
+          PackagingGroupId: S.optional(S.String),
+          Tags: S.optional(__S(512, __c16, 0)),
+        }).pipe(
+          S.encodeKeys({
+            Arn: "arn",
+            CmafPackage: "cmafPackage",
+            CreatedAt: "createdAt",
+            DashPackage: "dashPackage",
+            HlsPackage: "hlsPackage",
+            Id: "id",
+            MssPackage: "mssPackage",
+            PackagingGroupId: "packagingGroupId",
+            Tags: "tags",
+          }),
+        ),
+      ).annotate({ identifier: "CreatePackagingConfigurationResponse" });
   }
 }
-function __c24(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c25(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1983,7 +1891,7 @@ function __c25(j: number): any {
           Authorization: S.optional(__S(577, __c18, 1)),
           EgressAccessLogs: S.optional(__S(576, __c18, 0)),
           Id: S.optional(S.String),
-          Tags: S.optional(__S(544, __c17, 0)),
+          Tags: S.optional(__S(512, __c16, 0)),
         })
           .pipe(
             S.encodeKeys({
@@ -2003,33 +1911,7 @@ function __c25(j: number): any {
               rules,
             ),
           ),
-      ).annotate({
-        identifier: "CreatePackagingGroupRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.optional(S.String),
-          Authorization: S.optional(__S(577, __c18, 1)),
-          CreatedAt: S.optional(S.String),
-          DomainName: S.optional(S.String),
-          EgressAccessLogs: S.optional(__S(576, __c18, 0)),
-          Id: S.optional(S.String),
-          Tags: S.optional(__S(544, __c17, 0)),
-        }).pipe(
-          S.encodeKeys({
-            Arn: "arn",
-            Authorization: "authorization",
-            CreatedAt: "createdAt",
-            DomainName: "domainName",
-            EgressAccessLogs: "egressAccessLogs",
-            Id: "id",
-            Tags: "tags",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePackagingGroupResponse",
-      });
+      ).annotate({ identifier: "CreatePackagingGroupRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -838,9 +838,7 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ resources: S.optional(__S(34, __c2, 2)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListDeviceResourcesOutput",
-      });
+      ).annotate({ identifier: "ListDeviceResourcesOutput" });
   }
 }
 function __c3(j: number): any {
@@ -1035,9 +1033,7 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Unlock",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "Unlock" });
   }
 }
 function __c12(j: number): any {
@@ -1156,9 +1152,7 @@ function __c15(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ deviceName: S.optional(S.String), ebs: S.optional(__S(242, __c15, 2)) }),
-      ).annotate({
-        identifier: "InstanceBlockDeviceMapping",
-      });
+      ).annotate({ identifier: "InstanceBlockDeviceMapping" });
     case 4:
       return S.Array(__S(243, __c15, 3));
     case 5:

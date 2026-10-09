@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1701,9 +1701,7 @@ function __c3(j: number): any {
           State: S.optional(S.String),
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "DeleteApplicationResponse",
-      });
+      ).annotate({ identifier: "DeleteApplicationResponse" });
   }
 }
 function __c4(j: number): any {
@@ -1732,9 +1730,7 @@ function __c4(j: number): any {
           State: S.optional(S.String),
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "DeleteEnvironmentResponse",
-      });
+      ).annotate({ identifier: "DeleteEnvironmentResponse" });
   }
 }
 function __c5(j: number): any {
@@ -1751,17 +1747,13 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteResourcePolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteResourcePolicyRequest" });
   }
 }
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteResourcePolicyResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteResourcePolicyResponse" });
   }
 }
 function __c7(j: number): any {
@@ -1865,8 +1857,6 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 1:
       return S.suspend(() =>
         S.Struct({
           Code: S.optional(S.String),
@@ -1874,7 +1864,7 @@ function __c11(j: number): any {
           AccountId: S.optional(S.String),
           ResourceIdentifier: S.optional(S.String),
           ResourceType: S.optional(S.String),
-          AdditionalDetails: S.optional(__S(44, __c11, 0)),
+          AdditionalDetails: S.optional(__S(124, __c31, 0)),
         }),
       ).annotate({ identifier: "ErrorResponse" });
   }
@@ -1907,7 +1897,7 @@ function __c12(j: number): any {
           ApiGatewayProxy: S.optional(__S(48, __c12, 0)),
           State: S.optional(S.String),
           Tags: S.optional(__S(124, __c31, 0)),
-          Error: S.optional(__S(45, __c11, 1)),
+          Error: S.optional(__S(44, __c11, 0)),
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -1947,7 +1937,7 @@ function __c14(j: number): any {
           TransitGatewayId: S.optional(S.String),
           State: S.optional(S.String),
           Tags: S.optional(__S(124, __c31, 0)),
-          Error: S.optional(__S(45, __c11, 1)),
+          Error: S.optional(__S(44, __c11, 0)),
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -2015,10 +2005,10 @@ function __c17(j: number): any {
           SourcePath: S.optional(S.String),
           Methods: S.optional(__S(4, __c1, 0)),
           IncludeChildPaths: S.optional(S.Boolean),
-          PathResourceToId: S.optional(__S(44, __c11, 0)),
+          PathResourceToId: S.optional(__S(124, __c31, 0)),
           State: S.optional(S.String),
           Tags: S.optional(__S(124, __c31, 0)),
-          Error: S.optional(__S(45, __c11, 1)),
+          Error: S.optional(__S(44, __c11, 0)),
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           AppendSourcePath: S.optional(S.Boolean),
@@ -2077,7 +2067,7 @@ function __c19(j: number): any {
           LambdaEndpoint: S.optional(__S(77, __c19, 1)),
           State: S.optional(S.String),
           Tags: S.optional(__S(124, __c31, 0)),
-          Error: S.optional(__S(45, __c11, 1)),
+          Error: S.optional(__S(44, __c11, 0)),
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -2154,9 +2144,7 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListEnvironmentVpcsRequest",
-      });
+      ).annotate({ identifier: "ListEnvironmentVpcsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2177,9 +2165,7 @@ function __c22(j: number): any {
           EnvironmentVpcList: S.optional(__S(90, __c22, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListEnvironmentVpcsResponse",
-      });
+      ).annotate({ identifier: "ListEnvironmentVpcsResponse" });
   }
 }
 function __c23(j: number): any {
@@ -2264,9 +2250,7 @@ function __c25(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(124, __c31, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -2392,9 +2376,7 @@ function __c30(j: number): any {
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "CreateApplicationResponse",
-      });
+      ).annotate({ identifier: "CreateApplicationResponse" });
   }
 }
 function __c31(j: number): any {
@@ -2431,9 +2413,7 @@ function __c32(j: number): any {
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "CreateEnvironmentResponse",
-      });
+      ).annotate({ identifier: "CreateEnvironmentResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

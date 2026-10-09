@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -719,7 +719,7 @@ export const deleteInactiveApprovalTeamVersion: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(56, __c7, 0) as any as S.Schema<DeleteInactiveApprovalTeamVersionRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<DeleteInactiveApprovalTeamVersionResponse>,
+  output: __S(224, __c28, 0) as any as S.Schema<DeleteInactiveApprovalTeamVersionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -780,7 +780,7 @@ export const getIdentitySource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(72, __c9, 0) as any as S.Schema<GetIdentitySourceRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<GetIdentitySourceResponse>,
+  output: __S(82, __c10, 2) as any as S.Schema<GetIdentitySourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -935,7 +935,7 @@ export const listIdentitySources: API.PaginatedOperationMethod<
   IdentitySourceForList
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(128, __c16, 0) as any as S.Schema<ListIdentitySourcesRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<ListIdentitySourcesResponse>,
+  output: __S(130, __c16, 2) as any as S.Schema<ListIdentitySourcesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1311,9 +1311,7 @@ function __c0(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/approval-teams" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateApprovalTeamRequest",
-      });
+      ).annotate({ identifier: "CreateApprovalTeamRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1322,9 +1320,7 @@ function __c0(j: number): any {
           Name: S.optional(S.String),
           VersionId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateApprovalTeamResponse",
-      });
+      ).annotate({ identifier: "CreateApprovalTeamResponse" });
   }
 }
 function __c1(j: number): any {
@@ -1358,9 +1354,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ PrimaryIdentityId: S.String, PrimaryIdentitySourceArn: S.String }),
-      ).annotate({
-        identifier: "ApprovalTeamRequestApprover",
-      });
+      ).annotate({ identifier: "ApprovalTeamRequestApprover" });
     case 1:
       return S.Array(__S(32, __c4, 0));
   }
@@ -1384,9 +1378,7 @@ function __c5(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/identity-sources" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateIdentitySourceRequest",
-      });
+      ).annotate({ identifier: "CreateIdentitySourceRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1394,9 +1386,7 @@ function __c5(j: number): any {
           IdentitySourceArn: S.optional(S.String),
           CreationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "CreateIdentitySourceResponse",
-      });
+      ).annotate({ identifier: "CreateIdentitySourceResponse" });
   }
 }
 function __c6(j: number): any {
@@ -1413,9 +1403,7 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteIdentitySourceRequest",
-      });
+      ).annotate({ identifier: "DeleteIdentitySourceRequest" });
   }
 }
 function __c7(j: number): any {
@@ -1435,13 +1423,7 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteInactiveApprovalTeamVersionRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteInactiveApprovalTeamVersionResponse",
-      });
+      ).annotate({ identifier: "DeleteInactiveApprovalTeamVersionRequest" });
   }
 }
 function __c8(j: number): any {
@@ -1478,9 +1460,7 @@ function __c8(j: number): any {
           PendingBaselineSessionArn: S.optional(S.String),
           MfaMethods: S.optional(__S(66, __c8, 2)),
         }),
-      ).annotate({
-        identifier: "GetApprovalTeamResponseApprover",
-      });
+      ).annotate({ identifier: "GetApprovalTeamResponseApprover" });
     case 4:
       return S.Array(__S(67, __c8, 3));
     case 5:
@@ -1534,20 +1514,6 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetIdentitySourceRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          IdentitySourceType: S.optional(S.String),
-          IdentitySourceParameters: S.optional(__S(81, __c10, 1)),
-          IdentitySourceArn: S.optional(S.String),
-          CreationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Status: S.optional(S.String),
-          StatusCode: S.optional(S.String),
-          StatusMessage: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetIdentitySourceResponse",
-      });
   }
 }
 function __c10(j: number): any {
@@ -1562,6 +1528,18 @@ function __c10(j: number): any {
       ).annotate({ identifier: "IamIdentityCenterForGet" });
     case 1:
       return S.Union([/*@__PURE__*/ S.Struct({ IamIdentityCenter: __S(80, __c10, 0) })]);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          IdentitySourceType: S.optional(S.String),
+          IdentitySourceParameters: S.optional(__S(81, __c10, 1)),
+          IdentitySourceArn: S.optional(S.String),
+          CreationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          Status: S.optional(S.String),
+          StatusCode: S.optional(S.String),
+          StatusMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetIdentitySourceResponse" });
   }
 }
 function __c11(j: number): any {
@@ -1624,9 +1602,7 @@ function __c12(j: number): any {
           PolicyName: S.String,
           PolicyDocument: SensitiveString,
         }),
-      ).annotate({
-        identifier: "GetResourcePolicyResponse",
-      });
+      ).annotate({ identifier: "GetResourcePolicyResponse" });
   }
 }
 function __c13(j: number): any {
@@ -1653,9 +1629,7 @@ function __c13(j: number): any {
           Response: S.optional(S.String),
           ResponseTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "GetSessionResponseApproverResponse",
-      });
+      ).annotate({ identifier: "GetSessionResponseApproverResponse" });
     case 2:
       return S.Array(__S(105, __c13, 1));
     case 3:
@@ -1726,9 +1700,7 @@ function __c15(j: number): any {
           StatusCode: S.optional(S.String),
           StatusMessage: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListApprovalTeamsResponseApprovalTeam",
-      });
+      ).annotate({ identifier: "ListApprovalTeamsResponseApprovalTeam" });
     case 2:
       return S.Array(__S(121, __c15, 1));
     case 3:
@@ -1737,9 +1709,7 @@ function __c15(j: number): any {
           NextToken: S.optional(S.String),
           ApprovalTeams: S.optional(__S(122, __c15, 2)),
         }),
-      ).annotate({
-        identifier: "ListApprovalTeamsResponse",
-      });
+      ).annotate({ identifier: "ListApprovalTeamsResponse" });
   }
 }
 function __c16(j: number): any {
@@ -1759,32 +1729,16 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListIdentitySourcesRequest",
-      });
+      ).annotate({ identifier: "ListIdentitySourcesRequest" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          IdentitySourceType: S.optional(S.String),
-          IdentitySourceParameters: S.optional(__S(81, __c10, 1)),
-          IdentitySourceArn: S.optional(S.String),
-          CreationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Status: S.optional(S.String),
-          StatusCode: S.optional(S.String),
-          StatusMessage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IdentitySourceForList" });
+      return S.Array(__S(82, __c10, 2));
     case 2:
-      return S.Array(__S(129, __c16, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          IdentitySources: S.optional(__S(130, __c16, 2)),
+          IdentitySources: S.optional(__S(129, __c16, 1)),
         }),
-      ).annotate({
-        identifier: "ListIdentitySourcesResponse",
-      });
+      ).annotate({ identifier: "ListIdentitySourcesResponse" });
   }
 }
 function __c17(j: number): any {
@@ -1828,9 +1782,7 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListPolicyVersionsRequest",
-      });
+      ).annotate({ identifier: "ListPolicyVersionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1853,9 +1805,7 @@ function __c18(j: number): any {
           NextToken: S.optional(S.String),
           PolicyVersions: S.optional(__S(146, __c18, 2)),
         }),
-      ).annotate({
-        identifier: "ListPolicyVersionsResponse",
-      });
+      ).annotate({ identifier: "ListPolicyVersionsResponse" });
   }
 }
 function __c19(j: number): any {
@@ -1876,9 +1826,7 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListResourcePoliciesRequest",
-      });
+      ).annotate({ identifier: "ListResourcePoliciesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1886,9 +1834,7 @@ function __c19(j: number): any {
           PolicyType: S.optional(S.String),
           PolicyName: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListResourcePoliciesResponseResourcePolicy",
-      });
+      ).annotate({ identifier: "ListResourcePoliciesResponseResourcePolicy" });
     case 2:
       return S.Array(__S(153, __c19, 1));
     case 3:
@@ -1897,9 +1843,7 @@ function __c19(j: number): any {
           NextToken: S.optional(S.String),
           ResourcePolicies: S.optional(__S(154, __c19, 2)),
         }),
-      ).annotate({
-        identifier: "ListResourcePoliciesResponse",
-      });
+      ).annotate({ identifier: "ListResourcePoliciesResponse" });
   }
 }
 function __c20(j: number): any {
@@ -1954,9 +1898,7 @@ function __c20(j: number): any {
           ActionCompletionStrategy: S.optional(S.String),
           AdditionalSecurityRequirements: S.optional(__S(112, __c14, 0)),
         }),
-      ).annotate({
-        identifier: "ListSessionsResponseSession",
-      });
+      ).annotate({ identifier: "ListSessionsResponseSession" });
     case 4:
       return S.Array(__S(163, __c20, 3));
     case 5:
@@ -1979,9 +1921,7 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(8, __c1, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -2005,18 +1945,14 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartActiveApprovalTeamDeletionRequest",
-      });
+      ).annotate({ identifier: "StartActiveApprovalTeamDeletionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           DeletionCompletionTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           DeletionStartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "StartActiveApprovalTeamDeletionResponse",
-      });
+      ).annotate({ identifier: "StartActiveApprovalTeamDeletionResponse" });
   }
 }
 function __c23(j: number): any {
@@ -2038,9 +1974,7 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartApprovalTeamBaselineRequest",
-      });
+      ).annotate({ identifier: "StartApprovalTeamBaselineRequest" });
     case 2:
       return S.suspend(() => S.Struct({ BaselineSessionArn: S.optional(S.String) })).annotate({
         identifier: "StartApprovalTeamBaselineResponse",
@@ -2109,9 +2043,7 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateApprovalTeamRequest",
-      });
+      ).annotate({ identifier: "UpdateApprovalTeamRequest" });
     case 1:
       return S.suspend(() => S.Struct({ VersionId: S.optional(S.String) })).annotate({
         identifier: "UpdateApprovalTeamResponse",
@@ -2138,9 +2070,7 @@ function __c27(j: number): any {
 function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelSessionResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "CancelSessionResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

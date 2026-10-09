@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1332,8 +1332,8 @@ export const listPurchaseOptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PurchaseOptionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(514, __c16, 2) as any as S.Schema<ListPurchaseOptionsInput>,
-  output: __S(519, __c16, 7) as any as S.Schema<ListPurchaseOptionsOutput>,
+  input: __S(512, __c16, 0) as any as S.Schema<ListPurchaseOptionsInput>,
+  output: __S(517, __c16, 5) as any as S.Schema<ListPurchaseOptionsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1356,8 +1356,8 @@ export const searchFacets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(545, __c17, 1) as any as S.Schema<SearchFacetsInput>,
-  output: __S(549, __c17, 5) as any as S.Schema<SearchFacetsOutput>,
+  input: __S(577, __c18, 1) as any as S.Schema<SearchFacetsInput>,
+  output: __S(581, __c18, 5) as any as S.Schema<SearchFacetsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1532,11 +1532,7 @@ function __c5(j: number): any {
       return S.Array(__S(164, __c5, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({
-          engagementType: S.String,
-          contentType: S.String,
-          value: S.String,
-        }),
+        S.Struct({ engagementType: S.String, contentType: S.String, value: S.String }),
       ).annotate({ identifier: "SellerEngagement" });
     case 7:
       return S.Array(__S(166, __c5, 6));
@@ -1708,18 +1704,11 @@ function __c12(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          multipleDimensionSelection: S.String,
-          quantityConfiguration: S.String,
-        }),
+        S.Struct({ multipleDimensionSelection: S.String, quantityConfiguration: S.String }),
       ).annotate({ identifier: "Constraints" });
     case 4:
       return S.suspend(() =>
-        S.Struct({
-          labelType: S.String,
-          labelValue: S.String,
-          displayName: S.optional(S.String),
-        }),
+        S.Struct({ labelType: S.String, labelValue: S.String, displayName: S.optional(S.String) }),
       ).annotate({ identifier: "DimensionLabel" });
     case 5:
       return S.Array(__S(388, __c12, 4));
@@ -1743,9 +1732,7 @@ function __c12(j: number): any {
           constraints: __S(387, __c12, 3),
           rateCard: __S(391, __c12, 7),
         }),
-      ).annotate({
-        identifier: "ConfigurableUpfrontRateCardItem",
-      });
+      ).annotate({ identifier: "ConfigurableUpfrontRateCardItem" });
     case 9:
       return S.Array(__S(392, __c12, 8));
     case 10:
@@ -1756,9 +1743,7 @@ function __c12(j: number): any {
           currencyCode: S.String,
           rateCards: S.optional(__S(393, __c12, 9)),
         }),
-      ).annotate({
-        identifier: "ConfigurableUpfrontPricingTerm",
-      });
+      ).annotate({ identifier: "ConfigurableUpfrontPricingTerm" });
     case 11:
       return S.suspend(() =>
         S.Struct({
@@ -2006,9 +1991,7 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListFulfillmentOptionsInput",
-      });
+      ).annotate({ identifier: "ListFulfillmentOptionsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2016,9 +1999,7 @@ function __c15(j: number): any {
           operatingSystemName: S.String,
           operatingSystemVersion: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "AmazonMachineImageOperatingSystem",
-      });
+      ).annotate({ identifier: "AmazonMachineImageOperatingSystem" });
     case 2:
       return S.Array(__S(481, __c15, 1));
     case 3:
@@ -2029,26 +2010,17 @@ function __c15(j: number): any {
           toPort: S.Number,
           cidrIpAddresses: __S(192, __c6, 0),
         }),
-      ).annotate({
-        identifier: "AmazonMachineImageSecurityGroup",
-      });
+      ).annotate({ identifier: "AmazonMachineImageSecurityGroup" });
     case 4:
       return S.Array(__S(483, __c15, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({
-          instanceType: S.String,
-          securityGroups: S.optional(__S(484, __c15, 4)),
-        }),
-      ).annotate({
-        identifier: "AmazonMachineImageRecommendation",
-      });
+        S.Struct({ instanceType: S.String, securityGroups: S.optional(__S(484, __c15, 4)) }),
+      ).annotate({ identifier: "AmazonMachineImageRecommendation" });
     case 6:
       return S.suspend(() =>
         S.Struct({ volumeTypes: __S(192, __c6, 0), iops: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "AmazonMachineImageEbsVolume",
-      });
+      ).annotate({ identifier: "AmazonMachineImageEbsVolume" });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2068,9 +2040,7 @@ function __c15(j: number): any {
           ebsVolume: S.optional(__S(486, __c15, 6)),
           shortDescription: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "AmazonMachineImageFulfillmentOption",
-      });
+      ).annotate({ identifier: "AmazonMachineImageFulfillmentOption" });
     case 8:
       return S.suspend(() =>
         S.Struct({ supportedServiceType: S.String, displayName: S.String, description: S.String }),
@@ -2101,9 +2071,7 @@ function __c15(j: number): any {
           shortDescription: S.optional(S.String),
           longDescription: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CloudFormationFulfillmentOption",
-      });
+      ).annotate({ identifier: "CloudFormationFulfillmentOption" });
     case 12:
       return S.suspend(() =>
         S.Struct({ operatingSystemFamilyName: S.String, operatingSystemName: S.String }),
@@ -2123,9 +2091,7 @@ function __c15(j: number): any {
           releaseNotes: S.optional(S.String),
           usageInstructions: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ContainerFulfillmentOption",
-      });
+      ).annotate({ identifier: "ContainerFulfillmentOption" });
     case 15:
       return S.suspend(() =>
         S.Struct({
@@ -2153,9 +2119,7 @@ function __c15(j: number): any {
           usageInstructions: S.optional(S.String),
           awsSupportedServices: S.optional(__S(489, __c15, 9)),
         }),
-      ).annotate({
-        identifier: "EksAddOnFulfillmentOption",
-      });
+      ).annotate({ identifier: "EksAddOnFulfillmentOption" });
     case 17:
       return S.suspend(() =>
         S.Struct({
@@ -2175,9 +2139,7 @@ function __c15(j: number): any {
           fulfillmentOptionDisplayName: S.String,
           dataArtifacts: S.optional(__S(498, __c15, 18)),
         }),
-      ).annotate({
-        identifier: "DataExchangeFulfillmentOption",
-      });
+      ).annotate({ identifier: "DataExchangeFulfillmentOption" });
     case 20:
       return S.suspend(() =>
         S.Struct({
@@ -2185,9 +2147,7 @@ function __c15(j: number): any {
           fulfillmentOptionType: S.String,
           fulfillmentOptionDisplayName: S.String,
         }),
-      ).annotate({
-        identifier: "ProfessionalServicesFulfillmentOption",
-      });
+      ).annotate({ identifier: "ProfessionalServicesFulfillmentOption" });
     case 21:
       return S.suspend(() =>
         S.Struct({
@@ -2208,9 +2168,7 @@ function __c15(j: number): any {
           recommendedRealtimeInferenceInstanceType: S.optional(S.String),
           recommendedTrainingInstanceType: S.String,
         }),
-      ).annotate({
-        identifier: "SageMakerAlgorithmRecommendation",
-      });
+      ).annotate({ identifier: "SageMakerAlgorithmRecommendation" });
     case 23:
       return S.suspend(() =>
         S.Struct({
@@ -2222,18 +2180,14 @@ function __c15(j: number): any {
           usageInstructions: S.optional(S.String),
           recommendation: S.optional(__S(502, __c15, 22)),
         }),
-      ).annotate({
-        identifier: "SageMakerAlgorithmFulfillmentOption",
-      });
+      ).annotate({ identifier: "SageMakerAlgorithmFulfillmentOption" });
     case 24:
       return S.suspend(() =>
         S.Struct({
           recommendedBatchTransformInstanceType: S.String,
           recommendedRealtimeInferenceInstanceType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SageMakerModelRecommendation",
-      });
+      ).annotate({ identifier: "SageMakerModelRecommendation" });
     case 25:
       return S.suspend(() =>
         S.Struct({
@@ -2247,30 +2201,20 @@ function __c15(j: number): any {
           supportedContentTypes: S.optional(__S(192, __c6, 0)),
           supportedResponseMimeTypes: S.optional(__S(192, __c6, 0)),
         }),
-      ).annotate({
-        identifier: "SageMakerModelFulfillmentOption",
-      });
+      ).annotate({ identifier: "SageMakerModelFulfillmentOption" });
     case 26:
       return S.Union([
-        /*@__PURE__*/ S.Struct({
-          amazonMachineImageFulfillmentOption: __S(487, __c15, 7),
-        }),
+        /*@__PURE__*/ S.Struct({ amazonMachineImageFulfillmentOption: __S(487, __c15, 7) }),
         /*@__PURE__*/ S.Struct({ apiFulfillmentOption: __S(490, __c15, 10) }),
         /*@__PURE__*/ S.Struct({ cloudFormationFulfillmentOption: __S(491, __c15, 11) }),
         /*@__PURE__*/ S.Struct({ containerFulfillmentOption: __S(494, __c15, 14) }),
         /*@__PURE__*/ S.Struct({ helmFulfillmentOption: __S(495, __c15, 15) }),
         /*@__PURE__*/ S.Struct({ eksAddOnFulfillmentOption: __S(496, __c15, 16) }),
-        /*@__PURE__*/ S.Struct({
-          ec2ImageBuilderComponentFulfillmentOption: __S(494, __c15, 14),
-        }),
+        /*@__PURE__*/ S.Struct({ ec2ImageBuilderComponentFulfillmentOption: __S(494, __c15, 14) }),
         /*@__PURE__*/ S.Struct({ dataExchangeFulfillmentOption: __S(499, __c15, 19) }),
-        /*@__PURE__*/ S.Struct({
-          professionalServicesFulfillmentOption: __S(500, __c15, 20),
-        }),
+        /*@__PURE__*/ S.Struct({ professionalServicesFulfillmentOption: __S(500, __c15, 20) }),
         /*@__PURE__*/ S.Struct({ saasFulfillmentOption: __S(501, __c15, 21) }),
-        /*@__PURE__*/ S.Struct({
-          sageMakerAlgorithmFulfillmentOption: __S(503, __c15, 23),
-        }),
+        /*@__PURE__*/ S.Struct({ sageMakerAlgorithmFulfillmentOption: __S(503, __c15, 23) }),
         /*@__PURE__*/ S.Struct({ sageMakerModelFulfillmentOption: __S(505, __c15, 25) }),
       ]);
     case 27:
@@ -2282,24 +2226,16 @@ function __c15(j: number): any {
           fulfillmentOptions: __S(507, __c15, 27),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListFulfillmentOptionsOutput",
-      });
+      ).annotate({ identifier: "ListFulfillmentOptionsOutput" });
   }
 }
 function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ filterType: S.String, filterValues: __S(192, __c6, 0) }),
-      ).annotate({ identifier: "PurchaseOptionFilter" });
-    case 1:
-      return S.Array(__S(512, __c16, 0));
-    case 2:
-      return S.suspend(() =>
         S.Struct({
           locale: S.optional(S.String),
-          filters: S.optional(__S(513, __c16, 1)),
+          filters: S.optional(__S(545, __c17, 1)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -2313,19 +2249,17 @@ function __c16(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListPurchaseOptionsInput" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           product: __S(64, __c2, 0),
           offer: __S(128, __c4, 0),
           offerSet: S.optional(__S(320, __c10, 0)),
         }),
-      ).annotate({
-        identifier: "PurchaseOptionAssociatedEntity",
-      });
-    case 4:
-      return S.Array(__S(515, __c16, 3));
-    case 5:
+      ).annotate({ identifier: "PurchaseOptionAssociatedEntity" });
+    case 2:
+      return S.Array(__S(513, __c16, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           purchaseOptionId: S.String,
@@ -2336,23 +2270,31 @@ function __c16(j: number): any {
           expirationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           sellerOfRecord: __S(32, __c1, 0),
           badges: S.optional(__S(66, __c2, 2)),
-          associatedEntities: __S(516, __c16, 4),
+          associatedEntities: __S(514, __c16, 2),
         }),
       ).annotate({ identifier: "PurchaseOptionSummary" });
-    case 6:
-      return S.Array(__S(517, __c16, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(515, __c16, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          purchaseOptions: S.optional(__S(518, __c16, 6)),
+          purchaseOptions: S.optional(__S(516, __c16, 4)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListPurchaseOptionsOutput",
-      });
+      ).annotate({ identifier: "ListPurchaseOptionsOutput" });
   }
 }
 function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ filterType: S.String, filterValues: __S(192, __c6, 0) }),
+      ).annotate({ identifier: "PurchaseOptionFilter" });
+    case 1:
+      return S.Array(__S(544, __c17, 0));
+  }
+}
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
@@ -2361,8 +2303,8 @@ function __c17(j: number): any {
         S.Struct({
           locale: S.optional(S.String),
           searchText: S.optional(S.String),
-          filters: S.optional(__S(577, __c18, 1)),
-          facetTypes: S.optional(__S(544, __c17, 0)),
+          filters: S.optional(__S(545, __c17, 1)),
+          facetTypes: S.optional(__S(576, __c18, 0)),
           nextToken: S.optional(S.String),
         }).pipe(
           T.all(
@@ -2385,27 +2327,17 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "ListingFacet" });
     case 3:
-      return S.Array(__S(546, __c17, 2));
+      return S.Array(__S(578, __c18, 2));
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(547, __c17, 3).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(579, __c18, 3).pipe(S.optional));
     case 5:
       return S.suspend(() =>
         S.Struct({
           totalResults: S.Number,
-          listingFacets: __S(548, __c17, 4),
+          listingFacets: __S(580, __c18, 4),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "SearchFacetsOutput" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ filterType: S.String, filterValues: __S(192, __c6, 0) }),
-      ).annotate({ identifier: "SearchFilter" });
-    case 1:
-      return S.Array(__S(576, __c18, 0));
   }
 }
 function __c19(j: number): any {
@@ -2415,7 +2347,7 @@ function __c19(j: number): any {
         S.Struct({
           locale: S.optional(S.String),
           searchText: S.optional(S.String),
-          filters: S.optional(__S(577, __c18, 1)),
+          filters: S.optional(__S(545, __c17, 1)),
           maxResults: S.optional(S.Number),
           sortBy: S.optional(S.String),
           sortOrder: S.optional(S.String),

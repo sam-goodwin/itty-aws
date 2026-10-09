@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -135,7 +135,7 @@ export class ValidationException
         }),
       ),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(993, __c62, 1)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(945, __c59, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -1152,8 +1152,8 @@ export const createDeployment: API.OperationMethod<
   CreateDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1008, __c63, 0) as any as S.Schema<CreateDeploymentInput>,
-  output: __S(1108, __c69, 4) as any as S.Schema<CreateDeploymentOutput>,
+  input: __S(960, __c60, 0) as any as S.Schema<CreateDeploymentInput>,
+  output: __S(1060, __c66, 4) as any as S.Schema<CreateDeploymentOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1223,7 +1223,7 @@ export const createPolicy: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(16, __c1, 0) as any as S.Schema<CreatePolicyInput>,
-  output: __S(48, __c3, 0) as any as S.Schema<CreatePolicyOutput>,
+  output: __S(36, __c2, 4) as any as S.Schema<CreatePolicyOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1257,8 +1257,8 @@ export const createPolicySnapshot: API.OperationMethod<
   CreatePolicySnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c5, 0) as any as S.Schema<CreatePolicySnapshotInput>,
-  output: __S(81, __c5, 1) as any as S.Schema<CreatePolicySnapshotOutput>,
+  input: __S(64, __c4, 0) as any as S.Schema<CreatePolicySnapshotInput>,
+  output: __S(36, __c2, 4) as any as S.Schema<CreatePolicySnapshotOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1292,8 +1292,8 @@ export const createRule: API.OperationMethod<
   CreateRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c6, 0) as any as S.Schema<CreateRuleInput>,
-  output: __S(112, __c7, 0) as any as S.Schema<CreateRuleOutput>,
+  input: __S(80, __c5, 0) as any as S.Schema<CreateRuleInput>,
+  output: __S(96, __c6, 0) as any as S.Schema<CreateRuleOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1327,8 +1327,8 @@ export const createRuleSnapshot: API.OperationMethod<
   CreateRuleSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c8, 0) as any as S.Schema<CreateRuleSnapshotInput>,
-  output: __S(112, __c7, 0) as any as S.Schema<CreateRuleSnapshotOutput>,
+  input: __S(112, __c7, 0) as any as S.Schema<CreateRuleSnapshotInput>,
+  output: __S(96, __c6, 0) as any as S.Schema<CreateRuleSnapshotOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1362,8 +1362,8 @@ export const createScope: API.OperationMethod<
   CreateScopeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c9, 0) as any as S.Schema<CreateScopeInput>,
-  output: __S(176, __c11, 0) as any as S.Schema<CreateScopeOutput>,
+  input: __S(128, __c8, 0) as any as S.Schema<CreateScopeInput>,
+  output: __S(154, __c9, 10) as any as S.Schema<CreateScopeOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1397,8 +1397,8 @@ export const createScopeSnapshot: API.OperationMethod<
   CreateScopeSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c12, 0) as any as S.Schema<CreateScopeSnapshotInput>,
-  output: __S(193, __c12, 1) as any as S.Schema<CreateScopeSnapshotOutput>,
+  input: __S(160, __c10, 0) as any as S.Schema<CreateScopeSnapshotInput>,
+  output: __S(154, __c9, 10) as any as S.Schema<CreateScopeSnapshotOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1432,8 +1432,8 @@ export const createTemplate: API.OperationMethod<
   CreateTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c13, 0) as any as S.Schema<CreateTemplateInput>,
-  output: __S(240, __c15, 0) as any as S.Schema<CreateTemplateOutput>,
+  input: __S(176, __c11, 0) as any as S.Schema<CreateTemplateInput>,
+  output: __S(194, __c12, 2) as any as S.Schema<CreateTemplateOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1467,8 +1467,8 @@ export const createTemplateSnapshot: API.OperationMethod<
   CreateTemplateSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c17, 0) as any as S.Schema<CreateTemplateSnapshotInput>,
-  output: __S(273, __c17, 1) as any as S.Schema<CreateTemplateSnapshotOutput>,
+  input: __S(224, __c14, 0) as any as S.Schema<CreateTemplateSnapshotInput>,
+  output: __S(194, __c12, 2) as any as S.Schema<CreateTemplateSnapshotOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1498,8 +1498,8 @@ export const deleteAdminAccount: API.OperationMethod<
   DeleteAdminAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c18, 0) as any as S.Schema<DeleteAdminAccountRequest>,
-  output: __S(304, __c19, 0) as any as S.Schema<DeleteAdminAccountResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<DeleteAdminAccountRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<DeleteAdminAccountResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1527,8 +1527,8 @@ export const deleteDeployment: API.OperationMethod<
   DeleteDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c20, 0) as any as S.Schema<DeleteDeploymentInput>,
-  output: __S(304, __c19, 0) as any as S.Schema<DeleteDeploymentResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<DeleteDeploymentInput>,
+  output: __S(256, __c16, 0) as any as S.Schema<DeleteDeploymentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1557,8 +1557,8 @@ export const deletePolicy: API.OperationMethod<
   DeletePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<DeletePolicyInput>,
-  output: __S(304, __c19, 0) as any as S.Schema<DeletePolicyResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<DeletePolicyInput>,
+  output: __S(256, __c16, 0) as any as S.Schema<DeletePolicyResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1587,8 +1587,8 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c22, 0) as any as S.Schema<DeleteRuleInput>,
-  output: __S(304, __c19, 0) as any as S.Schema<DeleteRuleResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<DeleteRuleInput>,
+  output: __S(256, __c16, 0) as any as S.Schema<DeleteRuleResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1617,8 +1617,8 @@ export const deleteScope: API.OperationMethod<
   DeleteScopeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c23, 0) as any as S.Schema<DeleteScopeInput>,
-  output: __S(304, __c19, 0) as any as S.Schema<DeleteScopeResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<DeleteScopeInput>,
+  output: __S(256, __c16, 0) as any as S.Schema<DeleteScopeResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1647,8 +1647,8 @@ export const deleteTemplate: API.OperationMethod<
   DeleteTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<DeleteTemplateInput>,
-  output: __S(304, __c19, 0) as any as S.Schema<DeleteTemplateResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<DeleteTemplateInput>,
+  output: __S(256, __c16, 0) as any as S.Schema<DeleteTemplateResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1676,8 +1676,8 @@ export const generateRuleConfiguration: API.OperationMethod<
   GenerateRuleConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c25, 0) as any as S.Schema<GenerateRuleConfigurationRequest>,
-  output: __S(401, __c25, 1) as any as S.Schema<GenerateRuleConfigurationResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<GenerateRuleConfigurationRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<GenerateRuleConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1705,8 +1705,8 @@ export const getAdminAccount: API.OperationMethod<
   GetAdminAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c26, 0) as any as S.Schema<GetAdminAccountRequest>,
-  output: __S(441, __c27, 9) as any as S.Schema<GetAdminAccountResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetAdminAccountRequest>,
+  output: __S(393, __c24, 9) as any as S.Schema<GetAdminAccountResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1735,8 +1735,8 @@ export const getDeployment: API.OperationMethod<
   GetDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<GetDeploymentInput>,
-  output: __S(449, __c28, 1) as any as S.Schema<GetDeploymentOutput>,
+  input: __S(400, __c25, 0) as any as S.Schema<GetDeploymentInput>,
+  output: __S(401, __c25, 1) as any as S.Schema<GetDeploymentOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1765,8 +1765,8 @@ export const getPolicy: API.OperationMethod<
   GetPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c29, 0) as any as S.Schema<GetPolicyInput>,
-  output: __S(48, __c3, 0) as any as S.Schema<GetPolicyOutput>,
+  input: __S(416, __c26, 0) as any as S.Schema<GetPolicyInput>,
+  output: __S(36, __c2, 4) as any as S.Schema<GetPolicyOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1795,8 +1795,8 @@ export const getRule: API.OperationMethod<
   GetRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<GetRuleInput>,
-  output: __S(112, __c7, 0) as any as S.Schema<GetRuleOutput>,
+  input: __S(432, __c27, 0) as any as S.Schema<GetRuleInput>,
+  output: __S(96, __c6, 0) as any as S.Schema<GetRuleOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1825,8 +1825,8 @@ export const getScope: API.OperationMethod<
   GetScopeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<GetScopeInput>,
-  output: __S(176, __c11, 0) as any as S.Schema<GetScopeOutput>,
+  input: __S(448, __c28, 0) as any as S.Schema<GetScopeInput>,
+  output: __S(154, __c9, 10) as any as S.Schema<GetScopeOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1855,8 +1855,8 @@ export const getTemplate: API.OperationMethod<
   GetTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c32, 0) as any as S.Schema<GetTemplateInput>,
-  output: __S(240, __c15, 0) as any as S.Schema<GetTemplateOutput>,
+  input: __S(464, __c29, 0) as any as S.Schema<GetTemplateInput>,
+  output: __S(194, __c12, 2) as any as S.Schema<GetTemplateOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1885,8 +1885,8 @@ export const listAdminAccounts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AdminAccountSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(528, __c33, 0) as any as S.Schema<ListAdminAccountsRequest>,
-  output: __S(531, __c33, 3) as any as S.Schema<ListAdminAccountsResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListAdminAccountsRequest>,
+  output: __S(483, __c30, 3) as any as S.Schema<ListAdminAccountsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1920,10 +1920,10 @@ export const listAggregateResourceSynchronizationStatuses: API.PaginatedOperatio
   Credentials | HttpClient.HttpClient,
   ResourceSynchronizationStatusSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(544, __c34, 0) as any as S.Schema<ListAggregateResourceSynchronizationStatusesInput>,
+  input: __S(496, __c31, 0) as any as S.Schema<ListAggregateResourceSynchronizationStatusesInput>,
   output: __S(
-    572,
-    __c35,
+    524,
+    __c32,
     12,
   ) as any as S.Schema<ListAggregateResourceSynchronizationStatusesOutput>,
   errors: [
@@ -1959,8 +1959,8 @@ export const listDeployments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DeploymentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(576, __c36, 0) as any as S.Schema<ListDeploymentsInput>,
-  output: __S(577, __c36, 1) as any as S.Schema<ListDeploymentsOutput>,
+  input: __S(528, __c33, 0) as any as S.Schema<ListDeploymentsInput>,
+  output: __S(529, __c33, 1) as any as S.Schema<ListDeploymentsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1995,8 +1995,8 @@ export const listDeploymentSnapshots: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DeploymentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(608, __c38, 0) as any as S.Schema<ListDeploymentSnapshotsInput>,
-  output: __S(609, __c38, 1) as any as S.Schema<ListDeploymentSnapshotsOutput>,
+  input: __S(560, __c35, 0) as any as S.Schema<ListDeploymentSnapshotsInput>,
+  output: __S(561, __c35, 1) as any as S.Schema<ListDeploymentSnapshotsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2031,8 +2031,8 @@ export const listPolicies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PolicySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(624, __c39, 0) as any as S.Schema<ListPoliciesInput>,
-  output: __S(625, __c39, 1) as any as S.Schema<ListPoliciesOutput>,
+  input: __S(576, __c36, 0) as any as S.Schema<ListPoliciesInput>,
+  output: __S(577, __c36, 1) as any as S.Schema<ListPoliciesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2067,8 +2067,8 @@ export const listPolicySnapshots: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PolicySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(656, __c41, 0) as any as S.Schema<ListPolicySnapshotsInput>,
-  output: __S(657, __c41, 1) as any as S.Schema<ListPolicySnapshotsOutput>,
+  input: __S(608, __c38, 0) as any as S.Schema<ListPolicySnapshotsInput>,
+  output: __S(609, __c38, 1) as any as S.Schema<ListPolicySnapshotsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2103,8 +2103,8 @@ export const listResourceAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(672, __c42, 0) as any as S.Schema<ListResourceAssociationsInput>,
-  output: __S(675, __c42, 3) as any as S.Schema<ListResourceAssociationsOutput>,
+  input: __S(624, __c39, 0) as any as S.Schema<ListResourceAssociationsInput>,
+  output: __S(627, __c39, 3) as any as S.Schema<ListResourceAssociationsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2139,8 +2139,8 @@ export const listResourceSynchronizationStatuses: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceSynchronizationStatusSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(688, __c43, 0) as any as S.Schema<ListResourceSynchronizationStatusesInput>,
-  output: __S(572, __c35, 12) as any as S.Schema<ListResourceSynchronizationStatusesOutput>,
+  input: __S(640, __c40, 0) as any as S.Schema<ListResourceSynchronizationStatusesInput>,
+  output: __S(524, __c32, 12) as any as S.Schema<ListResourceSynchronizationStatusesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2175,8 +2175,8 @@ export const listRules: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RuleSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(704, __c44, 0) as any as S.Schema<ListRulesInput>,
-  output: __S(705, __c44, 1) as any as S.Schema<ListRulesOutput>,
+  input: __S(656, __c41, 0) as any as S.Schema<ListRulesInput>,
+  output: __S(657, __c41, 1) as any as S.Schema<ListRulesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2211,8 +2211,8 @@ export const listRuleSnapshots: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RuleSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(736, __c46, 0) as any as S.Schema<ListRuleSnapshotsInput>,
-  output: __S(737, __c46, 1) as any as S.Schema<ListRuleSnapshotsOutput>,
+  input: __S(688, __c43, 0) as any as S.Schema<ListRuleSnapshotsInput>,
+  output: __S(689, __c43, 1) as any as S.Schema<ListRuleSnapshotsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2247,8 +2247,8 @@ export const listScopes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ScopeSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(752, __c47, 0) as any as S.Schema<ListScopesInput>,
-  output: __S(753, __c47, 1) as any as S.Schema<ListScopesOutput>,
+  input: __S(704, __c44, 0) as any as S.Schema<ListScopesInput>,
+  output: __S(705, __c44, 1) as any as S.Schema<ListScopesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2283,8 +2283,8 @@ export const listScopeSnapshots: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ScopeSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(784, __c49, 0) as any as S.Schema<ListScopeSnapshotsInput>,
-  output: __S(785, __c49, 1) as any as S.Schema<ListScopeSnapshotsOutput>,
+  input: __S(736, __c46, 0) as any as S.Schema<ListScopeSnapshotsInput>,
+  output: __S(737, __c46, 1) as any as S.Schema<ListScopeSnapshotsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2319,8 +2319,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c50, 0) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(801, __c50, 1) as any as S.Schema<ListTagsForResourceOutput>,
+  input: __S(752, __c47, 0) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(753, __c47, 1) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2349,8 +2349,8 @@ export const listTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(816, __c51, 0) as any as S.Schema<ListTemplatesInput>,
-  output: __S(817, __c51, 1) as any as S.Schema<ListTemplatesOutput>,
+  input: __S(768, __c48, 0) as any as S.Schema<ListTemplatesInput>,
+  output: __S(769, __c48, 1) as any as S.Schema<ListTemplatesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2385,8 +2385,8 @@ export const listTemplateSnapshots: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(848, __c53, 0) as any as S.Schema<ListTemplateSnapshotsInput>,
-  output: __S(849, __c53, 1) as any as S.Schema<ListTemplateSnapshotsOutput>,
+  input: __S(800, __c50, 0) as any as S.Schema<ListTemplateSnapshotsInput>,
+  output: __S(801, __c50, 1) as any as S.Schema<ListTemplateSnapshotsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2425,8 +2425,8 @@ export const putAdminAccount: API.OperationMethod<
   PutAdminAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(867, __c54, 3) as any as S.Schema<PutAdminAccountRequest>,
-  output: __S(441, __c27, 9) as any as S.Schema<PutAdminAccountResponse>,
+  input: __S(819, __c51, 3) as any as S.Schema<PutAdminAccountRequest>,
+  output: __S(393, __c24, 9) as any as S.Schema<PutAdminAccountResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2458,8 +2458,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(880, __c55, 0) as any as S.Schema<TagResourceInput>,
-  output: __S(304, __c19, 0) as any as S.Schema<TagResourceOutput>,
+  input: __S(832, __c52, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(256, __c16, 0) as any as S.Schema<TagResourceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2490,8 +2490,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c56, 0) as any as S.Schema<UntagResourceInput>,
-  output: __S(304, __c19, 0) as any as S.Schema<UntagResourceOutput>,
+  input: __S(848, __c53, 0) as any as S.Schema<UntagResourceInput>,
+  output: __S(256, __c16, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2523,8 +2523,8 @@ export const updateDeployment: API.OperationMethod<
   UpdateDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(912, __c57, 0) as any as S.Schema<UpdateDeploymentInput>,
-  output: __S(1108, __c69, 4) as any as S.Schema<UpdateDeploymentOutput>,
+  input: __S(864, __c54, 0) as any as S.Schema<UpdateDeploymentInput>,
+  output: __S(1060, __c66, 4) as any as S.Schema<UpdateDeploymentOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2557,8 +2557,8 @@ export const updatePolicy: API.OperationMethod<
   UpdatePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c58, 0) as any as S.Schema<UpdatePolicyInput>,
-  output: __S(48, __c3, 0) as any as S.Schema<UpdatePolicyOutput>,
+  input: __S(880, __c55, 0) as any as S.Schema<UpdatePolicyInput>,
+  output: __S(36, __c2, 4) as any as S.Schema<UpdatePolicyOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2591,8 +2591,8 @@ export const updateRule: API.OperationMethod<
   UpdateRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(944, __c59, 0) as any as S.Schema<UpdateRuleInput>,
-  output: __S(112, __c7, 0) as any as S.Schema<UpdateRuleOutput>,
+  input: __S(896, __c56, 0) as any as S.Schema<UpdateRuleInput>,
+  output: __S(96, __c6, 0) as any as S.Schema<UpdateRuleOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2625,8 +2625,8 @@ export const updateScope: API.OperationMethod<
   UpdateScopeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c60, 0) as any as S.Schema<UpdateScopeInput>,
-  output: __S(176, __c11, 0) as any as S.Schema<UpdateScopeOutput>,
+  input: __S(912, __c57, 0) as any as S.Schema<UpdateScopeInput>,
+  output: __S(154, __c9, 10) as any as S.Schema<UpdateScopeOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2659,8 +2659,8 @@ export const updateTemplate: API.OperationMethod<
   UpdateTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(976, __c61, 0) as any as S.Schema<UpdateTemplateInput>,
-  output: __S(240, __c15, 0) as any as S.Schema<UpdateTemplateOutput>,
+  input: __S(928, __c58, 0) as any as S.Schema<UpdateTemplateInput>,
+  output: __S(194, __c12, 2) as any as S.Schema<UpdateTemplateOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2683,7 +2683,7 @@ function __c0(j: number): any {
         S.Struct({
           deploymentIdentifier: S.String.pipe(T.HttpLabel("deploymentIdentifier")),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(1024, __c64, 0)),
+          tags: S.optional(__S(976, __c61, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/deployments/{deploymentIdentifier}/snapshots" }),
@@ -2694,9 +2694,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateDeploymentSnapshotInput",
-      });
+      ).annotate({ identifier: "CreateDeploymentSnapshotInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2705,18 +2703,16 @@ function __c0(j: number): any {
           deploymentName: S.String,
           deploymentDescription: S.optional(S.String),
           status: S.String,
-          deploymentConfiguration: S.optional(__S(1040, __c65, 0)),
-          associatedPolicyList: __S(1042, __c65, 2),
-          associatedScopeList: __S(1044, __c65, 4),
+          deploymentConfiguration: S.optional(__S(992, __c62, 0)),
+          associatedPolicyList: __S(994, __c62, 2),
+          associatedScopeList: __S(996, __c62, 4),
           version: S.String,
           updateToken: S.optional(S.String),
           isSnapshot: S.optional(S.Boolean),
           hasPublishedVersion: S.optional(S.Boolean),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "CreateDeploymentSnapshotOutput",
-      });
+      ).annotate({ identifier: "CreateDeploymentSnapshotOutput" });
   }
 }
 function __c1(j: number): any {
@@ -2728,11 +2724,11 @@ function __c1(j: number): any {
           policyName: S.String,
           policyDescription: S.optional(S.String),
           priority: S.Number,
-          associatedTemplateAndRuleList: S.optional(__S(65, __c4, 1)),
+          associatedTemplateAndRuleList: S.optional(__S(49, __c3, 1)),
           firewallType: S.String,
           policyConfiguration: __S(33, __c2, 1),
           isPublished: S.optional(S.Boolean),
-          tags: S.optional(__S(1024, __c64, 0)),
+          tags: S.optional(__S(976, __c61, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/policies" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreatePolicyInput" });
   }
@@ -2741,10 +2737,7 @@ function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          existingCustomerWebACLResolution: S.String,
-          conflictResolution: S.String,
-        }),
+        S.Struct({ existingCustomerWebACLResolution: S.String, conflictResolution: S.String }),
       ).annotate({ identifier: "WafConfig" });
     case 1:
       return S.suspend(() =>
@@ -2761,11 +2754,7 @@ function __c2(j: number): any {
       ]);
     case 3:
       return S.Array(__S(34, __c2, 2));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           policyId: S.String,
@@ -2786,7 +2775,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "CreatePolicyOutput" });
   }
 }
-function __c4(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.Union([
@@ -2794,17 +2783,17 @@ function __c4(j: number): any {
         /*@__PURE__*/ S.Struct({ ruleIdentifier: S.String }),
       ]);
     case 1:
-      return S.Array(__S(64, __c4, 0));
+      return S.Array(__S(48, __c3, 0));
   }
 }
-function __c5(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           policyIdentifier: S.String.pipe(T.HttpLabel("policyIdentifier")),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(1024, __c64, 0)),
+          tags: S.optional(__S(976, __c61, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/policies/{policyIdentifier}/snapshots" }),
@@ -2815,33 +2804,10 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreatePolicySnapshotInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          policyId: S.String,
-          policyArn: S.String,
-          policyName: S.String,
-          policyDescription: S.optional(S.String),
-          status: S.String,
-          priority: S.Number,
-          associatedTemplateAndRuleList: __S(35, __c2, 3),
-          version: S.String,
-          updateToken: S.optional(S.String),
-          isSnapshot: S.optional(S.Boolean),
-          hasPublishedVersion: S.optional(S.Boolean),
-          firewallType: S.String,
-          policyConfiguration: S.optional(__S(33, __c2, 1)),
-          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-        }),
-      ).annotate({
-        identifier: "CreatePolicySnapshotOutput",
-      });
+      ).annotate({ identifier: "CreatePolicySnapshotInput" });
   }
 }
-function __c6(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2853,12 +2819,12 @@ function __c6(j: number): any {
           ruleDescription: S.optional(S.String),
           configuration: S.Any,
           isPublished: S.optional(S.Boolean),
-          tags: S.optional(__S(1024, __c64, 0)),
+          tags: S.optional(__S(976, __c61, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/rules" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateRuleInput" });
   }
 }
-function __c7(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2880,14 +2846,14 @@ function __c7(j: number): any {
       ).annotate({ identifier: "CreateRuleOutput" });
   }
 }
-function __c8(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ruleIdentifier: S.String.pipe(T.HttpLabel("ruleIdentifier")),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(1024, __c64, 0)),
+          tags: S.optional(__S(976, __c61, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/rules/{ruleIdentifier}/snapshots" }),
@@ -2901,7 +2867,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "CreateRuleSnapshotInput" });
   }
 }
-function __c9(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2909,27 +2875,27 @@ function __c9(j: number): any {
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           scopeName: S.String,
           scopeDescription: S.optional(S.String),
-          scopeConfiguration: __S(169, __c10, 9),
+          scopeConfiguration: __S(153, __c9, 9),
           isPublished: S.optional(S.Boolean),
-          tags: S.optional(__S(1024, __c64, 0)),
+          tags: S.optional(__S(976, __c61, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/scopes" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateScopeInput" });
   }
 }
-function __c10(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accountIds: S.optional(__S(1056, __c66, 0)),
-          organizationalUnits: S.optional(__S(1056, __c66, 0)),
+          accountIds: S.optional(__S(1008, __c63, 0)),
+          organizationalUnits: S.optional(__S(1008, __c63, 0)),
         }),
       ).annotate({ identifier: "AccountSet" });
     case 1:
       return S.Union([
         /*@__PURE__*/ S.Struct({ includeAll: /*@__PURE__*/ S.Struct({}) }),
-        /*@__PURE__*/ S.Struct({ include: __S(160, __c10, 0) }),
-        /*@__PURE__*/ S.Struct({ exclude: __S(160, __c10, 0) }),
+        /*@__PURE__*/ S.Struct({ include: __S(144, __c9, 0) }),
+        /*@__PURE__*/ S.Struct({ exclude: __S(144, __c9, 0) }),
       ]);
     case 2:
       return S.suspend(() =>
@@ -2937,30 +2903,30 @@ function __c10(j: number): any {
       ).annotate({ identifier: "AlbConfiguration" });
     case 3:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ tags: __S(1024, __c64, 0) }),
-        /*@__PURE__*/ S.Struct({ albConfig: __S(162, __c10, 2) }),
+        /*@__PURE__*/ S.Struct({ tags: __S(976, __c61, 0) }),
+        /*@__PURE__*/ S.Struct({ albConfig: __S(146, __c9, 2) }),
       ]);
     case 4:
       return S.Array(
-        /*@__PURE__*/ S.suspend(() => __S(165, __c10, 5)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(149, __c9, 5)).annotate({
           identifier: "ResourceLogicalExpression",
         }),
       );
     case 5:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ criteria: __S(163, __c10, 3) }),
+        /*@__PURE__*/ S.Struct({ criteria: __S(147, __c9, 3) }),
         /*@__PURE__*/ S.Struct({
-          and: /*@__PURE__*/ S.suspend(() => __S(164, __c10, 4)).annotate({
+          and: /*@__PURE__*/ S.suspend(() => __S(148, __c9, 4)).annotate({
             identifier: "ResourceLogicalExpressionList",
           }),
         }),
         /*@__PURE__*/ S.Struct({
-          or: /*@__PURE__*/ S.suspend(() => __S(164, __c10, 4)).annotate({
+          or: /*@__PURE__*/ S.suspend(() => __S(148, __c9, 4)).annotate({
             identifier: "ResourceLogicalExpressionList",
           }),
         }),
         /*@__PURE__*/ S.Struct({
-          not: /*@__PURE__*/ S.suspend(() => __S(165, __c10, 5)).annotate({
+          not: /*@__PURE__*/ S.suspend(() => __S(149, __c9, 5)).annotate({
             identifier: "ResourceLogicalExpression",
           }),
         }),
@@ -2968,39 +2934,35 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          explicitArns: S.optional(__S(1056, __c66, 0)),
-          expression: S.optional(__S(165, __c10, 5)),
+          explicitArns: S.optional(__S(1008, __c63, 0)),
+          expression: S.optional(__S(149, __c9, 5)),
         }),
       ).annotate({ identifier: "ResourceSet" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           includeAll: S.optional(S.Boolean),
-          include: S.optional(__S(166, __c10, 6)),
-          exclude: S.optional(__S(166, __c10, 6)),
+          include: S.optional(__S(150, __c9, 6)),
+          exclude: S.optional(__S(150, __c9, 6)),
         }),
       ).annotate({ identifier: "ResourceScope" });
     case 8:
-      return S.Record(S.String, /*@__PURE__*/ __S(167, __c10, 7).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(151, __c9, 7).pipe(S.optional));
     case 9:
       return S.suspend(() =>
         S.Struct({
-          accountFilter: S.optional(__S(161, __c10, 1)),
-          resourceScopes: __S(168, __c10, 8),
+          accountFilter: S.optional(__S(145, __c9, 1)),
+          resourceScopes: __S(152, __c9, 8),
         }),
       ).annotate({ identifier: "ScopeConfiguration" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           scopeId: S.String,
           scopeArn: S.String,
           scopeName: S.String,
           scopeDescription: S.optional(S.String),
-          scopeConfiguration: S.optional(__S(169, __c10, 9)),
+          scopeConfiguration: S.optional(__S(153, __c9, 9)),
           status: S.String,
           version: S.String,
           updateToken: S.optional(S.String),
@@ -3011,14 +2973,14 @@ function __c11(j: number): any {
       ).annotate({ identifier: "CreateScopeOutput" });
   }
 }
-function __c12(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           scopeIdentifier: S.String.pipe(T.HttpLabel("scopeIdentifier")),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(1024, __c64, 0)),
+          tags: S.optional(__S(976, __c61, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/scopes/{scopeIdentifier}/snapshots" }),
@@ -3030,27 +2992,9 @@ function __c12(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateScopeSnapshotInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          scopeId: S.String,
-          scopeArn: S.String,
-          scopeName: S.String,
-          scopeDescription: S.optional(S.String),
-          scopeConfiguration: S.optional(__S(169, __c10, 9)),
-          status: S.String,
-          version: S.String,
-          updateToken: S.optional(S.String),
-          isSnapshot: S.optional(S.Boolean),
-          hasPublishedVersion: S.optional(S.Boolean),
-          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-        }),
-      ).annotate({
-        identifier: "CreateScopeSnapshotOutput",
-      });
   }
 }
-function __c13(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3058,27 +3002,23 @@ function __c13(j: number): any {
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           templateName: S.String,
           templateDescription: S.optional(S.String),
-          associatedRuleList: __S(257, __c16, 1),
+          associatedRuleList: __S(209, __c13, 1),
           firewallType: S.String,
           isPublished: S.optional(S.Boolean),
-          tags: S.optional(__S(1024, __c64, 0)),
+          tags: S.optional(__S(976, __c61, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/templates" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateTemplateInput" });
   }
 }
-function __c14(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ ruleArn: S.String })).annotate({
         identifier: "AssociatedRule",
       });
     case 1:
-      return S.Array(__S(224, __c14, 0));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(__S(192, __c12, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           templateId: S.String,
@@ -3087,7 +3027,7 @@ function __c15(j: number): any {
           templateDescription: S.optional(S.String),
           status: S.String,
           version: S.String,
-          associatedRuleList: __S(225, __c14, 1),
+          associatedRuleList: __S(193, __c12, 1),
           updateToken: S.optional(S.String),
           isSnapshot: S.optional(S.Boolean),
           hasPublishedVersion: S.optional(S.Boolean),
@@ -3097,24 +3037,24 @@ function __c15(j: number): any {
       ).annotate({ identifier: "CreateTemplateOutput" });
   }
 }
-function __c16(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ ruleIdentifier: S.String })).annotate({
         identifier: "RuleReference",
       });
     case 1:
-      return S.Array(__S(256, __c16, 0));
+      return S.Array(__S(208, __c13, 0));
   }
 }
-function __c17(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           templateIdentifier: S.String.pipe(T.HttpLabel("templateIdentifier")),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(1024, __c64, 0)),
+          tags: S.optional(__S(976, __c61, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/templates/{templateIdentifier}/snapshots" }),
@@ -3125,31 +3065,10 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateTemplateSnapshotInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          templateId: S.String,
-          templateArn: S.String,
-          templateName: S.String,
-          templateDescription: S.optional(S.String),
-          status: S.String,
-          version: S.String,
-          associatedRuleList: __S(225, __c14, 1),
-          updateToken: S.optional(S.String),
-          isSnapshot: S.optional(S.Boolean),
-          hasPublishedVersion: S.optional(S.Boolean),
-          firewallType: S.String,
-          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-        }),
-      ).annotate({
-        identifier: "CreateTemplateSnapshotOutput",
-      });
+      ).annotate({ identifier: "CreateTemplateSnapshotInput" });
   }
 }
-function __c18(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3163,20 +3082,16 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteAdminAccountRequest",
-      });
+      ).annotate({ identifier: "DeleteAdminAccountRequest" });
   }
 }
-function __c19(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAdminAccountResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteAdminAccountResponse" });
   }
 }
-function __c20(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3193,7 +3108,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "DeleteDeploymentInput" });
   }
 }
-function __c21(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3210,7 +3125,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "DeletePolicyInput" });
   }
 }
-function __c22(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3227,7 +3142,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "DeleteRuleInput" });
   }
 }
-function __c23(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3244,7 +3159,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "DeleteScopeInput" });
   }
 }
-function __c24(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3261,7 +3176,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "DeleteTemplateInput" });
   }
 }
-function __c25(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3282,18 +3197,14 @@ function __c25(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GenerateRuleConfigurationRequest",
-      });
+      ).annotate({ identifier: "GenerateRuleConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ configuration: S.String, description: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GenerateRuleConfigurationResponse",
-      });
+      ).annotate({ identifier: "GenerateRuleConfigurationResponse" });
   }
 }
-function __c26(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3310,7 +3221,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "GetAdminAccountRequest" });
   }
 }
-function __c27(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3321,38 +3232,38 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "AccountReference" });
     case 1:
-      return S.Array(__S(432, __c27, 0));
+      return S.Array(__S(384, __c24, 0));
     case 2:
       return S.suspend(() => S.Struct({ ouId: S.String, name: S.optional(S.String) })).annotate({
         identifier: "OrganizationalUnitReference",
       });
     case 3:
-      return S.Array(__S(434, __c27, 2));
+      return S.Array(__S(386, __c24, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          accounts: S.optional(__S(433, __c27, 1)),
-          organizationalUnits: S.optional(__S(435, __c27, 3)),
+          accounts: S.optional(__S(385, __c24, 1)),
+          organizationalUnits: S.optional(__S(387, __c24, 3)),
         }),
       ).annotate({ identifier: "AdminScopeSelection" });
     case 5:
       return S.Union([
         /*@__PURE__*/ S.Struct({ includeAll: /*@__PURE__*/ S.Struct({}) }),
-        /*@__PURE__*/ S.Struct({ includeOnly: __S(436, __c27, 4) }),
-        /*@__PURE__*/ S.Struct({ excludeOnly: __S(436, __c27, 4) }),
+        /*@__PURE__*/ S.Struct({ includeOnly: __S(388, __c24, 4) }),
+        /*@__PURE__*/ S.Struct({ excludeOnly: __S(388, __c24, 4) }),
       ]);
     case 6:
       return S.suspend(() =>
         S.Struct({
           allFirewallTypesEnabled: S.optional(S.Boolean),
-          firewallTypes: S.optional(__S(1072, __c67, 0)),
+          firewallTypes: S.optional(__S(1024, __c64, 0)),
         }),
       ).annotate({ identifier: "AdminFirewallTypeScope" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          scopeFilter: S.optional(__S(437, __c27, 5)),
-          firewallTypeScope: S.optional(__S(438, __c27, 6)),
+          scopeFilter: S.optional(__S(389, __c24, 5)),
+          firewallTypeScope: S.optional(__S(390, __c24, 6)),
         }),
       ).annotate({ identifier: "AdminScope" });
     case 8:
@@ -3360,17 +3271,17 @@ function __c27(j: number): any {
         S.Struct({
           adminAccount: S.String,
           priority: S.Number,
-          adminScope: S.optional(__S(439, __c27, 7)),
+          adminScope: S.optional(__S(391, __c24, 7)),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "AdminAccountDetails" });
     case 9:
       return S.suspend(() =>
-        S.Struct({ adminAccountDetails: S.optional(__S(440, __c27, 8)) }),
+        S.Struct({ adminAccountDetails: S.optional(__S(392, __c24, 8)) }),
       ).annotate({ identifier: "GetAdminAccountResponse" });
   }
 }
-function __c28(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3393,21 +3304,21 @@ function __c28(j: number): any {
           deploymentName: S.String,
           deploymentDescription: S.optional(S.String),
           status: S.String,
-          deploymentConfiguration: S.optional(__S(1040, __c65, 0)),
-          associatedPolicyList: __S(1042, __c65, 2),
-          associatedScopeList: __S(1044, __c65, 4),
+          deploymentConfiguration: S.optional(__S(992, __c62, 0)),
+          associatedPolicyList: __S(994, __c62, 2),
+          associatedScopeList: __S(996, __c62, 4),
           version: S.String,
           updateToken: S.optional(S.String),
           isSnapshot: S.optional(S.Boolean),
           hasPublishedVersion: S.optional(S.Boolean),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          deploymentCoverage: S.optional(__S(1089, __c68, 1)),
-          warnings: S.optional(__S(1091, __c68, 3)),
+          deploymentCoverage: S.optional(__S(1041, __c65, 1)),
+          warnings: S.optional(__S(1043, __c65, 3)),
         }),
       ).annotate({ identifier: "GetDeploymentOutput" });
   }
 }
-function __c29(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3424,7 +3335,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "GetPolicyInput" });
   }
 }
-function __c30(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3441,7 +3352,7 @@ function __c30(j: number): any {
       ).annotate({ identifier: "GetRuleInput" });
   }
 }
-function __c31(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3458,7 +3369,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "GetScopeInput" });
   }
 }
-function __c32(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3475,7 +3386,7 @@ function __c32(j: number): any {
       ).annotate({ identifier: "GetTemplateInput" });
   }
 }
-function __c33(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3496,16 +3407,14 @@ function __c33(j: number): any {
         }),
       ).annotate({ identifier: "AdminAccountSummary" });
     case 2:
-      return S.Array(__S(529, __c33, 1));
+      return S.Array(__S(481, __c30, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), adminAccounts: __S(530, __c33, 2) }),
-      ).annotate({
-        identifier: "ListAdminAccountsResponse",
-      });
+        S.Struct({ nextToken: S.optional(S.String), adminAccounts: __S(482, __c30, 2) }),
+      ).annotate({ identifier: "ListAdminAccountsResponse" });
   }
 }
-function __c34(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3523,12 +3432,10 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListAggregateResourceSynchronizationStatusesInput",
-      });
+      ).annotate({ identifier: "ListAggregateResourceSynchronizationStatusesInput" });
   }
 }
-function __c35(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3539,33 +3446,33 @@ function __c35(j: number): any {
         }),
       ).annotate({ identifier: "ConfigurationIssue" });
     case 1:
-      return S.Array(__S(560, __c35, 0));
+      return S.Array(__S(512, __c32, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          incorrectSingleValueConfigurations: S.optional(__S(561, __c35, 1)),
-          missingAppendableConfigurationValues: S.optional(__S(561, __c35, 1)),
-          unexpectedAppendableConfigurationValues: S.optional(__S(561, __c35, 1)),
-          incorrectAppendableConfigurationOrder: S.optional(__S(561, __c35, 1)),
-          missingMergeableConfigurationValues: S.optional(__S(561, __c35, 1)),
-          unexpectedMergeableConfigurationValues: S.optional(__S(561, __c35, 1)),
+          incorrectSingleValueConfigurations: S.optional(__S(513, __c32, 1)),
+          missingAppendableConfigurationValues: S.optional(__S(513, __c32, 1)),
+          unexpectedAppendableConfigurationValues: S.optional(__S(513, __c32, 1)),
+          incorrectAppendableConfigurationOrder: S.optional(__S(513, __c32, 1)),
+          missingMergeableConfigurationValues: S.optional(__S(513, __c32, 1)),
+          unexpectedMergeableConfigurationValues: S.optional(__S(513, __c32, 1)),
         }),
       ).annotate({ identifier: "InvalidFirewallReasons" });
     case 3:
       return S.Union([
         /*@__PURE__*/ S.Struct({ missingFirewall: S.String }),
-        /*@__PURE__*/ S.Struct({ invalidFirewall: __S(562, __c35, 2) }),
+        /*@__PURE__*/ S.Struct({ invalidFirewall: __S(514, __c32, 2) }),
       ]);
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(563, __c35, 3).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(515, __c32, 3).pipe(S.optional));
     case 5:
       return S.suspend(() => S.Struct({ reason: S.String })).annotate({
         identifier: "NotVisibleMarker",
       });
     case 6:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ reasons: __S(564, __c35, 4) }),
-        /*@__PURE__*/ S.Struct({ notVisible: __S(565, __c35, 5) }),
+        /*@__PURE__*/ S.Struct({ reasons: __S(516, __c32, 4) }),
+        /*@__PURE__*/ S.Struct({ notVisible: __S(517, __c32, 5) }),
       ]);
     case 7:
       return S.suspend(() =>
@@ -3576,11 +3483,11 @@ function __c35(j: number): any {
         }),
       ).annotate({ identifier: "RemediationIssueDetails" });
     case 8:
-      return S.Record(S.String, /*@__PURE__*/ __S(567, __c35, 7).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(519, __c32, 7).pipe(S.optional));
     case 9:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ issues: __S(568, __c35, 8) }),
-        /*@__PURE__*/ S.Struct({ notVisible: __S(565, __c35, 5) }),
+        /*@__PURE__*/ S.Struct({ issues: __S(520, __c32, 8) }),
+        /*@__PURE__*/ S.Struct({ notVisible: __S(517, __c32, 5) }),
       ]);
     case 10:
       return S.suspend(() =>
@@ -3591,27 +3498,23 @@ function __c35(j: number): any {
           deploymentArn: S.optional(S.String),
           resourceType: S.optional(S.String),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          outOfSyncReasons: S.optional(__S(566, __c35, 6)),
-          remediationIssues: S.optional(__S(569, __c35, 9)),
+          outOfSyncReasons: S.optional(__S(518, __c32, 6)),
+          remediationIssues: S.optional(__S(521, __c32, 9)),
           evaluatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "ResourceSynchronizationStatusSummary",
-      });
+      ).annotate({ identifier: "ResourceSynchronizationStatusSummary" });
     case 11:
-      return S.Array(__S(570, __c35, 10));
+      return S.Array(__S(522, __c32, 10));
     case 12:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          resourceSynchronizationStatuses: __S(571, __c35, 11),
+          resourceSynchronizationStatuses: __S(523, __c32, 11),
         }),
-      ).annotate({
-        identifier: "ListAggregateResourceSynchronizationStatusesOutput",
-      });
+      ).annotate({ identifier: "ListAggregateResourceSynchronizationStatusesOutput" });
   }
 }
-function __c36(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3625,11 +3528,11 @@ function __c36(j: number): any {
       ).annotate({ identifier: "ListDeploymentsInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), deployments: __S(593, __c37, 1) }),
+        S.Struct({ nextToken: S.optional(S.String), deployments: __S(545, __c34, 1) }),
       ).annotate({ identifier: "ListDeploymentsOutput" });
   }
 }
-function __c37(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3644,10 +3547,10 @@ function __c37(j: number): any {
         }),
       ).annotate({ identifier: "DeploymentSummary" });
     case 1:
-      return S.Array(__S(592, __c37, 0));
+      return S.Array(__S(544, __c34, 0));
   }
 }
-function __c38(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3665,18 +3568,14 @@ function __c38(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDeploymentSnapshotsInput",
-      });
+      ).annotate({ identifier: "ListDeploymentSnapshotsInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), snapshots: __S(593, __c37, 1) }),
-      ).annotate({
-        identifier: "ListDeploymentSnapshotsOutput",
-      });
+        S.Struct({ nextToken: S.optional(S.String), snapshots: __S(545, __c34, 1) }),
+      ).annotate({ identifier: "ListDeploymentSnapshotsOutput" });
   }
 }
-function __c39(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3688,11 +3587,11 @@ function __c39(j: number): any {
       ).annotate({ identifier: "ListPoliciesInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), policies: __S(641, __c40, 1) }),
+        S.Struct({ nextToken: S.optional(S.String), policies: __S(593, __c37, 1) }),
       ).annotate({ identifier: "ListPoliciesOutput" });
   }
 }
-function __c40(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3709,10 +3608,10 @@ function __c40(j: number): any {
         }),
       ).annotate({ identifier: "PolicySummary" });
     case 1:
-      return S.Array(__S(640, __c40, 0));
+      return S.Array(__S(592, __c37, 0));
   }
 }
-function __c41(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3733,13 +3632,11 @@ function __c41(j: number): any {
       ).annotate({ identifier: "ListPolicySnapshotsInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), snapshots: __S(641, __c40, 1) }),
-      ).annotate({
-        identifier: "ListPolicySnapshotsOutput",
-      });
+        S.Struct({ nextToken: S.optional(S.String), snapshots: __S(593, __c37, 1) }),
+      ).annotate({ identifier: "ListPolicySnapshotsOutput" });
   }
 }
-function __c42(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3757,24 +3654,20 @@ function __c42(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListResourceAssociationsInput",
-      });
+      ).annotate({ identifier: "ListResourceAssociationsInput" });
     case 1:
       return S.suspend(() => S.Struct({ arn: S.String, resourceType: S.String })).annotate({
         identifier: "ResourceAssociation",
       });
     case 2:
-      return S.Array(__S(673, __c42, 1));
+      return S.Array(__S(625, __c39, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), resourceAssociations: __S(674, __c42, 2) }),
-      ).annotate({
-        identifier: "ListResourceAssociationsOutput",
-      });
+        S.Struct({ nextToken: S.optional(S.String), resourceAssociations: __S(626, __c39, 2) }),
+      ).annotate({ identifier: "ListResourceAssociationsOutput" });
   }
 }
-function __c43(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3793,12 +3686,10 @@ function __c43(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListResourceSynchronizationStatusesInput",
-      });
+      ).annotate({ identifier: "ListResourceSynchronizationStatusesInput" });
   }
 }
-function __c44(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3810,11 +3701,11 @@ function __c44(j: number): any {
       ).annotate({ identifier: "ListRulesInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), rules: __S(721, __c45, 1) }),
+        S.Struct({ nextToken: S.optional(S.String), rules: __S(673, __c42, 1) }),
       ).annotate({ identifier: "ListRulesOutput" });
   }
 }
-function __c45(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3831,10 +3722,10 @@ function __c45(j: number): any {
         }),
       ).annotate({ identifier: "RuleSummary" });
     case 1:
-      return S.Array(__S(720, __c45, 0));
+      return S.Array(__S(672, __c42, 0));
   }
 }
-function __c46(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3855,11 +3746,11 @@ function __c46(j: number): any {
       ).annotate({ identifier: "ListRuleSnapshotsInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), snapshots: __S(721, __c45, 1) }),
+        S.Struct({ nextToken: S.optional(S.String), snapshots: __S(673, __c42, 1) }),
       ).annotate({ identifier: "ListRuleSnapshotsOutput" });
   }
 }
-function __c47(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3871,11 +3762,11 @@ function __c47(j: number): any {
       ).annotate({ identifier: "ListScopesInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), scopes: __S(769, __c48, 1) }),
+        S.Struct({ nextToken: S.optional(S.String), scopes: __S(721, __c45, 1) }),
       ).annotate({ identifier: "ListScopesOutput" });
   }
 }
-function __c48(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3890,10 +3781,10 @@ function __c48(j: number): any {
         }),
       ).annotate({ identifier: "ScopeSummary" });
     case 1:
-      return S.Array(__S(768, __c48, 0));
+      return S.Array(__S(720, __c45, 0));
   }
 }
-function __c49(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3914,11 +3805,11 @@ function __c49(j: number): any {
       ).annotate({ identifier: "ListScopeSnapshotsInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), snapshots: __S(769, __c48, 1) }),
+        S.Struct({ nextToken: S.optional(S.String), snapshots: __S(721, __c45, 1) }),
       ).annotate({ identifier: "ListScopeSnapshotsOutput" });
   }
 }
-function __c50(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3934,12 +3825,12 @@ function __c50(j: number): any {
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(1024, __c64, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(976, __c61, 0)) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
   }
 }
-function __c51(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3951,11 +3842,11 @@ function __c51(j: number): any {
       ).annotate({ identifier: "ListTemplatesInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), templates: __S(833, __c52, 1) }),
+        S.Struct({ nextToken: S.optional(S.String), templates: __S(785, __c49, 1) }),
       ).annotate({ identifier: "ListTemplatesOutput" });
   }
 }
-function __c52(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3971,10 +3862,10 @@ function __c52(j: number): any {
         }),
       ).annotate({ identifier: "TemplateSummary" });
     case 1:
-      return S.Array(__S(832, __c52, 0));
+      return S.Array(__S(784, __c49, 0));
   }
 }
-function __c53(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3992,37 +3883,33 @@ function __c53(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTemplateSnapshotsInput",
-      });
+      ).annotate({ identifier: "ListTemplateSnapshotsInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), snapshots: __S(833, __c52, 1) }),
-      ).annotate({
-        identifier: "ListTemplateSnapshotsOutput",
-      });
+        S.Struct({ nextToken: S.optional(S.String), snapshots: __S(785, __c49, 1) }),
+      ).annotate({ identifier: "ListTemplateSnapshotsOutput" });
   }
 }
-function __c54(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accounts: S.optional(__S(1056, __c66, 0)),
-          organizationalUnits: S.optional(__S(1056, __c66, 0)),
+          accounts: S.optional(__S(1008, __c63, 0)),
+          organizationalUnits: S.optional(__S(1008, __c63, 0)),
         }),
       ).annotate({ identifier: "AdminScopeSelectionInput" });
     case 1:
       return S.Union([
         /*@__PURE__*/ S.Struct({ includeAll: /*@__PURE__*/ S.Struct({}) }),
-        /*@__PURE__*/ S.Struct({ includeOnly: __S(864, __c54, 0) }),
-        /*@__PURE__*/ S.Struct({ excludeOnly: __S(864, __c54, 0) }),
+        /*@__PURE__*/ S.Struct({ includeOnly: __S(816, __c51, 0) }),
+        /*@__PURE__*/ S.Struct({ excludeOnly: __S(816, __c51, 0) }),
       ]);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          scopeFilter: S.optional(__S(865, __c54, 1)),
-          firewallTypeScope: S.optional(__S(438, __c27, 6)),
+          scopeFilter: S.optional(__S(817, __c51, 1)),
+          firewallTypeScope: S.optional(__S(390, __c24, 6)),
         }),
       ).annotate({ identifier: "AdminScopeInput" });
     case 3:
@@ -4030,20 +3917,20 @@ function __c54(j: number): any {
         S.Struct({
           accountId: S.String,
           priority: S.Number,
-          adminScope: S.optional(__S(866, __c54, 2)),
+          adminScope: S.optional(__S(818, __c51, 2)),
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/admin-account" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutAdminAccountRequest" });
   }
 }
-function __c55(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(1024, __c64, 0),
+          tags: __S(976, __c61, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -4057,13 +3944,13 @@ function __c55(j: number): any {
       ).annotate({ identifier: "TagResourceInput" });
   }
 }
-function __c56(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(1056, __c66, 0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(1008, __c63, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -4077,7 +3964,7 @@ function __c56(j: number): any {
       ).annotate({ identifier: "UntagResourceInput" });
   }
 }
-function __c57(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4085,9 +3972,9 @@ function __c57(j: number): any {
           deploymentIdentifier: S.String.pipe(T.HttpLabel("deploymentIdentifier")),
           updateToken: S.String,
           deploymentDescription: S.optional(S.String),
-          deploymentConfiguration: S.optional(__S(1040, __c65, 0)),
-          associatedPolicyList: S.optional(__S(1105, __c69, 1)),
-          associatedScopeList: S.optional(__S(1107, __c69, 3)),
+          deploymentConfiguration: S.optional(__S(992, __c62, 0)),
+          associatedPolicyList: S.optional(__S(1057, __c66, 1)),
+          associatedScopeList: S.optional(__S(1059, __c66, 3)),
           isPublished: S.Boolean,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -4103,7 +3990,7 @@ function __c57(j: number): any {
       ).annotate({ identifier: "UpdateDeploymentInput" });
   }
 }
-function __c58(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4112,7 +3999,7 @@ function __c58(j: number): any {
           updateToken: S.String,
           policyDescription: S.optional(S.String),
           priority: S.optional(S.Number),
-          associatedTemplateAndRuleList: S.optional(__S(65, __c4, 1)),
+          associatedTemplateAndRuleList: S.optional(__S(49, __c3, 1)),
           policyConfiguration: S.optional(__S(33, __c2, 1)),
           isPublished: S.Boolean,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -4129,7 +4016,7 @@ function __c58(j: number): any {
       ).annotate({ identifier: "UpdatePolicyInput" });
   }
 }
-function __c59(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4154,7 +4041,7 @@ function __c59(j: number): any {
       ).annotate({ identifier: "UpdateRuleInput" });
   }
 }
-function __c60(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4162,7 +4049,7 @@ function __c60(j: number): any {
           scopeIdentifier: S.String.pipe(T.HttpLabel("scopeIdentifier")),
           updateToken: S.String,
           scopeDescription: S.optional(S.String),
-          scopeConfiguration: S.optional(__S(169, __c10, 9)),
+          scopeConfiguration: S.optional(__S(153, __c9, 9)),
           isPublished: S.Boolean,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -4178,7 +4065,7 @@ function __c60(j: number): any {
       ).annotate({ identifier: "UpdateScopeInput" });
   }
 }
-function __c61(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4186,7 +4073,7 @@ function __c61(j: number): any {
           templateIdentifier: S.String.pipe(T.HttpLabel("templateIdentifier")),
           updateToken: S.String,
           templateDescription: S.optional(S.String),
-          associatedRuleList: S.optional(__S(257, __c16, 1)),
+          associatedRuleList: S.optional(__S(209, __c13, 1)),
           isPublished: S.Boolean,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -4202,17 +4089,17 @@ function __c61(j: number): any {
       ).annotate({ identifier: "UpdateTemplateInput" });
   }
 }
-function __c62(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
         identifier: "ValidationExceptionField",
       });
     case 1:
-      return S.Array(__S(992, __c62, 0));
+      return S.Array(__S(944, __c59, 0));
   }
 }
-function __c63(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4220,24 +4107,24 @@ function __c63(j: number): any {
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           deploymentName: S.String,
           deploymentDescription: S.optional(S.String),
-          deploymentConfiguration: __S(1040, __c65, 0),
-          associatedPolicyList: __S(1105, __c69, 1),
-          associatedScopeList: __S(1107, __c69, 3),
+          deploymentConfiguration: __S(992, __c62, 0),
+          associatedPolicyList: __S(1057, __c66, 1),
+          associatedScopeList: __S(1059, __c66, 3),
           isPublished: S.optional(S.Boolean),
-          tags: S.optional(__S(1024, __c64, 0)),
+          tags: S.optional(__S(976, __c61, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/deployments" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateDeploymentInput" });
   }
 }
-function __c64(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c65(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ enableCrossAccountVisibility: S.Boolean })).annotate({
@@ -4248,61 +4135,61 @@ function __c65(j: number): any {
         identifier: "AssociatedPolicy",
       });
     case 2:
-      return S.Array(__S(1041, __c65, 1));
+      return S.Array(__S(993, __c62, 1));
     case 3:
       return S.suspend(() => S.Struct({ scopeArn: S.String })).annotate({
         identifier: "AssociatedScope",
       });
     case 4:
-      return S.Array(__S(1043, __c65, 3));
+      return S.Array(__S(995, __c62, 3));
   }
 }
-function __c66(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c67(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c68(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           firewallType: S.String,
-          policyArns: __S(1056, __c66, 0),
-          inScopeResourceTypes: __S(1072, __c67, 0),
+          policyArns: __S(1008, __c63, 0),
+          inScopeResourceTypes: __S(1024, __c64, 0),
         }),
       ).annotate({ identifier: "DeploymentCoverageEntry" });
     case 1:
-      return S.Array(__S(1088, __c68, 0));
+      return S.Array(__S(1040, __c65, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ code: S.String, policyArn: S.String, message: S.String }),
       ).annotate({ identifier: "DeploymentWarningEntry" });
     case 3:
-      return S.Array(__S(1090, __c68, 2));
+      return S.Array(__S(1042, __c65, 2));
   }
 }
-function __c69(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ policyIdentifier: S.String })).annotate({
         identifier: "PolicyReference",
       });
     case 1:
-      return S.Array(__S(1104, __c69, 0));
+      return S.Array(__S(1056, __c66, 0));
     case 2:
       return S.suspend(() => S.Struct({ scopeIdentifier: S.String })).annotate({
         identifier: "ScopeReference",
       });
     case 3:
-      return S.Array(__S(1106, __c69, 2));
+      return S.Array(__S(1058, __c66, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4311,15 +4198,15 @@ function __c69(j: number): any {
           deploymentName: S.String,
           deploymentDescription: S.optional(S.String),
           status: S.String,
-          deploymentConfiguration: S.optional(__S(1040, __c65, 0)),
-          associatedPolicyList: __S(1042, __c65, 2),
-          associatedScopeList: __S(1044, __c65, 4),
+          deploymentConfiguration: S.optional(__S(992, __c62, 0)),
+          associatedPolicyList: __S(994, __c62, 2),
+          associatedScopeList: __S(996, __c62, 4),
           version: S.String,
           updateToken: S.optional(S.String),
           isSnapshot: S.optional(S.Boolean),
           hasPublishedVersion: S.optional(S.Boolean),
-          deploymentCoverage: S.optional(__S(1089, __c68, 1)),
-          warnings: S.optional(__S(1091, __c68, 3)),
+          deploymentCoverage: S.optional(__S(1041, __c65, 1)),
+          warnings: S.optional(__S(1043, __c65, 3)),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "CreateDeploymentOutput" });

@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1219,9 +1219,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateBenefitApplicationInput",
-      });
+      ).annotate({ identifier: "CreateBenefitApplicationInput" });
   }
 }
 function __c1(j: number): any {
@@ -1290,9 +1288,7 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateBenefitApplicationResourceInput",
-      });
+      ).annotate({ identifier: "DisassociateBenefitApplicationResourceInput" });
   }
 }
 function __c7(j: number): any {
@@ -1333,9 +1329,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetBenefitAllocationInput",
-      });
+      ).annotate({ identifier: "GetBenefitAllocationInput" });
     case 1:
       return S.suspend(() => S.Struct({ Amount: S.String, CurrencyCode: S.String })).annotate({
         identifier: "MonetaryValue",
@@ -1416,9 +1410,7 @@ function __c8(j: number): any {
           StartsAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           ExpiresAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "GetBenefitAllocationOutput",
-      });
+      ).annotate({ identifier: "GetBenefitAllocationOutput" });
   }
 }
 function __c9(j: number): any {
@@ -1435,9 +1427,7 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetBenefitApplicationInput",
-      });
+      ).annotate({ identifier: "GetBenefitApplicationInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1477,9 +1467,7 @@ function __c9(j: number): any {
           PartnerContacts: S.optional(__S(49, __c3, 1)),
           FileDetails: S.optional(__S(146, __c9, 2)),
         }),
-      ).annotate({
-        identifier: "GetBenefitApplicationOutput",
-      });
+      ).annotate({ identifier: "GetBenefitApplicationOutput" });
   }
 }
 function __c10(j: number): any {
@@ -1504,9 +1492,7 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListBenefitAllocationsInput",
-      });
+      ).annotate({ identifier: "ListBenefitAllocationsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1532,9 +1518,7 @@ function __c10(j: number): any {
           BenefitAllocationSummaries: S.optional(__S(162, __c10, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListBenefitAllocationsOutput",
-      });
+      ).annotate({ identifier: "ListBenefitAllocationsOutput" });
   }
 }
 function __c11(j: number): any {
@@ -1572,9 +1556,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListBenefitApplicationsInput",
-      });
+      ).annotate({ identifier: "ListBenefitApplicationsInput" });
     case 3:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 4:
@@ -1594,9 +1576,7 @@ function __c11(j: number): any {
           BenefitApplicationDetails: S.optional(__S(179, __c11, 3)),
           AssociatedResources: S.optional(__S(16, __c1, 0)),
         }),
-      ).annotate({
-        identifier: "BenefitApplicationSummary",
-      });
+      ).annotate({ identifier: "BenefitApplicationSummary" });
     case 5:
       return S.Array(__S(180, __c11, 4));
     case 6:
@@ -1605,9 +1585,7 @@ function __c11(j: number): any {
           BenefitApplicationSummaries: S.optional(__S(181, __c11, 5)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListBenefitApplicationsOutput",
-      });
+      ).annotate({ identifier: "ListBenefitApplicationsOutput" });
   }
 }
 function __c12(j: number): any {
@@ -1663,9 +1641,7 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(65, __c4, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -1691,9 +1667,7 @@ function __c14(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RecallBenefitApplicationInput",
-      });
+      ).annotate({ identifier: "RecallBenefitApplicationInput" });
   }
 }
 function __c15(j: number): any {
@@ -1710,9 +1684,7 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SubmitBenefitApplicationInput",
-      });
+      ).annotate({ identifier: "SubmitBenefitApplicationInput" });
   }
 }
 function __c16(j: number): any {
@@ -1759,9 +1731,7 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateBenefitApplicationInput",
-      });
+      ).annotate({ identifier: "UpdateBenefitApplicationInput" });
   }
 }
 function __c19(j: number): any {
@@ -1801,9 +1771,7 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AmendBenefitApplicationInput",
-      });
+      ).annotate({ identifier: "AmendBenefitApplicationInput" });
   }
 }
 function __c21(j: number): any {
@@ -1832,9 +1800,7 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateBenefitApplicationResourceInput",
-      });
+      ).annotate({ identifier: "AssociateBenefitApplicationResourceInput" });
   }
 }
 function __c23(j: number): any {
@@ -1846,9 +1812,7 @@ function __c23(j: number): any {
           Arn: S.optional(S.String),
           Revision: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "AssociateBenefitApplicationResourceOutput",
-      });
+      ).annotate({ identifier: "AssociateBenefitApplicationResourceOutput" });
   }
 }
 function __c24(j: number): any {
@@ -1870,9 +1834,7 @@ function __c24(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CancelBenefitApplicationInput",
-      });
+      ).annotate({ identifier: "CancelBenefitApplicationInput" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

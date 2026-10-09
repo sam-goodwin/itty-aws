@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials as Creds } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -676,7 +676,7 @@ export const getId: API.OperationMethod<
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c12, 0) as any as S.Schema<GetIdInput>,
-  output: __S(97, __c12, 1) as any as S.Schema<GetIdResponse>,
+  output: __S(104, __c13, 0) as any as S.Schema<GetIdResponse>,
   errors: [
     ExternalServiceException,
     InternalErrorException,
@@ -712,8 +712,8 @@ export const getIdentityPoolRoles: API.OperationMethod<
   GetIdentityPoolRolesError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<GetIdentityPoolRolesInput>,
-  output: __S(105, __c13, 1) as any as S.Schema<GetIdentityPoolRolesResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetIdentityPoolRolesInput>,
+  output: __S(113, __c14, 1) as any as S.Schema<GetIdentityPoolRolesResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -751,8 +751,8 @@ export const getOpenIdToken: API.OperationMethod<
   GetOpenIdTokenError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<GetOpenIdTokenInput>,
-  output: __S(121, __c15, 1) as any as S.Schema<GetOpenIdTokenResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<GetOpenIdTokenInput>,
+  output: __S(136, __c17, 0) as any as S.Schema<GetOpenIdTokenResponse>,
   errors: [
     ExternalServiceException,
     InternalErrorException,
@@ -800,8 +800,8 @@ export const getOpenIdTokenForDeveloperIdentity: API.OperationMethod<
   GetOpenIdTokenForDeveloperIdentityError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<GetOpenIdTokenForDeveloperIdentityInput>,
-  output: __S(129, __c16, 1) as any as S.Schema<GetOpenIdTokenForDeveloperIdentityResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetOpenIdTokenForDeveloperIdentityInput>,
+  output: __S(136, __c17, 0) as any as S.Schema<GetOpenIdTokenForDeveloperIdentityResponse>,
   errors: [
     DeveloperUserAlreadyRegisteredException,
     InternalErrorException,
@@ -833,8 +833,8 @@ export const getPrincipalTagAttributeMap: API.OperationMethod<
   GetPrincipalTagAttributeMapError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<GetPrincipalTagAttributeMapInput>,
-  output: __S(144, __c18, 0) as any as S.Schema<GetPrincipalTagAttributeMapResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetPrincipalTagAttributeMapInput>,
+  output: __S(160, __c20, 0) as any as S.Schema<GetPrincipalTagAttributeMapResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -866,8 +866,8 @@ export const listIdentities: API.OperationMethod<
   ListIdentitiesError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<ListIdentitiesInput>,
-  output: __S(154, __c19, 2) as any as S.Schema<ListIdentitiesResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<ListIdentitiesInput>,
+  output: __S(170, __c21, 2) as any as S.Schema<ListIdentitiesResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -900,8 +900,8 @@ export const listIdentityPools: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   IdentityPoolShortDescription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<ListIdentityPoolsInput>,
-  output: __S(163, __c20, 3) as any as S.Schema<ListIdentityPoolsResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<ListIdentityPoolsInput>,
+  output: __S(179, __c22, 3) as any as S.Schema<ListIdentityPoolsResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -941,8 +941,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(169, __c21, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(185, __c23, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -990,8 +990,8 @@ export const lookupDeveloperIdentity: API.OperationMethod<
   LookupDeveloperIdentityError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<LookupDeveloperIdentityInput>,
-  output: __S(177, __c22, 1) as any as S.Schema<LookupDeveloperIdentityResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<LookupDeveloperIdentityInput>,
+  output: __S(193, __c24, 1) as any as S.Schema<LookupDeveloperIdentityResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -1037,8 +1037,8 @@ export const mergeDeveloperIdentities: API.OperationMethod<
   MergeDeveloperIdentitiesError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<MergeDeveloperIdentitiesInput>,
-  output: __S(185, __c23, 1) as any as S.Schema<MergeDeveloperIdentitiesResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<MergeDeveloperIdentitiesInput>,
+  output: __S(104, __c13, 0) as any as S.Schema<MergeDeveloperIdentitiesResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -1073,7 +1073,7 @@ export const setIdentityPoolRoles: API.OperationMethod<
   SetIdentityPoolRolesError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<SetIdentityPoolRolesInput>,
+  input: __S(208, __c26, 0) as any as S.Schema<SetIdentityPoolRolesInput>,
   output: __S(48, __c6, 0) as any as S.Schema<SetIdentityPoolRolesResponse>,
   errors: [
     ConcurrentModificationException,
@@ -1106,8 +1106,8 @@ export const setPrincipalTagAttributeMap: API.OperationMethod<
   SetPrincipalTagAttributeMapError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<SetPrincipalTagAttributeMapInput>,
-  output: __S(144, __c18, 0) as any as S.Schema<SetPrincipalTagAttributeMapResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<SetPrincipalTagAttributeMapInput>,
+  output: __S(160, __c20, 0) as any as S.Schema<SetPrincipalTagAttributeMapResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -1153,8 +1153,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<TagResourceInput>,
-  output: __S(216, __c27, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(48, __c6, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -1190,7 +1190,7 @@ export const unlinkDeveloperIdentity: API.OperationMethod<
   UnlinkDeveloperIdentityError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<UnlinkDeveloperIdentityInput>,
+  input: __S(232, __c29, 0) as any as S.Schema<UnlinkDeveloperIdentityInput>,
   output: __S(48, __c6, 0) as any as S.Schema<UnlinkDeveloperIdentityResponse>,
   errors: [
     InternalErrorException,
@@ -1227,8 +1227,8 @@ export const unlinkIdentity: API.OperationMethod<
   UnlinkIdentityError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<UnlinkIdentityInput>,
-  output: __S(233, __c29, 1) as any as S.Schema<UnlinkIdentityResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<UnlinkIdentityInput>,
+  output: __S(48, __c6, 0) as any as S.Schema<UnlinkIdentityResponse>,
   errors: [
     ExternalServiceException,
     InternalErrorException,
@@ -1260,8 +1260,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<UntagResourceInput>,
-  output: __S(216, __c27, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<UntagResourceInput>,
+  output: __S(48, __c6, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -1443,9 +1443,7 @@ function __c9(j: number): any {
         S.Struct({ IdentityPoolId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeIdentityPoolInput",
-      });
+      ).annotate({ identifier: "DescribeIdentityPoolInput" });
   }
 }
 function __c10(j: number): any {
@@ -1457,9 +1455,7 @@ function __c10(j: number): any {
           Logins: S.optional(__S(88, __c11, 0)),
           CustomRoleArn: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetCredentialsForIdentityInput",
-      });
+      ).annotate({ identifier: "GetCredentialsForIdentityInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1475,9 +1471,7 @@ function __c10(j: number): any {
           IdentityId: S.optional(S.String),
           Credentials: S.optional(__S(81, __c10, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetCredentialsForIdentityResponse",
-      });
+      ).annotate({ identifier: "GetCredentialsForIdentityResponse" });
   }
 }
 function __c11(j: number): any {
@@ -1496,66 +1490,59 @@ function __c12(j: number): any {
           Logins: S.optional(__S(88, __c11, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetIdInput" });
-    case 1:
-      return S.suspend(() => S.Struct({ IdentityId: S.optional(S.String) }).pipe(ns)).annotate({
-        identifier: "GetIdResponse",
-      });
   }
 }
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ IdentityPoolId: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "GetIdentityPoolRolesInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          IdentityPoolId: S.optional(S.String),
-          Roles: S.optional(__S(112, __c14, 0)),
-          RoleMappings: S.optional(__S(117, __c14, 5)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "GetIdentityPoolRolesResponse",
+      return S.suspend(() => S.Struct({ IdentityId: S.optional(S.String) }).pipe(ns)).annotate({
+        identifier: "GetIdResponse",
       });
   }
 }
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+      return S.suspend(() =>
+        S.Struct({ IdentityPoolId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetIdentityPoolRolesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Claim: S.String,
-          MatchType: S.String,
-          Value: S.String,
-          RoleARN: S.String,
-        }),
+          IdentityPoolId: S.optional(S.String),
+          Roles: S.optional(__S(16, __c2, 0)),
+          RoleMappings: S.optional(__S(124, __c15, 4)),
+        }).pipe(ns),
+      ).annotate({ identifier: "GetIdentityPoolRolesResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Claim: S.String, MatchType: S.String, Value: S.String, RoleARN: S.String }),
       ).annotate({ identifier: "MappingRule" });
+    case 1:
+      return S.Array(__S(120, __c15, 0));
     case 2:
-      return S.Array(__S(113, __c14, 1));
-    case 3:
-      return S.suspend(() => S.Struct({ Rules: __S(114, __c14, 2) })).annotate({
+      return S.suspend(() => S.Struct({ Rules: __S(121, __c15, 1) })).annotate({
         identifier: "RulesConfigurationType",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Type: S.String,
           AmbiguousRoleResolution: S.optional(S.String),
-          RulesConfiguration: S.optional(__S(115, __c14, 3)),
+          RulesConfiguration: S.optional(__S(122, __c15, 2)),
         }),
       ).annotate({ identifier: "RoleMapping" });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(116, __c14, 4).pipe(S.optional));
+    case 4:
+      return S.Record(S.String, /*@__PURE__*/ __S(123, __c15, 3).pipe(S.optional));
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1563,13 +1550,17 @@ function __c15(j: number): any {
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetOpenIdTokenInput" });
-    case 1:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ IdentityId: S.optional(S.String), Token: S.optional(SensitiveString) }).pipe(ns),
       ).annotate({ identifier: "GetOpenIdTokenResponse" });
   }
 }
-function __c16(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1580,30 +1571,20 @@ function __c16(j: number): any {
           PrincipalTags: S.optional(__S(16, __c2, 0)),
           TokenDuration: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetOpenIdTokenForDeveloperIdentityInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ IdentityId: S.optional(S.String), Token: S.optional(SensitiveString) }).pipe(ns),
-      ).annotate({
-        identifier: "GetOpenIdTokenForDeveloperIdentityResponse",
-      });
+      ).annotate({ identifier: "GetOpenIdTokenForDeveloperIdentityInput" });
   }
 }
-function __c17(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ IdentityPoolId: S.String, IdentityProviderName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetPrincipalTagAttributeMapInput",
-      });
+      ).annotate({ identifier: "GetPrincipalTagAttributeMapInput" });
   }
 }
-function __c18(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1613,12 +1594,10 @@ function __c18(j: number): any {
           UseDefaults: S.optional(S.Boolean),
           PrincipalTags: S.optional(__S(16, __c2, 0)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetPrincipalTagAttributeMapResponse",
-      });
+      ).annotate({ identifier: "GetPrincipalTagAttributeMapResponse" });
   }
 }
-function __c19(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1635,13 +1614,13 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           IdentityPoolId: S.optional(S.String),
-          Identities: S.optional(__S(153, __c19, 1)),
+          Identities: S.optional(__S(169, __c21, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListIdentitiesResponse" });
   }
 }
-function __c20(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1652,23 +1631,19 @@ function __c20(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ IdentityPoolId: S.optional(S.String), IdentityPoolName: S.optional(S.String) }),
-      ).annotate({
-        identifier: "IdentityPoolShortDescription",
-      });
+      ).annotate({ identifier: "IdentityPoolShortDescription" });
     case 2:
-      return S.Array(__S(161, __c20, 1));
+      return S.Array(__S(177, __c22, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          IdentityPools: S.optional(__S(162, __c20, 2)),
+          IdentityPools: S.optional(__S(178, __c22, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListIdentityPoolsResponse",
-      });
+      ).annotate({ identifier: "ListIdentityPoolsResponse" });
   }
 }
-function __c21(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1682,7 +1657,7 @@ function __c21(j: number): any {
       });
   }
 }
-function __c22(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1693,9 +1668,7 @@ function __c22(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "LookupDeveloperIdentityInput",
-      });
+      ).annotate({ identifier: "LookupDeveloperIdentityInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1703,12 +1676,10 @@ function __c22(j: number): any {
           DeveloperUserIdentifierList: S.optional(__S(8, __c1, 0)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "LookupDeveloperIdentityResponse",
-      });
+      ).annotate({ identifier: "LookupDeveloperIdentityResponse" });
   }
 }
-function __c23(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1718,30 +1689,22 @@ function __c23(j: number): any {
           DeveloperProviderName: S.String,
           IdentityPoolId: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "MergeDeveloperIdentitiesInput",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ IdentityId: S.optional(S.String) }).pipe(ns)).annotate({
-        identifier: "MergeDeveloperIdentitiesResponse",
-      });
+      ).annotate({ identifier: "MergeDeveloperIdentitiesInput" });
   }
 }
-function __c24(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           IdentityPoolId: S.String,
-          Roles: __S(112, __c14, 0),
-          RoleMappings: S.optional(__S(117, __c14, 5)),
+          Roles: __S(16, __c2, 0),
+          RoleMappings: S.optional(__S(124, __c15, 4)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SetIdentityPoolRolesInput",
-      });
+      ).annotate({ identifier: "SetIdentityPoolRolesInput" });
   }
 }
-function __c25(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1751,12 +1714,10 @@ function __c25(j: number): any {
           UseDefaults: S.optional(S.Boolean),
           PrincipalTags: S.optional(__S(16, __c2, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SetPrincipalTagAttributeMapInput",
-      });
+      ).annotate({ identifier: "SetPrincipalTagAttributeMapInput" });
   }
 }
-function __c26(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1766,15 +1727,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "TagResourceInput" });
   }
 }
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "TagResourceResponse",
-      });
-  }
-}
-function __c28(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1784,12 +1737,10 @@ function __c28(j: number): any {
           DeveloperProviderName: S.String,
           DeveloperUserIdentifier: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UnlinkDeveloperIdentityInput",
-      });
+      ).annotate({ identifier: "UnlinkDeveloperIdentityInput" });
   }
 }
-function __c29(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1799,13 +1750,9 @@ function __c29(j: number): any {
           LoginsToRemove: __S(8, __c1, 0),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UnlinkIdentityInput" });
-    case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "UnlinkIdentityResponse",
-      });
   }
 }
-function __c30(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

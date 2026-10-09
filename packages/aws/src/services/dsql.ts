@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -541,7 +541,7 @@ export const deleteClusterPolicy: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(92, __c23, 0) as any as S.Schema<DeleteClusterPolicyInput>,
-  output: __S(93, __c23, 1) as any as S.Schema<DeleteClusterPolicyOutput>,
+  output: __S(96, __c24, 0) as any as S.Schema<DeleteClusterPolicyOutput>,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -731,7 +731,7 @@ export const putClusterPolicy: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(32, __c8, 0) as any as S.Schema<PutClusterPolicyInput>,
-  output: __S(33, __c8, 1) as any as S.Schema<PutClusterPolicyOutput>,
+  output: __S(96, __c24, 0) as any as S.Schema<PutClusterPolicyOutput>,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -957,10 +957,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "GetStreamInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          error: S.String,
-          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }),
+        S.Struct({ error: S.String, updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }),
       ).annotate({ identifier: "StatusReason" });
     case 2:
       return S.suspend(() =>
@@ -993,15 +990,11 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetVpcEndpointServiceNameInput",
-      });
+      ).annotate({ identifier: "GetVpcEndpointServiceNameInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ serviceName: S.String, clusterVpcEndpoint: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetVpcEndpointServiceNameOutput",
-      });
+      ).annotate({ identifier: "GetVpcEndpointServiceNameOutput" });
   }
 }
 function __c5(j: number): any {
@@ -1104,10 +1097,6 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "PutClusterPolicyInput" });
-    case 1:
-      return S.suspend(() => S.Struct({ policyVersion: S.String })).annotate({
-        identifier: "PutClusterPolicyOutput",
-      });
   }
 }
 function __c9(j: number): any {
@@ -1133,9 +1122,7 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TagResourceResponse" });
   }
 }
 function __c11(j: number): any {
@@ -1350,7 +1337,11 @@ function __c23(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteClusterPolicyInput" });
-    case 1:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ policyVersion: S.String })).annotate({
         identifier: "DeleteClusterPolicyOutput",
       });

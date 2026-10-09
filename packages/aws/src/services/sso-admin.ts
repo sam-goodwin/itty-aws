@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1162,8 +1162,8 @@ export const addRegion: API.OperationMethod<
   AddRegionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(632, __c79, 0) as any as S.Schema<AddRegionRequest>,
-  output: __S(640, __c80, 0) as any as S.Schema<AddRegionResponse>,
+  input: __S(640, __c80, 0) as any as S.Schema<AddRegionRequest>,
+  output: __S(648, __c81, 0) as any as S.Schema<AddRegionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1196,13 +1196,13 @@ export const attachCustomerManagedPolicyReferenceToPermissionSet: API.OperationM
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    728,
-    __c91,
+    736,
+    __c92,
     0,
   ) as any as S.Schema<AttachCustomerManagedPolicyReferenceToPermissionSetRequest>,
   output: __S(
-    736,
-    __c92,
+    752,
+    __c94,
     0,
   ) as any as S.Schema<AttachCustomerManagedPolicyReferenceToPermissionSetResponse>,
   errors: [
@@ -1239,8 +1239,8 @@ export const attachManagedPolicyToPermissionSet: API.OperationMethod<
   AttachManagedPolicyToPermissionSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c100, 0) as any as S.Schema<AttachManagedPolicyToPermissionSetRequest>,
-  output: __S(808, __c101, 0) as any as S.Schema<AttachManagedPolicyToPermissionSetResponse>,
+  input: __S(808, __c101, 0) as any as S.Schema<AttachManagedPolicyToPermissionSetRequest>,
+  output: __S(752, __c94, 0) as any as S.Schema<AttachManagedPolicyToPermissionSetResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1350,7 +1350,7 @@ export const createApplicationAssignment: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(56, __c7, 0) as any as S.Schema<CreateApplicationAssignmentRequest>,
-  output: __S(808, __c101, 0) as any as S.Schema<CreateApplicationAssignmentResponse>,
+  output: __S(752, __c94, 0) as any as S.Schema<CreateApplicationAssignmentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1428,8 +1428,8 @@ export const createInstanceAccessControlAttributeConfiguration: API.OperationMet
     0,
   ) as any as S.Schema<CreateInstanceAccessControlAttributeConfigurationRequest>,
   output: __S(
-    736,
-    __c92,
+    752,
+    __c94,
     0,
   ) as any as S.Schema<CreateInstanceAccessControlAttributeConfigurationResponse>,
   errors: [
@@ -1567,7 +1567,7 @@ export const deleteApplication: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(144, __c18, 0) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<DeleteApplicationResponse>,
+  output: __S(752, __c94, 0) as any as S.Schema<DeleteApplicationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1598,8 +1598,8 @@ export const deleteApplicationAccessScope: API.OperationMethod<
   DeleteApplicationAccessScopeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<DeleteApplicationAccessScopeRequest>,
-  output: __S(808, __c101, 0) as any as S.Schema<DeleteApplicationAccessScopeResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<DeleteApplicationAccessScopeRequest>,
+  output: __S(752, __c94, 0) as any as S.Schema<DeleteApplicationAccessScopeResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1630,8 +1630,8 @@ export const deleteApplicationAssignment: API.OperationMethod<
   DeleteApplicationAssignmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<DeleteApplicationAssignmentRequest>,
-  output: __S(808, __c101, 0) as any as S.Schema<DeleteApplicationAssignmentResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<DeleteApplicationAssignmentRequest>,
+  output: __S(752, __c94, 0) as any as S.Schema<DeleteApplicationAssignmentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1662,8 +1662,8 @@ export const deleteApplicationAuthenticationMethod: API.OperationMethod<
   DeleteApplicationAuthenticationMethodError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<DeleteApplicationAuthenticationMethodRequest>,
-  output: __S(808, __c101, 0) as any as S.Schema<DeleteApplicationAuthenticationMethodResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<DeleteApplicationAuthenticationMethodRequest>,
+  output: __S(752, __c94, 0) as any as S.Schema<DeleteApplicationAuthenticationMethodResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1694,8 +1694,8 @@ export const deleteApplicationGrant: API.OperationMethod<
   DeleteApplicationGrantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<DeleteApplicationGrantRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<DeleteApplicationGrantResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<DeleteApplicationGrantRequest>,
+  output: __S(752, __c94, 0) as any as S.Schema<DeleteApplicationGrantResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1726,8 +1726,8 @@ export const deleteInlinePolicyFromPermissionSet: API.OperationMethod<
   DeleteInlinePolicyFromPermissionSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<DeleteInlinePolicyFromPermissionSetRequest>,
-  output: __S(808, __c101, 0) as any as S.Schema<DeleteInlinePolicyFromPermissionSetResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<DeleteInlinePolicyFromPermissionSetRequest>,
+  output: __S(752, __c94, 0) as any as S.Schema<DeleteInlinePolicyFromPermissionSetResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1757,8 +1757,8 @@ export const deleteInstance: API.OperationMethod<
   DeleteInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<DeleteInstanceRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<DeleteInstanceResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<DeleteInstanceRequest>,
+  output: __S(752, __c94, 0) as any as S.Schema<DeleteInstanceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1789,13 +1789,13 @@ export const deleteInstanceAccessControlAttributeConfiguration: API.OperationMet
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    208,
-    __c26,
+    200,
+    __c25,
     0,
   ) as any as S.Schema<DeleteInstanceAccessControlAttributeConfigurationRequest>,
   output: __S(
-    736,
-    __c92,
+    752,
+    __c94,
     0,
   ) as any as S.Schema<DeleteInstanceAccessControlAttributeConfigurationResponse>,
   errors: [
@@ -1828,12 +1828,8 @@ export const deletePermissionsBoundaryFromPermissionSet: API.OperationMethod<
   DeletePermissionsBoundaryFromPermissionSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<DeletePermissionsBoundaryFromPermissionSetRequest>,
-  output: __S(
-    808,
-    __c101,
-    0,
-  ) as any as S.Schema<DeletePermissionsBoundaryFromPermissionSetResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<DeletePermissionsBoundaryFromPermissionSetRequest>,
+  output: __S(752, __c94, 0) as any as S.Schema<DeletePermissionsBoundaryFromPermissionSetResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1864,8 +1860,8 @@ export const deletePermissionSet: API.OperationMethod<
   DeletePermissionSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<DeletePermissionSetRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<DeletePermissionSetResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<DeletePermissionSetRequest>,
+  output: __S(752, __c94, 0) as any as S.Schema<DeletePermissionSetResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1898,8 +1894,8 @@ export const deleteTrustedTokenIssuer: API.OperationMethod<
   DeleteTrustedTokenIssuerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<DeleteTrustedTokenIssuerRequest>,
-  output: __S(808, __c101, 0) as any as S.Schema<DeleteTrustedTokenIssuerResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<DeleteTrustedTokenIssuerRequest>,
+  output: __S(752, __c94, 0) as any as S.Schema<DeleteTrustedTokenIssuerResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1929,7 +1925,7 @@ export const describeAccountAssignmentCreationStatus: API.OperationMethod<
   DescribeAccountAssignmentCreationStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<DescribeAccountAssignmentCreationStatusRequest>,
+  input: __S(232, __c29, 0) as any as S.Schema<DescribeAccountAssignmentCreationStatusRequest>,
   output: __S(16, __c2, 0) as any as S.Schema<DescribeAccountAssignmentCreationStatusResponse>,
   errors: [
     AccessDeniedException,
@@ -1959,7 +1955,7 @@ export const describeAccountAssignmentDeletionStatus: API.OperationMethod<
   DescribeAccountAssignmentDeletionStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<DescribeAccountAssignmentDeletionStatusRequest>,
+  input: __S(240, __c30, 0) as any as S.Schema<DescribeAccountAssignmentDeletionStatusRequest>,
   output: __S(136, __c17, 0) as any as S.Schema<DescribeAccountAssignmentDeletionStatusResponse>,
   errors: [
     AccessDeniedException,
@@ -1989,8 +1985,8 @@ export const describeApplication: API.OperationMethod<
   DescribeApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<DescribeApplicationRequest>,
-  output: __S(257, __c32, 1) as any as S.Schema<DescribeApplicationResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<DescribeApplicationRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<DescribeApplicationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2050,7 +2046,7 @@ export const describeApplicationProvider: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(272, __c34, 0) as any as S.Schema<DescribeApplicationProviderRequest>,
-  output: __S(273, __c34, 1) as any as S.Schema<DescribeApplicationProviderResponse>,
+  output: __S(284, __c35, 4) as any as S.Schema<DescribeApplicationProviderResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2286,9 +2282,9 @@ export const detachCustomerManagedPolicyReferenceFromPermissionSet: API.Operatio
     0,
   ) as any as S.Schema<DetachCustomerManagedPolicyReferenceFromPermissionSetRequest>,
   output: __S(
-    361,
-    __c45,
-    1,
+    752,
+    __c94,
+    0,
   ) as any as S.Schema<DetachCustomerManagedPolicyReferenceFromPermissionSetResponse>,
   errors: [
     AccessDeniedException,
@@ -2321,7 +2317,7 @@ export const detachManagedPolicyFromPermissionSet: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(368, __c46, 0) as any as S.Schema<DetachManagedPolicyFromPermissionSetRequest>,
-  output: __S(808, __c101, 0) as any as S.Schema<DetachManagedPolicyFromPermissionSetResponse>,
+  output: __S(752, __c94, 0) as any as S.Schema<DetachManagedPolicyFromPermissionSetResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2352,7 +2348,7 @@ export const getApplicationAccessScope: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(376, __c47, 0) as any as S.Schema<GetApplicationAccessScopeRequest>,
-  output: __S(377, __c47, 1) as any as S.Schema<GetApplicationAccessScopeResponse>,
+  output: __S(384, __c48, 0) as any as S.Schema<GetApplicationAccessScopeResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2381,8 +2377,8 @@ export const getApplicationAssignmentConfiguration: API.OperationMethod<
   GetApplicationAssignmentConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c48, 0) as any as S.Schema<GetApplicationAssignmentConfigurationRequest>,
-  output: __S(385, __c48, 1) as any as S.Schema<GetApplicationAssignmentConfigurationResponse>,
+  input: __S(392, __c49, 0) as any as S.Schema<GetApplicationAssignmentConfigurationRequest>,
+  output: __S(393, __c49, 1) as any as S.Schema<GetApplicationAssignmentConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2411,8 +2407,8 @@ export const getApplicationAuthenticationMethod: API.OperationMethod<
   GetApplicationAuthenticationMethodError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<GetApplicationAuthenticationMethodRequest>,
-  output: __S(393, __c49, 1) as any as S.Schema<GetApplicationAuthenticationMethodResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<GetApplicationAuthenticationMethodRequest>,
+  output: __S(401, __c50, 1) as any as S.Schema<GetApplicationAuthenticationMethodResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2441,8 +2437,8 @@ export const getApplicationGrant: API.OperationMethod<
   GetApplicationGrantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(408, __c51, 0) as any as S.Schema<GetApplicationGrantRequest>,
-  output: __S(409, __c51, 1) as any as S.Schema<GetApplicationGrantResponse>,
+  input: __S(416, __c52, 0) as any as S.Schema<GetApplicationGrantRequest>,
+  output: __S(417, __c52, 1) as any as S.Schema<GetApplicationGrantResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2473,8 +2469,8 @@ export const getApplicationSessionConfiguration: API.OperationMethod<
   GetApplicationSessionConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<GetApplicationSessionConfigurationRequest>,
-  output: __S(425, __c53, 1) as any as S.Schema<GetApplicationSessionConfigurationResponse>,
+  input: __S(432, __c54, 0) as any as S.Schema<GetApplicationSessionConfigurationRequest>,
+  output: __S(433, __c54, 1) as any as S.Schema<GetApplicationSessionConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2503,8 +2499,8 @@ export const getInlinePolicyForPermissionSet: API.OperationMethod<
   GetInlinePolicyForPermissionSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c54, 0) as any as S.Schema<GetInlinePolicyForPermissionSetRequest>,
-  output: __S(433, __c54, 1) as any as S.Schema<GetInlinePolicyForPermissionSetResponse>,
+  input: __S(440, __c55, 0) as any as S.Schema<GetInlinePolicyForPermissionSetRequest>,
+  output: __S(441, __c55, 1) as any as S.Schema<GetInlinePolicyForPermissionSetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2533,8 +2529,8 @@ export const getPermissionsBoundaryForPermissionSet: API.OperationMethod<
   GetPermissionsBoundaryForPermissionSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(440, __c55, 0) as any as S.Schema<GetPermissionsBoundaryForPermissionSetRequest>,
-  output: __S(441, __c55, 1) as any as S.Schema<GetPermissionsBoundaryForPermissionSetResponse>,
+  input: __S(448, __c56, 0) as any as S.Schema<GetPermissionsBoundaryForPermissionSetRequest>,
+  output: __S(449, __c56, 1) as any as S.Schema<GetPermissionsBoundaryForPermissionSetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2564,8 +2560,8 @@ export const listAccountAssignmentCreationStatus: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AccountAssignmentOperationStatusMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(456, __c57, 0) as any as S.Schema<ListAccountAssignmentCreationStatusRequest>,
-  output: __S(457, __c57, 1) as any as S.Schema<ListAccountAssignmentCreationStatusResponse>,
+  input: __S(464, __c58, 0) as any as S.Schema<ListAccountAssignmentCreationStatusRequest>,
+  output: __S(465, __c58, 1) as any as S.Schema<ListAccountAssignmentCreationStatusResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2601,8 +2597,8 @@ export const listAccountAssignmentDeletionStatus: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AccountAssignmentOperationStatusMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(472, __c59, 0) as any as S.Schema<ListAccountAssignmentDeletionStatusRequest>,
-  output: __S(473, __c59, 1) as any as S.Schema<ListAccountAssignmentDeletionStatusResponse>,
+  input: __S(480, __c60, 0) as any as S.Schema<ListAccountAssignmentDeletionStatusRequest>,
+  output: __S(481, __c60, 1) as any as S.Schema<ListAccountAssignmentDeletionStatusResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2638,8 +2634,8 @@ export const listAccountAssignments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AccountAssignment
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(480, __c60, 0) as any as S.Schema<ListAccountAssignmentsRequest>,
-  output: __S(483, __c60, 3) as any as S.Schema<ListAccountAssignmentsResponse>,
+  input: __S(488, __c61, 0) as any as S.Schema<ListAccountAssignmentsRequest>,
+  output: __S(491, __c61, 3) as any as S.Schema<ListAccountAssignmentsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2675,8 +2671,8 @@ export const listAccountAssignmentsForPrincipal: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AccountAssignmentForPrincipal
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(489, __c61, 1) as any as S.Schema<ListAccountAssignmentsForPrincipalRequest>,
-  output: __S(492, __c61, 4) as any as S.Schema<ListAccountAssignmentsForPrincipalResponse>,
+  input: __S(497, __c62, 1) as any as S.Schema<ListAccountAssignmentsForPrincipalRequest>,
+  output: __S(500, __c62, 4) as any as S.Schema<ListAccountAssignmentsForPrincipalResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2712,8 +2708,8 @@ export const listAccountsForProvisionedPermissionSet: API.PaginatedOperationMeth
   Credentials | HttpClient.HttpClient,
   AccountId
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(496, __c62, 0) as any as S.Schema<ListAccountsForProvisionedPermissionSetRequest>,
-  output: __S(497, __c62, 1) as any as S.Schema<ListAccountsForProvisionedPermissionSetResponse>,
+  input: __S(504, __c63, 0) as any as S.Schema<ListAccountsForProvisionedPermissionSetRequest>,
+  output: __S(505, __c63, 1) as any as S.Schema<ListAccountsForProvisionedPermissionSetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2749,8 +2745,8 @@ export const listApplicationAccessScopes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ScopeDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(504, __c63, 0) as any as S.Schema<ListApplicationAccessScopesRequest>,
-  output: __S(507, __c63, 3) as any as S.Schema<ListApplicationAccessScopesResponse>,
+  input: __S(512, __c64, 0) as any as S.Schema<ListApplicationAccessScopesRequest>,
+  output: __S(514, __c64, 2) as any as S.Schema<ListApplicationAccessScopesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2786,8 +2782,8 @@ export const listApplicationAssignments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApplicationAssignment
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(512, __c64, 0) as any as S.Schema<ListApplicationAssignmentsRequest>,
-  output: __S(515, __c64, 3) as any as S.Schema<ListApplicationAssignmentsResponse>,
+  input: __S(520, __c65, 0) as any as S.Schema<ListApplicationAssignmentsRequest>,
+  output: __S(523, __c65, 3) as any as S.Schema<ListApplicationAssignmentsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2823,8 +2819,8 @@ export const listApplicationAssignmentsForPrincipal: API.PaginatedOperationMetho
   Credentials | HttpClient.HttpClient,
   ApplicationAssignmentForPrincipal
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(521, __c65, 1) as any as S.Schema<ListApplicationAssignmentsForPrincipalRequest>,
-  output: __S(524, __c65, 4) as any as S.Schema<ListApplicationAssignmentsForPrincipalResponse>,
+  input: __S(529, __c66, 1) as any as S.Schema<ListApplicationAssignmentsForPrincipalRequest>,
+  output: __S(532, __c66, 4) as any as S.Schema<ListApplicationAssignmentsForPrincipalResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2860,8 +2856,8 @@ export const listApplicationAuthenticationMethods: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AuthenticationMethodItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(528, __c66, 0) as any as S.Schema<ListApplicationAuthenticationMethodsRequest>,
-  output: __S(531, __c66, 3) as any as S.Schema<ListApplicationAuthenticationMethodsResponse>,
+  input: __S(536, __c67, 0) as any as S.Schema<ListApplicationAuthenticationMethodsRequest>,
+  output: __S(539, __c67, 3) as any as S.Schema<ListApplicationAuthenticationMethodsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2896,8 +2892,8 @@ export const listApplicationGrants: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GrantItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(536, __c67, 0) as any as S.Schema<ListApplicationGrantsRequest>,
-  output: __S(539, __c67, 3) as any as S.Schema<ListApplicationGrantsResponse>,
+  input: __S(544, __c68, 0) as any as S.Schema<ListApplicationGrantsRequest>,
+  output: __S(547, __c68, 3) as any as S.Schema<ListApplicationGrantsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2927,8 +2923,8 @@ export const listApplicationProviders: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApplicationProvider
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(544, __c68, 0) as any as S.Schema<ListApplicationProvidersRequest>,
-  output: __S(547, __c68, 3) as any as S.Schema<ListApplicationProvidersResponse>,
+  input: __S(552, __c69, 0) as any as S.Schema<ListApplicationProvidersRequest>,
+  output: __S(554, __c69, 2) as any as S.Schema<ListApplicationProvidersResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2962,8 +2958,8 @@ export const listApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Application
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(553, __c69, 1) as any as S.Schema<ListApplicationsRequest>,
-  output: __S(556, __c69, 4) as any as S.Schema<ListApplicationsResponse>,
+  input: __S(561, __c70, 1) as any as S.Schema<ListApplicationsRequest>,
+  output: __S(563, __c70, 3) as any as S.Schema<ListApplicationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2999,13 +2995,13 @@ export const listCustomerManagedPolicyReferencesInPermissionSet: API.PaginatedOp
   CustomerManagedPolicyReference
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    560,
-    __c70,
+    568,
+    __c71,
     0,
   ) as any as S.Schema<ListCustomerManagedPolicyReferencesInPermissionSetRequest>,
   output: __S(
-    562,
-    __c70,
+    570,
+    __c71,
     2,
   ) as any as S.Schema<ListCustomerManagedPolicyReferencesInPermissionSetResponse>,
   errors: [
@@ -3042,8 +3038,8 @@ export const listInstances: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   InstanceMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(568, __c71, 0) as any as S.Schema<ListInstancesRequest>,
-  output: __S(571, __c71, 3) as any as S.Schema<ListInstancesResponse>,
+  input: __S(576, __c72, 0) as any as S.Schema<ListInstancesRequest>,
+  output: __S(579, __c72, 3) as any as S.Schema<ListInstancesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3078,8 +3074,8 @@ export const listManagedPoliciesInPermissionSet: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AttachedManagedPolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(576, __c72, 0) as any as S.Schema<ListManagedPoliciesInPermissionSetRequest>,
-  output: __S(579, __c72, 3) as any as S.Schema<ListManagedPoliciesInPermissionSetResponse>,
+  input: __S(584, __c73, 0) as any as S.Schema<ListManagedPoliciesInPermissionSetRequest>,
+  output: __S(587, __c73, 3) as any as S.Schema<ListManagedPoliciesInPermissionSetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3115,8 +3111,8 @@ export const listPermissionSetProvisioningStatus: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PermissionSetProvisioningStatusMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(584, __c73, 0) as any as S.Schema<ListPermissionSetProvisioningStatusRequest>,
-  output: __S(585, __c73, 1) as any as S.Schema<ListPermissionSetProvisioningStatusResponse>,
+  input: __S(592, __c74, 0) as any as S.Schema<ListPermissionSetProvisioningStatusRequest>,
+  output: __S(593, __c74, 1) as any as S.Schema<ListPermissionSetProvisioningStatusResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3152,8 +3148,8 @@ export const listPermissionSets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PermissionSetArn
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(592, __c74, 0) as any as S.Schema<ListPermissionSetsRequest>,
-  output: __S(593, __c74, 1) as any as S.Schema<ListPermissionSetsResponse>,
+  input: __S(600, __c75, 0) as any as S.Schema<ListPermissionSetsRequest>,
+  output: __S(601, __c75, 1) as any as S.Schema<ListPermissionSetsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3189,8 +3185,8 @@ export const listPermissionSetsProvisionedToAccount: API.PaginatedOperationMetho
   Credentials | HttpClient.HttpClient,
   PermissionSetArn
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(600, __c75, 0) as any as S.Schema<ListPermissionSetsProvisionedToAccountRequest>,
-  output: __S(601, __c75, 1) as any as S.Schema<ListPermissionSetsProvisionedToAccountResponse>,
+  input: __S(608, __c76, 0) as any as S.Schema<ListPermissionSetsProvisionedToAccountRequest>,
+  output: __S(609, __c76, 1) as any as S.Schema<ListPermissionSetsProvisionedToAccountResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3233,8 +3229,8 @@ export const listRegions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RegionMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(608, __c76, 0) as any as S.Schema<ListRegionsRequest>,
-  output: __S(609, __c76, 1) as any as S.Schema<ListRegionsResponse>,
+  input: __S(616, __c77, 0) as any as S.Schema<ListRegionsRequest>,
+  output: __S(617, __c77, 1) as any as S.Schema<ListRegionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3269,8 +3265,8 @@ export const listTagsForResource: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Tag
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(616, __c77, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(617, __c77, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(624, __c78, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(625, __c78, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3300,8 +3296,8 @@ export const listTrustedTokenIssuers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TrustedTokenIssuerMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(624, __c78, 0) as any as S.Schema<ListTrustedTokenIssuersRequest>,
-  output: __S(627, __c78, 3) as any as S.Schema<ListTrustedTokenIssuersResponse>,
+  input: __S(632, __c79, 0) as any as S.Schema<ListTrustedTokenIssuersRequest>,
+  output: __S(635, __c79, 3) as any as S.Schema<ListTrustedTokenIssuersResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3336,7 +3332,7 @@ export const provisionPermissionSet: API.OperationMethod<
   ProvisionPermissionSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(648, __c81, 0) as any as S.Schema<ProvisionPermissionSetRequest>,
+  input: __S(656, __c82, 0) as any as S.Schema<ProvisionPermissionSetRequest>,
   output: __S(337, __c42, 1) as any as S.Schema<ProvisionPermissionSetResponse>,
   errors: [
     AccessDeniedException,
@@ -3368,8 +3364,8 @@ export const putApplicationAccessScope: API.OperationMethod<
   PutApplicationAccessScopeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656, __c82, 0) as any as S.Schema<PutApplicationAccessScopeRequest>,
-  output: __S(808, __c101, 0) as any as S.Schema<PutApplicationAccessScopeResponse>,
+  input: __S(664, __c83, 0) as any as S.Schema<PutApplicationAccessScopeRequest>,
+  output: __S(752, __c94, 0) as any as S.Schema<PutApplicationAccessScopeResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3400,8 +3396,8 @@ export const putApplicationAssignmentConfiguration: API.OperationMethod<
   PutApplicationAssignmentConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(664, __c83, 0) as any as S.Schema<PutApplicationAssignmentConfigurationRequest>,
-  output: __S(808, __c101, 0) as any as S.Schema<PutApplicationAssignmentConfigurationResponse>,
+  input: __S(672, __c84, 0) as any as S.Schema<PutApplicationAssignmentConfigurationRequest>,
+  output: __S(752, __c94, 0) as any as S.Schema<PutApplicationAssignmentConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3432,8 +3428,8 @@ export const putApplicationAuthenticationMethod: API.OperationMethod<
   PutApplicationAuthenticationMethodError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c84, 0) as any as S.Schema<PutApplicationAuthenticationMethodRequest>,
-  output: __S(808, __c101, 0) as any as S.Schema<PutApplicationAuthenticationMethodResponse>,
+  input: __S(680, __c85, 0) as any as S.Schema<PutApplicationAuthenticationMethodRequest>,
+  output: __S(752, __c94, 0) as any as S.Schema<PutApplicationAuthenticationMethodResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3489,8 +3485,8 @@ export const putApplicationGrant: API.OperationMethod<
   PutApplicationGrantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(680, __c85, 0) as any as S.Schema<PutApplicationGrantRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<PutApplicationGrantResponse>,
+  input: __S(688, __c86, 0) as any as S.Schema<PutApplicationGrantRequest>,
+  output: __S(752, __c94, 0) as any as S.Schema<PutApplicationGrantResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3523,8 +3519,8 @@ export const putApplicationSessionConfiguration: API.OperationMethod<
   PutApplicationSessionConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(688, __c86, 0) as any as S.Schema<PutApplicationSessionConfigurationRequest>,
-  output: __S(808, __c101, 0) as any as S.Schema<PutApplicationSessionConfigurationResponse>,
+  input: __S(696, __c87, 0) as any as S.Schema<PutApplicationSessionConfigurationRequest>,
+  output: __S(752, __c94, 0) as any as S.Schema<PutApplicationSessionConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3558,8 +3554,8 @@ export const putInlinePolicyToPermissionSet: API.OperationMethod<
   PutInlinePolicyToPermissionSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(696, __c87, 0) as any as S.Schema<PutInlinePolicyToPermissionSetRequest>,
-  output: __S(808, __c101, 0) as any as S.Schema<PutInlinePolicyToPermissionSetResponse>,
+  input: __S(704, __c88, 0) as any as S.Schema<PutInlinePolicyToPermissionSetRequest>,
+  output: __S(752, __c94, 0) as any as S.Schema<PutInlinePolicyToPermissionSetResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3591,8 +3587,8 @@ export const putPermissionsBoundaryToPermissionSet: API.OperationMethod<
   PutPermissionsBoundaryToPermissionSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c88, 0) as any as S.Schema<PutPermissionsBoundaryToPermissionSetRequest>,
-  output: __S(808, __c101, 0) as any as S.Schema<PutPermissionsBoundaryToPermissionSetResponse>,
+  input: __S(712, __c89, 0) as any as S.Schema<PutPermissionsBoundaryToPermissionSetRequest>,
+  output: __S(752, __c94, 0) as any as S.Schema<PutPermissionsBoundaryToPermissionSetResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3631,8 +3627,8 @@ export const removeRegion: API.OperationMethod<
   RemoveRegionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(712, __c89, 0) as any as S.Schema<RemoveRegionRequest>,
-  output: __S(640, __c80, 0) as any as S.Schema<RemoveRegionResponse>,
+  input: __S(720, __c90, 0) as any as S.Schema<RemoveRegionRequest>,
+  output: __S(648, __c81, 0) as any as S.Schema<RemoveRegionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3664,8 +3660,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(720, __c90, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(728, __c91, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(752, __c94, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3697,8 +3693,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(752, __c94, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(760, __c95, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(752, __c94, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3729,8 +3725,8 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(761, __c95, 1) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<UpdateApplicationResponse>,
+  input: __S(769, __c96, 1) as any as S.Schema<UpdateApplicationRequest>,
+  output: __S(752, __c94, 0) as any as S.Schema<UpdateApplicationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3769,8 +3765,8 @@ export const updateInstance: API.OperationMethod<
   UpdateInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(769, __c96, 1) as any as S.Schema<UpdateInstanceRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<UpdateInstanceResponse>,
+  input: __S(777, __c97, 1) as any as S.Schema<UpdateInstanceRequest>,
+  output: __S(752, __c94, 0) as any as S.Schema<UpdateInstanceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3802,13 +3798,13 @@ export const updateInstanceAccessControlAttributeConfiguration: API.OperationMet
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    776,
-    __c97,
+    784,
+    __c98,
     0,
   ) as any as S.Schema<UpdateInstanceAccessControlAttributeConfigurationRequest>,
   output: __S(
-    736,
-    __c92,
+    752,
+    __c94,
     0,
   ) as any as S.Schema<UpdateInstanceAccessControlAttributeConfigurationResponse>,
   errors: [
@@ -3841,8 +3837,8 @@ export const updatePermissionSet: API.OperationMethod<
   UpdatePermissionSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(784, __c98, 0) as any as S.Schema<UpdatePermissionSetRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<UpdatePermissionSetResponse>,
+  input: __S(792, __c99, 0) as any as S.Schema<UpdatePermissionSetRequest>,
+  output: __S(752, __c94, 0) as any as S.Schema<UpdatePermissionSetResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3875,8 +3871,8 @@ export const updateTrustedTokenIssuer: API.OperationMethod<
   UpdateTrustedTokenIssuerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(794, __c99, 2) as any as S.Schema<UpdateTrustedTokenIssuerRequest>,
-  output: __S(808, __c101, 0) as any as S.Schema<UpdateTrustedTokenIssuerResponse>,
+  input: __S(802, __c100, 2) as any as S.Schema<UpdateTrustedTokenIssuerRequest>,
+  output: __S(752, __c94, 0) as any as S.Schema<UpdateTrustedTokenIssuerResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3903,9 +3899,7 @@ function __c0(j: number): any {
           PrincipalType: S.String,
           PrincipalId: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateAccountAssignmentRequest",
-      });
+      ).annotate({ identifier: "CreateAccountAssignmentRequest" });
   }
 }
 function __c1(j: number): any {
@@ -3923,9 +3917,7 @@ function __c1(j: number): any {
           PrincipalId: S.optional(S.String),
           CreatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "AccountAssignmentOperationStatus",
-      });
+      ).annotate({ identifier: "AccountAssignmentOperationStatus" });
   }
 }
 function __c2(j: number): any {
@@ -3933,9 +3925,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ AccountAssignmentCreationStatus: S.optional(__S(8, __c1, 0)) }),
-      ).annotate({
-        identifier: "CreateAccountAssignmentResponse",
-      });
+      ).annotate({ identifier: "CreateAccountAssignmentResponse" });
   }
 }
 function __c3(j: number): any {
@@ -3960,9 +3950,7 @@ function __c3(j: number): any {
           InstanceArn: S.optional(S.String),
           IdentityStoreArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateApplicationResponse",
-      });
+      ).annotate({ identifier: "CreateApplicationResponse" });
   }
 }
 function __c4(j: number): any {
@@ -3979,10 +3967,7 @@ function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          SignInOptions: S.optional(__S(48, __c6, 0)),
-          Visibility: S.optional(S.String),
-        }),
+        S.Struct({ SignInOptions: S.optional(__S(48, __c6, 0)), Visibility: S.optional(S.String) }),
       ).annotate({ identifier: "PortalOptions" });
   }
 }
@@ -4001,9 +3986,7 @@ function __c7(j: number): any {
         S.Struct({ ApplicationArn: S.String, PrincipalId: S.String, PrincipalType: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateApplicationAssignmentRequest",
-      });
+      ).annotate({ identifier: "CreateApplicationAssignmentRequest" });
   }
 }
 function __c8(j: number): any {
@@ -4030,9 +4013,7 @@ function __c9(j: number): any {
           InstanceArn: S.String,
           InstanceAccessControlAttributeConfiguration: __S(91, __c11, 3),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateInstanceAccessControlAttributeConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateInstanceAccessControlAttributeConfigurationRequest" });
   }
 }
 function __c10(j: number): any {
@@ -4071,9 +4052,7 @@ function __c12(j: number): any {
           RelayState: S.optional(S.String),
           Tags: S.optional(__S(33, __c4, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreatePermissionSetRequest",
-      });
+      ).annotate({ identifier: "CreatePermissionSetRequest" });
   }
 }
 function __c13(j: number): any {
@@ -4107,9 +4086,7 @@ function __c14(j: number): any {
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           Tags: S.optional(__S(33, __c4, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateTrustedTokenIssuerRequest",
-      });
+      ).annotate({ identifier: "CreateTrustedTokenIssuerRequest" });
     case 1:
       return S.suspend(() => S.Struct({ TrustedTokenIssuerArn: S.optional(S.String) })).annotate({
         identifier: "CreateTrustedTokenIssuerResponse",
@@ -4143,9 +4120,7 @@ function __c16(j: number): any {
           PrincipalType: S.String,
           PrincipalId: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteAccountAssignmentRequest",
-      });
+      ).annotate({ identifier: "DeleteAccountAssignmentRequest" });
   }
 }
 function __c17(j: number): any {
@@ -4153,9 +4128,7 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ AccountAssignmentDeletionStatus: S.optional(__S(8, __c1, 0)) }),
-      ).annotate({
-        identifier: "DeleteAccountAssignmentResponse",
-      });
+      ).annotate({ identifier: "DeleteAccountAssignmentResponse" });
   }
 }
 function __c18(j: number): any {
@@ -4171,72 +4144,54 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteApplicationResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({ ApplicationArn: S.String, Scope: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteApplicationAccessScopeRequest" });
   }
 }
 function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ApplicationArn: S.String, Scope: S.String }).pipe(
+        S.Struct({ ApplicationArn: S.String, PrincipalId: S.String, PrincipalType: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteApplicationAccessScopeRequest",
-      });
+      ).annotate({ identifier: "DeleteApplicationAssignmentRequest" });
   }
 }
 function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ApplicationArn: S.String, PrincipalId: S.String, PrincipalType: S.String }).pipe(
+        S.Struct({ ApplicationArn: S.String, AuthenticationMethodType: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteApplicationAssignmentRequest",
-      });
+      ).annotate({ identifier: "DeleteApplicationAuthenticationMethodRequest" });
   }
 }
 function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ApplicationArn: S.String, AuthenticationMethodType: S.String }).pipe(
+        S.Struct({ ApplicationArn: S.String, GrantType: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteApplicationAuthenticationMethodRequest",
-      });
+      ).annotate({ identifier: "DeleteApplicationGrantRequest" });
   }
 }
 function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ApplicationArn: S.String, GrantType: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DeleteApplicationGrantRequest",
-      });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
         S.Struct({ InstanceArn: S.String, PermissionSetArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteInlinePolicyFromPermissionSetRequest",
-      });
+      ).annotate({ identifier: "DeleteInlinePolicyFromPermissionSetRequest" });
   }
 }
-function __c25(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4246,16 +4201,24 @@ function __c25(j: number): any {
       ).annotate({ identifier: "DeleteInstanceRequest" });
   }
 }
-function __c26(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ InstanceArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteInstanceAccessControlAttributeConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteInstanceAccessControlAttributeConfigurationRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ InstanceArn: S.String, PermissionSetArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeletePermissionsBoundaryFromPermissionSetRequest" });
   }
 }
 function __c27(j: number): any {
@@ -4265,70 +4228,52 @@ function __c27(j: number): any {
         S.Struct({ InstanceArn: S.String, PermissionSetArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeletePermissionsBoundaryFromPermissionSetRequest",
-      });
+      ).annotate({ identifier: "DeletePermissionSetRequest" });
   }
 }
 function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ InstanceArn: S.String, PermissionSetArn: S.String }).pipe(
+        S.Struct({ TrustedTokenIssuerArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeletePermissionSetRequest",
-      });
+      ).annotate({ identifier: "DeleteTrustedTokenIssuerRequest" });
   }
 }
 function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ TrustedTokenIssuerArn: S.String }).pipe(
+        S.Struct({ InstanceArn: S.String, AccountAssignmentCreationRequestId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteTrustedTokenIssuerRequest",
-      });
+      ).annotate({ identifier: "DescribeAccountAssignmentCreationStatusRequest" });
   }
 }
 function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ InstanceArn: S.String, AccountAssignmentCreationRequestId: S.String }).pipe(
+        S.Struct({ InstanceArn: S.String, AccountAssignmentDeletionRequestId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeAccountAssignmentCreationStatusRequest",
-      });
+      ).annotate({ identifier: "DescribeAccountAssignmentDeletionStatusRequest" });
   }
 }
 function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ InstanceArn: S.String, AccountAssignmentDeletionRequestId: S.String }).pipe(
+        S.Struct({ ApplicationArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeAccountAssignmentDeletionStatusRequest",
-      });
+      ).annotate({ identifier: "DescribeApplicationRequest" });
   }
 }
 function __c32(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ ApplicationArn: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DescribeApplicationRequest",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           ApplicationArn: S.optional(S.String),
@@ -4343,9 +4288,7 @@ function __c32(j: number): any {
           CreatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedFrom: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeApplicationResponse",
-      });
+      ).annotate({ identifier: "DescribeApplicationResponse" });
   }
 }
 function __c33(j: number): any {
@@ -4355,9 +4298,7 @@ function __c33(j: number): any {
         S.Struct({ ApplicationArn: S.String, PrincipalId: S.String, PrincipalType: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeApplicationAssignmentRequest",
-      });
+      ).annotate({ identifier: "DescribeApplicationAssignmentRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4365,9 +4306,7 @@ function __c33(j: number): any {
           PrincipalId: S.optional(S.String),
           ApplicationArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeApplicationAssignmentResponse",
-      });
+      ).annotate({ identifier: "DescribeApplicationAssignmentResponse" });
   }
 }
 function __c34(j: number): any {
@@ -4377,20 +4316,7 @@ function __c34(j: number): any {
         S.Struct({ ApplicationProviderArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeApplicationProviderRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationProviderArn: S.String,
-          FederationProtocol: S.optional(S.String),
-          DisplayData: S.optional(__S(280, __c35, 0)),
-          ResourceServerConfig: S.optional(__S(283, __c35, 3)),
-        }),
-      ).annotate({
-        identifier: "DescribeApplicationProviderResponse",
-      });
+      ).annotate({ identifier: "DescribeApplicationProviderRequest" });
   }
 }
 function __c35(j: number): any {
@@ -4406,15 +4332,22 @@ function __c35(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ LongDescription: S.optional(S.String), DetailedTitle: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ResourceServerScopeDetails",
-      });
+      ).annotate({ identifier: "ResourceServerScopeDetails" });
     case 2:
       return S.Record(S.String, /*@__PURE__*/ __S(281, __c35, 1).pipe(S.optional));
     case 3:
       return S.suspend(() => S.Struct({ Scopes: S.optional(__S(282, __c35, 2)) })).annotate({
         identifier: "ResourceServerConfig",
       });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationProviderArn: S.String,
+          FederationProtocol: S.optional(S.String),
+          DisplayData: S.optional(__S(280, __c35, 0)),
+          ResourceServerConfig: S.optional(__S(283, __c35, 3)),
+        }),
+      ).annotate({ identifier: "DescribeApplicationProviderResponse" });
   }
 }
 function __c36(j: number): any {
@@ -4433,9 +4366,7 @@ function __c36(j: number): any {
           EncryptionStatus: S.optional(S.String),
           EncryptionStatusReason: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "EncryptionConfigurationDetails",
-      });
+      ).annotate({ identifier: "EncryptionConfigurationDetails" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4481,9 +4412,7 @@ function __c39(j: number): any {
         S.Struct({ InstanceArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeInstanceAccessControlAttributeConfigurationRequest",
-      });
+      ).annotate({ identifier: "DescribeInstanceAccessControlAttributeConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4491,9 +4420,7 @@ function __c39(j: number): any {
           StatusReason: S.optional(S.String),
           InstanceAccessControlAttributeConfiguration: S.optional(__S(91, __c11, 3)),
         }),
-      ).annotate({
-        identifier: "DescribeInstanceAccessControlAttributeConfigurationResponse",
-      });
+      ).annotate({ identifier: "DescribeInstanceAccessControlAttributeConfigurationResponse" });
   }
 }
 function __c40(j: number): any {
@@ -4503,9 +4430,7 @@ function __c40(j: number): any {
         S.Struct({ InstanceArn: S.String, PermissionSetArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribePermissionSetRequest",
-      });
+      ).annotate({ identifier: "DescribePermissionSetRequest" });
   }
 }
 function __c41(j: number): any {
@@ -4515,9 +4440,7 @@ function __c41(j: number): any {
         S.Struct({ InstanceArn: S.String, ProvisionPermissionSetRequestId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribePermissionSetProvisioningStatusRequest",
-      });
+      ).annotate({ identifier: "DescribePermissionSetProvisioningStatusRequest" });
   }
 }
 function __c42(j: number): any {
@@ -4532,15 +4455,11 @@ function __c42(j: number): any {
           FailureReason: S.optional(S.String),
           CreatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "PermissionSetProvisioningStatus",
-      });
+      ).annotate({ identifier: "PermissionSetProvisioningStatus" });
     case 1:
       return S.suspend(() =>
         S.Struct({ PermissionSetProvisioningStatus: S.optional(__S(336, __c42, 0)) }),
-      ).annotate({
-        identifier: "DescribePermissionSetProvisioningStatusResponse",
-      });
+      ).annotate({ identifier: "DescribePermissionSetProvisioningStatusResponse" });
   }
 }
 function __c43(j: number): any {
@@ -4560,9 +4479,7 @@ function __c44(j: number): any {
         S.Struct({ TrustedTokenIssuerArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeTrustedTokenIssuerRequest",
-      });
+      ).annotate({ identifier: "DescribeTrustedTokenIssuerRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4571,9 +4488,7 @@ function __c44(j: number): any {
           TrustedTokenIssuerType: S.optional(S.String),
           TrustedTokenIssuerConfiguration: S.optional(__S(121, __c15, 1)),
         }),
-      ).annotate({
-        identifier: "DescribeTrustedTokenIssuerResponse",
-      });
+      ).annotate({ identifier: "DescribeTrustedTokenIssuerResponse" });
   }
 }
 function __c45(j: number): any {
@@ -4585,13 +4500,7 @@ function __c45(j: number): any {
           PermissionSetArn: S.String,
           CustomerManagedPolicyReference: __S(744, __c93, 0),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DetachCustomerManagedPolicyReferenceFromPermissionSetRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DetachCustomerManagedPolicyReferenceFromPermissionSetResponse",
-      });
+      ).annotate({ identifier: "DetachCustomerManagedPolicyReferenceFromPermissionSetRequest" });
   }
 }
 function __c46(j: number): any {
@@ -4603,9 +4512,7 @@ function __c46(j: number): any {
           PermissionSetArn: S.String,
           ManagedPolicyArn: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DetachManagedPolicyFromPermissionSetRequest",
-      });
+      ).annotate({ identifier: "DetachManagedPolicyFromPermissionSetRequest" });
   }
 }
 function __c47(j: number): any {
@@ -4615,78 +4522,70 @@ function __c47(j: number): any {
         S.Struct({ ApplicationArn: S.String, Scope: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetApplicationAccessScopeRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Scope: S.String, AuthorizedTargets: S.optional(__S(80, __c10, 0)) }),
-      ).annotate({
-        identifier: "GetApplicationAccessScopeResponse",
-      });
+      ).annotate({ identifier: "GetApplicationAccessScopeRequest" });
   }
 }
 function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ApplicationArn: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "GetApplicationAssignmentConfigurationRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ AssignmentRequired: S.Boolean })).annotate({
-        identifier: "GetApplicationAssignmentConfigurationResponse",
-      });
+        S.Struct({ Scope: S.String, AuthorizedTargets: S.optional(__S(80, __c10, 0)) }),
+      ).annotate({ identifier: "GetApplicationAccessScopeResponse" });
   }
 }
 function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ApplicationArn: S.String, AuthenticationMethodType: S.String }).pipe(
+        S.Struct({ ApplicationArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetApplicationAuthenticationMethodRequest",
-      });
+      ).annotate({ identifier: "GetApplicationAssignmentConfigurationRequest" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({ AuthenticationMethod: S.optional(__S(401, __c50, 1)) }),
-      ).annotate({
-        identifier: "GetApplicationAuthenticationMethodResponse",
+      return S.suspend(() => S.Struct({ AssignmentRequired: S.Boolean })).annotate({
+        identifier: "GetApplicationAssignmentConfigurationResponse",
       });
   }
 }
 function __c50(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({ ApplicationArn: S.String, AuthenticationMethodType: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetApplicationAuthenticationMethodRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ AuthenticationMethod: S.optional(__S(409, __c51, 1)) }),
+      ).annotate({ identifier: "GetApplicationAuthenticationMethodResponse" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ ActorPolicy: S.Any })).annotate({
         identifier: "IamAuthenticationMethod",
       });
     case 1:
-      return S.Union([/*@__PURE__*/ S.Struct({ Iam: __S(400, __c50, 0) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ Iam: __S(408, __c51, 0) })]);
   }
 }
-function __c51(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ ApplicationArn: S.String, GrantType: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetApplicationGrantRequest",
-      });
+      ).annotate({ identifier: "GetApplicationGrantRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ Grant: __S(420, __c52, 4) })).annotate({
+      return S.suspend(() => S.Struct({ Grant: __S(428, __c53, 4) })).annotate({
         identifier: "GetApplicationGrantResponse",
       });
   }
 }
-function __c52(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ RedirectUris: S.optional(__S(80, __c10, 0)) })).annotate({
@@ -4700,54 +4599,32 @@ function __c52(j: number): any {
         }),
       ).annotate({ identifier: "AuthorizedTokenIssuer" });
     case 2:
-      return S.Array(__S(417, __c52, 1));
+      return S.Array(__S(425, __c53, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ AuthorizedTokenIssuers: S.optional(__S(418, __c52, 2)) }),
+        S.Struct({ AuthorizedTokenIssuers: S.optional(__S(426, __c53, 2)) }),
       ).annotate({ identifier: "JwtBearerGrant" });
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ AuthorizationCode: __S(416, __c52, 0) }),
-        /*@__PURE__*/ S.Struct({ JwtBearer: __S(419, __c52, 3) }),
-        /*@__PURE__*/ S.Struct({ RefreshToken: __S(152, __c19, 0) }),
-        /*@__PURE__*/ S.Struct({ TokenExchange: __S(152, __c19, 0) }),
+        /*@__PURE__*/ S.Struct({ AuthorizationCode: __S(424, __c53, 0) }),
+        /*@__PURE__*/ S.Struct({ JwtBearer: __S(427, __c53, 3) }),
+        /*@__PURE__*/ S.Struct({ RefreshToken: __S(752, __c94, 0) }),
+        /*@__PURE__*/ S.Struct({ TokenExchange: __S(752, __c94, 0) }),
       ]);
-  }
-}
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ApplicationArn: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "GetApplicationSessionConfigurationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          UserBackgroundSessionApplicationStatus: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetApplicationSessionConfigurationResponse",
-      });
   }
 }
 function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ InstanceArn: S.String, PermissionSetArn: S.String }).pipe(
+        S.Struct({ ApplicationArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetInlinePolicyForPermissionSetRequest",
-      });
+      ).annotate({ identifier: "GetApplicationSessionConfigurationRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ InlinePolicy: S.optional(S.String) })).annotate({
-        identifier: "GetInlinePolicyForPermissionSetResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({ UserBackgroundSessionApplicationStatus: S.optional(S.String) }),
+      ).annotate({ identifier: "GetApplicationSessionConfigurationResponse" });
   }
 }
 function __c55(j: number): any {
@@ -4757,18 +4634,28 @@ function __c55(j: number): any {
         S.Struct({ InstanceArn: S.String, PermissionSetArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetPermissionsBoundaryForPermissionSetRequest",
-      });
+      ).annotate({ identifier: "GetInlinePolicyForPermissionSetRequest" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({ PermissionsBoundary: S.optional(__S(448, __c56, 0)) }),
-      ).annotate({
-        identifier: "GetPermissionsBoundaryForPermissionSetResponse",
+      return S.suspend(() => S.Struct({ InlinePolicy: S.optional(S.String) })).annotate({
+        identifier: "GetInlinePolicyForPermissionSetResponse",
       });
   }
 }
 function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ InstanceArn: S.String, PermissionSetArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetPermissionsBoundaryForPermissionSetRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ PermissionsBoundary: S.optional(__S(456, __c57, 0)) }),
+      ).annotate({ identifier: "GetPermissionsBoundaryForPermissionSetResponse" });
+  }
+}
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4779,7 +4666,7 @@ function __c56(j: number): any {
       ).annotate({ identifier: "PermissionsBoundary" });
   }
 }
-function __c57(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4787,23 +4674,19 @@ function __c57(j: number): any {
           InstanceArn: S.String,
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Filter: S.optional(__S(640, __c80, 0)),
+          Filter: S.optional(__S(648, __c81, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListAccountAssignmentCreationStatusRequest",
-      });
+      ).annotate({ identifier: "ListAccountAssignmentCreationStatusRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          AccountAssignmentsCreationStatus: S.optional(__S(465, __c58, 1)),
+          AccountAssignmentsCreationStatus: S.optional(__S(473, __c59, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListAccountAssignmentCreationStatusResponse",
-      });
+      ).annotate({ identifier: "ListAccountAssignmentCreationStatusResponse" });
   }
 }
-function __c58(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4812,14 +4695,12 @@ function __c58(j: number): any {
           RequestId: S.optional(S.String),
           CreatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "AccountAssignmentOperationStatusMetadata",
-      });
+      ).annotate({ identifier: "AccountAssignmentOperationStatusMetadata" });
     case 1:
-      return S.Array(__S(464, __c58, 0));
+      return S.Array(__S(472, __c59, 0));
   }
 }
-function __c59(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4827,23 +4708,19 @@ function __c59(j: number): any {
           InstanceArn: S.String,
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Filter: S.optional(__S(640, __c80, 0)),
+          Filter: S.optional(__S(648, __c81, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListAccountAssignmentDeletionStatusRequest",
-      });
+      ).annotate({ identifier: "ListAccountAssignmentDeletionStatusRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          AccountAssignmentsDeletionStatus: S.optional(__S(465, __c58, 1)),
+          AccountAssignmentsDeletionStatus: S.optional(__S(473, __c59, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListAccountAssignmentDeletionStatusResponse",
-      });
+      ).annotate({ identifier: "ListAccountAssignmentDeletionStatusResponse" });
   }
 }
-function __c60(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4854,9 +4731,7 @@ function __c60(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListAccountAssignmentsRequest",
-      });
+      ).annotate({ identifier: "ListAccountAssignmentsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4867,19 +4742,17 @@ function __c60(j: number): any {
         }),
       ).annotate({ identifier: "AccountAssignment" });
     case 2:
-      return S.Array(__S(481, __c60, 1));
+      return S.Array(__S(489, __c61, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AccountAssignments: S.optional(__S(482, __c60, 2)),
+          AccountAssignments: S.optional(__S(490, __c61, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListAccountAssignmentsResponse",
-      });
+      ).annotate({ identifier: "ListAccountAssignmentsResponse" });
   }
 }
-function __c61(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ AccountId: S.optional(S.String) })).annotate({
@@ -4891,13 +4764,11 @@ function __c61(j: number): any {
           InstanceArn: S.String,
           PrincipalId: S.String,
           PrincipalType: S.String,
-          Filter: S.optional(__S(488, __c61, 0)),
+          Filter: S.optional(__S(496, __c62, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListAccountAssignmentsForPrincipalRequest",
-      });
+      ).annotate({ identifier: "ListAccountAssignmentsForPrincipalRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4906,23 +4777,19 @@ function __c61(j: number): any {
           PrincipalId: S.optional(S.String),
           PrincipalType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "AccountAssignmentForPrincipal",
-      });
+      ).annotate({ identifier: "AccountAssignmentForPrincipal" });
     case 3:
-      return S.Array(__S(490, __c61, 2));
+      return S.Array(__S(498, __c62, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          AccountAssignments: S.optional(__S(491, __c61, 3)),
+          AccountAssignments: S.optional(__S(499, __c62, 3)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListAccountAssignmentsForPrincipalResponse",
-      });
+      ).annotate({ identifier: "ListAccountAssignmentsForPrincipalResponse" });
   }
 }
-function __c62(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4933,41 +4800,11 @@ function __c62(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListAccountsForProvisionedPermissionSetRequest",
-      });
+      ).annotate({ identifier: "ListAccountsForProvisionedPermissionSetRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ AccountIds: S.optional(__S(80, __c10, 0)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListAccountsForProvisionedPermissionSetResponse",
-      });
-  }
-}
-function __c63(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationArn: S.String,
-          MaxResults: S.optional(S.Number),
-          NextToken: S.optional(S.String),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListApplicationAccessScopesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Scope: S.String, AuthorizedTargets: S.optional(__S(80, __c10, 0)) }),
-      ).annotate({ identifier: "ScopeDetails" });
-    case 2:
-      return S.Array(__S(505, __c63, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Scopes: __S(506, __c63, 2), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListApplicationAccessScopesResponse",
-      });
+      ).annotate({ identifier: "ListAccountsForProvisionedPermissionSetResponse" });
   }
 }
 function __c64(j: number): any {
@@ -4979,27 +4816,41 @@ function __c64(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListApplicationAssignmentsRequest",
-      });
+      ).annotate({ identifier: "ListApplicationAccessScopesRequest" });
+    case 1:
+      return S.Array(__S(384, __c48, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Scopes: __S(513, __c64, 1), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListApplicationAccessScopesResponse" });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationArn: S.String,
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListApplicationAssignmentsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ApplicationArn: S.String, PrincipalId: S.String, PrincipalType: S.String }),
       ).annotate({ identifier: "ApplicationAssignment" });
     case 2:
-      return S.Array(__S(513, __c64, 1));
+      return S.Array(__S(521, __c65, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ApplicationAssignments: S.optional(__S(514, __c64, 2)),
+          ApplicationAssignments: S.optional(__S(522, __c65, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListApplicationAssignmentsResponse",
-      });
+      ).annotate({ identifier: "ListApplicationAssignmentsResponse" });
   }
 }
-function __c65(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ ApplicationArn: S.optional(S.String) })).annotate({
@@ -5011,13 +4862,11 @@ function __c65(j: number): any {
           InstanceArn: S.String,
           PrincipalId: S.String,
           PrincipalType: S.String,
-          Filter: S.optional(__S(520, __c65, 0)),
+          Filter: S.optional(__S(528, __c66, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListApplicationAssignmentsForPrincipalRequest",
-      });
+      ).annotate({ identifier: "ListApplicationAssignmentsForPrincipalRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5025,50 +4874,16 @@ function __c65(j: number): any {
           PrincipalId: S.optional(S.String),
           PrincipalType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ApplicationAssignmentForPrincipal",
-      });
+      ).annotate({ identifier: "ApplicationAssignmentForPrincipal" });
     case 3:
-      return S.Array(__S(522, __c65, 2));
+      return S.Array(__S(530, __c66, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ApplicationAssignments: S.optional(__S(523, __c65, 3)),
+          ApplicationAssignments: S.optional(__S(531, __c66, 3)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListApplicationAssignmentsForPrincipalResponse",
-      });
-  }
-}
-function __c66(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ApplicationArn: S.String, NextToken: S.optional(S.String) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "ListApplicationAuthenticationMethodsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          AuthenticationMethodType: S.optional(S.String),
-          AuthenticationMethod: S.optional(__S(401, __c50, 1)),
-        }),
-      ).annotate({ identifier: "AuthenticationMethodItem" });
-    case 2:
-      return S.Array(__S(529, __c66, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          AuthenticationMethods: S.optional(__S(530, __c66, 2)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListApplicationAuthenticationMethodsResponse",
-      });
+      ).annotate({ identifier: "ListApplicationAssignmentsForPrincipalResponse" });
   }
 }
 function __c67(j: number): any {
@@ -5078,56 +4893,65 @@ function __c67(j: number): any {
         S.Struct({ ApplicationArn: S.String, NextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListApplicationGrantsRequest",
-      });
+      ).annotate({ identifier: "ListApplicationAuthenticationMethodsRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ GrantType: S.String, Grant: __S(420, __c52, 4) })).annotate(
-        { identifier: "GrantItem" },
-      );
+      return S.suspend(() =>
+        S.Struct({
+          AuthenticationMethodType: S.optional(S.String),
+          AuthenticationMethod: S.optional(__S(409, __c51, 1)),
+        }),
+      ).annotate({ identifier: "AuthenticationMethodItem" });
     case 2:
       return S.Array(__S(537, __c67, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Grants: __S(538, __c67, 2), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListApplicationGrantsResponse",
-      });
+        S.Struct({
+          AuthenticationMethods: S.optional(__S(538, __c67, 2)),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListApplicationAuthenticationMethodsResponse" });
   }
 }
 function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
+        S.Struct({ ApplicationArn: S.String, NextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListApplicationProvidersRequest",
-      });
+      ).annotate({ identifier: "ListApplicationGrantsRequest" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationProviderArn: S.String,
-          FederationProtocol: S.optional(S.String),
-          DisplayData: S.optional(__S(280, __c35, 0)),
-          ResourceServerConfig: S.optional(__S(283, __c35, 3)),
-        }),
-      ).annotate({ identifier: "ApplicationProvider" });
+      return S.suspend(() => S.Struct({ GrantType: S.String, Grant: __S(428, __c53, 4) })).annotate(
+        { identifier: "GrantItem" },
+      );
     case 2:
       return S.Array(__S(545, __c68, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          ApplicationProviders: S.optional(__S(546, __c68, 2)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListApplicationProvidersResponse",
-      });
+        S.Struct({ Grants: __S(546, __c68, 2), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListApplicationGrantsResponse" });
   }
 }
 function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListApplicationProvidersRequest" });
+    case 1:
+      return S.Array(__S(284, __c35, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationProviders: S.optional(__S(553, __c69, 1)),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListApplicationProvidersResponse" });
+  }
+}
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5142,34 +4966,18 @@ function __c69(j: number): any {
           InstanceArn: S.String,
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Filter: S.optional(__S(552, __c69, 0)),
+          Filter: S.optional(__S(560, __c70, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListApplicationsRequest" });
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationArn: S.optional(S.String),
-          ApplicationProviderArn: S.optional(S.String),
-          Name: S.optional(S.String),
-          ApplicationAccount: S.optional(S.String),
-          InstanceArn: S.optional(S.String),
-          IdentityStoreArn: S.optional(S.String),
-          Status: S.optional(S.String),
-          PortalOptions: S.optional(__S(40, __c5, 0)),
-          Description: S.optional(S.String),
-          CreatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          CreatedFrom: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Application" });
+      return S.Array(__S(256, __c32, 0));
     case 3:
-      return S.Array(__S(554, __c69, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({ Applications: S.optional(__S(555, __c69, 3)), NextToken: S.optional(S.String) }),
+        S.Struct({ Applications: S.optional(__S(562, __c70, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListApplicationsResponse" });
   }
 }
-function __c70(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5179,23 +4987,19 @@ function __c70(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListCustomerManagedPolicyReferencesInPermissionSetRequest",
-      });
+      ).annotate({ identifier: "ListCustomerManagedPolicyReferencesInPermissionSetRequest" });
     case 1:
       return S.Array(__S(744, __c93, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          CustomerManagedPolicyReferences: S.optional(__S(561, __c70, 1)),
+          CustomerManagedPolicyReferences: S.optional(__S(569, __c71, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListCustomerManagedPolicyReferencesInPermissionSetResponse",
-      });
+      ).annotate({ identifier: "ListCustomerManagedPolicyReferencesInPermissionSetResponse" });
   }
 }
-function __c71(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5219,14 +5023,14 @@ function __c71(j: number): any {
         }),
       ).annotate({ identifier: "InstanceMetadata" });
     case 2:
-      return S.Array(__S(569, __c71, 1));
+      return S.Array(__S(577, __c72, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Instances: S.optional(__S(570, __c71, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ Instances: S.optional(__S(578, __c72, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListInstancesResponse" });
   }
 }
-function __c72(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5236,48 +5040,20 @@ function __c72(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListManagedPoliciesInPermissionSetRequest",
-      });
+      ).annotate({ identifier: "ListManagedPoliciesInPermissionSetRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String), Arn: S.optional(S.String) }),
       ).annotate({ identifier: "AttachedManagedPolicy" });
     case 2:
-      return S.Array(__S(577, __c72, 1));
+      return S.Array(__S(585, __c73, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AttachedManagedPolicies: S.optional(__S(578, __c72, 2)),
+          AttachedManagedPolicies: S.optional(__S(586, __c73, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListManagedPoliciesInPermissionSetResponse",
-      });
-  }
-}
-function __c73(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          InstanceArn: S.String,
-          MaxResults: S.optional(S.Number),
-          NextToken: S.optional(S.String),
-          Filter: S.optional(__S(640, __c80, 0)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListPermissionSetProvisioningStatusRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          PermissionSetsProvisioningStatus: S.optional(__S(465, __c58, 1)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListPermissionSetProvisioningStatusResponse",
-      });
+      ).annotate({ identifier: "ListManagedPoliciesInPermissionSetResponse" });
   }
 }
 function __c74(j: number): any {
@@ -5286,24 +5062,40 @@ function __c74(j: number): any {
       return S.suspend(() =>
         S.Struct({
           InstanceArn: S.String,
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+          Filter: S.optional(__S(648, __c81, 0)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListPermissionSetProvisioningStatusRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          PermissionSetsProvisioningStatus: S.optional(__S(473, __c59, 1)),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListPermissionSetProvisioningStatusResponse" });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          InstanceArn: S.String,
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListPermissionSetsRequest",
-      });
+      ).annotate({ identifier: "ListPermissionSetsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           PermissionSets: S.optional(__S(80, __c10, 0)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListPermissionSetsResponse",
-      });
+      ).annotate({ identifier: "ListPermissionSetsResponse" });
   }
 }
-function __c75(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5314,21 +5106,17 @@ function __c75(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListPermissionSetsProvisionedToAccountRequest",
-      });
+      ).annotate({ identifier: "ListPermissionSetsProvisionedToAccountRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           PermissionSets: S.optional(__S(80, __c10, 0)),
         }),
-      ).annotate({
-        identifier: "ListPermissionSetsProvisionedToAccountResponse",
-      });
+      ).annotate({ identifier: "ListPermissionSetsProvisionedToAccountResponse" });
   }
 }
-function __c76(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5344,7 +5132,7 @@ function __c76(j: number): any {
       ).annotate({ identifier: "ListRegionsResponse" });
   }
 }
-function __c77(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5353,18 +5141,14 @@ function __c77(j: number): any {
           ResourceArn: S.String,
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Tags: S.optional(__S(33, __c4, 1)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
+      ).annotate({ identifier: "ListTagsForResourceResponse" });
   }
 }
-function __c78(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5373,9 +5157,7 @@ function __c78(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListTrustedTokenIssuersRequest",
-      });
+      ).annotate({ identifier: "ListTrustedTokenIssuersRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5383,23 +5165,19 @@ function __c78(j: number): any {
           Name: S.optional(S.String),
           TrustedTokenIssuerType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "TrustedTokenIssuerMetadata",
-      });
+      ).annotate({ identifier: "TrustedTokenIssuerMetadata" });
     case 2:
-      return S.Array(__S(625, __c78, 1));
+      return S.Array(__S(633, __c79, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          TrustedTokenIssuers: S.optional(__S(626, __c78, 2)),
+          TrustedTokenIssuers: S.optional(__S(634, __c79, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListTrustedTokenIssuersResponse",
-      });
+      ).annotate({ identifier: "ListTrustedTokenIssuersResponse" });
   }
 }
-function __c79(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5409,7 +5187,7 @@ function __c79(j: number): any {
       ).annotate({ identifier: "AddRegionRequest" });
   }
 }
-function __c80(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
@@ -5417,7 +5195,7 @@ function __c80(j: number): any {
       });
   }
 }
-function __c81(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5427,12 +5205,10 @@ function __c81(j: number): any {
           TargetId: S.optional(S.String),
           TargetType: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ProvisionPermissionSetRequest",
-      });
+      ).annotate({ identifier: "ProvisionPermissionSetRequest" });
   }
 }
-function __c82(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5441,60 +5217,39 @@ function __c82(j: number): any {
           AuthorizedTargets: S.optional(__S(80, __c10, 0)),
           ApplicationArn: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PutApplicationAccessScopeRequest",
-      });
-  }
-}
-function __c83(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ApplicationArn: S.String, AssignmentRequired: S.Boolean }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "PutApplicationAssignmentConfigurationRequest",
-      });
+      ).annotate({ identifier: "PutApplicationAccessScopeRequest" });
   }
 }
 function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          ApplicationArn: S.String,
-          AuthenticationMethodType: S.String,
-          AuthenticationMethod: __S(401, __c50, 1),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PutApplicationAuthenticationMethodRequest",
-      });
+        S.Struct({ ApplicationArn: S.String, AssignmentRequired: S.Boolean }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "PutApplicationAssignmentConfigurationRequest" });
   }
 }
 function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ApplicationArn: S.String, GrantType: S.String, Grant: __S(420, __c52, 4) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "PutApplicationGrantRequest",
-      });
+        S.Struct({
+          ApplicationArn: S.String,
+          AuthenticationMethodType: S.String,
+          AuthenticationMethod: __S(409, __c51, 1),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "PutApplicationAuthenticationMethodRequest" });
   }
 }
 function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          ApplicationArn: S.String,
-          UserBackgroundSessionApplicationStatus: S.optional(S.String),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PutApplicationSessionConfigurationRequest",
-      });
+        S.Struct({ ApplicationArn: S.String, GrantType: S.String, Grant: __S(428, __c53, 4) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "PutApplicationGrantRequest" });
   }
 }
 function __c87(j: number): any {
@@ -5502,13 +5257,10 @@ function __c87(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          InstanceArn: S.String,
-          PermissionSetArn: S.String,
-          InlinePolicy: S.String,
+          ApplicationArn: S.String,
+          UserBackgroundSessionApplicationStatus: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PutInlinePolicyToPermissionSetRequest",
-      });
+      ).annotate({ identifier: "PutApplicationSessionConfigurationRequest" });
   }
 }
 function __c88(j: number): any {
@@ -5518,14 +5270,24 @@ function __c88(j: number): any {
         S.Struct({
           InstanceArn: S.String,
           PermissionSetArn: S.String,
-          PermissionsBoundary: __S(448, __c56, 0),
+          InlinePolicy: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PutPermissionsBoundaryToPermissionSetRequest",
-      });
+      ).annotate({ identifier: "PutInlinePolicyToPermissionSetRequest" });
   }
 }
 function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          InstanceArn: S.String,
+          PermissionSetArn: S.String,
+          PermissionsBoundary: __S(456, __c57, 0),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "PutPermissionsBoundaryToPermissionSetRequest" });
+  }
+}
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5535,7 +5297,7 @@ function __c89(j: number): any {
       ).annotate({ identifier: "RemoveRegionRequest" });
   }
 }
-function __c90(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5547,7 +5309,7 @@ function __c90(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c91(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5556,17 +5318,7 @@ function __c91(j: number): any {
           PermissionSetArn: S.String,
           CustomerManagedPolicyReference: __S(744, __c93, 0),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AttachCustomerManagedPolicyReferenceToPermissionSetRequest",
-      });
-  }
-}
-function __c92(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AttachCustomerManagedPolicyReferenceToPermissionSetResponse",
-      });
+      ).annotate({ identifier: "AttachCustomerManagedPolicyReferenceToPermissionSetRequest" });
   }
 }
 function __c93(j: number): any {
@@ -5580,6 +5332,14 @@ function __c93(j: number): any {
 function __c94(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AttachCustomerManagedPolicyReferenceToPermissionSetResponse",
+      });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           InstanceArn: S.optional(S.String),
@@ -5589,7 +5349,7 @@ function __c94(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c95(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ SignInOptions: S.optional(__S(48, __c6, 0)) })).annotate({
@@ -5602,12 +5362,12 @@ function __c95(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           Status: S.optional(S.String),
-          PortalOptions: S.optional(__S(760, __c95, 0)),
+          PortalOptions: S.optional(__S(768, __c96, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateApplicationRequest" });
   }
 }
-function __c96(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5618,13 +5378,13 @@ function __c96(j: number): any {
         S.Struct({
           Name: S.optional(S.String),
           InstanceArn: S.String,
-          EncryptionConfiguration: S.optional(__S(768, __c96, 0)),
+          EncryptionConfiguration: S.optional(__S(776, __c97, 0)),
           PermissionSetsEnabled: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateInstanceRequest" });
   }
 }
-function __c97(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5632,12 +5392,10 @@ function __c97(j: number): any {
           InstanceArn: S.String,
           InstanceAccessControlAttributeConfiguration: __S(91, __c11, 3),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateInstanceAccessControlAttributeConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateInstanceAccessControlAttributeConfigurationRequest" });
   }
 }
-function __c98(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5648,12 +5406,10 @@ function __c98(j: number): any {
           SessionDuration: S.optional(S.String),
           RelayState: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdatePermissionSetRequest",
-      });
+      ).annotate({ identifier: "UpdatePermissionSetRequest" });
   }
 }
-function __c99(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5662,24 +5418,20 @@ function __c99(j: number): any {
           IdentityStoreAttributePath: S.optional(S.String),
           JwksRetrievalOption: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "OidcJwtUpdateConfiguration",
-      });
+      ).annotate({ identifier: "OidcJwtUpdateConfiguration" });
     case 1:
-      return S.Union([/*@__PURE__*/ S.Struct({ OidcJwtConfiguration: __S(792, __c99, 0) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ OidcJwtConfiguration: __S(800, __c100, 0) })]);
     case 2:
       return S.suspend(() =>
         S.Struct({
           TrustedTokenIssuerArn: S.String,
           Name: S.optional(S.String),
-          TrustedTokenIssuerConfiguration: S.optional(__S(793, __c99, 1)),
+          TrustedTokenIssuerConfiguration: S.optional(__S(801, __c100, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateTrustedTokenIssuerRequest",
-      });
+      ).annotate({ identifier: "UpdateTrustedTokenIssuerRequest" });
   }
 }
-function __c100(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5688,17 +5440,7 @@ function __c100(j: number): any {
           PermissionSetArn: S.String,
           ManagedPolicyArn: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AttachManagedPolicyToPermissionSetRequest",
-      });
-  }
-}
-function __c101(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AttachManagedPolicyToPermissionSetResponse",
-      });
+      ).annotate({ identifier: "AttachManagedPolicyToPermissionSetRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

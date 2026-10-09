@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -88,9 +88,7 @@ export class ConflictException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       ConflictExceptionType: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({
-          identifier: "ConflictExceptionType",
-        }),
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ConflictExceptionType" }),
       ),
     },
     /*@__PURE__*/ T.HttpError(409),
@@ -107,9 +105,7 @@ export class ResourceNotFoundException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       ResourceTypeNotFound: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({
-          identifier: "ResourceTypeNotFound",
-        }),
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ResourceTypeNotFound" }),
       ),
     },
     /*@__PURE__*/ T.HttpError(404),
@@ -130,9 +126,7 @@ export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()("ValidationException", {
     message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     ValidationExceptionType: /*@__PURE__*/ S.optional(
-      /*@__PURE__*/ S.suspend(() => S.String).annotate({
-        identifier: "ValidationExceptionType",
-      }),
+      /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ValidationExceptionType" }),
     ),
   }) {}
 export type ResourceName = string;
@@ -1216,8 +1210,8 @@ export const cancelHarvestJob: API.OperationMethod<
   CancelHarvestJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c33, 0) as any as S.Schema<CancelHarvestJobRequest>,
-  output: __S(1088, __c34, 0) as any as S.Schema<CancelHarvestJobResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<CancelHarvestJobRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<CancelHarvestJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1249,8 +1243,8 @@ export const createChannel: API.OperationMethod<
   CreateChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1120, __c35, 0) as any as S.Schema<CreateChannelRequest>,
-  output: __S(1121, __c35, 1) as any as S.Schema<CreateChannelResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<CreateChannelRequest>,
+  output: __S(1153, __c36, 1) as any as S.Schema<CreateChannelResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1283,8 +1277,8 @@ export const createChannelGroup: API.OperationMethod<
   CreateChannelGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1312, __c41, 0) as any as S.Schema<CreateChannelGroupRequest>,
-  output: __S(1313, __c41, 1) as any as S.Schema<CreateChannelGroupResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<CreateChannelGroupRequest>,
+  output: __S(1345, __c42, 1) as any as S.Schema<CreateChannelGroupResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1384,7 +1378,7 @@ export const deleteChannel: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(224, __c7, 0) as any as S.Schema<DeleteChannelRequest>,
-  output: __S(1088, __c34, 0) as any as S.Schema<DeleteChannelResponse>,
+  output: __S(1120, __c35, 0) as any as S.Schema<DeleteChannelResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1414,7 +1408,7 @@ export const deleteChannelGroup: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(256, __c8, 0) as any as S.Schema<DeleteChannelGroupRequest>,
-  output: __S(1088, __c34, 0) as any as S.Schema<DeleteChannelGroupResponse>,
+  output: __S(1120, __c35, 0) as any as S.Schema<DeleteChannelGroupResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1444,7 +1438,7 @@ export const deleteChannelPolicy: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(288, __c9, 0) as any as S.Schema<DeleteChannelPolicyRequest>,
-  output: __S(1088, __c34, 0) as any as S.Schema<DeleteChannelPolicyResponse>,
+  output: __S(1120, __c35, 0) as any as S.Schema<DeleteChannelPolicyResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1473,7 +1467,7 @@ export const deleteOriginEndpoint: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(320, __c10, 0) as any as S.Schema<DeleteOriginEndpointRequest>,
-  output: __S(1088, __c34, 0) as any as S.Schema<DeleteOriginEndpointResponse>,
+  output: __S(1120, __c35, 0) as any as S.Schema<DeleteOriginEndpointResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1502,7 +1496,7 @@ export const deleteOriginEndpointPolicy: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(352, __c11, 0) as any as S.Schema<DeleteOriginEndpointPolicyRequest>,
-  output: __S(353, __c11, 1) as any as S.Schema<DeleteOriginEndpointPolicyResponse>,
+  output: __S(1120, __c35, 0) as any as S.Schema<DeleteOriginEndpointPolicyResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1562,7 +1556,7 @@ export const getChannelGroup: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(416, __c13, 0) as any as S.Schema<GetChannelGroupRequest>,
-  output: __S(417, __c13, 1) as any as S.Schema<GetChannelGroupResponse>,
+  output: __S(448, __c14, 0) as any as S.Schema<GetChannelGroupResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1591,8 +1585,8 @@ export const getChannelPolicy: API.OperationMethod<
   GetChannelPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c14, 0) as any as S.Schema<GetChannelPolicyRequest>,
-  output: __S(449, __c14, 1) as any as S.Schema<GetChannelPolicyResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetChannelPolicyRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<GetChannelPolicyResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1621,7 +1615,7 @@ export const getHarvestJob: API.OperationMethod<
   GetHarvestJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c15, 0) as any as S.Schema<GetHarvestJobRequest>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetHarvestJobRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<GetHarvestJobResponse>,
   errors: [
     AccessDeniedException,
@@ -1651,8 +1645,8 @@ export const getOriginEndpoint: API.OperationMethod<
   GetOriginEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c16, 0) as any as S.Schema<GetOriginEndpointRequest>,
-  output: __S(513, __c16, 1) as any as S.Schema<GetOriginEndpointResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetOriginEndpointRequest>,
+  output: __S(545, __c17, 1) as any as S.Schema<GetOriginEndpointResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1681,8 +1675,8 @@ export const getOriginEndpointPolicy: API.OperationMethod<
   GetOriginEndpointPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c17, 0) as any as S.Schema<GetOriginEndpointPolicyRequest>,
-  output: __S(545, __c17, 1) as any as S.Schema<GetOriginEndpointPolicyResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<GetOriginEndpointPolicyRequest>,
+  output: __S(577, __c18, 1) as any as S.Schema<GetOriginEndpointPolicyResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1711,8 +1705,8 @@ export const listChannelGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ChannelGroupListConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(608, __c19, 0) as any as S.Schema<ListChannelGroupsRequest>,
-  output: __S(611, __c19, 3) as any as S.Schema<ListChannelGroupsResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<ListChannelGroupsRequest>,
+  output: __S(643, __c20, 3) as any as S.Schema<ListChannelGroupsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1747,8 +1741,8 @@ export const listChannels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ChannelListConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(640, __c20, 0) as any as S.Schema<ListChannelsRequest>,
-  output: __S(643, __c20, 3) as any as S.Schema<ListChannelsResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<ListChannelsRequest>,
+  output: __S(675, __c21, 3) as any as S.Schema<ListChannelsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1784,8 +1778,8 @@ export const listHarvestJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   HarvestJob
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(672, __c21, 0) as any as S.Schema<ListHarvestJobsRequest>,
-  output: __S(675, __c21, 3) as any as S.Schema<ListHarvestJobsResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<ListHarvestJobsRequest>,
+  output: __S(707, __c22, 3) as any as S.Schema<ListHarvestJobsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1821,8 +1815,8 @@ export const listOriginEndpoints: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   OriginEndpointListConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(704, __c22, 0) as any as S.Schema<ListOriginEndpointsRequest>,
-  output: __S(712, __c22, 8) as any as S.Schema<ListOriginEndpointsResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<ListOriginEndpointsRequest>,
+  output: __S(743, __c23, 7) as any as S.Schema<ListOriginEndpointsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1851,8 +1845,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c23, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(737, __c23, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(769, __c24, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1876,8 +1870,8 @@ export const putChannelPolicy: API.OperationMethod<
   PutChannelPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c24, 0) as any as S.Schema<PutChannelPolicyRequest>,
-  output: __S(1088, __c34, 0) as any as S.Schema<PutChannelPolicyResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<PutChannelPolicyRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<PutChannelPolicyResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1908,8 +1902,8 @@ export const putOriginEndpointPolicy: API.OperationMethod<
   PutOriginEndpointPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c25, 0) as any as S.Schema<PutOriginEndpointPolicyRequest>,
-  output: __S(801, __c25, 1) as any as S.Schema<PutOriginEndpointPolicyResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<PutOriginEndpointPolicyRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<PutOriginEndpointPolicyResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1942,8 +1936,8 @@ export const resetChannelState: API.OperationMethod<
   ResetChannelStateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c26, 0) as any as S.Schema<ResetChannelStateRequest>,
-  output: __S(833, __c26, 1) as any as S.Schema<ResetChannelStateResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<ResetChannelStateRequest>,
+  output: __S(865, __c27, 1) as any as S.Schema<ResetChannelStateResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1976,8 +1970,8 @@ export const resetOriginEndpointState: API.OperationMethod<
   ResetOriginEndpointStateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c27, 0) as any as S.Schema<ResetOriginEndpointStateRequest>,
-  output: __S(865, __c27, 1) as any as S.Schema<ResetOriginEndpointStateResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<ResetOriginEndpointStateRequest>,
+  output: __S(897, __c28, 1) as any as S.Schema<ResetOriginEndpointStateResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2003,8 +1997,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c28, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(1088, __c34, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<TagResourceResponse>,
   errors: [ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2021,8 +2015,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c29, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(1088, __c34, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2048,8 +2042,8 @@ export const updateChannel: API.OperationMethod<
   UpdateChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c30, 0) as any as S.Schema<UpdateChannelRequest>,
-  output: __S(961, __c30, 1) as any as S.Schema<UpdateChannelResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<UpdateChannelRequest>,
+  output: __S(993, __c31, 1) as any as S.Schema<UpdateChannelResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2082,8 +2076,8 @@ export const updateChannelGroup: API.OperationMethod<
   UpdateChannelGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c31, 0) as any as S.Schema<UpdateChannelGroupRequest>,
-  output: __S(993, __c31, 1) as any as S.Schema<UpdateChannelGroupResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<UpdateChannelGroupRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<UpdateChannelGroupResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2117,8 +2111,8 @@ export const updateOriginEndpoint: API.OperationMethod<
   UpdateOriginEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c32, 0) as any as S.Schema<UpdateOriginEndpointRequest>,
-  output: __S(1025, __c32, 1) as any as S.Schema<UpdateOriginEndpointResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<UpdateOriginEndpointRequest>,
+  output: __S(1057, __c33, 1) as any as S.Schema<UpdateOriginEndpointResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2143,15 +2137,15 @@ function __c0(j: number): any {
           ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
           OriginEndpointName: S.String.pipe(T.HttpLabel("OriginEndpointName")),
           Description: S.optional(S.String),
-          HarvestedManifests: __S(68, __c2, 4),
-          ScheduleConfiguration: __S(69, __c2, 5),
-          Destination: __S(71, __c2, 7),
+          HarvestedManifests: __S(66, __c2, 2),
+          ScheduleConfiguration: __S(67, __c2, 3),
+          Destination: __S(69, __c2, 5),
           ClientToken: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-client-token"),
             T.IdempotencyToken(),
           ),
           HarvestJobName: S.optional(S.String),
-          Tags: S.optional(__S(1280, __c40, 0)),
+          Tags: S.optional(__S(1312, __c41, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -2176,18 +2170,18 @@ function __c1(j: number): any {
           ChannelGroupName: S.String,
           ChannelName: S.String,
           OriginEndpointName: S.String,
-          Destination: __S(71, __c2, 7),
+          Destination: __S(69, __c2, 5),
           HarvestJobName: S.String,
-          HarvestedManifests: __S(68, __c2, 4),
+          HarvestedManifests: __S(66, __c2, 2),
           Description: S.optional(S.String),
-          ScheduleConfiguration: __S(69, __c2, 5),
+          ScheduleConfiguration: __S(67, __c2, 3),
           Arn: S.String,
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           ModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           Status: S.String,
           ErrorMessage: S.optional(S.String),
           ETag: S.optional(S.String),
-          Tags: S.optional(__S(1280, __c40, 0)),
+          Tags: S.optional(__S(1312, __c41, 0)),
         }),
       ).annotate({ identifier: "CreateHarvestJobResponse" });
   }
@@ -2201,34 +2195,26 @@ function __c2(j: number): any {
     case 1:
       return S.Array(__S(64, __c2, 0));
     case 2:
-      return S.suspend(() => S.Struct({ ManifestName: S.String })).annotate({
-        identifier: "HarvestedLowLatencyHlsManifest",
-      });
-    case 3:
-      return S.Array(__S(66, __c2, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           HlsManifests: S.optional(__S(65, __c2, 1)),
           DashManifests: S.optional(__S(65, __c2, 1)),
-          LowLatencyHlsManifests: S.optional(__S(67, __c2, 3)),
+          LowLatencyHlsManifests: S.optional(__S(65, __c2, 1)),
         }),
       ).annotate({ identifier: "HarvestedManifests" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
-      ).annotate({
-        identifier: "HarvesterScheduleConfiguration",
-      });
-    case 6:
+      ).annotate({ identifier: "HarvesterScheduleConfiguration" });
+    case 4:
       return S.suspend(() =>
         S.Struct({ BucketName: S.String, DestinationPath: S.String }),
       ).annotate({ identifier: "S3DestinationConfig" });
-    case 7:
-      return S.suspend(() => S.Struct({ S3Destination: __S(70, __c2, 6) })).annotate({
+    case 5:
+      return S.suspend(() => S.Struct({ S3Destination: __S(68, __c2, 4) })).annotate({
         identifier: "Destination",
       });
   }
@@ -2250,13 +2236,13 @@ function __c3(j: number): any {
           Description: S.optional(S.String),
           StartoverWindowSeconds: S.optional(S.Number),
           HlsManifests: S.optional(__S(193, __c6, 1)),
-          LowLatencyHlsManifests: S.optional(__S(194, __c6, 2)),
-          DashManifests: S.optional(__S(196, __c6, 4)),
-          MssManifests: S.optional(__S(198, __c6, 6)),
+          LowLatencyHlsManifests: S.optional(__S(193, __c6, 1)),
+          DashManifests: S.optional(__S(195, __c6, 3)),
+          MssManifests: S.optional(__S(197, __c6, 5)),
           ForceEndpointErrorConfiguration: S.optional(__S(128, __c4, 0)),
           UriSeparator: S.optional(S.String),
           StreamNameOutputMode: S.optional(S.String),
-          Tags: S.optional(__S(1280, __c40, 0)),
+          Tags: S.optional(__S(1312, __c41, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -2270,9 +2256,7 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateOriginEndpointRequest",
-      });
+      ).annotate({ identifier: "CreateOriginEndpointRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2287,28 +2271,24 @@ function __c3(j: number): any {
           Description: S.optional(S.String),
           StartoverWindowSeconds: S.optional(S.Number),
           HlsManifests: S.optional(__S(184, __c5, 24)),
-          LowLatencyHlsManifests: S.optional(__S(185, __c5, 25)),
-          DashManifests: S.optional(__S(187, __c5, 27)),
-          MssManifests: S.optional(__S(189, __c5, 29)),
+          LowLatencyHlsManifests: S.optional(__S(184, __c5, 24)),
+          DashManifests: S.optional(__S(186, __c5, 26)),
+          MssManifests: S.optional(__S(188, __c5, 28)),
           ForceEndpointErrorConfiguration: S.optional(__S(128, __c4, 0)),
           UriSeparator: S.optional(S.String),
           StreamNameOutputMode: S.optional(S.String),
           ETag: S.optional(S.String),
-          Tags: S.optional(__S(1280, __c40, 0)),
+          Tags: S.optional(__S(1312, __c41, 0)),
         }),
-      ).annotate({
-        identifier: "CreateOriginEndpointResponse",
-      });
+      ).annotate({ identifier: "CreateOriginEndpointResponse" });
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ EndpointErrorConditions: S.optional(__S(1184, __c37, 0)) }),
-      ).annotate({
-        identifier: "ForceEndpointErrorConfiguration",
-      });
+        S.Struct({ EndpointErrorConditions: S.optional(__S(1216, __c38, 0)) }),
+      ).annotate({ identifier: "ForceEndpointErrorConfiguration" });
   }
 }
 function __c5(j: number): any {
@@ -2316,9 +2296,9 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ScteFilter: S.optional(__S(1184, __c37, 0)),
+          ScteFilter: S.optional(__S(1216, __c38, 0)),
           ScteInSegments: S.optional(S.String),
-          CustomAdTypes: S.optional(__S(1184, __c37, 0)),
+          CustomAdTypes: S.optional(__S(1216, __c38, 0)),
         }),
       ).annotate({ identifier: "Scte" });
     case 1:
@@ -2332,9 +2312,7 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ PresetSpeke20Audio: S.String, PresetSpeke20Video: S.String }),
-      ).annotate({
-        identifier: "EncryptionContractConfiguration",
-      });
+      ).annotate({ identifier: "EncryptionContractConfiguration" });
     case 3:
       return S.suspend(() => S.Struct({ ContentKeyPeriodTiming: S.optional(S.String) })).annotate({
         identifier: "ContentKeyPeriodConfiguration",
@@ -2344,7 +2322,7 @@ function __c5(j: number): any {
         S.Struct({
           EncryptionContractConfiguration: __S(162, __c5, 2),
           ResourceId: S.String,
-          DrmSystems: __S(1184, __c37, 0),
+          DrmSystems: __S(1216, __c38, 0),
           RoleArn: S.String,
           Url: S.String,
           CertificateArn: S.optional(S.String),
@@ -2384,10 +2362,8 @@ function __c5(j: number): any {
         S.Struct({ TimeOffset: S.Number, Precise: S.optional(S.Boolean) }),
       ).annotate({ identifier: "StartTag" });
     case 9:
-      return S.suspend(() => S.Struct({ Layout: S.String, Sources: __S(1152, __c36, 0) })).annotate(
-        {
-          identifier: "MultiviewFilterConfiguration",
-        },
+      return S.suspend(() => S.Struct({ Layout: S.String, Sources: __S(1184, __c37, 0) })).annotate(
+        { identifier: "MultiviewFilterConfiguration" },
       );
     case 10:
       return S.suspend(() =>
@@ -2403,10 +2379,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "FilterConfiguration" });
     case 11:
       return S.suspend(() =>
-        S.Struct({
-          AdMarkerDash: S.optional(S.String),
-          ScteInManifests: S.optional(S.String),
-        }),
+        S.Struct({ AdMarkerDash: S.optional(S.String), ScteInManifests: S.optional(S.String) }),
       ).annotate({ identifier: "ScteDash" });
     case 12:
       return S.suspend(() =>
@@ -2461,9 +2434,7 @@ function __c5(j: number): any {
     case 21:
       return S.suspend(() =>
         S.Struct({ TtmlConfiguration: S.optional(__S(180, __c5, 20)) }),
-      ).annotate({
-        identifier: "DashSubtitleConfiguration",
-      });
+      ).annotate({ identifier: "DashSubtitleConfiguration" });
     case 22:
       return S.Union([
         /*@__PURE__*/ S.Struct({
@@ -2486,14 +2457,10 @@ function __c5(j: number): any {
           UrlEncodeChildManifest: S.optional(S.Boolean),
           UriPathType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetHlsManifestConfiguration",
-      });
+      ).annotate({ identifier: "GetHlsManifestConfiguration" });
     case 24:
       return S.Array(__S(183, __c5, 23));
     case 25:
-      return S.Array(__S(183, __c5, 23));
-    case 26:
       return S.suspend(() =>
         S.Struct({
           ManifestName: S.String,
@@ -2504,11 +2471,11 @@ function __c5(j: number): any {
           MinBufferTimeSeconds: S.optional(S.Number),
           SuggestedPresentationDelaySeconds: S.optional(S.Number),
           SegmentTemplateFormat: S.optional(S.String),
-          PeriodTriggers: S.optional(__S(1184, __c37, 0)),
+          PeriodTriggers: S.optional(__S(1216, __c38, 0)),
           ScteDash: S.optional(__S(171, __c5, 11)),
           DrmSignaling: S.optional(S.String),
           UtcTiming: S.optional(__S(172, __c5, 12)),
-          Profiles: S.optional(__S(1184, __c37, 0)),
+          Profiles: S.optional(__S(1216, __c38, 0)),
           BaseUrls: S.optional(__S(174, __c5, 14)),
           ProgramInformation: S.optional(__S(175, __c5, 15)),
           DvbSettings: S.optional(__S(179, __c5, 19)),
@@ -2518,12 +2485,10 @@ function __c5(j: number): any {
           UriPathType: S.optional(S.String),
           AvailabilityStartTimeConfiguration: S.optional(__S(182, __c5, 22)),
         }),
-      ).annotate({
-        identifier: "GetDashManifestConfiguration",
-      });
+      ).annotate({ identifier: "GetDashManifestConfiguration" });
+    case 26:
+      return S.Array(__S(185, __c5, 25));
     case 27:
-      return S.Array(__S(186, __c5, 26));
-    case 28:
       return S.suspend(() =>
         S.Struct({
           ManifestName: S.String,
@@ -2532,11 +2497,9 @@ function __c5(j: number): any {
           ManifestWindowSeconds: S.optional(S.Number),
           ManifestLayout: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetMssManifestConfiguration",
-      });
-    case 29:
-      return S.Array(__S(188, __c5, 28));
+      ).annotate({ identifier: "GetMssManifestConfiguration" });
+    case 28:
+      return S.Array(__S(187, __c5, 27));
   }
 }
 function __c6(j: number): any {
@@ -2554,14 +2517,10 @@ function __c6(j: number): any {
           UrlEncodeChildManifest: S.optional(S.Boolean),
           UriPathType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateHlsManifestConfiguration",
-      });
+      ).annotate({ identifier: "CreateHlsManifestConfiguration" });
     case 1:
       return S.Array(__S(192, __c6, 0));
     case 2:
-      return S.Array(__S(192, __c6, 0));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           ManifestName: S.String,
@@ -2571,11 +2530,11 @@ function __c6(j: number): any {
           MinBufferTimeSeconds: S.optional(S.Number),
           SuggestedPresentationDelaySeconds: S.optional(S.Number),
           SegmentTemplateFormat: S.optional(S.String),
-          PeriodTriggers: S.optional(__S(1184, __c37, 0)),
+          PeriodTriggers: S.optional(__S(1216, __c38, 0)),
           ScteDash: S.optional(__S(171, __c5, 11)),
           DrmSignaling: S.optional(S.String),
           UtcTiming: S.optional(__S(172, __c5, 12)),
-          Profiles: S.optional(__S(1184, __c37, 0)),
+          Profiles: S.optional(__S(1216, __c38, 0)),
           BaseUrls: S.optional(__S(174, __c5, 14)),
           ProgramInformation: S.optional(__S(175, __c5, 15)),
           DvbSettings: S.optional(__S(179, __c5, 19)),
@@ -2585,12 +2544,10 @@ function __c6(j: number): any {
           UriPathType: S.optional(S.String),
           AvailabilityStartTimeConfiguration: S.optional(__S(182, __c5, 22)),
         }),
-      ).annotate({
-        identifier: "CreateDashManifestConfiguration",
-      });
+      ).annotate({ identifier: "CreateDashManifestConfiguration" });
+    case 3:
+      return S.Array(__S(194, __c6, 2));
     case 4:
-      return S.Array(__S(195, __c6, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           ManifestName: S.String,
@@ -2598,11 +2555,9 @@ function __c6(j: number): any {
           FilterConfiguration: S.optional(__S(170, __c5, 10)),
           ManifestLayout: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateMssManifestConfiguration",
-      });
-    case 6:
-      return S.Array(__S(197, __c6, 5));
+      ).annotate({ identifier: "CreateMssManifestConfiguration" });
+    case 5:
+      return S.Array(__S(196, __c6, 4));
   }
 }
 function __c7(j: number): any {
@@ -2642,9 +2597,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteChannelGroupRequest",
-      });
+      ).annotate({ identifier: "DeleteChannelGroupRequest" });
   }
 }
 function __c9(j: number): any {
@@ -2667,9 +2620,7 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteChannelPolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteChannelPolicyRequest" });
   }
 }
 function __c10(j: number): any {
@@ -2693,9 +2644,7 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteOriginEndpointRequest",
-      });
+      ).annotate({ identifier: "DeleteOriginEndpointRequest" });
   }
 }
 function __c11(j: number): any {
@@ -2719,13 +2668,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteOriginEndpointPolicyRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteOriginEndpointPolicyResponse",
-      });
+      ).annotate({ identifier: "DeleteOriginEndpointPolicyRequest" });
   }
 }
 function __c12(j: number): any {
@@ -2752,8 +2695,8 @@ function __c12(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          MultiviewConfiguration: S.optional(__S(1216, __c38, 0)),
-          AttachedMultiviewChannels: S.optional(__S(1152, __c36, 0)),
+          MultiviewConfiguration: S.optional(__S(1248, __c39, 0)),
+          AttachedMultiviewChannels: S.optional(__S(1184, __c37, 0)),
           Arn: S.String,
           ChannelName: S.String,
           ChannelGroupName: S.String,
@@ -2761,12 +2704,12 @@ function __c12(j: number): any {
           ModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           ResetAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Description: S.optional(S.String),
-          IngestEndpoints: S.optional(__S(1251, __c39, 3)),
+          IngestEndpoints: S.optional(__S(1283, __c40, 3)),
           InputType: S.optional(S.String),
           ETag: S.optional(S.String),
-          Tags: S.optional(__S(1280, __c40, 0)),
-          InputSwitchConfiguration: S.optional(__S(1248, __c39, 0)),
-          OutputHeaderConfiguration: S.optional(__S(1249, __c39, 1)),
+          Tags: S.optional(__S(1312, __c41, 0)),
+          InputSwitchConfiguration: S.optional(__S(1280, __c40, 0)),
+          OutputHeaderConfiguration: S.optional(__S(1281, __c40, 1)),
           OutputLockingMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetChannelResponse" });
@@ -2787,7 +2730,11 @@ function __c13(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetChannelGroupRequest" });
-    case 1:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ChannelGroupName: S.String,
@@ -2797,12 +2744,12 @@ function __c13(j: number): any {
           ModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           Description: S.optional(S.String),
           ETag: S.optional(S.String),
-          Tags: S.optional(__S(1280, __c40, 0)),
+          Tags: S.optional(__S(1312, __c41, 0)),
         }).pipe(S.encodeKeys({ Tags: "tags" })),
       ).annotate({ identifier: "GetChannelGroupResponse" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2829,7 +2776,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "GetChannelPolicyResponse" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2854,7 +2801,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "GetHarvestJobRequest" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2891,21 +2838,19 @@ function __c16(j: number): any {
           Description: S.optional(S.String),
           StartoverWindowSeconds: S.optional(S.Number),
           HlsManifests: S.optional(__S(184, __c5, 24)),
-          LowLatencyHlsManifests: S.optional(__S(185, __c5, 25)),
-          DashManifests: S.optional(__S(187, __c5, 27)),
-          MssManifests: S.optional(__S(189, __c5, 29)),
+          LowLatencyHlsManifests: S.optional(__S(184, __c5, 24)),
+          DashManifests: S.optional(__S(186, __c5, 26)),
+          MssManifests: S.optional(__S(188, __c5, 28)),
           ForceEndpointErrorConfiguration: S.optional(__S(128, __c4, 0)),
           UriSeparator: S.optional(S.String),
           StreamNameOutputMode: S.optional(S.String),
           ETag: S.optional(S.String),
-          Tags: S.optional(__S(1280, __c40, 0)),
+          Tags: S.optional(__S(1312, __c41, 0)),
         }),
-      ).annotate({
-        identifier: "GetOriginEndpointResponse",
-      });
+      ).annotate({ identifier: "GetOriginEndpointResponse" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2926,9 +2871,7 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetOriginEndpointPolicyRequest",
-      });
+      ).annotate({ identifier: "GetOriginEndpointPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2936,22 +2879,20 @@ function __c17(j: number): any {
           ChannelName: S.String,
           OriginEndpointName: S.String,
           Policy: S.String,
-          CdnAuthConfiguration: S.optional(__S(576, __c18, 0)),
+          CdnAuthConfiguration: S.optional(__S(608, __c19, 0)),
         }),
-      ).annotate({
-        identifier: "GetOriginEndpointPolicyResponse",
-      });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ CdnIdentifierSecretArns: __S(1152, __c36, 0), SecretsRoleArn: S.String }),
-      ).annotate({ identifier: "CdnAuthConfiguration" });
+      ).annotate({ identifier: "GetOriginEndpointPolicyResponse" });
   }
 }
 function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ CdnIdentifierSecretArns: __S(1184, __c37, 0), SecretsRoleArn: S.String }),
+      ).annotate({ identifier: "CdnAuthConfiguration" });
+  }
+}
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2971,20 +2912,16 @@ function __c19(j: number): any {
           ModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           Description: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ChannelGroupListConfiguration",
-      });
+      ).annotate({ identifier: "ChannelGroupListConfiguration" });
     case 2:
-      return S.Array(__S(609, __c19, 1));
+      return S.Array(__S(641, __c20, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(610, __c19, 2)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListChannelGroupsResponse",
-      });
+        S.Struct({ Items: S.optional(__S(642, __c20, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListChannelGroupsResponse" });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3014,19 +2951,19 @@ function __c20(j: number): any {
           Description: S.optional(S.String),
           InputType: S.optional(S.String),
           OutputLockingMode: S.optional(S.String),
-          MultiviewConfiguration: S.optional(__S(1216, __c38, 0)),
-          AttachedMultiviewChannels: S.optional(__S(1152, __c36, 0)),
+          MultiviewConfiguration: S.optional(__S(1248, __c39, 0)),
+          AttachedMultiviewChannels: S.optional(__S(1184, __c37, 0)),
         }),
       ).annotate({ identifier: "ChannelListConfiguration" });
     case 2:
-      return S.Array(__S(641, __c20, 1));
+      return S.Array(__S(673, __c21, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(642, __c20, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(674, __c21, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListChannelsResponse" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3054,11 +2991,11 @@ function __c21(j: number): any {
           ChannelGroupName: S.String,
           ChannelName: S.String,
           OriginEndpointName: S.String,
-          Destination: __S(71, __c2, 7),
+          Destination: __S(69, __c2, 5),
           HarvestJobName: S.String,
-          HarvestedManifests: __S(68, __c2, 4),
+          HarvestedManifests: __S(66, __c2, 2),
           Description: S.optional(S.String),
-          ScheduleConfiguration: __S(69, __c2, 5),
+          ScheduleConfiguration: __S(67, __c2, 3),
           Arn: S.String,
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           ModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -3068,14 +3005,14 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "HarvestJob" });
     case 2:
-      return S.Array(__S(673, __c21, 1));
+      return S.Array(__S(705, __c22, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(674, __c21, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(706, __c22, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListHarvestJobsResponse" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3097,9 +3034,7 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListOriginEndpointsRequest",
-      });
+      ).annotate({ identifier: "ListOriginEndpointsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3107,22 +3042,16 @@ function __c22(j: number): any {
           ChildManifestName: S.optional(S.String),
           Url: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListHlsManifestConfiguration",
-      });
+      ).annotate({ identifier: "ListHlsManifestConfiguration" });
     case 2:
-      return S.Array(__S(705, __c22, 1));
+      return S.Array(__S(737, __c23, 1));
     case 3:
-      return S.Array(__S(705, __c22, 1));
-    case 4:
       return S.suspend(() =>
         S.Struct({ ManifestName: S.String, Url: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListDashManifestConfiguration",
-      });
+      ).annotate({ identifier: "ListDashManifestConfiguration" });
+    case 4:
+      return S.Array(__S(739, __c23, 3));
     case 5:
-      return S.Array(__S(708, __c22, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
@@ -3133,28 +3062,24 @@ function __c22(j: number): any {
           Description: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ModifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          HlsManifests: S.optional(__S(706, __c22, 2)),
-          LowLatencyHlsManifests: S.optional(__S(707, __c22, 3)),
-          DashManifests: S.optional(__S(709, __c22, 5)),
-          MssManifests: S.optional(__S(709, __c22, 5)),
+          HlsManifests: S.optional(__S(738, __c23, 2)),
+          LowLatencyHlsManifests: S.optional(__S(738, __c23, 2)),
+          DashManifests: S.optional(__S(740, __c23, 4)),
+          MssManifests: S.optional(__S(740, __c23, 4)),
           ForceEndpointErrorConfiguration: S.optional(__S(128, __c4, 0)),
           UriSeparator: S.optional(S.String),
           StreamNameOutputMode: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "OriginEndpointListConfiguration",
-      });
+      ).annotate({ identifier: "OriginEndpointListConfiguration" });
+    case 6:
+      return S.Array(__S(741, __c23, 5));
     case 7:
-      return S.Array(__S(710, __c22, 6));
-    case 8:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(711, __c22, 7)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListOriginEndpointsResponse",
-      });
+        S.Struct({ Items: S.optional(__S(742, __c23, 6)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListOriginEndpointsResponse" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3168,18 +3093,14 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Tags: S.optional(__S(1280, __c40, 0)) }).pipe(S.encodeKeys({ Tags: "tags" })),
-      ).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
+        S.Struct({ Tags: S.optional(__S(1312, __c41, 0)) }).pipe(S.encodeKeys({ Tags: "tags" })),
+      ).annotate({ identifier: "ListTagsForResourceResponse" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3203,7 +3124,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "PutChannelPolicyRequest" });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3212,7 +3133,7 @@ function __c25(j: number): any {
           ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
           OriginEndpointName: S.String.pipe(T.HttpLabel("OriginEndpointName")),
           Policy: S.String,
-          CdnAuthConfiguration: S.optional(__S(576, __c18, 0)),
+          CdnAuthConfiguration: S.optional(__S(608, __c19, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -3226,16 +3147,10 @@ function __c25(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutOriginEndpointPolicyRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "PutOriginEndpointPolicyResponse",
-      });
+      ).annotate({ identifier: "PutOriginEndpointPolicyRequest" });
   }
 }
-function __c26(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3264,12 +3179,10 @@ function __c26(j: number): any {
           Arn: S.String,
           ResetAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
-      ).annotate({
-        identifier: "ResetChannelStateResponse",
-      });
+      ).annotate({ identifier: "ResetChannelStateResponse" });
   }
 }
-function __c27(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3290,9 +3203,7 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ResetOriginEndpointStateRequest",
-      });
+      ).annotate({ identifier: "ResetOriginEndpointStateRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3302,18 +3213,16 @@ function __c27(j: number): any {
           Arn: S.String,
           ResetAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
-      ).annotate({
-        identifier: "ResetOriginEndpointStateResponse",
-      });
+      ).annotate({ identifier: "ResetOriginEndpointStateResponse" });
   }
 }
-function __c28(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          Tags: __S(1280, __c40, 0),
+          Tags: __S(1312, __c41, 0),
         })
           .pipe(S.encodeKeys({ Tags: "tags" }))
           .pipe(
@@ -3329,13 +3238,13 @@ function __c28(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c29(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: __S(1152, __c36, 0).pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(1184, __c37, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
@@ -3349,7 +3258,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c30(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3358,9 +3267,9 @@ function __c30(j: number): any {
           ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
           ETag: S.optional(S.String).pipe(T.HttpHeader("x-amzn-update-if-match")),
           Description: S.optional(S.String),
-          InputSwitchConfiguration: S.optional(__S(1248, __c39, 0)),
-          OutputHeaderConfiguration: S.optional(__S(1249, __c39, 1)),
-          MultiviewConfiguration: S.optional(__S(1216, __c38, 0)),
+          InputSwitchConfiguration: S.optional(__S(1280, __c40, 0)),
+          OutputHeaderConfiguration: S.optional(__S(1281, __c40, 1)),
+          MultiviewConfiguration: S.optional(__S(1248, __c39, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -3378,26 +3287,26 @@ function __c30(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          MultiviewConfiguration: S.optional(__S(1216, __c38, 0)),
-          AttachedMultiviewChannels: S.optional(__S(1152, __c36, 0)),
+          MultiviewConfiguration: S.optional(__S(1248, __c39, 0)),
+          AttachedMultiviewChannels: S.optional(__S(1184, __c37, 0)),
           Arn: S.String,
           ChannelName: S.String,
           ChannelGroupName: S.String,
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           ModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           Description: S.optional(S.String),
-          IngestEndpoints: S.optional(__S(1251, __c39, 3)),
+          IngestEndpoints: S.optional(__S(1283, __c40, 3)),
           InputType: S.optional(S.String),
           ETag: S.optional(S.String),
-          Tags: S.optional(__S(1280, __c40, 0)),
-          InputSwitchConfiguration: S.optional(__S(1248, __c39, 0)),
-          OutputHeaderConfiguration: S.optional(__S(1249, __c39, 1)),
+          Tags: S.optional(__S(1312, __c41, 0)),
+          InputSwitchConfiguration: S.optional(__S(1280, __c40, 0)),
+          OutputHeaderConfiguration: S.optional(__S(1281, __c40, 1)),
           OutputLockingMode: S.optional(S.String),
         }).pipe(S.encodeKeys({ Tags: "tags" })),
       ).annotate({ identifier: "UpdateChannelResponse" });
   }
 }
-function __c31(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3415,27 +3324,10 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateChannelGroupRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ChannelGroupName: S.String,
-          Arn: S.String,
-          EgressDomain: S.String,
-          CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          ModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Description: S.optional(S.String),
-          ETag: S.optional(S.String),
-          Tags: S.optional(__S(1280, __c40, 0)),
-        }).pipe(S.encodeKeys({ Tags: "tags" })),
-      ).annotate({
-        identifier: "UpdateChannelGroupResponse",
-      });
+      ).annotate({ identifier: "UpdateChannelGroupRequest" });
   }
 }
-function __c32(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3448,9 +3340,9 @@ function __c32(j: number): any {
           Description: S.optional(S.String),
           StartoverWindowSeconds: S.optional(S.Number),
           HlsManifests: S.optional(__S(193, __c6, 1)),
-          LowLatencyHlsManifests: S.optional(__S(194, __c6, 2)),
-          DashManifests: S.optional(__S(196, __c6, 4)),
-          MssManifests: S.optional(__S(198, __c6, 6)),
+          LowLatencyHlsManifests: S.optional(__S(193, __c6, 1)),
+          DashManifests: S.optional(__S(195, __c6, 3)),
+          MssManifests: S.optional(__S(197, __c6, 5)),
           ForceEndpointErrorConfiguration: S.optional(__S(128, __c4, 0)),
           UriSeparator: S.optional(S.String),
           StreamNameOutputMode: S.optional(S.String),
@@ -3468,9 +3360,7 @@ function __c32(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateOriginEndpointRequest",
-      });
+      ).annotate({ identifier: "UpdateOriginEndpointRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3485,21 +3375,19 @@ function __c32(j: number): any {
           Description: S.optional(S.String),
           StartoverWindowSeconds: S.optional(S.Number),
           HlsManifests: S.optional(__S(184, __c5, 24)),
-          LowLatencyHlsManifests: S.optional(__S(185, __c5, 25)),
-          MssManifests: S.optional(__S(189, __c5, 29)),
+          LowLatencyHlsManifests: S.optional(__S(184, __c5, 24)),
+          MssManifests: S.optional(__S(188, __c5, 28)),
           ForceEndpointErrorConfiguration: S.optional(__S(128, __c4, 0)),
           UriSeparator: S.optional(S.String),
           StreamNameOutputMode: S.optional(S.String),
           ETag: S.optional(S.String),
-          Tags: S.optional(__S(1280, __c40, 0)),
-          DashManifests: S.optional(__S(187, __c5, 27)),
+          Tags: S.optional(__S(1312, __c41, 0)),
+          DashManifests: S.optional(__S(186, __c5, 26)),
         }).pipe(S.encodeKeys({ Tags: "tags" })),
-      ).annotate({
-        identifier: "UpdateOriginEndpointResponse",
-      });
+      ).annotate({ identifier: "UpdateOriginEndpointResponse" });
   }
 }
-function __c33(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3525,15 +3413,13 @@ function __c33(j: number): any {
       ).annotate({ identifier: "CancelHarvestJobRequest" });
   }
 }
-function __c34(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelHarvestJobResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "CancelHarvestJobResponse" });
   }
 }
-function __c35(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3546,11 +3432,11 @@ function __c35(j: number): any {
           ),
           InputType: S.optional(S.String),
           Description: S.optional(S.String),
-          InputSwitchConfiguration: S.optional(__S(1248, __c39, 0)),
-          OutputHeaderConfiguration: S.optional(__S(1249, __c39, 1)),
-          MultiviewConfiguration: S.optional(__S(1216, __c38, 0)),
+          InputSwitchConfiguration: S.optional(__S(1280, __c40, 0)),
+          OutputHeaderConfiguration: S.optional(__S(1281, __c40, 1)),
+          MultiviewConfiguration: S.optional(__S(1248, __c39, 0)),
           OutputLockingMode: S.optional(S.String),
-          Tags: S.optional(__S(1280, __c40, 0)),
+          Tags: S.optional(__S(1312, __c41, 0)),
         })
           .pipe(S.encodeKeys({ Tags: "tags" }))
           .pipe(
@@ -3567,29 +3453,23 @@ function __c35(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          MultiviewConfiguration: S.optional(__S(1216, __c38, 0)),
-          AttachedMultiviewChannels: S.optional(__S(1152, __c36, 0)),
+          MultiviewConfiguration: S.optional(__S(1248, __c39, 0)),
+          AttachedMultiviewChannels: S.optional(__S(1184, __c37, 0)),
           Arn: S.String,
           ChannelName: S.String,
           ChannelGroupName: S.String,
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           ModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           Description: S.optional(S.String),
-          IngestEndpoints: S.optional(__S(1251, __c39, 3)),
+          IngestEndpoints: S.optional(__S(1283, __c40, 3)),
           InputType: S.optional(S.String),
           ETag: S.optional(S.String),
-          Tags: S.optional(__S(1280, __c40, 0)),
-          InputSwitchConfiguration: S.optional(__S(1248, __c39, 0)),
-          OutputHeaderConfiguration: S.optional(__S(1249, __c39, 1)),
+          Tags: S.optional(__S(1312, __c41, 0)),
+          InputSwitchConfiguration: S.optional(__S(1280, __c40, 0)),
+          OutputHeaderConfiguration: S.optional(__S(1281, __c40, 1)),
           OutputLockingMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateChannelResponse" });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
   }
 }
 function __c37(j: number): any {
@@ -3601,12 +3481,18 @@ function __c37(j: number): any {
 function __c38(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ AvailableSources: __S(1152, __c36, 0), AvailableLayouts: __S(1184, __c37, 0) }),
-      ).annotate({ identifier: "MultiviewConfiguration" });
+      return S.Array(S.String);
   }
 }
 function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AvailableSources: __S(1184, __c37, 0), AvailableLayouts: __S(1216, __c38, 0) }),
+      ).annotate({ identifier: "MultiviewConfiguration" });
+  }
+}
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3624,16 +3510,16 @@ function __c39(j: number): any {
         S.Struct({ Id: S.optional(S.String), Url: S.optional(S.String) }),
       ).annotate({ identifier: "IngestEndpoint" });
     case 3:
-      return S.Array(__S(1250, __c39, 2));
+      return S.Array(__S(1282, __c40, 2));
   }
 }
-function __c40(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c41(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3644,15 +3530,13 @@ function __c41(j: number): any {
             T.IdempotencyToken(),
           ),
           Description: S.optional(S.String),
-          Tags: S.optional(__S(1280, __c40, 0)),
+          Tags: S.optional(__S(1312, __c41, 0)),
         })
           .pipe(S.encodeKeys({ Tags: "tags" }))
           .pipe(
             T.all(T.Http({ method: "POST", uri: "/channelGroup" }), svc, auth, proto, ver, rules),
           ),
-      ).annotate({
-        identifier: "CreateChannelGroupRequest",
-      });
+      ).annotate({ identifier: "CreateChannelGroupRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3663,11 +3547,9 @@ function __c41(j: number): any {
           ModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           ETag: S.optional(S.String),
           Description: S.optional(S.String),
-          Tags: S.optional(__S(1280, __c40, 0)),
+          Tags: S.optional(__S(1312, __c41, 0)),
         }),
-      ).annotate({
-        identifier: "CreateChannelGroupResponse",
-      });
+      ).annotate({ identifier: "CreateChannelGroupResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

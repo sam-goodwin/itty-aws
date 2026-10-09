@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -536,7 +536,7 @@ export const configureAgent: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(448, __c28, 0) as any as S.Schema<ConfigureAgentRequest>,
-  output: __S(451, __c28, 3) as any as S.Schema<ConfigureAgentResponse>,
+  output: __S(450, __c28, 2) as any as S.Schema<ConfigureAgentResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1210,17 +1210,13 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteProfilingGroupRequest",
-      });
+      ).annotate({ identifier: "DeleteProfilingGroupRequest" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteProfilingGroupResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteProfilingGroupResponse" });
   }
 }
 function __c2(j: number): any {
@@ -1237,9 +1233,7 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeProfilingGroupRequest",
-      });
+      ).annotate({ identifier: "DescribeProfilingGroupRequest" });
   }
 }
 function __c3(j: number): any {
@@ -1260,15 +1254,11 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetFindingsReportAccountSummaryRequest",
-      });
+      ).annotate({ identifier: "GetFindingsReportAccountSummaryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ reportSummaries: __S(65, __c4, 1), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetFindingsReportAccountSummaryResponse",
-      });
+      ).annotate({ identifier: "GetFindingsReportAccountSummaryResponse" });
   }
 }
 function __c4(j: number): any {
@@ -1304,9 +1294,7 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetNotificationConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetNotificationConfigurationRequest" });
     case 1:
       return S.suspend(() => S.Struct({ notificationConfiguration: __S(370, __c23, 2) })).annotate({
         identifier: "GetNotificationConfigurationResponse",
@@ -1400,9 +1388,7 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetRecommendationsRequest",
-      });
+      ).annotate({ identifier: "GetRecommendationsRequest" });
     case 1:
       return S.Array(__S(400, __c25, 0));
     case 2:
@@ -1441,9 +1427,7 @@ function __c9(j: number): any {
     case 6:
       return S.Array(__S(149, __c9, 5));
     case 7:
-      return S.suspend(() => S.Struct({ type: S.String })).annotate({
-        identifier: "UserFeedback",
-      });
+      return S.suspend(() => S.Struct({ type: S.String })).annotate({ identifier: "UserFeedback" });
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -1470,9 +1454,7 @@ function __c9(j: number): any {
           recommendations: __S(150, __c9, 6),
           anomalies: __S(155, __c9, 11),
         }),
-      ).annotate({
-        identifier: "GetRecommendationsResponse",
-      });
+      ).annotate({ identifier: "GetRecommendationsResponse" });
   }
 }
 function __c10(j: number): any {
@@ -1503,15 +1485,11 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListFindingsReportsRequest",
-      });
+      ).annotate({ identifier: "ListFindingsReportsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ findingsReportSummaries: __S(65, __c4, 1), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListFindingsReportsResponse",
-      });
+      ).annotate({ identifier: "ListFindingsReportsResponse" });
   }
 }
 function __c11(j: number): any {
@@ -1564,9 +1542,7 @@ function __c12(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/profilingGroups" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListProfilingGroupsRequest",
-      });
+      ).annotate({ identifier: "ListProfilingGroupsRequest" });
     case 1:
       return S.Array(__S(499, __c31, 3));
     case 2:
@@ -1576,9 +1552,7 @@ function __c12(j: number): any {
           profilingGroups: S.optional(__S(193, __c12, 1)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListProfilingGroupsResponse",
-      });
+      ).annotate({ identifier: "ListProfilingGroupsResponse" });
   }
 }
 function __c13(j: number): any {
@@ -1595,9 +1569,7 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(464, __c29, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -1674,9 +1646,7 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RemoveNotificationChannelRequest",
-      });
+      ).annotate({ identifier: "RemoveNotificationChannelRequest" });
   }
 }
 function __c17(j: number): any {
@@ -1785,9 +1755,7 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateProfilingGroupRequest",
-      });
+      ).annotate({ identifier: "UpdateProfilingGroupRequest" });
   }
 }
 function __c22(j: number): any {
@@ -1810,9 +1778,7 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AddNotificationChannelsRequest",
-      });
+      ).annotate({ identifier: "AddNotificationChannelsRequest" });
   }
 }
 function __c23(j: number): any {
@@ -1834,9 +1800,7 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ notificationConfiguration: S.optional(__S(370, __c23, 2)) }),
-      ).annotate({
-        identifier: "AddNotificationChannelsResponse",
-      });
+      ).annotate({ identifier: "AddNotificationChannelsResponse" });
   }
 }
 function __c25(j: number): any {
@@ -1875,9 +1839,7 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchGetFrameMetricDataRequest",
-      });
+      ).annotate({ identifier: "BatchGetFrameMetricDataRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({ value: T.DateFromString.pipe(T.TimestampFormat("date-time")) }),
@@ -1904,9 +1866,7 @@ function __c26(j: number): any {
           unprocessedEndTimes: __S(420, __c26, 4),
           frameMetricData: __S(423, __c26, 7),
         }),
-      ).annotate({
-        identifier: "BatchGetFrameMetricDataResponse",
-      });
+      ).annotate({ identifier: "BatchGetFrameMetricDataResponse" });
   }
 }
 function __c27(j: number): any {
@@ -1937,21 +1897,19 @@ function __c28(j: number): any {
         ),
       ).annotate({ identifier: "ConfigureAgentRequest" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           shouldProfile: S.Boolean,
           periodInSeconds: S.Number,
-          agentParameters: S.optional(__S(449, __c28, 1)),
+          agentParameters: S.optional(__S(464, __c29, 0)),
         }),
       ).annotate({ identifier: "AgentConfiguration" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          configuration: __S(450, __c28, 2).pipe(T.HttpPayload()).annotate({
-            identifier: "AgentConfiguration",
-          }),
+          configuration: __S(449, __c28, 1)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "AgentConfiguration" }),
         }),
       ).annotate({ identifier: "ConfigureAgentResponse" });
   }
@@ -1975,9 +1933,7 @@ function __c30(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/profilingGroups" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateProfilingGroupRequest",
-      });
+      ).annotate({ identifier: "CreateProfilingGroupRequest" });
   }
 }
 function __c31(j: number): any {
@@ -2017,9 +1973,7 @@ function __c31(j: number): any {
           computePlatform: S.optional(S.String),
           tags: S.optional(__S(464, __c29, 0)),
         }),
-      ).annotate({
-        identifier: "ProfilingGroupDescription",
-      });
+      ).annotate({ identifier: "ProfilingGroupDescription" });
   }
 }
 function __c32(j: number): any {
@@ -2027,13 +1981,11 @@ function __c32(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          profilingGroup: __S(499, __c31, 3).pipe(T.HttpPayload()).annotate({
-            identifier: "ProfilingGroupDescription",
-          }),
+          profilingGroup: __S(499, __c31, 3)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "ProfilingGroupDescription" }),
         }),
-      ).annotate({
-        identifier: "CreateProfilingGroupResponse",
-      });
+      ).annotate({ identifier: "CreateProfilingGroupResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

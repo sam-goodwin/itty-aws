@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1189,7 +1189,7 @@ export const putPortfolioPreferences: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(336, __c21, 0) as any as S.Schema<PutPortfolioPreferencesRequest>,
-  output: __S(337, __c21, 1) as any as S.Schema<PutPortfolioPreferencesResponse>,
+  output: __S(352, __c22, 0) as any as S.Schema<PutPortfolioPreferencesResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1217,8 +1217,8 @@ export const startAssessment: API.OperationMethod<
   StartAssessmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c22, 0) as any as S.Schema<StartAssessmentRequest>,
-  output: __S(353, __c22, 1) as any as S.Schema<StartAssessmentResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<StartAssessmentRequest>,
+  output: __S(369, __c23, 1) as any as S.Schema<StartAssessmentResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1246,7 +1246,7 @@ export const startImportFileTask: API.OperationMethod<
   StartImportFileTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c23, 0) as any as S.Schema<StartImportFileTaskRequest>,
+  input: __S(384, __c24, 0) as any as S.Schema<StartImportFileTaskRequest>,
   output: __S(96, __c6, 0) as any as S.Schema<StartImportFileTaskResponse>,
   errors: [
     AccessDeniedException,
@@ -1276,7 +1276,7 @@ export const startRecommendationReportGeneration: API.OperationMethod<
   StartRecommendationReportGenerationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<StartRecommendationReportGenerationRequest>,
+  input: __S(400, __c25, 0) as any as S.Schema<StartRecommendationReportGenerationRequest>,
   output: __S(96, __c6, 0) as any as S.Schema<StartRecommendationReportGenerationResponse>,
   errors: [
     AccessDeniedException,
@@ -1305,8 +1305,8 @@ export const stopAssessment: API.OperationMethod<
   StopAssessmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c25, 0) as any as S.Schema<StopAssessmentRequest>,
-  output: __S(416, __c26, 0) as any as S.Schema<StopAssessmentResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<StopAssessmentRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<StopAssessmentResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1334,7 +1334,7 @@ export const updateApplicationComponentConfig: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(434, __c27, 2) as any as S.Schema<UpdateApplicationComponentConfigRequest>,
-  output: __S(435, __c27, 3) as any as S.Schema<UpdateApplicationComponentConfigResponse>,
+  output: __S(352, __c22, 0) as any as S.Schema<UpdateApplicationComponentConfigResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1362,7 +1362,7 @@ export const updateServerConfig: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(464, __c29, 0) as any as S.Schema<UpdateServerConfigRequest>,
-  output: __S(416, __c26, 0) as any as S.Schema<UpdateServerConfigResponse>,
+  output: __S(352, __c22, 0) as any as S.Schema<UpdateServerConfigResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1394,9 +1394,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetApplicationComponentStrategiesRequest",
-      });
+      ).annotate({ identifier: "GetApplicationComponentStrategiesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1404,17 +1402,13 @@ function __c0(j: number): any {
           status: S.optional(S.String),
           isPreferred: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "ApplicationComponentStrategy",
-      });
+      ).annotate({ identifier: "ApplicationComponentStrategy" });
     case 2:
       return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ applicationComponentStrategies: S.optional(__S(2, __c0, 2)) }),
-      ).annotate({
-        identifier: "GetApplicationComponentStrategiesResponse",
-      });
+      ).annotate({ identifier: "GetApplicationComponentStrategiesResponse" });
   }
 }
 function __c1(j: number): any {
@@ -1499,9 +1493,7 @@ function __c4(j: number): any {
           numberOfRecordsFailed: S.optional(S.Number),
           importName: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetImportFileTaskResponse",
-      });
+      ).annotate({ identifier: "GetImportFileTaskResponse" });
   }
 }
 function __c5(j: number): any {
@@ -1518,9 +1510,7 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetLatestAssessmentIdRequest",
-      });
+      ).annotate({ identifier: "GetLatestAssessmentIdRequest" });
   }
 }
 function __c6(j: number): any {
@@ -1545,20 +1535,16 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetPortfolioPreferencesRequest",
-      });
+      ).annotate({ identifier: "GetPortfolioPreferencesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           prioritizeBusinessGoals: S.optional(__S(129, __c8, 1)),
           applicationPreferences: S.optional(__S(132, __c8, 4)),
-          databasePreferences: S.optional(__S(137, __c8, 9)),
+          databasePreferences: S.optional(__S(136, __c8, 8)),
           applicationMode: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetPortfolioPreferencesResponse",
-      });
+      ).annotate({ identifier: "GetPortfolioPreferencesResponse" });
   }
 }
 function __c8(j: number): any {
@@ -1599,20 +1585,16 @@ function __c8(j: number): any {
         S.Struct({ targetDatabaseEngine: S.optional(__S(512, __c32, 0)) }),
       ).annotate({ identifier: "Homogeneous" });
     case 7:
-      return S.suspend(() => S.Struct({ targetDatabaseEngine: __S(512, __c32, 0) })).annotate({
-        identifier: "NoDatabaseMigrationPreference",
-      });
-    case 8:
       return S.Union([
         /*@__PURE__*/ S.Struct({ heterogeneous: __S(133, __c8, 5) }),
         /*@__PURE__*/ S.Struct({ homogeneous: __S(134, __c8, 6) }),
-        /*@__PURE__*/ S.Struct({ noPreference: __S(135, __c8, 7) }),
+        /*@__PURE__*/ S.Struct({ noPreference: __S(133, __c8, 5) }),
       ]);
-    case 9:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           databaseManagementPreference: S.optional(S.String),
-          databaseMigrationPreference: S.optional(__S(136, __c8, 8)),
+          databaseMigrationPreference: S.optional(__S(135, __c8, 7)),
         }),
       ).annotate({ identifier: "DatabasePreferences" });
   }
@@ -1631,15 +1613,11 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetPortfolioSummaryRequest",
-      });
+      ).annotate({ identifier: "GetPortfolioSummaryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ appType: S.optional(S.String), count: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "ApplicationComponentSummary",
-      });
+      ).annotate({ identifier: "ApplicationComponentSummary" });
     case 2:
       return S.Array(__S(145, __c9, 1));
     case 3:
@@ -1651,9 +1629,7 @@ function __c9(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({ srcCodeOrDbAnalysisStatus: S.optional(S.String), count: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "ApplicationComponentStatusSummary",
-      });
+      ).annotate({ identifier: "ApplicationComponentStatusSummary" });
     case 6:
       return S.Array(__S(149, __c9, 5));
     case 7:
@@ -1681,9 +1657,7 @@ function __c9(j: number): any {
     case 10:
       return S.suspend(() =>
         S.Struct({ assessmentSummary: S.optional(__S(153, __c9, 9)) }),
-      ).annotate({
-        identifier: "GetPortfolioSummaryResponse",
-      });
+      ).annotate({ identifier: "GetPortfolioSummaryResponse" });
   }
 }
 function __c10(j: number): any {
@@ -1710,9 +1684,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetRecommendationReportDetailsRequest",
-      });
+      ).annotate({ identifier: "GetRecommendationReportDetailsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1723,18 +1695,14 @@ function __c11(j: number): any {
           s3Bucket: S.optional(S.String),
           s3Keys: S.optional(__S(512, __c32, 0)),
         }),
-      ).annotate({
-        identifier: "RecommendationReportDetails",
-      });
+      ).annotate({ identifier: "RecommendationReportDetails" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           recommendationReportDetails: S.optional(__S(177, __c11, 1)),
         }),
-      ).annotate({
-        identifier: "GetRecommendationReportDetailsResponse",
-      });
+      ).annotate({ identifier: "GetRecommendationReportDetailsResponse" });
   }
 }
 function __c12(j: number): any {
@@ -1831,9 +1799,7 @@ function __c14(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetServerStrategiesRequest",
-      });
+      ).annotate({ identifier: "GetServerStrategiesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1848,9 +1814,7 @@ function __c14(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ serverStrategies: S.optional(__S(226, __c14, 2)) }),
-      ).annotate({
-        identifier: "GetServerStrategiesResponse",
-      });
+      ).annotate({ identifier: "GetServerStrategiesResponse" });
   }
 }
 function __c15(j: number): any {
@@ -1871,9 +1835,7 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListAnalyzableServersRequest",
-      });
+      ).annotate({ identifier: "ListAnalyzableServersRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1891,9 +1853,7 @@ function __c15(j: number): any {
           analyzableServers: S.optional(__S(242, __c15, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListAnalyzableServersResponse",
-      });
+      ).annotate({ identifier: "ListAnalyzableServersResponse" });
   }
 }
 function __c16(j: number): any {
@@ -1917,9 +1877,7 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListApplicationComponentsRequest",
-      });
+      ).annotate({ identifier: "ListApplicationComponentsRequest" });
     case 1:
       return S.Array(__S(570, __c35, 10));
     case 2:
@@ -1928,9 +1886,7 @@ function __c16(j: number): any {
           applicationComponentInfos: S.optional(__S(257, __c16, 1)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListApplicationComponentsResponse",
-      });
+      ).annotate({ identifier: "ListApplicationComponentsResponse" });
   }
 }
 function __c17(j: number): any {
@@ -1994,9 +1950,7 @@ function __c18(j: number): any {
     case 9:
       return S.suspend(() =>
         S.Struct({ remoteSourceCodeAnalysisServerConfigurationTimestamp: S.optional(S.String) }),
-      ).annotate({
-        identifier: "RemoteSourceCodeAnalysisServerInfo",
-      });
+      ).annotate({ identifier: "RemoteSourceCodeAnalysisServerInfo" });
     case 10:
       return S.suspend(() =>
         S.Struct({
@@ -2045,20 +1999,13 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListImportFileTaskRequest",
-      });
+      ).annotate({ identifier: "ListImportFileTaskRequest" });
     case 1:
       return S.Array(__S(64, __c4, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          taskInfos: S.optional(__S(305, __c19, 1)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListImportFileTaskResponse",
-      });
+        S.Struct({ taskInfos: S.optional(__S(305, __c19, 1)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListImportFileTaskResponse" });
   }
 }
 function __c20(j: number): any {
@@ -2091,7 +2038,7 @@ function __c21(j: number): any {
         S.Struct({
           prioritizeBusinessGoals: S.optional(__S(129, __c8, 1)),
           applicationPreferences: S.optional(__S(132, __c8, 4)),
-          databasePreferences: S.optional(__S(137, __c8, 9)),
+          databasePreferences: S.optional(__S(136, __c8, 8)),
           applicationMode: S.optional(S.String),
         }).pipe(
           T.all(
@@ -2103,16 +2050,18 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutPortfolioPreferencesRequest",
-      });
-    case 1:
+      ).annotate({ identifier: "PutPortfolioPreferencesRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "PutPortfolioPreferencesResponse",
       });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2131,7 +2080,7 @@ function __c22(j: number): any {
       });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2152,12 +2101,10 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartImportFileTaskRequest",
-      });
+      ).annotate({ identifier: "StartImportFileTaskRequest" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2174,12 +2121,10 @@ function __c24(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartRecommendationReportGenerationRequest",
-      });
+      ).annotate({ identifier: "StartRecommendationReportGenerationRequest" });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2187,14 +2132,6 @@ function __c25(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/stop-assessment" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StopAssessmentRequest" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "StopAssessmentResponse",
-      });
   }
 }
 function __c27(j: number): any {
@@ -2230,13 +2167,7 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateApplicationComponentConfigRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UpdateApplicationComponentConfigResponse",
-      });
+      ).annotate({ identifier: "UpdateApplicationComponentConfigRequest" });
   }
 }
 function __c28(j: number): any {
@@ -2266,9 +2197,7 @@ function __c29(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateServerConfigRequest",
-      });
+      ).annotate({ identifier: "UpdateServerConfigRequest" });
   }
 }
 function __c30(j: number): any {
@@ -2290,9 +2219,7 @@ function __c30(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetApplicationComponentDetailsRequest",
-      });
+      ).annotate({ identifier: "GetApplicationComponentDetailsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2301,9 +2228,7 @@ function __c30(j: number): any {
           moreApplicationResource: S.optional(S.Boolean),
           associatedServerIds: S.optional(__S(512, __c32, 0)),
         }),
-      ).annotate({
-        identifier: "GetApplicationComponentDetailsResponse",
-      });
+      ).annotate({ identifier: "GetApplicationComponentDetailsResponse" });
   }
 }
 function __c31(j: number): any {
@@ -2337,9 +2262,7 @@ function __c33(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ severity: S.optional(S.String), count: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "AntipatternSeveritySummary",
-      });
+      ).annotate({ identifier: "AntipatternSeveritySummary" });
     case 1:
       return S.Array(__S(528, __c33, 0));
     case 2:
@@ -2439,9 +2362,7 @@ function __c35(j: number): any {
           appUnitError: S.optional(__S(563, __c35, 3)),
           resultList: S.optional(__S(569, __c35, 9)),
         }),
-      ).annotate({
-        identifier: "ApplicationComponentDetail",
-      });
+      ).annotate({ identifier: "ApplicationComponentDetail" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

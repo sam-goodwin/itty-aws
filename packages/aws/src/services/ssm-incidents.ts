@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -711,7 +711,7 @@ export const createReplicationSet: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(642, __c40, 2) as any as S.Schema<CreateReplicationSetInput>,
-  output: __S(643, __c40, 3) as any as S.Schema<CreateReplicationSetOutput>,
+  output: __S(656, __c41, 0) as any as S.Schema<CreateReplicationSetOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -746,7 +746,7 @@ export const createResponsePlan: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateResponsePlanInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateResponsePlanOutput>,
+  output: __S(656, __c41, 0) as any as S.Schema<CreateResponsePlanOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1622,7 +1622,7 @@ export const updateResponsePlan: API.OperationMethod<
   UpdateResponsePlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(577, __c36, 1) as any as S.Schema<UpdateResponsePlanInput>,
+  input: __S(576, __c36, 0) as any as S.Schema<UpdateResponsePlanInput>,
   output: __S(16, __c1, 0) as any as S.Schema<UpdateResponsePlanOutput>,
   errors: [
     AccessDeniedException,
@@ -1682,7 +1682,7 @@ function __c0(j: number): any {
           chatChannel: S.optional(__S(34, __c2, 2)),
           engagements: S.optional(__S(624, __c39, 0)),
           actions: S.optional(__S(69, __c4, 5)),
-          tags: S.optional(__S(656, __c41, 0)),
+          tags: S.optional(__S(672, __c42, 0)),
           integrations: S.optional(__S(73, __c4, 9)),
         }).pipe(
           T.all(
@@ -1695,18 +1695,12 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateResponsePlanInput" });
-    case 1:
-      return S.suspend(() => S.Struct({ arn: S.String })).annotate({
-        identifier: "CreateResponsePlanOutput",
-      });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "EmptyChatChannel",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "EmptyChatChannel" });
   }
 }
 function __c2(j: number): any {
@@ -1732,7 +1726,7 @@ function __c3(j: number): any {
           summary: S.optional(S.String),
           dedupeString: S.optional(S.String),
           notificationTargets: S.optional(__S(33, __c2, 1)),
-          incidentTags: S.optional(__S(656, __c41, 0)),
+          incidentTags: S.optional(__S(672, __c42, 0)),
         }),
       ).annotate({ identifier: "IncidentTemplate" });
   }
@@ -1802,9 +1796,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "CreateTimelineEventInput" });
     case 1:
       return S.suspend(() => S.Struct({ incidentRecordArn: S.String, eventId: S.String })).annotate(
-        {
-          identifier: "CreateTimelineEventOutput",
-        },
+        { identifier: "CreateTimelineEventOutput" },
       );
   }
 }
@@ -1833,9 +1825,7 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteIncidentRecordInput",
-      });
+      ).annotate({ identifier: "DeleteIncidentRecordInput" });
   }
 }
 function __c8(j: number): any {
@@ -1852,9 +1842,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteReplicationSetInput",
-      });
+      ).annotate({ identifier: "DeleteReplicationSetInput" });
   }
 }
 function __c9(j: number): any {
@@ -1871,9 +1859,7 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteResourcePolicyInput",
-      });
+      ).annotate({ identifier: "DeleteResourcePolicyInput" });
   }
 }
 function __c10(j: number): any {
@@ -2030,9 +2016,7 @@ function __c15(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ resourcePolicies: __S(242, __c15, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetResourcePoliciesOutput",
-      });
+      ).annotate({ identifier: "GetResourcePoliciesOutput" });
   }
 }
 function __c16(j: number): any {
@@ -2105,9 +2089,7 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListIncidentFindingsInput",
-      });
+      ).annotate({ identifier: "ListIncidentFindingsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2120,9 +2102,7 @@ function __c18(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ findings: __S(290, __c18, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListIncidentFindingsOutput",
-      });
+      ).annotate({ identifier: "ListIncidentFindingsOutput" });
   }
 }
 function __c19(j: number): any {
@@ -2161,9 +2141,7 @@ function __c19(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ incidentRecordSummaries: __S(306, __c19, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListIncidentRecordsOutput",
-      });
+      ).annotate({ identifier: "ListIncidentRecordsOutput" });
   }
 }
 function __c20(j: number): any {
@@ -2266,9 +2244,7 @@ function __c24(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ replicationSetArns: __S(624, __c39, 0), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListReplicationSetsOutput",
-      });
+      ).annotate({ identifier: "ListReplicationSetsOutput" });
   }
 }
 function __c25(j: number): any {
@@ -2312,11 +2288,9 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: __S(656, __c41, 0) })).annotate({
+      return S.suspend(() => S.Struct({ tags: __S(672, __c42, 0) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
@@ -2419,7 +2393,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(656, __c41, 0),
+          tags: __S(672, __c42, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -2471,9 +2445,7 @@ function __c32(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateDeletionProtectionInput",
-      });
+      ).annotate({ identifier: "UpdateDeletionProtectionInput" });
   }
 }
 function __c33(j: number): any {
@@ -2499,9 +2471,7 @@ function __c33(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateIncidentRecordInput",
-      });
+      ).annotate({ identifier: "UpdateIncidentRecordInput" });
   }
 }
 function __c34(j: number): any {
@@ -2563,16 +2533,12 @@ function __c35(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateReplicationSetInput",
-      });
+      ).annotate({ identifier: "UpdateReplicationSetInput" });
   }
 }
 function __c36(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 1:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -2586,7 +2552,7 @@ function __c36(j: number): any {
           chatChannel: S.optional(__S(34, __c2, 2)),
           engagements: S.optional(__S(624, __c39, 0)),
           actions: S.optional(__S(69, __c4, 5)),
-          incidentTemplateTags: S.optional(__S(576, __c36, 0)),
+          incidentTemplateTags: S.optional(__S(672, __c42, 0)),
           integrations: S.optional(__S(73, __c4, 9)),
         }).pipe(
           T.all(
@@ -2640,9 +2606,7 @@ function __c38(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchGetIncidentFindingsInput",
-      });
+      ).annotate({ identifier: "BatchGetIncidentFindingsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2659,9 +2623,7 @@ function __c38(j: number): any {
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           stackArn: S.String,
         }),
-      ).annotate({
-        identifier: "CloudFormationStackUpdate",
-      });
+      ).annotate({ identifier: "CloudFormationStackUpdate" });
     case 3:
       return S.Union([
         /*@__PURE__*/ S.Struct({ codeDeployDeployment: __S(609, __c38, 1) }),
@@ -2681,17 +2643,13 @@ function __c38(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({ findingId: S.String, code: S.String, message: S.String }),
-      ).annotate({
-        identifier: "BatchGetIncidentFindingsError",
-      });
+      ).annotate({ identifier: "BatchGetIncidentFindingsError" });
     case 7:
       return S.Array(__S(614, __c38, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({ findings: __S(613, __c38, 5), errors: __S(615, __c38, 7) }),
-      ).annotate({
-        identifier: "BatchGetIncidentFindingsOutput",
-      });
+      ).annotate({ identifier: "BatchGetIncidentFindingsOutput" });
   }
 }
 function __c39(j: number): any {
@@ -2713,7 +2671,7 @@ function __c40(j: number): any {
         S.Struct({
           regions: __S(641, __c40, 1),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(656, __c41, 0)),
+          tags: S.optional(__S(672, __c42, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/createReplicationSet" }),
@@ -2724,16 +2682,18 @@ function __c40(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateReplicationSetInput",
-      });
-    case 3:
+      ).annotate({ identifier: "CreateReplicationSetInput" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ arn: S.String })).annotate({
         identifier: "CreateReplicationSetOutput",
       });
   }
 }
-function __c41(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));

@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -2023,7 +2023,7 @@ export const deleteCloudConnector: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(416, __c26, 0) as any as S.Schema<DeleteCloudConnectorRequest>,
-  output: __S(432, __c27, 0) as any as S.Schema<DeleteCloudConnectorResponse>,
+  output: __S(400, __c25, 0) as any as S.Schema<DeleteCloudConnectorResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2055,7 +2055,7 @@ export const deleteConnectorDestination: API.OperationMethod<
   DeleteConnectorDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<DeleteConnectorDestinationRequest>,
+  input: __S(432, __c27, 0) as any as S.Schema<DeleteConnectorDestinationRequest>,
   output: __S(400, __c25, 0) as any as S.Schema<DeleteConnectorDestinationResponse>,
   errors: [
     AccessDeniedException,
@@ -2088,8 +2088,8 @@ export const deleteCredentialLocker: API.OperationMethod<
   DeleteCredentialLockerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c29, 0) as any as S.Schema<DeleteCredentialLockerRequest>,
-  output: __S(432, __c27, 0) as any as S.Schema<DeleteCredentialLockerResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<DeleteCredentialLockerRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<DeleteCredentialLockerResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2119,8 +2119,8 @@ export const deleteDestination: API.OperationMethod<
   DeleteDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<DeleteDestinationRequest>,
-  output: __S(432, __c27, 0) as any as S.Schema<DeleteDestinationResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<DeleteDestinationRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<DeleteDestinationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2149,7 +2149,7 @@ export const deleteEventLogConfiguration: API.OperationMethod<
   DeleteEventLogConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<DeleteEventLogConfigurationRequest>,
+  input: __S(480, __c30, 0) as any as S.Schema<DeleteEventLogConfigurationRequest>,
   output: __S(400, __c25, 0) as any as S.Schema<DeleteEventLogConfigurationResponse>,
   errors: [
     AccessDeniedException,
@@ -2182,8 +2182,8 @@ export const deleteManagedThing: API.OperationMethod<
   DeleteManagedThingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c32, 0) as any as S.Schema<DeleteManagedThingRequest>,
-  output: __S(432, __c27, 0) as any as S.Schema<DeleteManagedThingResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<DeleteManagedThingRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<DeleteManagedThingResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2215,7 +2215,7 @@ export const deleteNotificationConfiguration: API.OperationMethod<
   DeleteNotificationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c33, 0) as any as S.Schema<DeleteNotificationConfigurationRequest>,
+  input: __S(512, __c32, 0) as any as S.Schema<DeleteNotificationConfigurationRequest>,
   output: __S(400, __c25, 0) as any as S.Schema<DeleteNotificationConfigurationResponse>,
   errors: [
     AccessDeniedException,
@@ -2246,8 +2246,8 @@ export const deleteOtaTask: API.OperationMethod<
   DeleteOtaTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c34, 0) as any as S.Schema<DeleteOtaTaskRequest>,
-  output: __S(432, __c27, 0) as any as S.Schema<DeleteOtaTaskResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<DeleteOtaTaskRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<DeleteOtaTaskResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2277,7 +2277,7 @@ export const deleteOtaTaskConfiguration: API.OperationMethod<
   DeleteOtaTaskConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(560, __c35, 0) as any as S.Schema<DeleteOtaTaskConfigurationRequest>,
+  input: __S(544, __c34, 0) as any as S.Schema<DeleteOtaTaskConfigurationRequest>,
   output: __S(400, __c25, 0) as any as S.Schema<DeleteOtaTaskConfigurationResponse>,
   errors: [
     AccessDeniedException,
@@ -2310,7 +2310,7 @@ export const deleteProvisioningProfile: API.OperationMethod<
   DeleteProvisioningProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c36, 0) as any as S.Schema<DeleteProvisioningProfileRequest>,
+  input: __S(560, __c35, 0) as any as S.Schema<DeleteProvisioningProfileRequest>,
   output: __S(400, __c25, 0) as any as S.Schema<DeleteProvisioningProfileResponse>,
   errors: [
     AccessDeniedException,
@@ -2344,7 +2344,7 @@ export const deregisterAccountAssociation: API.OperationMethod<
   DeregisterAccountAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c37, 0) as any as S.Schema<DeregisterAccountAssociationRequest>,
+  input: __S(576, __c36, 0) as any as S.Schema<DeregisterAccountAssociationRequest>,
   output: __S(400, __c25, 0) as any as S.Schema<DeregisterAccountAssociationResponse>,
   errors: [
     AccessDeniedException,
@@ -2376,8 +2376,8 @@ export const getAccountAssociation: API.OperationMethod<
   GetAccountAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c38, 0) as any as S.Schema<GetAccountAssociationRequest>,
-  output: __S(609, __c38, 1) as any as S.Schema<GetAccountAssociationResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<GetAccountAssociationRequest>,
+  output: __S(593, __c37, 1) as any as S.Schema<GetAccountAssociationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2407,8 +2407,8 @@ export const getCloudConnector: API.OperationMethod<
   GetCloudConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c39, 0) as any as S.Schema<GetCloudConnectorRequest>,
-  output: __S(625, __c39, 1) as any as S.Schema<GetCloudConnectorResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<GetCloudConnectorRequest>,
+  output: __S(624, __c39, 0) as any as S.Schema<GetCloudConnectorResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3125,7 +3125,7 @@ export const listCloudConnectors: API.PaginatedOperationMethod<
   ConnectorItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1040, __c65, 0) as any as S.Schema<ListCloudConnectorsRequest>,
-  output: __S(1043, __c65, 3) as any as S.Schema<ListCloudConnectorsResponse>,
+  output: __S(1042, __c65, 2) as any as S.Schema<ListCloudConnectorsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3939,8 +3939,8 @@ export const sendConnectorEvent: API.OperationMethod<
   SendConnectorEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1422, __c88, 14) as any as S.Schema<SendConnectorEventRequest>,
-  output: __S(1423, __c88, 15) as any as S.Schema<SendConnectorEventResponse>,
+  input: __S(1421, __c88, 13) as any as S.Schema<SendConnectorEventRequest>,
+  output: __S(1422, __c88, 14) as any as S.Schema<SendConnectorEventResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4041,8 +4041,8 @@ export const startDeviceDiscovery: API.OperationMethod<
   StartDeviceDiscoveryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1458, __c91, 2) as any as S.Schema<StartDeviceDiscoveryRequest>,
-  output: __S(1459, __c91, 3) as any as S.Schema<StartDeviceDiscoveryResponse>,
+  input: __S(1457, __c91, 1) as any as S.Schema<StartDeviceDiscoveryRequest>,
+  output: __S(1458, __c91, 2) as any as S.Schema<StartDeviceDiscoveryResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4075,7 +4075,7 @@ export const tagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1472, __c92, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(432, __c27, 0) as any as S.Schema<TagResourceResponse>,
+  output: __S(400, __c25, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     ConflictException,
     InvalidRequestException,
@@ -4105,7 +4105,7 @@ export const untagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1488, __c93, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(432, __c27, 0) as any as S.Schema<UntagResourceResponse>,
+  output: __S(400, __c25, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     ConflictException,
     InvalidRequestException,
@@ -4170,7 +4170,7 @@ export const updateCloudConnector: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1520, __c95, 0) as any as S.Schema<UpdateCloudConnectorRequest>,
-  output: __S(432, __c27, 0) as any as S.Schema<UpdateCloudConnectorResponse>,
+  output: __S(400, __c25, 0) as any as S.Schema<UpdateCloudConnectorResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4231,7 +4231,7 @@ export const updateDestination: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1552, __c97, 0) as any as S.Schema<UpdateDestinationRequest>,
-  output: __S(432, __c27, 0) as any as S.Schema<UpdateDestinationResponse>,
+  output: __S(400, __c25, 0) as any as S.Schema<UpdateDestinationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4294,7 +4294,7 @@ export const updateManagedThing: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1584, __c99, 0) as any as S.Schema<UpdateManagedThingRequest>,
-  output: __S(432, __c27, 0) as any as S.Schema<UpdateManagedThingResponse>,
+  output: __S(400, __c25, 0) as any as S.Schema<UpdateManagedThingResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4357,7 +4357,7 @@ export const updateOtaTask: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1616, __c101, 0) as any as S.Schema<UpdateOtaTaskRequest>,
-  output: __S(432, __c27, 0) as any as S.Schema<UpdateOtaTaskResponse>,
+  output: __S(400, __c25, 0) as any as S.Schema<UpdateOtaTaskResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4392,9 +4392,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateAccountAssociationRequest",
-      });
+      ).annotate({ identifier: "CreateAccountAssociationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4403,9 +4401,7 @@ function __c0(j: number): any {
           AssociationState: S.String,
           Arn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateAccountAssociationResponse",
-      });
+      ).annotate({ identifier: "CreateAccountAssociationResponse" });
   }
 }
 function __c1(j: number): any {
@@ -4435,9 +4431,7 @@ function __c3(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/cloud-connectors" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateCloudConnectorRequest",
-      });
+      ).annotate({ identifier: "CreateCloudConnectorRequest" });
   }
 }
 function __c4(j: number): any {
@@ -4451,9 +4445,7 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ arn: S.String })).annotate({
-        identifier: "LambdaConfig",
-      });
+      return S.suspend(() => S.Struct({ arn: S.String })).annotate({ identifier: "LambdaConfig" });
     case 1:
       return S.suspend(() => S.Struct({ lambda: S.optional(__S(80, __c5, 0)) })).annotate({
         identifier: "EndpointConfig",
@@ -4482,9 +4474,7 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateConnectorDestinationRequest",
-      });
+      ).annotate({ identifier: "CreateConnectorDestinationRequest" });
   }
 }
 function __c7(j: number): any {
@@ -4514,9 +4504,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ enabled: S.optional(S.Boolean), DaysBeforeRenewal: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "ProactiveRefreshTokenRenewal",
-      });
+      ).annotate({ identifier: "ProactiveRefreshTokenRenewal" });
     case 1:
       return S.suspend(() => S.Struct({ arn: S.String, versionId: S.String })).annotate({
         identifier: "SecretsManager",
@@ -4547,9 +4535,7 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateCredentialLockerRequest",
-      });
+      ).annotate({ identifier: "CreateCredentialLockerRequest" });
   }
 }
 function __c10(j: number): any {
@@ -4561,9 +4547,7 @@ function __c10(j: number): any {
           Arn: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "CreateCredentialLockerResponse",
-      });
+      ).annotate({ identifier: "CreateCredentialLockerResponse" });
   }
 }
 function __c11(j: number): any {
@@ -4607,9 +4591,7 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateEventLogConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateEventLogConfigurationRequest" });
   }
 }
 function __c13(j: number): any {
@@ -4637,9 +4619,7 @@ function __c13(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/managed-things" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateManagedThingRequest",
-      });
+      ).annotate({ identifier: "CreateManagedThingRequest" });
   }
 }
 function __c14(j: number): any {
@@ -4657,9 +4637,7 @@ function __c15(j: number): any {
           EnableAsProvisionee: S.optional(S.Boolean),
           TimeoutInMinutes: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "WiFiSimpleSetupConfiguration",
-      });
+      ).annotate({ identifier: "WiFiSimpleSetupConfiguration" });
   }
 }
 function __c16(j: number): any {
@@ -4674,9 +4652,7 @@ function __c16(j: number): any {
           actions: __S(224, __c14, 0),
           events: __S(224, __c14, 0),
         }),
-      ).annotate({
-        identifier: "CapabilityReportCapability",
-      });
+      ).annotate({ identifier: "CapabilityReportCapability" });
     case 1:
       return S.Array(__S(256, __c16, 0));
     case 2:
@@ -4734,9 +4710,7 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateNotificationConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateNotificationConfigurationRequest" });
     case 1:
       return S.suspend(() => S.Struct({ EventType: S.optional(S.String) })).annotate({
         identifier: "CreateNotificationConfigurationResponse",
@@ -4777,9 +4751,7 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ DurationInMinutes: S.optional(S.Number), StartTime: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ScheduleMaintenanceWindow",
-      });
+      ).annotate({ identifier: "ScheduleMaintenanceWindow" });
     case 1:
       return S.Array(__S(320, __c20, 0));
     case 2:
@@ -4793,19 +4765,14 @@ function __c20(j: number): any {
       ).annotate({ identifier: "OtaTaskSchedulingConfig" });
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          FailureType: S.optional(S.String),
-          MinNumberOfRetries: S.optional(S.Number),
-        }),
+        S.Struct({ FailureType: S.optional(S.String), MinNumberOfRetries: S.optional(S.Number) }),
       ).annotate({ identifier: "RetryConfigCriteria" });
     case 4:
       return S.Array(__S(323, __c20, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({ RetryConfigCriteria: S.optional(__S(324, __c20, 4)) }),
-      ).annotate({
-        identifier: "OtaTaskExecutionRetryConfig",
-      });
+      ).annotate({ identifier: "OtaTaskExecutionRetryConfig" });
   }
 }
 function __c21(j: number): any {
@@ -4827,9 +4794,7 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateOtaTaskConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateOtaTaskConfigurationRequest" });
     case 1:
       return S.suspend(() => S.Struct({ TaskConfigurationId: S.optional(S.String) })).annotate({
         identifier: "CreateOtaTaskConfigurationResponse",
@@ -4859,9 +4824,7 @@ function __c22(j: number): any {
           numberOfNotifiedThings: S.optional(S.Number),
           numberOfSucceededThings: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "RolloutRateIncreaseCriteria",
-      });
+      ).annotate({ identifier: "RolloutRateIncreaseCriteria" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4876,9 +4839,7 @@ function __c22(j: number): any {
           ExponentialRolloutRate: S.optional(__S(356, __c22, 4)),
           MaximumPerMinute: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "OtaTaskExecutionRolloutConfig",
-      });
+      ).annotate({ identifier: "OtaTaskExecutionRolloutConfig" });
     case 6:
       return S.suspend(() =>
         S.Struct({ InProgressTimeoutInMinutes: S.optional(S.Number) }),
@@ -4914,9 +4875,7 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateProvisioningProfileRequest",
-      });
+      ).annotate({ identifier: "CreateProvisioningProfileRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4928,9 +4887,7 @@ function __c23(j: number): any {
           ClaimCertificate: S.optional(SensitiveString),
           ClaimCertificatePrivateKey: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "CreateProvisioningProfileResponse",
-      });
+      ).annotate({ identifier: "CreateProvisioningProfileResponse" });
   }
 }
 function __c24(j: number): any {
@@ -4947,9 +4904,7 @@ function __c24(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteAccountAssociationRequest",
-      });
+      ).annotate({ identifier: "DeleteAccountAssociationRequest" });
   }
 }
 function __c25(j: number): any {
@@ -4974,20 +4929,10 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteCloudConnectorRequest",
-      });
+      ).annotate({ identifier: "DeleteCloudConnectorRequest" });
   }
 }
 function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteCloudConnectorResponse",
-      });
-  }
-}
-function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5001,12 +4946,10 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteConnectorDestinationRequest",
-      });
+      ).annotate({ identifier: "DeleteConnectorDestinationRequest" });
   }
 }
-function __c29(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5020,12 +4963,10 @@ function __c29(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteCredentialLockerRequest",
-      });
+      ).annotate({ identifier: "DeleteCredentialLockerRequest" });
   }
 }
-function __c30(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5042,7 +4983,7 @@ function __c30(j: number): any {
       ).annotate({ identifier: "DeleteDestinationRequest" });
   }
 }
-function __c31(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5056,12 +4997,10 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteEventLogConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteEventLogConfigurationRequest" });
   }
 }
-function __c32(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5078,12 +5017,10 @@ function __c32(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteManagedThingRequest",
-      });
+      ).annotate({ identifier: "DeleteManagedThingRequest" });
   }
 }
-function __c33(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5097,12 +5034,10 @@ function __c33(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteNotificationConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteNotificationConfigurationRequest" });
   }
 }
-function __c34(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5119,7 +5054,7 @@ function __c34(j: number): any {
       ).annotate({ identifier: "DeleteOtaTaskRequest" });
   }
 }
-function __c35(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5133,12 +5068,10 @@ function __c35(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteOtaTaskConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteOtaTaskConfigurationRequest" });
   }
 }
-function __c36(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5152,12 +5085,10 @@ function __c36(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteProvisioningProfileRequest",
-      });
+      ).annotate({ identifier: "DeleteProvisioningProfileRequest" });
   }
 }
-function __c37(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5171,12 +5102,10 @@ function __c37(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeregisterAccountAssociationRequest",
-      });
+      ).annotate({ identifier: "DeregisterAccountAssociationRequest" });
   }
 }
-function __c38(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5190,9 +5119,7 @@ function __c38(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAccountAssociationRequest",
-      });
+      ).annotate({ identifier: "GetAccountAssociationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5207,12 +5134,10 @@ function __c38(j: number): any {
           Tags: S.optional(__S(16, __c1, 0)),
           GeneralAuthorization: S.optional(__S(32, __c2, 0)),
         }),
-      ).annotate({
-        identifier: "GetAccountAssociationResponse",
-      });
+      ).annotate({ identifier: "GetAccountAssociationResponse" });
   }
 }
-function __c39(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5227,7 +5152,11 @@ function __c39(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetCloudConnectorRequest" });
-    case 1:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
@@ -5237,9 +5166,7 @@ function __c39(j: number): any {
           Id: S.optional(S.String),
           Type: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetCloudConnectorResponse",
-      });
+      ).annotate({ identifier: "GetCloudConnectorResponse" });
   }
 }
 function __c40(j: number): any {
@@ -5256,9 +5183,7 @@ function __c40(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetConnectorDestinationRequest",
-      });
+      ).annotate({ identifier: "GetConnectorDestinationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5271,9 +5196,7 @@ function __c40(j: number): any {
           SecretsManager: S.optional(__S(129, __c8, 1)),
           OAuthCompleteRedirectUrl: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetConnectorDestinationResponse",
-      });
+      ).annotate({ identifier: "GetConnectorDestinationResponse" });
   }
 }
 function __c41(j: number): any {
@@ -5290,9 +5213,7 @@ function __c41(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetCredentialLockerRequest",
-      });
+      ).annotate({ identifier: "GetCredentialLockerRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5302,9 +5223,7 @@ function __c41(j: number): any {
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Tags: S.optional(__S(16, __c1, 0)),
         }),
-      ).annotate({
-        identifier: "GetCredentialLockerResponse",
-      });
+      ).annotate({ identifier: "GetCredentialLockerResponse" });
   }
 }
 function __c42(j: number): any {
@@ -5339,9 +5258,7 @@ function __c44(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDefaultEncryptionConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetDefaultEncryptionConfigurationRequest" });
   }
 }
 function __c45(j: number): any {
@@ -5361,9 +5278,7 @@ function __c45(j: number): any {
           encryptionType: S.String,
           kmsKeyArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetDefaultEncryptionConfigurationResponse",
-      });
+      ).annotate({ identifier: "GetDefaultEncryptionConfigurationResponse" });
   }
 }
 function __c46(j: number): any {
@@ -5410,9 +5325,7 @@ function __c47(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDeviceDiscoveryRequest",
-      });
+      ).annotate({ identifier: "GetDeviceDiscoveryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5427,9 +5340,7 @@ function __c47(j: number): any {
           FinishedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Tags: S.optional(__S(16, __c1, 0)),
         }),
-      ).annotate({
-        identifier: "GetDeviceDiscoveryResponse",
-      });
+      ).annotate({ identifier: "GetDeviceDiscoveryResponse" });
   }
 }
 function __c48(j: number): any {
@@ -5446,9 +5357,7 @@ function __c48(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetEventLogConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetEventLogConfigurationRequest" });
   }
 }
 function __c49(j: number): any {
@@ -5461,9 +5370,7 @@ function __c49(j: number): any {
           ResourceId: S.optional(S.String),
           EventLogLevel: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetEventLogConfigurationResponse",
-      });
+      ).annotate({ identifier: "GetEventLogConfigurationResponse" });
   }
 }
 function __c50(j: number): any {
@@ -5473,18 +5380,14 @@ function __c50(j: number): any {
         S.Struct({}).pipe(
           T.all(T.Http({ method: "GET", uri: "/hub-configuration" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetHubConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetHubConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           HubTokenTimerExpirySettingInSeconds: S.optional(S.Number),
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "GetHubConfigurationResponse",
-      });
+      ).annotate({ identifier: "GetHubConfigurationResponse" });
   }
 }
 function __c51(j: number): any {
@@ -5550,9 +5453,7 @@ function __c52(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetManagedThingCapabilitiesRequest",
-      });
+      ).annotate({ identifier: "GetManagedThingCapabilitiesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5560,9 +5461,7 @@ function __c52(j: number): any {
           Capabilities: S.optional(S.String),
           CapabilityReport: S.optional(__S(260, __c16, 4)),
         }),
-      ).annotate({
-        identifier: "GetManagedThingCapabilitiesResponse",
-      });
+      ).annotate({ identifier: "GetManagedThingCapabilitiesResponse" });
   }
 }
 function __c53(j: number): any {
@@ -5579,15 +5478,11 @@ function __c53(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetManagedThingCertificateRequest",
-      });
+      ).annotate({ identifier: "GetManagedThingCertificateRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ManagedThingId: S.optional(S.String), CertificatePem: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetManagedThingCertificateResponse",
-      });
+      ).annotate({ identifier: "GetManagedThingCertificateResponse" });
   }
 }
 function __c54(j: number): any {
@@ -5604,9 +5499,7 @@ function __c54(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetManagedThingConnectivityDataRequest",
-      });
+      ).annotate({ identifier: "GetManagedThingConnectivityDataRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5615,9 +5508,7 @@ function __c54(j: number): any {
           Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           DisconnectReason: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetManagedThingConnectivityDataResponse",
-      });
+      ).annotate({ identifier: "GetManagedThingConnectivityDataResponse" });
   }
 }
 function __c55(j: number): any {
@@ -5634,15 +5525,11 @@ function __c55(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetManagedThingMetaDataRequest",
-      });
+      ).annotate({ identifier: "GetManagedThingMetaDataRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ManagedThingId: S.optional(S.String), MetaData: S.optional(__S(16, __c1, 0)) }),
-      ).annotate({
-        identifier: "GetManagedThingMetaDataResponse",
-      });
+      ).annotate({ identifier: "GetManagedThingMetaDataResponse" });
   }
 }
 function __c56(j: number): any {
@@ -5659,9 +5546,7 @@ function __c56(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetManagedThingStateRequest",
-      });
+      ).annotate({ identifier: "GetManagedThingStateRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5699,9 +5584,7 @@ function __c57(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetNotificationConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetNotificationConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5711,9 +5594,7 @@ function __c57(j: number): any {
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Tags: S.optional(__S(16, __c1, 0)),
         }),
-      ).annotate({
-        identifier: "GetNotificationConfigurationResponse",
-      });
+      ).annotate({ identifier: "GetNotificationConfigurationResponse" });
   }
 }
 function __c58(j: number): any {
@@ -5783,9 +5664,7 @@ function __c59(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetOtaTaskConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetOtaTaskConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5795,9 +5674,7 @@ function __c59(j: number): any {
           Description: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "GetOtaTaskConfigurationResponse",
-      });
+      ).annotate({ identifier: "GetOtaTaskConfigurationResponse" });
   }
 }
 function __c60(j: number): any {
@@ -5814,9 +5691,7 @@ function __c60(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetProvisioningProfileRequest",
-      });
+      ).annotate({ identifier: "GetProvisioningProfileRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5828,9 +5703,7 @@ function __c60(j: number): any {
           ClaimCertificate: S.optional(SensitiveString),
           Tags: S.optional(__S(16, __c1, 0)),
         }),
-      ).annotate({
-        identifier: "GetProvisioningProfileResponse",
-      });
+      ).annotate({ identifier: "GetProvisioningProfileResponse" });
   }
 }
 function __c61(j: number): any {
@@ -5847,18 +5720,14 @@ function __c61(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetRuntimeLogConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetRuntimeLogConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ManagedThingId: S.optional(S.String),
           RuntimeLogConfigurations: S.optional(__S(992, __c62, 0)),
         }),
-      ).annotate({
-        identifier: "GetRuntimeLogConfigurationResponse",
-      });
+      ).annotate({ identifier: "GetRuntimeLogConfigurationResponse" });
   }
 }
 function __c62(j: number): any {
@@ -5929,9 +5798,7 @@ function __c64(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListAccountAssociationsRequest",
-      });
+      ).annotate({ identifier: "ListAccountAssociationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5948,13 +5815,8 @@ function __c64(j: number): any {
       return S.Array(__S(1025, __c64, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          Items: S.optional(__S(1026, __c64, 2)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListAccountAssociationsResponse",
-      });
+        S.Struct({ Items: S.optional(__S(1026, __c64, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListAccountAssociationsResponse" });
   }
 }
 function __c65(j: number): any {
@@ -5969,28 +5831,13 @@ function __c65(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/cloud-connectors" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListCloudConnectorsRequest",
-      });
+      ).annotate({ identifier: "ListCloudConnectorsRequest" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.String,
-          EndpointConfig: __S(81, __c5, 1),
-          Description: S.optional(S.String),
-          EndpointType: S.optional(S.String),
-          Id: S.optional(S.String),
-          Type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConnectorItem" });
+      return S.Array(__S(624, __c39, 0));
     case 2:
-      return S.Array(__S(1041, __c65, 1));
-    case 3:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(1042, __c65, 2)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListCloudConnectorsResponse",
-      });
+        S.Struct({ Items: S.optional(__S(1041, __c65, 1)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListCloudConnectorsResponse" });
   }
 }
 function __c66(j: number): any {
@@ -6011,9 +5858,7 @@ function __c66(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListConnectorDestinationsRequest",
-      });
+      ).annotate({ identifier: "ListConnectorDestinationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6022,9 +5867,7 @@ function __c66(j: number): any {
           CloudConnectorId: S.optional(S.String),
           Id: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ConnectorDestinationSummary",
-      });
+      ).annotate({ identifier: "ConnectorDestinationSummary" });
     case 2:
       return S.Array(__S(1057, __c66, 1));
     case 3:
@@ -6033,9 +5876,7 @@ function __c66(j: number): any {
           ConnectorDestinationList: S.optional(__S(1058, __c66, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListConnectorDestinationsResponse",
-      });
+      ).annotate({ identifier: "ListConnectorDestinationsResponse" });
   }
 }
 function __c67(j: number): any {
@@ -6055,9 +5896,7 @@ function __c67(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListCredentialLockersRequest",
-      });
+      ).annotate({ identifier: "ListCredentialLockersRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6072,9 +5911,7 @@ function __c67(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ Items: S.optional(__S(1074, __c67, 2)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListCredentialLockersResponse",
-      });
+      ).annotate({ identifier: "ListCredentialLockersResponse" });
   }
 }
 function __c68(j: number): any {
@@ -6128,9 +5965,7 @@ function __c69(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDeviceDiscoveriesRequest",
-      });
+      ).annotate({ identifier: "ListDeviceDiscoveriesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6144,9 +5979,7 @@ function __c69(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ Items: S.optional(__S(1106, __c69, 2)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListDeviceDiscoveriesResponse",
-      });
+      ).annotate({ identifier: "ListDeviceDiscoveriesResponse" });
   }
 }
 function __c70(j: number): any {
@@ -6167,9 +6000,7 @@ function __c70(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDiscoveredDevicesRequest",
-      });
+      ).annotate({ identifier: "ListDiscoveredDevicesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6189,9 +6020,7 @@ function __c70(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ Items: S.optional(__S(1122, __c70, 2)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListDiscoveredDevicesResponse",
-      });
+      ).annotate({ identifier: "ListDiscoveredDevicesResponse" });
   }
 }
 function __c71(j: number): any {
@@ -6211,9 +6040,7 @@ function __c71(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListEventLogConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListEventLogConfigurationsRequest" });
     case 1:
       return S.Array(__S(784, __c49, 0));
     case 2:
@@ -6222,9 +6049,7 @@ function __c71(j: number): any {
           EventLogConfigurationList: S.optional(__S(1137, __c71, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListEventLogConfigurationsResponse",
-      });
+      ).annotate({ identifier: "ListEventLogConfigurationsResponse" });
   }
 }
 function __c72(j: number): any {
@@ -6246,9 +6071,7 @@ function __c72(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListManagedThingAccountAssociationsRequest",
-      });
+      ).annotate({ identifier: "ListManagedThingAccountAssociationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6262,9 +6085,7 @@ function __c72(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ Items: S.optional(__S(1154, __c72, 2)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListManagedThingAccountAssociationsResponse",
-      });
+      ).annotate({ identifier: "ListManagedThingAccountAssociationsResponse" });
   }
 }
 function __c73(j: number): any {
@@ -6326,9 +6147,7 @@ function __c73(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ Items: S.optional(__S(1170, __c73, 2)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListManagedThingsResponse",
-      });
+      ).annotate({ identifier: "ListManagedThingsResponse" });
   }
 }
 function __c74(j: number): any {
@@ -6351,9 +6170,7 @@ function __c74(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListManagedThingSchemasRequest",
-      });
+      ).annotate({ identifier: "ListManagedThingSchemasRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6361,20 +6178,13 @@ function __c74(j: number): any {
           CapabilityId: S.optional(S.String),
           Schema: S.optional(S.Any),
         }),
-      ).annotate({
-        identifier: "ManagedThingSchemaListItem",
-      });
+      ).annotate({ identifier: "ManagedThingSchemaListItem" });
     case 2:
       return S.Array(__S(1185, __c74, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          Items: S.optional(__S(1186, __c74, 2)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListManagedThingSchemasResponse",
-      });
+        S.Struct({ Items: S.optional(__S(1186, __c74, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListManagedThingSchemasResponse" });
   }
 }
 function __c75(j: number): any {
@@ -6394,15 +6204,11 @@ function __c75(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListNotificationConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListNotificationConfigurationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ EventType: S.optional(S.String), DestinationName: S.optional(S.String) }),
-      ).annotate({
-        identifier: "NotificationConfigurationSummary",
-      });
+      ).annotate({ identifier: "NotificationConfigurationSummary" });
     case 2:
       return S.Array(__S(1201, __c75, 1));
     case 3:
@@ -6411,9 +6217,7 @@ function __c75(j: number): any {
           NotificationConfigurationList: S.optional(__S(1202, __c75, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListNotificationConfigurationsResponse",
-      });
+      ).annotate({ identifier: "ListNotificationConfigurationsResponse" });
   }
 }
 function __c76(j: number): any {
@@ -6433,9 +6237,7 @@ function __c76(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListOtaTaskConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListOtaTaskConfigurationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6443,20 +6245,13 @@ function __c76(j: number): any {
           Name: S.optional(SensitiveString),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "OtaTaskConfigurationSummary",
-      });
+      ).annotate({ identifier: "OtaTaskConfigurationSummary" });
     case 2:
       return S.Array(__S(1217, __c76, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          Items: S.optional(__S(1218, __c76, 2)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListOtaTaskConfigurationsResponse",
-      });
+        S.Struct({ Items: S.optional(__S(1218, __c76, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListOtaTaskConfigurationsResponse" });
   }
 }
 function __c77(j: number): any {
@@ -6477,9 +6272,7 @@ function __c77(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListOtaTaskExecutionsRequest",
-      });
+      ).annotate({ identifier: "ListOtaTaskExecutionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6497,9 +6290,7 @@ function __c77(j: number): any {
           TaskExecutionSummary: S.optional(__S(1233, __c77, 1)),
           ManagedThingId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "OtaTaskExecutionSummaries",
-      });
+      ).annotate({ identifier: "OtaTaskExecutionSummaries" });
     case 3:
       return S.Array(__S(1234, __c77, 2));
     case 4:
@@ -6508,9 +6299,7 @@ function __c77(j: number): any {
           ExecutionSummaries: S.optional(__S(1235, __c77, 3)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListOtaTaskExecutionsResponse",
-      });
+      ).annotate({ identifier: "ListOtaTaskExecutionsResponse" });
   }
 }
 function __c78(j: number): any {
@@ -6558,9 +6347,7 @@ function __c79(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListProvisioningProfilesRequest",
-      });
+      ).annotate({ identifier: "ListProvisioningProfilesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6570,20 +6357,13 @@ function __c79(j: number): any {
           ProvisioningType: S.optional(S.String),
           Status: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ProvisioningProfileSummary",
-      });
+      ).annotate({ identifier: "ProvisioningProfileSummary" });
     case 2:
       return S.Array(__S(1265, __c79, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          Items: S.optional(__S(1266, __c79, 2)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListProvisioningProfilesResponse",
-      });
+        S.Struct({ Items: S.optional(__S(1266, __c79, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListProvisioningProfilesResponse" });
   }
 }
 function __c80(j: number): any {
@@ -6608,9 +6388,7 @@ function __c80(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSchemaVersionsRequest",
-      });
+      ).annotate({ identifier: "ListSchemaVersionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6627,9 +6405,7 @@ function __c80(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ Items: S.optional(__S(1282, __c80, 2)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListSchemaVersionsResponse",
-      });
+      ).annotate({ identifier: "ListSchemaVersionsResponse" });
   }
 }
 function __c81(j: number): any {
@@ -6646,9 +6422,7 @@ function __c81(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(16, __c1, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -6669,9 +6443,7 @@ function __c82(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutDefaultEncryptionConfigurationRequest",
-      });
+      ).annotate({ identifier: "PutDefaultEncryptionConfigurationRequest" });
   }
 }
 function __c83(j: number): any {
@@ -6681,15 +6453,11 @@ function __c83(j: number): any {
         S.Struct({ HubTokenTimerExpirySettingInSeconds: S.Number }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/hub-configuration" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "PutHubConfigurationRequest",
-      });
+      ).annotate({ identifier: "PutHubConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ HubTokenTimerExpirySettingInSeconds: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "PutHubConfigurationResponse",
-      });
+      ).annotate({ identifier: "PutHubConfigurationResponse" });
   }
 }
 function __c84(j: number): any {
@@ -6709,9 +6477,7 @@ function __c84(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutRuntimeLogConfigurationRequest",
-      });
+      ).annotate({ identifier: "PutRuntimeLogConfigurationRequest" });
   }
 }
 function __c85(j: number): any {
@@ -6732,9 +6498,7 @@ function __c85(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RegisterAccountAssociationRequest",
-      });
+      ).annotate({ identifier: "RegisterAccountAssociationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6742,9 +6506,7 @@ function __c85(j: number): any {
           DeviceDiscoveryId: S.optional(S.String),
           ManagedThingId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "RegisterAccountAssociationResponse",
-      });
+      ).annotate({ identifier: "RegisterAccountAssociationResponse" });
   }
 }
 function __c86(j: number): any {
@@ -6754,9 +6516,7 @@ function __c86(j: number): any {
         S.Struct({}).pipe(
           T.all(T.Http({ method: "POST", uri: "/custom-endpoint" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "RegisterCustomEndpointRequest",
-      });
+      ).annotate({ identifier: "RegisterCustomEndpointRequest" });
   }
 }
 function __c87(j: number): any {
@@ -6773,9 +6533,7 @@ function __c87(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ResetRuntimeLogConfigurationRequest",
-      });
+      ).annotate({ identifier: "ResetRuntimeLogConfigurationRequest" });
   }
 }
 function __c88(j: number): any {
@@ -6787,9 +6545,7 @@ function __c88(j: number): any {
           name: S.optional(S.String),
           value: S.optional(S.Any),
         }),
-      ).annotate({
-        identifier: "MatterCapabilityReportAttribute",
-      });
+      ).annotate({ identifier: "MatterCapabilityReportAttribute" });
     case 1:
       return S.Array(__S(1408, __c88, 0));
     case 2:
@@ -6807,9 +6563,7 @@ function __c88(j: number): any {
           generatedCommands: S.optional(__S(224, __c14, 0)),
           fabricIndex: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "MatterCapabilityReportCluster",
-      });
+      ).annotate({ identifier: "MatterCapabilityReportCluster" });
     case 3:
       return S.Array(__S(1410, __c88, 2));
     case 4:
@@ -6822,9 +6576,7 @@ function __c88(j: number): any {
           semanticTags: S.optional(__S(224, __c14, 0)),
           clientClusters: S.optional(__S(224, __c14, 0)),
         }),
-      ).annotate({
-        identifier: "MatterCapabilityReportEndpoint",
-      });
+      ).annotate({ identifier: "MatterCapabilityReportEndpoint" });
     case 5:
       return S.Array(__S(1412, __c88, 4));
     case 6:
@@ -6850,23 +6602,21 @@ function __c88(j: number): any {
     case 9:
       return S.Record(S.String, /*@__PURE__*/ S.Any.pipe(S.optional));
     case 10:
-      return S.Record(S.String, /*@__PURE__*/ S.Any.pipe(S.optional));
-    case 11:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           attributes: S.optional(S.Any),
           commands: S.optional(__S(1417, __c88, 9)),
-          events: S.optional(__S(1418, __c88, 10)),
+          events: S.optional(__S(1417, __c88, 9)),
         }),
       ).annotate({ identifier: "MatterCluster" });
+    case 11:
+      return S.Array(__S(1418, __c88, 10));
     case 12:
-      return S.Array(__S(1419, __c88, 11));
-    case 13:
       return S.suspend(() =>
-        S.Struct({ id: S.optional(S.String), clusters: S.optional(__S(1420, __c88, 12)) }),
+        S.Struct({ id: S.optional(S.String), clusters: S.optional(__S(1419, __c88, 11)) }),
       ).annotate({ identifier: "MatterEndpoint" });
-    case 14:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           ConnectorId: S.String.pipe(T.HttpLabel("ConnectorId")),
@@ -6879,7 +6629,7 @@ function __c88(j: number): any {
           ConnectorDeviceId: S.optional(SensitiveString),
           TraceId: S.optional(S.String),
           Devices: S.optional(__S(1416, __c88, 8)),
-          MatterEndpoint: S.optional(__S(1421, __c88, 13)),
+          MatterEndpoint: S.optional(__S(1420, __c88, 12)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/connector-event/{ConnectorId}" }),
@@ -6890,10 +6640,8 @@ function __c88(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SendConnectorEventRequest",
-      });
-    case 15:
+      ).annotate({ identifier: "SendConnectorEventRequest" });
+    case 14:
       return S.suspend(() => S.Struct({ ConnectorId: S.String })).annotate({
         identifier: "SendConnectorEventResponse",
       });
@@ -6941,9 +6689,7 @@ function __c89(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SendManagedThingCommandRequest",
-      });
+      ).annotate({ identifier: "SendManagedThingCommandRequest" });
     case 7:
       return S.suspend(() => S.Struct({ TraceId: S.optional(S.String) })).annotate({
         identifier: "SendManagedThingCommandResponse",
@@ -6964,9 +6710,7 @@ function __c90(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartAccountAssociationRefreshRequest",
-      });
+      ).annotate({ identifier: "StartAccountAssociationRefreshRequest" });
     case 1:
       return S.suspend(() => S.Struct({ OAuthAuthorizationUrl: SensitiveString })).annotate({
         identifier: "StartAccountAssociationRefreshResponse",
@@ -6976,14 +6720,12 @@ function __c90(j: number): any {
 function __c91(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 1:
       return S.Array(SensitiveString);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DiscoveryType: S.String,
-          CustomProtocolDetail: S.optional(__S(1456, __c91, 0)),
+          CustomProtocolDetail: S.optional(__S(16, __c1, 0)),
           ControllerIdentifier: S.optional(S.String),
           ConnectorAssociationIdentifier: S.optional(S.String),
           AccountAssociationId: S.optional(S.String),
@@ -6991,7 +6733,7 @@ function __c91(j: number): any {
           AuthenticationMaterialType: S.optional(S.String),
           ClientToken: S.optional(S.String),
           Tags: S.optional(__S(16, __c1, 0)),
-          ConnectorDeviceIdList: S.optional(__S(1457, __c91, 1)),
+          ConnectorDeviceIdList: S.optional(__S(1456, __c91, 0)),
           Protocol: S.optional(S.String),
           EndDeviceIdentifier: S.optional(S.String),
         }).pipe(
@@ -7004,18 +6746,14 @@ function __c91(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartDeviceDiscoveryRequest",
-      });
-    case 3:
+      ).annotate({ identifier: "StartDeviceDiscoveryRequest" });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
           StartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "StartDeviceDiscoveryResponse",
-      });
+      ).annotate({ identifier: "StartDeviceDiscoveryResponse" });
   }
 }
 function __c92(j: number): any {
@@ -7076,9 +6814,7 @@ function __c94(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateAccountAssociationRequest",
-      });
+      ).annotate({ identifier: "UpdateAccountAssociationRequest" });
   }
 }
 function __c95(j: number): any {
@@ -7099,9 +6835,7 @@ function __c95(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateCloudConnectorRequest",
-      });
+      ).annotate({ identifier: "UpdateCloudConnectorRequest" });
   }
 }
 function __c96(j: number): any {
@@ -7119,9 +6853,7 @@ function __c96(j: number): any {
           AuthMaterialsToAdd: S.optional(__S(131, __c8, 3)),
           AuthMaterialsToUpdate: S.optional(__S(131, __c8, 3)),
         }),
-      ).annotate({
-        identifier: "GeneralAuthorizationUpdate",
-      });
+      ).annotate({ identifier: "GeneralAuthorizationUpdate" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -7148,9 +6880,7 @@ function __c96(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateConnectorDestinationRequest",
-      });
+      ).annotate({ identifier: "UpdateConnectorDestinationRequest" });
   }
 }
 function __c97(j: number): any {
@@ -7190,9 +6920,7 @@ function __c98(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateEventLogConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateEventLogConfigurationRequest" });
   }
 }
 function __c99(j: number): any {
@@ -7224,9 +6952,7 @@ function __c99(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateManagedThingRequest",
-      });
+      ).annotate({ identifier: "UpdateManagedThingRequest" });
   }
 }
 function __c100(j: number): any {
@@ -7246,9 +6972,7 @@ function __c100(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateNotificationConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateNotificationConfigurationRequest" });
   }
 }
 function __c101(j: number): any {

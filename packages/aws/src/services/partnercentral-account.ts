@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -122,7 +122,7 @@ export class ValidationException
         identifier: "ValidationExceptionReason",
       }),
       ErrorDetails: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(355, __c44, 3)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(347, __c43, 3)).annotate({
           identifier: "ValidationErrorList",
         }),
       ),
@@ -956,8 +956,8 @@ export const acceptConnectionInvitation: API.OperationMethod<
   AcceptConnectionInvitationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<AcceptConnectionInvitationRequest>,
-  output: __S(361, __c45, 1) as any as S.Schema<AcceptConnectionInvitationResponse>,
+  input: __S(352, __c44, 0) as any as S.Schema<AcceptConnectionInvitationRequest>,
+  output: __S(353, __c44, 1) as any as S.Schema<AcceptConnectionInvitationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -989,10 +989,10 @@ export const associateAwsTrainingCertificationEmailDomain: API.OperationMethod<
   AssociateAwsTrainingCertificationEmailDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c48, 0) as any as S.Schema<AssociateAwsTrainingCertificationEmailDomainRequest>,
+  input: __S(376, __c47, 0) as any as S.Schema<AssociateAwsTrainingCertificationEmailDomainRequest>,
   output: __S(
-    392,
-    __c49,
+    384,
+    __c48,
     0,
   ) as any as S.Schema<AssociateAwsTrainingCertificationEmailDomainResponse>,
   errors: [
@@ -1025,8 +1025,8 @@ export const cancelConnection: API.OperationMethod<
   CancelConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c50, 0) as any as S.Schema<CancelConnectionRequest>,
-  output: __S(370, __c46, 2) as any as S.Schema<CancelConnectionResponse>,
+  input: __S(392, __c49, 0) as any as S.Schema<CancelConnectionRequest>,
+  output: __S(362, __c45, 2) as any as S.Schema<CancelConnectionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1190,8 +1190,8 @@ export const disassociateAwsTrainingCertificationEmailDomain: API.OperationMetho
     0,
   ) as any as S.Schema<DisassociateAwsTrainingCertificationEmailDomainRequest>,
   output: __S(
-    392,
-    __c49,
+    384,
+    __c48,
     0,
   ) as any as S.Schema<DisassociateAwsTrainingCertificationEmailDomainResponse>,
   errors: [
@@ -1253,7 +1253,7 @@ export const getConnection: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(104, __c13, 0) as any as S.Schema<GetConnectionRequest>,
-  output: __S(370, __c46, 2) as any as S.Schema<GetConnectionResponse>,
+  output: __S(362, __c45, 2) as any as S.Schema<GetConnectionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1521,7 +1521,7 @@ export const getVerification: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(208, __c26, 0) as any as S.Schema<GetVerificationRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GetVerificationResponse>,
+  output: __S(220, __c27, 4) as any as S.Schema<GetVerificationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1779,7 +1779,7 @@ export const sendEmailVerificationCode: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(280, __c35, 0) as any as S.Schema<SendEmailVerificationCodeRequest>,
-  output: __S(392, __c49, 0) as any as S.Schema<SendEmailVerificationCodeResponse>,
+  output: __S(384, __c48, 0) as any as S.Schema<SendEmailVerificationCodeResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1908,7 +1908,7 @@ export const startVerification: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(313, __c39, 1) as any as S.Schema<StartVerificationRequest>,
-  output: __S(314, __c39, 2) as any as S.Schema<StartVerificationResponse>,
+  output: __S(220, __c27, 4) as any as S.Schema<StartVerificationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1939,8 +1939,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(320, __c40, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(384, __c48, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1971,8 +1971,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(320, __c40, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(384, __c48, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2002,7 +2002,7 @@ export const updateConnectionPreferences: API.OperationMethod<
   UpdateConnectionPreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<UpdateConnectionPreferencesRequest>,
+  input: __S(336, __c42, 0) as any as S.Schema<UpdateConnectionPreferencesRequest>,
   output: __S(136, __c17, 0) as any as S.Schema<UpdateConnectionPreferencesResponse>,
   errors: [
     AccessDeniedException,
@@ -2026,9 +2026,7 @@ function __c0(j: number): any {
           Identifier: S.String,
           ClientToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CancelConnectionInvitationRequest",
-      });
+      ).annotate({ identifier: "CancelConnectionInvitationRequest" });
   }
 }
 function __c1(j: number): any {
@@ -2051,9 +2049,7 @@ function __c1(j: number): any {
           InviterEmail: S.String,
           InviterName: SensitiveString,
         }),
-      ).annotate({
-        identifier: "CancelConnectionInvitationResponse",
-      });
+      ).annotate({ identifier: "CancelConnectionInvitationResponse" });
   }
 }
 function __c2(j: number): any {
@@ -2066,9 +2062,7 @@ function __c2(j: number): any {
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           TaskId: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CancelProfileUpdateTaskRequest",
-      });
+      ).annotate({ identifier: "CancelProfileUpdateTaskRequest" });
   }
 }
 function __c3(j: number): any {
@@ -2128,9 +2122,7 @@ function __c4(j: number): any {
           EndedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           ErrorDetailList: S.optional(__S(34, __c4, 2)),
         }),
-      ).annotate({
-        identifier: "CancelProfileUpdateTaskResponse",
-      });
+      ).annotate({ identifier: "CancelProfileUpdateTaskResponse" });
   }
 }
 function __c5(j: number): any {
@@ -2146,9 +2138,7 @@ function __c5(j: number): any {
           Name: SensitiveString,
           ReceiverIdentifier: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateConnectionInvitationRequest",
-      });
+      ).annotate({ identifier: "CreateConnectionInvitationRequest" });
   }
 }
 function __c6(j: number): any {
@@ -2241,9 +2231,7 @@ function __c10(j: number): any {
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           DomainName: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisassociateAwsTrainingCertificationEmailDomainRequest",
-      });
+      ).annotate({ identifier: "DisassociateAwsTrainingCertificationEmailDomainRequest" });
   }
 }
 function __c11(j: number): any {
@@ -2253,9 +2241,7 @@ function __c11(j: number): any {
         S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetAllianceLeadContactRequest",
-      });
+      ).annotate({ identifier: "GetAllianceLeadContactRequest" });
   }
 }
 function __c12(j: number): any {
@@ -2268,9 +2254,7 @@ function __c12(j: number): any {
           Id: S.String,
           AllianceLeadContact: __S(56, __c7, 0),
         }),
-      ).annotate({
-        identifier: "GetAllianceLeadContactResponse",
-      });
+      ).annotate({ identifier: "GetAllianceLeadContactResponse" });
   }
 }
 function __c13(j: number): any {
@@ -2290,9 +2274,7 @@ function __c14(j: number): any {
         S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetConnectionInvitationRequest",
-      });
+      ).annotate({ identifier: "GetConnectionInvitationRequest" });
   }
 }
 function __c15(j: number): any {
@@ -2302,9 +2284,7 @@ function __c15(j: number): any {
         S.Struct({ Catalog: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetConnectionPreferencesRequest",
-      });
+      ).annotate({ identifier: "GetConnectionPreferencesRequest" });
   }
 }
 function __c16(j: number): any {
@@ -2325,9 +2305,7 @@ function __c17(j: number): any {
           UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           Revision: S.Number,
         }),
-      ).annotate({
-        identifier: "GetConnectionPreferencesResponse",
-      });
+      ).annotate({ identifier: "GetConnectionPreferencesResponse" });
   }
 }
 function __c18(j: number): any {
@@ -2359,9 +2337,7 @@ function __c19(j: number): any {
         S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetProfileUpdateTaskRequest",
-      });
+      ).annotate({ identifier: "GetProfileUpdateTaskRequest" });
   }
 }
 function __c20(j: number): any {
@@ -2371,9 +2347,7 @@ function __c20(j: number): any {
         S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetProfileVisibilityRequest",
-      });
+      ).annotate({ identifier: "GetProfileVisibilityRequest" });
   }
 }
 function __c21(j: number): any {
@@ -2387,9 +2361,7 @@ function __c21(j: number): any {
           Visibility: S.String,
           ProfileId: S.String,
         }),
-      ).annotate({
-        identifier: "GetProfileVisibilityResponse",
-      });
+      ).annotate({ identifier: "GetProfileVisibilityResponse" });
   }
 }
 function __c22(j: number): any {
@@ -2399,9 +2371,7 @@ function __c22(j: number): any {
         S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetQualificationsAssociationDetailsRequest",
-      });
+      ).annotate({ identifier: "GetQualificationsAssociationDetailsRequest" });
     case 1:
       return S.Array(__S(184, __c23, 0));
     case 2:
@@ -2415,9 +2385,7 @@ function __c22(j: number): any {
           AssociatedPartners: S.optional(__S(177, __c22, 1)),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "GetQualificationsAssociationDetailsResponse",
-      });
+      ).annotate({ identifier: "GetQualificationsAssociationDetailsResponse" });
   }
 }
 function __c23(j: number): any {
@@ -2425,9 +2393,7 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ ProfileId: S.optional(S.String), AccountId: S.optional(S.String) }),
-      ).annotate({
-        identifier: "QualificationsAssociationPartner",
-      });
+      ).annotate({ identifier: "QualificationsAssociationPartner" });
   }
 }
 function __c24(j: number): any {
@@ -2437,9 +2403,7 @@ function __c24(j: number): any {
         S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetQualificationsAssociationTaskRequest",
-      });
+      ).annotate({ identifier: "GetQualificationsAssociationTaskRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2452,9 +2416,7 @@ function __c24(j: number): any {
           StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           EndedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "GetQualificationsAssociationTaskResponse",
-      });
+      ).annotate({ identifier: "GetQualificationsAssociationTaskResponse" });
   }
 }
 function __c25(j: number): any {
@@ -2464,9 +2426,7 @@ function __c25(j: number): any {
         S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetQualificationsDisassociationTaskRequest",
-      });
+      ).annotate({ identifier: "GetQualificationsDisassociationTaskRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2479,9 +2439,7 @@ function __c25(j: number): any {
           StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           EndedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "GetQualificationsDisassociationTaskResponse",
-      });
+      ).annotate({ identifier: "GetQualificationsDisassociationTaskResponse" });
   }
 }
 function __c26(j: number): any {
@@ -2492,17 +2450,6 @@ function __c26(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetVerificationRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          VerificationType: S.String,
-          VerificationStatus: S.String,
-          VerificationStatusReason: S.optional(S.String),
-          VerificationResponseDetails: __S(219, __c27, 3),
-          StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          CompletedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-        }),
-      ).annotate({ identifier: "GetVerificationResponse" });
   }
 }
 function __c27(j: number): any {
@@ -2515,9 +2462,7 @@ function __c27(j: number): any {
           CountryCode: S.String,
           JurisdictionOfIncorporation: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BusinessVerificationDetails",
-      });
+      ).annotate({ identifier: "BusinessVerificationDetails" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2525,23 +2470,30 @@ function __c27(j: number): any {
           CompletionUrl: S.optional(S.String),
           CompletionUrlExpiresAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "BusinessVerificationResponse",
-      });
+      ).annotate({ identifier: "BusinessVerificationResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           CompletionUrl: S.String,
           CompletionUrlExpiresAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "RegistrantVerificationResponse",
-      });
+      ).annotate({ identifier: "RegistrantVerificationResponse" });
     case 3:
       return S.Union([
         /*@__PURE__*/ S.Struct({ BusinessVerificationResponse: __S(217, __c27, 1) }),
         /*@__PURE__*/ S.Struct({ RegistrantVerificationResponse: __S(218, __c27, 2) }),
       ]);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          VerificationType: S.String,
+          VerificationStatus: S.String,
+          VerificationStatusReason: S.optional(S.String),
+          VerificationResponseDetails: __S(219, __c27, 3),
+          StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          CompletedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "GetVerificationResponse" });
   }
 }
 function __c28(j: number): any {
@@ -2557,9 +2509,7 @@ function __c28(j: number): any {
           ParticipantType: S.optional(S.String),
           Status: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListConnectionInvitationsRequest",
-      });
+      ).annotate({ identifier: "ListConnectionInvitationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2575,9 +2525,7 @@ function __c28(j: number): any {
           ParticipantType: S.String,
           Status: S.String,
         }),
-      ).annotate({
-        identifier: "ConnectionInvitationSummary",
-      });
+      ).annotate({ identifier: "ConnectionInvitationSummary" });
     case 2:
       return S.Array(__S(225, __c28, 1));
     case 3:
@@ -2586,9 +2534,7 @@ function __c28(j: number): any {
           ConnectionInvitationSummaries: __S(226, __c28, 2),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListConnectionInvitationsResponse",
-      });
+      ).annotate({ identifier: "ListConnectionInvitationsResponse" });
   }
 }
 function __c29(j: number): any {
@@ -2605,7 +2551,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "ListConnectionsRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Status: S.String, OtherParticipant: __S(378, __c47, 2) }),
+        S.Struct({ Status: S.String, OtherParticipant: __S(370, __c46, 2) }),
       ).annotate({ identifier: "ConnectionTypeSummary" });
     case 2:
       return S.Record(S.String, /*@__PURE__*/ __S(233, __c29, 1).pipe(S.optional));
@@ -2661,15 +2607,11 @@ function __c31(j: number): any {
         S.Struct({ ResourceArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String, Tags: S.optional(__S(73, __c9, 1)) }),
-      ).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
+      ).annotate({ identifier: "ListTagsForResourceResponse" });
   }
 }
 function __c32(j: number): any {
@@ -2682,9 +2624,7 @@ function __c32(j: number): any {
           AllianceLeadContact: __S(56, __c7, 0),
           EmailVerificationCode: S.optional(SensitiveString),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PutAllianceLeadContactRequest",
-      });
+      ).annotate({ identifier: "PutAllianceLeadContactRequest" });
   }
 }
 function __c33(j: number): any {
@@ -2694,9 +2634,7 @@ function __c33(j: number): any {
         S.Struct({ Catalog: S.String, Identifier: S.String, Visibility: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "PutProfileVisibilityRequest",
-      });
+      ).annotate({ identifier: "PutProfileVisibilityRequest" });
   }
 }
 function __c34(j: number): any {
@@ -2709,9 +2647,7 @@ function __c34(j: number): any {
           ClientToken: S.String.pipe(T.IdempotencyToken()),
           Reason: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RejectConnectionInvitationRequest",
-      });
+      ).annotate({ identifier: "RejectConnectionInvitationRequest" });
   }
 }
 function __c35(j: number): any {
@@ -2721,9 +2657,7 @@ function __c35(j: number): any {
         S.Struct({ Catalog: S.String, Email: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "SendEmailVerificationCodeRequest",
-      });
+      ).annotate({ identifier: "SendEmailVerificationCodeRequest" });
   }
 }
 function __c36(j: number): any {
@@ -2736,9 +2670,7 @@ function __c36(j: number): any {
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           TaskDetails: __S(32, __c4, 0),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartProfileUpdateTaskRequest",
-      });
+      ).annotate({ identifier: "StartProfileUpdateTaskRequest" });
   }
 }
 function __c37(j: number): any {
@@ -2751,9 +2683,7 @@ function __c37(j: number): any {
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           PrimaryPartner: __S(184, __c23, 0),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartQualificationsAssociationTaskRequest",
-      });
+      ).annotate({ identifier: "StartQualificationsAssociationTaskRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2765,9 +2695,7 @@ function __c37(j: number): any {
           PrimaryPartner: __S(184, __c23, 0),
           StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "StartQualificationsAssociationTaskResponse",
-      });
+      ).annotate({ identifier: "StartQualificationsAssociationTaskResponse" });
   }
 }
 function __c38(j: number): any {
@@ -2780,9 +2708,7 @@ function __c38(j: number): any {
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           AssociatedPartner: __S(184, __c23, 0),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartQualificationsDisassociationTaskRequest",
-      });
+      ).annotate({ identifier: "StartQualificationsDisassociationTaskRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2794,9 +2720,7 @@ function __c38(j: number): any {
           AssociatedPartner: __S(184, __c23, 0),
           StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "StartQualificationsDisassociationTaskResponse",
-      });
+      ).annotate({ identifier: "StartQualificationsDisassociationTaskResponse" });
   }
 }
 function __c39(j: number): any {
@@ -2804,7 +2728,7 @@ function __c39(j: number): any {
     case 0:
       return S.Union([
         /*@__PURE__*/ S.Struct({ BusinessVerificationDetails: __S(216, __c27, 0) }),
-        /*@__PURE__*/ S.Struct({ RegistrantVerificationDetails: __S(320, __c40, 0) }),
+        /*@__PURE__*/ S.Struct({ RegistrantVerificationDetails: __S(384, __c48, 0) }),
       ]);
     case 1:
       return S.suspend(() =>
@@ -2813,30 +2737,9 @@ function __c39(j: number): any {
           VerificationDetails: S.optional(__S(312, __c39, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartVerificationRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          VerificationType: S.String,
-          VerificationStatus: S.String,
-          VerificationStatusReason: S.optional(S.String),
-          VerificationResponseDetails: __S(219, __c27, 3),
-          StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          CompletedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-        }),
-      ).annotate({
-        identifier: "StartVerificationResponse",
-      });
   }
 }
 function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "RegistrantVerificationDetails",
-      });
-  }
-}
-function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2846,7 +2749,7 @@ function __c41(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c42(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2856,7 +2759,7 @@ function __c42(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c43(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2866,12 +2769,10 @@ function __c43(j: number): any {
           AccessType: S.String,
           ExcludedParticipantIdentifiers: S.optional(__S(128, __c16, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateConnectionPreferencesRequest",
-      });
+      ).annotate({ identifier: "UpdateConnectionPreferencesRequest" });
   }
 }
-function __c44(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2883,14 +2784,14 @@ function __c44(j: number): any {
       });
     case 2:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ FieldValidationError: __S(352, __c44, 0) }),
-        /*@__PURE__*/ S.Struct({ BusinessValidationError: __S(353, __c44, 1) }),
+        /*@__PURE__*/ S.Struct({ FieldValidationError: __S(344, __c43, 0) }),
+        /*@__PURE__*/ S.Struct({ BusinessValidationError: __S(345, __c43, 1) }),
       ]);
     case 3:
-      return S.Array(__S(354, __c44, 2));
+      return S.Array(__S(346, __c43, 2));
   }
 }
-function __c45(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2899,16 +2800,14 @@ function __c45(j: number): any {
           Identifier: S.String,
           ClientToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AcceptConnectionInvitationRequest",
-      });
+      ).annotate({ identifier: "AcceptConnectionInvitationRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ Connection: __S(370, __c46, 2) })).annotate({
+      return S.suspend(() => S.Struct({ Connection: __S(362, __c45, 2) })).annotate({
         identifier: "AcceptConnectionInvitationResponse",
       });
   }
 }
-function __c46(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2919,11 +2818,11 @@ function __c46(j: number): any {
           Status: S.String,
           CanceledAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           CanceledBy: S.optional(S.String),
-          OtherParticipant: __S(378, __c47, 2),
+          OtherParticipant: __S(370, __c46, 2),
         }),
       ).annotate({ identifier: "ConnectionTypeDetail" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(368, __c46, 0).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(360, __c45, 0).pipe(S.optional));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2932,12 +2831,12 @@ function __c46(j: number): any {
           Arn: S.String,
           OtherParticipantAccountId: S.String,
           UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          ConnectionTypes: __S(369, __c46, 1),
+          ConnectionTypes: __S(361, __c45, 1),
         }),
       ).annotate({ identifier: "Connection" });
   }
 }
-function __c47(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Id: S.String, Name: S.String })).annotate({
@@ -2949,13 +2848,13 @@ function __c47(j: number): any {
       });
     case 2:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ PartnerProfile: __S(376, __c47, 0) }),
-        /*@__PURE__*/ S.Struct({ SellerProfile: __S(376, __c47, 0) }),
-        /*@__PURE__*/ S.Struct({ Account: __S(377, __c47, 1) }),
+        /*@__PURE__*/ S.Struct({ PartnerProfile: __S(368, __c46, 0) }),
+        /*@__PURE__*/ S.Struct({ SellerProfile: __S(368, __c46, 0) }),
+        /*@__PURE__*/ S.Struct({ Account: __S(369, __c46, 1) }),
       ]);
   }
 }
-function __c48(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2966,12 +2865,10 @@ function __c48(j: number): any {
           Email: S.String,
           EmailVerificationCode: SensitiveString,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssociateAwsTrainingCertificationEmailDomainRequest",
-      });
+      ).annotate({ identifier: "AssociateAwsTrainingCertificationEmailDomainRequest" });
   }
 }
-function __c49(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
@@ -2979,7 +2876,7 @@ function __c49(j: number): any {
       });
   }
 }
-function __c50(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

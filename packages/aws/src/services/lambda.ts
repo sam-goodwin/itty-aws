@@ -1,9 +1,9 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
-import * as stream from "effect/Stream";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
+import type * as stream from "effect/Stream";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -2831,7 +2831,7 @@ export const createEventSourceMapping: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(2080, __c65, 0) as any as S.Schema<CreateEventSourceMappingRequest>,
-  output: __S(2130, __c66, 18) as any as S.Schema<EventSourceMappingConfiguration>,
+  output: __S(2129, __c66, 17) as any as S.Schema<EventSourceMappingConfiguration>,
   errors: [
     InvalidParameterValueException,
     ResourceConflictException,
@@ -3018,7 +3018,7 @@ export const deleteCodeSigningConfig: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(2464, __c77, 0) as any as S.Schema<DeleteCodeSigningConfigRequest>,
-  output: __S(2496, __c78, 0) as any as S.Schema<DeleteCodeSigningConfigResponse>,
+  output: __S(2400, __c75, 0) as any as S.Schema<DeleteCodeSigningConfigResponse>,
   errors: [
     InvalidParameterValueException,
     ResourceConflictException,
@@ -3051,8 +3051,8 @@ export const deleteEventSourceMapping: API.OperationMethod<
   DeleteEventSourceMappingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2528, __c79, 0) as any as S.Schema<DeleteEventSourceMappingRequest>,
-  output: __S(2130, __c66, 18) as any as S.Schema<EventSourceMappingConfiguration>,
+  input: __S(2496, __c78, 0) as any as S.Schema<DeleteEventSourceMappingRequest>,
+  output: __S(2129, __c66, 17) as any as S.Schema<EventSourceMappingConfiguration>,
   errors: [
     InvalidParameterValueException,
     ResourceConflictException,
@@ -3086,8 +3086,8 @@ export const deleteFunction: API.OperationMethod<
   DeleteFunctionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2560, __c80, 0) as any as S.Schema<DeleteFunctionRequest>,
-  output: __S(2561, __c80, 1) as any as S.Schema<DeleteFunctionResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<DeleteFunctionRequest>,
+  output: __S(2529, __c79, 1) as any as S.Schema<DeleteFunctionResponse>,
   errors: [
     InvalidParameterValueException,
     ResourceConflictException,
@@ -3117,8 +3117,8 @@ export const deleteFunctionCodeSigningConfig: API.OperationMethod<
   DeleteFunctionCodeSigningConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2592, __c81, 0) as any as S.Schema<DeleteFunctionCodeSigningConfigRequest>,
-  output: __S(2624, __c82, 0) as any as S.Schema<DeleteFunctionCodeSigningConfigResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<DeleteFunctionCodeSigningConfigRequest>,
+  output: __S(2400, __c75, 0) as any as S.Schema<DeleteFunctionCodeSigningConfigResponse>,
   errors: [
     CodeSigningConfigNotFoundException,
     InvalidParameterValueException,
@@ -3150,8 +3150,8 @@ export const deleteFunctionConcurrency: API.OperationMethod<
   DeleteFunctionConcurrencyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2656, __c83, 0) as any as S.Schema<DeleteFunctionConcurrencyRequest>,
-  output: __S(2624, __c82, 0) as any as S.Schema<DeleteFunctionConcurrencyResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<DeleteFunctionConcurrencyRequest>,
+  output: __S(2400, __c75, 0) as any as S.Schema<DeleteFunctionConcurrencyResponse>,
   errors: [
     InvalidParameterValueException,
     ResourceConflictException,
@@ -3186,8 +3186,8 @@ export const deleteFunctionEventInvokeConfig: API.OperationMethod<
   DeleteFunctionEventInvokeConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2688, __c84, 0) as any as S.Schema<DeleteFunctionEventInvokeConfigRequest>,
-  output: __S(2624, __c82, 0) as any as S.Schema<DeleteFunctionEventInvokeConfigResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<DeleteFunctionEventInvokeConfigRequest>,
+  output: __S(2400, __c75, 0) as any as S.Schema<DeleteFunctionEventInvokeConfigResponse>,
   errors: [
     InvalidParameterValueException,
     ResourceConflictException,
@@ -3220,8 +3220,8 @@ export const deleteFunctionUrlConfig: API.OperationMethod<
   DeleteFunctionUrlConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2720, __c85, 0) as any as S.Schema<DeleteFunctionUrlConfigRequest>,
-  output: __S(2496, __c78, 0) as any as S.Schema<DeleteFunctionUrlConfigResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<DeleteFunctionUrlConfigRequest>,
+  output: __S(2400, __c75, 0) as any as S.Schema<DeleteFunctionUrlConfigResponse>,
   errors: [
     InvalidParameterValueException,
     ResourceConflictException,
@@ -3253,7 +3253,7 @@ export const deleteLayerVersion: API.OperationMethod<
   DeleteLayerVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2752, __c86, 0) as any as S.Schema<DeleteLayerVersionRequest>,
+  input: __S(2688, __c84, 0) as any as S.Schema<DeleteLayerVersionRequest>,
   output: __S(2400, __c75, 0) as any as S.Schema<DeleteLayerVersionResponse>,
   errors: [
     InvalidParameterValueException,
@@ -3286,8 +3286,8 @@ export const deleteProvisionedConcurrencyConfig: API.OperationMethod<
   DeleteProvisionedConcurrencyConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2784, __c87, 0) as any as S.Schema<DeleteProvisionedConcurrencyConfigRequest>,
-  output: __S(2624, __c82, 0) as any as S.Schema<DeleteProvisionedConcurrencyConfigResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<DeleteProvisionedConcurrencyConfigRequest>,
+  output: __S(2400, __c75, 0) as any as S.Schema<DeleteProvisionedConcurrencyConfigResponse>,
   errors: [
     InvalidParameterValueException,
     ResourceConflictException,
@@ -3319,7 +3319,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2816, __c88, 0) as any as S.Schema<DeleteResourcePolicyRequest>,
+  input: __S(2752, __c86, 0) as any as S.Schema<DeleteResourcePolicyRequest>,
   output: __S(2400, __c75, 0) as any as S.Schema<DeleteResourcePolicyResponse>,
   errors: [
     InvalidParameterValueException,
@@ -3344,8 +3344,8 @@ export const getAccountSettings: API.OperationMethod<
   GetAccountSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2848, __c89, 0) as any as S.Schema<GetAccountSettingsRequest>,
-  output: __S(2851, __c89, 3) as any as S.Schema<GetAccountSettingsResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<GetAccountSettingsRequest>,
+  output: __S(2787, __c87, 3) as any as S.Schema<GetAccountSettingsResponse>,
   errors: [ServiceException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3367,7 +3367,7 @@ export const getAlias: API.OperationMethod<
   GetAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2880, __c90, 0) as any as S.Schema<GetAliasRequest>,
+  input: __S(2816, __c88, 0) as any as S.Schema<GetAliasRequest>,
   output: __S(1762, __c55, 2) as any as S.Schema<AliasConfiguration>,
   errors: [
     InvalidParameterValueException,
@@ -3395,7 +3395,7 @@ export const getCapacityProvider: API.OperationMethod<
   GetCapacityProviderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2912, __c91, 0) as any as S.Schema<GetCapacityProviderRequest>,
+  input: __S(2848, __c89, 0) as any as S.Schema<GetCapacityProviderRequest>,
   output: __S(1952, __c61, 0) as any as S.Schema<GetCapacityProviderResponse>,
   errors: [
     InvalidParameterValueException,
@@ -3424,7 +3424,7 @@ export const getCodeSigningConfig: API.OperationMethod<
   GetCodeSigningConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2944, __c92, 0) as any as S.Schema<GetCodeSigningConfigRequest>,
+  input: __S(2880, __c90, 0) as any as S.Schema<GetCodeSigningConfigRequest>,
   output: __S(2048, __c64, 0) as any as S.Schema<GetCodeSigningConfigResponse>,
   errors: [
     InvalidParameterValueException,
@@ -3457,8 +3457,8 @@ export const getDurableExecution: API.OperationMethod<
   GetDurableExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2976, __c93, 0) as any as S.Schema<GetDurableExecutionRequest>,
-  output: __S(2978, __c93, 2) as any as S.Schema<GetDurableExecutionResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<GetDurableExecutionRequest>,
+  output: __S(2914, __c91, 2) as any as S.Schema<GetDurableExecutionResponse>,
   errors: [
     InvalidParameterValueException,
     KMSAccessDeniedException,
@@ -3496,8 +3496,8 @@ export const getDurableExecutionHistory: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Event
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3008, __c94, 0) as any as S.Schema<GetDurableExecutionHistoryRequest>,
-  output: __S(3027, __c94, 19) as any as S.Schema<GetDurableExecutionHistoryResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<GetDurableExecutionHistoryRequest>,
+  output: __S(2961, __c92, 17) as any as S.Schema<GetDurableExecutionHistoryResponse>,
   errors: [
     InvalidParameterValueException,
     KMSAccessDeniedException,
@@ -3540,8 +3540,8 @@ export const getDurableExecutionState: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Operation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3040, __c95, 0) as any as S.Schema<GetDurableExecutionStateRequest>,
-  output: __S(3041, __c95, 1) as any as S.Schema<GetDurableExecutionStateResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<GetDurableExecutionStateRequest>,
+  output: __S(2977, __c93, 1) as any as S.Schema<GetDurableExecutionStateResponse>,
   errors: [
     InvalidParameterValueException,
     KMSAccessDeniedException,
@@ -3577,8 +3577,8 @@ export const getEventSourceMapping: API.OperationMethod<
   GetEventSourceMappingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3072, __c96, 0) as any as S.Schema<GetEventSourceMappingRequest>,
-  output: __S(2130, __c66, 18) as any as S.Schema<EventSourceMappingConfiguration>,
+  input: __S(3008, __c94, 0) as any as S.Schema<GetEventSourceMappingRequest>,
+  output: __S(2129, __c66, 17) as any as S.Schema<EventSourceMappingConfiguration>,
   errors: [
     InvalidParameterValueException,
     ResourceNotFoundException,
@@ -3605,8 +3605,8 @@ export const getFunction: API.OperationMethod<
   GetFunctionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3104, __c97, 0) as any as S.Schema<GetFunctionRequest>,
-  output: __S(3108, __c97, 4) as any as S.Schema<GetFunctionResponse>,
+  input: __S(3040, __c95, 0) as any as S.Schema<GetFunctionRequest>,
+  output: __S(3043, __c95, 3) as any as S.Schema<GetFunctionResponse>,
   errors: [
     InvalidParameterValueException,
     ResourceNotFoundException,
@@ -3634,8 +3634,8 @@ export const getFunctionCodeSigningConfig: API.OperationMethod<
   GetFunctionCodeSigningConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3200, __c100, 0) as any as S.Schema<GetFunctionCodeSigningConfigRequest>,
-  output: __S(3232, __c101, 0) as any as S.Schema<GetFunctionCodeSigningConfigResponse>,
+  input: __S(3136, __c98, 0) as any as S.Schema<GetFunctionCodeSigningConfigRequest>,
+  output: __S(3168, __c99, 0) as any as S.Schema<GetFunctionCodeSigningConfigResponse>,
   errors: [
     CodeSigningConfigNotFoundException,
     InvalidParameterValueException,
@@ -3665,8 +3665,8 @@ export const getFunctionConcurrency: API.OperationMethod<
   GetFunctionConcurrencyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3264, __c102, 0) as any as S.Schema<GetFunctionConcurrencyRequest>,
-  output: __S(3265, __c102, 1) as any as S.Schema<GetFunctionConcurrencyResponse>,
+  input: __S(3200, __c100, 0) as any as S.Schema<GetFunctionConcurrencyRequest>,
+  output: __S(3072, __c96, 0) as any as S.Schema<GetFunctionConcurrencyResponse>,
   errors: [
     InvalidParameterValueException,
     ResourceNotFoundException,
@@ -3697,7 +3697,7 @@ export const getFunctionConfiguration: API.OperationMethod<
   GetFunctionConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3296, __c103, 0) as any as S.Schema<GetFunctionConfigurationRequest>,
+  input: __S(3232, __c101, 0) as any as S.Schema<GetFunctionConfigurationRequest>,
   output: __S(2292, __c71, 20) as any as S.Schema<FunctionConfiguration>,
   errors: [
     InvalidParameterValueException,
@@ -3729,8 +3729,8 @@ export const getFunctionEventInvokeConfig: API.OperationMethod<
   GetFunctionEventInvokeConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3328, __c104, 0) as any as S.Schema<GetFunctionEventInvokeConfigRequest>,
-  output: __S(3360, __c105, 0) as any as S.Schema<FunctionEventInvokeConfig>,
+  input: __S(3264, __c102, 0) as any as S.Schema<GetFunctionEventInvokeConfigRequest>,
+  output: __S(3296, __c103, 0) as any as S.Schema<FunctionEventInvokeConfig>,
   errors: [
     InvalidParameterValueException,
     ResourceNotFoundException,
@@ -3761,8 +3761,8 @@ export const getFunctionRecursionConfig: API.OperationMethod<
   GetFunctionRecursionConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3392, __c106, 0) as any as S.Schema<GetFunctionRecursionConfigRequest>,
-  output: __S(3424, __c107, 0) as any as S.Schema<GetFunctionRecursionConfigResponse>,
+  input: __S(3328, __c104, 0) as any as S.Schema<GetFunctionRecursionConfigRequest>,
+  output: __S(3360, __c105, 0) as any as S.Schema<GetFunctionRecursionConfigResponse>,
   errors: [
     InvalidParameterValueException,
     ResourceNotFoundException,
@@ -3791,8 +3791,8 @@ export const getFunctionScalingConfig: API.OperationMethod<
   GetFunctionScalingConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3456, __c108, 0) as any as S.Schema<GetFunctionScalingConfigRequest>,
-  output: __S(3457, __c108, 1) as any as S.Schema<GetFunctionScalingConfigResponse>,
+  input: __S(3392, __c106, 0) as any as S.Schema<GetFunctionScalingConfigRequest>,
+  output: __S(3393, __c106, 1) as any as S.Schema<GetFunctionScalingConfigResponse>,
   errors: [
     InvalidParameterValueException,
     ResourceNotFoundException,
@@ -3819,8 +3819,8 @@ export const getFunctionUrlConfig: API.OperationMethod<
   GetFunctionUrlConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3520, __c110, 0) as any as S.Schema<GetFunctionUrlConfigRequest>,
-  output: __S(3552, __c111, 0) as any as S.Schema<GetFunctionUrlConfigResponse>,
+  input: __S(3456, __c108, 0) as any as S.Schema<GetFunctionUrlConfigRequest>,
+  output: __S(3488, __c109, 0) as any as S.Schema<GetFunctionUrlConfigResponse>,
   errors: [
     InvalidParameterValueException,
     ResourceNotFoundException,
@@ -3849,8 +3849,8 @@ export const getLayerVersion: API.OperationMethod<
   GetLayerVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3584, __c112, 0) as any as S.Schema<GetLayerVersionRequest>,
-  output: __S(3616, __c113, 0) as any as S.Schema<GetLayerVersionResponse>,
+  input: __S(3520, __c110, 0) as any as S.Schema<GetLayerVersionRequest>,
+  output: __S(3553, __c111, 1) as any as S.Schema<GetLayerVersionResponse>,
   errors: [
     InvalidParameterValueException,
     ResourceNotFoundException,
@@ -3879,8 +3879,8 @@ export const getLayerVersionByArn: API.OperationMethod<
   GetLayerVersionByArnError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3680, __c115, 0) as any as S.Schema<GetLayerVersionByArnRequest>,
-  output: __S(3616, __c113, 0) as any as S.Schema<GetLayerVersionResponse>,
+  input: __S(3584, __c112, 0) as any as S.Schema<GetLayerVersionByArnRequest>,
+  output: __S(3553, __c111, 1) as any as S.Schema<GetLayerVersionResponse>,
   errors: [
     InvalidParameterValueException,
     ResourceNotFoundException,
@@ -3909,8 +3909,8 @@ export const getLayerVersionPolicy: API.OperationMethod<
   GetLayerVersionPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3712, __c116, 0) as any as S.Schema<GetLayerVersionPolicyRequest>,
-  output: __S(3744, __c117, 0) as any as S.Schema<GetLayerVersionPolicyResponse>,
+  input: __S(3616, __c113, 0) as any as S.Schema<GetLayerVersionPolicyRequest>,
+  output: __S(3648, __c114, 0) as any as S.Schema<GetLayerVersionPolicyResponse>,
   errors: [
     InvalidParameterValueException,
     ResourceNotFoundException,
@@ -3939,8 +3939,8 @@ export const getPolicy: API.OperationMethod<
   GetPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3776, __c118, 0) as any as S.Schema<GetPolicyRequest>,
-  output: __S(3777, __c118, 1) as any as S.Schema<GetPolicyResponse>,
+  input: __S(3680, __c115, 0) as any as S.Schema<GetPolicyRequest>,
+  output: __S(3648, __c114, 0) as any as S.Schema<GetPolicyResponse>,
   errors: [
     InvalidParameterValueException,
     ResourceNotFoundException,
@@ -4002,7 +4002,7 @@ export const getResourcePolicy: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(32, __c1, 0) as any as S.Schema<GetResourcePolicyRequest>,
-  output: __S(3744, __c117, 0) as any as S.Schema<GetResourcePolicyResponse>,
+  output: __S(3648, __c114, 0) as any as S.Schema<GetResourcePolicyResponse>,
   errors: [
     InvalidParameterValueException,
     ResourceNotFoundException,
@@ -4876,7 +4876,7 @@ export const publishLayerVersion: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(737, __c23, 1) as any as S.Schema<PublishLayerVersionRequest>,
-  output: __S(738, __c23, 2) as any as S.Schema<PublishLayerVersionResponse>,
+  output: __S(3553, __c111, 1) as any as S.Schema<PublishLayerVersionResponse>,
   errors: [
     CodeStorageExceededException,
     InvalidParameterValueException,
@@ -4955,7 +4955,7 @@ export const putFunctionCodeSigningConfig: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(800, __c25, 0) as any as S.Schema<PutFunctionCodeSigningConfigRequest>,
-  output: __S(3232, __c101, 0) as any as S.Schema<PutFunctionCodeSigningConfigResponse>,
+  output: __S(3168, __c99, 0) as any as S.Schema<PutFunctionCodeSigningConfigResponse>,
   errors: [
     CodeSigningConfigNotFoundException,
     InvalidParameterValueException,
@@ -4994,7 +4994,7 @@ export const putFunctionConcurrency: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(832, __c26, 0) as any as S.Schema<PutFunctionConcurrencyRequest>,
-  output: __S(3136, __c98, 0) as any as S.Schema<Concurrency>,
+  output: __S(3072, __c96, 0) as any as S.Schema<Concurrency>,
   errors: [
     InvalidParameterValueException,
     ResourceConflictException,
@@ -5034,7 +5034,7 @@ export const putFunctionEventInvokeConfig: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(864, __c27, 0) as any as S.Schema<PutFunctionEventInvokeConfigRequest>,
-  output: __S(3360, __c105, 0) as any as S.Schema<FunctionEventInvokeConfig>,
+  output: __S(3296, __c103, 0) as any as S.Schema<FunctionEventInvokeConfig>,
   errors: [
     InvalidParameterValueException,
     ResourceConflictException,
@@ -5072,7 +5072,7 @@ export const putFunctionRecursionConfig: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(896, __c28, 0) as any as S.Schema<PutFunctionRecursionConfigRequest>,
-  output: __S(3424, __c107, 0) as any as S.Schema<PutFunctionRecursionConfigResponse>,
+  output: __S(3360, __c105, 0) as any as S.Schema<PutFunctionRecursionConfigResponse>,
   errors: [
     InvalidParameterValueException,
     ResourceConflictException,
@@ -5173,7 +5173,7 @@ export const putResourcePolicy: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(992, __c31, 0) as any as S.Schema<PutResourcePolicyRequest>,
-  output: __S(3744, __c117, 0) as any as S.Schema<PutResourcePolicyResponse>,
+  output: __S(3648, __c114, 0) as any as S.Schema<PutResourcePolicyResponse>,
   errors: [
     InvalidParameterValueException,
     PolicyLengthExceededException,
@@ -5238,7 +5238,7 @@ export const removeLayerVersionPermission: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1056, __c33, 0) as any as S.Schema<RemoveLayerVersionPermissionRequest>,
-  output: __S(2624, __c82, 0) as any as S.Schema<RemoveLayerVersionPermissionResponse>,
+  output: __S(2400, __c75, 0) as any as S.Schema<RemoveLayerVersionPermissionResponse>,
   errors: [
     InvalidParameterValueException,
     PreconditionFailedException,
@@ -5306,7 +5306,7 @@ export const sendDurableExecutionCallbackFailure: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1120, __c35, 0) as any as S.Schema<SendDurableExecutionCallbackFailureRequest>,
-  output: __S(2624, __c82, 0) as any as S.Schema<SendDurableExecutionCallbackFailureResponse>,
+  output: __S(2400, __c75, 0) as any as S.Schema<SendDurableExecutionCallbackFailureResponse>,
   errors: [
     CallbackTimeoutException,
     InvalidParameterValueException,
@@ -5340,7 +5340,7 @@ export const sendDurableExecutionCallbackHeartbeat: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1152, __c36, 0) as any as S.Schema<SendDurableExecutionCallbackHeartbeatRequest>,
-  output: __S(2624, __c82, 0) as any as S.Schema<SendDurableExecutionCallbackHeartbeatResponse>,
+  output: __S(2400, __c75, 0) as any as S.Schema<SendDurableExecutionCallbackHeartbeatResponse>,
   errors: [
     CallbackTimeoutException,
     InvalidParameterValueException,
@@ -5374,7 +5374,7 @@ export const sendDurableExecutionCallbackSuccess: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1184, __c37, 0) as any as S.Schema<SendDurableExecutionCallbackSuccessRequest>,
-  output: __S(2624, __c82, 0) as any as S.Schema<SendDurableExecutionCallbackSuccessResponse>,
+  output: __S(2400, __c75, 0) as any as S.Schema<SendDurableExecutionCallbackSuccessResponse>,
   errors: [
     CallbackTimeoutException,
     InvalidParameterValueException,
@@ -5649,7 +5649,7 @@ export const updateEventSourceMapping: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1408, __c44, 0) as any as S.Schema<UpdateEventSourceMappingRequest>,
-  output: __S(2130, __c66, 18) as any as S.Schema<EventSourceMappingConfiguration>,
+  output: __S(2129, __c66, 17) as any as S.Schema<EventSourceMappingConfiguration>,
   errors: [
     InvalidParameterValueException,
     ResourceConflictException,
@@ -5786,7 +5786,7 @@ export const updateFunctionEventInvokeConfig: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1504, __c47, 0) as any as S.Schema<UpdateFunctionEventInvokeConfigRequest>,
-  output: __S(3360, __c105, 0) as any as S.Schema<FunctionEventInvokeConfig>,
+  output: __S(3296, __c103, 0) as any as S.Schema<FunctionEventInvokeConfig>,
   errors: [
     InvalidParameterValueException,
     ResourceConflictException,
@@ -5818,7 +5818,7 @@ export const updateFunctionUrlConfig: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1536, __c48, 0) as any as S.Schema<UpdateFunctionUrlConfigRequest>,
-  output: __S(3552, __c111, 0) as any as S.Schema<UpdateFunctionUrlConfigResponse>,
+  output: __S(3488, __c109, 0) as any as S.Schema<UpdateFunctionUrlConfigResponse>,
   errors: [
     InvalidParameterValueException,
     ResourceConflictException,
@@ -5854,9 +5854,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetProvisionedConcurrencyConfigRequest",
-      });
+      ).annotate({ identifier: "GetProvisionedConcurrencyConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5867,9 +5865,7 @@ function __c0(j: number): any {
           StatusReason: S.optional(S.String),
           LastModified: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetProvisionedConcurrencyConfigResponse",
-      });
+      ).annotate({ identifier: "GetProvisionedConcurrencyConfigResponse" });
   }
 }
 function __c1(j: number): any {
@@ -5909,9 +5905,7 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetRuntimeManagementConfigRequest",
-      });
+      ).annotate({ identifier: "GetRuntimeManagementConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5919,9 +5913,7 @@ function __c2(j: number): any {
           FunctionArn: S.optional(S.String),
           RuntimeVersionArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetRuntimeManagementConfigResponse",
-      });
+      ).annotate({ identifier: "GetRuntimeManagementConfigResponse" });
   }
 }
 function __c3(j: number): any {
@@ -6014,15 +6006,11 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "InvokeWithResponseStreamRequest",
-      });
+      ).annotate({ identifier: "InvokeWithResponseStreamRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Payload: S.optional(SensitiveBlob).pipe(T.EventPayload()) }),
-      ).annotate({
-        identifier: "InvokeResponseStreamUpdate",
-      });
+      ).annotate({ identifier: "InvokeResponseStreamUpdate" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -6030,9 +6018,7 @@ function __c5(j: number): any {
           ErrorDetails: S.optional(S.String),
           LogResult: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "InvokeWithResponseStreamCompleteEvent",
-      });
+      ).annotate({ identifier: "InvokeWithResponseStreamCompleteEvent" });
     case 3:
       return T.EventStream(
         /*@__PURE__*/ S.Union([
@@ -6048,9 +6034,7 @@ function __c5(j: number): any {
           EventStream: S.optional(__S(163, __c5, 3)).pipe(T.HttpPayload()),
           ResponseStreamContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
         }),
-      ).annotate({
-        identifier: "InvokeWithResponseStreamResponse",
-      });
+      ).annotate({ identifier: "InvokeWithResponseStreamResponse" });
   }
 }
 function __c6(j: number): any {
@@ -6099,17 +6083,13 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListCapacityProvidersRequest",
-      });
+      ).annotate({ identifier: "ListCapacityProvidersRequest" });
     case 1:
       return S.Array(__S(1929, __c60, 9));
     case 2:
       return S.suspend(() =>
         S.Struct({ CapacityProviders: __S(225, __c7, 1), NextMarker: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListCapacityProvidersResponse",
-      });
+      ).annotate({ identifier: "ListCapacityProvidersResponse" });
   }
 }
 function __c8(j: number): any {
@@ -6129,9 +6109,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListCodeSigningConfigsRequest",
-      });
+      ).annotate({ identifier: "ListCodeSigningConfigsRequest" });
     case 1:
       return S.Array(__S(2018, __c63, 2));
     case 2:
@@ -6140,9 +6118,7 @@ function __c8(j: number): any {
           NextMarker: S.optional(S.String),
           CodeSigningConfigs: S.optional(__S(257, __c8, 1)),
         }),
-      ).annotate({
-        identifier: "ListCodeSigningConfigsResponse",
-      });
+      ).annotate({ identifier: "ListCodeSigningConfigsResponse" });
   }
 }
 function __c9(j: number): any {
@@ -6176,9 +6152,7 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDurableExecutionsByFunctionRequest",
-      });
+      ).annotate({ identifier: "ListDurableExecutionsByFunctionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6199,9 +6173,7 @@ function __c9(j: number): any {
           DurableExecutions: S.optional(__S(290, __c9, 2)),
           NextMarker: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListDurableExecutionsByFunctionResponse",
-      });
+      ).annotate({ identifier: "ListDurableExecutionsByFunctionResponse" });
   }
 }
 function __c10(j: number): any {
@@ -6223,20 +6195,16 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListEventSourceMappingsRequest",
-      });
+      ).annotate({ identifier: "ListEventSourceMappingsRequest" });
     case 1:
-      return S.Array(__S(2130, __c66, 18));
+      return S.Array(__S(2129, __c66, 17));
     case 2:
       return S.suspend(() =>
         S.Struct({
           NextMarker: S.optional(S.String),
           EventSourceMappings: S.optional(__S(321, __c10, 1)),
         }),
-      ).annotate({
-        identifier: "ListEventSourceMappingsResponse",
-      });
+      ).annotate({ identifier: "ListEventSourceMappingsResponse" });
   }
 }
 function __c11(j: number): any {
@@ -6260,20 +6228,16 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListFunctionEventInvokeConfigsRequest",
-      });
+      ).annotate({ identifier: "ListFunctionEventInvokeConfigsRequest" });
     case 1:
-      return S.Array(__S(3360, __c105, 0));
+      return S.Array(__S(3296, __c103, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           FunctionEventInvokeConfigs: S.optional(__S(353, __c11, 1)),
           NextMarker: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListFunctionEventInvokeConfigsResponse",
-      });
+      ).annotate({ identifier: "ListFunctionEventInvokeConfigsResponse" });
   }
 }
 function __c12(j: number): any {
@@ -6329,18 +6293,14 @@ function __c14(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListFunctionsByCodeSigningConfigRequest",
-      });
+      ).annotate({ identifier: "ListFunctionsByCodeSigningConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           NextMarker: S.optional(S.String),
           FunctionArns: S.optional(__S(1824, __c57, 0)),
         }),
-      ).annotate({
-        identifier: "ListFunctionsByCodeSigningConfigResponse",
-      });
+      ).annotate({ identifier: "ListFunctionsByCodeSigningConfigResponse" });
   }
 }
 function __c15(j: number): any {
@@ -6361,9 +6321,7 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListFunctionUrlConfigsRequest",
-      });
+      ).annotate({ identifier: "ListFunctionUrlConfigsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6381,9 +6339,7 @@ function __c15(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ FunctionUrlConfigs: __S(482, __c15, 2), NextMarker: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListFunctionUrlConfigsResponse",
-      });
+      ).annotate({ identifier: "ListFunctionUrlConfigsResponse" });
   }
 }
 function __c16(j: number): any {
@@ -6407,9 +6363,7 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListFunctionVersionsByCapacityProviderRequest",
-      });
+      ).annotate({ identifier: "ListFunctionVersionsByCapacityProviderRequest" });
     case 1:
       return S.suspend(() => S.Struct({ FunctionArn: S.String, State: S.String })).annotate({
         identifier: "FunctionVersionsByCapacityProviderListItem",
@@ -6423,9 +6377,7 @@ function __c16(j: number): any {
           FunctionVersions: __S(514, __c16, 2),
           NextMarker: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListFunctionVersionsByCapacityProviderResponse",
-      });
+      ).annotate({ identifier: "ListFunctionVersionsByCapacityProviderResponse" });
   }
 }
 function __c17(j: number): any {
@@ -6502,9 +6454,7 @@ function __c19(j: number): any {
           NextMarker: S.optional(S.String),
           LayerVersions: S.optional(__S(609, __c19, 1)),
         }),
-      ).annotate({
-        identifier: "ListLayerVersionsResponse",
-      });
+      ).annotate({ identifier: "ListLayerVersionsResponse" });
   }
 }
 function __c20(j: number): any {
@@ -6528,9 +6478,7 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListProvisionedConcurrencyConfigsRequest",
-      });
+      ).annotate({ identifier: "ListProvisionedConcurrencyConfigsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6542,9 +6490,7 @@ function __c20(j: number): any {
           StatusReason: S.optional(S.String),
           LastModified: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ProvisionedConcurrencyConfigListItem",
-      });
+      ).annotate({ identifier: "ProvisionedConcurrencyConfigListItem" });
     case 2:
       return S.Array(__S(641, __c20, 1));
     case 3:
@@ -6553,9 +6499,7 @@ function __c20(j: number): any {
           ProvisionedConcurrencyConfigs: S.optional(__S(642, __c20, 2)),
           NextMarker: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListProvisionedConcurrencyConfigsResponse",
-      });
+      ).annotate({ identifier: "ListProvisionedConcurrencyConfigsResponse" });
   }
 }
 function __c21(j: number): any {
@@ -6597,15 +6541,11 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListVersionsByFunctionRequest",
-      });
+      ).annotate({ identifier: "ListVersionsByFunctionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ NextMarker: S.optional(S.String), Versions: S.optional(__S(416, __c13, 0)) }),
-      ).annotate({
-        identifier: "ListVersionsByFunctionResponse",
-      });
+      ).annotate({ identifier: "ListVersionsByFunctionResponse" });
   }
 }
 function __c23(j: number): any {
@@ -6639,25 +6579,7 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PublishLayerVersionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Content: S.optional(__S(3648, __c114, 0)),
-          LayerArn: S.optional(S.String),
-          LayerVersionArn: S.optional(S.String),
-          Description: S.optional(S.String),
-          CreatedDate: S.optional(S.String),
-          Version: S.optional(S.Number),
-          CompatibleArchitectures: S.optional(__S(1888, __c59, 0)),
-          CompatibleRuntimes: S.optional(__S(1888, __c59, 0)),
-          LicenseInfo: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PublishLayerVersionResponse",
-      });
+      ).annotate({ identifier: "PublishLayerVersionRequest" });
   }
 }
 function __c24(j: number): any {
@@ -6703,9 +6625,7 @@ function __c25(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutFunctionCodeSigningConfigRequest",
-      });
+      ).annotate({ identifier: "PutFunctionCodeSigningConfigRequest" });
   }
 }
 function __c26(j: number): any {
@@ -6725,9 +6645,7 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutFunctionConcurrencyRequest",
-      });
+      ).annotate({ identifier: "PutFunctionConcurrencyRequest" });
   }
 }
 function __c27(j: number): any {
@@ -6753,9 +6671,7 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutFunctionEventInvokeConfigRequest",
-      });
+      ).annotate({ identifier: "PutFunctionEventInvokeConfigRequest" });
   }
 }
 function __c28(j: number): any {
@@ -6775,9 +6691,7 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutFunctionRecursionConfigRequest",
-      });
+      ).annotate({ identifier: "PutFunctionRecursionConfigRequest" });
   }
 }
 function __c29(j: number): any {
@@ -6787,7 +6701,7 @@ function __c29(j: number): any {
         S.Struct({
           FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
           Qualifier: S.String.pipe(T.HttpQuery("Qualifier")),
-          FunctionScalingConfig: S.optional(__S(3488, __c109, 0)),
+          FunctionScalingConfig: S.optional(__S(3424, __c107, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -6801,9 +6715,7 @@ function __c29(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutFunctionScalingConfigRequest",
-      });
+      ).annotate({ identifier: "PutFunctionScalingConfigRequest" });
     case 1:
       return S.suspend(() => S.Struct({ FunctionState: S.optional(S.String) })).annotate({
         identifier: "PutFunctionScalingConfigResponse",
@@ -6831,9 +6743,7 @@ function __c30(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutProvisionedConcurrencyConfigRequest",
-      });
+      ).annotate({ identifier: "PutProvisionedConcurrencyConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6844,9 +6754,7 @@ function __c30(j: number): any {
           StatusReason: S.optional(S.String),
           LastModified: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "PutProvisionedConcurrencyConfigResponse",
-      });
+      ).annotate({ identifier: "PutProvisionedConcurrencyConfigResponse" });
   }
 }
 function __c31(j: number): any {
@@ -6892,9 +6800,7 @@ function __c32(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutRuntimeManagementConfigRequest",
-      });
+      ).annotate({ identifier: "PutRuntimeManagementConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6902,9 +6808,7 @@ function __c32(j: number): any {
           FunctionArn: S.String,
           RuntimeVersionArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "PutRuntimeManagementConfigResponse",
-      });
+      ).annotate({ identifier: "PutRuntimeManagementConfigResponse" });
   }
 }
 function __c33(j: number): any {
@@ -6929,9 +6833,7 @@ function __c33(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RemoveLayerVersionPermissionRequest",
-      });
+      ).annotate({ identifier: "RemoveLayerVersionPermissionRequest" });
   }
 }
 function __c34(j: number): any {
@@ -6981,9 +6883,7 @@ function __c35(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SendDurableExecutionCallbackFailureRequest",
-      });
+      ).annotate({ identifier: "SendDurableExecutionCallbackFailureRequest" });
   }
 }
 function __c36(j: number): any {
@@ -7003,9 +6903,7 @@ function __c36(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SendDurableExecutionCallbackHeartbeatRequest",
-      });
+      ).annotate({ identifier: "SendDurableExecutionCallbackHeartbeatRequest" });
   }
 }
 function __c37(j: number): any {
@@ -7028,9 +6926,7 @@ function __c37(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SendDurableExecutionCallbackSuccessRequest",
-      });
+      ).annotate({ identifier: "SendDurableExecutionCallbackSuccessRequest" });
   }
 }
 function __c38(j: number): any {
@@ -7055,15 +6951,11 @@ function __c38(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StopDurableExecutionRequest",
-      });
+      ).annotate({ identifier: "StopDurableExecutionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ StopTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }),
-      ).annotate({
-        identifier: "StopDurableExecutionResponse",
-      });
+      ).annotate({ identifier: "StopDurableExecutionResponse" });
   }
 }
 function __c39(j: number): any {
@@ -7151,9 +7043,7 @@ function __c42(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateCapacityProviderRequest",
-      });
+      ).annotate({ identifier: "UpdateCapacityProviderRequest" });
   }
 }
 function __c43(j: number): any {
@@ -7178,9 +7068,7 @@ function __c43(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateCodeSigningConfigRequest",
-      });
+      ).annotate({ identifier: "UpdateCodeSigningConfigRequest" });
   }
 }
 function __c44(j: number): any {
@@ -7206,10 +7094,10 @@ function __c44(j: number): any {
           TumblingWindowInSeconds: S.optional(S.Number),
           SourceAccessConfigurations: S.optional(__S(2119, __c66, 7)),
           FunctionResponseTypes: S.optional(__S(1888, __c59, 0)),
-          AmazonManagedKafkaEventSourceConfig: S.optional(__S(2126, __c66, 14)),
-          SelfManagedKafkaEventSourceConfig: S.optional(__S(2126, __c66, 14)),
-          DocumentDBEventSourceConfig: S.optional(__S(2127, __c66, 15)),
-          ProvisionedPollerConfig: S.optional(__S(2128, __c66, 16)),
+          AmazonManagedKafkaEventSourceConfig: S.optional(__S(2125, __c66, 13)),
+          SelfManagedKafkaEventSourceConfig: S.optional(__S(2125, __c66, 13)),
+          DocumentDBEventSourceConfig: S.optional(__S(2126, __c66, 14)),
+          ProvisionedPollerConfig: S.optional(__S(2127, __c66, 15)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/2015-03-31/event-source-mappings/{UUID}" }),
@@ -7220,9 +7108,7 @@ function __c44(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateEventSourceMappingRequest",
-      });
+      ).annotate({ identifier: "UpdateEventSourceMappingRequest" });
   }
 }
 function __c45(j: number): any {
@@ -7253,9 +7139,7 @@ function __c45(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateFunctionCodeRequest",
-      });
+      ).annotate({ identifier: "UpdateFunctionCodeRequest" });
   }
 }
 function __c46(j: number): any {
@@ -7294,9 +7178,7 @@ function __c46(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateFunctionConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateFunctionConfigurationRequest" });
   }
 }
 function __c47(j: number): any {
@@ -7322,9 +7204,7 @@ function __c47(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateFunctionEventInvokeConfigRequest",
-      });
+      ).annotate({ identifier: "UpdateFunctionEventInvokeConfigRequest" });
   }
 }
 function __c48(j: number): any {
@@ -7347,9 +7227,7 @@ function __c48(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateFunctionUrlConfigRequest",
-      });
+      ).annotate({ identifier: "UpdateFunctionUrlConfigRequest" });
   }
 }
 function __c49(j: number): any {
@@ -7377,15 +7255,11 @@ function __c49(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AddLayerVersionPermissionRequest",
-      });
+      ).annotate({ identifier: "AddLayerVersionPermissionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Statement: S.optional(S.String), RevisionId: S.optional(S.String) }),
-      ).annotate({
-        identifier: "AddLayerVersionPermissionResponse",
-      });
+      ).annotate({ identifier: "AddLayerVersionPermissionResponse" });
   }
 }
 function __c50(j: number): any {
@@ -7487,24 +7361,15 @@ function __c51(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CheckpointDurableExecutionRequest",
-      });
+      ).annotate({ identifier: "CheckpointDurableExecutionRequest" });
     case 8:
       return S.suspend(() =>
         S.Struct({ Operations: S.optional(__S(1703, __c53, 7)), NextMarker: S.optional(S.String) }),
-      ).annotate({
-        identifier: "CheckpointUpdatedExecutionState",
-      });
+      ).annotate({ identifier: "CheckpointUpdatedExecutionState" });
     case 9:
       return S.suspend(() =>
-        S.Struct({
-          CheckpointToken: S.optional(S.String),
-          NewExecutionState: __S(1640, __c51, 8),
-        }),
-      ).annotate({
-        identifier: "CheckpointDurableExecutionResponse",
-      });
+        S.Struct({ CheckpointToken: S.optional(S.String), NewExecutionState: __S(1640, __c51, 8) }),
+      ).annotate({ identifier: "CheckpointDurableExecutionResponse" });
   }
 }
 function __c52(j: number): any {
@@ -7616,9 +7481,7 @@ function __c55(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ AdditionalVersionWeights: S.optional(__S(1760, __c55, 0)) }),
-      ).annotate({
-        identifier: "AliasRoutingConfiguration",
-      });
+      ).annotate({ identifier: "AliasRoutingConfiguration" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -7656,9 +7519,7 @@ function __c56(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateCapacityProviderRequest",
-      });
+      ).annotate({ identifier: "CreateCapacityProviderRequest" });
   }
 }
 function __c57(j: number): any {
@@ -7683,13 +7544,8 @@ function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          SubnetIds: __S(1824, __c57, 0),
-          SecurityGroupIds: __S(1824, __c57, 0),
-        }),
-      ).annotate({
-        identifier: "CapacityProviderVpcConfig",
-      });
+        S.Struct({ SubnetIds: __S(1824, __c57, 0), SecurityGroupIds: __S(1824, __c57, 0) }),
+      ).annotate({ identifier: "CapacityProviderVpcConfig" });
     case 1:
       return S.suspend(() => S.Struct({ CapacityProviderOperatorRoleArn: S.String })).annotate({
         identifier: "CapacityProviderPermissionsConfig",
@@ -7705,9 +7561,7 @@ function __c60(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ PredefinedMetricType: S.String, TargetValue: S.Number }),
-      ).annotate({
-        identifier: "TargetTrackingScalingPolicy",
-      });
+      ).annotate({ identifier: "TargetTrackingScalingPolicy" });
     case 4:
       return S.Array(__S(1923, __c60, 3));
     case 5:
@@ -7717,9 +7571,7 @@ function __c60(j: number): any {
           ScalingMode: S.optional(S.String),
           ScalingPolicies: S.optional(__S(1924, __c60, 4)),
         }),
-      ).annotate({
-        identifier: "CapacityProviderScalingConfig",
-      });
+      ).annotate({ identifier: "CapacityProviderScalingConfig" });
     case 6:
       return S.suspend(() =>
         S.Struct({ Mode: S.optional(S.String), ExplicitTags: S.optional(__S(1856, __c58, 0)) }),
@@ -7727,14 +7579,10 @@ function __c60(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({ SystemLogLevel: S.optional(S.String), LogGroup: S.optional(S.String) }),
-      ).annotate({
-        identifier: "CapacityProviderLoggingConfig",
-      });
+      ).annotate({ identifier: "CapacityProviderLoggingConfig" });
     case 8:
       return S.suspend(() => S.Struct({ LoggingConfig: S.optional(__S(1927, __c60, 7)) })).annotate(
-        {
-          identifier: "CapacityProviderTelemetryConfig",
-        },
+        { identifier: "CapacityProviderTelemetryConfig" },
       );
     case 9:
       return S.suspend(() =>
@@ -7780,9 +7628,7 @@ function __c62(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateCodeSigningConfigRequest",
-      });
+      ).annotate({ identifier: "CreateCodeSigningConfigRequest" });
   }
 }
 function __c63(j: number): any {
@@ -7845,10 +7691,10 @@ function __c65(j: number): any {
           SourceAccessConfigurations: S.optional(__S(2119, __c66, 7)),
           SelfManagedEventSource: S.optional(__S(2121, __c66, 9)),
           FunctionResponseTypes: S.optional(__S(1888, __c59, 0)),
-          AmazonManagedKafkaEventSourceConfig: S.optional(__S(2126, __c66, 14)),
-          SelfManagedKafkaEventSourceConfig: S.optional(__S(2126, __c66, 14)),
-          DocumentDBEventSourceConfig: S.optional(__S(2127, __c66, 15)),
-          ProvisionedPollerConfig: S.optional(__S(2128, __c66, 16)),
+          AmazonManagedKafkaEventSourceConfig: S.optional(__S(2125, __c66, 13)),
+          SelfManagedKafkaEventSourceConfig: S.optional(__S(2125, __c66, 13)),
+          DocumentDBEventSourceConfig: S.optional(__S(2126, __c66, 14)),
+          ProvisionedPollerConfig: S.optional(__S(2127, __c66, 15)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/2015-03-31/event-source-mappings" }),
@@ -7859,9 +7705,7 @@ function __c65(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateEventSourceMappingRequest",
-      });
+      ).annotate({ identifier: "CreateEventSourceMappingRequest" });
   }
 }
 function __c66(j: number): any {
@@ -7891,9 +7735,7 @@ function __c66(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({ Type: S.optional(S.String), URI: S.optional(S.String) }),
-      ).annotate({
-        identifier: "SourceAccessConfiguration",
-      });
+      ).annotate({ identifier: "SourceAccessConfiguration" });
     case 7:
       return S.Array(__S(2118, __c66, 6));
     case 8:
@@ -7903,44 +7745,36 @@ function __c66(j: number): any {
         identifier: "SelfManagedEventSource",
       });
     case 10:
-      return S.Array(__S(2118, __c66, 6));
-    case 11:
       return S.suspend(() => S.Struct({ Attribute: S.optional(S.String) })).annotate({
         identifier: "KafkaSchemaValidationConfig",
       });
+    case 11:
+      return S.Array(__S(2122, __c66, 10));
     case 12:
-      return S.Array(__S(2123, __c66, 11));
-    case 13:
       return S.suspend(() =>
         S.Struct({
           SchemaRegistryURI: S.optional(S.String),
           EventRecordFormat: S.optional(S.String),
-          AccessConfigs: S.optional(__S(2122, __c66, 10)),
-          SchemaValidationConfigs: S.optional(__S(2124, __c66, 12)),
+          AccessConfigs: S.optional(__S(2119, __c66, 7)),
+          SchemaValidationConfigs: S.optional(__S(2123, __c66, 11)),
         }),
-      ).annotate({
-        identifier: "KafkaSchemaRegistryConfig",
-      });
-    case 14:
+      ).annotate({ identifier: "KafkaSchemaRegistryConfig" });
+    case 13:
       return S.suspend(() =>
         S.Struct({
           ConsumerGroupId: S.optional(S.String),
-          SchemaRegistryConfig: S.optional(__S(2125, __c66, 13)),
+          SchemaRegistryConfig: S.optional(__S(2124, __c66, 12)),
         }),
-      ).annotate({
-        identifier: "AmazonManagedKafkaEventSourceConfig",
-      });
-    case 15:
+      ).annotate({ identifier: "AmazonManagedKafkaEventSourceConfig" });
+    case 14:
       return S.suspend(() =>
         S.Struct({
           DatabaseName: S.optional(S.String),
           CollectionName: S.optional(S.String),
           FullDocument: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DocumentDBEventSourceConfig",
-      });
-    case 16:
+      ).annotate({ identifier: "DocumentDBEventSourceConfig" });
+    case 15:
       return S.suspend(() =>
         S.Struct({
           MinimumPollers: S.optional(S.Number),
@@ -7948,11 +7782,11 @@ function __c66(j: number): any {
           PollerGroupName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProvisionedPollerConfig" });
-    case 17:
+    case 16:
       return S.suspend(() =>
         S.Struct({ ErrorCode: S.optional(S.String), Message: S.optional(S.String) }),
       ).annotate({ identifier: "FilterCriteriaError" });
-    case 18:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           UUID: S.optional(S.String),
@@ -7963,7 +7797,7 @@ function __c66(j: number): any {
           ParallelizationFactor: S.optional(S.Number),
           EventSourceArn: S.optional(S.String),
           FilterCriteria: S.optional(__S(2114, __c66, 2)),
-          FilterCriteriaError: S.optional(__S(2129, __c66, 17)),
+          FilterCriteriaError: S.optional(__S(2128, __c66, 16)),
           KMSKeyArn: S.optional(S.String),
           MetricsConfig: S.optional(__S(2115, __c66, 3)),
           LoggingConfig: S.optional(__S(2116, __c66, 4)),
@@ -7983,15 +7817,13 @@ function __c66(j: number): any {
           MaximumRetryAttempts: S.optional(S.Number),
           TumblingWindowInSeconds: S.optional(S.Number),
           FunctionResponseTypes: S.optional(__S(1888, __c59, 0)),
-          AmazonManagedKafkaEventSourceConfig: S.optional(__S(2126, __c66, 14)),
-          SelfManagedKafkaEventSourceConfig: S.optional(__S(2126, __c66, 14)),
-          DocumentDBEventSourceConfig: S.optional(__S(2127, __c66, 15)),
+          AmazonManagedKafkaEventSourceConfig: S.optional(__S(2125, __c66, 13)),
+          SelfManagedKafkaEventSourceConfig: S.optional(__S(2125, __c66, 13)),
+          DocumentDBEventSourceConfig: S.optional(__S(2126, __c66, 14)),
           EventSourceMappingArn: S.optional(S.String),
-          ProvisionedPollerConfig: S.optional(__S(2128, __c66, 16)),
+          ProvisionedPollerConfig: S.optional(__S(2127, __c66, 15)),
         }),
-      ).annotate({
-        identifier: "EventSourceMappingConfiguration",
-      });
+      ).annotate({ identifier: "EventSourceMappingConfiguration" });
   }
 }
 function __c67(j: number): any {
@@ -8157,14 +7989,10 @@ function __c71(j: number): any {
           PerExecutionEnvironmentMaxConcurrency: S.optional(S.Number),
           ExecutionEnvironmentMemoryGiBPerVCpu: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "LambdaManagedInstancesCapacityProviderConfig",
-      });
+      ).annotate({ identifier: "LambdaManagedInstancesCapacityProviderConfig" });
     case 11:
       return S.suspend(() =>
-        S.Struct({
-          LambdaManagedInstancesCapacityProviderConfig: __S(2282, __c71, 10),
-        }),
+        S.Struct({ LambdaManagedInstancesCapacityProviderConfig: __S(2282, __c71, 10) }),
       ).annotate({ identifier: "CapacityProviderConfig" });
     case 12:
       return S.suspend(() =>
@@ -8206,10 +8034,7 @@ function __c71(j: number): any {
       ).annotate({ identifier: "ImageConfigResponse" });
     case 18:
       return S.suspend(() =>
-        S.Struct({
-          ApplyOn: S.optional(S.String),
-          OptimizationStatus: S.optional(S.String),
-        }),
+        S.Struct({ ApplyOn: S.optional(S.String), OptimizationStatus: S.optional(S.String) }),
       ).annotate({ identifier: "SnapStartResponse" });
     case 19:
       return S.suspend(() =>
@@ -8285,9 +8110,7 @@ function __c72(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateFunctionUrlConfigRequest",
-      });
+      ).annotate({ identifier: "CreateFunctionUrlConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8298,9 +8121,7 @@ function __c72(j: number): any {
           CreationTime: S.String,
           InvokeMode: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateFunctionUrlConfigResponse",
-      });
+      ).annotate({ identifier: "CreateFunctionUrlConfigResponse" });
   }
 }
 function __c73(j: number): any {
@@ -8344,9 +8165,7 @@ function __c74(j: number): any {
 function __c75(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAliasResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteAliasResponse" });
   }
 }
 function __c76(j: number): any {
@@ -8366,9 +8185,7 @@ function __c76(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteCapacityProviderRequest",
-      });
+      ).annotate({ identifier: "DeleteCapacityProviderRequest" });
   }
 }
 function __c77(j: number): any {
@@ -8388,20 +8205,10 @@ function __c77(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteCodeSigningConfigRequest",
-      });
+      ).annotate({ identifier: "DeleteCodeSigningConfigRequest" });
   }
 }
 function __c78(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteCodeSigningConfigResponse",
-      });
-  }
-}
-function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8415,12 +8222,10 @@ function __c79(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteEventSourceMappingRequest",
-      });
+      ).annotate({ identifier: "DeleteEventSourceMappingRequest" });
   }
 }
-function __c80(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8444,7 +8249,7 @@ function __c80(j: number): any {
       ).annotate({ identifier: "DeleteFunctionResponse" });
   }
 }
-function __c81(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8461,20 +8266,10 @@ function __c81(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteFunctionCodeSigningConfigRequest",
-      });
+      ).annotate({ identifier: "DeleteFunctionCodeSigningConfigRequest" });
   }
 }
-function __c82(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteFunctionCodeSigningConfigResponse",
-      });
-  }
-}
-function __c83(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8488,12 +8283,10 @@ function __c83(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteFunctionConcurrencyRequest",
-      });
+      ).annotate({ identifier: "DeleteFunctionConcurrencyRequest" });
   }
 }
-function __c84(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8513,12 +8306,10 @@ function __c84(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteFunctionEventInvokeConfigRequest",
-      });
+      ).annotate({ identifier: "DeleteFunctionEventInvokeConfigRequest" });
   }
 }
-function __c85(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8535,12 +8326,10 @@ function __c85(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteFunctionUrlConfigRequest",
-      });
+      ).annotate({ identifier: "DeleteFunctionUrlConfigRequest" });
   }
 }
-function __c86(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8560,12 +8349,10 @@ function __c86(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteLayerVersionRequest",
-      });
+      ).annotate({ identifier: "DeleteLayerVersionRequest" });
   }
 }
-function __c87(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8585,12 +8372,10 @@ function __c87(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteProvisionedConcurrencyConfigRequest",
-      });
+      ).annotate({ identifier: "DeleteProvisionedConcurrencyConfigRequest" });
   }
 }
-function __c88(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8607,12 +8392,10 @@ function __c88(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteResourcePolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteResourcePolicyRequest" });
   }
 }
-function __c89(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8626,9 +8409,7 @@ function __c89(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAccountSettingsRequest",
-      });
+      ).annotate({ identifier: "GetAccountSettingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8646,15 +8427,13 @@ function __c89(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AccountLimit: S.optional(__S(2849, __c89, 1)),
-          AccountUsage: S.optional(__S(2850, __c89, 2)),
+          AccountLimit: S.optional(__S(2785, __c87, 1)),
+          AccountUsage: S.optional(__S(2786, __c87, 2)),
         }),
-      ).annotate({
-        identifier: "GetAccountSettingsResponse",
-      });
+      ).annotate({ identifier: "GetAccountSettingsResponse" });
   }
 }
-function __c90(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8674,7 +8453,7 @@ function __c90(j: number): any {
       ).annotate({ identifier: "GetAliasRequest" });
   }
 }
-function __c91(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8688,12 +8467,10 @@ function __c91(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetCapacityProviderRequest",
-      });
+      ).annotate({ identifier: "GetCapacityProviderRequest" });
   }
 }
-function __c92(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8710,12 +8487,10 @@ function __c92(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetCodeSigningConfigRequest",
-      });
+      ).annotate({ identifier: "GetCodeSigningConfigRequest" });
   }
 }
-function __c93(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8732,9 +8507,7 @@ function __c93(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDurableExecutionRequest",
-      });
+      ).annotate({ identifier: "GetDurableExecutionRequest" });
     case 1:
       return S.suspend(() => S.Struct({ XAmznTraceId: S.optional(S.String) })).annotate({
         identifier: "TraceHeader",
@@ -8752,16 +8525,14 @@ function __c93(j: number): any {
           Status: S.String,
           EndTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Version: S.optional(S.String),
-          TraceHeader: S.optional(__S(2977, __c93, 1)),
+          TraceHeader: S.optional(__S(2913, __c91, 1)),
           ExecutionDataIncluded: S.optional(S.Boolean),
           DurableConfig: S.optional(__S(2240, __c70, 0)),
         }),
-      ).annotate({
-        identifier: "GetDurableExecutionResponse",
-      });
+      ).annotate({ identifier: "GetDurableExecutionResponse" });
   }
 }
-function __c94(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8784,19 +8555,17 @@ function __c94(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDurableExecutionHistoryRequest",
-      });
+      ).annotate({ identifier: "GetDurableExecutionHistoryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Payload: S.optional(SensitiveString), Truncated: S.optional(S.Boolean) }),
       ).annotate({ identifier: "EventInput" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Input: __S(3009, __c94, 1), ExecutionTimeout: S.Number }),
+        S.Struct({ Input: __S(2945, __c92, 1), ExecutionTimeout: S.Number }),
       ).annotate({ identifier: "ExecutionStartedDetails" });
     case 3:
-      return S.suspend(() => S.Struct({ Result: __S(3009, __c94, 1) })).annotate({
+      return S.suspend(() => S.Struct({ Result: __S(2945, __c92, 1) })).annotate({
         identifier: "ExecutionSucceededDetails",
       });
     case 4:
@@ -8804,60 +8573,50 @@ function __c94(j: number): any {
         S.Struct({ Payload: S.optional(__S(1665, __c52, 1)), Truncated: S.optional(S.Boolean) }),
       ).annotate({ identifier: "EventError" });
     case 5:
-      return S.suspend(() => S.Struct({ Error: __S(3012, __c94, 4) })).annotate({
+      return S.suspend(() => S.Struct({ Error: __S(2948, __c92, 4) })).annotate({
         identifier: "ExecutionFailedDetails",
       });
     case 6:
-      return S.suspend(() => S.Struct({ Error: S.optional(__S(3012, __c94, 4)) })).annotate({
+      return S.suspend(() => S.Struct({ Error: S.optional(__S(2948, __c92, 4)) })).annotate({
         identifier: "ExecutionTimedOutDetails",
       });
     case 7:
-      return S.suspend(() => S.Struct({ Result: __S(3009, __c94, 1) })).annotate({
-        identifier: "ContextSucceededDetails",
-      });
-    case 8:
       return S.suspend(() =>
         S.Struct({
           Duration: S.Number,
           ScheduledEndTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "WaitStartedDetails" });
-    case 9:
+    case 8:
       return S.suspend(() => S.Struct({ Duration: S.optional(S.Number) })).annotate({
         identifier: "WaitSucceededDetails",
       });
-    case 10:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           CurrentAttempt: S.optional(S.Number),
           NextAttemptDelaySeconds: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RetryDetails" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({ Result: __S(2945, __c92, 1), RetryDetails: __S(2953, __c92, 9) }),
+      ).annotate({ identifier: "StepSucceededDetails" });
     case 11:
       return S.suspend(() =>
-        S.Struct({ Result: __S(3009, __c94, 1), RetryDetails: __S(3018, __c94, 10) }),
-      ).annotate({ identifier: "StepSucceededDetails" });
-    case 12:
-      return S.suspend(() =>
-        S.Struct({ Error: __S(3012, __c94, 4), RetryDetails: __S(3018, __c94, 10) }),
+        S.Struct({ Error: __S(2948, __c92, 4), RetryDetails: __S(2953, __c92, 9) }),
       ).annotate({ identifier: "StepFailedDetails" });
-    case 13:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           FunctionName: S.String,
           TenantId: S.optional(S.String),
-          Input: S.optional(__S(3009, __c94, 1)),
+          Input: S.optional(__S(2945, __c92, 1)),
           ExecutedVersion: S.optional(S.String),
           DurableExecutionArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ChainedInvokeStartedDetails",
-      });
-    case 14:
-      return S.suspend(() => S.Struct({ Error: __S(3012, __c94, 4) })).annotate({
-        identifier: "ChainedInvokeFailedDetails",
-      });
-    case 15:
+      ).annotate({ identifier: "ChainedInvokeStartedDetails" });
+    case 13:
       return S.suspend(() =>
         S.Struct({
           CallbackId: S.String,
@@ -8865,18 +8624,16 @@ function __c94(j: number): any {
           Timeout: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CallbackStartedDetails" });
-    case 16:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           StartTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           EndTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           RequestId: S.String,
-          Error: S.optional(__S(3012, __c94, 4)),
+          Error: S.optional(__S(2948, __c92, 4)),
         }),
-      ).annotate({
-        identifier: "InvocationCompletedDetails",
-      });
-    case 17:
+      ).annotate({ identifier: "InvocationCompletedDetails" });
+    case 15:
       return S.suspend(() =>
         S.Struct({
           EventType: S.optional(S.String),
@@ -8886,43 +8643,41 @@ function __c94(j: number): any {
           Name: S.optional(S.String),
           EventTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ParentId: S.optional(S.String),
-          ExecutionStartedDetails: S.optional(__S(3010, __c94, 2)),
-          ExecutionSucceededDetails: S.optional(__S(3011, __c94, 3)),
-          ExecutionFailedDetails: S.optional(__S(3013, __c94, 5)),
-          ExecutionTimedOutDetails: S.optional(__S(3014, __c94, 6)),
-          ExecutionStoppedDetails: S.optional(__S(3013, __c94, 5)),
+          ExecutionStartedDetails: S.optional(__S(2946, __c92, 2)),
+          ExecutionSucceededDetails: S.optional(__S(2947, __c92, 3)),
+          ExecutionFailedDetails: S.optional(__S(2949, __c92, 5)),
+          ExecutionTimedOutDetails: S.optional(__S(2950, __c92, 6)),
+          ExecutionStoppedDetails: S.optional(__S(2949, __c92, 5)),
           ContextStartedDetails: S.optional(__S(2400, __c75, 0)),
-          ContextSucceededDetails: S.optional(__S(3015, __c94, 7)),
-          ContextFailedDetails: S.optional(__S(3013, __c94, 5)),
-          WaitStartedDetails: S.optional(__S(3016, __c94, 8)),
-          WaitSucceededDetails: S.optional(__S(3017, __c94, 9)),
-          WaitCancelledDetails: S.optional(__S(3014, __c94, 6)),
+          ContextSucceededDetails: S.optional(__S(2947, __c92, 3)),
+          ContextFailedDetails: S.optional(__S(2949, __c92, 5)),
+          WaitStartedDetails: S.optional(__S(2951, __c92, 7)),
+          WaitSucceededDetails: S.optional(__S(2952, __c92, 8)),
+          WaitCancelledDetails: S.optional(__S(2950, __c92, 6)),
           StepStartedDetails: S.optional(__S(2400, __c75, 0)),
-          StepSucceededDetails: S.optional(__S(3019, __c94, 11)),
-          StepFailedDetails: S.optional(__S(3020, __c94, 12)),
-          ChainedInvokeStartedDetails: S.optional(__S(3021, __c94, 13)),
-          ChainedInvokeSucceededDetails: S.optional(__S(3011, __c94, 3)),
-          ChainedInvokeFailedDetails: S.optional(__S(3022, __c94, 14)),
-          ChainedInvokeTimedOutDetails: S.optional(__S(3022, __c94, 14)),
-          ChainedInvokeStoppedDetails: S.optional(__S(3022, __c94, 14)),
-          CallbackStartedDetails: S.optional(__S(3023, __c94, 15)),
-          CallbackSucceededDetails: S.optional(__S(3015, __c94, 7)),
-          CallbackFailedDetails: S.optional(__S(3013, __c94, 5)),
-          CallbackTimedOutDetails: S.optional(__S(3013, __c94, 5)),
-          InvocationCompletedDetails: S.optional(__S(3024, __c94, 16)),
+          StepSucceededDetails: S.optional(__S(2954, __c92, 10)),
+          StepFailedDetails: S.optional(__S(2955, __c92, 11)),
+          ChainedInvokeStartedDetails: S.optional(__S(2956, __c92, 12)),
+          ChainedInvokeSucceededDetails: S.optional(__S(2947, __c92, 3)),
+          ChainedInvokeFailedDetails: S.optional(__S(2949, __c92, 5)),
+          ChainedInvokeTimedOutDetails: S.optional(__S(2949, __c92, 5)),
+          ChainedInvokeStoppedDetails: S.optional(__S(2949, __c92, 5)),
+          CallbackStartedDetails: S.optional(__S(2957, __c92, 13)),
+          CallbackSucceededDetails: S.optional(__S(2947, __c92, 3)),
+          CallbackFailedDetails: S.optional(__S(2949, __c92, 5)),
+          CallbackTimedOutDetails: S.optional(__S(2949, __c92, 5)),
+          InvocationCompletedDetails: S.optional(__S(2958, __c92, 14)),
         }),
       ).annotate({ identifier: "Event" });
-    case 18:
-      return S.Array(__S(3025, __c94, 17));
-    case 19:
+    case 16:
+      return S.Array(__S(2959, __c92, 15));
+    case 17:
       return S.suspend(() =>
-        S.Struct({ Events: __S(3026, __c94, 18), NextMarker: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetDurableExecutionHistoryResponse",
-      });
+        S.Struct({ Events: __S(2960, __c92, 16), NextMarker: S.optional(S.String) }),
+      ).annotate({ identifier: "GetDurableExecutionHistoryResponse" });
   }
 }
-function __c95(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8944,18 +8699,14 @@ function __c95(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDurableExecutionStateRequest",
-      });
+      ).annotate({ identifier: "GetDurableExecutionStateRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Operations: __S(1703, __c53, 7), NextMarker: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetDurableExecutionStateResponse",
-      });
+      ).annotate({ identifier: "GetDurableExecutionStateResponse" });
   }
 }
-function __c96(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8969,12 +8720,10 @@ function __c96(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetEventSourceMappingRequest",
-      });
+      ).annotate({ identifier: "GetEventSourceMappingRequest" });
   }
 }
-function __c97(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8994,39 +8743,33 @@ function __c97(j: number): any {
       ).annotate({ identifier: "GetFunctionRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ErrorCode: S.optional(S.String), Message: S.optional(SensitiveString) }),
-      ).annotate({
-        identifier: "FunctionCodeLocationError",
-      });
-    case 2:
-      return S.suspend(() =>
         S.Struct({
           RepositoryType: S.optional(S.String),
           Location: S.optional(S.String),
           ImageUri: S.optional(S.String),
           ResolvedImageUri: S.optional(S.String),
-          ResolvedS3Object: S.optional(__S(3168, __c99, 0)),
+          ResolvedS3Object: S.optional(__S(3104, __c97, 0)),
           SourceKMSKeyArn: S.optional(S.String),
-          Error: S.optional(__S(3105, __c97, 1)),
+          Error: S.optional(__S(2285, __c71, 13)),
         }),
       ).annotate({ identifier: "FunctionCodeLocation" });
-    case 3:
+    case 2:
       return S.suspend(() => S.Struct({ ErrorCode: S.String, Message: S.String })).annotate({
         identifier: "TagsError",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Configuration: S.optional(__S(2292, __c71, 20)),
-          Code: S.optional(__S(3106, __c97, 2)),
+          Code: S.optional(__S(3041, __c95, 1)),
           Tags: S.optional(__S(1856, __c58, 0)),
-          TagsError: S.optional(__S(3107, __c97, 3)),
-          Concurrency: S.optional(__S(3136, __c98, 0)),
+          TagsError: S.optional(__S(3042, __c95, 2)),
+          Concurrency: S.optional(__S(3072, __c96, 0)),
         }),
       ).annotate({ identifier: "GetFunctionResponse" });
   }
 }
-function __c98(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9034,7 +8777,7 @@ function __c98(j: number): any {
       ).annotate({ identifier: "Concurrency" });
   }
 }
-function __c99(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9046,7 +8789,7 @@ function __c99(j: number): any {
       ).annotate({ identifier: "ResolvedS3Object" });
   }
 }
-function __c100(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9063,22 +8806,18 @@ function __c100(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetFunctionCodeSigningConfigRequest",
-      });
+      ).annotate({ identifier: "GetFunctionCodeSigningConfigRequest" });
   }
 }
-function __c101(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ CodeSigningConfigArn: S.String, FunctionName: S.String }),
-      ).annotate({
-        identifier: "GetFunctionCodeSigningConfigResponse",
-      });
+      ).annotate({ identifier: "GetFunctionCodeSigningConfigResponse" });
   }
 }
-function __c102(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9092,18 +8831,10 @@ function __c102(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetFunctionConcurrencyRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ ReservedConcurrentExecutions: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "GetFunctionConcurrencyResponse",
-      });
+      ).annotate({ identifier: "GetFunctionConcurrencyRequest" });
   }
 }
-function __c103(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9120,12 +8851,10 @@ function __c103(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetFunctionConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetFunctionConfigurationRequest" });
   }
 }
-function __c104(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9145,12 +8874,10 @@ function __c104(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetFunctionEventInvokeConfigRequest",
-      });
+      ).annotate({ identifier: "GetFunctionEventInvokeConfigRequest" });
   }
 }
-function __c105(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9161,12 +8888,10 @@ function __c105(j: number): any {
           MaximumEventAgeInSeconds: S.optional(S.Number),
           DestinationConfig: S.optional(__S(2145, __c67, 1)),
         }),
-      ).annotate({
-        identifier: "FunctionEventInvokeConfig",
-      });
+      ).annotate({ identifier: "FunctionEventInvokeConfig" });
   }
 }
-function __c106(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9180,12 +8905,10 @@ function __c106(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetFunctionRecursionConfigRequest",
-      });
+      ).annotate({ identifier: "GetFunctionRecursionConfigRequest" });
   }
 }
-function __c107(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ RecursiveLoop: S.optional(S.String) })).annotate({
@@ -9193,7 +8916,7 @@ function __c107(j: number): any {
       });
   }
 }
-function __c108(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9213,22 +8936,18 @@ function __c108(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetFunctionScalingConfigRequest",
-      });
+      ).annotate({ identifier: "GetFunctionScalingConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           FunctionArn: S.optional(S.String),
-          AppliedFunctionScalingConfig: S.optional(__S(3488, __c109, 0)),
-          RequestedFunctionScalingConfig: S.optional(__S(3488, __c109, 0)),
+          AppliedFunctionScalingConfig: S.optional(__S(3424, __c107, 0)),
+          RequestedFunctionScalingConfig: S.optional(__S(3424, __c107, 0)),
         }),
-      ).annotate({
-        identifier: "GetFunctionScalingConfigResponse",
-      });
+      ).annotate({ identifier: "GetFunctionScalingConfigResponse" });
   }
 }
-function __c109(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9239,7 +8958,7 @@ function __c109(j: number): any {
       ).annotate({ identifier: "FunctionScalingConfig" });
   }
 }
-function __c110(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9256,12 +8975,10 @@ function __c110(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetFunctionUrlConfigRequest",
-      });
+      ).annotate({ identifier: "GetFunctionUrlConfigRequest" });
   }
 }
-function __c111(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9274,12 +8991,10 @@ function __c111(j: number): any {
           LastModifiedTime: S.String,
           InvokeMode: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetFunctionUrlConfigResponse",
-      });
+      ).annotate({ identifier: "GetFunctionUrlConfigResponse" });
   }
 }
-function __c112(j: number): any {
+function __c110(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9302,12 +9017,23 @@ function __c112(j: number): any {
       ).annotate({ identifier: "GetLayerVersionRequest" });
   }
 }
-function __c113(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Content: S.optional(__S(3648, __c114, 0)),
+          Location: S.optional(S.String),
+          CodeSha256: S.optional(S.String),
+          CodeSize: S.optional(S.Number),
+          SigningProfileVersionArn: S.optional(S.String),
+          SigningJobArn: S.optional(S.String),
+          ResolvedS3Object: S.optional(__S(3104, __c97, 0)),
+        }),
+      ).annotate({ identifier: "LayerVersionContentOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Content: S.optional(__S(3552, __c111, 0)),
           LayerArn: S.optional(S.String),
           LayerVersionArn: S.optional(S.String),
           Description: S.optional(S.String),
@@ -9320,24 +9046,7 @@ function __c113(j: number): any {
       ).annotate({ identifier: "GetLayerVersionResponse" });
   }
 }
-function __c114(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Location: S.optional(S.String),
-          CodeSha256: S.optional(S.String),
-          CodeSize: S.optional(S.Number),
-          SigningProfileVersionArn: S.optional(S.String),
-          SigningJobArn: S.optional(S.String),
-          ResolvedS3Object: S.optional(__S(3168, __c99, 0)),
-        }),
-      ).annotate({
-        identifier: "LayerVersionContentOutput",
-      });
-  }
-}
-function __c115(j: number): any {
+function __c112(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9351,12 +9060,10 @@ function __c115(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetLayerVersionByArnRequest",
-      });
+      ).annotate({ identifier: "GetLayerVersionByArnRequest" });
   }
 }
-function __c116(j: number): any {
+function __c113(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9376,22 +9083,18 @@ function __c116(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetLayerVersionPolicyRequest",
-      });
+      ).annotate({ identifier: "GetLayerVersionPolicyRequest" });
   }
 }
-function __c117(j: number): any {
+function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ Policy: S.optional(S.String), RevisionId: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetLayerVersionPolicyResponse",
-      });
+      ).annotate({ identifier: "GetLayerVersionPolicyResponse" });
   }
 }
-function __c118(j: number): any {
+function __c115(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9409,10 +9112,6 @@ function __c118(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetPolicyRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Policy: S.optional(S.String), RevisionId: S.optional(S.String) }),
-      ).annotate({ identifier: "GetPolicyResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

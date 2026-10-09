@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -649,8 +649,8 @@ export const createEventIntegration: API.OperationMethod<
   CreateEventIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c11, 0) as any as S.Schema<CreateEventIntegrationRequest>,
-  output: __S(177, __c11, 1) as any as S.Schema<CreateEventIntegrationResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<CreateEventIntegrationRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<CreateEventIntegrationResponse>,
   errors: [
     AccessDeniedException,
     DuplicateResourceException,
@@ -684,8 +684,8 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c13, 0) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(224, __c14, 0) as any as S.Schema<DeleteApplicationResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<DeleteApplicationRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<DeleteApplicationResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -722,8 +722,8 @@ export const deleteDataIntegration: API.OperationMethod<
   DeleteDataIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c15, 0) as any as S.Schema<DeleteDataIntegrationRequest>,
-  output: __S(224, __c14, 0) as any as S.Schema<DeleteDataIntegrationResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<DeleteDataIntegrationRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<DeleteDataIntegrationResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -755,8 +755,8 @@ export const deleteEventIntegration: API.OperationMethod<
   DeleteEventIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c16, 0) as any as S.Schema<DeleteEventIntegrationRequest>,
-  output: __S(224, __c14, 0) as any as S.Schema<DeleteEventIntegrationResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<DeleteEventIntegrationRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<DeleteEventIntegrationResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -787,8 +787,8 @@ export const getApplication: API.OperationMethod<
   GetApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c17, 0) as any as S.Schema<GetApplicationRequest>,
-  output: __S(273, __c17, 1) as any as S.Schema<GetApplicationResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetApplicationRequest>,
+  output: __S(257, __c16, 1) as any as S.Schema<GetApplicationResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -823,8 +823,8 @@ export const getDataIntegration: API.OperationMethod<
   GetDataIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c18, 0) as any as S.Schema<GetDataIntegrationRequest>,
-  output: __S(289, __c18, 1) as any as S.Schema<GetDataIntegrationResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<GetDataIntegrationRequest>,
+  output: __S(273, __c17, 1) as any as S.Schema<GetDataIntegrationResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -855,8 +855,8 @@ export const getEventIntegration: API.OperationMethod<
   GetEventIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c19, 0) as any as S.Schema<GetEventIntegrationRequest>,
-  output: __S(305, __c19, 1) as any as S.Schema<GetEventIntegrationResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetEventIntegrationRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<GetEventIntegrationResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -888,8 +888,8 @@ export const listApplicationAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApplicationAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(320, __c20, 0) as any as S.Schema<ListApplicationAssociationsRequest>,
-  output: __S(323, __c20, 3) as any as S.Schema<ListApplicationAssociationsResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListApplicationAssociationsRequest>,
+  output: __S(307, __c19, 3) as any as S.Schema<ListApplicationAssociationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -926,8 +926,8 @@ export const listApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApplicationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<ListApplicationsRequest>,
-  output: __S(339, __c21, 3) as any as S.Schema<ListApplicationsResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<ListApplicationsRequest>,
+  output: __S(323, __c20, 3) as any as S.Schema<ListApplicationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -968,8 +968,8 @@ export const listDataIntegrationAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataIntegrationAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(352, __c22, 0) as any as S.Schema<ListDataIntegrationAssociationsRequest>,
-  output: __S(356, __c22, 4) as any as S.Schema<ListDataIntegrationAssociationsResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<ListDataIntegrationAssociationsRequest>,
+  output: __S(340, __c21, 4) as any as S.Schema<ListDataIntegrationAssociationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -1010,8 +1010,8 @@ export const listDataIntegrations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataIntegrationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(368, __c23, 0) as any as S.Schema<ListDataIntegrationsRequest>,
-  output: __S(371, __c23, 3) as any as S.Schema<ListDataIntegrationsResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<ListDataIntegrationsRequest>,
+  output: __S(355, __c22, 3) as any as S.Schema<ListDataIntegrationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -1048,8 +1048,8 @@ export const listEventIntegrationAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EventIntegrationAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<ListEventIntegrationAssociationsRequest>,
-  output: __S(387, __c24, 3) as any as S.Schema<ListEventIntegrationAssociationsResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<ListEventIntegrationAssociationsRequest>,
+  output: __S(371, __c23, 3) as any as S.Schema<ListEventIntegrationAssociationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -1086,8 +1086,8 @@ export const listEventIntegrations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EventIntegration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(400, __c25, 0) as any as S.Schema<ListEventIntegrationsRequest>,
-  output: __S(403, __c25, 3) as any as S.Schema<ListEventIntegrationsResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<ListEventIntegrationsRequest>,
+  output: __S(387, __c24, 3) as any as S.Schema<ListEventIntegrationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -1122,8 +1122,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c26, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(417, __c26, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(401, __c25, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1152,8 +1152,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c27, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(224, __c14, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1182,8 +1182,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(224, __c14, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1215,8 +1215,8 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c29, 0) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(224, __c14, 0) as any as S.Schema<UpdateApplicationResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<UpdateApplicationRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<UpdateApplicationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1253,8 +1253,8 @@ export const updateDataIntegration: API.OperationMethod<
   UpdateDataIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<UpdateDataIntegrationRequest>,
-  output: __S(224, __c14, 0) as any as S.Schema<UpdateDataIntegrationResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<UpdateDataIntegrationRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<UpdateDataIntegrationResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -1287,8 +1287,8 @@ export const updateDataIntegrationAssociation: API.OperationMethod<
   UpdateDataIntegrationAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<UpdateDataIntegrationAssociationRequest>,
-  output: __S(497, __c31, 1) as any as S.Schema<UpdateDataIntegrationAssociationResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<UpdateDataIntegrationAssociationRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<UpdateDataIntegrationAssociationResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -1319,8 +1319,8 @@ export const updateEventIntegration: API.OperationMethod<
   UpdateEventIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c32, 0) as any as S.Schema<UpdateEventIntegrationRequest>,
-  output: __S(224, __c14, 0) as any as S.Schema<UpdateEventIntegrationResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<UpdateEventIntegrationRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<UpdateEventIntegrationResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -1347,8 +1347,8 @@ function __c0(j: number): any {
           Subscriptions: S.optional(__S(51, __c3, 3)),
           Publications: S.optional(__S(53, __c3, 5)),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(32, __c2, 0)),
-          Permissions: S.optional(__S(16, __c1, 0)),
+          Tags: S.optional(__S(16, __c1, 0)),
+          Permissions: S.optional(__S(32, __c2, 0)),
           IsService: S.optional(S.Boolean),
           InitializationTimeout: S.optional(S.Number),
           ApplicationConfig: S.optional(__S(55, __c3, 7)),
@@ -1362,28 +1362,26 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ Arn: S.optional(S.String), Id: S.optional(S.String) }),
-      ).annotate({
-        identifier: "CreateApplicationResponse",
-      });
+      ).annotate({ identifier: "CreateApplicationResponse" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+      return S.Array(S.String);
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ AccessUrl: S.String, ApprovedOrigins: S.optional(__S(16, __c1, 0)) }),
+        S.Struct({ AccessUrl: S.String, ApprovedOrigins: S.optional(__S(32, __c2, 0)) }),
       ).annotate({ identifier: "ExternalUrlConfig" });
     case 1:
       return S.suspend(() =>
@@ -1411,7 +1409,7 @@ function __c3(j: number): any {
       });
     case 8:
       return S.suspend(() =>
-        S.Struct({ Allow: S.optional(__S(16, __c1, 0)), Sandbox: S.optional(__S(16, __c1, 0)) }),
+        S.Struct({ Allow: S.optional(__S(32, __c2, 0)), Sandbox: S.optional(__S(32, __c2, 0)) }),
       ).annotate({ identifier: "IframeConfig" });
     case 9:
       return S.suspend(() =>
@@ -1432,16 +1430,14 @@ function __c4(j: number): any {
           KmsKey: S.String,
           SourceURI: S.optional(S.String),
           ScheduleConfig: S.optional(__S(96, __c6, 0)),
-          Tags: S.optional(__S(32, __c2, 0)),
+          Tags: S.optional(__S(16, __c1, 0)),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           FileConfiguration: S.optional(__S(112, __c7, 0)),
           ObjectConfiguration: S.optional(__S(81, __c5, 1)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/dataIntegrations" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateDataIntegrationRequest",
-      });
+      ).annotate({ identifier: "CreateDataIntegrationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1452,20 +1448,18 @@ function __c4(j: number): any {
           KmsKey: S.optional(S.String),
           SourceURI: S.optional(S.String),
           ScheduleConfiguration: S.optional(__S(96, __c6, 0)),
-          Tags: S.optional(__S(32, __c2, 0)),
+          Tags: S.optional(__S(16, __c1, 0)),
           ClientToken: S.optional(S.String),
           FileConfiguration: S.optional(__S(112, __c7, 0)),
           ObjectConfiguration: S.optional(__S(81, __c5, 1)),
         }),
-      ).annotate({
-        identifier: "CreateDataIntegrationResponse",
-      });
+      ).annotate({ identifier: "CreateDataIntegrationResponse" });
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ __S(16, __c1, 0).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(32, __c2, 0).pipe(S.optional));
     case 1:
       return S.Record(S.String, /*@__PURE__*/ __S(80, __c5, 0).pipe(S.optional));
   }
@@ -1486,7 +1480,7 @@ function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Folders: __S(16, __c1, 0), Filters: S.optional(__S(80, __c5, 0)) }),
+        S.Struct({ Folders: __S(32, __c2, 0), Filters: S.optional(__S(80, __c5, 0)) }),
       ).annotate({ identifier: "FileConfiguration" });
   }
 }
@@ -1499,7 +1493,7 @@ function __c8(j: number): any {
           ClientId: S.optional(S.String),
           ObjectConfiguration: S.optional(__S(81, __c5, 1)),
           DestinationURI: S.optional(S.String),
-          ClientAssociationMetadata: S.optional(__S(160, __c10, 0)),
+          ClientAssociationMetadata: S.optional(__S(16, __c1, 0)),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           ExecutionConfiguration: S.optional(__S(145, __c9, 1)),
         }).pipe(
@@ -1515,18 +1509,14 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateDataIntegrationAssociationRequest",
-      });
+      ).annotate({ identifier: "CreateDataIntegrationAssociationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           DataIntegrationAssociationId: S.optional(S.String),
           DataIntegrationArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateDataIntegrationAssociationResponse",
-      });
+      ).annotate({ identifier: "CreateDataIntegrationAssociationResponse" });
   }
 }
 function __c9(j: number): any {
@@ -1548,20 +1538,14 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           Description: S.optional(S.String),
-          EventFilter: __S(192, __c12, 0),
+          EventFilter: __S(176, __c11, 0),
           EventBridgeBus: S.String,
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(32, __c2, 0)),
+          Tags: S.optional(__S(16, __c1, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/eventIntegrations" }),
@@ -1572,16 +1556,14 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateEventIntegrationRequest",
-      });
+      ).annotate({ identifier: "CreateEventIntegrationRequest" });
     case 1:
       return S.suspend(() => S.Struct({ EventIntegrationArn: S.optional(S.String) })).annotate({
         identifier: "CreateEventIntegrationResponse",
       });
   }
 }
-function __c12(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Source: S.String })).annotate({
@@ -1589,7 +1571,7 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1609,15 +1591,13 @@ function __c13(j: number): any {
       ).annotate({ identifier: "DeleteApplicationRequest" });
   }
 }
-function __c14(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteApplicationResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteApplicationResponse" });
   }
 }
-function __c15(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1633,12 +1613,10 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteDataIntegrationRequest",
-      });
+      ).annotate({ identifier: "DeleteDataIntegrationRequest" });
   }
 }
-function __c16(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1652,12 +1630,10 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteEventIntegrationRequest",
-      });
+      ).annotate({ identifier: "DeleteEventIntegrationRequest" });
   }
 }
-function __c17(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1685,8 +1661,8 @@ function __c17(j: number): any {
           Publications: S.optional(__S(53, __c3, 5)),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(__S(32, __c2, 0)),
-          Permissions: S.optional(__S(16, __c1, 0)),
+          Tags: S.optional(__S(16, __c1, 0)),
+          Permissions: S.optional(__S(32, __c2, 0)),
           IsService: S.optional(S.Boolean),
           InitializationTimeout: S.optional(S.Number),
           ApplicationConfig: S.optional(__S(55, __c3, 7)),
@@ -1697,7 +1673,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "GetApplicationResponse" });
   }
 }
-function __c18(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1711,9 +1687,7 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDataIntegrationRequest",
-      });
+      ).annotate({ identifier: "GetDataIntegrationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1724,16 +1698,14 @@ function __c18(j: number): any {
           KmsKey: S.optional(S.String),
           SourceURI: S.optional(S.String),
           ScheduleConfiguration: S.optional(__S(96, __c6, 0)),
-          Tags: S.optional(__S(32, __c2, 0)),
+          Tags: S.optional(__S(16, __c1, 0)),
           FileConfiguration: S.optional(__S(112, __c7, 0)),
           ObjectConfiguration: S.optional(__S(81, __c5, 1)),
         }),
-      ).annotate({
-        identifier: "GetDataIntegrationResponse",
-      });
+      ).annotate({ identifier: "GetDataIntegrationResponse" });
   }
 }
-function __c19(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1747,9 +1719,7 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetEventIntegrationRequest",
-      });
+      ).annotate({ identifier: "GetEventIntegrationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1757,15 +1727,13 @@ function __c19(j: number): any {
           Description: S.optional(S.String),
           EventIntegrationArn: S.optional(S.String),
           EventBridgeBus: S.optional(S.String),
-          EventFilter: S.optional(__S(192, __c12, 0)),
-          Tags: S.optional(__S(32, __c2, 0)),
+          EventFilter: S.optional(__S(176, __c11, 0)),
+          Tags: S.optional(__S(16, __c1, 0)),
         }),
-      ).annotate({
-        identifier: "GetEventIntegrationResponse",
-      });
+      ).annotate({ identifier: "GetEventIntegrationResponse" });
   }
 }
-function __c20(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1783,9 +1751,7 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListApplicationAssociationsRequest",
-      });
+      ).annotate({ identifier: "ListApplicationAssociationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1793,23 +1759,19 @@ function __c20(j: number): any {
           ApplicationArn: S.optional(S.String),
           ClientId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ApplicationAssociationSummary",
-      });
+      ).annotate({ identifier: "ApplicationAssociationSummary" });
     case 2:
-      return S.Array(__S(321, __c20, 1));
+      return S.Array(__S(305, __c19, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ApplicationAssociations: S.optional(__S(322, __c20, 2)),
+          ApplicationAssociations: S.optional(__S(306, __c19, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListApplicationAssociationsResponse",
-      });
+      ).annotate({ identifier: "ListApplicationAssociationsResponse" });
   }
 }
-function __c21(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1835,14 +1797,14 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "ApplicationSummary" });
     case 2:
-      return S.Array(__S(337, __c21, 1));
+      return S.Array(__S(321, __c20, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Applications: S.optional(__S(338, __c21, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ Applications: S.optional(__S(322, __c20, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListApplicationsResponse" });
   }
 }
-function __c22(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1863,9 +1825,7 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDataIntegrationAssociationsRequest",
-      });
+      ).annotate({ identifier: "ListDataIntegrationAssociationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ExecutionStatus: S.optional(S.String), StatusMessage: S.optional(S.String) }),
@@ -1877,26 +1837,22 @@ function __c22(j: number): any {
           DataIntegrationArn: S.optional(S.String),
           ClientId: S.optional(S.String),
           DestinationURI: S.optional(S.String),
-          LastExecutionStatus: S.optional(__S(353, __c22, 1)),
+          LastExecutionStatus: S.optional(__S(337, __c21, 1)),
           ExecutionConfiguration: S.optional(__S(145, __c9, 1)),
         }),
-      ).annotate({
-        identifier: "DataIntegrationAssociationSummary",
-      });
+      ).annotate({ identifier: "DataIntegrationAssociationSummary" });
     case 3:
-      return S.Array(__S(354, __c22, 2));
+      return S.Array(__S(338, __c21, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          DataIntegrationAssociations: S.optional(__S(355, __c22, 3)),
+          DataIntegrationAssociations: S.optional(__S(339, __c21, 3)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListDataIntegrationAssociationsResponse",
-      });
+      ).annotate({ identifier: "ListDataIntegrationAssociationsResponse" });
   }
 }
-function __c23(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1906,9 +1862,7 @@ function __c23(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/dataIntegrations" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListDataIntegrationsRequest",
-      });
+      ).annotate({ identifier: "ListDataIntegrationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1918,19 +1872,17 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "DataIntegrationSummary" });
     case 2:
-      return S.Array(__S(369, __c23, 1));
+      return S.Array(__S(353, __c22, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          DataIntegrations: S.optional(__S(370, __c23, 2)),
+          DataIntegrations: S.optional(__S(354, __c22, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListDataIntegrationsResponse",
-      });
+      ).annotate({ identifier: "ListDataIntegrationsResponse" });
   }
 }
-function __c24(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1951,9 +1903,7 @@ function __c24(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListEventIntegrationAssociationsRequest",
-      });
+      ).annotate({ identifier: "ListEventIntegrationAssociationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1962,25 +1912,21 @@ function __c24(j: number): any {
           EventIntegrationName: S.optional(S.String),
           ClientId: S.optional(S.String),
           EventBridgeRuleName: S.optional(S.String),
-          ClientAssociationMetadata: S.optional(__S(160, __c10, 0)),
+          ClientAssociationMetadata: S.optional(__S(16, __c1, 0)),
         }),
-      ).annotate({
-        identifier: "EventIntegrationAssociation",
-      });
+      ).annotate({ identifier: "EventIntegrationAssociation" });
     case 2:
-      return S.Array(__S(385, __c24, 1));
+      return S.Array(__S(369, __c23, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          EventIntegrationAssociations: S.optional(__S(386, __c24, 2)),
+          EventIntegrationAssociations: S.optional(__S(370, __c23, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListEventIntegrationAssociationsResponse",
-      });
+      ).annotate({ identifier: "ListEventIntegrationAssociationsResponse" });
   }
 }
-function __c25(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1990,34 +1936,30 @@ function __c25(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/eventIntegrations" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListEventIntegrationsRequest",
-      });
+      ).annotate({ identifier: "ListEventIntegrationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           EventIntegrationArn: S.optional(S.String),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          EventFilter: S.optional(__S(192, __c12, 0)),
+          EventFilter: S.optional(__S(176, __c11, 0)),
           EventBridgeBus: S.optional(S.String),
-          Tags: S.optional(__S(32, __c2, 0)),
+          Tags: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "EventIntegration" });
     case 2:
-      return S.Array(__S(401, __c25, 1));
+      return S.Array(__S(385, __c24, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          EventIntegrations: S.optional(__S(402, __c25, 2)),
+          EventIntegrations: S.optional(__S(386, __c24, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListEventIntegrationsResponse",
-      });
+      ).annotate({ identifier: "ListEventIntegrationsResponse" });
   }
 }
-function __c26(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2031,22 +1973,20 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(32, __c2, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(16, __c1, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c27(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(32, __c2, 0),
+          tags: __S(16, __c1, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -2060,13 +2000,13 @@ function __c27(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c28(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(16, __c1, 0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(32, __c2, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -2080,7 +2020,7 @@ function __c28(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c29(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2091,7 +2031,7 @@ function __c29(j: number): any {
           ApplicationSourceConfig: S.optional(__S(49, __c3, 1)),
           Subscriptions: S.optional(__S(51, __c3, 3)),
           Publications: S.optional(__S(53, __c3, 5)),
-          Permissions: S.optional(__S(16, __c1, 0)),
+          Permissions: S.optional(__S(32, __c2, 0)),
           IsService: S.optional(S.Boolean),
           InitializationTimeout: S.optional(S.Number),
           ApplicationConfig: S.optional(__S(55, __c3, 7)),
@@ -2111,7 +2051,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "UpdateApplicationRequest" });
   }
 }
-function __c30(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2129,12 +2069,10 @@ function __c30(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateDataIntegrationRequest",
-      });
+      ).annotate({ identifier: "UpdateDataIntegrationRequest" });
   }
 }
-function __c31(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2157,16 +2095,10 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateDataIntegrationAssociationRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UpdateDataIntegrationAssociationResponse",
-      });
+      ).annotate({ identifier: "UpdateDataIntegrationAssociationRequest" });
   }
 }
-function __c32(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2183,9 +2115,7 @@ function __c32(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateEventIntegrationRequest",
-      });
+      ).annotate({ identifier: "UpdateEventIntegrationRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

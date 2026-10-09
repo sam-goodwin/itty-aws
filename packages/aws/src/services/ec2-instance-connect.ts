@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -248,7 +248,7 @@ export const sendSerialConsoleSSHPublicKey: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<SendSerialConsoleSSHPublicKeyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SendSerialConsoleSSHPublicKeyResponse>,
+  output: __S(2, __c1, 0) as any as S.Schema<SendSerialConsoleSSHPublicKeyResponse>,
   errors: [
     AuthException,
     EC2InstanceNotFoundException,
@@ -289,8 +289,8 @@ export const sendSSHPublicKey: API.OperationMethod<
   SendSSHPublicKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c1, 0) as any as S.Schema<SendSSHPublicKeyRequest>,
-  output: __S(3, __c1, 1) as any as S.Schema<SendSSHPublicKeyResponse>,
+  input: __S(4, __c2, 0) as any as S.Schema<SendSSHPublicKeyRequest>,
+  output: __S(2, __c1, 0) as any as S.Schema<SendSSHPublicKeyResponse>,
   errors: [
     AuthException,
     EC2InstanceNotFoundException,
@@ -315,18 +315,18 @@ function __c0(j: number): any {
           SerialPort: S.optional(S.Number),
           SSHPublicKey: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SendSerialConsoleSSHPublicKeyRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ RequestId: S.optional(S.String), Success: S.optional(S.Boolean) }),
-      ).annotate({
-        identifier: "SendSerialConsoleSSHPublicKeyResponse",
-      });
+      ).annotate({ identifier: "SendSerialConsoleSSHPublicKeyRequest" });
   }
 }
 function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ RequestId: S.optional(S.String), Success: S.optional(S.Boolean) }),
+      ).annotate({ identifier: "SendSerialConsoleSSHPublicKeyResponse" });
+  }
+}
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -337,10 +337,6 @@ function __c1(j: number): any {
           AvailabilityZone: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "SendSSHPublicKeyRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ RequestId: S.optional(S.String), Success: S.optional(S.Boolean) }),
-      ).annotate({ identifier: "SendSSHPublicKeyResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

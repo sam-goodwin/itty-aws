@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -320,7 +320,7 @@ export const listEndpoints: API.PaginatedOperationMethod<
   Endpoint
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(20, __c5, 0) as any as S.Schema<ListEndpointsRequest>,
-  output: __S(21, __c5, 1) as any as S.Schema<ListEndpointsResult>,
+  output: __S(25, __c6, 1) as any as S.Schema<ListEndpointsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -400,7 +400,7 @@ export const listSharedEndpoints: API.PaginatedOperationMethod<
   Endpoint
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4, __c1, 0) as any as S.Schema<ListSharedEndpointsRequest>,
-  output: __S(5, __c1, 1) as any as S.Schema<ListSharedEndpointsResult>,
+  output: __S(25, __c6, 1) as any as S.Schema<ListSharedEndpointsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -437,9 +437,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListOutpostsWithS3Request",
-      });
+      ).annotate({ identifier: "ListOutpostsWithS3Request" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -476,15 +474,7 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSharedEndpointsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Endpoints: S.optional(__S(24, __c6, 0)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListSharedEndpointsResult",
-      });
+      ).annotate({ identifier: "ListSharedEndpointsRequest" });
   }
 }
 function __c2(j: number): any {
@@ -564,9 +554,7 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "DeleteEndpointRequest" });
     case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteEndpointResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteEndpointResponse" });
   }
 }
 function __c5(j: number): any {
@@ -587,16 +575,16 @@ function __c5(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListEndpointsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Endpoints: S.optional(__S(24, __c6, 0)), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListEndpointsResult" });
   }
 }
 function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.Array(Endpoint);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Endpoints: S.optional(__S(24, __c6, 0)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListEndpointsResult" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

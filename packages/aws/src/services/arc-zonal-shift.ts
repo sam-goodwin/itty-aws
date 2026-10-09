@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -415,7 +415,7 @@ export const cancelPracticeRun: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(104, __c13, 0) as any as S.Schema<CancelPracticeRunRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<CancelPracticeRunResponse>,
+  output: __S(112, __c14, 0) as any as S.Schema<CancelPracticeRunResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -448,8 +448,8 @@ export const cancelZonalShift: API.OperationMethod<
   CancelZonalShiftError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<CancelZonalShiftRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<ZonalShift>,
+  input: __S(120, __c15, 0) as any as S.Schema<CancelZonalShiftRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<ZonalShift>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -710,7 +710,7 @@ export const startPracticeRun: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(56, __c7, 0) as any as S.Schema<StartPracticeRunRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<StartPracticeRunResponse>,
+  output: __S(112, __c14, 0) as any as S.Schema<StartPracticeRunResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -756,7 +756,7 @@ export const startZonalShift: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(64, __c8, 0) as any as S.Schema<StartZonalShiftRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<ZonalShift>,
+  output: __S(112, __c14, 0) as any as S.Schema<ZonalShift>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -886,7 +886,7 @@ export const updateZonalShift: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c12, 0) as any as S.Schema<UpdateZonalShiftRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<ZonalShift>,
+  output: __S(112, __c14, 0) as any as S.Schema<ZonalShift>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -915,9 +915,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAutoshiftObserverNotificationStatusRequest",
-      });
+      ).annotate({ identifier: "GetAutoshiftObserverNotificationStatusRequest" });
   }
 }
 function __c1(j: number): any {
@@ -942,9 +940,7 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetManagedResourceRequest",
-      });
+      ).annotate({ identifier: "GetManagedResourceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -956,9 +952,7 @@ function __c2(j: number): any {
           practiceRunConfiguration: S.optional(__S(146, __c18, 2)),
           zonalAutoshiftStatus: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetManagedResourceResponse",
-      });
+      ).annotate({ identifier: "GetManagedResourceResponse" });
   }
 }
 function __c3(j: number): any {
@@ -1030,9 +1024,7 @@ function __c5(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/managedresources" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListManagedResourcesRequest",
-      });
+      ).annotate({ identifier: "ListManagedResourcesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1051,9 +1043,7 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ items: __S(42, __c5, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListManagedResourcesResponse",
-      });
+      ).annotate({ identifier: "ListManagedResourcesResponse" });
   }
 }
 function __c6(j: number): any {
@@ -1130,9 +1120,7 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateAutoshiftObserverNotificationStatusRequest",
-      });
+      ).annotate({ identifier: "UpdateAutoshiftObserverNotificationStatusRequest" });
   }
 }
 function __c10(j: number): any {
@@ -1156,9 +1144,7 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdatePracticeRunConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdatePracticeRunConfigurationRequest" });
   }
 }
 function __c11(j: number): any {
@@ -1178,15 +1164,11 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateZonalAutoshiftConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateZonalAutoshiftConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ resourceIdentifier: S.String, zonalAutoshiftStatus: S.String }),
-      ).annotate({
-        identifier: "UpdateZonalAutoshiftConfigurationResponse",
-      });
+      ).annotate({ identifier: "UpdateZonalAutoshiftConfigurationResponse" });
   }
 }
 function __c12(j: number): any {
@@ -1225,7 +1207,11 @@ function __c13(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CancelPracticeRunRequest" });
-    case 1:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zonalShiftId: S.String,
@@ -1236,12 +1222,10 @@ function __c13(j: number): any {
           status: S.String,
           comment: S.String,
         }),
-      ).annotate({
-        identifier: "CancelPracticeRunResponse",
-      });
+      ).annotate({ identifier: "CancelPracticeRunResponse" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1258,22 +1242,6 @@ function __c14(j: number): any {
       ).annotate({ identifier: "CancelZonalShiftRequest" });
   }
 }
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          zonalShiftId: S.String,
-          resourceIdentifier: S.String,
-          awayFrom: S.String,
-          expiryTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          status: S.String,
-          comment: S.String,
-        }),
-      ).annotate({ identifier: "ZonalShift" });
-  }
-}
 function __c16(j: number): any {
   switch (j) {
     case 0:
@@ -1288,9 +1256,7 @@ function __c16(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/configuration" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreatePracticeRunConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreatePracticeRunConfigurationRequest" });
   }
 }
 function __c17(j: number): any {
@@ -1329,9 +1295,7 @@ function __c19(j: number): any {
           zonalAutoshiftStatus: S.String,
           practiceRunConfiguration: __S(146, __c18, 2),
         }),
-      ).annotate({
-        identifier: "CreatePracticeRunConfigurationResponse",
-      });
+      ).annotate({ identifier: "CreatePracticeRunConfigurationResponse" });
   }
 }
 function __c20(j: number): any {
@@ -1348,15 +1312,11 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeletePracticeRunConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeletePracticeRunConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ arn: S.String, name: S.String, zonalAutoshiftStatus: S.String }),
-      ).annotate({
-        identifier: "DeletePracticeRunConfigurationResponse",
-      });
+      ).annotate({ identifier: "DeletePracticeRunConfigurationResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

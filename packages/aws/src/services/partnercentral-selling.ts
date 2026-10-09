@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -105,7 +105,7 @@ export class ValidationException
         identifier: "ValidationExceptionReason",
       }),
       ErrorList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(2145, __c67, 1)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(2081, __c65, 1)).annotate({
           identifier: "ValidationExceptionErrorList",
         }),
       ),
@@ -2203,8 +2203,8 @@ export const acceptEngagementInvitation: API.OperationMethod<
   AcceptEngagementInvitationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2176, __c68, 0) as any as S.Schema<AcceptEngagementInvitationRequest>,
-  output: __S(2208, __c69, 0) as any as S.Schema<AcceptEngagementInvitationResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<AcceptEngagementInvitationRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<AcceptEngagementInvitationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2236,8 +2236,8 @@ export const assignOpportunity: API.OperationMethod<
   AssignOpportunityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2241, __c70, 1) as any as S.Schema<AssignOpportunityRequest>,
-  output: __S(2272, __c71, 0) as any as S.Schema<AssignOpportunityResponse>,
+  input: __S(2177, __c68, 1) as any as S.Schema<AssignOpportunityRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<AssignOpportunityResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2280,8 +2280,8 @@ export const associateOpportunity: API.OperationMethod<
   AssociateOpportunityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2304, __c72, 0) as any as S.Schema<AssociateOpportunityRequest>,
-  output: __S(2272, __c71, 0) as any as S.Schema<AssociateOpportunityResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<AssociateOpportunityRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<AssociateOpportunityResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2526,7 +2526,7 @@ export const deleteResourceSnapshotJob: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(672, __c21, 0) as any as S.Schema<DeleteResourceSnapshotJobRequest>,
-  output: __S(2208, __c69, 0) as any as S.Schema<DeleteResourceSnapshotJobResponse>,
+  output: __S(2144, __c67, 0) as any as S.Schema<DeleteResourceSnapshotJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2559,7 +2559,7 @@ export const disassociateOpportunity: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(704, __c22, 0) as any as S.Schema<DisassociateOpportunityRequest>,
-  output: __S(736, __c23, 0) as any as S.Schema<DisassociateOpportunityResponse>,
+  output: __S(2144, __c67, 0) as any as S.Schema<DisassociateOpportunityResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2588,8 +2588,8 @@ export const getAwsOpportunitySummary: API.OperationMethod<
   GetAwsOpportunitySummaryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c24, 0) as any as S.Schema<GetAwsOpportunitySummaryRequest>,
-  output: __S(769, __c24, 1) as any as S.Schema<GetAwsOpportunitySummaryResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetAwsOpportunitySummaryRequest>,
+  output: __S(737, __c23, 1) as any as S.Schema<GetAwsOpportunitySummaryResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2618,8 +2618,8 @@ export const getEngagement: API.OperationMethod<
   GetEngagementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c26, 0) as any as S.Schema<GetEngagementRequest>,
-  output: __S(833, __c26, 1) as any as S.Schema<GetEngagementResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetEngagementRequest>,
+  output: __S(801, __c25, 1) as any as S.Schema<GetEngagementResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2648,8 +2648,8 @@ export const getEngagementInvitation: API.OperationMethod<
   GetEngagementInvitationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c27, 0) as any as S.Schema<GetEngagementInvitationRequest>,
-  output: __S(869, __c27, 5) as any as S.Schema<GetEngagementInvitationResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetEngagementInvitationRequest>,
+  output: __S(837, __c26, 5) as any as S.Schema<GetEngagementInvitationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2680,8 +2680,8 @@ export const getOpportunity: API.OperationMethod<
   GetOpportunityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c28, 0) as any as S.Schema<GetOpportunityRequest>,
-  output: __S(897, __c28, 1) as any as S.Schema<GetOpportunityResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<GetOpportunityRequest>,
+  output: __S(865, __c27, 1) as any as S.Schema<GetOpportunityResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2710,8 +2710,8 @@ export const getProspectingFromEngagementTask: API.OperationMethod<
   GetProspectingFromEngagementTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c30, 0) as any as S.Schema<GetProspectingFromEngagementTaskRequest>,
-  output: __S(963, __c30, 3) as any as S.Schema<GetProspectingFromEngagementTaskResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<GetProspectingFromEngagementTaskRequest>,
+  output: __S(931, __c29, 3) as any as S.Schema<GetProspectingFromEngagementTaskResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2740,8 +2740,8 @@ export const getResourceSnapshot: API.OperationMethod<
   GetResourceSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c31, 0) as any as S.Schema<GetResourceSnapshotRequest>,
-  output: __S(998, __c31, 6) as any as S.Schema<GetResourceSnapshotResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<GetResourceSnapshotRequest>,
+  output: __S(966, __c30, 6) as any as S.Schema<GetResourceSnapshotResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2770,8 +2770,8 @@ export const getResourceSnapshotJob: API.OperationMethod<
   GetResourceSnapshotJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c33, 0) as any as S.Schema<GetResourceSnapshotJobRequest>,
-  output: __S(1057, __c33, 1) as any as S.Schema<GetResourceSnapshotJobResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<GetResourceSnapshotJobRequest>,
+  output: __S(1025, __c32, 1) as any as S.Schema<GetResourceSnapshotJobResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2800,8 +2800,8 @@ export const getSellingSystemSettings: API.OperationMethod<
   GetSellingSystemSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c34, 0) as any as S.Schema<GetSellingSystemSettingsRequest>,
-  output: __S(1120, __c35, 0) as any as S.Schema<GetSellingSystemSettingsResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<GetSellingSystemSettingsRequest>,
+  output: __S(1088, __c34, 0) as any as S.Schema<GetSellingSystemSettingsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2831,8 +2831,8 @@ export const listEngagementByAcceptingInvitationTasks: API.PaginatedOperationMet
   Credentials | HttpClient.HttpClient,
   ListEngagementByAcceptingInvitationTaskSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1152, __c36, 0) as any as S.Schema<ListEngagementByAcceptingInvitationTasksRequest>,
-  output: __S(1154, __c36, 2) as any as S.Schema<ListEngagementByAcceptingInvitationTasksResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<ListEngagementByAcceptingInvitationTasksRequest>,
+  output: __S(1122, __c35, 2) as any as S.Schema<ListEngagementByAcceptingInvitationTasksResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2868,8 +2868,8 @@ export const listEngagementFromOpportunityTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListEngagementFromOpportunityTaskSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1248, __c39, 0) as any as S.Schema<ListEngagementFromOpportunityTasksRequest>,
-  output: __S(1250, __c39, 2) as any as S.Schema<ListEngagementFromOpportunityTasksResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<ListEngagementFromOpportunityTasksRequest>,
+  output: __S(1218, __c38, 2) as any as S.Schema<ListEngagementFromOpportunityTasksResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2905,8 +2905,8 @@ export const listEngagementInvitations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EngagementInvitationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1313, __c41, 1) as any as S.Schema<ListEngagementInvitationsRequest>,
-  output: __S(1316, __c41, 4) as any as S.Schema<ListEngagementInvitationsResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<ListEngagementInvitationsRequest>,
+  output: __S(1283, __c40, 3) as any as S.Schema<ListEngagementInvitationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2942,8 +2942,8 @@ export const listEngagementMembers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EngagementMember
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1376, __c43, 0) as any as S.Schema<ListEngagementMembersRequest>,
-  output: __S(1379, __c43, 3) as any as S.Schema<ListEngagementMembersResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<ListEngagementMembersRequest>,
+  output: __S(1315, __c41, 3) as any as S.Schema<ListEngagementMembersResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2979,8 +2979,8 @@ export const listEngagementResourceAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EngagementResourceAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1408, __c44, 0) as any as S.Schema<ListEngagementResourceAssociationsRequest>,
-  output: __S(1411, __c44, 3) as any as S.Schema<ListEngagementResourceAssociationsResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<ListEngagementResourceAssociationsRequest>,
+  output: __S(1347, __c42, 3) as any as S.Schema<ListEngagementResourceAssociationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3016,8 +3016,8 @@ export const listEngagements: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EngagementSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1440, __c45, 0) as any as S.Schema<ListEngagementsRequest>,
-  output: __S(1443, __c45, 3) as any as S.Schema<ListEngagementsResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<ListEngagementsRequest>,
+  output: __S(1379, __c43, 3) as any as S.Schema<ListEngagementsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3063,8 +3063,8 @@ export const listOpportunities: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   OpportunitySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1475, __c46, 3) as any as S.Schema<ListOpportunitiesRequest>,
-  output: __S(1483, __c46, 11) as any as S.Schema<ListOpportunitiesResponse>,
+  input: __S(1411, __c44, 3) as any as S.Schema<ListOpportunitiesRequest>,
+  output: __S(1419, __c44, 11) as any as S.Schema<ListOpportunitiesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3100,8 +3100,8 @@ export const listOpportunityFromEngagementTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListOpportunityFromEngagementTaskSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1504, __c47, 0) as any as S.Schema<ListOpportunityFromEngagementTasksRequest>,
-  output: __S(1506, __c47, 2) as any as S.Schema<ListOpportunityFromEngagementTasksResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<ListOpportunityFromEngagementTasksRequest>,
+  output: __S(1442, __c45, 2) as any as S.Schema<ListOpportunityFromEngagementTasksResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3136,8 +3136,8 @@ export const listProspectingFromEngagementTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProspectingTaskSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1568, __c49, 0) as any as S.Schema<ListProspectingFromEngagementTasksRequest>,
-  output: __S(1571, __c49, 3) as any as S.Schema<ListProspectingFromEngagementTasksResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<ListProspectingFromEngagementTasksRequest>,
+  output: __S(1507, __c47, 3) as any as S.Schema<ListProspectingFromEngagementTasksResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3172,8 +3172,8 @@ export const listResourceSnapshotJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceSnapshotJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1601, __c50, 1) as any as S.Schema<ListResourceSnapshotJobsRequest>,
-  output: __S(1604, __c50, 4) as any as S.Schema<ListResourceSnapshotJobsResponse>,
+  input: __S(1537, __c48, 1) as any as S.Schema<ListResourceSnapshotJobsRequest>,
+  output: __S(1540, __c48, 4) as any as S.Schema<ListResourceSnapshotJobsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3219,8 +3219,8 @@ export const listResourceSnapshots: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceSnapshotSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1632, __c51, 0) as any as S.Schema<ListResourceSnapshotsRequest>,
-  output: __S(1635, __c51, 3) as any as S.Schema<ListResourceSnapshotsResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<ListResourceSnapshotsRequest>,
+  output: __S(1571, __c49, 3) as any as S.Schema<ListResourceSnapshotsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3256,8 +3256,8 @@ export const listSolutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SolutionBase
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1664, __c52, 0) as any as S.Schema<ListSolutionsRequest>,
-  output: __S(1667, __c52, 3) as any as S.Schema<ListSolutionsResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<ListSolutionsRequest>,
+  output: __S(1603, __c50, 3) as any as S.Schema<ListSolutionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3292,8 +3292,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1696, __c53, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(1697, __c53, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(1633, __c51, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3322,8 +3322,8 @@ export const putSellingSystemSettings: API.OperationMethod<
   PutSellingSystemSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1728, __c54, 0) as any as S.Schema<PutSellingSystemSettingsRequest>,
-  output: __S(1120, __c35, 0) as any as S.Schema<PutSellingSystemSettingsResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<PutSellingSystemSettingsRequest>,
+  output: __S(1088, __c34, 0) as any as S.Schema<PutSellingSystemSettingsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3353,8 +3353,8 @@ export const rejectEngagementInvitation: API.OperationMethod<
   RejectEngagementInvitationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1760, __c55, 0) as any as S.Schema<RejectEngagementInvitationRequest>,
-  output: __S(2208, __c69, 0) as any as S.Schema<RejectEngagementInvitationResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<RejectEngagementInvitationRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<RejectEngagementInvitationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3386,8 +3386,8 @@ export const startEngagementByAcceptingInvitationTask: API.OperationMethod<
   StartEngagementByAcceptingInvitationTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1792, __c56, 0) as any as S.Schema<StartEngagementByAcceptingInvitationTaskRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<StartEngagementByAcceptingInvitationTaskResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<StartEngagementByAcceptingInvitationTaskRequest>,
+  output: __S(1184, __c37, 0) as any as S.Schema<StartEngagementByAcceptingInvitationTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3420,8 +3420,8 @@ export const startEngagementFromOpportunityTask: API.OperationMethod<
   StartEngagementFromOpportunityTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1825, __c57, 1) as any as S.Schema<StartEngagementFromOpportunityTaskRequest>,
-  output: __S(1280, __c40, 0) as any as S.Schema<StartEngagementFromOpportunityTaskResponse>,
+  input: __S(1761, __c55, 1) as any as S.Schema<StartEngagementFromOpportunityTaskRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<StartEngagementFromOpportunityTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3454,8 +3454,8 @@ export const startOpportunityFromEngagementTask: API.OperationMethod<
   StartOpportunityFromEngagementTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1856, __c58, 0) as any as S.Schema<StartOpportunityFromEngagementTaskRequest>,
-  output: __S(1536, __c48, 0) as any as S.Schema<StartOpportunityFromEngagementTaskResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<StartOpportunityFromEngagementTaskRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<StartOpportunityFromEngagementTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3487,8 +3487,8 @@ export const startProspectingFromEngagementTask: API.OperationMethod<
   StartProspectingFromEngagementTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1888, __c59, 0) as any as S.Schema<StartProspectingFromEngagementTaskRequest>,
-  output: __S(1889, __c59, 1) as any as S.Schema<StartProspectingFromEngagementTaskResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<StartProspectingFromEngagementTaskRequest>,
+  output: __S(1825, __c57, 1) as any as S.Schema<StartProspectingFromEngagementTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3518,8 +3518,8 @@ export const startResourceSnapshotJob: API.OperationMethod<
   StartResourceSnapshotJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1920, __c60, 0) as any as S.Schema<StartResourceSnapshotJobRequest>,
-  output: __S(2208, __c69, 0) as any as S.Schema<StartResourceSnapshotJobResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<StartResourceSnapshotJobRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<StartResourceSnapshotJobResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3548,8 +3548,8 @@ export const stopResourceSnapshotJob: API.OperationMethod<
   StopResourceSnapshotJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1952, __c61, 0) as any as S.Schema<StopResourceSnapshotJobRequest>,
-  output: __S(736, __c23, 0) as any as S.Schema<StopResourceSnapshotJobResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<StopResourceSnapshotJobRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<StopResourceSnapshotJobResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3578,8 +3578,8 @@ export const submitOpportunity: API.OperationMethod<
   SubmitOpportunityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1984, __c62, 0) as any as S.Schema<SubmitOpportunityRequest>,
-  output: __S(2272, __c71, 0) as any as S.Schema<SubmitOpportunityResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<SubmitOpportunityRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<SubmitOpportunityResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3609,8 +3609,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2016, __c63, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(2272, __c71, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3641,8 +3641,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2048, __c64, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(2272, __c71, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3674,8 +3674,8 @@ export const updateEngagementContext: API.OperationMethod<
   UpdateEngagementContextError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2082, __c65, 2) as any as S.Schema<UpdateEngagementContextRequest>,
-  output: __S(2083, __c65, 3) as any as S.Schema<UpdateEngagementContextResponse>,
+  input: __S(2018, __c63, 2) as any as S.Schema<UpdateEngagementContextRequest>,
+  output: __S(2019, __c63, 3) as any as S.Schema<UpdateEngagementContextResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3709,8 +3709,8 @@ export const updateOpportunity: API.OperationMethod<
   UpdateOpportunityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2112, __c66, 0) as any as S.Schema<UpdateOpportunityRequest>,
-  output: __S(2113, __c66, 1) as any as S.Schema<UpdateOpportunityResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<UpdateOpportunityRequest>,
+  output: __S(2049, __c64, 1) as any as S.Schema<UpdateOpportunityResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3810,9 +3810,7 @@ function __c4(j: number): any {
           EligiblePrograms: S.optional(__S(64, __c2, 0)),
           PublicProfileSummary: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ProspectingResultCustomer",
-      });
+      ).annotate({ identifier: "ProspectingResultCustomer" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3833,9 +3831,7 @@ function __c5(j: number): any {
           BusinessProblem: SensitiveString,
           TargetCompletionDate: S.String,
         }),
-      ).annotate({
-        identifier: "EngagementCustomerProjectDetails",
-      });
+      ).annotate({ identifier: "EngagementCustomerProjectDetails" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3938,9 +3934,7 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateEngagementContextRequest",
-      });
+      ).annotate({ identifier: "CreateEngagementContextRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3951,9 +3945,7 @@ function __c7(j: number): any {
           ),
           ContextId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateEngagementContextResponse",
-      });
+      ).annotate({ identifier: "CreateEngagementContextResponse" });
   }
 }
 function __c8(j: number): any {
@@ -3983,9 +3975,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateEngagementInvitationRequest",
-      });
+      ).annotate({ identifier: "CreateEngagementInvitationRequest" });
     case 2:
       return S.suspend(() => S.Struct({ Id: S.String, Arn: S.String })).annotate({
         identifier: "CreateEngagementInvitationResponse",
@@ -4045,9 +4035,7 @@ function __c11(j: number): any {
           Customer: __S(32, __c1, 0),
           Project: __S(354, __c11, 2),
         }),
-      ).annotate({
-        identifier: "OpportunityInvitationPayload",
-      });
+      ).annotate({ identifier: "OpportunityInvitationPayload" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4068,9 +4056,7 @@ function __c11(j: number): any {
           Usecase: S.optional(S.String),
           ContactBusinessTitle: SensitiveString,
         }),
-      ).annotate({
-        identifier: "LeadInvitationInteraction",
-      });
+      ).annotate({ identifier: "LeadInvitationInteraction" });
     case 6:
       return S.suspend(() =>
         S.Struct({ Customer: __S(356, __c11, 4), Interaction: __S(357, __c11, 5) }),
@@ -4129,9 +4115,7 @@ function __c13(j: number): any {
           PartnerOpportunityIdentifier: S.optional(S.String),
           LastModifiedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "CreateOpportunityResponse",
-      });
+      ).annotate({ identifier: "CreateOpportunityResponse" });
   }
 }
 function __c14(j: number): any {
@@ -4287,15 +4271,11 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateResourceSnapshotRequest",
-      });
+      ).annotate({ identifier: "CreateResourceSnapshotRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Arn: S.optional(S.String), Revision: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "CreateResourceSnapshotResponse",
-      });
+      ).annotate({ identifier: "CreateResourceSnapshotResponse" });
   }
 }
 function __c20(j: number): any {
@@ -4320,15 +4300,11 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateResourceSnapshotJobRequest",
-      });
+      ).annotate({ identifier: "CreateResourceSnapshotJobRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Id: S.optional(S.String), Arn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "CreateResourceSnapshotJobResponse",
-      });
+      ).annotate({ identifier: "CreateResourceSnapshotJobResponse" });
   }
 }
 function __c21(j: number): any {
@@ -4345,9 +4321,7 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteResourceSnapshotJobRequest",
-      });
+      ).annotate({ identifier: "DeleteResourceSnapshotJobRequest" });
   }
 }
 function __c22(j: number): any {
@@ -4369,20 +4343,10 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateOpportunityRequest",
-      });
+      ).annotate({ identifier: "DisassociateOpportunityRequest" });
   }
 }
 function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DisassociateOpportunityResponse",
-      });
-  }
-}
-function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4396,9 +4360,7 @@ function __c24(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAwsOpportunitySummaryRequest",
-      });
+      ).annotate({ identifier: "GetAwsOpportunitySummaryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4406,23 +4368,21 @@ function __c24(j: number): any {
           Origin: S.optional(S.String),
           InvolvementType: S.optional(S.String),
           Visibility: S.optional(S.String),
-          LifeCycle: S.optional(__S(800, __c25, 0)),
-          OpportunityTeam: S.optional(__S(802, __c25, 2)),
-          Insights: S.optional(__S(814, __c25, 14)),
+          LifeCycle: S.optional(__S(768, __c24, 0)),
+          OpportunityTeam: S.optional(__S(770, __c24, 2)),
+          Insights: S.optional(__S(782, __c24, 14)),
           InvolvementTypeChangeReason: S.optional(S.String),
-          RelatedEntityIds: S.optional(__S(815, __c25, 15)),
-          Customer: S.optional(__S(816, __c25, 16)),
-          Project: S.optional(__S(817, __c25, 17)),
+          RelatedEntityIds: S.optional(__S(783, __c24, 15)),
+          Customer: S.optional(__S(784, __c24, 16)),
+          Project: S.optional(__S(785, __c24, 17)),
           CosellMotion: S.optional(S.String),
-          SoftwareRevenue: S.optional(__S(818, __c25, 18)),
+          SoftwareRevenue: S.optional(__S(786, __c24, 18)),
           Catalog: S.String,
         }),
-      ).annotate({
-        identifier: "GetAwsOpportunitySummaryResponse",
-      });
+      ).annotate({ identifier: "GetAwsOpportunitySummaryResponse" });
   }
 }
-function __c25(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4444,7 +4404,7 @@ function __c25(j: number): any {
         }),
       ).annotate({ identifier: "AwsTeamMember" });
     case 2:
-      return S.Array(__S(801, __c25, 1));
+      return S.Array(__S(769, __c24, 1));
     case 3:
       return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
     case 4:
@@ -4452,7 +4412,7 @@ function __c25(j: number): any {
         S.Struct({ Description: S.String, SavingsAmount: SensitiveString }),
       ).annotate({ identifier: "AwsProductOptimization" });
     case 5:
-      return S.Array(__S(804, __c25, 4));
+      return S.Array(__S(772, __c24, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -4462,11 +4422,11 @@ function __c25(j: number): any {
           Amount: S.optional(SensitiveString),
           OptimizedAmount: S.optional(SensitiveString),
           PotentialSavingsAmount: S.optional(SensitiveString),
-          Optimizations: __S(805, __c25, 5),
+          Optimizations: __S(773, __c24, 5),
         }),
       ).annotate({ identifier: "AwsProductDetails" });
     case 7:
-      return S.Array(__S(806, __c25, 6));
+      return S.Array(__S(774, __c24, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -4475,16 +4435,14 @@ function __c25(j: number): any {
           TotalAmount: S.optional(SensitiveString),
           TotalOptimizedAmount: S.optional(SensitiveString),
           TotalPotentialSavingsAmount: S.optional(SensitiveString),
-          TotalAmountByCategory: __S(803, __c25, 3),
-          AwsProducts: __S(807, __c25, 7),
+          TotalAmountByCategory: __S(771, __c24, 3),
+          AwsProducts: __S(775, __c24, 7),
         }),
       ).annotate({ identifier: "AwsProductInsights" });
     case 9:
       return S.suspend(() =>
-        S.Struct({ Partner: S.optional(__S(808, __c25, 8)), AWS: S.optional(__S(808, __c25, 8)) }),
-      ).annotate({
-        identifier: "AwsProductsSpendInsightsBySource",
-      });
+        S.Struct({ Partner: S.optional(__S(776, __c24, 8)), AWS: S.optional(__S(776, __c24, 8)) }),
+      ).annotate({ identifier: "AwsProductsSpendInsightsBySource" });
     case 10:
       return S.suspend(() =>
         S.Struct({ Score: S.optional(S.Number), Trend: S.optional(S.String) }),
@@ -4496,19 +4454,19 @@ function __c25(j: number): any {
         S.Struct({
           Type: S.String,
           Details: S.String,
-          Attributes: S.optional(__S(811, __c25, 11)),
+          Attributes: S.optional(__S(779, __c24, 11)),
         }),
       ).annotate({ identifier: "Recommendation" });
     case 13:
-      return S.Array(__S(812, __c25, 12));
+      return S.Array(__S(780, __c24, 12));
     case 14:
       return S.suspend(() =>
         S.Struct({
           NextBestActions: S.optional(S.String),
           EngagementScore: S.optional(S.String),
-          AwsProductsSpendInsightsBySource: S.optional(__S(809, __c25, 9)),
-          OpportunityQuality: S.optional(__S(810, __c25, 10)),
-          Recommendations: S.optional(__S(813, __c25, 13)),
+          AwsProductsSpendInsightsBySource: S.optional(__S(777, __c24, 9)),
+          OpportunityQuality: S.optional(__S(778, __c24, 10)),
+          Recommendations: S.optional(__S(781, __c24, 13)),
         }),
       ).annotate({ identifier: "AwsOpportunityInsights" });
     case 15:
@@ -4519,9 +4477,7 @@ function __c25(j: number): any {
           AwsMarketplaceSolutions: S.optional(__S(64, __c2, 0)),
           AwsMarketplaceProducts: S.optional(__S(64, __c2, 0)),
         }),
-      ).annotate({
-        identifier: "AwsOpportunityRelatedEntities",
-      });
+      ).annotate({ identifier: "AwsOpportunityRelatedEntities" });
     case 16:
       return S.suspend(() => S.Struct({ Contacts: S.optional(__S(481, __c15, 1)) })).annotate({
         identifier: "AwsOpportunityCustomer",
@@ -4544,7 +4500,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "AwsSoftwareRevenue" });
   }
 }
-function __c26(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4569,7 +4525,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "GetEngagementResponse" });
   }
 }
-function __c27(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4583,28 +4539,24 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetEngagementInvitationRequest",
-      });
+      ).annotate({ identifier: "GetEngagementInvitationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ CompanyName: S.optional(SensitiveString), WebsiteUrl: S.optional(S.String) }),
       ).annotate({ identifier: "EngagementMemberSummary" });
     case 2:
-      return S.Array(__S(865, __c27, 1));
+      return S.Array(__S(833, __c26, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           Customer: S.optional(__S(129, __c4, 1)),
           Insights: S.optional(__S(130, __c4, 2)),
         }),
-      ).annotate({
-        identifier: "InvitationProspectingResultAws",
-      });
+      ).annotate({ identifier: "InvitationProspectingResultAws" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ProspectingResultAws: S.optional(__S(867, __c27, 3)),
+          ProspectingResultAws: S.optional(__S(835, __c26, 3)),
           LeadInsights: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({ identifier: "EnrichmentContext" });
@@ -4627,15 +4579,13 @@ function __c27(j: number): any {
           Payload: S.optional(__S(359, __c11, 7)),
           InvitationMessage: S.optional(SensitiveString),
           EngagementDescription: S.optional(S.String),
-          ExistingMembers: S.optional(__S(866, __c27, 2)),
-          EnrichmentContext: S.optional(__S(868, __c27, 4)),
+          ExistingMembers: S.optional(__S(834, __c26, 2)),
+          EnrichmentContext: S.optional(__S(836, __c26, 4)),
         }),
-      ).annotate({
-        identifier: "GetEngagementInvitationResponse",
-      });
+      ).annotate({ identifier: "GetEngagementInvitationResponse" });
   }
 }
-function __c28(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4659,14 +4609,14 @@ function __c28(j: number): any {
           Arn: S.optional(S.String),
           LastModifiedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           CreatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          RelatedEntityIdentifiers: __S(928, __c29, 0),
+          RelatedEntityIdentifiers: __S(896, __c28, 0),
           LifeCycle: S.optional(__S(579, __c18, 3)),
           OpportunityTeam: S.optional(__S(481, __c15, 1)),
         }),
       ).annotate({ identifier: "GetOpportunityResponse" });
   }
 }
-function __c29(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4681,7 +4631,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "RelatedEntityIdentifiers" });
   }
 }
-function __c30(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4695,9 +4645,7 @@ function __c30(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetProspectingFromEngagementTaskRequest",
-      });
+      ).annotate({ identifier: "GetProspectingFromEngagementTaskRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4707,11 +4655,9 @@ function __c30(j: number): any {
           ReasonCode: S.optional(S.String),
           Message: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "EngagementProspectingResult",
-      });
+      ).annotate({ identifier: "EngagementProspectingResult" });
     case 2:
-      return S.Array(__S(961, __c30, 1));
+      return S.Array(__S(929, __c29, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4720,14 +4666,12 @@ function __c30(j: number): any {
           TaskName: S.String,
           StartTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Engagements: __S(962, __c30, 2),
+          Engagements: __S(930, __c29, 2),
         }),
-      ).annotate({
-        identifier: "GetProspectingFromEngagementTaskResponse",
-      });
+      ).annotate({ identifier: "GetProspectingFromEngagementTaskResponse" });
   }
 }
-function __c31(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4748,9 +4692,7 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetResourceSnapshotRequest",
-      });
+      ).annotate({ identifier: "GetResourceSnapshotRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4775,12 +4717,12 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           OpportunityType: S.optional(S.String),
-          Lifecycle: S.optional(__S(993, __c31, 1)),
+          Lifecycle: S.optional(__S(961, __c30, 1)),
           OpportunityTeam: S.optional(__S(481, __c15, 1)),
           PrimaryNeedsFromAws: S.optional(__S(320, __c10, 0)),
           Customer: S.optional(__S(546, __c17, 2)),
-          Project: S.optional(__S(994, __c31, 2)),
-          RelatedEntityIdentifiers: S.optional(__S(928, __c29, 0)),
+          Project: S.optional(__S(962, __c30, 2)),
+          RelatedEntityIdentifiers: S.optional(__S(896, __c28, 0)),
         }),
       ).annotate({ identifier: "OpportunitySummaryView" });
     case 4:
@@ -4790,23 +4732,21 @@ function __c31(j: number): any {
           Origin: S.optional(S.String),
           InvolvementType: S.optional(S.String),
           Visibility: S.optional(S.String),
-          LifeCycle: S.optional(__S(800, __c25, 0)),
-          OpportunityTeam: S.optional(__S(802, __c25, 2)),
-          Insights: S.optional(__S(814, __c25, 14)),
+          LifeCycle: S.optional(__S(768, __c24, 0)),
+          OpportunityTeam: S.optional(__S(770, __c24, 2)),
+          Insights: S.optional(__S(782, __c24, 14)),
           InvolvementTypeChangeReason: S.optional(S.String),
-          RelatedEntityIds: S.optional(__S(815, __c25, 15)),
-          Customer: S.optional(__S(816, __c25, 16)),
-          Project: S.optional(__S(817, __c25, 17)),
+          RelatedEntityIds: S.optional(__S(783, __c24, 15)),
+          Customer: S.optional(__S(784, __c24, 16)),
+          Project: S.optional(__S(785, __c24, 17)),
           CosellMotion: S.optional(S.String),
-          SoftwareRevenue: S.optional(__S(818, __c25, 18)),
+          SoftwareRevenue: S.optional(__S(786, __c24, 18)),
         }),
-      ).annotate({
-        identifier: "AwsOpportunitySummaryFullView",
-      });
+      ).annotate({ identifier: "AwsOpportunitySummaryFullView" });
     case 5:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ OpportunitySummary: __S(995, __c31, 3) }),
-        /*@__PURE__*/ S.Struct({ AwsOpportunitySummaryFullView: __S(996, __c31, 4) }),
+        /*@__PURE__*/ S.Struct({ OpportunitySummary: __S(963, __c30, 3) }),
+        /*@__PURE__*/ S.Struct({ AwsOpportunitySummaryFullView: __S(964, __c30, 4) }),
       ]);
     case 6:
       return S.suspend(() =>
@@ -4820,21 +4760,19 @@ function __c31(j: number): any {
           ResourceId: S.optional(S.String),
           ResourceSnapshotTemplateName: S.optional(S.String),
           Revision: S.optional(S.Number),
-          Payload: S.optional(__S(997, __c31, 5)),
-          TargetMemberAccounts: S.optional(__S(1024, __c32, 0)),
+          Payload: S.optional(__S(965, __c30, 5)),
+          TargetMemberAccounts: S.optional(__S(992, __c31, 0)),
         }),
-      ).annotate({
-        identifier: "GetResourceSnapshotResponse",
-      });
+      ).annotate({ identifier: "GetResourceSnapshotResponse" });
   }
 }
-function __c32(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.Array(SensitiveString);
   }
 }
-function __c33(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4848,9 +4786,7 @@ function __c33(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetResourceSnapshotJobRequest",
-      });
+      ).annotate({ identifier: "GetResourceSnapshotJobRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4869,12 +4805,10 @@ function __c33(j: number): any {
           ),
           LastFailure: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetResourceSnapshotJobResponse",
-      });
+      ).annotate({ identifier: "GetResourceSnapshotJobResponse" });
   }
 }
-function __c34(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4888,29 +4822,25 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetSellingSystemSettingsRequest",
-      });
+      ).annotate({ identifier: "GetSellingSystemSettingsRequest" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Catalog: S.String, ResourceSnapshotJobRoleArn: S.optional(S.String) }),
+      ).annotate({ identifier: "GetSellingSystemSettingsResponse" });
   }
 }
 function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Catalog: S.String, ResourceSnapshotJobRoleArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetSellingSystemSettingsResponse",
-      });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Sort: S.optional(__S(1184, __c37, 0)),
+          Sort: S.optional(__S(1152, __c36, 0)),
           Catalog: S.String,
           TaskStatus: S.optional(__S(320, __c10, 0)),
           OpportunityIdentifier: S.optional(__S(64, __c2, 0)),
@@ -4926,23 +4856,19 @@ function __c36(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListEngagementByAcceptingInvitationTasksRequest",
-      });
+      ).annotate({ identifier: "ListEngagementByAcceptingInvitationTasksRequest" });
     case 1:
-      return S.Array(__S(1216, __c38, 0));
+      return S.Array(__S(1184, __c37, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          TaskSummaries: S.optional(__S(1153, __c36, 1)),
+          TaskSummaries: S.optional(__S(1121, __c35, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListEngagementByAcceptingInvitationTasksResponse",
-      });
+      ).annotate({ identifier: "ListEngagementByAcceptingInvitationTasksResponse" });
   }
 }
-function __c37(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ SortOrder: S.String, SortBy: S.String })).annotate({
@@ -4950,7 +4876,7 @@ function __c37(j: number): any {
       });
   }
 }
-function __c38(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4965,19 +4891,17 @@ function __c38(j: number): any {
           ResourceSnapshotJobId: S.optional(S.String),
           EngagementInvitationId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListEngagementByAcceptingInvitationTaskSummary",
-      });
+      ).annotate({ identifier: "ListEngagementByAcceptingInvitationTaskSummary" });
   }
 }
-function __c39(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Sort: S.optional(__S(1184, __c37, 0)),
+          Sort: S.optional(__S(1152, __c36, 0)),
           Catalog: S.String,
           TaskStatus: S.optional(__S(320, __c10, 0)),
           TaskIdentifier: S.optional(__S(64, __c2, 0)),
@@ -4993,23 +4917,19 @@ function __c39(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListEngagementFromOpportunityTasksRequest",
-      });
+      ).annotate({ identifier: "ListEngagementFromOpportunityTasksRequest" });
     case 1:
-      return S.Array(__S(1280, __c40, 0));
+      return S.Array(__S(1248, __c39, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          TaskSummaries: S.optional(__S(1249, __c39, 1)),
+          TaskSummaries: S.optional(__S(1217, __c38, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListEngagementFromOpportunityTasksResponse",
-      });
+      ).annotate({ identifier: "ListEngagementFromOpportunityTasksResponse" });
   }
 }
-function __c40(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5025,27 +4945,23 @@ function __c40(j: number): any {
           EngagementId: S.optional(S.String),
           EngagementInvitationId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListEngagementFromOpportunityTaskSummary",
-      });
+      ).annotate({ identifier: "ListEngagementFromOpportunityTaskSummary" });
   }
 }
-function __c41(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           Catalog: S.String,
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Sort: S.optional(__S(1344, __c42, 0)),
-          PayloadType: S.optional(__S(1312, __c41, 0)),
+          Sort: S.optional(__S(1152, __c36, 0)),
+          PayloadType: S.optional(__S(320, __c10, 0)),
           ParticipantType: S.String,
           Status: S.optional(__S(320, __c10, 0)),
           EngagementIdentifier: S.optional(__S(64, __c2, 0)),
-          SenderAwsAccountId: S.optional(__S(1024, __c32, 0)),
+          SenderAwsAccountId: S.optional(__S(992, __c31, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/ListEngagementInvitations" }),
@@ -5056,10 +4972,8 @@ function __c41(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListEngagementInvitationsRequest",
-      });
-    case 2:
+      ).annotate({ identifier: "ListEngagementInvitationsRequest" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -5076,31 +4990,19 @@ function __c41(j: number): any {
           Catalog: S.String,
           ParticipantType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "EngagementInvitationSummary",
-      });
+      ).annotate({ identifier: "EngagementInvitationSummary" });
+    case 2:
+      return S.Array(__S(1281, __c40, 1));
     case 3:
-      return S.Array(__S(1314, __c41, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          EngagementInvitationSummaries: S.optional(__S(1315, __c41, 3)),
+          EngagementInvitationSummaries: S.optional(__S(1282, __c40, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListEngagementInvitationsResponse",
-      });
+      ).annotate({ identifier: "ListEngagementInvitationsResponse" });
   }
 }
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ SortOrder: S.String, SortBy: S.String })).annotate({
-        identifier: "OpportunityEngagementInvitationSort",
-      });
-  }
-}
-function __c43(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5119,9 +5021,7 @@ function __c43(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListEngagementMembersRequest",
-      });
+      ).annotate({ identifier: "ListEngagementMembersRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5131,16 +5031,14 @@ function __c43(j: number): any {
         }),
       ).annotate({ identifier: "EngagementMember" });
     case 2:
-      return S.Array(__S(1377, __c43, 1));
+      return S.Array(__S(1313, __c41, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ EngagementMemberList: __S(1378, __c43, 2), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListEngagementMembersResponse",
-      });
+        S.Struct({ EngagementMemberList: __S(1314, __c41, 2), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListEngagementMembersResponse" });
   }
 }
-function __c44(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5162,9 +5060,7 @@ function __c44(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListEngagementResourceAssociationsRequest",
-      });
+      ).annotate({ identifier: "ListEngagementResourceAssociationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5174,33 +5070,29 @@ function __c44(j: number): any {
           ResourceId: S.optional(S.String),
           CreatedBy: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "EngagementResourceAssociationSummary",
-      });
+      ).annotate({ identifier: "EngagementResourceAssociationSummary" });
     case 2:
-      return S.Array(__S(1409, __c44, 1));
+      return S.Array(__S(1345, __c42, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          EngagementResourceAssociationSummaries: __S(1410, __c44, 2),
+          EngagementResourceAssociationSummaries: __S(1346, __c42, 2),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListEngagementResourceAssociationsResponse",
-      });
+      ).annotate({ identifier: "ListEngagementResourceAssociationsResponse" });
   }
 }
-function __c45(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           Catalog: S.String,
-          CreatedBy: S.optional(__S(1024, __c32, 0)),
-          ExcludeCreatedBy: S.optional(__S(1024, __c32, 0)),
+          CreatedBy: S.optional(__S(992, __c31, 0)),
+          ExcludeCreatedBy: S.optional(__S(992, __c31, 0)),
           ContextTypes: S.optional(__S(320, __c10, 0)),
           ExcludeContextTypes: S.optional(__S(320, __c10, 0)),
-          Sort: S.optional(__S(1184, __c37, 0)),
+          Sort: S.optional(__S(1152, __c36, 0)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
           EngagementIdentifier: S.optional(__S(64, __c2, 0)),
@@ -5223,14 +5115,14 @@ function __c45(j: number): any {
         }),
       ).annotate({ identifier: "EngagementSummary" });
     case 2:
-      return S.Array(__S(1441, __c45, 1));
+      return S.Array(__S(1377, __c43, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ EngagementSummaryList: __S(1442, __c45, 2), NextToken: S.optional(S.String) }),
+        S.Struct({ EngagementSummaryList: __S(1378, __c43, 2), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListEngagementsResponse" });
   }
 }
-function __c46(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5259,14 +5151,14 @@ function __c46(j: number): any {
           Catalog: S.String,
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Sort: S.optional(__S(1184, __c37, 0)),
-          LastModifiedDate: S.optional(__S(1472, __c46, 0)),
+          Sort: S.optional(__S(1152, __c36, 0)),
+          LastModifiedDate: S.optional(__S(1408, __c44, 0)),
           Identifier: S.optional(__S(64, __c2, 0)),
           LifeCycleStage: S.optional(__S(320, __c10, 0)),
           LifeCycleReviewStatus: S.optional(__S(320, __c10, 0)),
           CustomerCompanyName: S.optional(__S(64, __c2, 0)),
-          CreatedDate: S.optional(__S(1473, __c46, 1)),
-          TargetCloseDate: S.optional(__S(1474, __c46, 2)),
+          CreatedDate: S.optional(__S(1409, __c44, 1)),
+          TargetCloseDate: S.optional(__S(1410, __c44, 2)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/ListOpportunities" }),
@@ -5306,11 +5198,11 @@ function __c46(j: number): any {
           OtherIndustry: S.optional(S.String),
           CompanyName: SensitiveString,
           WebsiteUrl: S.optional(SensitiveString),
-          Address: S.optional(__S(1477, __c46, 5)),
+          Address: S.optional(__S(1413, __c44, 5)),
         }),
       ).annotate({ identifier: "AccountSummary" });
     case 7:
-      return S.suspend(() => S.Struct({ Account: S.optional(__S(1478, __c46, 6)) })).annotate({
+      return S.suspend(() => S.Struct({ Account: S.optional(__S(1414, __c44, 6)) })).annotate({
         identifier: "CustomerSummary",
       });
     case 8:
@@ -5331,29 +5223,27 @@ function __c46(j: number): any {
           OpportunityType: S.optional(S.String),
           LastModifiedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           CreatedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          LifeCycle: S.optional(__S(1476, __c46, 4)),
-          Customer: S.optional(__S(1479, __c46, 7)),
-          Project: S.optional(__S(1480, __c46, 8)),
+          LifeCycle: S.optional(__S(1412, __c44, 4)),
+          Customer: S.optional(__S(1415, __c44, 7)),
+          Project: S.optional(__S(1416, __c44, 8)),
         }),
       ).annotate({ identifier: "OpportunitySummary" });
     case 10:
-      return S.Array(__S(1481, __c46, 9));
+      return S.Array(__S(1417, __c44, 9));
     case 11:
       return S.suspend(() =>
-        S.Struct({ OpportunitySummaries: __S(1482, __c46, 10), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListOpportunitiesResponse",
-      });
+        S.Struct({ OpportunitySummaries: __S(1418, __c44, 10), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListOpportunitiesResponse" });
   }
 }
-function __c47(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Sort: S.optional(__S(1184, __c37, 0)),
+          Sort: S.optional(__S(1152, __c36, 0)),
           Catalog: S.String,
           TaskStatus: S.optional(__S(320, __c10, 0)),
           TaskIdentifier: S.optional(__S(64, __c2, 0)),
@@ -5370,23 +5260,19 @@ function __c47(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListOpportunityFromEngagementTasksRequest",
-      });
+      ).annotate({ identifier: "ListOpportunityFromEngagementTasksRequest" });
     case 1:
-      return S.Array(__S(1536, __c48, 0));
+      return S.Array(__S(1472, __c46, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          TaskSummaries: S.optional(__S(1505, __c47, 1)),
+          TaskSummaries: S.optional(__S(1441, __c45, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListOpportunityFromEngagementTasksResponse",
-      });
+      ).annotate({ identifier: "ListOpportunityFromEngagementTasksResponse" });
   }
 }
-function __c48(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5402,12 +5288,10 @@ function __c48(j: number): any {
           EngagementId: S.optional(S.String),
           ContextId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListOpportunityFromEngagementTaskSummary",
-      });
+      ).annotate({ identifier: "ListOpportunityFromEngagementTaskSummary" });
   }
 }
-function __c49(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5419,7 +5303,7 @@ function __c49(j: number): any {
           TaskName: S.optional(__S(64, __c2, 0)),
           StartAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           StartBefore: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Sort: S.optional(__S(1344, __c42, 0)),
+          Sort: S.optional(__S(1152, __c36, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/ListProspectingFromEngagementTasks" }),
@@ -5430,9 +5314,7 @@ function __c49(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListProspectingFromEngagementTasksRequest",
-      });
+      ).annotate({ identifier: "ListProspectingFromEngagementTasksRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5447,16 +5329,14 @@ function __c49(j: number): any {
         }),
       ).annotate({ identifier: "ProspectingTaskSummary" });
     case 2:
-      return S.Array(__S(1569, __c49, 1));
+      return S.Array(__S(1505, __c47, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), TaskSummaries: __S(1570, __c49, 2) }),
-      ).annotate({
-        identifier: "ListProspectingFromEngagementTasksResponse",
-      });
+        S.Struct({ NextToken: S.optional(S.String), TaskSummaries: __S(1506, __c47, 2) }),
+      ).annotate({ identifier: "ListProspectingFromEngagementTasksResponse" });
   }
 }
-function __c50(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5470,7 +5350,7 @@ function __c50(j: number): any {
           NextToken: S.optional(S.String),
           EngagementIdentifier: S.optional(S.String),
           Status: S.optional(S.String),
-          Sort: S.optional(__S(1600, __c50, 0)),
+          Sort: S.optional(__S(1536, __c48, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/ListResourceSnapshotJobs" }),
@@ -5481,9 +5361,7 @@ function __c50(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListResourceSnapshotJobsRequest",
-      });
+      ).annotate({ identifier: "ListResourceSnapshotJobsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5492,23 +5370,19 @@ function __c50(j: number): any {
           EngagementId: S.optional(S.String),
           Status: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ResourceSnapshotJobSummary",
-      });
+      ).annotate({ identifier: "ResourceSnapshotJobSummary" });
     case 3:
-      return S.Array(__S(1602, __c50, 2));
+      return S.Array(__S(1538, __c48, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ResourceSnapshotJobSummaries: __S(1603, __c50, 3),
+          ResourceSnapshotJobSummaries: __S(1539, __c48, 3),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListResourceSnapshotJobsResponse",
-      });
+      ).annotate({ identifier: "ListResourceSnapshotJobsResponse" });
   }
 }
-function __c51(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5531,9 +5405,7 @@ function __c51(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListResourceSnapshotsRequest",
-      });
+      ).annotate({ identifier: "ListResourceSnapshotsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5546,19 +5418,17 @@ function __c51(j: number): any {
         }),
       ).annotate({ identifier: "ResourceSnapshotSummary" });
     case 2:
-      return S.Array(__S(1633, __c51, 1));
+      return S.Array(__S(1569, __c49, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ResourceSnapshotSummaries: __S(1634, __c51, 2),
+          ResourceSnapshotSummaries: __S(1570, __c49, 2),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListResourceSnapshotsResponse",
-      });
+      ).annotate({ identifier: "ListResourceSnapshotsResponse" });
   }
 }
-function __c52(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5566,7 +5436,7 @@ function __c52(j: number): any {
           Catalog: S.String,
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Sort: S.optional(__S(1184, __c37, 0)),
+          Sort: S.optional(__S(1152, __c36, 0)),
           Status: S.optional(__S(320, __c10, 0)),
           Identifier: S.optional(__S(64, __c2, 0)),
           Category: S.optional(__S(64, __c2, 0)),
@@ -5589,14 +5459,14 @@ function __c52(j: number): any {
         }),
       ).annotate({ identifier: "SolutionBase" });
     case 2:
-      return S.Array(__S(1665, __c52, 1));
+      return S.Array(__S(1601, __c50, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ SolutionSummaries: __S(1666, __c52, 2), NextToken: S.optional(S.String) }),
+        S.Struct({ SolutionSummaries: __S(1602, __c50, 2), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListSolutionsResponse" });
   }
 }
-function __c53(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5610,16 +5480,14 @@ function __c53(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: __S(449, __c14, 1) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c54(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5636,12 +5504,10 @@ function __c54(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutSellingSystemSettingsRequest",
-      });
+      ).annotate({ identifier: "PutSellingSystemSettingsRequest" });
   }
 }
-function __c55(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5659,12 +5525,10 @@ function __c55(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RejectEngagementInvitationRequest",
-      });
+      ).annotate({ identifier: "RejectEngagementInvitationRequest" });
   }
 }
-function __c56(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5683,12 +5547,10 @@ function __c56(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartEngagementByAcceptingInvitationTaskRequest",
-      });
+      ).annotate({ identifier: "StartEngagementByAcceptingInvitationTaskRequest" });
   }
 }
-function __c57(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5700,7 +5562,7 @@ function __c57(j: number): any {
           Catalog: S.String,
           ClientToken: S.String.pipe(T.IdempotencyToken()),
           Identifier: S.String,
-          AwsSubmission: __S(1824, __c57, 0),
+          AwsSubmission: __S(1760, __c55, 0),
           Tags: S.optional(__S(449, __c14, 1)),
         }).pipe(
           T.all(
@@ -5712,12 +5574,10 @@ function __c57(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartEngagementFromOpportunityTaskRequest",
-      });
+      ).annotate({ identifier: "StartEngagementFromOpportunityTaskRequest" });
   }
 }
-function __c58(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5737,12 +5597,10 @@ function __c58(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartOpportunityFromEngagementTaskRequest",
-      });
+      ).annotate({ identifier: "StartOpportunityFromEngagementTaskRequest" });
   }
 }
-function __c59(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5761,9 +5619,7 @@ function __c59(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartProspectingFromEngagementTaskRequest",
-      });
+      ).annotate({ identifier: "StartProspectingFromEngagementTaskRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5776,12 +5632,10 @@ function __c59(j: number): any {
           TaskArn: S.optional(S.String),
           TaskStatus: S.String,
         }),
-      ).annotate({
-        identifier: "StartProspectingFromEngagementTaskResponse",
-      });
+      ).annotate({ identifier: "StartProspectingFromEngagementTaskResponse" });
   }
 }
-function __c60(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5795,12 +5649,10 @@ function __c60(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartResourceSnapshotJobRequest",
-      });
+      ).annotate({ identifier: "StartResourceSnapshotJobRequest" });
   }
 }
-function __c61(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5814,12 +5666,10 @@ function __c61(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StopResourceSnapshotJobRequest",
-      });
+      ).annotate({ identifier: "StopResourceSnapshotJobRequest" });
   }
 }
-function __c62(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5841,7 +5691,7 @@ function __c62(j: number): any {
       ).annotate({ identifier: "SubmitOpportunityRequest" });
   }
 }
-function __c63(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5851,7 +5701,7 @@ function __c63(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c64(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5861,7 +5711,7 @@ function __c64(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c65(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5874,7 +5724,7 @@ function __c65(j: number): any {
       ).annotate({ identifier: "UpdateLeadContext" });
     case 1:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ Lead: __S(2080, __c65, 0) }),
+        /*@__PURE__*/ S.Struct({ Lead: __S(2016, __c63, 0) }),
         /*@__PURE__*/ S.Struct({ CustomerProject: __S(161, __c5, 1) }),
         /*@__PURE__*/ S.Struct({ ProspectingResult: __S(167, __c5, 7) }),
       ]);
@@ -5886,7 +5736,7 @@ function __c65(j: number): any {
           ContextIdentifier: S.String,
           EngagementLastModifiedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           Type: S.String,
-          Payload: __S(2081, __c65, 1),
+          Payload: __S(2017, __c63, 1),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/UpdateEngagementContext" }),
@@ -5897,9 +5747,7 @@ function __c65(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateEngagementContextRequest",
-      });
+      ).annotate({ identifier: "UpdateEngagementContextRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5908,12 +5756,10 @@ function __c65(j: number): any {
           EngagementLastModifiedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ContextId: S.String,
         }),
-      ).annotate({
-        identifier: "UpdateEngagementContextResponse",
-      });
+      ).annotate({ identifier: "UpdateEngagementContextResponse" });
   }
 }
-function __c66(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5947,26 +5793,20 @@ function __c66(j: number): any {
           Id: S.String,
           LastModifiedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "UpdateOpportunityResponse",
-      });
+      ).annotate({ identifier: "UpdateOpportunityResponse" });
   }
 }
-function __c67(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          FieldName: S.optional(S.String),
-          Message: S.String,
-          Code: S.String,
-        }),
+        S.Struct({ FieldName: S.optional(S.String), Message: S.String, Code: S.String }),
       ).annotate({ identifier: "ValidationExceptionError" });
     case 1:
-      return S.Array(__S(2144, __c67, 0));
+      return S.Array(__S(2080, __c65, 0));
   }
 }
-function __c68(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5980,12 +5820,10 @@ function __c68(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AcceptEngagementInvitationRequest",
-      });
+      ).annotate({ identifier: "AcceptEngagementInvitationRequest" });
   }
 }
-function __c69(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
@@ -5993,7 +5831,7 @@ function __c69(j: number): any {
       });
   }
 }
-function __c70(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6007,7 +5845,7 @@ function __c70(j: number): any {
       ).annotate({ identifier: "AssigneeContact" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Catalog: S.String, Identifier: S.String, Assignee: __S(2240, __c70, 0) }).pipe(
+        S.Struct({ Catalog: S.String, Identifier: S.String, Assignee: __S(2176, __c68, 0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/AssignOpportunity" }),
             svc,
@@ -6020,15 +5858,7 @@ function __c70(j: number): any {
       ).annotate({ identifier: "AssignOpportunityRequest" });
   }
 }
-function __c71(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AssignOpportunityResponse",
-      });
-  }
-}
-function __c72(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6047,9 +5877,7 @@ function __c72(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateOpportunityRequest",
-      });
+      ).annotate({ identifier: "AssociateOpportunityRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

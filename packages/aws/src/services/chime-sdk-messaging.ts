@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -957,8 +957,8 @@ export const associateChannelFlow: API.OperationMethod<
   AssociateChannelFlowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c72, 0) as any as S.Schema<AssociateChannelFlowRequest>,
-  output: __S(584, __c73, 0) as any as S.Schema<AssociateChannelFlowResponse>,
+  input: __S(568, __c71, 0) as any as S.Schema<AssociateChannelFlowRequest>,
+  output: __S(576, __c72, 0) as any as S.Schema<AssociateChannelFlowResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1325,7 +1325,7 @@ export const deleteChannel: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(144, __c18, 0) as any as S.Schema<DeleteChannelRequest>,
-  output: __S(584, __c73, 0) as any as S.Schema<DeleteChannelResponse>,
+  output: __S(576, __c72, 0) as any as S.Schema<DeleteChannelResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1362,7 +1362,7 @@ export const deleteChannelBan: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(152, __c19, 0) as any as S.Schema<DeleteChannelBanRequest>,
-  output: __S(584, __c73, 0) as any as S.Schema<DeleteChannelBanResponse>,
+  output: __S(576, __c72, 0) as any as S.Schema<DeleteChannelBanResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1398,7 +1398,7 @@ export const deleteChannelFlow: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(160, __c20, 0) as any as S.Schema<DeleteChannelFlowRequest>,
-  output: __S(584, __c73, 0) as any as S.Schema<DeleteChannelFlowResponse>,
+  output: __S(576, __c72, 0) as any as S.Schema<DeleteChannelFlowResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1436,7 +1436,7 @@ export const deleteChannelMembership: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(168, __c21, 0) as any as S.Schema<DeleteChannelMembershipRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<DeleteChannelMembershipResponse>,
+  output: __S(576, __c72, 0) as any as S.Schema<DeleteChannelMembershipResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1474,8 +1474,8 @@ export const deleteChannelMessage: API.OperationMethod<
   DeleteChannelMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<DeleteChannelMessageRequest>,
-  output: __S(584, __c73, 0) as any as S.Schema<DeleteChannelMessageResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<DeleteChannelMessageRequest>,
+  output: __S(576, __c72, 0) as any as S.Schema<DeleteChannelMessageResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1510,8 +1510,8 @@ export const deleteChannelModerator: API.OperationMethod<
   DeleteChannelModeratorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<DeleteChannelModeratorRequest>,
-  output: __S(584, __c73, 0) as any as S.Schema<DeleteChannelModeratorResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<DeleteChannelModeratorRequest>,
+  output: __S(576, __c72, 0) as any as S.Schema<DeleteChannelModeratorResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1543,8 +1543,8 @@ export const deleteMessagingStreamingConfigurations: API.OperationMethod<
   DeleteMessagingStreamingConfigurationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<DeleteMessagingStreamingConfigurationsRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<DeleteMessagingStreamingConfigurationsResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<DeleteMessagingStreamingConfigurationsRequest>,
+  output: __S(576, __c72, 0) as any as S.Schema<DeleteMessagingStreamingConfigurationsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1580,8 +1580,8 @@ export const describeChannel: API.OperationMethod<
   DescribeChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<DescribeChannelRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<DescribeChannelResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<DescribeChannelRequest>,
+  output: __S(202, __c25, 2) as any as S.Schema<DescribeChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1617,8 +1617,8 @@ export const describeChannelBan: API.OperationMethod<
   DescribeChannelBanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<DescribeChannelBanRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<DescribeChannelBanResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<DescribeChannelBanRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<DescribeChannelBanResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1650,8 +1650,8 @@ export const describeChannelFlow: API.OperationMethod<
   DescribeChannelFlowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<DescribeChannelFlowRequest>,
-  output: __S(226, __c28, 2) as any as S.Schema<DescribeChannelFlowResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<DescribeChannelFlowRequest>,
+  output: __S(218, __c27, 2) as any as S.Schema<DescribeChannelFlowResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1687,8 +1687,8 @@ export const describeChannelMembership: API.OperationMethod<
   DescribeChannelMembershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<DescribeChannelMembershipRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<DescribeChannelMembershipResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<DescribeChannelMembershipRequest>,
+  output: __S(226, __c28, 2) as any as S.Schema<DescribeChannelMembershipResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1725,10 +1725,10 @@ export const describeChannelMembershipForAppInstanceUser: API.OperationMethod<
   DescribeChannelMembershipForAppInstanceUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<DescribeChannelMembershipForAppInstanceUserRequest>,
+  input: __S(232, __c29, 0) as any as S.Schema<DescribeChannelMembershipForAppInstanceUserRequest>,
   output: __S(
-    241,
-    __c30,
+    233,
+    __c29,
     1,
   ) as any as S.Schema<DescribeChannelMembershipForAppInstanceUserResponse>,
   errors: [
@@ -1766,8 +1766,8 @@ export const describeChannelModeratedByAppInstanceUser: API.OperationMethod<
   DescribeChannelModeratedByAppInstanceUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<DescribeChannelModeratedByAppInstanceUserRequest>,
-  output: __S(265, __c33, 1) as any as S.Schema<DescribeChannelModeratedByAppInstanceUserResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<DescribeChannelModeratedByAppInstanceUserRequest>,
+  output: __S(257, __c32, 1) as any as S.Schema<DescribeChannelModeratedByAppInstanceUserResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1803,8 +1803,8 @@ export const describeChannelModerator: API.OperationMethod<
   DescribeChannelModeratorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<DescribeChannelModeratorRequest>,
-  output: __S(282, __c35, 2) as any as S.Schema<DescribeChannelModeratorResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<DescribeChannelModeratorRequest>,
+  output: __S(274, __c34, 2) as any as S.Schema<DescribeChannelModeratorResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1845,8 +1845,8 @@ export const disassociateChannelFlow: API.OperationMethod<
   DisassociateChannelFlowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<DisassociateChannelFlowRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<DisassociateChannelFlowResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<DisassociateChannelFlowRequest>,
+  output: __S(576, __c72, 0) as any as S.Schema<DisassociateChannelFlowResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1887,8 +1887,8 @@ export const getChannelMembershipPreferences: API.OperationMethod<
   GetChannelMembershipPreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<GetChannelMembershipPreferencesRequest>,
-  output: __S(306, __c38, 2) as any as S.Schema<GetChannelMembershipPreferencesResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<GetChannelMembershipPreferencesRequest>,
+  output: __S(298, __c37, 2) as any as S.Schema<GetChannelMembershipPreferencesResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1924,8 +1924,8 @@ export const getChannelMessage: API.OperationMethod<
   GetChannelMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<GetChannelMessageRequest>,
-  output: __S(314, __c39, 2) as any as S.Schema<GetChannelMessageResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<GetChannelMessageRequest>,
+  output: __S(306, __c38, 2) as any as S.Schema<GetChannelMessageResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1984,8 +1984,8 @@ export const getChannelMessageStatus: API.OperationMethod<
   GetChannelMessageStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<GetChannelMessageStatusRequest>,
-  output: __S(337, __c42, 1) as any as S.Schema<GetChannelMessageStatusResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<GetChannelMessageStatusRequest>,
+  output: __S(329, __c41, 1) as any as S.Schema<GetChannelMessageStatusResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2015,8 +2015,8 @@ export const getMessagingSessionEndpoint: API.OperationMethod<
   GetMessagingSessionEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<GetMessagingSessionEndpointRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<GetMessagingSessionEndpointResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<GetMessagingSessionEndpointRequest>,
+  output: __S(338, __c42, 2) as any as S.Schema<GetMessagingSessionEndpointResponse>,
   errors: [
     ForbiddenException,
     ServiceFailureException,
@@ -2048,8 +2048,8 @@ export const getMessagingStreamingConfigurations: API.OperationMethod<
   GetMessagingStreamingConfigurationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<GetMessagingStreamingConfigurationsRequest>,
-  output: __S(362, __c45, 2) as any as S.Schema<GetMessagingStreamingConfigurationsResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<GetMessagingStreamingConfigurationsRequest>,
+  output: __S(354, __c44, 2) as any as S.Schema<GetMessagingStreamingConfigurationsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2086,8 +2086,8 @@ export const listChannelBans: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<ListChannelBansRequest>,
-  output: __S(369, __c46, 1) as any as S.Schema<ListChannelBansResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<ListChannelBansRequest>,
+  output: __S(361, __c45, 1) as any as S.Schema<ListChannelBansResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2124,8 +2124,8 @@ export const listChannelFlows: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(384, __c48, 0) as any as S.Schema<ListChannelFlowsRequest>,
-  output: __S(387, __c48, 3) as any as S.Schema<ListChannelFlowsResponse>,
+  input: __S(376, __c47, 0) as any as S.Schema<ListChannelFlowsRequest>,
+  output: __S(379, __c47, 3) as any as S.Schema<ListChannelFlowsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2169,8 +2169,8 @@ export const listChannelMemberships: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<ListChannelMembershipsRequest>,
-  output: __S(393, __c49, 1) as any as S.Schema<ListChannelMembershipsResponse>,
+  input: __S(384, __c48, 0) as any as S.Schema<ListChannelMembershipsRequest>,
+  output: __S(385, __c48, 1) as any as S.Schema<ListChannelMembershipsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2212,8 +2212,8 @@ export const listChannelMembershipsForAppInstanceUser: API.PaginatedOperationMet
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(400, __c50, 0) as any as S.Schema<ListChannelMembershipsForAppInstanceUserRequest>,
-  output: __S(402, __c50, 2) as any as S.Schema<ListChannelMembershipsForAppInstanceUserResponse>,
+  input: __S(392, __c49, 0) as any as S.Schema<ListChannelMembershipsForAppInstanceUserRequest>,
+  output: __S(394, __c49, 2) as any as S.Schema<ListChannelMembershipsForAppInstanceUserResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2260,8 +2260,8 @@ export const listChannelMessages: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(408, __c51, 0) as any as S.Schema<ListChannelMessagesRequest>,
-  output: __S(411, __c51, 3) as any as S.Schema<ListChannelMessagesResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<ListChannelMessagesRequest>,
+  output: __S(403, __c50, 3) as any as S.Schema<ListChannelMessagesResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2302,8 +2302,8 @@ export const listChannelModerators: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<ListChannelModeratorsRequest>,
-  output: __S(419, __c52, 3) as any as S.Schema<ListChannelModeratorsResponse>,
+  input: __S(408, __c51, 0) as any as S.Schema<ListChannelModeratorsRequest>,
+  output: __S(411, __c51, 3) as any as S.Schema<ListChannelModeratorsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2353,8 +2353,8 @@ export const listChannels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<ListChannelsRequest>,
-  output: __S(433, __c54, 1) as any as S.Schema<ListChannelsResponse>,
+  input: __S(416, __c52, 0) as any as S.Schema<ListChannelsRequest>,
+  output: __S(425, __c53, 1) as any as S.Schema<ListChannelsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2391,8 +2391,8 @@ export const listChannelsAssociatedWithChannelFlow: API.PaginatedOperationMethod
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(440, __c55, 0) as any as S.Schema<ListChannelsAssociatedWithChannelFlowRequest>,
-  output: __S(443, __c55, 3) as any as S.Schema<ListChannelsAssociatedWithChannelFlowResponse>,
+  input: __S(432, __c54, 0) as any as S.Schema<ListChannelsAssociatedWithChannelFlowRequest>,
+  output: __S(435, __c54, 3) as any as S.Schema<ListChannelsAssociatedWithChannelFlowResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2433,8 +2433,8 @@ export const listChannelsModeratedByAppInstanceUser: API.PaginatedOperationMetho
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(448, __c56, 0) as any as S.Schema<ListChannelsModeratedByAppInstanceUserRequest>,
-  output: __S(450, __c56, 2) as any as S.Schema<ListChannelsModeratedByAppInstanceUserResponse>,
+  input: __S(440, __c55, 0) as any as S.Schema<ListChannelsModeratedByAppInstanceUserRequest>,
+  output: __S(442, __c55, 2) as any as S.Schema<ListChannelsModeratedByAppInstanceUserResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2471,8 +2471,8 @@ export const listSubChannels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(456, __c57, 0) as any as S.Schema<ListSubChannelsRequest>,
-  output: __S(459, __c57, 3) as any as S.Schema<ListSubChannelsResponse>,
+  input: __S(448, __c56, 0) as any as S.Schema<ListSubChannelsRequest>,
+  output: __S(451, __c56, 3) as any as S.Schema<ListSubChannelsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2508,8 +2508,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c58, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(465, __c58, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(456, __c57, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(457, __c57, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2551,8 +2551,8 @@ export const putChannelExpirationSettings: API.OperationMethod<
   PutChannelExpirationSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(472, __c59, 0) as any as S.Schema<PutChannelExpirationSettingsRequest>,
-  output: __S(473, __c59, 1) as any as S.Schema<PutChannelExpirationSettingsResponse>,
+  input: __S(464, __c58, 0) as any as S.Schema<PutChannelExpirationSettingsRequest>,
+  output: __S(465, __c58, 1) as any as S.Schema<PutChannelExpirationSettingsResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2593,8 +2593,8 @@ export const putChannelMembershipPreferences: API.OperationMethod<
   PutChannelMembershipPreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c60, 0) as any as S.Schema<PutChannelMembershipPreferencesRequest>,
-  output: __S(306, __c38, 2) as any as S.Schema<PutChannelMembershipPreferencesResponse>,
+  input: __S(472, __c59, 0) as any as S.Schema<PutChannelMembershipPreferencesRequest>,
+  output: __S(298, __c37, 2) as any as S.Schema<PutChannelMembershipPreferencesResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2629,8 +2629,8 @@ export const putMessagingStreamingConfigurations: API.OperationMethod<
   PutMessagingStreamingConfigurationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(488, __c61, 0) as any as S.Schema<PutMessagingStreamingConfigurationsRequest>,
-  output: __S(362, __c45, 2) as any as S.Schema<PutMessagingStreamingConfigurationsResponse>,
+  input: __S(480, __c60, 0) as any as S.Schema<PutMessagingStreamingConfigurationsRequest>,
+  output: __S(354, __c44, 2) as any as S.Schema<PutMessagingStreamingConfigurationsResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2669,8 +2669,8 @@ export const redactChannelMessage: API.OperationMethod<
   RedactChannelMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c62, 0) as any as S.Schema<RedactChannelMessageRequest>,
-  output: __S(497, __c62, 1) as any as S.Schema<RedactChannelMessageResponse>,
+  input: __S(488, __c61, 0) as any as S.Schema<RedactChannelMessageRequest>,
+  output: __S(489, __c61, 1) as any as S.Schema<RedactChannelMessageResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2711,8 +2711,8 @@ export const searchChannels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(506, __c63, 2) as any as S.Schema<SearchChannelsRequest>,
-  output: __S(433, __c54, 1) as any as S.Schema<SearchChannelsResponse>,
+  input: __S(498, __c62, 2) as any as S.Schema<SearchChannelsRequest>,
+  output: __S(425, __c53, 1) as any as S.Schema<SearchChannelsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2758,8 +2758,8 @@ export const sendChannelMessage: API.OperationMethod<
   SendChannelMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c64, 0) as any as S.Schema<SendChannelMessageRequest>,
-  output: __S(520, __c65, 0) as any as S.Schema<SendChannelMessageResponse>,
+  input: __S(504, __c63, 0) as any as S.Schema<SendChannelMessageRequest>,
+  output: __S(512, __c64, 0) as any as S.Schema<SendChannelMessageResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2792,8 +2792,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c66, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(584, __c73, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(520, __c65, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(576, __c72, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2825,8 +2825,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(536, __c67, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(584, __c73, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(528, __c66, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(576, __c72, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2864,7 +2864,7 @@ export const updateChannel: API.OperationMethod<
   UpdateChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c68, 0) as any as S.Schema<UpdateChannelRequest>,
+  input: __S(536, __c67, 0) as any as S.Schema<UpdateChannelRequest>,
   output: __S(88, __c11, 0) as any as S.Schema<UpdateChannelResponse>,
   errors: [
     BadRequestException,
@@ -2898,7 +2898,7 @@ export const updateChannelFlow: API.OperationMethod<
   UpdateChannelFlowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(552, __c69, 0) as any as S.Schema<UpdateChannelFlowRequest>,
+  input: __S(544, __c68, 0) as any as S.Schema<UpdateChannelFlowRequest>,
   output: __S(120, __c15, 0) as any as S.Schema<UpdateChannelFlowResponse>,
   errors: [
     BadRequestException,
@@ -2936,8 +2936,8 @@ export const updateChannelMessage: API.OperationMethod<
   UpdateChannelMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(560, __c70, 0) as any as S.Schema<UpdateChannelMessageRequest>,
-  output: __S(520, __c65, 0) as any as S.Schema<UpdateChannelMessageResponse>,
+  input: __S(552, __c69, 0) as any as S.Schema<UpdateChannelMessageRequest>,
+  output: __S(512, __c64, 0) as any as S.Schema<UpdateChannelMessageResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2974,8 +2974,8 @@ export const updateChannelReadMarker: API.OperationMethod<
   UpdateChannelReadMarkerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(568, __c71, 0) as any as S.Schema<UpdateChannelReadMarkerRequest>,
-  output: __S(569, __c71, 1) as any as S.Schema<UpdateChannelReadMarkerResponse>,
+  input: __S(560, __c70, 0) as any as S.Schema<UpdateChannelReadMarkerRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<UpdateChannelReadMarkerResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3014,9 +3014,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchCreateChannelMembershipRequest",
-      });
+      ).annotate({ identifier: "BatchCreateChannelMembershipRequest" });
     case 1:
       return S.Array(__S(16, __c2, 0));
     case 2:
@@ -3036,9 +3034,7 @@ function __c0(j: number): any {
           ErrorCode: S.optional(S.String),
           ErrorMessage: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchCreateChannelMembershipError",
-      });
+      ).annotate({ identifier: "BatchCreateChannelMembershipError" });
     case 4:
       return S.Array(__S(3, __c0, 3));
     case 5:
@@ -3047,9 +3043,7 @@ function __c0(j: number): any {
           BatchChannelMemberships: S.optional(__S(2, __c0, 2)),
           Errors: S.optional(__S(4, __c0, 4)),
         }),
-      ).annotate({
-        identifier: "BatchCreateChannelMembershipResponse",
-      });
+      ).annotate({ identifier: "BatchCreateChannelMembershipResponse" });
   }
 }
 function __c1(j: number): any {
@@ -3100,15 +3094,11 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ChannelFlowCallbackRequest",
-      });
+      ).annotate({ identifier: "ChannelFlowCallbackRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({ ChannelArn: S.optional(S.String), CallbackId: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ChannelFlowCallbackResponse",
-      });
+      ).annotate({ identifier: "ChannelFlowCallbackResponse" });
   }
 }
 function __c4(j: number): any {
@@ -3136,9 +3126,7 @@ function __c6(j: number): any {
           Body: S.optional(SensitiveString),
           Type: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "PushNotificationConfiguration",
-      });
+      ).annotate({ identifier: "PushNotificationConfiguration" });
   }
 }
 function __c7(j: number): any {
@@ -3182,9 +3170,7 @@ function __c9(j: number): any {
           TargetMembershipsPerSubChannel: S.Number,
           MinimumMembershipPercentage: S.Number,
         }),
-      ).annotate({
-        identifier: "ElasticChannelConfiguration",
-      });
+      ).annotate({ identifier: "ElasticChannelConfiguration" });
   }
 }
 function __c10(j: number): any {
@@ -3295,9 +3281,7 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateChannelMembershipRequest",
-      });
+      ).annotate({ identifier: "CreateChannelMembershipRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3305,9 +3289,7 @@ function __c16(j: number): any {
           Member: S.optional(__S(16, __c2, 0)),
           SubChannelId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateChannelMembershipResponse",
-      });
+      ).annotate({ identifier: "CreateChannelMembershipResponse" });
   }
 }
 function __c17(j: number): any {
@@ -3328,18 +3310,14 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateChannelModeratorRequest",
-      });
+      ).annotate({ identifier: "CreateChannelModeratorRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ChannelArn: S.optional(S.String),
           ChannelModerator: S.optional(__S(16, __c2, 0)),
         }),
-      ).annotate({
-        identifier: "CreateChannelModeratorResponse",
-      });
+      ).annotate({ identifier: "CreateChannelModeratorResponse" });
   }
 }
 function __c18(j: number): any {
@@ -3419,20 +3397,10 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteChannelMembershipRequest",
-      });
+      ).annotate({ identifier: "DeleteChannelMembershipRequest" });
   }
 }
 function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteChannelMembershipResponse",
-      });
-  }
-}
-function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3451,12 +3419,10 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteChannelMessageRequest",
-      });
+      ).annotate({ identifier: "DeleteChannelMessageRequest" });
   }
 }
-function __c24(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3477,12 +3443,10 @@ function __c24(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteChannelModeratorRequest",
-      });
+      ).annotate({ identifier: "DeleteChannelModeratorRequest" });
   }
 }
-function __c25(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3499,16 +3463,10 @@ function __c25(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteMessagingStreamingConfigurationsRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteMessagingStreamingConfigurationsResponse",
-      });
+      ).annotate({ identifier: "DeleteMessagingStreamingConfigurationsRequest" });
   }
 }
-function __c26(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3544,12 +3502,12 @@ function __c26(j: number): any {
         }),
       ).annotate({ identifier: "Channel" });
     case 2:
-      return S.suspend(() => S.Struct({ Channel: S.optional(__S(209, __c26, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ Channel: S.optional(__S(201, __c25, 1)) })).annotate({
         identifier: "DescribeChannelResponse",
       });
   }
 }
-function __c27(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3567,9 +3525,7 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeChannelBanRequest",
-      });
+      ).annotate({ identifier: "DescribeChannelBanRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3580,12 +3536,12 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "ChannelBan" });
     case 2:
-      return S.suspend(() => S.Struct({ ChannelBan: S.optional(__S(217, __c27, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ ChannelBan: S.optional(__S(209, __c26, 1)) })).annotate({
         identifier: "DescribeChannelBanResponse",
       });
   }
 }
-function __c28(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3599,9 +3555,7 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeChannelFlowRequest",
-      });
+      ).annotate({ identifier: "DescribeChannelFlowRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3613,12 +3567,12 @@ function __c28(j: number): any {
         }),
       ).annotate({ identifier: "ChannelFlow" });
     case 2:
-      return S.suspend(() => S.Struct({ ChannelFlow: S.optional(__S(225, __c28, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ ChannelFlow: S.optional(__S(217, __c27, 1)) })).annotate({
         identifier: "DescribeChannelFlowResponse",
       });
   }
 }
-function __c29(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3637,9 +3591,7 @@ function __c29(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeChannelMembershipRequest",
-      });
+      ).annotate({ identifier: "DescribeChannelMembershipRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3654,13 +3606,11 @@ function __c29(j: number): any {
       ).annotate({ identifier: "ChannelMembership" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ ChannelMembership: S.optional(__S(233, __c29, 1)) }),
-      ).annotate({
-        identifier: "DescribeChannelMembershipResponse",
-      });
+        S.Struct({ ChannelMembership: S.optional(__S(225, __c28, 1)) }),
+      ).annotate({ identifier: "DescribeChannelMembershipResponse" });
   }
 }
-function __c30(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3681,18 +3631,14 @@ function __c30(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeChannelMembershipForAppInstanceUserRequest",
-      });
+      ).annotate({ identifier: "DescribeChannelMembershipForAppInstanceUserRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ChannelMembership: S.optional(__S(257, __c32, 1)) }),
-      ).annotate({
-        identifier: "DescribeChannelMembershipForAppInstanceUserResponse",
-      });
+        S.Struct({ ChannelMembership: S.optional(__S(249, __c31, 1)) }),
+      ).annotate({ identifier: "DescribeChannelMembershipForAppInstanceUserResponse" });
   }
 }
-function __c31(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3707,7 +3653,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "ChannelSummary" });
   }
 }
-function __c32(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3716,21 +3662,17 @@ function __c32(j: number): any {
           ReadMarkerTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           SubChannelId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "AppInstanceUserMembershipSummary",
-      });
+      ).annotate({ identifier: "AppInstanceUserMembershipSummary" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ChannelSummary: S.optional(__S(248, __c31, 0)),
-          AppInstanceUserMembershipSummary: S.optional(__S(256, __c32, 0)),
+          ChannelSummary: S.optional(__S(240, __c30, 0)),
+          AppInstanceUserMembershipSummary: S.optional(__S(248, __c31, 0)),
         }),
-      ).annotate({
-        identifier: "ChannelMembershipForAppInstanceUserSummary",
-      });
+      ).annotate({ identifier: "ChannelMembershipForAppInstanceUserSummary" });
   }
 }
-function __c33(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3751,26 +3693,22 @@ function __c33(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeChannelModeratedByAppInstanceUserRequest",
-      });
+      ).annotate({ identifier: "DescribeChannelModeratedByAppInstanceUserRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ Channel: S.optional(__S(272, __c34, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ Channel: S.optional(__S(264, __c33, 0)) })).annotate({
         identifier: "DescribeChannelModeratedByAppInstanceUserResponse",
       });
   }
 }
-function __c34(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ ChannelSummary: S.optional(__S(248, __c31, 0)) })).annotate(
-        {
-          identifier: "ChannelModeratedByAppInstanceUserSummary",
-        },
+      return S.suspend(() => S.Struct({ ChannelSummary: S.optional(__S(240, __c30, 0)) })).annotate(
+        { identifier: "ChannelModeratedByAppInstanceUserSummary" },
       );
   }
 }
-function __c35(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3791,9 +3729,7 @@ function __c35(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeChannelModeratorRequest",
-      });
+      ).annotate({ identifier: "DescribeChannelModeratorRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3805,13 +3741,11 @@ function __c35(j: number): any {
       ).annotate({ identifier: "ChannelModerator" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ ChannelModerator: S.optional(__S(281, __c35, 1)) }),
-      ).annotate({
-        identifier: "DescribeChannelModeratorResponse",
-      });
+        S.Struct({ ChannelModerator: S.optional(__S(273, __c34, 1)) }),
+      ).annotate({ identifier: "DescribeChannelModeratorResponse" });
   }
 }
-function __c36(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3832,12 +3766,10 @@ function __c36(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateChannelFlowRequest",
-      });
+      ).annotate({ identifier: "DisassociateChannelFlowRequest" });
   }
 }
-function __c37(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3858,38 +3790,30 @@ function __c37(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetChannelMembershipPreferencesRequest",
-      });
+      ).annotate({ identifier: "GetChannelMembershipPreferencesRequest" });
   }
 }
-function __c38(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ AllowNotifications: S.String, FilterRule: S.optional(SensitiveString) }),
-      ).annotate({
-        identifier: "PushNotificationPreferences",
-      });
+      ).annotate({ identifier: "PushNotificationPreferences" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ PushNotifications: S.optional(__S(304, __c38, 0)) }),
-      ).annotate({
-        identifier: "ChannelMembershipPreferences",
-      });
+        S.Struct({ PushNotifications: S.optional(__S(296, __c37, 0)) }),
+      ).annotate({ identifier: "ChannelMembershipPreferences" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           ChannelArn: S.optional(S.String),
           Member: S.optional(__S(16, __c2, 0)),
-          Preferences: S.optional(__S(305, __c38, 1)),
+          Preferences: S.optional(__S(297, __c37, 1)),
         }),
-      ).annotate({
-        identifier: "GetChannelMembershipPreferencesResponse",
-      });
+      ).annotate({ identifier: "GetChannelMembershipPreferencesResponse" });
   }
 }
-function __c39(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3923,42 +3847,38 @@ function __c39(j: number): any {
           Sender: S.optional(__S(16, __c2, 0)),
           Redacted: S.optional(S.Boolean),
           Persistence: S.optional(S.String),
-          Status: S.optional(__S(320, __c40, 0)),
+          Status: S.optional(__S(312, __c39, 0)),
           MessageAttributes: S.optional(__S(33, __c4, 1)),
           SubChannelId: S.optional(S.String),
           ContentType: S.optional(SensitiveString),
-          Target: S.optional(__S(329, __c41, 1)),
+          Target: S.optional(__S(321, __c40, 1)),
         }),
       ).annotate({ identifier: "ChannelMessage" });
     case 2:
-      return S.suspend(() => S.Struct({ ChannelMessage: S.optional(__S(313, __c39, 1)) })).annotate(
-        {
-          identifier: "GetChannelMessageResponse",
-        },
+      return S.suspend(() => S.Struct({ ChannelMessage: S.optional(__S(305, __c38, 1)) })).annotate(
+        { identifier: "GetChannelMessageResponse" },
       );
   }
 }
-function __c40(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ Value: S.optional(S.String), Detail: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ChannelMessageStatusStructure",
-      });
+      ).annotate({ identifier: "ChannelMessageStatusStructure" });
   }
 }
-function __c41(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ MemberArn: S.optional(S.String) })).annotate({
         identifier: "Target",
       });
     case 1:
-      return S.Array(__S(328, __c41, 0));
+      return S.Array(__S(320, __c40, 0));
   }
 }
-function __c42(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3980,16 +3900,14 @@ function __c42(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetChannelMessageStatusRequest",
-      });
+      ).annotate({ identifier: "GetChannelMessageStatusRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ Status: S.optional(__S(320, __c40, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ Status: S.optional(__S(312, __c39, 0)) })).annotate({
         identifier: "GetChannelMessageStatusResponse",
       });
   }
 }
-function __c43(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4003,20 +3921,18 @@ function __c43(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetMessagingSessionEndpointRequest",
-      });
+      ).annotate({ identifier: "GetMessagingSessionEndpointRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Url: S.optional(S.String) })).annotate({
         identifier: "MessagingSessionEndpoint",
       });
     case 2:
-      return S.suspend(() => S.Struct({ Endpoint: S.optional(__S(345, __c43, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ Endpoint: S.optional(__S(337, __c42, 1)) })).annotate({
         identifier: "GetMessagingSessionEndpointResponse",
       });
   }
 }
-function __c44(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4033,28 +3949,24 @@ function __c44(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetMessagingStreamingConfigurationsRequest",
-      });
+      ).annotate({ identifier: "GetMessagingStreamingConfigurationsRequest" });
   }
 }
-function __c45(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ DataType: S.String, ResourceArn: S.String })).annotate({
         identifier: "StreamingConfiguration",
       });
     case 1:
-      return S.Array(__S(360, __c45, 0));
+      return S.Array(__S(352, __c44, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ StreamingConfigurations: S.optional(__S(361, __c45, 1)) }),
-      ).annotate({
-        identifier: "GetMessagingStreamingConfigurationsResponse",
-      });
+        S.Struct({ StreamingConfigurations: S.optional(__S(353, __c44, 1)) }),
+      ).annotate({ identifier: "GetMessagingStreamingConfigurationsResponse" });
   }
 }
-function __c46(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4079,22 +3991,22 @@ function __c46(j: number): any {
         S.Struct({
           ChannelArn: S.optional(S.String),
           NextToken: S.optional(SensitiveString),
-          ChannelBans: S.optional(__S(377, __c47, 1)),
+          ChannelBans: S.optional(__S(369, __c46, 1)),
         }),
       ).annotate({ identifier: "ListChannelBansResponse" });
   }
 }
-function __c47(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Member: S.optional(__S(16, __c2, 0)) })).annotate({
         identifier: "ChannelBanSummary",
       });
     case 1:
-      return S.Array(__S(376, __c47, 0));
+      return S.Array(__S(368, __c46, 0));
   }
 }
-function __c48(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4115,17 +4027,17 @@ function __c48(j: number): any {
         }),
       ).annotate({ identifier: "ChannelFlowSummary" });
     case 2:
-      return S.Array(__S(385, __c48, 1));
+      return S.Array(__S(377, __c47, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ChannelFlows: S.optional(__S(386, __c48, 2)),
+          ChannelFlows: S.optional(__S(378, __c47, 2)),
           NextToken: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "ListChannelFlowsResponse" });
   }
 }
-function __c49(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4146,22 +4058,18 @@ function __c49(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListChannelMembershipsRequest",
-      });
+      ).annotate({ identifier: "ListChannelMembershipsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ChannelArn: S.optional(S.String),
-          ChannelMemberships: S.optional(__S(377, __c47, 1)),
+          ChannelMemberships: S.optional(__S(369, __c46, 1)),
           NextToken: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "ListChannelMembershipsResponse",
-      });
+      ).annotate({ identifier: "ListChannelMembershipsResponse" });
   }
 }
-function __c50(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4180,23 +4088,19 @@ function __c50(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListChannelMembershipsForAppInstanceUserRequest",
-      });
+      ).annotate({ identifier: "ListChannelMembershipsForAppInstanceUserRequest" });
     case 1:
-      return S.Array(__S(257, __c32, 1));
+      return S.Array(__S(249, __c31, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ChannelMemberships: S.optional(__S(401, __c50, 1)),
+          ChannelMemberships: S.optional(__S(393, __c49, 1)),
           NextToken: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "ListChannelMembershipsForAppInstanceUserResponse",
-      });
+      ).annotate({ identifier: "ListChannelMembershipsForAppInstanceUserResponse" });
   }
 }
-function __c51(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4223,9 +4127,7 @@ function __c51(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListChannelMessagesRequest",
-      });
+      ).annotate({ identifier: "ListChannelMessagesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4238,28 +4140,26 @@ function __c51(j: number): any {
           LastEditedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Sender: S.optional(__S(16, __c2, 0)),
           Redacted: S.optional(S.Boolean),
-          Status: S.optional(__S(320, __c40, 0)),
+          Status: S.optional(__S(312, __c39, 0)),
           MessageAttributes: S.optional(__S(33, __c4, 1)),
           ContentType: S.optional(SensitiveString),
-          Target: S.optional(__S(329, __c41, 1)),
+          Target: S.optional(__S(321, __c40, 1)),
         }),
       ).annotate({ identifier: "ChannelMessageSummary" });
     case 2:
-      return S.Array(__S(409, __c51, 1));
+      return S.Array(__S(401, __c50, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           ChannelArn: S.optional(S.String),
           NextToken: S.optional(SensitiveString),
-          ChannelMessages: S.optional(__S(410, __c51, 2)),
+          ChannelMessages: S.optional(__S(402, __c50, 2)),
           SubChannelId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListChannelMessagesResponse",
-      });
+      ).annotate({ identifier: "ListChannelMessagesResponse" });
   }
 }
-function __c52(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4278,28 +4178,24 @@ function __c52(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListChannelModeratorsRequest",
-      });
+      ).annotate({ identifier: "ListChannelModeratorsRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Moderator: S.optional(__S(16, __c2, 0)) })).annotate({
         identifier: "ChannelModeratorSummary",
       });
     case 2:
-      return S.Array(__S(417, __c52, 1));
+      return S.Array(__S(409, __c51, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           ChannelArn: S.optional(S.String),
           NextToken: S.optional(SensitiveString),
-          ChannelModerators: S.optional(__S(418, __c52, 2)),
+          ChannelModerators: S.optional(__S(410, __c51, 2)),
         }),
-      ).annotate({
-        identifier: "ListChannelModeratorsResponse",
-      });
+      ).annotate({ identifier: "ListChannelModeratorsResponse" });
   }
 }
-function __c53(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4313,20 +4209,20 @@ function __c53(j: number): any {
       ).annotate({ identifier: "ListChannelsRequest" });
   }
 }
-function __c54(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(248, __c31, 0));
+      return S.Array(__S(240, __c30, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Channels: S.optional(__S(432, __c54, 0)),
+          Channels: S.optional(__S(424, __c53, 0)),
           NextToken: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "ListChannelsResponse" });
   }
 }
-function __c55(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4344,9 +4240,7 @@ function __c55(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListChannelsAssociatedWithChannelFlowRequest",
-      });
+      ).annotate({ identifier: "ListChannelsAssociatedWithChannelFlowRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4356,23 +4250,19 @@ function __c55(j: number): any {
           Privacy: S.optional(S.String),
           Metadata: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "ChannelAssociatedWithFlowSummary",
-      });
+      ).annotate({ identifier: "ChannelAssociatedWithFlowSummary" });
     case 2:
-      return S.Array(__S(441, __c55, 1));
+      return S.Array(__S(433, __c54, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Channels: S.optional(__S(442, __c55, 2)),
+          Channels: S.optional(__S(434, __c54, 2)),
           NextToken: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "ListChannelsAssociatedWithChannelFlowResponse",
-      });
+      ).annotate({ identifier: "ListChannelsAssociatedWithChannelFlowResponse" });
   }
 }
-function __c56(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4391,23 +4281,19 @@ function __c56(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListChannelsModeratedByAppInstanceUserRequest",
-      });
+      ).annotate({ identifier: "ListChannelsModeratedByAppInstanceUserRequest" });
     case 1:
-      return S.Array(__S(272, __c34, 0));
+      return S.Array(__S(264, __c33, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Channels: S.optional(__S(449, __c56, 1)),
+          Channels: S.optional(__S(441, __c55, 1)),
           NextToken: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "ListChannelsModeratedByAppInstanceUserResponse",
-      });
+      ).annotate({ identifier: "ListChannelsModeratedByAppInstanceUserResponse" });
   }
 }
-function __c57(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4432,34 +4318,32 @@ function __c57(j: number): any {
         S.Struct({ SubChannelId: S.optional(S.String), MembershipCount: S.optional(S.Number) }),
       ).annotate({ identifier: "SubChannelSummary" });
     case 2:
-      return S.Array(__S(457, __c57, 1));
+      return S.Array(__S(449, __c56, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           ChannelArn: S.optional(S.String),
-          SubChannels: S.optional(__S(458, __c57, 2)),
+          SubChannels: S.optional(__S(450, __c56, 2)),
           NextToken: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "ListSubChannelsResponse" });
   }
 }
-function __c58(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ ResourceARN: S.String.pipe(T.HttpQuery("arn")) }).pipe(
           T.all(T.Http({ method: "GET", uri: "/tags" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(65, __c8, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c59(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4477,21 +4361,17 @@ function __c59(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutChannelExpirationSettingsRequest",
-      });
+      ).annotate({ identifier: "PutChannelExpirationSettingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ChannelArn: S.optional(S.String),
           ExpirationSettings: S.optional(__S(80, __c10, 0)),
         }),
-      ).annotate({
-        identifier: "PutChannelExpirationSettingsResponse",
-      });
+      ).annotate({ identifier: "PutChannelExpirationSettingsResponse" });
   }
 }
-function __c60(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4499,7 +4379,7 @@ function __c60(j: number): any {
           ChannelArn: S.String.pipe(T.HttpLabel("ChannelArn")),
           MemberArn: S.String.pipe(T.HttpLabel("MemberArn")),
           ChimeBearer: S.String.pipe(T.HttpHeader("x-amz-chime-bearer")),
-          Preferences: __S(305, __c38, 1),
+          Preferences: __S(297, __c37, 1),
         }).pipe(
           T.all(
             T.Http({
@@ -4513,18 +4393,16 @@ function __c60(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutChannelMembershipPreferencesRequest",
-      });
+      ).annotate({ identifier: "PutChannelMembershipPreferencesRequest" });
   }
 }
-function __c61(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           AppInstanceArn: S.String.pipe(T.HttpLabel("AppInstanceArn")),
-          StreamingConfigurations: __S(361, __c45, 1),
+          StreamingConfigurations: __S(353, __c44, 1),
         }).pipe(
           T.all(
             T.Http({
@@ -4538,12 +4416,10 @@ function __c61(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutMessagingStreamingConfigurationsRequest",
-      });
+      ).annotate({ identifier: "PutMessagingStreamingConfigurationsRequest" });
   }
 }
-function __c62(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4565,9 +4441,7 @@ function __c62(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RedactChannelMessageRequest",
-      });
+      ).annotate({ identifier: "RedactChannelMessageRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4575,24 +4449,22 @@ function __c62(j: number): any {
           MessageId: S.optional(S.String),
           SubChannelId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "RedactChannelMessageResponse",
-      });
+      ).annotate({ identifier: "RedactChannelMessageResponse" });
   }
 }
-function __c63(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ Key: S.String, Values: __S(8, __c1, 0), Operator: S.String }),
       ).annotate({ identifier: "SearchField" });
     case 1:
-      return S.Array(__S(504, __c63, 0));
+      return S.Array(__S(496, __c62, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           ChimeBearer: S.optional(S.String).pipe(T.HttpHeader("x-amz-chime-bearer")),
-          Fields: __S(505, __c63, 1),
+          Fields: __S(497, __c62, 1),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
           NextToken: S.optional(SensitiveString).pipe(T.HttpQuery("next-token")),
         }).pipe(
@@ -4608,7 +4480,7 @@ function __c63(j: number): any {
       ).annotate({ identifier: "SearchChannelsRequest" });
   }
 }
-function __c64(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4624,7 +4496,7 @@ function __c64(j: number): any {
           MessageAttributes: S.optional(__S(33, __c4, 1)),
           SubChannelId: S.optional(S.String),
           ContentType: S.optional(SensitiveString),
-          Target: S.optional(__S(329, __c41, 1)),
+          Target: S.optional(__S(321, __c40, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/channels/{ChannelArn}/messages" }),
@@ -4635,27 +4507,23 @@ function __c64(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SendChannelMessageRequest",
-      });
+      ).annotate({ identifier: "SendChannelMessageRequest" });
   }
 }
-function __c65(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ChannelArn: S.optional(S.String),
           MessageId: S.optional(S.String),
-          Status: S.optional(__S(320, __c40, 0)),
+          Status: S.optional(__S(312, __c39, 0)),
           SubChannelId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SendChannelMessageResponse",
-      });
+      ).annotate({ identifier: "SendChannelMessageResponse" });
   }
 }
-function __c66(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4672,7 +4540,7 @@ function __c66(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c67(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4689,7 +4557,7 @@ function __c67(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c68(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4712,7 +4580,7 @@ function __c68(j: number): any {
       ).annotate({ identifier: "UpdateChannelRequest" });
   }
 }
-function __c69(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4733,7 +4601,7 @@ function __c69(j: number): any {
       ).annotate({ identifier: "UpdateChannelFlowRequest" });
   }
 }
-function __c70(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4755,12 +4623,10 @@ function __c70(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateChannelMessageRequest",
-      });
+      ).annotate({ identifier: "UpdateChannelMessageRequest" });
   }
 }
-function __c71(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4777,16 +4643,10 @@ function __c71(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateChannelReadMarkerRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ ChannelArn: S.optional(S.String) })).annotate({
-        identifier: "UpdateChannelReadMarkerResponse",
-      });
+      ).annotate({ identifier: "UpdateChannelReadMarkerRequest" });
   }
 }
-function __c72(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4804,17 +4664,13 @@ function __c72(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateChannelFlowRequest",
-      });
+      ).annotate({ identifier: "AssociateChannelFlowRequest" });
   }
 }
-function __c73(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AssociateChannelFlowResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "AssociateChannelFlowResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

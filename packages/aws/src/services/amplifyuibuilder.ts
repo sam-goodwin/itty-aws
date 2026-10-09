@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -914,7 +914,7 @@ export const createComponent: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(865, __c27, 1) as any as S.Schema<CreateComponentRequest>,
-  output: __S(960, __c30, 0) as any as S.Schema<CreateComponentResponse>,
+  output: __S(928, __c29, 0) as any as S.Schema<CreateComponentResponse>,
   errors: [
     InternalServerException,
     InvalidParameterException,
@@ -941,8 +941,8 @@ export const createForm: API.OperationMethod<
   CreateFormError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1089, __c34, 1) as any as S.Schema<CreateFormRequest>,
-  output: __S(1184, __c37, 0) as any as S.Schema<CreateFormResponse>,
+  input: __S(1057, __c33, 1) as any as S.Schema<CreateFormRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<CreateFormResponse>,
   errors: [
     InternalServerException,
     InvalidParameterException,
@@ -969,8 +969,8 @@ export const createTheme: API.OperationMethod<
   CreateThemeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1217, __c38, 1) as any as S.Schema<CreateThemeRequest>,
-  output: __S(1280, __c40, 0) as any as S.Schema<CreateThemeResponse>,
+  input: __S(1185, __c37, 1) as any as S.Schema<CreateThemeRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<CreateThemeResponse>,
   errors: [
     InternalServerException,
     InvalidParameterException,
@@ -1517,7 +1517,7 @@ export const updateComponent: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(769, __c24, 1) as any as S.Schema<UpdateComponentRequest>,
-  output: __S(960, __c30, 0) as any as S.Schema<UpdateComponentResponse>,
+  output: __S(928, __c29, 0) as any as S.Schema<UpdateComponentResponse>,
   errors: [InternalServerException, InvalidParameterException, ResourceConflictException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1539,7 +1539,7 @@ export const updateForm: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(801, __c25, 1) as any as S.Schema<UpdateFormRequest>,
-  output: __S(1184, __c37, 0) as any as S.Schema<UpdateFormResponse>,
+  output: __S(1152, __c36, 0) as any as S.Schema<UpdateFormResponse>,
   errors: [InternalServerException, InvalidParameterException, ResourceConflictException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1561,7 +1561,7 @@ export const updateTheme: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(833, __c26, 1) as any as S.Schema<UpdateThemeRequest>,
-  output: __S(1280, __c40, 0) as any as S.Schema<UpdateThemeResponse>,
+  output: __S(1248, __c39, 0) as any as S.Schema<UpdateThemeResponse>,
   errors: [InternalServerException, InvalidParameterException, ResourceConflictException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1596,9 +1596,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteComponentResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteComponentResponse" });
   }
 }
 function __c2(j: number): any {
@@ -1658,16 +1656,14 @@ function __c4(j: number): any {
           redirectUri: S.String,
           clientId: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "ExchangeCodeForTokenRequestBody",
-      });
+      ).annotate({ identifier: "ExchangeCodeForTokenRequestBody" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.String.pipe(T.HttpLabel("provider")),
-          request: __S(128, __c4, 0).pipe(T.HttpPayload()).annotate({
-            identifier: "ExchangeCodeForTokenRequestBody",
-          }),
+          request: __S(128, __c4, 0)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "ExchangeCodeForTokenRequestBody" }),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tokens/{provider}" }),
@@ -1678,9 +1674,7 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ExchangeCodeForTokenRequest",
-      });
+      ).annotate({ identifier: "ExchangeCodeForTokenRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1688,9 +1682,7 @@ function __c4(j: number): any {
           expiresIn: S.Number,
           refreshToken: SensitiveString,
         }),
-      ).annotate({
-        identifier: "ExchangeCodeForTokenResponse",
-      });
+      ).annotate({ identifier: "ExchangeCodeForTokenResponse" });
   }
 }
 function __c5(j: number): any {
@@ -1716,7 +1708,7 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "ExportComponentsRequest" });
     case 1:
-      return S.Array(__S(952, __c29, 24));
+      return S.Array(__S(920, __c28, 24));
     case 2:
       return S.suspend(() =>
         S.Struct({ entities: __S(161, __c5, 1), nextToken: S.optional(S.String) }),
@@ -1746,7 +1738,7 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "ExportFormsRequest" });
     case 1:
-      return S.Array(__S(1174, __c36, 22));
+      return S.Array(__S(1142, __c35, 22));
     case 2:
       return S.suspend(() =>
         S.Struct({ entities: __S(193, __c6, 1), nextToken: S.optional(S.String) }),
@@ -1776,7 +1768,7 @@ function __c7(j: number): any {
         ),
       ).annotate({ identifier: "ExportThemesRequest" });
     case 1:
-      return S.Array(__S(1251, __c39, 3));
+      return S.Array(__S(1219, __c38, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({ entities: __S(225, __c7, 1), nextToken: S.optional(S.String) }),
@@ -1842,7 +1834,7 @@ function __c9(j: number): any {
           renderTypeDeclarations: S.optional(S.Boolean),
           inlineSourceMap: S.optional(S.Boolean),
           apiConfiguration: S.optional(__S(289, __c9, 1)),
-          dependencies: S.optional(__S(896, __c28, 0)),
+          dependencies: S.optional(__S(1024, __c32, 0)),
         }),
       ).annotate({ identifier: "ReactStartCodegenJobData" });
     case 3:
@@ -1852,17 +1844,15 @@ function __c9(j: number): any {
         S.Struct({
           type: S.String,
           relatedModelName: S.String,
-          relatedModelFields: S.optional(__S(992, __c31, 0)),
+          relatedModelFields: S.optional(__S(960, __c30, 0)),
           canUnlinkAssociatedModel: S.optional(S.Boolean),
           relatedJoinFieldName: S.optional(S.String),
           relatedJoinTableName: S.optional(S.String),
           belongsToFieldOnRelatedModel: S.optional(S.String),
-          associatedFields: S.optional(__S(992, __c31, 0)),
+          associatedFields: S.optional(__S(960, __c30, 0)),
           isHasManyIndex: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "CodegenGenericDataRelationshipType",
-      });
+      ).annotate({ identifier: "CodegenGenericDataRelationshipType" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1881,13 +1871,13 @@ function __c9(j: number): any {
         S.Struct({
           fields: __S(294, __c9, 6),
           isJoinTable: S.optional(S.Boolean),
-          primaryKeys: __S(992, __c31, 0),
+          primaryKeys: __S(960, __c30, 0),
         }),
       ).annotate({ identifier: "CodegenGenericDataModel" });
     case 8:
       return S.Record(S.String, /*@__PURE__*/ __S(295, __c9, 7).pipe(S.optional));
     case 9:
-      return S.suspend(() => S.Struct({ values: __S(992, __c31, 0) })).annotate({
+      return S.suspend(() => S.Struct({ values: __S(960, __c30, 0) })).annotate({
         identifier: "CodegenGenericDataEnum",
       });
     case 10:
@@ -1906,9 +1896,7 @@ function __c9(j: number): any {
           enums: __S(298, __c9, 10),
           nonModels: __S(300, __c9, 12),
         }),
-      ).annotate({
-        identifier: "CodegenJobGenericDataSchema",
-      });
+      ).annotate({ identifier: "CodegenJobGenericDataSchema" });
     case 14:
       return S.suspend(() =>
         S.Struct({
@@ -1944,7 +1932,7 @@ function __c9(j: number): any {
           status: S.optional(S.String),
           statusMessage: S.optional(S.String),
           asset: S.optional(__S(303, __c9, 15)),
-          tags: S.optional(__S(1056, __c33, 0)),
+          tags: S.optional(__S(1024, __c32, 0)),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           modifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           dependencies: S.optional(__S(305, __c9, 17)),
@@ -1977,7 +1965,7 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          component: S.optional(__S(952, __c29, 24))
+          component: S.optional(__S(920, __c28, 24))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "Component" }),
         }),
@@ -2006,7 +1994,7 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          form: S.optional(__S(1174, __c36, 22))
+          form: S.optional(__S(1142, __c35, 22))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "Form" }),
         }),
@@ -2032,7 +2020,7 @@ function __c12(j: number): any {
         ),
       ).annotate({ identifier: "GetMetadataRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ features: __S(896, __c28, 0) })).annotate({
+      return S.suspend(() => S.Struct({ features: __S(1024, __c32, 0) })).annotate({
         identifier: "GetMetadataResponse",
       });
   }
@@ -2062,7 +2050,7 @@ function __c13(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          theme: S.optional(__S(1251, __c39, 3))
+          theme: S.optional(__S(1219, __c38, 3))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "Theme" }),
         }),
@@ -2172,7 +2160,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           appId: S.String,
-          dataType: __S(1120, __c35, 0),
+          dataType: __S(1088, __c34, 0),
           environmentName: S.String,
           formActionType: S.String,
           id: S.String,
@@ -2201,11 +2189,9 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: __S(1056, __c33, 0) })).annotate({
+      return S.suspend(() => S.Struct({ tags: __S(1024, __c32, 0) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
@@ -2283,9 +2269,9 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           provider: S.String.pipe(T.HttpLabel("provider")),
-          refreshTokenBody: __S(640, __c20, 0).pipe(T.HttpPayload()).annotate({
-            identifier: "RefreshTokenRequestBody",
-          }),
+          refreshTokenBody: __S(640, __c20, 0)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "RefreshTokenRequestBody" }),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tokens/{provider}/refresh" }),
@@ -2312,7 +2298,7 @@ function __c21(j: number): any {
           genericDataSchema: S.optional(__S(301, __c9, 13)),
           autoGenerateForms: S.optional(S.Boolean),
           features: S.optional(__S(302, __c9, 14)),
-          tags: S.optional(__S(1056, __c33, 0)),
+          tags: S.optional(__S(1024, __c32, 0)),
         }),
       ).annotate({ identifier: "StartCodegenJobData" });
     case 1:
@@ -2321,9 +2307,9 @@ function __c21(j: number): any {
           appId: S.String.pipe(T.HttpLabel("appId")),
           environmentName: S.String.pipe(T.HttpLabel("environmentName")),
           clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-          codegenJobToCreate: __S(672, __c21, 0).pipe(T.HttpPayload()).annotate({
-            identifier: "StartCodegenJobData",
-          }),
+          codegenJobToCreate: __S(672, __c21, 0)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "StartCodegenJobData" }),
         }).pipe(
           T.all(
             T.Http({
@@ -2354,7 +2340,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(1056, __c33, 0),
+          tags: __S(1024, __c32, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -2374,7 +2360,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(992, __c31, 0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(960, __c30, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -2397,13 +2383,13 @@ function __c24(j: number): any {
           name: S.optional(S.String),
           sourceId: S.optional(S.String),
           componentType: S.optional(S.String),
-          properties: S.optional(__S(933, __c29, 5)),
-          children: S.optional(__S(939, __c29, 11)),
-          variants: S.optional(__S(942, __c29, 14)),
-          overrides: S.optional(__S(940, __c29, 12)),
-          bindingProperties: S.optional(__S(947, __c29, 19)),
-          collectionProperties: S.optional(__S(951, __c29, 23)),
-          events: S.optional(__S(937, __c29, 9)),
+          properties: S.optional(__S(901, __c28, 5)),
+          children: S.optional(__S(907, __c28, 11)),
+          variants: S.optional(__S(910, __c28, 14)),
+          overrides: S.optional(__S(908, __c28, 12)),
+          bindingProperties: S.optional(__S(915, __c28, 19)),
+          collectionProperties: S.optional(__S(919, __c28, 23)),
+          events: S.optional(__S(905, __c28, 9)),
           schemaVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateComponentData" });
@@ -2414,9 +2400,9 @@ function __c24(j: number): any {
           environmentName: S.String.pipe(T.HttpLabel("environmentName")),
           id: S.String.pipe(T.HttpLabel("id")),
           clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-          updatedComponent: __S(768, __c24, 0).pipe(T.HttpPayload()).annotate({
-            identifier: "UpdateComponentData",
-          }),
+          updatedComponent: __S(768, __c24, 0)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "UpdateComponentData" }),
         }).pipe(
           T.all(
             T.Http({
@@ -2439,13 +2425,13 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          dataType: S.optional(__S(1120, __c35, 0)),
+          dataType: S.optional(__S(1088, __c34, 0)),
           formActionType: S.optional(S.String),
-          fields: S.optional(__S(1167, __c36, 15)),
-          style: S.optional(__S(1169, __c36, 17)),
-          sectionalElements: S.optional(__S(1171, __c36, 19)),
+          fields: S.optional(__S(1135, __c35, 15)),
+          style: S.optional(__S(1137, __c35, 17)),
+          sectionalElements: S.optional(__S(1139, __c35, 19)),
           schemaVersion: S.optional(S.String),
-          cta: S.optional(__S(1173, __c36, 21)),
+          cta: S.optional(__S(1141, __c35, 21)),
           labelDecorator: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateFormData" });
@@ -2482,8 +2468,8 @@ function __c26(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          values: __S(1250, __c39, 2),
-          overrides: S.optional(__S(1250, __c39, 2)),
+          values: __S(1218, __c38, 2),
+          overrides: S.optional(__S(1218, __c38, 2)),
         }),
       ).annotate({ identifier: "UpdateThemeData" });
     case 1:
@@ -2520,14 +2506,14 @@ function __c27(j: number): any {
           name: S.String,
           sourceId: S.optional(S.String),
           componentType: S.String,
-          properties: __S(933, __c29, 5),
-          children: S.optional(__S(939, __c29, 11)),
-          variants: __S(942, __c29, 14),
-          overrides: __S(940, __c29, 12),
-          bindingProperties: __S(947, __c29, 19),
-          collectionProperties: S.optional(__S(951, __c29, 23)),
-          tags: S.optional(__S(1056, __c33, 0)),
-          events: S.optional(__S(937, __c29, 9)),
+          properties: __S(901, __c28, 5),
+          children: S.optional(__S(907, __c28, 11)),
+          variants: __S(910, __c28, 14),
+          overrides: __S(908, __c28, 12),
+          bindingProperties: __S(915, __c28, 19),
+          collectionProperties: S.optional(__S(919, __c28, 23)),
+          tags: S.optional(__S(1024, __c32, 0)),
+          events: S.optional(__S(905, __c28, 9)),
           schemaVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateComponentData" });
@@ -2537,9 +2523,9 @@ function __c27(j: number): any {
           appId: S.String.pipe(T.HttpLabel("appId")),
           environmentName: S.String.pipe(T.HttpLabel("environmentName")),
           clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-          componentToCreate: __S(864, __c27, 0).pipe(T.HttpPayload()).annotate({
-            identifier: "CreateComponentData",
-          }),
+          componentToCreate: __S(864, __c27, 0)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "CreateComponentData" }),
         }).pipe(
           T.all(
             T.Http({
@@ -2559,20 +2545,14 @@ function __c27(j: number): any {
 function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() => S.Struct({ element: S.String, property: S.String })).annotate({
         identifier: "FormBindingElement",
       });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(928, __c29, 0).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(896, __c28, 0).pipe(S.optional));
     case 2:
       return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<ComponentProperty> => __S(932, __c29, 4)).annotate({
+        /*@__PURE__*/ S.suspend((): S.Schema<ComponentProperty> => __S(900, __c28, 4)).annotate({
           identifier: "ComponentProperty",
         }),
       );
@@ -2584,36 +2564,34 @@ function __c29(j: number): any {
           operator: S.optional(S.String),
           operand: S.optional(S.String),
           then: S.optional(
-            S.suspend((): S.Schema<ComponentProperty> => __S(932, __c29, 4)).annotate({
+            S.suspend((): S.Schema<ComponentProperty> => __S(900, __c28, 4)).annotate({
               identifier: "ComponentProperty",
             }),
           ),
           else: S.optional(
-            S.suspend((): S.Schema<ComponentProperty> => __S(932, __c29, 4)).annotate({
+            S.suspend((): S.Schema<ComponentProperty> => __S(900, __c28, 4)).annotate({
               identifier: "ComponentProperty",
             }),
           ),
           operandType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ComponentConditionProperty",
-      });
+      ).annotate({ identifier: "ComponentConditionProperty" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
-          bindingProperties: S.optional(__S(1024, __c32, 0)),
-          collectionBindingProperties: S.optional(__S(1024, __c32, 0)),
+          bindingProperties: S.optional(__S(992, __c31, 0)),
+          collectionBindingProperties: S.optional(__S(992, __c31, 0)),
           defaultValue: S.optional(S.String),
           model: S.optional(S.String),
-          bindings: S.optional(__S(929, __c29, 1)),
+          bindings: S.optional(__S(897, __c28, 1)),
           event: S.optional(S.String),
           userAttribute: S.optional(S.String),
           concat: S.optional(
-            S.suspend(() => __S(930, __c29, 2)).annotate({ identifier: "ComponentPropertyList" }),
+            S.suspend(() => __S(898, __c28, 2)).annotate({ identifier: "ComponentPropertyList" }),
           ),
           condition: S.optional(
-            S.suspend((): S.Schema<ComponentConditionProperty> => __S(931, __c29, 3)).annotate({
+            S.suspend((): S.Schema<ComponentConditionProperty> => __S(899, __c28, 3)).annotate({
               identifier: "ComponentConditionProperty",
             }),
           ),
@@ -2627,78 +2605,76 @@ function __c29(j: number): any {
     case 5:
       return S.Record(
         S.String,
-        /*@__PURE__*/ S.suspend((): S.Schema<ComponentProperty> => __S(932, __c29, 4))
+        /*@__PURE__*/ S.suspend((): S.Schema<ComponentProperty> => __S(900, __c28, 4))
           .annotate({ identifier: "ComponentProperty" })
           .pipe(S.optional),
       );
     case 6:
       return S.suspend(() =>
-        S.Struct({ componentName: S.String, property: S.String, set: __S(932, __c29, 4) }),
-      ).annotate({
-        identifier: "MutationActionSetStateParameter",
-      });
+        S.Struct({ componentName: S.String, property: S.String, set: __S(900, __c28, 4) }),
+      ).annotate({ identifier: "MutationActionSetStateParameter" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(__S(932, __c29, 4)),
-          url: S.optional(__S(932, __c29, 4)),
-          anchor: S.optional(__S(932, __c29, 4)),
-          target: S.optional(__S(932, __c29, 4)),
-          global: S.optional(__S(932, __c29, 4)),
+          type: S.optional(__S(900, __c28, 4)),
+          url: S.optional(__S(900, __c28, 4)),
+          anchor: S.optional(__S(900, __c28, 4)),
+          target: S.optional(__S(900, __c28, 4)),
+          global: S.optional(__S(900, __c28, 4)),
           model: S.optional(S.String),
-          id: S.optional(__S(932, __c29, 4)),
-          fields: S.optional(__S(933, __c29, 5)),
-          state: S.optional(__S(934, __c29, 6)),
+          id: S.optional(__S(900, __c28, 4)),
+          fields: S.optional(__S(901, __c28, 5)),
+          state: S.optional(__S(902, __c28, 6)),
         }),
       ).annotate({ identifier: "ActionParameters" });
     case 8:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.String),
-          parameters: S.optional(__S(935, __c29, 7)),
+          parameters: S.optional(__S(903, __c28, 7)),
           bindingEvent: S.optional(S.String),
         }),
       ).annotate({ identifier: "ComponentEvent" });
     case 9:
-      return S.Record(S.String, /*@__PURE__*/ __S(936, __c29, 8).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(904, __c28, 8).pipe(S.optional));
     case 10:
       return S.suspend(() =>
         S.Struct({
           componentType: S.String,
           name: S.String,
-          properties: __S(933, __c29, 5),
+          properties: __S(901, __c28, 5),
           children: S.optional(
-            S.suspend(() => __S(939, __c29, 11)).annotate({ identifier: "ComponentChildList" }),
+            S.suspend(() => __S(907, __c28, 11)).annotate({ identifier: "ComponentChildList" }),
           ),
-          events: S.optional(__S(937, __c29, 9)),
+          events: S.optional(__S(905, __c28, 9)),
           sourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ComponentChild" });
     case 11:
       return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<ComponentChild> => __S(938, __c29, 10)).annotate({
+        /*@__PURE__*/ S.suspend((): S.Schema<ComponentChild> => __S(906, __c28, 10)).annotate({
           identifier: "ComponentChild",
         }),
       );
     case 12:
-      return S.Record(S.String, /*@__PURE__*/ __S(896, __c28, 0).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(1024, __c32, 0).pipe(S.optional));
     case 13:
       return S.suspend(() =>
         S.Struct({
-          variantValues: S.optional(__S(896, __c28, 0)),
-          overrides: S.optional(__S(940, __c29, 12)),
+          variantValues: S.optional(__S(1024, __c32, 0)),
+          overrides: S.optional(__S(908, __c28, 12)),
         }),
       ).annotate({ identifier: "ComponentVariant" });
     case 14:
-      return S.Array(__S(941, __c29, 13));
+      return S.Array(__S(909, __c28, 13));
     case 15:
       return S.suspend(() =>
         S.Struct({
           or: S.optional(
-            S.suspend(() => __S(944, __c29, 16)).annotate({ identifier: "PredicateList" }),
+            S.suspend(() => __S(912, __c28, 16)).annotate({ identifier: "PredicateList" }),
           ),
           and: S.optional(
-            S.suspend(() => __S(944, __c29, 16)).annotate({ identifier: "PredicateList" }),
+            S.suspend(() => __S(912, __c28, 16)).annotate({ identifier: "PredicateList" }),
           ),
           field: S.optional(S.String),
           operator: S.optional(S.String),
@@ -2708,7 +2684,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "Predicate" });
     case 16:
       return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<Predicate> => __S(943, __c29, 15)).annotate({
+        /*@__PURE__*/ S.suspend((): S.Schema<Predicate> => __S(911, __c28, 15)).annotate({
           identifier: "Predicate",
         }),
       );
@@ -2717,47 +2693,41 @@ function __c29(j: number): any {
         S.Struct({
           model: S.optional(S.String),
           field: S.optional(S.String),
-          predicates: S.optional(__S(944, __c29, 16)),
+          predicates: S.optional(__S(912, __c28, 16)),
           userAttribute: S.optional(S.String),
           bucket: S.optional(S.String),
           key: S.optional(S.String),
           defaultValue: S.optional(S.String),
           slotName: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ComponentBindingPropertiesValueProperties",
-      });
+      ).annotate({ identifier: "ComponentBindingPropertiesValueProperties" });
     case 18:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          bindingProperties: S.optional(__S(945, __c29, 17)),
+          bindingProperties: S.optional(__S(913, __c28, 17)),
           defaultValue: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ComponentBindingPropertiesValue",
-      });
+      ).annotate({ identifier: "ComponentBindingPropertiesValue" });
     case 19:
-      return S.Record(S.String, /*@__PURE__*/ __S(946, __c29, 18).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(914, __c28, 18).pipe(S.optional));
     case 20:
       return S.suspend(() => S.Struct({ field: S.String, direction: S.String })).annotate({
         identifier: "SortProperty",
       });
     case 21:
-      return S.Array(__S(948, __c29, 20));
+      return S.Array(__S(916, __c28, 20));
     case 22:
       return S.suspend(() =>
         S.Struct({
           model: S.String,
-          sort: S.optional(__S(949, __c29, 21)),
-          predicate: S.optional(__S(943, __c29, 15)),
-          identifiers: S.optional(__S(992, __c31, 0)),
+          sort: S.optional(__S(917, __c28, 21)),
+          predicate: S.optional(__S(911, __c28, 15)),
+          identifiers: S.optional(__S(960, __c30, 0)),
         }),
-      ).annotate({
-        identifier: "ComponentDataConfiguration",
-      });
+      ).annotate({ identifier: "ComponentDataConfiguration" });
     case 23:
-      return S.Record(S.String, /*@__PURE__*/ __S(950, __c29, 22).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(918, __c28, 22).pipe(S.optional));
     case 24:
       return S.suspend(() =>
         S.Struct({
@@ -2767,69 +2737,67 @@ function __c29(j: number): any {
           id: S.String,
           name: S.String,
           componentType: S.String,
-          properties: __S(933, __c29, 5),
-          children: S.optional(__S(939, __c29, 11)),
-          variants: __S(942, __c29, 14),
-          overrides: __S(940, __c29, 12),
-          bindingProperties: __S(947, __c29, 19),
-          collectionProperties: S.optional(__S(951, __c29, 23)),
+          properties: __S(901, __c28, 5),
+          children: S.optional(__S(907, __c28, 11)),
+          variants: __S(910, __c28, 14),
+          overrides: __S(908, __c28, 12),
+          bindingProperties: __S(915, __c28, 19),
+          collectionProperties: S.optional(__S(919, __c28, 23)),
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           modifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          tags: S.optional(__S(1056, __c33, 0)),
-          events: S.optional(__S(937, __c29, 9)),
+          tags: S.optional(__S(1024, __c32, 0)),
+          events: S.optional(__S(905, __c28, 9)),
           schemaVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "Component" });
   }
 }
-function __c30(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          entity: S.optional(__S(952, __c29, 24))
+          entity: S.optional(__S(920, __c28, 24))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "Component" }),
         }),
       ).annotate({ identifier: "CreateComponentResponse" });
   }
 }
-function __c31(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c32(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ property: S.String, field: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ComponentPropertyBindingProperties",
-      });
+      ).annotate({ identifier: "ComponentPropertyBindingProperties" });
   }
 }
-function __c33(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c34(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          dataType: __S(1120, __c35, 0),
+          dataType: __S(1088, __c34, 0),
           formActionType: S.String,
-          fields: __S(1167, __c36, 15),
-          style: __S(1169, __c36, 17),
-          sectionalElements: __S(1171, __c36, 19),
+          fields: __S(1135, __c35, 15),
+          style: __S(1137, __c35, 17),
+          sectionalElements: __S(1139, __c35, 19),
           schemaVersion: S.String,
-          cta: S.optional(__S(1173, __c36, 21)),
-          tags: S.optional(__S(1056, __c33, 0)),
+          cta: S.optional(__S(1141, __c35, 21)),
+          tags: S.optional(__S(1024, __c32, 0)),
           labelDecorator: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateFormData" });
@@ -2839,7 +2807,7 @@ function __c34(j: number): any {
           appId: S.String.pipe(T.HttpLabel("appId")),
           environmentName: S.String.pipe(T.HttpLabel("environmentName")),
           clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-          formToCreate: __S(1088, __c34, 0)
+          formToCreate: __S(1056, __c33, 0)
             .pipe(T.HttpPayload())
             .annotate({ identifier: "CreateFormData" }),
         }).pipe(
@@ -2855,7 +2823,7 @@ function __c34(j: number): any {
       ).annotate({ identifier: "CreateFormRequest" });
   }
 }
-function __c35(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2863,7 +2831,7 @@ function __c35(j: number): any {
       ).annotate({ identifier: "FormDataTypeConfig" });
   }
 }
-function __c36(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.Union([
@@ -2874,18 +2842,16 @@ function __c36(j: number): any {
     case 1:
       return S.Array(
         /*@__PURE__*/ S.suspend((): S.Schema<FormInputValueProperty> =>
-          __S(1154, __c36, 2),
-        ).annotate({
-          identifier: "FormInputValueProperty",
-        }),
+          __S(1122, __c35, 2),
+        ).annotate({ identifier: "FormInputValueProperty" }),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
-          bindingProperties: S.optional(__S(1024, __c32, 0)),
+          bindingProperties: S.optional(__S(992, __c31, 0)),
           concat: S.optional(
-            S.suspend(() => __S(1153, __c36, 1)).annotate({
+            S.suspend(() => __S(1121, __c35, 1)).annotate({
               identifier: "FormInputValuePropertyList",
             }),
           ),
@@ -2893,10 +2859,10 @@ function __c36(j: number): any {
       ).annotate({ identifier: "FormInputValueProperty" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ displayValue: S.optional(__S(1154, __c36, 2)), value: __S(1154, __c36, 2) }),
+        S.Struct({ displayValue: S.optional(__S(1122, __c35, 2)), value: __S(1122, __c35, 2) }),
       ).annotate({ identifier: "ValueMapping" });
     case 4:
-      return S.Array(__S(1155, __c36, 3));
+      return S.Array(__S(1123, __c35, 3));
     case 5:
       return S.suspend(() => S.Struct({ model: S.optional(S.String) })).annotate({
         identifier: "FormInputBindingPropertiesValueProperties",
@@ -2905,25 +2871,23 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          bindingProperties: S.optional(__S(1157, __c36, 5)),
+          bindingProperties: S.optional(__S(1125, __c35, 5)),
         }),
-      ).annotate({
-        identifier: "FormInputBindingPropertiesValue",
-      });
+      ).annotate({ identifier: "FormInputBindingPropertiesValue" });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ __S(1158, __c36, 6).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(1126, __c35, 6).pipe(S.optional));
     case 8:
       return S.suspend(() =>
         S.Struct({
-          values: __S(1156, __c36, 4),
-          bindingProperties: S.optional(__S(1159, __c36, 7)),
+          values: __S(1124, __c35, 4),
+          bindingProperties: S.optional(__S(1127, __c35, 7)),
         }),
       ).annotate({ identifier: "ValueMappings" });
     case 9:
       return S.suspend(() =>
         S.Struct({
           accessLevel: S.String,
-          acceptedFileTypes: __S(992, __c31, 0),
+          acceptedFileTypes: __S(960, __c30, 0),
           showThumbnails: S.optional(S.Boolean),
           isResumable: S.optional(S.Boolean),
           maxFileCount: S.optional(S.Number),
@@ -2941,14 +2905,14 @@ function __c36(j: number): any {
           descriptiveText: S.optional(S.String),
           defaultChecked: S.optional(S.Boolean),
           defaultCountryCode: S.optional(S.String),
-          valueMappings: S.optional(__S(1160, __c36, 8)),
+          valueMappings: S.optional(__S(1128, __c35, 8)),
           name: S.optional(S.String),
           minValue: S.optional(S.Number),
           maxValue: S.optional(S.Number),
           step: S.optional(S.Number),
           value: S.optional(S.String),
           isArray: S.optional(S.Boolean),
-          fileUploaderConfig: S.optional(__S(1161, __c36, 9)),
+          fileUploaderConfig: S.optional(__S(1129, __c35, 9)),
         }),
       ).annotate({ identifier: "FieldInputConfig" });
     case 11:
@@ -2957,27 +2921,25 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          strValues: S.optional(__S(992, __c31, 0)),
-          numValues: S.optional(__S(1163, __c36, 11)),
+          strValues: S.optional(__S(960, __c30, 0)),
+          numValues: S.optional(__S(1131, __c35, 11)),
           validationMessage: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "FieldValidationConfiguration",
-      });
+      ).annotate({ identifier: "FieldValidationConfiguration" });
     case 13:
-      return S.Array(__S(1164, __c36, 12));
+      return S.Array(__S(1132, __c35, 12));
     case 14:
       return S.suspend(() =>
         S.Struct({
           label: S.optional(S.String),
-          position: S.optional(__S(1152, __c36, 0)),
+          position: S.optional(__S(1120, __c35, 0)),
           excluded: S.optional(S.Boolean),
-          inputType: S.optional(__S(1162, __c36, 10)),
-          validations: S.optional(__S(1165, __c36, 13)),
+          inputType: S.optional(__S(1130, __c35, 10)),
+          validations: S.optional(__S(1133, __c35, 13)),
         }),
       ).annotate({ identifier: "FieldConfig" });
     case 15:
-      return S.Record(S.String, /*@__PURE__*/ __S(1166, __c36, 14).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(1134, __c35, 14).pipe(S.optional));
     case 16:
       return S.Union([
         /*@__PURE__*/ S.Struct({ tokenReference: S.String }),
@@ -2986,16 +2948,16 @@ function __c36(j: number): any {
     case 17:
       return S.suspend(() =>
         S.Struct({
-          horizontalGap: S.optional(__S(1168, __c36, 16)),
-          verticalGap: S.optional(__S(1168, __c36, 16)),
-          outerPadding: S.optional(__S(1168, __c36, 16)),
+          horizontalGap: S.optional(__S(1136, __c35, 16)),
+          verticalGap: S.optional(__S(1136, __c35, 16)),
+          outerPadding: S.optional(__S(1136, __c35, 16)),
         }),
       ).annotate({ identifier: "FormStyle" });
     case 18:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          position: S.optional(__S(1152, __c36, 0)),
+          position: S.optional(__S(1120, __c35, 0)),
           text: S.optional(S.String),
           level: S.optional(S.Number),
           orientation: S.optional(S.String),
@@ -3003,22 +2965,22 @@ function __c36(j: number): any {
         }),
       ).annotate({ identifier: "SectionalElement" });
     case 19:
-      return S.Record(S.String, /*@__PURE__*/ __S(1170, __c36, 18).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(1138, __c35, 18).pipe(S.optional));
     case 20:
       return S.suspend(() =>
         S.Struct({
           excluded: S.optional(S.Boolean),
           children: S.optional(S.String),
-          position: S.optional(__S(1152, __c36, 0)),
+          position: S.optional(__S(1120, __c35, 0)),
         }),
       ).annotate({ identifier: "FormButton" });
     case 21:
       return S.suspend(() =>
         S.Struct({
           position: S.optional(S.String),
-          clear: S.optional(__S(1172, __c36, 20)),
-          cancel: S.optional(__S(1172, __c36, 20)),
-          submit: S.optional(__S(1172, __c36, 20)),
+          clear: S.optional(__S(1140, __c35, 20)),
+          cancel: S.optional(__S(1140, __c35, 20)),
+          submit: S.optional(__S(1140, __c35, 20)),
         }),
       ).annotate({ identifier: "FormCTA" });
     case 22:
@@ -3029,16 +2991,28 @@ function __c36(j: number): any {
           id: S.String,
           name: S.String,
           formActionType: S.String,
-          style: __S(1169, __c36, 17),
-          dataType: __S(1120, __c35, 0),
-          fields: __S(1167, __c36, 15),
-          sectionalElements: __S(1171, __c36, 19),
+          style: __S(1137, __c35, 17),
+          dataType: __S(1088, __c34, 0),
+          fields: __S(1135, __c35, 15),
+          sectionalElements: __S(1139, __c35, 19),
           schemaVersion: S.String,
-          tags: S.optional(__S(1056, __c33, 0)),
-          cta: S.optional(__S(1173, __c36, 21)),
+          tags: S.optional(__S(1024, __c32, 0)),
+          cta: S.optional(__S(1141, __c35, 21)),
           labelDecorator: S.optional(S.String),
         }),
       ).annotate({ identifier: "Form" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          entity: S.optional(__S(1142, __c35, 22))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "Form" }),
+        }),
+      ).annotate({ identifier: "CreateFormResponse" });
   }
 }
 function __c37(j: number): any {
@@ -3046,22 +3020,10 @@ function __c37(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          entity: S.optional(__S(1174, __c36, 22))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "Form" }),
-        }),
-      ).annotate({ identifier: "CreateFormResponse" });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
           name: S.String,
-          values: __S(1250, __c39, 2),
-          overrides: S.optional(__S(1250, __c39, 2)),
-          tags: S.optional(__S(1056, __c33, 0)),
+          values: __S(1218, __c38, 2),
+          overrides: S.optional(__S(1218, __c38, 2)),
+          tags: S.optional(__S(1024, __c32, 0)),
         }),
       ).annotate({ identifier: "CreateThemeData" });
     case 1:
@@ -3070,9 +3032,9 @@ function __c38(j: number): any {
           appId: S.String.pipe(T.HttpLabel("appId")),
           environmentName: S.String.pipe(T.HttpLabel("environmentName")),
           clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-          themeToCreate: __S(1216, __c38, 0).pipe(T.HttpPayload()).annotate({
-            identifier: "CreateThemeData",
-          }),
+          themeToCreate: __S(1184, __c37, 0)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "CreateThemeData" }),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/app/{appId}/environment/{environmentName}/themes" }),
@@ -3086,14 +3048,14 @@ function __c38(j: number): any {
       ).annotate({ identifier: "CreateThemeRequest" });
   }
 }
-function __c39(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
           children: S.optional(
-            S.suspend(() => __S(1250, __c39, 2)).annotate({ identifier: "ThemeValuesList" }),
+            S.suspend(() => __S(1218, __c38, 2)).annotate({ identifier: "ThemeValuesList" }),
           ),
         }),
       ).annotate({ identifier: "ThemeValue" });
@@ -3102,7 +3064,7 @@ function __c39(j: number): any {
         S.Struct({
           key: S.optional(S.String),
           value: S.optional(
-            S.suspend((): S.Schema<ThemeValue> => __S(1248, __c39, 0)).annotate({
+            S.suspend((): S.Schema<ThemeValue> => __S(1216, __c38, 0)).annotate({
               identifier: "ThemeValue",
             }),
           ),
@@ -3110,7 +3072,7 @@ function __c39(j: number): any {
       ).annotate({ identifier: "ThemeValues" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<ThemeValues> => __S(1249, __c39, 1)).annotate({
+        /*@__PURE__*/ S.suspend((): S.Schema<ThemeValues> => __S(1217, __c38, 1)).annotate({
           identifier: "ThemeValues",
         }),
       );
@@ -3123,19 +3085,19 @@ function __c39(j: number): any {
           name: S.String,
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           modifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          values: __S(1250, __c39, 2),
-          overrides: S.optional(__S(1250, __c39, 2)),
-          tags: S.optional(__S(1056, __c33, 0)),
+          values: __S(1218, __c38, 2),
+          overrides: S.optional(__S(1218, __c38, 2)),
+          tags: S.optional(__S(1024, __c32, 0)),
         }),
       ).annotate({ identifier: "Theme" });
   }
 }
-function __c40(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          entity: S.optional(__S(1251, __c39, 3))
+          entity: S.optional(__S(1219, __c38, 3))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "Theme" }),
         }),

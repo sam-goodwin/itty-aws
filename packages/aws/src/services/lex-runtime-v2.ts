@@ -1,9 +1,9 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
-import * as stream from "effect/Stream";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
+import type * as stream from "effect/Stream";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1182,9 +1182,7 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RecognizeUtteranceRequest",
-      });
+      ).annotate({ identifier: "RecognizeUtteranceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1203,9 +1201,7 @@ function __c3(j: number): any {
             T.HttpHeader("x-amz-lex-recognized-bot-member"),
           ),
         }),
-      ).annotate({
-        identifier: "RecognizeUtteranceResponse",
-      });
+      ).annotate({ identifier: "RecognizeUtteranceResponse" });
   }
 }
 function __c4(j: number): any {
@@ -1292,9 +1288,7 @@ function __c4(j: number): any {
           causedByEventId: S.optional(S.String),
           eventId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "PlaybackInterruptionEvent",
-      });
+      ).annotate({ identifier: "PlaybackInterruptionEvent" });
     case 8:
       return S.suspend(() =>
         S.Struct({ transcript: S.optional(S.String), eventId: S.optional(S.String) }),
@@ -1344,9 +1338,7 @@ function __c4(j: number): any {
           /*@__PURE__*/ S.Struct({
             ResourceNotFoundException: /*@__PURE__*/ S.suspend(
               () => ResourceNotFoundException,
-            ).annotate({
-              identifier: "ResourceNotFoundException",
-            }),
+            ).annotate({ identifier: "ResourceNotFoundException" }),
           }),
           /*@__PURE__*/ S.Struct({
             ValidationException: /*@__PURE__*/ S.suspend(() => ValidationException).annotate({
@@ -1361,9 +1353,7 @@ function __c4(j: number): any {
           /*@__PURE__*/ S.Struct({
             InternalServerException: /*@__PURE__*/ S.suspend(
               () => InternalServerException,
-            ).annotate({
-              identifier: "InternalServerException",
-            }),
+            ).annotate({ identifier: "InternalServerException" }),
           }),
           /*@__PURE__*/ S.Struct({
             ConflictException: /*@__PURE__*/ S.suspend(() => ConflictException).annotate({
@@ -1373,9 +1363,7 @@ function __c4(j: number): any {
           /*@__PURE__*/ S.Struct({
             DependencyFailedException: /*@__PURE__*/ S.suspend(
               () => DependencyFailedException,
-            ).annotate({
-              identifier: "DependencyFailedException",
-            }),
+            ).annotate({ identifier: "DependencyFailedException" }),
           }),
           /*@__PURE__*/ S.Struct({
             BadGatewayException: /*@__PURE__*/ S.suspend(() => BadGatewayException).annotate({
@@ -1386,12 +1374,8 @@ function __c4(j: number): any {
       );
     case 14:
       return S.suspend(() =>
-        S.Struct({
-          responseEventStream: S.optional(__S(141, __c4, 13)).pipe(T.HttpPayload()),
-        }),
-      ).annotate({
-        identifier: "StartConversationResponse",
-      });
+        S.Struct({ responseEventStream: S.optional(__S(141, __c4, 13)).pipe(T.HttpPayload()) }),
+      ).annotate({ identifier: "StartConversationResponse" });
   }
 }
 function __c5(j: number): any {

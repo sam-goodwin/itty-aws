@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1480,7 +1480,7 @@ export const updateComponentConfiguration: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(132, __c33, 0) as any as S.Schema<UpdateComponentConfigurationRequest>,
-  output: __S(133, __c33, 1) as any as S.Schema<UpdateComponentConfigurationResponse>,
+  output: __S(4, __c1, 0) as any as S.Schema<UpdateComponentConfigurationResponse>,
   errors: [
     InternalServerException,
     ResourceInUseException,
@@ -1581,9 +1581,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateComponentResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "CreateComponentResponse" });
   }
 }
 function __c2(j: number): any {
@@ -1665,9 +1663,7 @@ function __c8(j: number): any {
         S.Struct({ ResourceGroupName: S.String, AccountId: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeApplicationRequest",
-      });
+      ).annotate({ identifier: "DescribeApplicationRequest" });
   }
 }
 function __c9(j: number): any {
@@ -1686,9 +1682,7 @@ function __c9(j: number): any {
           ApplicationComponent: S.optional(__S(42, __c10, 2)),
           ResourceList: S.optional(__S(8, __c2, 0)),
         }),
-      ).annotate({
-        identifier: "DescribeComponentResponse",
-      });
+      ).annotate({ identifier: "DescribeComponentResponse" });
   }
 }
 function __c10(j: number): any {
@@ -1720,9 +1714,7 @@ function __c11(j: number): any {
           ComponentName: S.String,
           AccountId: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeComponentConfigurationRequest",
-      });
+      ).annotate({ identifier: "DescribeComponentConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1730,9 +1722,7 @@ function __c11(j: number): any {
           Tier: S.optional(S.String),
           ComponentConfiguration: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeComponentConfigurationResponse",
-      });
+      ).annotate({ identifier: "DescribeComponentConfigurationResponse" });
   }
 }
 function __c12(j: number): any {
@@ -1746,9 +1736,7 @@ function __c12(j: number): any {
           WorkloadName: S.optional(S.String),
           RecommendationType: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeComponentConfigurationRecommendationRequest",
-      });
+      ).annotate({ identifier: "DescribeComponentConfigurationRecommendationRequest" });
     case 1:
       return S.suspend(() => S.Struct({ ComponentConfiguration: S.optional(S.String) })).annotate({
         identifier: "DescribeComponentConfigurationRecommendationResponse",
@@ -1765,9 +1753,7 @@ function __c13(j: number): any {
           PatternName: S.String,
           AccountId: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeLogPatternRequest",
-      });
+      ).annotate({ identifier: "DescribeLogPatternRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1775,9 +1761,7 @@ function __c13(j: number): any {
           AccountId: S.optional(S.String),
           LogPattern: S.optional(__S(16, __c4, 0)),
         }),
-      ).annotate({
-        identifier: "DescribeLogPatternResponse",
-      });
+      ).annotate({ identifier: "DescribeLogPatternResponse" });
   }
 }
 function __c14(j: number): any {
@@ -1787,9 +1771,7 @@ function __c14(j: number): any {
         S.Struct({ ObservationId: S.String, AccountId: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeObservationRequest",
-      });
+      ).annotate({ identifier: "DescribeObservationRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Observation: S.optional(__S(60, __c15, 0)) })).annotate({
         identifier: "DescribeObservationResponse",
@@ -1901,9 +1883,7 @@ function __c18(j: number): any {
         S.Struct({ ProblemId: S.String, AccountId: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeProblemObservationsRequest",
-      });
+      ).annotate({ identifier: "DescribeProblemObservationsRequest" });
     case 1:
       return S.Array(__S(60, __c15, 0));
     case 2:
@@ -1913,9 +1893,7 @@ function __c18(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ RelatedObservations: S.optional(__S(74, __c18, 2)) }),
-      ).annotate({
-        identifier: "DescribeProblemObservationsResponse",
-      });
+      ).annotate({ identifier: "DescribeProblemObservationsResponse" });
   }
 }
 function __c19(j: number): any {
@@ -1995,9 +1973,7 @@ function __c22(j: number): any {
           NextToken: S.optional(S.String),
           AccountId: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListConfigurationHistoryRequest",
-      });
+      ).annotate({ identifier: "ListConfigurationHistoryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2016,9 +1992,7 @@ function __c22(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ EventList: S.optional(__S(90, __c22, 2)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListConfigurationHistoryResponse",
-      });
+      ).annotate({ identifier: "ListConfigurationHistoryResponse" });
   }
 }
 function __c23(j: number): any {
@@ -2056,9 +2030,7 @@ function __c24(j: number): any {
           NextToken: S.optional(S.String),
           AccountId: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListLogPatternSetsRequest",
-      });
+      ).annotate({ identifier: "ListLogPatternSetsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2067,9 +2039,7 @@ function __c24(j: number): any {
           LogPatternSets: S.optional(__S(8, __c2, 0)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListLogPatternSetsResponse",
-      });
+      ).annotate({ identifier: "ListLogPatternSetsResponse" });
   }
 }
 function __c25(j: number): any {
@@ -2107,9 +2077,7 @@ function __c26(j: number): any {
         S.Struct({ ResourceARN: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(173, __c43, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -2221,13 +2189,7 @@ function __c33(j: number): any {
           ComponentConfiguration: S.optional(S.String),
           AutoConfigEnabled: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateComponentConfigurationRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UpdateComponentConfigurationResponse",
-      });
+      ).annotate({ identifier: "UpdateComponentConfigurationRequest" });
   }
 }
 function __c34(j: number): any {
@@ -2355,9 +2317,7 @@ function __c42(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ ApplicationInfo: S.optional(__S(164, __c41, 0)) }),
-      ).annotate({
-        identifier: "CreateApplicationResponse",
-      });
+      ).annotate({ identifier: "CreateApplicationResponse" });
   }
 }
 function __c43(j: number): any {

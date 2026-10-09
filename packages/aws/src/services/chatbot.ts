@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -901,7 +901,7 @@ export const deleteCustomAction: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(136, __c17, 0) as any as S.Schema<DeleteCustomActionRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<DeleteCustomActionResult>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteCustomActionResult>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1488,7 +1488,7 @@ export const tagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(312, __c39, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(320, __c40, 0) as any as S.Schema<TagResourceResponse>,
+  output: __S(8, __c1, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     InternalServiceError,
     ResourceNotFoundException,
@@ -1514,8 +1514,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(320, __c40, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalServiceError, ResourceNotFoundException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1536,7 +1536,7 @@ export const updateAccountPreferences: API.OperationMethod<
   UpdateAccountPreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<UpdateAccountPreferencesRequest>,
+  input: __S(328, __c41, 0) as any as S.Schema<UpdateAccountPreferencesRequest>,
   output: __S(241, __c30, 1) as any as S.Schema<UpdateAccountPreferencesResult>,
   errors: [InvalidParameterException, InvalidRequestException, UpdateAccountPreferencesException],
   protocol: AwsProtocol,
@@ -1559,7 +1559,7 @@ export const updateChimeWebhookConfiguration: API.OperationMethod<
   UpdateChimeWebhookConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<UpdateChimeWebhookConfigurationRequest>,
+  input: __S(336, __c42, 0) as any as S.Schema<UpdateChimeWebhookConfigurationRequest>,
   output: __S(48, __c6, 0) as any as S.Schema<UpdateChimeWebhookConfigurationResult>,
   errors: [
     InvalidParameterException,
@@ -1587,7 +1587,7 @@ export const updateCustomAction: API.OperationMethod<
   UpdateCustomActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<UpdateCustomActionRequest>,
+  input: __S(344, __c43, 0) as any as S.Schema<UpdateCustomActionRequest>,
   output: __S(72, __c9, 0) as any as S.Schema<UpdateCustomActionResult>,
   errors: [
     InternalServiceError,
@@ -1615,7 +1615,7 @@ export const updateMicrosoftTeamsChannelConfiguration: API.OperationMethod<
   UpdateMicrosoftTeamsChannelConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<UpdateTeamsChannelConfigurationRequest>,
+  input: __S(352, __c44, 0) as any as S.Schema<UpdateTeamsChannelConfigurationRequest>,
   output: __S(96, __c12, 0) as any as S.Schema<UpdateTeamsChannelConfigurationResult>,
   errors: [
     InvalidParameterException,
@@ -1643,7 +1643,7 @@ export const updateSlackChannelConfiguration: API.OperationMethod<
   UpdateSlackChannelConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<UpdateSlackChannelConfigurationRequest>,
+  input: __S(360, __c45, 0) as any as S.Schema<UpdateSlackChannelConfigurationRequest>,
   output: __S(120, __c15, 0) as any as S.Schema<UpdateSlackChannelConfigurationResult>,
   errors: [
     InvalidParameterException,
@@ -1672,9 +1672,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateToConfigurationRequest",
-      });
+      ).annotate({ identifier: "AssociateToConfigurationRequest" });
   }
 }
 function __c1(j: number): any {
@@ -1708,9 +1706,7 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateChimeWebhookConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateChimeWebhookConfigurationRequest" });
   }
 }
 function __c3(j: number): any {
@@ -1744,9 +1740,7 @@ function __c5(j: number): any {
           State: S.optional(S.String),
           StateReason: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ChimeWebhookConfiguration",
-      });
+      ).annotate({ identifier: "ChimeWebhookConfiguration" });
   }
 }
 function __c6(j: number): any {
@@ -1754,9 +1748,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ WebhookConfiguration: S.optional(__S(40, __c5, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateChimeWebhookConfigurationResult",
-      });
+      ).annotate({ identifier: "CreateChimeWebhookConfigurationResult" });
   }
 }
 function __c7(j: number): any {
@@ -1781,9 +1773,7 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateCustomActionRequest",
-      });
+      ).annotate({ identifier: "CreateCustomActionRequest" });
   }
 }
 function __c8(j: number): any {
@@ -1794,14 +1784,8 @@ function __c8(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          Operator: S.String,
-          VariableName: S.String,
-          Value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CustomActionAttachmentCriteria",
-      });
+        S.Struct({ Operator: S.String, VariableName: S.String, Value: S.optional(S.String) }),
+      ).annotate({ identifier: "CustomActionAttachmentCriteria" });
     case 2:
       return S.Array(__S(65, __c8, 1));
     case 3:
@@ -1855,9 +1839,7 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateTeamsChannelConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateTeamsChannelConfigurationRequest" });
   }
 }
 function __c11(j: number): any {
@@ -1881,9 +1863,7 @@ function __c11(j: number): any {
           State: S.optional(S.String),
           StateReason: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "TeamsChannelConfiguration",
-      });
+      ).annotate({ identifier: "TeamsChannelConfiguration" });
   }
 }
 function __c12(j: number): any {
@@ -1891,9 +1871,7 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ ChannelConfiguration: S.optional(__S(88, __c11, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateTeamsChannelConfigurationResult",
-      });
+      ).annotate({ identifier: "CreateTeamsChannelConfigurationResult" });
   }
 }
 function __c13(j: number): any {
@@ -1922,9 +1900,7 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateSlackChannelConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateSlackChannelConfigurationRequest" });
   }
 }
 function __c14(j: number): any {
@@ -1947,9 +1923,7 @@ function __c14(j: number): any {
           State: S.optional(S.String),
           StateReason: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SlackChannelConfiguration",
-      });
+      ).annotate({ identifier: "SlackChannelConfiguration" });
   }
 }
 function __c15(j: number): any {
@@ -1957,9 +1931,7 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ ChannelConfiguration: S.optional(__S(112, __c14, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateSlackChannelConfigurationResult",
-      });
+      ).annotate({ identifier: "CreateSlackChannelConfigurationResult" });
   }
 }
 function __c16(j: number): any {
@@ -1977,9 +1949,7 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteChimeWebhookConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteChimeWebhookConfigurationRequest" });
   }
 }
 function __c17(j: number): any {
@@ -1997,13 +1967,7 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteCustomActionRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeleteCustomActionResult",
-      });
+      ).annotate({ identifier: "DeleteCustomActionRequest" });
   }
 }
 function __c18(j: number): any {
@@ -2021,9 +1985,7 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteTeamsChannelConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteTeamsChannelConfigurationRequest" });
   }
 }
 function __c19(j: number): any {
@@ -2041,9 +2003,7 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteTeamsConfiguredTeamRequest",
-      });
+      ).annotate({ identifier: "DeleteTeamsConfiguredTeamRequest" });
   }
 }
 function __c20(j: number): any {
@@ -2061,9 +2021,7 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteMicrosoftTeamsUserIdentityRequest",
-      });
+      ).annotate({ identifier: "DeleteMicrosoftTeamsUserIdentityRequest" });
   }
 }
 function __c21(j: number): any {
@@ -2081,9 +2039,7 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteSlackChannelConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteSlackChannelConfigurationRequest" });
   }
 }
 function __c22(j: number): any {
@@ -2105,9 +2061,7 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteSlackUserIdentityRequest",
-      });
+      ).annotate({ identifier: "DeleteSlackUserIdentityRequest" });
   }
 }
 function __c23(j: number): any {
@@ -2125,9 +2079,7 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteSlackWorkspaceAuthorizationRequest",
-      });
+      ).annotate({ identifier: "DeleteSlackWorkspaceAuthorizationRequest" });
   }
 }
 function __c24(j: number): any {
@@ -2149,9 +2101,7 @@ function __c24(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeChimeWebhookConfigurationsRequest",
-      });
+      ).annotate({ identifier: "DescribeChimeWebhookConfigurationsRequest" });
     case 1:
       return S.Array(__S(40, __c5, 0));
     case 2:
@@ -2160,9 +2110,7 @@ function __c24(j: number): any {
           NextToken: S.optional(S.String),
           WebhookConfigurations: S.optional(__S(193, __c24, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeChimeWebhookConfigurationsResult",
-      });
+      ).annotate({ identifier: "DescribeChimeWebhookConfigurationsResult" });
   }
 }
 function __c25(j: number): any {
@@ -2184,9 +2132,7 @@ function __c25(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeSlackChannelConfigurationsRequest",
-      });
+      ).annotate({ identifier: "DescribeSlackChannelConfigurationsRequest" });
     case 1:
       return S.Array(__S(112, __c14, 0));
     case 2:
@@ -2195,9 +2141,7 @@ function __c25(j: number): any {
           NextToken: S.optional(S.String),
           SlackChannelConfigurations: S.optional(__S(201, __c25, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeSlackChannelConfigurationsResult",
-      });
+      ).annotate({ identifier: "DescribeSlackChannelConfigurationsResult" });
   }
 }
 function __c26(j: number): any {
@@ -2219,9 +2163,7 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeSlackUserIdentitiesRequest",
-      });
+      ).annotate({ identifier: "DescribeSlackUserIdentitiesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2240,9 +2182,7 @@ function __c26(j: number): any {
           SlackUserIdentities: S.optional(__S(210, __c26, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeSlackUserIdentitiesResult",
-      });
+      ).annotate({ identifier: "DescribeSlackUserIdentitiesResult" });
   }
 }
 function __c27(j: number): any {
@@ -2260,9 +2200,7 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeSlackWorkspacesRequest",
-      });
+      ).annotate({ identifier: "DescribeSlackWorkspacesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2280,9 +2218,7 @@ function __c27(j: number): any {
           SlackWorkspaces: S.optional(__S(218, __c27, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeSlackWorkspacesResult",
-      });
+      ).annotate({ identifier: "DescribeSlackWorkspacesResult" });
   }
 }
 function __c28(j: number): any {
@@ -2300,9 +2236,7 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateFromConfigurationRequest",
-      });
+      ).annotate({ identifier: "DisassociateFromConfigurationRequest" });
   }
 }
 function __c29(j: number): any {
@@ -2320,9 +2254,7 @@ function __c29(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAccountPreferencesRequest",
-      });
+      ).annotate({ identifier: "GetAccountPreferencesRequest" });
   }
 }
 function __c30(j: number): any {
@@ -2337,9 +2269,7 @@ function __c30(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ AccountPreferences: S.optional(__S(240, __c30, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetAccountPreferencesResult",
-      });
+      ).annotate({ identifier: "GetAccountPreferencesResult" });
   }
 }
 function __c31(j: number): any {
@@ -2389,9 +2319,7 @@ function __c32(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetTeamsChannelConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetTeamsChannelConfigurationRequest" });
   }
 }
 function __c33(j: number): any {
@@ -2467,9 +2395,7 @@ function __c35(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTeamsChannelConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListTeamsChannelConfigurationsRequest" });
     case 1:
       return S.Array(__S(88, __c11, 0));
     case 2:
@@ -2478,9 +2404,7 @@ function __c35(j: number): any {
           NextToken: S.optional(S.String),
           TeamChannelConfigurations: S.optional(__S(281, __c35, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListTeamsChannelConfigurationsResult",
-      });
+      ).annotate({ identifier: "ListTeamsChannelConfigurationsResult" });
   }
 }
 function __c36(j: number): any {
@@ -2498,9 +2422,7 @@ function __c36(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListMicrosoftTeamsConfiguredTeamsRequest",
-      });
+      ).annotate({ identifier: "ListMicrosoftTeamsConfiguredTeamsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2519,9 +2441,7 @@ function __c36(j: number): any {
           ConfiguredTeams: S.optional(__S(290, __c36, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListMicrosoftTeamsConfiguredTeamsResult",
-      });
+      ).annotate({ identifier: "ListMicrosoftTeamsConfiguredTeamsResult" });
   }
 }
 function __c37(j: number): any {
@@ -2543,9 +2463,7 @@ function __c37(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListMicrosoftTeamsUserIdentitiesRequest",
-      });
+      ).annotate({ identifier: "ListMicrosoftTeamsUserIdentitiesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2566,9 +2484,7 @@ function __c37(j: number): any {
           TeamsUserIdentities: S.optional(__S(298, __c37, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListMicrosoftTeamsUserIdentitiesResult",
-      });
+      ).annotate({ identifier: "ListMicrosoftTeamsUserIdentitiesResult" });
   }
 }
 function __c38(j: number): any {
@@ -2586,9 +2502,7 @@ function __c38(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(25, __c3, 1)) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -2608,14 +2522,6 @@ function __c39(j: number): any {
 function __c40(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "TagResourceResponse",
-      });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceARN: S.String, TagKeys: __S(32, __c4, 0) }).pipe(
           T.all(
@@ -2631,7 +2537,7 @@ function __c41(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c42(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2649,12 +2555,10 @@ function __c42(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateAccountPreferencesRequest",
-      });
+      ).annotate({ identifier: "UpdateAccountPreferencesRequest" });
   }
 }
-function __c43(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2676,12 +2580,10 @@ function __c43(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateChimeWebhookConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateChimeWebhookConfigurationRequest" });
   }
 }
-function __c44(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2701,12 +2603,10 @@ function __c44(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateCustomActionRequest",
-      });
+      ).annotate({ identifier: "UpdateCustomActionRequest" });
   }
 }
-function __c45(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2730,12 +2630,10 @@ function __c45(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateTeamsChannelConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateTeamsChannelConfigurationRequest" });
   }
 }
-function __c46(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2759,9 +2657,7 @@ function __c46(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateSlackChannelConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateSlackChannelConfigurationRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

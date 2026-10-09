@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -281,9 +281,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetActionRecommendationsRequest",
-      });
+      ).annotate({ identifier: "GetActionRecommendationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ actionId: S.optional(S.String), score: S.optional(S.Number) }),
@@ -296,9 +294,7 @@ function __c0(j: number): any {
           actionList: S.optional(__S(2, __c0, 2)),
           recommendationId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetActionRecommendationsResponse",
-      });
+      ).annotate({ identifier: "GetActionRecommendationsResponse" });
   }
 }
 function __c1(j: number): any {
@@ -329,18 +325,14 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetPersonalizedRankingRequest",
-      });
+      ).annotate({ identifier: "GetPersonalizedRankingRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           personalizedRanking: S.optional(__S(28, __c3, 4)),
           recommendationId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetPersonalizedRankingResponse",
-      });
+      ).annotate({ identifier: "GetPersonalizedRankingResponse" });
   }
 }
 function __c3(j: number): any {
@@ -394,18 +386,14 @@ function __c4(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/recommendations" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetRecommendationsRequest",
-      });
+      ).annotate({ identifier: "GetRecommendationsRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           itemList: S.optional(__S(28, __c3, 4)),
           recommendationId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetRecommendationsResponse",
-      });
+      ).annotate({ identifier: "GetRecommendationsResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

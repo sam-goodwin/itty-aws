@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1063,7 +1063,7 @@ export const createPermission: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(72, __c9, 0) as any as S.Schema<CreatePermissionRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<CreatePermissionResponse>,
+  output: __S(96, __c12, 0) as any as S.Schema<CreatePermissionResponse>,
   errors: [
     IdempotentParameterMismatchException,
     InvalidClientTokenException,
@@ -1108,8 +1108,8 @@ export const createPermissionVersion: API.OperationMethod<
   CreatePermissionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<CreatePermissionVersionRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<CreatePermissionVersionResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<CreatePermissionVersionRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<CreatePermissionVersionResponse>,
   errors: [
     IdempotentParameterMismatchException,
     InvalidClientTokenException,
@@ -1157,8 +1157,8 @@ export const createResourceShare: API.OperationMethod<
   CreateResourceShareError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<CreateResourceShareRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<CreateResourceShareResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<CreateResourceShareRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<CreateResourceShareResponse>,
   errors: [
     IdempotentParameterMismatchException,
     InvalidClientTokenException,
@@ -1199,8 +1199,8 @@ export const deletePermission: API.OperationMethod<
   DeletePermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<DeletePermissionRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<DeletePermissionResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<DeletePermissionRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<DeletePermissionResponse>,
   errors: [
     IdempotentParameterMismatchException,
     InvalidClientTokenException,
@@ -1238,8 +1238,8 @@ export const deletePermissionVersion: API.OperationMethod<
   DeletePermissionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<DeletePermissionVersionRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<DeletePermissionVersionResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<DeletePermissionVersionRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<DeletePermissionVersionResponse>,
   errors: [
     IdempotentParameterMismatchException,
     InvalidClientTokenException,
@@ -1279,8 +1279,8 @@ export const deleteResourceShare: API.OperationMethod<
   DeleteResourceShareError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<DeleteResourceShareRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<DeleteResourceShareResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<DeleteResourceShareRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<DeleteResourceShareResponse>,
   errors: [
     IdempotentParameterMismatchException,
     InvalidClientTokenException,
@@ -1321,7 +1321,7 @@ export const disassociateResourceShare: API.OperationMethod<
   DisassociateResourceShareError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<DisassociateResourceShareRequest>,
+  input: __S(184, __c23, 0) as any as S.Schema<DisassociateResourceShareRequest>,
   output: __S(48, __c6, 0) as any as S.Schema<DisassociateResourceShareResponse>,
   errors: [
     IdempotentParameterMismatchException,
@@ -1362,7 +1362,7 @@ export const disassociateResourceSharePermission: API.OperationMethod<
   DisassociateResourceSharePermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<DisassociateResourceSharePermissionRequest>,
+  input: __S(192, __c24, 0) as any as S.Schema<DisassociateResourceSharePermissionRequest>,
   output: __S(64, __c8, 0) as any as S.Schema<DisassociateResourceSharePermissionResponse>,
   errors: [
     InvalidClientTokenException,
@@ -1403,8 +1403,8 @@ export const enableSharingWithAwsOrganization: API.OperationMethod<
   EnableSharingWithAwsOrganizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<EnableSharingWithAwsOrganizationRequest>,
-  output: __S(192, __c24, 0) as any as S.Schema<EnableSharingWithAwsOrganizationResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<EnableSharingWithAwsOrganizationRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<EnableSharingWithAwsOrganizationResponse>,
   errors: [OperationNotPermittedException, ServerInternalException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1428,8 +1428,8 @@ export const getPermission: API.OperationMethod<
   GetPermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<GetPermissionRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<GetPermissionResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<GetPermissionRequest>,
+  output: __S(217, __c27, 1) as any as S.Schema<GetPermissionResponse>,
   errors: [
     InvalidParameterException,
     MalformedArnException,
@@ -1468,8 +1468,8 @@ export const getResourcePolicies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<GetResourcePoliciesRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GetResourcePoliciesResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<GetResourcePoliciesRequest>,
+  output: __S(225, __c28, 1) as any as S.Schema<GetResourcePoliciesResponse>,
   errors: [
     InvalidNextTokenException,
     InvalidParameterException,
@@ -1514,8 +1514,8 @@ export const getResourceShareAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<GetResourceShareAssociationsRequest>,
-  output: __S(217, __c27, 1) as any as S.Schema<GetResourceShareAssociationsResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<GetResourceShareAssociationsRequest>,
+  output: __S(233, __c29, 1) as any as S.Schema<GetResourceShareAssociationsResponse>,
   errors: [
     InvalidNextTokenException,
     InvalidParameterException,
@@ -1561,8 +1561,8 @@ export const getResourceShareInvitations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<GetResourceShareInvitationsRequest>,
-  output: __S(226, __c28, 2) as any as S.Schema<GetResourceShareInvitationsResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<GetResourceShareInvitationsRequest>,
+  output: __S(242, __c30, 2) as any as S.Schema<GetResourceShareInvitationsResponse>,
   errors: [
     InvalidMaxResultsException,
     InvalidNextTokenException,
@@ -1607,8 +1607,8 @@ export const getResourceShares: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(234, __c29, 2) as any as S.Schema<GetResourceSharesRequest>,
-  output: __S(236, __c29, 4) as any as S.Schema<GetResourceSharesResponse>,
+  input: __S(250, __c31, 2) as any as S.Schema<GetResourceSharesRequest>,
+  output: __S(252, __c31, 4) as any as S.Schema<GetResourceSharesResponse>,
   errors: [
     InvalidNextTokenException,
     InvalidParameterException,
@@ -1656,8 +1656,8 @@ export const listPendingInvitationResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<ListPendingInvitationResourcesRequest>,
-  output: __S(249, __c31, 1) as any as S.Schema<ListPendingInvitationResourcesResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<ListPendingInvitationResourcesRequest>,
+  output: __S(274, __c34, 2) as any as S.Schema<ListPendingInvitationResourcesResponse>,
   errors: [
     InvalidNextTokenException,
     InvalidParameterException,
@@ -1704,8 +1704,8 @@ export const listPermissionAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<ListPermissionAssociationsRequest>,
-  output: __S(267, __c33, 3) as any as S.Schema<ListPermissionAssociationsResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<ListPermissionAssociationsRequest>,
+  output: __S(283, __c35, 3) as any as S.Schema<ListPermissionAssociationsResponse>,
   errors: [
     InvalidNextTokenException,
     InvalidParameterException,
@@ -1747,8 +1747,8 @@ export const listPermissions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<ListPermissionsRequest>,
-  output: __S(273, __c34, 1) as any as S.Schema<ListPermissionsResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<ListPermissionsRequest>,
+  output: __S(297, __c37, 1) as any as S.Schema<ListPermissionsResponse>,
   errors: [
     InvalidNextTokenException,
     InvalidParameterException,
@@ -1791,8 +1791,8 @@ export const listPermissionVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<ListPermissionVersionsRequest>,
-  output: __S(296, __c37, 0) as any as S.Schema<ListPermissionVersionsResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<ListPermissionVersionsRequest>,
+  output: __S(297, __c37, 1) as any as S.Schema<ListPermissionVersionsResponse>,
   errors: [
     InvalidNextTokenException,
     InvalidParameterException,
@@ -1837,8 +1837,8 @@ export const listPrincipals: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<ListPrincipalsRequest>,
-  output: __S(307, __c38, 3) as any as S.Schema<ListPrincipalsResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<ListPrincipalsRequest>,
+  output: __S(315, __c39, 3) as any as S.Schema<ListPrincipalsResponse>,
   errors: [
     InvalidNextTokenException,
     InvalidParameterException,
@@ -1880,8 +1880,8 @@ export const listReplacePermissionAssociationsWork: API.PaginatedOperationMethod
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<ListReplacePermissionAssociationsWorkRequest>,
-  output: __S(314, __c39, 2) as any as S.Schema<ListReplacePermissionAssociationsWorkResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<ListReplacePermissionAssociationsWorkRequest>,
+  output: __S(322, __c40, 2) as any as S.Schema<ListReplacePermissionAssociationsWorkResponse>,
   errors: [
     InvalidNextTokenException,
     InvalidParameterException,
@@ -1924,8 +1924,8 @@ export const listResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<ListResourcesRequest>,
-  output: __S(329, __c41, 1) as any as S.Schema<ListResourcesResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<ListResourcesRequest>,
+  output: __S(274, __c34, 2) as any as S.Schema<ListResourcesResponse>,
   errors: [
     InvalidNextTokenException,
     InvalidParameterException,
@@ -1970,8 +1970,8 @@ export const listResourceSharePermissions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<ListResourceSharePermissionsRequest>,
-  output: __S(296, __c37, 0) as any as S.Schema<ListResourceSharePermissionsResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<ListResourceSharePermissionsRequest>,
+  output: __S(297, __c37, 1) as any as S.Schema<ListResourceSharePermissionsResponse>,
   errors: [
     InvalidNextTokenException,
     InvalidParameterException,
@@ -2007,8 +2007,8 @@ export const listResourceTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<ListResourceTypesRequest>,
-  output: __S(347, __c43, 3) as any as S.Schema<ListResourceTypesResponse>,
+  input: __S(352, __c44, 0) as any as S.Schema<ListResourceTypesRequest>,
+  output: __S(355, __c44, 3) as any as S.Schema<ListResourceTypesResponse>,
   errors: [
     InvalidNextTokenException,
     InvalidParameterException,
@@ -2045,8 +2045,8 @@ export const listSourceAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssociatedSource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<ListSourceAssociationsRequest>,
-  output: __S(355, __c44, 3) as any as S.Schema<ListSourceAssociationsResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<ListSourceAssociationsRequest>,
+  output: __S(363, __c45, 3) as any as S.Schema<ListSourceAssociationsResponse>,
   errors: [
     InvalidNextTokenException,
     InvalidParameterException,
@@ -2111,8 +2111,8 @@ export const promotePermissionCreatedFromPolicy: API.OperationMethod<
   PromotePermissionCreatedFromPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<PromotePermissionCreatedFromPolicyRequest>,
-  output: __S(361, __c45, 1) as any as S.Schema<PromotePermissionCreatedFromPolicyResponse>,
+  input: __S(368, __c46, 0) as any as S.Schema<PromotePermissionCreatedFromPolicyRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<PromotePermissionCreatedFromPolicyResponse>,
   errors: [
     InvalidParameterException,
     InvalidPolicyException,
@@ -2162,8 +2162,8 @@ export const promoteResourceShareCreatedFromPolicy: API.OperationMethod<
   PromoteResourceShareCreatedFromPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<PromoteResourceShareCreatedFromPolicyRequest>,
-  output: __S(192, __c24, 0) as any as S.Schema<PromoteResourceShareCreatedFromPolicyResponse>,
+  input: __S(376, __c47, 0) as any as S.Schema<PromoteResourceShareCreatedFromPolicyRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<PromoteResourceShareCreatedFromPolicyResponse>,
   errors: [
     InvalidParameterException,
     InvalidStateTransitionException,
@@ -2202,7 +2202,7 @@ export const rejectResourceShareInvitation: API.OperationMethod<
   RejectResourceShareInvitationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(376, __c47, 0) as any as S.Schema<RejectResourceShareInvitationRequest>,
+  input: __S(384, __c48, 0) as any as S.Schema<RejectResourceShareInvitationRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<RejectResourceShareInvitationResponse>,
   errors: [
     IdempotentParameterMismatchException,
@@ -2255,8 +2255,8 @@ export const replacePermissionAssociations: API.OperationMethod<
   ReplacePermissionAssociationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c48, 0) as any as S.Schema<ReplacePermissionAssociationsRequest>,
-  output: __S(385, __c48, 1) as any as S.Schema<ReplacePermissionAssociationsResponse>,
+  input: __S(392, __c49, 0) as any as S.Schema<ReplacePermissionAssociationsRequest>,
+  output: __S(393, __c49, 1) as any as S.Schema<ReplacePermissionAssociationsResponse>,
   errors: [
     IdempotentParameterMismatchException,
     InvalidClientTokenException,
@@ -2292,8 +2292,8 @@ export const setDefaultPermissionVersion: API.OperationMethod<
   SetDefaultPermissionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<SetDefaultPermissionVersionRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<SetDefaultPermissionVersionResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<SetDefaultPermissionVersionRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<SetDefaultPermissionVersionResponse>,
   errors: [
     IdempotentParameterMismatchException,
     InvalidClientTokenException,
@@ -2330,8 +2330,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c50, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(408, __c51, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(408, __c51, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(416, __c52, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     InvalidParameterException,
     MalformedArnException,
@@ -2363,8 +2363,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(408, __c51, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(424, __c53, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(416, __c52, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     InvalidParameterException,
     MalformedArnException,
@@ -2397,8 +2397,8 @@ export const updateResourceShare: API.OperationMethod<
   UpdateResourceShareError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<UpdateResourceShareRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<UpdateResourceShareResponse>,
+  input: __S(432, __c54, 0) as any as S.Schema<UpdateResourceShareRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<UpdateResourceShareResponse>,
   errors: [
     IdempotentParameterMismatchException,
     InvalidClientTokenException,
@@ -2430,9 +2430,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AcceptResourceShareInvitationRequest",
-      });
+      ).annotate({ identifier: "AcceptResourceShareInvitationRequest" });
   }
 }
 function __c1(j: number): any {
@@ -2453,9 +2451,9 @@ function __c1(j: number): any {
       ).annotate({ identifier: "ResourceShareAssociation" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(8, __c1, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ResourceShareAssociation",
-        }),
+        /*@__PURE__*/ __S(8, __c1, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ResourceShareAssociation" }),
       );
   }
 }
@@ -2485,9 +2483,7 @@ function __c3(j: number): any {
           resourceShareInvitation: S.optional(__S(16, __c2, 0)),
           clientToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "AcceptResourceShareInvitationResponse",
-      });
+      ).annotate({ identifier: "AcceptResourceShareInvitationResponse" });
   }
 }
 function __c4(j: number): any {
@@ -2510,9 +2506,7 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateResourceShareRequest",
-      });
+      ).annotate({ identifier: "AssociateResourceShareRequest" });
   }
 }
 function __c5(j: number): any {
@@ -2529,9 +2523,7 @@ function __c6(j: number): any {
           resourceShareAssociations: S.optional(__S(9, __c1, 1)),
           clientToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "AssociateResourceShareResponse",
-      });
+      ).annotate({ identifier: "AssociateResourceShareResponse" });
   }
 }
 function __c7(j: number): any {
@@ -2554,9 +2546,7 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateResourceSharePermissionRequest",
-      });
+      ).annotate({ identifier: "AssociateResourceSharePermissionRequest" });
   }
 }
 function __c8(j: number): any {
@@ -2564,9 +2554,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ returnValue: S.optional(S.Boolean), clientToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "AssociateResourceSharePermissionResponse",
-      });
+      ).annotate({ identifier: "AssociateResourceSharePermissionResponse" });
   }
 }
 function __c9(j: number): any {
@@ -2583,13 +2571,6 @@ function __c9(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/createpermission" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreatePermissionRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          permission: S.optional(__S(88, __c11, 0)),
-          clientToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreatePermissionResponse" });
   }
 }
 function __c10(j: number): any {
@@ -2620,12 +2601,18 @@ function __c11(j: number): any {
           featureSet: S.optional(S.String),
           tags: S.optional(__S(81, __c10, 1)),
         }),
-      ).annotate({
-        identifier: "ResourceSharePermissionSummary",
-      });
+      ).annotate({ identifier: "ResourceSharePermissionSummary" });
   }
 }
 function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ permission: S.optional(__S(88, __c11, 0)), clientToken: S.optional(S.String) }),
+      ).annotate({ identifier: "CreatePermissionResponse" });
+  }
+}
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2643,21 +2630,14 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreatePermissionVersionRequest",
-      });
+      ).annotate({ identifier: "CreatePermissionVersionRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          permission: S.optional(__S(104, __c13, 0)),
-          clientToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreatePermissionVersionResponse",
-      });
+        S.Struct({ permission: S.optional(__S(112, __c14, 0)), clientToken: S.optional(S.String) }),
+      ).annotate({ identifier: "CreatePermissionVersionResponse" });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2676,12 +2656,10 @@ function __c13(j: number): any {
           status: S.optional(S.String),
           tags: S.optional(__S(81, __c10, 1)),
         }),
-      ).annotate({
-        identifier: "ResourceSharePermissionDetail",
-      });
+      ).annotate({ identifier: "ResourceSharePermissionDetail" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2694,7 +2672,7 @@ function __c14(j: number): any {
           clientToken: S.optional(S.String),
           permissionArns: S.optional(__S(40, __c5, 0)),
           sources: S.optional(__S(40, __c5, 0)),
-          resourceShareConfiguration: S.optional(__S(120, __c15, 0)),
+          resourceShareConfiguration: S.optional(__S(128, __c16, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/createresourceshare" }),
@@ -2705,19 +2683,15 @@ function __c14(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateResourceShareRequest",
-      });
+      ).annotate({ identifier: "CreateResourceShareRequest" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ retainSharingOnAccountLeaveOrganization: S.optional(S.Boolean) }),
-      ).annotate({
-        identifier: "ResourceShareConfiguration",
-      });
+      ).annotate({ identifier: "ResourceShareConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2731,25 +2705,23 @@ function __c15(j: number): any {
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           featureSet: S.optional(S.String),
-          resourceShareConfiguration: S.optional(__S(120, __c15, 0)),
+          resourceShareConfiguration: S.optional(__S(128, __c16, 0)),
         }),
       ).annotate({ identifier: "ResourceShare" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          resourceShare: S.optional(__S(121, __c15, 1)),
+          resourceShare: S.optional(__S(129, __c16, 1)),
           clientToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateResourceShareResponse",
-      });
+      ).annotate({ identifier: "CreateResourceShareResponse" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2767,7 +2739,11 @@ function __c17(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeletePermissionRequest" });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           returnValue: S.optional(S.Boolean).pipe(T.XmlName("return")),
@@ -2777,7 +2753,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "DeletePermissionResponse" });
   }
 }
-function __c18(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2795,22 +2771,10 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeletePermissionVersionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          returnValue: S.optional(S.Boolean).pipe(T.XmlName("return")),
-          clientToken: S.optional(S.String),
-          permissionStatus: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DeletePermissionVersionResponse",
-      });
+      ).annotate({ identifier: "DeletePermissionVersionRequest" });
   }
 }
-function __c19(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2827,12 +2791,10 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteResourceShareRequest",
-      });
+      ).annotate({ identifier: "DeleteResourceShareRequest" });
   }
 }
-function __c20(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2840,12 +2802,10 @@ function __c20(j: number): any {
           returnValue: S.optional(S.Boolean).pipe(T.XmlName("return")),
           clientToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DeleteResourceShareResponse",
-      });
+      ).annotate({ identifier: "DeleteResourceShareResponse" });
   }
 }
-function __c21(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2865,12 +2825,10 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateResourceShareRequest",
-      });
+      ).annotate({ identifier: "DisassociateResourceShareRequest" });
   }
 }
-function __c22(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2888,12 +2846,10 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateResourceSharePermissionRequest",
-      });
+      ).annotate({ identifier: "DisassociateResourceSharePermissionRequest" });
   }
 }
-function __c23(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2907,22 +2863,18 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "EnableSharingWithAwsOrganizationRequest",
-      });
+      ).annotate({ identifier: "EnableSharingWithAwsOrganizationRequest" });
   }
 }
-function __c24(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ returnValue: S.optional(S.Boolean).pipe(T.XmlName("return")) }),
-      ).annotate({
-        identifier: "EnableSharingWithAwsOrganizationResponse",
-      });
+      ).annotate({ identifier: "EnableSharingWithAwsOrganizationResponse" });
   }
 }
-function __c25(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2931,12 +2883,12 @@ function __c25(j: number): any {
         ),
       ).annotate({ identifier: "GetPermissionRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ permission: S.optional(__S(104, __c13, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ permission: S.optional(__S(112, __c14, 0)) })).annotate({
         identifier: "GetPermissionResponse",
       });
   }
 }
-function __c26(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2955,18 +2907,14 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetResourcePoliciesRequest",
-      });
+      ).annotate({ identifier: "GetResourcePoliciesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ policies: S.optional(__S(40, __c5, 0)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetResourcePoliciesResponse",
-      });
+      ).annotate({ identifier: "GetResourcePoliciesResponse" });
   }
 }
-function __c27(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2988,21 +2936,17 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetResourceShareAssociationsRequest",
-      });
+      ).annotate({ identifier: "GetResourceShareAssociationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           resourceShareAssociations: S.optional(__S(9, __c1, 1)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetResourceShareAssociationsResponse",
-      });
+      ).annotate({ identifier: "GetResourceShareAssociationsResponse" });
   }
 }
-function __c28(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3021,34 +2965,30 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetResourceShareInvitationsRequest",
-      });
+      ).annotate({ identifier: "GetResourceShareInvitationsRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(16, __c2, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ResourceShareInvitation",
-        }),
+        /*@__PURE__*/ __S(16, __c2, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ResourceShareInvitation" }),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resourceShareInvitations: S.optional(__S(225, __c28, 1)),
+          resourceShareInvitations: S.optional(__S(241, __c30, 1)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetResourceShareInvitationsResponse",
-      });
+      ).annotate({ identifier: "GetResourceShareInvitationsResponse" });
   }
 }
-function __c29(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ tagKey: S.optional(S.String), tagValues: S.optional(__S(240, __c30, 0)) }),
+        S.Struct({ tagKey: S.optional(S.String), tagValues: S.optional(__S(256, __c32, 0)) }),
       ).annotate({ identifier: "TagFilter" });
     case 1:
-      return S.Array(__S(232, __c29, 0));
+      return S.Array(__S(248, __c31, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3056,7 +2996,7 @@ function __c29(j: number): any {
           resourceShareStatus: S.optional(S.String),
           resourceOwner: S.String,
           name: S.optional(S.String),
-          tagFilters: S.optional(__S(233, __c29, 1)),
+          tagFilters: S.optional(__S(249, __c31, 1)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
           permissionArn: S.optional(S.String),
@@ -3074,28 +3014,26 @@ function __c29(j: number): any {
       ).annotate({ identifier: "GetResourceSharesRequest" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(121, __c15, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ResourceShare",
-        }),
+        /*@__PURE__*/ __S(129, __c16, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ResourceShare" }),
       );
     case 4:
       return S.suspend(() =>
         S.Struct({
-          resourceShares: S.optional(__S(235, __c29, 3)),
+          resourceShares: S.optional(__S(251, __c31, 3)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetResourceSharesResponse",
-      });
+      ).annotate({ identifier: "GetResourceSharesResponse" });
   }
 }
-function __c30(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c31(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3114,18 +3052,10 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListPendingInvitationResourcesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ resources: S.optional(__S(257, __c32, 1)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListPendingInvitationResourcesResponse",
-      });
+      ).annotate({ identifier: "ListPendingInvitationResourcesRequest" });
   }
 }
-function __c32(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3143,13 +3073,17 @@ function __c32(j: number): any {
       ).annotate({ identifier: "Resource" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(256, __c32, 0)
+        /*@__PURE__*/ __S(272, __c34, 0)
           .pipe(/*@__PURE__*/ T.XmlName("item"))
           .annotate({ identifier: "Resource" }),
       );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ resources: S.optional(__S(273, __c34, 1)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListPendingInvitationResourcesResponse" });
   }
 }
-function __c33(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3172,9 +3106,7 @@ function __c33(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListPermissionAssociationsRequest",
-      });
+      ).annotate({ identifier: "ListPermissionAssociationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3190,19 +3122,17 @@ function __c33(j: number): any {
       ).annotate({ identifier: "AssociatedPermission" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(265, __c33, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "AssociatedPermission",
-        }),
+        /*@__PURE__*/ __S(281, __c35, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "AssociatedPermission" }),
       );
     case 3:
       return S.suspend(() =>
-        S.Struct({ permissions: S.optional(__S(266, __c33, 2)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListPermissionAssociationsResponse",
-      });
+        S.Struct({ permissions: S.optional(__S(282, __c35, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListPermissionAssociationsResponse" });
   }
 }
-function __c34(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3215,26 +3145,23 @@ function __c34(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/listpermissions" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListPermissionsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(280, __c35, 0)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListPermissionsResponse" });
   }
 }
-function __c35(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ __S(88, __c11, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ResourceSharePermissionSummary",
-        }),
+        /*@__PURE__*/ __S(88, __c11, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ResourceSharePermissionSummary" }),
       );
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ permissions: S.optional(__S(296, __c37, 0)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListPermissionsResponse" });
   }
 }
-function __c36(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3252,25 +3179,10 @@ function __c36(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListPermissionVersionsRequest",
-      });
+      ).annotate({ identifier: "ListPermissionVersionsRequest" });
   }
 }
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(280, __c35, 0)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListPermissionVersionsResponse",
-      });
-  }
-}
-function __c38(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3298,17 +3210,17 @@ function __c38(j: number): any {
       ).annotate({ identifier: "Principal" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(305, __c38, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "Principal",
-        }),
+        /*@__PURE__*/ __S(313, __c39, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "Principal" }),
       );
     case 3:
       return S.suspend(() =>
-        S.Struct({ principals: S.optional(__S(306, __c38, 2)), nextToken: S.optional(S.String) }),
+        S.Struct({ principals: S.optional(__S(314, __c39, 2)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListPrincipalsResponse" });
   }
 }
-function __c39(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3327,27 +3239,23 @@ function __c39(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListReplacePermissionAssociationsWorkRequest",
-      });
+      ).annotate({ identifier: "ListReplacePermissionAssociationsWorkRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(320, __c40, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ReplacePermissionAssociationsWork",
-        }),
+        /*@__PURE__*/ __S(328, __c41, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ReplacePermissionAssociationsWork" }),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({
-          replacePermissionAssociationsWorks: S.optional(__S(313, __c39, 1)),
+          replacePermissionAssociationsWorks: S.optional(__S(321, __c40, 1)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListReplacePermissionAssociationsWorkResponse",
-      });
+      ).annotate({ identifier: "ListReplacePermissionAssociationsWorkResponse" });
   }
 }
-function __c40(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3362,12 +3270,10 @@ function __c40(j: number): any {
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "ReplacePermissionAssociationsWork",
-      });
+      ).annotate({ identifier: "ReplacePermissionAssociationsWork" });
   }
 }
-function __c41(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3384,13 +3290,9 @@ function __c41(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/listresources" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListResourcesRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ resources: S.optional(__S(257, __c32, 1)), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListResourcesResponse" });
   }
 }
-function __c42(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3408,12 +3310,10 @@ function __c42(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListResourceSharePermissionsRequest",
-      });
+      ).annotate({ identifier: "ListResourceSharePermissionsRequest" });
   }
 }
-function __c43(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3439,27 +3339,23 @@ function __c43(j: number): any {
           serviceName: S.optional(S.String),
           resourceRegionScope: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ServiceNameAndResourceType",
-      });
+      ).annotate({ identifier: "ServiceNameAndResourceType" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(345, __c43, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ServiceNameAndResourceType",
-        }),
+        /*@__PURE__*/ __S(353, __c44, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ServiceNameAndResourceType" }),
       );
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resourceTypes: S.optional(__S(346, __c43, 2)),
+          resourceTypes: S.optional(__S(354, __c44, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListResourceTypesResponse",
-      });
+      ).annotate({ identifier: "ListResourceTypesResponse" });
   }
 }
-function __c44(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3480,9 +3376,7 @@ function __c44(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSourceAssociationsRequest",
-      });
+      ).annotate({ identifier: "ListSourceAssociationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3497,22 +3391,20 @@ function __c44(j: number): any {
       ).annotate({ identifier: "AssociatedSource" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(353, __c44, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "AssociatedSource",
-        }),
+        /*@__PURE__*/ __S(361, __c45, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "AssociatedSource" }),
       );
     case 3:
       return S.suspend(() =>
         S.Struct({
-          sourceAssociations: S.optional(__S(354, __c44, 2)),
+          sourceAssociations: S.optional(__S(362, __c45, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListSourceAssociationsResponse",
-      });
+      ).annotate({ identifier: "ListSourceAssociationsResponse" });
   }
 }
-function __c45(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3530,21 +3422,10 @@ function __c45(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PromotePermissionCreatedFromPolicyRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          permission: S.optional(__S(88, __c11, 0)),
-          clientToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PromotePermissionCreatedFromPolicyResponse",
-      });
+      ).annotate({ identifier: "PromotePermissionCreatedFromPolicyRequest" });
   }
 }
-function __c46(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3558,12 +3439,10 @@ function __c46(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PromoteResourceShareCreatedFromPolicyRequest",
-      });
+      ).annotate({ identifier: "PromoteResourceShareCreatedFromPolicyRequest" });
   }
 }
-function __c47(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3577,12 +3456,10 @@ function __c47(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RejectResourceShareInvitationRequest",
-      });
+      ).annotate({ identifier: "RejectResourceShareInvitationRequest" });
   }
 }
-function __c48(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3601,21 +3478,17 @@ function __c48(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ReplacePermissionAssociationsRequest",
-      });
+      ).annotate({ identifier: "ReplacePermissionAssociationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          replacePermissionAssociationsWork: S.optional(__S(320, __c40, 0)),
+          replacePermissionAssociationsWork: S.optional(__S(328, __c41, 0)),
           clientToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ReplacePermissionAssociationsResponse",
-      });
+      ).annotate({ identifier: "ReplacePermissionAssociationsResponse" });
   }
 }
-function __c49(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3633,12 +3506,10 @@ function __c49(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SetDefaultPermissionVersionRequest",
-      });
+      ).annotate({ identifier: "SetDefaultPermissionVersionRequest" });
   }
 }
-function __c50(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3652,21 +3523,19 @@ function __c50(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c51(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TagResourceResponse" });
   }
 }
-function __c52(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceShareArn: S.optional(S.String),
-          tagKeys: __S(240, __c30, 0),
+          tagKeys: __S(256, __c32, 0),
           resourceArn: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/untagresource" }), svc, auth, proto, ver, rules),
@@ -3674,7 +3543,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c53(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3693,9 +3562,7 @@ function __c53(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateResourceShareRequest",
-      });
+      ).annotate({ identifier: "UpdateResourceShareRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

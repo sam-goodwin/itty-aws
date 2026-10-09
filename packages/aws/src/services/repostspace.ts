@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -457,7 +457,7 @@ export const batchAddChannelRoleToAccessors: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(84, __c21, 0) as any as S.Schema<BatchAddChannelRoleToAccessorsInput>,
-  output: __S(85, __c21, 1) as any as S.Schema<BatchAddChannelRoleToAccessorsOutput>,
+  output: __S(88, __c22, 0) as any as S.Schema<BatchAddChannelRoleToAccessorsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -486,8 +486,8 @@ export const batchAddRole: API.OperationMethod<
   BatchAddRoleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c24, 0) as any as S.Schema<BatchAddRoleInput>,
-  output: __S(97, __c24, 1) as any as S.Schema<BatchAddRoleOutput>,
+  input: __S(100, __c25, 0) as any as S.Schema<BatchAddRoleInput>,
+  output: __S(88, __c22, 0) as any as S.Schema<BatchAddRoleOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -516,8 +516,8 @@ export const batchRemoveChannelRoleFromAccessors: API.OperationMethod<
   BatchRemoveChannelRoleFromAccessorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c25, 0) as any as S.Schema<BatchRemoveChannelRoleFromAccessorsInput>,
-  output: __S(101, __c25, 1) as any as S.Schema<BatchRemoveChannelRoleFromAccessorsOutput>,
+  input: __S(104, __c26, 0) as any as S.Schema<BatchRemoveChannelRoleFromAccessorsInput>,
+  output: __S(108, __c27, 0) as any as S.Schema<BatchRemoveChannelRoleFromAccessorsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -547,7 +547,7 @@ export const batchRemoveRole: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<BatchRemoveRoleInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<BatchRemoveRoleOutput>,
+  output: __S(108, __c27, 0) as any as S.Schema<BatchRemoveRoleOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -705,7 +705,7 @@ export const getChannel: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(32, __c8, 0) as any as S.Schema<GetChannelInput>,
-  output: __S(34, __c8, 2) as any as S.Schema<GetChannelOutput>,
+  output: __S(33, __c8, 1) as any as S.Schema<GetChannelOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -735,7 +735,7 @@ export const getSpace: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(40, __c10, 0) as any as S.Schema<GetSpaceInput>,
-  output: __S(42, __c10, 2) as any as S.Schema<GetSpaceOutput>,
+  output: __S(41, __c10, 1) as any as S.Schema<GetSpaceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1041,7 +1041,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           spaceId: S.String.pipe(T.HttpLabel("spaceId")),
-          accessorIds: __S(92, __c23, 0),
+          accessorIds: __S(96, __c24, 0),
           role: S.String,
         }).pipe(
           T.all(
@@ -1054,10 +1054,6 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "BatchRemoveRoleInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ removedAccessorIds: __S(92, __c23, 0), errors: __S(89, __c22, 1) }),
-      ).annotate({ identifier: "BatchRemoveRoleOutput" });
   }
 }
 function __c1(j: number): any {
@@ -1112,13 +1108,8 @@ function __c3(j: number): any {
       return S.Array(SensitiveString);
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.String),
-          allowedDomains: S.optional(__S(12, __c3, 0)),
-        }),
-      ).annotate({
-        identifier: "SupportedEmailDomainsParameters",
-      });
+        S.Struct({ enabled: S.optional(S.String), allowedDomains: S.optional(__S(12, __c3, 0)) }),
+      ).annotate({ identifier: "SupportedEmailDomainsParameters" });
   }
 }
 function __c4(j: number): any {
@@ -1147,9 +1138,7 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteSpaceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteSpaceResponse" });
   }
 }
 function __c7(j: number): any {
@@ -1191,8 +1180,6 @@ function __c8(j: number): any {
         ),
       ).annotate({ identifier: "GetChannelInput" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(36, __c9, 0).pipe(S.optional));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           spaceId: S.String,
@@ -1201,7 +1188,7 @@ function __c8(j: number): any {
           channelDescription: S.optional(SensitiveString),
           createDateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           deleteDateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          channelRoles: S.optional(__S(33, __c8, 1)),
+          channelRoles: S.optional(__S(37, __c9, 1)),
           channelStatus: S.String,
         }),
       ).annotate({ identifier: "GetChannelOutput" });
@@ -1211,6 +1198,8 @@ function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ __S(36, __c9, 0).pipe(S.optional));
   }
 }
 function __c10(j: number): any {
@@ -1222,8 +1211,6 @@ function __c10(j: number): any {
         ),
       ).annotate({ identifier: "GetSpaceInput" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(36, __c9, 0).pipe(S.optional));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           spaceId: S.String,
@@ -1243,9 +1230,9 @@ function __c10(j: number): any {
           deleteDateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           tier: S.String,
           storageLimit: S.Number,
-          userAdmins: S.optional(__S(92, __c23, 0)),
-          groupAdmins: S.optional(__S(92, __c23, 0)),
-          roles: S.optional(__S(41, __c10, 1)),
+          userAdmins: S.optional(__S(96, __c24, 0)),
+          groupAdmins: S.optional(__S(96, __c24, 0)),
+          roles: S.optional(__S(37, __c9, 1)),
           userKMSKey: S.optional(S.String),
           userCount: S.optional(S.Number),
           contentSize: S.optional(S.Number),
@@ -1348,9 +1335,7 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(16, __c4, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -1383,7 +1368,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           spaceId: S.String.pipe(T.HttpLabel("spaceId")),
-          accessorIds: __S(92, __c23, 0),
+          accessorIds: __S(96, __c24, 0),
           title: SensitiveString,
           body: SensitiveString,
         }).pipe(
@@ -1425,7 +1410,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(92, __c23, 0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(96, __c24, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -1494,7 +1479,7 @@ function __c21(j: number): any {
         S.Struct({
           spaceId: S.String.pipe(T.HttpLabel("spaceId")),
           channelId: S.String.pipe(T.HttpLabel("channelId")),
-          accessorIds: __S(92, __c23, 0),
+          accessorIds: __S(96, __c24, 0),
           channelRole: S.String,
         }).pipe(
           T.all(
@@ -1506,40 +1491,40 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchAddChannelRoleToAccessorsInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ addedAccessorIds: __S(92, __c23, 0), errors: __S(89, __c22, 1) }),
-      ).annotate({
-        identifier: "BatchAddChannelRoleToAccessorsOutput",
-      });
+      ).annotate({ identifier: "BatchAddChannelRoleToAccessorsInput" });
   }
 }
 function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ accessorId: S.String, error: S.Number, message: S.String }),
-      ).annotate({ identifier: "BatchError" });
-    case 1:
-      return S.Array(__S(88, __c22, 0));
+        S.Struct({ addedAccessorIds: __S(96, __c24, 0), errors: __S(93, __c23, 1) }),
+      ).annotate({ identifier: "BatchAddChannelRoleToAccessorsOutput" });
   }
 }
 function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.suspend(() =>
+        S.Struct({ accessorId: S.String, error: S.Number, message: S.String }),
+      ).annotate({ identifier: "BatchError" });
+    case 1:
+      return S.Array(__S(92, __c23, 0));
   }
 }
 function __c24(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.String);
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           spaceId: S.String.pipe(T.HttpLabel("spaceId")),
-          accessorIds: __S(92, __c23, 0),
+          accessorIds: __S(96, __c24, 0),
           role: S.String,
         }).pipe(
           T.all(
@@ -1552,20 +1537,16 @@ function __c24(j: number): any {
           ),
         ),
       ).annotate({ identifier: "BatchAddRoleInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ addedAccessorIds: __S(92, __c23, 0), errors: __S(89, __c22, 1) }),
-      ).annotate({ identifier: "BatchAddRoleOutput" });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           spaceId: S.String.pipe(T.HttpLabel("spaceId")),
           channelId: S.String.pipe(T.HttpLabel("channelId")),
-          accessorIds: __S(92, __c23, 0),
+          accessorIds: __S(96, __c24, 0),
           channelRole: S.String,
         }).pipe(
           T.all(
@@ -1577,15 +1558,15 @@ function __c25(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchRemoveChannelRoleFromAccessorsInput",
-      });
-    case 1:
+      ).annotate({ identifier: "BatchRemoveChannelRoleFromAccessorsInput" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ removedAccessorIds: __S(92, __c23, 0), errors: __S(89, __c22, 1) }),
-      ).annotate({
-        identifier: "BatchRemoveChannelRoleFromAccessorsOutput",
-      });
+        S.Struct({ removedAccessorIds: __S(96, __c24, 0), errors: __S(93, __c23, 1) }),
+      ).annotate({ identifier: "BatchRemoveChannelRoleFromAccessorsOutput" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

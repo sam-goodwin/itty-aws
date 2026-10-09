@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -301,14 +301,10 @@ function __c0(j: number): any {
           Target: __S(4, __c1, 0),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateHomeRegionControlRequest",
-      });
+      ).annotate({ identifier: "CreateHomeRegionControlRequest" });
     case 1:
       return S.suspend(() => S.Struct({ HomeRegionControl: S.optional(__S(5, __c1, 1)) })).annotate(
-        {
-          identifier: "CreateHomeRegionControlResult",
-        },
+        { identifier: "CreateHomeRegionControlResult" },
       );
   }
 }
@@ -336,9 +332,7 @@ function __c2(j: number): any {
         S.Struct({ ControlId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteHomeRegionControlRequest",
-      });
+      ).annotate({ identifier: "DeleteHomeRegionControlRequest" });
     case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteHomeRegionControlResult",
@@ -356,9 +350,7 @@ function __c3(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeHomeRegionControlsRequest",
-      });
+      ).annotate({ identifier: "DescribeHomeRegionControlsRequest" });
     case 1:
       return S.Array(__S(5, __c1, 1));
     case 2:
@@ -367,9 +359,7 @@ function __c3(j: number): any {
           HomeRegionControls: S.optional(__S(13, __c3, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeHomeRegionControlsResult",
-      });
+      ).annotate({ identifier: "DescribeHomeRegionControlsResult" });
   }
 }
 function __c4(j: number): any {

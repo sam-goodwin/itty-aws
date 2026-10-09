@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -252,7 +252,7 @@ export interface Region {
   Code?: string | redacted.Redacted<string>;
   Name?: string | redacted.Redacted<string>;
 }
-const Region = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Region>;
+const Region = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<Region>;
 export interface SubRegion {
   Code?: string | redacted.Redacted<string>;
   Name?: string | redacted.Redacted<string>;
@@ -1040,8 +1040,8 @@ export const geocode: API.OperationMethod<
   GeocodeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258, __c8, 2) as any as S.Schema<GeocodeRequest>,
-  output: __S(277, __c8, 21) as any as S.Schema<GeocodeResponse>,
+  input: __S(226, __c7, 2) as any as S.Schema<GeocodeRequest>,
+  output: __S(245, __c7, 21) as any as S.Schema<GeocodeResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1070,8 +1070,8 @@ export const getPlace: API.OperationMethod<
   GetPlaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c13, 0) as any as S.Schema<GetPlaceRequest>,
-  output: __S(417, __c13, 1) as any as S.Schema<GetPlaceResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetPlaceRequest>,
+  output: __S(385, __c12, 1) as any as S.Schema<GetPlaceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1100,8 +1100,8 @@ export const reverseGeocode: API.OperationMethod<
   ReverseGeocodeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(513, __c16, 1) as any as S.Schema<ReverseGeocodeRequest>,
-  output: __S(516, __c16, 4) as any as S.Schema<ReverseGeocodeResponse>,
+  input: __S(481, __c15, 1) as any as S.Schema<ReverseGeocodeRequest>,
+  output: __S(484, __c15, 4) as any as S.Schema<ReverseGeocodeResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1130,8 +1130,8 @@ export const searchNearby: API.OperationMethod<
   SearchNearbyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(545, __c17, 1) as any as S.Schema<SearchNearbyRequest>,
-  output: __S(578, __c18, 2) as any as S.Schema<SearchNearbyResponse>,
+  input: __S(513, __c16, 1) as any as S.Schema<SearchNearbyRequest>,
+  output: __S(546, __c17, 2) as any as S.Schema<SearchNearbyResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1160,8 +1160,8 @@ export const searchText: API.OperationMethod<
   SearchTextError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c19, 0) as any as S.Schema<SearchTextRequest>,
-  output: __S(578, __c18, 2) as any as S.Schema<SearchTextResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<SearchTextRequest>,
+  output: __S(546, __c17, 2) as any as S.Schema<SearchTextResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1213,8 +1213,8 @@ function __c0(j: number): any {
           MaxResults: S.optional(S.Number),
           MaxQueryRefinements: S.optional(S.Number),
           BiasPosition: S.optional(__S(128, __c4, 0)),
-          Filter: S.optional(__S(640, __c20, 0)),
-          AdditionalFeatures: S.optional(__S(161, __c5, 1)),
+          Filter: S.optional(__S(608, __c19, 0)),
+          AdditionalFeatures: S.optional(__S(129, __c4, 1)),
           Language: S.optional(S.String),
           PoliticalView: S.optional(SensitiveString),
           IntendedUse: S.optional(S.String),
@@ -1229,20 +1229,20 @@ function __c0(j: number): any {
         S.Struct({
           PlaceId: S.optional(SensitiveString),
           PlaceType: S.optional(S.String),
-          Address: S.optional(__S(136, __c4, 8)),
+          Address: S.optional(__S(137, __c4, 9)),
           Position: S.optional(__S(128, __c4, 0)),
           Distance: S.optional(S.Number),
           MapView: S.optional(__S(128, __c4, 0)),
-          Categories: S.optional(__S(353, __c11, 1)),
-          FoodTypes: S.optional(__S(355, __c11, 3)),
-          BusinessChains: S.optional(__S(481, __c15, 1)),
-          AccessPoints: S.optional(__S(357, __c11, 5)),
-          AccessRestrictions: S.optional(__S(483, __c15, 3)),
-          TimeZone: S.optional(__S(358, __c11, 6)),
+          Categories: S.optional(__S(321, __c10, 1)),
+          FoodTypes: S.optional(__S(323, __c10, 3)),
+          BusinessChains: S.optional(__S(449, __c14, 1)),
+          AccessPoints: S.optional(__S(325, __c10, 5)),
+          AccessRestrictions: S.optional(__S(451, __c14, 3)),
+          TimeZone: S.optional(__S(326, __c10, 6)),
           PoliticalView: S.optional(SensitiveString),
-          Phonemes: S.optional(__S(487, __c15, 7)),
-          PlaceAttributes: S.optional(__S(161, __c5, 1)),
-          CrossReferences: S.optional(__S(489, __c15, 9)),
+          Phonemes: S.optional(__S(455, __c14, 7)),
+          PlaceAttributes: S.optional(__S(129, __c4, 1)),
+          CrossReferences: S.optional(__S(457, __c14, 9)),
         }),
       ).annotate({ identifier: "SuggestPlaceResult" });
     case 2:
@@ -1308,9 +1308,9 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           BoundingBox: S.optional(__S(128, __c4, 0)),
-          Circle: S.optional(__S(224, __c7, 0)),
+          Circle: S.optional(__S(192, __c6, 0)),
           IncludeCountries: S.optional(__S(160, __c5, 0)),
-          IncludePlaceTypes: S.optional(__S(161, __c5, 1)),
+          IncludePlaceTypes: S.optional(__S(129, __c4, 1)),
         }),
       ).annotate({ identifier: "AutocompleteFilter" });
     case 1:
@@ -1321,7 +1321,7 @@ function __c2(j: number): any {
           BiasPosition: S.optional(__S(128, __c4, 0)),
           Filter: S.optional(__S(64, __c2, 0)),
           PostalCodeMode: S.optional(S.String),
-          AdditionalFeatures: S.optional(__S(192, __c6, 0)),
+          AdditionalFeatures: S.optional(__S(129, __c4, 1)),
           Language: S.optional(S.String),
           PoliticalView: S.optional(SensitiveString),
           IntendedUse: S.optional(S.String),
@@ -1354,15 +1354,10 @@ function __c2(j: number): any {
           AddressNumber: S.optional(__S(97, __c3, 1)),
           Building: S.optional(__S(97, __c3, 1)),
         }),
-      ).annotate({
-        identifier: "AutocompleteAddressHighlights",
-      });
+      ).annotate({ identifier: "AutocompleteAddressHighlights" });
     case 5:
       return S.suspend(() =>
-        S.Struct({
-          Title: S.optional(__S(97, __c3, 1)),
-          Address: S.optional(__S(68, __c2, 4)),
-        }),
+        S.Struct({ Title: S.optional(__S(97, __c3, 1)), Address: S.optional(__S(68, __c2, 4)) }),
       ).annotate({ identifier: "AutocompleteHighlights" });
     case 6:
       return S.suspend(() =>
@@ -1370,7 +1365,7 @@ function __c2(j: number): any {
           PlaceId: SensitiveString,
           PlaceType: S.String,
           Title: SensitiveString,
-          Address: S.optional(__S(136, __c4, 8)),
+          Address: S.optional(__S(137, __c4, 9)),
           Distance: S.optional(S.Number),
           Language: S.optional(S.String),
           PoliticalView: S.optional(SensitiveString),
@@ -1408,6 +1403,8 @@ function __c4(j: number): any {
     case 0:
       return S.Array(S.Number);
     case 1:
+      return S.Array(S.String);
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Code2: S.optional(SensitiveString),
@@ -1415,13 +1412,13 @@ function __c4(j: number): any {
           Name: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "Country" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({ Code: S.optional(SensitiveString), Name: S.optional(SensitiveString) }),
       ).annotate({ identifier: "Region" });
-    case 3:
-      return S.Array(S.String);
     case 4:
+      return S.Array(S.String);
+    case 5:
       return S.suspend(() =>
         S.Struct({
           BaseName: S.optional(SensitiveString),
@@ -1434,21 +1431,19 @@ function __c4(j: number): any {
           Language: S.optional(S.String),
         }),
       ).annotate({ identifier: "StreetComponents" });
-    case 5:
-      return S.Array(__S(132, __c4, 4));
     case 6:
+      return S.Array(__S(133, __c4, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({ Number: SensitiveString, Designator: S.optional(SensitiveString) }),
-      ).annotate({
-        identifier: "SecondaryAddressComponent",
-      });
-    case 7:
-      return S.Array(__S(134, __c4, 6));
+      ).annotate({ identifier: "SecondaryAddressComponent" });
     case 8:
+      return S.Array(__S(135, __c4, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           Label: S.optional(SensitiveString),
-          Country: S.optional(__S(129, __c4, 1)),
+          Country: S.optional(__S(130, __c4, 2)),
           Region: S.optional(Region),
           SubRegion: S.optional(SubRegion),
           Locality: S.optional(SensitiveString),
@@ -1457,12 +1452,12 @@ function __c4(j: number): any {
           PostalCode: S.optional(SensitiveString),
           Block: S.optional(SensitiveString),
           SubBlock: S.optional(SensitiveString),
-          Intersection: S.optional(__S(131, __c4, 3)),
+          Intersection: S.optional(__S(132, __c4, 4)),
           Street: S.optional(SensitiveString),
-          StreetComponents: S.optional(__S(133, __c4, 5)),
+          StreetComponents: S.optional(__S(134, __c4, 6)),
           AddressNumber: S.optional(SensitiveString),
           Building: S.optional(SensitiveString),
-          SecondaryAddressComponents: S.optional(__S(135, __c4, 7)),
+          SecondaryAddressComponents: S.optional(__S(136, __c4, 8)),
         }),
       ).annotate({ identifier: "Address" });
   }
@@ -1471,17 +1466,9 @@ function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.Array(SensitiveString);
-    case 1:
-      return S.Array(S.String);
   }
 }
 function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-  }
-}
-function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Center: __S(128, __c4, 0), Radius: S.Number })).annotate({
@@ -1489,7 +1476,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1508,24 +1495,24 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           IncludeCountries: S.optional(__S(160, __c5, 0)),
-          IncludePlaceTypes: S.optional(__S(161, __c5, 1)),
+          IncludePlaceTypes: S.optional(__S(129, __c4, 1)),
         }),
       ).annotate({ identifier: "GeocodeFilter" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           QueryText: S.optional(SensitiveString),
-          QueryComponents: S.optional(__S(256, __c8, 0)),
+          QueryComponents: S.optional(__S(224, __c7, 0)),
           MaxResults: S.optional(S.Number),
           BiasPosition: S.optional(__S(128, __c4, 0)),
-          Filter: S.optional(__S(257, __c8, 1)),
-          AdditionalFeatures: S.optional(__S(161, __c5, 1)),
+          Filter: S.optional(__S(225, __c7, 1)),
+          AdditionalFeatures: S.optional(__S(129, __c4, 1)),
           Language: S.optional(S.String),
           PoliticalView: S.optional(SensitiveString),
           IntendedUse: S.optional(S.String),
           Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
           PostalCodeMode: S.optional(S.String),
-          AddressTranslations: S.optional(__S(161, __c5, 1)),
+          AddressTranslations: S.optional(__S(129, __c4, 1)),
           AddressNamesMode: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/v2/geocode" }), svc, auth, proto, ver, rules),
@@ -1536,7 +1523,7 @@ function __c8(j: number): any {
         identifier: "SecondaryAddressComponentMatchScore",
       });
     case 4:
-      return S.Array(__S(259, __c8, 3));
+      return S.Array(__S(227, __c7, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1552,18 +1539,16 @@ function __c8(j: number): any {
           Intersection: S.optional(__S(128, __c4, 0)),
           AddressNumber: S.optional(S.Number),
           Building: S.optional(S.Number),
-          SecondaryAddressComponents: S.optional(__S(260, __c8, 4)),
+          SecondaryAddressComponents: S.optional(__S(228, __c7, 4)),
         }),
-      ).annotate({
-        identifier: "AddressComponentMatchScores",
-      });
+      ).annotate({ identifier: "AddressComponentMatchScores" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ Title: S.optional(S.Number), Address: S.optional(__S(261, __c8, 5)) }),
+        S.Struct({ Title: S.optional(S.Number), Address: S.optional(__S(229, __c7, 5)) }),
       ).annotate({ identifier: "ComponentMatchScores" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ Overall: S.optional(S.Number), Components: S.optional(__S(262, __c8, 6)) }),
+        S.Struct({ Overall: S.optional(S.Number), Components: S.optional(__S(230, __c7, 6)) }),
       ).annotate({ identifier: "MatchScoreDetails" });
     case 8:
       return S.suspend(() =>
@@ -1575,7 +1560,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "ParsedQueryComponent" });
     case 9:
-      return S.Array(__S(264, __c8, 8));
+      return S.Array(__S(232, __c7, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
@@ -1585,38 +1570,31 @@ function __c8(j: number): any {
           Number: SensitiveString,
           Designator: SensitiveString,
         }),
-      ).annotate({
-        identifier: "ParsedQuerySecondaryAddressComponent",
-      });
+      ).annotate({ identifier: "ParsedQuerySecondaryAddressComponent" });
     case 11:
-      return S.Array(__S(266, __c8, 10));
+      return S.Array(__S(234, __c7, 10));
     case 12:
       return S.suspend(() =>
         S.Struct({
-          Country: S.optional(__S(265, __c8, 9)),
-          Region: S.optional(__S(265, __c8, 9)),
-          SubRegion: S.optional(__S(265, __c8, 9)),
-          Locality: S.optional(__S(265, __c8, 9)),
-          District: S.optional(__S(265, __c8, 9)),
-          SubDistrict: S.optional(__S(265, __c8, 9)),
-          PostalCode: S.optional(__S(265, __c8, 9)),
-          Block: S.optional(__S(265, __c8, 9)),
-          SubBlock: S.optional(__S(265, __c8, 9)),
-          Street: S.optional(__S(265, __c8, 9)),
-          AddressNumber: S.optional(__S(265, __c8, 9)),
-          Building: S.optional(__S(265, __c8, 9)),
-          SecondaryAddressComponents: S.optional(__S(267, __c8, 11)),
-          OtherComponents: S.optional(__S(265, __c8, 9)),
+          Country: S.optional(__S(233, __c7, 9)),
+          Region: S.optional(__S(233, __c7, 9)),
+          SubRegion: S.optional(__S(233, __c7, 9)),
+          Locality: S.optional(__S(233, __c7, 9)),
+          District: S.optional(__S(233, __c7, 9)),
+          SubDistrict: S.optional(__S(233, __c7, 9)),
+          PostalCode: S.optional(__S(233, __c7, 9)),
+          Block: S.optional(__S(233, __c7, 9)),
+          SubBlock: S.optional(__S(233, __c7, 9)),
+          Street: S.optional(__S(233, __c7, 9)),
+          AddressNumber: S.optional(__S(233, __c7, 9)),
+          Building: S.optional(__S(233, __c7, 9)),
+          SecondaryAddressComponents: S.optional(__S(235, __c7, 11)),
+          OtherComponents: S.optional(__S(233, __c7, 9)),
         }),
-      ).annotate({
-        identifier: "GeocodeParsedQueryAddressComponents",
-      });
+      ).annotate({ identifier: "GeocodeParsedQueryAddressComponents" });
     case 13:
       return S.suspend(() =>
-        S.Struct({
-          Title: S.optional(__S(265, __c8, 9)),
-          Address: S.optional(__S(268, __c8, 12)),
-        }),
+        S.Struct({ Title: S.optional(__S(233, __c7, 9)), Address: S.optional(__S(236, __c7, 12)) }),
       ).annotate({ identifier: "GeocodeParsedQuery" });
     case 14:
       return S.suspend(() =>
@@ -1629,20 +1607,20 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "TranslationName" });
     case 15:
-      return S.Array(__S(270, __c8, 14));
+      return S.Array(__S(238, __c7, 14));
     case 16:
       return S.suspend(() =>
-        S.Struct({ Names: __S(271, __c8, 15), Preference: S.optional(S.String) }),
+        S.Struct({ Names: __S(239, __c7, 15), Preference: S.optional(S.String) }),
       ).annotate({ identifier: "AdminNames" });
     case 17:
-      return S.Array(__S(272, __c8, 16));
+      return S.Array(__S(240, __c7, 16));
     case 18:
       return S.suspend(() =>
         S.Struct({
-          Locality: S.optional(__S(273, __c8, 17)),
-          Region: S.optional(__S(273, __c8, 17)),
-          District: S.optional(__S(273, __c8, 17)),
-          SubRegion: S.optional(__S(273, __c8, 17)),
+          Locality: S.optional(__S(241, __c7, 17)),
+          Region: S.optional(__S(241, __c7, 17)),
+          District: S.optional(__S(241, __c7, 17)),
+          SubRegion: S.optional(__S(241, __c7, 17)),
         }),
       ).annotate({ identifier: "TranslationDetails" });
     case 19:
@@ -1651,44 +1629,44 @@ function __c8(j: number): any {
           PlaceId: SensitiveString,
           PlaceType: S.String,
           Title: SensitiveString,
-          Address: S.optional(__S(136, __c4, 8)),
+          Address: S.optional(__S(137, __c4, 9)),
           AddressNumberCorrected: S.optional(S.Boolean),
-          PostalCodeDetails: S.optional(__S(323, __c10, 3)),
+          PostalCodeDetails: S.optional(__S(291, __c9, 3)),
           Position: S.optional(__S(128, __c4, 0)),
           Distance: S.optional(S.Number),
           MapView: S.optional(__S(128, __c4, 0)),
-          Categories: S.optional(__S(353, __c11, 1)),
-          FoodTypes: S.optional(__S(355, __c11, 3)),
-          AccessPoints: S.optional(__S(357, __c11, 5)),
-          TimeZone: S.optional(__S(358, __c11, 6)),
+          Categories: S.optional(__S(321, __c10, 1)),
+          FoodTypes: S.optional(__S(323, __c10, 3)),
+          AccessPoints: S.optional(__S(325, __c10, 5)),
+          TimeZone: S.optional(__S(326, __c10, 6)),
           PoliticalView: S.optional(SensitiveString),
-          MatchScores: S.optional(__S(263, __c8, 7)),
-          ParsedQuery: S.optional(__S(269, __c8, 13)),
-          Intersections: S.optional(__S(385, __c12, 1)),
-          MainAddress: S.optional(__S(324, __c10, 4)),
-          SecondaryAddresses: S.optional(__S(288, __c9, 0)),
-          Translations: S.optional(__S(274, __c8, 18)),
+          MatchScores: S.optional(__S(231, __c7, 7)),
+          ParsedQuery: S.optional(__S(237, __c7, 13)),
+          Intersections: S.optional(__S(353, __c11, 1)),
+          MainAddress: S.optional(__S(292, __c9, 4)),
+          SecondaryAddresses: S.optional(__S(256, __c8, 0)),
+          Translations: S.optional(__S(242, __c7, 18)),
           EstimatedPointAddress: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GeocodeResultItem" });
     case 20:
-      return S.Array(__S(275, __c8, 19));
+      return S.Array(__S(243, __c7, 19));
     case 21:
       return S.suspend(() =>
         S.Struct({
           PricingBucket: S.String.pipe(T.HttpHeader("x-amz-geo-pricing-bucket")),
-          ResultItems: S.optional(__S(276, __c8, 20)),
+          ResultItems: S.optional(__S(244, __c7, 20)),
         }),
       ).annotate({ identifier: "GeocodeResponse" });
   }
 }
-function __c9(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(324, __c10, 4));
+      return S.Array(__S(292, __c9, 4));
   }
 }
-function __c10(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ ZipClassificationCode: S.optional(S.String) })).annotate({
@@ -1704,26 +1682,26 @@ function __c10(j: number): any {
           PostalCode: S.optional(SensitiveString),
           PostalAuthority: S.optional(S.String),
           PostalCodeType: S.optional(S.String),
-          UspsZip: S.optional(__S(320, __c10, 0)),
-          UspsZipPlus4: S.optional(__S(321, __c10, 1)),
+          UspsZip: S.optional(__S(288, __c9, 0)),
+          UspsZipPlus4: S.optional(__S(289, __c9, 1)),
         }),
       ).annotate({ identifier: "PostalCodeDetails" });
     case 3:
-      return S.Array(__S(322, __c10, 2));
+      return S.Array(__S(290, __c9, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           PlaceId: SensitiveString,
           PlaceType: S.String,
           Title: SensitiveString,
-          Address: S.optional(__S(136, __c4, 8)),
+          Address: S.optional(__S(137, __c4, 9)),
           Position: S.optional(__S(128, __c4, 0)),
-          AccessPoints: S.optional(__S(357, __c11, 5)),
+          AccessPoints: S.optional(__S(325, __c10, 5)),
         }),
       ).annotate({ identifier: "RelatedPlace" });
   }
 }
-function __c11(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1735,7 +1713,7 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "Category" });
     case 1:
-      return S.Array(__S(352, __c11, 0));
+      return S.Array(__S(320, __c10, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1745,7 +1723,7 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "FoodType" });
     case 3:
-      return S.Array(__S(354, __c11, 2));
+      return S.Array(__S(322, __c10, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1756,7 +1734,7 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "AccessPoint" });
     case 5:
-      return S.Array(__S(356, __c11, 4));
+      return S.Array(__S(324, __c10, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1767,32 +1745,32 @@ function __c11(j: number): any {
       ).annotate({ identifier: "TimeZone" });
   }
 }
-function __c12(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           PlaceId: SensitiveString,
           Title: SensitiveString,
-          Address: S.optional(__S(136, __c4, 8)),
+          Address: S.optional(__S(137, __c4, 9)),
           Position: S.optional(__S(128, __c4, 0)),
           Distance: S.optional(S.Number),
           RouteDistance: S.optional(S.Number),
           MapView: S.optional(__S(128, __c4, 0)),
-          AccessPoints: S.optional(__S(357, __c11, 5)),
+          AccessPoints: S.optional(__S(325, __c10, 5)),
         }),
       ).annotate({ identifier: "Intersection" });
     case 1:
-      return S.Array(__S(384, __c12, 0));
+      return S.Array(__S(352, __c11, 0));
   }
 }
-function __c13(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           PlaceId: SensitiveString.pipe(T.HttpLabel("PlaceId")),
-          AdditionalFeatures: S.optional(__S(161, __c5, 1)).pipe(
+          AdditionalFeatures: S.optional(__S(129, __c4, 1)).pipe(
             T.HttpQuery("additional-features"),
           ),
           Language: S.optional(S.String).pipe(T.HttpQuery("language")),
@@ -1818,49 +1796,49 @@ function __c13(j: number): any {
           PlaceType: S.String,
           Title: SensitiveString,
           PricingBucket: S.String.pipe(T.HttpHeader("x-amz-geo-pricing-bucket")),
-          Address: S.optional(__S(136, __c4, 8)),
+          Address: S.optional(__S(137, __c4, 9)),
           AddressNumberCorrected: S.optional(S.Boolean),
-          PostalCodeDetails: S.optional(__S(323, __c10, 3)),
+          PostalCodeDetails: S.optional(__S(291, __c9, 3)),
           Position: S.optional(__S(128, __c4, 0)),
           MapView: S.optional(__S(128, __c4, 0)),
-          Categories: S.optional(__S(353, __c11, 1)),
-          FoodTypes: S.optional(__S(355, __c11, 3)),
-          BusinessChains: S.optional(__S(481, __c15, 1)),
-          Contacts: S.optional(__S(450, __c14, 2)),
-          OpeningHours: S.optional(__S(454, __c14, 6)),
-          AccessPoints: S.optional(__S(357, __c11, 5)),
-          AccessRestrictions: S.optional(__S(483, __c15, 3)),
-          TimeZone: S.optional(__S(358, __c11, 6)),
+          Categories: S.optional(__S(321, __c10, 1)),
+          FoodTypes: S.optional(__S(323, __c10, 3)),
+          BusinessChains: S.optional(__S(449, __c14, 1)),
+          Contacts: S.optional(__S(418, __c13, 2)),
+          OpeningHours: S.optional(__S(422, __c13, 6)),
+          AccessPoints: S.optional(__S(325, __c10, 5)),
+          AccessRestrictions: S.optional(__S(451, __c14, 3)),
+          TimeZone: S.optional(__S(326, __c10, 6)),
           PoliticalView: S.optional(SensitiveString),
-          Phonemes: S.optional(__S(487, __c15, 7)),
-          MainAddress: S.optional(__S(324, __c10, 4)),
-          SecondaryAddresses: S.optional(__S(288, __c9, 0)),
-          PlaceAttributes: S.optional(__S(161, __c5, 1)),
+          Phonemes: S.optional(__S(455, __c14, 7)),
+          MainAddress: S.optional(__S(292, __c9, 4)),
+          SecondaryAddresses: S.optional(__S(256, __c8, 0)),
+          PlaceAttributes: S.optional(__S(129, __c4, 1)),
           EstimatedPointAddress: S.optional(S.Boolean),
-          CrossReferences: S.optional(__S(489, __c15, 9)),
+          CrossReferences: S.optional(__S(457, __c14, 9)),
         }),
       ).annotate({ identifier: "GetPlaceResponse" });
   }
 }
-function __c14(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           Label: S.optional(SensitiveString),
           Value: S.optional(SensitiveString),
-          Categories: S.optional(__S(353, __c11, 1)),
+          Categories: S.optional(__S(321, __c10, 1)),
         }),
       ).annotate({ identifier: "ContactDetails" });
     case 1:
-      return S.Array(__S(448, __c14, 0));
+      return S.Array(__S(416, __c13, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Phones: S.optional(__S(449, __c14, 1)),
-          Faxes: S.optional(__S(449, __c14, 1)),
-          Websites: S.optional(__S(449, __c14, 1)),
-          Emails: S.optional(__S(449, __c14, 1)),
+          Phones: S.optional(__S(417, __c13, 1)),
+          Faxes: S.optional(__S(417, __c13, 1)),
+          Websites: S.optional(__S(417, __c13, 1)),
+          Emails: S.optional(__S(417, __c13, 1)),
         }),
       ).annotate({ identifier: "Contacts" });
     case 3:
@@ -1872,34 +1850,34 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "OpeningHoursComponents" });
     case 4:
-      return S.Array(__S(451, __c14, 3));
+      return S.Array(__S(419, __c13, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           Display: S.optional(__S(160, __c5, 0)),
           OpenNow: S.optional(S.Boolean),
-          Components: S.optional(__S(452, __c14, 4)),
-          Categories: S.optional(__S(353, __c11, 1)),
+          Components: S.optional(__S(420, __c13, 4)),
+          Categories: S.optional(__S(321, __c10, 1)),
         }),
       ).annotate({ identifier: "OpeningHours" });
     case 6:
-      return S.Array(__S(453, __c14, 5));
+      return S.Array(__S(421, __c13, 5));
   }
 }
-function __c15(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(SensitiveString), Id: S.optional(SensitiveString) }),
       ).annotate({ identifier: "BusinessChain" });
     case 1:
-      return S.Array(__S(480, __c15, 0));
+      return S.Array(__S(448, __c14, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ Restricted: S.optional(S.Boolean), Categories: S.optional(__S(353, __c11, 1)) }),
+        S.Struct({ Restricted: S.optional(S.Boolean), Categories: S.optional(__S(321, __c10, 1)) }),
       ).annotate({ identifier: "AccessRestriction" });
     case 3:
-      return S.Array(__S(482, __c15, 2));
+      return S.Array(__S(450, __c14, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1909,26 +1887,26 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "PhonemeTranscription" });
     case 5:
-      return S.Array(__S(484, __c15, 4));
+      return S.Array(__S(452, __c14, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Country: S.optional(__S(485, __c15, 5)),
-          Region: S.optional(__S(485, __c15, 5)),
-          SubRegion: S.optional(__S(485, __c15, 5)),
-          Locality: S.optional(__S(485, __c15, 5)),
-          District: S.optional(__S(485, __c15, 5)),
-          SubDistrict: S.optional(__S(485, __c15, 5)),
-          Block: S.optional(__S(485, __c15, 5)),
-          SubBlock: S.optional(__S(485, __c15, 5)),
-          Street: S.optional(__S(485, __c15, 5)),
+          Country: S.optional(__S(453, __c14, 5)),
+          Region: S.optional(__S(453, __c14, 5)),
+          SubRegion: S.optional(__S(453, __c14, 5)),
+          Locality: S.optional(__S(453, __c14, 5)),
+          District: S.optional(__S(453, __c14, 5)),
+          SubDistrict: S.optional(__S(453, __c14, 5)),
+          Block: S.optional(__S(453, __c14, 5)),
+          SubBlock: S.optional(__S(453, __c14, 5)),
+          Street: S.optional(__S(453, __c14, 5)),
         }),
       ).annotate({ identifier: "AddressComponentPhonemes" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Title: S.optional(__S(485, __c15, 5)),
-          Address: S.optional(__S(486, __c15, 6)),
+          Title: S.optional(__S(453, __c14, 5)),
+          Address: S.optional(__S(454, __c14, 6)),
         }),
       ).annotate({ identifier: "PhonemeDetails" });
     case 8:
@@ -1936,18 +1914,18 @@ function __c15(j: number): any {
         S.Struct({
           Source: SensitiveString,
           SourcePlaceId: SensitiveString,
-          SourceCategories: S.optional(__S(353, __c11, 1)),
+          SourceCategories: S.optional(__S(321, __c10, 1)),
         }),
       ).annotate({ identifier: "CrossReference" });
     case 9:
-      return S.Array(__S(488, __c15, 8));
+      return S.Array(__S(456, __c14, 8));
   }
 }
-function __c16(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ IncludePlaceTypes: S.optional(__S(192, __c6, 0)) }),
+        S.Struct({ IncludePlaceTypes: S.optional(__S(129, __c4, 1)) }),
       ).annotate({ identifier: "ReverseGeocodeFilter" });
     case 1:
       return S.suspend(() =>
@@ -1955,8 +1933,8 @@ function __c16(j: number): any {
           QueryPosition: __S(128, __c4, 0),
           QueryRadius: S.optional(S.Number),
           MaxResults: S.optional(S.Number),
-          Filter: S.optional(__S(512, __c16, 0)),
-          AdditionalFeatures: S.optional(__S(192, __c6, 0)),
+          Filter: S.optional(__S(480, __c15, 0)),
+          AdditionalFeatures: S.optional(__S(129, __c4, 1)),
           Language: S.optional(S.String),
           PoliticalView: S.optional(SensitiveString),
           IntendedUse: S.optional(S.String),
@@ -1980,34 +1958,34 @@ function __c16(j: number): any {
           PlaceId: SensitiveString,
           PlaceType: S.String,
           Title: SensitiveString,
-          Address: S.optional(__S(136, __c4, 8)),
+          Address: S.optional(__S(137, __c4, 9)),
           AddressNumberCorrected: S.optional(S.Boolean),
-          PostalCodeDetails: S.optional(__S(323, __c10, 3)),
+          PostalCodeDetails: S.optional(__S(291, __c9, 3)),
           Position: S.optional(__S(128, __c4, 0)),
           Distance: S.optional(S.Number),
           MapView: S.optional(__S(128, __c4, 0)),
-          Categories: S.optional(__S(353, __c11, 1)),
-          FoodTypes: S.optional(__S(355, __c11, 3)),
-          AccessPoints: S.optional(__S(357, __c11, 5)),
-          TimeZone: S.optional(__S(358, __c11, 6)),
+          Categories: S.optional(__S(321, __c10, 1)),
+          FoodTypes: S.optional(__S(323, __c10, 3)),
+          AccessPoints: S.optional(__S(325, __c10, 5)),
+          TimeZone: S.optional(__S(326, __c10, 6)),
           PoliticalView: S.optional(SensitiveString),
-          Intersections: S.optional(__S(385, __c12, 1)),
-          MainAddress: S.optional(__S(324, __c10, 4)),
+          Intersections: S.optional(__S(353, __c11, 1)),
+          MainAddress: S.optional(__S(292, __c9, 4)),
           EstimatedPointAddress: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ReverseGeocodeResultItem" });
     case 3:
-      return S.Array(__S(514, __c16, 2));
+      return S.Array(__S(482, __c15, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           PricingBucket: S.String.pipe(T.HttpHeader("x-amz-geo-pricing-bucket")),
-          ResultItems: S.optional(__S(515, __c16, 3)),
+          ResultItems: S.optional(__S(483, __c15, 3)),
         }),
       ).annotate({ identifier: "ReverseGeocodeResponse" });
   }
 }
-function __c17(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2028,8 +2006,8 @@ function __c17(j: number): any {
           QueryPosition: __S(128, __c4, 0),
           QueryRadius: S.optional(S.Number),
           MaxResults: S.optional(S.Number),
-          Filter: S.optional(__S(544, __c17, 0)),
-          AdditionalFeatures: S.optional(__S(192, __c6, 0)),
+          Filter: S.optional(__S(512, __c16, 0)),
+          AdditionalFeatures: S.optional(__S(129, __c4, 1)),
           Language: S.optional(S.String),
           PoliticalView: S.optional(SensitiveString),
           IntendedUse: S.optional(S.String),
@@ -2041,7 +2019,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "SearchNearbyRequest" });
   }
 }
-function __c18(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2049,38 +2027,38 @@ function __c18(j: number): any {
           PlaceId: SensitiveString,
           PlaceType: S.String,
           Title: SensitiveString,
-          Address: S.optional(__S(136, __c4, 8)),
+          Address: S.optional(__S(137, __c4, 9)),
           AddressNumberCorrected: S.optional(S.Boolean),
           Position: S.optional(__S(128, __c4, 0)),
           Distance: S.optional(S.Number),
           MapView: S.optional(__S(128, __c4, 0)),
-          Categories: S.optional(__S(353, __c11, 1)),
-          FoodTypes: S.optional(__S(355, __c11, 3)),
-          BusinessChains: S.optional(__S(481, __c15, 1)),
-          Contacts: S.optional(__S(450, __c14, 2)),
-          OpeningHours: S.optional(__S(454, __c14, 6)),
-          AccessPoints: S.optional(__S(357, __c11, 5)),
-          AccessRestrictions: S.optional(__S(483, __c15, 3)),
-          TimeZone: S.optional(__S(358, __c11, 6)),
+          Categories: S.optional(__S(321, __c10, 1)),
+          FoodTypes: S.optional(__S(323, __c10, 3)),
+          BusinessChains: S.optional(__S(449, __c14, 1)),
+          Contacts: S.optional(__S(418, __c13, 2)),
+          OpeningHours: S.optional(__S(422, __c13, 6)),
+          AccessPoints: S.optional(__S(325, __c10, 5)),
+          AccessRestrictions: S.optional(__S(451, __c14, 3)),
+          TimeZone: S.optional(__S(326, __c10, 6)),
           PoliticalView: S.optional(SensitiveString),
-          Phonemes: S.optional(__S(487, __c15, 7)),
-          PlaceAttributes: S.optional(__S(161, __c5, 1)),
-          CrossReferences: S.optional(__S(489, __c15, 9)),
+          Phonemes: S.optional(__S(455, __c14, 7)),
+          PlaceAttributes: S.optional(__S(129, __c4, 1)),
+          CrossReferences: S.optional(__S(457, __c14, 9)),
         }),
       ).annotate({ identifier: "SearchNearbyResultItem" });
     case 1:
-      return S.Array(__S(576, __c18, 0));
+      return S.Array(__S(544, __c17, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           PricingBucket: S.String.pipe(T.HttpHeader("x-amz-geo-pricing-bucket")),
-          ResultItems: S.optional(__S(577, __c18, 1)),
+          ResultItems: S.optional(__S(545, __c17, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "SearchNearbyResponse" });
   }
 }
-function __c19(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2089,8 +2067,8 @@ function __c19(j: number): any {
           QueryId: S.optional(SensitiveString),
           MaxResults: S.optional(S.Number),
           BiasPosition: S.optional(__S(128, __c4, 0)),
-          Filter: S.optional(__S(640, __c20, 0)),
-          AdditionalFeatures: S.optional(__S(161, __c5, 1)),
+          Filter: S.optional(__S(608, __c19, 0)),
+          AdditionalFeatures: S.optional(__S(129, __c4, 1)),
           Language: S.optional(S.String),
           PoliticalView: S.optional(SensitiveString),
           IntendedUse: S.optional(S.String),
@@ -2103,13 +2081,13 @@ function __c19(j: number): any {
       ).annotate({ identifier: "SearchTextRequest" });
   }
 }
-function __c20(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           BoundingBox: S.optional(__S(128, __c4, 0)),
-          Circle: S.optional(__S(224, __c7, 0)),
+          Circle: S.optional(__S(192, __c6, 0)),
           IncludeCountries: S.optional(__S(160, __c5, 0)),
         }),
       ).annotate({ identifier: "SearchTextFilter" });

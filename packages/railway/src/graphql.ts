@@ -18,39 +18,35 @@ import {
 import * as S from "effect/Schema";
 
 /** The bucket exists but its S3-compatible credentials are not available yet. Retry the credentials query with a bounded policy. */
-export class RailwayBucketCredentialsNotReady
-  extends /*@__PURE__*/ S.TaggedError<RailwayBucketCredentialsNotReady>()(
-    "RailwayBucketCredentialsNotReady",
-    errorFields,
-  ).pipe(Category.withNotFoundError, /*@__PURE__*/ Category.withRetryable()) {}
-const RailwayBucketCredentialsNotReadySpec: ErrorSpec<RailwayBucketCredentialsNotReady> =
-  /*@__PURE__*/ errorSpec(
-    RailwayBucketCredentialsNotReady,
-    "RailwayBucketCredentialsNotReady",
-    [{ message: "BucketInstanceCredential not found" }],
-    { retryable: true },
-  );
+export class RailwayBucketCredentialsNotReady extends S.TaggedError<RailwayBucketCredentialsNotReady>()(
+  "RailwayBucketCredentialsNotReady",
+  errorFields,
+).pipe(Category.withNotFoundError, Category.withRetryable()) {}
+const RailwayBucketCredentialsNotReadySpec: ErrorSpec<RailwayBucketCredentialsNotReady> = errorSpec(
+  RailwayBucketCredentialsNotReady,
+  "RailwayBucketCredentialsNotReady",
+  [{ message: "BucketInstanceCredential not found" }],
+  { retryable: true },
+);
 
 /** Railway could not create the custom domain. Observe whether it exists before retrying the mutation. */
-export class RailwayCustomDomainCreateFailed
-  extends /*@__PURE__*/ S.TaggedError<RailwayCustomDomainCreateFailed>()(
-    "RailwayCustomDomainCreateFailed",
-    errorFields,
-  ).pipe(Category.withServerError, /*@__PURE__*/ Category.withRetryable()) {}
-const RailwayCustomDomainCreateFailedSpec: ErrorSpec<RailwayCustomDomainCreateFailed> =
-  /*@__PURE__*/ errorSpec(
-    RailwayCustomDomainCreateFailed,
-    "RailwayCustomDomainCreateFailed",
-    [{ message: "Failed to create custom domain, please try again" }],
-    { retryable: true },
-  );
+export class RailwayCustomDomainCreateFailed extends S.TaggedError<RailwayCustomDomainCreateFailed>()(
+  "RailwayCustomDomainCreateFailed",
+  errorFields,
+).pipe(Category.withServerError, Category.withRetryable()) {}
+const RailwayCustomDomainCreateFailedSpec: ErrorSpec<RailwayCustomDomainCreateFailed> = errorSpec(
+  RailwayCustomDomainCreateFailed,
+  "RailwayCustomDomainCreateFailed",
+  [{ message: "Failed to create custom domain, please try again" }],
+  { retryable: true },
+);
 
 /** Token lacks access to the requested operation. */
-export class RailwayForbidden
-  extends /*@__PURE__*/ S.TaggedError<RailwayForbidden>()("RailwayForbidden", errorFields).pipe(
-    Category.withAuthError,
-  ) {}
-const RailwayForbiddenSpec: ErrorSpec<RailwayForbidden> = /*@__PURE__*/ errorSpec(
+export class RailwayForbidden extends S.TaggedError<RailwayForbidden>()(
+  "RailwayForbidden",
+  errorFields,
+).pipe(Category.withAuthError) {}
+const RailwayForbiddenSpec: ErrorSpec<RailwayForbidden> = errorSpec(
   RailwayForbidden,
   "RailwayForbidden",
   [{ code: "FORBIDDEN" }, { code: "INTERNAL_SERVER_ERROR", messageIncludes: "Not Authorized" }],
@@ -58,12 +54,11 @@ const RailwayForbiddenSpec: ErrorSpec<RailwayForbidden> = /*@__PURE__*/ errorSpe
 );
 
 /** Railway resolver failed internally. */
-export class RailwayInternalError
-  extends /*@__PURE__*/ S.TaggedError<RailwayInternalError>()(
-    "RailwayInternalError",
-    errorFields,
-  ).pipe(Category.withServerError) {}
-const RailwayInternalErrorSpec: ErrorSpec<RailwayInternalError> = /*@__PURE__*/ errorSpec(
+export class RailwayInternalError extends S.TaggedError<RailwayInternalError>()(
+  "RailwayInternalError",
+  errorFields,
+).pipe(Category.withServerError) {}
+const RailwayInternalErrorSpec: ErrorSpec<RailwayInternalError> = errorSpec(
   RailwayInternalError,
   "RailwayInternalError",
   [{ code: "INTERNAL_SERVER_ERROR" }],
@@ -71,22 +66,22 @@ const RailwayInternalErrorSpec: ErrorSpec<RailwayInternalError> = /*@__PURE__*/ 
 );
 
 /** The login session does not exist: it was cancelled, consumed, or expired. Stop polling and start a new session. */
-export class RailwayLoginSessionNotFound
-  extends /*@__PURE__*/ S.TaggedError<RailwayLoginSessionNotFound>()(
-    "RailwayLoginSessionNotFound",
-    errorFields,
-  ).pipe(Category.withNotFoundError) {}
-const RailwayLoginSessionNotFoundSpec: ErrorSpec<RailwayLoginSessionNotFound> =
-  /*@__PURE__*/ errorSpec(RailwayLoginSessionNotFound, "RailwayLoginSessionNotFound", [
-    { code: "BAD_USER_INPUT", messageIncludes: "does not exist" },
-  ]);
+export class RailwayLoginSessionNotFound extends S.TaggedError<RailwayLoginSessionNotFound>()(
+  "RailwayLoginSessionNotFound",
+  errorFields,
+).pipe(Category.withNotFoundError) {}
+const RailwayLoginSessionNotFoundSpec: ErrorSpec<RailwayLoginSessionNotFound> = errorSpec(
+  RailwayLoginSessionNotFound,
+  "RailwayLoginSessionNotFound",
+  [{ code: "BAD_USER_INPUT", messageIncludes: "does not exist" }],
+);
 
 /** The selected resource or a required dependency was not found. */
-export class RailwayNotFound
-  extends /*@__PURE__*/ S.TaggedError<RailwayNotFound>()("RailwayNotFound", errorFields).pipe(
-    Category.withNotFoundError,
-  ) {}
-const RailwayNotFoundSpec: ErrorSpec<RailwayNotFound> = /*@__PURE__*/ errorSpec(
+export class RailwayNotFound extends S.TaggedError<RailwayNotFound>()(
+  "RailwayNotFound",
+  errorFields,
+).pipe(Category.withNotFoundError) {}
+const RailwayNotFoundSpec: ErrorSpec<RailwayNotFound> = errorSpec(
   RailwayNotFound,
   "RailwayNotFound",
   [
@@ -107,26 +102,23 @@ const RailwayNotFoundSpec: ErrorSpec<RailwayNotFound> = /*@__PURE__*/ errorSpec(
 );
 
 /** TCP proxy deletion must wait for an existing operation to complete. Observed in Alchemy TCPProxy lifecycle: Cannot delete TCP proxy: an operation is already in progress. */
-export class RailwayOperationInProgress
-  extends /*@__PURE__*/ S.TaggedError<RailwayOperationInProgress>()(
-    "RailwayOperationInProgress",
-    errorFields,
-  ).pipe(Category.withConflictError, /*@__PURE__*/ Category.withRetryable()) {}
-const RailwayOperationInProgressSpec: ErrorSpec<RailwayOperationInProgress> =
-  /*@__PURE__*/ errorSpec(
-    RailwayOperationInProgress,
-    "RailwayOperationInProgress",
-    [{ code: "INTERNAL_SERVER_ERROR", messageIncludes: "operation is already in progress" }],
-    { retryable: true },
-  );
+export class RailwayOperationInProgress extends S.TaggedError<RailwayOperationInProgress>()(
+  "RailwayOperationInProgress",
+  errorFields,
+).pipe(Category.withConflictError, Category.withRetryable()) {}
+const RailwayOperationInProgressSpec: ErrorSpec<RailwayOperationInProgress> = errorSpec(
+  RailwayOperationInProgress,
+  "RailwayOperationInProgress",
+  [{ code: "INTERNAL_SERVER_ERROR", messageIncludes: "operation is already in progress" }],
+  { retryable: true },
+);
 
 /** Workspace subscription or quota does not permit the operation. */
-export class RailwayPlanLimitExceeded
-  extends /*@__PURE__*/ S.TaggedError<RailwayPlanLimitExceeded>()(
-    "RailwayPlanLimitExceeded",
-    errorFields,
-  ).pipe(Category.withQuotaError) {}
-const RailwayPlanLimitExceededSpec: ErrorSpec<RailwayPlanLimitExceeded> = /*@__PURE__*/ errorSpec(
+export class RailwayPlanLimitExceeded extends S.TaggedError<RailwayPlanLimitExceeded>()(
+  "RailwayPlanLimitExceeded",
+  errorFields,
+).pipe(Category.withQuotaError) {}
+const RailwayPlanLimitExceededSpec: ErrorSpec<RailwayPlanLimitExceeded> = errorSpec(
   RailwayPlanLimitExceeded,
   "RailwayPlanLimitExceeded",
   [{ code: "PLAN_LIMIT" }, { code: "SUBSCRIPTION_REQUIRED" }],
@@ -134,12 +126,11 @@ const RailwayPlanLimitExceededSpec: ErrorSpec<RailwayPlanLimitExceeded> = /*@__P
 );
 
 /** Railway API request or provisioning rate limit exceeded. */
-export class RailwayRateLimited
-  extends /*@__PURE__*/ S.TaggedError<RailwayRateLimited>()("RailwayRateLimited", errorFields).pipe(
-    Category.withThrottlingError,
-    /*@__PURE__*/ Category.withRetryable({ throttling: true }),
-  ) {}
-const RailwayRateLimitedSpec: ErrorSpec<RailwayRateLimited> = /*@__PURE__*/ errorSpec(
+export class RailwayRateLimited extends S.TaggedError<RailwayRateLimited>()(
+  "RailwayRateLimited",
+  errorFields,
+).pipe(Category.withThrottlingError, Category.withRetryable({ throttling: true })) {}
+const RailwayRateLimitedSpec: ErrorSpec<RailwayRateLimited> = errorSpec(
   RailwayRateLimited,
   "RailwayRateLimited",
   [
@@ -157,55 +148,55 @@ const RailwayRateLimitedSpec: ErrorSpec<RailwayRateLimited> = /*@__PURE__*/ erro
 );
 
 /** Railway could not process the request and supplied no more specific cause. Inspect the preserved trace identifier; do not infer a retryable or entitlement failure. */
-export class RailwayRequestProcessingError
-  extends /*@__PURE__*/ S.TaggedError<RailwayRequestProcessingError>()(
-    "RailwayRequestProcessingError",
-    errorFields,
-  ).pipe(Category.withServerError) {}
-const RailwayRequestProcessingErrorSpec: ErrorSpec<RailwayRequestProcessingError> =
-  /*@__PURE__*/ errorSpec(
-    RailwayRequestProcessingError,
-    "RailwayRequestProcessingError",
-    [{ message: "Problem processing request" }],
-    { global: true },
-  );
+export class RailwayRequestProcessingError extends S.TaggedError<RailwayRequestProcessingError>()(
+  "RailwayRequestProcessingError",
+  errorFields,
+).pipe(Category.withServerError) {}
+const RailwayRequestProcessingErrorSpec: ErrorSpec<RailwayRequestProcessingError> = errorSpec(
+  RailwayRequestProcessingError,
+  "RailwayRequestProcessingError",
+  [{ message: "Problem processing request" }],
+  { global: true },
+);
 
 /** The named checkpoint to rename or boot does not exist. Both exact messages were observed live. */
-export class RailwaySandboxCheckpointNotFound
-  extends /*@__PURE__*/ S.TaggedError<RailwaySandboxCheckpointNotFound>()(
-    "RailwaySandboxCheckpointNotFound",
-    errorFields,
-  ).pipe(Category.withNotFoundError) {}
-const RailwaySandboxCheckpointNotFoundSpec: ErrorSpec<RailwaySandboxCheckpointNotFound> =
-  /*@__PURE__*/ errorSpec(RailwaySandboxCheckpointNotFound, "RailwaySandboxCheckpointNotFound", [
+export class RailwaySandboxCheckpointNotFound extends S.TaggedError<RailwaySandboxCheckpointNotFound>()(
+  "RailwaySandboxCheckpointNotFound",
+  errorFields,
+).pipe(Category.withNotFoundError) {}
+const RailwaySandboxCheckpointNotFoundSpec: ErrorSpec<RailwaySandboxCheckpointNotFound> = errorSpec(
+  RailwaySandboxCheckpointNotFound,
+  "RailwaySandboxCheckpointNotFound",
+  [
     { code: "INTERNAL_SERVER_ERROR", message: "Sandbox checkpoint not found" },
     {
       code: "INTERNAL_SERVER_ERROR",
       message:
         "Sandbox checkpoint not found. Build or capture it before creating a sandbox from it.",
     },
-  ]);
+  ],
+);
 
 /** The sandbox to execute in, checkpoint, or fork does not exist. Observed exact message: Sandbox not found. */
-export class RailwaySandboxNotFound
-  extends /*@__PURE__*/ S.TaggedError<RailwaySandboxNotFound>()(
-    "RailwaySandboxNotFound",
-    errorFields,
-  ).pipe(Category.withNotFoundError) {}
-const RailwaySandboxNotFoundSpec: ErrorSpec<RailwaySandboxNotFound> = /*@__PURE__*/ errorSpec(
+export class RailwaySandboxNotFound extends S.TaggedError<RailwaySandboxNotFound>()(
+  "RailwaySandboxNotFound",
+  errorFields,
+).pipe(Category.withNotFoundError) {}
+const RailwaySandboxNotFoundSpec: ErrorSpec<RailwaySandboxNotFound> = errorSpec(
   RailwaySandboxNotFound,
   "RailwaySandboxNotFound",
   [{ code: "INTERNAL_SERVER_ERROR", message: "Sandbox not found" }],
 );
 
 /** Invalid sandbox creation options. Live CPU and memory errors ended in 'at most 24 vCPU' and 'at most 24 GB'; the idle timeout range was 1 to 120 minutes. Match stable prefixes for workspace-dependent limits. The source-conflict message mentions checkpointName, but introspection exposes checkpoint restore only through template.name. */
-export class RailwaySandboxValidationError
-  extends /*@__PURE__*/ S.TaggedError<RailwaySandboxValidationError>()(
-    "RailwaySandboxValidationError",
-    errorFields,
-  ).pipe(Category.withBadRequestError) {}
-const RailwaySandboxValidationErrorSpec: ErrorSpec<RailwaySandboxValidationError> =
-  /*@__PURE__*/ errorSpec(RailwaySandboxValidationError, "RailwaySandboxValidationError", [
+export class RailwaySandboxValidationError extends S.TaggedError<RailwaySandboxValidationError>()(
+  "RailwaySandboxValidationError",
+  errorFields,
+).pipe(Category.withBadRequestError) {}
+const RailwaySandboxValidationErrorSpec: ErrorSpec<RailwaySandboxValidationError> = errorSpec(
+  RailwaySandboxValidationError,
+  "RailwaySandboxValidationError",
+  [
     {
       code: "INTERNAL_SERVER_ERROR",
       message: "Provide at most one of checkpointName, template, or sourceSandboxId",
@@ -230,43 +221,39 @@ const RailwaySandboxValidationErrorSpec: ErrorSpec<RailwaySandboxValidationError
     { code: "INTERNAL_SERVER_ERROR", message: "publicDomains ports must be unique" },
     { code: "INTERNAL_SERVER_ERROR", message: "publicDomains prefixes must be unique" },
     { code: "INTERNAL_SERVER_ERROR", message: "publicDomains supports at most 10 domains" },
-  ]);
+  ],
+);
 
 /** The service instance is not ready for domain creation. */
-export class RailwayServiceDomainCreateFailed
-  extends /*@__PURE__*/ S.TaggedError<RailwayServiceDomainCreateFailed>()(
-    "RailwayServiceDomainCreateFailed",
-    errorFields,
-  ).pipe(Category.withServerError, /*@__PURE__*/ Category.withRetryable()) {}
-const RailwayServiceDomainCreateFailedSpec: ErrorSpec<RailwayServiceDomainCreateFailed> =
-  /*@__PURE__*/ errorSpec(
-    RailwayServiceDomainCreateFailed,
-    "RailwayServiceDomainCreateFailed",
-    [{ code: "INTERNAL_SERVER_ERROR", messageIncludes: "Failed to create service domain" }],
-    { retryable: true },
-  );
+export class RailwayServiceDomainCreateFailed extends S.TaggedError<RailwayServiceDomainCreateFailed>()(
+  "RailwayServiceDomainCreateFailed",
+  errorFields,
+).pipe(Category.withServerError, Category.withRetryable()) {}
+const RailwayServiceDomainCreateFailedSpec: ErrorSpec<RailwayServiceDomainCreateFailed> = errorSpec(
+  RailwayServiceDomainCreateFailed,
+  "RailwayServiceDomainCreateFailed",
+  [{ code: "INTERNAL_SERVER_ERROR", messageIncludes: "Failed to create service domain" }],
+  { retryable: true },
+);
 
 /** Service domain creation ran before the service instance became visible. Observed in Alchemy ServiceDomain lifecycle: ServiceInstance not found. */
-export class RailwayServiceInstanceNotFound
-  extends /*@__PURE__*/ S.TaggedError<RailwayServiceInstanceNotFound>()(
-    "RailwayServiceInstanceNotFound",
-    errorFields,
-  ).pipe(Category.withNotFoundError, /*@__PURE__*/ Category.withRetryable()) {}
-const RailwayServiceInstanceNotFoundSpec: ErrorSpec<RailwayServiceInstanceNotFound> =
-  /*@__PURE__*/ errorSpec(
-    RailwayServiceInstanceNotFound,
-    "RailwayServiceInstanceNotFound",
-    [{ code: "INTERNAL_SERVER_ERROR", message: "ServiceInstance not found" }],
-    { retryable: true },
-  );
+export class RailwayServiceInstanceNotFound extends S.TaggedError<RailwayServiceInstanceNotFound>()(
+  "RailwayServiceInstanceNotFound",
+  errorFields,
+).pipe(Category.withNotFoundError, Category.withRetryable()) {}
+const RailwayServiceInstanceNotFoundSpec: ErrorSpec<RailwayServiceInstanceNotFound> = errorSpec(
+  RailwayServiceInstanceNotFound,
+  "RailwayServiceInstanceNotFound",
+  [{ code: "INTERNAL_SERVER_ERROR", message: "ServiceInstance not found" }],
+  { retryable: true },
+);
 
 /** Authentication token missing or rejected. */
-export class RailwayUnauthenticated
-  extends /*@__PURE__*/ S.TaggedError<RailwayUnauthenticated>()(
-    "RailwayUnauthenticated",
-    errorFields,
-  ).pipe(Category.withAuthError) {}
-const RailwayUnauthenticatedSpec: ErrorSpec<RailwayUnauthenticated> = /*@__PURE__*/ errorSpec(
+export class RailwayUnauthenticated extends S.TaggedError<RailwayUnauthenticated>()(
+  "RailwayUnauthenticated",
+  errorFields,
+).pipe(Category.withAuthError) {}
+const RailwayUnauthenticatedSpec: ErrorSpec<RailwayUnauthenticated> = errorSpec(
   RailwayUnauthenticated,
   "RailwayUnauthenticated",
   [{ code: "UNAUTHENTICATED" }, { code: "UNAUTHORIZED" }],
@@ -274,12 +261,11 @@ const RailwayUnauthenticatedSpec: ErrorSpec<RailwayUnauthenticated> = /*@__PURE_
 );
 
 /** GraphQL document or input failed validation. */
-export class RailwayValidationError
-  extends /*@__PURE__*/ S.TaggedError<RailwayValidationError>()(
-    "RailwayValidationError",
-    errorFields,
-  ).pipe(Category.withBadRequestError) {}
-const RailwayValidationErrorSpec: ErrorSpec<RailwayValidationError> = /*@__PURE__*/ errorSpec(
+export class RailwayValidationError extends S.TaggedError<RailwayValidationError>()(
+  "RailwayValidationError",
+  errorFields,
+).pipe(Category.withBadRequestError) {}
+const RailwayValidationErrorSpec: ErrorSpec<RailwayValidationError> = errorSpec(
   RailwayValidationError,
   "RailwayValidationError",
   [

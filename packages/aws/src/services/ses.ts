@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -3499,9 +3499,7 @@ function __c0(j: number): any {
         S.Struct({ ConfigurationSetName: S.String, TrackingOptions: __S(224, __c14, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateConfigurationSetTrackingOptionsRequest",
-      });
+      ).annotate({ identifier: "UpdateConfigurationSetTrackingOptionsRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "UpdateConfigurationSetTrackingOptionsResponse",
@@ -3520,9 +3518,7 @@ function __c1(j: number): any {
           SuccessRedirectionURL: S.optional(S.String),
           FailureRedirectionURL: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateCustomVerificationEmailTemplateRequest",
-      });
+      ).annotate({ identifier: "UpdateCustomVerificationEmailTemplateRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "UpdateCustomVerificationEmailTemplateResponse",
@@ -3578,9 +3574,7 @@ function __c5(j: number): any {
         S.Struct({ Domain: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "VerifyDomainIdentityRequest",
-      });
+      ).annotate({ identifier: "VerifyDomainIdentityRequest" });
     case 1:
       return S.suspend(() => S.Struct({ VerificationToken: S.String }).pipe(ns)).annotate({
         identifier: "VerifyDomainIdentityResponse",
@@ -3594,9 +3588,7 @@ function __c6(j: number): any {
         S.Struct({ EmailAddress: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "VerifyEmailAddressRequest",
-      });
+      ).annotate({ identifier: "VerifyEmailAddressRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "VerifyEmailAddressResponse",
@@ -3610,9 +3602,7 @@ function __c7(j: number): any {
         S.Struct({ EmailAddress: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "VerifyEmailIdentityRequest",
-      });
+      ).annotate({ identifier: "VerifyEmailIdentityRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "VerifyEmailIdentityResponse",
@@ -3626,9 +3616,7 @@ function __c8(j: number): any {
         S.Struct({ RuleSetName: S.String, OriginalRuleSetName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CloneReceiptRuleSetRequest",
-      });
+      ).annotate({ identifier: "CloneReceiptRuleSetRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CloneReceiptRuleSetResponse",
@@ -3642,9 +3630,7 @@ function __c9(j: number): any {
         S.Struct({ ConfigurationSet: __S(160, __c10, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateConfigurationSetRequest",
-      });
+      ).annotate({ identifier: "CreateConfigurationSetRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateConfigurationSetResponse",
@@ -3666,9 +3652,7 @@ function __c11(j: number): any {
         S.Struct({ ConfigurationSetName: S.String, EventDestination: __S(198, __c12, 6) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateConfigurationSetEventDestinationRequest",
-      });
+      ).annotate({ identifier: "CreateConfigurationSetEventDestinationRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateConfigurationSetEventDestinationResponse",
@@ -3682,9 +3666,7 @@ function __c12(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ IAMRoleARN: S.String, DeliveryStreamARN: S.String }),
-      ).annotate({
-        identifier: "KinesisFirehoseDestination",
-      });
+      ).annotate({ identifier: "KinesisFirehoseDestination" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3692,9 +3674,7 @@ function __c12(j: number): any {
           DimensionValueSource: S.String,
           DefaultDimensionValue: S.String,
         }),
-      ).annotate({
-        identifier: "CloudWatchDimensionConfiguration",
-      });
+      ).annotate({ identifier: "CloudWatchDimensionConfiguration" });
     case 3:
       return S.Array(__S(194, __c12, 2));
     case 4:
@@ -3725,9 +3705,7 @@ function __c13(j: number): any {
         S.Struct({ ConfigurationSetName: S.String, TrackingOptions: __S(224, __c14, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateConfigurationSetTrackingOptionsRequest",
-      });
+      ).annotate({ identifier: "CreateConfigurationSetTrackingOptionsRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateConfigurationSetTrackingOptionsResponse",
@@ -3754,9 +3732,7 @@ function __c15(j: number): any {
           SuccessRedirectionURL: S.String,
           FailureRedirectionURL: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateCustomVerificationEmailTemplateRequest",
-      });
+      ).annotate({ identifier: "CreateCustomVerificationEmailTemplateRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateCustomVerificationEmailTemplateResponse",
@@ -3770,9 +3746,7 @@ function __c16(j: number): any {
         S.Struct({ Filter: __S(273, __c17, 1) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateReceiptFilterRequest",
-      });
+      ).annotate({ identifier: "CreateReceiptFilterRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateReceiptFilterResponse",
@@ -3894,9 +3868,7 @@ function __c20(j: number): any {
         S.Struct({ RuleSetName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateReceiptRuleSetRequest",
-      });
+      ).annotate({ identifier: "CreateReceiptRuleSetRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateReceiptRuleSetResponse",
@@ -3937,9 +3909,7 @@ function __c23(j: number): any {
         S.Struct({ ConfigurationSetName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteConfigurationSetRequest",
-      });
+      ).annotate({ identifier: "DeleteConfigurationSetRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteConfigurationSetResponse",
@@ -3953,9 +3923,7 @@ function __c24(j: number): any {
         S.Struct({ ConfigurationSetName: S.String, EventDestinationName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteConfigurationSetEventDestinationRequest",
-      });
+      ).annotate({ identifier: "DeleteConfigurationSetEventDestinationRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteConfigurationSetEventDestinationResponse",
@@ -3969,9 +3937,7 @@ function __c25(j: number): any {
         S.Struct({ ConfigurationSetName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteConfigurationSetTrackingOptionsRequest",
-      });
+      ).annotate({ identifier: "DeleteConfigurationSetTrackingOptionsRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteConfigurationSetTrackingOptionsResponse",
@@ -3985,9 +3951,7 @@ function __c26(j: number): any {
         S.Struct({ TemplateName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteCustomVerificationEmailTemplateRequest",
-      });
+      ).annotate({ identifier: "DeleteCustomVerificationEmailTemplateRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteCustomVerificationEmailTemplateResponse",
@@ -4015,9 +3979,7 @@ function __c28(j: number): any {
         S.Struct({ Identity: S.String, PolicyName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteIdentityPolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteIdentityPolicyRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteIdentityPolicyResponse",
@@ -4031,9 +3993,7 @@ function __c29(j: number): any {
         S.Struct({ FilterName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteReceiptFilterRequest",
-      });
+      ).annotate({ identifier: "DeleteReceiptFilterRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteReceiptFilterResponse",
@@ -4061,9 +4021,7 @@ function __c31(j: number): any {
         S.Struct({ RuleSetName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteReceiptRuleSetRequest",
-      });
+      ).annotate({ identifier: "DeleteReceiptRuleSetRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteReceiptRuleSetResponse",
@@ -4091,9 +4049,7 @@ function __c33(j: number): any {
         S.Struct({ EmailAddress: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteVerifiedEmailAddressRequest",
-      });
+      ).annotate({ identifier: "DeleteVerifiedEmailAddressRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteVerifiedEmailAddressResponse",
@@ -4107,18 +4063,14 @@ function __c34(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeActiveReceiptRuleSetRequest",
-      });
+      ).annotate({ identifier: "DescribeActiveReceiptRuleSetRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Metadata: S.optional(__S(576, __c36, 0)),
           Rules: S.optional(__S(560, __c35, 0)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeActiveReceiptRuleSetResponse",
-      });
+      ).annotate({ identifier: "DescribeActiveReceiptRuleSetResponse" });
   }
 }
 function __c35(j: number): any {
@@ -4148,9 +4100,7 @@ function __c37(j: number): any {
           ConfigurationSetName: S.String,
           ConfigurationSetAttributeNames: S.optional(__S(592, __c37, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeConfigurationSetRequest",
-      });
+      ).annotate({ identifier: "DescribeConfigurationSetRequest" });
     case 2:
       return S.Array(__S(198, __c12, 6));
     case 3:
@@ -4170,9 +4120,7 @@ function __c37(j: number): any {
           DeliveryOptions: S.optional(__S(608, __c38, 0)),
           ReputationOptions: S.optional(__S(595, __c37, 3)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeConfigurationSetResponse",
-      });
+      ).annotate({ identifier: "DescribeConfigurationSetResponse" });
   }
 }
 function __c38(j: number): any {
@@ -4190,14 +4138,10 @@ function __c39(j: number): any {
         S.Struct({ RuleSetName: S.String, RuleName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeReceiptRuleRequest",
-      });
+      ).annotate({ identifier: "DescribeReceiptRuleRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Rule: S.optional(__S(315, __c19, 11)) }).pipe(ns)).annotate(
-        {
-          identifier: "DescribeReceiptRuleResponse",
-        },
+        { identifier: "DescribeReceiptRuleResponse" },
       );
   }
 }
@@ -4208,18 +4152,14 @@ function __c40(j: number): any {
         S.Struct({ RuleSetName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeReceiptRuleSetRequest",
-      });
+      ).annotate({ identifier: "DescribeReceiptRuleSetRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Metadata: S.optional(__S(576, __c36, 0)),
           Rules: S.optional(__S(560, __c35, 0)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeReceiptRuleSetResponse",
-      });
+      ).annotate({ identifier: "DescribeReceiptRuleSetResponse" });
   }
 }
 function __c41(j: number): any {
@@ -4229,9 +4169,7 @@ function __c41(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetAccountSendingEnabledRequest",
-      });
+      ).annotate({ identifier: "GetAccountSendingEnabledRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Enabled: S.optional(S.Boolean) }).pipe(ns)).annotate({
         identifier: "GetAccountSendingEnabledResponse",
@@ -4245,9 +4183,7 @@ function __c42(j: number): any {
         S.Struct({ TemplateName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetCustomVerificationEmailTemplateRequest",
-      });
+      ).annotate({ identifier: "GetCustomVerificationEmailTemplateRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4258,9 +4194,7 @@ function __c42(j: number): any {
           SuccessRedirectionURL: S.optional(S.String),
           FailureRedirectionURL: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetCustomVerificationEmailTemplateResponse",
-      });
+      ).annotate({ identifier: "GetCustomVerificationEmailTemplateResponse" });
   }
 }
 function __c43(j: number): any {
@@ -4270,9 +4204,7 @@ function __c43(j: number): any {
         S.Struct({ Identities: __S(720, __c45, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetIdentityDkimAttributesRequest",
-      });
+      ).annotate({ identifier: "GetIdentityDkimAttributesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4308,9 +4240,7 @@ function __c46(j: number): any {
         S.Struct({ Identities: __S(720, __c45, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetIdentityMailFromDomainAttributesRequest",
-      });
+      ).annotate({ identifier: "GetIdentityMailFromDomainAttributesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4318,17 +4248,13 @@ function __c46(j: number): any {
           MailFromDomainStatus: S.String,
           BehaviorOnMXFailure: S.String,
         }),
-      ).annotate({
-        identifier: "IdentityMailFromDomainAttributes",
-      });
+      ).annotate({ identifier: "IdentityMailFromDomainAttributes" });
     case 2:
       return S.Record(S.String, /*@__PURE__*/ __S(737, __c46, 1).pipe(S.optional));
     case 3:
       return S.suspend(() =>
         S.Struct({ MailFromDomainAttributes: __S(738, __c46, 2) }).pipe(ns),
-      ).annotate({
-        identifier: "GetIdentityMailFromDomainAttributesResponse",
-      });
+      ).annotate({ identifier: "GetIdentityMailFromDomainAttributesResponse" });
   }
 }
 function __c47(j: number): any {
@@ -4338,9 +4264,7 @@ function __c47(j: number): any {
         S.Struct({ Identities: __S(720, __c45, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetIdentityNotificationAttributesRequest",
-      });
+      ).annotate({ identifier: "GetIdentityNotificationAttributesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4352,17 +4276,13 @@ function __c47(j: number): any {
           HeadersInComplaintNotificationsEnabled: S.optional(S.Boolean),
           HeadersInDeliveryNotificationsEnabled: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "IdentityNotificationAttributes",
-      });
+      ).annotate({ identifier: "IdentityNotificationAttributes" });
     case 2:
       return S.Record(S.String, /*@__PURE__*/ __S(753, __c47, 1).pipe(S.optional));
     case 3:
       return S.suspend(() =>
         S.Struct({ NotificationAttributes: __S(754, __c47, 2) }).pipe(ns),
-      ).annotate({
-        identifier: "GetIdentityNotificationAttributesResponse",
-      });
+      ).annotate({ identifier: "GetIdentityNotificationAttributesResponse" });
   }
 }
 function __c48(j: number): any {
@@ -4372,9 +4292,7 @@ function __c48(j: number): any {
         S.Struct({ Identity: S.String, PolicyNames: __S(784, __c49, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetIdentityPoliciesRequest",
-      });
+      ).annotate({ identifier: "GetIdentityPoliciesRequest" });
     case 1:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 2:
@@ -4396,23 +4314,17 @@ function __c50(j: number): any {
         S.Struct({ Identities: __S(720, __c45, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetIdentityVerificationAttributesRequest",
-      });
+      ).annotate({ identifier: "GetIdentityVerificationAttributesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ VerificationStatus: S.String, VerificationToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "IdentityVerificationAttributes",
-      });
+      ).annotate({ identifier: "IdentityVerificationAttributes" });
     case 2:
       return S.Record(S.String, /*@__PURE__*/ __S(801, __c50, 1).pipe(S.optional));
     case 3:
       return S.suspend(() =>
         S.Struct({ VerificationAttributes: __S(802, __c50, 2) }).pipe(ns),
-      ).annotate({
-        identifier: "GetIdentityVerificationAttributesResponse",
-      });
+      ).annotate({ identifier: "GetIdentityVerificationAttributesResponse" });
   }
 }
 function __c51(j: number): any {
@@ -4456,9 +4368,7 @@ function __c52(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ SendDataPoints: S.optional(__S(834, __c52, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetSendStatisticsResponse",
-      });
+      ).annotate({ identifier: "GetSendStatisticsResponse" });
   }
 }
 function __c53(j: number): any {
@@ -4482,9 +4392,7 @@ function __c54(j: number): any {
         S.Struct({ NextToken: S.optional(S.String), MaxItems: S.optional(S.Number) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListConfigurationSetsRequest",
-      });
+      ).annotate({ identifier: "ListConfigurationSetsRequest" });
     case 1:
       return S.Array(__S(160, __c10, 0));
     case 2:
@@ -4493,9 +4401,7 @@ function __c54(j: number): any {
           ConfigurationSets: S.optional(__S(865, __c54, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListConfigurationSetsResponse",
-      });
+      ).annotate({ identifier: "ListConfigurationSetsResponse" });
   }
 }
 function __c55(j: number): any {
@@ -4505,9 +4411,7 @@ function __c55(j: number): any {
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListCustomVerificationEmailTemplatesRequest",
-      });
+      ).annotate({ identifier: "ListCustomVerificationEmailTemplatesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4517,9 +4421,7 @@ function __c55(j: number): any {
           SuccessRedirectionURL: S.optional(S.String),
           FailureRedirectionURL: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CustomVerificationEmailTemplate",
-      });
+      ).annotate({ identifier: "CustomVerificationEmailTemplate" });
     case 2:
       return S.Array(__S(881, __c55, 1));
     case 3:
@@ -4528,9 +4430,7 @@ function __c55(j: number): any {
           CustomVerificationEmailTemplates: S.optional(__S(882, __c55, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListCustomVerificationEmailTemplatesResponse",
-      });
+      ).annotate({ identifier: "ListCustomVerificationEmailTemplatesResponse" });
   }
 }
 function __c56(j: number): any {
@@ -4556,9 +4456,7 @@ function __c57(j: number): any {
         S.Struct({ Identity: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListIdentityPoliciesRequest",
-      });
+      ).annotate({ identifier: "ListIdentityPoliciesRequest" });
     case 1:
       return S.suspend(() => S.Struct({ PolicyNames: __S(784, __c49, 0) }).pipe(ns)).annotate({
         identifier: "ListIdentityPoliciesResponse",
@@ -4572,17 +4470,13 @@ function __c58(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListReceiptFiltersRequest",
-      });
+      ).annotate({ identifier: "ListReceiptFiltersRequest" });
     case 1:
       return S.Array(__S(273, __c17, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({ Filters: S.optional(__S(929, __c58, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "ListReceiptFiltersResponse",
-      });
+      ).annotate({ identifier: "ListReceiptFiltersResponse" });
   }
 }
 function __c59(j: number): any {
@@ -4592,9 +4486,7 @@ function __c59(j: number): any {
         S.Struct({ NextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListReceiptRuleSetsRequest",
-      });
+      ).annotate({ identifier: "ListReceiptRuleSetsRequest" });
     case 1:
       return S.Array(__S(576, __c36, 0));
     case 2:
@@ -4603,9 +4495,7 @@ function __c59(j: number): any {
           RuleSets: S.optional(__S(945, __c59, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListReceiptRuleSetsResponse",
-      });
+      ).annotate({ identifier: "ListReceiptRuleSetsResponse" });
   }
 }
 function __c60(j: number): any {
@@ -4641,15 +4531,11 @@ function __c61(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListVerifiedEmailAddressesRequest",
-      });
+      ).annotate({ identifier: "ListVerifiedEmailAddressesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ VerifiedEmailAddresses: S.optional(__S(992, __c62, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "ListVerifiedEmailAddressesResponse",
-      });
+      ).annotate({ identifier: "ListVerifiedEmailAddressesResponse" });
   }
 }
 function __c62(j: number): any {
@@ -4666,9 +4552,7 @@ function __c63(j: number): any {
           ConfigurationSetName: S.String,
           DeliveryOptions: S.optional(__S(608, __c38, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PutConfigurationSetDeliveryOptionsRequest",
-      });
+      ).annotate({ identifier: "PutConfigurationSetDeliveryOptionsRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutConfigurationSetDeliveryOptionsResponse",
@@ -4698,9 +4582,7 @@ function __c65(j: number): any {
         S.Struct({ RuleSetName: S.String, RuleNames: __S(1040, __c65, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ReorderReceiptRuleSetRequest",
-      });
+      ).annotate({ identifier: "ReorderReceiptRuleSetRequest" });
     case 2:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "ReorderReceiptRuleSetResponse",
@@ -4790,9 +4672,7 @@ function __c67(j: number): any {
           DefaultTemplateData: S.String,
           Destinations: __S(1073, __c67, 1),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SendBulkTemplatedEmailRequest",
-      });
+      ).annotate({ identifier: "SendBulkTemplatedEmailRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4800,9 +4680,7 @@ function __c67(j: number): any {
           Error: S.optional(S.String),
           MessageId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BulkEmailDestinationStatus",
-      });
+      ).annotate({ identifier: "BulkEmailDestinationStatus" });
     case 4:
       return S.Array(__S(1075, __c67, 3));
     case 5:
@@ -4842,9 +4720,7 @@ function __c70(j: number): any {
           TemplateName: S.String,
           ConfigurationSetName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SendCustomVerificationEmailRequest",
-      });
+      ).annotate({ identifier: "SendCustomVerificationEmailRequest" });
     case 1:
       return S.suspend(() => S.Struct({ MessageId: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "SendCustomVerificationEmailResponse",
@@ -4864,9 +4740,7 @@ function __c71(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ Subject: __S(1136, __c71, 0), Body: __S(1137, __c71, 1) }),
-      ).annotate({
-        identifier: "Message",
-      });
+      ).annotate({ identifier: "Message" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4890,9 +4764,7 @@ function __c71(j: number): any {
 function __c72(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Data: T.Blob })).annotate({
-        identifier: "RawMessage",
-      });
+      return S.suspend(() => S.Struct({ Data: T.Blob })).annotate({ identifier: "RawMessage" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4929,9 +4801,7 @@ function __c73(j: number): any {
           TemplateArn: S.optional(S.String),
           TemplateData: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SendTemplatedEmailRequest",
-      });
+      ).annotate({ identifier: "SendTemplatedEmailRequest" });
     case 1:
       return S.suspend(() => S.Struct({ MessageId: S.String }).pipe(ns)).annotate({
         identifier: "SendTemplatedEmailResponse",
@@ -4945,9 +4815,7 @@ function __c74(j: number): any {
         S.Struct({ RuleSetName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "SetActiveReceiptRuleSetRequest",
-      });
+      ).annotate({ identifier: "SetActiveReceiptRuleSetRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "SetActiveReceiptRuleSetResponse",
@@ -4961,9 +4829,7 @@ function __c75(j: number): any {
         S.Struct({ Identity: S.String, DkimEnabled: S.Boolean }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "SetIdentityDkimEnabledRequest",
-      });
+      ).annotate({ identifier: "SetIdentityDkimEnabledRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "SetIdentityDkimEnabledResponse",
@@ -4977,9 +4843,7 @@ function __c76(j: number): any {
         S.Struct({ Identity: S.String, ForwardingEnabled: S.Boolean }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "SetIdentityFeedbackForwardingEnabledRequest",
-      });
+      ).annotate({ identifier: "SetIdentityFeedbackForwardingEnabledRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "SetIdentityFeedbackForwardingEnabledResponse",
@@ -4993,9 +4857,7 @@ function __c77(j: number): any {
         S.Struct({ Identity: S.String, NotificationType: S.String, Enabled: S.Boolean }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "SetIdentityHeadersInNotificationsEnabledRequest",
-      });
+      ).annotate({ identifier: "SetIdentityHeadersInNotificationsEnabledRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "SetIdentityHeadersInNotificationsEnabledResponse",
@@ -5011,9 +4873,7 @@ function __c78(j: number): any {
           MailFromDomain: S.optional(S.String),
           BehaviorOnMXFailure: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SetIdentityMailFromDomainRequest",
-      });
+      ).annotate({ identifier: "SetIdentityMailFromDomainRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "SetIdentityMailFromDomainResponse",
@@ -5029,9 +4889,7 @@ function __c79(j: number): any {
           NotificationType: S.String,
           SnsTopic: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SetIdentityNotificationTopicRequest",
-      });
+      ).annotate({ identifier: "SetIdentityNotificationTopicRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "SetIdentityNotificationTopicResponse",
@@ -5045,9 +4903,7 @@ function __c80(j: number): any {
         S.Struct({ RuleSetName: S.String, RuleName: S.String, After: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "SetReceiptRulePositionRequest",
-      });
+      ).annotate({ identifier: "SetReceiptRulePositionRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "SetReceiptRulePositionResponse",
@@ -5061,15 +4917,11 @@ function __c81(j: number): any {
         S.Struct({ TemplateName: S.String, TemplateData: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "TestRenderTemplateRequest",
-      });
+      ).annotate({ identifier: "TestRenderTemplateRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ RenderedTemplate: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "TestRenderTemplateResponse",
-      });
+      ).annotate({ identifier: "TestRenderTemplateResponse" });
   }
 }
 function __c82(j: number): any {
@@ -5079,9 +4931,7 @@ function __c82(j: number): any {
         S.Struct({ Enabled: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateAccountSendingEnabledRequest",
-      });
+      ).annotate({ identifier: "UpdateAccountSendingEnabledRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "UpdateAccountSendingEnabledResponse",
@@ -5095,9 +4945,7 @@ function __c83(j: number): any {
         S.Struct({ ConfigurationSetName: S.String, EventDestination: __S(198, __c12, 6) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateConfigurationSetEventDestinationRequest",
-      });
+      ).annotate({ identifier: "UpdateConfigurationSetEventDestinationRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "UpdateConfigurationSetEventDestinationResponse",
@@ -5111,9 +4959,7 @@ function __c84(j: number): any {
         S.Struct({ ConfigurationSetName: S.String, Enabled: S.Boolean }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateConfigurationSetReputationMetricsEnabledRequest",
-      });
+      ).annotate({ identifier: "UpdateConfigurationSetReputationMetricsEnabledRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "UpdateConfigurationSetReputationMetricsEnabledResponse",
@@ -5127,9 +4973,7 @@ function __c85(j: number): any {
         S.Struct({ ConfigurationSetName: S.String, Enabled: S.Boolean }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateConfigurationSetSendingEnabledRequest",
-      });
+      ).annotate({ identifier: "UpdateConfigurationSetSendingEnabledRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "UpdateConfigurationSetSendingEnabledResponse",

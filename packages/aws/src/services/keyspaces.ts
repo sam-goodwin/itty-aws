@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -603,8 +603,8 @@ export const createType: API.OperationMethod<
   CreateTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<CreateTypeRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<CreateTypeResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<CreateTypeRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<CreateTypeResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -635,8 +635,8 @@ export const deleteKeyspace: API.OperationMethod<
   DeleteKeyspaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<DeleteKeyspaceRequest>,
-  output: __S(256, __c32, 0) as any as S.Schema<DeleteKeyspaceResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<DeleteKeyspaceRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<DeleteKeyspaceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -668,7 +668,7 @@ export const deleteTable: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteTableRequest>,
-  output: __S(256, __c32, 0) as any as S.Schema<DeleteTableResponse>,
+  output: __S(248, __c31, 0) as any as S.Schema<DeleteTableResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -702,7 +702,7 @@ export const deleteType: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(8, __c1, 0) as any as S.Schema<DeleteTypeRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<DeleteTypeResponse>,
+  output: __S(232, __c29, 0) as any as S.Schema<DeleteTypeResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1082,7 +1082,7 @@ export const tagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(88, __c11, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(256, __c32, 0) as any as S.Schema<TagResourceResponse>,
+  output: __S(248, __c31, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1114,7 +1114,7 @@ export const untagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c12, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(256, __c32, 0) as any as S.Schema<UntagResourceResponse>,
+  output: __S(248, __c31, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1301,24 +1301,18 @@ function __c3(j: number): any {
             S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           ),
         }),
-      ).annotate({
-        identifier: "CapacitySpecificationSummary",
-      });
+      ).annotate({ identifier: "CapacitySpecificationSummary" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
           earliestRestorableTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "PointInTimeRecoverySummary",
-      });
+      ).annotate({ identifier: "PointInTimeRecoverySummary" });
     case 3:
       return S.suspend(() =>
         S.Struct({ readUnitsPerSecond: S.Number, writeUnitsPerSecond: S.Number, status: S.String }),
-      ).annotate({
-        identifier: "WarmThroughputSpecificationSummary",
-      });
+      ).annotate({ identifier: "WarmThroughputSpecificationSummary" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1327,9 +1321,7 @@ function __c3(j: number): any {
           capacitySpecification: S.optional(__S(25, __c3, 1)),
           warmThroughputSpecification: S.optional(__S(27, __c3, 3)),
         }),
-      ).annotate({
-        identifier: "ReplicaSpecificationSummary",
-      });
+      ).annotate({ identifier: "ReplicaSpecificationSummary" });
     case 5:
       return S.Array(__S(28, __c3, 4));
     case 6:
@@ -1348,7 +1340,7 @@ function __c3(j: number): any {
           capacitySpecification: S.optional(__S(25, __c3, 1)),
           encryptionSpecification: S.optional(__S(184, __c23, 0)),
           pointInTimeRecovery: S.optional(__S(26, __c3, 2)),
-          ttl: S.optional(__S(192, __c24, 0)),
+          ttl: S.optional(__S(176, __c22, 0)),
           defaultTimeToLive: S.optional(S.Number),
           comment: S.optional(__S(173, __c21, 5)),
           clientSideTimestamps: S.optional(__S(176, __c22, 0)),
@@ -1367,18 +1359,14 @@ function __c4(j: number): any {
         S.Struct({ keyspaceName: S.String, tableName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetTableAutoScalingSettingsRequest",
-      });
+      ).annotate({ identifier: "GetTableAutoScalingSettingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           region: S.optional(S.String),
-          autoScalingSpecification: S.optional(__S(203, __c25, 3)),
+          autoScalingSpecification: S.optional(__S(195, __c24, 3)),
         }),
-      ).annotate({
-        identifier: "ReplicaAutoScalingSpecification",
-      });
+      ).annotate({ identifier: "ReplicaAutoScalingSpecification" });
     case 2:
       return S.Array(__S(33, __c4, 1));
     case 3:
@@ -1387,12 +1375,10 @@ function __c4(j: number): any {
           keyspaceName: S.String,
           tableName: S.String,
           resourceArn: S.String,
-          autoScalingSpecification: S.optional(__S(203, __c25, 3)),
+          autoScalingSpecification: S.optional(__S(195, __c24, 3)),
           replicaSpecifications: S.optional(__S(34, __c4, 2)),
         }),
-      ).annotate({
-        identifier: "GetTableAutoScalingSettingsResponse",
-      });
+      ).annotate({ identifier: "GetTableAutoScalingSettingsResponse" });
   }
 }
 function __c5(j: number): any {
@@ -1408,7 +1394,7 @@ function __c5(j: number): any {
         S.Struct({
           keyspaceName: S.String,
           typeName: S.String,
-          fieldDefinitions: S.optional(__S(225, __c28, 1)),
+          fieldDefinitions: S.optional(__S(217, __c27, 1)),
           lastModifiedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           status: S.optional(S.String),
           directReferringTables: S.optional(__S(128, __c16, 0)),
@@ -1475,15 +1461,11 @@ function __c8(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), tags: S.optional(__S(145, __c18, 1)) }),
-      ).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
+      ).annotate({ identifier: "ListTagsForResourceResponse" });
   }
 }
 function __c9(j: number): any {
@@ -1512,12 +1494,12 @@ function __c10(j: number): any {
           targetKeyspaceName: S.String,
           targetTableName: S.String,
           restoreTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          capacitySpecificationOverride: S.optional(__S(208, __c26, 0)),
+          capacitySpecificationOverride: S.optional(__S(200, __c25, 0)),
           encryptionSpecificationOverride: S.optional(__S(184, __c23, 0)),
           pointInTimeRecoveryOverride: S.optional(__S(176, __c22, 0)),
           tagsOverride: S.optional(__S(145, __c18, 1)),
-          autoScalingSpecification: S.optional(__S(203, __c25, 3)),
-          replicaSpecifications: S.optional(__S(210, __c26, 2)),
+          autoScalingSpecification: S.optional(__S(195, __c24, 3)),
+          replicaSpecifications: S.optional(__S(202, __c25, 2)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "RestoreTableRequest" });
     case 1:
@@ -1565,17 +1547,17 @@ function __c14(j: number): any {
         S.Struct({
           keyspaceName: S.String,
           tableName: S.String,
-          addColumns: S.optional(__S(225, __c28, 1)),
-          capacitySpecification: S.optional(__S(208, __c26, 0)),
+          addColumns: S.optional(__S(217, __c27, 1)),
+          capacitySpecification: S.optional(__S(200, __c25, 0)),
           encryptionSpecification: S.optional(__S(184, __c23, 0)),
           pointInTimeRecovery: S.optional(__S(176, __c22, 0)),
-          ttl: S.optional(__S(192, __c24, 0)),
+          ttl: S.optional(__S(176, __c22, 0)),
           defaultTimeToLive: S.optional(S.Number),
           clientSideTimestamps: S.optional(__S(176, __c22, 0)),
-          autoScalingSpecification: S.optional(__S(203, __c25, 3)),
-          replicaSpecifications: S.optional(__S(210, __c26, 2)),
-          cdcSpecification: S.optional(__S(216, __c27, 0)),
-          warmThroughputSpecification: S.optional(__S(217, __c27, 1)),
+          autoScalingSpecification: S.optional(__S(195, __c24, 3)),
+          replicaSpecifications: S.optional(__S(202, __c25, 2)),
+          cdcSpecification: S.optional(__S(208, __c26, 0)),
+          warmThroughputSpecification: S.optional(__S(209, __c26, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateTableRequest" });
   }
@@ -1633,17 +1615,17 @@ function __c20(j: number): any {
           tableName: S.String,
           schemaDefinition: __S(172, __c21, 4),
           comment: S.optional(__S(173, __c21, 5)),
-          capacitySpecification: S.optional(__S(208, __c26, 0)),
+          capacitySpecification: S.optional(__S(200, __c25, 0)),
           encryptionSpecification: S.optional(__S(184, __c23, 0)),
           pointInTimeRecovery: S.optional(__S(176, __c22, 0)),
-          ttl: S.optional(__S(192, __c24, 0)),
+          ttl: S.optional(__S(176, __c22, 0)),
           defaultTimeToLive: S.optional(S.Number),
           tags: S.optional(__S(145, __c18, 1)),
           clientSideTimestamps: S.optional(__S(176, __c22, 0)),
-          autoScalingSpecification: S.optional(__S(203, __c25, 3)),
-          replicaSpecifications: S.optional(__S(210, __c26, 2)),
-          cdcSpecification: S.optional(__S(216, __c27, 0)),
-          warmThroughputSpecification: S.optional(__S(217, __c27, 1)),
+          autoScalingSpecification: S.optional(__S(195, __c24, 3)),
+          replicaSpecifications: S.optional(__S(202, __c25, 2)),
+          cdcSpecification: S.optional(__S(208, __c26, 0)),
+          warmThroughputSpecification: S.optional(__S(209, __c26, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateTableRequest" });
   }
@@ -1651,9 +1633,7 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ name: S.String })).annotate({
-        identifier: "PartitionKey",
-      });
+      return S.suspend(() => S.Struct({ name: S.String })).annotate({ identifier: "PartitionKey" });
     case 1:
       return S.Array(__S(168, __c21, 0));
     case 2:
@@ -1665,16 +1645,14 @@ function __c21(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          allColumns: __S(225, __c28, 1),
+          allColumns: __S(217, __c27, 1),
           partitionKeys: __S(169, __c21, 1),
           clusteringKeys: S.optional(__S(171, __c21, 3)),
           staticColumns: S.optional(__S(169, __c21, 1)),
         }),
       ).annotate({ identifier: "SchemaDefinition" });
     case 5:
-      return S.suspend(() => S.Struct({ message: S.String })).annotate({
-        identifier: "Comment",
-      });
+      return S.suspend(() => S.Struct({ message: S.String })).annotate({ identifier: "Comment" });
   }
 }
 function __c22(j: number): any {
@@ -1696,14 +1674,6 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ status: S.String })).annotate({
-        identifier: "TimeToLive",
-      });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           disableScaleIn: S.optional(S.Boolean),
@@ -1711,14 +1681,10 @@ function __c25(j: number): any {
           scaleOutCooldown: S.optional(S.Number),
           targetValue: S.Number,
         }),
-      ).annotate({
-        identifier: "TargetTrackingScalingPolicyConfiguration",
-      });
+      ).annotate({ identifier: "TargetTrackingScalingPolicyConfiguration" });
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          targetTrackingScalingPolicyConfiguration: S.optional(__S(200, __c25, 0)),
-        }),
+        S.Struct({ targetTrackingScalingPolicyConfiguration: S.optional(__S(192, __c24, 0)) }),
       ).annotate({ identifier: "AutoScalingPolicy" });
     case 2:
       return S.suspend(() =>
@@ -1726,19 +1692,19 @@ function __c25(j: number): any {
           autoScalingDisabled: S.optional(S.Boolean),
           minimumUnits: S.optional(S.Number),
           maximumUnits: S.optional(S.Number),
-          scalingPolicy: S.optional(__S(201, __c25, 1)),
+          scalingPolicy: S.optional(__S(193, __c24, 1)),
         }),
       ).annotate({ identifier: "AutoScalingSettings" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          writeCapacityAutoScaling: S.optional(__S(202, __c25, 2)),
-          readCapacityAutoScaling: S.optional(__S(202, __c25, 2)),
+          writeCapacityAutoScaling: S.optional(__S(194, __c24, 2)),
+          readCapacityAutoScaling: S.optional(__S(194, __c24, 2)),
         }),
       ).annotate({ identifier: "AutoScalingSpecification" });
   }
 }
-function __c26(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1753,14 +1719,14 @@ function __c26(j: number): any {
         S.Struct({
           region: S.String,
           readCapacityUnits: S.optional(S.Number),
-          readCapacityAutoScaling: S.optional(__S(202, __c25, 2)),
+          readCapacityAutoScaling: S.optional(__S(194, __c24, 2)),
         }),
       ).annotate({ identifier: "ReplicaSpecification" });
     case 2:
-      return S.Array(__S(209, __c26, 1));
+      return S.Array(__S(201, __c25, 1));
   }
 }
-function __c27(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1777,34 +1743,32 @@ function __c27(j: number): any {
           readUnitsPerSecond: S.optional(S.Number),
           writeUnitsPerSecond: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "WarmThroughputSpecification",
-      });
+      ).annotate({ identifier: "WarmThroughputSpecification" });
   }
 }
-function __c28(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ name: S.String, type: S.String })).annotate({
         identifier: "ColumnDefinition",
       });
     case 1:
-      return S.Array(__S(224, __c28, 0));
+      return S.Array(__S(216, __c27, 0));
   }
 }
-function __c29(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           keyspaceName: S.String,
           typeName: S.String,
-          fieldDefinitions: __S(225, __c28, 1),
+          fieldDefinitions: __S(217, __c27, 1),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateTypeRequest" });
   }
 }
-function __c30(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ keyspaceArn: S.String, typeName: S.String })).annotate({
@@ -1812,7 +1776,7 @@ function __c30(j: number): any {
       });
   }
 }
-function __c31(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1822,12 +1786,10 @@ function __c31(j: number): any {
       ).annotate({ identifier: "DeleteKeyspaceRequest" });
   }
 }
-function __c32(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteKeyspaceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteKeyspaceResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

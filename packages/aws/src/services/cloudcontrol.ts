@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -438,7 +438,7 @@ export const cancelResourceRequest: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CancelResourceRequestInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<CancelResourceRequestOutput>,
+  output: __S(16, __c2, 0) as any as S.Schema<CancelResourceRequestOutput>,
   errors: [ConcurrentModificationException, RequestTokenNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -480,8 +480,8 @@ export const createResource: API.OperationMethod<
   CreateResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateResourceInput>,
-  output: __S(24, __c3, 0) as any as S.Schema<CreateResourceOutput>,
+  input: __S(24, __c3, 0) as any as S.Schema<CreateResourceInput>,
+  output: __S(16, __c2, 0) as any as S.Schema<CreateResourceOutput>,
   errors: [
     AlreadyExistsException,
     ClientTokenConflictException,
@@ -544,7 +544,7 @@ export const deleteResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(32, __c4, 0) as any as S.Schema<DeleteResourceInput>,
-  output: __S(24, __c3, 0) as any as S.Schema<DeleteResourceOutput>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteResourceOutput>,
   errors: [
     AlreadyExistsException,
     ClientTokenConflictException,
@@ -788,7 +788,7 @@ export const updateResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(80, __c10, 0) as any as S.Schema<UpdateResourceInput>,
-  output: __S(24, __c3, 0) as any as S.Schema<UpdateResourceOutput>,
+  output: __S(16, __c2, 0) as any as S.Schema<UpdateResourceOutput>,
   errors: [
     AlreadyExistsException,
     ClientTokenConflictException,
@@ -823,13 +823,7 @@ function __c0(j: number): any {
         S.Struct({ RequestToken: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CancelResourceRequestInput",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ ProgressEvent: S.optional(__S(8, __c1, 0)) })).annotate({
-        identifier: "CancelResourceRequestOutput",
-      });
+      ).annotate({ identifier: "CancelResourceRequestInput" });
   }
 }
 function __c1(j: number): any {
@@ -855,6 +849,14 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() => S.Struct({ ProgressEvent: S.optional(__S(8, __c1, 0)) })).annotate({
+        identifier: "CancelResourceRequestOutput",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TypeName: S.String,
@@ -864,14 +866,6 @@ function __c2(j: number): any {
           DesiredState: SensitiveString,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateResourceInput" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ ProgressEvent: S.optional(__S(8, __c1, 0)) })).annotate({
-        identifier: "CreateResourceOutput",
-      });
   }
 }
 function __c4(j: number): any {
@@ -923,9 +917,7 @@ function __c7(j: number): any {
         S.Struct({ RequestToken: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetResourceRequestStatusInput",
-      });
+      ).annotate({ identifier: "GetResourceRequestStatusInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -947,9 +939,7 @@ function __c7(j: number): any {
           ProgressEvent: S.optional(__S(8, __c1, 0)),
           HooksProgressEvent: S.optional(__S(58, __c7, 2)),
         }),
-      ).annotate({
-        identifier: "GetResourceRequestStatusOutput",
-      });
+      ).annotate({ identifier: "GetResourceRequestStatusOutput" });
   }
 }
 function __c8(j: number): any {
@@ -962,9 +952,7 @@ function __c8(j: number): any {
           Operations: S.optional(__S(64, __c8, 0)),
           OperationStatuses: S.optional(__S(64, __c8, 0)),
         }),
-      ).annotate({
-        identifier: "ResourceRequestStatusFilter",
-      });
+      ).annotate({ identifier: "ResourceRequestStatusFilter" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -972,9 +960,7 @@ function __c8(j: number): any {
           NextToken: S.optional(S.String),
           ResourceRequestStatusFilter: S.optional(__S(65, __c8, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListResourceRequestsInput",
-      });
+      ).annotate({ identifier: "ListResourceRequestsInput" });
     case 3:
       return S.Array(__S(8, __c1, 0));
     case 4:
@@ -983,9 +969,7 @@ function __c8(j: number): any {
           ResourceRequestStatusSummaries: S.optional(__S(67, __c8, 3)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListResourceRequestsOutput",
-      });
+      ).annotate({ identifier: "ListResourceRequestsOutput" });
   }
 }
 function __c9(j: number): any {

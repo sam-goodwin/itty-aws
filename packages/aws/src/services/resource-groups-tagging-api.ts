@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
@@ -728,10 +728,7 @@ function __c1(j: number): any {
       return S.Array(__S(17, __c1, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          RequiredTags: S.optional(__S(18, __c1, 2)),
-          NextToken: S.optional(S.String),
-        }),
+        S.Struct({ RequiredTags: S.optional(__S(18, __c1, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListRequiredTagsOutput" });
   }
 }
@@ -751,9 +748,7 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "StartReportCreationInput" });
     case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "StartReportCreationOutput",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "StartReportCreationOutput" });
   }
 }
 function __c3(j: number): any {
@@ -810,9 +805,7 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeReportCreationInput",
-      });
+      ).annotate({ identifier: "DescribeReportCreationInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -821,9 +814,7 @@ function __c6(j: number): any {
           StartDate: S.optional(S.String),
           ErrorMessage: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeReportCreationOutput",
-      });
+      ).annotate({ identifier: "DescribeReportCreationOutput" });
   }
 }
 function __c7(j: number): any {
@@ -850,9 +841,7 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetComplianceSummaryInput",
-      });
+      ).annotate({ identifier: "GetComplianceSummaryInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -872,9 +861,7 @@ function __c7(j: number): any {
           SummaryList: S.optional(__S(115, __c7, 3)),
           PaginationToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetComplianceSummaryOutput",
-      });
+      ).annotate({ identifier: "GetComplianceSummaryOutput" });
   }
 }
 function __c8(j: number): any {

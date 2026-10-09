@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -317,9 +317,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetRoleCredentialsRequest",
-      });
+      ).annotate({ identifier: "GetRoleCredentialsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -404,9 +402,7 @@ function __c3(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/logout" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "LogoutRequest" });
     case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "LogoutResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "LogoutResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

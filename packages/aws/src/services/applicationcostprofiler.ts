@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -400,9 +400,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateReportDefinitionRequest",
-      });
+      ).annotate({ identifier: "UpdateReportDefinitionRequest" });
   }
 }
 function __c1(j: number): any {
@@ -419,9 +417,7 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteReportDefinitionRequest",
-      });
+      ).annotate({ identifier: "DeleteReportDefinitionRequest" });
   }
 }
 function __c2(j: number): any {
@@ -446,9 +442,7 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetReportDefinitionRequest",
-      });
+      ).annotate({ identifier: "GetReportDefinitionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -460,9 +454,7 @@ function __c3(j: number): any {
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastUpdated: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
-      ).annotate({
-        identifier: "GetReportDefinitionResult",
-      });
+      ).annotate({ identifier: "GetReportDefinitionResult" });
   }
 }
 function __c4(j: number): any {
@@ -491,9 +483,7 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ImportApplicationUsageRequest",
-      });
+      ).annotate({ identifier: "ImportApplicationUsageRequest" });
     case 2:
       return S.suspend(() => S.Struct({ importId: S.String })).annotate({
         identifier: "ImportApplicationUsageResult",
@@ -510,9 +500,7 @@ function __c6(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/reportDefinition" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListReportDefinitionsRequest",
-      });
+      ).annotate({ identifier: "ListReportDefinitionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -533,9 +521,7 @@ function __c6(j: number): any {
           reportDefinitions: S.optional(__S(26, __c6, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListReportDefinitionsResult",
-      });
+      ).annotate({ identifier: "ListReportDefinitionsResult" });
   }
 }
 function __c7(j: number): any {
@@ -551,9 +537,7 @@ function __c7(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/reportDefinition" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "PutReportDefinitionRequest",
-      });
+      ).annotate({ identifier: "PutReportDefinitionRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

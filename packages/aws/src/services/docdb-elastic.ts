@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -438,7 +438,7 @@ export const copyClusterSnapshot: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(84, __c21, 0) as any as S.Schema<CopyClusterSnapshotInput>,
-  output: __S(88, __c22, 0) as any as S.Schema<CopyClusterSnapshotOutput>,
+  output: __S(89, __c22, 1) as any as S.Schema<CopyClusterSnapshotOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -470,8 +470,8 @@ export const createCluster: API.OperationMethod<
   CreateClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c26, 0) as any as S.Schema<CreateClusterInput>,
-  output: __S(112, __c28, 0) as any as S.Schema<CreateClusterOutput>,
+  input: __S(100, __c25, 0) as any as S.Schema<CreateClusterInput>,
+  output: __S(107, __c26, 3) as any as S.Schema<CreateClusterOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -504,7 +504,7 @@ export const createClusterSnapshot: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateClusterSnapshotInput>,
-  output: __S(88, __c22, 0) as any as S.Schema<CreateClusterSnapshotOutput>,
+  output: __S(89, __c22, 1) as any as S.Schema<CreateClusterSnapshotOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -537,7 +537,7 @@ export const deleteCluster: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(4, __c1, 0) as any as S.Schema<DeleteClusterInput>,
-  output: __S(112, __c28, 0) as any as S.Schema<DeleteClusterOutput>,
+  output: __S(107, __c26, 3) as any as S.Schema<DeleteClusterOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -569,7 +569,7 @@ export const deleteClusterSnapshot: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(8, __c2, 0) as any as S.Schema<DeleteClusterSnapshotInput>,
-  output: __S(88, __c22, 0) as any as S.Schema<DeleteClusterSnapshotOutput>,
+  output: __S(89, __c22, 1) as any as S.Schema<DeleteClusterSnapshotOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -600,7 +600,7 @@ export const getCluster: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(12, __c3, 0) as any as S.Schema<GetClusterInput>,
-  output: __S(112, __c28, 0) as any as S.Schema<GetClusterOutput>,
+  output: __S(107, __c26, 3) as any as S.Schema<GetClusterOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -630,7 +630,7 @@ export const getClusterSnapshot: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(16, __c4, 0) as any as S.Schema<GetClusterSnapshotInput>,
-  output: __S(17, __c4, 1) as any as S.Schema<GetClusterSnapshotOutput>,
+  output: __S(89, __c22, 1) as any as S.Schema<GetClusterSnapshotOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -827,7 +827,7 @@ export const restoreClusterFromSnapshot: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(40, __c10, 0) as any as S.Schema<RestoreClusterFromSnapshotInput>,
-  output: __S(41, __c10, 1) as any as S.Schema<RestoreClusterFromSnapshotOutput>,
+  output: __S(107, __c26, 3) as any as S.Schema<RestoreClusterFromSnapshotOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -859,7 +859,7 @@ export const startCluster: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(44, __c11, 0) as any as S.Schema<StartClusterInput>,
-  output: __S(112, __c28, 0) as any as S.Schema<StartClusterOutput>,
+  output: __S(107, __c26, 3) as any as S.Schema<StartClusterOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -890,7 +890,7 @@ export const stopCluster: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(48, __c12, 0) as any as S.Schema<StopClusterInput>,
-  output: __S(112, __c28, 0) as any as S.Schema<StopClusterOutput>,
+  output: __S(107, __c26, 3) as any as S.Schema<StopClusterOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -978,7 +978,7 @@ export const updateCluster: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(64, __c16, 0) as any as S.Schema<UpdateClusterInput>,
-  output: __S(112, __c28, 0) as any as S.Schema<UpdateClusterOutput>,
+  output: __S(107, __c26, 3) as any as S.Schema<UpdateClusterOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1000,13 +1000,11 @@ function __c0(j: number): any {
         S.Struct({
           clusterArn: S.String,
           snapshotName: S.String,
-          tags: S.optional(__S(100, __c25, 0)),
+          tags: S.optional(__S(96, __c24, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/cluster-snapshot" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateClusterSnapshotInput",
-      });
+      ).annotate({ identifier: "CreateClusterSnapshotInput" });
   }
 }
 function __c1(j: number): any {
@@ -1040,9 +1038,7 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteClusterSnapshotInput",
-      });
+      ).annotate({ identifier: "DeleteClusterSnapshotInput" });
   }
 }
 function __c3(j: number): any {
@@ -1077,10 +1073,6 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetClusterSnapshotInput" });
-    case 1:
-      return S.suspend(() => S.Struct({ snapshot: __S(92, __c23, 0) })).annotate({
-        identifier: "GetClusterSnapshotOutput",
-      });
   }
 }
 function __c5(j: number): any {
@@ -1097,9 +1089,7 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetPendingMaintenanceActionInput",
-      });
+      ).annotate({ identifier: "GetPendingMaintenanceActionInput" });
   }
 }
 function __c6(j: number): any {
@@ -1135,9 +1125,7 @@ function __c7(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/cluster-snapshots" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListClusterSnapshotsInput",
-      });
+      ).annotate({ identifier: "ListClusterSnapshotsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1153,9 +1141,7 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ snapshots: S.optional(__S(30, __c7, 2)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListClusterSnapshotsOutput",
-      });
+      ).annotate({ identifier: "ListClusterSnapshotsOutput" });
   }
 }
 function __c8(j: number): any {
@@ -1168,9 +1154,7 @@ function __c8(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/pending-actions" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListPendingMaintenanceActionsInput",
-      });
+      ).annotate({ identifier: "ListPendingMaintenanceActionsInput" });
     case 1:
       return S.Array(__S(82, __c20, 2));
     case 2:
@@ -1179,9 +1163,7 @@ function __c8(j: number): any {
           resourcePendingMaintenanceActions: __S(33, __c8, 1),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListPendingMaintenanceActionsOutput",
-      });
+      ).annotate({ identifier: "ListPendingMaintenanceActionsOutput" });
   }
 }
 function __c9(j: number): any {
@@ -1198,11 +1180,9 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(100, __c25, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(96, __c24, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
@@ -1214,10 +1194,10 @@ function __c10(j: number): any {
         S.Struct({
           clusterName: S.String,
           snapshotArn: S.String.pipe(T.HttpLabel("snapshotArn")),
-          vpcSecurityGroupIds: S.optional(__S(96, __c24, 0)),
-          subnetIds: S.optional(__S(96, __c24, 0)),
+          vpcSecurityGroupIds: S.optional(__S(92, __c23, 0)),
+          subnetIds: S.optional(__S(92, __c23, 0)),
           kmsKeyId: S.optional(S.String),
-          tags: S.optional(__S(100, __c25, 0)),
+          tags: S.optional(__S(96, __c24, 0)),
           shardCapacity: S.optional(S.Number),
           shardInstanceCount: S.optional(S.Number),
         }).pipe(
@@ -1230,13 +1210,7 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RestoreClusterFromSnapshotInput",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ cluster: __S(110, __c27, 2) })).annotate({
-        identifier: "RestoreClusterFromSnapshotOutput",
-      });
+      ).annotate({ identifier: "RestoreClusterFromSnapshotInput" });
   }
 }
 function __c11(j: number): any {
@@ -1279,7 +1253,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(100, __c25, 0),
+          tags: __S(96, __c24, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -1296,9 +1270,7 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TagResourceResponse" });
   }
 }
 function __c15(j: number): any {
@@ -1307,7 +1279,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(96, __c24, 0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(92, __c23, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -1330,8 +1302,8 @@ function __c16(j: number): any {
           authType: S.optional(S.String),
           shardCapacity: S.optional(S.Number),
           shardCount: S.optional(S.Number),
-          vpcSecurityGroupIds: S.optional(__S(96, __c24, 0)),
-          subnetIds: S.optional(__S(96, __c24, 0)),
+          vpcSecurityGroupIds: S.optional(__S(92, __c23, 0)),
+          subnetIds: S.optional(__S(92, __c23, 0)),
           adminUserPassword: S.optional(SensitiveString),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           preferredMaintenanceWindow: S.optional(S.String),
@@ -1373,9 +1345,7 @@ function __c18(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/pending-action" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ApplyPendingMaintenanceActionInput",
-      });
+      ).annotate({ identifier: "ApplyPendingMaintenanceActionInput" });
   }
 }
 function __c19(j: number): any {
@@ -1383,9 +1353,7 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ resourcePendingMaintenanceAction: __S(82, __c20, 2) }),
-      ).annotate({
-        identifier: "ApplyPendingMaintenanceActionOutput",
-      });
+      ).annotate({ identifier: "ApplyPendingMaintenanceActionOutput" });
   }
 }
 function __c20(j: number): any {
@@ -1400,9 +1368,7 @@ function __c20(j: number): any {
           currentApplyDate: S.optional(S.String),
           description: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "PendingMaintenanceActionDetails",
-      });
+      ).annotate({ identifier: "PendingMaintenanceActionDetails" });
     case 1:
       return S.Array(__S(80, __c20, 0));
     case 2:
@@ -1411,9 +1377,7 @@ function __c20(j: number): any {
           resourceArn: S.optional(S.String),
           pendingMaintenanceActionDetails: S.optional(__S(81, __c20, 1)),
         }),
-      ).annotate({
-        identifier: "ResourcePendingMaintenanceAction",
-      });
+      ).annotate({ identifier: "ResourcePendingMaintenanceAction" });
   }
 }
 function __c21(j: number): any {
@@ -1425,7 +1389,7 @@ function __c21(j: number): any {
           targetSnapshotName: S.String,
           kmsKeyId: S.optional(S.String),
           copyTags: S.optional(S.Boolean),
-          tags: S.optional(__S(100, __c25, 0)),
+          tags: S.optional(__S(96, __c24, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/cluster-snapshot/{snapshotArn}/copy" }),
@@ -1442,7 +1406,23 @@ function __c21(j: number): any {
 function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ snapshot: __S(92, __c23, 0) })).annotate({
+      return S.suspend(() =>
+        S.Struct({
+          subnetIds: __S(92, __c23, 0),
+          snapshotName: S.String,
+          snapshotArn: S.String,
+          snapshotCreationTime: S.String,
+          clusterArn: S.String,
+          clusterCreationTime: S.String,
+          status: S.String,
+          vpcSecurityGroupIds: __S(92, __c23, 0),
+          adminUserName: S.String,
+          kmsKeyId: S.String,
+          snapshotType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClusterSnapshot" });
+    case 1:
+      return S.suspend(() => S.Struct({ snapshot: __S(88, __c22, 0) })).annotate({
         identifier: "CopyClusterSnapshotOutput",
       });
   }
@@ -1450,36 +1430,16 @@ function __c22(j: number): any {
 function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subnetIds: __S(96, __c24, 0),
-          snapshotName: S.String,
-          snapshotArn: S.String,
-          snapshotCreationTime: S.String,
-          clusterArn: S.String,
-          clusterCreationTime: S.String,
-          status: S.String,
-          vpcSecurityGroupIds: __S(96, __c24, 0),
-          adminUserName: S.String,
-          kmsKeyId: S.String,
-          snapshotType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClusterSnapshot" });
+      return S.Array(S.String);
   }
 }
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c26(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1490,12 +1450,12 @@ function __c26(j: number): any {
           adminUserPassword: SensitiveString,
           shardCapacity: S.Number,
           shardCount: S.Number,
-          vpcSecurityGroupIds: S.optional(__S(96, __c24, 0)),
-          subnetIds: S.optional(__S(96, __c24, 0)),
+          vpcSecurityGroupIds: S.optional(__S(92, __c23, 0)),
+          subnetIds: S.optional(__S(92, __c23, 0)),
           kmsKeyId: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           preferredMaintenanceWindow: S.optional(S.String),
-          tags: S.optional(__S(100, __c25, 0)),
+          tags: S.optional(__S(96, __c24, 0)),
           backupRetentionPeriod: S.optional(S.Number),
           preferredBackupWindow: S.optional(S.String),
           shardInstanceCount: S.optional(S.Number),
@@ -1503,14 +1463,14 @@ function __c26(j: number): any {
       ).annotate({ identifier: "CreateClusterInput" });
   }
 }
-function __c27(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ shardId: S.String, createTime: S.String, status: S.String }),
       ).annotate({ identifier: "Shard" });
     case 1:
-      return S.Array(__S(108, __c27, 0));
+      return S.Array(__S(104, __c26, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1523,22 +1483,18 @@ function __c27(j: number): any {
           authType: S.String,
           shardCapacity: S.Number,
           shardCount: S.Number,
-          vpcSecurityGroupIds: __S(96, __c24, 0),
-          subnetIds: __S(96, __c24, 0),
+          vpcSecurityGroupIds: __S(92, __c23, 0),
+          subnetIds: __S(92, __c23, 0),
           preferredMaintenanceWindow: S.String,
           kmsKeyId: S.String,
-          shards: S.optional(__S(109, __c27, 1)),
+          shards: S.optional(__S(105, __c26, 1)),
           backupRetentionPeriod: S.optional(S.Number),
           preferredBackupWindow: S.optional(S.String),
           shardInstanceCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Cluster" });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ cluster: __S(110, __c27, 2) })).annotate({
+    case 3:
+      return S.suspend(() => S.Struct({ cluster: __S(106, __c26, 2) })).annotate({
         identifier: "CreateClusterOutput",
       });
   }

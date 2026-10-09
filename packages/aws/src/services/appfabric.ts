@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -150,7 +150,7 @@ export class ValidationException
         identifier: "ValidationExceptionReason",
       }),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(433, __c27, 1)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(449, __c28, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -538,8 +538,8 @@ export const batchGetUserAccessTasks: API.OperationMethod<
   BatchGetUserAccessTasksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<BatchGetUserAccessTasksRequest>,
-  output: __S(451, __c28, 3) as any as S.Schema<BatchGetUserAccessTasksResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<BatchGetUserAccessTasksRequest>,
+  output: __S(467, __c29, 3) as any as S.Schema<BatchGetUserAccessTasksResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -569,8 +569,8 @@ export const connectAppAuthorization: API.OperationMethod<
   ConnectAppAuthorizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(497, __c31, 1) as any as S.Schema<ConnectAppAuthorizationRequest>,
-  output: __S(498, __c31, 2) as any as S.Schema<ConnectAppAuthorizationResponse>,
+  input: __S(513, __c32, 1) as any as S.Schema<ConnectAppAuthorizationRequest>,
+  output: __S(514, __c32, 2) as any as S.Schema<ConnectAppAuthorizationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -602,8 +602,8 @@ export const createAppAuthorization: API.OperationMethod<
   CreateAppAuthorizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c34, 0) as any as S.Schema<CreateAppAuthorizationRequest>,
-  output: __S(577, __c36, 1) as any as S.Schema<CreateAppAuthorizationResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<CreateAppAuthorizationRequest>,
+  output: __S(593, __c37, 1) as any as S.Schema<CreateAppAuthorizationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -830,7 +830,7 @@ export const deleteIngestionDestination: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(160, __c10, 0) as any as S.Schema<DeleteIngestionDestinationRequest>,
-  output: __S(161, __c10, 1) as any as S.Schema<DeleteIngestionDestinationResponse>,
+  output: __S(112, __c7, 0) as any as S.Schema<DeleteIngestionDestinationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -860,7 +860,7 @@ export const getAppAuthorization: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(176, __c11, 0) as any as S.Schema<GetAppAuthorizationRequest>,
-  output: __S(577, __c36, 1) as any as S.Schema<GetAppAuthorizationResponse>,
+  output: __S(593, __c37, 1) as any as S.Schema<GetAppAuthorizationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1017,7 +1017,7 @@ export const listAppBundles: API.PaginatedOperationMethod<
   AppBundleSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(256, __c16, 0) as any as S.Schema<ListAppBundlesRequest>,
-  output: __S(259, __c16, 3) as any as S.Schema<ListAppBundlesResponse>,
+  output: __S(257, __c16, 1) as any as S.Schema<ListAppBundlesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1052,8 +1052,8 @@ export const listIngestionDestinations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   IngestionDestinationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(272, __c17, 0) as any as S.Schema<ListIngestionDestinationsRequest>,
-  output: __S(275, __c17, 3) as any as S.Schema<ListIngestionDestinationsResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListIngestionDestinationsRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<ListIngestionDestinationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1089,8 +1089,8 @@ export const listIngestions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   IngestionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(288, __c18, 0) as any as S.Schema<ListIngestionsRequest>,
-  output: __S(291, __c18, 3) as any as S.Schema<ListIngestionsResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListIngestionsRequest>,
+  output: __S(307, __c19, 3) as any as S.Schema<ListIngestionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1125,8 +1125,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c19, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(305, __c19, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1156,7 +1156,7 @@ export const startIngestion: API.OperationMethod<
   StartIngestionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c20, 0) as any as S.Schema<StartIngestionRequest>,
+  input: __S(336, __c21, 0) as any as S.Schema<StartIngestionRequest>,
   output: __S(112, __c7, 0) as any as S.Schema<StartIngestionResponse>,
   errors: [
     AccessDeniedException,
@@ -1190,8 +1190,8 @@ export const startUserAccessTasks: API.OperationMethod<
   StartUserAccessTasksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<StartUserAccessTasksRequest>,
-  output: __S(339, __c21, 3) as any as S.Schema<StartUserAccessTasksResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<StartUserAccessTasksRequest>,
+  output: __S(355, __c22, 3) as any as S.Schema<StartUserAccessTasksResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1221,7 +1221,7 @@ export const stopIngestion: API.OperationMethod<
   StopIngestionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c22, 0) as any as S.Schema<StopIngestionRequest>,
+  input: __S(368, __c23, 0) as any as S.Schema<StopIngestionRequest>,
   output: __S(112, __c7, 0) as any as S.Schema<StopIngestionResponse>,
   errors: [
     AccessDeniedException,
@@ -1252,7 +1252,7 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c23, 0) as any as S.Schema<TagResourceRequest>,
+  input: __S(384, __c24, 0) as any as S.Schema<TagResourceRequest>,
   output: __S(112, __c7, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
@@ -1282,7 +1282,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<UntagResourceRequest>,
+  input: __S(400, __c25, 0) as any as S.Schema<UntagResourceRequest>,
   output: __S(112, __c7, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
@@ -1316,8 +1316,8 @@ export const updateAppAuthorization: API.OperationMethod<
   UpdateAppAuthorizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c25, 0) as any as S.Schema<UpdateAppAuthorizationRequest>,
-  output: __S(577, __c36, 1) as any as S.Schema<UpdateAppAuthorizationResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<UpdateAppAuthorizationRequest>,
+  output: __S(593, __c37, 1) as any as S.Schema<UpdateAppAuthorizationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1349,7 +1349,7 @@ export const updateIngestionDestination: API.OperationMethod<
   UpdateIngestionDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c26, 0) as any as S.Schema<UpdateIngestionDestinationRequest>,
+  input: __S(432, __c27, 0) as any as S.Schema<UpdateIngestionDestinationRequest>,
   output: __S(88, __c5, 8) as any as S.Schema<UpdateIngestionDestinationResponse>,
   errors: [
     AccessDeniedException,
@@ -1373,7 +1373,7 @@ function __c0(j: number): any {
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           customerManagedKeyIdentifier: S.optional(S.String),
-          tags: S.optional(__S(561, __c35, 1)),
+          tags: S.optional(__S(577, __c36, 1)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/appbundles" }), svc, auth, proto, ver, rules),
         ),
@@ -1402,7 +1402,7 @@ function __c2(j: number): any {
           tenantId: S.String,
           ingestionType: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(561, __c35, 1)),
+          tags: S.optional(__S(577, __c36, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/appbundles/{appBundleIdentifier}/ingestions" }),
@@ -1447,7 +1447,7 @@ function __c4(j: number): any {
           processingConfiguration: __S(81, __c5, 1),
           destinationConfiguration: __S(86, __c5, 6),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(561, __c35, 1)),
+          tags: S.optional(__S(577, __c36, 1)),
         }).pipe(
           T.all(
             T.Http({
@@ -1461,9 +1461,7 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateIngestionDestinationRequest",
-      });
+      ).annotate({ identifier: "CreateIngestionDestinationRequest" });
   }
 }
 function __c5(j: number): any {
@@ -1532,9 +1530,7 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteAppAuthorizationRequest",
-      });
+      ).annotate({ identifier: "DeleteAppAuthorizationRequest" });
   }
 }
 function __c7(j: number): any {
@@ -1608,13 +1604,7 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteIngestionDestinationRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteIngestionDestinationResponse",
-      });
+      ).annotate({ identifier: "DeleteIngestionDestinationRequest" });
   }
 }
 function __c11(j: number): any {
@@ -1637,9 +1627,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAppAuthorizationRequest",
-      });
+      ).annotate({ identifier: "GetAppAuthorizationRequest" });
   }
 }
 function __c12(j: number): any {
@@ -1705,9 +1693,7 @@ function __c14(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetIngestionDestinationRequest",
-      });
+      ).annotate({ identifier: "GetIngestionDestinationRequest" });
   }
 }
 function __c15(j: number): any {
@@ -1728,20 +1714,16 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListAppAuthorizationsRequest",
-      });
+      ).annotate({ identifier: "ListAppAuthorizationsRequest" });
     case 1:
-      return S.Array(__S(512, __c32, 0));
+      return S.Array(__S(528, __c33, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           appAuthorizationSummaryList: __S(241, __c15, 1),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListAppAuthorizationsResponse",
-      });
+      ).annotate({ identifier: "ListAppAuthorizationsResponse" });
   }
 }
 function __c16(j: number): any {
@@ -1754,18 +1736,22 @@ function __c16(j: number): any {
         }).pipe(T.all(T.Http({ method: "GET", uri: "/appbundles" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListAppBundlesRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ arn: S.String })).annotate({
-        identifier: "AppBundleSummary",
-      });
-    case 2:
-      return S.Array(__S(257, __c16, 1));
-    case 3:
       return S.suspend(() =>
-        S.Struct({ appBundleSummaryList: __S(258, __c16, 2), nextToken: S.optional(S.String) }),
+        S.Struct({ appBundleSummaryList: __S(273, __c17, 1), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListAppBundlesResponse" });
   }
 }
 function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ arn: S.String })).annotate({
+        identifier: "AppBundleSummary",
+      });
+    case 1:
+      return S.Array(__S(272, __c17, 0));
+  }
+}
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1787,24 +1773,14 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListIngestionDestinationsRequest",
-      });
+      ).annotate({ identifier: "ListIngestionDestinationsRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ arn: S.String })).annotate({
-        identifier: "IngestionDestinationSummary",
-      });
-    case 2:
-      return S.Array(__S(273, __c17, 1));
-    case 3:
       return S.suspend(() =>
-        S.Struct({ ingestionDestinations: __S(274, __c17, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListIngestionDestinationsResponse",
-      });
+        S.Struct({ ingestionDestinations: __S(273, __c17, 1), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListIngestionDestinationsResponse" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1828,14 +1804,14 @@ function __c18(j: number): any {
         S.Struct({ arn: S.String, app: S.String, tenantId: S.String, state: S.String }),
       ).annotate({ identifier: "IngestionSummary" });
     case 2:
-      return S.Array(__S(289, __c18, 1));
+      return S.Array(__S(305, __c19, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ ingestions: __S(290, __c18, 2), nextToken: S.optional(S.String) }),
+        S.Struct({ ingestions: __S(306, __c19, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListIngestionsResponse" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1849,16 +1825,14 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(561, __c35, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(577, __c36, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1881,36 +1855,32 @@ function __c20(j: number): any {
       ).annotate({ identifier: "StartIngestionRequest" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ appBundleIdentifier: S.String, email: SensitiveString }).pipe(
           T.all(T.Http({ method: "POST", uri: "/useraccess/start" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StartUserAccessTasksRequest",
-      });
+      ).annotate({ identifier: "StartUserAccessTasksRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           app: S.String,
           tenantId: S.String,
           taskId: S.optional(S.String),
-          error: S.optional(__S(464, __c29, 0)),
+          error: S.optional(__S(480, __c30, 0)),
         }),
       ).annotate({ identifier: "UserAccessTaskItem" });
     case 2:
-      return S.Array(__S(337, __c21, 1));
+      return S.Array(__S(353, __c22, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ userAccessTasksList: S.optional(__S(338, __c21, 2)) }),
-      ).annotate({
-        identifier: "StartUserAccessTasksResponse",
-      });
+        S.Struct({ userAccessTasksList: S.optional(__S(354, __c22, 2)) }),
+      ).annotate({ identifier: "StartUserAccessTasksResponse" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1933,13 +1903,13 @@ function __c22(j: number): any {
       ).annotate({ identifier: "StopIngestionRequest" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(561, __c35, 1),
+          tags: __S(577, __c36, 1),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -1953,13 +1923,13 @@ function __c23(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(480, __c30, 0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(496, __c31, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -1973,15 +1943,15 @@ function __c24(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           appBundleIdentifier: S.String.pipe(T.HttpLabel("appBundleIdentifier")),
           appAuthorizationIdentifier: S.String.pipe(T.HttpLabel("appAuthorizationIdentifier")),
-          credential: S.optional(__S(594, __c37, 2)),
-          tenant: S.optional(__S(528, __c33, 0)),
+          credential: S.optional(__S(610, __c38, 2)),
+          tenant: S.optional(__S(544, __c34, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -1995,12 +1965,10 @@ function __c25(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateAppAuthorizationRequest",
-      });
+      ).annotate({ identifier: "UpdateAppAuthorizationRequest" });
   }
 }
-function __c26(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2024,26 +1992,24 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateIngestionDestinationRequest",
-      });
+      ).annotate({ identifier: "UpdateIngestionDestinationRequest" });
   }
 }
-function __c27(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
         identifier: "ValidationExceptionField",
       });
     case 1:
-      return S.Array(__S(432, __c27, 0));
+      return S.Array(__S(448, __c28, 0));
   }
 }
-function __c28(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ appBundleIdentifier: S.String, taskIdList: __S(480, __c30, 0) }).pipe(
+        S.Struct({ appBundleIdentifier: S.String, taskIdList: __S(496, __c31, 0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/useraccess/batchget" }),
             svc,
@@ -2053,9 +2019,7 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchGetUserAccessTasksRequest",
-      });
+      ).annotate({ identifier: "BatchGetUserAccessTasksRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2070,20 +2034,18 @@ function __c28(j: number): any {
           userFirstName: S.optional(SensitiveString),
           userLastName: S.optional(SensitiveString),
           userStatus: S.optional(S.String),
-          taskError: S.optional(__S(464, __c29, 0)),
+          taskError: S.optional(__S(480, __c30, 0)),
         }),
       ).annotate({ identifier: "UserAccessResultItem" });
     case 2:
-      return S.Array(__S(449, __c28, 1));
+      return S.Array(__S(465, __c29, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ userAccessResultsList: S.optional(__S(450, __c28, 2)) }),
-      ).annotate({
-        identifier: "BatchGetUserAccessTasksResponse",
-      });
+        S.Struct({ userAccessResultsList: S.optional(__S(466, __c29, 2)) }),
+      ).annotate({ identifier: "BatchGetUserAccessTasksResponse" });
   }
 }
-function __c29(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2091,13 +2053,13 @@ function __c29(j: number): any {
       ).annotate({ identifier: "TaskError" });
   }
 }
-function __c30(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c31(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ redirectUri: S.String, code: SensitiveString })).annotate({
@@ -2108,7 +2070,7 @@ function __c31(j: number): any {
         S.Struct({
           appBundleIdentifier: S.String.pipe(T.HttpLabel("appBundleIdentifier")),
           appAuthorizationIdentifier: S.String.pipe(T.HttpLabel("appAuthorizationIdentifier")),
-          authRequest: S.optional(__S(496, __c31, 0)),
+          authRequest: S.optional(__S(512, __c32, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -2122,16 +2084,14 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ConnectAppAuthorizationRequest",
-      });
+      ).annotate({ identifier: "ConnectAppAuthorizationRequest" });
     case 2:
-      return S.suspend(() => S.Struct({ appAuthorizationSummary: __S(512, __c32, 0) })).annotate({
+      return S.suspend(() => S.Struct({ appAuthorizationSummary: __S(528, __c33, 0) })).annotate({
         identifier: "ConnectAppAuthorizationResponse",
       });
   }
 }
-function __c32(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2139,14 +2099,14 @@ function __c32(j: number): any {
           appAuthorizationArn: S.String,
           appBundleArn: S.String,
           app: S.String,
-          tenant: __S(528, __c33, 0),
+          tenant: __S(544, __c34, 0),
           status: S.String,
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "AppAuthorizationSummary" });
   }
 }
-function __c33(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2154,18 +2114,18 @@ function __c33(j: number): any {
       ).annotate({ identifier: "Tenant" });
   }
 }
-function __c34(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           appBundleIdentifier: S.String.pipe(T.HttpLabel("appBundleIdentifier")),
           app: S.String,
-          credential: __S(594, __c37, 2),
-          tenant: __S(528, __c33, 0),
+          credential: __S(610, __c38, 2),
+          tenant: __S(544, __c34, 0),
           authType: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(561, __c35, 1)),
+          tags: S.optional(__S(577, __c36, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/appbundles/{appBundleIdentifier}/appauthorizations" }),
@@ -2176,22 +2136,20 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateAppAuthorizationRequest",
-      });
+      ).annotate({ identifier: "CreateAppAuthorizationRequest" });
   }
 }
-function __c35(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
         identifier: "Tag",
       });
     case 1:
-      return S.Array(__S(560, __c35, 0));
+      return S.Array(__S(576, __c36, 0));
   }
 }
-function __c36(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2199,7 +2157,7 @@ function __c36(j: number): any {
           appAuthorizationArn: S.String,
           appBundleArn: S.String,
           app: S.String,
-          tenant: __S(528, __c33, 0),
+          tenant: __S(544, __c34, 0),
           authType: S.String,
           status: S.String,
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -2209,12 +2167,12 @@ function __c36(j: number): any {
         }),
       ).annotate({ identifier: "AppAuthorization" });
     case 1:
-      return S.suspend(() => S.Struct({ appAuthorization: __S(576, __c36, 0) })).annotate({
+      return S.suspend(() => S.Struct({ appAuthorization: __S(592, __c37, 0) })).annotate({
         identifier: "CreateAppAuthorizationResponse",
       });
   }
 }
-function __c37(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2226,8 +2184,8 @@ function __c37(j: number): any {
       });
     case 2:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ oauth2Credential: __S(592, __c37, 0) }),
-        /*@__PURE__*/ S.Struct({ apiKeyCredential: __S(593, __c37, 1) }),
+        /*@__PURE__*/ S.Struct({ oauth2Credential: __S(608, __c38, 0) }),
+        /*@__PURE__*/ S.Struct({ apiKeyCredential: __S(609, __c38, 1) }),
       ]);
   }
 }

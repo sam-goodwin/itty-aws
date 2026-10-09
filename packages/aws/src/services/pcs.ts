@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -688,7 +688,7 @@ export const createCluster: API.OperationMethod<
   CreateClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306, __c19, 2) as any as S.Schema<CreateClusterRequest>,
+  input: __S(305, __c19, 1) as any as S.Schema<CreateClusterRequest>,
   output: __S(344, __c21, 8) as any as S.Schema<CreateClusterResponse>,
   errors: [
     AccessDeniedException,
@@ -755,8 +755,8 @@ export const createQueue: API.OperationMethod<
   CreateQueueError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<CreateQueueRequest>,
-  output: __S(500, __c31, 4) as any as S.Schema<CreateQueueResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<CreateQueueRequest>,
+  output: __S(484, __c30, 4) as any as S.Schema<CreateQueueResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -949,7 +949,7 @@ export const getQueue: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c6, 0) as any as S.Schema<GetQueueRequest>,
-  output: __S(500, __c31, 4) as any as S.Schema<GetQueueResponse>,
+  output: __S(484, __c30, 4) as any as S.Schema<GetQueueResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1247,7 +1247,7 @@ export const updateQueue: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(272, __c17, 0) as any as S.Schema<UpdateQueueRequest>,
-  output: __S(500, __c31, 4) as any as S.Schema<UpdateQueueResponse>,
+  output: __S(484, __c30, 4) as any as S.Schema<UpdateQueueResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1277,9 +1277,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteClusterResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteClusterResponse" });
   }
 }
 function __c2(j: number): any {
@@ -1291,9 +1289,7 @@ function __c2(j: number): any {
           computeNodeGroupIdentifier: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteComputeNodeGroupRequest",
-      });
+      ).annotate({ identifier: "DeleteComputeNodeGroupRequest" });
   }
 }
 function __c3(j: number): any {
@@ -1325,9 +1321,7 @@ function __c5(j: number): any {
         S.Struct({ clusterIdentifier: S.String, computeNodeGroupIdentifier: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetComputeNodeGroupRequest",
-      });
+      ).annotate({ identifier: "GetComputeNodeGroupRequest" });
   }
 }
 function __c6(j: number): any {
@@ -1377,15 +1371,11 @@ function __c8(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListComputeNodeGroupsRequest",
-      });
+      ).annotate({ identifier: "ListComputeNodeGroupsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ computeNodeGroups: __S(145, __c9, 1), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListComputeNodeGroupsResponse",
-      });
+      ).annotate({ identifier: "ListComputeNodeGroupsResponse" });
   }
 }
 function __c9(j: number): any {
@@ -1429,9 +1419,7 @@ function __c11(j: number): any {
         S.Struct({ resourceArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(400, __c25, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -1445,9 +1433,7 @@ function __c12(j: number): any {
         S.Struct({ clusterIdentifier: S.String, bootstrapId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "RegisterComputeNodeGroupInstanceRequest",
-      });
+      ).annotate({ identifier: "RegisterComputeNodeGroupInstanceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1459,9 +1445,7 @@ function __c12(j: number): any {
           computeNodeGroupName: S.optional(S.String),
           nodeLifecycleActions: S.optional(__S(436, __c27, 4)),
         }),
-      ).annotate({
-        identifier: "RegisterComputeNodeGroupInstanceResponse",
-      });
+      ).annotate({ identifier: "RegisterComputeNodeGroupInstanceResponse" });
   }
 }
 function __c13(j: number): any {
@@ -1505,9 +1489,7 @@ function __c15(j: number): any {
           accounting: S.optional(__S(240, __c15, 0)),
           slurmRest: S.optional(__S(241, __c15, 1)),
         }),
-      ).annotate({
-        identifier: "UpdateClusterSlurmConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateClusterSlurmConfigurationRequest" });
     case 3:
       return S.suspend(() => S.Struct({ version: S.String })).annotate({
         identifier: "UpdateSchedulerRequest",
@@ -1534,16 +1516,14 @@ function __c16(j: number): any {
           subnetIds: S.optional(__S(352, __c22, 0)),
           customLaunchTemplate: S.optional(__S(448, __c28, 0)),
           purchaseOption: S.optional(S.String),
-          spotOptions: S.optional(__S(451, __c28, 3)),
-          scalingConfiguration: S.optional(__S(464, __c29, 0)),
+          spotOptions: S.optional(__S(452, __c28, 4)),
+          scalingConfiguration: S.optional(__S(449, __c28, 1)),
           iamInstanceProfileArn: S.optional(S.String),
-          slurmConfiguration: S.optional(__S(453, __c28, 5)),
-          nodeLifecycleActions: S.optional(__S(465, __c29, 1)),
+          slurmConfiguration: S.optional(__S(454, __c28, 6)),
+          nodeLifecycleActions: S.optional(__S(436, __c27, 4)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateComputeNodeGroupRequest",
-      });
+      ).annotate({ identifier: "UpdateComputeNodeGroupRequest" });
   }
 }
 function __c17(j: number): any {
@@ -1553,8 +1533,8 @@ function __c17(j: number): any {
         S.Struct({
           clusterIdentifier: S.String,
           queueIdentifier: S.String,
-          computeNodeGroupConfigurations: S.optional(__S(497, __c31, 1)),
-          slurmConfiguration: S.optional(__S(512, __c32, 0)),
+          computeNodeGroupConfigurations: S.optional(__S(481, __c30, 1)),
+          slurmConfiguration: S.optional(__S(482, __c30, 2)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateQueueRequest" });
@@ -1573,10 +1553,6 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ mode: S.String })).annotate({
-        identifier: "SlurmRestRequest",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           scaleDownIdleTimeInSeconds: S.optional(S.Number),
@@ -1584,19 +1560,17 @@ function __c19(j: number): any {
           slurmdbdCustomSettings: S.optional(__S(385, __c24, 1)),
           cgroupCustomSettings: S.optional(__S(385, __c24, 1)),
           accounting: S.optional(__S(338, __c21, 2)),
-          slurmRest: S.optional(__S(304, __c19, 0)),
+          slurmRest: S.optional(__S(339, __c21, 3)),
         }),
-      ).annotate({
-        identifier: "ClusterSlurmConfigurationRequest",
-      });
-    case 2:
+      ).annotate({ identifier: "ClusterSlurmConfigurationRequest" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           clusterName: S.String,
           scheduler: __S(336, __c21, 0),
           size: S.String,
           networking: __S(337, __c21, 1),
-          slurmConfiguration: S.optional(__S(305, __c19, 1)),
+          slurmConfiguration: S.optional(__S(304, __c19, 0)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           tags: S.optional(__S(400, __c25, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -1628,16 +1602,16 @@ function __c21(j: number): any {
         S.Struct({ defaultPurgeTimeInDays: S.optional(S.Number), mode: S.String }),
       ).annotate({ identifier: "AccountingRequest" });
     case 3:
+      return S.suspend(() => S.Struct({ mode: S.String })).annotate({
+        identifier: "SlurmRestRequest",
+      });
+    case 4:
       return S.suspend(() => S.Struct({ secretArn: S.String, secretVersion: S.String })).annotate({
         identifier: "SlurmAuthKey",
       });
-    case 4:
-      return S.suspend(() => S.Struct({ jwtKey: S.optional(__S(339, __c21, 3)) })).annotate({
-        identifier: "JwtAuth",
-      });
     case 5:
-      return S.suspend(() => S.Struct({ mode: S.String })).annotate({
-        identifier: "SlurmRest",
+      return S.suspend(() => S.Struct({ jwtKey: S.optional(__S(340, __c21, 4)) })).annotate({
+        identifier: "JwtAuth",
       });
     case 6:
       return S.suspend(() =>
@@ -1646,14 +1620,12 @@ function __c21(j: number): any {
           slurmCustomSettings: S.optional(__S(385, __c24, 1)),
           slurmdbdCustomSettings: S.optional(__S(385, __c24, 1)),
           cgroupCustomSettings: S.optional(__S(385, __c24, 1)),
-          authKey: S.optional(__S(339, __c21, 3)),
-          jwtAuth: S.optional(__S(340, __c21, 4)),
+          authKey: S.optional(__S(340, __c21, 4)),
+          jwtAuth: S.optional(__S(341, __c21, 5)),
           accounting: S.optional(__S(338, __c21, 2)),
-          slurmRest: S.optional(__S(341, __c21, 5)),
+          slurmRest: S.optional(__S(339, __c21, 3)),
         }),
-      ).annotate({
-        identifier: "ClusterSlurmConfiguration",
-      });
+      ).annotate({ identifier: "ClusterSlurmConfiguration" });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1731,17 +1703,15 @@ function __c26(j: number): any {
           purchaseOption: S.optional(S.String),
           customLaunchTemplate: __S(448, __c28, 0),
           iamInstanceProfileArn: S.String,
-          scalingConfiguration: __S(464, __c29, 0),
-          instanceConfigs: __S(450, __c28, 2),
-          spotOptions: S.optional(__S(451, __c28, 3)),
-          slurmConfiguration: S.optional(__S(453, __c28, 5)),
-          nodeLifecycleActions: S.optional(__S(465, __c29, 1)),
+          scalingConfiguration: __S(449, __c28, 1),
+          instanceConfigs: __S(451, __c28, 3),
+          spotOptions: S.optional(__S(452, __c28, 4)),
+          slurmConfiguration: S.optional(__S(454, __c28, 6)),
+          nodeLifecycleActions: S.optional(__S(436, __c27, 4)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           tags: S.optional(__S(400, __c25, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateComputeNodeGroupRequest",
-      });
+      ).annotate({ identifier: "CreateComputeNodeGroupRequest" });
   }
 }
 function __c27(j: number): any {
@@ -1776,7 +1746,7 @@ function __c27(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({ stages: __S(435, __c27, 3), scriptCachingPolicy: S.optional(S.String) }),
-      ).annotate({ identifier: "NodeLifecycleActions" });
+      ).annotate({ identifier: "NodeLifecycleActionsRequest" });
   }
 }
 function __c28(j: number): any {
@@ -1786,31 +1756,29 @@ function __c28(j: number): any {
         identifier: "CustomLaunchTemplate",
       });
     case 1:
+      return S.suspend(() =>
+        S.Struct({ minInstanceCount: S.Number, maxInstanceCount: S.Number }),
+      ).annotate({ identifier: "ScalingConfigurationRequest" });
+    case 2:
       return S.suspend(() => S.Struct({ instanceType: S.optional(S.String) })).annotate({
         identifier: "InstanceConfig",
       });
-    case 2:
-      return S.Array(__S(449, __c28, 1));
     case 3:
+      return S.Array(__S(450, __c28, 2));
+    case 4:
       return S.suspend(() => S.Struct({ allocationStrategy: S.optional(S.String) })).annotate({
         identifier: "SpotOptions",
       });
-    case 4:
-      return S.Array(__S(400, __c25, 0));
     case 5:
+      return S.Array(__S(400, __c25, 0));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           scaleDownIdleTimeInSeconds: S.optional(S.Number),
           slurmCustomSettings: S.optional(__S(385, __c24, 1)),
-          gresCustomSettings: S.optional(__S(452, __c28, 4)),
+          gresCustomSettings: S.optional(__S(453, __c28, 5)),
         }),
-      ).annotate({
-        identifier: "ComputeNodeGroupSlurmConfigurationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ minInstanceCount: S.Number, maxInstanceCount: S.Number }),
-      ).annotate({ identifier: "ScalingConfiguration" });
+      ).annotate({ identifier: "ComputeNodeGroupSlurmConfigurationRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1826,10 +1794,10 @@ function __c28(j: number): any {
           purchaseOption: S.optional(S.String),
           customLaunchTemplate: __S(448, __c28, 0),
           iamInstanceProfileArn: S.String,
-          scalingConfiguration: __S(454, __c28, 6),
-          instanceConfigs: __S(450, __c28, 2),
-          spotOptions: S.optional(__S(451, __c28, 3)),
-          slurmConfiguration: S.optional(__S(453, __c28, 5)),
+          scalingConfiguration: __S(449, __c28, 1),
+          instanceConfigs: __S(451, __c28, 3),
+          spotOptions: S.optional(__S(452, __c28, 4)),
+          slurmConfiguration: S.optional(__S(454, __c28, 6)),
           nodeLifecycleActions: S.optional(__S(436, __c27, 4)),
           errorInfo: S.optional(__S(387, __c24, 3)),
         }),
@@ -1837,54 +1805,36 @@ function __c28(j: number): any {
     case 8:
       return S.suspend(() =>
         S.Struct({ computeNodeGroup: S.optional(__S(455, __c28, 7)) }),
-      ).annotate({
-        identifier: "CreateComputeNodeGroupResponse",
-      });
+      ).annotate({ identifier: "CreateComputeNodeGroupResponse" });
   }
 }
 function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ minInstanceCount: S.Number, maxInstanceCount: S.Number }),
-      ).annotate({
-        identifier: "ScalingConfigurationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ stages: __S(435, __c27, 3), scriptCachingPolicy: S.optional(S.String) }),
-      ).annotate({
-        identifier: "NodeLifecycleActionsRequest",
-      });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
         S.Struct({
           clusterIdentifier: S.String,
           queueName: S.String,
-          computeNodeGroupConfigurations: S.optional(__S(497, __c31, 1)),
-          slurmConfiguration: S.optional(__S(512, __c32, 0)),
+          computeNodeGroupConfigurations: S.optional(__S(481, __c30, 1)),
+          slurmConfiguration: S.optional(__S(482, __c30, 2)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           tags: S.optional(__S(400, __c25, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateQueueRequest" });
   }
 }
-function __c31(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ computeNodeGroupId: S.optional(S.String) })).annotate({
         identifier: "ComputeNodeGroupConfiguration",
       });
     case 1:
-      return S.Array(__S(496, __c31, 0));
+      return S.Array(__S(480, __c30, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ slurmCustomSettings: S.optional(__S(385, __c24, 1)) }),
-      ).annotate({ identifier: "QueueSlurmConfiguration" });
+      ).annotate({ identifier: "QueueSlurmConfigurationRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1895,24 +1845,14 @@ function __c31(j: number): any {
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           modifiedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           status: S.String,
-          computeNodeGroupConfigurations: __S(497, __c31, 1),
-          slurmConfiguration: S.optional(__S(498, __c31, 2)),
+          computeNodeGroupConfigurations: __S(481, __c30, 1),
+          slurmConfiguration: S.optional(__S(482, __c30, 2)),
           errorInfo: S.optional(__S(387, __c24, 3)),
         }),
       ).annotate({ identifier: "Queue" });
     case 4:
-      return S.suspend(() => S.Struct({ queue: S.optional(__S(499, __c31, 3)) })).annotate({
+      return S.suspend(() => S.Struct({ queue: S.optional(__S(483, __c30, 3)) })).annotate({
         identifier: "CreateQueueResponse",
-      });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ slurmCustomSettings: S.optional(__S(385, __c24, 1)) }),
-      ).annotate({
-        identifier: "QueueSlurmConfigurationRequest",
       });
   }
 }

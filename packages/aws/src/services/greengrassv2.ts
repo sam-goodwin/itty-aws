@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1880,9 +1880,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchDisassociateClientDeviceFromCoreDeviceRequest",
-      });
+      ).annotate({ identifier: "BatchDisassociateClientDeviceFromCoreDeviceRequest" });
   }
 }
 function __c1(j: number): any {
@@ -1914,9 +1912,7 @@ function __c2(j: number): any {
           versionRequirement: S.optional(S.String),
           dependencyType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ComponentDependencyRequirement",
-      });
+      ).annotate({ identifier: "ComponentDependencyRequirement" });
     case 1:
       return S.Record(S.String, /*@__PURE__*/ __S(32, __c2, 0).pipe(S.optional));
     case 2:
@@ -1974,12 +1970,10 @@ function __c2(j: number): any {
           pinned: S.optional(S.Boolean),
           inputPayloadEncodingType: S.optional(S.String),
           execArgs: S.optional(__S(64, __c4, 0)),
-          environmentVariables: S.optional(__S(112, __c7, 0)),
+          environmentVariables: S.optional(__S(48, __c3, 0)),
           linuxProcessParams: S.optional(__S(41, __c2, 9)),
         }),
-      ).annotate({
-        identifier: "LambdaExecutionParameters",
-      });
+      ).annotate({ identifier: "LambdaExecutionParameters" });
     case 11:
       return S.suspend(() =>
         S.Struct({
@@ -1990,9 +1984,7 @@ function __c2(j: number): any {
           componentDependencies: S.optional(__S(33, __c2, 1)),
           componentLambdaParameters: S.optional(__S(42, __c2, 10)),
         }),
-      ).annotate({
-        identifier: "LambdaFunctionRecipeSource",
-      });
+      ).annotate({ identifier: "LambdaFunctionRecipeSource" });
     case 12:
       return S.suspend(() =>
         S.Struct({
@@ -2010,9 +2002,7 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateComponentVersionRequest",
-      });
+      ).annotate({ identifier: "CreateComponentVersionRequest" });
     case 13:
       return S.suspend(() =>
         S.Struct({
@@ -2022,9 +2012,7 @@ function __c2(j: number): any {
           creationTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           status: __S(80, __c5, 0),
         }),
-      ).annotate({
-        identifier: "CreateComponentVersionResponse",
-      });
+      ).annotate({ identifier: "CreateComponentVersionResponse" });
   }
 }
 function __c3(j: number): any {
@@ -2056,16 +2044,14 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(113, __c7, 1));
+      return S.Array(__S(112, __c7, 0));
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 1:
       return S.suspend(() =>
-        S.Struct({ name: S.optional(S.String), attributes: S.optional(__S(112, __c7, 0)) }),
+        S.Struct({ name: S.optional(S.String), attributes: S.optional(__S(48, __c3, 0)) }),
       ).annotate({ identifier: "ComponentPlatform" });
   }
 }
@@ -2108,9 +2094,7 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ merge: S.optional(S.String), reset: S.optional(__S(64, __c4, 0)) }),
-      ).annotate({
-        identifier: "ComponentConfigurationUpdate",
-      });
+      ).annotate({ identifier: "ComponentConfigurationUpdate" });
     case 1:
       return S.suspend(() =>
         S.Struct({ memory: S.optional(S.Number), cpus: S.optional(S.Number) }),
@@ -2130,9 +2114,7 @@ function __c9(j: number): any {
           configurationUpdate: S.optional(__S(144, __c9, 0)),
           runWith: S.optional(__S(146, __c9, 2)),
         }),
-      ).annotate({
-        identifier: "ComponentDeploymentSpecification",
-      });
+      ).annotate({ identifier: "ComponentDeploymentSpecification" });
     case 4:
       return S.Record(S.String, /*@__PURE__*/ __S(147, __c9, 3).pipe(S.optional));
     case 5:
@@ -2141,9 +2123,7 @@ function __c9(j: number): any {
           numberOfNotifiedThings: S.optional(S.Number),
           numberOfSucceededThings: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "IoTJobRateIncreaseCriteria",
-      });
+      ).annotate({ identifier: "IoTJobRateIncreaseCriteria" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2151,18 +2131,14 @@ function __c9(j: number): any {
           incrementFactor: S.Number,
           rateIncreaseCriteria: __S(149, __c9, 5),
         }),
-      ).annotate({
-        identifier: "IoTJobExponentialRolloutRate",
-      });
+      ).annotate({ identifier: "IoTJobExponentialRolloutRate" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           exponentialRate: S.optional(__S(150, __c9, 6)),
           maximumPerMinute: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "IoTJobExecutionsRolloutConfig",
-      });
+      ).annotate({ identifier: "IoTJobExecutionsRolloutConfig" });
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -2189,18 +2165,11 @@ function __c9(j: number): any {
           abortConfig: S.optional(__S(154, __c9, 10)),
           timeoutConfig: S.optional(__S(155, __c9, 11)),
         }),
-      ).annotate({
-        identifier: "DeploymentIoTJobConfiguration",
-      });
+      ).annotate({ identifier: "DeploymentIoTJobConfiguration" });
     case 13:
       return S.suspend(() =>
-        S.Struct({
-          timeoutInSeconds: S.optional(S.Number),
-          action: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DeploymentComponentUpdatePolicy",
-      });
+        S.Struct({ timeoutInSeconds: S.optional(S.Number), action: S.optional(S.String) }),
+      ).annotate({ identifier: "DeploymentComponentUpdatePolicy" });
     case 14:
       return S.suspend(() => S.Struct({ timeoutInSeconds: S.optional(S.Number) })).annotate({
         identifier: "DeploymentConfigurationValidationPolicy",
@@ -2235,9 +2204,7 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteComponentResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteComponentResponse" });
   }
 }
 function __c12(j: number): any {
@@ -2302,9 +2269,7 @@ function __c14(j: number): any {
           platforms: S.optional(__S(96, __c6, 0)),
           tags: S.optional(__S(48, __c3, 0)),
         }),
-      ).annotate({
-        identifier: "DescribeComponentResponse",
-      });
+      ).annotate({ identifier: "DescribeComponentResponse" });
   }
 }
 function __c15(j: number): any {
@@ -2321,17 +2286,13 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateServiceRoleFromAccountRequest",
-      });
+      ).annotate({ identifier: "DisassociateServiceRoleFromAccountRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ disassociatedAt: S.optional(S.String) }).pipe(
           S.encodeKeys({ disassociatedAt: "DisassociatedAt" }),
         ),
-      ).annotate({
-        identifier: "DisassociateServiceRoleFromAccountResponse",
-      });
+      ).annotate({ identifier: "DisassociateServiceRoleFromAccountResponse" });
   }
 }
 function __c16(j: number): any {
@@ -2384,9 +2345,7 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetComponentVersionArtifactRequest",
-      });
+      ).annotate({ identifier: "GetComponentVersionArtifactRequest" });
     case 1:
       return S.suspend(() => S.Struct({ preSignedUrl: S.String })).annotate({
         identifier: "GetComponentVersionArtifactResponse",
@@ -2407,18 +2366,14 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetConnectivityInfoRequest",
-      });
+      ).annotate({ identifier: "GetConnectivityInfoRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           connectivityInfo: S.optional(__S(305, __c19, 1)),
           message: S.optional(S.String),
         }).pipe(S.encodeKeys({ connectivityInfo: "ConnectivityInfo", message: "Message" })),
-      ).annotate({
-        identifier: "GetConnectivityInfoResponse",
-      });
+      ).annotate({ identifier: "GetConnectivityInfoResponse" });
   }
 }
 function __c19(j: number): any {
@@ -2523,17 +2478,13 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetServiceRoleForAccountRequest",
-      });
+      ).annotate({ identifier: "GetServiceRoleForAccountRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ associatedAt: S.optional(S.String), roleArn: S.optional(S.String) }).pipe(
           S.encodeKeys({ associatedAt: "AssociatedAt", roleArn: "RoleArn" }),
         ),
-      ).annotate({
-        identifier: "GetServiceRoleForAccountResponse",
-      });
+      ).annotate({ identifier: "GetServiceRoleForAccountResponse" });
   }
 }
 function __c23(j: number): any {
@@ -2557,9 +2508,7 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListClientDevicesAssociatedWithCoreDeviceRequest",
-      });
+      ).annotate({ identifier: "ListClientDevicesAssociatedWithCoreDeviceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2575,9 +2524,7 @@ function __c23(j: number): any {
           associatedClientDevices: S.optional(__S(370, __c23, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListClientDevicesAssociatedWithCoreDeviceResponse",
-      });
+      ).annotate({ identifier: "ListClientDevicesAssociatedWithCoreDeviceResponse" });
   }
 }
 function __c24(j: number): any {
@@ -2644,9 +2591,7 @@ function __c25(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListComponentVersionsRequest",
-      });
+      ).annotate({ identifier: "ListComponentVersionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2663,9 +2608,7 @@ function __c25(j: number): any {
           componentVersions: S.optional(__S(402, __c25, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListComponentVersionsResponse",
-      });
+      ).annotate({ identifier: "ListComponentVersionsResponse" });
   }
 }
 function __c26(j: number): any {
@@ -2771,18 +2714,14 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListEffectiveDeploymentsRequest",
-      });
+      ).annotate({ identifier: "ListEffectiveDeploymentsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           errorStack: S.optional(__S(64, __c4, 0)),
           errorTypes: S.optional(__S(64, __c4, 0)),
         }),
-      ).annotate({
-        identifier: "EffectiveDeploymentStatusDetails",
-      });
+      ).annotate({ identifier: "EffectiveDeploymentStatusDetails" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2807,9 +2746,7 @@ function __c28(j: number): any {
           effectiveDeployments: S.optional(__S(451, __c28, 3)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListEffectiveDeploymentsResponse",
-      });
+      ).annotate({ identifier: "ListEffectiveDeploymentsResponse" });
   }
 }
 function __c29(j: number): any {
@@ -2834,9 +2771,7 @@ function __c29(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListInstalledComponentsRequest",
-      });
+      ).annotate({ identifier: "ListInstalledComponentsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2859,9 +2794,7 @@ function __c29(j: number): any {
           installedComponents: S.optional(__S(466, __c29, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListInstalledComponentsResponse",
-      });
+      ).annotate({ identifier: "ListInstalledComponentsResponse" });
   }
 }
 function __c30(j: number): any {
@@ -2878,9 +2811,7 @@ function __c30(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(48, __c3, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -2894,7 +2825,7 @@ function __c31(j: number): any {
         S.Struct({
           componentName: S.optional(S.String),
           componentVersion: S.optional(S.String),
-          versionRequirements: S.optional(__S(112, __c7, 0)),
+          versionRequirements: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({ identifier: "ComponentCandidate" });
     case 1:
@@ -2902,7 +2833,7 @@ function __c31(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          platform: S.optional(__S(113, __c7, 1)),
+          platform: S.optional(__S(112, __c7, 0)),
           componentCandidates: S.optional(__S(497, __c31, 1)),
         }).pipe(
           T.all(
@@ -2914,9 +2845,7 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ResolveComponentCandidatesRequest",
-      });
+      ).annotate({ identifier: "ResolveComponentCandidatesRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2933,9 +2862,7 @@ function __c31(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({ resolvedComponentVersions: S.optional(__S(500, __c31, 4)) }),
-      ).annotate({
-        identifier: "ResolveComponentCandidatesResponse",
-      });
+      ).annotate({ identifier: "ResolveComponentCandidatesResponse" });
   }
 }
 function __c32(j: number): any {
@@ -2997,17 +2924,13 @@ function __c34(j: number): any {
               rules,
             ),
           ),
-      ).annotate({
-        identifier: "UpdateConnectivityInfoRequest",
-      });
+      ).annotate({ identifier: "UpdateConnectivityInfoRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ version: S.optional(S.String), message: S.optional(S.String) }).pipe(
           S.encodeKeys({ version: "Version", message: "Message" }),
         ),
-      ).annotate({
-        identifier: "UpdateConnectivityInfoResponse",
-      });
+      ).annotate({ identifier: "UpdateConnectivityInfoResponse" });
   }
 }
 function __c35(j: number): any {
@@ -3036,17 +2959,13 @@ function __c36(j: number): any {
               rules,
             ),
           ),
-      ).annotate({
-        identifier: "AssociateServiceRoleToAccountRequest",
-      });
+      ).annotate({ identifier: "AssociateServiceRoleToAccountRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ associatedAt: S.optional(S.String) }).pipe(
           S.encodeKeys({ associatedAt: "AssociatedAt" }),
         ),
-      ).annotate({
-        identifier: "AssociateServiceRoleToAccountResponse",
-      });
+      ).annotate({ identifier: "AssociateServiceRoleToAccountResponse" });
   }
 }
 function __c37(j: number): any {
@@ -3069,9 +2988,7 @@ function __c37(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchAssociateClientDeviceWithCoreDeviceRequest",
-      });
+      ).annotate({ identifier: "BatchAssociateClientDeviceWithCoreDeviceRequest" });
   }
 }
 function __c38(j: number): any {
@@ -3089,9 +3006,7 @@ function __c38(j: number): any {
           code: S.optional(S.String),
           message: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "AssociateClientDeviceWithCoreDeviceErrorEntry",
-      });
+      ).annotate({ identifier: "AssociateClientDeviceWithCoreDeviceErrorEntry" });
     case 3:
       return S.Array(__S(610, __c38, 2));
     case 4:

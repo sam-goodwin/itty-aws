@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -377,9 +377,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteHumanLoopResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteHumanLoopResponse" });
   }
 }
 function __c3(j: number): any {
@@ -413,9 +411,7 @@ function __c3(j: number): any {
           FlowDefinitionArn: S.optional(S.String),
           HumanLoopOutput: S.optional(__S(25, __c3, 1)),
         }),
-      ).annotate({
-        identifier: "DescribeHumanLoopResponse",
-      });
+      ).annotate({ identifier: "DescribeHumanLoopResponse" });
   }
 }
 function __c4(j: number): any {

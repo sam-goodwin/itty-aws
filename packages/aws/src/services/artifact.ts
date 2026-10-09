@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1054,9 +1054,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetComplianceInquiryMetadataRequest",
-      });
+      ).annotate({ identifier: "GetComplianceInquiryMetadataRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1077,9 +1075,7 @@ function __c0(j: number): any {
           complianceInquiryDetail: S.optional(__S(1, __c0, 1)),
           tags: S.optional(__S(160, __c20, 0)),
         }),
-      ).annotate({
-        identifier: "GetComplianceInquiryMetadataResponse",
-      });
+      ).annotate({ identifier: "GetComplianceInquiryMetadataResponse" });
   }
 }
 function __c1(j: number): any {
@@ -1190,9 +1186,7 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListComplianceInquiriesRequest",
-      });
+      ).annotate({ identifier: "ListComplianceInquiriesRequest" });
     case 1:
       return S.Array(__S(144, __c18, 0));
     case 2:
@@ -1201,9 +1195,7 @@ function __c4(j: number): any {
           complianceInquiries: S.optional(__S(33, __c4, 1)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListComplianceInquiriesResponse",
-      });
+      ).annotate({ identifier: "ListComplianceInquiriesResponse" });
   }
 }
 function __c5(j: number): any {
@@ -1224,9 +1216,7 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListComplianceInquiryQueriesRequest",
-      });
+      ).annotate({ identifier: "ListComplianceInquiryQueriesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1265,9 +1255,7 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({ queries: S.optional(__S(46, __c5, 6)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListComplianceInquiryQueriesResponse",
-      });
+      ).annotate({ identifier: "ListComplianceInquiryQueriesResponse" });
   }
 }
 function __c6(j: number): any {
@@ -1287,9 +1275,7 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListCustomerAgreementsRequest",
-      });
+      ).annotate({ identifier: "ListCustomerAgreementsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1313,9 +1299,7 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ customerAgreements: __S(50, __c6, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListCustomerAgreementsResponse",
-      });
+      ).annotate({ identifier: "ListCustomerAgreementsResponse" });
   }
 }
 function __c7(j: number): any {
@@ -1379,15 +1363,11 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListReportVersionsRequest",
-      });
+      ).annotate({ identifier: "ListReportVersionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ reports: __S(65, __c8, 1), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListReportVersionsResponse",
-      });
+      ).annotate({ identifier: "ListReportVersionsResponse" });
   }
 }
 function __c10(j: number): any {
@@ -1404,9 +1384,7 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(160, __c20, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -1427,9 +1405,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutAccountSettingsRequest",
-      });
+      ).annotate({ identifier: "PutAccountSettingsRequest" });
   }
 }
 function __c12(j: number): any {
@@ -1456,15 +1432,11 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutComplianceInquiryFeedbackRequest",
-      });
+      ).annotate({ identifier: "PutComplianceInquiryFeedbackRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({ submittedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")) }),
-      ).annotate({
-        identifier: "PutComplianceInquiryFeedbackResponse",
-      });
+      ).annotate({ identifier: "PutComplianceInquiryFeedbackResponse" });
   }
 }
 function __c13(j: number): any {
@@ -1490,9 +1462,7 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TagResourceResponse" });
   }
 }
 function __c15(j: number): any {
@@ -1554,18 +1524,14 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateComplianceInquiryRequest",
-      });
+      ).annotate({ identifier: "CreateComplianceInquiryRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           complianceInquirySummary: S.optional(__S(144, __c18, 0)),
           tags: S.optional(__S(160, __c20, 0)),
         }),
-      ).annotate({
-        identifier: "CreateComplianceInquiryResponse",
-      });
+      ).annotate({ identifier: "CreateComplianceInquiryResponse" });
   }
 }
 function __c18(j: number): any {
@@ -1616,18 +1582,14 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ExportComplianceInquiryRequest",
-      });
+      ).annotate({ identifier: "ExportComplianceInquiryRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           documentPresignedUrl: S.optional(SensitiveString),
           tags: S.optional(__S(160, __c20, 0)),
         }),
-      ).annotate({
-        identifier: "ExportComplianceInquiryResponse",
-      });
+      ).annotate({ identifier: "ExportComplianceInquiryResponse" });
   }
 }
 function __c22(j: number): any {
@@ -1644,9 +1606,7 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAccountSettingsRequest",
-      });
+      ).annotate({ identifier: "GetAccountSettingsRequest" });
   }
 }
 function __c23(j: number): any {
@@ -1658,9 +1618,7 @@ function __c23(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ accountSettings: S.optional(__S(184, __c23, 0)) }),
-      ).annotate({
-        identifier: "GetAccountSettingsResponse",
-      });
+      ).annotate({ identifier: "GetAccountSettingsResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

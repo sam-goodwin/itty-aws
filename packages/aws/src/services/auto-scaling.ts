@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -4111,9 +4111,7 @@ function __c4(j: number): any {
           AutoScalingGroupName: S.optional(S.String),
           TargetGroupARNs: S.optional(__S(160, __c5, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AttachLoadBalancerTargetGroupsType",
-      });
+      ).annotate({ identifier: "AttachLoadBalancerTargetGroupsType" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "AttachLoadBalancerTargetGroupsResultType",
@@ -4160,15 +4158,11 @@ function __c8(j: number): any {
           AutoScalingGroupName: S.optional(S.String),
           ScheduledActionNames: S.optional(__S(320, __c10, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "BatchDeleteScheduledActionType",
-      });
+      ).annotate({ identifier: "BatchDeleteScheduledActionType" });
     case 1:
       return S.suspend(() =>
         S.Struct({ FailedScheduledActions: S.optional(__S(289, __c9, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "BatchDeleteScheduledActionAnswer",
-      });
+      ).annotate({ identifier: "BatchDeleteScheduledActionAnswer" });
   }
 }
 function __c9(j: number): any {
@@ -4180,9 +4174,7 @@ function __c9(j: number): any {
           ErrorCode: S.optional(S.String),
           ErrorMessage: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "FailedScheduledUpdateGroupActionRequest",
-      });
+      ).annotate({ identifier: "FailedScheduledUpdateGroupActionRequest" });
     case 1:
       return S.Array(__S(288, __c9, 0));
   }
@@ -4207,9 +4199,7 @@ function __c11(j: number): any {
           DesiredCapacity: S.optional(S.Number),
           TimeZone: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ScheduledUpdateGroupActionRequest",
-      });
+      ).annotate({ identifier: "ScheduledUpdateGroupActionRequest" });
     case 1:
       return S.Array(__S(352, __c11, 0));
     case 2:
@@ -4218,17 +4208,11 @@ function __c11(j: number): any {
           AutoScalingGroupName: S.optional(S.String),
           ScheduledUpdateGroupActions: S.optional(__S(353, __c11, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "BatchPutScheduledUpdateGroupActionType",
-      });
+      ).annotate({ identifier: "BatchPutScheduledUpdateGroupActionType" });
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          FailedScheduledUpdateGroupActions: S.optional(__S(289, __c9, 1)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "BatchPutScheduledUpdateGroupActionAnswer",
-      });
+        S.Struct({ FailedScheduledUpdateGroupActions: S.optional(__S(289, __c9, 1)) }).pipe(ns),
+      ).annotate({ identifier: "BatchPutScheduledUpdateGroupActionAnswer" });
   }
 }
 function __c12(j: number): any {
@@ -4239,15 +4223,11 @@ function __c12(j: number): any {
           AutoScalingGroupName: S.optional(S.String),
           WaitForTransitioningInstances: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CancelInstanceRefreshType",
-      });
+      ).annotate({ identifier: "CancelInstanceRefreshType" });
     case 1:
       return S.suspend(() =>
         S.Struct({ InstanceRefreshId: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "CancelInstanceRefreshAnswer",
-      });
+      ).annotate({ identifier: "CancelInstanceRefreshAnswer" });
   }
 }
 function __c13(j: number): any {
@@ -4261,9 +4241,7 @@ function __c13(j: number): any {
           LifecycleActionResult: S.optional(S.String),
           InstanceId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CompleteLifecycleActionType",
-      });
+      ).annotate({ identifier: "CompleteLifecycleActionType" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CompleteLifecycleActionAnswer",
@@ -4283,9 +4261,7 @@ function __c14(j: number): any {
           NotificationTargetARN: S.optional(S.String),
           RoleARN: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "LifecycleHookSpecification",
-      });
+      ).annotate({ identifier: "LifecycleHookSpecification" });
     case 1:
       return S.Array(__S(448, __c14, 0));
     case 2:
@@ -4328,9 +4304,7 @@ function __c14(j: number): any {
           InstanceLifecyclePolicy: S.optional(__S(650, __c20, 10)),
           Operator: S.optional(__S(512, __c16, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateAutoScalingGroupType",
-      });
+      ).annotate({ identifier: "CreateAutoScalingGroupType" });
     case 3:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateAutoScalingGroupResponse",
@@ -4370,9 +4344,7 @@ function __c17(j: number): any {
           LaunchTemplateName: S.optional(S.String),
           Version: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateSpecification",
-      });
+      ).annotate({ identifier: "LaunchTemplateSpecification" });
   }
 }
 function __c18(j: number): any {
@@ -4398,23 +4370,17 @@ function __c18(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({ Min: S.optional(S.Number), Max: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "NetworkInterfaceCountRequest",
-      });
+      ).annotate({ identifier: "NetworkInterfaceCountRequest" });
     case 7:
       return S.Array(S.String);
     case 8:
       return S.suspend(() =>
         S.Struct({ Min: S.optional(S.Number), Max: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "TotalLocalStorageGBRequest",
-      });
+      ).annotate({ identifier: "TotalLocalStorageGBRequest" });
     case 9:
       return S.suspend(() =>
         S.Struct({ Min: S.optional(S.Number), Max: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "BaselineEbsBandwidthMbpsRequest",
-      });
+      ).annotate({ identifier: "BaselineEbsBandwidthMbpsRequest" });
     case 10:
       return S.Array(S.String);
     case 11:
@@ -4428,15 +4394,11 @@ function __c18(j: number): any {
     case 14:
       return S.suspend(() =>
         S.Struct({ Min: S.optional(S.Number), Max: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "AcceleratorTotalMemoryMiBRequest",
-      });
+      ).annotate({ identifier: "AcceleratorTotalMemoryMiBRequest" });
     case 15:
       return S.suspend(() =>
         S.Struct({ Min: S.optional(S.Number), Max: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "NetworkBandwidthGbpsRequest",
-      });
+      ).annotate({ identifier: "NetworkBandwidthGbpsRequest" });
     case 16:
       return S.Array(S.String);
     case 17:
@@ -4445,18 +4407,14 @@ function __c18(j: number): any {
       });
     case 18:
       return S.Array(
-        /*@__PURE__*/ __S(593, __c18, 17).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "PerformanceFactorReferenceRequest",
-        }),
+        /*@__PURE__*/ __S(593, __c18, 17)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "PerformanceFactorReferenceRequest" }),
       );
     case 19:
       return S.suspend(() =>
-        S.Struct({
-          References: S.optional(__S(594, __c18, 18)).pipe(T.XmlName("Reference")),
-        }),
-      ).annotate({
-        identifier: "CpuPerformanceFactorRequest",
-      });
+        S.Struct({ References: S.optional(__S(594, __c18, 18)).pipe(T.XmlName("Reference")) }),
+      ).annotate({ identifier: "CpuPerformanceFactorRequest" });
     case 20:
       return S.suspend(() => S.Struct({ Cpu: S.optional(__S(595, __c18, 19)) })).annotate({
         identifier: "BaselinePerformanceFactorsRequest",
@@ -4557,24 +4515,18 @@ function __c20(j: number): any {
           MinHealthyPercentage: S.optional(S.Number),
           MaxHealthyPercentage: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "InstanceMaintenancePolicy",
-      });
+      ).annotate({ identifier: "InstanceMaintenancePolicy" });
     case 3:
       return S.suspend(() =>
         S.Struct({ CapacityDistributionStrategy: S.optional(S.String) }),
-      ).annotate({
-        identifier: "AvailabilityZoneDistribution",
-      });
+      ).annotate({ identifier: "AvailabilityZoneDistribution" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           ZonalShiftEnabled: S.optional(S.Boolean),
           ImpairedZoneHealthCheckBehavior: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "AvailabilityZoneImpairmentPolicy",
-      });
+      ).annotate({ identifier: "AvailabilityZoneImpairmentPolicy" });
     case 5:
       return S.Array(S.String);
     case 6:
@@ -4585,18 +4537,14 @@ function __c20(j: number): any {
           CapacityReservationIds: S.optional(__S(645, __c20, 5)),
           CapacityReservationResourceGroupArns: S.optional(__S(646, __c20, 6)),
         }),
-      ).annotate({
-        identifier: "CapacityReservationTarget",
-      });
+      ).annotate({ identifier: "CapacityReservationTarget" });
     case 8:
       return S.suspend(() =>
         S.Struct({
           CapacityReservationPreference: S.optional(S.String),
           CapacityReservationTarget: S.optional(__S(647, __c20, 7)),
         }),
-      ).annotate({
-        identifier: "CapacityReservationSpecification",
-      });
+      ).annotate({ identifier: "CapacityReservationSpecification" });
     case 9:
       return S.suspend(() => S.Struct({ TerminateHookAbandon: S.optional(S.String) })).annotate({
         identifier: "RetentionTriggers",
@@ -4632,9 +4580,7 @@ function __c21(j: number): any {
           PlacementTenancy: S.optional(S.String),
           MetadataOptions: S.optional(__S(710, __c22, 6)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateLaunchConfigurationType",
-      });
+      ).annotate({ identifier: "CreateLaunchConfigurationType" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateLaunchConfigurationResponse",
@@ -4706,9 +4652,7 @@ function __c24(j: number): any {
           AutoScalingGroupName: S.optional(S.String),
           ForceDelete: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteAutoScalingGroupType",
-      });
+      ).annotate({ identifier: "DeleteAutoScalingGroupType" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteAutoScalingGroupResponse",
@@ -4722,9 +4666,7 @@ function __c25(j: number): any {
         S.Struct({ LaunchConfigurationName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "LaunchConfigurationNameType",
-      });
+      ).annotate({ identifier: "LaunchConfigurationNameType" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteLaunchConfigurationResponse",
@@ -4754,9 +4696,7 @@ function __c27(j: number): any {
           AutoScalingGroupName: S.optional(S.String),
           TopicARN: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteNotificationConfigurationType",
-      });
+      ).annotate({ identifier: "DeleteNotificationConfigurationType" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteNotificationConfigurationResponse",
@@ -4786,9 +4726,7 @@ function __c29(j: number): any {
           AutoScalingGroupName: S.optional(S.String),
           ScheduledActionName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteScheduledActionType",
-      });
+      ).annotate({ identifier: "DeleteScheduledActionType" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteScheduledActionResponse",
@@ -4804,9 +4742,7 @@ function __c30(j: number): any {
         ),
       ).annotate({ identifier: "DeleteTagsType" });
     case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeleteTagsResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "DeleteTagsResponse" });
   }
 }
 function __c31(j: number): any {
@@ -4831,9 +4767,7 @@ function __c32(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeAccountLimitsRequest",
-      });
+      ).annotate({ identifier: "DescribeAccountLimitsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4842,9 +4776,7 @@ function __c32(j: number): any {
           NumberOfAutoScalingGroups: S.optional(S.Number),
           NumberOfLaunchConfigurations: S.optional(S.Number),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeAccountLimitsAnswer",
-      });
+      ).annotate({ identifier: "DescribeAccountLimitsAnswer" });
   }
 }
 function __c33(j: number): any {
@@ -4854,9 +4786,7 @@ function __c33(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeAdjustmentTypesRequest",
-      });
+      ).annotate({ identifier: "DescribeAdjustmentTypesRequest" });
     case 1:
       return S.suspend(() => S.Struct({ AdjustmentType: S.optional(S.String) })).annotate({
         identifier: "AdjustmentType",
@@ -4866,9 +4796,7 @@ function __c33(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ AdjustmentTypes: S.optional(__S(1058, __c33, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeAdjustmentTypesAnswer",
-      });
+      ).annotate({ identifier: "DescribeAdjustmentTypesAnswer" });
   }
 }
 function __c34(j: number): any {
@@ -4882,9 +4810,7 @@ function __c34(j: number): any {
           MaxRecords: S.optional(S.Number),
           Filters: S.optional(__S(1154, __c36, 2)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AutoScalingGroupNamesType",
-      });
+      ).annotate({ identifier: "AutoScalingGroupNamesType" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ProcessName: S.optional(S.String), SuspensionReason: S.optional(S.String) }),
@@ -5038,9 +4964,7 @@ function __c40(j: number): any {
           MaxRecords: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeAutoScalingInstancesType",
-      });
+      ).annotate({ identifier: "DescribeAutoScalingInstancesType" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5057,9 +4981,7 @@ function __c40(j: number): any {
           ProtectedFromScaleIn: S.optional(S.Boolean),
           WeightedCapacity: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "AutoScalingInstanceDetails",
-      });
+      ).annotate({ identifier: "AutoScalingInstanceDetails" });
     case 2:
       return S.Array(__S(1281, __c40, 1));
     case 3:
@@ -5078,15 +5000,11 @@ function __c41(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeAutoScalingNotificationTypesRequest",
-      });
+      ).annotate({ identifier: "DescribeAutoScalingNotificationTypesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ AutoScalingNotificationTypes: S.optional(__S(1344, __c42, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeAutoScalingNotificationTypesAnswer",
-      });
+      ).annotate({ identifier: "DescribeAutoScalingNotificationTypesAnswer" });
   }
 }
 function __c42(j: number): any {
@@ -5107,36 +5025,28 @@ function __c43(j: number): any {
           NextToken: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeInstanceRefreshesType",
-      });
+      ).annotate({ identifier: "DescribeInstanceRefreshesType" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           PercentageComplete: S.optional(S.Number),
           InstancesToUpdate: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "InstanceRefreshLivePoolProgress",
-      });
+      ).annotate({ identifier: "InstanceRefreshLivePoolProgress" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           PercentageComplete: S.optional(S.Number),
           InstancesToUpdate: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "InstanceRefreshWarmPoolProgress",
-      });
+      ).annotate({ identifier: "InstanceRefreshWarmPoolProgress" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           LivePoolProgress: S.optional(__S(1378, __c43, 2)),
           WarmPoolProgress: S.optional(__S(1379, __c43, 3)),
         }),
-      ).annotate({
-        identifier: "InstanceRefreshProgressDetails",
-      });
+      ).annotate({ identifier: "InstanceRefreshProgressDetails" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5173,9 +5083,7 @@ function __c43(j: number): any {
           InstanceRefreshes: S.optional(__S(1383, __c43, 7)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeInstanceRefreshesAnswer",
-      });
+      ).annotate({ identifier: "DescribeInstanceRefreshesAnswer" });
   }
 }
 function __c44(j: number): any {
@@ -5224,9 +5132,7 @@ function __c45(j: number): any {
           NextToken: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "LaunchConfigurationNamesType",
-      });
+      ).annotate({ identifier: "LaunchConfigurationNamesType" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5273,9 +5179,7 @@ function __c46(j: number): any {
           AutoScalingGroupName: S.optional(S.String),
           LifecycleHookNames: S.optional(__S(1472, __c46, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeLifecycleHooksType",
-      });
+      ).annotate({ identifier: "DescribeLifecycleHooksType" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5295,9 +5199,7 @@ function __c46(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({ LifecycleHooks: S.optional(__S(1475, __c46, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeLifecycleHooksAnswer",
-      });
+      ).annotate({ identifier: "DescribeLifecycleHooksAnswer" });
   }
 }
 function __c47(j: number): any {
@@ -5307,15 +5209,11 @@ function __c47(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeLifecycleHookTypesRequest",
-      });
+      ).annotate({ identifier: "DescribeLifecycleHookTypesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ LifecycleHookTypes: S.optional(__S(1344, __c42, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeLifecycleHookTypesAnswer",
-      });
+      ).annotate({ identifier: "DescribeLifecycleHookTypesAnswer" });
   }
 }
 function __c48(j: number): any {
@@ -5327,9 +5225,7 @@ function __c48(j: number): any {
           NextToken: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeLoadBalancersRequest",
-      });
+      ).annotate({ identifier: "DescribeLoadBalancersRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ LoadBalancerName: S.optional(S.String), State: S.optional(S.String) }),
@@ -5342,9 +5238,7 @@ function __c48(j: number): any {
           LoadBalancers: S.optional(__S(1538, __c48, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeLoadBalancersResponse",
-      });
+      ).annotate({ identifier: "DescribeLoadBalancersResponse" });
   }
 }
 function __c49(j: number): any {
@@ -5356,15 +5250,11 @@ function __c49(j: number): any {
           NextToken: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeLoadBalancerTargetGroupsRequest",
-      });
+      ).annotate({ identifier: "DescribeLoadBalancerTargetGroupsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ LoadBalancerTargetGroupARN: S.optional(S.String), State: S.optional(S.String) }),
-      ).annotate({
-        identifier: "LoadBalancerTargetGroupState",
-      });
+      ).annotate({ identifier: "LoadBalancerTargetGroupState" });
     case 2:
       return S.Array(__S(1569, __c49, 1));
     case 3:
@@ -5373,9 +5263,7 @@ function __c49(j: number): any {
           LoadBalancerTargetGroups: S.optional(__S(1570, __c49, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeLoadBalancerTargetGroupsResponse",
-      });
+      ).annotate({ identifier: "DescribeLoadBalancerTargetGroupsResponse" });
   }
 }
 function __c50(j: number): any {
@@ -5385,9 +5273,7 @@ function __c50(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeMetricCollectionTypesRequest",
-      });
+      ).annotate({ identifier: "DescribeMetricCollectionTypesRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Metric: S.optional(S.String) })).annotate({
         identifier: "MetricCollectionType",
@@ -5406,9 +5292,7 @@ function __c50(j: number): any {
           Metrics: S.optional(__S(1602, __c50, 2)),
           Granularities: S.optional(__S(1604, __c50, 4)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeMetricCollectionTypesAnswer",
-      });
+      ).annotate({ identifier: "DescribeMetricCollectionTypesAnswer" });
   }
 }
 function __c51(j: number): any {
@@ -5420,9 +5304,7 @@ function __c51(j: number): any {
           NextToken: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeNotificationConfigurationsType",
-      });
+      ).annotate({ identifier: "DescribeNotificationConfigurationsType" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5430,9 +5312,7 @@ function __c51(j: number): any {
           TopicARN: S.optional(S.String),
           NotificationType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "NotificationConfiguration",
-      });
+      ).annotate({ identifier: "NotificationConfiguration" });
     case 2:
       return S.Array(__S(1633, __c51, 1));
     case 3:
@@ -5441,9 +5321,7 @@ function __c51(j: number): any {
           NotificationConfigurations: S.optional(__S(1634, __c51, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeNotificationConfigurationsAnswer",
-      });
+      ).annotate({ identifier: "DescribeNotificationConfigurationsAnswer" });
   }
 }
 function __c52(j: number): any {
@@ -5516,27 +5394,21 @@ function __c53(j: number): any {
           PredefinedMetricType: S.optional(S.String),
           ResourceLabel: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "PredictiveScalingPredefinedMetricPair",
-      });
+      ).annotate({ identifier: "PredictiveScalingPredefinedMetricPair" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           PredefinedMetricType: S.optional(S.String),
           ResourceLabel: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "PredictiveScalingPredefinedScalingMetric",
-      });
+      ).annotate({ identifier: "PredictiveScalingPredefinedScalingMetric" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           PredefinedMetricType: S.optional(S.String),
           ResourceLabel: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "PredictiveScalingPredefinedLoadMetric",
-      });
+      ).annotate({ identifier: "PredictiveScalingPredefinedLoadMetric" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5560,21 +5432,15 @@ function __c53(j: number): any {
     case 9:
       return S.suspend(() =>
         S.Struct({ MetricDataQueries: S.optional(__S(1704, __c53, 8)) }),
-      ).annotate({
-        identifier: "PredictiveScalingCustomizedScalingMetric",
-      });
+      ).annotate({ identifier: "PredictiveScalingCustomizedScalingMetric" });
     case 10:
       return S.suspend(() =>
         S.Struct({ MetricDataQueries: S.optional(__S(1704, __c53, 8)) }),
-      ).annotate({
-        identifier: "PredictiveScalingCustomizedLoadMetric",
-      });
+      ).annotate({ identifier: "PredictiveScalingCustomizedLoadMetric" });
     case 11:
       return S.suspend(() =>
         S.Struct({ MetricDataQueries: S.optional(__S(1704, __c53, 8)) }),
-      ).annotate({
-        identifier: "PredictiveScalingCustomizedCapacityMetric",
-      });
+      ).annotate({ identifier: "PredictiveScalingCustomizedCapacityMetric" });
     case 12:
       return S.suspend(() =>
         S.Struct({
@@ -5586,9 +5452,7 @@ function __c53(j: number): any {
           CustomizedLoadMetricSpecification: S.optional(__S(1706, __c53, 10)),
           CustomizedCapacityMetricSpecification: S.optional(__S(1707, __c53, 11)),
         }),
-      ).annotate({
-        identifier: "PredictiveScalingMetricSpecification",
-      });
+      ).annotate({ identifier: "PredictiveScalingMetricSpecification" });
   }
 }
 function __c54(j: number): any {
@@ -5615,9 +5479,7 @@ function __c54(j: number): any {
           PredefinedMetricType: S.optional(S.String),
           ResourceLabel: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "PredefinedMetricSpecification",
-      });
+      ).annotate({ identifier: "PredefinedMetricSpecification" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5637,9 +5499,7 @@ function __c54(j: number): any {
           Period: S.optional(S.Number),
           ReturnData: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "TargetTrackingMetricDataQuery",
-      });
+      ).annotate({ identifier: "TargetTrackingMetricDataQuery" });
     case 7:
       return S.Array(__S(1734, __c54, 6));
     case 8:
@@ -5653,9 +5513,7 @@ function __c54(j: number): any {
           Period: S.optional(S.Number),
           Metrics: S.optional(__S(1735, __c54, 7)),
         }),
-      ).annotate({
-        identifier: "CustomizedMetricSpecification",
-      });
+      ).annotate({ identifier: "CustomizedMetricSpecification" });
     case 9:
       return S.suspend(() =>
         S.Struct({
@@ -5664,9 +5522,7 @@ function __c54(j: number): any {
           TargetValue: S.optional(S.Number),
           DisableScaleIn: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "TargetTrackingConfiguration",
-      });
+      ).annotate({ identifier: "TargetTrackingConfiguration" });
     case 10:
       return S.Array(__S(1708, __c53, 12));
     case 11:
@@ -5678,9 +5534,7 @@ function __c54(j: number): any {
           MaxCapacityBreachBehavior: S.optional(S.String),
           MaxCapacityBuffer: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "PredictiveScalingConfiguration",
-      });
+      ).annotate({ identifier: "PredictiveScalingConfiguration" });
   }
 }
 function __c55(j: number): any {
@@ -5697,9 +5551,7 @@ function __c55(j: number): any {
           NextToken: S.optional(S.String),
           Filters: S.optional(__S(1154, __c36, 2)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeScalingActivitiesType",
-      });
+      ).annotate({ identifier: "DescribeScalingActivitiesType" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5739,9 +5591,7 @@ function __c57(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeScalingProcessTypesRequest",
-      });
+      ).annotate({ identifier: "DescribeScalingProcessTypesRequest" });
     case 1:
       return S.suspend(() => S.Struct({ ProcessName: S.optional(S.String) })).annotate({
         identifier: "ProcessType",
@@ -5766,9 +5616,7 @@ function __c58(j: number): any {
           NextToken: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeScheduledActionsType",
-      });
+      ).annotate({ identifier: "DescribeScheduledActionsType" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5784,9 +5632,7 @@ function __c58(j: number): any {
           DesiredCapacity: S.optional(S.Number),
           TimeZone: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ScheduledUpdateGroupAction",
-      });
+      ).annotate({ identifier: "ScheduledUpdateGroupAction" });
     case 2:
       return S.Array(__S(1857, __c58, 1));
     case 3:
@@ -5823,15 +5669,11 @@ function __c60(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeTerminationPolicyTypesRequest",
-      });
+      ).annotate({ identifier: "DescribeTerminationPolicyTypesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ TerminationPolicyTypes: S.optional(__S(608, __c19, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeTerminationPolicyTypesAnswer",
-      });
+      ).annotate({ identifier: "DescribeTerminationPolicyTypesAnswer" });
   }
 }
 function __c61(j: number): any {
@@ -5844,9 +5686,7 @@ function __c61(j: number): any {
           NextToken: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeTrafficSourcesRequest",
-      });
+      ).annotate({ identifier: "DescribeTrafficSourcesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5864,9 +5704,7 @@ function __c61(j: number): any {
           TrafficSources: S.optional(__S(1954, __c61, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeTrafficSourcesResponse",
-      });
+      ).annotate({ identifier: "DescribeTrafficSourcesResponse" });
   }
 }
 function __c62(j: number): any {
@@ -5928,9 +5766,7 @@ function __c65(j: number): any {
           AutoScalingGroupName: S.optional(S.String),
           TargetGroupARNs: S.optional(__S(160, __c5, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DetachLoadBalancerTargetGroupsType",
-      });
+      ).annotate({ identifier: "DetachLoadBalancerTargetGroupsType" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DetachLoadBalancerTargetGroupsResultType",
@@ -5960,9 +5796,7 @@ function __c67(j: number): any {
           AutoScalingGroupName: S.optional(S.String),
           Metrics: S.optional(__S(2176, __c68, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisableMetricsCollectionQuery",
-      });
+      ).annotate({ identifier: "DisableMetricsCollectionQuery" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DisableMetricsCollectionResponse",
@@ -5984,9 +5818,7 @@ function __c69(j: number): any {
           Metrics: S.optional(__S(2176, __c68, 0)),
           Granularity: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "EnableMetricsCollectionQuery",
-      });
+      ).annotate({ identifier: "EnableMetricsCollectionQuery" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "EnableMetricsCollectionResponse",
@@ -6052,9 +5884,7 @@ function __c73(j: number): any {
           StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetPredictiveScalingForecastType",
-      });
+      ).annotate({ identifier: "GetPredictiveScalingForecastType" });
     case 1:
       return S.Array(
         /*@__PURE__*/ T.DateFromString.pipe(/*@__PURE__*/ T.TimestampFormat("date-time")),
@@ -6085,9 +5915,7 @@ function __c73(j: number): any {
           CapacityForecast: S.optional(__S(2341, __c73, 5)),
           UpdateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetPredictiveScalingForecastAnswer",
-      });
+      ).annotate({ identifier: "GetPredictiveScalingForecastAnswer" });
   }
 }
 function __c74(j: number): any {
@@ -6178,9 +6006,7 @@ function __c76(j: number): any {
           TopicARN: S.optional(S.String),
           NotificationTypes: S.optional(__S(1344, __c42, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PutNotificationConfigurationType",
-      });
+      ).annotate({ identifier: "PutNotificationConfigurationType" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutNotificationConfigurationResponse",
@@ -6232,9 +6058,7 @@ function __c78(j: number): any {
           DesiredCapacity: S.optional(S.Number),
           TimeZone: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PutScheduledUpdateGroupActionType",
-      });
+      ).annotate({ identifier: "PutScheduledUpdateGroupActionType" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutScheduledUpdateGroupActionResponse",
@@ -6254,9 +6078,7 @@ function __c79(j: number): any {
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutWarmPoolType" });
     case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutWarmPoolAnswer",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "PutWarmPoolAnswer" });
   }
 }
 function __c80(j: number): any {
@@ -6269,9 +6091,7 @@ function __c80(j: number): any {
           LifecycleActionToken: S.optional(S.String),
           InstanceId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RecordLifecycleActionHeartbeatType",
-      });
+      ).annotate({ identifier: "RecordLifecycleActionHeartbeatType" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "RecordLifecycleActionHeartbeatAnswer",
@@ -6306,15 +6126,11 @@ function __c83(j: number): any {
         S.Struct({ AutoScalingGroupName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "RollbackInstanceRefreshType",
-      });
+      ).annotate({ identifier: "RollbackInstanceRefreshType" });
     case 1:
       return S.suspend(() =>
         S.Struct({ InstanceRefreshId: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "RollbackInstanceRefreshAnswer",
-      });
+      ).annotate({ identifier: "RollbackInstanceRefreshAnswer" });
   }
 }
 function __c84(j: number): any {
@@ -6358,9 +6174,7 @@ function __c86(j: number): any {
           AutoScalingGroupName: S.optional(S.String),
           ProtectedFromScaleIn: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SetInstanceProtectionQuery",
-      });
+      ).annotate({ identifier: "SetInstanceProtectionQuery" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "SetInstanceProtectionAnswer",
@@ -6381,9 +6195,7 @@ function __c87(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ InstanceRefreshId: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "StartInstanceRefreshAnswer",
-      });
+      ).annotate({ identifier: "StartInstanceRefreshAnswer" });
   }
 }
 function __c88(j: number): any {
@@ -6406,9 +6218,7 @@ function __c89(j: number): any {
           AutoScalingGroupName: S.optional(S.String),
           ShouldDecrementDesiredCapacity: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "TerminateInstanceInAutoScalingGroupType",
-      });
+      ).annotate({ identifier: "TerminateInstanceInAutoScalingGroupType" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -6453,9 +6263,7 @@ function __c90(j: number): any {
           InstanceLifecyclePolicy: S.optional(__S(650, __c20, 10)),
           DeletionProtection: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateAutoScalingGroupType",
-      });
+      ).annotate({ identifier: "UpdateAutoScalingGroupType" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "UpdateAutoScalingGroupResponse",

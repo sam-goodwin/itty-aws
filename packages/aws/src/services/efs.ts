@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1385,7 +1385,7 @@ export const deleteReplicationConfiguration: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(136, __c17, 0) as any as S.Schema<DeleteReplicationConfigurationRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<DeleteReplicationConfigurationResponse>,
+  output: __S(96, __c12, 0) as any as S.Schema<DeleteReplicationConfigurationResponse>,
   errors: [BadRequest, FileSystemNotFound, InternalServerError, ReplicationNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1411,7 +1411,7 @@ export const deleteTags: API.OperationMethod<
   DeleteTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<DeleteTagsRequest>,
+  input: __S(144, __c18, 0) as any as S.Schema<DeleteTagsRequest>,
   output: __S(96, __c12, 0) as any as S.Schema<DeleteTagsResponse>,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
   protocol: AwsProtocol,
@@ -1441,8 +1441,8 @@ export const describeAccessPoints: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AccessPointDescription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<DescribeAccessPointsRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<DescribeAccessPointsResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<DescribeAccessPointsRequest>,
+  output: __S(154, __c19, 2) as any as S.Schema<DescribeAccessPointsResponse>,
   errors: [AccessPointNotFound, BadRequest, FileSystemNotFound, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1465,8 +1465,8 @@ export const describeAccountPreferences: API.OperationMethod<
   DescribeAccountPreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<DescribeAccountPreferencesRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<DescribeAccountPreferencesResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<DescribeAccountPreferencesRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<DescribeAccountPreferencesResponse>,
   errors: [InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1489,8 +1489,8 @@ export const describeBackupPolicy: API.OperationMethod<
   DescribeBackupPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<DescribeBackupPolicyRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<BackupPolicyDescription>,
+  input: __S(176, __c22, 0) as any as S.Schema<DescribeBackupPolicyRequest>,
+  output: __S(185, __c23, 1) as any as S.Schema<BackupPolicyDescription>,
   errors: [
     BadRequest,
     FileSystemNotFound,
@@ -1521,8 +1521,8 @@ export const describeFileSystemPolicy: API.OperationMethod<
   DescribeFileSystemPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<DescribeFileSystemPolicyRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<FileSystemPolicyDescription>,
+  input: __S(192, __c24, 0) as any as S.Schema<DescribeFileSystemPolicyRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<FileSystemPolicyDescription>,
   errors: [BadRequest, FileSystemNotFound, InternalServerError, PolicyNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1567,8 +1567,8 @@ export const describeFileSystems: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FileSystemDescription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<DescribeFileSystemsRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<DescribeFileSystemsResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<DescribeFileSystemsRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<DescribeFileSystemsResponse>,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1602,8 +1602,8 @@ export const describeLifecycleConfiguration: API.OperationMethod<
   DescribeLifecycleConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<DescribeLifecycleConfigurationRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<LifecycleConfigurationDescription>,
+  input: __S(216, __c27, 0) as any as S.Schema<DescribeLifecycleConfigurationRequest>,
+  output: __S(226, __c28, 2) as any as S.Schema<LifecycleConfigurationDescription>,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1634,8 +1634,8 @@ export const describeMountTargets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MountTargetDescription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<DescribeMountTargetsRequest>,
-  output: __S(242, __c30, 2) as any as S.Schema<DescribeMountTargetsResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<DescribeMountTargetsRequest>,
+  output: __S(234, __c29, 2) as any as S.Schema<DescribeMountTargetsResponse>,
   errors: [
     AccessPointNotFound,
     BadRequest,
@@ -1679,8 +1679,8 @@ export const describeMountTargetSecurityGroups: API.OperationMethod<
   DescribeMountTargetSecurityGroupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<DescribeMountTargetSecurityGroupsRequest>,
-  output: __S(249, __c31, 1) as any as S.Schema<DescribeMountTargetSecurityGroupsResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<DescribeMountTargetSecurityGroupsRequest>,
+  output: __S(241, __c30, 1) as any as S.Schema<DescribeMountTargetSecurityGroupsResponse>,
   errors: [BadRequest, IncorrectMountTargetState, InternalServerError, MountTargetNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1706,8 +1706,8 @@ export const describeReplicationConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReplicationConfigurationDescription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<DescribeReplicationConfigurationsRequest>,
-  output: __S(258, __c32, 2) as any as S.Schema<DescribeReplicationConfigurationsResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<DescribeReplicationConfigurationsRequest>,
+  output: __S(250, __c31, 2) as any as S.Schema<DescribeReplicationConfigurationsResponse>,
   errors: [
     BadRequest,
     FileSystemNotFound,
@@ -1750,8 +1750,8 @@ export const describeTags: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Tag
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<DescribeTagsRequest>,
-  output: __S(265, __c33, 1) as any as S.Schema<DescribeTagsResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<DescribeTagsRequest>,
+  output: __S(257, __c32, 1) as any as S.Schema<DescribeTagsResponse>,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1783,8 +1783,8 @@ export const listTagsForResource: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(273, __c34, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(265, __c33, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [AccessPointNotFound, BadRequest, FileSystemNotFound, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1828,8 +1828,8 @@ export const modifyMountTargetSecurityGroups: API.OperationMethod<
   ModifyMountTargetSecurityGroupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<ModifyMountTargetSecurityGroupsRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<ModifyMountTargetSecurityGroupsResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<ModifyMountTargetSecurityGroupsRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<ModifyMountTargetSecurityGroupsResponse>,
   errors: [
     BadRequest,
     IncorrectMountTargetState,
@@ -1861,8 +1861,8 @@ export const putAccountPreferences: API.OperationMethod<
   PutAccountPreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<PutAccountPreferencesRequest>,
-  output: __S(289, __c36, 1) as any as S.Schema<PutAccountPreferencesResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<PutAccountPreferencesRequest>,
+  output: __S(281, __c35, 1) as any as S.Schema<PutAccountPreferencesResponse>,
   errors: [BadRequest, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1885,8 +1885,8 @@ export const putBackupPolicy: API.OperationMethod<
   PutBackupPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<PutBackupPolicyRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<BackupPolicyDescription>,
+  input: __S(288, __c36, 0) as any as S.Schema<PutBackupPolicyRequest>,
+  output: __S(185, __c23, 1) as any as S.Schema<BackupPolicyDescription>,
   errors: [
     BadRequest,
     FileSystemNotFound,
@@ -1926,8 +1926,8 @@ export const putFileSystemPolicy: API.OperationMethod<
   PutFileSystemPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<PutFileSystemPolicyRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<FileSystemPolicyDescription>,
+  input: __S(296, __c37, 0) as any as S.Schema<PutFileSystemPolicyRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<FileSystemPolicyDescription>,
   errors: [
     BadRequest,
     FileSystemNotFound,
@@ -2007,8 +2007,8 @@ export const putLifecycleConfiguration: API.OperationMethod<
   PutLifecycleConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<PutLifecycleConfigurationRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<LifecycleConfigurationDescription>,
+  input: __S(304, __c38, 0) as any as S.Schema<PutLifecycleConfigurationRequest>,
+  output: __S(226, __c28, 2) as any as S.Schema<LifecycleConfigurationDescription>,
   errors: [BadRequest, FileSystemNotFound, IncorrectFileSystemLifeCycleState, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2033,7 +2033,7 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<TagResourceRequest>,
+  input: __S(312, __c39, 0) as any as S.Schema<TagResourceRequest>,
   output: __S(96, __c12, 0) as any as S.Schema<TagResourceResponse>,
   errors: [AccessPointNotFound, BadRequest, FileSystemNotFound, InternalServerError],
   protocol: AwsProtocol,
@@ -2059,7 +2059,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<UntagResourceRequest>,
+  input: __S(320, __c40, 0) as any as S.Schema<UntagResourceRequest>,
   output: __S(96, __c12, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [AccessPointNotFound, BadRequest, FileSystemNotFound, InternalServerError],
   protocol: AwsProtocol,
@@ -2086,7 +2086,7 @@ export const updateFileSystem: API.OperationMethod<
   UpdateFileSystemError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<UpdateFileSystemRequest>,
+  input: __S(328, __c41, 0) as any as S.Schema<UpdateFileSystemRequest>,
   output: __S(33, __c4, 1) as any as S.Schema<FileSystemDescription>,
   errors: [
     BadRequest,
@@ -2124,7 +2124,7 @@ export const updateFileSystemProtection: API.OperationMethod<
   UpdateFileSystemProtectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<UpdateFileSystemProtectionRequest>,
+  input: __S(336, __c42, 0) as any as S.Schema<UpdateFileSystemProtectionRequest>,
   output: __S(40, __c5, 0) as any as S.Schema<FileSystemProtectionDescription>,
   errors: [
     BadRequest,
@@ -2277,9 +2277,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ ReplicationOverwriteProtection: S.optional(S.String) }),
-      ).annotate({
-        identifier: "FileSystemProtectionDescription",
-      });
+      ).annotate({ identifier: "FileSystemProtectionDescription" });
   }
 }
 function __c6(j: number): any {
@@ -2364,9 +2362,7 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateReplicationConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateReplicationConfigurationRequest" });
   }
 }
 function __c10(j: number): any {
@@ -2396,9 +2392,7 @@ function __c10(j: number): any {
           Destinations: __S(81, __c10, 1),
           SourceFileSystemOwnerId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ReplicationConfigurationDescription",
-      });
+      ).annotate({ identifier: "ReplicationConfigurationDescription" });
   }
 }
 function __c11(j: number): any {
@@ -2424,9 +2418,7 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateTagsResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "CreateTagsResponse" });
   }
 }
 function __c13(j: number): any {
@@ -2477,9 +2469,7 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteFileSystemPolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteFileSystemPolicyRequest" });
   }
 }
 function __c16(j: number): any {
@@ -2519,20 +2509,10 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteReplicationConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteReplicationConfigurationRequest" });
   }
 }
 function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteReplicationConfigurationResponse",
-      });
-  }
-}
-function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2552,7 +2532,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "DeleteTagsRequest" });
   }
 }
-function __c20(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2571,20 +2551,16 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeAccessPointsRequest",
-      });
+      ).annotate({ identifier: "DescribeAccessPointsRequest" });
     case 1:
       return S.Array(__S(20, __c2, 4));
     case 2:
       return S.suspend(() =>
-        S.Struct({ AccessPoints: S.optional(__S(161, __c20, 1)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DescribeAccessPointsResponse",
-      });
+        S.Struct({ AccessPoints: S.optional(__S(153, __c19, 1)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "DescribeAccessPointsResponse" });
   }
 }
-function __c21(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2598,21 +2574,17 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeAccountPreferencesRequest",
-      });
+      ).annotate({ identifier: "DescribeAccountPreferencesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ResourceIdPreference: S.optional(__S(177, __c22, 1)),
+          ResourceIdPreference: S.optional(__S(169, __c21, 1)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeAccountPreferencesResponse",
-      });
+      ).annotate({ identifier: "DescribeAccountPreferencesResponse" });
   }
 }
-function __c22(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
@@ -2620,12 +2592,12 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceIdType: S.optional(S.String),
-          Resources: S.optional(__S(176, __c22, 0)),
+          Resources: S.optional(__S(168, __c21, 0)),
         }),
       ).annotate({ identifier: "ResourceIdPreference" });
   }
 }
-function __c23(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2639,24 +2611,22 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeBackupPolicyRequest",
-      });
+      ).annotate({ identifier: "DescribeBackupPolicyRequest" });
   }
 }
-function __c24(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Status: S.String })).annotate({
         identifier: "BackupPolicy",
       });
     case 1:
-      return S.suspend(() => S.Struct({ BackupPolicy: S.optional(__S(192, __c24, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ BackupPolicy: S.optional(__S(184, __c23, 0)) })).annotate({
         identifier: "BackupPolicyDescription",
       });
   }
 }
-function __c25(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2670,22 +2640,18 @@ function __c25(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeFileSystemPolicyRequest",
-      });
+      ).annotate({ identifier: "DescribeFileSystemPolicyRequest" });
   }
 }
-function __c26(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ FileSystemId: S.optional(S.String), Policy: S.optional(S.String) }),
-      ).annotate({
-        identifier: "FileSystemPolicyDescription",
-      });
+      ).annotate({ identifier: "FileSystemPolicyDescription" });
   }
 }
-function __c27(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2704,24 +2670,20 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeFileSystemsRequest",
-      });
+      ).annotate({ identifier: "DescribeFileSystemsRequest" });
     case 1:
       return S.Array(__S(33, __c4, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          FileSystems: S.optional(__S(217, __c27, 1)),
+          FileSystems: S.optional(__S(209, __c26, 1)),
           NextMarker: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeFileSystemsResponse",
-      });
+      ).annotate({ identifier: "DescribeFileSystemsResponse" });
   }
 }
-function __c28(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2738,12 +2700,10 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeLifecycleConfigurationRequest",
-      });
+      ).annotate({ identifier: "DescribeLifecycleConfigurationRequest" });
   }
 }
-function __c29(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2754,16 +2714,14 @@ function __c29(j: number): any {
         }),
       ).annotate({ identifier: "LifecyclePolicy" });
     case 1:
-      return S.Array(__S(232, __c29, 0));
+      return S.Array(__S(224, __c28, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ LifecyclePolicies: S.optional(__S(233, __c29, 1)) }),
-      ).annotate({
-        identifier: "LifecycleConfigurationDescription",
-      });
+        S.Struct({ LifecyclePolicies: S.optional(__S(225, __c28, 1)) }),
+      ).annotate({ identifier: "LifecycleConfigurationDescription" });
   }
 }
-function __c30(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2783,24 +2741,20 @@ function __c30(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeMountTargetsRequest",
-      });
+      ).annotate({ identifier: "DescribeMountTargetsRequest" });
     case 1:
       return S.Array(__S(64, __c8, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          MountTargets: S.optional(__S(241, __c30, 1)),
+          MountTargets: S.optional(__S(233, __c29, 1)),
           NextMarker: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeMountTargetsResponse",
-      });
+      ).annotate({ identifier: "DescribeMountTargetsResponse" });
   }
 }
-function __c31(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2817,16 +2771,14 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeMountTargetSecurityGroupsRequest",
-      });
+      ).annotate({ identifier: "DescribeMountTargetSecurityGroupsRequest" });
     case 1:
       return S.suspend(() => S.Struct({ SecurityGroups: __S(56, __c7, 0) })).annotate({
         identifier: "DescribeMountTargetSecurityGroupsResponse",
       });
   }
 }
-function __c32(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2844,23 +2796,16 @@ function __c32(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeReplicationConfigurationsRequest",
-      });
+      ).annotate({ identifier: "DescribeReplicationConfigurationsRequest" });
     case 1:
       return S.Array(__S(82, __c10, 2));
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          Replications: S.optional(__S(257, __c32, 1)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DescribeReplicationConfigurationsResponse",
-      });
+        S.Struct({ Replications: S.optional(__S(249, __c31, 1)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "DescribeReplicationConfigurationsResponse" });
   }
 }
-function __c33(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2889,7 +2834,7 @@ function __c33(j: number): any {
       ).annotate({ identifier: "DescribeTagsResponse" });
   }
 }
-function __c34(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2907,18 +2852,14 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Tags: S.optional(__S(9, __c1, 1)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
+      ).annotate({ identifier: "ListTagsForResourceResponse" });
   }
 }
-function __c35(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2938,12 +2879,10 @@ function __c35(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ModifyMountTargetSecurityGroupsRequest",
-      });
+      ).annotate({ identifier: "ModifyMountTargetSecurityGroupsRequest" });
   }
 }
-function __c36(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2957,24 +2896,20 @@ function __c36(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutAccountPreferencesRequest",
-      });
+      ).annotate({ identifier: "PutAccountPreferencesRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ResourceIdPreference: S.optional(__S(177, __c22, 1)) }),
-      ).annotate({
-        identifier: "PutAccountPreferencesResponse",
-      });
+        S.Struct({ ResourceIdPreference: S.optional(__S(169, __c21, 1)) }),
+      ).annotate({ identifier: "PutAccountPreferencesResponse" });
   }
 }
-function __c37(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           FileSystemId: S.String.pipe(T.HttpLabel("FileSystemId")),
-          BackupPolicy: __S(192, __c24, 0),
+          BackupPolicy: __S(184, __c23, 0),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/2015-02-01/file-systems/{FileSystemId}/backup-policy" }),
@@ -2988,7 +2923,7 @@ function __c37(j: number): any {
       ).annotate({ identifier: "PutBackupPolicyRequest" });
   }
 }
-function __c38(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3006,18 +2941,16 @@ function __c38(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutFileSystemPolicyRequest",
-      });
+      ).annotate({ identifier: "PutFileSystemPolicyRequest" });
   }
 }
-function __c39(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           FileSystemId: S.String.pipe(T.HttpLabel("FileSystemId")),
-          LifecyclePolicies: __S(233, __c29, 1),
+          LifecyclePolicies: __S(225, __c28, 1),
         }).pipe(
           T.all(
             T.Http({
@@ -3031,12 +2964,10 @@ function __c39(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutLifecycleConfigurationRequest",
-      });
+      ).annotate({ identifier: "PutLifecycleConfigurationRequest" });
   }
 }
-function __c40(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3056,7 +2987,7 @@ function __c40(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c41(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3076,7 +3007,7 @@ function __c41(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c42(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3097,7 +3028,7 @@ function __c42(j: number): any {
       ).annotate({ identifier: "UpdateFileSystemRequest" });
   }
 }
-function __c43(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3114,9 +3045,7 @@ function __c43(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateFileSystemProtectionRequest",
-      });
+      ).annotate({ identifier: "UpdateFileSystemProtectionRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -111,7 +111,7 @@ export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()("ValidationException", {
     message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
     fieldList: /*@__PURE__*/ S.optional(
-      /*@__PURE__*/ S.suspend(() => __S(225, __c14, 1)).annotate({
+      /*@__PURE__*/ S.suspend(() => __S(241, __c15, 1)).annotate({
         identifier: "ValidationExceptionFieldList",
       }),
     ),
@@ -1099,8 +1099,8 @@ export const decryptData: API.OperationMethod<
   DecryptDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c15, 0) as any as S.Schema<DecryptDataInput>,
-  output: __S(241, __c15, 1) as any as S.Schema<DecryptDataOutput>,
+  input: __S(256, __c16, 0) as any as S.Schema<DecryptDataInput>,
+  output: __S(257, __c16, 1) as any as S.Schema<DecryptDataOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1155,8 +1155,8 @@ export const encryptData: API.OperationMethod<
   EncryptDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c19, 0) as any as S.Schema<EncryptDataInput>,
-  output: __S(305, __c19, 1) as any as S.Schema<EncryptDataOutput>,
+  input: __S(320, __c20, 0) as any as S.Schema<EncryptDataInput>,
+  output: __S(321, __c20, 1) as any as S.Schema<EncryptDataOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1195,8 +1195,8 @@ export const generateAs2805KekValidation: API.OperationMethod<
   GenerateAs2805KekValidationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323, __c20, 3) as any as S.Schema<GenerateAs2805KekValidationInput>,
-  output: __S(324, __c20, 4) as any as S.Schema<GenerateAs2805KekValidationOutput>,
+  input: __S(339, __c21, 3) as any as S.Schema<GenerateAs2805KekValidationInput>,
+  output: __S(340, __c21, 4) as any as S.Schema<GenerateAs2805KekValidationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1237,8 +1237,8 @@ export const generateAuthRequestCryptogram: API.OperationMethod<
   GenerateAuthRequestCryptogramError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<GenerateAuthRequestCryptogramInput>,
-  output: __S(337, __c21, 1) as any as S.Schema<GenerateAuthRequestCryptogramOutput>,
+  input: __S(352, __c22, 0) as any as S.Schema<GenerateAuthRequestCryptogramInput>,
+  output: __S(353, __c22, 1) as any as S.Schema<GenerateAuthRequestCryptogramOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1659,7 +1659,7 @@ export const verifyCardValidationData: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(178, __c11, 2) as any as S.Schema<VerifyCardValidationDataInput>,
-  output: __S(179, __c11, 3) as any as S.Schema<VerifyCardValidationDataOutput>,
+  output: __S(192, __c12, 0) as any as S.Schema<VerifyCardValidationDataOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1700,8 +1700,8 @@ export const verifyMac: API.OperationMethod<
   VerifyMacError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c12, 0) as any as S.Schema<VerifyMacInput>,
-  output: __S(193, __c12, 1) as any as S.Schema<VerifyMacOutput>,
+  input: __S(208, __c13, 0) as any as S.Schema<VerifyMacInput>,
+  output: __S(192, __c12, 0) as any as S.Schema<VerifyMacOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1744,8 +1744,8 @@ export const verifyPinData: API.OperationMethod<
   VerifyPinDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c13, 3) as any as S.Schema<VerifyPinDataInput>,
-  output: __S(212, __c13, 4) as any as S.Schema<VerifyPinDataOutput>,
+  input: __S(227, __c14, 3) as any as S.Schema<VerifyPinDataInput>,
+  output: __S(228, __c14, 4) as any as S.Schema<VerifyPinDataOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1766,11 +1766,11 @@ function __c0(j: number): any {
       return S.Union([
         /*@__PURE__*/ S.Struct({ AmexCardSecurityCodeVersion1: __S(16, __c1, 0) }),
         /*@__PURE__*/ S.Struct({ AmexCardSecurityCodeVersion2: __S(17, __c1, 1) }),
-        /*@__PURE__*/ S.Struct({ CardVerificationValue1: __S(18, __c1, 2) }),
-        /*@__PURE__*/ S.Struct({ CardVerificationValue2: __S(19, __c1, 3) }),
-        /*@__PURE__*/ S.Struct({ CardHolderVerificationValue: __S(20, __c1, 4) }),
-        /*@__PURE__*/ S.Struct({ DynamicCardVerificationCode: __S(21, __c1, 5) }),
-        /*@__PURE__*/ S.Struct({ DynamicCardVerificationValue: __S(22, __c1, 6) }),
+        /*@__PURE__*/ S.Struct({ CardVerificationValue1: __S(17, __c1, 1) }),
+        /*@__PURE__*/ S.Struct({ CardVerificationValue2: __S(16, __c1, 0) }),
+        /*@__PURE__*/ S.Struct({ CardHolderVerificationValue: __S(18, __c1, 2) }),
+        /*@__PURE__*/ S.Struct({ DynamicCardVerificationCode: __S(19, __c1, 3) }),
+        /*@__PURE__*/ S.Struct({ DynamicCardVerificationValue: __S(20, __c1, 4) }),
       ]);
     case 1:
       return S.suspend(() =>
@@ -1789,15 +1789,11 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GenerateCardValidationDataInput",
-      });
+      ).annotate({ identifier: "GenerateCardValidationDataInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({ KeyArn: S.String, KeyCheckValue: S.String, ValidationData: SensitiveString }),
-      ).annotate({
-        identifier: "GenerateCardValidationDataOutput",
-      });
+      ).annotate({ identifier: "GenerateCardValidationDataOutput" });
   }
 }
 function __c1(j: number): any {
@@ -1809,28 +1805,16 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ CardExpiryDate: SensitiveString, ServiceCode: SensitiveString }),
-      ).annotate({
-        identifier: "AmexCardSecurityCodeVersion2",
-      });
+      ).annotate({ identifier: "AmexCardSecurityCodeVersion2" });
     case 2:
-      return S.suspend(() =>
-        S.Struct({ CardExpiryDate: SensitiveString, ServiceCode: SensitiveString }),
-      ).annotate({ identifier: "CardVerificationValue1" });
-    case 3:
-      return S.suspend(() => S.Struct({ CardExpiryDate: SensitiveString })).annotate({
-        identifier: "CardVerificationValue2",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           UnpredictableNumber: S.String,
           PanSequenceNumber: S.String,
           ApplicationTransactionCounter: S.String,
         }),
-      ).annotate({
-        identifier: "CardHolderVerificationValue",
-      });
-    case 5:
+      ).annotate({ identifier: "CardHolderVerificationValue" });
+    case 3:
       return S.suspend(() =>
         S.Struct({
           UnpredictableNumber: S.String,
@@ -1838,10 +1822,8 @@ function __c1(j: number): any {
           ApplicationTransactionCounter: S.String,
           TrackData: SensitiveString,
         }),
-      ).annotate({
-        identifier: "DynamicCardVerificationCode",
-      });
-    case 6:
+      ).annotate({ identifier: "DynamicCardVerificationCode" });
+    case 4:
       return S.suspend(() =>
         S.Struct({
           PanSequenceNumber: S.String,
@@ -1849,9 +1831,7 @@ function __c1(j: number): any {
           ServiceCode: SensitiveString,
           ApplicationTransactionCounter: S.String,
         }),
-      ).annotate({
-        identifier: "DynamicCardVerificationValue",
-      });
+      ).annotate({ identifier: "DynamicCardVerificationValue" });
   }
 }
 function __c2(j: number): any {
@@ -1983,9 +1963,7 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GenerateMacEmvPinChangeInput",
-      });
+      ).annotate({ identifier: "GenerateMacEmvPinChangeInput" });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1994,9 +1972,7 @@ function __c4(j: number): any {
           CurrentPinPekArn: S.optional(S.String),
           CurrentPinPekKeyCheckValue: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "VisaAmexDerivationOutputs",
-      });
+      ).annotate({ identifier: "VisaAmexDerivationOutputs" });
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -2010,9 +1986,7 @@ function __c4(j: number): any {
           SecureMessagingConfidentialityKeyCheckValue: S.String,
           VisaAmexDerivationOutputs: S.optional(__S(71, __c4, 7)),
         }),
-      ).annotate({
-        identifier: "GenerateMacEmvPinChangeOutput",
-      });
+      ).annotate({ identifier: "GenerateMacEmvPinChangeOutput" });
   }
 }
 function __c5(j: number): any {
@@ -2060,7 +2034,7 @@ function __c5(j: number): any {
           PinDataLength: S.optional(S.Number),
           PrimaryAccountNumber: S.optional(SensitiveString),
           PinBlockFormat: S.String,
-          EncryptionWrappedKey: S.optional(__S(274, __c17, 2)),
+          EncryptionWrappedKey: S.optional(__S(290, __c18, 2)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/pindata/generate" }), svc, auth, proto, ver, rules),
         ),
@@ -2100,9 +2074,9 @@ function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ Symmetric: __S(288, __c18, 0) }),
-        /*@__PURE__*/ S.Struct({ Asymmetric: __S(289, __c18, 1) }),
-        /*@__PURE__*/ S.Struct({ Dukpt: __S(290, __c18, 2) }),
+        /*@__PURE__*/ S.Struct({ Symmetric: __S(304, __c19, 0) }),
+        /*@__PURE__*/ S.Struct({ Asymmetric: __S(305, __c19, 1) }),
+        /*@__PURE__*/ S.Struct({ Dukpt: __S(306, __c19, 2) }),
       ]);
     case 1:
       return S.suspend(() =>
@@ -2112,8 +2086,8 @@ function __c7(j: number): any {
           CipherText: SensitiveString,
           IncomingEncryptionAttributes: __S(112, __c7, 0),
           OutgoingEncryptionAttributes: __S(112, __c7, 0),
-          IncomingWrappedKey: S.optional(__S(274, __c17, 2)),
-          OutgoingWrappedKey: S.optional(__S(274, __c17, 2)),
+          IncomingWrappedKey: S.optional(__S(290, __c18, 2)),
+          OutgoingWrappedKey: S.optional(__S(290, __c18, 2)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/keys/{IncomingKeyIdentifier}/reencrypt" }),
@@ -2147,9 +2121,7 @@ function __c8(j: number): any {
           DerivationData: __S(128, __c8, 0),
           WrappedKeyBlock: SensitiveString,
         }),
-      ).annotate({
-        identifier: "IncomingDiffieHellmanTr31KeyBlock",
-      });
+      ).annotate({ identifier: "IncomingDiffieHellmanTr31KeyBlock" });
     case 2:
       return S.Union([/*@__PURE__*/ S.Struct({ DiffieHellmanTr31KeyBlock: __S(129, __c8, 1) })]);
     case 3:
@@ -2174,9 +2146,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "TranslateKeyMaterialInput",
-      });
+      ).annotate({ identifier: "TranslateKeyMaterialInput" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2198,9 +2168,7 @@ function __c9(j: number): any {
         identifier: "TranslationPinDataIsoFormat034",
       });
     case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TranslationPinDataIsoFormat1",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TranslationPinDataIsoFormat1" });
     case 2:
       return S.Union([
         /*@__PURE__*/ S.Struct({ IsoFormat0: __S(144, __c9, 0) }),
@@ -2216,15 +2184,11 @@ function __c9(j: number): any {
           DukptKeyDerivationType: S.optional(S.String),
           DukptKeyVariant: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DukptDerivationAttributes",
-      });
+      ).annotate({ identifier: "DukptDerivationAttributes" });
     case 4:
       return S.suspend(() =>
         S.Struct({ SystemTraceAuditNumber: S.String, TransactionAmount: S.String }),
-      ).annotate({
-        identifier: "As2805PekDerivationAttributes",
-      });
+      ).annotate({ identifier: "As2805PekDerivationAttributes" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2235,8 +2199,8 @@ function __c9(j: number): any {
           EncryptedPinBlock: SensitiveString,
           IncomingDukptAttributes: S.optional(__S(147, __c9, 3)),
           OutgoingDukptAttributes: S.optional(__S(147, __c9, 3)),
-          IncomingWrappedKey: S.optional(__S(274, __c17, 2)),
-          OutgoingWrappedKey: S.optional(__S(274, __c17, 2)),
+          IncomingWrappedKey: S.optional(__S(290, __c18, 2)),
+          OutgoingWrappedKey: S.optional(__S(290, __c18, 2)),
           IncomingAs2805Attributes: S.optional(__S(148, __c9, 4)),
         }).pipe(
           T.all(
@@ -2267,9 +2231,7 @@ function __c10(j: number): any {
           CardStatusUpdate: S.String,
           ProprietaryAuthenticationData: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "CryptogramVerificationArpcMethod2",
-      });
+      ).annotate({ identifier: "CryptogramVerificationArpcMethod2" });
     case 2:
       return S.Union([
         /*@__PURE__*/ S.Struct({ ArpcMethod1: __S(160, __c10, 0) }),
@@ -2282,7 +2244,7 @@ function __c10(j: number): any {
           TransactionData: SensitiveString,
           AuthRequestCryptogram: SensitiveString,
           MajorKeyDerivationMode: S.String,
-          SessionKeyDerivationAttributes: __S(355, __c22, 3),
+          SessionKeyDerivationAttributes: __S(371, __c23, 3),
           AuthResponseAttributes: S.optional(__S(162, __c10, 2)),
         }).pipe(
           T.all(
@@ -2294,9 +2256,7 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "VerifyAuthRequestCryptogramInput",
-      });
+      ).annotate({ identifier: "VerifyAuthRequestCryptogramInput" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2304,9 +2264,7 @@ function __c10(j: number): any {
           KeyCheckValue: S.String,
           AuthResponseValue: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "VerifyAuthRequestCryptogramOutput",
-      });
+      ).annotate({ identifier: "VerifyAuthRequestCryptogramOutput" });
   }
 }
 function __c11(j: number): any {
@@ -2318,21 +2276,17 @@ function __c11(j: number): any {
           UnpredictableNumber: S.String,
           ApplicationTransactionCounter: S.String,
         }),
-      ).annotate({
-        identifier: "DiscoverDynamicCardVerificationCode",
-      });
+      ).annotate({ identifier: "DiscoverDynamicCardVerificationCode" });
     case 1:
       return S.Union([
         /*@__PURE__*/ S.Struct({ AmexCardSecurityCodeVersion1: __S(16, __c1, 0) }),
         /*@__PURE__*/ S.Struct({ AmexCardSecurityCodeVersion2: __S(17, __c1, 1) }),
-        /*@__PURE__*/ S.Struct({ CardVerificationValue1: __S(18, __c1, 2) }),
-        /*@__PURE__*/ S.Struct({ CardVerificationValue2: __S(19, __c1, 3) }),
-        /*@__PURE__*/ S.Struct({ CardHolderVerificationValue: __S(20, __c1, 4) }),
-        /*@__PURE__*/ S.Struct({ DynamicCardVerificationCode: __S(21, __c1, 5) }),
-        /*@__PURE__*/ S.Struct({ DynamicCardVerificationValue: __S(22, __c1, 6) }),
-        /*@__PURE__*/ S.Struct({
-          DiscoverDynamicCardVerificationCode: __S(176, __c11, 0),
-        }),
+        /*@__PURE__*/ S.Struct({ CardVerificationValue1: __S(17, __c1, 1) }),
+        /*@__PURE__*/ S.Struct({ CardVerificationValue2: __S(16, __c1, 0) }),
+        /*@__PURE__*/ S.Struct({ CardHolderVerificationValue: __S(18, __c1, 2) }),
+        /*@__PURE__*/ S.Struct({ DynamicCardVerificationCode: __S(19, __c1, 3) }),
+        /*@__PURE__*/ S.Struct({ DynamicCardVerificationValue: __S(20, __c1, 4) }),
+        /*@__PURE__*/ S.Struct({ DiscoverDynamicCardVerificationCode: __S(176, __c11, 0) }),
       ]);
     case 2:
       return S.suspend(() =>
@@ -2351,16 +2305,18 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "VerifyCardValidationDataInput",
-      });
-    case 3:
+      ).annotate({ identifier: "VerifyCardValidationDataInput" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ KeyArn: S.String, KeyCheckValue: S.String })).annotate({
         identifier: "VerifyCardValidationDataOutput",
       });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2374,13 +2330,9 @@ function __c12(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/mac/verify" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "VerifyMacInput" });
-    case 1:
-      return S.suspend(() => S.Struct({ KeyArn: S.String, KeyCheckValue: S.String })).annotate({
-        identifier: "VerifyMacOutput",
-      });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2388,7 +2340,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "VisaPinVerification" });
     case 1:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ VisaPin: __S(208, __c13, 0) }),
+        /*@__PURE__*/ S.Struct({ VisaPin: __S(224, __c14, 0) }),
         /*@__PURE__*/ S.Struct({ Ibm3624Pin: __S(96, __c6, 0) }),
       ]);
     case 2:
@@ -2400,13 +2352,13 @@ function __c13(j: number): any {
         S.Struct({
           VerificationKeyIdentifier: S.String,
           EncryptionKeyIdentifier: S.String,
-          VerificationAttributes: __S(209, __c13, 1),
+          VerificationAttributes: __S(225, __c14, 1),
           EncryptedPinBlock: SensitiveString,
           PrimaryAccountNumber: S.optional(SensitiveString),
           PinBlockFormat: S.String,
           PinDataLength: S.optional(S.Number),
-          DukptAttributes: S.optional(__S(210, __c13, 2)),
-          EncryptionWrappedKey: S.optional(__S(274, __c17, 2)),
+          DukptAttributes: S.optional(__S(226, __c14, 2)),
+          EncryptionWrappedKey: S.optional(__S(290, __c18, 2)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/pindata/verify" }), svc, auth, proto, ver, rules),
         ),
@@ -2422,25 +2374,25 @@ function __c13(j: number): any {
       ).annotate({ identifier: "VerifyPinDataOutput" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ path: S.String, message: S.String })).annotate({
         identifier: "ValidationExceptionField",
       });
     case 1:
-      return S.Array(__S(224, __c14, 0));
+      return S.Array(__S(240, __c15, 0));
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           KeyIdentifier: S.String.pipe(T.HttpLabel("KeyIdentifier")),
           CipherText: SensitiveString,
-          DecryptionAttributes: __S(257, __c16, 1),
-          WrappedKey: S.optional(__S(274, __c17, 2)),
+          DecryptionAttributes: __S(273, __c17, 1),
+          WrappedKey: S.optional(__S(290, __c18, 2)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/keys/{KeyIdentifier}/decrypt" }),
@@ -2458,7 +2410,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "DecryptDataOutput" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2473,14 +2425,14 @@ function __c16(j: number): any {
       ).annotate({ identifier: "EmvEncryptionAttributes" });
     case 1:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ Symmetric: __S(288, __c18, 0) }),
-        /*@__PURE__*/ S.Struct({ Asymmetric: __S(289, __c18, 1) }),
-        /*@__PURE__*/ S.Struct({ Dukpt: __S(290, __c18, 2) }),
-        /*@__PURE__*/ S.Struct({ Emv: __S(256, __c16, 0) }),
+        /*@__PURE__*/ S.Struct({ Symmetric: __S(304, __c19, 0) }),
+        /*@__PURE__*/ S.Struct({ Asymmetric: __S(305, __c19, 1) }),
+        /*@__PURE__*/ S.Struct({ Dukpt: __S(306, __c19, 2) }),
+        /*@__PURE__*/ S.Struct({ Emv: __S(272, __c17, 0) }),
       ]);
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2496,18 +2448,18 @@ function __c17(j: number): any {
     case 1:
       return S.Union([
         /*@__PURE__*/ S.Struct({ Tr31KeyBlock: SensitiveString }),
-        /*@__PURE__*/ S.Struct({ DiffieHellmanSymmetricKey: __S(272, __c17, 0) }),
+        /*@__PURE__*/ S.Struct({ DiffieHellmanSymmetricKey: __S(288, __c18, 0) }),
       ]);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          WrappedKeyMaterial: __S(273, __c17, 1),
+          WrappedKeyMaterial: __S(289, __c18, 1),
           KeyCheckValueAlgorithm: S.optional(S.String),
         }),
       ).annotate({ identifier: "WrappedKey" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2516,9 +2468,7 @@ function __c18(j: number): any {
           InitializationVector: S.optional(SensitiveString),
           PaddingType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SymmetricEncryptionAttributes",
-      });
+      ).annotate({ identifier: "SymmetricEncryptionAttributes" });
     case 1:
       return S.suspend(() => S.Struct({ PaddingType: S.optional(S.String) })).annotate({
         identifier: "AsymmetricEncryptionAttributes",
@@ -2532,20 +2482,18 @@ function __c18(j: number): any {
           DukptKeyVariant: S.optional(S.String),
           InitializationVector: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "DukptEncryptionAttributes",
-      });
+      ).annotate({ identifier: "DukptEncryptionAttributes" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           KeyIdentifier: S.String.pipe(T.HttpLabel("KeyIdentifier")),
           PlainText: SensitiveString,
-          EncryptionAttributes: __S(257, __c16, 1),
-          WrappedKey: S.optional(__S(274, __c17, 2)),
+          EncryptionAttributes: __S(273, __c17, 1),
+          WrappedKey: S.optional(__S(290, __c18, 2)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/keys/{KeyIdentifier}/encrypt" }),
@@ -2567,14 +2515,11 @@ function __c19(j: number): any {
       ).annotate({ identifier: "EncryptDataOutput" });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          DeriveKeyAlgorithm: S.String,
-          RandomKeyMaxLength: S.optional(S.String),
-        }),
+        S.Struct({ DeriveKeyAlgorithm: S.String, RandomKeyMaxLength: S.optional(S.String) }),
       ).annotate({ identifier: "KekValidationRequest" });
     case 1:
       return S.suspend(() => S.Struct({ RandomKeySend: SensitiveString })).annotate({
@@ -2582,14 +2527,14 @@ function __c20(j: number): any {
       });
     case 2:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ KekValidationRequest: __S(320, __c20, 0) }),
-        /*@__PURE__*/ S.Struct({ KekValidationResponse: __S(321, __c20, 1) }),
+        /*@__PURE__*/ S.Struct({ KekValidationRequest: __S(336, __c21, 0) }),
+        /*@__PURE__*/ S.Struct({ KekValidationResponse: __S(337, __c21, 1) }),
       ]);
     case 3:
       return S.suspend(() =>
         S.Struct({
           KeyIdentifier: S.String,
-          KekValidationType: __S(322, __c20, 2),
+          KekValidationType: __S(338, __c21, 2),
           RandomKeySendVariantMask: S.String,
         }).pipe(
           T.all(
@@ -2601,9 +2546,7 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GenerateAs2805KekValidationInput",
-      });
+      ).annotate({ identifier: "GenerateAs2805KekValidationInput" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2612,12 +2555,10 @@ function __c20(j: number): any {
           RandomKeySend: SensitiveString,
           RandomKeyReceive: SensitiveString,
         }),
-      ).annotate({
-        identifier: "GenerateAs2805KekValidationOutput",
-      });
+      ).annotate({ identifier: "GenerateAs2805KekValidationOutput" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2625,7 +2566,7 @@ function __c21(j: number): any {
           KeyIdentifier: S.String,
           TransactionData: SensitiveString,
           MajorKeyDerivationMode: S.String,
-          SessionKeyDerivationAttributes: __S(355, __c22, 3),
+          SessionKeyDerivationAttributes: __S(371, __c23, 3),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/cryptogram/generate" }),
@@ -2636,9 +2577,7 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GenerateAuthRequestCryptogramInput",
-      });
+      ).annotate({ identifier: "GenerateAuthRequestCryptogramInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2646,12 +2585,10 @@ function __c21(j: number): any {
           KeyCheckValue: S.String,
           AuthRequestCryptogram: SensitiveString,
         }),
-      ).annotate({
-        identifier: "GenerateAuthRequestCryptogramOutput",
-      });
+      ).annotate({ identifier: "GenerateAuthRequestCryptogramOutput" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2676,12 +2613,12 @@ function __c22(j: number): any {
       ).annotate({ identifier: "SessionKeyAmex" });
     case 3:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ EmvCommon: __S(352, __c22, 0) }),
-        /*@__PURE__*/ S.Struct({ Mastercard: __S(353, __c22, 1) }),
-        /*@__PURE__*/ S.Struct({ Emv2000: __S(352, __c22, 0) }),
-        /*@__PURE__*/ S.Struct({ Amex: __S(354, __c22, 2) }),
-        /*@__PURE__*/ S.Struct({ Visa: __S(354, __c22, 2) }),
-        /*@__PURE__*/ S.Struct({ UnionPay: __S(352, __c22, 0) }),
+        /*@__PURE__*/ S.Struct({ EmvCommon: __S(368, __c23, 0) }),
+        /*@__PURE__*/ S.Struct({ Mastercard: __S(369, __c23, 1) }),
+        /*@__PURE__*/ S.Struct({ Emv2000: __S(368, __c23, 0) }),
+        /*@__PURE__*/ S.Struct({ Amex: __S(370, __c23, 2) }),
+        /*@__PURE__*/ S.Struct({ Visa: __S(370, __c23, 2) }),
+        /*@__PURE__*/ S.Struct({ UnionPay: __S(368, __c23, 0) }),
       ]);
   }
 }

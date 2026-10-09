@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -859,7 +859,7 @@ export const createBackendAuth: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(512, __c32, 0) as any as S.Schema<CreateBackendAuthRequest>,
-  output: __S(528, __c33, 0) as any as S.Schema<CreateBackendAuthResponse>,
+  output: __S(448, __c28, 0) as any as S.Schema<CreateBackendAuthResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -886,8 +886,8 @@ export const createBackendConfig: API.OperationMethod<
   CreateBackendConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c38, 0) as any as S.Schema<CreateBackendConfigRequest>,
-  output: __S(624, __c39, 0) as any as S.Schema<CreateBackendConfigResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<CreateBackendConfigRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<CreateBackendConfigResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -914,8 +914,8 @@ export const createBackendStorage: API.OperationMethod<
   CreateBackendStorageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(641, __c40, 1) as any as S.Schema<CreateBackendStorageRequest>,
-  output: __S(624, __c39, 0) as any as S.Schema<CreateBackendStorageResponse>,
+  input: __S(625, __c39, 1) as any as S.Schema<CreateBackendStorageRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<CreateBackendStorageResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1027,7 +1027,7 @@ export const deleteBackendAuth: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(64, __c4, 0) as any as S.Schema<DeleteBackendAuthRequest>,
-  output: __S(528, __c33, 0) as any as S.Schema<DeleteBackendAuthResponse>,
+  output: __S(448, __c28, 0) as any as S.Schema<DeleteBackendAuthResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1055,7 +1055,7 @@ export const deleteBackendStorage: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(80, __c5, 0) as any as S.Schema<DeleteBackendStorageRequest>,
-  output: __S(624, __c39, 0) as any as S.Schema<DeleteBackendStorageResponse>,
+  output: __S(608, __c38, 0) as any as S.Schema<DeleteBackendStorageResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1111,7 +1111,7 @@ export const generateBackendAPIModels: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(112, __c7, 0) as any as S.Schema<GenerateBackendAPIModelsRequest>,
-  output: __S(528, __c33, 0) as any as S.Schema<GenerateBackendAPIModelsResponse>,
+  output: __S(448, __c28, 0) as any as S.Schema<GenerateBackendAPIModelsResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1335,7 +1335,7 @@ export const importBackendAuth: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(256, __c16, 0) as any as S.Schema<ImportBackendAuthRequest>,
-  output: __S(528, __c33, 0) as any as S.Schema<ImportBackendAuthResponse>,
+  output: __S(448, __c28, 0) as any as S.Schema<ImportBackendAuthResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1363,7 +1363,7 @@ export const importBackendStorage: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(272, __c17, 0) as any as S.Schema<ImportBackendStorageRequest>,
-  output: __S(624, __c39, 0) as any as S.Schema<ImportBackendStorageResponse>,
+  output: __S(608, __c38, 0) as any as S.Schema<ImportBackendStorageResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1531,7 +1531,7 @@ export const updateBackendAuth: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(371, __c23, 3) as any as S.Schema<UpdateBackendAuthRequest>,
-  output: __S(528, __c33, 0) as any as S.Schema<UpdateBackendAuthResponse>,
+  output: __S(448, __c28, 0) as any as S.Schema<UpdateBackendAuthResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1615,7 +1615,7 @@ export const updateBackendStorage: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(417, __c26, 1) as any as S.Schema<UpdateBackendStorageRequest>,
-  output: __S(624, __c39, 0) as any as S.Schema<UpdateBackendStorageResponse>,
+  output: __S(608, __c38, 0) as any as S.Schema<UpdateBackendStorageResponse>,
   errors: [
     BadRequestException,
     GatewayTimeoutException,
@@ -1765,9 +1765,7 @@ function __c5(j: number): any {
               rules,
             ),
           ),
-      ).annotate({
-        identifier: "DeleteBackendStorageRequest",
-      });
+      ).annotate({ identifier: "DeleteBackendStorageRequest" });
   }
 }
 function __c6(j: number): any {
@@ -1819,9 +1817,7 @@ function __c7(j: number): any {
               rules,
             ),
           ),
-      ).annotate({
-        identifier: "GenerateBackendAPIModelsRequest",
-      });
+      ).annotate({ identifier: "GenerateBackendAPIModelsRequest" });
   }
 }
 function __c8(j: number): any {
@@ -1851,7 +1847,7 @@ function __c8(j: number): any {
           AmplifyMetaConfig: S.optional(S.String),
           AppId: S.optional(S.String),
           AppName: S.optional(S.String),
-          BackendEnvironmentList: S.optional(__S(544, __c34, 0)),
+          BackendEnvironmentList: S.optional(__S(528, __c33, 0)),
           BackendEnvironmentName: S.optional(S.String),
           Error: S.optional(S.String),
         }).pipe(
@@ -1936,9 +1932,7 @@ function __c10(j: number): any {
               rules,
             ),
           ),
-      ).annotate({
-        identifier: "GetBackendAPIModelsRequest",
-      });
+      ).annotate({ identifier: "GetBackendAPIModelsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1952,9 +1946,7 @@ function __c10(j: number): any {
             ModelIntrospectionSchema: "modelIntrospectionSchema",
           }),
         ),
-      ).annotate({
-        identifier: "GetBackendAPIModelsResponse",
-      });
+      ).annotate({ identifier: "GetBackendAPIModelsResponse" });
   }
 }
 function __c11(j: number): any {
@@ -1987,7 +1979,7 @@ function __c11(j: number): any {
           AppId: S.optional(S.String),
           BackendEnvironmentName: S.optional(S.String),
           Error: S.optional(S.String),
-          ResourceConfig: S.optional(__S(562, __c35, 2)),
+          ResourceConfig: S.optional(__S(546, __c34, 2)),
           ResourceName: S.optional(S.String),
         }).pipe(
           S.encodeKeys({
@@ -2079,7 +2071,7 @@ function __c14(j: number): any {
         S.Struct({
           BucketName: S.optional(S.String),
           Imported: S.optional(S.Boolean),
-          Permissions: S.optional(__S(656, __c41, 0)),
+          Permissions: S.optional(__S(640, __c40, 0)),
           ServiceName: S.optional(S.String),
         }).pipe(
           S.encodeKeys({
@@ -2089,9 +2081,7 @@ function __c14(j: number): any {
             ServiceName: "serviceName",
           }),
         ),
-      ).annotate({
-        identifier: "GetBackendStorageResourceConfig",
-      });
+      ).annotate({ identifier: "GetBackendStorageResourceConfig" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2107,9 +2097,7 @@ function __c14(j: number): any {
             ResourceName: "resourceName",
           }),
         ),
-      ).annotate({
-        identifier: "GetBackendStorageResponse",
-      });
+      ).annotate({ identifier: "GetBackendStorageResponse" });
   }
 }
 function __c15(j: number): any {
@@ -2192,9 +2180,7 @@ function __c17(j: number): any {
               rules,
             ),
           ),
-      ).annotate({
-        identifier: "ImportBackendStorageRequest",
-      });
+      ).annotate({ identifier: "ImportBackendStorageRequest" });
   }
 }
 function __c18(j: number): any {
@@ -2301,9 +2287,7 @@ function __c20(j: number): any {
             Status: "status",
           }),
         ),
-      ).annotate({
-        identifier: "RemoveAllBackendsResponse",
-      });
+      ).annotate({ identifier: "RemoveAllBackendsResponse" });
   }
 }
 function __c21(j: number): any {
@@ -2320,15 +2304,11 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RemoveBackendConfigRequest",
-      });
+      ).annotate({ identifier: "RemoveBackendConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Error: S.optional(S.String) }).pipe(S.encodeKeys({ Error: "error" })),
-      ).annotate({
-        identifier: "RemoveBackendConfigResponse",
-      });
+      ).annotate({ identifier: "RemoveBackendConfigResponse" });
   }
 }
 function __c22(j: number): any {
@@ -2362,17 +2342,15 @@ function __c23(j: number): any {
         S.Struct({ UnauthenticatedLogin: S.optional(S.Boolean) }).pipe(
           S.encodeKeys({ UnauthenticatedLogin: "unauthenticatedLogin" }),
         ),
-      ).annotate({
-        identifier: "UpdateBackendAuthIdentityPoolConfig",
-      });
+      ).annotate({ identifier: "UpdateBackendAuthIdentityPoolConfig" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ForgotPassword: S.optional(__S(578, __c36, 2)),
-          Mfa: S.optional(__S(580, __c36, 4)),
-          OAuth: S.optional(__S(584, __c36, 8)),
-          PasswordPolicy: S.optional(__S(586, __c36, 10)),
-          VerificationMessage: S.optional(__S(578, __c36, 2)),
+          ForgotPassword: S.optional(__S(562, __c35, 2)),
+          Mfa: S.optional(__S(564, __c35, 4)),
+          OAuth: S.optional(__S(568, __c35, 8)),
+          PasswordPolicy: S.optional(__S(569, __c35, 9)),
+          VerificationMessage: S.optional(__S(562, __c35, 2)),
         }).pipe(
           S.encodeKeys({
             ForgotPassword: "forgotPassword",
@@ -2382,9 +2360,7 @@ function __c23(j: number): any {
             VerificationMessage: "verificationMessage",
           }),
         ),
-      ).annotate({
-        identifier: "UpdateBackendAuthUserPoolConfig",
-      });
+      ).annotate({ identifier: "UpdateBackendAuthUserPoolConfig" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2400,9 +2376,7 @@ function __c23(j: number): any {
             UserPoolConfigs: "userPoolConfigs",
           }),
         ),
-      ).annotate({
-        identifier: "UpdateBackendAuthResourceConfig",
-      });
+      ).annotate({ identifier: "UpdateBackendAuthResourceConfig" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2460,9 +2434,7 @@ function __c24(j: number): any {
               rules,
             ),
           ),
-      ).annotate({
-        identifier: "UpdateBackendConfigRequest",
-      });
+      ).annotate({ identifier: "UpdateBackendConfigRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2478,9 +2450,7 @@ function __c24(j: number): any {
             LoginAuthConfig: "loginAuthConfig",
           }),
         ),
-      ).annotate({
-        identifier: "UpdateBackendConfigResponse",
-      });
+      ).annotate({ identifier: "UpdateBackendConfigResponse" });
   }
 }
 function __c25(j: number): any {
@@ -2516,12 +2486,10 @@ function __c26(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Permissions: S.optional(__S(656, __c41, 0)),
+          Permissions: S.optional(__S(640, __c40, 0)),
           ServiceName: S.optional(S.String),
         }).pipe(S.encodeKeys({ Permissions: "permissions", ServiceName: "serviceName" })),
-      ).annotate({
-        identifier: "UpdateBackendStorageResourceConfig",
-      });
+      ).annotate({ identifier: "UpdateBackendStorageResourceConfig" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2541,9 +2509,7 @@ function __c26(j: number): any {
               rules,
             ),
           ),
-      ).annotate({
-        identifier: "UpdateBackendStorageRequest",
-      });
+      ).annotate({ identifier: "UpdateBackendStorageRequest" });
   }
 }
 function __c27(j: number): any {
@@ -2599,9 +2565,7 @@ function __c28(j: number): any {
 function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ResourceConfig",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "ResourceConfig" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2679,9 +2643,7 @@ function __c31(j: number): any {
             OpenIDProviderName: "openIDProviderName",
           }),
         ),
-      ).annotate({
-        identifier: "BackendAPIAppSyncAuthSettings",
-      });
+      ).annotate({ identifier: "BackendAPIAppSyncAuthSettings" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Mode: S.optional(S.String), Settings: S.optional(__S(496, __c31, 0)) }).pipe(
@@ -2695,9 +2657,7 @@ function __c31(j: number): any {
         S.Struct({ ResolutionStrategy: S.optional(S.String) }).pipe(
           S.encodeKeys({ ResolutionStrategy: "resolutionStrategy" }),
         ),
-      ).annotate({
-        identifier: "BackendAPIConflictResolution",
-      });
+      ).annotate({ identifier: "BackendAPIConflictResolution" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2727,7 +2687,7 @@ function __c32(j: number): any {
         S.Struct({
           AppId: S.String.pipe(T.HttpLabel("AppId")),
           BackendEnvironmentName: S.optional(S.String),
-          ResourceConfig: S.optional(__S(562, __c35, 2)),
+          ResourceConfig: S.optional(__S(546, __c34, 2)),
           ResourceName: S.optional(S.String),
         })
           .pipe(
@@ -2753,36 +2713,10 @@ function __c32(j: number): any {
 function __c33(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          AppId: S.optional(S.String),
-          BackendEnvironmentName: S.optional(S.String),
-          Error: S.optional(S.String),
-          JobId: S.optional(S.String),
-          Operation: S.optional(S.String),
-          Status: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            AppId: "appId",
-            BackendEnvironmentName: "backendEnvironmentName",
-            Error: "error",
-            JobId: "jobId",
-            Operation: "operation",
-            Status: "status",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateBackendAuthResponse",
-      });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
       return S.Array(S.String);
   }
 }
-function __c35(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2795,20 +2729,18 @@ function __c35(j: number): any {
             UnauthenticatedLogin: "unauthenticatedLogin",
           }),
         ),
-      ).annotate({
-        identifier: "CreateBackendAuthIdentityPoolConfig",
-      });
+      ).annotate({ identifier: "CreateBackendAuthIdentityPoolConfig" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ForgotPassword: S.optional(__S(578, __c36, 2)),
-          Mfa: S.optional(__S(580, __c36, 4)),
-          OAuth: S.optional(__S(584, __c36, 8)),
-          PasswordPolicy: S.optional(__S(586, __c36, 10)),
-          RequiredSignUpAttributes: S.optional(__S(585, __c36, 9)),
+          ForgotPassword: S.optional(__S(562, __c35, 2)),
+          Mfa: S.optional(__S(564, __c35, 4)),
+          OAuth: S.optional(__S(568, __c35, 8)),
+          PasswordPolicy: S.optional(__S(569, __c35, 9)),
+          RequiredSignUpAttributes: S.optional(__S(576, __c36, 0)),
           SignInMethod: S.optional(S.String),
           UserPoolName: S.optional(S.String),
-          VerificationMessage: S.optional(__S(578, __c36, 2)),
+          VerificationMessage: S.optional(__S(562, __c35, 2)),
         }).pipe(
           S.encodeKeys({
             ForgotPassword: "forgotPassword",
@@ -2821,16 +2753,14 @@ function __c35(j: number): any {
             VerificationMessage: "verificationMessage",
           }),
         ),
-      ).annotate({
-        identifier: "CreateBackendAuthUserPoolConfig",
-      });
+      ).annotate({ identifier: "CreateBackendAuthUserPoolConfig" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           AuthResources: S.optional(S.String),
-          IdentityPoolConfigs: S.optional(__S(560, __c35, 0)),
+          IdentityPoolConfigs: S.optional(__S(544, __c34, 0)),
           Service: S.optional(S.String),
-          UserPoolConfigs: S.optional(__S(561, __c35, 1)),
+          UserPoolConfigs: S.optional(__S(545, __c34, 1)),
         }).pipe(
           S.encodeKeys({
             AuthResources: "authResources",
@@ -2839,12 +2769,10 @@ function __c35(j: number): any {
             UserPoolConfigs: "userPoolConfigs",
           }),
         ),
-      ).annotate({
-        identifier: "CreateBackendAuthResourceConfig",
-      });
+      ).annotate({ identifier: "CreateBackendAuthResourceConfig" });
   }
 }
-function __c36(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2862,8 +2790,8 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DeliveryMethod: S.optional(S.String),
-          EmailSettings: S.optional(__S(576, __c36, 0)),
-          SmsSettings: S.optional(__S(577, __c36, 1)),
+          EmailSettings: S.optional(__S(560, __c35, 0)),
+          SmsSettings: S.optional(__S(561, __c35, 1)),
         }).pipe(
           S.encodeKeys({
             DeliveryMethod: "deliveryMethod",
@@ -2871,32 +2799,26 @@ function __c36(j: number): any {
             SmsSettings: "smsSettings",
           }),
         ),
-      ).annotate({
-        identifier: "CreateBackendAuthForgotPasswordConfig",
-      });
+      ).annotate({ identifier: "CreateBackendAuthForgotPasswordConfig" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          MfaTypes: S.optional(__S(592, __c37, 0)),
+          MfaTypes: S.optional(__S(576, __c36, 0)),
           SmsMessage: S.optional(S.String),
         }).pipe(S.encodeKeys({ MfaTypes: "mfaTypes", SmsMessage: "smsMessage" })),
       ).annotate({ identifier: "Settings" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ MFAMode: S.optional(S.String), Settings: S.optional(__S(579, __c36, 3)) }).pipe(
+        S.Struct({ MFAMode: S.optional(S.String), Settings: S.optional(__S(563, __c35, 3)) }).pipe(
           S.encodeKeys({ Settings: "settings" }),
         ),
-      ).annotate({
-        identifier: "CreateBackendAuthMFAConfig",
-      });
+      ).annotate({ identifier: "CreateBackendAuthMFAConfig" });
     case 5:
       return S.suspend(() =>
         S.Struct({ ClientId: S.optional(S.String), ClientSecret: S.optional(S.String) }).pipe(
           S.encodeKeys({ ClientId: "client_id", ClientSecret: "client_secret" }),
         ),
-      ).annotate({
-        identifier: "BackendAuthSocialProviderConfig",
-      });
+      ).annotate({ identifier: "BackendAuthSocialProviderConfig" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2912,16 +2834,14 @@ function __c36(j: number): any {
             TeamId: "team_id",
           }),
         ),
-      ).annotate({
-        identifier: "BackendAuthAppleProviderConfig",
-      });
+      ).annotate({ identifier: "BackendAuthAppleProviderConfig" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Facebook: S.optional(__S(581, __c36, 5)),
-          Google: S.optional(__S(581, __c36, 5)),
-          LoginWithAmazon: S.optional(__S(581, __c36, 5)),
-          SignInWithApple: S.optional(__S(582, __c36, 6)),
+          Facebook: S.optional(__S(565, __c35, 5)),
+          Google: S.optional(__S(565, __c35, 5)),
+          LoginWithAmazon: S.optional(__S(565, __c35, 5)),
+          SignInWithApple: S.optional(__S(566, __c35, 6)),
         }),
       ).annotate({ identifier: "SocialProviderSettings" });
     case 8:
@@ -2929,10 +2849,10 @@ function __c36(j: number): any {
         S.Struct({
           DomainPrefix: S.optional(S.String),
           OAuthGrantType: S.optional(S.String),
-          OAuthScopes: S.optional(__S(592, __c37, 0)),
-          RedirectSignInURIs: S.optional(__S(544, __c34, 0)),
-          RedirectSignOutURIs: S.optional(__S(544, __c34, 0)),
-          SocialProviderSettings: S.optional(__S(583, __c36, 7)),
+          OAuthScopes: S.optional(__S(576, __c36, 0)),
+          RedirectSignInURIs: S.optional(__S(528, __c33, 0)),
+          RedirectSignOutURIs: S.optional(__S(528, __c33, 0)),
+          SocialProviderSettings: S.optional(__S(567, __c35, 7)),
         }).pipe(
           S.encodeKeys({
             DomainPrefix: "domainPrefix",
@@ -2943,15 +2863,11 @@ function __c36(j: number): any {
             SocialProviderSettings: "socialProviderSettings",
           }),
         ),
-      ).annotate({
-        identifier: "CreateBackendAuthOAuthConfig",
-      });
+      ).annotate({ identifier: "CreateBackendAuthOAuthConfig" });
     case 9:
-      return S.Array(S.String);
-    case 10:
       return S.suspend(() =>
         S.Struct({
-          AdditionalConstraints: S.optional(__S(585, __c36, 9)),
+          AdditionalConstraints: S.optional(__S(576, __c36, 0)),
           MinimumLength: S.optional(S.Number),
         }).pipe(
           S.encodeKeys({
@@ -2959,18 +2875,16 @@ function __c36(j: number): any {
             MinimumLength: "minimumLength",
           }),
         ),
-      ).annotate({
-        identifier: "CreateBackendAuthPasswordPolicyConfig",
-      });
+      ).annotate({ identifier: "CreateBackendAuthPasswordPolicyConfig" });
   }
 }
-function __c37(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c38(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2989,12 +2903,10 @@ function __c38(j: number): any {
               rules,
             ),
           ),
-      ).annotate({
-        identifier: "CreateBackendConfigRequest",
-      });
+      ).annotate({ identifier: "CreateBackendConfigRequest" });
   }
 }
-function __c39(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3011,18 +2923,16 @@ function __c39(j: number): any {
             Status: "status",
           }),
         ),
-      ).annotate({
-        identifier: "CreateBackendConfigResponse",
-      });
+      ).annotate({ identifier: "CreateBackendConfigResponse" });
   }
 }
-function __c40(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           BucketName: S.optional(S.String),
-          Permissions: S.optional(__S(656, __c41, 0)),
+          Permissions: S.optional(__S(640, __c40, 0)),
           ServiceName: S.optional(S.String),
         }).pipe(
           S.encodeKeys({
@@ -3031,15 +2941,13 @@ function __c40(j: number): any {
             ServiceName: "serviceName",
           }),
         ),
-      ).annotate({
-        identifier: "CreateBackendStorageResourceConfig",
-      });
+      ).annotate({ identifier: "CreateBackendStorageResourceConfig" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           AppId: S.String.pipe(T.HttpLabel("AppId")),
           BackendEnvironmentName: S.optional(S.String),
-          ResourceConfig: S.optional(__S(640, __c40, 0)),
+          ResourceConfig: S.optional(__S(624, __c39, 0)),
           ResourceName: S.optional(S.String),
         })
           .pipe(
@@ -3059,24 +2967,20 @@ function __c40(j: number): any {
               rules,
             ),
           ),
-      ).annotate({
-        identifier: "CreateBackendStorageRequest",
-      });
+      ).annotate({ identifier: "CreateBackendStorageRequest" });
   }
 }
-function __c41(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Authenticated: S.optional(__S(592, __c37, 0)),
-          UnAuthenticated: S.optional(__S(592, __c37, 0)),
+          Authenticated: S.optional(__S(576, __c36, 0)),
+          UnAuthenticated: S.optional(__S(576, __c36, 0)),
         }).pipe(
           S.encodeKeys({ Authenticated: "authenticated", UnAuthenticated: "unAuthenticated" }),
         ),
-      ).annotate({
-        identifier: "BackendStoragePermissions",
-      });
+      ).annotate({ identifier: "BackendStoragePermissions" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

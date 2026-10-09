@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1140,9 +1140,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(384, __c12, 0)) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -1209,9 +1207,7 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "TagResourceResponse" });
   }
 }
 function __c5(j: number): any {
@@ -1248,9 +1244,7 @@ function __c6(j: number): any {
           MaximumRetryAttempts: S.optional(S.Number),
           ParallelizationFactor: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "UpdatePipeSourceKinesisStreamParameters",
-      });
+      ).annotate({ identifier: "UpdatePipeSourceKinesisStreamParameters" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1258,9 +1252,7 @@ function __c6(j: number): any {
           BatchSize: S.optional(S.Number),
           MaximumBatchingWindowInSeconds: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "UpdatePipeSourceActiveMQBrokerParameters",
-      });
+      ).annotate({ identifier: "UpdatePipeSourceActiveMQBrokerParameters" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1268,9 +1260,7 @@ function __c6(j: number): any {
           Credentials: S.optional(__S(454, __c14, 6)),
           MaximumBatchingWindowInSeconds: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "UpdatePipeSourceManagedStreamingKafkaParameters",
-      });
+      ).annotate({ identifier: "UpdatePipeSourceManagedStreamingKafkaParameters" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1280,9 +1270,7 @@ function __c6(j: number): any {
           ServerRootCaCertificate: S.optional(S.String),
           Vpc: S.optional(__S(457, __c14, 9)),
         }),
-      ).annotate({
-        identifier: "UpdatePipeSourceSelfManagedKafkaParameters",
-      });
+      ).annotate({ identifier: "UpdatePipeSourceSelfManagedKafkaParameters" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1295,9 +1283,7 @@ function __c6(j: number): any {
           ManagedStreamingKafkaParameters: S.optional(__S(194, __c6, 2)),
           SelfManagedKafkaParameters: S.optional(__S(195, __c6, 3)),
         }),
-      ).annotate({
-        identifier: "UpdatePipeSourceParameters",
-      });
+      ).annotate({ identifier: "UpdatePipeSourceParameters" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1308,7 +1294,7 @@ function __c6(j: number): any {
           Enrichment: S.optional(S.String),
           EnrichmentParameters: S.optional(__S(459, __c14, 11)),
           Target: S.optional(S.String),
-          TargetParameters: S.optional(__S(511, __c15, 31)),
+          TargetParameters: S.optional(__S(510, __c15, 30)),
           RoleArn: S.String,
           LogConfiguration: S.optional(__S(291, __c9, 3)),
           KmsKeyIdentifier: S.optional(S.String),
@@ -1349,7 +1335,7 @@ function __c8(j: number): any {
           Enrichment: S.optional(S.String),
           EnrichmentParameters: S.optional(__S(459, __c14, 11)),
           Target: S.String,
-          TargetParameters: S.optional(__S(511, __c15, 31)),
+          TargetParameters: S.optional(__S(510, __c15, 30)),
           RoleArn: S.String,
           Tags: S.optional(__S(384, __c12, 0)),
           LogConfiguration: S.optional(__S(291, __c9, 3)),
@@ -1378,9 +1364,7 @@ function __c9(j: number): any {
           OutputFormat: S.optional(S.String),
           Prefix: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "S3LogDestinationParameters",
-      });
+      ).annotate({ identifier: "S3LogDestinationParameters" });
     case 1:
       return S.suspend(() => S.Struct({ DeliveryStreamArn: S.String })).annotate({
         identifier: "FirehoseLogDestinationParameters",
@@ -1398,9 +1382,7 @@ function __c9(j: number): any {
           Level: S.String,
           IncludeExecutionData: S.optional(__S(416, __c13, 0)),
         }),
-      ).annotate({
-        identifier: "PipeLogConfigurationParameters",
-      });
+      ).annotate({ identifier: "PipeLogConfigurationParameters" });
   }
 }
 function __c10(j: number): any {
@@ -1433,9 +1415,7 @@ function __c11(j: number): any {
           StartingPosition: S.String,
           StartingPositionTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "PipeSourceKinesisStreamParameters",
-      });
+      ).annotate({ identifier: "PipeSourceKinesisStreamParameters" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1448,9 +1428,7 @@ function __c11(j: number): any {
           ParallelizationFactor: S.optional(S.Number),
           StartingPosition: S.String,
         }),
-      ).annotate({
-        identifier: "PipeSourceDynamoDBStreamParameters",
-      });
+      ).annotate({ identifier: "PipeSourceDynamoDBStreamParameters" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1459,9 +1437,7 @@ function __c11(j: number): any {
           BatchSize: S.optional(S.Number),
           MaximumBatchingWindowInSeconds: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "PipeSourceActiveMQBrokerParameters",
-      });
+      ).annotate({ identifier: "PipeSourceActiveMQBrokerParameters" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1471,9 +1447,7 @@ function __c11(j: number): any {
           BatchSize: S.optional(S.Number),
           MaximumBatchingWindowInSeconds: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "PipeSourceRabbitMQBrokerParameters",
-      });
+      ).annotate({ identifier: "PipeSourceRabbitMQBrokerParameters" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1484,9 +1458,7 @@ function __c11(j: number): any {
           ConsumerGroupID: S.optional(SensitiveString),
           Credentials: S.optional(__S(454, __c14, 6)),
         }),
-      ).annotate({
-        identifier: "PipeSourceManagedStreamingKafkaParameters",
-      });
+      ).annotate({ identifier: "PipeSourceManagedStreamingKafkaParameters" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1500,9 +1472,7 @@ function __c11(j: number): any {
           ServerRootCaCertificate: S.optional(S.String),
           Vpc: S.optional(__S(457, __c14, 9)),
         }),
-      ).annotate({
-        identifier: "PipeSourceSelfManagedKafkaParameters",
-      });
+      ).annotate({ identifier: "PipeSourceSelfManagedKafkaParameters" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1552,9 +1522,7 @@ function __c14(j: number): any {
           BatchSize: S.optional(S.Number),
           MaximumBatchingWindowInSeconds: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "PipeSourceSqsQueueParameters",
-      });
+      ).annotate({ identifier: "PipeSourceSqsQueueParameters" });
     case 5:
       return S.Union([/*@__PURE__*/ S.Struct({ BasicAuth: S.String })]);
     case 6:
@@ -1577,9 +1545,7 @@ function __c14(j: number): any {
           Subnets: S.optional(__S(455, __c14, 7)),
           SecurityGroup: S.optional(__S(455, __c14, 7)),
         }),
-      ).annotate({
-        identifier: "SelfManagedKafkaAccessConfigurationVpc",
-      });
+      ).annotate({ identifier: "SelfManagedKafkaAccessConfigurationVpc" });
     case 10:
       return S.suspend(() =>
         S.Struct({
@@ -1587,9 +1553,7 @@ function __c14(j: number): any {
           HeaderParameters: S.optional(__S(384, __c12, 0)),
           QueryStringParameters: S.optional(__S(384, __c12, 0)),
         }),
-      ).annotate({
-        identifier: "PipeEnrichmentHttpParameters",
-      });
+      ).annotate({ identifier: "PipeEnrichmentHttpParameters" });
     case 11:
       return S.suspend(() =>
         S.Struct({
@@ -1624,9 +1588,7 @@ function __c14(j: number): any {
           weight: S.optional(S.Number),
           base: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "CapacityProviderStrategyItem",
-      });
+      ).annotate({ identifier: "CapacityProviderStrategyItem" });
     case 17:
       return S.Array(__S(464, __c14, 16));
     case 18:
@@ -1675,9 +1637,7 @@ function __c14(j: number): any {
     case 29:
       return S.suspend(() =>
         S.Struct({ deviceName: S.optional(S.String), deviceType: S.optional(S.String) }),
-      ).annotate({
-        identifier: "EcsInferenceAcceleratorOverride",
-      });
+      ).annotate({ identifier: "EcsInferenceAcceleratorOverride" });
     case 30:
       return S.Array(__S(477, __c14, 29));
     case 31:
@@ -1721,9 +1681,7 @@ function __c15(j: number): any {
           Overrides: S.optional(__S(479, __c14, 31)),
           Tags: S.optional(__S(481, __c15, 1)),
         }),
-      ).annotate({
-        identifier: "PipeTargetEcsTaskParameters",
-      });
+      ).annotate({ identifier: "PipeTargetEcsTaskParameters" });
     case 3:
       return S.suspend(() => S.Struct({ Size: S.optional(S.Number) })).annotate({
         identifier: "BatchArrayProperties",
@@ -1772,27 +1730,15 @@ function __c15(j: number): any {
           DependsOn: S.optional(__S(491, __c15, 11)),
           Parameters: S.optional(__S(492, __c15, 12)),
         }),
-      ).annotate({
-        identifier: "PipeTargetBatchJobParameters",
-      });
+      ).annotate({ identifier: "PipeTargetBatchJobParameters" });
     case 14:
       return S.suspend(() =>
         S.Struct({
           MessageGroupId: S.optional(SensitiveString),
           MessageDeduplicationId: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "PipeTargetSqsQueueParameters",
-      });
+      ).annotate({ identifier: "PipeTargetSqsQueueParameters" });
     case 15:
-      return S.suspend(() =>
-        S.Struct({
-          PathParameterValues: S.optional(__S(455, __c14, 7)),
-          HeaderParameters: S.optional(__S(384, __c12, 0)),
-          QueryStringParameters: S.optional(__S(384, __c12, 0)),
-        }),
-      ).annotate({ identifier: "PipeTargetHttpParameters" });
-    case 16:
       return S.suspend(() =>
         S.Struct({
           SecretManagerArn: S.optional(S.String),
@@ -1802,22 +1748,18 @@ function __c15(j: number): any {
           WithEvent: S.optional(S.Boolean),
           Sqls: __S(455, __c14, 7),
         }),
-      ).annotate({
-        identifier: "PipeTargetRedshiftDataParameters",
-      });
-    case 17:
+      ).annotate({ identifier: "PipeTargetRedshiftDataParameters" });
+    case 16:
       return S.suspend(() => S.Struct({ Name: SensitiveString, Value: SensitiveString })).annotate({
         identifier: "SageMakerPipelineParameter",
       });
+    case 17:
+      return S.Array(__S(496, __c15, 16));
     case 18:
-      return S.Array(__S(497, __c15, 17));
-    case 19:
       return S.suspend(() =>
-        S.Struct({ PipelineParameterList: S.optional(__S(498, __c15, 18)) }),
-      ).annotate({
-        identifier: "PipeTargetSageMakerPipelineParameters",
-      });
-    case 20:
+        S.Struct({ PipelineParameterList: S.optional(__S(497, __c15, 17)) }),
+      ).annotate({ identifier: "PipeTargetSageMakerPipelineParameters" });
+    case 19:
       return S.suspend(() =>
         S.Struct({
           EndpointId: S.optional(SensitiveString),
@@ -1826,16 +1768,12 @@ function __c15(j: number): any {
           Resources: S.optional(__S(416, __c13, 0)),
           Time: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "PipeTargetEventBridgeEventBusParameters",
-      });
-    case 21:
+      ).annotate({ identifier: "PipeTargetEventBridgeEventBusParameters" });
+    case 20:
       return S.suspend(() =>
         S.Struct({ LogStreamName: S.optional(S.String), Timestamp: S.optional(S.String) }),
-      ).annotate({
-        identifier: "PipeTargetCloudWatchLogsParameters",
-      });
-    case 22:
+      ).annotate({ identifier: "PipeTargetCloudWatchLogsParameters" });
+    case 21:
       return S.suspend(() =>
         S.Struct({
           DimensionValue: S.String,
@@ -1843,36 +1781,34 @@ function __c15(j: number): any {
           DimensionName: S.String,
         }),
       ).annotate({ identifier: "DimensionMapping" });
+    case 22:
+      return S.Array(__S(501, __c15, 21));
     case 23:
-      return S.Array(__S(502, __c15, 22));
-    case 24:
       return S.suspend(() =>
         S.Struct({ MeasureValue: S.String, MeasureValueType: S.String, MeasureName: S.String }),
       ).annotate({ identifier: "SingleMeasureMapping" });
+    case 24:
+      return S.Array(__S(503, __c15, 23));
     case 25:
-      return S.Array(__S(504, __c15, 24));
-    case 26:
       return S.suspend(() =>
         S.Struct({
           MeasureValue: S.String,
           MeasureValueType: S.String,
           MultiMeasureAttributeName: S.String,
         }),
-      ).annotate({
-        identifier: "MultiMeasureAttributeMapping",
-      });
+      ).annotate({ identifier: "MultiMeasureAttributeMapping" });
+    case 26:
+      return S.Array(__S(505, __c15, 25));
     case 27:
-      return S.Array(__S(506, __c15, 26));
-    case 28:
       return S.suspend(() =>
         S.Struct({
           MultiMeasureName: S.String,
-          MultiMeasureAttributeMappings: __S(507, __c15, 27),
+          MultiMeasureAttributeMappings: __S(506, __c15, 26),
         }),
       ).annotate({ identifier: "MultiMeasureMapping" });
+    case 28:
+      return S.Array(__S(507, __c15, 27));
     case 29:
-      return S.Array(__S(508, __c15, 28));
-    case 30:
       return S.suspend(() =>
         S.Struct({
           TimeValue: S.String,
@@ -1880,14 +1816,12 @@ function __c15(j: number): any {
           TimeFieldType: S.optional(S.String),
           TimestampFormat: S.optional(S.String),
           VersionValue: S.String,
-          DimensionMappings: __S(503, __c15, 23),
-          SingleMeasureMappings: S.optional(__S(505, __c15, 25)),
-          MultiMeasureMappings: S.optional(__S(509, __c15, 29)),
+          DimensionMappings: __S(502, __c15, 22),
+          SingleMeasureMappings: S.optional(__S(504, __c15, 24)),
+          MultiMeasureMappings: S.optional(__S(508, __c15, 28)),
         }),
-      ).annotate({
-        identifier: "PipeTargetTimestreamParameters",
-      });
-    case 31:
+      ).annotate({ identifier: "PipeTargetTimestreamParameters" });
+    case 30:
       return S.suspend(() =>
         S.Struct({
           InputTemplate: S.optional(SensitiveString),
@@ -1897,12 +1831,12 @@ function __c15(j: number): any {
           EcsTaskParameters: S.optional(__S(482, __c15, 2)),
           BatchJobParameters: S.optional(__S(493, __c15, 13)),
           SqsQueueParameters: S.optional(__S(494, __c15, 14)),
-          HttpParameters: S.optional(__S(495, __c15, 15)),
-          RedshiftDataParameters: S.optional(__S(496, __c15, 16)),
-          SageMakerPipelineParameters: S.optional(__S(499, __c15, 19)),
-          EventBridgeEventBusParameters: S.optional(__S(500, __c15, 20)),
-          CloudWatchLogsParameters: S.optional(__S(501, __c15, 21)),
-          TimestreamParameters: S.optional(__S(510, __c15, 30)),
+          HttpParameters: S.optional(__S(458, __c14, 10)),
+          RedshiftDataParameters: S.optional(__S(495, __c15, 15)),
+          SageMakerPipelineParameters: S.optional(__S(498, __c15, 18)),
+          EventBridgeEventBusParameters: S.optional(__S(499, __c15, 19)),
+          CloudWatchLogsParameters: S.optional(__S(500, __c15, 20)),
+          TimestreamParameters: S.optional(__S(509, __c15, 29)),
         }),
       ).annotate({ identifier: "PipeTargetParameters" });
   }
@@ -1982,7 +1916,7 @@ function __c17(j: number): any {
           Enrichment: S.optional(S.String),
           EnrichmentParameters: S.optional(__S(459, __c14, 11)),
           Target: S.optional(S.String),
-          TargetParameters: S.optional(__S(511, __c15, 31)),
+          TargetParameters: S.optional(__S(510, __c15, 30)),
           RoleArn: S.optional(S.String),
           Tags: S.optional(__S(384, __c12, 0)),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),

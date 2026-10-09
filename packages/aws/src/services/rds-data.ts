@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -866,9 +866,7 @@ function __c0(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/BatchExecute" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "BatchExecuteStatementRequest",
-      });
+      ).annotate({ identifier: "BatchExecuteStatementRequest" });
     case 2:
       return S.suspend(() => S.Struct({ generatedFields: S.optional(__S(24, __c1, 8)) })).annotate({
         identifier: "UpdateResult",
@@ -1024,9 +1022,7 @@ function __c5(j: number): any {
         /*@__PURE__*/ S.Struct({
           structValue: /*@__PURE__*/ S.suspend((): S.Schema<StructValue> =>
             __S(83, __c5, 3),
-          ).annotate({
-            identifier: "StructValue",
-          }),
+          ).annotate({ identifier: "StructValue" }),
         }),
       ]);
     case 5:
@@ -1090,10 +1086,7 @@ function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          decimalReturnType: S.optional(S.String),
-          longReturnType: S.optional(S.String),
-        }),
+        S.Struct({ decimalReturnType: S.optional(S.String), longReturnType: S.optional(S.String) }),
       ).annotate({ identifier: "ResultSetOptions" });
     case 1:
       return S.suspend(() =>
@@ -1139,9 +1132,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RollbackTransactionRequest",
-      });
+      ).annotate({ identifier: "RollbackTransactionRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

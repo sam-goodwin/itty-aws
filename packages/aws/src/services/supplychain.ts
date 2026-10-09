@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1647,9 +1647,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateDataLakeNamespaceRequest",
-      });
+      ).annotate({ identifier: "CreateDataLakeNamespaceRequest" });
   }
 }
 function __c1(j: number): any {
@@ -1740,9 +1738,7 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteDataIntegrationFlowRequest",
-      });
+      ).annotate({ identifier: "DeleteDataIntegrationFlowRequest" });
   }
 }
 function __c7(j: number): any {
@@ -1766,15 +1762,11 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteDataLakeDatasetRequest",
-      });
+      ).annotate({ identifier: "DeleteDataLakeDatasetRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ instanceId: S.String, namespace: S.String, name: S.String }),
-      ).annotate({
-        identifier: "DeleteDataLakeDatasetResponse",
-      });
+      ).annotate({ identifier: "DeleteDataLakeDatasetResponse" });
   }
 }
 function __c8(j: number): any {
@@ -1797,9 +1789,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteDataLakeNamespaceRequest",
-      });
+      ).annotate({ identifier: "DeleteDataLakeNamespaceRequest" });
   }
 }
 function __c9(j: number): any {
@@ -1839,9 +1829,7 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetBillOfMaterialsImportJobRequest",
-      });
+      ).annotate({ identifier: "GetBillOfMaterialsImportJobRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1878,9 +1866,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDataIntegrationEventRequest",
-      });
+      ).annotate({ identifier: "GetDataIntegrationEventRequest" });
     case 1:
       return S.suspend(() => S.Struct({ event: __S(194, __c12, 2) })).annotate({
         identifier: "GetDataIntegrationEventResponse",
@@ -1892,9 +1878,7 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ status: S.String, message: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DataIntegrationEventDatasetLoadExecutionDetails",
-      });
+      ).annotate({ identifier: "DataIntegrationEventDatasetLoadExecutionDetails" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1902,9 +1886,7 @@ function __c12(j: number): any {
           operationType: S.String,
           datasetLoadExecution: __S(192, __c12, 0),
         }),
-      ).annotate({
-        identifier: "DataIntegrationEventDatasetTargetDetails",
-      });
+      ).annotate({ identifier: "DataIntegrationEventDatasetTargetDetails" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1938,9 +1920,7 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDataIntegrationFlowRequest",
-      });
+      ).annotate({ identifier: "GetDataIntegrationFlowRequest" });
   }
 }
 function __c14(j: number): any {
@@ -1988,9 +1968,7 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDataIntegrationFlowExecutionRequest",
-      });
+      ).annotate({ identifier: "GetDataIntegrationFlowExecutionRequest" });
     case 1:
       return S.suspend(() => S.Struct({ flowExecution: __S(276, __c17, 4) })).annotate({
         identifier: "GetDataIntegrationFlowExecutionResponse",
@@ -2014,15 +1992,11 @@ function __c17(j: number): any {
           s3Source: S.optional(__S(272, __c17, 0)),
           datasetSource: S.optional(__S(273, __c17, 1)),
         }),
-      ).annotate({
-        identifier: "DataIntegrationFlowExecutionSourceInfo",
-      });
+      ).annotate({ identifier: "DataIntegrationFlowExecutionSourceInfo" });
     case 3:
       return S.suspend(() =>
         S.Struct({ diagnosticReportsRootS3URI: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DataIntegrationFlowExecutionOutputMetadata",
-      });
+      ).annotate({ identifier: "DataIntegrationFlowExecutionOutputMetadata" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2036,9 +2010,7 @@ function __c17(j: number): any {
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           outputMetadata: S.optional(__S(275, __c17, 3)),
         }),
-      ).annotate({
-        identifier: "DataIntegrationFlowExecution",
-      });
+      ).annotate({ identifier: "DataIntegrationFlowExecution" });
   }
 }
 function __c18(j: number): any {
@@ -2062,9 +2034,7 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDataLakeDatasetRequest",
-      });
+      ).annotate({ identifier: "GetDataLakeDatasetRequest" });
   }
 }
 function __c19(j: number): any {
@@ -2084,9 +2054,7 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDataLakeNamespaceRequest",
-      });
+      ).annotate({ identifier: "GetDataLakeNamespaceRequest" });
   }
 }
 function __c20(j: number): any {
@@ -2128,17 +2096,13 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDataIntegrationEventsRequest",
-      });
+      ).annotate({ identifier: "ListDataIntegrationEventsRequest" });
     case 1:
       return S.Array(__S(194, __c12, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({ events: __S(337, __c21, 1), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListDataIntegrationEventsResponse",
-      });
+      ).annotate({ identifier: "ListDataIntegrationEventsResponse" });
   }
 }
 function __c22(j: number): any {
@@ -2163,17 +2127,13 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDataIntegrationFlowExecutionsRequest",
-      });
+      ).annotate({ identifier: "ListDataIntegrationFlowExecutionsRequest" });
     case 1:
       return S.Array(__S(276, __c17, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({ flowExecutions: __S(353, __c22, 1), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListDataIntegrationFlowExecutionsResponse",
-      });
+      ).annotate({ identifier: "ListDataIntegrationFlowExecutionsResponse" });
   }
 }
 function __c23(j: number): any {
@@ -2197,17 +2157,13 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDataIntegrationFlowsRequest",
-      });
+      ).annotate({ identifier: "ListDataIntegrationFlowsRequest" });
     case 1:
       return S.Array(__S(224, __c14, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ flows: __S(369, __c23, 1), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListDataIntegrationFlowsResponse",
-      });
+      ).annotate({ identifier: "ListDataIntegrationFlowsResponse" });
   }
 }
 function __c24(j: number): any {
@@ -2232,17 +2188,13 @@ function __c24(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDataLakeDatasetsRequest",
-      });
+      ).annotate({ identifier: "ListDataLakeDatasetsRequest" });
     case 1:
       return S.Array(__S(697, __c43, 9));
     case 2:
       return S.suspend(() =>
         S.Struct({ datasets: __S(385, __c24, 1), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListDataLakeDatasetsResponse",
-      });
+      ).annotate({ identifier: "ListDataLakeDatasetsResponse" });
   }
 }
 function __c25(j: number): any {
@@ -2263,17 +2215,13 @@ function __c25(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDataLakeNamespacesRequest",
-      });
+      ).annotate({ identifier: "ListDataLakeNamespacesRequest" });
     case 1:
       return S.Array(__S(16, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ namespaces: __S(401, __c25, 1), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListDataLakeNamespacesResponse",
-      });
+      ).annotate({ identifier: "ListDataLakeNamespacesResponse" });
   }
 }
 function __c26(j: number): any {
@@ -2323,9 +2271,7 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: __S(656, __c41, 0) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -2336,13 +2282,8 @@ function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          datasetIdentifier: S.String,
-          operationType: S.String,
-        }),
-      ).annotate({
-        identifier: "DataIntegrationEventDatasetTargetConfiguration",
-      });
+        S.Struct({ datasetIdentifier: S.String, operationType: S.String }),
+      ).annotate({ identifier: "DataIntegrationEventDatasetTargetConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2366,9 +2307,7 @@ function __c29(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SendDataIntegrationEventRequest",
-      });
+      ).annotate({ identifier: "SendDataIntegrationEventRequest" });
     case 2:
       return S.suspend(() => S.Struct({ eventId: S.String })).annotate({
         identifier: "SendDataIntegrationEventResponse",
@@ -2398,9 +2337,7 @@ function __c30(j: number): any {
 function __c31(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TagResourceResponse" });
   }
 }
 function __c32(j: number): any {
@@ -2446,9 +2383,7 @@ function __c33(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateDataIntegrationFlowRequest",
-      });
+      ).annotate({ identifier: "UpdateDataIntegrationFlowRequest" });
   }
 }
 function __c34(j: number): any {
@@ -2473,9 +2408,7 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateDataLakeDatasetRequest",
-      });
+      ).annotate({ identifier: "UpdateDataLakeDatasetRequest" });
   }
 }
 function __c35(j: number): any {
@@ -2499,9 +2432,7 @@ function __c35(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateDataLakeNamespaceRequest",
-      });
+      ).annotate({ identifier: "UpdateDataLakeNamespaceRequest" });
   }
 }
 function __c36(j: number): any {
@@ -2546,9 +2477,7 @@ function __c37(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateBillOfMaterialsImportJobRequest",
-      });
+      ).annotate({ identifier: "CreateBillOfMaterialsImportJobRequest" });
     case 1:
       return S.suspend(() => S.Struct({ jobId: S.String })).annotate({
         identifier: "CreateBillOfMaterialsImportJobResponse",
@@ -2579,9 +2508,7 @@ function __c38(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateDataIntegrationFlowRequest",
-      });
+      ).annotate({ identifier: "CreateDataIntegrationFlowRequest" });
   }
 }
 function __c39(j: number): any {
@@ -2605,9 +2532,7 @@ function __c40(j: number): any {
           prefix: S.String,
           options: S.optional(__S(640, __c40, 0)),
         }),
-      ).annotate({
-        identifier: "DataIntegrationFlowS3SourceConfiguration",
-      });
+      ).annotate({ identifier: "DataIntegrationFlowS3SourceConfiguration" });
     case 2:
       return S.suspend(() => S.Struct({ name: S.String, sortOrder: S.String })).annotate({
         identifier: "DataIntegrationFlowFieldPriorityDedupeField",
@@ -2620,13 +2545,8 @@ function __c40(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          fieldPriority: S.optional(__S(644, __c40, 4)),
-        }),
-      ).annotate({
-        identifier: "DataIntegrationFlowDedupeStrategy",
-      });
+        S.Struct({ type: S.String, fieldPriority: S.optional(__S(644, __c40, 4)) }),
+      ).annotate({ identifier: "DataIntegrationFlowDedupeStrategy" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2634,15 +2554,11 @@ function __c40(j: number): any {
           dedupeRecords: S.optional(S.Boolean),
           dedupeStrategy: S.optional(__S(645, __c40, 5)),
         }),
-      ).annotate({
-        identifier: "DataIntegrationFlowDatasetOptions",
-      });
+      ).annotate({ identifier: "DataIntegrationFlowDatasetOptions" });
     case 7:
       return S.suspend(() =>
         S.Struct({ datasetIdentifier: S.String, options: S.optional(__S(646, __c40, 6)) }),
-      ).annotate({
-        identifier: "DataIntegrationFlowDatasetSourceConfiguration",
-      });
+      ).annotate({ identifier: "DataIntegrationFlowDatasetSourceConfiguration" });
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -2651,9 +2567,7 @@ function __c40(j: number): any {
           s3Source: S.optional(__S(641, __c40, 1)),
           datasetSource: S.optional(__S(647, __c40, 7)),
         }),
-      ).annotate({
-        identifier: "DataIntegrationFlowSource",
-      });
+      ).annotate({ identifier: "DataIntegrationFlowSource" });
     case 9:
       return S.Array(__S(648, __c40, 8));
     case 10:
@@ -2666,9 +2580,7 @@ function __c40(j: number): any {
           transformationType: S.String,
           sqlTransformation: S.optional(__S(650, __c40, 10)),
         }),
-      ).annotate({
-        identifier: "DataIntegrationFlowTransformation",
-      });
+      ).annotate({ identifier: "DataIntegrationFlowTransformation" });
     case 12:
       return S.suspend(() =>
         S.Struct({
@@ -2676,9 +2588,7 @@ function __c40(j: number): any {
           s3Target: S.optional(__S(641, __c40, 1)),
           datasetTarget: S.optional(__S(647, __c40, 7)),
         }),
-      ).annotate({
-        identifier: "DataIntegrationFlowTarget",
-      });
+      ).annotate({ identifier: "DataIntegrationFlowTarget" });
   }
 }
 function __c41(j: number): any {
@@ -2712,9 +2622,7 @@ function __c42(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateDataLakeDatasetRequest",
-      });
+      ).annotate({ identifier: "CreateDataLakeDatasetRequest" });
   }
 }
 function __c43(j: number): any {
@@ -2722,9 +2630,7 @@ function __c43(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ name: S.String, type: S.String, isRequired: S.Boolean }),
-      ).annotate({
-        identifier: "DataLakeDatasetSchemaField",
-      });
+      ).annotate({ identifier: "DataLakeDatasetSchemaField" });
     case 1:
       return S.Array(__S(688, __c43, 0));
     case 2:

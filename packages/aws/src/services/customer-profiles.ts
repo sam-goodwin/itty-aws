@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -2941,8 +2941,8 @@ export const addProfileKey: API.OperationMethod<
   AddProfileKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1344, __c84, 0) as any as S.Schema<AddProfileKeyRequest>,
-  output: __S(1376, __c86, 0) as any as S.Schema<AddProfileKeyResponse>,
+  input: __S(1312, __c82, 0) as any as S.Schema<AddProfileKeyRequest>,
+  output: __S(1344, __c84, 0) as any as S.Schema<AddProfileKeyResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2973,8 +2973,8 @@ export const associateStreamForSegments: API.OperationMethod<
   AssociateStreamForSegmentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1632, __c102, 0) as any as S.Schema<AssociateStreamForSegmentsRequest>,
-  output: __S(1648, __c103, 0) as any as S.Schema<AssociateStreamForSegmentsResponse>,
+  input: __S(1584, __c99, 0) as any as S.Schema<AssociateStreamForSegmentsRequest>,
+  output: __S(1600, __c100, 0) as any as S.Schema<AssociateStreamForSegmentsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3003,8 +3003,8 @@ export const batchGetCalculatedAttributeForProfile: API.OperationMethod<
   BatchGetCalculatedAttributeForProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1840, __c115, 0) as any as S.Schema<BatchGetCalculatedAttributeForProfileRequest>,
-  output: __S(1845, __c115, 5) as any as S.Schema<BatchGetCalculatedAttributeForProfileResponse>,
+  input: __S(1808, __c113, 0) as any as S.Schema<BatchGetCalculatedAttributeForProfileRequest>,
+  output: __S(1813, __c113, 5) as any as S.Schema<BatchGetCalculatedAttributeForProfileResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3033,8 +3033,8 @@ export const batchGetProfile: API.OperationMethod<
   BatchGetProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2048, __c128, 0) as any as S.Schema<BatchGetProfileRequest>,
-  output: __S(2051, __c128, 3) as any as S.Schema<BatchGetProfileResponse>,
+  input: __S(2016, __c126, 0) as any as S.Schema<BatchGetProfileRequest>,
+  output: __S(2019, __c126, 3) as any as S.Schema<BatchGetProfileResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3075,8 +3075,8 @@ export const batchPutProfileObject: API.OperationMethod<
   BatchPutProfileObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2306, __c144, 2) as any as S.Schema<BatchPutProfileObjectRequest>,
-  output: __S(2311, __c144, 7) as any as S.Schema<BatchPutProfileObjectResponse>,
+  input: __S(2274, __c142, 2) as any as S.Schema<BatchPutProfileObjectRequest>,
+  output: __S(2279, __c142, 7) as any as S.Schema<BatchPutProfileObjectResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3159,8 +3159,8 @@ export const createDomain: API.OperationMethod<
   CreateDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c14, 0) as any as S.Schema<CreateDomainRequest>,
-  output: __S(225, __c14, 1) as any as S.Schema<CreateDomainResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<CreateDomainRequest>,
+  output: __S(241, __c15, 1) as any as S.Schema<CreateDomainResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3190,8 +3190,8 @@ export const createDomainLayout: API.OperationMethod<
   CreateDomainLayoutError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c29, 0) as any as S.Schema<CreateDomainLayoutRequest>,
-  output: __S(465, __c29, 1) as any as S.Schema<CreateDomainLayoutResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<CreateDomainLayoutRequest>,
+  output: __S(481, __c30, 1) as any as S.Schema<CreateDomainLayoutResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3224,8 +3224,8 @@ export const createEventStream: API.OperationMethod<
   CreateEventStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<CreateEventStreamRequest>,
-  output: __S(481, __c30, 1) as any as S.Schema<CreateEventStreamResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<CreateEventStreamRequest>,
+  output: __S(497, __c31, 1) as any as S.Schema<CreateEventStreamResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3258,8 +3258,8 @@ export const createEventTrigger: API.OperationMethod<
   CreateEventTriggerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<CreateEventTriggerRequest>,
-  output: __S(512, __c32, 0) as any as S.Schema<CreateEventTriggerResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<CreateEventTriggerRequest>,
+  output: __S(537, __c33, 9) as any as S.Schema<CreateEventTriggerResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3567,7 +3567,7 @@ export const deleteCalculatedAttributeDefinition: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(816, __c51, 0) as any as S.Schema<DeleteCalculatedAttributeDefinitionRequest>,
-  output: __S(1648, __c103, 0) as any as S.Schema<DeleteCalculatedAttributeDefinitionResponse>,
+  output: __S(1600, __c100, 0) as any as S.Schema<DeleteCalculatedAttributeDefinitionResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3598,7 +3598,7 @@ export const deleteDomain: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(832, __c52, 0) as any as S.Schema<DeleteDomainRequest>,
-  output: __S(833, __c52, 1) as any as S.Schema<DeleteDomainResponse>,
+  output: __S(848, __c53, 0) as any as S.Schema<DeleteDomainResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3628,8 +3628,8 @@ export const deleteDomainLayout: API.OperationMethod<
   DeleteDomainLayoutError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(848, __c53, 0) as any as S.Schema<DeleteDomainLayoutRequest>,
-  output: __S(864, __c54, 0) as any as S.Schema<DeleteDomainLayoutResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<DeleteDomainLayoutRequest>,
+  output: __S(848, __c53, 0) as any as S.Schema<DeleteDomainLayoutResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3659,7 +3659,7 @@ export const deleteDomainObjectType: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(880, __c55, 0) as any as S.Schema<DeleteDomainObjectTypeRequest>,
-  output: __S(896, __c56, 0) as any as S.Schema<DeleteDomainObjectTypeResponse>,
+  output: __S(1600, __c100, 0) as any as S.Schema<DeleteDomainObjectTypeResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3688,8 +3688,8 @@ export const deleteEventStream: API.OperationMethod<
   DeleteEventStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(912, __c57, 0) as any as S.Schema<DeleteEventStreamRequest>,
-  output: __S(896, __c56, 0) as any as S.Schema<DeleteEventStreamResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<DeleteEventStreamRequest>,
+  output: __S(1600, __c100, 0) as any as S.Schema<DeleteEventStreamResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3720,8 +3720,8 @@ export const deleteEventTrigger: API.OperationMethod<
   DeleteEventTriggerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c58, 0) as any as S.Schema<DeleteEventTriggerRequest>,
-  output: __S(864, __c54, 0) as any as S.Schema<DeleteEventTriggerResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<DeleteEventTriggerRequest>,
+  output: __S(848, __c53, 0) as any as S.Schema<DeleteEventTriggerResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3750,8 +3750,8 @@ export const deleteIntegration: API.OperationMethod<
   DeleteIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(944, __c59, 0) as any as S.Schema<DeleteIntegrationRequest>,
-  output: __S(864, __c54, 0) as any as S.Schema<DeleteIntegrationResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<DeleteIntegrationRequest>,
+  output: __S(848, __c53, 0) as any as S.Schema<DeleteIntegrationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3780,8 +3780,8 @@ export const deleteProfile: API.OperationMethod<
   DeleteProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c60, 0) as any as S.Schema<DeleteProfileRequest>,
-  output: __S(976, __c61, 0) as any as S.Schema<DeleteProfileResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<DeleteProfileRequest>,
+  output: __S(960, __c60, 0) as any as S.Schema<DeleteProfileResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3810,8 +3810,8 @@ export const deleteProfileKey: API.OperationMethod<
   DeleteProfileKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c62, 0) as any as S.Schema<DeleteProfileKeyRequest>,
-  output: __S(976, __c61, 0) as any as S.Schema<DeleteProfileKeyResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<DeleteProfileKeyRequest>,
+  output: __S(960, __c60, 0) as any as S.Schema<DeleteProfileKeyResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3840,8 +3840,8 @@ export const deleteProfileObject: API.OperationMethod<
   DeleteProfileObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1008, __c63, 0) as any as S.Schema<DeleteProfileObjectRequest>,
-  output: __S(1024, __c64, 0) as any as S.Schema<DeleteProfileObjectResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<DeleteProfileObjectRequest>,
+  output: __S(960, __c60, 0) as any as S.Schema<DeleteProfileObjectResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3873,8 +3873,8 @@ export const deleteProfileObjectType: API.OperationMethod<
   DeleteProfileObjectTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1040, __c65, 0) as any as S.Schema<DeleteProfileObjectTypeRequest>,
-  output: __S(864, __c54, 0) as any as S.Schema<DeleteProfileObjectTypeResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<DeleteProfileObjectTypeRequest>,
+  output: __S(848, __c53, 0) as any as S.Schema<DeleteProfileObjectTypeResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3903,8 +3903,8 @@ export const deleteRecommender: API.OperationMethod<
   DeleteRecommenderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c66, 0) as any as S.Schema<DeleteRecommenderRequest>,
-  output: __S(896, __c56, 0) as any as S.Schema<DeleteRecommenderResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<DeleteRecommenderRequest>,
+  output: __S(1600, __c100, 0) as any as S.Schema<DeleteRecommenderResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3933,8 +3933,8 @@ export const deleteRecommenderFilter: API.OperationMethod<
   DeleteRecommenderFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1072, __c67, 0) as any as S.Schema<DeleteRecommenderFilterRequest>,
-  output: __S(864, __c54, 0) as any as S.Schema<DeleteRecommenderFilterResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<DeleteRecommenderFilterRequest>,
+  output: __S(848, __c53, 0) as any as S.Schema<DeleteRecommenderFilterResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3963,8 +3963,8 @@ export const deleteRecommenderSchema: API.OperationMethod<
   DeleteRecommenderSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c68, 0) as any as S.Schema<DeleteRecommenderSchemaRequest>,
-  output: __S(1089, __c68, 1) as any as S.Schema<DeleteRecommenderSchemaResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<DeleteRecommenderSchemaRequest>,
+  output: __S(1600, __c100, 0) as any as S.Schema<DeleteRecommenderSchemaResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3993,8 +3993,8 @@ export const deleteSegmentDefinition: API.OperationMethod<
   DeleteSegmentDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1104, __c69, 0) as any as S.Schema<DeleteSegmentDefinitionRequest>,
-  output: __S(1024, __c64, 0) as any as S.Schema<DeleteSegmentDefinitionResponse>,
+  input: __S(1072, __c67, 0) as any as S.Schema<DeleteSegmentDefinitionRequest>,
+  output: __S(960, __c60, 0) as any as S.Schema<DeleteSegmentDefinitionResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4024,8 +4024,8 @@ export const deleteSegmentSubscription: API.OperationMethod<
   DeleteSegmentSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1120, __c70, 0) as any as S.Schema<DeleteSegmentSubscriptionRequest>,
-  output: __S(1024, __c64, 0) as any as S.Schema<DeleteSegmentSubscriptionResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<DeleteSegmentSubscriptionRequest>,
+  output: __S(960, __c60, 0) as any as S.Schema<DeleteSegmentSubscriptionResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4055,8 +4055,8 @@ export const deleteWorkflow: API.OperationMethod<
   DeleteWorkflowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1136, __c71, 0) as any as S.Schema<DeleteWorkflowRequest>,
-  output: __S(896, __c56, 0) as any as S.Schema<DeleteWorkflowResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<DeleteWorkflowRequest>,
+  output: __S(1600, __c100, 0) as any as S.Schema<DeleteWorkflowResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4085,8 +4085,8 @@ export const detectProfileObjectType: API.OperationMethod<
   DetectProfileObjectTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1153, __c72, 1) as any as S.Schema<DetectProfileObjectTypeRequest>,
-  output: __S(1156, __c72, 4) as any as S.Schema<DetectProfileObjectTypeResponse>,
+  input: __S(1121, __c70, 1) as any as S.Schema<DetectProfileObjectTypeRequest>,
+  output: __S(1124, __c70, 4) as any as S.Schema<DetectProfileObjectTypeResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4116,8 +4116,8 @@ export const disassociateStreamForSegments: API.OperationMethod<
   DisassociateStreamForSegmentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1184, __c74, 0) as any as S.Schema<DisassociateStreamForSegmentsRequest>,
-  output: __S(1024, __c64, 0) as any as S.Schema<DisassociateStreamForSegmentsResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<DisassociateStreamForSegmentsRequest>,
+  output: __S(960, __c60, 0) as any as S.Schema<DisassociateStreamForSegmentsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4158,8 +4158,8 @@ export const getAutoMergingPreview: API.OperationMethod<
   GetAutoMergingPreviewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1200, __c75, 0) as any as S.Schema<GetAutoMergingPreviewRequest>,
-  output: __S(1201, __c75, 1) as any as S.Schema<GetAutoMergingPreviewResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<GetAutoMergingPreviewRequest>,
+  output: __S(1169, __c73, 1) as any as S.Schema<GetAutoMergingPreviewResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4189,8 +4189,8 @@ export const getCalculatedAttributeDefinition: API.OperationMethod<
   GetCalculatedAttributeDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1216, __c76, 0) as any as S.Schema<GetCalculatedAttributeDefinitionRequest>,
-  output: __S(1217, __c76, 1) as any as S.Schema<GetCalculatedAttributeDefinitionResponse>,
+  input: __S(1184, __c74, 0) as any as S.Schema<GetCalculatedAttributeDefinitionRequest>,
+  output: __S(1185, __c74, 1) as any as S.Schema<GetCalculatedAttributeDefinitionResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4219,8 +4219,8 @@ export const getCalculatedAttributeForProfile: API.OperationMethod<
   GetCalculatedAttributeForProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1232, __c77, 0) as any as S.Schema<GetCalculatedAttributeForProfileRequest>,
-  output: __S(1248, __c78, 0) as any as S.Schema<GetCalculatedAttributeForProfileResponse>,
+  input: __S(1200, __c75, 0) as any as S.Schema<GetCalculatedAttributeForProfileRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<GetCalculatedAttributeForProfileResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4249,8 +4249,8 @@ export const getDomain: API.OperationMethod<
   GetDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1264, __c79, 0) as any as S.Schema<GetDomainRequest>,
-  output: __S(1266, __c79, 2) as any as S.Schema<GetDomainResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<GetDomainRequest>,
+  output: __S(1234, __c77, 2) as any as S.Schema<GetDomainResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4280,8 +4280,8 @@ export const getDomainLayout: API.OperationMethod<
   GetDomainLayoutError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1280, __c80, 0) as any as S.Schema<GetDomainLayoutRequest>,
-  output: __S(1281, __c80, 1) as any as S.Schema<GetDomainLayoutResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<GetDomainLayoutRequest>,
+  output: __S(1249, __c78, 1) as any as S.Schema<GetDomainLayoutResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4310,8 +4310,8 @@ export const getDomainObjectType: API.OperationMethod<
   GetDomainObjectTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1296, __c81, 0) as any as S.Schema<GetDomainObjectTypeRequest>,
-  output: __S(1297, __c81, 1) as any as S.Schema<GetDomainObjectTypeResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<GetDomainObjectTypeRequest>,
+  output: __S(1265, __c79, 1) as any as S.Schema<GetDomainObjectTypeResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4340,8 +4340,8 @@ export const getEventStream: API.OperationMethod<
   GetEventStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1328, __c83, 0) as any as S.Schema<GetEventStreamRequest>,
-  output: __S(1330, __c83, 2) as any as S.Schema<GetEventStreamResponse>,
+  input: __S(1296, __c81, 0) as any as S.Schema<GetEventStreamRequest>,
+  output: __S(1298, __c81, 2) as any as S.Schema<GetEventStreamResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4370,8 +4370,8 @@ export const getEventTrigger: API.OperationMethod<
   GetEventTriggerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1392, __c87, 0) as any as S.Schema<GetEventTriggerRequest>,
-  output: __S(1393, __c87, 1) as any as S.Schema<GetEventTriggerResponse>,
+  input: __S(1360, __c85, 0) as any as S.Schema<GetEventTriggerRequest>,
+  output: __S(537, __c33, 9) as any as S.Schema<GetEventTriggerResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4403,8 +4403,8 @@ export const getIdentityResolutionJob: API.OperationMethod<
   GetIdentityResolutionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1408, __c88, 0) as any as S.Schema<GetIdentityResolutionJobRequest>,
-  output: __S(1409, __c88, 1) as any as S.Schema<GetIdentityResolutionJobResponse>,
+  input: __S(1376, __c86, 0) as any as S.Schema<GetIdentityResolutionJobRequest>,
+  output: __S(1377, __c86, 1) as any as S.Schema<GetIdentityResolutionJobResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4433,8 +4433,8 @@ export const getIntegration: API.OperationMethod<
   GetIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c90, 0) as any as S.Schema<GetIntegrationRequest>,
-  output: __S(1472, __c92, 0) as any as S.Schema<GetIntegrationResponse>,
+  input: __S(1408, __c88, 0) as any as S.Schema<GetIntegrationRequest>,
+  output: __S(1424, __c89, 0) as any as S.Schema<GetIntegrationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4500,8 +4500,8 @@ export const getMatches: API.OperationMethod<
   GetMatchesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1488, __c93, 0) as any as S.Schema<GetMatchesRequest>,
-  output: __S(1491, __c93, 3) as any as S.Schema<GetMatchesResponse>,
+  input: __S(1440, __c90, 0) as any as S.Schema<GetMatchesRequest>,
+  output: __S(1443, __c90, 3) as any as S.Schema<GetMatchesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4536,8 +4536,8 @@ export const getObjectTypeAttributeStatistics: API.OperationMethod<
   GetObjectTypeAttributeStatisticsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1504, __c94, 0) as any as S.Schema<GetObjectTypeAttributeStatisticsRequest>,
-  output: __S(1507, __c94, 3) as any as S.Schema<GetObjectTypeAttributeStatisticsResponse>,
+  input: __S(1456, __c91, 0) as any as S.Schema<GetObjectTypeAttributeStatisticsRequest>,
+  output: __S(1459, __c91, 3) as any as S.Schema<GetObjectTypeAttributeStatisticsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4566,8 +4566,8 @@ export const getProfileHistoryRecord: API.OperationMethod<
   GetProfileHistoryRecordError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1520, __c95, 0) as any as S.Schema<GetProfileHistoryRecordRequest>,
-  output: __S(1521, __c95, 1) as any as S.Schema<GetProfileHistoryRecordResponse>,
+  input: __S(1472, __c92, 0) as any as S.Schema<GetProfileHistoryRecordRequest>,
+  output: __S(1473, __c92, 1) as any as S.Schema<GetProfileHistoryRecordResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4596,8 +4596,8 @@ export const getProfileObjectType: API.OperationMethod<
   GetProfileObjectTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1536, __c96, 0) as any as S.Schema<GetProfileObjectTypeRequest>,
-  output: __S(1537, __c96, 1) as any as S.Schema<GetProfileObjectTypeResponse>,
+  input: __S(1488, __c93, 0) as any as S.Schema<GetProfileObjectTypeRequest>,
+  output: __S(1489, __c93, 1) as any as S.Schema<GetProfileObjectTypeResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4631,8 +4631,8 @@ export const getProfileObjectTypeTemplate: API.OperationMethod<
   GetProfileObjectTypeTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1552, __c97, 0) as any as S.Schema<GetProfileObjectTypeTemplateRequest>,
-  output: __S(1553, __c97, 1) as any as S.Schema<GetProfileObjectTypeTemplateResponse>,
+  input: __S(1504, __c94, 0) as any as S.Schema<GetProfileObjectTypeTemplateRequest>,
+  output: __S(1505, __c94, 1) as any as S.Schema<GetProfileObjectTypeTemplateResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4661,8 +4661,8 @@ export const getProfileRecommendations: API.OperationMethod<
   GetProfileRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1569, __c98, 1) as any as S.Schema<GetProfileRecommendationsRequest>,
-  output: __S(1570, __c98, 2) as any as S.Schema<GetProfileRecommendationsResponse>,
+  input: __S(1521, __c95, 1) as any as S.Schema<GetProfileRecommendationsRequest>,
+  output: __S(1522, __c95, 2) as any as S.Schema<GetProfileRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4691,8 +4691,8 @@ export const getRecommender: API.OperationMethod<
   GetRecommenderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1600, __c100, 0) as any as S.Schema<GetRecommenderRequest>,
-  output: __S(1604, __c100, 4) as any as S.Schema<GetRecommenderResponse>,
+  input: __S(1552, __c97, 0) as any as S.Schema<GetRecommenderRequest>,
+  output: __S(1556, __c97, 4) as any as S.Schema<GetRecommenderResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4721,8 +4721,8 @@ export const getRecommenderFilter: API.OperationMethod<
   GetRecommenderFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1664, __c104, 0) as any as S.Schema<GetRecommenderFilterRequest>,
-  output: __S(1665, __c104, 1) as any as S.Schema<GetRecommenderFilterResponse>,
+  input: __S(1616, __c101, 0) as any as S.Schema<GetRecommenderFilterRequest>,
+  output: __S(1617, __c101, 1) as any as S.Schema<GetRecommenderFilterResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4751,8 +4751,8 @@ export const getRecommenderSchema: API.OperationMethod<
   GetRecommenderSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1680, __c105, 0) as any as S.Schema<GetRecommenderSchemaRequest>,
-  output: __S(1681, __c105, 1) as any as S.Schema<GetRecommenderSchemaResponse>,
+  input: __S(1632, __c102, 0) as any as S.Schema<GetRecommenderSchemaRequest>,
+  output: __S(1648, __c103, 0) as any as S.Schema<GetRecommenderSchemaResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4781,8 +4781,8 @@ export const getSegmentDefinition: API.OperationMethod<
   GetSegmentDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1696, __c106, 0) as any as S.Schema<GetSegmentDefinitionRequest>,
-  output: __S(1697, __c106, 1) as any as S.Schema<GetSegmentDefinitionResponse>,
+  input: __S(1664, __c104, 0) as any as S.Schema<GetSegmentDefinitionRequest>,
+  output: __S(1665, __c104, 1) as any as S.Schema<GetSegmentDefinitionResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4811,8 +4811,8 @@ export const getSegmentEstimate: API.OperationMethod<
   GetSegmentEstimateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1712, __c107, 0) as any as S.Schema<GetSegmentEstimateRequest>,
-  output: __S(1713, __c107, 1) as any as S.Schema<GetSegmentEstimateResponse>,
+  input: __S(1680, __c105, 0) as any as S.Schema<GetSegmentEstimateRequest>,
+  output: __S(1681, __c105, 1) as any as S.Schema<GetSegmentEstimateResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4841,8 +4841,8 @@ export const getSegmentMembership: API.OperationMethod<
   GetSegmentMembershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1728, __c108, 0) as any as S.Schema<GetSegmentMembershipRequest>,
-  output: __S(1733, __c108, 5) as any as S.Schema<GetSegmentMembershipResponse>,
+  input: __S(1696, __c106, 0) as any as S.Schema<GetSegmentMembershipRequest>,
+  output: __S(1701, __c106, 5) as any as S.Schema<GetSegmentMembershipResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4871,8 +4871,8 @@ export const getSegmentSnapshot: API.OperationMethod<
   GetSegmentSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1744, __c109, 0) as any as S.Schema<GetSegmentSnapshotRequest>,
-  output: __S(1745, __c109, 1) as any as S.Schema<GetSegmentSnapshotResponse>,
+  input: __S(1712, __c107, 0) as any as S.Schema<GetSegmentSnapshotRequest>,
+  output: __S(1713, __c107, 1) as any as S.Schema<GetSegmentSnapshotResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4902,8 +4902,8 @@ export const getSegmentSubscription: API.OperationMethod<
   GetSegmentSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1760, __c110, 0) as any as S.Schema<GetSegmentSubscriptionRequest>,
-  output: __S(1762, __c110, 2) as any as S.Schema<GetSegmentSubscriptionResponse>,
+  input: __S(1728, __c108, 0) as any as S.Schema<GetSegmentSubscriptionRequest>,
+  output: __S(1730, __c108, 2) as any as S.Schema<GetSegmentSubscriptionResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4936,8 +4936,8 @@ export const getSimilarProfiles: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Uuid
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1792, __c112, 0) as any as S.Schema<GetSimilarProfilesRequest>,
-  output: __S(1793, __c112, 1) as any as S.Schema<GetSimilarProfilesResponse>,
+  input: __S(1760, __c110, 0) as any as S.Schema<GetSimilarProfilesRequest>,
+  output: __S(1761, __c110, 1) as any as S.Schema<GetSimilarProfilesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4973,8 +4973,8 @@ export const getStreamForSegments: API.OperationMethod<
   GetStreamForSegmentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1808, __c113, 0) as any as S.Schema<GetStreamForSegmentsRequest>,
-  output: __S(1811, __c113, 3) as any as S.Schema<GetStreamForSegmentsResponse>,
+  input: __S(1776, __c111, 0) as any as S.Schema<GetStreamForSegmentsRequest>,
+  output: __S(1779, __c111, 3) as any as S.Schema<GetStreamForSegmentsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5003,8 +5003,8 @@ export const getUploadJob: API.OperationMethod<
   GetUploadJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1824, __c114, 0) as any as S.Schema<GetUploadJobRequest>,
-  output: __S(1826, __c114, 2) as any as S.Schema<GetUploadJobResponse>,
+  input: __S(1792, __c112, 0) as any as S.Schema<GetUploadJobRequest>,
+  output: __S(1794, __c112, 2) as any as S.Schema<GetUploadJobResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5034,8 +5034,8 @@ export const getUploadJobPath: API.OperationMethod<
   GetUploadJobPathError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1872, __c117, 0) as any as S.Schema<GetUploadJobPathRequest>,
-  output: __S(1873, __c117, 1) as any as S.Schema<GetUploadJobPathResponse>,
+  input: __S(1840, __c115, 0) as any as S.Schema<GetUploadJobPathRequest>,
+  output: __S(1841, __c115, 1) as any as S.Schema<GetUploadJobPathResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5064,8 +5064,8 @@ export const getWorkflow: API.OperationMethod<
   GetWorkflowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1888, __c118, 0) as any as S.Schema<GetWorkflowRequest>,
-  output: __S(1893, __c118, 5) as any as S.Schema<GetWorkflowResponse>,
+  input: __S(1856, __c116, 0) as any as S.Schema<GetWorkflowRequest>,
+  output: __S(1861, __c116, 5) as any as S.Schema<GetWorkflowResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5094,8 +5094,8 @@ export const getWorkflowSteps: API.OperationMethod<
   GetWorkflowStepsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1904, __c119, 0) as any as S.Schema<GetWorkflowStepsRequest>,
-  output: __S(1908, __c119, 4) as any as S.Schema<GetWorkflowStepsResponse>,
+  input: __S(1872, __c117, 0) as any as S.Schema<GetWorkflowStepsRequest>,
+  output: __S(1876, __c117, 4) as any as S.Schema<GetWorkflowStepsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5124,8 +5124,8 @@ export const listAccountIntegrations: API.OperationMethod<
   ListAccountIntegrationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1920, __c120, 0) as any as S.Schema<ListAccountIntegrationsRequest>,
-  output: __S(1921, __c120, 1) as any as S.Schema<ListAccountIntegrationsResponse>,
+  input: __S(1888, __c118, 0) as any as S.Schema<ListAccountIntegrationsRequest>,
+  output: __S(1905, __c119, 1) as any as S.Schema<ListAccountIntegrationsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5154,8 +5154,8 @@ export const listCalculatedAttributeDefinitions: API.OperationMethod<
   ListCalculatedAttributeDefinitionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1952, __c122, 0) as any as S.Schema<ListCalculatedAttributeDefinitionsRequest>,
-  output: __S(1955, __c122, 3) as any as S.Schema<ListCalculatedAttributeDefinitionsResponse>,
+  input: __S(1920, __c120, 0) as any as S.Schema<ListCalculatedAttributeDefinitionsRequest>,
+  output: __S(1923, __c120, 3) as any as S.Schema<ListCalculatedAttributeDefinitionsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5184,8 +5184,8 @@ export const listCalculatedAttributesForProfile: API.OperationMethod<
   ListCalculatedAttributesForProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1968, __c123, 0) as any as S.Schema<ListCalculatedAttributesForProfileRequest>,
-  output: __S(1970, __c123, 2) as any as S.Schema<ListCalculatedAttributesForProfileResponse>,
+  input: __S(1936, __c121, 0) as any as S.Schema<ListCalculatedAttributesForProfileRequest>,
+  output: __S(1938, __c121, 2) as any as S.Schema<ListCalculatedAttributesForProfileResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5216,8 +5216,8 @@ export const listDomainLayouts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LayoutItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1984, __c124, 0) as any as S.Schema<ListDomainLayoutsRequest>,
-  output: __S(1987, __c124, 3) as any as S.Schema<ListDomainLayoutsResponse>,
+  input: __S(1952, __c122, 0) as any as S.Schema<ListDomainLayoutsRequest>,
+  output: __S(1955, __c122, 3) as any as S.Schema<ListDomainLayoutsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5253,8 +5253,8 @@ export const listDomainObjectTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DomainObjectTypesListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2000, __c125, 0) as any as S.Schema<ListDomainObjectTypesRequest>,
-  output: __S(2003, __c125, 3) as any as S.Schema<ListDomainObjectTypesResponse>,
+  input: __S(1968, __c123, 0) as any as S.Schema<ListDomainObjectTypesRequest>,
+  output: __S(1971, __c123, 3) as any as S.Schema<ListDomainObjectTypesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5289,8 +5289,8 @@ export const listDomains: API.OperationMethod<
   ListDomainsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2016, __c126, 0) as any as S.Schema<ListDomainsRequest>,
-  output: __S(2019, __c126, 3) as any as S.Schema<ListDomainsResponse>,
+  input: __S(1984, __c124, 0) as any as S.Schema<ListDomainsRequest>,
+  output: __S(1987, __c124, 3) as any as S.Schema<ListDomainsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5320,8 +5320,8 @@ export const listEventStreams: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EventStreamSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2032, __c127, 0) as any as S.Schema<ListEventStreamsRequest>,
-  output: __S(2036, __c127, 4) as any as S.Schema<ListEventStreamsResponse>,
+  input: __S(2000, __c125, 0) as any as S.Schema<ListEventStreamsRequest>,
+  output: __S(2004, __c125, 4) as any as S.Schema<ListEventStreamsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5357,8 +5357,8 @@ export const listEventTriggers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EventTriggerSummaryItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2128, __c133, 0) as any as S.Schema<ListEventTriggersRequest>,
-  output: __S(2131, __c133, 3) as any as S.Schema<ListEventTriggersResponse>,
+  input: __S(2096, __c131, 0) as any as S.Schema<ListEventTriggersRequest>,
+  output: __S(2099, __c131, 3) as any as S.Schema<ListEventTriggersResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5394,8 +5394,8 @@ export const listIdentityResolutionJobs: API.OperationMethod<
   ListIdentityResolutionJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2144, __c134, 0) as any as S.Schema<ListIdentityResolutionJobsRequest>,
-  output: __S(2147, __c134, 3) as any as S.Schema<ListIdentityResolutionJobsResponse>,
+  input: __S(2112, __c132, 0) as any as S.Schema<ListIdentityResolutionJobsRequest>,
+  output: __S(2115, __c132, 3) as any as S.Schema<ListIdentityResolutionJobsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5424,8 +5424,8 @@ export const listIntegrations: API.OperationMethod<
   ListIntegrationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2160, __c135, 0) as any as S.Schema<ListIntegrationsRequest>,
-  output: __S(2161, __c135, 1) as any as S.Schema<ListIntegrationsResponse>,
+  input: __S(2128, __c133, 0) as any as S.Schema<ListIntegrationsRequest>,
+  output: __S(1905, __c119, 1) as any as S.Schema<ListIntegrationsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5455,8 +5455,8 @@ export const listObjectTypeAttributes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListObjectTypeAttributeItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2176, __c136, 0) as any as S.Schema<ListObjectTypeAttributesRequest>,
-  output: __S(2179, __c136, 3) as any as S.Schema<ListObjectTypeAttributesResponse>,
+  input: __S(2144, __c134, 0) as any as S.Schema<ListObjectTypeAttributesRequest>,
+  output: __S(2147, __c134, 3) as any as S.Schema<ListObjectTypeAttributesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5491,8 +5491,8 @@ export const listObjectTypeAttributeValues: API.OperationMethod<
   ListObjectTypeAttributeValuesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2192, __c137, 0) as any as S.Schema<ListObjectTypeAttributeValuesRequest>,
-  output: __S(2195, __c137, 3) as any as S.Schema<ListObjectTypeAttributeValuesResponse>,
+  input: __S(2160, __c135, 0) as any as S.Schema<ListObjectTypeAttributeValuesRequest>,
+  output: __S(2163, __c135, 3) as any as S.Schema<ListObjectTypeAttributeValuesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5521,8 +5521,8 @@ export const listProfileAttributeValues: API.OperationMethod<
   ListProfileAttributeValuesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2208, __c138, 0) as any as S.Schema<ProfileAttributeValuesRequest>,
-  output: __S(2211, __c138, 3) as any as S.Schema<ProfileAttributeValuesResponse>,
+  input: __S(2176, __c136, 0) as any as S.Schema<ProfileAttributeValuesRequest>,
+  output: __S(2179, __c136, 3) as any as S.Schema<ProfileAttributeValuesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5551,8 +5551,8 @@ export const listProfileHistoryRecords: API.OperationMethod<
   ListProfileHistoryRecordsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2224, __c139, 0) as any as S.Schema<ListProfileHistoryRecordsRequest>,
-  output: __S(2227, __c139, 3) as any as S.Schema<ListProfileHistoryRecordsResponse>,
+  input: __S(2192, __c137, 0) as any as S.Schema<ListProfileHistoryRecordsRequest>,
+  output: __S(2195, __c137, 3) as any as S.Schema<ListProfileHistoryRecordsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5581,8 +5581,8 @@ export const listProfileObjects: API.OperationMethod<
   ListProfileObjectsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2240, __c140, 0) as any as S.Schema<ListProfileObjectsRequest>,
-  output: __S(2243, __c140, 3) as any as S.Schema<ListProfileObjectsResponse>,
+  input: __S(2208, __c138, 0) as any as S.Schema<ListProfileObjectsRequest>,
+  output: __S(2211, __c138, 3) as any as S.Schema<ListProfileObjectsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5611,8 +5611,8 @@ export const listProfileObjectTypes: API.OperationMethod<
   ListProfileObjectTypesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2272, __c142, 0) as any as S.Schema<ListProfileObjectTypesRequest>,
-  output: __S(2275, __c142, 3) as any as S.Schema<ListProfileObjectTypesResponse>,
+  input: __S(2240, __c140, 0) as any as S.Schema<ListProfileObjectTypesRequest>,
+  output: __S(2243, __c140, 3) as any as S.Schema<ListProfileObjectTypesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5641,8 +5641,8 @@ export const listProfileObjectTypeTemplates: API.OperationMethod<
   ListProfileObjectTypeTemplatesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2288, __c143, 0) as any as S.Schema<ListProfileObjectTypeTemplatesRequest>,
-  output: __S(2291, __c143, 3) as any as S.Schema<ListProfileObjectTypeTemplatesResponse>,
+  input: __S(2256, __c141, 0) as any as S.Schema<ListProfileObjectTypeTemplatesRequest>,
+  output: __S(2259, __c141, 3) as any as S.Schema<ListProfileObjectTypeTemplatesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5672,8 +5672,8 @@ export const listRecommenderFilters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecommenderFilterSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2320, __c145, 0) as any as S.Schema<ListRecommenderFiltersRequest>,
-  output: __S(2323, __c145, 3) as any as S.Schema<ListRecommenderFiltersResponse>,
+  input: __S(2288, __c143, 0) as any as S.Schema<ListRecommenderFiltersRequest>,
+  output: __S(2291, __c143, 3) as any as S.Schema<ListRecommenderFiltersResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5708,8 +5708,8 @@ export const listRecommenderRecipes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecommenderRecipe
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2336, __c146, 0) as any as S.Schema<ListRecommenderRecipesRequest>,
-  output: __S(2339, __c146, 3) as any as S.Schema<ListRecommenderRecipesResponse>,
+  input: __S(2304, __c144, 0) as any as S.Schema<ListRecommenderRecipesRequest>,
+  output: __S(2307, __c144, 3) as any as S.Schema<ListRecommenderRecipesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5744,8 +5744,8 @@ export const listRecommenders: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecommenderSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2352, __c147, 0) as any as S.Schema<ListRecommendersRequest>,
-  output: __S(2355, __c147, 3) as any as S.Schema<ListRecommendersResponse>,
+  input: __S(2320, __c145, 0) as any as S.Schema<ListRecommendersRequest>,
+  output: __S(2323, __c145, 3) as any as S.Schema<ListRecommendersResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5781,8 +5781,8 @@ export const listRecommenderSchemas: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecommenderSchemaSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2368, __c148, 0) as any as S.Schema<ListRecommenderSchemasRequest>,
-  output: __S(2371, __c148, 3) as any as S.Schema<ListRecommenderSchemasResponse>,
+  input: __S(2336, __c146, 0) as any as S.Schema<ListRecommenderSchemasRequest>,
+  output: __S(2338, __c146, 2) as any as S.Schema<ListRecommenderSchemasResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5818,8 +5818,8 @@ export const listRuleBasedMatches: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   String1To255
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2384, __c149, 0) as any as S.Schema<ListRuleBasedMatchesRequest>,
-  output: __S(2385, __c149, 1) as any as S.Schema<ListRuleBasedMatchesResponse>,
+  input: __S(2352, __c147, 0) as any as S.Schema<ListRuleBasedMatchesRequest>,
+  output: __S(2353, __c147, 1) as any as S.Schema<ListRuleBasedMatchesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5855,8 +5855,8 @@ export const listSegmentDefinitions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SegmentDefinitionItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2400, __c150, 0) as any as S.Schema<ListSegmentDefinitionsRequest>,
-  output: __S(2403, __c150, 3) as any as S.Schema<ListSegmentDefinitionsResponse>,
+  input: __S(2368, __c148, 0) as any as S.Schema<ListSegmentDefinitionsRequest>,
+  output: __S(2371, __c148, 3) as any as S.Schema<ListSegmentDefinitionsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5895,8 +5895,8 @@ export const listSegmentSubscriptionEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SubscriptionEventItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2416, __c151, 0) as any as S.Schema<ListSegmentSubscriptionEventsRequest>,
-  output: __S(2419, __c151, 3) as any as S.Schema<ListSegmentSubscriptionEventsResponse>,
+  input: __S(2384, __c149, 0) as any as S.Schema<ListSegmentSubscriptionEventsRequest>,
+  output: __S(2387, __c149, 3) as any as S.Schema<ListSegmentSubscriptionEventsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5930,8 +5930,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2432, __c152, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(2433, __c152, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(2400, __c150, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(2401, __c150, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5955,8 +5955,8 @@ export const listUploadJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   UploadJobItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2448, __c153, 0) as any as S.Schema<ListUploadJobsRequest>,
-  output: __S(2451, __c153, 3) as any as S.Schema<ListUploadJobsResponse>,
+  input: __S(2416, __c151, 0) as any as S.Schema<ListUploadJobsRequest>,
+  output: __S(2419, __c151, 3) as any as S.Schema<ListUploadJobsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5991,8 +5991,8 @@ export const listWorkflows: API.OperationMethod<
   ListWorkflowsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2464, __c154, 0) as any as S.Schema<ListWorkflowsRequest>,
-  output: __S(2467, __c154, 3) as any as S.Schema<ListWorkflowsResponse>,
+  input: __S(2432, __c152, 0) as any as S.Schema<ListWorkflowsRequest>,
+  output: __S(2435, __c152, 3) as any as S.Schema<ListWorkflowsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6048,8 +6048,8 @@ export const mergeProfiles: API.OperationMethod<
   MergeProfilesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c4, 1) as any as S.Schema<MergeProfilesRequest>,
-  output: __S(976, __c61, 0) as any as S.Schema<MergeProfilesResponse>,
+  input: __S(81, __c5, 1) as any as S.Schema<MergeProfilesRequest>,
+  output: __S(960, __c60, 0) as any as S.Schema<MergeProfilesResponse>,
   errors: [
     BadRequestException,
     InternalServerException,
@@ -6077,8 +6077,8 @@ export const putDomainObjectType: API.OperationMethod<
   PutDomainObjectTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c5, 0) as any as S.Schema<PutDomainObjectTypeRequest>,
-  output: __S(81, __c5, 1) as any as S.Schema<PutDomainObjectTypeResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<PutDomainObjectTypeRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<PutDomainObjectTypeResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6114,8 +6114,8 @@ export const putIntegration: API.OperationMethod<
   PutIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c6, 0) as any as S.Schema<PutIntegrationRequest>,
-  output: __S(1472, __c92, 0) as any as S.Schema<PutIntegrationResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<PutIntegrationRequest>,
+  output: __S(1424, __c89, 0) as any as S.Schema<PutIntegrationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6156,8 +6156,8 @@ export const putProfileObject: API.OperationMethod<
   PutProfileObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c7, 0) as any as S.Schema<PutProfileObjectRequest>,
-  output: __S(113, __c7, 1) as any as S.Schema<PutProfileObjectResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<PutProfileObjectRequest>,
+  output: __S(129, __c8, 1) as any as S.Schema<PutProfileObjectResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6189,8 +6189,8 @@ export const putProfileObjectType: API.OperationMethod<
   PutProfileObjectTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c8, 0) as any as S.Schema<PutProfileObjectTypeRequest>,
-  output: __S(129, __c8, 1) as any as S.Schema<PutProfileObjectTypeResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<PutProfileObjectTypeRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<PutProfileObjectTypeResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6232,8 +6232,8 @@ export const putSegmentSubscription: API.OperationMethod<
   PutSegmentSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c9, 0) as any as S.Schema<PutSegmentSubscriptionRequest>,
-  output: __S(145, __c9, 1) as any as S.Schema<PutSegmentSubscriptionResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<PutSegmentSubscriptionRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<PutSegmentSubscriptionResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6268,8 +6268,8 @@ export const searchProfiles: API.OperationMethod<
   SearchProfilesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c10, 1) as any as S.Schema<SearchProfilesRequest>,
-  output: __S(162, __c10, 2) as any as S.Schema<SearchProfilesResponse>,
+  input: __S(177, __c11, 1) as any as S.Schema<SearchProfilesRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<SearchProfilesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6306,8 +6306,8 @@ export const searchRecommendations: API.OperationMethod<
   SearchRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c11, 2) as any as S.Schema<SearchRecommendationsRequest>,
-  output: __S(179, __c11, 3) as any as S.Schema<SearchRecommendationsResponse>,
+  input: __S(194, __c12, 2) as any as S.Schema<SearchRecommendationsRequest>,
+  output: __S(195, __c12, 3) as any as S.Schema<SearchRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6336,8 +6336,8 @@ export const startRecommender: API.OperationMethod<
   StartRecommenderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c12, 0) as any as S.Schema<StartRecommenderRequest>,
-  output: __S(896, __c56, 0) as any as S.Schema<StartRecommenderResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<StartRecommenderRequest>,
+  output: __S(1600, __c100, 0) as any as S.Schema<StartRecommenderResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6366,8 +6366,8 @@ export const startUploadJob: API.OperationMethod<
   StartUploadJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c13, 0) as any as S.Schema<StartUploadJobRequest>,
-  output: __S(896, __c56, 0) as any as S.Schema<StartUploadJobResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<StartUploadJobRequest>,
+  output: __S(1600, __c100, 0) as any as S.Schema<StartUploadJobResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6396,8 +6396,8 @@ export const stopRecommender: API.OperationMethod<
   StopRecommenderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c19, 0) as any as S.Schema<StopRecommenderRequest>,
-  output: __S(896, __c56, 0) as any as S.Schema<StopRecommenderResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<StopRecommenderRequest>,
+  output: __S(1600, __c100, 0) as any as S.Schema<StopRecommenderResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6426,8 +6426,8 @@ export const stopUploadJob: API.OperationMethod<
   StopUploadJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c20, 0) as any as S.Schema<StopUploadJobRequest>,
-  output: __S(896, __c56, 0) as any as S.Schema<StopUploadJobResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<StopUploadJobRequest>,
+  output: __S(1600, __c100, 0) as any as S.Schema<StopUploadJobResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6468,8 +6468,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(896, __c56, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(1600, __c100, 0) as any as S.Schema<TagResourceResponse>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6491,8 +6491,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c22, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(896, __c56, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(1600, __c100, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [BadRequestException, InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6517,8 +6517,8 @@ export const updateCalculatedAttributeDefinition: API.OperationMethod<
   UpdateCalculatedAttributeDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c23, 0) as any as S.Schema<UpdateCalculatedAttributeDefinitionRequest>,
-  output: __S(369, __c23, 1) as any as S.Schema<UpdateCalculatedAttributeDefinitionResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<UpdateCalculatedAttributeDefinitionRequest>,
+  output: __S(385, __c24, 1) as any as S.Schema<UpdateCalculatedAttributeDefinitionResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6559,8 +6559,8 @@ export const updateDomain: API.OperationMethod<
   UpdateDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<UpdateDomainRequest>,
-  output: __S(385, __c24, 1) as any as S.Schema<UpdateDomainResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<UpdateDomainRequest>,
+  output: __S(401, __c25, 1) as any as S.Schema<UpdateDomainResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6590,8 +6590,8 @@ export const updateDomainLayout: API.OperationMethod<
   UpdateDomainLayoutError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c25, 0) as any as S.Schema<UpdateDomainLayoutRequest>,
-  output: __S(401, __c25, 1) as any as S.Schema<UpdateDomainLayoutResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<UpdateDomainLayoutRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<UpdateDomainLayoutResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6620,8 +6620,8 @@ export const updateEventTrigger: API.OperationMethod<
   UpdateEventTriggerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c26, 0) as any as S.Schema<UpdateEventTriggerRequest>,
-  output: __S(512, __c32, 0) as any as S.Schema<UpdateEventTriggerResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<UpdateEventTriggerRequest>,
+  output: __S(537, __c33, 9) as any as S.Schema<UpdateEventTriggerResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6655,7 +6655,7 @@ export const updateProfile: API.OperationMethod<
   UpdateProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c27, 0) as any as S.Schema<UpdateProfileRequest>,
+  input: __S(448, __c28, 0) as any as S.Schema<UpdateProfileRequest>,
   output: __S(592, __c37, 0) as any as S.Schema<UpdateProfileResponse>,
   errors: [
     AccessDeniedException,
@@ -6685,8 +6685,8 @@ export const updateRecommender: API.OperationMethod<
   UpdateRecommenderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<UpdateRecommenderRequest>,
-  output: __S(449, __c28, 1) as any as S.Schema<UpdateRecommenderResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<UpdateRecommenderRequest>,
+  output: __S(465, __c29, 1) as any as S.Schema<UpdateRecommenderResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -6709,12 +6709,12 @@ function __c0(j: number): any {
           CalculatedAttributeName: S.String.pipe(T.HttpLabel("CalculatedAttributeName")),
           DisplayName: S.optional(S.String),
           Description: S.optional(SensitiveString),
-          AttributeDetails: __S(50, __c3, 2),
-          Conditions: S.optional(__S(54, __c3, 6)),
-          Filter: S.optional(__S(38, __c2, 6)),
+          AttributeDetails: __S(66, __c4, 2),
+          Conditions: S.optional(__S(70, __c4, 6)),
+          Filter: S.optional(__S(52, __c3, 4)),
           Statistic: S.String,
           UseHistoricalData: S.optional(S.Boolean),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -6728,29 +6728,25 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateCalculatedAttributeDefinitionRequest",
-      });
+      ).annotate({ identifier: "CreateCalculatedAttributeDefinitionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           CalculatedAttributeName: S.optional(S.String),
           DisplayName: S.optional(S.String),
           Description: S.optional(SensitiveString),
-          AttributeDetails: S.optional(__S(50, __c3, 2)),
-          Conditions: S.optional(__S(54, __c3, 6)),
-          Filter: S.optional(__S(38, __c2, 6)),
+          AttributeDetails: S.optional(__S(66, __c4, 2)),
+          Conditions: S.optional(__S(70, __c4, 6)),
+          Filter: S.optional(__S(52, __c3, 4)),
           Statistic: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UseHistoricalData: S.optional(S.Boolean),
           Status: S.optional(S.String),
           Readiness: S.optional(__S(16, __c1, 0)),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }),
-      ).annotate({
-        identifier: "CreateCalculatedAttributeDefinitionResponse",
-      });
+      ).annotate({ identifier: "CreateCalculatedAttributeDefinitionResponse" });
   }
 }
 function __c1(j: number): any {
@@ -6765,39 +6761,43 @@ function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ DimensionType: S.String, Values: __S(1360, __c85, 0) }),
+        S.Struct({ DimensionType: S.String, Values: __S(1328, __c83, 0) }),
       ).annotate({ identifier: "FilterAttributeDimension" });
     case 1:
       return S.Record(S.String, /*@__PURE__*/ __S(32, __c2, 0).pipe(S.optional));
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Attributes: __S(33, __c2, 1) })).annotate({
         identifier: "FilterDimension",
       });
-    case 3:
-      return S.Array(__S(34, __c2, 2));
-    case 4:
-      return S.suspend(() => S.Struct({ Type: S.String, Dimensions: __S(35, __c2, 3) })).annotate({
+    case 1:
+      return S.Array(__S(48, __c3, 0));
+    case 2:
+      return S.suspend(() => S.Struct({ Type: S.String, Dimensions: __S(49, __c3, 1) })).annotate({
         identifier: "FilterGroup",
       });
-    case 5:
-      return S.Array(__S(36, __c2, 4));
-    case 6:
-      return S.suspend(() => S.Struct({ Include: S.String, Groups: __S(37, __c2, 5) })).annotate({
+    case 3:
+      return S.Array(__S(50, __c3, 2));
+    case 4:
+      return S.suspend(() => S.Struct({ Include: S.String, Groups: __S(51, __c3, 3) })).annotate({
         identifier: "Filter",
       });
   }
 }
-function __c3(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Name: S.String })).annotate({
         identifier: "AttributeItem",
       });
     case 1:
-      return S.Array(__S(48, __c3, 0));
+      return S.Array(__S(64, __c4, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ Attributes: __S(49, __c3, 1), Expression: S.String }),
+        S.Struct({ Attributes: __S(65, __c4, 1), Expression: S.String }),
       ).annotate({ identifier: "AttributeDetails" });
     case 3:
       return S.suspend(() => S.Struct({ Start: S.Number, End: S.Number })).annotate({
@@ -6808,7 +6808,7 @@ function __c3(j: number): any {
         S.Struct({
           Value: S.optional(S.Number),
           Unit: S.optional(S.String),
-          ValueRange: S.optional(__S(51, __c3, 3)),
+          ValueRange: S.optional(__S(67, __c4, 3)),
           TimestampSource: S.optional(S.String),
           TimestampFormat: S.optional(S.String),
         }),
@@ -6820,14 +6820,14 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Range: S.optional(__S(52, __c3, 4)),
+          Range: S.optional(__S(68, __c4, 4)),
           ObjectCount: S.optional(S.Number),
-          Threshold: S.optional(__S(53, __c3, 5)),
+          Threshold: S.optional(__S(69, __c4, 5)),
         }),
       ).annotate({ identifier: "Conditions" });
   }
 }
-function __c4(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6852,7 +6852,7 @@ function __c4(j: number): any {
           ShippingAddress: S.optional(S.String),
           MailingAddress: S.optional(S.String),
           BillingAddress: S.optional(S.String),
-          Attributes: S.optional(__S(1456, __c91, 0)),
+          Attributes: S.optional(__S(2032, __c127, 0)),
           ProfileType: S.optional(S.String),
           EngagementPreferences: S.optional(S.String),
         }),
@@ -6862,8 +6862,8 @@ function __c4(j: number): any {
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
           MainProfileId: S.String,
-          ProfileIdsToBeMerged: __S(1360, __c85, 0),
-          FieldSourceProfileIds: S.optional(__S(64, __c4, 0)),
+          ProfileIdsToBeMerged: __S(1328, __c83, 0),
+          FieldSourceProfileIds: S.optional(__S(80, __c5, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/domains/{DomainName}/profiles/objects/merge" }),
@@ -6877,7 +6877,7 @@ function __c4(j: number): any {
       ).annotate({ identifier: "MergeProfilesRequest" });
   }
 }
-function __c5(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6886,8 +6886,8 @@ function __c5(j: number): any {
           ObjectTypeName: S.String.pipe(T.HttpLabel("ObjectTypeName")),
           Description: S.optional(SensitiveString),
           EncryptionKey: S.optional(S.String),
-          Fields: __S(1313, __c82, 1),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Fields: __S(1281, __c80, 1),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -6901,26 +6901,22 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutDomainObjectTypeRequest",
-      });
+      ).annotate({ identifier: "PutDomainObjectTypeRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ObjectTypeName: S.optional(S.String),
           Description: S.optional(SensitiveString),
           EncryptionKey: S.optional(S.String),
-          Fields: S.optional(__S(1313, __c82, 1)),
+          Fields: S.optional(__S(1281, __c80, 1)),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }),
-      ).annotate({
-        identifier: "PutDomainObjectTypeResponse",
-      });
+      ).annotate({ identifier: "PutDomainObjectTypeResponse" });
   }
 }
-function __c6(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6928,11 +6924,11 @@ function __c6(j: number): any {
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
           Uri: S.optional(S.String),
           ObjectTypeName: S.optional(S.String),
-          ObjectTypeNames: S.optional(__S(1456, __c91, 0)),
-          Tags: S.optional(__S(2064, __c129, 0)),
-          FlowDefinition: S.optional(__S(574, __c35, 14)),
+          ObjectTypeNames: S.optional(__S(2032, __c127, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
+          FlowDefinition: S.optional(__S(573, __c35, 13)),
           RoleArn: S.optional(S.String),
-          EventTriggerNames: S.optional(__S(1360, __c85, 0)),
+          EventTriggerNames: S.optional(__S(1328, __c83, 0)),
           Scope: S.optional(S.String),
         }).pipe(
           T.all(
@@ -6947,7 +6943,7 @@ function __c6(j: number): any {
       ).annotate({ identifier: "PutIntegrationRequest" });
   }
 }
-function __c7(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6972,7 +6968,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6988,8 +6984,8 @@ function __c8(j: number): any {
           MaxProfileObjectCount: S.optional(S.Number),
           SourcePriority: S.optional(S.Number),
           Fields: S.optional(__S(801, __c50, 1)),
-          Keys: S.optional(__S(1170, __c73, 2)),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Keys: S.optional(__S(1138, __c71, 2)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/domains/{DomainName}/object-types/{ObjectTypeName}" }),
@@ -7000,9 +6996,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutProfileObjectTypeRequest",
-      });
+      ).annotate({ identifier: "PutProfileObjectTypeRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7017,24 +7011,22 @@ function __c8(j: number): any {
           MaxAvailableProfileObjectCount: S.optional(S.Number),
           SourcePriority: S.optional(S.Number),
           Fields: S.optional(__S(801, __c50, 1)),
-          Keys: S.optional(__S(1170, __c73, 2)),
+          Keys: S.optional(__S(1138, __c71, 2)),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }),
-      ).annotate({
-        identifier: "PutProfileObjectTypeResponse",
-      });
+      ).annotate({ identifier: "PutProfileObjectTypeResponse" });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
           SegmentDefinitionName: S.String.pipe(T.HttpLabel("SegmentDefinitionName")),
-          ScheduleConfiguration: S.optional(__S(1776, __c111, 0)),
+          ScheduleConfiguration: S.optional(__S(1744, __c109, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -7048,25 +7040,21 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutSegmentSubscriptionRequest",
-      });
+      ).annotate({ identifier: "PutSegmentSubscriptionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String),
-          ScheduleConfiguration: S.optional(__S(1776, __c111, 0)),
+          ScheduleConfiguration: S.optional(__S(1744, __c109, 0)),
           StartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "PutSegmentSubscriptionResponse",
-      });
+      ).annotate({ identifier: "PutSegmentSubscriptionResponse" });
   }
 }
-function __c10(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(2256, __c141, 0));
+      return S.Array(__S(2224, __c139, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7074,8 +7062,8 @@ function __c10(j: number): any {
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
           KeyName: S.String,
-          Values: __S(1360, __c85, 0),
-          AdditionalSearchKeys: S.optional(__S(160, __c10, 0)),
+          Values: __S(1328, __c83, 0),
+          AdditionalSearchKeys: S.optional(__S(176, __c11, 0)),
           LogicalOperator: S.optional(S.String),
         }).pipe(
           T.all(
@@ -7090,22 +7078,22 @@ function __c10(j: number): any {
       ).annotate({ identifier: "SearchProfilesRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(2080, __c130, 0)), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(2048, __c128, 0)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "SearchProfilesResponse" });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          Filters: S.optional(__S(1586, __c99, 2)),
-          PromotionalFilters: S.optional(__S(1588, __c99, 4)),
+          Filters: S.optional(__S(1538, __c96, 2)),
+          PromotionalFilters: S.optional(__S(1540, __c96, 4)),
         }),
       ).annotate({ identifier: "Recommender" });
     case 1:
-      return S.suspend(() => S.Struct({ Columns: S.optional(__S(1360, __c85, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ Columns: S.optional(__S(1328, __c83, 0)) })).annotate({
         identifier: "RecommendationMetadata",
       });
     case 2:
@@ -7113,12 +7101,12 @@ function __c11(j: number): any {
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
           KeyName: S.String,
-          KeyValues: __S(1360, __c85, 0),
-          Recommender: __S(176, __c11, 0),
-          CandidateIds: S.optional(__S(1360, __c85, 0)),
-          Context: S.optional(__S(1456, __c91, 0)),
-          Diversity: S.optional(__S(1590, __c99, 6)),
-          Metadata: S.optional(__S(177, __c11, 1)),
+          KeyValues: __S(1328, __c83, 0),
+          Recommender: __S(192, __c12, 0),
+          CandidateIds: S.optional(__S(1328, __c83, 0)),
+          Context: S.optional(__S(2032, __c127, 0)),
+          Diversity: S.optional(__S(1542, __c96, 6)),
+          Metadata: S.optional(__S(193, __c12, 1)),
           MaxRecommendations: S.optional(S.Number),
         }).pipe(
           T.all(
@@ -7130,21 +7118,17 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SearchRecommendationsRequest",
-      });
+      ).annotate({ identifier: "SearchRecommendationsRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           ProfileId: S.optional(S.String),
-          Recommendations: S.optional(__S(1593, __c99, 9)),
+          Recommendations: S.optional(__S(1545, __c96, 9)),
         }),
-      ).annotate({
-        identifier: "SearchRecommendationsResponse",
-      });
+      ).annotate({ identifier: "SearchRecommendationsResponse" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7167,7 +7151,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "StartRecommenderRequest" });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7187,7 +7171,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "StartUploadJobRequest" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7196,10 +7180,10 @@ function __c14(j: number): any {
           DefaultExpirationDays: S.Number,
           DefaultEncryptionKey: S.optional(S.String),
           DeadLetterQueueUrl: S.optional(S.String),
-          Matching: S.optional(__S(240, __c15, 0)),
-          RuleBasedMatching: S.optional(__S(241, __c15, 1)),
-          DataStore: S.optional(__S(242, __c15, 2)),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Matching: S.optional(__S(256, __c16, 0)),
+          RuleBasedMatching: S.optional(__S(257, __c16, 1)),
+          DataStore: S.optional(__S(258, __c16, 2)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/domains/{DomainName}" }),
@@ -7218,37 +7202,37 @@ function __c14(j: number): any {
           DefaultExpirationDays: S.Number,
           DefaultEncryptionKey: S.optional(S.String),
           DeadLetterQueueUrl: S.optional(S.String),
-          Matching: S.optional(__S(278, __c17, 6)),
-          RuleBasedMatching: S.optional(__S(279, __c17, 7)),
-          DataStore: S.optional(__S(280, __c17, 8)),
+          Matching: S.optional(__S(294, __c18, 6)),
+          RuleBasedMatching: S.optional(__S(295, __c18, 7)),
+          DataStore: S.optional(__S(296, __c18, 8)),
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           LastUpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }),
       ).annotate({ identifier: "CreateDomainResponse" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           Enabled: S.Boolean,
-          JobSchedule: S.optional(__S(272, __c17, 0)),
-          AutoMerging: S.optional(__S(288, __c18, 0)),
-          ExportingConfig: S.optional(__S(274, __c17, 2)),
+          JobSchedule: S.optional(__S(288, __c18, 0)),
+          AutoMerging: S.optional(__S(304, __c19, 0)),
+          ExportingConfig: S.optional(__S(290, __c18, 2)),
         }),
       ).annotate({ identifier: "MatchingRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Enabled: S.Boolean,
-          MatchingRules: S.optional(__S(276, __c17, 4)),
+          MatchingRules: S.optional(__S(292, __c18, 4)),
           MaxAllowedRuleLevelForMerging: S.optional(S.Number),
           MaxAllowedRuleLevelForMatching: S.optional(S.Number),
-          AttributeTypesSelector: S.optional(__S(277, __c17, 5)),
-          ConflictResolution: S.optional(__S(258, __c16, 2)),
-          ExportingConfig: S.optional(__S(274, __c17, 2)),
+          AttributeTypesSelector: S.optional(__S(293, __c18, 5)),
+          ConflictResolution: S.optional(__S(274, __c17, 2)),
+          ExportingConfig: S.optional(__S(290, __c18, 2)),
         }),
       ).annotate({ identifier: "RuleBasedMatchingRequest" });
     case 2:
@@ -7257,12 +7241,12 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1360, __c85, 0));
+      return S.Array(__S(1328, __c83, 0));
     case 1:
-      return S.suspend(() => S.Struct({ MatchingAttributesList: __S(256, __c16, 0) })).annotate({
+      return S.suspend(() => S.Struct({ MatchingAttributesList: __S(272, __c17, 0) })).annotate({
         identifier: "Consolidation",
       });
     case 2:
@@ -7271,7 +7255,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "ConflictResolution" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ DayOfTheWeek: S.String, Time: S.String })).annotate({
@@ -7282,68 +7266,66 @@ function __c17(j: number): any {
         S.Struct({ S3BucketName: S.String, S3KeyName: S.optional(S.String) }),
       ).annotate({ identifier: "S3ExportingConfig" });
     case 2:
-      return S.suspend(() => S.Struct({ S3Exporting: S.optional(__S(273, __c17, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ S3Exporting: S.optional(__S(289, __c18, 1)) })).annotate({
         identifier: "ExportingConfig",
       });
     case 3:
-      return S.suspend(() => S.Struct({ Rule: __S(1360, __c85, 0) })).annotate({
+      return S.suspend(() => S.Struct({ Rule: __S(1328, __c83, 0) })).annotate({
         identifier: "MatchingRule",
       });
     case 4:
-      return S.Array(__S(275, __c17, 3));
+      return S.Array(__S(291, __c18, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           AttributeMatchingModel: S.String,
-          Address: S.optional(__S(1360, __c85, 0)),
-          PhoneNumber: S.optional(__S(1360, __c85, 0)),
-          EmailAddress: S.optional(__S(1360, __c85, 0)),
+          Address: S.optional(__S(1328, __c83, 0)),
+          PhoneNumber: S.optional(__S(1328, __c83, 0)),
+          EmailAddress: S.optional(__S(1328, __c83, 0)),
         }),
       ).annotate({ identifier: "AttributeTypesSelector" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           Enabled: S.optional(S.Boolean),
-          JobSchedule: S.optional(__S(272, __c17, 0)),
-          AutoMerging: S.optional(__S(288, __c18, 0)),
-          ExportingConfig: S.optional(__S(274, __c17, 2)),
+          JobSchedule: S.optional(__S(288, __c18, 0)),
+          AutoMerging: S.optional(__S(304, __c19, 0)),
+          ExportingConfig: S.optional(__S(290, __c18, 2)),
         }),
       ).annotate({ identifier: "MatchingResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           Enabled: S.optional(S.Boolean),
-          MatchingRules: S.optional(__S(276, __c17, 4)),
+          MatchingRules: S.optional(__S(292, __c18, 4)),
           Status: S.optional(S.String),
           MaxAllowedRuleLevelForMerging: S.optional(S.Number),
           MaxAllowedRuleLevelForMatching: S.optional(S.Number),
-          AttributeTypesSelector: S.optional(__S(277, __c17, 5)),
-          ConflictResolution: S.optional(__S(258, __c16, 2)),
-          ExportingConfig: S.optional(__S(274, __c17, 2)),
+          AttributeTypesSelector: S.optional(__S(293, __c18, 5)),
+          ConflictResolution: S.optional(__S(274, __c17, 2)),
+          ExportingConfig: S.optional(__S(290, __c18, 2)),
         }),
-      ).annotate({
-        identifier: "RuleBasedMatchingResponse",
-      });
+      ).annotate({ identifier: "RuleBasedMatchingResponse" });
     case 8:
       return S.suspend(() =>
         S.Struct({ Enabled: S.optional(S.Boolean), Readiness: S.optional(__S(16, __c1, 0)) }),
       ).annotate({ identifier: "DataStoreResponse" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           Enabled: S.Boolean,
-          Consolidation: S.optional(__S(257, __c16, 1)),
-          ConflictResolution: S.optional(__S(258, __c16, 2)),
+          Consolidation: S.optional(__S(273, __c17, 1)),
+          ConflictResolution: S.optional(__S(274, __c17, 2)),
           MinAllowedConfidenceScoreForMerging: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AutoMerging" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7366,7 +7348,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "StopRecommenderRequest" });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7386,13 +7368,13 @@ function __c20(j: number): any {
       ).annotate({ identifier: "StopUploadJobRequest" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(2064, __c129, 0),
+          tags: __S(2032, __c127, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -7406,13 +7388,13 @@ function __c21(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(1360, __c85, 0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(1328, __c83, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -7426,7 +7408,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7435,7 +7417,7 @@ function __c23(j: number): any {
           CalculatedAttributeName: S.String.pipe(T.HttpLabel("CalculatedAttributeName")),
           DisplayName: S.optional(S.String),
           Description: S.optional(SensitiveString),
-          Conditions: S.optional(__S(54, __c3, 6)),
+          Conditions: S.optional(__S(70, __c4, 6)),
         }).pipe(
           T.all(
             T.Http({
@@ -7449,9 +7431,7 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateCalculatedAttributeDefinitionRequest",
-      });
+      ).annotate({ identifier: "UpdateCalculatedAttributeDefinitionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7461,19 +7441,17 @@ function __c23(j: number): any {
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Statistic: S.optional(S.String),
-          Conditions: S.optional(__S(54, __c3, 6)),
-          AttributeDetails: S.optional(__S(50, __c3, 2)),
+          Conditions: S.optional(__S(70, __c4, 6)),
+          AttributeDetails: S.optional(__S(66, __c4, 2)),
           UseHistoricalData: S.optional(S.Boolean),
           Status: S.optional(S.String),
           Readiness: S.optional(__S(16, __c1, 0)),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }),
-      ).annotate({
-        identifier: "UpdateCalculatedAttributeDefinitionResponse",
-      });
+      ).annotate({ identifier: "UpdateCalculatedAttributeDefinitionResponse" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7482,10 +7460,10 @@ function __c24(j: number): any {
           DefaultExpirationDays: S.optional(S.Number),
           DefaultEncryptionKey: S.optional(S.String),
           DeadLetterQueueUrl: S.optional(S.String),
-          Matching: S.optional(__S(240, __c15, 0)),
-          RuleBasedMatching: S.optional(__S(241, __c15, 1)),
-          DataStore: S.optional(__S(242, __c15, 2)),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Matching: S.optional(__S(256, __c16, 0)),
+          RuleBasedMatching: S.optional(__S(257, __c16, 1)),
+          DataStore: S.optional(__S(258, __c16, 2)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/domains/{DomainName}" }),
@@ -7504,17 +7482,17 @@ function __c24(j: number): any {
           DefaultExpirationDays: S.optional(S.Number),
           DefaultEncryptionKey: S.optional(S.String),
           DeadLetterQueueUrl: S.optional(S.String),
-          Matching: S.optional(__S(278, __c17, 6)),
-          RuleBasedMatching: S.optional(__S(279, __c17, 7)),
-          DataStore: S.optional(__S(280, __c17, 8)),
+          Matching: S.optional(__S(294, __c18, 6)),
+          RuleBasedMatching: S.optional(__S(295, __c18, 7)),
+          DataStore: S.optional(__S(296, __c18, 8)),
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           LastUpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }),
       ).annotate({ identifier: "UpdateDomainResponse" });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7536,9 +7514,7 @@ function __c25(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateDomainLayoutRequest",
-      });
+      ).annotate({ identifier: "UpdateDomainLayoutRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7551,14 +7527,12 @@ function __c25(j: number): any {
           Version: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }),
-      ).annotate({
-        identifier: "UpdateDomainLayoutResponse",
-      });
+      ).annotate({ identifier: "UpdateDomainLayoutResponse" });
   }
 }
-function __c26(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7583,12 +7557,10 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateEventTriggerRequest",
-      });
+      ).annotate({ identifier: "UpdateEventTriggerRequest" });
   }
 }
-function __c27(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7611,15 +7583,15 @@ function __c27(j: number): any {
           EmailAddress: S.optional(SensitiveString),
           PersonalEmailAddress: S.optional(SensitiveString),
           BusinessEmailAddress: S.optional(SensitiveString),
-          Address: S.optional(__S(2096, __c131, 0)),
-          ShippingAddress: S.optional(__S(2096, __c131, 0)),
-          MailingAddress: S.optional(__S(2096, __c131, 0)),
-          BillingAddress: S.optional(__S(2096, __c131, 0)),
-          Attributes: S.optional(__S(1456, __c91, 0)),
+          Address: S.optional(__S(2064, __c129, 0)),
+          ShippingAddress: S.optional(__S(2064, __c129, 0)),
+          MailingAddress: S.optional(__S(2064, __c129, 0)),
+          BillingAddress: S.optional(__S(2064, __c129, 0)),
+          Attributes: S.optional(__S(2032, __c127, 0)),
           PartyTypeString: S.optional(SensitiveString),
           GenderString: S.optional(SensitiveString),
           ProfileType: S.optional(S.String),
-          EngagementPreferences: S.optional(__S(2099, __c131, 3)),
+          EngagementPreferences: S.optional(__S(2067, __c129, 3)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/domains/{DomainName}/profiles" }),
@@ -7633,7 +7605,7 @@ function __c27(j: number): any {
       ).annotate({ identifier: "UpdateProfileRequest" });
   }
 }
-function __c28(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7663,7 +7635,7 @@ function __c28(j: number): any {
       });
   }
 }
-function __c29(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7675,7 +7647,7 @@ function __c29(j: number): any {
           IsDefault: S.optional(S.Boolean),
           LayoutType: S.String,
           Layout: SensitiveString,
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/domains/{DomainName}/layouts/{LayoutDefinitionName}" }),
@@ -7686,9 +7658,7 @@ function __c29(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateDomainLayoutRequest",
-      });
+      ).annotate({ identifier: "CreateDomainLayoutRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7699,16 +7669,14 @@ function __c29(j: number): any {
           LayoutType: S.String,
           Layout: SensitiveString,
           Version: S.String,
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "CreateDomainLayoutResponse",
-      });
+      ).annotate({ identifier: "CreateDomainLayoutResponse" });
   }
 }
-function __c30(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7716,7 +7684,7 @@ function __c30(j: number): any {
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
           Uri: S.String,
           EventStreamName: S.String.pipe(T.HttpLabel("EventStreamName")),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -7733,13 +7701,11 @@ function __c30(j: number): any {
       ).annotate({ identifier: "CreateEventStreamRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ EventStreamArn: S.String, Tags: S.optional(__S(2064, __c129, 0)) }),
-      ).annotate({
-        identifier: "CreateEventStreamResponse",
-      });
+        S.Struct({ EventStreamArn: S.String, Tags: S.optional(__S(2032, __c127, 0)) }),
+      ).annotate({ identifier: "CreateEventStreamResponse" });
   }
 }
-function __c31(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7751,7 +7717,7 @@ function __c31(j: number): any {
           EventTriggerConditions: __S(533, __c33, 5),
           SegmentFilter: S.optional(S.String),
           EventTriggerLimits: S.optional(__S(536, __c33, 8)),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -7765,29 +7731,7 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateEventTriggerRequest",
-      });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          EventTriggerName: S.optional(S.String),
-          ObjectTypeName: S.optional(S.String),
-          Description: S.optional(SensitiveString),
-          EventTriggerConditions: S.optional(__S(533, __c33, 5)),
-          SegmentFilter: S.optional(S.String),
-          EventTriggerLimits: S.optional(__S(536, __c33, 8)),
-          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(__S(2064, __c129, 0)),
-        }),
-      ).annotate({
-        identifier: "CreateEventTriggerResponse",
-      });
+      ).annotate({ identifier: "CreateEventTriggerRequest" });
   }
 }
 function __c33(j: number): any {
@@ -7798,7 +7742,7 @@ function __c33(j: number): any {
           Source: S.optional(S.String),
           FieldName: S.optional(S.String),
           ComparisonOperator: S.String,
-          Values: __S(1360, __c85, 0),
+          Values: __S(1328, __c83, 0),
         }),
       ).annotate({ identifier: "ObjectAttribute" });
     case 1:
@@ -7811,10 +7755,7 @@ function __c33(j: number): any {
       return S.Array(__S(530, __c33, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({
-          EventTriggerDimensions: __S(531, __c33, 3),
-          LogicalOperator: S.String,
-        }),
+        S.Struct({ EventTriggerDimensions: __S(531, __c33, 3), LogicalOperator: S.String }),
       ).annotate({ identifier: "EventTriggerCondition" });
     case 5:
       return S.Array(__S(532, __c33, 4));
@@ -7836,6 +7777,20 @@ function __c33(j: number): any {
           Periods: S.optional(__S(535, __c33, 7)),
         }),
       ).annotate({ identifier: "EventTriggerLimits" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          EventTriggerName: S.optional(S.String),
+          ObjectTypeName: S.optional(S.String),
+          Description: S.optional(SensitiveString),
+          EventTriggerConditions: S.optional(__S(533, __c33, 5)),
+          SegmentFilter: S.optional(S.String),
+          EventTriggerLimits: S.optional(__S(536, __c33, 8)),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Tags: S.optional(__S(2032, __c127, 0)),
+        }),
+      ).annotate({ identifier: "CreateEventTriggerResponse" });
   }
 }
 function __c34(j: number): any {
@@ -7851,7 +7806,7 @@ function __c34(j: number): any {
       return S.Array(__S(544, __c34, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ FlowDefinition: __S(574, __c35, 14), Batches: S.optional(__S(545, __c34, 1)) }),
+        S.Struct({ FlowDefinition: __S(573, __c35, 13), Batches: S.optional(__S(545, __c34, 1)) }),
       ).annotate({ identifier: "AppflowIntegration" });
     case 3:
       return S.suspend(() =>
@@ -7865,7 +7820,7 @@ function __c34(j: number): any {
           IntegrationConfig: __S(547, __c34, 3),
           ObjectTypeName: S.String,
           RoleArn: S.String,
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/domains/{DomainName}/workflows/integrations" }),
@@ -7876,9 +7831,7 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateIntegrationWorkflowRequest",
-      });
+      ).annotate({ identifier: "CreateIntegrationWorkflowRequest" });
     case 5:
       return S.suspend(() => S.Struct({ WorkflowId: S.String, Message: S.String })).annotate({
         identifier: "CreateIntegrationWorkflowResponse",
@@ -7906,35 +7859,27 @@ function __c35(j: number): any {
           EnableDynamicFieldUpdate: S.optional(S.Boolean),
           IncludeDeletedRecords: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "SalesforceSourceProperties",
-      });
+      ).annotate({ identifier: "SalesforceSourceProperties" });
     case 4:
-      return S.suspend(() => S.Struct({ Object: S.String })).annotate({
-        identifier: "ServiceNowSourceProperties",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           Marketo: S.optional(__S(561, __c35, 1)),
           S3: S.optional(__S(562, __c35, 2)),
           Salesforce: S.optional(__S(563, __c35, 3)),
-          ServiceNow: S.optional(__S(564, __c35, 4)),
+          ServiceNow: S.optional(__S(561, __c35, 1)),
           Zendesk: S.optional(__S(561, __c35, 1)),
         }),
-      ).annotate({
-        identifier: "SourceConnectorProperties",
-      });
-    case 6:
+      ).annotate({ identifier: "SourceConnectorProperties" });
+    case 5:
       return S.suspend(() =>
         S.Struct({
           ConnectorProfileName: S.optional(S.String),
           ConnectorType: S.String,
           IncrementalPullConfig: S.optional(__S(560, __c35, 0)),
-          SourceConnectorProperties: __S(565, __c35, 5),
+          SourceConnectorProperties: __S(564, __c35, 4),
         }),
       ).annotate({ identifier: "SourceFlowConfig" });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           Marketo: S.optional(S.String),
@@ -7944,21 +7889,21 @@ function __c35(j: number): any {
           Zendesk: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectorOperator" });
-    case 8:
+    case 7:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 9:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          ConnectorOperator: S.optional(__S(567, __c35, 7)),
+          ConnectorOperator: S.optional(__S(566, __c35, 6)),
           DestinationField: S.optional(S.String),
-          SourceFields: __S(1360, __c85, 0),
-          TaskProperties: S.optional(__S(568, __c35, 8)),
+          SourceFields: __S(1328, __c83, 0),
+          TaskProperties: S.optional(__S(567, __c35, 7)),
           TaskType: S.String,
         }),
       ).annotate({ identifier: "Task" });
+    case 9:
+      return S.Array(__S(568, __c35, 8));
     case 10:
-      return S.Array(__S(569, __c35, 9));
-    case 11:
       return S.suspend(() =>
         S.Struct({
           ScheduleExpression: S.String,
@@ -7969,26 +7914,24 @@ function __c35(j: number): any {
           ScheduleOffset: S.optional(S.Number),
           FirstExecutionFrom: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "ScheduledTriggerProperties",
-      });
-    case 12:
-      return S.suspend(() => S.Struct({ Scheduled: S.optional(__S(571, __c35, 11)) })).annotate({
+      ).annotate({ identifier: "ScheduledTriggerProperties" });
+    case 11:
+      return S.suspend(() => S.Struct({ Scheduled: S.optional(__S(570, __c35, 10)) })).annotate({
         identifier: "TriggerProperties",
       });
-    case 13:
+    case 12:
       return S.suspend(() =>
-        S.Struct({ TriggerType: S.String, TriggerProperties: S.optional(__S(572, __c35, 12)) }),
+        S.Struct({ TriggerType: S.String, TriggerProperties: S.optional(__S(571, __c35, 11)) }),
       ).annotate({ identifier: "TriggerConfig" });
-    case 14:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           Description: S.optional(S.String),
           FlowName: S.String,
           KmsArn: S.String,
-          SourceFlowConfig: __S(566, __c35, 6),
-          Tasks: __S(570, __c35, 10),
-          TriggerConfig: __S(573, __c35, 13),
+          SourceFlowConfig: __S(565, __c35, 5),
+          Tasks: __S(569, __c35, 9),
+          TriggerConfig: __S(572, __c35, 12),
         }),
       ).annotate({ identifier: "FlowDefinition" });
   }
@@ -8015,15 +7958,15 @@ function __c36(j: number): any {
           EmailAddress: S.optional(SensitiveString),
           PersonalEmailAddress: S.optional(SensitiveString),
           BusinessEmailAddress: S.optional(SensitiveString),
-          Address: S.optional(__S(2096, __c131, 0)),
-          ShippingAddress: S.optional(__S(2096, __c131, 0)),
-          MailingAddress: S.optional(__S(2096, __c131, 0)),
-          BillingAddress: S.optional(__S(2096, __c131, 0)),
-          Attributes: S.optional(__S(2064, __c129, 0)),
+          Address: S.optional(__S(2064, __c129, 0)),
+          ShippingAddress: S.optional(__S(2064, __c129, 0)),
+          MailingAddress: S.optional(__S(2064, __c129, 0)),
+          BillingAddress: S.optional(__S(2064, __c129, 0)),
+          Attributes: S.optional(__S(2032, __c127, 0)),
           PartyTypeString: S.optional(SensitiveString),
           GenderString: S.optional(SensitiveString),
           ProfileType: S.optional(S.String),
-          EngagementPreferences: S.optional(__S(2099, __c131, 3)),
+          EngagementPreferences: S.optional(__S(2067, __c129, 3)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/domains/{DomainName}/profiles" }),
@@ -8056,7 +7999,7 @@ function __c38(j: number): any {
           RecommenderConfig: S.optional(__S(632, __c39, 8)),
           Description: S.optional(SensitiveString),
           RecommenderSchemaName: S.optional(S.String),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/domains/{DomainName}/recommenders/{RecommenderName}" }),
@@ -8070,10 +8013,8 @@ function __c38(j: number): any {
       ).annotate({ identifier: "CreateRecommenderRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ RecommenderArn: S.String, Tags: S.optional(__S(2064, __c129, 0)) }),
-      ).annotate({
-        identifier: "CreateRecommenderResponse",
-      });
+        S.Struct({ RecommenderArn: S.String, Tags: S.optional(__S(2032, __c127, 0)) }),
+      ).annotate({ identifier: "CreateRecommenderResponse" });
   }
 }
 function __c39(j: number): any {
@@ -8097,7 +8038,7 @@ function __c39(j: number): any {
         identifier: "InferenceConfig",
       });
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(1360, __c85, 0).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(1328, __c83, 0).pipe(S.optional));
     case 5:
       return S.suspend(() =>
         S.Struct({ Name: S.String, CapType: S.String, Target: S.String }),
@@ -8131,7 +8072,7 @@ function __c40(j: number): any {
           RecommenderFilterExpression: SensitiveString,
           RecommenderSchemaName: S.optional(S.String),
           Description: S.optional(SensitiveString),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -8145,15 +8086,11 @@ function __c40(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateRecommenderFilterRequest",
-      });
+      ).annotate({ identifier: "CreateRecommenderFilterRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ RecommenderFilterArn: S.String, Tags: S.optional(__S(2064, __c129, 0)) }),
-      ).annotate({
-        identifier: "CreateRecommenderFilterResponse",
-      });
+        S.Struct({ RecommenderFilterArn: S.String, Tags: S.optional(__S(2032, __c127, 0)) }),
+      ).annotate({ identifier: "CreateRecommenderFilterResponse" });
   }
 }
 function __c41(j: number): any {
@@ -8164,7 +8101,7 @@ function __c41(j: number): any {
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
           RecommenderSchemaName: S.String.pipe(T.HttpLabel("RecommenderSchemaName")),
           Fields: __S(674, __c42, 2),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -8178,9 +8115,7 @@ function __c41(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateRecommenderSchemaRequest",
-      });
+      ).annotate({ identifier: "CreateRecommenderSchemaRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8189,11 +8124,9 @@ function __c41(j: number): any {
           Fields: __S(674, __c42, 2),
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           Status: S.String,
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }),
-      ).annotate({
-        identifier: "CreateRecommenderSchemaResponse",
-      });
+      ).annotate({ identifier: "CreateRecommenderSchemaResponse" });
   }
 }
 function __c42(j: number): any {
@@ -8221,10 +8154,10 @@ function __c43(j: number): any {
           SegmentDefinitionName: S.String.pipe(T.HttpLabel("SegmentDefinitionName")),
           DisplayName: S.String,
           Description: S.optional(SensitiveString),
-          SegmentGroups: S.optional(__S(735, __c45, 15)),
+          SegmentGroups: S.optional(__S(731, __c45, 11)),
           SegmentSqlQuery: S.optional(SensitiveString),
           SegmentSort: S.optional(__S(738, __c46, 2)),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -8238,9 +8171,7 @@ function __c43(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateSegmentDefinitionRequest",
-      });
+      ).annotate({ identifier: "CreateSegmentDefinitionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8249,11 +8180,9 @@ function __c43(j: number): any {
           Description: S.optional(SensitiveString),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           SegmentDefinitionArn: S.optional(S.String),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }),
-      ).annotate({
-        identifier: "CreateSegmentDefinitionResponse",
-      });
+      ).annotate({ identifier: "CreateSegmentDefinitionResponse" });
   }
 }
 function __c44(j: number): any {
@@ -8266,101 +8195,83 @@ function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ DimensionType: S.String, Values: __S(1360, __c85, 0) }),
-      ).annotate({ identifier: "ProfileDimension" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ DimensionType: S.String, Values: __S(1360, __c85, 0) }),
-      ).annotate({
-        identifier: "ExtraLengthValueProfileDimension",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ DimensionType: S.String, Values: __S(1360, __c85, 0) }),
-      ).annotate({ identifier: "DateDimension" });
-    case 3:
-      return S.suspend(() =>
         S.Struct({
-          City: S.optional(__S(720, __c45, 0)),
-          Country: S.optional(__S(720, __c45, 0)),
-          County: S.optional(__S(720, __c45, 0)),
-          PostalCode: S.optional(__S(720, __c45, 0)),
-          Province: S.optional(__S(720, __c45, 0)),
-          State: S.optional(__S(720, __c45, 0)),
+          City: S.optional(__S(32, __c2, 0)),
+          Country: S.optional(__S(32, __c2, 0)),
+          County: S.optional(__S(32, __c2, 0)),
+          PostalCode: S.optional(__S(32, __c2, 0)),
+          Province: S.optional(__S(32, __c2, 0)),
+          State: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "AddressDimension" });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(720, __c45, 0).pipe(S.optional));
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({ DimensionType: S.String, Values: __S(704, __c44, 0) }),
       ).annotate({ identifier: "ProfileTypeDimension" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          AccountNumber: S.optional(__S(720, __c45, 0)),
-          AdditionalInformation: S.optional(__S(721, __c45, 1)),
-          FirstName: S.optional(__S(720, __c45, 0)),
-          LastName: S.optional(__S(720, __c45, 0)),
-          MiddleName: S.optional(__S(720, __c45, 0)),
-          GenderString: S.optional(__S(720, __c45, 0)),
-          PartyTypeString: S.optional(__S(720, __c45, 0)),
-          BirthDate: S.optional(__S(722, __c45, 2)),
-          PhoneNumber: S.optional(__S(720, __c45, 0)),
-          BusinessName: S.optional(__S(720, __c45, 0)),
-          BusinessPhoneNumber: S.optional(__S(720, __c45, 0)),
-          HomePhoneNumber: S.optional(__S(720, __c45, 0)),
-          MobilePhoneNumber: S.optional(__S(720, __c45, 0)),
-          EmailAddress: S.optional(__S(720, __c45, 0)),
-          PersonalEmailAddress: S.optional(__S(720, __c45, 0)),
-          BusinessEmailAddress: S.optional(__S(720, __c45, 0)),
-          Address: S.optional(__S(723, __c45, 3)),
-          ShippingAddress: S.optional(__S(723, __c45, 3)),
-          MailingAddress: S.optional(__S(723, __c45, 3)),
-          BillingAddress: S.optional(__S(723, __c45, 3)),
-          Attributes: S.optional(__S(724, __c45, 4)),
-          ProfileType: S.optional(__S(725, __c45, 5)),
+          AccountNumber: S.optional(__S(32, __c2, 0)),
+          AdditionalInformation: S.optional(__S(32, __c2, 0)),
+          FirstName: S.optional(__S(32, __c2, 0)),
+          LastName: S.optional(__S(32, __c2, 0)),
+          MiddleName: S.optional(__S(32, __c2, 0)),
+          GenderString: S.optional(__S(32, __c2, 0)),
+          PartyTypeString: S.optional(__S(32, __c2, 0)),
+          BirthDate: S.optional(__S(32, __c2, 0)),
+          PhoneNumber: S.optional(__S(32, __c2, 0)),
+          BusinessName: S.optional(__S(32, __c2, 0)),
+          BusinessPhoneNumber: S.optional(__S(32, __c2, 0)),
+          HomePhoneNumber: S.optional(__S(32, __c2, 0)),
+          MobilePhoneNumber: S.optional(__S(32, __c2, 0)),
+          EmailAddress: S.optional(__S(32, __c2, 0)),
+          PersonalEmailAddress: S.optional(__S(32, __c2, 0)),
+          BusinessEmailAddress: S.optional(__S(32, __c2, 0)),
+          Address: S.optional(__S(720, __c45, 0)),
+          ShippingAddress: S.optional(__S(720, __c45, 0)),
+          MailingAddress: S.optional(__S(720, __c45, 0)),
+          BillingAddress: S.optional(__S(720, __c45, 0)),
+          Attributes: S.optional(__S(33, __c2, 1)),
+          ProfileType: S.optional(__S(721, __c45, 1)),
         }),
       ).annotate({ identifier: "ProfileAttributes" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           DimensionType: S.String,
-          Values: __S(1360, __c85, 0),
-          ConditionOverrides: S.optional(__S(1857, __c116, 1)),
+          Values: __S(1328, __c83, 0),
+          ConditionOverrides: S.optional(__S(1825, __c114, 1)),
         }),
-      ).annotate({
-        identifier: "CalculatedAttributeDimension",
-      });
-    case 8:
-      return S.Record(S.String, /*@__PURE__*/ __S(727, __c45, 7).pipe(S.optional));
-    case 9:
+      ).annotate({ identifier: "CalculatedAttributeDimension" });
+    case 4:
+      return S.Record(S.String, /*@__PURE__*/ __S(723, __c45, 3).pipe(S.optional));
+    case 5:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ ProfileAttributes: __S(726, __c45, 6) }),
-        /*@__PURE__*/ S.Struct({ CalculatedAttributes: __S(728, __c45, 8) }),
+        /*@__PURE__*/ S.Struct({ ProfileAttributes: __S(722, __c45, 2) }),
+        /*@__PURE__*/ S.Struct({ CalculatedAttributes: __S(724, __c45, 4) }),
       ]);
-    case 10:
-      return S.Array(__S(729, __c45, 9));
-    case 11:
+    case 6:
+      return S.Array(__S(725, __c45, 5));
+    case 7:
       return S.suspend(() => S.Struct({ SegmentDefinitionName: S.optional(S.String) })).annotate({
         identifier: "SourceSegment",
       });
-    case 12:
-      return S.Array(__S(731, __c45, 11));
-    case 13:
+    case 8:
+      return S.Array(__S(727, __c45, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          Dimensions: S.optional(__S(730, __c45, 10)),
-          SourceSegments: S.optional(__S(732, __c45, 12)),
+          Dimensions: S.optional(__S(726, __c45, 6)),
+          SourceSegments: S.optional(__S(728, __c45, 8)),
           SourceType: S.optional(S.String),
           Type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Group" });
-    case 14:
-      return S.Array(__S(733, __c45, 13));
-    case 15:
+    case 10:
+      return S.Array(__S(729, __c45, 9));
+    case 11:
       return S.suspend(() =>
-        S.Struct({ Groups: S.optional(__S(734, __c45, 14)), Include: S.optional(S.String) }),
+        S.Struct({ Groups: S.optional(__S(730, __c45, 10)), Include: S.optional(S.String) }),
       ).annotate({ identifier: "SegmentGroup" });
   }
 }
@@ -8389,7 +8300,7 @@ function __c47(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
-          SegmentQuery: S.optional(__S(735, __c45, 15)),
+          SegmentQuery: S.optional(__S(731, __c45, 11)),
           SegmentSqlQuery: S.optional(SensitiveString),
         }).pipe(
           T.all(
@@ -8401,9 +8312,7 @@ function __c47(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateSegmentEstimateRequest",
-      });
+      ).annotate({ identifier: "CreateSegmentEstimateRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8411,9 +8320,7 @@ function __c47(j: number): any {
           EstimateId: S.optional(S.String),
           StatusCode: S.optional(S.Number).pipe(T.HttpResponseCode()),
         }),
-      ).annotate({
-        identifier: "CreateSegmentEstimateResponse",
-      });
+      ).annotate({ identifier: "CreateSegmentEstimateResponse" });
   }
 }
 function __c48(j: number): any {
@@ -8440,9 +8347,7 @@ function __c48(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateSegmentSnapshotRequest",
-      });
+      ).annotate({ identifier: "CreateSegmentSnapshotRequest" });
     case 1:
       return S.suspend(() => S.Struct({ SnapshotId: S.String })).annotate({
         identifier: "CreateSegmentSnapshotResponse",
@@ -8510,9 +8415,7 @@ function __c51(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteCalculatedAttributeDefinitionRequest",
-      });
+      ).annotate({ identifier: "DeleteCalculatedAttributeDefinitionRequest" });
   }
 }
 function __c52(j: number): any {
@@ -8530,13 +8433,17 @@ function __c52(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteDomainRequest" });
-    case 1:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Message: S.String })).annotate({
         identifier: "DeleteDomainResponse",
       });
   }
 }
-function __c53(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8556,17 +8463,7 @@ function __c53(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteDomainLayoutRequest",
-      });
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Message: S.String })).annotate({
-        identifier: "DeleteDomainLayoutResponse",
-      });
+      ).annotate({ identifier: "DeleteDomainLayoutRequest" });
   }
 }
 function __c55(j: number): any {
@@ -8589,20 +8486,10 @@ function __c55(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteDomainObjectTypeRequest",
-      });
+      ).annotate({ identifier: "DeleteDomainObjectTypeRequest" });
   }
 }
 function __c56(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteDomainObjectTypeResponse",
-      });
-  }
-}
-function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8625,7 +8512,7 @@ function __c57(j: number): any {
       ).annotate({ identifier: "DeleteEventStreamRequest" });
   }
 }
-function __c58(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8645,12 +8532,10 @@ function __c58(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteEventTriggerRequest",
-      });
+      ).annotate({ identifier: "DeleteEventTriggerRequest" });
   }
 }
-function __c59(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8667,7 +8552,7 @@ function __c59(j: number): any {
       ).annotate({ identifier: "DeleteIntegrationRequest" });
   }
 }
-function __c60(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8687,7 +8572,7 @@ function __c60(j: number): any {
       ).annotate({ identifier: "DeleteProfileRequest" });
   }
 }
-function __c61(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Message: S.optional(S.String) })).annotate({
@@ -8695,14 +8580,14 @@ function __c61(j: number): any {
       });
   }
 }
-function __c62(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ProfileId: S.String,
           KeyName: S.String,
-          Values: __S(1360, __c85, 0),
+          Values: __S(1328, __c83, 0),
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
         }).pipe(
           T.all(
@@ -8717,7 +8602,7 @@ function __c62(j: number): any {
       ).annotate({ identifier: "DeleteProfileKeyRequest" });
   }
 }
-function __c63(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8736,20 +8621,10 @@ function __c63(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteProfileObjectRequest",
-      });
+      ).annotate({ identifier: "DeleteProfileObjectRequest" });
   }
 }
-function __c64(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Message: S.optional(S.String) })).annotate({
-        identifier: "DeleteProfileObjectResponse",
-      });
-  }
-}
-function __c65(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8769,12 +8644,10 @@ function __c65(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteProfileObjectTypeRequest",
-      });
+      ).annotate({ identifier: "DeleteProfileObjectTypeRequest" });
   }
 }
-function __c66(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8797,7 +8670,7 @@ function __c66(j: number): any {
       ).annotate({ identifier: "DeleteRecommenderRequest" });
   }
 }
-function __c67(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8817,12 +8690,10 @@ function __c67(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteRecommenderFilterRequest",
-      });
+      ).annotate({ identifier: "DeleteRecommenderFilterRequest" });
   }
 }
-function __c68(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8842,16 +8713,10 @@ function __c68(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteRecommenderSchemaRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteRecommenderSchemaResponse",
-      });
+      ).annotate({ identifier: "DeleteRecommenderSchemaRequest" });
   }
 }
-function __c69(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8871,12 +8736,10 @@ function __c69(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteSegmentDefinitionRequest",
-      });
+      ).annotate({ identifier: "DeleteSegmentDefinitionRequest" });
   }
 }
-function __c70(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8896,12 +8759,10 @@ function __c70(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteSegmentSubscriptionRequest",
-      });
+      ).annotate({ identifier: "DeleteSegmentSubscriptionRequest" });
   }
 }
-function __c71(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8921,14 +8782,14 @@ function __c71(j: number): any {
       ).annotate({ identifier: "DeleteWorkflowRequest" });
   }
 }
-function __c72(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.Array(SensitiveString);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Objects: __S(1152, __c72, 0),
+          Objects: __S(1120, __c70, 0),
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
         }).pipe(
           T.all(
@@ -8940,45 +8801,39 @@ function __c72(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DetectProfileObjectTypeRequest",
-      });
+      ).annotate({ identifier: "DetectProfileObjectTypeRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           SourceLastUpdatedTimestampFormat: S.optional(S.String),
           Fields: S.optional(__S(801, __c50, 1)),
-          Keys: S.optional(__S(1170, __c73, 2)),
+          Keys: S.optional(__S(1138, __c71, 2)),
         }),
-      ).annotate({
-        identifier: "DetectedProfileObjectType",
-      });
+      ).annotate({ identifier: "DetectedProfileObjectType" });
     case 3:
-      return S.Array(__S(1154, __c72, 2));
+      return S.Array(__S(1122, __c70, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ DetectedProfileObjectTypes: S.optional(__S(1155, __c72, 3)) }),
-      ).annotate({
-        identifier: "DetectProfileObjectTypeResponse",
-      });
+        S.Struct({ DetectedProfileObjectTypes: S.optional(__S(1123, __c70, 3)) }),
+      ).annotate({ identifier: "DetectProfileObjectTypeResponse" });
   }
 }
-function __c73(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           StandardIdentifiers: S.optional(__S(704, __c44, 0)),
-          FieldNames: S.optional(__S(1360, __c85, 0)),
+          FieldNames: S.optional(__S(1328, __c83, 0)),
         }),
       ).annotate({ identifier: "ObjectTypeKey" });
     case 1:
-      return S.Array(__S(1168, __c73, 0));
+      return S.Array(__S(1136, __c71, 0));
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(1169, __c73, 1).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(1137, __c71, 1).pipe(S.optional));
   }
 }
-function __c74(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8992,19 +8847,17 @@ function __c74(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateStreamForSegmentsRequest",
-      });
+      ).annotate({ identifier: "DisassociateStreamForSegmentsRequest" });
   }
 }
-function __c75(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
-          Consolidation: __S(257, __c16, 1),
-          ConflictResolution: __S(258, __c16, 2),
+          Consolidation: __S(273, __c17, 1),
+          ConflictResolution: __S(274, __c17, 2),
           MinAllowedConfidenceScoreForMerging: S.optional(S.Number),
         }).pipe(
           T.all(
@@ -9019,9 +8872,7 @@ function __c75(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAutoMergingPreviewRequest",
-      });
+      ).annotate({ identifier: "GetAutoMergingPreviewRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9030,12 +8881,10 @@ function __c75(j: number): any {
           NumberOfProfilesInSample: S.optional(S.Number),
           NumberOfProfilesWillBeMerged: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "GetAutoMergingPreviewResponse",
-      });
+      ).annotate({ identifier: "GetAutoMergingPreviewResponse" });
   }
 }
-function __c76(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9055,9 +8904,7 @@ function __c76(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetCalculatedAttributeDefinitionRequest",
-      });
+      ).annotate({ identifier: "GetCalculatedAttributeDefinitionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9067,20 +8914,18 @@ function __c76(j: number): any {
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Statistic: S.optional(S.String),
-          Filter: S.optional(__S(38, __c2, 6)),
-          Conditions: S.optional(__S(54, __c3, 6)),
-          AttributeDetails: S.optional(__S(50, __c3, 2)),
+          Filter: S.optional(__S(52, __c3, 4)),
+          Conditions: S.optional(__S(70, __c4, 6)),
+          AttributeDetails: S.optional(__S(66, __c4, 2)),
           UseHistoricalData: S.optional(S.Boolean),
           Status: S.optional(S.String),
           Readiness: S.optional(__S(16, __c1, 0)),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }),
-      ).annotate({
-        identifier: "GetCalculatedAttributeDefinitionResponse",
-      });
+      ).annotate({ identifier: "GetCalculatedAttributeDefinitionResponse" });
   }
 }
-function __c77(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9101,12 +8946,10 @@ function __c77(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetCalculatedAttributeForProfileRequest",
-      });
+      ).annotate({ identifier: "GetCalculatedAttributeForProfileRequest" });
   }
 }
-function __c78(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9117,12 +8960,10 @@ function __c78(j: number): any {
           Value: S.optional(S.String),
           LastObjectTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "GetCalculatedAttributeForProfileResponse",
-      });
+      ).annotate({ identifier: "GetCalculatedAttributeForProfileResponse" });
   }
 }
-function __c79(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9153,18 +8994,18 @@ function __c79(j: number): any {
           DefaultExpirationDays: S.optional(S.Number),
           DefaultEncryptionKey: S.optional(S.String),
           DeadLetterQueueUrl: S.optional(S.String),
-          Stats: S.optional(__S(1265, __c79, 1)),
-          Matching: S.optional(__S(278, __c17, 6)),
-          RuleBasedMatching: S.optional(__S(279, __c17, 7)),
-          DataStore: S.optional(__S(280, __c17, 8)),
+          Stats: S.optional(__S(1233, __c77, 1)),
+          Matching: S.optional(__S(294, __c18, 6)),
+          RuleBasedMatching: S.optional(__S(295, __c18, 7)),
+          DataStore: S.optional(__S(296, __c18, 8)),
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           LastUpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }),
       ).annotate({ identifier: "GetDomainResponse" });
   }
 }
-function __c80(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9194,12 +9035,12 @@ function __c80(j: number): any {
           Version: S.String,
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           LastUpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }),
       ).annotate({ identifier: "GetDomainLayoutResponse" });
   }
 }
-function __c81(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9219,26 +9060,22 @@ function __c81(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDomainObjectTypeRequest",
-      });
+      ).annotate({ identifier: "GetDomainObjectTypeRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ObjectTypeName: S.String,
           Description: S.optional(SensitiveString),
           EncryptionKey: S.optional(S.String),
-          Fields: S.optional(__S(1313, __c82, 1)),
+          Fields: S.optional(__S(1281, __c80, 1)),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }),
-      ).annotate({
-        identifier: "GetDomainObjectTypeResponse",
-      });
+      ).annotate({ identifier: "GetDomainObjectTypeResponse" });
   }
 }
-function __c82(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9250,10 +9087,10 @@ function __c82(j: number): any {
         }),
       ).annotate({ identifier: "DomainObjectTypeField" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(1312, __c82, 0).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(1280, __c80, 0).pipe(S.optional));
   }
 }
-function __c83(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9279,9 +9116,7 @@ function __c83(j: number): any {
           UnhealthySince: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Message: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "EventStreamDestinationDetails",
-      });
+      ).annotate({ identifier: "EventStreamDestinationDetails" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -9290,20 +9125,20 @@ function __c83(j: number): any {
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           State: S.String,
           StoppedSince: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          DestinationDetails: __S(1329, __c83, 1),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          DestinationDetails: __S(1297, __c81, 1),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }),
       ).annotate({ identifier: "GetEventStreamResponse" });
   }
 }
-function __c84(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ProfileId: S.String,
           KeyName: S.String,
-          Values: __S(1360, __c85, 0),
+          Values: __S(1328, __c83, 0),
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
         }).pipe(
           T.all(
@@ -9318,21 +9153,21 @@ function __c84(j: number): any {
       ).annotate({ identifier: "AddProfileKeyRequest" });
   }
 }
-function __c85(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c86(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ KeyName: S.optional(S.String), Values: S.optional(__S(1360, __c85, 0)) }),
+        S.Struct({ KeyName: S.optional(S.String), Values: S.optional(__S(1328, __c83, 0)) }),
       ).annotate({ identifier: "AddProfileKeyResponse" });
   }
 }
-function __c87(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9353,23 +9188,9 @@ function __c87(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetEventTriggerRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          EventTriggerName: S.optional(S.String),
-          ObjectTypeName: S.optional(S.String),
-          Description: S.optional(SensitiveString),
-          EventTriggerConditions: S.optional(__S(533, __c33, 5)),
-          SegmentFilter: S.optional(S.String),
-          EventTriggerLimits: S.optional(__S(536, __c33, 8)),
-          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(__S(2064, __c129, 0)),
-        }),
-      ).annotate({ identifier: "GetEventTriggerResponse" });
   }
 }
-function __c88(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9389,9 +9210,7 @@ function __c88(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetIdentityResolutionJobRequest",
-      });
+      ).annotate({ identifier: "GetIdentityResolutionJobRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9403,23 +9222,21 @@ function __c88(j: number): any {
           JobEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           JobExpirationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AutoMerging: S.optional(__S(288, __c18, 0)),
-          ExportingLocation: S.optional(__S(1425, __c89, 1)),
-          JobStats: S.optional(__S(1426, __c89, 2)),
+          AutoMerging: S.optional(__S(304, __c19, 0)),
+          ExportingLocation: S.optional(__S(1393, __c87, 1)),
+          JobStats: S.optional(__S(1394, __c87, 2)),
         }),
-      ).annotate({
-        identifier: "GetIdentityResolutionJobResponse",
-      });
+      ).annotate({ identifier: "GetIdentityResolutionJobResponse" });
   }
 }
-function __c89(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ S3BucketName: S.optional(S.String), S3KeyName: S.optional(S.String) }),
       ).annotate({ identifier: "S3ExportingLocation" });
     case 1:
-      return S.suspend(() => S.Struct({ S3Exporting: S.optional(__S(1424, __c89, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ S3Exporting: S.optional(__S(1392, __c87, 0)) })).annotate({
         identifier: "ExportingLocation",
       });
     case 2:
@@ -9432,7 +9249,7 @@ function __c89(j: number): any {
       ).annotate({ identifier: "JobStats" });
   }
 }
-function __c90(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9449,13 +9266,7 @@ function __c90(j: number): any {
       ).annotate({ identifier: "GetIntegrationRequest" });
   }
 }
-function __c91(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c92(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9465,18 +9276,18 @@ function __c92(j: number): any {
           ObjectTypeName: S.optional(S.String),
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           LastUpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Tags: S.optional(__S(2064, __c129, 0)),
-          ObjectTypeNames: S.optional(__S(1456, __c91, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
+          ObjectTypeNames: S.optional(__S(2032, __c127, 0)),
           WorkflowId: S.optional(S.String),
           IsUnstructured: S.optional(S.Boolean),
           RoleArn: S.optional(S.String),
-          EventTriggerNames: S.optional(__S(1360, __c85, 0)),
+          EventTriggerNames: S.optional(__S(1328, __c83, 0)),
           Scope: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetIntegrationResponse" });
   }
 }
-function __c93(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9499,24 +9310,24 @@ function __c93(j: number): any {
       return S.suspend(() =>
         S.Struct({
           MatchId: S.optional(S.String),
-          ProfileIds: S.optional(__S(1360, __c85, 0)),
+          ProfileIds: S.optional(__S(1328, __c83, 0)),
           ConfidenceScore: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MatchItem" });
     case 2:
-      return S.Array(__S(1489, __c93, 1));
+      return S.Array(__S(1441, __c90, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           MatchGenerationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           PotentialMatches: S.optional(S.Number),
-          Matches: S.optional(__S(1490, __c93, 2)),
+          Matches: S.optional(__S(1442, __c90, 2)),
         }),
       ).annotate({ identifier: "GetMatchesResponse" });
   }
 }
-function __c94(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9537,15 +9348,11 @@ function __c94(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetObjectTypeAttributeStatisticsRequest",
-      });
+      ).annotate({ identifier: "GetObjectTypeAttributeStatisticsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ P5: S.Number, P25: S.Number, P50: S.Number, P75: S.Number, P95: S.Number }),
-      ).annotate({
-        identifier: "GetObjectTypeAttributeStatisticsPercentiles",
-      });
+      ).annotate({ identifier: "GetObjectTypeAttributeStatisticsPercentiles" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -9553,23 +9360,19 @@ function __c94(j: number): any {
           Minimum: S.Number,
           Average: S.Number,
           StandardDeviation: S.Number,
-          Percentiles: __S(1505, __c94, 1),
+          Percentiles: __S(1457, __c91, 1),
         }),
-      ).annotate({
-        identifier: "GetObjectTypeAttributeStatisticsStats",
-      });
+      ).annotate({ identifier: "GetObjectTypeAttributeStatisticsStats" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Statistics: __S(1506, __c94, 2),
+          Statistics: __S(1458, __c91, 2),
           CalculatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
-      ).annotate({
-        identifier: "GetObjectTypeAttributeStatisticsResponse",
-      });
+      ).annotate({ identifier: "GetObjectTypeAttributeStatisticsResponse" });
   }
 }
-function __c95(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9590,9 +9393,7 @@ function __c95(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetProfileHistoryRecordRequest",
-      });
+      ).annotate({ identifier: "GetProfileHistoryRecordRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9605,12 +9406,10 @@ function __c95(j: number): any {
           Content: S.optional(SensitiveString),
           PerformedBy: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetProfileHistoryRecordResponse",
-      });
+      ).annotate({ identifier: "GetProfileHistoryRecordResponse" });
   }
 }
-function __c96(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9627,9 +9426,7 @@ function __c96(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetProfileObjectTypeRequest",
-      });
+      ).annotate({ identifier: "GetProfileObjectTypeRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9644,17 +9441,15 @@ function __c96(j: number): any {
           MaxProfileObjectCount: S.optional(S.Number),
           SourcePriority: S.optional(S.Number),
           Fields: S.optional(__S(801, __c50, 1)),
-          Keys: S.optional(__S(1170, __c73, 2)),
+          Keys: S.optional(__S(1138, __c71, 2)),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }),
-      ).annotate({
-        identifier: "GetProfileObjectTypeResponse",
-      });
+      ).annotate({ identifier: "GetProfileObjectTypeResponse" });
   }
 }
-function __c97(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9668,9 +9463,7 @@ function __c97(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetProfileObjectTypeTemplateRequest",
-      });
+      ).annotate({ identifier: "GetProfileObjectTypeTemplateRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9680,18 +9473,16 @@ function __c97(j: number): any {
           AllowProfileCreation: S.optional(S.Boolean),
           SourceLastUpdatedTimestampFormat: S.optional(S.String),
           Fields: S.optional(__S(801, __c50, 1)),
-          Keys: S.optional(__S(1170, __c73, 2)),
+          Keys: S.optional(__S(1138, __c71, 2)),
         }),
-      ).annotate({
-        identifier: "GetProfileObjectTypeTemplateResponse",
-      });
+      ).annotate({ identifier: "GetProfileObjectTypeTemplateResponse" });
   }
 }
-function __c98(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ MetadataColumns: S.optional(__S(1360, __c85, 0)) }),
+        S.Struct({ MetadataColumns: S.optional(__S(1328, __c83, 0)) }),
       ).annotate({ identifier: "MetadataConfig" });
     case 1:
       return S.suspend(() =>
@@ -9699,13 +9490,13 @@ function __c98(j: number): any {
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
           ProfileId: S.String.pipe(T.HttpLabel("ProfileId")),
           RecommenderName: S.String,
-          Context: S.optional(__S(1456, __c91, 0)),
-          RecommenderFilters: S.optional(__S(1586, __c99, 2)),
-          RecommenderPromotionalFilters: S.optional(__S(1588, __c99, 4)),
-          CandidateIds: S.optional(__S(1360, __c85, 0)),
+          Context: S.optional(__S(2032, __c127, 0)),
+          RecommenderFilters: S.optional(__S(1538, __c96, 2)),
+          RecommenderPromotionalFilters: S.optional(__S(1540, __c96, 4)),
+          CandidateIds: S.optional(__S(1328, __c83, 0)),
           MaxResults: S.optional(S.Number),
-          MetadataConfig: S.optional(__S(1568, __c98, 0)),
-          DiversityConfig: S.optional(__S(1590, __c99, 6)),
+          MetadataConfig: S.optional(__S(1520, __c95, 0)),
+          DiversityConfig: S.optional(__S(1542, __c96, 6)),
         }).pipe(
           T.all(
             T.Http({
@@ -9719,48 +9510,40 @@ function __c98(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetProfileRecommendationsRequest",
-      });
+      ).annotate({ identifier: "GetProfileRecommendationsRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Recommendations: S.optional(__S(1593, __c99, 9)) }),
-      ).annotate({
-        identifier: "GetProfileRecommendationsResponse",
-      });
+        S.Struct({ Recommendations: S.optional(__S(1545, __c96, 9)) }),
+      ).annotate({ identifier: "GetProfileRecommendationsResponse" });
   }
 }
-function __c99(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
     case 1:
       return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Values: S.optional(__S(1584, __c99, 0)) }),
+        S.Struct({ Name: S.optional(S.String), Values: S.optional(__S(1536, __c96, 0)) }),
       ).annotate({ identifier: "RecommenderFilter" });
     case 2:
-      return S.Array(__S(1585, __c99, 1));
+      return S.Array(__S(1537, __c96, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          Values: S.optional(__S(1584, __c99, 0)),
+          Values: S.optional(__S(1536, __c96, 0)),
           PromotionName: S.optional(S.String),
           PercentPromotedItems: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "RecommenderPromotionalFilter",
-      });
+      ).annotate({ identifier: "RecommenderPromotionalFilter" });
     case 4:
-      return S.Array(__S(1587, __c99, 3));
+      return S.Array(__S(1539, __c96, 3));
     case 5:
       return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
     case 6:
       return S.suspend(() =>
-        S.Struct({ Enabled: S.Boolean, Values: S.optional(__S(1589, __c99, 5)) }),
-      ).annotate({
-        identifier: "RecommendationDiversityConfig",
-      });
+        S.Struct({ Enabled: S.Boolean, Values: S.optional(__S(1541, __c96, 5)) }),
+      ).annotate({ identifier: "RecommendationDiversityConfig" });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -9776,18 +9559,18 @@ function __c99(j: number): any {
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Price: S.optional(SensitiveString),
-          Attributes: S.optional(__S(2064, __c129, 0)),
+          Attributes: S.optional(__S(2032, __c127, 0)),
         }),
       ).annotate({ identifier: "CatalogItem" });
     case 8:
       return S.suspend(() =>
-        S.Struct({ CatalogItem: S.optional(__S(1591, __c99, 7)), Score: S.optional(S.Number) }),
+        S.Struct({ CatalogItem: S.optional(__S(1543, __c96, 7)), Score: S.optional(S.Number) }),
       ).annotate({ identifier: "Recommendation" });
     case 9:
-      return S.Array(__S(1592, __c99, 8));
+      return S.Array(__S(1544, __c96, 8));
   }
 }
-function __c100(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9812,12 +9595,12 @@ function __c100(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Time: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Metrics: S.optional(__S(1601, __c100, 1)),
+          Metrics: S.optional(__S(1553, __c97, 1)),
           RecommenderVersionName: S.optional(S.String),
         }),
       ).annotate({ identifier: "TrainingMetrics" });
     case 3:
-      return S.Array(__S(1602, __c100, 2));
+      return S.Array(__S(1554, __c97, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -9830,15 +9613,15 @@ function __c100(j: number): any {
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           FailureReason: S.optional(S.String),
-          LatestRecommenderUpdate: S.optional(__S(1616, __c101, 0)),
+          LatestRecommenderUpdate: S.optional(__S(1568, __c98, 0)),
           ActiveRecommenderVersionName: S.optional(S.String),
-          TrainingMetrics: S.optional(__S(1603, __c100, 3)),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          TrainingMetrics: S.optional(__S(1555, __c97, 3)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }),
       ).annotate({ identifier: "GetRecommenderResponse" });
   }
 }
-function __c101(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9853,7 +9636,7 @@ function __c101(j: number): any {
       ).annotate({ identifier: "RecommenderUpdate" });
   }
 }
-function __c102(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9871,12 +9654,10 @@ function __c102(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateStreamForSegmentsRequest",
-      });
+      ).annotate({ identifier: "AssociateStreamForSegmentsRequest" });
   }
 }
-function __c103(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
@@ -9884,7 +9665,7 @@ function __c103(j: number): any {
       });
   }
 }
-function __c104(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9904,9 +9685,7 @@ function __c104(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetRecommenderFilterRequest",
-      });
+      ).annotate({ identifier: "GetRecommenderFilterRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9917,14 +9696,12 @@ function __c104(j: number): any {
           Status: S.String,
           Description: S.optional(SensitiveString),
           FailureReason: S.optional(S.String),
-          Tags: __S(2064, __c129, 0),
+          Tags: __S(2032, __c127, 0),
         }),
-      ).annotate({
-        identifier: "GetRecommenderFilterResponse",
-      });
+      ).annotate({ identifier: "GetRecommenderFilterResponse" });
   }
 }
-function __c105(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9944,10 +9721,12 @@ function __c105(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetRecommenderSchemaRequest",
-      });
-    case 1:
+      ).annotate({ identifier: "GetRecommenderSchemaRequest" });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           RecommenderSchemaName: S.String,
@@ -9955,12 +9734,10 @@ function __c105(j: number): any {
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           Status: S.String,
         }),
-      ).annotate({
-        identifier: "GetRecommenderSchemaResponse",
-      });
+      ).annotate({ identifier: "GetRecommenderSchemaResponse" });
   }
 }
-function __c106(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9980,29 +9757,25 @@ function __c106(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetSegmentDefinitionRequest",
-      });
+      ).annotate({ identifier: "GetSegmentDefinitionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           SegmentDefinitionName: S.optional(S.String),
           DisplayName: S.optional(S.String),
           Description: S.optional(SensitiveString),
-          SegmentGroups: S.optional(__S(735, __c45, 15)),
+          SegmentGroups: S.optional(__S(731, __c45, 11)),
           SegmentSort: S.optional(__S(738, __c46, 2)),
           SegmentDefinitionArn: S.String,
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
           SegmentSqlQuery: S.optional(SensitiveString),
           SegmentType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetSegmentDefinitionResponse",
-      });
+      ).annotate({ identifier: "GetSegmentDefinitionResponse" });
   }
 }
-function __c107(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10019,9 +9792,7 @@ function __c107(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetSegmentEstimateRequest",
-      });
+      ).annotate({ identifier: "GetSegmentEstimateRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10032,19 +9803,17 @@ function __c107(j: number): any {
           Message: S.optional(S.String),
           StatusCode: S.optional(S.Number).pipe(T.HttpResponseCode()),
         }),
-      ).annotate({
-        identifier: "GetSegmentEstimateResponse",
-      });
+      ).annotate({ identifier: "GetSegmentEstimateResponse" });
   }
 }
-function __c108(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
           SegmentDefinitionName: S.String.pipe(T.HttpLabel("SegmentDefinitionName")),
-          ProfileIds: __S(1360, __c85, 0),
+          ProfileIds: __S(1328, __c83, 0),
         }).pipe(
           T.all(
             T.Http({
@@ -10058,39 +9827,35 @@ function __c108(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetSegmentMembershipRequest",
-      });
+      ).annotate({ identifier: "GetSegmentMembershipRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ProfileId: S.String,
           QueryResult: S.String,
-          Profile: S.optional(__S(2113, __c132, 1)),
+          Profile: S.optional(__S(2081, __c130, 1)),
         }),
       ).annotate({ identifier: "ProfileQueryResult" });
     case 2:
-      return S.Array(__S(1729, __c108, 1));
+      return S.Array(__S(1697, __c106, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ ProfileId: S.String, Message: S.String, Status: S.optional(S.Number) }),
       ).annotate({ identifier: "ProfileQueryFailures" });
     case 4:
-      return S.Array(__S(1731, __c108, 3));
+      return S.Array(__S(1699, __c106, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           SegmentDefinitionName: S.optional(S.String),
-          Profiles: S.optional(__S(1730, __c108, 2)),
-          Failures: S.optional(__S(1732, __c108, 4)),
+          Profiles: S.optional(__S(1698, __c106, 2)),
+          Failures: S.optional(__S(1700, __c106, 4)),
           LastComputedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "GetSegmentMembershipResponse",
-      });
+      ).annotate({ identifier: "GetSegmentMembershipResponse" });
   }
 }
-function __c109(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10111,9 +9876,7 @@ function __c109(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetSegmentSnapshotRequest",
-      });
+      ).annotate({ identifier: "GetSegmentSnapshotRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10125,12 +9888,10 @@ function __c109(j: number): any {
           RoleArn: S.optional(S.String),
           DestinationUri: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetSegmentSnapshotResponse",
-      });
+      ).annotate({ identifier: "GetSegmentSnapshotResponse" });
   }
 }
-function __c110(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10150,9 +9911,7 @@ function __c110(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetSegmentSubscriptionRequest",
-      });
+      ).annotate({ identifier: "GetSegmentSubscriptionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10165,17 +9924,15 @@ function __c110(j: number): any {
         S.Struct({
           Status: S.optional(S.String),
           Message: S.optional(S.String),
-          ScheduleConfiguration: S.optional(__S(1776, __c111, 0)),
-          ScheduledExecutions: S.optional(__S(1761, __c110, 1)),
+          ScheduleConfiguration: S.optional(__S(1744, __c109, 0)),
+          ScheduledExecutions: S.optional(__S(1729, __c108, 1)),
           StartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "GetSegmentSubscriptionResponse",
-      });
+      ).annotate({ identifier: "GetSegmentSubscriptionResponse" });
   }
 }
-function __c111(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Interval: S.Number, Unit: S.optional(S.String) })).annotate(
@@ -10183,7 +9940,7 @@ function __c111(j: number): any {
       );
   }
 }
-function __c112(j: number): any {
+function __c110(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10204,25 +9961,21 @@ function __c112(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetSimilarProfilesRequest",
-      });
+      ).annotate({ identifier: "GetSimilarProfilesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ProfileIds: S.optional(__S(1360, __c85, 0)),
+          ProfileIds: S.optional(__S(1328, __c83, 0)),
           MatchId: S.optional(S.String),
           MatchType: S.optional(S.String),
           RuleLevel: S.optional(S.Number),
           ConfidenceScore: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetSimilarProfilesResponse",
-      });
+      ).annotate({ identifier: "GetSimilarProfilesResponse" });
   }
 }
-function __c113(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10236,9 +9989,7 @@ function __c113(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetStreamForSegmentsRequest",
-      });
+      ).annotate({ identifier: "GetStreamForSegmentsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10248,12 +9999,12 @@ function __c113(j: number): any {
         }),
       ).annotate({ identifier: "AssociatedSegment" });
     case 2:
-      return S.Array(__S(1809, __c113, 1));
+      return S.Array(__S(1777, __c111, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           AssociatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AssociatedSegments: S.optional(__S(1810, __c113, 2)),
+          AssociatedSegments: S.optional(__S(1778, __c111, 2)),
           DomainName: S.optional(S.String),
           DestinationArn: S.optional(S.String),
           DestinationRoleArn: S.optional(S.String),
@@ -10261,12 +10012,10 @@ function __c113(j: number): any {
           DisassociatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           FailureReason: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetStreamForSegmentsResponse",
-      });
+      ).annotate({ identifier: "GetStreamForSegmentsResponse" });
   }
 }
-function __c114(j: number): any {
+function __c112(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10303,21 +10052,21 @@ function __c114(j: number): any {
           CompletedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Fields: S.optional(__S(801, __c50, 1)),
           UniqueKey: S.optional(S.String),
-          ResultsSummary: S.optional(__S(1825, __c114, 1)),
+          ResultsSummary: S.optional(__S(1793, __c112, 1)),
           DataExpiry: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GetUploadJobResponse" });
   }
 }
-function __c115(j: number): any {
+function __c113(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           CalculatedAttributeName: S.String.pipe(T.HttpLabel("CalculatedAttributeName")),
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
-          ProfileIds: __S(1360, __c85, 0),
-          ConditionOverrides: S.optional(__S(1857, __c116, 1)),
+          ProfileIds: __S(1328, __c83, 0),
+          ConditionOverrides: S.optional(__S(1825, __c114, 1)),
         }).pipe(
           T.all(
             T.Http({
@@ -10331,17 +10080,13 @@ function __c115(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchGetCalculatedAttributeForProfileRequest",
-      });
+      ).annotate({ identifier: "BatchGetCalculatedAttributeForProfileRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Code: S.String, Message: S.String, ProfileId: S.String }),
-      ).annotate({
-        identifier: "BatchGetCalculatedAttributeForProfileError",
-      });
+      ).annotate({ identifier: "BatchGetCalculatedAttributeForProfileError" });
     case 2:
-      return S.Array(__S(1841, __c115, 1));
+      return S.Array(__S(1809, __c113, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -10354,32 +10099,30 @@ function __c115(j: number): any {
         }),
       ).annotate({ identifier: "CalculatedAttributeValue" });
     case 4:
-      return S.Array(__S(1843, __c115, 3));
+      return S.Array(__S(1811, __c113, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Errors: S.optional(__S(1842, __c115, 2)),
-          CalculatedAttributeValues: S.optional(__S(1844, __c115, 4)),
-          ConditionOverrides: S.optional(__S(1857, __c116, 1)),
+          Errors: S.optional(__S(1810, __c113, 2)),
+          CalculatedAttributeValues: S.optional(__S(1812, __c113, 4)),
+          ConditionOverrides: S.optional(__S(1825, __c114, 1)),
         }),
-      ).annotate({
-        identifier: "BatchGetCalculatedAttributeForProfileResponse",
-      });
+      ).annotate({ identifier: "BatchGetCalculatedAttributeForProfileResponse" });
   }
 }
-function __c116(j: number): any {
+function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ Start: S.Number, End: S.optional(S.Number), Unit: S.String }),
       ).annotate({ identifier: "RangeOverride" });
     case 1:
-      return S.suspend(() => S.Struct({ Range: S.optional(__S(1856, __c116, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ Range: S.optional(__S(1824, __c114, 0)) })).annotate({
         identifier: "ConditionOverrides",
       });
   }
 }
-function __c117(j: number): any {
+function __c115(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10407,7 +10150,7 @@ function __c117(j: number): any {
       ).annotate({ identifier: "GetUploadJobPathResponse" });
   }
 }
-function __c118(j: number): any {
+function __c116(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10432,22 +10175,18 @@ function __c118(j: number): any {
           ConnectorProfileName: S.String,
           RoleArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "AppflowIntegrationWorkflowAttributes",
-      });
+      ).annotate({ identifier: "AppflowIntegrationWorkflowAttributes" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ AppflowIntegration: S.optional(__S(1889, __c118, 1)) }),
+        S.Struct({ AppflowIntegration: S.optional(__S(1857, __c116, 1)) }),
       ).annotate({ identifier: "WorkflowAttributes" });
     case 3:
       return S.suspend(() =>
         S.Struct({ RecordsProcessed: S.Number, StepsCompleted: S.Number, TotalSteps: S.Number }),
-      ).annotate({
-        identifier: "AppflowIntegrationWorkflowMetrics",
-      });
+      ).annotate({ identifier: "AppflowIntegrationWorkflowMetrics" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ AppflowIntegration: S.optional(__S(1891, __c118, 3)) }),
+        S.Struct({ AppflowIntegration: S.optional(__S(1859, __c116, 3)) }),
       ).annotate({ identifier: "WorkflowMetrics" });
     case 5:
       return S.suspend(() =>
@@ -10458,13 +10197,13 @@ function __c118(j: number): any {
           ErrorDescription: S.optional(S.String),
           StartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Attributes: S.optional(__S(1890, __c118, 2)),
-          Metrics: S.optional(__S(1892, __c118, 4)),
+          Attributes: S.optional(__S(1858, __c116, 2)),
+          Metrics: S.optional(__S(1860, __c116, 4)),
         }),
       ).annotate({ identifier: "GetWorkflowResponse" });
   }
 }
-function __c119(j: number): any {
+function __c117(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10496,27 +10235,25 @@ function __c119(j: number): any {
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           LastUpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
-      ).annotate({
-        identifier: "AppflowIntegrationWorkflowStep",
-      });
+      ).annotate({ identifier: "AppflowIntegrationWorkflowStep" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ AppflowIntegration: S.optional(__S(1905, __c119, 1)) }),
+        S.Struct({ AppflowIntegration: S.optional(__S(1873, __c117, 1)) }),
       ).annotate({ identifier: "WorkflowStepItem" });
     case 3:
-      return S.Array(__S(1906, __c119, 2));
+      return S.Array(__S(1874, __c117, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           WorkflowId: S.optional(S.String),
           WorkflowType: S.optional(S.String),
-          Items: S.optional(__S(1907, __c119, 3)),
+          Items: S.optional(__S(1875, __c117, 3)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetWorkflowStepsResponse" });
   }
 }
-function __c120(j: number): any {
+function __c118(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10528,24 +10265,20 @@ function __c120(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/integrations" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListAccountIntegrationsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(1936, __c121, 0)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListAccountIntegrationsResponse",
-      });
+      ).annotate({ identifier: "ListAccountIntegrationsRequest" });
   }
 }
-function __c121(j: number): any {
+function __c119(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1472, __c92, 0));
+      return S.Array(__S(1424, __c89, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Items: S.optional(__S(1904, __c119, 0)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListAccountIntegrationsResponse" });
   }
 }
-function __c122(j: number): any {
+function __c120(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10563,9 +10296,7 @@ function __c122(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListCalculatedAttributeDefinitionsRequest",
-      });
+      ).annotate({ identifier: "ListCalculatedAttributeDefinitionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10576,25 +10307,18 @@ function __c122(j: number): any {
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UseHistoricalData: S.optional(S.Boolean),
           Status: S.optional(S.String),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }),
-      ).annotate({
-        identifier: "ListCalculatedAttributeDefinitionItem",
-      });
+      ).annotate({ identifier: "ListCalculatedAttributeDefinitionItem" });
     case 2:
-      return S.Array(__S(1953, __c122, 1));
+      return S.Array(__S(1921, __c120, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          Items: S.optional(__S(1954, __c122, 2)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListCalculatedAttributeDefinitionsResponse",
-      });
+        S.Struct({ Items: S.optional(__S(1922, __c120, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListCalculatedAttributeDefinitionsResponse" });
   }
 }
-function __c123(j: number): any {
+function __c121(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10616,23 +10340,16 @@ function __c123(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListCalculatedAttributesForProfileRequest",
-      });
+      ).annotate({ identifier: "ListCalculatedAttributesForProfileRequest" });
     case 1:
-      return S.Array(__S(1248, __c78, 0));
+      return S.Array(__S(1216, __c76, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          Items: S.optional(__S(1969, __c123, 1)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListCalculatedAttributesForProfileResponse",
-      });
+        S.Struct({ Items: S.optional(__S(1937, __c121, 1)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListCalculatedAttributesForProfileResponse" });
   }
 }
-function __c124(j: number): any {
+function __c122(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10659,22 +10376,20 @@ function __c124(j: number): any {
           DisplayName: S.String,
           IsDefault: S.optional(S.Boolean),
           LayoutType: S.String,
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           LastUpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "LayoutItem" });
     case 2:
-      return S.Array(__S(1985, __c124, 1));
+      return S.Array(__S(1953, __c122, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(1986, __c124, 2)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListDomainLayoutsResponse",
-      });
+        S.Struct({ Items: S.optional(__S(1954, __c122, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListDomainLayoutsResponse" });
   }
 }
-function __c125(j: number): any {
+function __c123(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10692,9 +10407,7 @@ function __c125(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDomainObjectTypesRequest",
-      });
+      ).annotate({ identifier: "ListDomainObjectTypesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10702,22 +10415,18 @@ function __c125(j: number): any {
           Description: S.optional(SensitiveString),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }),
-      ).annotate({
-        identifier: "DomainObjectTypesListItem",
-      });
+      ).annotate({ identifier: "DomainObjectTypesListItem" });
     case 2:
-      return S.Array(__S(2001, __c125, 1));
+      return S.Array(__S(1969, __c123, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(2002, __c125, 2)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListDomainObjectTypesResponse",
-      });
+        S.Struct({ Items: S.optional(__S(1970, __c123, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListDomainObjectTypesResponse" });
   }
 }
-function __c126(j: number): any {
+function __c124(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10732,18 +10441,18 @@ function __c126(j: number): any {
           DomainName: S.String,
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           LastUpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }),
       ).annotate({ identifier: "ListDomainItem" });
     case 2:
-      return S.Array(__S(2017, __c126, 1));
+      return S.Array(__S(1985, __c124, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(2018, __c126, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(1986, __c124, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListDomainsResponse" });
   }
 }
-function __c127(j: number): any {
+function __c125(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10778,25 +10487,25 @@ function __c127(j: number): any {
           EventStreamArn: S.String,
           State: S.String,
           StoppedSince: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          DestinationSummary: S.optional(__S(2033, __c127, 1)),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          DestinationSummary: S.optional(__S(2001, __c125, 1)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }),
       ).annotate({ identifier: "EventStreamSummary" });
     case 3:
-      return S.Array(__S(2034, __c127, 2));
+      return S.Array(__S(2002, __c125, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(2035, __c127, 3)), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(2003, __c125, 3)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListEventStreamsResponse" });
   }
 }
-function __c128(j: number): any {
+function __c126(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
-          ProfileIds: __S(1360, __c85, 0),
+          ProfileIds: __S(1328, __c83, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/domains/{DomainName}/batch-get-profiles" }),
@@ -10813,29 +10522,29 @@ function __c128(j: number): any {
         S.Struct({ Code: S.String, Message: S.String, ProfileId: S.String }),
       ).annotate({ identifier: "BatchGetProfileError" });
     case 2:
-      return S.Array(__S(2049, __c128, 1));
+      return S.Array(__S(2017, __c126, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Errors: S.optional(__S(2050, __c128, 2)),
-          Profiles: S.optional(__S(2080, __c130, 0)),
+          Errors: S.optional(__S(2018, __c126, 2)),
+          Profiles: S.optional(__S(2048, __c128, 0)),
         }),
       ).annotate({ identifier: "BatchGetProfileResponse" });
   }
 }
-function __c129(j: number): any {
+function __c127(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c130(j: number): any {
+function __c128(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(2113, __c132, 1));
+      return S.Array(__S(2081, __c130, 1));
   }
 }
-function __c131(j: number): any {
+function __c129(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10862,20 +10571,20 @@ function __c131(j: number): any {
         }),
       ).annotate({ identifier: "ContactPreference" });
     case 2:
-      return S.Array(__S(2097, __c131, 1));
+      return S.Array(__S(2065, __c129, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Phone: S.optional(__S(2098, __c131, 2)),
-          Email: S.optional(__S(2098, __c131, 2)),
+          Phone: S.optional(__S(2066, __c129, 2)),
+          Email: S.optional(__S(2066, __c129, 2)),
         }),
       ).annotate({ identifier: "EngagementPreferences" });
   }
 }
-function __c132(j: number): any {
+function __c130(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1376, __c86, 0));
+      return S.Array(__S(1344, __c84, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10896,21 +10605,21 @@ function __c132(j: number): any {
           EmailAddress: S.optional(SensitiveString),
           PersonalEmailAddress: S.optional(SensitiveString),
           BusinessEmailAddress: S.optional(SensitiveString),
-          Address: S.optional(__S(2096, __c131, 0)),
-          ShippingAddress: S.optional(__S(2096, __c131, 0)),
-          MailingAddress: S.optional(__S(2096, __c131, 0)),
-          BillingAddress: S.optional(__S(2096, __c131, 0)),
-          Attributes: S.optional(__S(2064, __c129, 0)),
-          FoundByItems: S.optional(__S(2112, __c132, 0)),
+          Address: S.optional(__S(2064, __c129, 0)),
+          ShippingAddress: S.optional(__S(2064, __c129, 0)),
+          MailingAddress: S.optional(__S(2064, __c129, 0)),
+          BillingAddress: S.optional(__S(2064, __c129, 0)),
+          Attributes: S.optional(__S(2032, __c127, 0)),
+          FoundByItems: S.optional(__S(2080, __c130, 0)),
           PartyTypeString: S.optional(SensitiveString),
           GenderString: S.optional(SensitiveString),
           ProfileType: S.optional(S.String),
-          EngagementPreferences: S.optional(__S(2099, __c131, 3)),
+          EngagementPreferences: S.optional(__S(2067, __c129, 3)),
         }),
       ).annotate({ identifier: "Profile" });
   }
 }
-function __c133(j: number): any {
+function __c131(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10937,20 +10646,18 @@ function __c133(j: number): any {
           Description: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }),
       ).annotate({ identifier: "EventTriggerSummaryItem" });
     case 2:
-      return S.Array(__S(2129, __c133, 1));
+      return S.Array(__S(2097, __c131, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(2130, __c133, 2)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListEventTriggersResponse",
-      });
+        S.Struct({ Items: S.optional(__S(2098, __c131, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListEventTriggersResponse" });
   }
 }
-function __c134(j: number): any {
+function __c132(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10968,9 +10675,7 @@ function __c134(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListIdentityResolutionJobsRequest",
-      });
+      ).annotate({ identifier: "ListIdentityResolutionJobsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10979,25 +10684,23 @@ function __c134(j: number): any {
           Status: S.optional(S.String),
           JobStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           JobEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          JobStats: S.optional(__S(1426, __c89, 2)),
-          ExportingLocation: S.optional(__S(1425, __c89, 1)),
+          JobStats: S.optional(__S(1394, __c87, 2)),
+          ExportingLocation: S.optional(__S(1393, __c87, 1)),
           Message: S.optional(S.String),
         }),
       ).annotate({ identifier: "IdentityResolutionJob" });
     case 2:
-      return S.Array(__S(2145, __c134, 1));
+      return S.Array(__S(2113, __c132, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          IdentityResolutionJobsList: S.optional(__S(2146, __c134, 2)),
+          IdentityResolutionJobsList: S.optional(__S(2114, __c132, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListIdentityResolutionJobsResponse",
-      });
+      ).annotate({ identifier: "ListIdentityResolutionJobsResponse" });
   }
 }
-function __c135(j: number): any {
+function __c133(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11017,13 +10720,9 @@ function __c135(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListIntegrationsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(1936, __c121, 0)), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListIntegrationsResponse" });
   }
 }
-function __c136(j: number): any {
+function __c134(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11045,29 +10744,23 @@ function __c136(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListObjectTypeAttributesRequest",
-      });
+      ).annotate({ identifier: "ListObjectTypeAttributesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           AttributeName: S.String,
           LastUpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
-      ).annotate({
-        identifier: "ListObjectTypeAttributeItem",
-      });
+      ).annotate({ identifier: "ListObjectTypeAttributeItem" });
     case 2:
-      return S.Array(__S(2177, __c136, 1));
+      return S.Array(__S(2145, __c134, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(2178, __c136, 2)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListObjectTypeAttributesResponse",
-      });
+        S.Struct({ Items: S.optional(__S(2146, __c134, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListObjectTypeAttributesResponse" });
   }
 }
-function __c137(j: number): any {
+function __c135(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11090,32 +10783,23 @@ function __c137(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListObjectTypeAttributeValuesRequest",
-      });
+      ).annotate({ identifier: "ListObjectTypeAttributeValuesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Value: SensitiveString,
           LastUpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
-      ).annotate({
-        identifier: "ListObjectTypeAttributeValuesItem",
-      });
+      ).annotate({ identifier: "ListObjectTypeAttributeValuesItem" });
     case 2:
-      return S.Array(__S(2193, __c137, 1));
+      return S.Array(__S(2161, __c135, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          Items: S.optional(__S(2194, __c137, 2)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListObjectTypeAttributeValuesResponse",
-      });
+        S.Struct({ Items: S.optional(__S(2162, __c135, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListObjectTypeAttributeValuesResponse" });
   }
 }
-function __c138(j: number): any {
+function __c136(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11135,29 +10819,25 @@ function __c138(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ProfileAttributeValuesRequest",
-      });
+      ).annotate({ identifier: "ProfileAttributeValuesRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Value: S.optional(S.String) })).annotate({
         identifier: "AttributeValueItem",
       });
     case 2:
-      return S.Array(__S(2209, __c138, 1));
+      return S.Array(__S(2177, __c136, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.optional(S.String),
           AttributeName: S.optional(S.String),
-          Items: S.optional(__S(2210, __c138, 2)),
+          Items: S.optional(__S(2178, __c136, 2)),
           StatusCode: S.optional(S.Number).pipe(T.HttpResponseCode()),
         }),
-      ).annotate({
-        identifier: "ProfileAttributeValuesResponse",
-      });
+      ).annotate({ identifier: "ProfileAttributeValuesResponse" });
   }
 }
-function __c139(j: number): any {
+function __c137(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11179,9 +10859,7 @@ function __c139(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListProfileHistoryRecordsRequest",
-      });
+      ).annotate({ identifier: "ListProfileHistoryRecordsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11195,19 +10873,17 @@ function __c139(j: number): any {
         }),
       ).annotate({ identifier: "ProfileHistoryRecord" });
     case 2:
-      return S.Array(__S(2225, __c139, 1));
+      return S.Array(__S(2193, __c137, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ProfileHistoryRecords: S.optional(__S(2226, __c139, 2)),
+          ProfileHistoryRecords: S.optional(__S(2194, __c137, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListProfileHistoryRecordsResponse",
-      });
+      ).annotate({ identifier: "ListProfileHistoryRecordsResponse" });
   }
 }
-function __c140(j: number): any {
+function __c138(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11217,7 +10893,7 @@ function __c140(j: number): any {
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
           ObjectTypeName: S.String,
           ProfileId: S.String,
-          ObjectFilter: S.optional(__S(2256, __c141, 0)),
+          ObjectFilter: S.optional(__S(2224, __c139, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/domains/{DomainName}/profiles/objects" }),
@@ -11228,9 +10904,7 @@ function __c140(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListProfileObjectsRequest",
-      });
+      ).annotate({ identifier: "ListProfileObjectsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11240,24 +10914,22 @@ function __c140(j: number): any {
         }),
       ).annotate({ identifier: "ListProfileObjectsItem" });
     case 2:
-      return S.Array(__S(2241, __c140, 1));
+      return S.Array(__S(2209, __c138, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(2242, __c140, 2)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListProfileObjectsResponse",
-      });
+        S.Struct({ Items: S.optional(__S(2210, __c138, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListProfileObjectsResponse" });
   }
 }
-function __c141(j: number): any {
+function __c139(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ KeyName: S.String, Values: __S(1360, __c85, 0) })).annotate(
+      return S.suspend(() => S.Struct({ KeyName: S.String, Values: __S(1328, __c83, 0) })).annotate(
         { identifier: "ObjectFilter" },
       );
   }
 }
-function __c142(j: number): any {
+function __c140(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11275,9 +10947,7 @@ function __c142(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListProfileObjectTypesRequest",
-      });
+      ).annotate({ identifier: "ListProfileObjectTypesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11288,22 +10958,18 @@ function __c142(j: number): any {
           MaxProfileObjectCount: S.optional(S.Number),
           MaxAvailableProfileObjectCount: S.optional(S.Number),
           SourcePriority: S.optional(S.Number),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }),
-      ).annotate({
-        identifier: "ListProfileObjectTypeItem",
-      });
+      ).annotate({ identifier: "ListProfileObjectTypeItem" });
     case 2:
-      return S.Array(__S(2273, __c142, 1));
+      return S.Array(__S(2241, __c140, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(2274, __c142, 2)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListProfileObjectTypesResponse",
-      });
+        S.Struct({ Items: S.optional(__S(2242, __c140, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListProfileObjectTypesResponse" });
   }
 }
-function __c143(j: number): any {
+function __c141(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11311,9 +10977,7 @@ function __c143(j: number): any {
           NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/templates" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListProfileObjectTypeTemplatesRequest",
-      });
+      ).annotate({ identifier: "ListProfileObjectTypeTemplatesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11321,33 +10985,29 @@ function __c143(j: number): any {
           SourceName: S.optional(S.String),
           SourceObject: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListProfileObjectTypeTemplateItem",
-      });
+      ).annotate({ identifier: "ListProfileObjectTypeTemplateItem" });
     case 2:
-      return S.Array(__S(2289, __c143, 1));
+      return S.Array(__S(2257, __c141, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(2290, __c143, 2)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListProfileObjectTypeTemplatesResponse",
-      });
+        S.Struct({ Items: S.optional(__S(2258, __c141, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListProfileObjectTypeTemplatesResponse" });
   }
 }
-function __c144(j: number): any {
+function __c142(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Id: S.String, Object: SensitiveString })).annotate({
         identifier: "BatchPutProfileObjectRequestItem",
       });
     case 1:
-      return S.Array(__S(2304, __c144, 0));
+      return S.Array(__S(2272, __c142, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
           ObjectTypeName: S.String,
-          Items: __S(2305, __c144, 1),
+          Items: __S(2273, __c142, 1),
         }).pipe(
           T.all(
             T.Http({
@@ -11361,37 +11021,29 @@ function __c144(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchPutProfileObjectRequest",
-      });
+      ).annotate({ identifier: "BatchPutProfileObjectRequest" });
     case 3:
       return S.suspend(() => S.Struct({ Id: S.String, ProfileObjectUniqueKey: S.String })).annotate(
-        {
-          identifier: "BatchPutProfileObjectResponseItem",
-        },
+        { identifier: "BatchPutProfileObjectResponseItem" },
       );
     case 4:
-      return S.Array(__S(2307, __c144, 3));
+      return S.Array(__S(2275, __c142, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({ Id: S.String, Code: S.Number, Message: S.optional(S.String) }),
-      ).annotate({
-        identifier: "BatchPutProfileObjectErrorItem",
-      });
+      ).annotate({ identifier: "BatchPutProfileObjectErrorItem" });
     case 6:
-      return S.Array(__S(2309, __c144, 5));
+      return S.Array(__S(2277, __c142, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Successful: S.optional(__S(2308, __c144, 4)),
-          Failed: S.optional(__S(2310, __c144, 6)),
+          Successful: S.optional(__S(2276, __c142, 4)),
+          Failed: S.optional(__S(2278, __c142, 6)),
         }),
-      ).annotate({
-        identifier: "BatchPutProfileObjectResponse",
-      });
+      ).annotate({ identifier: "BatchPutProfileObjectResponse" });
   }
 }
-function __c145(j: number): any {
+function __c143(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11409,9 +11061,7 @@ function __c145(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListRecommenderFiltersRequest",
-      });
+      ).annotate({ identifier: "ListRecommenderFiltersRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11422,23 +11072,21 @@ function __c145(j: number): any {
           Description: S.optional(SensitiveString),
           Status: S.optional(S.String),
           FailureReason: S.optional(S.String),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
         }),
       ).annotate({ identifier: "RecommenderFilterSummary" });
     case 2:
-      return S.Array(__S(2321, __c145, 1));
+      return S.Array(__S(2289, __c143, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          RecommenderFilters: S.optional(__S(2322, __c145, 2)),
+          RecommenderFilters: S.optional(__S(2290, __c143, 2)),
         }),
-      ).annotate({
-        identifier: "ListRecommenderFiltersResponse",
-      });
+      ).annotate({ identifier: "ListRecommenderFiltersResponse" });
   }
 }
-function __c146(j: number): any {
+function __c144(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11455,27 +11103,23 @@ function __c146(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListRecommenderRecipesRequest",
-      });
+      ).annotate({ identifier: "ListRecommenderRecipesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ name: S.optional(S.String), description: S.optional(S.String) }),
       ).annotate({ identifier: "RecommenderRecipe" });
     case 2:
-      return S.Array(__S(2337, __c146, 1));
+      return S.Array(__S(2305, __c144, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          RecommenderRecipes: S.optional(__S(2338, __c146, 2)),
+          RecommenderRecipes: S.optional(__S(2306, __c144, 2)),
         }),
-      ).annotate({
-        identifier: "ListRecommenderRecipesResponse",
-      });
+      ).annotate({ identifier: "ListRecommenderRecipesResponse" });
   }
 }
-function __c147(j: number): any {
+function __c145(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11505,23 +11149,23 @@ function __c147(j: number): any {
           Description: S.optional(SensitiveString),
           Status: S.optional(S.String),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
           FailureReason: S.optional(S.String),
-          LatestRecommenderUpdate: S.optional(__S(1616, __c101, 0)),
+          LatestRecommenderUpdate: S.optional(__S(1568, __c98, 0)),
         }),
       ).annotate({ identifier: "RecommenderSummary" });
     case 2:
-      return S.Array(__S(2353, __c147, 1));
+      return S.Array(__S(2321, __c145, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          Recommenders: S.optional(__S(2354, __c147, 2)),
+          Recommenders: S.optional(__S(2322, __c145, 2)),
         }),
       ).annotate({ identifier: "ListRecommendersResponse" });
   }
 }
-function __c148(j: number): any {
+function __c146(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11539,32 +11183,19 @@ function __c148(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListRecommenderSchemasRequest",
-      });
+      ).annotate({ identifier: "ListRecommenderSchemasRequest" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          RecommenderSchemaName: S.String,
-          Fields: __S(674, __c42, 2),
-          CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Status: S.String,
-        }),
-      ).annotate({ identifier: "RecommenderSchemaSummary" });
+      return S.Array(__S(1648, __c103, 0));
     case 2:
-      return S.Array(__S(2369, __c148, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          RecommenderSchemas: S.optional(__S(2370, __c148, 2)),
+          RecommenderSchemas: S.optional(__S(2337, __c146, 1)),
         }),
-      ).annotate({
-        identifier: "ListRecommenderSchemasResponse",
-      });
+      ).annotate({ identifier: "ListRecommenderSchemasResponse" });
   }
 }
-function __c149(j: number): any {
+function __c147(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11582,18 +11213,14 @@ function __c149(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListRuleBasedMatchesRequest",
-      });
+      ).annotate({ identifier: "ListRuleBasedMatchesRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ MatchIds: S.optional(__S(1360, __c85, 0)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListRuleBasedMatchesResponse",
-      });
+        S.Struct({ MatchIds: S.optional(__S(1328, __c83, 0)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListRuleBasedMatchesResponse" });
   }
 }
-function __c150(j: number): any {
+function __c148(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11611,9 +11238,7 @@ function __c150(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSegmentDefinitionsRequest",
-      });
+      ).annotate({ identifier: "ListSegmentDefinitionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11622,21 +11247,19 @@ function __c150(j: number): any {
           Description: S.optional(SensitiveString),
           SegmentDefinitionArn: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(__S(2064, __c129, 0)),
+          Tags: S.optional(__S(2032, __c127, 0)),
           SegmentType: S.optional(S.String),
         }),
       ).annotate({ identifier: "SegmentDefinitionItem" });
     case 2:
-      return S.Array(__S(2401, __c150, 1));
+      return S.Array(__S(2369, __c148, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Items: S.optional(__S(2402, __c150, 2)) }),
-      ).annotate({
-        identifier: "ListSegmentDefinitionsResponse",
-      });
+        S.Struct({ NextToken: S.optional(S.String), Items: S.optional(__S(2370, __c148, 2)) }),
+      ).annotate({ identifier: "ListSegmentDefinitionsResponse" });
   }
 }
-function __c151(j: number): any {
+function __c149(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11658,9 +11281,7 @@ function __c151(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSegmentSubscriptionEventsRequest",
-      });
+      ).annotate({ identifier: "ListSegmentSubscriptionEventsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11671,16 +11292,14 @@ function __c151(j: number): any {
         }),
       ).annotate({ identifier: "SubscriptionEventItem" });
     case 2:
-      return S.Array(__S(2417, __c151, 1));
+      return S.Array(__S(2385, __c149, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Events: S.optional(__S(2418, __c151, 2)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListSegmentSubscriptionEventsResponse",
-      });
+        S.Struct({ Events: S.optional(__S(2386, __c149, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListSegmentSubscriptionEventsResponse" });
   }
 }
-function __c152(j: number): any {
+function __c150(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11694,16 +11313,14 @@ function __c152(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(2064, __c129, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(2032, __c127, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c153(j: number): any {
+function __c151(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11735,14 +11352,14 @@ function __c153(j: number): any {
         }),
       ).annotate({ identifier: "UploadJobItem" });
     case 2:
-      return S.Array(__S(2449, __c153, 1));
+      return S.Array(__S(2417, __c151, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Items: S.optional(__S(2450, __c153, 2)) }),
+        S.Struct({ NextToken: S.optional(S.String), Items: S.optional(__S(2418, __c151, 2)) }),
       ).annotate({ identifier: "ListUploadJobsResponse" });
   }
 }
-function __c154(j: number): any {
+function __c152(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11777,10 +11394,10 @@ function __c154(j: number): any {
         }),
       ).annotate({ identifier: "ListWorkflowsItem" });
     case 2:
-      return S.Array(__S(2465, __c154, 1));
+      return S.Array(__S(2433, __c152, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(2466, __c154, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(2434, __c152, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListWorkflowsResponse" });
   }
 }

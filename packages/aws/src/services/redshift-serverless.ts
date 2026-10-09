@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1095,7 +1095,7 @@ export const convertRecoveryPointToSnapshot: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<ConvertRecoveryPointToSnapshotRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ConvertRecoveryPointToSnapshotResponse>,
+  output: __S(40, __c5, 0) as any as S.Schema<ConvertRecoveryPointToSnapshotResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1126,8 +1126,8 @@ export const createCustomDomainAssociation: API.OperationMethod<
   CreateCustomDomainAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<CreateCustomDomainAssociationRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<CreateCustomDomainAssociationResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<CreateCustomDomainAssociationRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<CreateCustomDomainAssociationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1158,8 +1158,8 @@ export const createEndpointAccess: API.OperationMethod<
   CreateEndpointAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<CreateEndpointAccessRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<CreateEndpointAccessResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<CreateEndpointAccessRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<CreateEndpointAccessResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1188,8 +1188,8 @@ export const createNamespace: API.OperationMethod<
   CreateNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<CreateNamespaceRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<CreateNamespaceResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<CreateNamespaceRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<CreateNamespaceResponse>,
   errors: [ConflictException, InternalServerException, TooManyTagsException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1214,8 +1214,8 @@ export const createReservation: API.OperationMethod<
   CreateReservationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<CreateReservationRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<CreateReservationResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<CreateReservationRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<CreateReservationResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1245,8 +1245,8 @@ export const createScheduledAction: API.OperationMethod<
   CreateScheduledActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<CreateScheduledActionRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<CreateScheduledActionResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<CreateScheduledActionRequest>,
+  output: __S(141, __c17, 5) as any as S.Schema<CreateScheduledActionResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1275,8 +1275,8 @@ export const createSnapshot: API.OperationMethod<
   CreateSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<CreateSnapshotRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<CreateSnapshotResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<CreateSnapshotRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<CreateSnapshotResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1414,7 +1414,7 @@ export const deleteCustomDomainAssociation: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(216, __c27, 0) as any as S.Schema<DeleteCustomDomainAssociationRequest>,
-  output: __S(217, __c27, 1) as any as S.Schema<DeleteCustomDomainAssociationResponse>,
+  output: __S(224, __c28, 0) as any as S.Schema<DeleteCustomDomainAssociationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1443,8 +1443,8 @@ export const deleteEndpointAccess: API.OperationMethod<
   DeleteEndpointAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<DeleteEndpointAccessRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<DeleteEndpointAccessResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<DeleteEndpointAccessRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteEndpointAccessResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1471,8 +1471,8 @@ export const deleteNamespace: API.OperationMethod<
   DeleteNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<DeleteNamespaceRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<DeleteNamespaceResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<DeleteNamespaceRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<DeleteNamespaceResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1498,8 +1498,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<DeleteResourcePolicyRequest>,
-  output: __S(256, __c32, 0) as any as S.Schema<DeleteResourcePolicyResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<DeleteResourcePolicyRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<DeleteResourcePolicyResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1521,7 +1521,7 @@ export const deleteScheduledAction: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(264, __c33, 0) as any as S.Schema<DeleteScheduledActionRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<DeleteScheduledActionResponse>,
+  output: __S(141, __c17, 5) as any as S.Schema<DeleteScheduledActionResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1544,7 +1544,7 @@ export const deleteSnapshot: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(272, __c34, 0) as any as S.Schema<DeleteSnapshotRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<DeleteSnapshotResponse>,
+  output: __S(40, __c5, 0) as any as S.Schema<DeleteSnapshotResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1688,7 +1688,7 @@ export const getCustomDomainAssociation: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(320, __c40, 0) as any as S.Schema<GetCustomDomainAssociationRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<GetCustomDomainAssociationResponse>,
+  output: __S(56, __c7, 0) as any as S.Schema<GetCustomDomainAssociationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1718,7 +1718,7 @@ export const getEndpointAccess: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(328, __c41, 0) as any as S.Schema<GetEndpointAccessRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<GetEndpointAccessResponse>,
+  output: __S(80, __c10, 0) as any as S.Schema<GetEndpointAccessResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1783,7 +1783,7 @@ export const getNamespace: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(344, __c43, 0) as any as S.Schema<GetNamespaceRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<GetNamespaceResponse>,
+  output: __S(248, __c31, 0) as any as S.Schema<GetNamespaceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1911,7 +1911,7 @@ export const getScheduledAction: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(400, __c50, 0) as any as S.Schema<GetScheduledActionRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GetScheduledActionResponse>,
+  output: __S(141, __c17, 5) as any as S.Schema<GetScheduledActionResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1933,7 +1933,7 @@ export const getSnapshot: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(408, __c51, 0) as any as S.Schema<GetSnapshotRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<GetSnapshotResponse>,
+  output: __S(40, __c5, 0) as any as S.Schema<GetSnapshotResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2671,7 +2671,7 @@ export const tagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(632, __c79, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(256, __c32, 0) as any as S.Schema<TagResourceResponse>,
+  output: __S(224, __c28, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -2700,7 +2700,7 @@ export const untagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(640, __c80, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(256, __c32, 0) as any as S.Schema<UntagResourceResponse>,
+  output: __S(224, __c28, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -2730,7 +2730,7 @@ export const updateCustomDomainAssociation: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(648, __c81, 0) as any as S.Schema<UpdateCustomDomainAssociationRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<UpdateCustomDomainAssociationResponse>,
+  output: __S(56, __c7, 0) as any as S.Schema<UpdateCustomDomainAssociationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2761,7 +2761,7 @@ export const updateEndpointAccess: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(656, __c82, 0) as any as S.Schema<UpdateEndpointAccessRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<UpdateEndpointAccessResponse>,
+  output: __S(80, __c10, 0) as any as S.Schema<UpdateEndpointAccessResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2822,7 +2822,7 @@ export const updateNamespace: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(672, __c84, 0) as any as S.Schema<UpdateNamespaceRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<UpdateNamespaceResponse>,
+  output: __S(248, __c31, 0) as any as S.Schema<UpdateNamespaceResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2850,7 +2850,7 @@ export const updateScheduledAction: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(680, __c85, 0) as any as S.Schema<UpdateScheduledActionRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<UpdateScheduledActionResponse>,
+  output: __S(141, __c17, 5) as any as S.Schema<UpdateScheduledActionResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2878,7 +2878,7 @@ export const updateSnapshot: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(688, __c86, 0) as any as S.Schema<UpdateSnapshotRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<UpdateSnapshotResponse>,
+  output: __S(40, __c5, 0) as any as S.Schema<UpdateSnapshotResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -3001,13 +3001,7 @@ function __c0(j: number): any {
           retentionPeriod: S.optional(S.Number),
           tags: S.optional(__S(25, __c3, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ConvertRecoveryPointToSnapshotRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ snapshot: S.optional(__S(32, __c4, 0)) })).annotate({
-        identifier: "ConvertRecoveryPointToSnapshotResponse",
-      });
+      ).annotate({ identifier: "ConvertRecoveryPointToSnapshotRequest" });
   }
 }
 function __c1(j: number): any {
@@ -3096,18 +3090,24 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() => S.Struct({ snapshot: S.optional(__S(32, __c4, 0)) })).annotate({
+        identifier: "ConvertRecoveryPointToSnapshotResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workgroupName: S.String,
           customDomainName: S.String,
           customDomainCertificateArn: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateCustomDomainAssociationRequest",
-      });
+      ).annotate({ identifier: "CreateCustomDomainAssociationRequest" });
   }
 }
-function __c6(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3119,12 +3119,10 @@ function __c6(j: number): any {
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ),
         }),
-      ).annotate({
-        identifier: "CreateCustomDomainAssociationResponse",
-      });
+      ).annotate({ identifier: "CreateCustomDomainAssociationResponse" });
   }
 }
-function __c7(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3135,21 +3133,17 @@ function __c7(j: number): any {
           vpcSecurityGroupIds: S.optional(__S(16, __c2, 0)),
           ownerAccount: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateEndpointAccessRequest",
-      });
+      ).annotate({ identifier: "CreateEndpointAccessRequest" });
   }
 }
-function __c8(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ vpcSecurityGroupId: S.optional(S.String), status: S.optional(S.String) }),
-      ).annotate({
-        identifier: "VpcSecurityGroupMembership",
-      });
+      ).annotate({ identifier: "VpcSecurityGroupMembership" });
     case 1:
-      return S.Array(__S(64, __c8, 0));
+      return S.Array(__S(72, __c9, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3160,22 +3154,22 @@ function __c8(j: number): any {
           port: S.optional(S.Number),
           address: S.optional(S.String),
           subnetIds: S.optional(__S(16, __c2, 0)),
-          vpcSecurityGroups: S.optional(__S(65, __c8, 1)),
+          vpcSecurityGroups: S.optional(__S(73, __c9, 1)),
           vpcEndpoint: S.optional(__S(10, __c1, 2)),
           endpointArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "EndpointAccess" });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ endpoint: S.optional(__S(66, __c8, 2)) })).annotate({
+      return S.suspend(() => S.Struct({ endpoint: S.optional(__S(74, __c9, 2)) })).annotate({
         identifier: "CreateEndpointAccessResponse",
       });
   }
 }
-function __c10(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3195,12 +3189,12 @@ function __c10(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateNamespaceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ namespace: S.optional(__S(90, __c11, 2)) })).annotate({
+      return S.suspend(() => S.Struct({ namespace: S.optional(__S(98, __c12, 2)) })).annotate({
         identifier: "CreateNamespaceResponse",
       });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
@@ -3211,7 +3205,7 @@ function __c11(j: number): any {
           s3TableNamespace: S.optional(S.String),
           s3TableGranularity: S.optional(S.String),
           enabledAll: S.optional(S.Boolean),
-          lastIngestionTimes: S.optional(__S(88, __c11, 0)),
+          lastIngestionTimes: S.optional(__S(96, __c12, 0)),
         }),
       ).annotate({ identifier: "S3TablePublishStatus" });
     case 2:
@@ -3232,12 +3226,12 @@ function __c11(j: number): any {
           adminPasswordSecretKmsKeyId: S.optional(S.String),
           lakehouseRegistrationStatus: S.optional(S.String),
           catalogArn: S.optional(S.String),
-          s3TablePublishStatus: S.optional(__S(89, __c11, 1)),
+          s3TablePublishStatus: S.optional(__S(97, __c12, 1)),
         }),
       ).annotate({ identifier: "Namespace" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3248,12 +3242,12 @@ function __c12(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateReservationRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ reservation: S.optional(__S(112, __c14, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ reservation: S.optional(__S(120, __c15, 0)) })).annotate({
         identifier: "CreateReservationResponse",
       });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3268,7 +3262,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "ReservationOffering" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3278,20 +3272,20 @@ function __c14(j: number): any {
           startDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           endDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           capacity: S.optional(S.Number),
-          offering: S.optional(__S(104, __c13, 0)),
+          offering: S.optional(__S(112, __c14, 0)),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "Reservation" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           scheduledActionName: S.String,
-          targetAction: __S(129, __c16, 1),
-          schedule: __S(130, __c16, 2),
+          targetAction: __S(137, __c17, 1),
+          schedule: __S(138, __c17, 2),
           roleArn: S.String,
           namespaceName: S.String,
           enabled: S.optional(S.Boolean),
@@ -3299,12 +3293,10 @@ function __c15(j: number): any {
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateScheduledActionRequest",
-      });
+      ).annotate({ identifier: "CreateScheduledActionRequest" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3314,11 +3306,9 @@ function __c16(j: number): any {
           retentionPeriod: S.optional(S.Number),
           tags: S.optional(__S(25, __c3, 1)),
         }),
-      ).annotate({
-        identifier: "CreateSnapshotScheduleActionParameters",
-      });
+      ).annotate({ identifier: "CreateSnapshotScheduleActionParameters" });
     case 1:
-      return S.Union([/*@__PURE__*/ S.Struct({ createSnapshot: __S(128, __c16, 0) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ createSnapshot: __S(136, __c17, 0) })]);
     case 2:
       return S.Union([
         /*@__PURE__*/ S.Struct({
@@ -3332,27 +3322,25 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scheduledActionName: S.optional(S.String),
-          schedule: S.optional(__S(130, __c16, 2)),
+          schedule: S.optional(__S(138, __c17, 2)),
           scheduledActionDescription: S.optional(S.String),
-          nextInvocations: S.optional(__S(131, __c16, 3)),
+          nextInvocations: S.optional(__S(139, __c17, 3)),
           roleArn: S.optional(S.String),
           state: S.optional(S.String),
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          targetAction: S.optional(__S(129, __c16, 1)),
+          targetAction: S.optional(__S(137, __c17, 1)),
           namespaceName: S.optional(S.String),
           scheduledActionUuid: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScheduledActionResponse" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ scheduledAction: S.optional(__S(132, __c16, 4)) }),
-      ).annotate({
-        identifier: "CreateScheduledActionResponse",
-      });
+        S.Struct({ scheduledAction: S.optional(__S(140, __c17, 4)) }),
+      ).annotate({ identifier: "CreateScheduledActionResponse" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3365,14 +3353,6 @@ function __c17(j: number): any {
       ).annotate({ identifier: "CreateSnapshotRequest" });
   }
 }
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ snapshot: S.optional(__S(32, __c4, 0)) })).annotate({
-        identifier: "CreateSnapshotResponse",
-      });
-  }
-}
 function __c19(j: number): any {
   switch (j) {
     case 0:
@@ -3383,9 +3363,7 @@ function __c19(j: number): any {
           snapshotRetentionPeriod: S.optional(S.Number),
           destinationKmsKeyId: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateSnapshotCopyConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateSnapshotCopyConfigurationRequest" });
   }
 }
 function __c20(j: number): any {
@@ -3400,9 +3378,7 @@ function __c20(j: number): any {
           snapshotRetentionPeriod: S.optional(S.Number),
           destinationKmsKeyId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SnapshotCopyConfiguration",
-      });
+      ).annotate({ identifier: "SnapshotCopyConfiguration" });
   }
 }
 function __c21(j: number): any {
@@ -3533,28 +3509,28 @@ function __c27(j: number): any {
         S.Struct({ workgroupName: S.String, customDomainName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteCustomDomainAssociationRequest",
-      });
-    case 1:
+      ).annotate({ identifier: "DeleteCustomDomainAssociationRequest" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteCustomDomainAssociationResponse",
       });
   }
 }
-function __c28(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ endpointName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteEndpointAccessRequest",
-      });
+      ).annotate({ identifier: "DeleteEndpointAccessRequest" });
   }
 }
-function __c29(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3566,32 +3542,22 @@ function __c29(j: number): any {
       ).annotate({ identifier: "DeleteNamespaceRequest" });
   }
 }
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ namespace: __S(90, __c11, 2) })).annotate({
-        identifier: "DeleteNamespaceResponse",
-      });
-  }
-}
 function __c31(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ resourceArn: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DeleteResourcePolicyRequest",
+      return S.suspend(() => S.Struct({ namespace: __S(98, __c12, 2) })).annotate({
+        identifier: "DeleteNamespaceResponse",
       });
   }
 }
 function __c32(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteResourcePolicyResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteResourcePolicyRequest" });
   }
 }
 function __c33(j: number): any {
@@ -3601,9 +3567,7 @@ function __c33(j: number): any {
         S.Struct({ scheduledActionName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteScheduledActionRequest",
-      });
+      ).annotate({ identifier: "DeleteScheduledActionRequest" });
   }
 }
 function __c34(j: number): any {
@@ -3623,9 +3587,7 @@ function __c35(j: number): any {
         S.Struct({ snapshotCopyConfigurationId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteSnapshotCopyConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteSnapshotCopyConfigurationRequest" });
   }
 }
 function __c36(j: number): any {
@@ -3685,9 +3647,7 @@ function __c40(j: number): any {
         S.Struct({ customDomainName: S.String, workgroupName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetCustomDomainAssociationRequest",
-      });
+      ).annotate({ identifier: "GetCustomDomainAssociationRequest" });
   }
 }
 function __c41(j: number): any {
@@ -3707,18 +3667,14 @@ function __c42(j: number): any {
         S.Struct({ workgroupNames: __S(16, __c2, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetIdentityCenterAuthTokenRequest",
-      });
+      ).annotate({ identifier: "GetIdentityCenterAuthTokenRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           token: S.optional(SensitiveString),
           expirationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }).pipe(S.encodeKeys({ token: "Token", expirationTime: "ExpirationTime" })),
-      ).annotate({
-        identifier: "GetIdentityCenterAuthTokenResponse",
-      });
+      ).annotate({ identifier: "GetIdentityCenterAuthTokenResponse" });
   }
 }
 function __c43(j: number): any {
@@ -3771,7 +3727,7 @@ function __c46(j: number): any {
         ),
       ).annotate({ identifier: "GetReservationRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ reservation: __S(112, __c14, 0) })).annotate({
+      return S.suspend(() => S.Struct({ reservation: __S(120, __c15, 0) })).annotate({
         identifier: "GetReservationResponse",
       });
   }
@@ -3783,11 +3739,9 @@ function __c47(j: number): any {
         S.Struct({ offeringId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetReservationOfferingRequest",
-      });
+      ).annotate({ identifier: "GetReservationOfferingRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ reservationOffering: __S(104, __c13, 0) })).annotate({
+      return S.suspend(() => S.Struct({ reservationOffering: __S(112, __c14, 0) })).annotate({
         identifier: "GetReservationOfferingResponse",
       });
   }
@@ -3810,9 +3764,7 @@ function __c49(j: number): any {
       ).annotate({ identifier: "ResourcePolicy" });
     case 1:
       return S.suspend(() => S.Struct({ resourcePolicy: S.optional(__S(392, __c49, 0)) })).annotate(
-        {
-          identifier: "GetResourcePolicyResponse",
-        },
+        { identifier: "GetResourcePolicyResponse" },
       );
   }
 }
@@ -3823,9 +3775,7 @@ function __c50(j: number): any {
         S.Struct({ scheduledActionName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetScheduledActionRequest",
-      });
+      ).annotate({ identifier: "GetScheduledActionRequest" });
   }
 }
 function __c51(j: number): any {
@@ -3847,9 +3797,7 @@ function __c52(j: number): any {
         S.Struct({ tableRestoreRequestId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetTableRestoreStatusRequest",
-      });
+      ).annotate({ identifier: "GetTableRestoreStatusRequest" });
   }
 }
 function __c53(j: number): any {
@@ -3882,9 +3830,7 @@ function __c54(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ tableRestoreStatus: S.optional(__S(424, __c53, 0)) }),
-      ).annotate({
-        identifier: "GetTableRestoreStatusResponse",
-      });
+      ).annotate({ identifier: "GetTableRestoreStatusResponse" });
   }
 }
 function __c55(j: number): any {
@@ -3949,9 +3895,7 @@ function __c59(j: number): any {
           customDomainName: S.optional(S.String),
           customDomainCertificateArn: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListCustomDomainAssociationsRequest",
-      });
+      ).annotate({ identifier: "ListCustomDomainAssociationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3968,9 +3912,7 @@ function __c59(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), associations: S.optional(__S(474, __c59, 2)) }),
-      ).annotate({
-        identifier: "ListCustomDomainAssociationsResponse",
-      });
+      ).annotate({ identifier: "ListCustomDomainAssociationsResponse" });
   }
 }
 function __c60(j: number): any {
@@ -3984,17 +3926,13 @@ function __c60(j: number): any {
           vpcId: S.optional(S.String),
           ownerAccount: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListEndpointAccessRequest",
-      });
+      ).annotate({ identifier: "ListEndpointAccessRequest" });
     case 1:
-      return S.Array(__S(66, __c8, 2));
+      return S.Array(__S(74, __c9, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), endpoints: __S(481, __c60, 1) }),
-      ).annotate({
-        identifier: "ListEndpointAccessResponse",
-      });
+      ).annotate({ identifier: "ListEndpointAccessResponse" });
   }
 }
 function __c61(j: number): any {
@@ -4006,9 +3944,7 @@ function __c61(j: number): any {
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListManagedWorkgroupsRequest",
-      });
+      ).annotate({ identifier: "ListManagedWorkgroupsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4027,9 +3963,7 @@ function __c61(j: number): any {
           nextToken: S.optional(S.String),
           managedWorkgroups: S.optional(__S(490, __c61, 2)),
         }),
-      ).annotate({
-        identifier: "ListManagedWorkgroupsResponse",
-      });
+      ).annotate({ identifier: "ListManagedWorkgroupsResponse" });
   }
 }
 function __c62(j: number): any {
@@ -4042,7 +3976,7 @@ function __c62(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListNamespacesRequest" });
     case 1:
-      return S.Array(__S(90, __c11, 2));
+      return S.Array(__S(98, __c12, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), namespaces: __S(497, __c62, 1) }),
@@ -4061,9 +3995,7 @@ function __c63(j: number): any {
           namespaceName: S.optional(S.String),
           namespaceArn: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListRecoveryPointsRequest",
-      });
+      ).annotate({ identifier: "ListRecoveryPointsRequest" });
     case 1:
       return S.Array(__S(360, __c45, 0));
     case 2:
@@ -4072,9 +4004,7 @@ function __c63(j: number): any {
           recoveryPoints: S.optional(__S(505, __c63, 1)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListRecoveryPointsResponse",
-      });
+      ).annotate({ identifier: "ListRecoveryPointsResponse" });
   }
 }
 function __c64(j: number): any {
@@ -4085,17 +4015,13 @@ function __c64(j: number): any {
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListReservationOfferingsRequest",
-      });
+      ).annotate({ identifier: "ListReservationOfferingsRequest" });
     case 1:
-      return S.Array(__S(104, __c13, 0));
+      return S.Array(__S(112, __c14, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ reservationOfferingsList: __S(513, __c64, 1), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListReservationOfferingsResponse",
-      });
+      ).annotate({ identifier: "ListReservationOfferingsResponse" });
   }
 }
 function __c65(j: number): any {
@@ -4108,7 +4034,7 @@ function __c65(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListReservationsRequest" });
     case 1:
-      return S.Array(__S(112, __c14, 0));
+      return S.Array(__S(120, __c15, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ reservationsList: __S(521, __c65, 1), nextToken: S.optional(S.String) }),
@@ -4124,18 +4050,14 @@ function __c66(j: number): any {
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           namespaceName: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListScheduledActionsRequest",
-      });
+      ).annotate({ identifier: "ListScheduledActionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           namespaceName: S.optional(S.String),
           scheduledActionName: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ScheduledActionAssociation",
-      });
+      ).annotate({ identifier: "ScheduledActionAssociation" });
     case 2:
       return S.Array(__S(529, __c66, 1));
     case 3:
@@ -4144,9 +4066,7 @@ function __c66(j: number): any {
           nextToken: S.optional(S.String),
           scheduledActions: S.optional(__S(530, __c66, 2)),
         }),
-      ).annotate({
-        identifier: "ListScheduledActionsResponse",
-      });
+      ).annotate({ identifier: "ListScheduledActionsResponse" });
   }
 }
 function __c67(j: number): any {
@@ -4158,9 +4078,7 @@ function __c67(j: number): any {
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListSnapshotCopyConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListSnapshotCopyConfigurationsRequest" });
     case 1:
       return S.Array(__S(160, __c20, 0));
     case 2:
@@ -4169,9 +4087,7 @@ function __c67(j: number): any {
           nextToken: S.optional(S.String),
           snapshotCopyConfigurations: __S(537, __c67, 1),
         }),
-      ).annotate({
-        identifier: "ListSnapshotCopyConfigurationsResponse",
-      });
+      ).annotate({ identifier: "ListSnapshotCopyConfigurationsResponse" });
   }
 }
 function __c68(j: number): any {
@@ -4206,9 +4122,7 @@ function __c69(j: number): any {
           namespaceName: S.optional(S.String),
           workgroupName: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListTableRestoreStatusRequest",
-      });
+      ).annotate({ identifier: "ListTableRestoreStatusRequest" });
     case 1:
       return S.Array(__S(424, __c53, 0));
     case 2:
@@ -4217,9 +4131,7 @@ function __c69(j: number): any {
           nextToken: S.optional(S.String),
           tableRestoreStatuses: S.optional(__S(553, __c69, 1)),
         }),
-      ).annotate({
-        identifier: "ListTableRestoreStatusResponse",
-      });
+      ).annotate({ identifier: "ListTableRestoreStatusResponse" });
   }
 }
 function __c70(j: number): any {
@@ -4229,9 +4141,7 @@ function __c70(j: number): any {
         S.Struct({ resourceArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(25, __c3, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -4312,18 +4222,14 @@ function __c75(j: number): any {
           workgroupName: S.String,
           maintainIntegration: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RestoreFromRecoveryPointRequest",
-      });
+      ).annotate({ identifier: "RestoreFromRecoveryPointRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           recoveryPointId: S.optional(S.String),
-          namespace: S.optional(__S(90, __c11, 2)),
+          namespace: S.optional(__S(98, __c12, 2)),
         }),
-      ).annotate({
-        identifier: "RestoreFromRecoveryPointResponse",
-      });
+      ).annotate({ identifier: "RestoreFromRecoveryPointResponse" });
   }
 }
 function __c76(j: number): any {
@@ -4340,19 +4246,15 @@ function __c76(j: number): any {
           adminPasswordSecretKmsKeyId: S.optional(S.String),
           maintainIntegration: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RestoreFromSnapshotRequest",
-      });
+      ).annotate({ identifier: "RestoreFromSnapshotRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           snapshotName: S.optional(S.String),
           ownerAccount: S.optional(S.String),
-          namespace: S.optional(__S(90, __c11, 2)),
+          namespace: S.optional(__S(98, __c12, 2)),
         }),
-      ).annotate({
-        identifier: "RestoreFromSnapshotResponse",
-      });
+      ).annotate({ identifier: "RestoreFromSnapshotResponse" });
   }
 }
 function __c77(j: number): any {
@@ -4371,9 +4273,7 @@ function __c77(j: number): any {
           newTableName: S.String,
           activateCaseSensitiveIdentifier: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RestoreTableFromRecoveryPointRequest",
-      });
+      ).annotate({ identifier: "RestoreTableFromRecoveryPointRequest" });
   }
 }
 function __c78(j: number): any {
@@ -4392,9 +4292,7 @@ function __c78(j: number): any {
           newTableName: S.String,
           activateCaseSensitiveIdentifier: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RestoreTableFromSnapshotRequest",
-      });
+      ).annotate({ identifier: "RestoreTableFromSnapshotRequest" });
   }
 }
 function __c79(j: number): any {
@@ -4426,9 +4324,7 @@ function __c81(j: number): any {
           customDomainName: S.String,
           customDomainCertificateArn: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateCustomDomainAssociationRequest",
-      });
+      ).annotate({ identifier: "UpdateCustomDomainAssociationRequest" });
   }
 }
 function __c82(j: number): any {
@@ -4439,9 +4335,7 @@ function __c82(j: number): any {
           endpointName: S.String,
           vpcSecurityGroupIds: S.optional(__S(16, __c2, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateEndpointAccessRequest",
-      });
+      ).annotate({ identifier: "UpdateEndpointAccessRequest" });
   }
 }
 function __c83(j: number): any {
@@ -4456,9 +4350,7 @@ function __c83(j: number): any {
           lakehouseIdcApplicationArn: S.optional(S.String),
           dryRun: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateLakehouseConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateLakehouseConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4467,9 +4359,7 @@ function __c83(j: number): any {
           lakehouseRegistrationStatus: S.optional(S.String),
           catalogArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "UpdateLakehouseConfigurationResponse",
-      });
+      ).annotate({ identifier: "UpdateLakehouseConfigurationResponse" });
   }
 }
 function __c84(j: number): any {
@@ -4501,17 +4391,15 @@ function __c85(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scheduledActionName: S.String,
-          targetAction: S.optional(__S(129, __c16, 1)),
-          schedule: S.optional(__S(130, __c16, 2)),
+          targetAction: S.optional(__S(137, __c17, 1)),
+          schedule: S.optional(__S(138, __c17, 2)),
           roleArn: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           scheduledActionDescription: S.optional(S.String),
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateScheduledActionRequest",
-      });
+      ).annotate({ identifier: "UpdateScheduledActionRequest" });
   }
 }
 function __c86(j: number): any {
@@ -4532,9 +4420,7 @@ function __c87(j: number): any {
           snapshotCopyConfigurationId: S.String,
           snapshotRetentionPeriod: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateSnapshotCopyConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateSnapshotCopyConfigurationRequest" });
   }
 }
 function __c88(j: number): any {

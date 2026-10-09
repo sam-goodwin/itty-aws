@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1820,9 +1820,7 @@ function __c0(j: number): any {
           SecurityGroups: S.optional(__S(64, __c2, 0)),
           Tags: S.optional(__S(1377, __c43, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateVpcConnectorRequest",
-      });
+      ).annotate({ identifier: "CreateVpcConnectorRequest" });
   }
 }
 function __c1(j: number): any {
@@ -1866,9 +1864,7 @@ function __c4(j: number): any {
           IngressVpcConfiguration: __S(160, __c5, 0),
           Tags: S.optional(__S(1377, __c43, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateVpcIngressConnectionRequest",
-      });
+      ).annotate({ identifier: "CreateVpcIngressConnectionRequest" });
   }
 }
 function __c5(j: number): any {
@@ -1894,9 +1890,7 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ VpcIngressConnection: __S(161, __c5, 1) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateVpcIngressConnectionResponse",
-      });
+      ).annotate({ identifier: "CreateVpcIngressConnectionResponse" });
   }
 }
 function __c6(j: number): any {
@@ -1907,9 +1901,7 @@ function __c6(j: number): any {
           AutoScalingConfigurationArn: S.String,
           DeleteAllRevisions: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteAutoScalingConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteAutoScalingConfigurationRequest" });
   }
 }
 function __c7(j: number): any {
@@ -1933,9 +1925,7 @@ function __c8(j: number): any {
         S.Struct({ ObservabilityConfigurationArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteObservabilityConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteObservabilityConfigurationRequest" });
   }
 }
 function __c9(j: number): any {
@@ -1955,9 +1945,7 @@ function __c10(j: number): any {
         S.Struct({ VpcConnectorArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteVpcConnectorRequest",
-      });
+      ).annotate({ identifier: "DeleteVpcConnectorRequest" });
   }
 }
 function __c11(j: number): any {
@@ -1967,9 +1955,7 @@ function __c11(j: number): any {
         S.Struct({ VpcIngressConnectionArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteVpcIngressConnectionRequest",
-      });
+      ).annotate({ identifier: "DeleteVpcIngressConnectionRequest" });
   }
 }
 function __c12(j: number): any {
@@ -1979,9 +1965,7 @@ function __c12(j: number): any {
         S.Struct({ AutoScalingConfigurationArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeAutoScalingConfigurationRequest",
-      });
+      ).annotate({ identifier: "DescribeAutoScalingConfigurationRequest" });
   }
 }
 function __c13(j: number): any {
@@ -1993,9 +1977,7 @@ function __c13(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeCustomDomainsRequest",
-      });
+      ).annotate({ identifier: "DescribeCustomDomainsRequest" });
     case 1:
       return S.Array(__S(1250, __c39, 2));
     case 2:
@@ -2007,9 +1989,7 @@ function __c13(j: number): any {
           VpcDNSTargets: __S(1252, __c39, 4),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeCustomDomainsResponse",
-      });
+      ).annotate({ identifier: "DescribeCustomDomainsResponse" });
   }
 }
 function __c14(j: number): any {
@@ -2019,9 +1999,7 @@ function __c14(j: number): any {
         S.Struct({ ObservabilityConfigurationArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeObservabilityConfigurationRequest",
-      });
+      ).annotate({ identifier: "DescribeObservabilityConfigurationRequest" });
   }
 }
 function __c15(j: number): any {
@@ -2045,9 +2023,7 @@ function __c16(j: number): any {
         S.Struct({ VpcConnectorArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeVpcConnectorRequest",
-      });
+      ).annotate({ identifier: "DescribeVpcConnectorRequest" });
   }
 }
 function __c17(j: number): any {
@@ -2057,9 +2033,7 @@ function __c17(j: number): any {
         S.Struct({ VpcIngressConnectionArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeVpcIngressConnectionRequest",
-      });
+      ).annotate({ identifier: "DescribeVpcIngressConnectionRequest" });
   }
 }
 function __c18(j: number): any {
@@ -2069,9 +2043,7 @@ function __c18(j: number): any {
         S.Struct({ ServiceArn: S.String, DomainName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DisassociateCustomDomainRequest",
-      });
+      ).annotate({ identifier: "DisassociateCustomDomainRequest" });
   }
 }
 function __c19(j: number): any {
@@ -2084,9 +2056,7 @@ function __c19(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListAutoScalingConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListAutoScalingConfigurationsRequest" });
     case 1:
       return S.Array(__S(1568, __c49, 0));
     case 2:
@@ -2095,9 +2065,7 @@ function __c19(j: number): any {
           AutoScalingConfigurationSummaryList: __S(609, __c19, 1),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListAutoScalingConfigurationsResponse",
-      });
+      ).annotate({ identifier: "ListAutoScalingConfigurationsResponse" });
   }
 }
 function __c20(j: number): any {
@@ -2131,9 +2099,7 @@ function __c21(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListObservabilityConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListObservabilityConfigurationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2141,9 +2107,7 @@ function __c21(j: number): any {
           ObservabilityConfigurationName: S.optional(S.String),
           ObservabilityConfigurationRevision: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "ObservabilityConfigurationSummary",
-      });
+      ).annotate({ identifier: "ObservabilityConfigurationSummary" });
     case 2:
       return S.Array(__S(673, __c21, 1));
     case 3:
@@ -2152,9 +2116,7 @@ function __c21(j: number): any {
           ObservabilityConfigurationSummaryList: __S(674, __c21, 2),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListObservabilityConfigurationsResponse",
-      });
+      ).annotate({ identifier: "ListObservabilityConfigurationsResponse" });
   }
 }
 function __c22(j: number): any {
@@ -2229,15 +2191,11 @@ function __c24(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListServicesForAutoScalingConfigurationRequest",
-      });
+      ).annotate({ identifier: "ListServicesForAutoScalingConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ServiceArnList: __S(64, __c2, 0), NextToken: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "ListServicesForAutoScalingConfigurationResponse",
-      });
+      ).annotate({ identifier: "ListServicesForAutoScalingConfigurationResponse" });
   }
 }
 function __c25(j: number): any {
@@ -2247,14 +2205,10 @@ function __c25(j: number): any {
         S.Struct({ ResourceArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(1377, __c43, 1)) }).pipe(ns)).annotate(
-        {
-          identifier: "ListTagsForResourceResponse",
-        },
+        { identifier: "ListTagsForResourceResponse" },
       );
   }
 }
@@ -2271,9 +2225,7 @@ function __c26(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ VpcConnectors: __S(833, __c26, 1), NextToken: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "ListVpcConnectorsResponse",
-      });
+      ).annotate({ identifier: "ListVpcConnectorsResponse" });
   }
 }
 function __c27(j: number): any {
@@ -2281,9 +2233,7 @@ function __c27(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ ServiceArn: S.optional(S.String), VpcEndpointId: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListVpcIngressConnectionsFilter",
-      });
+      ).annotate({ identifier: "ListVpcIngressConnectionsFilter" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2291,18 +2241,14 @@ function __c27(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListVpcIngressConnectionsRequest",
-      });
+      ).annotate({ identifier: "ListVpcIngressConnectionsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           VpcIngressConnectionArn: S.optional(S.String),
           ServiceArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "VpcIngressConnectionSummary",
-      });
+      ).annotate({ identifier: "VpcIngressConnectionSummary" });
     case 3:
       return S.Array(__S(866, __c27, 2));
     case 4:
@@ -2311,9 +2257,7 @@ function __c27(j: number): any {
           VpcIngressConnectionSummaryList: __S(867, __c27, 3),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListVpcIngressConnectionsResponse",
-      });
+      ).annotate({ identifier: "ListVpcIngressConnectionsResponse" });
   }
 }
 function __c28(j: number): any {
@@ -2371,9 +2315,7 @@ function __c32(j: number): any {
 function __c33(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "TagResourceResponse" });
   }
 }
 function __c34(j: number): any {
@@ -2393,9 +2335,7 @@ function __c35(j: number): any {
         S.Struct({ AutoScalingConfigurationArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateDefaultAutoScalingConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateDefaultAutoScalingConfigurationRequest" });
   }
 }
 function __c36(j: number): any {
@@ -2422,9 +2362,7 @@ function __c37(j: number): any {
           VpcIngressConnectionArn: S.String,
           IngressVpcConfiguration: __S(160, __c5, 0),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateVpcIngressConnectionRequest",
-      });
+      ).annotate({ identifier: "UpdateVpcIngressConnectionRequest" });
   }
 }
 function __c38(j: number): any {
@@ -2436,9 +2374,7 @@ function __c38(j: number): any {
           DomainName: S.String,
           EnableWWWSubdomain: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssociateCustomDomainRequest",
-      });
+      ).annotate({ identifier: "AssociateCustomDomainRequest" });
   }
 }
 function __c39(j: number): any {
@@ -2451,9 +2387,7 @@ function __c39(j: number): any {
           Value: S.optional(S.String),
           Status: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CertificateValidationRecord",
-      });
+      ).annotate({ identifier: "CertificateValidationRecord" });
     case 1:
       return S.Array(__S(1248, __c39, 0));
     case 2:
@@ -2487,9 +2421,7 @@ function __c40(j: number): any {
           CustomDomain: __S(1250, __c39, 2),
           VpcDNSTargets: __S(1252, __c39, 4),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AssociateCustomDomainResponse",
-      });
+      ).annotate({ identifier: "AssociateCustomDomainResponse" });
   }
 }
 function __c41(j: number): any {
@@ -2503,9 +2435,7 @@ function __c41(j: number): any {
           MaxSize: S.optional(S.Number),
           Tags: S.optional(__S(1377, __c43, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateAutoScalingConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateAutoScalingConfigurationRequest" });
   }
 }
 function __c42(j: number): any {
@@ -2530,9 +2460,7 @@ function __c42(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ AutoScalingConfiguration: __S(1344, __c42, 0) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateAutoScalingConfigurationResponse",
-      });
+      ).annotate({ identifier: "CreateAutoScalingConfigurationResponse" });
   }
 }
 function __c43(j: number): any {
@@ -2584,9 +2512,7 @@ function __c46(j: number): any {
           TraceConfiguration: S.optional(__S(1504, __c47, 0)),
           Tags: S.optional(__S(1377, __c43, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateObservabilityConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateObservabilityConfigurationRequest" });
   }
 }
 function __c47(j: number): any {
@@ -2607,15 +2533,11 @@ function __c47(j: number): any {
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           DeletedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "ObservabilityConfiguration",
-      });
+      ).annotate({ identifier: "ObservabilityConfiguration" });
     case 2:
       return S.suspend(() =>
         S.Struct({ ObservabilityConfiguration: __S(1505, __c47, 1) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateObservabilityConfigurationResponse",
-      });
+      ).annotate({ identifier: "CreateObservabilityConfigurationResponse" });
   }
 }
 function __c48(j: number): any {
@@ -2649,9 +2571,7 @@ function __c49(j: number): any {
           HasAssociatedService: S.optional(S.Boolean),
           IsDefault: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "AutoScalingConfigurationSummary",
-      });
+      ).annotate({ identifier: "AutoScalingConfigurationSummary" });
   }
 }
 function __c50(j: number): any {
@@ -2709,9 +2629,7 @@ function __c50(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({ ConnectionArn: S.optional(S.String), AccessRoleArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "AuthenticationConfiguration",
-      });
+      ).annotate({ identifier: "AuthenticationConfiguration" });
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -2766,9 +2684,7 @@ function __c50(j: number): any {
           ObservabilityEnabled: S.Boolean,
           ObservabilityConfigurationArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ServiceObservabilityConfiguration",
-      });
+      ).annotate({ identifier: "ServiceObservabilityConfiguration" });
     case 16:
       return S.suspend(() =>
         S.Struct({

@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -538,8 +538,8 @@ export const createMonitor: API.OperationMethod<
   CreateMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<CreateMonitorInput>,
-  output: __S(210, __c26, 2) as any as S.Schema<CreateMonitorOutput>,
+  input: __S(192, __c24, 0) as any as S.Schema<CreateMonitorInput>,
+  output: __S(202, __c25, 2) as any as S.Schema<CreateMonitorOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -580,8 +580,8 @@ export const createScope: API.OperationMethod<
   CreateScopeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<CreateScopeInput>,
-  output: __S(240, __c30, 0) as any as S.Schema<CreateScopeOutput>,
+  input: __S(216, __c27, 0) as any as S.Schema<CreateScopeInput>,
+  output: __S(232, __c29, 0) as any as S.Schema<CreateScopeOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -612,8 +612,8 @@ export const deleteMonitor: API.OperationMethod<
   DeleteMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<DeleteMonitorInput>,
-  output: __S(256, __c32, 0) as any as S.Schema<DeleteMonitorOutput>,
+  input: __S(240, __c30, 0) as any as S.Schema<DeleteMonitorInput>,
+  output: __S(248, __c31, 0) as any as S.Schema<DeleteMonitorOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -646,7 +646,7 @@ export const deleteScope: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteScopeInput>,
-  output: __S(256, __c32, 0) as any as S.Schema<DeleteScopeOutput>,
+  output: __S(248, __c31, 0) as any as S.Schema<DeleteScopeOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -678,7 +678,7 @@ export const getMonitor: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(8, __c1, 0) as any as S.Schema<GetMonitorInput>,
-  output: __S(210, __c26, 2) as any as S.Schema<GetMonitorOutput>,
+  output: __S(202, __c25, 2) as any as S.Schema<GetMonitorOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1207,7 +1207,7 @@ export const stopQueryMonitorTopContributors: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(136, __c17, 0) as any as S.Schema<StopQueryMonitorTopContributorsInput>,
-  output: __S(144, __c18, 0) as any as S.Schema<StopQueryMonitorTopContributorsOutput>,
+  output: __S(248, __c31, 0) as any as S.Schema<StopQueryMonitorTopContributorsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1238,8 +1238,8 @@ export const stopQueryWorkloadInsightsTopContributors: API.OperationMethod<
   StopQueryWorkloadInsightsTopContributorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<StopQueryWorkloadInsightsTopContributorsInput>,
-  output: __S(144, __c18, 0) as any as S.Schema<StopQueryWorkloadInsightsTopContributorsOutput>,
+  input: __S(144, __c18, 0) as any as S.Schema<StopQueryWorkloadInsightsTopContributorsInput>,
+  output: __S(248, __c31, 0) as any as S.Schema<StopQueryWorkloadInsightsTopContributorsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1270,8 +1270,8 @@ export const stopQueryWorkloadInsightsTopContributorsData: API.OperationMethod<
   StopQueryWorkloadInsightsTopContributorsDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<StopQueryWorkloadInsightsTopContributorsDataInput>,
-  output: __S(144, __c18, 0) as any as S.Schema<StopQueryWorkloadInsightsTopContributorsDataOutput>,
+  input: __S(152, __c19, 0) as any as S.Schema<StopQueryWorkloadInsightsTopContributorsDataInput>,
+  output: __S(248, __c31, 0) as any as S.Schema<StopQueryWorkloadInsightsTopContributorsDataOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1301,8 +1301,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<TagResourceInput>,
-  output: __S(256, __c32, 0) as any as S.Schema<TagResourceOutput>,
+  input: __S(160, __c20, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(248, __c31, 0) as any as S.Schema<TagResourceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1333,8 +1333,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<UntagResourceInput>,
-  output: __S(256, __c32, 0) as any as S.Schema<UntagResourceOutput>,
+  input: __S(169, __c21, 1) as any as S.Schema<UntagResourceInput>,
+  output: __S(248, __c31, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1364,8 +1364,8 @@ export const updateMonitor: API.OperationMethod<
   UpdateMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<UpdateMonitorInput>,
-  output: __S(210, __c26, 2) as any as S.Schema<UpdateMonitorOutput>,
+  input: __S(176, __c22, 0) as any as S.Schema<UpdateMonitorInput>,
+  output: __S(202, __c25, 2) as any as S.Schema<UpdateMonitorOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1396,8 +1396,8 @@ export const updateScope: API.OperationMethod<
   UpdateScopeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<UpdateScopeInput>,
-  output: __S(240, __c30, 0) as any as S.Schema<UpdateScopeOutput>,
+  input: __S(184, __c23, 0) as any as S.Schema<UpdateScopeInput>,
+  output: __S(232, __c29, 0) as any as S.Schema<UpdateScopeOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1469,9 +1469,7 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetQueryResultsMonitorTopContributorsInput",
-      });
+      ).annotate({ identifier: "GetQueryResultsMonitorTopContributorsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1523,9 +1521,7 @@ function __c2(j: number): any {
           remoteSubnetArn: S.optional(S.String),
           remoteVpcArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "MonitorTopContributorsRow",
-      });
+      ).annotate({ identifier: "MonitorTopContributorsRow" });
     case 5:
       return S.Array(__S(20, __c2, 4));
     case 6:
@@ -1535,9 +1531,7 @@ function __c2(j: number): any {
           topContributors: S.optional(__S(21, __c2, 5)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetQueryResultsMonitorTopContributorsOutput",
-      });
+      ).annotate({ identifier: "GetQueryResultsMonitorTopContributorsOutput" });
   }
 }
 function __c3(j: number): any {
@@ -1562,9 +1556,7 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetQueryResultsWorkloadInsightsTopContributorsInput",
-      });
+      ).annotate({ identifier: "GetQueryResultsWorkloadInsightsTopContributorsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1578,9 +1570,7 @@ function __c3(j: number): any {
           localSubnetArn: S.optional(S.String),
           localVpcArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "WorkloadInsightsTopContributorsRow",
-      });
+      ).annotate({ identifier: "WorkloadInsightsTopContributorsRow" });
     case 2:
       return S.Array(__S(25, __c3, 1));
     case 3:
@@ -1589,9 +1579,7 @@ function __c3(j: number): any {
           topContributors: S.optional(__S(26, __c3, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetQueryResultsWorkloadInsightsTopContributorsOutput",
-      });
+      ).annotate({ identifier: "GetQueryResultsWorkloadInsightsTopContributorsOutput" });
   }
 }
 function __c4(j: number): any {
@@ -1616,35 +1604,21 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetQueryResultsWorkloadInsightsTopContributorsDataInput",
-      });
+      ).annotate({ identifier: "GetQueryResultsWorkloadInsightsTopContributorsDataInput" });
     case 1:
       return S.Array(/*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")));
     case 2:
       return S.Array(S.Number);
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          timestamps: __S(33, __c4, 1),
-          values: __S(34, __c4, 2),
-          label: S.String,
-        }),
-      ).annotate({
-        identifier: "WorkloadInsightsTopContributorsDataPoint",
-      });
+        S.Struct({ timestamps: __S(33, __c4, 1), values: __S(34, __c4, 2), label: S.String }),
+      ).annotate({ identifier: "WorkloadInsightsTopContributorsDataPoint" });
     case 4:
       return S.Array(__S(35, __c4, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({
-          unit: S.String,
-          datapoints: __S(36, __c4, 4),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetQueryResultsWorkloadInsightsTopContributorsDataOutput",
-      });
+        S.Struct({ unit: S.String, datapoints: __S(36, __c4, 4), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "GetQueryResultsWorkloadInsightsTopContributorsDataOutput" });
   }
 }
 function __c5(j: number): any {
@@ -1667,9 +1641,7 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetQueryStatusMonitorTopContributorsInput",
-      });
+      ).annotate({ identifier: "GetQueryStatusMonitorTopContributorsInput" });
   }
 }
 function __c6(j: number): any {
@@ -1700,9 +1672,7 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetQueryStatusWorkloadInsightsTopContributorsInput",
-      });
+      ).annotate({ identifier: "GetQueryStatusWorkloadInsightsTopContributorsInput" });
   }
 }
 function __c8(j: number): any {
@@ -1725,9 +1695,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetQueryStatusWorkloadInsightsTopContributorsDataInput",
-      });
+      ).annotate({ identifier: "GetQueryStatusWorkloadInsightsTopContributorsDataInput" });
   }
 }
 function __c9(j: number): any {
@@ -1744,8 +1712,8 @@ function __c9(j: number): any {
           scopeId: S.String,
           status: S.String,
           scopeArn: S.String,
-          targets: __S(235, __c29, 3),
-          tags: S.optional(__S(216, __c27, 0)),
+          targets: __S(227, __c28, 3),
+          tags: S.optional(__S(208, __c26, 0)),
         }),
       ).annotate({ identifier: "GetScopeOutput" });
   }
@@ -1809,7 +1777,7 @@ function __c12(j: number): any {
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(216, __c27, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(208, __c26, 0)) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
   }
@@ -1835,9 +1803,7 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartQueryMonitorTopContributorsInput",
-      });
+      ).annotate({ identifier: "StartQueryMonitorTopContributorsInput" });
   }
 }
 function __c14(j: number): any {
@@ -1869,9 +1835,7 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartQueryWorkloadInsightsTopContributorsInput",
-      });
+      ).annotate({ identifier: "StartQueryWorkloadInsightsTopContributorsInput" });
   }
 }
 function __c16(j: number): any {
@@ -1897,9 +1861,7 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartQueryWorkloadInsightsTopContributorsDataInput",
-      });
+      ).annotate({ identifier: "StartQueryWorkloadInsightsTopContributorsDataInput" });
   }
 }
 function __c17(j: number): any {
@@ -1922,20 +1884,10 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StopQueryMonitorTopContributorsInput",
-      });
+      ).annotate({ identifier: "StopQueryMonitorTopContributorsInput" });
   }
 }
 function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "StopQueryMonitorTopContributorsOutput",
-      });
-  }
-}
-function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1955,12 +1907,10 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StopQueryWorkloadInsightsTopContributorsInput",
-      });
+      ).annotate({ identifier: "StopQueryWorkloadInsightsTopContributorsInput" });
   }
 }
-function __c20(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1980,18 +1930,16 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StopQueryWorkloadInsightsTopContributorsDataInput",
-      });
+      ).annotate({ identifier: "StopQueryWorkloadInsightsTopContributorsDataInput" });
   }
 }
-function __c21(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(216, __c27, 0),
+          tags: __S(208, __c26, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -2005,7 +1953,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "TagResourceInput" });
   }
 }
-function __c22(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
@@ -2013,7 +1961,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(176, __c22, 0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(168, __c21, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -2027,16 +1975,16 @@ function __c22(j: number): any {
       ).annotate({ identifier: "UntagResourceInput" });
   }
 }
-function __c23(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           monitorName: S.String.pipe(T.HttpLabel("monitorName")),
-          localResourcesToAdd: S.optional(__S(209, __c26, 1)),
-          localResourcesToRemove: S.optional(__S(209, __c26, 1)),
-          remoteResourcesToAdd: S.optional(__S(209, __c26, 1)),
-          remoteResourcesToRemove: S.optional(__S(209, __c26, 1)),
+          localResourcesToAdd: S.optional(__S(201, __c25, 1)),
+          localResourcesToRemove: S.optional(__S(201, __c25, 1)),
+          remoteResourcesToAdd: S.optional(__S(201, __c25, 1)),
+          remoteResourcesToRemove: S.optional(__S(201, __c25, 1)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -2051,14 +1999,14 @@ function __c23(j: number): any {
       ).annotate({ identifier: "UpdateMonitorInput" });
   }
 }
-function __c24(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           scopeId: S.String.pipe(T.HttpLabel("scopeId")),
-          resourcesToAdd: S.optional(__S(235, __c29, 3)),
-          resourcesToDelete: S.optional(__S(235, __c29, 3)),
+          resourcesToAdd: S.optional(__S(227, __c28, 3)),
+          resourcesToDelete: S.optional(__S(227, __c28, 3)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/scopes/{scopeId}" }),
@@ -2072,79 +2020,79 @@ function __c24(j: number): any {
       ).annotate({ identifier: "UpdateScopeInput" });
   }
 }
-function __c25(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           monitorName: S.String,
-          localResources: __S(209, __c26, 1),
-          remoteResources: S.optional(__S(209, __c26, 1)),
+          localResources: __S(201, __c25, 1),
+          remoteResources: S.optional(__S(201, __c25, 1)),
           scopeArn: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(216, __c27, 0)),
+          tags: S.optional(__S(208, __c26, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/monitors" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateMonitorInput" });
   }
 }
-function __c26(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ type: S.String, identifier: S.String })).annotate({
         identifier: "MonitorLocalResource",
       });
     case 1:
-      return S.Array(__S(208, __c26, 0));
+      return S.Array(__S(200, __c25, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           monitorArn: S.String,
           monitorName: S.String,
           monitorStatus: S.String,
-          localResources: __S(209, __c26, 1),
-          remoteResources: __S(209, __c26, 1),
+          localResources: __S(201, __c25, 1),
+          remoteResources: __S(201, __c25, 1),
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           modifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          tags: S.optional(__S(216, __c27, 0)),
+          tags: S.optional(__S(208, __c26, 0)),
         }),
       ).annotate({ identifier: "CreateMonitorOutput" });
   }
 }
-function __c27(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c28(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          targets: __S(235, __c29, 3),
+          targets: __S(227, __c28, 3),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(216, __c27, 0)),
+          tags: S.optional(__S(208, __c26, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/scopes" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateScopeInput" });
   }
 }
-function __c29(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.Union([/*@__PURE__*/ S.Struct({ accountId: S.String })]);
     case 1:
       return S.suspend(() =>
-        S.Struct({ targetId: __S(232, __c29, 0), targetType: S.String }),
+        S.Struct({ targetId: __S(224, __c28, 0), targetType: S.String }),
       ).annotate({ identifier: "TargetIdentifier" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ targetIdentifier: __S(233, __c29, 1), region: S.String }),
+        S.Struct({ targetIdentifier: __S(225, __c28, 1), region: S.String }),
       ).annotate({ identifier: "TargetResource" });
     case 3:
-      return S.Array(__S(234, __c29, 2));
+      return S.Array(__S(226, __c28, 2));
   }
 }
-function __c30(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2152,12 +2100,12 @@ function __c30(j: number): any {
           scopeId: S.String,
           status: S.String,
           scopeArn: S.String,
-          tags: S.optional(__S(216, __c27, 0)),
+          tags: S.optional(__S(208, __c26, 0)),
         }),
       ).annotate({ identifier: "CreateScopeOutput" });
   }
 }
-function __c31(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2174,12 +2122,10 @@ function __c31(j: number): any {
       ).annotate({ identifier: "DeleteMonitorInput" });
   }
 }
-function __c32(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteMonitorOutput",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteMonitorOutput" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

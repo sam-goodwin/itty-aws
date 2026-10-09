@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -445,9 +445,7 @@ function __c0(j: number): any {
         S.Struct({ resourceARN: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(145, __c9, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -467,9 +465,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TagResourceResponse" });
   }
 }
 function __c3(j: number): any {
@@ -491,9 +487,7 @@ function __c4(j: number): any {
         S.Struct({ invocationArn: S.String.pipe(T.HttpLabel("invocationArn")) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetDataAutomationStatusRequest",
-      });
+      ).annotate({ identifier: "GetDataAutomationStatusRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -505,9 +499,7 @@ function __c4(j: number): any {
           jobCompletionTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           jobDurationInSeconds: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "GetDataAutomationStatusResponse",
-      });
+      ).annotate({ identifier: "GetDataAutomationStatusResponse" });
   }
 }
 function __c5(j: number): any {
@@ -534,9 +526,7 @@ function __c6(j: number): any {
           encryptionConfiguration: S.optional(__S(116, __c7, 4)),
           outputConfiguration: S.optional(__S(80, __c5, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "InvokeDataAutomationRequest",
-      });
+      ).annotate({ identifier: "InvokeDataAutomationRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -554,9 +544,7 @@ function __c6(j: number): any {
           semanticModality: S.String,
           outputSegments: S.optional(__S(99, __c6, 3)),
         }),
-      ).annotate({
-        identifier: "InvokeDataAutomationResponse",
-      });
+      ).annotate({ identifier: "InvokeDataAutomationResponse" });
   }
 }
 function __c7(j: number): any {
@@ -564,9 +552,7 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ dataAutomationProjectArn: S.String, stage: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DataAutomationConfiguration",
-      });
+      ).annotate({ identifier: "DataAutomationConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -596,19 +582,14 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ segmentConfiguration: S.optional(__S(129, __c8, 1)) }),
-      ).annotate({
-        identifier: "VideoAssetProcessingConfiguration",
-      });
+      ).annotate({ identifier: "VideoAssetProcessingConfiguration" });
     case 3:
       return S.suspend(() => S.Struct({ video: S.optional(__S(130, __c8, 2)) })).annotate({
         identifier: "AssetProcessingConfiguration",
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({
-          s3Uri: S.String,
-          assetProcessingConfiguration: S.optional(__S(131, __c8, 3)),
-        }),
+        S.Struct({ s3Uri: S.String, assetProcessingConfiguration: S.optional(__S(131, __c8, 3)) }),
       ).annotate({ identifier: "InputConfiguration" });
     case 5:
       return S.suspend(() => S.Struct({ eventBridgeEnabled: S.Boolean })).annotate({
@@ -631,9 +612,7 @@ function __c8(j: number): any {
           dataAutomationProfileArn: S.String,
           tags: S.optional(__S(145, __c9, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "InvokeDataAutomationAsyncRequest",
-      });
+      ).annotate({ identifier: "InvokeDataAutomationAsyncRequest" });
     case 8:
       return S.suspend(() => S.Struct({ invocationArn: S.String })).annotate({
         identifier: "InvokeDataAutomationAsyncResponse",

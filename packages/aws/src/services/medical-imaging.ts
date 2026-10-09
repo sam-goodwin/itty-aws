@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1442,9 +1442,7 @@ function __c7(j: number): any {
       });
     case 3:
       return S.Union([
-        /*@__PURE__*/ S.Struct({
-          dicomJsonMetadataImportConfiguration: __S(114, __c7, 2),
-        }),
+        /*@__PURE__*/ S.Struct({ dicomJsonMetadataImportConfiguration: __S(114, __c7, 2) }),
       ]);
   }
 }
@@ -1459,9 +1457,9 @@ function __c8(j: number): any {
         S.Struct({
           datastoreId: S.String.pipe(T.HttpLabel("datastoreId")),
           imageSetId: S.String.pipe(T.HttpLabel("imageSetId")),
-          imageFrameInformation: __S(128, __c8, 0).pipe(T.HttpPayload()).annotate({
-            identifier: "ImageFrameInformation",
-          }),
+          imageFrameInformation: __S(128, __c8, 0)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "ImageFrameInformation" }),
         }).pipe(
           T.all(
             T.Http({
@@ -1557,9 +1555,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetImageSetMetadataRequest",
-      });
+      ).annotate({ identifier: "GetImageSetMetadataRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1567,9 +1563,7 @@ function __c11(j: number): any {
           contentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
           contentEncoding: S.optional(S.String).pipe(T.HttpHeader("Content-Encoding")),
         }),
-      ).annotate({
-        identifier: "GetImageSetMetadataResponse",
-      });
+      ).annotate({ identifier: "GetImageSetMetadataResponse" });
   }
 }
 function __c12(j: number): any {
@@ -1623,9 +1617,7 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDICOMImportJobsRequest",
-      });
+      ).annotate({ identifier: "ListDICOMImportJobsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1644,9 +1636,7 @@ function __c13(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ jobSummaries: __S(210, __c13, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListDICOMImportJobsResponse",
-      });
+      ).annotate({ identifier: "ListDICOMImportJobsResponse" });
   }
 }
 function __c14(j: number): any {
@@ -1671,9 +1661,7 @@ function __c14(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListImageSetVersionsRequest",
-      });
+      ).annotate({ identifier: "ListImageSetVersionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1694,9 +1682,7 @@ function __c14(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ imageSetPropertiesList: __S(226, __c14, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListImageSetVersionsResponse",
-      });
+      ).annotate({ identifier: "ListImageSetVersionsResponse" });
   }
 }
 function __c15(j: number): any {
@@ -1713,9 +1699,7 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: __S(32, __c2, 0) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -1849,9 +1833,7 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartDICOMImportJobRequest",
-      });
+      ).annotate({ identifier: "StartDICOMImportJobRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1860,9 +1842,7 @@ function __c17(j: number): any {
           jobStatus: S.String,
           submittedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
-      ).annotate({
-        identifier: "StartDICOMImportJobResponse",
-      });
+      ).annotate({ identifier: "StartDICOMImportJobResponse" });
   }
 }
 function __c18(j: number): any {
@@ -1888,9 +1868,7 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TagResourceResponse" });
   }
 }
 function __c20(j: number): any {
@@ -1951,9 +1929,7 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateImageSetMetadataRequest",
-      });
+      ).annotate({ identifier: "UpdateImageSetMetadataRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1966,9 +1942,7 @@ function __c21(j: number): any {
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           message: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "UpdateImageSetMetadataResponse",
-      });
+      ).annotate({ identifier: "UpdateImageSetMetadataResponse" });
   }
 }
 function __c22(j: number): any {
@@ -1980,9 +1954,7 @@ function __c22(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ latestVersionId: S.String, DICOMCopies: S.optional(__S(352, __c22, 0)) }),
-      ).annotate({
-        identifier: "CopySourceImageSetInformation",
-      });
+      ).annotate({ identifier: "CopySourceImageSetInformation" });
     case 2:
       return S.suspend(() =>
         S.Struct({ imageSetId: S.String, latestVersionId: S.String }),
@@ -1999,9 +1971,9 @@ function __c22(j: number): any {
         S.Struct({
           datastoreId: S.String.pipe(T.HttpLabel("datastoreId")),
           sourceImageSetId: S.String.pipe(T.HttpLabel("sourceImageSetId")),
-          copyImageSetInformation: __S(355, __c22, 3).pipe(T.HttpPayload()).annotate({
-            identifier: "CopyImageSetInformation",
-          }),
+          copyImageSetInformation: __S(355, __c22, 3)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "CopyImageSetInformation" }),
           force: S.optional(S.Boolean).pipe(T.HttpQuery("force")),
           promoteToPrimary: S.optional(S.Boolean).pipe(T.HttpQuery("promoteToPrimary")),
         }).pipe(
@@ -2029,9 +2001,7 @@ function __c22(j: number): any {
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           imageSetArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CopySourceImageSetProperties",
-      });
+      ).annotate({ identifier: "CopySourceImageSetProperties" });
     case 6:
       return S.suspend(() =>
         S.Struct({

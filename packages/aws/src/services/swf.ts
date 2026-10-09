@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1508,7 +1508,7 @@ export const deleteActivityType: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(256, __c8, 0) as any as S.Schema<DeleteActivityTypeInput>,
-  output: __S(320, __c10, 0) as any as S.Schema<DeleteActivityTypeResponse>,
+  output: __S(288, __c9, 0) as any as S.Schema<DeleteActivityTypeResponse>,
   errors: [OperationNotPermittedFault, TypeNotDeprecatedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1560,7 +1560,7 @@ export const deleteWorkflowType: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(352, __c11, 0) as any as S.Schema<DeleteWorkflowTypeInput>,
-  output: __S(320, __c10, 0) as any as S.Schema<DeleteWorkflowTypeResponse>,
+  output: __S(288, __c9, 0) as any as S.Schema<DeleteWorkflowTypeResponse>,
   errors: [OperationNotPermittedFault, TypeNotDeprecatedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1610,7 +1610,7 @@ export const deprecateActivityType: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(384, __c12, 0) as any as S.Schema<DeprecateActivityTypeInput>,
-  output: __S(320, __c10, 0) as any as S.Schema<DeprecateActivityTypeResponse>,
+  output: __S(288, __c9, 0) as any as S.Schema<DeprecateActivityTypeResponse>,
   errors: [OperationNotPermittedFault, TypeDeprecatedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1658,7 +1658,7 @@ export const deprecateDomain: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(416, __c13, 0) as any as S.Schema<DeprecateDomainInput>,
-  output: __S(417, __c13, 1) as any as S.Schema<DeprecateDomainResponse>,
+  output: __S(288, __c9, 0) as any as S.Schema<DeprecateDomainResponse>,
   errors: [DomainDeprecatedFault, OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1712,7 +1712,7 @@ export const deprecateWorkflowType: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(448, __c14, 0) as any as S.Schema<DeprecateWorkflowTypeInput>,
-  output: __S(320, __c10, 0) as any as S.Schema<DeprecateWorkflowTypeResponse>,
+  output: __S(288, __c9, 0) as any as S.Schema<DeprecateWorkflowTypeResponse>,
   errors: [OperationNotPermittedFault, TypeDeprecatedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2482,7 +2482,7 @@ export const registerActivityType: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1248, __c39, 0) as any as S.Schema<RegisterActivityTypeInput>,
-  output: __S(320, __c10, 0) as any as S.Schema<RegisterActivityTypeResponse>,
+  output: __S(288, __c9, 0) as any as S.Schema<RegisterActivityTypeResponse>,
   errors: [
     LimitExceededFault,
     OperationNotPermittedFault,
@@ -2529,7 +2529,7 @@ export const registerDomain: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1280, __c40, 0) as any as S.Schema<RegisterDomainInput>,
-  output: __S(1281, __c40, 1) as any as S.Schema<RegisterDomainResponse>,
+  output: __S(288, __c9, 0) as any as S.Schema<RegisterDomainResponse>,
   errors: [
     DomainAlreadyExistsFault,
     LimitExceededFault,
@@ -2592,7 +2592,7 @@ export const registerWorkflowType: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1312, __c41, 0) as any as S.Schema<RegisterWorkflowTypeInput>,
-  output: __S(320, __c10, 0) as any as S.Schema<RegisterWorkflowTypeResponse>,
+  output: __S(288, __c9, 0) as any as S.Schema<RegisterWorkflowTypeResponse>,
   errors: [
     LimitExceededFault,
     OperationNotPermittedFault,
@@ -2648,7 +2648,7 @@ export const requestCancelWorkflowExecution: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1344, __c42, 0) as any as S.Schema<RequestCancelWorkflowExecutionInput>,
-  output: __S(320, __c10, 0) as any as S.Schema<RequestCancelWorkflowExecutionResponse>,
+  output: __S(288, __c9, 0) as any as S.Schema<RequestCancelWorkflowExecutionResponse>,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2703,7 +2703,7 @@ export const respondActivityTaskCanceled: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1376, __c43, 0) as any as S.Schema<RespondActivityTaskCanceledInput>,
-  output: __S(320, __c10, 0) as any as S.Schema<RespondActivityTaskCanceledResponse>,
+  output: __S(288, __c9, 0) as any as S.Schema<RespondActivityTaskCanceledResponse>,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2756,7 +2756,7 @@ export const respondActivityTaskCompleted: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1408, __c44, 0) as any as S.Schema<RespondActivityTaskCompletedInput>,
-  output: __S(320, __c10, 0) as any as S.Schema<RespondActivityTaskCompletedResponse>,
+  output: __S(288, __c9, 0) as any as S.Schema<RespondActivityTaskCompletedResponse>,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2804,7 +2804,7 @@ export const respondActivityTaskFailed: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1440, __c45, 0) as any as S.Schema<RespondActivityTaskFailedInput>,
-  output: __S(320, __c10, 0) as any as S.Schema<RespondActivityTaskFailedResponse>,
+  output: __S(288, __c9, 0) as any as S.Schema<RespondActivityTaskFailedResponse>,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2842,7 +2842,7 @@ export const respondDecisionTaskCompleted: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1487, __c46, 15) as any as S.Schema<RespondDecisionTaskCompletedInput>,
-  output: __S(320, __c10, 0) as any as S.Schema<RespondDecisionTaskCompletedResponse>,
+  output: __S(288, __c9, 0) as any as S.Schema<RespondDecisionTaskCompletedResponse>,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2892,7 +2892,7 @@ export const signalWorkflowExecution: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1504, __c47, 0) as any as S.Schema<SignalWorkflowExecutionInput>,
-  output: __S(320, __c10, 0) as any as S.Schema<SignalWorkflowExecutionResponse>,
+  output: __S(288, __c9, 0) as any as S.Schema<SignalWorkflowExecutionResponse>,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2991,7 +2991,7 @@ export const tagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1568, __c49, 0) as any as S.Schema<TagResourceInput>,
-  output: __S(1600, __c50, 0) as any as S.Schema<TagResourceResponse>,
+  output: __S(288, __c9, 0) as any as S.Schema<TagResourceResponse>,
   errors: [LimitExceededFault, OperationNotPermittedFault, TooManyTagsFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3043,8 +3043,8 @@ export const terminateWorkflowExecution: API.OperationMethod<
   TerminateWorkflowExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1632, __c51, 0) as any as S.Schema<TerminateWorkflowExecutionInput>,
-  output: __S(320, __c10, 0) as any as S.Schema<TerminateWorkflowExecutionResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<TerminateWorkflowExecutionInput>,
+  output: __S(288, __c9, 0) as any as S.Schema<TerminateWorkflowExecutionResponse>,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3095,8 +3095,8 @@ export const undeprecateActivityType: API.OperationMethod<
   UndeprecateActivityTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1664, __c52, 0) as any as S.Schema<UndeprecateActivityTypeInput>,
-  output: __S(320, __c10, 0) as any as S.Schema<UndeprecateActivityTypeResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<UndeprecateActivityTypeInput>,
+  output: __S(288, __c9, 0) as any as S.Schema<UndeprecateActivityTypeResponse>,
   errors: [OperationNotPermittedFault, TypeAlreadyExistsFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3140,8 +3140,8 @@ export const undeprecateDomain: API.OperationMethod<
   UndeprecateDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1696, __c53, 0) as any as S.Schema<UndeprecateDomainInput>,
-  output: __S(320, __c10, 0) as any as S.Schema<UndeprecateDomainResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<UndeprecateDomainInput>,
+  output: __S(288, __c9, 0) as any as S.Schema<UndeprecateDomainResponse>,
   errors: [DomainAlreadyExistsFault, OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3192,8 +3192,8 @@ export const undeprecateWorkflowType: API.OperationMethod<
   UndeprecateWorkflowTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1728, __c54, 0) as any as S.Schema<UndeprecateWorkflowTypeInput>,
-  output: __S(320, __c10, 0) as any as S.Schema<UndeprecateWorkflowTypeResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<UndeprecateWorkflowTypeInput>,
+  output: __S(288, __c9, 0) as any as S.Schema<UndeprecateWorkflowTypeResponse>,
   errors: [OperationNotPermittedFault, TypeAlreadyExistsFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3214,8 +3214,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1760, __c55, 0) as any as S.Schema<UntagResourceInput>,
-  output: __S(1600, __c50, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<UntagResourceInput>,
+  output: __S(288, __c9, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [LimitExceededFault, OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3236,9 +3236,7 @@ function __c0(j: number): any {
           tagFilter: S.optional(__S(67, __c2, 3)),
           closeStatusFilter: S.optional(__S(96, __c3, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CountClosedWorkflowExecutionsInput",
-      });
+      ).annotate({ identifier: "CountClosedWorkflowExecutionsInput" });
   }
 }
 function __c1(j: number): any {
@@ -3267,9 +3265,7 @@ function __c2(j: number): any {
         identifier: "WorkflowTypeFilter",
       });
     case 3:
-      return S.suspend(() => S.Struct({ tag: S.String })).annotate({
-        identifier: "TagFilter",
-      });
+      return S.suspend(() => S.Struct({ tag: S.String })).annotate({ identifier: "TagFilter" });
   }
 }
 function __c3(j: number): any {
@@ -3291,9 +3287,7 @@ function __c4(j: number): any {
           tagFilter: S.optional(__S(67, __c2, 3)),
           executionFilter: S.optional(__S(65, __c2, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CountOpenWorkflowExecutionsInput",
-      });
+      ).annotate({ identifier: "CountOpenWorkflowExecutionsInput" });
   }
 }
 function __c5(j: number): any {
@@ -3303,17 +3297,13 @@ function __c5(j: number): any {
         S.Struct({ domain: S.String, taskList: __S(192, __c6, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CountPendingActivityTasksInput",
-      });
+      ).annotate({ identifier: "CountPendingActivityTasksInput" });
   }
 }
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ name: S.String })).annotate({
-        identifier: "TaskList",
-      });
+      return S.suspend(() => S.Struct({ name: S.String })).annotate({ identifier: "TaskList" });
   }
 }
 function __c7(j: number): any {
@@ -3323,16 +3313,14 @@ function __c7(j: number): any {
         S.Struct({ domain: S.String, taskList: __S(192, __c6, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CountPendingDecisionTasksInput",
-      });
+      ).annotate({ identifier: "CountPendingDecisionTasksInput" });
   }
 }
 function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ domain: S.String, activityType: __S(288, __c9, 0) }).pipe(
+        S.Struct({ domain: S.String, activityType: __S(320, __c10, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteActivityTypeInput" });
@@ -3341,16 +3329,16 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ name: S.String, version: S.String })).annotate({
-        identifier: "ActivityType",
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteActivityTypeResponse",
       });
   }
 }
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeleteActivityTypeResponse",
+      return S.suspend(() => S.Struct({ name: S.String, version: S.String })).annotate({
+        identifier: "ActivityType",
       });
   }
 }
@@ -3358,7 +3346,7 @@ function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ domain: S.String, workflowType: __S(288, __c9, 0) }).pipe(
+        S.Struct({ domain: S.String, workflowType: __S(320, __c10, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteWorkflowTypeInput" });
@@ -3368,12 +3356,10 @@ function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ domain: S.String, activityType: __S(288, __c9, 0) }).pipe(
+        S.Struct({ domain: S.String, activityType: __S(320, __c10, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeprecateActivityTypeInput",
-      });
+      ).annotate({ identifier: "DeprecateActivityTypeInput" });
   }
 }
 function __c13(j: number): any {
@@ -3384,34 +3370,26 @@ function __c13(j: number): any {
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeprecateDomainInput" });
-    case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeprecateDomainResponse",
-      });
   }
 }
 function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ domain: S.String, workflowType: __S(288, __c9, 0) }).pipe(
+        S.Struct({ domain: S.String, workflowType: __S(320, __c10, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeprecateWorkflowTypeInput",
-      });
+      ).annotate({ identifier: "DeprecateWorkflowTypeInput" });
   }
 }
 function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ domain: S.String, activityType: __S(288, __c9, 0) }).pipe(
+        S.Struct({ domain: S.String, activityType: __S(320, __c10, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeActivityTypeInput",
-      });
+      ).annotate({ identifier: "DescribeActivityTypeInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3422,9 +3400,7 @@ function __c15(j: number): any {
           defaultTaskScheduleToStartTimeout: S.optional(S.String),
           defaultTaskScheduleToCloseTimeout: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ActivityTypeConfiguration",
-      });
+      ).annotate({ identifier: "ActivityTypeConfiguration" });
     case 2:
       return S.suspend(() =>
         S.Struct({ typeInfo: __S(512, __c16, 0), configuration: __S(481, __c15, 1) }).pipe(ns),
@@ -3436,7 +3412,7 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          activityType: __S(288, __c9, 0),
+          activityType: __S(320, __c10, 0),
           status: S.String,
           description: S.optional(S.String),
           creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -3483,9 +3459,7 @@ function __c19(j: number): any {
         S.Struct({ domain: S.String, execution: __S(640, __c20, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeWorkflowExecutionInput",
-      });
+      ).annotate({ identifier: "DescribeWorkflowExecutionInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3496,9 +3470,7 @@ function __c19(j: number): any {
           childPolicy: S.String,
           lambdaRole: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "WorkflowExecutionConfiguration",
-      });
+      ).annotate({ identifier: "WorkflowExecutionConfiguration" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3508,9 +3480,7 @@ function __c19(j: number): any {
           openChildWorkflowExecutions: S.Number,
           openLambdaFunctions: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "WorkflowExecutionOpenCounts",
-      });
+      ).annotate({ identifier: "WorkflowExecutionOpenCounts" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3543,7 +3513,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           execution: __S(640, __c20, 0),
-          workflowType: __S(288, __c9, 0),
+          workflowType: __S(320, __c10, 0),
           startTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           closeTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           executionStatus: S.String,
@@ -3559,12 +3529,10 @@ function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ domain: S.String, workflowType: __S(288, __c9, 0) }).pipe(
+        S.Struct({ domain: S.String, workflowType: __S(320, __c10, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeWorkflowTypeInput",
-      });
+      ).annotate({ identifier: "DescribeWorkflowTypeInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3575,9 +3543,7 @@ function __c23(j: number): any {
           defaultChildPolicy: S.optional(S.String),
           defaultLambdaRole: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "WorkflowTypeConfiguration",
-      });
+      ).annotate({ identifier: "WorkflowTypeConfiguration" });
     case 2:
       return S.suspend(() =>
         S.Struct({ typeInfo: __S(768, __c24, 0), configuration: __S(737, __c23, 1) }).pipe(ns),
@@ -3589,7 +3555,7 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          workflowType: __S(288, __c9, 0),
+          workflowType: __S(320, __c10, 0),
           status: S.String,
           description: S.optional(S.String),
           creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -3609,12 +3575,10 @@ function __c25(j: number): any {
           maximumPageSize: S.optional(S.Number),
           reverseOrder: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetWorkflowExecutionHistoryInput",
-      });
+      ).annotate({ identifier: "GetWorkflowExecutionHistoryInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ events: __S(882, __c27, 18), nextPageToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ events: __S(880, __c27, 16), nextPageToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "History" });
   }
 }
@@ -3629,28 +3593,22 @@ function __c26(j: number): any {
           childPolicy: S.String,
           taskList: __S(192, __c6, 0),
           taskPriority: S.optional(S.String),
-          workflowType: __S(288, __c9, 0),
+          workflowType: __S(320, __c10, 0),
           tagList: S.optional(__S(672, __c21, 0)),
           continuedExecutionRunId: S.optional(S.String),
           parentWorkflowExecution: S.optional(__S(640, __c20, 0)),
           parentInitiatedEventId: S.optional(S.Number),
           lambdaRole: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "WorkflowExecutionStartedEventAttributes",
-      });
+      ).annotate({ identifier: "WorkflowExecutionStartedEventAttributes" });
     case 1:
       return S.suspend(() =>
         S.Struct({ result: S.optional(S.String), decisionTaskCompletedEventId: S.Number }),
-      ).annotate({
-        identifier: "WorkflowExecutionCompletedEventAttributes",
-      });
+      ).annotate({ identifier: "WorkflowExecutionCompletedEventAttributes" });
     case 2:
       return S.suspend(() =>
         S.Struct({ cause: S.String, decisionTaskCompletedEventId: S.Number }),
-      ).annotate({
-        identifier: "CompleteWorkflowExecutionFailedEventAttributes",
-      });
+      ).annotate({ identifier: "CompleteWorkflowExecutionFailedEventAttributes" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3658,9 +3616,7 @@ function __c26(j: number): any {
           details: S.optional(S.String),
           decisionTaskCompletedEventId: S.Number,
         }),
-      ).annotate({
-        identifier: "WorkflowExecutionFailedEventAttributes",
-      });
+      ).annotate({ identifier: "WorkflowExecutionFailedEventAttributes" });
     case 4:
       return S.suspend(() => S.Struct({ timeoutType: S.String, childPolicy: S.String })).annotate({
         identifier: "WorkflowExecutionTimedOutEventAttributes",
@@ -3668,9 +3624,7 @@ function __c26(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({ details: S.optional(S.String), decisionTaskCompletedEventId: S.Number }),
-      ).annotate({
-        identifier: "WorkflowExecutionCanceledEventAttributes",
-      });
+      ).annotate({ identifier: "WorkflowExecutionCanceledEventAttributes" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3683,22 +3637,11 @@ function __c26(j: number): any {
           taskStartToCloseTimeout: S.optional(S.String),
           childPolicy: S.String,
           tagList: S.optional(__S(672, __c21, 0)),
-          workflowType: __S(288, __c9, 0),
+          workflowType: __S(320, __c10, 0),
           lambdaRole: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "WorkflowExecutionContinuedAsNewEventAttributes",
-      });
+      ).annotate({ identifier: "WorkflowExecutionContinuedAsNewEventAttributes" });
     case 7:
-      return S.suspend(() =>
-        S.Struct({
-          cause: S.String,
-          decisionTaskCompletedEventId: S.Number,
-        }),
-      ).annotate({
-        identifier: "ContinueAsNewWorkflowExecutionFailedEventAttributes",
-      });
-    case 8:
       return S.suspend(() =>
         S.Struct({
           reason: S.optional(S.String),
@@ -3706,20 +3649,16 @@ function __c26(j: number): any {
           childPolicy: S.String,
           cause: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "WorkflowExecutionTerminatedEventAttributes",
-      });
-    case 9:
+      ).annotate({ identifier: "WorkflowExecutionTerminatedEventAttributes" });
+    case 8:
       return S.suspend(() =>
         S.Struct({
           externalWorkflowExecution: S.optional(__S(640, __c20, 0)),
           externalInitiatedEventId: S.optional(S.Number),
           cause: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "WorkflowExecutionCancelRequestedEventAttributes",
-      });
-    case 10:
+      ).annotate({ identifier: "WorkflowExecutionCancelRequestedEventAttributes" });
+    case 9:
       return S.suspend(() =>
         S.Struct({
           taskList: __S(192, __c6, 0),
@@ -3727,16 +3666,12 @@ function __c26(j: number): any {
           startToCloseTimeout: S.optional(S.String),
           scheduleToStartTimeout: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DecisionTaskScheduledEventAttributes",
-      });
-    case 11:
+      ).annotate({ identifier: "DecisionTaskScheduledEventAttributes" });
+    case 10:
       return S.suspend(() =>
         S.Struct({ identity: S.optional(S.String), scheduledEventId: S.Number }),
-      ).annotate({
-        identifier: "DecisionTaskStartedEventAttributes",
-      });
-    case 12:
+      ).annotate({ identifier: "DecisionTaskStartedEventAttributes" });
+    case 11:
       return S.suspend(() =>
         S.Struct({
           executionContext: S.optional(S.String),
@@ -3745,23 +3680,15 @@ function __c26(j: number): any {
           taskList: S.optional(__S(192, __c6, 0)),
           taskListScheduleToStartTimeout: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DecisionTaskCompletedEventAttributes",
-      });
+      ).annotate({ identifier: "DecisionTaskCompletedEventAttributes" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({ timeoutType: S.String, scheduledEventId: S.Number, startedEventId: S.Number }),
+      ).annotate({ identifier: "DecisionTaskTimedOutEventAttributes" });
     case 13:
       return S.suspend(() =>
         S.Struct({
-          timeoutType: S.String,
-          scheduledEventId: S.Number,
-          startedEventId: S.Number,
-        }),
-      ).annotate({
-        identifier: "DecisionTaskTimedOutEventAttributes",
-      });
-    case 14:
-      return S.suspend(() =>
-        S.Struct({
-          activityType: __S(288, __c9, 0),
+          activityType: __S(320, __c10, 0),
           activityId: S.String,
           input: S.optional(S.String),
           control: S.optional(S.String),
@@ -3773,20 +3700,16 @@ function __c26(j: number): any {
           decisionTaskCompletedEventId: S.Number,
           heartbeatTimeout: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ActivityTaskScheduledEventAttributes",
-      });
-    case 15:
+      ).annotate({ identifier: "ActivityTaskScheduledEventAttributes" });
+    case 14:
       return S.suspend(() =>
         S.Struct({
           result: S.optional(S.String),
           scheduledEventId: S.Number,
           startedEventId: S.Number,
         }),
-      ).annotate({
-        identifier: "ActivityTaskCompletedEventAttributes",
-      });
-    case 16:
+      ).annotate({ identifier: "ActivityTaskCompletedEventAttributes" });
+    case 15:
       return S.suspend(() =>
         S.Struct({
           reason: S.optional(S.String),
@@ -3794,10 +3717,8 @@ function __c26(j: number): any {
           scheduledEventId: S.Number,
           startedEventId: S.Number,
         }),
-      ).annotate({
-        identifier: "ActivityTaskFailedEventAttributes",
-      });
-    case 17:
+      ).annotate({ identifier: "ActivityTaskFailedEventAttributes" });
+    case 16:
       return S.suspend(() =>
         S.Struct({
           timeoutType: S.String,
@@ -3805,10 +3726,8 @@ function __c26(j: number): any {
           startedEventId: S.Number,
           details: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ActivityTaskTimedOutEventAttributes",
-      });
-    case 18:
+      ).annotate({ identifier: "ActivityTaskTimedOutEventAttributes" });
+    case 17:
       return S.suspend(() =>
         S.Struct({
           details: S.optional(S.String),
@@ -3816,16 +3735,12 @@ function __c26(j: number): any {
           startedEventId: S.Number,
           latestCancelRequestedEventId: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "ActivityTaskCanceledEventAttributes",
-      });
-    case 19:
+      ).annotate({ identifier: "ActivityTaskCanceledEventAttributes" });
+    case 18:
       return S.suspend(() =>
         S.Struct({ decisionTaskCompletedEventId: S.Number, activityId: S.String }),
-      ).annotate({
-        identifier: "ActivityTaskCancelRequestedEventAttributes",
-      });
-    case 20:
+      ).annotate({ identifier: "ActivityTaskCancelRequestedEventAttributes" });
+    case 19:
       return S.suspend(() =>
         S.Struct({
           signalName: S.String,
@@ -3833,30 +3748,20 @@ function __c26(j: number): any {
           externalWorkflowExecution: S.optional(__S(640, __c20, 0)),
           externalInitiatedEventId: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "WorkflowExecutionSignaledEventAttributes",
-      });
-    case 21:
+      ).annotate({ identifier: "WorkflowExecutionSignaledEventAttributes" });
+    case 20:
       return S.suspend(() =>
         S.Struct({
           markerName: S.String,
           details: S.optional(S.String),
           decisionTaskCompletedEventId: S.Number,
         }),
-      ).annotate({
-        identifier: "MarkerRecordedEventAttributes",
-      });
-    case 22:
+      ).annotate({ identifier: "MarkerRecordedEventAttributes" });
+    case 21:
       return S.suspend(() =>
-        S.Struct({
-          markerName: S.String,
-          cause: S.String,
-          decisionTaskCompletedEventId: S.Number,
-        }),
-      ).annotate({
-        identifier: "RecordMarkerFailedEventAttributes",
-      });
-    case 23:
+        S.Struct({ markerName: S.String, cause: S.String, decisionTaskCompletedEventId: S.Number }),
+      ).annotate({ identifier: "RecordMarkerFailedEventAttributes" });
+    case 22:
       return S.suspend(() =>
         S.Struct({
           timerId: S.String,
@@ -3864,28 +3769,24 @@ function __c26(j: number): any {
           startToFireTimeout: S.String,
           decisionTaskCompletedEventId: S.Number,
         }),
-      ).annotate({
-        identifier: "TimerStartedEventAttributes",
-      });
-    case 24:
+      ).annotate({ identifier: "TimerStartedEventAttributes" });
+    case 23:
       return S.suspend(() => S.Struct({ timerId: S.String, startedEventId: S.Number })).annotate({
         identifier: "TimerFiredEventAttributes",
       });
-    case 25:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           timerId: S.String,
           startedEventId: S.Number,
           decisionTaskCompletedEventId: S.Number,
         }),
-      ).annotate({
-        identifier: "TimerCanceledEventAttributes",
-      });
-    case 26:
+      ).annotate({ identifier: "TimerCanceledEventAttributes" });
+    case 25:
       return S.suspend(() =>
         S.Struct({
           workflowId: S.String,
-          workflowType: __S(288, __c9, 0),
+          workflowType: __S(320, __c10, 0),
           control: S.optional(S.String),
           input: S.optional(S.String),
           executionStartToCloseTimeout: S.optional(S.String),
@@ -3897,84 +3798,70 @@ function __c26(j: number): any {
           tagList: S.optional(__S(672, __c21, 0)),
           lambdaRole: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "StartChildWorkflowExecutionInitiatedEventAttributes",
-      });
+      ).annotate({ identifier: "StartChildWorkflowExecutionInitiatedEventAttributes" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          workflowExecution: __S(640, __c20, 0),
+          workflowType: __S(320, __c10, 0),
+          initiatedEventId: S.Number,
+        }),
+      ).annotate({ identifier: "ChildWorkflowExecutionStartedEventAttributes" });
     case 27:
       return S.suspend(() =>
         S.Struct({
           workflowExecution: __S(640, __c20, 0),
-          workflowType: __S(288, __c9, 0),
-          initiatedEventId: S.Number,
-        }),
-      ).annotate({
-        identifier: "ChildWorkflowExecutionStartedEventAttributes",
-      });
-    case 28:
-      return S.suspend(() =>
-        S.Struct({
-          workflowExecution: __S(640, __c20, 0),
-          workflowType: __S(288, __c9, 0),
+          workflowType: __S(320, __c10, 0),
           result: S.optional(S.String),
           initiatedEventId: S.Number,
           startedEventId: S.Number,
         }),
-      ).annotate({
-        identifier: "ChildWorkflowExecutionCompletedEventAttributes",
-      });
-    case 29:
+      ).annotate({ identifier: "ChildWorkflowExecutionCompletedEventAttributes" });
+    case 28:
       return S.suspend(() =>
         S.Struct({
           workflowExecution: __S(640, __c20, 0),
-          workflowType: __S(288, __c9, 0),
+          workflowType: __S(320, __c10, 0),
           reason: S.optional(S.String),
           details: S.optional(S.String),
           initiatedEventId: S.Number,
           startedEventId: S.Number,
         }),
-      ).annotate({
-        identifier: "ChildWorkflowExecutionFailedEventAttributes",
-      });
-    case 30:
+      ).annotate({ identifier: "ChildWorkflowExecutionFailedEventAttributes" });
+    case 29:
       return S.suspend(() =>
         S.Struct({
           workflowExecution: __S(640, __c20, 0),
-          workflowType: __S(288, __c9, 0),
+          workflowType: __S(320, __c10, 0),
           timeoutType: S.String,
           initiatedEventId: S.Number,
           startedEventId: S.Number,
         }),
-      ).annotate({
-        identifier: "ChildWorkflowExecutionTimedOutEventAttributes",
-      });
-    case 31:
+      ).annotate({ identifier: "ChildWorkflowExecutionTimedOutEventAttributes" });
+    case 30:
       return S.suspend(() =>
         S.Struct({
           workflowExecution: __S(640, __c20, 0),
-          workflowType: __S(288, __c9, 0),
+          workflowType: __S(320, __c10, 0),
           details: S.optional(S.String),
           initiatedEventId: S.Number,
           startedEventId: S.Number,
         }),
-      ).annotate({
-        identifier: "ChildWorkflowExecutionCanceledEventAttributes",
-      });
+      ).annotate({ identifier: "ChildWorkflowExecutionCanceledEventAttributes" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          workflowExecution: __S(640, __c20, 0),
+          workflowType: __S(320, __c10, 0),
+          initiatedEventId: S.Number,
+          startedEventId: S.Number,
+        }),
+      ).annotate({ identifier: "ChildWorkflowExecutionTerminatedEventAttributes" });
   }
 }
 function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          workflowExecution: __S(640, __c20, 0),
-          workflowType: __S(288, __c9, 0),
-          initiatedEventId: S.Number,
-          startedEventId: S.Number,
-        }),
-      ).annotate({
-        identifier: "ChildWorkflowExecutionTerminatedEventAttributes",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           workflowId: S.String,
@@ -3984,97 +3871,60 @@ function __c27(j: number): any {
           decisionTaskCompletedEventId: S.Number,
           control: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SignalExternalWorkflowExecutionInitiatedEventAttributes",
-      });
-    case 2:
+      ).annotate({ identifier: "SignalExternalWorkflowExecutionInitiatedEventAttributes" });
+    case 1:
       return S.suspend(() =>
         S.Struct({ workflowExecution: __S(640, __c20, 0), initiatedEventId: S.Number }),
-      ).annotate({
-        identifier: "ExternalWorkflowExecutionSignaledEventAttributes",
-      });
+      ).annotate({ identifier: "ExternalWorkflowExecutionSignaledEventAttributes" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          workflowId: S.String,
+          runId: S.optional(S.String),
+          cause: S.String,
+          initiatedEventId: S.Number,
+          decisionTaskCompletedEventId: S.Number,
+          control: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SignalExternalWorkflowExecutionFailedEventAttributes" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           workflowId: S.String,
           runId: S.optional(S.String),
-          cause: S.String,
-          initiatedEventId: S.Number,
           decisionTaskCompletedEventId: S.Number,
           control: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SignalExternalWorkflowExecutionFailedEventAttributes",
-      });
+      ).annotate({ identifier: "RequestCancelExternalWorkflowExecutionInitiatedEventAttributes" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          workflowId: S.String,
-          runId: S.optional(S.String),
-          decisionTaskCompletedEventId: S.Number,
-          control: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RequestCancelExternalWorkflowExecutionInitiatedEventAttributes",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          workflowId: S.String,
-          runId: S.optional(S.String),
-          cause: S.String,
-          initiatedEventId: S.Number,
-          decisionTaskCompletedEventId: S.Number,
-          control: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RequestCancelExternalWorkflowExecutionFailedEventAttributes",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          activityType: __S(288, __c9, 0),
+          activityType: __S(320, __c10, 0),
           activityId: S.String,
           cause: S.String,
           decisionTaskCompletedEventId: S.Number,
         }),
-      ).annotate({
-        identifier: "ScheduleActivityTaskFailedEventAttributes",
-      });
+      ).annotate({ identifier: "ScheduleActivityTaskFailedEventAttributes" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ activityId: S.String, cause: S.String, decisionTaskCompletedEventId: S.Number }),
+      ).annotate({ identifier: "RequestCancelActivityTaskFailedEventAttributes" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ timerId: S.String, cause: S.String, decisionTaskCompletedEventId: S.Number }),
+      ).annotate({ identifier: "StartTimerFailedEventAttributes" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          activityId: S.String,
-          cause: S.String,
-          decisionTaskCompletedEventId: S.Number,
-        }),
-      ).annotate({
-        identifier: "RequestCancelActivityTaskFailedEventAttributes",
-      });
-    case 8:
-      return S.suspend(() =>
-        S.Struct({
-          timerId: S.String,
-          cause: S.String,
-          decisionTaskCompletedEventId: S.Number,
-        }),
-      ).annotate({
-        identifier: "StartTimerFailedEventAttributes",
-      });
-    case 9:
-      return S.suspend(() =>
-        S.Struct({
-          workflowType: __S(288, __c9, 0),
+          workflowType: __S(320, __c10, 0),
           cause: S.String,
           workflowId: S.String,
           initiatedEventId: S.Number,
           decisionTaskCompletedEventId: S.Number,
           control: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "StartChildWorkflowExecutionFailedEventAttributes",
-      });
-    case 10:
+      ).annotate({ identifier: "StartChildWorkflowExecutionFailedEventAttributes" });
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -4084,24 +3934,20 @@ function __c27(j: number): any {
           startToCloseTimeout: S.optional(S.String),
           decisionTaskCompletedEventId: S.Number,
         }),
-      ).annotate({
-        identifier: "LambdaFunctionScheduledEventAttributes",
-      });
-    case 11:
+      ).annotate({ identifier: "LambdaFunctionScheduledEventAttributes" });
+    case 9:
       return S.suspend(() => S.Struct({ scheduledEventId: S.Number })).annotate({
         identifier: "LambdaFunctionStartedEventAttributes",
       });
-    case 12:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           scheduledEventId: S.Number,
           startedEventId: S.Number,
           result: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "LambdaFunctionCompletedEventAttributes",
-      });
-    case 13:
+      ).annotate({ identifier: "LambdaFunctionCompletedEventAttributes" });
+    case 11:
       return S.suspend(() =>
         S.Struct({
           scheduledEventId: S.Number,
@@ -4109,20 +3955,16 @@ function __c27(j: number): any {
           reason: S.optional(S.String),
           details: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "LambdaFunctionFailedEventAttributes",
-      });
-    case 14:
+      ).annotate({ identifier: "LambdaFunctionFailedEventAttributes" });
+    case 12:
       return S.suspend(() =>
         S.Struct({
           scheduledEventId: S.Number,
           startedEventId: S.Number,
           timeoutType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "LambdaFunctionTimedOutEventAttributes",
-      });
-    case 15:
+      ).annotate({ identifier: "LambdaFunctionTimedOutEventAttributes" });
+    case 13:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -4130,20 +3972,16 @@ function __c27(j: number): any {
           cause: S.String,
           decisionTaskCompletedEventId: S.Number,
         }),
-      ).annotate({
-        identifier: "ScheduleLambdaFunctionFailedEventAttributes",
-      });
-    case 16:
+      ).annotate({ identifier: "ScheduleLambdaFunctionFailedEventAttributes" });
+    case 14:
       return S.suspend(() =>
         S.Struct({
           scheduledEventId: S.optional(S.Number),
           cause: S.optional(S.String),
           message: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "StartLambdaFunctionFailedEventAttributes",
-      });
-    case 17:
+      ).annotate({ identifier: "StartLambdaFunctionFailedEventAttributes" });
+    case 15:
       return S.suspend(() =>
         S.Struct({
           eventTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -4158,59 +3996,59 @@ function __c27(j: number): any {
           workflowExecutionCanceledEventAttributes: S.optional(__S(837, __c26, 5)),
           cancelWorkflowExecutionFailedEventAttributes: S.optional(__S(834, __c26, 2)),
           workflowExecutionContinuedAsNewEventAttributes: S.optional(__S(838, __c26, 6)),
-          continueAsNewWorkflowExecutionFailedEventAttributes: S.optional(__S(839, __c26, 7)),
-          workflowExecutionTerminatedEventAttributes: S.optional(__S(840, __c26, 8)),
-          workflowExecutionCancelRequestedEventAttributes: S.optional(__S(841, __c26, 9)),
-          decisionTaskScheduledEventAttributes: S.optional(__S(842, __c26, 10)),
-          decisionTaskStartedEventAttributes: S.optional(__S(843, __c26, 11)),
-          decisionTaskCompletedEventAttributes: S.optional(__S(844, __c26, 12)),
-          decisionTaskTimedOutEventAttributes: S.optional(__S(845, __c26, 13)),
-          activityTaskScheduledEventAttributes: S.optional(__S(846, __c26, 14)),
-          activityTaskStartedEventAttributes: S.optional(__S(843, __c26, 11)),
-          activityTaskCompletedEventAttributes: S.optional(__S(847, __c26, 15)),
-          activityTaskFailedEventAttributes: S.optional(__S(848, __c26, 16)),
-          activityTaskTimedOutEventAttributes: S.optional(__S(849, __c26, 17)),
-          activityTaskCanceledEventAttributes: S.optional(__S(850, __c26, 18)),
-          activityTaskCancelRequestedEventAttributes: S.optional(__S(851, __c26, 19)),
-          workflowExecutionSignaledEventAttributes: S.optional(__S(852, __c26, 20)),
-          markerRecordedEventAttributes: S.optional(__S(853, __c26, 21)),
-          recordMarkerFailedEventAttributes: S.optional(__S(854, __c26, 22)),
-          timerStartedEventAttributes: S.optional(__S(855, __c26, 23)),
-          timerFiredEventAttributes: S.optional(__S(856, __c26, 24)),
-          timerCanceledEventAttributes: S.optional(__S(857, __c26, 25)),
-          startChildWorkflowExecutionInitiatedEventAttributes: S.optional(__S(858, __c26, 26)),
-          childWorkflowExecutionStartedEventAttributes: S.optional(__S(859, __c26, 27)),
-          childWorkflowExecutionCompletedEventAttributes: S.optional(__S(860, __c26, 28)),
-          childWorkflowExecutionFailedEventAttributes: S.optional(__S(861, __c26, 29)),
-          childWorkflowExecutionTimedOutEventAttributes: S.optional(__S(862, __c26, 30)),
-          childWorkflowExecutionCanceledEventAttributes: S.optional(__S(863, __c26, 31)),
-          childWorkflowExecutionTerminatedEventAttributes: S.optional(__S(864, __c27, 0)),
-          signalExternalWorkflowExecutionInitiatedEventAttributes: S.optional(__S(865, __c27, 1)),
-          externalWorkflowExecutionSignaledEventAttributes: S.optional(__S(866, __c27, 2)),
-          signalExternalWorkflowExecutionFailedEventAttributes: S.optional(__S(867, __c27, 3)),
-          externalWorkflowExecutionCancelRequestedEventAttributes: S.optional(__S(866, __c27, 2)),
+          continueAsNewWorkflowExecutionFailedEventAttributes: S.optional(__S(834, __c26, 2)),
+          workflowExecutionTerminatedEventAttributes: S.optional(__S(839, __c26, 7)),
+          workflowExecutionCancelRequestedEventAttributes: S.optional(__S(840, __c26, 8)),
+          decisionTaskScheduledEventAttributes: S.optional(__S(841, __c26, 9)),
+          decisionTaskStartedEventAttributes: S.optional(__S(842, __c26, 10)),
+          decisionTaskCompletedEventAttributes: S.optional(__S(843, __c26, 11)),
+          decisionTaskTimedOutEventAttributes: S.optional(__S(844, __c26, 12)),
+          activityTaskScheduledEventAttributes: S.optional(__S(845, __c26, 13)),
+          activityTaskStartedEventAttributes: S.optional(__S(842, __c26, 10)),
+          activityTaskCompletedEventAttributes: S.optional(__S(846, __c26, 14)),
+          activityTaskFailedEventAttributes: S.optional(__S(847, __c26, 15)),
+          activityTaskTimedOutEventAttributes: S.optional(__S(848, __c26, 16)),
+          activityTaskCanceledEventAttributes: S.optional(__S(849, __c26, 17)),
+          activityTaskCancelRequestedEventAttributes: S.optional(__S(850, __c26, 18)),
+          workflowExecutionSignaledEventAttributes: S.optional(__S(851, __c26, 19)),
+          markerRecordedEventAttributes: S.optional(__S(852, __c26, 20)),
+          recordMarkerFailedEventAttributes: S.optional(__S(853, __c26, 21)),
+          timerStartedEventAttributes: S.optional(__S(854, __c26, 22)),
+          timerFiredEventAttributes: S.optional(__S(855, __c26, 23)),
+          timerCanceledEventAttributes: S.optional(__S(856, __c26, 24)),
+          startChildWorkflowExecutionInitiatedEventAttributes: S.optional(__S(857, __c26, 25)),
+          childWorkflowExecutionStartedEventAttributes: S.optional(__S(858, __c26, 26)),
+          childWorkflowExecutionCompletedEventAttributes: S.optional(__S(859, __c26, 27)),
+          childWorkflowExecutionFailedEventAttributes: S.optional(__S(860, __c26, 28)),
+          childWorkflowExecutionTimedOutEventAttributes: S.optional(__S(861, __c26, 29)),
+          childWorkflowExecutionCanceledEventAttributes: S.optional(__S(862, __c26, 30)),
+          childWorkflowExecutionTerminatedEventAttributes: S.optional(__S(863, __c26, 31)),
+          signalExternalWorkflowExecutionInitiatedEventAttributes: S.optional(__S(864, __c27, 0)),
+          externalWorkflowExecutionSignaledEventAttributes: S.optional(__S(865, __c27, 1)),
+          signalExternalWorkflowExecutionFailedEventAttributes: S.optional(__S(866, __c27, 2)),
+          externalWorkflowExecutionCancelRequestedEventAttributes: S.optional(__S(865, __c27, 1)),
           requestCancelExternalWorkflowExecutionInitiatedEventAttributes: S.optional(
-            __S(868, __c27, 4),
+            __S(867, __c27, 3),
           ),
           requestCancelExternalWorkflowExecutionFailedEventAttributes: S.optional(
-            __S(869, __c27, 5),
+            __S(866, __c27, 2),
           ),
-          scheduleActivityTaskFailedEventAttributes: S.optional(__S(870, __c27, 6)),
-          requestCancelActivityTaskFailedEventAttributes: S.optional(__S(871, __c27, 7)),
-          startTimerFailedEventAttributes: S.optional(__S(872, __c27, 8)),
-          cancelTimerFailedEventAttributes: S.optional(__S(872, __c27, 8)),
-          startChildWorkflowExecutionFailedEventAttributes: S.optional(__S(873, __c27, 9)),
-          lambdaFunctionScheduledEventAttributes: S.optional(__S(874, __c27, 10)),
-          lambdaFunctionStartedEventAttributes: S.optional(__S(875, __c27, 11)),
-          lambdaFunctionCompletedEventAttributes: S.optional(__S(876, __c27, 12)),
-          lambdaFunctionFailedEventAttributes: S.optional(__S(877, __c27, 13)),
-          lambdaFunctionTimedOutEventAttributes: S.optional(__S(878, __c27, 14)),
-          scheduleLambdaFunctionFailedEventAttributes: S.optional(__S(879, __c27, 15)),
-          startLambdaFunctionFailedEventAttributes: S.optional(__S(880, __c27, 16)),
+          scheduleActivityTaskFailedEventAttributes: S.optional(__S(868, __c27, 4)),
+          requestCancelActivityTaskFailedEventAttributes: S.optional(__S(869, __c27, 5)),
+          startTimerFailedEventAttributes: S.optional(__S(870, __c27, 6)),
+          cancelTimerFailedEventAttributes: S.optional(__S(870, __c27, 6)),
+          startChildWorkflowExecutionFailedEventAttributes: S.optional(__S(871, __c27, 7)),
+          lambdaFunctionScheduledEventAttributes: S.optional(__S(872, __c27, 8)),
+          lambdaFunctionStartedEventAttributes: S.optional(__S(873, __c27, 9)),
+          lambdaFunctionCompletedEventAttributes: S.optional(__S(874, __c27, 10)),
+          lambdaFunctionFailedEventAttributes: S.optional(__S(875, __c27, 11)),
+          lambdaFunctionTimedOutEventAttributes: S.optional(__S(876, __c27, 12)),
+          scheduleLambdaFunctionFailedEventAttributes: S.optional(__S(877, __c27, 13)),
+          startLambdaFunctionFailedEventAttributes: S.optional(__S(878, __c27, 14)),
         }),
       ).annotate({ identifier: "HistoryEvent" });
-    case 18:
-      return S.Array(__S(881, __c27, 17));
+    case 16:
+      return S.Array(__S(879, __c27, 15));
   }
 }
 function __c28(j: number): any {
@@ -4250,9 +4088,7 @@ function __c29(j: number): any {
           maximumPageSize: S.optional(S.Number),
           reverseOrder: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListClosedWorkflowExecutionsInput",
-      });
+      ).annotate({ identifier: "ListClosedWorkflowExecutionsInput" });
   }
 }
 function __c30(j: number): any {
@@ -4300,9 +4136,7 @@ function __c32(j: number): any {
           reverseOrder: S.optional(S.Boolean),
           executionFilter: S.optional(__S(65, __c2, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListOpenWorkflowExecutionsInput",
-      });
+      ).annotate({ identifier: "ListOpenWorkflowExecutionsInput" });
   }
 }
 function __c33(j: number): any {
@@ -4315,9 +4149,7 @@ function __c33(j: number): any {
       ).annotate({ identifier: "ListTagsForResourceInput" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(1089, __c34, 1)) }).pipe(ns)).annotate(
-        {
-          identifier: "ListTagsForResourceOutput",
-        },
+        { identifier: "ListTagsForResourceOutput" },
       );
   }
 }
@@ -4369,7 +4201,7 @@ function __c36(j: number): any {
           activityId: S.String,
           startedEventId: S.Number,
           workflowExecution: __S(640, __c20, 0),
-          activityType: __S(288, __c9, 0),
+          activityType: __S(320, __c10, 0),
           input: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ActivityTask" });
@@ -4395,8 +4227,8 @@ function __c37(j: number): any {
           taskToken: S.String,
           startedEventId: S.Number,
           workflowExecution: __S(640, __c20, 0),
-          workflowType: __S(288, __c9, 0),
-          events: __S(882, __c27, 18),
+          workflowType: __S(320, __c10, 0),
+          events: __S(880, __c27, 16),
           nextPageToken: S.optional(S.String),
           previousStartedEventId: S.optional(S.Number),
         }).pipe(ns),
@@ -4410,9 +4242,7 @@ function __c38(j: number): any {
         S.Struct({ taskToken: S.String, details: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "RecordActivityTaskHeartbeatInput",
-      });
+      ).annotate({ identifier: "RecordActivityTaskHeartbeatInput" });
     case 1:
       return S.suspend(() => S.Struct({ cancelRequested: S.Boolean }).pipe(ns)).annotate({
         identifier: "ActivityTaskStatus",
@@ -4435,9 +4265,7 @@ function __c39(j: number): any {
           defaultTaskScheduleToStartTimeout: S.optional(S.String),
           defaultTaskScheduleToCloseTimeout: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RegisterActivityTypeInput",
-      });
+      ).annotate({ identifier: "RegisterActivityTypeInput" });
   }
 }
 function __c40(j: number): any {
@@ -4451,10 +4279,6 @@ function __c40(j: number): any {
           tags: S.optional(__S(1089, __c34, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "RegisterDomainInput" });
-    case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "RegisterDomainResponse",
-      });
   }
 }
 function __c41(j: number): any {
@@ -4473,9 +4297,7 @@ function __c41(j: number): any {
           defaultChildPolicy: S.optional(S.String),
           defaultLambdaRole: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RegisterWorkflowTypeInput",
-      });
+      ).annotate({ identifier: "RegisterWorkflowTypeInput" });
   }
 }
 function __c42(j: number): any {
@@ -4485,9 +4307,7 @@ function __c42(j: number): any {
         S.Struct({ domain: S.String, workflowId: S.String, runId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "RequestCancelWorkflowExecutionInput",
-      });
+      ).annotate({ identifier: "RequestCancelWorkflowExecutionInput" });
   }
 }
 function __c43(j: number): any {
@@ -4497,9 +4317,7 @@ function __c43(j: number): any {
         S.Struct({ taskToken: S.String, details: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "RespondActivityTaskCanceledInput",
-      });
+      ).annotate({ identifier: "RespondActivityTaskCanceledInput" });
   }
 }
 function __c44(j: number): any {
@@ -4509,9 +4327,7 @@ function __c44(j: number): any {
         S.Struct({ taskToken: S.String, result: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "RespondActivityTaskCompletedInput",
-      });
+      ).annotate({ identifier: "RespondActivityTaskCompletedInput" });
   }
 }
 function __c45(j: number): any {
@@ -4523,9 +4339,7 @@ function __c45(j: number): any {
           reason: S.optional(S.String),
           details: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RespondActivityTaskFailedInput",
-      });
+      ).annotate({ identifier: "RespondActivityTaskFailedInput" });
   }
 }
 function __c46(j: number): any {
@@ -4533,7 +4347,7 @@ function __c46(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          activityType: __S(288, __c9, 0),
+          activityType: __S(320, __c10, 0),
           activityId: S.String,
           control: S.optional(S.String),
           input: S.optional(S.String),
@@ -4544,9 +4358,7 @@ function __c46(j: number): any {
           startToCloseTimeout: S.optional(S.String),
           heartbeatTimeout: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ScheduleActivityTaskDecisionAttributes",
-      });
+      ).annotate({ identifier: "ScheduleActivityTaskDecisionAttributes" });
     case 1:
       return S.suspend(() => S.Struct({ activityId: S.String })).annotate({
         identifier: "RequestCancelActivityTaskDecisionAttributes",
@@ -4558,9 +4370,7 @@ function __c46(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ reason: S.optional(S.String), details: S.optional(S.String) }),
-      ).annotate({
-        identifier: "FailWorkflowExecutionDecisionAttributes",
-      });
+      ).annotate({ identifier: "FailWorkflowExecutionDecisionAttributes" });
     case 4:
       return S.suspend(() => S.Struct({ details: S.optional(S.String) })).annotate({
         identifier: "CancelWorkflowExecutionDecisionAttributes",
@@ -4578,15 +4388,11 @@ function __c46(j: number): any {
           workflowTypeVersion: S.optional(S.String),
           lambdaRole: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ContinueAsNewWorkflowExecutionDecisionAttributes",
-      });
+      ).annotate({ identifier: "ContinueAsNewWorkflowExecutionDecisionAttributes" });
     case 6:
       return S.suspend(() =>
         S.Struct({ markerName: S.String, details: S.optional(S.String) }),
-      ).annotate({
-        identifier: "RecordMarkerDecisionAttributes",
-      });
+      ).annotate({ identifier: "RecordMarkerDecisionAttributes" });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -4594,9 +4400,7 @@ function __c46(j: number): any {
           control: S.optional(S.String),
           startToFireTimeout: S.String,
         }),
-      ).annotate({
-        identifier: "StartTimerDecisionAttributes",
-      });
+      ).annotate({ identifier: "StartTimerDecisionAttributes" });
     case 8:
       return S.suspend(() => S.Struct({ timerId: S.String })).annotate({
         identifier: "CancelTimerDecisionAttributes",
@@ -4610,9 +4414,7 @@ function __c46(j: number): any {
           input: S.optional(S.String),
           control: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SignalExternalWorkflowExecutionDecisionAttributes",
-      });
+      ).annotate({ identifier: "SignalExternalWorkflowExecutionDecisionAttributes" });
     case 10:
       return S.suspend(() =>
         S.Struct({
@@ -4620,13 +4422,11 @@ function __c46(j: number): any {
           runId: S.optional(S.String),
           control: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "RequestCancelExternalWorkflowExecutionDecisionAttributes",
-      });
+      ).annotate({ identifier: "RequestCancelExternalWorkflowExecutionDecisionAttributes" });
     case 11:
       return S.suspend(() =>
         S.Struct({
-          workflowType: __S(288, __c9, 0),
+          workflowType: __S(320, __c10, 0),
           workflowId: S.String,
           control: S.optional(S.String),
           input: S.optional(S.String),
@@ -4638,9 +4438,7 @@ function __c46(j: number): any {
           tagList: S.optional(__S(672, __c21, 0)),
           lambdaRole: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "StartChildWorkflowExecutionDecisionAttributes",
-      });
+      ).annotate({ identifier: "StartChildWorkflowExecutionDecisionAttributes" });
     case 12:
       return S.suspend(() =>
         S.Struct({
@@ -4650,9 +4448,7 @@ function __c46(j: number): any {
           input: S.optional(S.String),
           startToCloseTimeout: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ScheduleLambdaFunctionDecisionAttributes",
-      });
+      ).annotate({ identifier: "ScheduleLambdaFunctionDecisionAttributes" });
     case 13:
       return S.suspend(() =>
         S.Struct({
@@ -4685,9 +4481,7 @@ function __c46(j: number): any {
           taskList: S.optional(__S(192, __c6, 0)),
           taskListScheduleToStartTimeout: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RespondDecisionTaskCompletedInput",
-      });
+      ).annotate({ identifier: "RespondDecisionTaskCompletedInput" });
   }
 }
 function __c47(j: number): any {
@@ -4701,9 +4495,7 @@ function __c47(j: number): any {
           signalName: S.String,
           input: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SignalWorkflowExecutionInput",
-      });
+      ).annotate({ identifier: "SignalWorkflowExecutionInput" });
   }
 }
 function __c48(j: number): any {
@@ -4713,7 +4505,7 @@ function __c48(j: number): any {
         S.Struct({
           domain: S.String,
           workflowId: S.String,
-          workflowType: __S(288, __c9, 0),
+          workflowType: __S(320, __c10, 0),
           taskList: S.optional(__S(192, __c6, 0)),
           taskPriority: S.optional(S.String),
           input: S.optional(S.String),
@@ -4723,9 +4515,7 @@ function __c48(j: number): any {
           childPolicy: S.optional(S.String),
           lambdaRole: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartWorkflowExecutionInput",
-      });
+      ).annotate({ identifier: "StartWorkflowExecutionInput" });
     case 1:
       return S.suspend(() => S.Struct({ runId: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "Run",
@@ -4745,14 +4535,6 @@ function __c49(j: number): any {
 function __c50(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "TagResourceResponse",
-      });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String,
@@ -4762,24 +4544,20 @@ function __c51(j: number): any {
           details: S.optional(S.String),
           childPolicy: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "TerminateWorkflowExecutionInput",
-      });
+      ).annotate({ identifier: "TerminateWorkflowExecutionInput" });
   }
 }
-function __c52(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ domain: S.String, activityType: __S(288, __c9, 0) }).pipe(
+        S.Struct({ domain: S.String, activityType: __S(320, __c10, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UndeprecateActivityTypeInput",
-      });
+      ).annotate({ identifier: "UndeprecateActivityTypeInput" });
   }
 }
-function __c53(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4789,19 +4567,17 @@ function __c53(j: number): any {
       ).annotate({ identifier: "UndeprecateDomainInput" });
   }
 }
-function __c54(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ domain: S.String, workflowType: __S(288, __c9, 0) }).pipe(
+        S.Struct({ domain: S.String, workflowType: __S(320, __c10, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UndeprecateWorkflowTypeInput",
-      });
+      ).annotate({ identifier: "UndeprecateWorkflowTypeInput" });
   }
 }
-function __c55(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

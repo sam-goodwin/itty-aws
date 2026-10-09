@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -925,7 +925,7 @@ export const deleteSupplementalTaxRegistration: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteSupplementalTaxRegistrationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteSupplementalTaxRegistrationResponse>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteSupplementalTaxRegistrationResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -954,8 +954,8 @@ export const deleteTaxRegistration: API.OperationMethod<
   DeleteTaxRegistrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c1, 0) as any as S.Schema<DeleteTaxRegistrationRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<DeleteTaxRegistrationResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<DeleteTaxRegistrationRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteTaxRegistrationResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1211,7 +1211,7 @@ export const putTaxInheritance: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(448, __c14, 0) as any as S.Schema<PutTaxInheritanceRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<PutTaxInheritanceResponse>,
+  output: __S(32, __c1, 0) as any as S.Schema<PutTaxInheritanceResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1400,16 +1400,18 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteSupplementalTaxRegistrationRequest",
-      });
-    case 1:
+      ).annotate({ identifier: "DeleteSupplementalTaxRegistrationRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteSupplementalTaxRegistrationResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1423,17 +1425,7 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteTaxRegistrationRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteTaxRegistrationResponse",
-      });
+      ).annotate({ identifier: "DeleteTaxRegistrationRequest" });
   }
 }
 function __c3(j: number): any {
@@ -1450,17 +1442,13 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetTaxExemptionTypesRequest",
-      });
+      ).annotate({ identifier: "GetTaxExemptionTypesRequest" });
     case 1:
       return S.Array(__S(641, __c20, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({ taxExemptionTypes: S.optional(__S(97, __c3, 1)) }),
-      ).annotate({
-        identifier: "GetTaxExemptionTypesResponse",
-      });
+      ).annotate({ identifier: "GetTaxExemptionTypesResponse" });
   }
 }
 function __c4(j: number): any {
@@ -1498,9 +1486,7 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetTaxRegistrationRequest",
-      });
+      ).annotate({ identifier: "GetTaxRegistrationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1517,9 +1503,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "TaxRegistration" });
     case 2:
       return S.suspend(() => S.Struct({ taxRegistration: S.optional(__S(161, __c5, 1)) })).annotate(
-        {
-          identifier: "GetTaxRegistrationResponse",
-        },
+        { identifier: "GetTaxRegistrationResponse" },
       );
   }
 }
@@ -1597,18 +1581,14 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetTaxRegistrationDocumentRequest",
-      });
+      ).annotate({ identifier: "GetTaxRegistrationDocumentRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           destinationFilePath: S.optional(S.String),
           presignedS3Url: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetTaxRegistrationDocumentResponse",
-      });
+      ).annotate({ identifier: "GetTaxRegistrationDocumentResponse" });
   }
 }
 function __c9(j: number): any {
@@ -1625,9 +1605,7 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSupplementalTaxRegistrationsRequest",
-      });
+      ).annotate({ identifier: "ListSupplementalTaxRegistrationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1638,17 +1616,13 @@ function __c9(j: number): any {
           authorityId: S.String,
           status: S.String,
         }),
-      ).annotate({
-        identifier: "SupplementalTaxRegistration",
-      });
+      ).annotate({ identifier: "SupplementalTaxRegistration" });
     case 2:
       return S.Array(__S(289, __c9, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ taxRegistrations: __S(290, __c9, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListSupplementalTaxRegistrationsResponse",
-      });
+      ).annotate({ identifier: "ListSupplementalTaxRegistrationsResponse" });
   }
 }
 function __c10(j: number): any {
@@ -1672,9 +1646,7 @@ function __c10(j: number): any {
           nextToken: S.optional(S.String),
           taxExemptionDetailsMap: S.optional(__S(707, __c22, 3)),
         }),
-      ).annotate({
-        identifier: "ListTaxExemptionsResponse",
-      });
+      ).annotate({ identifier: "ListTaxExemptionsResponse" });
   }
 }
 function __c11(j: number): any {
@@ -1691,9 +1663,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTaxRegistrationsRequest",
-      });
+      ).annotate({ identifier: "ListTaxRegistrationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ stateOrRegion: S.optional(S.String), countryCode: S.String }),
@@ -1711,9 +1681,7 @@ function __c11(j: number): any {
           additionalTaxInformation: S.optional(__S(227, __c7, 3)),
           jurisdiction: __S(353, __c11, 1),
         }),
-      ).annotate({
-        identifier: "TaxRegistrationWithJurisdiction",
-      });
+      ).annotate({ identifier: "TaxRegistrationWithJurisdiction" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1747,9 +1715,7 @@ function __c11(j: number): any {
     case 8:
       return S.suspend(() =>
         S.Struct({ accountDetails: __S(359, __c11, 7), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListTaxRegistrationsResponse",
-      });
+      ).annotate({ identifier: "ListTaxRegistrationsResponse" });
   }
 }
 function __c12(j: number): any {
@@ -1762,9 +1728,7 @@ function __c12(j: number): any {
           legalName: S.String,
           address: __S(768, __c24, 0),
         }),
-      ).annotate({
-        identifier: "SupplementalTaxRegistrationEntry",
-      });
+      ).annotate({ identifier: "SupplementalTaxRegistrationEntry" });
     case 1:
       return S.suspend(() =>
         S.Struct({ taxRegistrationEntry: __S(384, __c12, 0) }).pipe(
@@ -1777,9 +1741,7 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutSupplementalTaxRegistrationRequest",
-      });
+      ).annotate({ identifier: "PutSupplementalTaxRegistrationRequest" });
     case 2:
       return S.suspend(() => S.Struct({ authorityId: S.String, status: S.String })).annotate({
         identifier: "PutSupplementalTaxRegistrationResponse",
@@ -1843,9 +1805,7 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutTaxRegistrationRequest",
-      });
+      ).annotate({ identifier: "PutTaxRegistrationRequest" });
     case 1:
       return S.suspend(() => S.Struct({ status: S.optional(S.String) })).annotate({
         identifier: "PutTaxRegistrationResponse",
@@ -1876,15 +1836,11 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchDeleteTaxRegistrationRequest",
-      });
+      ).annotate({ identifier: "BatchDeleteTaxRegistrationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ accountId: S.String, message: SensitiveString, code: S.optional(S.String) }),
-      ).annotate({
-        identifier: "BatchDeleteTaxRegistrationError",
-      });
+      ).annotate({ identifier: "BatchDeleteTaxRegistrationError" });
     case 2:
       return S.Array(__S(545, __c17, 1));
     case 3:
@@ -1913,18 +1869,14 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchGetTaxExemptionsRequest",
-      });
+      ).annotate({ identifier: "BatchGetTaxExemptionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           taxExemptionDetailsMap: S.optional(__S(707, __c22, 3)),
           failedAccounts: S.optional(__S(576, __c18, 0)),
         }),
-      ).annotate({
-        identifier: "BatchGetTaxExemptionsResponse",
-      });
+      ).annotate({ identifier: "BatchGetTaxExemptionsResponse" });
   }
 }
 function __c20(j: number): any {
@@ -1991,23 +1943,17 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchPutTaxRegistrationRequest",
-      });
+      ).annotate({ identifier: "BatchPutTaxRegistrationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ accountId: S.String, message: SensitiveString, code: S.optional(S.String) }),
-      ).annotate({
-        identifier: "BatchPutTaxRegistrationError",
-      });
+      ).annotate({ identifier: "BatchPutTaxRegistrationError" });
     case 2:
       return S.Array(__S(737, __c23, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ status: S.optional(S.String), errors: __S(738, __c23, 2) }),
-      ).annotate({
-        identifier: "BatchPutTaxRegistrationResponse",
-      });
+      ).annotate({ identifier: "BatchPutTaxRegistrationResponse" });
   }
 }
 function __c24(j: number): any {
@@ -2110,9 +2056,7 @@ function __c25(j: number): any {
     case 13:
       return S.suspend(() =>
         S.Struct({ taxRegistrationNumberType: S.optional(S.String) }),
-      ).annotate({
-        identifier: "SaudiArabiaAdditionalInfo",
-      });
+      ).annotate({ identifier: "SaudiArabiaAdditionalInfo" });
     case 14:
       return S.suspend(() =>
         S.Struct({

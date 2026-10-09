@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -39102,9 +39102,8 @@ export const getImageBlockPublicAccessState: API.OperationMethod<
 export type GetInstanceMetadataDefaultsError = CommonErrors;
 /**
  * Gets the default instance metadata service (IMDS) settings that are set at the account
- * level in the specified Amazon Web Services
- Region.
- * 
+ * level in the specified Amazon Web ServicesU+2028 Region.
+ *
  * For more information, see Order of precedence for instance metadata options in the
  * *Amazon EC2 User Guide*.
  */
@@ -41764,9 +41763,8 @@ export type ModifyInstanceMetadataDefaultsError =
   | CommonErrors;
 /**
  * Modifies the default instance metadata service (IMDS) settings at the account level in
- * the specified Amazon Web Services
- Region.
- * 
+ * the specified Amazon Web ServicesU+2028 Region.
+ *
  * To remove a parameter's account-level default setting, specify
  * `no-preference`. If an account-level setting is cleared with
  * `no-preference`, then the instance launch considers the other
@@ -46206,17 +46204,13 @@ function __c0(j: number): any {
           Cidr: S.optional(S.String),
           IpamPoolAllocationId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ReleaseIpamPoolAllocationRequest",
-      });
+      ).annotate({ identifier: "ReleaseIpamPoolAllocationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Success: S.optional(S.Boolean).pipe(T.XmlName("success"), T.Ec2QueryName("Success")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ReleaseIpamPoolAllocationResult",
-      });
+      ).annotate({ identifier: "ReleaseIpamPoolAllocationResult" });
   }
 }
 function __c1(j: number): any {
@@ -46227,9 +46221,7 @@ function __c1(j: number): any {
           IamInstanceProfile: S.optional(__S(3616, __c113, 0)),
           AssociationId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ReplaceIamInstanceProfileAssociationRequest",
-      });
+      ).annotate({ identifier: "ReplaceIamInstanceProfileAssociationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -46240,9 +46232,7 @@ function __c1(j: number): any {
             )
             .annotate({ identifier: "IamInstanceProfileAssociation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ReplaceIamInstanceProfileAssociationResult",
-      });
+      ).annotate({ identifier: "ReplaceIamInstanceProfileAssociationResult" });
   }
 }
 function __c2(j: number): any {
@@ -46256,9 +46246,7 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ MaximumDaysSinceDeprecated: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "DeprecationTimeConditionRequest",
-      });
+      ).annotate({ identifier: "DeprecationTimeConditionRequest" });
     case 4:
       return S.suspend(() => S.Struct({ MaximumDaysSinceCreated: S.optional(S.Number) })).annotate({
         identifier: "CreationDateConditionRequest",
@@ -46271,14 +46259,12 @@ function __c2(j: number): any {
           MaximumDaysSinceSourceImageCreated: S.optional(S.Number),
           MaximumDaysSinceWatermarkCreated: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "ImageWatermarkFilterRequest",
-      });
+      ).annotate({ identifier: "ImageWatermarkFilterRequest" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ __S(69, __c2, 5).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ImageWatermarkFilterRequest",
-        }),
+        /*@__PURE__*/ __S(69, __c2, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ImageWatermarkFilterRequest" }),
       );
     case 7:
       return S.suspend(() =>
@@ -46295,9 +46281,9 @@ function __c2(j: number): any {
       ).annotate({ identifier: "ImageCriterionRequest" });
     case 8:
       return S.Array(
-        /*@__PURE__*/ __S(71, __c2, 7).pipe(/*@__PURE__*/ T.XmlName("ImageCriterion")).annotate({
-          identifier: "ImageCriterionRequest",
-        }),
+        /*@__PURE__*/ __S(71, __c2, 7)
+          .pipe(/*@__PURE__*/ T.XmlName("ImageCriterion"))
+          .annotate({ identifier: "ImageCriterionRequest" }),
       );
     case 9:
       return S.suspend(() =>
@@ -46305,17 +46291,13 @@ function __c2(j: number): any {
           ImageCriteria: S.optional(__S(72, __c2, 8)).pipe(T.XmlName("ImageCriterion")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ReplaceImageCriteriaInAllowedImagesSettingsRequest",
-      });
+      ).annotate({ identifier: "ReplaceImageCriteriaInAllowedImagesSettingsRequest" });
     case 10:
       return S.suspend(() =>
         S.Struct({
           ReturnValue: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ReplaceImageCriteriaInAllowedImagesSettingsResult",
-      });
+      ).annotate({ identifier: "ReplaceImageCriteriaInAllowedImagesSettingsResult" });
   }
 }
 function __c3(j: number): any {
@@ -46334,9 +46316,7 @@ function __c3(j: number): any {
             T.XmlName("UnsupportedInstanceType"),
           ),
         }),
-      ).annotate({
-        identifier: "InstanceTypeSpecificationRequest",
-      });
+      ).annotate({ identifier: "InstanceTypeSpecificationRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -46344,9 +46324,7 @@ function __c3(j: number): any {
           InstanceTypeSpecification: S.optional(__S(98, __c3, 2)),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ReplaceImageInstanceTypeSpecificationRequest",
-      });
+      ).annotate({ identifier: "ReplaceImageInstanceTypeSpecificationRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -46355,9 +46333,7 @@ function __c3(j: number): any {
             T.Ec2QueryName("ReturnValue"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ReplaceImageInstanceTypeSpecificationResult",
-      });
+      ).annotate({ identifier: "ReplaceImageInstanceTypeSpecificationResult" });
   }
 }
 function __c4(j: number): any {
@@ -46375,9 +46351,7 @@ function __c4(j: number): any {
             T.Ec2QueryName("NetworkAclId"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ReplaceNetworkAclAssociationRequest",
-      });
+      ).annotate({ identifier: "ReplaceNetworkAclAssociationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -46386,9 +46360,7 @@ function __c4(j: number): any {
             T.Ec2QueryName("NewAssociationId"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ReplaceNetworkAclAssociationResult",
-      });
+      ).annotate({ identifier: "ReplaceNetworkAclAssociationResult" });
   }
 }
 function __c5(j: number): any {
@@ -46423,9 +46395,7 @@ function __c5(j: number): any {
             .pipe(T.XmlName("portRange"), T.Ec2QueryName("PortRange"))
             .annotate({ identifier: "PortRange" }),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ReplaceNetworkAclEntryRequest",
-      });
+      ).annotate({ identifier: "ReplaceNetworkAclEntryRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "ReplaceNetworkAclEntryResponse",
@@ -46502,9 +46472,7 @@ function __c7(j: number): any {
             T.Ec2QueryName("RouteTableId"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ReplaceRouteTableAssociationRequest",
-      });
+      ).annotate({ identifier: "ReplaceRouteTableAssociationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -46516,9 +46484,7 @@ function __c7(j: number): any {
             .pipe(T.XmlName("associationState"), T.Ec2QueryName("AssociationState"))
             .annotate({ identifier: "RouteTableAssociationState" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ReplaceRouteTableAssociationResult",
-      });
+      ).annotate({ identifier: "ReplaceRouteTableAssociationResult" });
   }
 }
 function __c8(j: number): any {
@@ -46532,9 +46498,7 @@ function __c8(j: number): any {
           Blackhole: S.optional(S.Boolean),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ReplaceTransitGatewayRouteRequest",
-      });
+      ).annotate({ identifier: "ReplaceTransitGatewayRouteRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -46542,9 +46506,7 @@ function __c8(j: number): any {
             .pipe(T.XmlName("route"), T.Ec2QueryName("Route"))
             .annotate({ identifier: "TransitGatewayRoute" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ReplaceTransitGatewayRouteResult",
-      });
+      ).annotate({ identifier: "ReplaceTransitGatewayRouteResult" });
   }
 }
 function __c9(j: number): any {
@@ -46596,9 +46558,7 @@ function __c10(j: number): any {
             T.Ec2QueryName("Description"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ReportInstanceStatusRequest",
-      });
+      ).annotate({ identifier: "ReportInstanceStatusRequest" });
     case 2:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "ReportInstanceStatusResponse",
@@ -46674,9 +46634,7 @@ function __c12(j: number): any {
             T.Ec2QueryName("UserData"),
           ),
         }),
-      ).annotate({
-        identifier: "RequestSpotLaunchSpecification",
-      });
+      ).annotate({ identifier: "RequestSpotLaunchSpecification" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -46715,9 +46673,7 @@ function __c12(j: number): any {
             T.Ec2QueryName("BlockDurationMinutes"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RequestSpotInstancesRequest",
-      });
+      ).annotate({ identifier: "RequestSpotInstancesRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -46726,9 +46682,7 @@ function __c12(j: number): any {
             T.Ec2QueryName("SpotInstanceRequestSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "RequestSpotInstancesResult",
-      });
+      ).annotate({ identifier: "RequestSpotInstancesResult" });
   }
 }
 function __c13(j: number): any {
@@ -46740,9 +46694,7 @@ function __c13(j: number): any {
           Attribute: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ResetAddressAttributeRequest",
-      });
+      ).annotate({ identifier: "ResetAddressAttributeRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -46750,9 +46702,7 @@ function __c13(j: number): any {
             .pipe(T.XmlName("address"), T.Ec2QueryName("Address"))
             .annotate({ identifier: "AddressAttribute" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ResetAddressAttributeResult",
-      });
+      ).annotate({ identifier: "ResetAddressAttributeResult" });
   }
 }
 function __c14(j: number): any {
@@ -46762,17 +46712,13 @@ function __c14(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ResetEbsDefaultKmsKeyIdRequest",
-      });
+      ).annotate({ identifier: "ResetEbsDefaultKmsKeyIdRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           KmsKeyId: S.optional(S.String).pipe(T.XmlName("kmsKeyId"), T.Ec2QueryName("KmsKeyId")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ResetEbsDefaultKmsKeyIdResult",
-      });
+      ).annotate({ identifier: "ResetEbsDefaultKmsKeyIdResult" });
   }
 }
 function __c15(j: number): any {
@@ -46784,17 +46730,13 @@ function __c15(j: number): any {
           FpgaImageId: S.optional(S.String),
           Attribute: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ResetFpgaImageAttributeRequest",
-      });
+      ).annotate({ identifier: "ResetFpgaImageAttributeRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ResetFpgaImageAttributeResult",
-      });
+      ).annotate({ identifier: "ResetFpgaImageAttributeResult" });
   }
 }
 function __c16(j: number): any {
@@ -46806,9 +46748,7 @@ function __c16(j: number): any {
           ImageId: S.optional(S.String),
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ResetImageAttributeRequest",
-      });
+      ).annotate({ identifier: "ResetImageAttributeRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "ResetImageAttributeResponse",
@@ -46827,9 +46767,7 @@ function __c17(j: number): any {
           ),
           Attribute: S.optional(S.String).pipe(T.XmlName("attribute"), T.Ec2QueryName("Attribute")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ResetInstanceAttributeRequest",
-      });
+      ).annotate({ identifier: "ResetInstanceAttributeRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "ResetInstanceAttributeResponse",
@@ -46851,9 +46789,7 @@ function __c18(j: number): any {
             T.Ec2QueryName("SourceDestCheck"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ResetNetworkInterfaceAttributeRequest",
-      });
+      ).annotate({ identifier: "ResetNetworkInterfaceAttributeRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "ResetNetworkInterfaceAttributeResponse",
@@ -46869,9 +46805,7 @@ function __c19(j: number): any {
           SnapshotId: S.optional(S.String),
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ResetSnapshotAttributeRequest",
-      });
+      ).annotate({ identifier: "ResetSnapshotAttributeRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "ResetSnapshotAttributeResponse",
@@ -46886,18 +46820,14 @@ function __c20(j: number): any {
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
           PublicIp: S.optional(S.String).pipe(T.XmlName("publicIp"), T.Ec2QueryName("PublicIp")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RestoreAddressToClassicRequest",
-      });
+      ).annotate({ identifier: "RestoreAddressToClassicRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           PublicIp: S.optional(S.String).pipe(T.XmlName("publicIp"), T.Ec2QueryName("PublicIp")),
           Status: S.optional(S.String).pipe(T.XmlName("status"), T.Ec2QueryName("Status")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "RestoreAddressToClassicResult",
-      });
+      ).annotate({ identifier: "RestoreAddressToClassicResult" });
   }
 }
 function __c21(j: number): any {
@@ -46907,17 +46837,13 @@ function __c21(j: number): any {
         S.Struct({ ImageId: S.optional(S.String), DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "RestoreImageFromRecycleBinRequest",
-      });
+      ).annotate({ identifier: "RestoreImageFromRecycleBinRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "RestoreImageFromRecycleBinResult",
-      });
+      ).annotate({ identifier: "RestoreImageFromRecycleBinResult" });
   }
 }
 function __c22(j: number): any {
@@ -46930,9 +46856,7 @@ function __c22(j: number): any {
           PreviousVersion: S.optional(S.Number),
           CurrentVersion: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RestoreManagedPrefixListVersionRequest",
-      });
+      ).annotate({ identifier: "RestoreManagedPrefixListVersionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -46940,9 +46864,7 @@ function __c22(j: number): any {
             .pipe(T.XmlName("prefixList"), T.Ec2QueryName("PrefixList"))
             .annotate({ identifier: "ManagedPrefixList" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "RestoreManagedPrefixListVersionResult",
-      });
+      ).annotate({ identifier: "RestoreManagedPrefixListVersionResult" });
   }
 }
 function __c23(j: number): any {
@@ -46952,9 +46874,7 @@ function __c23(j: number): any {
         S.Struct({ SnapshotId: S.optional(S.String), DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "RestoreSnapshotFromRecycleBinRequest",
-      });
+      ).annotate({ identifier: "RestoreSnapshotFromRecycleBinRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -46988,9 +46908,7 @@ function __c23(j: number): any {
           ),
           SseType: S.optional(S.String).pipe(T.XmlName("sseType"), T.Ec2QueryName("SseType")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "RestoreSnapshotFromRecycleBinResult",
-      });
+      ).annotate({ identifier: "RestoreSnapshotFromRecycleBinResult" });
   }
 }
 function __c24(j: number): any {
@@ -47003,9 +46921,7 @@ function __c24(j: number): any {
           PermanentRestore: S.optional(S.Boolean),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RestoreSnapshotTierRequest",
-      });
+      ).annotate({ identifier: "RestoreSnapshotTierRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -47026,9 +46942,7 @@ function __c24(j: number): any {
             T.Ec2QueryName("IsPermanentRestore"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "RestoreSnapshotTierResult",
-      });
+      ).annotate({ identifier: "RestoreSnapshotTierResult" });
   }
 }
 function __c25(j: number): any {
@@ -47038,17 +46952,13 @@ function __c25(j: number): any {
         S.Struct({ VolumeId: S.optional(S.String), DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "RestoreVolumeFromRecycleBinRequest",
-      });
+      ).annotate({ identifier: "RestoreVolumeFromRecycleBinRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "RestoreVolumeFromRecycleBinResult",
-      });
+      ).annotate({ identifier: "RestoreVolumeFromRecycleBinResult" });
   }
 }
 function __c26(j: number): any {
@@ -47062,9 +46972,7 @@ function __c26(j: number): any {
           RevokeAllGroups: S.optional(S.Boolean),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RevokeClientVpnIngressRequest",
-      });
+      ).annotate({ identifier: "RevokeClientVpnIngressRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -47072,9 +46980,7 @@ function __c26(j: number): any {
             .pipe(T.XmlName("status"), T.Ec2QueryName("Status"))
             .annotate({ identifier: "ClientVpnAuthorizationRuleStatus" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "RevokeClientVpnIngressResult",
-      });
+      ).annotate({ identifier: "RevokeClientVpnIngressResult" });
   }
 }
 function __c27(j: number): any {
@@ -47107,9 +47013,7 @@ function __c27(j: number): any {
             T.Ec2QueryName("IpPermissions"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RevokeSecurityGroupEgressRequest",
-      });
+      ).annotate({ identifier: "RevokeSecurityGroupEgressRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -47123,9 +47027,7 @@ function __c27(j: number): any {
             T.Ec2QueryName("RevokedSecurityGroupRuleSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "RevokeSecurityGroupEgressResult",
-      });
+      ).annotate({ identifier: "RevokeSecurityGroupEgressResult" });
   }
 }
 function __c28(j: number): any {
@@ -47163,9 +47065,9 @@ function __c28(j: number): any {
       ).annotate({ identifier: "RevokedSecurityGroupRule" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(896, __c28, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "RevokedSecurityGroupRule",
-        }),
+        /*@__PURE__*/ __S(896, __c28, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "RevokedSecurityGroupRule" }),
       );
   }
 }
@@ -47188,9 +47090,7 @@ function __c29(j: number): any {
           ),
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RevokeSecurityGroupIngressRequest",
-      });
+      ).annotate({ identifier: "RevokeSecurityGroupIngressRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -47204,30 +47104,26 @@ function __c29(j: number): any {
             T.Ec2QueryName("RevokedSecurityGroupRuleSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "RevokeSecurityGroupIngressResult",
-      });
+      ).annotate({ identifier: "RevokeSecurityGroupIngressResult" });
   }
 }
 function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ __S(9216, __c288, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ElasticGpuSpecification",
-        }),
+        /*@__PURE__*/ __S(9216, __c288, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ElasticGpuSpecification" }),
       );
     case 1:
       return S.suspend(() =>
         S.Struct({ Type: S.optional(S.String), Count: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "ElasticInferenceAccelerator",
-      });
+      ).annotate({ identifier: "ElasticInferenceAccelerator" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(961, __c30, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ElasticInferenceAccelerator",
-        }),
+        /*@__PURE__*/ __S(961, __c30, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ElasticInferenceAccelerator" }),
       );
     case 3:
       return S.suspend(() =>
@@ -47236,9 +47132,7 @@ function __c30(j: number): any {
           LaunchTemplateName: S.optional(S.String),
           Version: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateSpecification",
-      });
+      ).annotate({ identifier: "LaunchTemplateSpecification" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -47252,9 +47146,7 @@ function __c30(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({ MarketType: S.optional(S.String), SpotOptions: S.optional(__S(964, __c30, 4)) }),
-      ).annotate({
-        identifier: "InstanceMarketOptionsRequest",
-      });
+      ).annotate({ identifier: "InstanceMarketOptionsRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -47274,9 +47166,9 @@ function __c30(j: number): any {
       });
     case 9:
       return S.Array(
-        /*@__PURE__*/ __S(968, __c30, 8).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "LicenseConfigurationRequest",
-        }),
+        /*@__PURE__*/ __S(968, __c30, 8)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "LicenseConfigurationRequest" }),
       );
     case 10:
       return S.suspend(() =>
@@ -47287,9 +47179,7 @@ function __c30(j: number): any {
           HttpProtocolIpv6: S.optional(S.String),
           InstanceMetadataTags: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "InstanceMetadataOptionsRequest",
-      });
+      ).annotate({ identifier: "InstanceMetadataOptionsRequest" });
     case 11:
       return S.suspend(() =>
         S.Struct({
@@ -47297,9 +47187,7 @@ function __c30(j: number): any {
           EnableResourceNameDnsARecord: S.optional(S.Boolean),
           EnableResourceNameDnsAAAARecord: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "PrivateDnsNameOptionsRequest",
-      });
+      ).annotate({ identifier: "PrivateDnsNameOptionsRequest" });
     case 12:
       return S.suspend(() => S.Struct({ AutoRecovery: S.optional(S.String) })).annotate({
         identifier: "InstanceMaintenanceOptionsRequest",
@@ -47314,9 +47202,9 @@ function __c30(j: number): any {
       });
     case 15:
       return S.Array(
-        /*@__PURE__*/ __S(974, __c30, 14).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceSecondaryInterfacePrivateIpAddressRequest",
-        }),
+        /*@__PURE__*/ __S(974, __c30, 14)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceSecondaryInterfacePrivateIpAddressRequest" }),
       );
     case 16:
       return S.suspend(() =>
@@ -47329,14 +47217,12 @@ function __c30(j: number): any {
           InterfaceType: S.optional(S.String),
           NetworkCardIndex: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "InstanceSecondaryInterfaceSpecificationRequest",
-      });
+      ).annotate({ identifier: "InstanceSecondaryInterfaceSpecificationRequest" });
     case 17:
       return S.Array(
-        /*@__PURE__*/ __S(976, __c30, 16).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceSecondaryInterfaceSpecificationRequest",
-        }),
+        /*@__PURE__*/ __S(976, __c30, 16)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceSecondaryInterfaceSpecificationRequest" }),
       );
     case 18:
       return S.suspend(() =>
@@ -47442,23 +47328,17 @@ function __c31(j: number): any {
           NoDevice: S.optional(S.String),
           VirtualName: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ScheduledInstancesBlockDeviceMapping",
-      });
+      ).annotate({ identifier: "ScheduledInstancesBlockDeviceMapping" });
     case 2:
       return S.Array(
         /*@__PURE__*/ __S(993, __c31, 1)
           .pipe(/*@__PURE__*/ T.XmlName("BlockDeviceMapping"))
-          .annotate({
-            identifier: "ScheduledInstancesBlockDeviceMapping",
-          }),
+          .annotate({ identifier: "ScheduledInstancesBlockDeviceMapping" }),
       );
     case 3:
       return S.suspend(() =>
         S.Struct({ Arn: S.optional(S.String), Name: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ScheduledInstancesIamInstanceProfile",
-      });
+      ).annotate({ identifier: "ScheduledInstancesIamInstanceProfile" });
     case 4:
       return S.suspend(() => S.Struct({ Enabled: S.optional(S.Boolean) })).annotate({
         identifier: "ScheduledInstancesMonitoring",
@@ -47471,23 +47351,19 @@ function __c31(j: number): any {
       });
     case 7:
       return S.Array(
-        /*@__PURE__*/ __S(998, __c31, 6).pipe(/*@__PURE__*/ T.XmlName("Ipv6Address")).annotate({
-          identifier: "ScheduledInstancesIpv6Address",
-        }),
+        /*@__PURE__*/ __S(998, __c31, 6)
+          .pipe(/*@__PURE__*/ T.XmlName("Ipv6Address"))
+          .annotate({ identifier: "ScheduledInstancesIpv6Address" }),
       );
     case 8:
       return S.suspend(() =>
         S.Struct({ Primary: S.optional(S.Boolean), PrivateIpAddress: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ScheduledInstancesPrivateIpAddressConfig",
-      });
+      ).annotate({ identifier: "ScheduledInstancesPrivateIpAddressConfig" });
     case 9:
       return S.Array(
         /*@__PURE__*/ __S(1000, __c31, 8)
           .pipe(/*@__PURE__*/ T.XmlName("PrivateIpAddressConfigSet"))
-          .annotate({
-            identifier: "ScheduledInstancesPrivateIpAddressConfig",
-          }),
+          .annotate({ identifier: "ScheduledInstancesPrivateIpAddressConfig" }),
       );
     case 10:
       return S.suspend(() =>
@@ -47507,23 +47383,17 @@ function __c31(j: number): any {
           SecondaryPrivateIpAddressCount: S.optional(S.Number),
           SubnetId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ScheduledInstancesNetworkInterface",
-      });
+      ).annotate({ identifier: "ScheduledInstancesNetworkInterface" });
     case 11:
       return S.Array(
         /*@__PURE__*/ __S(1002, __c31, 10)
           .pipe(/*@__PURE__*/ T.XmlName("NetworkInterface"))
-          .annotate({
-            identifier: "ScheduledInstancesNetworkInterface",
-          }),
+          .annotate({ identifier: "ScheduledInstancesNetworkInterface" }),
       );
     case 12:
       return S.suspend(() =>
         S.Struct({ AvailabilityZone: S.optional(S.String), GroupName: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ScheduledInstancesPlacement",
-      });
+      ).annotate({ identifier: "ScheduledInstancesPlacement" });
     case 13:
       return S.suspend(() =>
         S.Struct({
@@ -47542,9 +47412,7 @@ function __c31(j: number): any {
           SubnetId: S.optional(S.String),
           UserData: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ScheduledInstancesLaunchSpecification",
-      });
+      ).annotate({ identifier: "ScheduledInstancesLaunchSpecification" });
     case 14:
       return S.suspend(() =>
         S.Struct({
@@ -47554,9 +47422,7 @@ function __c31(j: number): any {
           LaunchSpecification: S.optional(__S(1005, __c31, 13)),
           ScheduledInstanceId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RunScheduledInstancesRequest",
-      });
+      ).annotate({ identifier: "RunScheduledInstancesRequest" });
     case 15:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")));
     case 16:
@@ -47567,9 +47433,7 @@ function __c31(j: number): any {
             T.Ec2QueryName("InstanceIdSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "RunScheduledInstancesResult",
-      });
+      ).annotate({ identifier: "RunScheduledInstancesResult" });
   }
 }
 function __c32(j: number): any {
@@ -47583,14 +47447,12 @@ function __c32(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SearchLocalGatewayRoutesRequest",
-      });
+      ).annotate({ identifier: "SearchLocalGatewayRoutesRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(9760, __c305, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "LocalGatewayRoute",
-        }),
+        /*@__PURE__*/ __S(9760, __c305, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "LocalGatewayRoute" }),
       );
     case 2:
       return S.suspend(() =>
@@ -47601,9 +47463,7 @@ function __c32(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "SearchLocalGatewayRoutesResult",
-      });
+      ).annotate({ identifier: "SearchLocalGatewayRoutesResult" });
   }
 }
 function __c33(j: number): any {
@@ -47617,9 +47477,7 @@ function __c33(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SearchTransitGatewayMulticastGroupsRequest",
-      });
+      ).annotate({ identifier: "SearchTransitGatewayMulticastGroupsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -47665,14 +47523,12 @@ function __c33(j: number): any {
             T.Ec2QueryName("SourceType"),
           ),
         }),
-      ).annotate({
-        identifier: "TransitGatewayMulticastGroup",
-      });
+      ).annotate({ identifier: "TransitGatewayMulticastGroup" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(1057, __c33, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TransitGatewayMulticastGroup",
-        }),
+        /*@__PURE__*/ __S(1057, __c33, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TransitGatewayMulticastGroup" }),
       );
     case 3:
       return S.suspend(() =>
@@ -47683,9 +47539,7 @@ function __c33(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "SearchTransitGatewayMulticastGroupsResult",
-      });
+      ).annotate({ identifier: "SearchTransitGatewayMulticastGroupsResult" });
   }
 }
 function __c34(j: number): any {
@@ -47699,14 +47553,12 @@ function __c34(j: number): any {
           DryRun: S.optional(S.Boolean),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SearchTransitGatewayRoutesRequest",
-      });
+      ).annotate({ identifier: "SearchTransitGatewayRoutesRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(12994, __c406, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TransitGatewayRoute",
-        }),
+        /*@__PURE__*/ __S(12994, __c406, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TransitGatewayRoute" }),
       );
     case 2:
       return S.suspend(() =>
@@ -47721,9 +47573,7 @@ function __c34(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "SearchTransitGatewayRoutesResult",
-      });
+      ).annotate({ identifier: "SearchTransitGatewayRoutesResult" });
   }
 }
 function __c35(j: number): any {
@@ -47733,9 +47583,7 @@ function __c35(j: number): any {
         S.Struct({ InstanceId: S.optional(S.String), DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "SendDiagnosticInterruptRequest",
-      });
+      ).annotate({ identifier: "SendDiagnosticInterruptRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "SendDiagnosticInterruptResponse",
@@ -47753,17 +47601,13 @@ function __c36(j: number): any {
           TargetId: S.optional(S.String),
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartDeclarativePoliciesReportRequest",
-      });
+      ).annotate({ identifier: "StartDeclarativePoliciesReportRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ReportId: S.optional(S.String).pipe(T.XmlName("reportId"), T.Ec2QueryName("ReportId")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "StartDeclarativePoliciesReportResult",
-      });
+      ).annotate({ identifier: "StartDeclarativePoliciesReportResult" });
   }
 }
 function __c37(j: number): any {
@@ -47809,9 +47653,9 @@ function __c38(j: number): any {
       ).annotate({ identifier: "InstanceStateChange" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(1216, __c38, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceStateChange",
-        }),
+        /*@__PURE__*/ __S(1216, __c38, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceStateChange" }),
       );
   }
 }
@@ -47825,9 +47669,7 @@ function __c39(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartNetworkInsightsAccessScopeAnalysisRequest",
-      });
+      ).annotate({ identifier: "StartNetworkInsightsAccessScopeAnalysisRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -47838,9 +47680,7 @@ function __c39(j: number): any {
             )
             .annotate({ identifier: "NetworkInsightsAccessScopeAnalysis" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "StartNetworkInsightsAccessScopeAnalysisResult",
-      });
+      ).annotate({ identifier: "StartNetworkInsightsAccessScopeAnalysisResult" });
   }
 }
 function __c40(j: number): any {
@@ -47856,9 +47696,7 @@ function __c40(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartNetworkInsightsAnalysisRequest",
-      });
+      ).annotate({ identifier: "StartNetworkInsightsAnalysisRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -47866,9 +47704,7 @@ function __c40(j: number): any {
             .pipe(T.XmlName("networkInsightsAnalysis"), T.Ec2QueryName("NetworkInsightsAnalysis"))
             .annotate({ identifier: "NetworkInsightsAnalysis" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "StartNetworkInsightsAnalysisResult",
-      });
+      ).annotate({ identifier: "StartNetworkInsightsAnalysisResult" });
   }
 }
 function __c41(j: number): any {
@@ -47878,17 +47714,13 @@ function __c41(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean), ServiceId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StartVpcEndpointServicePrivateDnsVerificationRequest",
-      });
+      ).annotate({ identifier: "StartVpcEndpointServicePrivateDnsVerificationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ReturnValue: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "StartVpcEndpointServicePrivateDnsVerificationResult",
-      });
+      ).annotate({ identifier: "StartVpcEndpointServicePrivateDnsVerificationResult" });
   }
 }
 function __c42(j: number): any {
@@ -47924,9 +47756,7 @@ function __c43(j: number): any {
           Username: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "TerminateClientVpnConnectionsRequest",
-      });
+      ).annotate({ identifier: "TerminateClientVpnConnectionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -47941,14 +47771,12 @@ function __c43(j: number): any {
             .pipe(T.XmlName("currentStatus"), T.Ec2QueryName("CurrentStatus"))
             .annotate({ identifier: "ClientVpnConnectionStatus" }),
         }),
-      ).annotate({
-        identifier: "TerminateConnectionStatus",
-      });
+      ).annotate({ identifier: "TerminateConnectionStatus" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(1377, __c43, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TerminateConnectionStatus",
-        }),
+        /*@__PURE__*/ __S(1377, __c43, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TerminateConnectionStatus" }),
       );
     case 3:
       return S.suspend(() =>
@@ -47963,9 +47791,7 @@ function __c43(j: number): any {
             T.Ec2QueryName("ConnectionStatuses"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "TerminateClientVpnConnectionsResult",
-      });
+      ).annotate({ identifier: "TerminateClientVpnConnectionsResult" });
   }
 }
 function __c44(j: number): any {
@@ -47978,9 +47804,7 @@ function __c44(j: number): any {
           SkipOsShutdown: S.optional(S.Boolean),
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "TerminateInstancesRequest",
-      });
+      ).annotate({ identifier: "TerminateInstancesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -48007,9 +47831,7 @@ function __c45(j: number): any {
             T.Ec2QueryName("Ipv6Addresses"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UnassignIpv6AddressesRequest",
-      });
+      ).annotate({ identifier: "UnassignIpv6AddressesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -48026,9 +47848,7 @@ function __c45(j: number): any {
             T.Ec2QueryName("UnassignedIpv6PrefixSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "UnassignIpv6AddressesResult",
-      });
+      ).annotate({ identifier: "UnassignIpv6AddressesResult" });
   }
 }
 function __c46(j: number): any {
@@ -48046,9 +47866,7 @@ function __c46(j: number): any {
             T.Ec2QueryName("PrivateIpAddress"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UnassignPrivateIpAddressesRequest",
-      });
+      ).annotate({ identifier: "UnassignPrivateIpAddressesRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "UnassignPrivateIpAddressesResponse",
@@ -48065,9 +47883,7 @@ function __c47(j: number): any {
           MaxDrainDurationSeconds: S.optional(S.Number),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UnassignPrivateNatGatewayAddressRequest",
-      });
+      ).annotate({ identifier: "UnassignPrivateNatGatewayAddressRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -48080,9 +47896,7 @@ function __c47(j: number): any {
             T.Ec2QueryName("NatGatewayAddressSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "UnassignPrivateNatGatewayAddressResult",
-      });
+      ).annotate({ identifier: "UnassignPrivateNatGatewayAddressResult" });
   }
 }
 function __c48(j: number): any {
@@ -48112,9 +47926,7 @@ function __c49(j: number): any {
           InstanceIds: S.optional(__S(19040, __c595, 0)).pipe(T.XmlName("InstanceId")),
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UnmonitorInstancesRequest",
-      });
+      ).annotate({ identifier: "UnmonitorInstancesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -48136,9 +47948,7 @@ function __c50(j: number): any {
           DryRun: S.optional(S.Boolean),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateCapacityManagerMonitoredTagKeysRequest",
-      });
+      ).annotate({ identifier: "UpdateCapacityManagerMonitoredTagKeysRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -48147,9 +47957,7 @@ function __c50(j: number): any {
             T.Ec2QueryName("CapacityManagerTagKeySet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateCapacityManagerMonitoredTagKeysResult",
-      });
+      ).annotate({ identifier: "UpdateCapacityManagerMonitoredTagKeysResult" });
   }
 }
 function __c51(j: number): any {
@@ -48161,9 +47969,7 @@ function __c51(j: number): any {
           DryRun: S.optional(S.Boolean),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateCapacityManagerOrganizationsAccessRequest",
-      });
+      ).annotate({ identifier: "UpdateCapacityManagerOrganizationsAccessRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -48176,9 +47982,7 @@ function __c51(j: number): any {
             T.Ec2QueryName("OrganizationsAccess"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateCapacityManagerOrganizationsAccessResult",
-      });
+      ).annotate({ identifier: "UpdateCapacityManagerOrganizationsAccessResult" });
   }
 }
 function __c52(j: number): any {
@@ -48191,9 +47995,7 @@ function __c52(j: number): any {
           DryRun: S.optional(S.Boolean),
           ZeroSizePreference: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateInterruptibleCapacityReservationAllocationRequest",
-      });
+      ).annotate({ identifier: "UpdateInterruptibleCapacityReservationAllocationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -48219,9 +48021,7 @@ function __c52(j: number): any {
             T.Ec2QueryName("InterruptionType"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateInterruptibleCapacityReservationAllocationResult",
-      });
+      ).annotate({ identifier: "UpdateInterruptibleCapacityReservationAllocationResult" });
   }
 }
 function __c53(j: number): any {
@@ -48237,17 +48037,13 @@ function __c53(j: number): any {
             T.XmlName("SecurityGroupRuleDescription"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateSecurityGroupRuleDescriptionsEgressRequest",
-      });
+      ).annotate({ identifier: "UpdateSecurityGroupRuleDescriptionsEgressRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateSecurityGroupRuleDescriptionsEgressResult",
-      });
+      ).annotate({ identifier: "UpdateSecurityGroupRuleDescriptionsEgressResult" });
   }
 }
 function __c54(j: number): any {
@@ -48255,14 +48051,12 @@ function __c54(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ SecurityGroupRuleId: S.optional(S.String), Description: S.optional(S.String) }),
-      ).annotate({
-        identifier: "SecurityGroupRuleDescription",
-      });
+      ).annotate({ identifier: "SecurityGroupRuleDescription" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(1728, __c54, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SecurityGroupRuleDescription",
-        }),
+        /*@__PURE__*/ __S(1728, __c54, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SecurityGroupRuleDescription" }),
       );
   }
 }
@@ -48279,17 +48073,13 @@ function __c55(j: number): any {
             T.XmlName("SecurityGroupRuleDescription"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateSecurityGroupRuleDescriptionsIngressRequest",
-      });
+      ).annotate({ identifier: "UpdateSecurityGroupRuleDescriptionsIngressRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateSecurityGroupRuleDescriptionsIngressResult",
-      });
+      ).annotate({ identifier: "UpdateSecurityGroupRuleDescriptionsIngressResult" });
   }
 }
 function __c56(j: number): any {
@@ -48300,17 +48090,13 @@ function __c56(j: number): any {
           SecurityGroupIds: S.optional(__S(13280, __c415, 0)).pipe(T.XmlName("SecurityGroupId")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ValidateSecurityGroupQuotasForInterfaceRequest",
-      });
+      ).annotate({ identifier: "ValidateSecurityGroupQuotasForInterfaceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Valid: S.optional(S.Boolean).pipe(T.XmlName("valid"), T.Ec2QueryName("Valid")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ValidateSecurityGroupQuotasForInterfaceResult",
-      });
+      ).annotate({ identifier: "ValidateSecurityGroupQuotasForInterfaceResult" });
   }
 }
 function __c57(j: number): any {
@@ -48340,9 +48126,7 @@ function __c58(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AcceptAddressTransferRequest",
-      });
+      ).annotate({ identifier: "AcceptAddressTransferRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -48350,9 +48134,7 @@ function __c58(j: number): any {
             .pipe(T.XmlName("addressTransfer"), T.Ec2QueryName("AddressTransfer"))
             .annotate({ identifier: "AddressTransfer" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AcceptAddressTransferResult",
-      });
+      ).annotate({ identifier: "AcceptAddressTransferResult" });
   }
 }
 function __c59(j: number): any {
@@ -48363,9 +48145,9 @@ function __c59(j: number): any {
       ).annotate({ identifier: "RegionGeography" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(1888, __c59, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "RegionGeography",
-        }),
+        /*@__PURE__*/ __S(1888, __c59, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "RegionGeography" }),
       );
     case 2:
       return S.suspend(() =>
@@ -48421,9 +48203,9 @@ function __c61(j: number): any {
       ).annotate({ identifier: "TagSpecification" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(1952, __c61, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TagSpecification",
-        }),
+        /*@__PURE__*/ __S(1952, __c61, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TagSpecification" }),
       );
   }
 }
@@ -48469,17 +48251,13 @@ function __c63(j: number): any {
           DryRun: S.optional(S.Boolean),
           CapacityReservationId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AcceptCapacityReservationBillingOwnershipRequest",
-      });
+      ).annotate({ identifier: "AcceptCapacityReservationBillingOwnershipRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AcceptCapacityReservationBillingOwnershipResult",
-      });
+      ).annotate({ identifier: "AcceptCapacityReservationBillingOwnershipResult" });
   }
 }
 function __c64(j: number): any {
@@ -48495,9 +48273,7 @@ function __c64(j: number): any {
             T.XmlName("TargetConfiguration"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AcceptReservedInstancesExchangeQuoteRequest",
-      });
+      ).annotate({ identifier: "AcceptReservedInstancesExchangeQuoteRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -48506,9 +48282,7 @@ function __c64(j: number): any {
             T.Ec2QueryName("ExchangeId"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AcceptReservedInstancesExchangeQuoteResult",
-      });
+      ).annotate({ identifier: "AcceptReservedInstancesExchangeQuoteResult" });
   }
 }
 function __c65(j: number): any {
@@ -48518,16 +48292,12 @@ function __c65(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ InstanceCount: S.optional(S.Number), OfferingId: S.optional(S.String) }),
-      ).annotate({
-        identifier: "TargetConfigurationRequest",
-      });
+      ).annotate({ identifier: "TargetConfigurationRequest" });
     case 2:
       return S.Array(
         /*@__PURE__*/ __S(2081, __c65, 1)
           .pipe(/*@__PURE__*/ T.XmlName("TargetConfigurationRequest"))
-          .annotate({
-            identifier: "TargetConfigurationRequest",
-          }),
+          .annotate({ identifier: "TargetConfigurationRequest" }),
       );
   }
 }
@@ -48539,9 +48309,7 @@ function __c66(j: number): any {
           TransitGatewayAttachmentId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AcceptTransitGatewayClientVpnAttachmentRequest",
-      });
+      ).annotate({ identifier: "AcceptTransitGatewayClientVpnAttachmentRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -48552,9 +48320,7 @@ function __c66(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayClientVpnAttachment" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AcceptTransitGatewayClientVpnAttachmentResult",
-      });
+      ).annotate({ identifier: "AcceptTransitGatewayClientVpnAttachmentResult" });
   }
 }
 function __c67(j: number): any {
@@ -48584,9 +48350,7 @@ function __c67(j: number): any {
             T.Ec2QueryName("CreationTime"),
           ),
         }),
-      ).annotate({
-        identifier: "TransitGatewayClientVpnAttachment",
-      });
+      ).annotate({ identifier: "TransitGatewayClientVpnAttachment" });
   }
 }
 function __c68(j: number): any {
@@ -48599,9 +48363,7 @@ function __c68(j: number): any {
           SubnetIds: S.optional(__S(2208, __c69, 0)),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AcceptTransitGatewayMulticastDomainAssociationsRequest",
-      });
+      ).annotate({ identifier: "AcceptTransitGatewayMulticastDomainAssociationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -48609,9 +48371,7 @@ function __c68(j: number): any {
             .pipe(T.XmlName("associations"), T.Ec2QueryName("Associations"))
             .annotate({ identifier: "TransitGatewayMulticastDomainAssociations" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AcceptTransitGatewayMulticastDomainAssociationsResult",
-      });
+      ).annotate({ identifier: "AcceptTransitGatewayMulticastDomainAssociationsResult" });
   }
 }
 function __c69(j: number): any {
@@ -48635,9 +48395,9 @@ function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ __S(2240, __c70, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SubnetAssociation",
-        }),
+        /*@__PURE__*/ __S(2240, __c70, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SubnetAssociation" }),
       );
     case 1:
       return S.suspend(() =>
@@ -48667,9 +48427,7 @@ function __c71(j: number): any {
             T.Ec2QueryName("Subnets"),
           ),
         }),
-      ).annotate({
-        identifier: "TransitGatewayMulticastDomainAssociations",
-      });
+      ).annotate({ identifier: "TransitGatewayMulticastDomainAssociations" });
   }
 }
 function __c72(j: number): any {
@@ -48680,9 +48438,7 @@ function __c72(j: number): any {
           TransitGatewayAttachmentId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AcceptTransitGatewayPeeringAttachmentRequest",
-      });
+      ).annotate({ identifier: "AcceptTransitGatewayPeeringAttachmentRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -48693,9 +48449,7 @@ function __c72(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayPeeringAttachment" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AcceptTransitGatewayPeeringAttachmentResult",
-      });
+      ).annotate({ identifier: "AcceptTransitGatewayPeeringAttachmentResult" });
   }
 }
 function __c73(j: number): any {
@@ -48723,9 +48477,7 @@ function __c73(j: number): any {
             T.Ec2QueryName("DynamicRouting"),
           ),
         }),
-      ).annotate({
-        identifier: "TransitGatewayPeeringAttachmentOptions",
-      });
+      ).annotate({ identifier: "TransitGatewayPeeringAttachmentOptions" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -48763,9 +48515,7 @@ function __c73(j: number): any {
           ),
           Tags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("tagSet"), T.Ec2QueryName("TagSet")),
         }),
-      ).annotate({
-        identifier: "TransitGatewayPeeringAttachment",
-      });
+      ).annotate({ identifier: "TransitGatewayPeeringAttachment" });
   }
 }
 function __c74(j: number): any {
@@ -48776,9 +48526,7 @@ function __c74(j: number): any {
           TransitGatewayAttachmentId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AcceptTransitGatewayVpcAttachmentRequest",
-      });
+      ).annotate({ identifier: "AcceptTransitGatewayVpcAttachmentRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -48789,9 +48537,7 @@ function __c74(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayVpcAttachment" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AcceptTransitGatewayVpcAttachmentResult",
-      });
+      ).annotate({ identifier: "AcceptTransitGatewayVpcAttachmentResult" });
   }
 }
 function __c75(j: number): any {
@@ -48816,9 +48562,7 @@ function __c75(j: number): any {
             T.Ec2QueryName("ApplianceModeSupport"),
           ),
         }),
-      ).annotate({
-        identifier: "TransitGatewayVpcAttachmentOptions",
-      });
+      ).annotate({ identifier: "TransitGatewayVpcAttachmentOptions" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -48849,9 +48593,7 @@ function __c75(j: number): any {
             .annotate({ identifier: "TransitGatewayVpcAttachmentOptions" }),
           Tags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("tagSet"), T.Ec2QueryName("TagSet")),
         }),
-      ).annotate({
-        identifier: "TransitGatewayVpcAttachment",
-      });
+      ).annotate({ identifier: "TransitGatewayVpcAttachment" });
   }
 }
 function __c76(j: number): any {
@@ -48863,9 +48605,7 @@ function __c76(j: number): any {
           ServiceId: S.optional(S.String),
           VpcEndpointIds: S.optional(__S(2528, __c79, 0)).pipe(T.XmlName("VpcEndpointId")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AcceptVpcEndpointConnectionsRequest",
-      });
+      ).annotate({ identifier: "AcceptVpcEndpointConnectionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -48874,9 +48614,7 @@ function __c76(j: number): any {
             T.Ec2QueryName("Unsuccessful"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AcceptVpcEndpointConnectionsResult",
-      });
+      ).annotate({ identifier: "AcceptVpcEndpointConnectionsResult" });
   }
 }
 function __c77(j: number): any {
@@ -48906,9 +48644,9 @@ function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ __S(2465, __c77, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "UnsuccessfulItem",
-        }),
+        /*@__PURE__*/ __S(2465, __c77, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "UnsuccessfulItem" }),
       );
   }
 }
@@ -48929,9 +48667,7 @@ function __c80(j: number): any {
             T.Ec2QueryName("VpcPeeringConnectionId"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AcceptVpcPeeringConnectionRequest",
-      });
+      ).annotate({ identifier: "AcceptVpcPeeringConnectionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -48939,9 +48675,7 @@ function __c80(j: number): any {
             .pipe(T.XmlName("vpcPeeringConnection"), T.Ec2QueryName("VpcPeeringConnection"))
             .annotate({ identifier: "VpcPeeringConnection" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AcceptVpcPeeringConnectionResult",
-      });
+      ).annotate({ identifier: "AcceptVpcPeeringConnectionResult" });
   }
 }
 function __c81(j: number): any {
@@ -48957,9 +48691,9 @@ function __c81(j: number): any {
       ).annotate({ identifier: "Ipv6CidrBlock" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(2592, __c81, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "Ipv6CidrBlock",
-        }),
+        /*@__PURE__*/ __S(2592, __c81, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "Ipv6CidrBlock" }),
       );
     case 2:
       return S.suspend(() =>
@@ -48969,9 +48703,9 @@ function __c81(j: number): any {
       ).annotate({ identifier: "CidrBlock" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(2594, __c81, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CidrBlock",
-        }),
+        /*@__PURE__*/ __S(2594, __c81, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CidrBlock" }),
       );
     case 4:
       return S.suspend(() =>
@@ -48989,9 +48723,7 @@ function __c81(j: number): any {
             T.Ec2QueryName("AllowEgressFromLocalVpcToRemoteClassicLink"),
           ),
         }),
-      ).annotate({
-        identifier: "VpcPeeringConnectionOptionsDescription",
-      });
+      ).annotate({ identifier: "VpcPeeringConnectionOptionsDescription" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -49011,18 +48743,14 @@ function __c81(j: number): any {
           VpcId: S.optional(S.String).pipe(T.XmlName("vpcId"), T.Ec2QueryName("VpcId")),
           Region: S.optional(S.String).pipe(T.XmlName("region"), T.Ec2QueryName("Region")),
         }),
-      ).annotate({
-        identifier: "VpcPeeringConnectionVpcInfo",
-      });
+      ).annotate({ identifier: "VpcPeeringConnectionVpcInfo" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           Code: S.optional(S.String).pipe(T.XmlName("code"), T.Ec2QueryName("Code")),
           Message: S.optional(S.String).pipe(T.XmlName("message"), T.Ec2QueryName("Message")),
         }),
-      ).annotate({
-        identifier: "VpcPeeringConnectionStateReason",
-      });
+      ).annotate({ identifier: "VpcPeeringConnectionStateReason" });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -49058,9 +48786,7 @@ function __c82(j: number): any {
           DryRun: S.optional(S.Boolean),
           NetworkBorderGroup: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AdvertiseByoipCidrRequest",
-      });
+      ).annotate({ identifier: "AdvertiseByoipCidrRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -49091,9 +48817,9 @@ function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ __S(2656, __c83, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "AsnAssociation",
-        }),
+        /*@__PURE__*/ __S(2656, __c83, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "AsnAssociation" }),
       );
     case 1:
       return S.suspend(() =>
@@ -49249,9 +48975,7 @@ function __c88(j: number): any {
           DisallowedCidrs: S.optional(__S(2817, __c88, 1)).pipe(T.XmlName("DisallowedCidr")),
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AllocateIpamPoolCidrRequest",
-      });
+      ).annotate({ identifier: "AllocateIpamPoolCidrRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -49259,9 +48983,7 @@ function __c88(j: number): any {
             .pipe(T.XmlName("ipamPoolAllocation"), T.Ec2QueryName("IpamPoolAllocation"))
             .annotate({ identifier: "IpamPoolAllocation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AllocateIpamPoolCidrResult",
-      });
+      ).annotate({ identifier: "AllocateIpamPoolCidrResult" });
   }
 }
 function __c89(j: number): any {
@@ -49309,9 +49031,7 @@ function __c90(j: number): any {
           SecurityGroupIds: S.optional(__S(2912, __c91, 0)).pipe(T.XmlName("SecurityGroupId")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ApplySecurityGroupsToClientVpnTargetNetworkRequest",
-      });
+      ).annotate({ identifier: "ApplySecurityGroupsToClientVpnTargetNetworkRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -49320,9 +49040,7 @@ function __c90(j: number): any {
             T.Ec2QueryName("SecurityGroupIds"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ApplySecurityGroupsToClientVpnTargetNetworkResult",
-      });
+      ).annotate({ identifier: "ApplySecurityGroupsToClientVpnTargetNetworkResult" });
   }
 }
 function __c91(j: number): any {
@@ -49351,9 +49069,7 @@ function __c92(j: number): any {
             T.Ec2QueryName("Ipv6AddressCount"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssignIpv6AddressesRequest",
-      });
+      ).annotate({ identifier: "AssignIpv6AddressesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -49370,9 +49086,7 @@ function __c92(j: number): any {
             T.Ec2QueryName("NetworkInterfaceId"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AssignIpv6AddressesResult",
-      });
+      ).annotate({ identifier: "AssignIpv6AddressesResult" });
   }
 }
 function __c93(j: number): any {
@@ -49411,9 +49125,7 @@ function __c95(j: number): any {
             T.Ec2QueryName("AllowReassignment"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssignPrivateIpAddressesRequest",
-      });
+      ).annotate({ identifier: "AssignPrivateIpAddressesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -49425,9 +49137,9 @@ function __c95(j: number): any {
       ).annotate({ identifier: "AssignedPrivateIpAddress" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(3041, __c95, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "AssignedPrivateIpAddress",
-        }),
+        /*@__PURE__*/ __S(3041, __c95, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "AssignedPrivateIpAddress" }),
       );
     case 3:
       return S.suspend(() =>
@@ -49445,9 +49157,7 @@ function __c95(j: number): any {
             T.Ec2QueryName("AssignedIpv4PrefixSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AssignPrivateIpAddressesResult",
-      });
+      ).annotate({ identifier: "AssignPrivateIpAddressesResult" });
   }
 }
 function __c96(j: number): any {
@@ -49469,9 +49179,9 @@ function __c97(j: number): any {
       ).annotate({ identifier: "Ipv4PrefixSpecification" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(3104, __c97, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "Ipv4PrefixSpecification",
-        }),
+        /*@__PURE__*/ __S(3104, __c97, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "Ipv4PrefixSpecification" }),
       );
   }
 }
@@ -49485,9 +49195,7 @@ function __c98(j: number): any {
           PrivateIpAddressCount: S.optional(S.Number),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssignPrivateNatGatewayAddressRequest",
-      });
+      ).annotate({ identifier: "AssignPrivateNatGatewayAddressRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -49500,9 +49208,7 @@ function __c98(j: number): any {
             T.Ec2QueryName("NatGatewayAddressSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AssignPrivateNatGatewayAddressResult",
-      });
+      ).annotate({ identifier: "AssignPrivateNatGatewayAddressResult" });
   }
 }
 function __c99(j: number): any {
@@ -49551,9 +49257,9 @@ function __c100(j: number): any {
       ).annotate({ identifier: "NatGatewayAddress" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(3200, __c100, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "NatGatewayAddress",
-        }),
+        /*@__PURE__*/ __S(3200, __c100, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "NatGatewayAddress" }),
       );
   }
 }
@@ -49604,9 +49310,7 @@ function __c102(j: number): any {
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssociateApplicationStatusCheckRequest",
-      });
+      ).annotate({ identifier: "AssociateApplicationStatusCheckRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -49619,9 +49323,7 @@ function __c102(j: number): any {
             T.Ec2QueryName("UnsuccessfulResultSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AssociateApplicationStatusCheckResult",
-      });
+      ).annotate({ identifier: "AssociateApplicationStatusCheckResult" });
   }
 }
 function __c103(j: number): any {
@@ -49635,14 +49337,12 @@ function __c104(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
-      ).annotate({
-        identifier: "CustomTagKeyValueRequestPair",
-      });
+      ).annotate({ identifier: "CustomTagKeyValueRequestPair" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(3328, __c104, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CustomTagKeyValueRequestPair",
-        }),
+        /*@__PURE__*/ __S(3328, __c104, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CustomTagKeyValueRequestPair" }),
       );
     case 2:
       return S.suspend(() =>
@@ -49660,14 +49360,12 @@ function __c104(j: number): any {
             T.Ec2QueryName("AssociationValue"),
           ),
         }),
-      ).annotate({
-        identifier: "SuccessfulAssociationResponseObject",
-      });
+      ).annotate({ identifier: "SuccessfulAssociationResponseObject" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(3330, __c104, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SuccessfulAssociationResponseObject",
-        }),
+        /*@__PURE__*/ __S(3330, __c104, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SuccessfulAssociationResponseObject" }),
       );
     case 4:
       return S.suspend(() =>
@@ -49686,14 +49384,12 @@ function __c104(j: number): any {
           ),
           Reason: S.optional(S.String).pipe(T.XmlName("reason"), T.Ec2QueryName("Reason")),
         }),
-      ).annotate({
-        identifier: "UnsuccessfulAssociationResponseObject",
-      });
+      ).annotate({ identifier: "UnsuccessfulAssociationResponseObject" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(3332, __c104, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "UnsuccessfulAssociationResponseObject",
-        }),
+        /*@__PURE__*/ __S(3332, __c104, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "UnsuccessfulAssociationResponseObject" }),
       );
   }
 }
@@ -49706,17 +49402,13 @@ function __c105(j: number): any {
           CapacityReservationId: S.optional(S.String),
           UnusedReservationBillingOwnerId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssociateCapacityReservationBillingOwnerRequest",
-      });
+      ).annotate({ identifier: "AssociateCapacityReservationBillingOwnerRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AssociateCapacityReservationBillingOwnerResult",
-      });
+      ).annotate({ identifier: "AssociateCapacityReservationBillingOwnerResult" });
   }
 }
 function __c106(j: number): any {
@@ -49731,9 +49423,7 @@ function __c106(j: number): any {
           AvailabilityZone: S.optional(S.String),
           AvailabilityZoneId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssociateClientVpnTargetNetworkRequest",
-      });
+      ).annotate({ identifier: "AssociateClientVpnTargetNetworkRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -49745,9 +49435,7 @@ function __c106(j: number): any {
             .pipe(T.XmlName("status"), T.Ec2QueryName("Status"))
             .annotate({ identifier: "AssociationStatus" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AssociateClientVpnTargetNetworkResult",
-      });
+      ).annotate({ identifier: "AssociateClientVpnTargetNetworkResult" });
   }
 }
 function __c107(j: number): any {
@@ -49770,9 +49458,7 @@ function __c108(j: number): any {
           VpcId: S.optional(S.String),
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssociateDhcpOptionsRequest",
-      });
+      ).annotate({ identifier: "AssociateDhcpOptionsRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "AssociateDhcpOptionsResponse",
@@ -49788,9 +49474,7 @@ function __c109(j: number): any {
           RoleArn: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssociateEnclaveCertificateIamRoleRequest",
-      });
+      ).annotate({ identifier: "AssociateEnclaveCertificateIamRoleRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -49807,9 +49491,7 @@ function __c109(j: number): any {
             T.Ec2QueryName("EncryptionKmsKeyId"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AssociateEnclaveCertificateIamRoleResult",
-      });
+      ).annotate({ identifier: "AssociateEnclaveCertificateIamRoleResult" });
   }
 }
 function __c110(j: number): any {
@@ -49820,9 +49502,7 @@ function __c110(j: number): any {
           IamInstanceProfile: S.optional(__S(3616, __c113, 0)),
           InstanceId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssociateIamInstanceProfileRequest",
-      });
+      ).annotate({ identifier: "AssociateIamInstanceProfileRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -49833,9 +49513,7 @@ function __c110(j: number): any {
             )
             .annotate({ identifier: "IamInstanceProfileAssociation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AssociateIamInstanceProfileResult",
-      });
+      ).annotate({ identifier: "AssociateIamInstanceProfileResult" });
   }
 }
 function __c111(j: number): any {
@@ -49871,9 +49549,7 @@ function __c112(j: number): any {
             T.Ec2QueryName("Timestamp"),
           ),
         }),
-      ).annotate({
-        identifier: "IamInstanceProfileAssociation",
-      });
+      ).annotate({ identifier: "IamInstanceProfileAssociation" });
   }
 }
 function __c113(j: number): any {
@@ -49884,9 +49560,7 @@ function __c113(j: number): any {
           Arn: S.optional(S.String).pipe(T.XmlName("arn"), T.Ec2QueryName("Arn")),
           Name: S.optional(S.String).pipe(T.XmlName("name"), T.Ec2QueryName("Name")),
         }),
-      ).annotate({
-        identifier: "IamInstanceProfileSpecification",
-      });
+      ).annotate({ identifier: "IamInstanceProfileSpecification" });
   }
 }
 function __c114(j: number): any {
@@ -49898,9 +49572,7 @@ function __c114(j: number): any {
           InstanceTags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("InstanceTag")),
           DedicatedHostIds: S.optional(__S(3680, __c115, 0)).pipe(T.XmlName("DedicatedHostId")),
         }),
-      ).annotate({
-        identifier: "InstanceEventWindowAssociationRequest",
-      });
+      ).annotate({ identifier: "InstanceEventWindowAssociationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -49908,9 +49580,7 @@ function __c114(j: number): any {
           InstanceEventWindowId: S.optional(S.String),
           AssociationTarget: S.optional(__S(3648, __c114, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssociateInstanceEventWindowRequest",
-      });
+      ).annotate({ identifier: "AssociateInstanceEventWindowRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -49918,9 +49588,7 @@ function __c114(j: number): any {
             .pipe(T.XmlName("instanceEventWindow"), T.Ec2QueryName("InstanceEventWindow"))
             .annotate({ identifier: "InstanceEventWindow" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AssociateInstanceEventWindowResult",
-      });
+      ).annotate({ identifier: "AssociateInstanceEventWindowResult" });
   }
 }
 function __c115(j: number): any {
@@ -49941,14 +49609,12 @@ function __c115(j: number): any {
           ),
           EndHour: S.optional(S.Number).pipe(T.XmlName("endHour"), T.Ec2QueryName("EndHour")),
         }),
-      ).annotate({
-        identifier: "InstanceEventWindowTimeRange",
-      });
+      ).annotate({ identifier: "InstanceEventWindowTimeRange" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(3681, __c115, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceEventWindowTimeRange",
-        }),
+        /*@__PURE__*/ __S(3681, __c115, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceEventWindowTimeRange" }),
       );
     case 3:
       return S.suspend(() =>
@@ -49963,9 +49629,7 @@ function __c115(j: number): any {
             T.Ec2QueryName("DedicatedHostIdSet"),
           ),
         }),
-      ).annotate({
-        identifier: "InstanceEventWindowAssociationTarget",
-      });
+      ).annotate({ identifier: "InstanceEventWindowAssociationTarget" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -50000,9 +49664,7 @@ function __c116(j: number): any {
           Asn: S.optional(S.String),
           Cidr: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssociateIpamByoasnRequest",
-      });
+      ).annotate({ identifier: "AssociateIpamByoasnRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -50010,9 +49672,7 @@ function __c116(j: number): any {
             .pipe(T.XmlName("asnAssociation"), T.Ec2QueryName("AsnAssociation"))
             .annotate({ identifier: "AsnAssociation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AssociateIpamByoasnResult",
-      });
+      ).annotate({ identifier: "AssociateIpamByoasnResult" });
   }
 }
 function __c117(j: number): any {
@@ -50026,9 +49686,7 @@ function __c117(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssociateIpamResourceDiscoveryRequest",
-      });
+      ).annotate({ identifier: "AssociateIpamResourceDiscoveryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -50039,9 +49697,7 @@ function __c117(j: number): any {
             )
             .annotate({ identifier: "IpamResourceDiscoveryAssociation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AssociateIpamResourceDiscoveryResult",
-      });
+      ).annotate({ identifier: "AssociateIpamResourceDiscoveryResult" });
   }
 }
 function __c118(j: number): any {
@@ -50079,9 +49735,7 @@ function __c118(j: number): any {
           State: S.optional(S.String).pipe(T.XmlName("state"), T.Ec2QueryName("State")),
           Tags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("tagSet"), T.Ec2QueryName("TagSet")),
         }),
-      ).annotate({
-        identifier: "IpamResourceDiscoveryAssociation",
-      });
+      ).annotate({ identifier: "IpamResourceDiscoveryAssociation" });
   }
 }
 function __c119(j: number): any {
@@ -50096,9 +49750,7 @@ function __c119(j: number): any {
           AvailabilityZone: S.optional(S.String),
           AvailabilityZoneId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssociateNatGatewayAddressRequest",
-      });
+      ).annotate({ identifier: "AssociateNatGatewayAddressRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -50111,9 +49763,7 @@ function __c119(j: number): any {
             T.Ec2QueryName("NatGatewayAddressSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AssociateNatGatewayAddressResult",
-      });
+      ).annotate({ identifier: "AssociateNatGatewayAddressResult" });
   }
 }
 function __c120(j: number): any {
@@ -50131,9 +49781,7 @@ function __c121(j: number): any {
           VpcId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssociateRouteServerRequest",
-      });
+      ).annotate({ identifier: "AssociateRouteServerRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -50141,9 +49789,7 @@ function __c121(j: number): any {
             .pipe(T.XmlName("routeServerAssociation"), T.Ec2QueryName("RouteServerAssociation"))
             .annotate({ identifier: "RouteServerAssociation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AssociateRouteServerResult",
-      });
+      ).annotate({ identifier: "AssociateRouteServerResult" });
   }
 }
 function __c122(j: number): any {
@@ -50175,9 +49821,7 @@ function __c123(j: number): any {
             T.Ec2QueryName("RouteTableId"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssociateRouteTableRequest",
-      });
+      ).annotate({ identifier: "AssociateRouteTableRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -50189,9 +49833,7 @@ function __c123(j: number): any {
             .pipe(T.XmlName("associationState"), T.Ec2QueryName("AssociationState"))
             .annotate({ identifier: "RouteTableAssociationState" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AssociateRouteTableResult",
-      });
+      ).annotate({ identifier: "AssociateRouteTableResult" });
   }
 }
 function __c124(j: number): any {
@@ -50205,9 +49847,7 @@ function __c124(j: number): any {
             T.Ec2QueryName("StatusMessage"),
           ),
         }),
-      ).annotate({
-        identifier: "RouteTableAssociationState",
-      });
+      ).annotate({ identifier: "RouteTableAssociationState" });
   }
 }
 function __c125(j: number): any {
@@ -50219,17 +49859,13 @@ function __c125(j: number): any {
           VpcId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssociateSecurityGroupVpcRequest",
-      });
+      ).annotate({ identifier: "AssociateSecurityGroupVpcRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           State: S.optional(S.String).pipe(T.XmlName("state"), T.Ec2QueryName("State")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AssociateSecurityGroupVpcResult",
-      });
+      ).annotate({ identifier: "AssociateSecurityGroupVpcResult" });
   }
 }
 function __c126(j: number): any {
@@ -50245,9 +49881,7 @@ function __c126(j: number): any {
             T.Ec2QueryName("Ipv6CidrBlock"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssociateSubnetCidrBlockRequest",
-      });
+      ).annotate({ identifier: "AssociateSubnetCidrBlockRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -50256,9 +49890,7 @@ function __c126(j: number): any {
             .annotate({ identifier: "SubnetIpv6CidrBlockAssociation" }),
           SubnetId: S.optional(S.String).pipe(T.XmlName("subnetId"), T.Ec2QueryName("SubnetId")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AssociateSubnetCidrBlockResult",
-      });
+      ).annotate({ identifier: "AssociateSubnetCidrBlockResult" });
   }
 }
 function __c127(j: number): any {
@@ -50293,9 +49925,7 @@ function __c127(j: number): any {
           ),
           IpSource: S.optional(S.String).pipe(T.XmlName("ipSource"), T.Ec2QueryName("IpSource")),
         }),
-      ).annotate({
-        identifier: "SubnetIpv6CidrBlockAssociation",
-      });
+      ).annotate({ identifier: "SubnetIpv6CidrBlockAssociation" });
   }
 }
 function __c128(j: number): any {
@@ -50308,9 +49938,7 @@ function __c128(j: number): any {
           SubnetIds: S.optional(__S(4128, __c129, 0)),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssociateTransitGatewayMulticastDomainRequest",
-      });
+      ).annotate({ identifier: "AssociateTransitGatewayMulticastDomainRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -50318,9 +49946,7 @@ function __c128(j: number): any {
             .pipe(T.XmlName("associations"), T.Ec2QueryName("Associations"))
             .annotate({ identifier: "TransitGatewayMulticastDomainAssociations" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AssociateTransitGatewayMulticastDomainResult",
-      });
+      ).annotate({ identifier: "AssociateTransitGatewayMulticastDomainResult" });
   }
 }
 function __c129(j: number): any {
@@ -50338,9 +49964,7 @@ function __c130(j: number): any {
           TransitGatewayAttachmentId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssociateTransitGatewayPolicyTableRequest",
-      });
+      ).annotate({ identifier: "AssociateTransitGatewayPolicyTableRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -50348,9 +49972,7 @@ function __c130(j: number): any {
             .pipe(T.XmlName("association"), T.Ec2QueryName("Association"))
             .annotate({ identifier: "TransitGatewayPolicyTableAssociation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AssociateTransitGatewayPolicyTableResult",
-      });
+      ).annotate({ identifier: "AssociateTransitGatewayPolicyTableResult" });
   }
 }
 function __c131(j: number): any {
@@ -50376,9 +49998,7 @@ function __c131(j: number): any {
           ),
           State: S.optional(S.String).pipe(T.XmlName("state"), T.Ec2QueryName("State")),
         }),
-      ).annotate({
-        identifier: "TransitGatewayPolicyTableAssociation",
-      });
+      ).annotate({ identifier: "TransitGatewayPolicyTableAssociation" });
   }
 }
 function __c132(j: number): any {
@@ -50390,9 +50010,7 @@ function __c132(j: number): any {
           TransitGatewayAttachmentId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssociateTransitGatewayRouteTableRequest",
-      });
+      ).annotate({ identifier: "AssociateTransitGatewayRouteTableRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -50400,9 +50018,7 @@ function __c132(j: number): any {
             .pipe(T.XmlName("association"), T.Ec2QueryName("Association"))
             .annotate({ identifier: "TransitGatewayAssociation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AssociateTransitGatewayRouteTableResult",
-      });
+      ).annotate({ identifier: "AssociateTransitGatewayRouteTableResult" });
   }
 }
 function __c133(j: number): any {
@@ -50428,9 +50044,7 @@ function __c133(j: number): any {
           ),
           State: S.optional(S.String).pipe(T.XmlName("state"), T.Ec2QueryName("State")),
         }),
-      ).annotate({
-        identifier: "TransitGatewayAssociation",
-      });
+      ).annotate({ identifier: "TransitGatewayAssociation" });
   }
 }
 function __c134(j: number): any {
@@ -50445,9 +50059,7 @@ function __c134(j: number): any {
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssociateTrunkInterfaceRequest",
-      });
+      ).annotate({ identifier: "AssociateTrunkInterfaceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -50459,9 +50071,7 @@ function __c134(j: number): any {
             T.Ec2QueryName("ClientToken"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AssociateTrunkInterfaceResult",
-      });
+      ).annotate({ identifier: "AssociateTrunkInterfaceResult" });
   }
 }
 function __c135(j: number): any {
@@ -50489,9 +50099,7 @@ function __c135(j: number): any {
           GreKey: S.optional(S.Number).pipe(T.XmlName("greKey"), T.Ec2QueryName("GreKey")),
           Tags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("tagSet"), T.Ec2QueryName("TagSet")),
         }),
-      ).annotate({
-        identifier: "TrunkInterfaceAssociation",
-      });
+      ).annotate({ identifier: "TrunkInterfaceAssociation" });
   }
 }
 function __c136(j: number): any {
@@ -50513,9 +50121,7 @@ function __c136(j: number): any {
             T.Ec2QueryName("AmazonProvidedIpv6CidrBlock"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssociateVpcCidrBlockRequest",
-      });
+      ).annotate({ identifier: "AssociateVpcCidrBlockRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -50527,9 +50133,7 @@ function __c136(j: number): any {
             .annotate({ identifier: "VpcCidrBlockAssociation" }),
           VpcId: S.optional(S.String).pipe(T.XmlName("vpcId"), T.Ec2QueryName("VpcId")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AssociateVpcCidrBlockResult",
-      });
+      ).annotate({ identifier: "AssociateVpcCidrBlockResult" });
   }
 }
 function __c137(j: number): any {
@@ -50569,9 +50173,7 @@ function __c137(j: number): any {
           ),
           IpSource: S.optional(S.String).pipe(T.XmlName("ipSource"), T.Ec2QueryName("IpSource")),
         }),
-      ).annotate({
-        identifier: "VpcIpv6CidrBlockAssociation",
-      });
+      ).annotate({ identifier: "VpcIpv6CidrBlockAssociation" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -50600,17 +50202,13 @@ function __c138(j: number): any {
           VpcId: S.optional(S.String).pipe(T.XmlName("vpcId"), T.Ec2QueryName("VpcId")),
           Groups: S.optional(__S(4448, __c139, 0)).pipe(T.XmlName("SecurityGroupId")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AttachClassicLinkVpcRequest",
-      });
+      ).annotate({ identifier: "AttachClassicLinkVpcRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AttachClassicLinkVpcResult",
-      });
+      ).annotate({ identifier: "AttachClassicLinkVpcResult" });
   }
 }
 function __c139(j: number): any {
@@ -50628,9 +50226,7 @@ function __c140(j: number): any {
           WatermarkName: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AttachImageWatermarkRequest",
-      });
+      ).annotate({ identifier: "AttachImageWatermarkRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -50639,9 +50235,7 @@ function __c140(j: number): any {
             T.Ec2QueryName("WatermarkKey"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AttachImageWatermarkResult",
-      });
+      ).annotate({ identifier: "AttachImageWatermarkResult" });
   }
 }
 function __c141(j: number): any {
@@ -50656,9 +50250,7 @@ function __c141(j: number): any {
           ),
           VpcId: S.optional(S.String).pipe(T.XmlName("vpcId"), T.Ec2QueryName("VpcId")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AttachInternetGatewayRequest",
-      });
+      ).annotate({ identifier: "AttachInternetGatewayRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "AttachInternetGatewayResponse",
@@ -50687,9 +50279,7 @@ function __c142(j: number): any {
             T.Ec2QueryName("DeviceIndex"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AttachNetworkInterfaceRequest",
-      });
+      ).annotate({ identifier: "AttachNetworkInterfaceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -50702,9 +50292,7 @@ function __c142(j: number): any {
             T.Ec2QueryName("NetworkCardIndex"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AttachNetworkInterfaceResult",
-      });
+      ).annotate({ identifier: "AttachNetworkInterfaceResult" });
   }
 }
 function __c143(j: number): any {
@@ -50732,9 +50320,7 @@ function __c144(j: number): any {
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AttachVerifiedAccessTrustProviderRequest",
-      });
+      ).annotate({ identifier: "AttachVerifiedAccessTrustProviderRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -50748,9 +50334,7 @@ function __c144(j: number): any {
             .pipe(T.XmlName("verifiedAccessInstance"), T.Ec2QueryName("VerifiedAccessInstance"))
             .annotate({ identifier: "VerifiedAccessInstance" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AttachVerifiedAccessTrustProviderResult",
-      });
+      ).annotate({ identifier: "AttachVerifiedAccessTrustProviderResult" });
   }
 }
 function __c145(j: number): any {
@@ -50764,9 +50348,7 @@ function __c145(j: number): any {
           ),
           KmsKeyArn: S.optional(S.String).pipe(T.XmlName("kmsKeyArn"), T.Ec2QueryName("KmsKeyArn")),
         }),
-      ).annotate({
-        identifier: "VerifiedAccessSseSpecificationResponse",
-      });
+      ).annotate({ identifier: "VerifiedAccessSseSpecificationResponse" });
   }
 }
 function __c146(j: number): any {
@@ -50795,14 +50377,12 @@ function __c146(j: number): any {
             T.Ec2QueryName("DeviceTrustProviderType"),
           ),
         }),
-      ).annotate({
-        identifier: "VerifiedAccessTrustProviderCondensed",
-      });
+      ).annotate({ identifier: "VerifiedAccessTrustProviderCondensed" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(4672, __c146, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VerifiedAccessTrustProviderCondensed",
-        }),
+        /*@__PURE__*/ __S(4672, __c146, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VerifiedAccessTrustProviderCondensed" }),
       );
     case 2:
       return S.suspend(() =>
@@ -50813,9 +50393,7 @@ function __c146(j: number): any {
             T.Ec2QueryName("NameserverSet"),
           ),
         }),
-      ).annotate({
-        identifier: "VerifiedAccessInstanceCustomSubDomain",
-      });
+      ).annotate({ identifier: "VerifiedAccessInstanceCustomSubDomain" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -50913,9 +50491,7 @@ function __c147(j: number): any {
           ClientId: S.optional(S.String).pipe(T.XmlName("clientId"), T.Ec2QueryName("ClientId")),
           Scope: S.optional(S.String).pipe(T.XmlName("scope"), T.Ec2QueryName("Scope")),
         }),
-      ).annotate({
-        identifier: "NativeApplicationOidcOptions",
-      });
+      ).annotate({ identifier: "NativeApplicationOidcOptions" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -50968,9 +50544,7 @@ function __c147(j: number): any {
             )
             .annotate({ identifier: "NativeApplicationOidcOptions" }),
         }),
-      ).annotate({
-        identifier: "VerifiedAccessTrustProvider",
-      });
+      ).annotate({ identifier: "VerifiedAccessTrustProvider" });
   }
 }
 function __c148(j: number): any {
@@ -51067,9 +50641,7 @@ function __c152(j: number): any {
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AuthorizeClientVpnIngressRequest",
-      });
+      ).annotate({ identifier: "AuthorizeClientVpnIngressRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -51077,9 +50649,7 @@ function __c152(j: number): any {
             .pipe(T.XmlName("status"), T.Ec2QueryName("Status"))
             .annotate({ identifier: "ClientVpnAuthorizationRuleStatus" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AuthorizeClientVpnIngressResult",
-      });
+      ).annotate({ identifier: "AuthorizeClientVpnIngressResult" });
   }
 }
 function __c153(j: number): any {
@@ -51090,9 +50660,7 @@ function __c153(j: number): any {
           Code: S.optional(S.String).pipe(T.XmlName("code"), T.Ec2QueryName("Code")),
           Message: S.optional(S.String).pipe(T.XmlName("message"), T.Ec2QueryName("Message")),
         }),
-      ).annotate({
-        identifier: "ClientVpnAuthorizationRuleStatus",
-      });
+      ).annotate({ identifier: "ClientVpnAuthorizationRuleStatus" });
   }
 }
 function __c154(j: number): any {
@@ -51123,9 +50691,7 @@ function __c154(j: number): any {
             T.Ec2QueryName("IpPermissions"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AuthorizeSecurityGroupEgressRequest",
-      });
+      ).annotate({ identifier: "AuthorizeSecurityGroupEgressRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -51135,9 +50701,7 @@ function __c154(j: number): any {
             T.Ec2QueryName("SecurityGroupRuleSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AuthorizeSecurityGroupEgressResult",
-      });
+      ).annotate({ identifier: "AuthorizeSecurityGroupEgressResult" });
   }
 }
 function __c155(j: number): any {
@@ -51199,9 +50763,9 @@ function __c155(j: number): any {
       ).annotate({ identifier: "SecurityGroupRule" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(4961, __c155, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SecurityGroupRule",
-        }),
+        /*@__PURE__*/ __S(4961, __c155, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SecurityGroupRule" }),
       );
   }
 }
@@ -51209,9 +50773,9 @@ function __c156(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ __S(5024, __c157, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "UserIdGroupPair",
-        }),
+        /*@__PURE__*/ __S(5024, __c157, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "UserIdGroupPair" }),
       );
     case 1:
       return S.suspend(() =>
@@ -51241,9 +50805,9 @@ function __c156(j: number): any {
       ).annotate({ identifier: "Ipv6Range" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(4995, __c156, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "Ipv6Range",
-        }),
+        /*@__PURE__*/ __S(4995, __c156, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "Ipv6Range" }),
       );
     case 5:
       return S.suspend(() =>
@@ -51260,9 +50824,9 @@ function __c156(j: number): any {
       ).annotate({ identifier: "PrefixListId" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ __S(4997, __c156, 5).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "PrefixListId",
-        }),
+        /*@__PURE__*/ __S(4997, __c156, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "PrefixListId" }),
       );
     case 7:
       return S.suspend(() =>
@@ -51293,9 +50857,9 @@ function __c156(j: number): any {
       ).annotate({ identifier: "IpPermission" });
     case 8:
       return S.Array(
-        /*@__PURE__*/ __S(4999, __c156, 7).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpPermission",
-        }),
+        /*@__PURE__*/ __S(4999, __c156, 7)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpPermission" }),
       );
   }
 }
@@ -51341,9 +50905,7 @@ function __c158(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AuthorizeSecurityGroupIngressRequest",
-      });
+      ).annotate({ identifier: "AuthorizeSecurityGroupIngressRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -51353,9 +50915,7 @@ function __c158(j: number): any {
             T.Ec2QueryName("SecurityGroupRuleSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "AuthorizeSecurityGroupIngressResult",
-      });
+      ).annotate({ identifier: "AuthorizeSecurityGroupIngressResult" });
   }
 }
 function __c159(j: number): any {
@@ -51369,9 +50929,7 @@ function __c159(j: number): any {
           Force: S.optional(S.Boolean),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "BatchModifyIpamRoutingPolicyRegistrationsRequest",
-      });
+      ).annotate({ identifier: "BatchModifyIpamRoutingPolicyRegistrationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -51382,9 +50940,7 @@ function __c159(j: number): any {
             )
             .annotate({ identifier: "IpamRoutingPolicyRegistrationDelta" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "BatchModifyIpamRoutingPolicyRegistrationsResult",
-      });
+      ).annotate({ identifier: "BatchModifyIpamRoutingPolicyRegistrationsResult" });
   }
 }
 function __c160(j: number): any {
@@ -51400,9 +50956,7 @@ function __c160(j: number): any {
             T.Ec2QueryName("StateMessage"),
           ),
         }),
-      ).annotate({
-        identifier: "IpamRoutingPolicyRegistrationDelta",
-      });
+      ).annotate({ identifier: "IpamRoutingPolicyRegistrationDelta" });
   }
 }
 function __c161(j: number): any {
@@ -51515,17 +51069,13 @@ function __c164(j: number): any {
           ApplyCancellationCharges: S.optional(S.String),
           QuoteId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CancelCapacityReservationRequest",
-      });
+      ).annotate({ identifier: "CancelCapacityReservationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CancelCapacityReservationResult",
-      });
+      ).annotate({ identifier: "CancelCapacityReservationResult" });
   }
 }
 function __c165(j: number): any {
@@ -51538,9 +51088,7 @@ function __c165(j: number): any {
             T.XmlName("CapacityReservationFleetId"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CancelCapacityReservationFleetsRequest",
-      });
+      ).annotate({ identifier: "CancelCapacityReservationFleetsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -51557,14 +51105,12 @@ function __c165(j: number): any {
             T.Ec2QueryName("CapacityReservationFleetId"),
           ),
         }),
-      ).annotate({
-        identifier: "CapacityReservationFleetCancellationState",
-      });
+      ).annotate({ identifier: "CapacityReservationFleetCancellationState" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(5281, __c165, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CapacityReservationFleetCancellationState",
-        }),
+        /*@__PURE__*/ __S(5281, __c165, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CapacityReservationFleetCancellationState" }),
       );
     case 3:
       return S.suspend(() =>
@@ -51572,9 +51118,7 @@ function __c165(j: number): any {
           Code: S.optional(S.String).pipe(T.XmlName("code"), T.Ec2QueryName("Code")),
           Message: S.optional(S.String).pipe(T.XmlName("message"), T.Ec2QueryName("Message")),
         }),
-      ).annotate({
-        identifier: "CancelCapacityReservationFleetError",
-      });
+      ).annotate({ identifier: "CancelCapacityReservationFleetError" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -51589,14 +51133,12 @@ function __c165(j: number): any {
             )
             .annotate({ identifier: "CancelCapacityReservationFleetError" }),
         }),
-      ).annotate({
-        identifier: "FailedCapacityReservationFleetCancellationResult",
-      });
+      ).annotate({ identifier: "FailedCapacityReservationFleetCancellationResult" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(5284, __c165, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "FailedCapacityReservationFleetCancellationResult",
-        }),
+        /*@__PURE__*/ __S(5284, __c165, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "FailedCapacityReservationFleetCancellationResult" }),
       );
     case 6:
       return S.suspend(() =>
@@ -51610,9 +51152,7 @@ function __c165(j: number): any {
             T.Ec2QueryName("FailedFleetCancellationSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CancelCapacityReservationFleetsResult",
-      });
+      ).annotate({ identifier: "CancelCapacityReservationFleetsResult" });
   }
 }
 function __c166(j: number): any {
@@ -51650,17 +51190,13 @@ function __c168(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean), ReportId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CancelDeclarativePoliciesReportRequest",
-      });
+      ).annotate({ identifier: "CancelDeclarativePoliciesReportRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CancelDeclarativePoliciesReportResult",
-      });
+      ).annotate({ identifier: "CancelDeclarativePoliciesReportResult" });
   }
 }
 function __c169(j: number): any {
@@ -51687,17 +51223,13 @@ function __c170(j: number): any {
         S.Struct({ ImageId: S.optional(S.String), DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CancelImageLaunchPermissionRequest",
-      });
+      ).annotate({ identifier: "CancelImageLaunchPermissionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CancelImageLaunchPermissionResult",
-      });
+      ).annotate({ identifier: "CancelImageLaunchPermissionResult" });
   }
 }
 function __c171(j: number): any {
@@ -51736,9 +51268,7 @@ function __c172(j: number): any {
             T.Ec2QueryName("ReservedInstancesListingId"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CancelReservedInstancesListingRequest",
-      });
+      ).annotate({ identifier: "CancelReservedInstancesListingRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -51747,9 +51277,7 @@ function __c172(j: number): any {
             T.Ec2QueryName("ReservedInstancesListingsSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CancelReservedInstancesListingResult",
-      });
+      ).annotate({ identifier: "CancelReservedInstancesListingResult" });
   }
 }
 function __c173(j: number): any {
@@ -51766,9 +51294,9 @@ function __c173(j: number): any {
       ).annotate({ identifier: "InstanceCount" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(5536, __c173, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceCount",
-        }),
+        /*@__PURE__*/ __S(5536, __c173, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceCount" }),
       );
     case 2:
       return S.suspend(() =>
@@ -51784,9 +51312,9 @@ function __c173(j: number): any {
       ).annotate({ identifier: "PriceSchedule" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(5538, __c173, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "PriceSchedule",
-        }),
+        /*@__PURE__*/ __S(5538, __c173, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "PriceSchedule" }),
       );
     case 4:
       return S.suspend(() =>
@@ -51829,9 +51357,9 @@ function __c173(j: number): any {
       ).annotate({ identifier: "ReservedInstancesListing" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(5540, __c173, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ReservedInstancesListing",
-        }),
+        /*@__PURE__*/ __S(5540, __c173, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ReservedInstancesListing" }),
       );
   }
 }
@@ -51850,9 +51378,7 @@ function __c174(j: number): any {
             T.Ec2QueryName("TerminateInstances"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CancelSpotFleetRequestsRequest",
-      });
+      ).annotate({ identifier: "CancelSpotFleetRequestsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -51869,14 +51395,12 @@ function __c174(j: number): any {
             T.Ec2QueryName("SpotFleetRequestId"),
           ),
         }),
-      ).annotate({
-        identifier: "CancelSpotFleetRequestsSuccessItem",
-      });
+      ).annotate({ identifier: "CancelSpotFleetRequestsSuccessItem" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(5569, __c174, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CancelSpotFleetRequestsSuccessItem",
-        }),
+        /*@__PURE__*/ __S(5569, __c174, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CancelSpotFleetRequestsSuccessItem" }),
       );
     case 3:
       return S.suspend(() =>
@@ -51884,9 +51408,7 @@ function __c174(j: number): any {
           Code: S.optional(S.String).pipe(T.XmlName("code"), T.Ec2QueryName("Code")),
           Message: S.optional(S.String).pipe(T.XmlName("message"), T.Ec2QueryName("Message")),
         }),
-      ).annotate({
-        identifier: "CancelSpotFleetRequestsError",
-      });
+      ).annotate({ identifier: "CancelSpotFleetRequestsError" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -51898,14 +51420,12 @@ function __c174(j: number): any {
             T.Ec2QueryName("SpotFleetRequestId"),
           ),
         }),
-      ).annotate({
-        identifier: "CancelSpotFleetRequestsErrorItem",
-      });
+      ).annotate({ identifier: "CancelSpotFleetRequestsErrorItem" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(5572, __c174, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CancelSpotFleetRequestsErrorItem",
-        }),
+        /*@__PURE__*/ __S(5572, __c174, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CancelSpotFleetRequestsErrorItem" }),
       );
     case 6:
       return S.suspend(() =>
@@ -51919,9 +51439,7 @@ function __c174(j: number): any {
             T.Ec2QueryName("UnsuccessfulFleetRequestSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CancelSpotFleetRequestsResponse",
-      });
+      ).annotate({ identifier: "CancelSpotFleetRequestsResponse" });
   }
 }
 function __c175(j: number): any {
@@ -51940,9 +51458,7 @@ function __c176(j: number): any {
             T.XmlName("SpotInstanceRequestId"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CancelSpotInstanceRequestsRequest",
-      });
+      ).annotate({ identifier: "CancelSpotInstanceRequestsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -51952,14 +51468,12 @@ function __c176(j: number): any {
           ),
           State: S.optional(S.String).pipe(T.XmlName("state"), T.Ec2QueryName("State")),
         }),
-      ).annotate({
-        identifier: "CancelledSpotInstanceRequest",
-      });
+      ).annotate({ identifier: "CancelledSpotInstanceRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(5633, __c176, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CancelledSpotInstanceRequest",
-        }),
+        /*@__PURE__*/ __S(5633, __c176, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CancelledSpotInstanceRequest" }),
       );
     case 3:
       return S.suspend(() =>
@@ -51969,9 +51483,7 @@ function __c176(j: number): any {
             T.Ec2QueryName("SpotInstanceRequestSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CancelSpotInstanceRequestsResult",
-      });
+      ).annotate({ identifier: "CancelSpotInstanceRequestsResult" });
   }
 }
 function __c177(j: number): any {
@@ -51989,18 +51501,14 @@ function __c178(j: number): any {
           ProductCode: S.optional(S.String),
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ConfirmProductInstanceRequest",
-      });
+      ).annotate({ identifier: "ConfirmProductInstanceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
           OwnerId: S.optional(S.String).pipe(T.XmlName("ownerId"), T.Ec2QueryName("OwnerId")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ConfirmProductInstanceResult",
-      });
+      ).annotate({ identifier: "ConfirmProductInstanceResult" });
   }
 }
 function __c179(j: number): any {
@@ -52147,9 +51655,9 @@ function __c184(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ __S(4768, __c149, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VolumeAttachment",
-        }),
+        /*@__PURE__*/ __S(4768, __c149, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VolumeAttachment" }),
       );
     case 1:
       return S.suspend(() =>
@@ -52255,9 +51763,7 @@ function __c186(j: number): any {
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateApplicationStatusCheckRequest",
-      });
+      ).annotate({ identifier: "CreateApplicationStatusCheckRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -52265,9 +51771,7 @@ function __c186(j: number): any {
             .pipe(T.XmlName("applicationStatusCheck"), T.Ec2QueryName("ApplicationStatusCheck"))
             .annotate({ identifier: "ApplicationStatusCheckResponseObject" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateApplicationStatusCheckResult",
-      });
+      ).annotate({ identifier: "CreateApplicationStatusCheckResult" });
   }
 }
 function __c187(j: number): any {
@@ -52281,9 +51785,7 @@ function __c187(j: number): any {
             T.Ec2QueryName("SecurityGroupId"),
           ),
         }),
-      ).annotate({
-        identifier: "HealthCheckPathSourceResponseObject",
-      });
+      ).annotate({ identifier: "HealthCheckPathSourceResponseObject" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -52293,14 +51795,12 @@ function __c187(j: number): any {
             T.Ec2QueryName("SecurityGroupId"),
           ),
         }),
-      ).annotate({
-        identifier: "HealthCheckPathDestinationResponseObject",
-      });
+      ).annotate({ identifier: "HealthCheckPathDestinationResponseObject" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(5985, __c187, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "HealthCheckPathDestinationResponseObject",
-        }),
+        /*@__PURE__*/ __S(5985, __c187, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "HealthCheckPathDestinationResponseObject" }),
       );
     case 3:
       return S.suspend(() =>
@@ -52313,14 +51813,12 @@ function __c187(j: number): any {
             T.Ec2QueryName("DestinationSet"),
           ),
         }),
-      ).annotate({
-        identifier: "HealthCheckPathResponseObject",
-      });
+      ).annotate({ identifier: "HealthCheckPathResponseObject" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(5987, __c187, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "HealthCheckPathResponseObject",
-        }),
+        /*@__PURE__*/ __S(5987, __c187, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "HealthCheckPathResponseObject" }),
       );
     case 5:
       return S.suspend(() =>
@@ -52328,14 +51826,12 @@ function __c187(j: number): any {
           Key: S.optional(S.String).pipe(T.XmlName("key"), T.Ec2QueryName("Key")),
           Value: S.optional(S.String).pipe(T.XmlName("value"), T.Ec2QueryName("Value")),
         }),
-      ).annotate({
-        identifier: "CustomTagKeyValueResponsePair",
-      });
+      ).annotate({ identifier: "CustomTagKeyValueResponsePair" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ __S(5989, __c187, 5).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CustomTagKeyValueResponsePair",
-        }),
+        /*@__PURE__*/ __S(5989, __c187, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CustomTagKeyValueResponsePair" }),
       );
     case 7:
       return S.suspend(() =>
@@ -52401,9 +51897,7 @@ function __c187(j: number): any {
             T.Ec2QueryName("DeletionTime"),
           ),
         }),
-      ).annotate({
-        identifier: "ApplicationStatusCheckResponseObject",
-      });
+      ).annotate({ identifier: "ApplicationStatusCheckResponseObject" });
   }
 }
 function __c188(j: number): any {
@@ -52411,20 +51905,16 @@ function __c188(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ SubnetId: S.optional(S.String), SecurityGroupId: S.optional(S.String) }),
-      ).annotate({
-        identifier: "HealthCheckPathSourceRequestObject",
-      });
+      ).annotate({ identifier: "HealthCheckPathSourceRequestObject" });
     case 1:
       return S.suspend(() =>
         S.Struct({ SubnetId: S.optional(S.String), SecurityGroupId: S.optional(S.String) }),
-      ).annotate({
-        identifier: "HealthCheckPathDestinationRequestObject",
-      });
+      ).annotate({ identifier: "HealthCheckPathDestinationRequestObject" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(6017, __c188, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "HealthCheckPathDestinationRequestObject",
-        }),
+        /*@__PURE__*/ __S(6017, __c188, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "HealthCheckPathDestinationRequestObject" }),
       );
     case 3:
       return S.suspend(() =>
@@ -52432,14 +51922,12 @@ function __c188(j: number): any {
           Source: S.optional(__S(6016, __c188, 0)),
           Destinations: S.optional(__S(6018, __c188, 2)).pipe(T.XmlName("Destination")),
         }),
-      ).annotate({
-        identifier: "HealthCheckPathRequestObject",
-      });
+      ).annotate({ identifier: "HealthCheckPathRequestObject" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(6019, __c188, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "HealthCheckPathRequestObject",
-        }),
+        /*@__PURE__*/ __S(6019, __c188, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "HealthCheckPathRequestObject" }),
       );
   }
 }
@@ -52456,9 +51944,7 @@ function __c189(j: number): any {
           DryRun: S.optional(S.Boolean),
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateCapacityManagerDataExportRequest",
-      });
+      ).annotate({ identifier: "CreateCapacityManagerDataExportRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -52467,9 +51953,7 @@ function __c189(j: number): any {
             T.Ec2QueryName("CapacityManagerDataExportId"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateCapacityManagerDataExportResult",
-      });
+      ).annotate({ identifier: "CreateCapacityManagerDataExportResult" });
   }
 }
 function __c190(j: number): any {
@@ -52497,9 +51981,7 @@ function __c190(j: number): any {
           CommitmentDuration: S.optional(S.Number),
           DeliveryPreference: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateCapacityReservationRequest",
-      });
+      ).annotate({ identifier: "CreateCapacityReservationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -52507,9 +51989,7 @@ function __c190(j: number): any {
             .pipe(T.XmlName("capacityReservation"), T.Ec2QueryName("CapacityReservation"))
             .annotate({ identifier: "CapacityReservation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateCapacityReservationResult",
-      });
+      ).annotate({ identifier: "CreateCapacityReservationResult" });
   }
 }
 function __c191(j: number): any {
@@ -52539,9 +52019,7 @@ function __c191(j: number): any {
             T.Ec2QueryName("ZeroSizePreference"),
           ),
         }),
-      ).annotate({
-        identifier: "InterruptibleCapacityAllocation",
-      });
+      ).annotate({ identifier: "InterruptibleCapacityAllocation" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -52583,9 +52061,7 @@ function __c192(j: number): any {
             T.Ec2QueryName("CommitmentDuration"),
           ),
         }),
-      ).annotate({
-        identifier: "CapacityReservationAdjustmentDetails",
-      });
+      ).annotate({ identifier: "CapacityReservationAdjustmentDetails" });
   }
 }
 function __c193(j: number): any {
@@ -52596,14 +52072,12 @@ function __c193(j: number): any {
           Key: S.optional(S.String).pipe(T.XmlName("key"), T.Ec2QueryName("Key")),
           Value: S.optional(S.String).pipe(T.XmlName("value"), T.Ec2QueryName("Value")),
         }),
-      ).annotate({
-        identifier: "CapacityAllocationMetadataEntry",
-      });
+      ).annotate({ identifier: "CapacityAllocationMetadataEntry" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(6176, __c193, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CapacityAllocationMetadataEntry",
-        }),
+        /*@__PURE__*/ __S(6176, __c193, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CapacityAllocationMetadataEntry" }),
       );
     case 2:
       return S.suspend(() =>
@@ -52621,9 +52095,9 @@ function __c193(j: number): any {
       ).annotate({ identifier: "CapacityAllocation" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(6178, __c193, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CapacityAllocation",
-        }),
+        /*@__PURE__*/ __S(6178, __c193, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CapacityAllocation" }),
       );
     case 4:
       return S.suspend(() =>
@@ -52641,9 +52115,7 @@ function __c193(j: number): any {
             T.Ec2QueryName("CommitmentDuration"),
           ),
         }),
-      ).annotate({
-        identifier: "CapacityReservationCommitmentInfo",
-      });
+      ).annotate({ identifier: "CapacityReservationCommitmentInfo" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -52793,9 +52265,7 @@ function __c194(j: number): any {
           InstanceCount: S.optional(S.Number),
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateCapacityReservationBySplittingRequest",
-      });
+      ).annotate({ identifier: "CreateCapacityReservationBySplittingRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -52816,9 +52286,7 @@ function __c194(j: number): any {
             T.Ec2QueryName("InstanceCount"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateCapacityReservationBySplittingResult",
-      });
+      ).annotate({ identifier: "CreateCapacityReservationBySplittingResult" });
   }
 }
 function __c195(j: number): any {
@@ -52831,9 +52299,7 @@ function __c195(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateCapacityReservationCancellationQuoteRequest",
-      });
+      ).annotate({ identifier: "CreateCapacityReservationCancellationQuoteRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -52844,9 +52310,7 @@ function __c195(j: number): any {
             )
             .annotate({ identifier: "CapacityReservationCancellationQuote" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateCapacityReservationCancellationQuoteResult",
-      });
+      ).annotate({ identifier: "CreateCapacityReservationCancellationQuoteResult" });
   }
 }
 function __c196(j: number): any {
@@ -52863,9 +52327,7 @@ function __c196(j: number): any {
             T.Ec2QueryName("ReservationState"),
           ),
         }),
-      ).annotate({
-        identifier: "CapacityReservationConfiguration",
-      });
+      ).annotate({ identifier: "CapacityReservationConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -52893,9 +52355,9 @@ function __c196(j: number): any {
       ).annotate({ identifier: "CancellationTerms" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(6273, __c196, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CancellationTerms",
-        }),
+        /*@__PURE__*/ __S(6273, __c196, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CancellationTerms" }),
       );
     case 3:
       return S.suspend(() =>
@@ -52929,9 +52391,7 @@ function __c196(j: number): any {
           ),
           Tags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("tagSet"), T.Ec2QueryName("TagSet")),
         }),
-      ).annotate({
-        identifier: "CapacityReservationCancellationQuote",
-      });
+      ).annotate({ identifier: "CapacityReservationCancellationQuote" });
   }
 }
 function __c197(j: number): any {
@@ -52945,9 +52405,7 @@ function __c197(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateCapacityReservationDateChangeQuoteRequest",
-      });
+      ).annotate({ identifier: "CreateCapacityReservationDateChangeQuoteRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -52958,9 +52416,7 @@ function __c197(j: number): any {
             )
             .annotate({ identifier: "CapacityReservationModificationQuote" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateCapacityReservationDateChangeQuoteResult",
-      });
+      ).annotate({ identifier: "CreateCapacityReservationDateChangeQuoteResult" });
   }
 }
 function __c198(j: number): any {
@@ -52985,9 +52441,7 @@ function __c198(j: number): any {
             T.Ec2QueryName("OriginalStartDate"),
           ),
         }),
-      ).annotate({
-        identifier: "ModificationQuoteCurrentConfiguration",
-      });
+      ).annotate({ identifier: "ModificationQuoteCurrentConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -53003,9 +52457,7 @@ function __c198(j: number): any {
             T.Ec2QueryName("NewCommitmentDuration"),
           ),
         }),
-      ).annotate({
-        identifier: "ModificationReservationUpdate",
-      });
+      ).annotate({ identifier: "ModificationReservationUpdate" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -53045,9 +52497,7 @@ function __c198(j: number): any {
             .annotate({ identifier: "ModificationTerms" }),
           Tags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("tagSet"), T.Ec2QueryName("TagSet")),
         }),
-      ).annotate({
-        identifier: "CapacityReservationModificationQuote",
-      });
+      ).annotate({ identifier: "CapacityReservationModificationQuote" });
   }
 }
 function __c199(j: number): any {
@@ -53063,9 +52513,7 @@ function __c199(j: number): any {
           EbsOptimized: S.optional(S.Boolean),
           Priority: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "ReservationFleetInstanceSpecification",
-      });
+      ).annotate({ identifier: "ReservationFleetInstanceSpecification" });
     case 1:
       return S.Array(__S(6368, __c199, 0));
     case 2:
@@ -53083,9 +52531,7 @@ function __c199(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateCapacityReservationFleetRequest",
-      });
+      ).annotate({ identifier: "CreateCapacityReservationFleetRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -53125,9 +52571,7 @@ function __c199(j: number): any {
           ),
           Tags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("tagSet"), T.Ec2QueryName("TagSet")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateCapacityReservationFleetResult",
-      });
+      ).annotate({ identifier: "CreateCapacityReservationFleetResult" });
   }
 }
 function __c200(j: number): any {
@@ -53177,9 +52621,9 @@ function __c200(j: number): any {
       ).annotate({ identifier: "FleetCapacityReservation" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(6400, __c200, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "FleetCapacityReservation",
-        }),
+        /*@__PURE__*/ __S(6400, __c200, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "FleetCapacityReservation" }),
       );
   }
 }
@@ -53193,9 +52637,7 @@ function __c201(j: number): any {
           DryRun: S.optional(S.Boolean),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateCarrierGatewayRequest",
-      });
+      ).annotate({ identifier: "CreateCarrierGatewayRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -53203,9 +52645,7 @@ function __c201(j: number): any {
             .pipe(T.XmlName("carrierGateway"), T.Ec2QueryName("CarrierGateway"))
             .annotate({ identifier: "CarrierGateway" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateCarrierGatewayResult",
-      });
+      ).annotate({ identifier: "CreateCarrierGatewayResult" });
   }
 }
 function __c202(j: number): any {
@@ -53234,18 +52674,14 @@ function __c203(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ ClientRootCertificateChainArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "CertificateAuthenticationRequest",
-      });
+      ).annotate({ identifier: "CertificateAuthenticationRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           SAMLProviderArn: S.optional(S.String),
           SelfServiceSAMLProviderArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "FederatedAuthenticationRequest",
-      });
+      ).annotate({ identifier: "FederatedAuthenticationRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -53254,9 +52690,7 @@ function __c203(j: number): any {
           MutualAuthentication: S.optional(__S(6497, __c203, 1)),
           FederatedAuthentication: S.optional(__S(6498, __c203, 2)),
         }),
-      ).annotate({
-        identifier: "ClientVpnAuthenticationRequest",
-      });
+      ).annotate({ identifier: "ClientVpnAuthenticationRequest" });
     case 4:
       return S.Array(__S(6499, __c203, 3));
     case 5:
@@ -53287,9 +52721,7 @@ function __c203(j: number): any {
           TransitGatewayConfiguration: S.optional(__S(6596, __c206, 4)),
           DevicePostureOptions: S.optional(__S(6599, __c206, 7)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateClientVpnEndpointRequest",
-      });
+      ).annotate({ identifier: "CreateClientVpnEndpointRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -53302,9 +52734,7 @@ function __c203(j: number): any {
             .annotate({ identifier: "ClientVpnEndpointStatus" }),
           DnsName: S.optional(S.String).pipe(T.XmlName("dnsName"), T.Ec2QueryName("DnsName")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateClientVpnEndpointResult",
-      });
+      ).annotate({ identifier: "CreateClientVpnEndpointResult" });
   }
 }
 function __c204(j: number): any {
@@ -53358,9 +52788,7 @@ function __c206(j: number): any {
             T.XmlName("AvailabilityZoneId"),
           ),
         }),
-      ).annotate({
-        identifier: "TransitGatewayConfigurationInputStructure",
-      });
+      ).annotate({ identifier: "TransitGatewayConfigurationInputStructure" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -53368,14 +52796,12 @@ function __c206(j: number): any {
           TenantId: S.optional(S.String),
           PublicSigningKeyUrl: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ClientVpnTrustProviderRequest",
-      });
+      ).annotate({ identifier: "ClientVpnTrustProviderRequest" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ __S(6597, __c206, 5).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ClientVpnTrustProviderRequest",
-        }),
+        /*@__PURE__*/ __S(6597, __c206, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ClientVpnTrustProviderRequest" }),
       );
     case 7:
       return S.suspend(() =>
@@ -53398,9 +52824,7 @@ function __c207(j: number): any {
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateClientVpnRouteRequest",
-      });
+      ).annotate({ identifier: "CreateClientVpnRouteRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -53408,9 +52832,7 @@ function __c207(j: number): any {
             .pipe(T.XmlName("status"), T.Ec2QueryName("Status"))
             .annotate({ identifier: "ClientVpnRouteStatus" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateClientVpnRouteResult",
-      });
+      ).annotate({ identifier: "CreateClientVpnRouteResult" });
   }
 }
 function __c208(j: number): any {
@@ -53517,9 +52939,7 @@ function __c213(j: number): any {
           BgpAsnExtended: S.optional(S.Number),
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateCustomerGatewayRequest",
-      });
+      ).annotate({ identifier: "CreateCustomerGatewayRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -53527,9 +52947,7 @@ function __c213(j: number): any {
             .pipe(T.XmlName("customerGateway"), T.Ec2QueryName("CustomerGateway"))
             .annotate({ identifier: "CustomerGateway" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateCustomerGatewayResult",
-      });
+      ).annotate({ identifier: "CreateCustomerGatewayResult" });
   }
 }
 function __c214(j: number): any {
@@ -53572,9 +52990,7 @@ function __c215(j: number): any {
           Ipv6Native: S.optional(S.Boolean),
           AvailabilityZoneId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateDefaultSubnetRequest",
-      });
+      ).annotate({ identifier: "CreateDefaultSubnetRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -53582,9 +52998,7 @@ function __c215(j: number): any {
             .pipe(T.XmlName("subnet"), T.Ec2QueryName("Subnet"))
             .annotate({ identifier: "Subnet" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateDefaultSubnetResult",
-      });
+      ).annotate({ identifier: "CreateDefaultSubnetResult" });
   }
 }
 function __c216(j: number): any {
@@ -53604,9 +53018,9 @@ function __c217(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ __S(4065, __c127, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SubnetIpv6CidrBlockAssociation",
-        }),
+        /*@__PURE__*/ __S(4065, __c127, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SubnetIpv6CidrBlockAssociation" }),
       );
     case 1:
       return S.suspend(() =>
@@ -53624,9 +53038,7 @@ function __c217(j: number): any {
             T.Ec2QueryName("EnableResourceNameDnsAAAARecord"),
           ),
         }),
-      ).annotate({
-        identifier: "PrivateDnsNameOptionsOnLaunch",
-      });
+      ).annotate({ identifier: "PrivateDnsNameOptionsOnLaunch" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -53732,9 +53144,7 @@ function __c219(j: number): any {
             T.Ec2QueryName("StateMessage"),
           ),
         }),
-      ).annotate({
-        identifier: "VpcEncryptionControlExclusion",
-      });
+      ).annotate({ identifier: "VpcEncryptionControlExclusion" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -53766,9 +53176,7 @@ function __c219(j: number): any {
             .pipe(T.XmlName("elasticFileSystem"), T.Ec2QueryName("ElasticFileSystem"))
             .annotate({ identifier: "VpcEncryptionControlExclusion" }),
         }),
-      ).annotate({
-        identifier: "VpcEncryptionControlExclusions",
-      });
+      ).annotate({ identifier: "VpcEncryptionControlExclusions" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -53795,15 +53203,15 @@ function __c220(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ __S(4385, __c137, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VpcIpv6CidrBlockAssociation",
-        }),
+        /*@__PURE__*/ __S(4385, __c137, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VpcIpv6CidrBlockAssociation" }),
       );
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(4386, __c137, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VpcCidrBlockAssociation",
-        }),
+        /*@__PURE__*/ __S(4386, __c137, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VpcCidrBlockAssociation" }),
       );
     case 2:
       return S.suspend(() =>
@@ -53854,9 +53262,7 @@ function __c221(j: number): any {
           MacCredentials: S.optional(SensitiveString),
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateDelegateMacVolumeOwnershipTaskRequest",
-      });
+      ).annotate({ identifier: "CreateDelegateMacVolumeOwnershipTaskRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -53864,9 +53270,7 @@ function __c221(j: number): any {
             .pipe(T.XmlName("macModificationTask"), T.Ec2QueryName("MacModificationTask"))
             .annotate({ identifier: "MacModificationTask" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateDelegateMacVolumeOwnershipTaskResult",
-      });
+      ).annotate({ identifier: "CreateDelegateMacVolumeOwnershipTaskResult" });
   }
 }
 function __c222(j: number): any {
@@ -53904,9 +53308,7 @@ function __c222(j: number): any {
           ),
           Status: S.optional(S.String).pipe(T.XmlName("status"), T.Ec2QueryName("Status")),
         }),
-      ).annotate({
-        identifier: "MacSystemIntegrityProtectionConfiguration",
-      });
+      ).annotate({ identifier: "MacSystemIntegrityProtectionConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -53946,9 +53348,9 @@ function __c223(j: number): any {
       ).annotate({ identifier: "NewDhcpConfiguration" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(7136, __c223, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "NewDhcpConfiguration",
-        }),
+        /*@__PURE__*/ __S(7136, __c223, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "NewDhcpConfiguration" }),
       );
     case 2:
       return S.suspend(() =>
@@ -53975,9 +53377,9 @@ function __c224(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ __S(7200, __c225, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "AttributeValue",
-        }),
+        /*@__PURE__*/ __S(7200, __c225, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "AttributeValue" }),
       );
     case 1:
       return S.suspend(() =>
@@ -53991,9 +53393,9 @@ function __c224(j: number): any {
       ).annotate({ identifier: "DhcpConfiguration" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(7169, __c224, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "DhcpConfiguration",
-        }),
+        /*@__PURE__*/ __S(7169, __c224, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "DhcpConfiguration" }),
       );
     case 3:
       return S.suspend(() =>
@@ -54030,9 +53432,7 @@ function __c226(j: number): any {
           VpcId: S.optional(S.String),
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateEgressOnlyInternetGatewayRequest",
-      });
+      ).annotate({ identifier: "CreateEgressOnlyInternetGatewayRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -54047,9 +53447,7 @@ function __c226(j: number): any {
             )
             .annotate({ identifier: "EgressOnlyInternetGateway" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateEgressOnlyInternetGatewayResult",
-      });
+      ).annotate({ identifier: "CreateEgressOnlyInternetGatewayResult" });
   }
 }
 function __c227(j: number): any {
@@ -54060,14 +53458,12 @@ function __c227(j: number): any {
           State: S.optional(S.String).pipe(T.XmlName("state"), T.Ec2QueryName("State")),
           VpcId: S.optional(S.String).pipe(T.XmlName("vpcId"), T.Ec2QueryName("VpcId")),
         }),
-      ).annotate({
-        identifier: "InternetGatewayAttachment",
-      });
+      ).annotate({ identifier: "InternetGatewayAttachment" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(7264, __c227, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InternetGatewayAttachment",
-        }),
+        /*@__PURE__*/ __S(7264, __c227, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InternetGatewayAttachment" }),
       );
   }
 }
@@ -54086,9 +53482,7 @@ function __c228(j: number): any {
           ),
           Tags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("tagSet"), T.Ec2QueryName("TagSet")),
         }),
-      ).annotate({
-        identifier: "EgressOnlyInternetGateway",
-      });
+      ).annotate({ identifier: "EgressOnlyInternetGateway" });
   }
 }
 function __c229(j: number): any {
@@ -54099,15 +53493,11 @@ function __c229(j: number): any {
           ReplacementStrategy: S.optional(S.String),
           TerminationDelay: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "FleetSpotCapacityRebalanceRequest",
-      });
+      ).annotate({ identifier: "FleetSpotCapacityRebalanceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ CapacityRebalance: S.optional(__S(7328, __c229, 0)) }),
-      ).annotate({
-        identifier: "FleetSpotMaintenanceStrategiesRequest",
-      });
+      ).annotate({ identifier: "FleetSpotMaintenanceStrategiesRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -54150,17 +53540,11 @@ function __c229(j: number): any {
             T.XmlName("CapacityReservationResourceGroupArn"),
           ),
         }),
-      ).annotate({
-        identifier: "FleetCapacityReservationTargetRequest",
-      });
+      ).annotate({ identifier: "FleetCapacityReservationTargetRequest" });
     case 8:
       return S.suspend(() =>
-        S.Struct({
-          MarketTypes: S.optional(__S(7488, __c234, 0)).pipe(T.XmlName("MarketType")),
-        }),
-      ).annotate({
-        identifier: "ReservedCapacityFallbackOptionsRequest",
-      });
+        S.Struct({ MarketTypes: S.optional(__S(7488, __c234, 0)).pipe(T.XmlName("MarketType")) }),
+      ).annotate({ identifier: "ReservedCapacityFallbackOptionsRequest" });
     case 9:
       return S.suspend(() =>
         S.Struct({
@@ -54169,9 +53553,7 @@ function __c229(j: number): any {
           CapacityReservationTarget: S.optional(__S(7335, __c229, 7)),
           ReservedCapacityFallbackOptions: S.optional(__S(7336, __c229, 8)),
         }),
-      ).annotate({
-        identifier: "ReservedCapacityOptionsRequest",
-      });
+      ).annotate({ identifier: "ReservedCapacityOptionsRequest" });
     case 10:
       return S.suspend(() =>
         S.Struct({
@@ -54211,9 +53593,9 @@ function __c229(j: number): any {
       ).annotate({ identifier: "CreateFleetError" });
     case 12:
       return S.Array(
-        /*@__PURE__*/ __S(7339, __c229, 11).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CreateFleetError",
-        }),
+        /*@__PURE__*/ __S(7339, __c229, 11)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CreateFleetError" }),
       );
     case 13:
       return S.suspend(() =>
@@ -54247,9 +53629,9 @@ function __c229(j: number): any {
       ).annotate({ identifier: "CreateFleetInstance" });
     case 14:
       return S.Array(
-        /*@__PURE__*/ __S(7341, __c229, 13).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CreateFleetInstance",
-        }),
+        /*@__PURE__*/ __S(7341, __c229, 13)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CreateFleetInstance" }),
       );
     case 15:
       return S.suspend(() =>
@@ -54304,21 +53686,15 @@ function __c231(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ Min: S.optional(S.Number), Max: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "NetworkInterfaceCountRequest",
-      });
+      ).annotate({ identifier: "NetworkInterfaceCountRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({ Min: S.optional(S.Number), Max: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "TotalLocalStorageGBRequest",
-      });
+      ).annotate({ identifier: "TotalLocalStorageGBRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({ Min: S.optional(S.Number), Max: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "BaselineEbsBandwidthMbpsRequest",
-      });
+      ).annotate({ identifier: "BaselineEbsBandwidthMbpsRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({ Min: S.optional(S.Number), Max: S.optional(S.Number) }),
@@ -54326,33 +53702,25 @@ function __c231(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({ Min: S.optional(S.Number), Max: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "AcceleratorTotalMemoryMiBRequest",
-      });
+      ).annotate({ identifier: "AcceleratorTotalMemoryMiBRequest" });
     case 8:
       return S.suspend(() =>
         S.Struct({ Min: S.optional(S.Number), Max: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "NetworkBandwidthGbpsRequest",
-      });
+      ).annotate({ identifier: "NetworkBandwidthGbpsRequest" });
     case 9:
       return S.suspend(() => S.Struct({ InstanceFamily: S.optional(S.String) })).annotate({
         identifier: "PerformanceFactorReferenceRequest",
       });
     case 10:
       return S.Array(
-        /*@__PURE__*/ __S(7401, __c231, 9).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "PerformanceFactorReferenceRequest",
-        }),
+        /*@__PURE__*/ __S(7401, __c231, 9)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "PerformanceFactorReferenceRequest" }),
       );
     case 11:
       return S.suspend(() =>
-        S.Struct({
-          References: S.optional(__S(7402, __c231, 10)).pipe(T.XmlName("Reference")),
-        }),
-      ).annotate({
-        identifier: "CpuPerformanceFactorRequest",
-      });
+        S.Struct({ References: S.optional(__S(7402, __c231, 10)).pipe(T.XmlName("Reference")) }),
+      ).annotate({ identifier: "CpuPerformanceFactorRequest" });
     case 12:
       return S.suspend(() => S.Struct({ Cpu: S.optional(__S(7403, __c231, 11)) })).annotate({
         identifier: "BaselinePerformanceFactorsRequest",
@@ -54395,9 +53763,7 @@ function __c231(j: number): any {
           BaselinePerformanceFactors: S.optional(__S(7404, __c231, 12)),
           RequireEncryptionInTransit: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "InstanceRequirementsRequest",
-      });
+      ).annotate({ identifier: "InstanceRequirementsRequest" });
   }
 }
 function __c232(j: number): any {
@@ -54457,9 +53823,7 @@ function __c232(j: number): any {
           Min: S.optional(S.Number).pipe(T.XmlName("min"), T.Ec2QueryName("Min")),
           Max: S.optional(S.Number).pipe(T.XmlName("max"), T.Ec2QueryName("Max")),
         }),
-      ).annotate({
-        identifier: "AcceleratorTotalMemoryMiB",
-      });
+      ).annotate({ identifier: "AcceleratorTotalMemoryMiB" });
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -54475,14 +53839,12 @@ function __c232(j: number): any {
             T.Ec2QueryName("InstanceFamily"),
           ),
         }),
-      ).annotate({
-        identifier: "PerformanceFactorReference",
-      });
+      ).annotate({ identifier: "PerformanceFactorReference" });
     case 10:
       return S.Array(
-        /*@__PURE__*/ __S(7433, __c232, 9).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "PerformanceFactorReference",
-        }),
+        /*@__PURE__*/ __S(7433, __c232, 9)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "PerformanceFactorReference" }),
       );
     case 11:
       return S.suspend(() =>
@@ -54500,9 +53862,7 @@ function __c232(j: number): any {
             .pipe(T.XmlName("cpu"), T.Ec2QueryName("Cpu"))
             .annotate({ identifier: "CpuPerformanceFactor" }),
         }),
-      ).annotate({
-        identifier: "BaselinePerformanceFactors",
-      });
+      ).annotate({ identifier: "BaselinePerformanceFactors" });
     case 13:
       return S.suspend(() =>
         S.Struct({
@@ -54670,14 +54030,12 @@ function __c234(j: number): any {
             .annotate({ identifier: "EbsBlockDeviceResponse" }),
           NoDevice: S.optional(S.String).pipe(T.XmlName("noDevice"), T.Ec2QueryName("NoDevice")),
         }),
-      ).annotate({
-        identifier: "BlockDeviceMappingResponse",
-      });
+      ).annotate({ identifier: "BlockDeviceMappingResponse" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(7491, __c234, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "BlockDeviceMappingResponse",
-        }),
+        /*@__PURE__*/ __S(7491, __c234, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "BlockDeviceMappingResponse" }),
       );
     case 5:
       return S.suspend(() =>
@@ -54713,9 +54071,7 @@ function __c234(j: number): any {
             T.Ec2QueryName("AvailabilityZoneId"),
           ),
         }),
-      ).annotate({
-        identifier: "FleetLaunchTemplateOverrides",
-      });
+      ).annotate({ identifier: "FleetLaunchTemplateOverrides" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -54729,9 +54085,7 @@ function __c234(j: number): any {
             .pipe(T.XmlName("overrides"), T.Ec2QueryName("Overrides"))
             .annotate({ identifier: "FleetLaunchTemplateOverrides" }),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateAndOverridesResponse",
-      });
+      ).annotate({ identifier: "LaunchTemplateAndOverridesResponse" });
     case 7:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")));
   }
@@ -54751,9 +54105,7 @@ function __c235(j: number): any {
           ),
           Version: S.optional(S.String).pipe(T.XmlName("version"), T.Ec2QueryName("Version")),
         }),
-      ).annotate({
-        identifier: "FleetLaunchTemplateSpecification",
-      });
+      ).annotate({ identifier: "FleetLaunchTemplateSpecification" });
   }
 }
 function __c236(j: number): any {
@@ -54800,9 +54152,7 @@ function __c237(j: number): any {
           Version: S.optional(S.String),
           LaunchTemplateSpecificationUserData: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "FleetLaunchTemplateSpecificationRequest",
-      });
+      ).annotate({ identifier: "FleetLaunchTemplateSpecificationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -54815,9 +54165,7 @@ function __c237(j: number): any {
           VolumeSize: S.optional(S.Number),
           VolumeType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "FleetEbsBlockDeviceRequest",
-      });
+      ).annotate({ identifier: "FleetEbsBlockDeviceRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -54826,23 +54174,17 @@ function __c237(j: number): any {
           Ebs: S.optional(__S(7585, __c237, 1)),
           NoDevice: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "FleetBlockDeviceMappingRequest",
-      });
+      ).annotate({ identifier: "FleetBlockDeviceMappingRequest" });
     case 3:
       return S.Array(
         /*@__PURE__*/ __S(7586, __c237, 2)
           .pipe(/*@__PURE__*/ T.XmlName("BlockDeviceMapping"))
-          .annotate({
-            identifier: "FleetBlockDeviceMappingRequest",
-          }),
+          .annotate({ identifier: "FleetBlockDeviceMappingRequest" }),
       );
     case 4:
       return S.suspend(() =>
         S.Struct({ Arn: S.optional(S.String), Name: S.optional(S.String) }),
-      ).annotate({
-        identifier: "FleetIamInstanceProfileSpecificationRequest",
-      });
+      ).annotate({ identifier: "FleetIamInstanceProfileSpecificationRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -54850,9 +54192,7 @@ function __c237(j: number): any {
           HttpPutResponseHopLimit: S.optional(S.Number),
           HttpEndpoint: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "FleetInstanceMetadataOptionsRequest",
-      });
+      ).annotate({ identifier: "FleetInstanceMetadataOptionsRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -54873,14 +54213,12 @@ function __c237(j: number): any {
           ImageId: S.optional(S.String),
           AvailabilityZoneId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "FleetLaunchTemplateOverridesRequest",
-      });
+      ).annotate({ identifier: "FleetLaunchTemplateOverridesRequest" });
     case 7:
       return S.Array(
-        /*@__PURE__*/ __S(7590, __c237, 6).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "FleetLaunchTemplateOverridesRequest",
-        }),
+        /*@__PURE__*/ __S(7590, __c237, 6)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "FleetLaunchTemplateOverridesRequest" }),
       );
     case 8:
       return S.suspend(() =>
@@ -54888,14 +54226,12 @@ function __c237(j: number): any {
           LaunchTemplateSpecification: S.optional(__S(7584, __c237, 0)),
           Overrides: S.optional(__S(7591, __c237, 7)),
         }),
-      ).annotate({
-        identifier: "FleetLaunchTemplateConfigRequest",
-      });
+      ).annotate({ identifier: "FleetLaunchTemplateConfigRequest" });
     case 9:
       return S.Array(
-        /*@__PURE__*/ __S(7592, __c237, 8).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "FleetLaunchTemplateConfigRequest",
-        }),
+        /*@__PURE__*/ __S(7592, __c237, 8)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "FleetLaunchTemplateConfigRequest" }),
       );
     case 10:
       return S.suspend(() =>
@@ -54906,9 +54242,7 @@ function __c237(j: number): any {
           DefaultTargetCapacityType: S.optional(S.String),
           TargetCapacityUnitType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "TargetCapacitySpecificationRequest",
-      });
+      ).annotate({ identifier: "TargetCapacitySpecificationRequest" });
   }
 }
 function __c238(j: number): any {
@@ -54922,23 +54256,19 @@ function __c238(j: number): any {
           HiveCompatiblePartitions: S.optional(S.Boolean),
           PerHourPartition: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "DestinationOptionsRequest",
-      });
+      ).annotate({ identifier: "DestinationOptionsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           ResourceType: S.optional(S.String),
           TagKeys: S.optional(__S(7648, __c239, 0)).pipe(T.XmlName("TagKey")),
         }),
-      ).annotate({
-        identifier: "TagFieldSpecificationRequest",
-      });
+      ).annotate({ identifier: "TagFieldSpecificationRequest" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(7618, __c238, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TagFieldSpecificationRequest",
-        }),
+        /*@__PURE__*/ __S(7618, __c238, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TagFieldSpecificationRequest" }),
       );
     case 4:
       return S.suspend(() =>
@@ -55122,9 +54452,7 @@ function __c243(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(7745, __c242, 1)
           .pipe(/*@__PURE__*/ T.XmlName("BlockDeviceMapping"))
-          .annotate({
-            identifier: "BlockDeviceMapping",
-          }),
+          .annotate({ identifier: "BlockDeviceMapping" }),
       );
   }
 }
@@ -55136,9 +54464,7 @@ function __c244(j: number): any {
           OptionName: S.optional(S.String),
           OptionValues: S.optional(__S(7840, __c245, 0)).pipe(T.XmlName("OptionValue")),
         }),
-      ).annotate({
-        identifier: "ImageUsageResourceTypeOptionRequest",
-      });
+      ).annotate({ identifier: "ImageUsageResourceTypeOptionRequest" });
     case 1:
       return S.Array(__S(7808, __c244, 0));
     case 2:
@@ -55149,9 +54475,7 @@ function __c244(j: number): any {
             T.XmlName("ResourceTypeOption"),
           ),
         }),
-      ).annotate({
-        identifier: "ImageUsageResourceTypeRequest",
-      });
+      ).annotate({ identifier: "ImageUsageResourceTypeRequest" });
     case 3:
       return S.Array(__S(7810, __c244, 2));
     case 4:
@@ -55166,17 +54490,13 @@ function __c244(j: number): any {
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateImageUsageReportRequest",
-      });
+      ).annotate({ identifier: "CreateImageUsageReportRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           ReportId: S.optional(S.String).pipe(T.XmlName("reportId"), T.Ec2QueryName("ReportId")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateImageUsageReportResult",
-      });
+      ).annotate({ identifier: "CreateImageUsageReportResult" });
   }
 }
 function __c245(j: number): any {
@@ -55198,9 +54518,7 @@ function __c246(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           IpAddressType: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateInstanceConnectEndpointRequest",
-      });
+      ).annotate({ identifier: "CreateInstanceConnectEndpointRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -55212,9 +54530,7 @@ function __c246(j: number): any {
             T.Ec2QueryName("ClientToken"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateInstanceConnectEndpointResult",
-      });
+      ).annotate({ identifier: "CreateInstanceConnectEndpointResult" });
   }
 }
 function __c247(j: number): any {
@@ -55232,9 +54548,7 @@ function __c247(j: number): any {
             T.Ec2QueryName("FipsDnsName"),
           ),
         }),
-      ).annotate({
-        identifier: "InstanceConnectEndpointDnsNames",
-      });
+      ).annotate({ identifier: "InstanceConnectEndpointDnsNames" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -55245,9 +54559,7 @@ function __c247(j: number): any {
             .pipe(T.XmlName("dualstack"), T.Ec2QueryName("Dualstack"))
             .annotate({ identifier: "InstanceConnectEndpointDnsNames" }),
         }),
-      ).annotate({
-        identifier: "InstanceConnectEndpointPublicDnsNames",
-      });
+      ).annotate({ identifier: "InstanceConnectEndpointPublicDnsNames" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -55305,9 +54617,7 @@ function __c247(j: number): any {
             T.Ec2QueryName("AvailabilityZoneId"),
           ),
         }),
-      ).annotate({
-        identifier: "Ec2InstanceConnectEndpoint",
-      });
+      ).annotate({ identifier: "Ec2InstanceConnectEndpoint" });
   }
 }
 function __c248(j: number): any {
@@ -55327,9 +54637,7 @@ function __c249(j: number): any {
           CronExpression: S.optional(S.String),
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateInstanceEventWindowRequest",
-      });
+      ).annotate({ identifier: "CreateInstanceEventWindowRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -55337,9 +54645,7 @@ function __c249(j: number): any {
             .pipe(T.XmlName("instanceEventWindow"), T.Ec2QueryName("InstanceEventWindow"))
             .annotate({ identifier: "InstanceEventWindow" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateInstanceEventWindowResult",
-      });
+      ).annotate({ identifier: "CreateInstanceEventWindowResult" });
   }
 }
 function __c250(j: number): any {
@@ -55352,9 +54658,7 @@ function __c250(j: number): any {
           EndWeekDay: S.optional(S.String),
           EndHour: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "InstanceEventWindowTimeRangeRequest",
-      });
+      ).annotate({ identifier: "InstanceEventWindowTimeRangeRequest" });
     case 1:
       return S.Array(__S(8000, __c250, 0));
   }
@@ -55375,9 +54679,7 @@ function __c251(j: number): any {
           S3Bucket: S.optional(S.String).pipe(T.XmlName("s3Bucket"), T.Ec2QueryName("S3Bucket")),
           S3Prefix: S.optional(S.String).pipe(T.XmlName("s3Prefix"), T.Ec2QueryName("S3Prefix")),
         }),
-      ).annotate({
-        identifier: "ExportToS3TaskSpecification",
-      });
+      ).annotate({ identifier: "ExportToS3TaskSpecification" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -55398,9 +54700,7 @@ function __c251(j: number): any {
             .pipe(T.XmlName("exportToS3"), T.Ec2QueryName("ExportToS3"))
             .annotate({ identifier: "ExportToS3TaskSpecification" }),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateInstanceExportTaskRequest",
-      });
+      ).annotate({ identifier: "CreateInstanceExportTaskRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -55408,9 +54708,7 @@ function __c251(j: number): any {
             .pipe(T.XmlName("exportTask"), T.Ec2QueryName("ExportTask"))
             .annotate({ identifier: "ExportTask" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateInstanceExportTaskResult",
-      });
+      ).annotate({ identifier: "CreateInstanceExportTaskResult" });
   }
 }
 function __c252(j: number): any {
@@ -55478,9 +54776,7 @@ function __c253(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateInternetGatewayRequest",
-      });
+      ).annotate({ identifier: "CreateInternetGatewayRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -55488,9 +54784,7 @@ function __c253(j: number): any {
             .pipe(T.XmlName("internetGateway"), T.Ec2QueryName("InternetGateway"))
             .annotate({ identifier: "InternetGateway" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateInternetGatewayResult",
-      });
+      ).annotate({ identifier: "CreateInternetGatewayResult" });
   }
 }
 function __c254(j: number): any {
@@ -55524,9 +54818,7 @@ function __c255(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           ZeroSizePreference: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateInterruptibleCapacityReservationAllocationRequest",
-      });
+      ).annotate({ identifier: "CreateInterruptibleCapacityReservationAllocationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -55544,9 +54836,7 @@ function __c255(j: number): any {
             T.Ec2QueryName("InterruptionType"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateInterruptibleCapacityReservationAllocationResult",
-      });
+      ).annotate({ identifier: "CreateInterruptibleCapacityReservationAllocationResult" });
   }
 }
 function __c256(j: number): any {
@@ -55587,9 +54877,9 @@ function __c257(j: number): any {
       ).annotate({ identifier: "IpamOperatingRegion" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(8224, __c257, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamOperatingRegion",
-        }),
+        /*@__PURE__*/ __S(8224, __c257, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamOperatingRegion" }),
       );
   }
 }
@@ -55676,9 +54966,7 @@ function __c260(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateIpamExternalResourceVerificationTokenRequest",
-      });
+      ).annotate({ identifier: "CreateIpamExternalResourceVerificationTokenRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -55689,9 +54977,7 @@ function __c260(j: number): any {
             )
             .annotate({ identifier: "IpamExternalResourceVerificationToken" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateIpamExternalResourceVerificationTokenResult",
-      });
+      ).annotate({ identifier: "CreateIpamExternalResourceVerificationTokenResult" });
   }
 }
 function __c261(j: number): any {
@@ -55726,9 +55012,7 @@ function __c261(j: number): any {
           Tags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("tagSet"), T.Ec2QueryName("TagSet")),
           State: S.optional(S.String).pipe(T.XmlName("state"), T.Ec2QueryName("State")),
         }),
-      ).annotate({
-        identifier: "IpamExternalResourceVerificationToken",
-      });
+      ).annotate({ identifier: "IpamExternalResourceVerificationToken" });
   }
 }
 function __c262(j: number): any {
@@ -55744,9 +55028,7 @@ function __c262(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateIpamInternetRegistryAssociationRequest",
-      });
+      ).annotate({ identifier: "CreateIpamInternetRegistryAssociationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -55757,9 +55039,7 @@ function __c262(j: number): any {
             )
             .annotate({ identifier: "IpamInternetRegistryAssociation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateIpamInternetRegistryAssociationResult",
-      });
+      ).annotate({ identifier: "CreateIpamInternetRegistryAssociationResult" });
   }
 }
 function __c263(j: number): any {
@@ -55801,9 +55081,7 @@ function __c263(j: number): any {
           ),
           Tags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("tagSet"), T.Ec2QueryName("TagSet")),
         }),
-      ).annotate({
-        identifier: "IpamInternetRegistryAssociation",
-      });
+      ).annotate({ identifier: "IpamInternetRegistryAssociation" });
   }
 }
 function __c264(j: number): any {
@@ -55866,9 +55144,7 @@ function __c266(j: number): any {
           ResourceRegion: S.optional(S.String),
           ResourceOwner: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "IpamPoolSourceResourceRequest",
-      });
+      ).annotate({ identifier: "IpamPoolSourceResourceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -55926,9 +55202,9 @@ function __c269(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ __S(8576, __c268, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamResourceTag",
-        }),
+        /*@__PURE__*/ __S(8576, __c268, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamResourceTag" }),
       );
   }
 }
@@ -56043,9 +55319,9 @@ function __c271(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ __S(8544, __c267, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "RequestIpamResourceTag",
-        }),
+        /*@__PURE__*/ __S(8544, __c267, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "RequestIpamResourceTag" }),
       );
   }
 }
@@ -56062,9 +55338,7 @@ function __c272(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateIpamPrefixListResolverRequest",
-      });
+      ).annotate({ identifier: "CreateIpamPrefixListResolverRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -56072,9 +55346,7 @@ function __c272(j: number): any {
             .pipe(T.XmlName("ipamPrefixListResolver"), T.Ec2QueryName("IpamPrefixListResolver"))
             .annotate({ identifier: "IpamPrefixListResolver" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateIpamPrefixListResolverResult",
-      });
+      ).annotate({ identifier: "CreateIpamPrefixListResolverResult" });
   }
 }
 function __c273(j: number): any {
@@ -56131,14 +55403,12 @@ function __c274(j: number): any {
           ResourceTag: S.optional(__S(8544, __c267, 0)),
           Cidr: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "IpamPrefixListResolverRuleConditionRequest",
-      });
+      ).annotate({ identifier: "IpamPrefixListResolverRuleConditionRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(8768, __c274, 0).pipe(/*@__PURE__*/ T.XmlName("Condition")).annotate({
-          identifier: "IpamPrefixListResolverRuleConditionRequest",
-        }),
+        /*@__PURE__*/ __S(8768, __c274, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("Condition"))
+          .annotate({ identifier: "IpamPrefixListResolverRuleConditionRequest" }),
       );
     case 2:
       return S.suspend(() =>
@@ -56149,14 +55419,12 @@ function __c274(j: number): any {
           ResourceType: S.optional(S.String),
           Conditions: S.optional(__S(8769, __c274, 1)).pipe(T.XmlName("Condition")),
         }),
-      ).annotate({
-        identifier: "IpamPrefixListResolverRuleRequest",
-      });
+      ).annotate({ identifier: "IpamPrefixListResolverRuleRequest" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(8770, __c274, 2).pipe(/*@__PURE__*/ T.XmlName("Rule")).annotate({
-          identifier: "IpamPrefixListResolverRuleRequest",
-        }),
+        /*@__PURE__*/ __S(8770, __c274, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("Rule"))
+          .annotate({ identifier: "IpamPrefixListResolverRuleRequest" }),
       );
   }
 }
@@ -56174,9 +55442,7 @@ function __c275(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateIpamPrefixListResolverTargetRequest",
-      });
+      ).annotate({ identifier: "CreateIpamPrefixListResolverTargetRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -56187,9 +55453,7 @@ function __c275(j: number): any {
             )
             .annotate({ identifier: "IpamPrefixListResolverTarget" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateIpamPrefixListResolverTargetResult",
-      });
+      ).annotate({ identifier: "CreateIpamPrefixListResolverTargetResult" });
   }
 }
 function __c276(j: number): any {
@@ -56237,9 +55501,7 @@ function __c276(j: number): any {
           State: S.optional(S.String).pipe(T.XmlName("state"), T.Ec2QueryName("State")),
           Tags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("tagSet"), T.Ec2QueryName("TagSet")),
         }),
-      ).annotate({
-        identifier: "IpamPrefixListResolverTarget",
-      });
+      ).annotate({ identifier: "IpamPrefixListResolverTarget" });
   }
 }
 function __c277(j: number): any {
@@ -56253,9 +55515,7 @@ function __c277(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateIpamResourceDiscoveryRequest",
-      });
+      ).annotate({ identifier: "CreateIpamResourceDiscoveryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -56263,9 +55523,7 @@ function __c277(j: number): any {
             .pipe(T.XmlName("ipamResourceDiscovery"), T.Ec2QueryName("IpamResourceDiscovery"))
             .annotate({ identifier: "IpamResourceDiscovery" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateIpamResourceDiscoveryResult",
-      });
+      ).annotate({ identifier: "CreateIpamResourceDiscoveryResult" });
   }
 }
 function __c278(j: number): any {
@@ -56278,14 +55536,12 @@ function __c278(j: number): any {
             T.Ec2QueryName("OrganizationsEntityPath"),
           ),
         }),
-      ).annotate({
-        identifier: "IpamOrganizationalUnitExclusion",
-      });
+      ).annotate({ identifier: "IpamOrganizationalUnitExclusion" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(8896, __c278, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamOrganizationalUnitExclusion",
-        }),
+        /*@__PURE__*/ __S(8896, __c278, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamOrganizationalUnitExclusion" }),
       );
     case 2:
       return S.suspend(() =>
@@ -56340,9 +55596,7 @@ function __c279(j: number): any {
           Force: S.optional(S.Boolean),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateIpamRoutingPolicyRegistrationRequest",
-      });
+      ).annotate({ identifier: "CreateIpamRoutingPolicyRegistrationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -56353,9 +55607,7 @@ function __c279(j: number): any {
             )
             .annotate({ identifier: "IpamRoutingPolicyRegistrationDelta" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateIpamRoutingPolicyRegistrationResult",
-      });
+      ).annotate({ identifier: "CreateIpamRoutingPolicyRegistrationResult" });
   }
 }
 function __c280(j: number): any {
@@ -56398,9 +55650,7 @@ function __c282(j: number): any {
             T.Ec2QueryName("ExternalResourceIdentifier"),
           ),
         }),
-      ).annotate({
-        identifier: "IpamScopeExternalAuthorityConfiguration",
-      });
+      ).annotate({ identifier: "IpamScopeExternalAuthorityConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -56447,13 +55697,8 @@ function __c283(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          Type: S.optional(S.String),
-          ExternalResourceIdentifier: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ExternalAuthorityConfiguration",
-      });
+        S.Struct({ Type: S.optional(S.String), ExternalResourceIdentifier: S.optional(S.String) }),
+      ).annotate({ identifier: "ExternalAuthorityConfiguration" });
   }
 }
 function __c284(j: number): any {
@@ -56499,9 +55744,7 @@ function __c285(j: number): any {
           Operator: S.optional(__S(9248, __c289, 0)),
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateLaunchTemplateRequest",
-      });
+      ).annotate({ identifier: "CreateLaunchTemplateRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -56512,9 +55755,7 @@ function __c285(j: number): any {
             .pipe(T.XmlName("warning"), T.Ec2QueryName("Warning"))
             .annotate({ identifier: "ValidationWarning" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateLaunchTemplateResult",
-      });
+      ).annotate({ identifier: "CreateLaunchTemplateResult" });
   }
 }
 function __c286(j: number): any {
@@ -56522,9 +55763,7 @@ function __c286(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ Arn: S.optional(S.String), Name: S.optional(S.String) }),
-      ).annotate({
-        identifier: "LaunchTemplateIamInstanceProfileSpecificationRequest",
-      });
+      ).annotate({ identifier: "LaunchTemplateIamInstanceProfileSpecificationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -56539,9 +55778,7 @@ function __c286(j: number): any {
           VolumeInitializationRate: S.optional(S.Number),
           EbsCardIndex: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateEbsBlockDeviceRequest",
-      });
+      ).annotate({ identifier: "LaunchTemplateEbsBlockDeviceRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -56550,16 +55787,12 @@ function __c286(j: number): any {
           Ebs: S.optional(__S(9153, __c286, 1)),
           NoDevice: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateBlockDeviceMappingRequest",
-      });
+      ).annotate({ identifier: "LaunchTemplateBlockDeviceMappingRequest" });
     case 3:
       return S.Array(
         /*@__PURE__*/ __S(9154, __c286, 2)
           .pipe(/*@__PURE__*/ T.XmlName("BlockDeviceMapping"))
-          .annotate({
-            identifier: "LaunchTemplateBlockDeviceMappingRequest",
-          }),
+          .annotate({ identifier: "LaunchTemplateBlockDeviceMappingRequest" }),
       );
     case 4:
       return S.suspend(() => S.Struct({ Ipv6Address: S.optional(S.String) })).annotate({
@@ -56569,9 +55802,7 @@ function __c286(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(9156, __c286, 4)
           .pipe(/*@__PURE__*/ T.XmlName("InstanceIpv6Address"))
-          .annotate({
-            identifier: "InstanceIpv6AddressRequest",
-          }),
+          .annotate({ identifier: "InstanceIpv6AddressRequest" }),
       );
     case 6:
       return S.suspend(() =>
@@ -56600,9 +55831,7 @@ function __c286(j: number): any {
           ConnectionTrackingSpecification: S.optional(__S(9376, __c293, 0)),
           EnaQueueCount: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateInstanceNetworkInterfaceSpecificationRequest",
-      });
+      ).annotate({ identifier: "LaunchTemplateInstanceNetworkInterfaceSpecificationRequest" });
     case 7:
       return S.Array(
         /*@__PURE__*/ __S(9158, __c286, 6)
@@ -56627,18 +55856,14 @@ function __c286(j: number): any {
           PartitionNumber: S.optional(S.Number),
           GroupId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "LaunchTemplatePlacementRequest",
-      });
+      ).annotate({ identifier: "LaunchTemplatePlacementRequest" });
     case 10:
       return S.suspend(() =>
         S.Struct({
           ResourceType: S.optional(S.String),
           Tags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("Tag")),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateTagSpecificationRequest",
-      });
+      ).annotate({ identifier: "LaunchTemplateTagSpecificationRequest" });
     case 11:
       return S.Array(
         /*@__PURE__*/ __S(9162, __c286, 10)
@@ -56649,21 +55874,17 @@ function __c286(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(9216, __c288, 0)
           .pipe(/*@__PURE__*/ T.XmlName("ElasticGpuSpecification"))
-          .annotate({
-            identifier: "ElasticGpuSpecification",
-          }),
+          .annotate({ identifier: "ElasticGpuSpecification" }),
       );
     case 13:
       return S.suspend(() =>
         S.Struct({ Type: S.optional(S.String), Count: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "LaunchTemplateElasticInferenceAccelerator",
-      });
+      ).annotate({ identifier: "LaunchTemplateElasticInferenceAccelerator" });
     case 14:
       return S.Array(
-        /*@__PURE__*/ __S(9165, __c286, 13).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "LaunchTemplateElasticInferenceAccelerator",
-        }),
+        /*@__PURE__*/ __S(9165, __c286, 13)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "LaunchTemplateElasticInferenceAccelerator" }),
       );
     case 15:
       return S.suspend(() =>
@@ -56674,18 +55895,14 @@ function __c286(j: number): any {
           ValidUntil: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           InstanceInterruptionBehavior: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateSpotMarketOptionsRequest",
-      });
+      ).annotate({ identifier: "LaunchTemplateSpotMarketOptionsRequest" });
     case 16:
       return S.suspend(() =>
         S.Struct({
           MarketType: S.optional(S.String),
           SpotOptions: S.optional(__S(9167, __c286, 15)),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateInstanceMarketOptionsRequest",
-      });
+      ).annotate({ identifier: "LaunchTemplateInstanceMarketOptionsRequest" });
     case 17:
       return S.suspend(() =>
         S.Struct({
@@ -56694,27 +55911,23 @@ function __c286(j: number): any {
           AmdSevSnp: S.optional(S.String),
           NestedVirtualization: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateCpuOptionsRequest",
-      });
+      ).annotate({ identifier: "LaunchTemplateCpuOptionsRequest" });
     case 18:
       return S.suspend(() =>
         S.Struct({
           CapacityReservationPreference: S.optional(S.String),
           CapacityReservationTarget: S.optional(__S(9472, __c296, 0)),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateCapacityReservationSpecificationRequest",
-      });
+      ).annotate({ identifier: "LaunchTemplateCapacityReservationSpecificationRequest" });
     case 19:
       return S.suspend(() => S.Struct({ LicenseConfigurationArn: S.optional(S.String) })).annotate({
         identifier: "LaunchTemplateLicenseConfigurationRequest",
       });
     case 20:
       return S.Array(
-        /*@__PURE__*/ __S(9171, __c286, 19).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "LaunchTemplateLicenseConfigurationRequest",
-        }),
+        /*@__PURE__*/ __S(9171, __c286, 19)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "LaunchTemplateLicenseConfigurationRequest" }),
       );
     case 21:
       return S.suspend(() => S.Struct({ Configured: S.optional(S.Boolean) })).annotate({
@@ -56729,9 +55942,7 @@ function __c286(j: number): any {
           HttpProtocolIpv6: S.optional(S.String),
           InstanceMetadataTags: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateInstanceMetadataOptionsRequest",
-      });
+      ).annotate({ identifier: "LaunchTemplateInstanceMetadataOptionsRequest" });
     case 23:
       return S.suspend(() => S.Struct({ Enabled: S.optional(S.Boolean) })).annotate({
         identifier: "LaunchTemplateEnclaveOptionsRequest",
@@ -56743,9 +55954,7 @@ function __c286(j: number): any {
           EnableResourceNameDnsARecord: S.optional(S.Boolean),
           EnableResourceNameDnsAAAARecord: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "LaunchTemplatePrivateDnsNameOptionsRequest",
-      });
+      ).annotate({ identifier: "LaunchTemplatePrivateDnsNameOptionsRequest" });
     case 25:
       return S.suspend(() => S.Struct({ AutoRecovery: S.optional(S.String) })).annotate({
         identifier: "LaunchTemplateInstanceMaintenanceOptionsRequest",
@@ -56775,9 +55984,7 @@ function __c286(j: number): any {
           InterfaceType: S.optional(S.String),
           NetworkCardIndex: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateInstanceSecondaryInterfaceSpecificationRequest",
-      });
+      ).annotate({ identifier: "LaunchTemplateInstanceSecondaryInterfaceSpecificationRequest" });
     case 30:
       return S.Array(
         /*@__PURE__*/ __S(9181, __c286, 29)
@@ -56832,9 +56039,7 @@ function __c286(j: number): any {
             T.XmlName("SecondaryInterface"),
           ),
         }),
-      ).annotate({
-        identifier: "RequestLaunchTemplateData",
-      });
+      ).annotate({ identifier: "RequestLaunchTemplateData" });
   }
 }
 function __c287(j: number): any {
@@ -56848,9 +56053,9 @@ function __c287(j: number): any {
       ).annotate({ identifier: "ValidationError" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(9184, __c287, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ValidationError",
-        }),
+        /*@__PURE__*/ __S(9184, __c287, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ValidationError" }),
       );
     case 2:
       return S.suspend(() =>
@@ -56894,14 +56099,12 @@ function __c290(j: number): any {
             T.Ec2QueryName("PrivateIpAddress"),
           ),
         }),
-      ).annotate({
-        identifier: "PrivateIpAddressSpecification",
-      });
+      ).annotate({ identifier: "PrivateIpAddressSpecification" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(9280, __c290, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "PrivateIpAddressSpecification",
-        }),
+        /*@__PURE__*/ __S(9280, __c290, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "PrivateIpAddressSpecification" }),
       );
   }
 }
@@ -56913,9 +56116,9 @@ function __c291(j: number): any {
       });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(9312, __c291, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "Ipv4PrefixSpecificationRequest",
-        }),
+        /*@__PURE__*/ __S(9312, __c291, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "Ipv4PrefixSpecificationRequest" }),
       );
     case 2:
       return S.suspend(() => S.Struct({ Ipv6Prefix: S.optional(S.String) })).annotate({
@@ -56923,9 +56126,9 @@ function __c291(j: number): any {
       });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(9314, __c291, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "Ipv6PrefixSpecificationRequest",
-        }),
+        /*@__PURE__*/ __S(9314, __c291, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "Ipv6PrefixSpecificationRequest" }),
       );
   }
 }
@@ -56944,9 +56147,7 @@ function __c293(j: number): any {
           UdpStreamTimeout: S.optional(S.Number),
           UdpTimeout: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "ConnectionTrackingSpecificationRequest",
-      });
+      ).annotate({ identifier: "ConnectionTrackingSpecificationRequest" });
   }
 }
 function __c294(j: number): any {
@@ -56961,9 +56162,7 @@ function __c294(j: number): any {
           EnaSrdEnabled: S.optional(S.Boolean),
           EnaSrdUdpSpecification: S.optional(__S(9408, __c294, 0)),
         }),
-      ).annotate({
-        identifier: "EnaSrdSpecificationRequest",
-      });
+      ).annotate({ identifier: "EnaSrdSpecificationRequest" });
   }
 }
 function __c295(j: number): any {
@@ -56980,9 +56179,7 @@ function __c296(j: number): any {
           CapacityReservationId: S.optional(S.String),
           CapacityReservationResourceGroupArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CapacityReservationTarget",
-      });
+      ).annotate({ identifier: "CapacityReservationTarget" });
   }
 }
 function __c297(j: number): any {
@@ -57033,9 +56230,7 @@ function __c298(j: number): any {
           LaunchTemplateData: S.optional(__S(9183, __c286, 31)),
           ResolveAlias: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateLaunchTemplateVersionRequest",
-      });
+      ).annotate({ identifier: "CreateLaunchTemplateVersionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -57046,9 +56241,7 @@ function __c298(j: number): any {
             .pipe(T.XmlName("warning"), T.Ec2QueryName("Warning"))
             .annotate({ identifier: "ValidationWarning" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateLaunchTemplateVersionResult",
-      });
+      ).annotate({ identifier: "CreateLaunchTemplateVersionResult" });
   }
 }
 function __c299(j: number): any {
@@ -57068,9 +56261,9 @@ function __c299(j: number): any {
       ).annotate({ identifier: "InstanceIpv6Address" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(9568, __c299, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceIpv6Address",
-        }),
+        /*@__PURE__*/ __S(9568, __c299, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceIpv6Address" }),
       );
   }
 }
@@ -57088,9 +56281,7 @@ function __c300(j: number): any {
             T.Ec2QueryName("CapacityReservationResourceGroupArn"),
           ),
         }),
-      ).annotate({
-        identifier: "CapacityReservationTargetResponse",
-      });
+      ).annotate({ identifier: "CapacityReservationTargetResponse" });
   }
 }
 function __c301(j: number): any {
@@ -57141,9 +56332,7 @@ function __c302(j: number): any {
           Arn: S.optional(S.String).pipe(T.XmlName("arn"), T.Ec2QueryName("Arn")),
           Name: S.optional(S.String).pipe(T.XmlName("name"), T.Ec2QueryName("Name")),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateIamInstanceProfileSpecification",
-      });
+      ).annotate({ identifier: "LaunchTemplateIamInstanceProfileSpecification" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -57182,9 +56371,7 @@ function __c302(j: number): any {
             T.Ec2QueryName("EbsCardIndex"),
           ),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateEbsBlockDevice",
-      });
+      ).annotate({ identifier: "LaunchTemplateEbsBlockDevice" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -57201,14 +56388,12 @@ function __c302(j: number): any {
             .annotate({ identifier: "LaunchTemplateEbsBlockDevice" }),
           NoDevice: S.optional(S.String).pipe(T.XmlName("noDevice"), T.Ec2QueryName("NoDevice")),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateBlockDeviceMapping",
-      });
+      ).annotate({ identifier: "LaunchTemplateBlockDeviceMapping" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(9666, __c302, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "LaunchTemplateBlockDeviceMapping",
-        }),
+        /*@__PURE__*/ __S(9666, __c302, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "LaunchTemplateBlockDeviceMapping" }),
       );
     case 4:
       return S.suspend(() =>
@@ -57218,14 +56403,12 @@ function __c302(j: number): any {
             T.Ec2QueryName("Ipv4Prefix"),
           ),
         }),
-      ).annotate({
-        identifier: "Ipv4PrefixSpecificationResponse",
-      });
+      ).annotate({ identifier: "Ipv4PrefixSpecificationResponse" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(9668, __c302, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "Ipv4PrefixSpecificationResponse",
-        }),
+        /*@__PURE__*/ __S(9668, __c302, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "Ipv4PrefixSpecificationResponse" }),
       );
     case 6:
       return S.suspend(() =>
@@ -57235,14 +56418,12 @@ function __c302(j: number): any {
             T.Ec2QueryName("Ipv6Prefix"),
           ),
         }),
-      ).annotate({
-        identifier: "Ipv6PrefixSpecificationResponse",
-      });
+      ).annotate({ identifier: "Ipv6PrefixSpecificationResponse" });
     case 7:
       return S.Array(
-        /*@__PURE__*/ __S(9670, __c302, 6).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "Ipv6PrefixSpecificationResponse",
-        }),
+        /*@__PURE__*/ __S(9670, __c302, 6)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "Ipv6PrefixSpecificationResponse" }),
       );
     case 8:
       return S.suspend(() =>
@@ -57252,9 +56433,7 @@ function __c302(j: number): any {
             T.Ec2QueryName("EnaSrdUdpEnabled"),
           ),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateEnaSrdUdpSpecification",
-      });
+      ).annotate({ identifier: "LaunchTemplateEnaSrdUdpSpecification" });
     case 9:
       return S.suspend(() =>
         S.Struct({
@@ -57266,9 +56445,7 @@ function __c302(j: number): any {
             .pipe(T.XmlName("enaSrdUdpSpecification"), T.Ec2QueryName("EnaSrdUdpSpecification"))
             .annotate({ identifier: "LaunchTemplateEnaSrdUdpSpecification" }),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateEnaSrdSpecification",
-      });
+      ).annotate({ identifier: "LaunchTemplateEnaSrdSpecification" });
     case 10:
       return S.suspend(() =>
         S.Struct({
@@ -57285,9 +56462,7 @@ function __c302(j: number): any {
             T.Ec2QueryName("UdpStreamTimeout"),
           ),
         }),
-      ).annotate({
-        identifier: "ConnectionTrackingSpecification",
-      });
+      ).annotate({ identifier: "ConnectionTrackingSpecification" });
     case 11:
       return S.suspend(() =>
         S.Struct({
@@ -57382,23 +56557,19 @@ function __c302(j: number): any {
             T.Ec2QueryName("EnaQueueCount"),
           ),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateInstanceNetworkInterfaceSpecification",
-      });
+      ).annotate({ identifier: "LaunchTemplateInstanceNetworkInterfaceSpecification" });
     case 12:
       return S.Array(
-        /*@__PURE__*/ __S(9675, __c302, 11).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "LaunchTemplateInstanceNetworkInterfaceSpecification",
-        }),
+        /*@__PURE__*/ __S(9675, __c302, 11)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "LaunchTemplateInstanceNetworkInterfaceSpecification" }),
       );
     case 13:
       return S.suspend(() =>
         S.Struct({
           Enabled: S.optional(S.Boolean).pipe(T.XmlName("enabled"), T.Ec2QueryName("Enabled")),
         }),
-      ).annotate({
-        identifier: "LaunchTemplatesMonitoring",
-      });
+      ).annotate({ identifier: "LaunchTemplatesMonitoring" });
     case 14:
       return S.suspend(() =>
         S.Struct({
@@ -57438,26 +56609,22 @@ function __c302(j: number): any {
           ),
           Tags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("tagSet"), T.Ec2QueryName("TagSet")),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateTagSpecification",
-      });
+      ).annotate({ identifier: "LaunchTemplateTagSpecification" });
     case 16:
       return S.Array(
-        /*@__PURE__*/ __S(9679, __c302, 15).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "LaunchTemplateTagSpecification",
-        }),
+        /*@__PURE__*/ __S(9679, __c302, 15)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "LaunchTemplateTagSpecification" }),
       );
     case 17:
       return S.suspend(() =>
         S.Struct({ Type: S.optional(S.String).pipe(T.XmlName("type"), T.Ec2QueryName("Type")) }),
-      ).annotate({
-        identifier: "ElasticGpuSpecificationResponse",
-      });
+      ).annotate({ identifier: "ElasticGpuSpecificationResponse" });
     case 18:
       return S.Array(
-        /*@__PURE__*/ __S(9681, __c302, 17).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ElasticGpuSpecificationResponse",
-        }),
+        /*@__PURE__*/ __S(9681, __c302, 17)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ElasticGpuSpecificationResponse" }),
       );
     case 19:
       return S.suspend(() =>
@@ -57465,14 +56632,12 @@ function __c302(j: number): any {
           Type: S.optional(S.String).pipe(T.XmlName("type"), T.Ec2QueryName("Type")),
           Count: S.optional(S.Number).pipe(T.XmlName("count"), T.Ec2QueryName("Count")),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateElasticInferenceAcceleratorResponse",
-      });
+      ).annotate({ identifier: "LaunchTemplateElasticInferenceAcceleratorResponse" });
     case 20:
       return S.Array(
-        /*@__PURE__*/ __S(9683, __c302, 19).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "LaunchTemplateElasticInferenceAcceleratorResponse",
-        }),
+        /*@__PURE__*/ __S(9683, __c302, 19)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "LaunchTemplateElasticInferenceAcceleratorResponse" }),
       );
     case 21:
       return S.suspend(() =>
@@ -57495,9 +56660,7 @@ function __c302(j: number): any {
             T.Ec2QueryName("InstanceInterruptionBehavior"),
           ),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateSpotMarketOptions",
-      });
+      ).annotate({ identifier: "LaunchTemplateSpotMarketOptions" });
     case 22:
       return S.suspend(() =>
         S.Struct({
@@ -57509,9 +56672,7 @@ function __c302(j: number): any {
             .pipe(T.XmlName("spotOptions"), T.Ec2QueryName("SpotOptions"))
             .annotate({ identifier: "LaunchTemplateSpotMarketOptions" }),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateInstanceMarketOptions",
-      });
+      ).annotate({ identifier: "LaunchTemplateInstanceMarketOptions" });
     case 23:
       return S.suspend(() =>
         S.Struct({
@@ -57550,9 +56711,7 @@ function __c302(j: number): any {
             )
             .annotate({ identifier: "CapacityReservationTargetResponse" }),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateCapacityReservationSpecificationResponse",
-      });
+      ).annotate({ identifier: "LaunchTemplateCapacityReservationSpecificationResponse" });
     case 26:
       return S.suspend(() =>
         S.Struct({
@@ -57561,14 +56720,12 @@ function __c302(j: number): any {
             T.Ec2QueryName("LicenseConfigurationArn"),
           ),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateLicenseConfiguration",
-      });
+      ).annotate({ identifier: "LaunchTemplateLicenseConfiguration" });
     case 27:
       return S.Array(
-        /*@__PURE__*/ __S(9690, __c302, 26).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "LaunchTemplateLicenseConfiguration",
-        }),
+        /*@__PURE__*/ __S(9690, __c302, 26)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "LaunchTemplateLicenseConfiguration" }),
       );
     case 28:
       return S.suspend(() =>
@@ -57578,9 +56735,7 @@ function __c302(j: number): any {
             T.Ec2QueryName("Configured"),
           ),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateHibernationOptions",
-      });
+      ).annotate({ identifier: "LaunchTemplateHibernationOptions" });
     case 29:
       return S.suspend(() =>
         S.Struct({
@@ -57606,17 +56761,13 @@ function __c302(j: number): any {
             T.Ec2QueryName("InstanceMetadataTags"),
           ),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateInstanceMetadataOptions",
-      });
+      ).annotate({ identifier: "LaunchTemplateInstanceMetadataOptions" });
     case 30:
       return S.suspend(() =>
         S.Struct({
           Enabled: S.optional(S.Boolean).pipe(T.XmlName("enabled"), T.Ec2QueryName("Enabled")),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateEnclaveOptions",
-      });
+      ).annotate({ identifier: "LaunchTemplateEnclaveOptions" });
     case 31:
       return S.suspend(() =>
         S.Struct({
@@ -57633,9 +56784,7 @@ function __c302(j: number): any {
             T.Ec2QueryName("EnableResourceNameDnsAAAARecord"),
           ),
         }),
-      ).annotate({
-        identifier: "LaunchTemplatePrivateDnsNameOptions",
-      });
+      ).annotate({ identifier: "LaunchTemplatePrivateDnsNameOptions" });
   }
 }
 function __c303(j: number): any {
@@ -57648,9 +56797,7 @@ function __c303(j: number): any {
             T.Ec2QueryName("AutoRecovery"),
           ),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateInstanceMaintenanceOptions",
-      });
+      ).annotate({ identifier: "LaunchTemplateInstanceMaintenanceOptions" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -57659,9 +56806,7 @@ function __c303(j: number): any {
             T.Ec2QueryName("BandwidthWeighting"),
           ),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateNetworkPerformanceOptions",
-      });
+      ).annotate({ identifier: "LaunchTemplateNetworkPerformanceOptions" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -57670,14 +56815,12 @@ function __c303(j: number): any {
             T.Ec2QueryName("PrivateIpAddress"),
           ),
         }),
-      ).annotate({
-        identifier: "SecondaryInterfacePrivateIpAddressSpecification",
-      });
+      ).annotate({ identifier: "SecondaryInterfacePrivateIpAddressSpecification" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(9698, __c303, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SecondaryInterfacePrivateIpAddressSpecification",
-        }),
+        /*@__PURE__*/ __S(9698, __c303, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SecondaryInterfacePrivateIpAddressSpecification" }),
       );
     case 4:
       return S.suspend(() =>
@@ -57711,14 +56854,12 @@ function __c303(j: number): any {
             T.Ec2QueryName("NetworkCardIndex"),
           ),
         }),
-      ).annotate({
-        identifier: "LaunchTemplateInstanceSecondaryInterfaceSpecification",
-      });
+      ).annotate({ identifier: "LaunchTemplateInstanceSecondaryInterfaceSpecification" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(9700, __c303, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "LaunchTemplateInstanceSecondaryInterfaceSpecification",
-        }),
+        /*@__PURE__*/ __S(9700, __c303, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "LaunchTemplateInstanceSecondaryInterfaceSpecification" }),
       );
     case 6:
       return S.suspend(() =>
@@ -57839,9 +56980,7 @@ function __c303(j: number): any {
             T.Ec2QueryName("SecondaryInterfaceSet"),
           ),
         }),
-      ).annotate({
-        identifier: "ResponseLaunchTemplateData",
-      });
+      ).annotate({ identifier: "ResponseLaunchTemplateData" });
   }
 }
 function __c304(j: number): any {
@@ -57856,9 +56995,7 @@ function __c304(j: number): any {
           NetworkInterfaceId: S.optional(S.String),
           DestinationPrefixListId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateLocalGatewayRouteRequest",
-      });
+      ).annotate({ identifier: "CreateLocalGatewayRouteRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -57866,9 +57003,7 @@ function __c304(j: number): any {
             .pipe(T.XmlName("route"), T.Ec2QueryName("Route"))
             .annotate({ identifier: "LocalGatewayRoute" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateLocalGatewayRouteResult",
-      });
+      ).annotate({ identifier: "CreateLocalGatewayRouteResult" });
   }
 }
 function __c305(j: number): any {
@@ -57922,9 +57057,7 @@ function __c306(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateLocalGatewayRouteTableRequest",
-      });
+      ).annotate({ identifier: "CreateLocalGatewayRouteTableRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -57932,9 +57065,7 @@ function __c306(j: number): any {
             .pipe(T.XmlName("localGatewayRouteTable"), T.Ec2QueryName("LocalGatewayRouteTable"))
             .annotate({ identifier: "LocalGatewayRouteTable" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateLocalGatewayRouteTableResult",
-      });
+      ).annotate({ identifier: "CreateLocalGatewayRouteTableResult" });
   }
 }
 function __c307(j: number): any {
@@ -58037,9 +57168,7 @@ function __c310(j: number): any {
           State: S.optional(S.String).pipe(T.XmlName("state"), T.Ec2QueryName("State")),
           Tags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("tagSet"), T.Ec2QueryName("TagSet")),
         }),
-      ).annotate({
-        identifier: "LocalGatewayRouteTableVirtualInterfaceGroupAssociation",
-      });
+      ).annotate({ identifier: "LocalGatewayRouteTableVirtualInterfaceGroupAssociation" });
   }
 }
 function __c311(j: number): any {
@@ -58052,9 +57181,7 @@ function __c311(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateLocalGatewayRouteTableVpcAssociationRequest",
-      });
+      ).annotate({ identifier: "CreateLocalGatewayRouteTableVpcAssociationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -58065,9 +57192,7 @@ function __c311(j: number): any {
             )
             .annotate({ identifier: "LocalGatewayRouteTableVpcAssociation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateLocalGatewayRouteTableVpcAssociationResult",
-      });
+      ).annotate({ identifier: "CreateLocalGatewayRouteTableVpcAssociationResult" });
   }
 }
 function __c312(j: number): any {
@@ -58096,9 +57221,7 @@ function __c312(j: number): any {
           State: S.optional(S.String).pipe(T.XmlName("state"), T.Ec2QueryName("State")),
           Tags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("tagSet"), T.Ec2QueryName("TagSet")),
         }),
-      ).annotate({
-        identifier: "LocalGatewayRouteTableVpcAssociation",
-      });
+      ).annotate({ identifier: "LocalGatewayRouteTableVpcAssociation" });
   }
 }
 function __c313(j: number): any {
@@ -58116,9 +57239,7 @@ function __c313(j: number): any {
           DryRun: S.optional(S.Boolean),
           PeerBgpAsnExtended: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateLocalGatewayVirtualInterfaceRequest",
-      });
+      ).annotate({ identifier: "CreateLocalGatewayVirtualInterfaceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -58129,9 +57250,7 @@ function __c313(j: number): any {
             )
             .annotate({ identifier: "LocalGatewayVirtualInterface" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateLocalGatewayVirtualInterfaceResult",
-      });
+      ).annotate({ identifier: "CreateLocalGatewayVirtualInterfaceResult" });
   }
 }
 function __c314(j: number): any {
@@ -58187,9 +57306,7 @@ function __c314(j: number): any {
             T.Ec2QueryName("ConfigurationState"),
           ),
         }),
-      ).annotate({
-        identifier: "LocalGatewayVirtualInterface",
-      });
+      ).annotate({ identifier: "LocalGatewayVirtualInterface" });
   }
 }
 function __c315(j: number): any {
@@ -58203,9 +57320,7 @@ function __c315(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateLocalGatewayVirtualInterfaceGroupRequest",
-      });
+      ).annotate({ identifier: "CreateLocalGatewayVirtualInterfaceGroupRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -58216,9 +57331,7 @@ function __c315(j: number): any {
             )
             .annotate({ identifier: "LocalGatewayVirtualInterfaceGroup" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateLocalGatewayVirtualInterfaceGroupResult",
-      });
+      ).annotate({ identifier: "CreateLocalGatewayVirtualInterfaceGroupResult" });
   }
 }
 function __c316(j: number): any {
@@ -58257,9 +57370,7 @@ function __c316(j: number): any {
             T.Ec2QueryName("ConfigurationState"),
           ),
         }),
-      ).annotate({
-        identifier: "LocalGatewayVirtualInterfaceGroup",
-      });
+      ).annotate({ identifier: "LocalGatewayVirtualInterfaceGroup" });
   }
 }
 function __c317(j: number): any {
@@ -58281,9 +57392,7 @@ function __c318(j: number): any {
           KextSigning: S.optional(S.String),
           NvramProtections: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "MacSystemIntegrityProtectionConfigurationRequest",
-      });
+      ).annotate({ identifier: "MacSystemIntegrityProtectionConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -58295,9 +57404,7 @@ function __c318(j: number): any {
           MacSystemIntegrityProtectionStatus: S.optional(S.String),
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateMacSystemIntegrityProtectionModificationTaskRequest",
-      });
+      ).annotate({ identifier: "CreateMacSystemIntegrityProtectionModificationTaskRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -58305,9 +57412,7 @@ function __c318(j: number): any {
             .pipe(T.XmlName("macModificationTask"), T.Ec2QueryName("MacModificationTask"))
             .annotate({ identifier: "MacModificationTask" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateMacSystemIntegrityProtectionModificationTaskResult",
-      });
+      ).annotate({ identifier: "CreateMacSystemIntegrityProtectionModificationTaskResult" });
   }
 }
 function __c319(j: number): any {
@@ -58323,9 +57428,7 @@ function __c319(j: number): any {
           AddressFamily: S.optional(S.String),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateManagedPrefixListRequest",
-      });
+      ).annotate({ identifier: "CreateManagedPrefixListRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -58333,9 +57436,7 @@ function __c319(j: number): any {
             .pipe(T.XmlName("prefixList"), T.Ec2QueryName("PrefixList"))
             .annotate({ identifier: "ManagedPrefixList" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateManagedPrefixListResult",
-      });
+      ).annotate({ identifier: "CreateManagedPrefixListResult" });
   }
 }
 function __c320(j: number): any {
@@ -58407,9 +57508,7 @@ function __c322(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(10304, __c322, 0)
           .pipe(/*@__PURE__*/ T.XmlName("AvailabilityZoneAddress"))
-          .annotate({
-            identifier: "AvailabilityZoneAddress",
-          }),
+          .annotate({ identifier: "AvailabilityZoneAddress" }),
       );
     case 2:
       return S.suspend(() =>
@@ -58499,14 +57598,12 @@ function __c323(j: number): any {
             T.Ec2QueryName("FailureMessage"),
           ),
         }),
-      ).annotate({
-        identifier: "NatGatewayAttachedAppliance",
-      });
+      ).annotate({ identifier: "NatGatewayAttachedAppliance" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(10337, __c323, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "NatGatewayAttachedAppliance",
-        }),
+        /*@__PURE__*/ __S(10337, __c323, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "NatGatewayAttachedAppliance" }),
       );
     case 3:
       return S.suspend(() =>
@@ -58635,9 +57732,9 @@ function __c327(j: number): any {
       ).annotate({ identifier: "NetworkAclAssociation" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(10464, __c327, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "NetworkAclAssociation",
-        }),
+        /*@__PURE__*/ __S(10464, __c327, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "NetworkAclAssociation" }),
       );
     case 2:
       return S.suspend(() =>
@@ -58667,9 +57764,9 @@ function __c327(j: number): any {
       ).annotate({ identifier: "NetworkAclEntry" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(10466, __c327, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "NetworkAclEntry",
-        }),
+        /*@__PURE__*/ __S(10466, __c327, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "NetworkAclEntry" }),
       );
     case 4:
       return S.suspend(() =>
@@ -58726,9 +57823,7 @@ function __c328(j: number): any {
             .pipe(T.XmlName("portRange"), T.Ec2QueryName("PortRange"))
             .annotate({ identifier: "PortRange" }),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateNetworkAclEntryRequest",
-      });
+      ).annotate({ identifier: "CreateNetworkAclEntryRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateNetworkAclEntryResponse",
@@ -58752,9 +57847,7 @@ function __c329(j: number): any {
           ),
           Protocols: S.optional(__S(10592, __c331, 0)).pipe(T.XmlName("Protocol")),
         }),
-      ).annotate({
-        identifier: "PacketHeaderStatementRequest",
-      });
+      ).annotate({ identifier: "PacketHeaderStatementRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -58772,14 +57865,12 @@ function __c329(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ ResourceStatement: S.optional(__S(10529, __c329, 1)) }),
-      ).annotate({
-        identifier: "ThroughResourcesStatementRequest",
-      });
+      ).annotate({ identifier: "ThroughResourcesStatementRequest" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(10531, __c329, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ThroughResourcesStatementRequest",
-        }),
+        /*@__PURE__*/ __S(10531, __c329, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ThroughResourcesStatementRequest" }),
       );
     case 5:
       return S.suspend(() =>
@@ -58791,9 +57882,9 @@ function __c329(j: number): any {
       ).annotate({ identifier: "AccessScopePathRequest" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ __S(10533, __c329, 5).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "AccessScopePathRequest",
-        }),
+        /*@__PURE__*/ __S(10533, __c329, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "AccessScopePathRequest" }),
       );
     case 7:
       return S.suspend(() =>
@@ -58804,9 +57895,7 @@ function __c329(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateNetworkInsightsAccessScopeRequest",
-      });
+      ).annotate({ identifier: "CreateNetworkInsightsAccessScopeRequest" });
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -58823,9 +57912,7 @@ function __c329(j: number): any {
             )
             .annotate({ identifier: "NetworkInsightsAccessScopeContent" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateNetworkInsightsAccessScopeResult",
-      });
+      ).annotate({ identifier: "CreateNetworkInsightsAccessScopeResult" });
   }
 }
 function __c330(j: number): any {
@@ -58851,9 +57938,7 @@ function __c330(j: number): any {
           ),
           Tags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("tagSet"), T.Ec2QueryName("TagSet")),
         }),
-      ).annotate({
-        identifier: "NetworkInsightsAccessScope",
-      });
+      ).annotate({ identifier: "NetworkInsightsAccessScope" });
   }
 }
 function __c331(j: number): any {
@@ -58924,14 +58009,12 @@ function __c331(j: number): any {
             .pipe(T.XmlName("resourceStatement"), T.Ec2QueryName("ResourceStatement"))
             .annotate({ identifier: "ResourceStatement" }),
         }),
-      ).annotate({
-        identifier: "ThroughResourcesStatement",
-      });
+      ).annotate({ identifier: "ThroughResourcesStatement" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(10596, __c331, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ThroughResourcesStatement",
-        }),
+        /*@__PURE__*/ __S(10596, __c331, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ThroughResourcesStatement" }),
       );
     case 6:
       return S.suspend(() =>
@@ -58950,9 +58033,9 @@ function __c331(j: number): any {
       ).annotate({ identifier: "AccessScopePath" });
     case 7:
       return S.Array(
-        /*@__PURE__*/ __S(10598, __c331, 6).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "AccessScopePath",
-        }),
+        /*@__PURE__*/ __S(10598, __c331, 6)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "AccessScopePath" }),
       );
     case 8:
       return S.suspend(() =>
@@ -58970,9 +58053,7 @@ function __c331(j: number): any {
             T.Ec2QueryName("ExcludePathSet"),
           ),
         }),
-      ).annotate({
-        identifier: "NetworkInsightsAccessScopeContent",
-      });
+      ).annotate({ identifier: "NetworkInsightsAccessScopeContent" });
   }
 }
 function __c332(j: number): any {
@@ -59005,9 +58086,7 @@ function __c332(j: number): any {
           FilterAtSource: S.optional(__S(10625, __c332, 1)),
           FilterAtDestination: S.optional(__S(10625, __c332, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateNetworkInsightsPathRequest",
-      });
+      ).annotate({ identifier: "CreateNetworkInsightsPathRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -59015,9 +58094,7 @@ function __c332(j: number): any {
             .pipe(T.XmlName("networkInsightsPath"), T.Ec2QueryName("NetworkInsightsPath"))
             .annotate({ identifier: "NetworkInsightsPath" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateNetworkInsightsPathResult",
-      });
+      ).annotate({ identifier: "CreateNetworkInsightsPathResult" });
   }
 }
 function __c333(j: number): any {
@@ -59137,9 +58214,7 @@ function __c334(j: number): any {
           ),
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateNetworkInterfaceRequest",
-      });
+      ).annotate({ identifier: "CreateNetworkInterfaceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -59151,9 +58226,7 @@ function __c334(j: number): any {
             T.Ec2QueryName("ClientToken"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateNetworkInterfaceResult",
-      });
+      ).annotate({ identifier: "CreateNetworkInterfaceResult" });
   }
 }
 function __c335(j: number): any {
@@ -59167,9 +58240,9 @@ function __c335(j: number): any {
       ).annotate({ identifier: "GroupIdentifier" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(10720, __c335, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "GroupIdentifier",
-        }),
+        /*@__PURE__*/ __S(10720, __c335, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "GroupIdentifier" }),
       );
   }
 }
@@ -59183,9 +58256,7 @@ function __c336(j: number): any {
             T.Ec2QueryName("EnaSrdUdpEnabled"),
           ),
         }),
-      ).annotate({
-        identifier: "AttachmentEnaSrdUdpSpecification",
-      });
+      ).annotate({ identifier: "AttachmentEnaSrdUdpSpecification" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -59197,9 +58268,7 @@ function __c336(j: number): any {
             .pipe(T.XmlName("enaSrdUdpSpecification"), T.Ec2QueryName("EnaSrdUdpSpecification"))
             .annotate({ identifier: "AttachmentEnaSrdUdpSpecification" }),
         }),
-      ).annotate({
-        identifier: "AttachmentEnaSrdSpecification",
-      });
+      ).annotate({ identifier: "AttachmentEnaSrdSpecification" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -59240,9 +58309,7 @@ function __c336(j: number): any {
             T.Ec2QueryName("EnaQueueCount"),
           ),
         }),
-      ).annotate({
-        identifier: "NetworkInterfaceAttachment",
-      });
+      ).annotate({ identifier: "NetworkInterfaceAttachment" });
   }
 }
 function __c337(j: number): any {
@@ -59270,9 +58337,7 @@ function __c337(j: number): any {
           ),
           CarrierIp: S.optional(S.String).pipe(T.XmlName("carrierIp"), T.Ec2QueryName("CarrierIp")),
         }),
-      ).annotate({
-        identifier: "NetworkInterfaceAssociation",
-      });
+      ).annotate({ identifier: "NetworkInterfaceAssociation" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -59289,9 +58354,7 @@ function __c337(j: number): any {
             T.Ec2QueryName("UdpTimeout"),
           ),
         }),
-      ).annotate({
-        identifier: "ConnectionTrackingConfiguration",
-      });
+      ).annotate({ identifier: "ConnectionTrackingConfiguration" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -59308,14 +58371,12 @@ function __c337(j: number): any {
             T.Ec2QueryName("IsPrimaryIpv6"),
           ),
         }),
-      ).annotate({
-        identifier: "NetworkInterfaceIpv6Address",
-      });
+      ).annotate({ identifier: "NetworkInterfaceIpv6Address" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(10786, __c337, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "NetworkInterfaceIpv6Address",
-        }),
+        /*@__PURE__*/ __S(10786, __c337, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "NetworkInterfaceIpv6Address" }),
       );
     case 4:
       return S.suspend(() =>
@@ -59354,14 +58415,12 @@ function __c337(j: number): any {
             T.Ec2QueryName("PrivateIpAddress"),
           ),
         }),
-      ).annotate({
-        identifier: "NetworkInterfacePrivateIpAddress",
-      });
+      ).annotate({ identifier: "NetworkInterfacePrivateIpAddress" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ __S(10789, __c337, 5).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "NetworkInterfacePrivateIpAddress",
-        }),
+        /*@__PURE__*/ __S(10789, __c337, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "NetworkInterfacePrivateIpAddress" }),
       );
     case 7:
       return S.suspend(() =>
@@ -59374,9 +58433,9 @@ function __c337(j: number): any {
       ).annotate({ identifier: "Ipv6PrefixSpecification" });
     case 8:
       return S.Array(
-        /*@__PURE__*/ __S(10791, __c337, 7).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "Ipv6PrefixSpecification",
-        }),
+        /*@__PURE__*/ __S(10791, __c337, 7)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "Ipv6PrefixSpecification" }),
       );
     case 9:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")));
@@ -59512,9 +58571,7 @@ function __c338(j: number): any {
           Permission: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateNetworkInterfacePermissionRequest",
-      });
+      ).annotate({ identifier: "CreateNetworkInterfacePermissionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -59522,9 +58579,7 @@ function __c338(j: number): any {
             .pipe(T.XmlName("interfacePermission"), T.Ec2QueryName("InterfacePermission"))
             .annotate({ identifier: "NetworkInterfacePermission" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateNetworkInterfacePermissionResult",
-      });
+      ).annotate({ identifier: "CreateNetworkInterfacePermissionResult" });
   }
 }
 function __c339(j: number): any {
@@ -59538,9 +58593,7 @@ function __c339(j: number): any {
             T.Ec2QueryName("StatusMessage"),
           ),
         }),
-      ).annotate({
-        identifier: "NetworkInterfacePermissionState",
-      });
+      ).annotate({ identifier: "NetworkInterfacePermissionState" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -59568,9 +58621,7 @@ function __c339(j: number): any {
             .pipe(T.XmlName("permissionState"), T.Ec2QueryName("PermissionState"))
             .annotate({ identifier: "NetworkInterfacePermissionState" }),
         }),
-      ).annotate({
-        identifier: "NetworkInterfacePermission",
-      });
+      ).annotate({ identifier: "NetworkInterfacePermission" });
   }
 }
 function __c340(j: number): any {
@@ -59588,9 +58639,7 @@ function __c340(j: number): any {
           GroupName: S.optional(S.String).pipe(T.XmlName("groupName"), T.Ec2QueryName("GroupName")),
           Strategy: S.optional(S.String).pipe(T.XmlName("strategy"), T.Ec2QueryName("Strategy")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreatePlacementGroupRequest",
-      });
+      ).annotate({ identifier: "CreatePlacementGroupRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -59598,9 +58647,7 @@ function __c340(j: number): any {
             .pipe(T.XmlName("placementGroup"), T.Ec2QueryName("PlacementGroup"))
             .annotate({ identifier: "PlacementGroup" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreatePlacementGroupResult",
-      });
+      ).annotate({ identifier: "CreatePlacementGroupResult" });
   }
 }
 function __c341(j: number): any {
@@ -59646,17 +58693,13 @@ function __c342(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           NetworkBorderGroup: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreatePublicIpv4PoolRequest",
-      });
+      ).annotate({ identifier: "CreatePublicIpv4PoolRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           PoolId: S.optional(S.String).pipe(T.XmlName("poolId"), T.Ec2QueryName("PoolId")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreatePublicIpv4PoolResult",
-      });
+      ).annotate({ identifier: "CreatePublicIpv4PoolResult" });
   }
 }
 function __c343(j: number): any {
@@ -59674,9 +58717,7 @@ function __c343(j: number): any {
           VolumeInitializationRate: S.optional(S.Number),
           VolumeId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateReplaceRootVolumeTaskRequest",
-      });
+      ).annotate({ identifier: "CreateReplaceRootVolumeTaskRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -59684,9 +58725,7 @@ function __c343(j: number): any {
             .pipe(T.XmlName("replaceRootVolumeTask"), T.Ec2QueryName("ReplaceRootVolumeTask"))
             .annotate({ identifier: "ReplaceRootVolumeTask" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateReplaceRootVolumeTaskResult",
-      });
+      ).annotate({ identifier: "CreateReplaceRootVolumeTaskResult" });
   }
 }
 function __c344(j: number): any {
@@ -59734,14 +58773,12 @@ function __c345(j: number): any {
             T.Ec2QueryName("CurrencyCode"),
           ),
         }),
-      ).annotate({
-        identifier: "PriceScheduleSpecification",
-      });
+      ).annotate({ identifier: "PriceScheduleSpecification" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(11040, __c345, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "PriceScheduleSpecification",
-        }),
+        /*@__PURE__*/ __S(11040, __c345, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "PriceScheduleSpecification" }),
       );
     case 2:
       return S.suspend(() =>
@@ -59763,9 +58800,7 @@ function __c345(j: number): any {
             T.Ec2QueryName("ClientToken"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateReservedInstancesListingRequest",
-      });
+      ).annotate({ identifier: "CreateReservedInstancesListingRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -59774,9 +58809,7 @@ function __c345(j: number): any {
             T.Ec2QueryName("ReservedInstancesListingsSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateReservedInstancesListingResult",
-      });
+      ).annotate({ identifier: "CreateReservedInstancesListingResult" });
   }
 }
 function __c346(j: number): any {
@@ -59790,17 +58823,13 @@ function __c346(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateRestoreImageTaskRequest",
-      });
+      ).annotate({ identifier: "CreateRestoreImageTaskRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ImageId: S.optional(S.String).pipe(T.XmlName("imageId"), T.Ec2QueryName("ImageId")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateRestoreImageTaskResult",
-      });
+      ).annotate({ identifier: "CreateRestoreImageTaskResult" });
   }
 }
 function __c347(j: number): any {
@@ -59929,9 +58958,7 @@ function __c350(j: number): any {
           DryRun: S.optional(S.Boolean),
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateRouteServerEndpointRequest",
-      });
+      ).annotate({ identifier: "CreateRouteServerEndpointRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -59939,9 +58966,7 @@ function __c350(j: number): any {
             .pipe(T.XmlName("routeServerEndpoint"), T.Ec2QueryName("RouteServerEndpoint"))
             .annotate({ identifier: "RouteServerEndpoint" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateRouteServerEndpointResult",
-      });
+      ).annotate({ identifier: "CreateRouteServerEndpointResult" });
   }
 }
 function __c351(j: number): any {
@@ -59978,13 +59003,8 @@ function __c352(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          PeerAsn: S.optional(S.Number),
-          PeerLivenessDetection: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RouteServerBgpOptionsRequest",
-      });
+        S.Struct({ PeerAsn: S.optional(S.Number), PeerLivenessDetection: S.optional(S.String) }),
+      ).annotate({ identifier: "RouteServerBgpOptionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -59994,9 +59014,7 @@ function __c352(j: number): any {
           DryRun: S.optional(S.Boolean),
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateRouteServerPeerRequest",
-      });
+      ).annotate({ identifier: "CreateRouteServerPeerRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -60004,9 +59022,7 @@ function __c352(j: number): any {
             .pipe(T.XmlName("routeServerPeer"), T.Ec2QueryName("RouteServerPeer"))
             .annotate({ identifier: "RouteServerPeer" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateRouteServerPeerResult",
-      });
+      ).annotate({ identifier: "CreateRouteServerPeerResult" });
   }
 }
 function __c353(j: number): any {
@@ -60133,9 +59149,9 @@ function __c355(j: number): any {
       ).annotate({ identifier: "RouteTableAssociation" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(11360, __c355, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "RouteTableAssociation",
-        }),
+        /*@__PURE__*/ __S(11360, __c355, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "RouteTableAssociation" }),
       );
     case 2:
       return S.suspend(() =>
@@ -60145,9 +59161,9 @@ function __c355(j: number): any {
       ).annotate({ identifier: "PropagatingVgw" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(11362, __c355, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "PropagatingVgw",
-        }),
+        /*@__PURE__*/ __S(11362, __c355, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "PropagatingVgw" }),
       );
     case 4:
       return S.suspend(() =>
@@ -60257,9 +59273,7 @@ function __c356(j: number): any {
           NetworkType: S.optional(S.String),
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateSecondaryNetworkRequest",
-      });
+      ).annotate({ identifier: "CreateSecondaryNetworkRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -60271,9 +59285,7 @@ function __c356(j: number): any {
             T.Ec2QueryName("ClientToken"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateSecondaryNetworkResult",
-      });
+      ).annotate({ identifier: "CreateSecondaryNetworkResult" });
   }
 }
 function __c357(j: number): any {
@@ -60292,14 +59304,12 @@ function __c357(j: number): any {
             T.Ec2QueryName("StateReason"),
           ),
         }),
-      ).annotate({
-        identifier: "SecondaryNetworkIpv4CidrBlockAssociation",
-      });
+      ).annotate({ identifier: "SecondaryNetworkIpv4CidrBlockAssociation" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(11424, __c357, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SecondaryNetworkIpv4CidrBlockAssociation",
-        }),
+        /*@__PURE__*/ __S(11424, __c357, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SecondaryNetworkIpv4CidrBlockAssociation" }),
       );
     case 2:
       return S.suspend(() =>
@@ -60341,9 +59351,7 @@ function __c358(j: number): any {
           SecondaryNetworkId: S.optional(S.String),
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateSecondarySubnetRequest",
-      });
+      ).annotate({ identifier: "CreateSecondarySubnetRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -60355,9 +59363,7 @@ function __c358(j: number): any {
             T.Ec2QueryName("ClientToken"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateSecondarySubnetResult",
-      });
+      ).annotate({ identifier: "CreateSecondarySubnetResult" });
   }
 }
 function __c359(j: number): any {
@@ -60376,14 +59382,12 @@ function __c359(j: number): any {
             T.Ec2QueryName("StateReason"),
           ),
         }),
-      ).annotate({
-        identifier: "SecondarySubnetIpv4CidrBlockAssociation",
-      });
+      ).annotate({ identifier: "SecondarySubnetIpv4CidrBlockAssociation" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(11488, __c359, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SecondarySubnetIpv4CidrBlockAssociation",
-        }),
+        /*@__PURE__*/ __S(11488, __c359, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SecondarySubnetIpv4CidrBlockAssociation" }),
       );
     case 2:
       return S.suspend(() =>
@@ -60438,9 +59442,7 @@ function __c360(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateSecurityGroupRequest",
-      });
+      ).annotate({ identifier: "CreateSecurityGroupRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -60451,9 +59453,7 @@ function __c360(j: number): any {
             T.Ec2QueryName("SecurityGroupArn"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateSecurityGroupResult",
-      });
+      ).annotate({ identifier: "CreateSecurityGroupResult" });
   }
 }
 function __c361(j: number): any {
@@ -60616,9 +59616,9 @@ function __c363(j: number): any {
       ).annotate({ identifier: "SnapshotInfo" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(11618, __c363, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SnapshotInfo",
-        }),
+        /*@__PURE__*/ __S(11618, __c363, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SnapshotInfo" }),
       );
     case 4:
       return S.suspend(() =>
@@ -60646,9 +59646,7 @@ function __c365(j: number): any {
           Bucket: S.optional(S.String).pipe(T.XmlName("bucket"), T.Ec2QueryName("Bucket")),
           Prefix: S.optional(S.String).pipe(T.XmlName("prefix"), T.Ec2QueryName("Prefix")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateSpotDatafeedSubscriptionRequest",
-      });
+      ).annotate({ identifier: "CreateSpotDatafeedSubscriptionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -60656,9 +59654,7 @@ function __c365(j: number): any {
             .pipe(T.XmlName("spotDatafeedSubscription"), T.Ec2QueryName("SpotDatafeedSubscription"))
             .annotate({ identifier: "SpotDatafeedSubscription" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateSpotDatafeedSubscriptionResult",
-      });
+      ).annotate({ identifier: "CreateSpotDatafeedSubscriptionResult" });
   }
 }
 function __c366(j: number): any {
@@ -60696,9 +59692,9 @@ function __c368(j: number): any {
       ).annotate({ identifier: "S3ObjectTag" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(11776, __c368, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "S3ObjectTag",
-        }),
+        /*@__PURE__*/ __S(11776, __c368, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "S3ObjectTag" }),
       );
     case 2:
       return S.suspend(() =>
@@ -60708,17 +59704,13 @@ function __c368(j: number): any {
           S3ObjectTags: S.optional(__S(11777, __c368, 1)).pipe(T.XmlName("S3ObjectTag")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateStoreImageTaskRequest",
-      });
+      ).annotate({ identifier: "CreateStoreImageTaskRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           ObjectKey: S.optional(S.String).pipe(T.XmlName("objectKey"), T.Ec2QueryName("ObjectKey")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateStoreImageTaskResult",
-      });
+      ).annotate({ identifier: "CreateStoreImageTaskResult" });
   }
 }
 function __c369(j: number): any {
@@ -60763,9 +59755,7 @@ function __c370(j: number): any {
           DryRun: S.optional(S.Boolean),
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateSubnetCidrReservationRequest",
-      });
+      ).annotate({ identifier: "CreateSubnetCidrReservationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -60773,9 +59763,7 @@ function __c370(j: number): any {
             .pipe(T.XmlName("subnetCidrReservation"), T.Ec2QueryName("SubnetCidrReservation"))
             .annotate({ identifier: "SubnetCidrReservation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateSubnetCidrReservationResult",
-      });
+      ).annotate({ identifier: "CreateSubnetCidrReservationResult" });
   }
 }
 function __c371(j: number): any {
@@ -60814,9 +59802,7 @@ function __c372(j: number): any {
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateTagsRequest" });
     case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "CreateTagsResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "CreateTagsResponse" });
   }
 }
 function __c373(j: number): any {
@@ -60835,9 +59821,7 @@ function __c374(j: number): any {
           DryRun: S.optional(S.Boolean),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateTrafficMirrorFilterRequest",
-      });
+      ).annotate({ identifier: "CreateTrafficMirrorFilterRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -60849,9 +59833,7 @@ function __c374(j: number): any {
             T.Ec2QueryName("ClientToken"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateTrafficMirrorFilterResult",
-      });
+      ).annotate({ identifier: "CreateTrafficMirrorFilterResult" });
   }
 }
 function __c375(j: number): any {
@@ -60914,9 +59896,9 @@ function __c376(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ __S(12001, __c375, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TrafficMirrorFilterRule",
-        }),
+        /*@__PURE__*/ __S(12001, __c375, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TrafficMirrorFilterRule" }),
       );
     case 1:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")));
@@ -60967,9 +59949,7 @@ function __c377(j: number): any {
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateTrafficMirrorFilterRuleRequest",
-      });
+      ).annotate({ identifier: "CreateTrafficMirrorFilterRuleRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -60981,9 +59961,7 @@ function __c377(j: number): any {
             T.Ec2QueryName("ClientToken"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateTrafficMirrorFilterRuleResult",
-      });
+      ).annotate({ identifier: "CreateTrafficMirrorFilterRuleResult" });
   }
 }
 function __c378(j: number): any {
@@ -60991,9 +59969,7 @@ function __c378(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ FromPort: S.optional(S.Number), ToPort: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "TrafficMirrorPortRangeRequest",
-      });
+      ).annotate({ identifier: "TrafficMirrorPortRangeRequest" });
   }
 }
 function __c379(j: number): any {
@@ -61012,9 +59988,7 @@ function __c379(j: number): any {
           DryRun: S.optional(S.Boolean),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateTrafficMirrorSessionRequest",
-      });
+      ).annotate({ identifier: "CreateTrafficMirrorSessionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -61026,9 +60000,7 @@ function __c379(j: number): any {
             T.Ec2QueryName("ClientToken"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateTrafficMirrorSessionResult",
-      });
+      ).annotate({ identifier: "CreateTrafficMirrorSessionResult" });
   }
 }
 function __c380(j: number): any {
@@ -61087,9 +60059,7 @@ function __c381(j: number): any {
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           GatewayLoadBalancerEndpointId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateTrafficMirrorTargetRequest",
-      });
+      ).annotate({ identifier: "CreateTrafficMirrorTargetRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -61101,9 +60071,7 @@ function __c381(j: number): any {
             T.Ec2QueryName("ClientToken"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateTrafficMirrorTargetResult",
-      });
+      ).annotate({ identifier: "CreateTrafficMirrorTargetResult" });
   }
 }
 function __c382(j: number): any {
@@ -61153,9 +60121,7 @@ function __c383(j: number): any {
           MulticastSupport: S.optional(S.String),
           TransitGatewayCidrBlocks: S.optional(__S(12320, __c385, 0)),
         }),
-      ).annotate({
-        identifier: "TransitGatewayRequestOptions",
-      });
+      ).annotate({ identifier: "TransitGatewayRequestOptions" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -61164,9 +60130,7 @@ function __c383(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateTransitGatewayRequest",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -61174,9 +60138,7 @@ function __c383(j: number): any {
             .pipe(T.XmlName("transitGateway"), T.Ec2QueryName("TransitGateway"))
             .annotate({ identifier: "TransitGateway" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateTransitGatewayResult",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayResult" });
   }
 }
 function __c384(j: number): any {
@@ -61295,9 +60257,7 @@ function __c386(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateTransitGatewayConnectRequest",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayConnectRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -61305,9 +60265,7 @@ function __c386(j: number): any {
             .pipe(T.XmlName("transitGatewayConnect"), T.Ec2QueryName("TransitGatewayConnect"))
             .annotate({ identifier: "TransitGatewayConnect" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateTransitGatewayConnectResult",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayConnectResult" });
   }
 }
 function __c387(j: number): any {
@@ -61317,9 +60275,7 @@ function __c387(j: number): any {
         S.Struct({
           Protocol: S.optional(S.String).pipe(T.XmlName("protocol"), T.Ec2QueryName("Protocol")),
         }),
-      ).annotate({
-        identifier: "TransitGatewayConnectOptions",
-      });
+      ).annotate({ identifier: "TransitGatewayConnectOptions" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -61365,9 +60321,7 @@ function __c388(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateTransitGatewayConnectPeerRequest",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayConnectPeerRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -61378,9 +60332,7 @@ function __c388(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayConnectPeer" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateTransitGatewayConnectPeerResult",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayConnectPeerResult" });
   }
 }
 function __c389(j: number): any {
@@ -61405,14 +60357,12 @@ function __c389(j: number): any {
           ),
           BgpStatus: S.optional(S.String).pipe(T.XmlName("bgpStatus"), T.Ec2QueryName("BgpStatus")),
         }),
-      ).annotate({
-        identifier: "TransitGatewayAttachmentBgpConfiguration",
-      });
+      ).annotate({ identifier: "TransitGatewayAttachmentBgpConfiguration" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(12449, __c389, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TransitGatewayAttachmentBgpConfiguration",
-        }),
+        /*@__PURE__*/ __S(12449, __c389, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TransitGatewayAttachmentBgpConfiguration" }),
       );
     case 3:
       return S.suspend(() =>
@@ -61435,9 +60385,7 @@ function __c389(j: number): any {
             T.Ec2QueryName("BgpConfigurations"),
           ),
         }),
-      ).annotate({
-        identifier: "TransitGatewayConnectPeerConfiguration",
-      });
+      ).annotate({ identifier: "TransitGatewayConnectPeerConfiguration" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -61459,9 +60407,7 @@ function __c389(j: number): any {
             .annotate({ identifier: "TransitGatewayConnectPeerConfiguration" }),
           Tags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("tagSet"), T.Ec2QueryName("TagSet")),
         }),
-      ).annotate({
-        identifier: "TransitGatewayConnectPeer",
-      });
+      ).annotate({ identifier: "TransitGatewayConnectPeer" });
   }
 }
 function __c390(j: number): any {
@@ -61476,9 +60422,7 @@ function __c390(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateTransitGatewayMeteringPolicyRequest",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayMeteringPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -61489,9 +60433,7 @@ function __c390(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayMeteringPolicy" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateTransitGatewayMeteringPolicyResult",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayMeteringPolicyResult" });
   }
 }
 function __c391(j: number): any {
@@ -61518,9 +60460,7 @@ function __c391(j: number): any {
           ),
           Tags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("tagSet"), T.Ec2QueryName("TagSet")),
         }),
-      ).annotate({
-        identifier: "TransitGatewayMeteringPolicy",
-      });
+      ).annotate({ identifier: "TransitGatewayMeteringPolicy" });
   }
 }
 function __c392(j: number): any {
@@ -61548,9 +60488,7 @@ function __c393(j: number): any {
           MeteredAccount: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateTransitGatewayMeteringPolicyEntryRequest",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayMeteringPolicyEntryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -61561,9 +60499,7 @@ function __c393(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayMeteringPolicyEntry" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateTransitGatewayMeteringPolicyEntryResult",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayMeteringPolicyEntryResult" });
   }
 }
 function __c394(j: number): any {
@@ -61605,9 +60541,7 @@ function __c394(j: number): any {
           ),
           Protocol: S.optional(S.String).pipe(T.XmlName("protocol"), T.Ec2QueryName("Protocol")),
         }),
-      ).annotate({
-        identifier: "TransitGatewayMeteringPolicyRule",
-      });
+      ).annotate({ identifier: "TransitGatewayMeteringPolicyRule" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -61632,9 +60566,7 @@ function __c394(j: number): any {
             .pipe(T.XmlName("meteringPolicyRule"), T.Ec2QueryName("MeteringPolicyRule"))
             .annotate({ identifier: "TransitGatewayMeteringPolicyRule" }),
         }),
-      ).annotate({
-        identifier: "TransitGatewayMeteringPolicyEntry",
-      });
+      ).annotate({ identifier: "TransitGatewayMeteringPolicyEntry" });
   }
 }
 function __c395(j: number): any {
@@ -61646,9 +60578,7 @@ function __c395(j: number): any {
           StaticSourcesSupport: S.optional(S.String),
           AutoAcceptSharedAssociations: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateTransitGatewayMulticastDomainRequestOptions",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayMulticastDomainRequestOptions" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -61657,9 +60587,7 @@ function __c395(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateTransitGatewayMulticastDomainRequest",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayMulticastDomainRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -61670,9 +60598,7 @@ function __c395(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayMulticastDomain" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateTransitGatewayMulticastDomainResult",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayMulticastDomainResult" });
   }
 }
 function __c396(j: number): any {
@@ -61693,9 +60619,7 @@ function __c396(j: number): any {
             T.Ec2QueryName("AutoAcceptSharedAssociations"),
           ),
         }),
-      ).annotate({
-        identifier: "TransitGatewayMulticastDomainOptions",
-      });
+      ).annotate({ identifier: "TransitGatewayMulticastDomainOptions" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -61722,9 +60646,7 @@ function __c396(j: number): any {
           ),
           Tags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("tagSet"), T.Ec2QueryName("TagSet")),
         }),
-      ).annotate({
-        identifier: "TransitGatewayMulticastDomain",
-      });
+      ).annotate({ identifier: "TransitGatewayMulticastDomain" });
   }
 }
 function __c397(j: number): any {
@@ -61744,9 +60666,7 @@ function __c397(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateTransitGatewayPeeringAttachmentRequest",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayPeeringAttachmentRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -61757,9 +60677,7 @@ function __c397(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayPeeringAttachment" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateTransitGatewayPeeringAttachmentResult",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayPeeringAttachmentResult" });
   }
 }
 function __c398(j: number): any {
@@ -61771,9 +60689,7 @@ function __c398(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateTransitGatewayPolicyTableRequest",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayPolicyTableRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -61784,9 +60700,7 @@ function __c398(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayPolicyTable" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateTransitGatewayPolicyTableResult",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayPolicyTableResult" });
   }
 }
 function __c399(j: number): any {
@@ -61809,9 +60723,7 @@ function __c399(j: number): any {
           ),
           Tags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("tagSet"), T.Ec2QueryName("TagSet")),
         }),
-      ).annotate({
-        identifier: "TransitGatewayPolicyTable",
-      });
+      ).annotate({ identifier: "TransitGatewayPolicyTable" });
   }
 }
 function __c400(j: number): any {
@@ -61825,9 +60737,7 @@ function __c400(j: number): any {
           TargetRouteTableId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateTransitGatewayPolicyTableEntryRequest",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayPolicyTableEntryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -61838,9 +60748,7 @@ function __c400(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayPolicyTableEntry" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateTransitGatewayPolicyTableEntryResult",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayPolicyTableEntryResult" });
   }
 }
 function __c401(j: number): any {
@@ -61857,9 +60765,7 @@ function __c401(j: number): any {
             T.Ec2QueryName("MetaDataValue"),
           ),
         }),
-      ).annotate({
-        identifier: "TransitGatewayPolicyRuleMetaData",
-      });
+      ).annotate({ identifier: "TransitGatewayPolicyRuleMetaData" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -61901,9 +60807,7 @@ function __c401(j: number): any {
           ),
           State: S.optional(S.String).pipe(T.XmlName("state"), T.Ec2QueryName("State")),
         }),
-      ).annotate({
-        identifier: "TransitGatewayPolicyTableEntry",
-      });
+      ).annotate({ identifier: "TransitGatewayPolicyTableEntry" });
   }
 }
 function __c402(j: number): any {
@@ -61911,9 +60815,7 @@ function __c402(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ MetaDataKey: S.optional(S.String), MetaDataValue: S.optional(S.String) }),
-      ).annotate({
-        identifier: "TransitGatewayRequestPolicyRuleMetaData",
-      });
+      ).annotate({ identifier: "TransitGatewayRequestPolicyRuleMetaData" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -61924,9 +60826,7 @@ function __c402(j: number): any {
           Protocol: S.optional(S.String),
           MetaData: S.optional(__S(12864, __c402, 0)),
         }),
-      ).annotate({
-        identifier: "TransitGatewayRequestPolicyRule",
-      });
+      ).annotate({ identifier: "TransitGatewayRequestPolicyRule" });
   }
 }
 function __c403(j: number): any {
@@ -61940,9 +60840,7 @@ function __c403(j: number): any {
           Blackhole: S.optional(S.Boolean),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateTransitGatewayPrefixListReferenceRequest",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayPrefixListReferenceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -61953,9 +60851,7 @@ function __c403(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayPrefixListReference" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateTransitGatewayPrefixListReferenceResult",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayPrefixListReferenceResult" });
   }
 }
 function __c404(j: number): any {
@@ -61976,9 +60872,7 @@ function __c404(j: number): any {
             T.Ec2QueryName("ResourceId"),
           ),
         }),
-      ).annotate({
-        identifier: "TransitGatewayPrefixListAttachment",
-      });
+      ).annotate({ identifier: "TransitGatewayPrefixListAttachment" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -62003,9 +60897,7 @@ function __c404(j: number): any {
             .pipe(T.XmlName("transitGatewayAttachment"), T.Ec2QueryName("TransitGatewayAttachment"))
             .annotate({ identifier: "TransitGatewayPrefixListAttachment" }),
         }),
-      ).annotate({
-        identifier: "TransitGatewayPrefixListReference",
-      });
+      ).annotate({ identifier: "TransitGatewayPrefixListReference" });
   }
 }
 function __c405(j: number): any {
@@ -62019,9 +60911,7 @@ function __c405(j: number): any {
           Blackhole: S.optional(S.Boolean),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateTransitGatewayRouteRequest",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayRouteRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -62029,9 +60919,7 @@ function __c405(j: number): any {
             .pipe(T.XmlName("route"), T.Ec2QueryName("Route"))
             .annotate({ identifier: "TransitGatewayRoute" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateTransitGatewayRouteResult",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayRouteResult" });
   }
 }
 function __c406(j: number): any {
@@ -62052,14 +60940,12 @@ function __c406(j: number): any {
             T.Ec2QueryName("ResourceType"),
           ),
         }),
-      ).annotate({
-        identifier: "TransitGatewayRouteAttachment",
-      });
+      ).annotate({ identifier: "TransitGatewayRouteAttachment" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(12992, __c406, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TransitGatewayRouteAttachment",
-        }),
+        /*@__PURE__*/ __S(12992, __c406, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TransitGatewayRouteAttachment" }),
       );
     case 2:
       return S.suspend(() =>
@@ -62095,9 +60981,7 @@ function __c407(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateTransitGatewayRouteTableRequest",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayRouteTableRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -62105,9 +60989,7 @@ function __c407(j: number): any {
             .pipe(T.XmlName("transitGatewayRouteTable"), T.Ec2QueryName("TransitGatewayRouteTable"))
             .annotate({ identifier: "TransitGatewayRouteTable" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateTransitGatewayRouteTableResult",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayRouteTableResult" });
   }
 }
 function __c408(j: number): any {
@@ -62151,9 +61033,7 @@ function __c409(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateTransitGatewayRouteTableAnnouncementRequest",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayRouteTableAnnouncementRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -62164,9 +61044,7 @@ function __c409(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayRouteTableAnnouncement" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateTransitGatewayRouteTableAnnouncementResult",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayRouteTableAnnouncementResult" });
   }
 }
 function __c410(j: number): any {
@@ -62213,9 +61091,7 @@ function __c410(j: number): any {
           ),
           Tags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("tagSet"), T.Ec2QueryName("TagSet")),
         }),
-      ).annotate({
-        identifier: "TransitGatewayRouteTableAnnouncement",
-      });
+      ).annotate({ identifier: "TransitGatewayRouteTableAnnouncement" });
   }
 }
 function __c411(j: number): any {
@@ -62228,9 +61104,7 @@ function __c411(j: number): any {
           Ipv6Support: S.optional(S.String),
           ApplianceModeSupport: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateTransitGatewayVpcAttachmentRequestOptions",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayVpcAttachmentRequestOptions" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -62241,9 +61115,7 @@ function __c411(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateTransitGatewayVpcAttachmentRequest",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayVpcAttachmentRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -62254,9 +61126,7 @@ function __c411(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayVpcAttachment" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateTransitGatewayVpcAttachmentResult",
-      });
+      ).annotate({ identifier: "CreateTransitGatewayVpcAttachmentResult" });
   }
 }
 function __c412(j: number): any {
@@ -62266,14 +61136,12 @@ function __c412(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ FromPort: S.optional(S.Number), ToPort: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "CreateVerifiedAccessEndpointPortRange",
-      });
+      ).annotate({ identifier: "CreateVerifiedAccessEndpointPortRange" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(13185, __c412, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CreateVerifiedAccessEndpointPortRange",
-        }),
+        /*@__PURE__*/ __S(13185, __c412, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CreateVerifiedAccessEndpointPortRange" }),
       );
     case 3:
       return S.suspend(() =>
@@ -62284,9 +61152,7 @@ function __c412(j: number): any {
           SubnetIds: S.optional(__S(13184, __c412, 0)).pipe(T.XmlName("SubnetId")),
           PortRanges: S.optional(__S(13186, __c412, 2)).pipe(T.XmlName("PortRange")),
         }),
-      ).annotate({
-        identifier: "CreateVerifiedAccessEndpointLoadBalancerOptions",
-      });
+      ).annotate({ identifier: "CreateVerifiedAccessEndpointLoadBalancerOptions" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -62295,9 +61161,7 @@ function __c412(j: number): any {
           Port: S.optional(S.Number),
           PortRanges: S.optional(__S(13186, __c412, 2)).pipe(T.XmlName("PortRange")),
         }),
-      ).annotate({
-        identifier: "CreateVerifiedAccessEndpointEniOptions",
-      });
+      ).annotate({ identifier: "CreateVerifiedAccessEndpointEniOptions" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -62309,9 +61173,7 @@ function __c412(j: number): any {
           RdsEndpoint: S.optional(S.String),
           SubnetIds: S.optional(__S(13184, __c412, 0)).pipe(T.XmlName("SubnetId")),
         }),
-      ).annotate({
-        identifier: "CreateVerifiedAccessEndpointRdsOptions",
-      });
+      ).annotate({ identifier: "CreateVerifiedAccessEndpointRdsOptions" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -62320,9 +61182,7 @@ function __c412(j: number): any {
           Cidr: S.optional(S.String),
           PortRanges: S.optional(__S(13186, __c412, 2)).pipe(T.XmlName("PortRange")),
         }),
-      ).annotate({
-        identifier: "CreateVerifiedAccessEndpointCidrOptions",
-      });
+      ).annotate({ identifier: "CreateVerifiedAccessEndpointCidrOptions" });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -62344,9 +61204,7 @@ function __c412(j: number): any {
           RdsOptions: S.optional(__S(13189, __c412, 5)),
           CidrOptions: S.optional(__S(13190, __c412, 6)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateVerifiedAccessEndpointRequest",
-      });
+      ).annotate({ identifier: "CreateVerifiedAccessEndpointRequest" });
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -62354,9 +61212,7 @@ function __c412(j: number): any {
             .pipe(T.XmlName("verifiedAccessEndpoint"), T.Ec2QueryName("VerifiedAccessEndpoint"))
             .annotate({ identifier: "VerifiedAccessEndpoint" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateVerifiedAccessEndpointResult",
-      });
+      ).annotate({ identifier: "CreateVerifiedAccessEndpointResult" });
   }
 }
 function __c413(j: number): any {
@@ -62367,9 +61223,7 @@ function __c413(j: number): any {
           CustomerManagedKeyEnabled: S.optional(S.Boolean),
           KmsKeyArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "VerifiedAccessSseSpecificationRequest",
-      });
+      ).annotate({ identifier: "VerifiedAccessSseSpecificationRequest" });
   }
 }
 function __c414(j: number): any {
@@ -62382,14 +61236,12 @@ function __c414(j: number): any {
           FromPort: S.optional(S.Number).pipe(T.XmlName("fromPort"), T.Ec2QueryName("FromPort")),
           ToPort: S.optional(S.Number).pipe(T.XmlName("toPort"), T.Ec2QueryName("ToPort")),
         }),
-      ).annotate({
-        identifier: "VerifiedAccessEndpointPortRange",
-      });
+      ).annotate({ identifier: "VerifiedAccessEndpointPortRange" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(13249, __c414, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VerifiedAccessEndpointPortRange",
-        }),
+        /*@__PURE__*/ __S(13249, __c414, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VerifiedAccessEndpointPortRange" }),
       );
     case 3:
       return S.suspend(() =>
@@ -62409,9 +61261,7 @@ function __c414(j: number): any {
             T.Ec2QueryName("PortRangeSet"),
           ),
         }),
-      ).annotate({
-        identifier: "VerifiedAccessEndpointLoadBalancerOptions",
-      });
+      ).annotate({ identifier: "VerifiedAccessEndpointLoadBalancerOptions" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -62426,18 +61276,14 @@ function __c414(j: number): any {
             T.Ec2QueryName("PortRangeSet"),
           ),
         }),
-      ).annotate({
-        identifier: "VerifiedAccessEndpointEniOptions",
-      });
+      ).annotate({ identifier: "VerifiedAccessEndpointEniOptions" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           Code: S.optional(S.String).pipe(T.XmlName("code"), T.Ec2QueryName("Code")),
           Message: S.optional(S.String).pipe(T.XmlName("message"), T.Ec2QueryName("Message")),
         }),
-      ).annotate({
-        identifier: "VerifiedAccessEndpointStatus",
-      });
+      ).annotate({ identifier: "VerifiedAccessEndpointStatus" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -62464,9 +61310,7 @@ function __c414(j: number): any {
             T.Ec2QueryName("SubnetIdSet"),
           ),
         }),
-      ).annotate({
-        identifier: "VerifiedAccessEndpointRdsOptions",
-      });
+      ).annotate({ identifier: "VerifiedAccessEndpointRdsOptions" });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -62481,9 +61325,7 @@ function __c414(j: number): any {
             T.Ec2QueryName("SubnetIdSet"),
           ),
         }),
-      ).annotate({
-        identifier: "VerifiedAccessEndpointCidrOptions",
-      });
+      ).annotate({ identifier: "VerifiedAccessEndpointCidrOptions" });
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -62585,9 +61427,7 @@ function __c416(j: number): any {
           DryRun: S.optional(S.Boolean),
           SseSpecification: S.optional(__S(13216, __c413, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateVerifiedAccessGroupRequest",
-      });
+      ).annotate({ identifier: "CreateVerifiedAccessGroupRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -62595,9 +61435,7 @@ function __c416(j: number): any {
             .pipe(T.XmlName("verifiedAccessGroup"), T.Ec2QueryName("VerifiedAccessGroup"))
             .annotate({ identifier: "VerifiedAccessGroup" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateVerifiedAccessGroupResult",
-      });
+      ).annotate({ identifier: "CreateVerifiedAccessGroupResult" });
   }
 }
 function __c417(j: number): any {
@@ -62654,9 +61492,7 @@ function __c418(j: number): any {
           FIPSEnabled: S.optional(S.Boolean),
           CidrEndpointsCustomSubDomain: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateVerifiedAccessInstanceRequest",
-      });
+      ).annotate({ identifier: "CreateVerifiedAccessInstanceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -62664,9 +61500,7 @@ function __c418(j: number): any {
             .pipe(T.XmlName("verifiedAccessInstance"), T.Ec2QueryName("VerifiedAccessInstance"))
             .annotate({ identifier: "VerifiedAccessInstance" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateVerifiedAccessInstanceResult",
-      });
+      ).annotate({ identifier: "CreateVerifiedAccessInstanceResult" });
   }
 }
 function __c419(j: number): any {
@@ -62682,15 +61516,11 @@ function __c419(j: number): any {
           ClientSecret: S.optional(SensitiveString),
           Scope: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateVerifiedAccessTrustProviderOidcOptions",
-      });
+      ).annotate({ identifier: "CreateVerifiedAccessTrustProviderOidcOptions" });
     case 1:
       return S.suspend(() =>
         S.Struct({ TenantId: S.optional(S.String), PublicSigningKeyUrl: S.optional(S.String) }),
-      ).annotate({
-        identifier: "CreateVerifiedAccessTrustProviderDeviceOptions",
-      });
+      ).annotate({ identifier: "CreateVerifiedAccessTrustProviderDeviceOptions" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -62703,9 +61533,7 @@ function __c419(j: number): any {
           ClientSecret: S.optional(SensitiveString),
           Scope: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateVerifiedAccessNativeApplicationOidcOptions",
-      });
+      ).annotate({ identifier: "CreateVerifiedAccessNativeApplicationOidcOptions" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -62722,9 +61550,7 @@ function __c419(j: number): any {
           SseSpecification: S.optional(__S(13216, __c413, 0)),
           NativeApplicationOidcOptions: S.optional(__S(13410, __c419, 2)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateVerifiedAccessTrustProviderRequest",
-      });
+      ).annotate({ identifier: "CreateVerifiedAccessTrustProviderRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -62735,9 +61561,7 @@ function __c419(j: number): any {
             )
             .annotate({ identifier: "VerifiedAccessTrustProvider" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateVerifiedAccessTrustProviderResult",
-      });
+      ).annotate({ identifier: "CreateVerifiedAccessTrustProviderResult" });
   }
 }
 function __c420(j: number): any {
@@ -62783,9 +61607,7 @@ function __c421(j: number): any {
           VpcLatticeExclusion: S.optional(S.String),
           ElasticFileSystemExclusion: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "VpcEncryptionControlConfiguration",
-      });
+      ).annotate({ identifier: "VpcEncryptionControlConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -62831,9 +61653,7 @@ function __c422(j: number): any {
           InternetGatewayExclusionMode: S.optional(S.String),
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateVpcBlockPublicAccessExclusionRequest",
-      });
+      ).annotate({ identifier: "CreateVpcBlockPublicAccessExclusionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -62844,9 +61664,7 @@ function __c422(j: number): any {
             )
             .annotate({ identifier: "VpcBlockPublicAccessExclusion" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateVpcBlockPublicAccessExclusionResult",
-      });
+      ).annotate({ identifier: "CreateVpcBlockPublicAccessExclusionResult" });
   }
 }
 function __c423(j: number): any {
@@ -62881,9 +61699,7 @@ function __c423(j: number): any {
           ),
           Tags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("tagSet"), T.Ec2QueryName("TagSet")),
         }),
-      ).annotate({
-        identifier: "VpcBlockPublicAccessExclusion",
-      });
+      ).annotate({ identifier: "VpcBlockPublicAccessExclusion" });
   }
 }
 function __c424(j: number): any {
@@ -62895,9 +61711,7 @@ function __c424(j: number): any {
           VpcId: S.optional(S.String),
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateVpcEncryptionControlRequest",
-      });
+      ).annotate({ identifier: "CreateVpcEncryptionControlRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -62905,9 +61719,7 @@ function __c424(j: number): any {
             .pipe(T.XmlName("vpcEncryptionControl"), T.Ec2QueryName("VpcEncryptionControl"))
             .annotate({ identifier: "VpcEncryptionControl" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateVpcEncryptionControlResult",
-      });
+      ).annotate({ identifier: "CreateVpcEncryptionControlResult" });
   }
 }
 function __c425(j: number): any {
@@ -62988,9 +61800,9 @@ function __c428(j: number): any {
       ).annotate({ identifier: "PayerResponsibilityEntry" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(13696, __c428, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "PayerResponsibilityEntry",
-        }),
+        /*@__PURE__*/ __S(13696, __c428, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "PayerResponsibilityEntry" }),
       );
   }
 }
@@ -63005,9 +61817,9 @@ function __c429(j: number): any {
       ).annotate({ identifier: "SecurityGroupIdentifier" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(13728, __c429, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SecurityGroupIdentifier",
-        }),
+        /*@__PURE__*/ __S(13728, __c429, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SecurityGroupIdentifier" }),
       );
     case 2:
       return S.suspend(() =>
@@ -63049,9 +61861,9 @@ function __c429(j: number): any {
       ).annotate({ identifier: "SubnetIpPrefixes" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(13732, __c429, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SubnetIpPrefixes",
-        }),
+        /*@__PURE__*/ __S(13732, __c429, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SubnetIpPrefixes" }),
       );
     case 6:
       return S.suspend(() =>
@@ -63185,9 +61997,9 @@ function __c431(j: number): any {
       ).annotate({ identifier: "SubnetConfiguration" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(13796, __c431, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SubnetConfiguration",
-        }),
+        /*@__PURE__*/ __S(13796, __c431, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SubnetConfiguration" }),
       );
   }
 }
@@ -63203,9 +62015,7 @@ function __c432(j: number): any {
           ConnectionEvents: S.optional(__S(2208, __c69, 0)),
           ClientToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateVpcEndpointConnectionNotificationRequest",
-      });
+      ).annotate({ identifier: "CreateVpcEndpointConnectionNotificationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -63217,9 +62027,7 @@ function __c432(j: number): any {
             T.Ec2QueryName("ClientToken"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateVpcEndpointConnectionNotificationResult",
-      });
+      ).annotate({ identifier: "CreateVpcEndpointConnectionNotificationResult" });
   }
 }
 function __c433(j: number): any {
@@ -63281,9 +62089,7 @@ function __c434(j: number): any {
           ClientToken: S.optional(S.String),
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateVpcEndpointServiceConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateVpcEndpointServiceConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -63295,9 +62101,7 @@ function __c434(j: number): any {
             T.Ec2QueryName("ClientToken"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateVpcEndpointServiceConfigurationResult",
-      });
+      ).annotate({ identifier: "CreateVpcEndpointServiceConfigurationResult" });
   }
 }
 function __c435(j: number): any {
@@ -63310,9 +62114,7 @@ function __c435(j: number): any {
           Value: S.optional(S.String).pipe(T.XmlName("value"), T.Ec2QueryName("Value")),
           Name: S.optional(S.String).pipe(T.XmlName("name"), T.Ec2QueryName("Name")),
         }),
-      ).annotate({
-        identifier: "PrivateDnsNameConfiguration",
-      });
+      ).annotate({ identifier: "PrivateDnsNameConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -63325,9 +62127,9 @@ function __c435(j: number): any {
       ).annotate({ identifier: "SupportedRegionDetail" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(13921, __c435, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SupportedRegionDetail",
-        }),
+        /*@__PURE__*/ __S(13921, __c435, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SupportedRegionDetail" }),
       );
     case 3:
       return S.suspend(() =>
@@ -63417,9 +62219,9 @@ function __c436(j: number): any {
       ).annotate({ identifier: "ServiceTypeDetail" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(13952, __c436, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ServiceTypeDetail",
-        }),
+        /*@__PURE__*/ __S(13952, __c436, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ServiceTypeDetail" }),
       );
     case 2:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")));
@@ -63440,9 +62242,7 @@ function __c437(j: number): any {
             T.Ec2QueryName("PeerOwnerId"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateVpcPeeringConnectionRequest",
-      });
+      ).annotate({ identifier: "CreateVpcPeeringConnectionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -63450,9 +62250,7 @@ function __c437(j: number): any {
             .pipe(T.XmlName("vpcPeeringConnection"), T.Ec2QueryName("VpcPeeringConnection"))
             .annotate({ identifier: "VpcPeeringConnection" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateVpcPeeringConnectionResult",
-      });
+      ).annotate({ identifier: "CreateVpcPeeringConnectionResult" });
   }
 }
 function __c438(j: number): any {
@@ -63465,9 +62263,7 @@ function __c438(j: number): any {
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateVpnConcentratorRequest",
-      });
+      ).annotate({ identifier: "CreateVpnConcentratorRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -63475,9 +62271,7 @@ function __c438(j: number): any {
             .pipe(T.XmlName("vpnConcentrator"), T.Ec2QueryName("VpnConcentrator"))
             .annotate({ identifier: "VpnConcentrator" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateVpnConcentratorResult",
-      });
+      ).annotate({ identifier: "CreateVpnConcentratorResult" });
   }
 }
 function __c439(j: number): any {
@@ -63542,9 +62336,7 @@ function __c440(j: number): any {
           LogOptions: S.optional(__S(14159, __c442, 15)),
           EnableTunnelLifecycleControl: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "VpnTunnelOptionsSpecification",
-      });
+      ).annotate({ identifier: "VpnTunnelOptionsSpecification" });
     case 1:
       return S.Array(__S(14080, __c440, 0));
     case 2:
@@ -63565,9 +62357,7 @@ function __c440(j: number): any {
             T.Ec2QueryName("StaticRoutesOnly"),
           ),
         }),
-      ).annotate({
-        identifier: "VpnConnectionOptionsSpecification",
-      });
+      ).annotate({ identifier: "VpnConnectionOptionsSpecification" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -63583,9 +62373,7 @@ function __c440(j: number): any {
             .pipe(T.XmlName("options"), T.Ec2QueryName("Options"))
             .annotate({ identifier: "VpnConnectionOptionsSpecification" }),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateVpnConnectionRequest",
-      });
+      ).annotate({ identifier: "CreateVpnConnectionRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -63593,9 +62381,7 @@ function __c440(j: number): any {
             .pipe(T.XmlName("vpnConnection"), T.Ec2QueryName("VpnConnection"))
             .annotate({ identifier: "VpnConnection" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CreateVpnConnectionResult",
-      });
+      ).annotate({ identifier: "CreateVpnConnectionResult" });
   }
 }
 function __c441(j: number): any {
@@ -63603,74 +62389,62 @@ function __c441(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ Value: S.optional(S.String).pipe(T.XmlName("value"), T.Ec2QueryName("Value")) }),
-      ).annotate({
-        identifier: "Phase1EncryptionAlgorithmsListValue",
-      });
+      ).annotate({ identifier: "Phase1EncryptionAlgorithmsListValue" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(14112, __c441, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "Phase1EncryptionAlgorithmsListValue",
-        }),
+        /*@__PURE__*/ __S(14112, __c441, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "Phase1EncryptionAlgorithmsListValue" }),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({ Value: S.optional(S.String).pipe(T.XmlName("value"), T.Ec2QueryName("Value")) }),
-      ).annotate({
-        identifier: "Phase2EncryptionAlgorithmsListValue",
-      });
+      ).annotate({ identifier: "Phase2EncryptionAlgorithmsListValue" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(14114, __c441, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "Phase2EncryptionAlgorithmsListValue",
-        }),
+        /*@__PURE__*/ __S(14114, __c441, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "Phase2EncryptionAlgorithmsListValue" }),
       );
     case 4:
       return S.suspend(() =>
         S.Struct({ Value: S.optional(S.String).pipe(T.XmlName("value"), T.Ec2QueryName("Value")) }),
-      ).annotate({
-        identifier: "Phase1IntegrityAlgorithmsListValue",
-      });
+      ).annotate({ identifier: "Phase1IntegrityAlgorithmsListValue" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(14116, __c441, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "Phase1IntegrityAlgorithmsListValue",
-        }),
+        /*@__PURE__*/ __S(14116, __c441, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "Phase1IntegrityAlgorithmsListValue" }),
       );
     case 6:
       return S.suspend(() =>
         S.Struct({ Value: S.optional(S.String).pipe(T.XmlName("value"), T.Ec2QueryName("Value")) }),
-      ).annotate({
-        identifier: "Phase2IntegrityAlgorithmsListValue",
-      });
+      ).annotate({ identifier: "Phase2IntegrityAlgorithmsListValue" });
     case 7:
       return S.Array(
-        /*@__PURE__*/ __S(14118, __c441, 6).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "Phase2IntegrityAlgorithmsListValue",
-        }),
+        /*@__PURE__*/ __S(14118, __c441, 6)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "Phase2IntegrityAlgorithmsListValue" }),
       );
     case 8:
       return S.suspend(() =>
         S.Struct({ Value: S.optional(S.Number).pipe(T.XmlName("value"), T.Ec2QueryName("Value")) }),
-      ).annotate({
-        identifier: "Phase1DHGroupNumbersListValue",
-      });
+      ).annotate({ identifier: "Phase1DHGroupNumbersListValue" });
     case 9:
       return S.Array(
-        /*@__PURE__*/ __S(14120, __c441, 8).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "Phase1DHGroupNumbersListValue",
-        }),
+        /*@__PURE__*/ __S(14120, __c441, 8)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "Phase1DHGroupNumbersListValue" }),
       );
     case 10:
       return S.suspend(() =>
         S.Struct({ Value: S.optional(S.Number).pipe(T.XmlName("value"), T.Ec2QueryName("Value")) }),
-      ).annotate({
-        identifier: "Phase2DHGroupNumbersListValue",
-      });
+      ).annotate({ identifier: "Phase2DHGroupNumbersListValue" });
     case 11:
       return S.Array(
-        /*@__PURE__*/ __S(14122, __c441, 10).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "Phase2DHGroupNumbersListValue",
-        }),
+        /*@__PURE__*/ __S(14122, __c441, 10)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "Phase2DHGroupNumbersListValue" }),
       );
     case 12:
       return S.suspend(() =>
@@ -63678,9 +62452,9 @@ function __c441(j: number): any {
       ).annotate({ identifier: "IKEVersionsListValue" });
     case 13:
       return S.Array(
-        /*@__PURE__*/ __S(14124, __c441, 12).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IKEVersionsListValue",
-        }),
+        /*@__PURE__*/ __S(14124, __c441, 12)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IKEVersionsListValue" }),
       );
     case 14:
       return S.suspend(() =>
@@ -63809,9 +62583,9 @@ function __c441(j: number): any {
       ).annotate({ identifier: "TunnelOption" });
     case 17:
       return S.Array(
-        /*@__PURE__*/ __S(14128, __c441, 16).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TunnelOption",
-        }),
+        /*@__PURE__*/ __S(14128, __c441, 16)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TunnelOption" }),
       );
     case 18:
       return S.suspend(() =>
@@ -63875,9 +62649,9 @@ function __c441(j: number): any {
       ).annotate({ identifier: "VpnStaticRoute" });
     case 20:
       return S.Array(
-        /*@__PURE__*/ __S(14131, __c441, 19).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VpnStaticRoute",
-        }),
+        /*@__PURE__*/ __S(14131, __c441, 19)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VpnStaticRoute" }),
       );
     case 21:
       return S.suspend(() =>
@@ -63907,9 +62681,9 @@ function __c441(j: number): any {
       ).annotate({ identifier: "VgwTelemetry" });
     case 22:
       return S.Array(
-        /*@__PURE__*/ __S(14133, __c441, 21).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VgwTelemetry",
-        }),
+        /*@__PURE__*/ __S(14133, __c441, 21)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VgwTelemetry" }),
       );
     case 23:
       return S.suspend(() =>
@@ -63981,9 +62755,9 @@ function __c442(j: number): any {
       });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(14144, __c442, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "Phase1EncryptionAlgorithmsRequestListValue",
-        }),
+        /*@__PURE__*/ __S(14144, __c442, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "Phase1EncryptionAlgorithmsRequestListValue" }),
       );
     case 2:
       return S.suspend(() => S.Struct({ Value: S.optional(S.String) })).annotate({
@@ -63991,9 +62765,9 @@ function __c442(j: number): any {
       });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(14146, __c442, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "Phase2EncryptionAlgorithmsRequestListValue",
-        }),
+        /*@__PURE__*/ __S(14146, __c442, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "Phase2EncryptionAlgorithmsRequestListValue" }),
       );
     case 4:
       return S.suspend(() => S.Struct({ Value: S.optional(S.String) })).annotate({
@@ -64001,9 +62775,9 @@ function __c442(j: number): any {
       });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(14148, __c442, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "Phase1IntegrityAlgorithmsRequestListValue",
-        }),
+        /*@__PURE__*/ __S(14148, __c442, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "Phase1IntegrityAlgorithmsRequestListValue" }),
       );
     case 6:
       return S.suspend(() => S.Struct({ Value: S.optional(S.String) })).annotate({
@@ -64011,9 +62785,9 @@ function __c442(j: number): any {
       });
     case 7:
       return S.Array(
-        /*@__PURE__*/ __S(14150, __c442, 6).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "Phase2IntegrityAlgorithmsRequestListValue",
-        }),
+        /*@__PURE__*/ __S(14150, __c442, 6)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "Phase2IntegrityAlgorithmsRequestListValue" }),
       );
     case 8:
       return S.suspend(() => S.Struct({ Value: S.optional(S.Number) })).annotate({
@@ -64021,9 +62795,9 @@ function __c442(j: number): any {
       });
     case 9:
       return S.Array(
-        /*@__PURE__*/ __S(14152, __c442, 8).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "Phase1DHGroupNumbersRequestListValue",
-        }),
+        /*@__PURE__*/ __S(14152, __c442, 8)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "Phase1DHGroupNumbersRequestListValue" }),
       );
     case 10:
       return S.suspend(() => S.Struct({ Value: S.optional(S.Number) })).annotate({
@@ -64031,9 +62805,9 @@ function __c442(j: number): any {
       });
     case 11:
       return S.Array(
-        /*@__PURE__*/ __S(14154, __c442, 10).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "Phase2DHGroupNumbersRequestListValue",
-        }),
+        /*@__PURE__*/ __S(14154, __c442, 10)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "Phase2DHGroupNumbersRequestListValue" }),
       );
     case 12:
       return S.suspend(() => S.Struct({ Value: S.optional(S.String) })).annotate({
@@ -64041,9 +62815,9 @@ function __c442(j: number): any {
       });
     case 13:
       return S.Array(
-        /*@__PURE__*/ __S(14156, __c442, 12).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IKEVersionsRequestListValue",
-        }),
+        /*@__PURE__*/ __S(14156, __c442, 12)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IKEVersionsRequestListValue" }),
       );
     case 14:
       return S.suspend(() =>
@@ -64055,15 +62829,11 @@ function __c442(j: number): any {
           BgpLogGroupArn: S.optional(S.String),
           BgpLogOutputFormat: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CloudWatchLogOptionsSpecification",
-      });
+      ).annotate({ identifier: "CloudWatchLogOptionsSpecification" });
     case 15:
       return S.suspend(() =>
         S.Struct({ CloudWatchLogOptions: S.optional(__S(14158, __c442, 14)) }),
-      ).annotate({
-        identifier: "VpnTunnelLogOptionsSpecification",
-      });
+      ).annotate({ identifier: "VpnTunnelLogOptionsSpecification" });
   }
 }
 function __c443(j: number): any {
@@ -64074,9 +62844,7 @@ function __c443(j: number): any {
           DestinationCidrBlock: S.optional(S.String),
           VpnConnectionId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateVpnConnectionRouteRequest",
-      });
+      ).annotate({ identifier: "CreateVpnConnectionRouteRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateVpnConnectionRouteResponse",
@@ -64109,9 +62877,9 @@ function __c445(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ __S(4832, __c151, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VpcAttachment",
-        }),
+        /*@__PURE__*/ __S(4832, __c151, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VpcAttachment" }),
       );
     case 1:
       return S.suspend(() =>
@@ -64148,9 +62916,7 @@ function __c446(j: number): any {
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteApplicationStatusCheckRequest",
-      });
+      ).annotate({ identifier: "DeleteApplicationStatusCheckRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -64158,9 +62924,7 @@ function __c446(j: number): any {
             .pipe(T.XmlName("applicationStatusCheck"), T.Ec2QueryName("ApplicationStatusCheck"))
             .annotate({ identifier: "ApplicationStatusCheckResponseObject" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteApplicationStatusCheckResult",
-      });
+      ).annotate({ identifier: "DeleteApplicationStatusCheckResult" });
   }
 }
 function __c447(j: number): any {
@@ -64171,9 +62935,7 @@ function __c447(j: number): any {
           CapacityManagerDataExportId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteCapacityManagerDataExportRequest",
-      });
+      ).annotate({ identifier: "DeleteCapacityManagerDataExportRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -64182,9 +62944,7 @@ function __c447(j: number): any {
             T.Ec2QueryName("CapacityManagerDataExportId"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteCapacityManagerDataExportResult",
-      });
+      ).annotate({ identifier: "DeleteCapacityManagerDataExportResult" });
   }
 }
 function __c448(j: number): any {
@@ -64194,9 +62954,7 @@ function __c448(j: number): any {
         S.Struct({ CarrierGatewayId: S.optional(S.String), DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteCarrierGatewayRequest",
-      });
+      ).annotate({ identifier: "DeleteCarrierGatewayRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -64204,9 +62962,7 @@ function __c448(j: number): any {
             .pipe(T.XmlName("carrierGateway"), T.Ec2QueryName("CarrierGateway"))
             .annotate({ identifier: "CarrierGateway" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteCarrierGatewayResult",
-      });
+      ).annotate({ identifier: "DeleteCarrierGatewayResult" });
   }
 }
 function __c449(j: number): any {
@@ -64216,9 +62972,7 @@ function __c449(j: number): any {
         S.Struct({ ClientVpnEndpointId: S.optional(S.String), DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteClientVpnEndpointRequest",
-      });
+      ).annotate({ identifier: "DeleteClientVpnEndpointRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -64226,9 +62980,7 @@ function __c449(j: number): any {
             .pipe(T.XmlName("status"), T.Ec2QueryName("Status"))
             .annotate({ identifier: "ClientVpnEndpointStatus" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteClientVpnEndpointResult",
-      });
+      ).annotate({ identifier: "DeleteClientVpnEndpointResult" });
   }
 }
 function __c450(j: number): any {
@@ -64238,17 +62990,13 @@ function __c450(j: number): any {
         S.Struct({ ClientVpnEndpointId: S.optional(S.String), DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteClientVpnEndpointAuthorizationPolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteClientVpnEndpointAuthorizationPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String).pipe(T.XmlName("status"), T.Ec2QueryName("Status")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteClientVpnEndpointAuthorizationPolicyResult",
-      });
+      ).annotate({ identifier: "DeleteClientVpnEndpointAuthorizationPolicyResult" });
   }
 }
 function __c451(j: number): any {
@@ -64261,9 +63009,7 @@ function __c451(j: number): any {
           DestinationCidrBlock: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteClientVpnRouteRequest",
-      });
+      ).annotate({ identifier: "DeleteClientVpnRouteRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -64271,9 +63017,7 @@ function __c451(j: number): any {
             .pipe(T.XmlName("status"), T.Ec2QueryName("Status"))
             .annotate({ identifier: "ClientVpnRouteStatus" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteClientVpnRouteResult",
-      });
+      ).annotate({ identifier: "DeleteClientVpnRouteResult" });
   }
 }
 function __c452(j: number): any {
@@ -64322,9 +63066,7 @@ function __c454(j: number): any {
           CustomerGatewayId: S.optional(S.String),
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteCustomerGatewayRequest",
-      });
+      ).annotate({ identifier: "DeleteCustomerGatewayRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteCustomerGatewayResponse",
@@ -64354,9 +63096,7 @@ function __c456(j: number): any {
           DryRun: S.optional(S.Boolean),
           EgressOnlyInternetGatewayId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteEgressOnlyInternetGatewayRequest",
-      });
+      ).annotate({ identifier: "DeleteEgressOnlyInternetGatewayRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -64365,9 +63105,7 @@ function __c456(j: number): any {
             T.Ec2QueryName("ReturnCode"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteEgressOnlyInternetGatewayResult",
-      });
+      ).annotate({ identifier: "DeleteEgressOnlyInternetGatewayResult" });
   }
 }
 function __c457(j: number): any {
@@ -64396,9 +63134,9 @@ function __c457(j: number): any {
       ).annotate({ identifier: "DeleteFleetSuccessItem" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(14625, __c457, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "DeleteFleetSuccessItem",
-        }),
+        /*@__PURE__*/ __S(14625, __c457, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "DeleteFleetSuccessItem" }),
       );
     case 3:
       return S.suspend(() =>
@@ -64418,9 +63156,9 @@ function __c457(j: number): any {
       ).annotate({ identifier: "DeleteFleetErrorItem" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(14628, __c457, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "DeleteFleetErrorItem",
-        }),
+        /*@__PURE__*/ __S(14628, __c457, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "DeleteFleetErrorItem" }),
       );
     case 6:
       return S.suspend(() =>
@@ -64492,17 +63230,13 @@ function __c462(j: number): any {
         S.Struct({ ReportId: S.optional(S.String), DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteImageUsageReportRequest",
-      });
+      ).annotate({ identifier: "DeleteImageUsageReportRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteImageUsageReportResult",
-      });
+      ).annotate({ identifier: "DeleteImageUsageReportResult" });
   }
 }
 function __c463(j: number): any {
@@ -64513,9 +63247,7 @@ function __c463(j: number): any {
           DryRun: S.optional(S.Boolean),
           InstanceConnectEndpointId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteInstanceConnectEndpointRequest",
-      });
+      ).annotate({ identifier: "DeleteInstanceConnectEndpointRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -64523,9 +63255,7 @@ function __c463(j: number): any {
             .pipe(T.XmlName("instanceConnectEndpoint"), T.Ec2QueryName("InstanceConnectEndpoint"))
             .annotate({ identifier: "Ec2InstanceConnectEndpoint" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteInstanceConnectEndpointResult",
-      });
+      ).annotate({ identifier: "DeleteInstanceConnectEndpointResult" });
   }
 }
 function __c464(j: number): any {
@@ -64537,9 +63267,7 @@ function __c464(j: number): any {
           ForceDelete: S.optional(S.Boolean),
           InstanceEventWindowId: S.optional(S.String).pipe(T.XmlName("InstanceEventWindowId")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteInstanceEventWindowRequest",
-      });
+      ).annotate({ identifier: "DeleteInstanceEventWindowRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -64549,9 +63277,7 @@ function __c464(j: number): any {
           ),
           State: S.optional(S.String).pipe(T.XmlName("state"), T.Ec2QueryName("State")),
         }),
-      ).annotate({
-        identifier: "InstanceEventWindowStateChange",
-      });
+      ).annotate({ identifier: "InstanceEventWindowStateChange" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -64559,9 +63285,7 @@ function __c464(j: number): any {
             .pipe(T.XmlName("instanceEventWindowState"), T.Ec2QueryName("InstanceEventWindowState"))
             .annotate({ identifier: "InstanceEventWindowStateChange" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteInstanceEventWindowResult",
-      });
+      ).annotate({ identifier: "DeleteInstanceEventWindowResult" });
   }
 }
 function __c465(j: number): any {
@@ -64575,9 +63299,7 @@ function __c465(j: number): any {
             T.Ec2QueryName("InternetGatewayId"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteInternetGatewayRequest",
-      });
+      ).annotate({ identifier: "DeleteInternetGatewayRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteInternetGatewayResponse",
@@ -64612,9 +63334,7 @@ function __c467(j: number): any {
           DryRun: S.optional(S.Boolean),
           IpamExternalResourceVerificationTokenId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteIpamExternalResourceVerificationTokenRequest",
-      });
+      ).annotate({ identifier: "DeleteIpamExternalResourceVerificationTokenRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -64625,9 +63345,7 @@ function __c467(j: number): any {
             )
             .annotate({ identifier: "IpamExternalResourceVerificationToken" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteIpamExternalResourceVerificationTokenResult",
-      });
+      ).annotate({ identifier: "DeleteIpamExternalResourceVerificationTokenResult" });
   }
 }
 function __c468(j: number): any {
@@ -64638,9 +63356,7 @@ function __c468(j: number): any {
           DryRun: S.optional(S.Boolean),
           IpamInternetRegistryAssociationId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteIpamInternetRegistryAssociationRequest",
-      });
+      ).annotate({ identifier: "DeleteIpamInternetRegistryAssociationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -64651,9 +63367,7 @@ function __c468(j: number): any {
             )
             .annotate({ identifier: "IpamInternetRegistryAssociation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteIpamInternetRegistryAssociationResult",
-      });
+      ).annotate({ identifier: "DeleteIpamInternetRegistryAssociationResult" });
   }
 }
 function __c469(j: number): any {
@@ -64702,9 +63416,7 @@ function __c471(j: number): any {
           DryRun: S.optional(S.Boolean),
           IpamPrefixListResolverId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteIpamPrefixListResolverRequest",
-      });
+      ).annotate({ identifier: "DeleteIpamPrefixListResolverRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -64712,9 +63424,7 @@ function __c471(j: number): any {
             .pipe(T.XmlName("ipamPrefixListResolver"), T.Ec2QueryName("IpamPrefixListResolver"))
             .annotate({ identifier: "IpamPrefixListResolver" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteIpamPrefixListResolverResult",
-      });
+      ).annotate({ identifier: "DeleteIpamPrefixListResolverResult" });
   }
 }
 function __c472(j: number): any {
@@ -64725,9 +63435,7 @@ function __c472(j: number): any {
           DryRun: S.optional(S.Boolean),
           IpamPrefixListResolverTargetId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteIpamPrefixListResolverTargetRequest",
-      });
+      ).annotate({ identifier: "DeleteIpamPrefixListResolverTargetRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -64738,9 +63446,7 @@ function __c472(j: number): any {
             )
             .annotate({ identifier: "IpamPrefixListResolverTarget" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteIpamPrefixListResolverTargetResult",
-      });
+      ).annotate({ identifier: "DeleteIpamPrefixListResolverTargetResult" });
   }
 }
 function __c473(j: number): any {
@@ -64751,9 +63457,7 @@ function __c473(j: number): any {
           DryRun: S.optional(S.Boolean),
           IpamResourceDiscoveryId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteIpamResourceDiscoveryRequest",
-      });
+      ).annotate({ identifier: "DeleteIpamResourceDiscoveryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -64761,9 +63465,7 @@ function __c473(j: number): any {
             .pipe(T.XmlName("ipamResourceDiscovery"), T.Ec2QueryName("IpamResourceDiscovery"))
             .annotate({ identifier: "IpamResourceDiscovery" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteIpamResourceDiscoveryResult",
-      });
+      ).annotate({ identifier: "DeleteIpamResourceDiscoveryResult" });
   }
 }
 function __c474(j: number): any {
@@ -64777,9 +63479,7 @@ function __c474(j: number): any {
           Force: S.optional(S.Boolean),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteIpamRoutingPolicyRegistrationRequest",
-      });
+      ).annotate({ identifier: "DeleteIpamRoutingPolicyRegistrationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -64790,9 +63490,7 @@ function __c474(j: number): any {
             )
             .annotate({ identifier: "IpamRoutingPolicyRegistrationDelta" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteIpamRoutingPolicyRegistrationResult",
-      });
+      ).annotate({ identifier: "DeleteIpamRoutingPolicyRegistrationResult" });
   }
 }
 function __c475(j: number): any {
@@ -64841,9 +63539,7 @@ function __c477(j: number): any {
           LaunchTemplateId: S.optional(S.String),
           LaunchTemplateName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteLaunchTemplateRequest",
-      });
+      ).annotate({ identifier: "DeleteLaunchTemplateRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -64851,9 +63547,7 @@ function __c477(j: number): any {
             .pipe(T.XmlName("launchTemplate"), T.Ec2QueryName("LaunchTemplate"))
             .annotate({ identifier: "LaunchTemplate" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteLaunchTemplateResult",
-      });
+      ).annotate({ identifier: "DeleteLaunchTemplateResult" });
   }
 }
 function __c478(j: number): any {
@@ -64866,9 +63560,7 @@ function __c478(j: number): any {
           LaunchTemplateName: S.optional(S.String),
           Versions: S.optional(__S(15328, __c479, 0)).pipe(T.XmlName("LaunchTemplateVersion")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteLaunchTemplateVersionsRequest",
-      });
+      ).annotate({ identifier: "DeleteLaunchTemplateVersionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -64885,14 +63577,12 @@ function __c478(j: number): any {
             T.Ec2QueryName("VersionNumber"),
           ),
         }),
-      ).annotate({
-        identifier: "DeleteLaunchTemplateVersionsResponseSuccessItem",
-      });
+      ).annotate({ identifier: "DeleteLaunchTemplateVersionsResponseSuccessItem" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(15297, __c478, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "DeleteLaunchTemplateVersionsResponseSuccessItem",
-        }),
+        /*@__PURE__*/ __S(15297, __c478, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "DeleteLaunchTemplateVersionsResponseSuccessItem" }),
       );
     case 3:
       return S.suspend(() =>
@@ -64920,14 +63610,12 @@ function __c478(j: number): any {
             .pipe(T.XmlName("responseError"), T.Ec2QueryName("ResponseError"))
             .annotate({ identifier: "ResponseError" }),
         }),
-      ).annotate({
-        identifier: "DeleteLaunchTemplateVersionsResponseErrorItem",
-      });
+      ).annotate({ identifier: "DeleteLaunchTemplateVersionsResponseErrorItem" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(15300, __c478, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "DeleteLaunchTemplateVersionsResponseErrorItem",
-        }),
+        /*@__PURE__*/ __S(15300, __c478, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "DeleteLaunchTemplateVersionsResponseErrorItem" }),
       );
     case 6:
       return S.suspend(() =>
@@ -64941,9 +63629,7 @@ function __c478(j: number): any {
             T.Ec2QueryName("UnsuccessfullyDeletedLaunchTemplateVersionSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteLaunchTemplateVersionsResult",
-      });
+      ).annotate({ identifier: "DeleteLaunchTemplateVersionsResult" });
   }
 }
 function __c479(j: number): any {
@@ -64962,9 +63648,7 @@ function __c480(j: number): any {
           DryRun: S.optional(S.Boolean),
           DestinationPrefixListId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteLocalGatewayRouteRequest",
-      });
+      ).annotate({ identifier: "DeleteLocalGatewayRouteRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -64972,9 +63656,7 @@ function __c480(j: number): any {
             .pipe(T.XmlName("route"), T.Ec2QueryName("Route"))
             .annotate({ identifier: "LocalGatewayRoute" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteLocalGatewayRouteResult",
-      });
+      ).annotate({ identifier: "DeleteLocalGatewayRouteResult" });
   }
 }
 function __c481(j: number): any {
@@ -64985,9 +63667,7 @@ function __c481(j: number): any {
           LocalGatewayRouteTableId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteLocalGatewayRouteTableRequest",
-      });
+      ).annotate({ identifier: "DeleteLocalGatewayRouteTableRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -64995,9 +63675,7 @@ function __c481(j: number): any {
             .pipe(T.XmlName("localGatewayRouteTable"), T.Ec2QueryName("LocalGatewayRouteTable"))
             .annotate({ identifier: "LocalGatewayRouteTable" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteLocalGatewayRouteTableResult",
-      });
+      ).annotate({ identifier: "DeleteLocalGatewayRouteTableResult" });
   }
 }
 function __c482(j: number): any {
@@ -65034,9 +63712,7 @@ function __c483(j: number): any {
           LocalGatewayRouteTableVpcAssociationId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteLocalGatewayRouteTableVpcAssociationRequest",
-      });
+      ).annotate({ identifier: "DeleteLocalGatewayRouteTableVpcAssociationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -65047,9 +63723,7 @@ function __c483(j: number): any {
             )
             .annotate({ identifier: "LocalGatewayRouteTableVpcAssociation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteLocalGatewayRouteTableVpcAssociationResult",
-      });
+      ).annotate({ identifier: "DeleteLocalGatewayRouteTableVpcAssociationResult" });
   }
 }
 function __c484(j: number): any {
@@ -65060,9 +63734,7 @@ function __c484(j: number): any {
           LocalGatewayVirtualInterfaceId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteLocalGatewayVirtualInterfaceRequest",
-      });
+      ).annotate({ identifier: "DeleteLocalGatewayVirtualInterfaceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -65073,9 +63745,7 @@ function __c484(j: number): any {
             )
             .annotate({ identifier: "LocalGatewayVirtualInterface" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteLocalGatewayVirtualInterfaceResult",
-      });
+      ).annotate({ identifier: "DeleteLocalGatewayVirtualInterfaceResult" });
   }
 }
 function __c485(j: number): any {
@@ -65086,9 +63756,7 @@ function __c485(j: number): any {
           LocalGatewayVirtualInterfaceGroupId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteLocalGatewayVirtualInterfaceGroupRequest",
-      });
+      ).annotate({ identifier: "DeleteLocalGatewayVirtualInterfaceGroupRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -65099,9 +63767,7 @@ function __c485(j: number): any {
             )
             .annotate({ identifier: "LocalGatewayVirtualInterfaceGroup" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteLocalGatewayVirtualInterfaceGroupResult",
-      });
+      ).annotate({ identifier: "DeleteLocalGatewayVirtualInterfaceGroupResult" });
   }
 }
 function __c486(j: number): any {
@@ -65111,9 +63777,7 @@ function __c486(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean), PrefixListId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteManagedPrefixListRequest",
-      });
+      ).annotate({ identifier: "DeleteManagedPrefixListRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -65121,9 +63785,7 @@ function __c486(j: number): any {
             .pipe(T.XmlName("prefixList"), T.Ec2QueryName("PrefixList"))
             .annotate({ identifier: "ManagedPrefixList" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteManagedPrefixListResult",
-      });
+      ).annotate({ identifier: "DeleteManagedPrefixListResult" });
   }
 }
 function __c487(j: number): any {
@@ -65180,9 +63842,7 @@ function __c489(j: number): any {
           ),
           Egress: S.optional(S.Boolean).pipe(T.XmlName("egress"), T.Ec2QueryName("Egress")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteNetworkAclEntryRequest",
-      });
+      ).annotate({ identifier: "DeleteNetworkAclEntryRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteNetworkAclEntryResponse",
@@ -65197,9 +63857,7 @@ function __c490(j: number): any {
           DryRun: S.optional(S.Boolean),
           NetworkInsightsAccessScopeId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteNetworkInsightsAccessScopeRequest",
-      });
+      ).annotate({ identifier: "DeleteNetworkInsightsAccessScopeRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -65208,9 +63866,7 @@ function __c490(j: number): any {
             T.Ec2QueryName("NetworkInsightsAccessScopeId"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteNetworkInsightsAccessScopeResult",
-      });
+      ).annotate({ identifier: "DeleteNetworkInsightsAccessScopeResult" });
   }
 }
 function __c491(j: number): any {
@@ -65221,9 +63877,7 @@ function __c491(j: number): any {
           NetworkInsightsAccessScopeAnalysisId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteNetworkInsightsAccessScopeAnalysisRequest",
-      });
+      ).annotate({ identifier: "DeleteNetworkInsightsAccessScopeAnalysisRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -65232,9 +63886,7 @@ function __c491(j: number): any {
             T.Ec2QueryName("NetworkInsightsAccessScopeAnalysisId"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteNetworkInsightsAccessScopeAnalysisResult",
-      });
+      ).annotate({ identifier: "DeleteNetworkInsightsAccessScopeAnalysisResult" });
   }
 }
 function __c492(j: number): any {
@@ -65245,9 +63897,7 @@ function __c492(j: number): any {
           DryRun: S.optional(S.Boolean),
           NetworkInsightsAnalysisId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteNetworkInsightsAnalysisRequest",
-      });
+      ).annotate({ identifier: "DeleteNetworkInsightsAnalysisRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -65256,9 +63906,7 @@ function __c492(j: number): any {
             T.Ec2QueryName("NetworkInsightsAnalysisId"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteNetworkInsightsAnalysisResult",
-      });
+      ).annotate({ identifier: "DeleteNetworkInsightsAnalysisResult" });
   }
 }
 function __c493(j: number): any {
@@ -65269,9 +63917,7 @@ function __c493(j: number): any {
           DryRun: S.optional(S.Boolean),
           NetworkInsightsPathId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteNetworkInsightsPathRequest",
-      });
+      ).annotate({ identifier: "DeleteNetworkInsightsPathRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -65280,9 +63926,7 @@ function __c493(j: number): any {
             T.Ec2QueryName("NetworkInsightsPathId"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteNetworkInsightsPathResult",
-      });
+      ).annotate({ identifier: "DeleteNetworkInsightsPathResult" });
   }
 }
 function __c494(j: number): any {
@@ -65296,9 +63940,7 @@ function __c494(j: number): any {
             T.Ec2QueryName("NetworkInterfaceId"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteNetworkInterfaceRequest",
-      });
+      ).annotate({ identifier: "DeleteNetworkInterfaceRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteNetworkInterfaceResponse",
@@ -65314,17 +63956,13 @@ function __c495(j: number): any {
           Force: S.optional(S.Boolean),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteNetworkInterfacePermissionRequest",
-      });
+      ).annotate({ identifier: "DeleteNetworkInterfacePermissionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteNetworkInterfacePermissionResult",
-      });
+      ).annotate({ identifier: "DeleteNetworkInterfacePermissionResult" });
   }
 }
 function __c496(j: number): any {
@@ -65335,9 +63973,7 @@ function __c496(j: number): any {
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
           GroupName: S.optional(S.String).pipe(T.XmlName("groupName"), T.Ec2QueryName("GroupName")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeletePlacementGroupRequest",
-      });
+      ).annotate({ identifier: "DeletePlacementGroupRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeletePlacementGroupResponse",
@@ -65353,9 +63989,7 @@ function __c497(j: number): any {
           PoolId: S.optional(S.String),
           NetworkBorderGroup: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeletePublicIpv4PoolRequest",
-      });
+      ).annotate({ identifier: "DeletePublicIpv4PoolRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -65364,9 +63998,7 @@ function __c497(j: number): any {
             T.Ec2QueryName("ReturnValue"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeletePublicIpv4PoolResult",
-      });
+      ).annotate({ identifier: "DeletePublicIpv4PoolResult" });
   }
 }
 function __c498(j: number): any {
@@ -65381,9 +64013,7 @@ function __c498(j: number): any {
             T.XmlName("ReservedInstancesId"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteQueuedReservedInstancesRequest",
-      });
+      ).annotate({ identifier: "DeleteQueuedReservedInstancesRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -65392,14 +64022,12 @@ function __c498(j: number): any {
             T.Ec2QueryName("ReservedInstancesId"),
           ),
         }),
-      ).annotate({
-        identifier: "SuccessfulQueuedPurchaseDeletion",
-      });
+      ).annotate({ identifier: "SuccessfulQueuedPurchaseDeletion" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(15938, __c498, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SuccessfulQueuedPurchaseDeletion",
-        }),
+        /*@__PURE__*/ __S(15938, __c498, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SuccessfulQueuedPurchaseDeletion" }),
       );
     case 4:
       return S.suspend(() =>
@@ -65407,9 +64035,7 @@ function __c498(j: number): any {
           Code: S.optional(S.String).pipe(T.XmlName("code"), T.Ec2QueryName("Code")),
           Message: S.optional(S.String).pipe(T.XmlName("message"), T.Ec2QueryName("Message")),
         }),
-      ).annotate({
-        identifier: "DeleteQueuedReservedInstancesError",
-      });
+      ).annotate({ identifier: "DeleteQueuedReservedInstancesError" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -65421,14 +64047,12 @@ function __c498(j: number): any {
             T.Ec2QueryName("ReservedInstancesId"),
           ),
         }),
-      ).annotate({
-        identifier: "FailedQueuedPurchaseDeletion",
-      });
+      ).annotate({ identifier: "FailedQueuedPurchaseDeletion" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ __S(15941, __c498, 5).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "FailedQueuedPurchaseDeletion",
-        }),
+        /*@__PURE__*/ __S(15941, __c498, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "FailedQueuedPurchaseDeletion" }),
       );
     case 7:
       return S.suspend(() =>
@@ -65442,9 +64066,7 @@ function __c498(j: number): any {
             T.Ec2QueryName("FailedQueuedPurchaseDeletionSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteQueuedReservedInstancesResult",
-      });
+      ).annotate({ identifier: "DeleteQueuedReservedInstancesResult" });
   }
 }
 function __c499(j: number): any {
@@ -65469,9 +64091,7 @@ function __c499(j: number): any {
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DeleteRouteRequest" });
     case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeleteRouteResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "DeleteRouteResponse" });
   }
 }
 function __c500(j: number): any {
@@ -65500,9 +64120,7 @@ function __c501(j: number): any {
           RouteServerEndpointId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteRouteServerEndpointRequest",
-      });
+      ).annotate({ identifier: "DeleteRouteServerEndpointRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -65510,9 +64128,7 @@ function __c501(j: number): any {
             .pipe(T.XmlName("routeServerEndpoint"), T.Ec2QueryName("RouteServerEndpoint"))
             .annotate({ identifier: "RouteServerEndpoint" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteRouteServerEndpointResult",
-      });
+      ).annotate({ identifier: "DeleteRouteServerEndpointResult" });
   }
 }
 function __c502(j: number): any {
@@ -65522,9 +64138,7 @@ function __c502(j: number): any {
         S.Struct({ RouteServerPeerId: S.optional(S.String), DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteRouteServerPeerRequest",
-      });
+      ).annotate({ identifier: "DeleteRouteServerPeerRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -65532,9 +64146,7 @@ function __c502(j: number): any {
             .pipe(T.XmlName("routeServerPeer"), T.Ec2QueryName("RouteServerPeer"))
             .annotate({ identifier: "RouteServerPeer" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteRouteServerPeerResult",
-      });
+      ).annotate({ identifier: "DeleteRouteServerPeerResult" });
   }
 }
 function __c503(j: number): any {
@@ -65564,9 +64176,7 @@ function __c504(j: number): any {
           DryRun: S.optional(S.Boolean),
           SecondaryNetworkId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteSecondaryNetworkRequest",
-      });
+      ).annotate({ identifier: "DeleteSecondaryNetworkRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -65578,9 +64188,7 @@ function __c504(j: number): any {
             T.Ec2QueryName("ClientToken"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteSecondaryNetworkResult",
-      });
+      ).annotate({ identifier: "DeleteSecondaryNetworkResult" });
   }
 }
 function __c505(j: number): any {
@@ -65592,9 +64200,7 @@ function __c505(j: number): any {
           DryRun: S.optional(S.Boolean),
           SecondarySubnetId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteSecondarySubnetRequest",
-      });
+      ).annotate({ identifier: "DeleteSecondarySubnetRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -65606,9 +64212,7 @@ function __c505(j: number): any {
             T.Ec2QueryName("ClientToken"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteSecondarySubnetResult",
-      });
+      ).annotate({ identifier: "DeleteSecondarySubnetResult" });
   }
 }
 function __c506(j: number): any {
@@ -65620,18 +64224,14 @@ function __c506(j: number): any {
           GroupName: S.optional(S.String),
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteSecurityGroupRequest",
-      });
+      ).annotate({ identifier: "DeleteSecurityGroupRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
           GroupId: S.optional(S.String).pipe(T.XmlName("groupId"), T.Ec2QueryName("GroupId")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteSecurityGroupResult",
-      });
+      ).annotate({ identifier: "DeleteSecurityGroupResult" });
   }
 }
 function __c507(j: number): any {
@@ -65656,9 +64256,7 @@ function __c508(j: number): any {
         S.Struct({
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteSpotDatafeedSubscriptionRequest",
-      });
+      ).annotate({ identifier: "DeleteSpotDatafeedSubscriptionRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteSpotDatafeedSubscriptionResponse",
@@ -65688,9 +64286,7 @@ function __c510(j: number): any {
           SubnetCidrReservationId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteSubnetCidrReservationRequest",
-      });
+      ).annotate({ identifier: "DeleteSubnetCidrReservationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -65701,9 +64297,7 @@ function __c510(j: number): any {
             )
             .annotate({ identifier: "SubnetCidrReservation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteSubnetCidrReservationResult",
-      });
+      ).annotate({ identifier: "DeleteSubnetCidrReservationResult" });
   }
 }
 function __c511(j: number): any {
@@ -65720,9 +64314,7 @@ function __c511(j: number): any {
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DeleteTagsRequest" });
     case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeleteTagsResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "DeleteTagsResponse" });
   }
 }
 function __c512(j: number): any {
@@ -65733,9 +64325,7 @@ function __c512(j: number): any {
           TrafficMirrorFilterId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteTrafficMirrorFilterRequest",
-      });
+      ).annotate({ identifier: "DeleteTrafficMirrorFilterRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -65744,9 +64334,7 @@ function __c512(j: number): any {
             T.Ec2QueryName("TrafficMirrorFilterId"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteTrafficMirrorFilterResult",
-      });
+      ).annotate({ identifier: "DeleteTrafficMirrorFilterResult" });
   }
 }
 function __c513(j: number): any {
@@ -65757,9 +64345,7 @@ function __c513(j: number): any {
           TrafficMirrorFilterRuleId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteTrafficMirrorFilterRuleRequest",
-      });
+      ).annotate({ identifier: "DeleteTrafficMirrorFilterRuleRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -65768,9 +64354,7 @@ function __c513(j: number): any {
             T.Ec2QueryName("TrafficMirrorFilterRuleId"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteTrafficMirrorFilterRuleResult",
-      });
+      ).annotate({ identifier: "DeleteTrafficMirrorFilterRuleResult" });
   }
 }
 function __c514(j: number): any {
@@ -65781,9 +64365,7 @@ function __c514(j: number): any {
           TrafficMirrorSessionId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteTrafficMirrorSessionRequest",
-      });
+      ).annotate({ identifier: "DeleteTrafficMirrorSessionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -65792,9 +64374,7 @@ function __c514(j: number): any {
             T.Ec2QueryName("TrafficMirrorSessionId"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteTrafficMirrorSessionResult",
-      });
+      ).annotate({ identifier: "DeleteTrafficMirrorSessionResult" });
   }
 }
 function __c515(j: number): any {
@@ -65805,9 +64385,7 @@ function __c515(j: number): any {
           TrafficMirrorTargetId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteTrafficMirrorTargetRequest",
-      });
+      ).annotate({ identifier: "DeleteTrafficMirrorTargetRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -65816,9 +64394,7 @@ function __c515(j: number): any {
             T.Ec2QueryName("TrafficMirrorTargetId"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteTrafficMirrorTargetResult",
-      });
+      ).annotate({ identifier: "DeleteTrafficMirrorTargetResult" });
   }
 }
 function __c516(j: number): any {
@@ -65828,9 +64404,7 @@ function __c516(j: number): any {
         S.Struct({ TransitGatewayId: S.optional(S.String), DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteTransitGatewayRequest",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -65838,9 +64412,7 @@ function __c516(j: number): any {
             .pipe(T.XmlName("transitGateway"), T.Ec2QueryName("TransitGateway"))
             .annotate({ identifier: "TransitGateway" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteTransitGatewayResult",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayResult" });
   }
 }
 function __c517(j: number): any {
@@ -65851,9 +64423,7 @@ function __c517(j: number): any {
           TransitGatewayAttachmentId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteTransitGatewayClientVpnAttachmentRequest",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayClientVpnAttachmentRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -65864,9 +64434,7 @@ function __c517(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayClientVpnAttachment" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteTransitGatewayClientVpnAttachmentResult",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayClientVpnAttachmentResult" });
   }
 }
 function __c518(j: number): any {
@@ -65877,9 +64445,7 @@ function __c518(j: number): any {
           TransitGatewayAttachmentId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteTransitGatewayConnectRequest",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayConnectRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -65887,9 +64453,7 @@ function __c518(j: number): any {
             .pipe(T.XmlName("transitGatewayConnect"), T.Ec2QueryName("TransitGatewayConnect"))
             .annotate({ identifier: "TransitGatewayConnect" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteTransitGatewayConnectResult",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayConnectResult" });
   }
 }
 function __c519(j: number): any {
@@ -65900,9 +64464,7 @@ function __c519(j: number): any {
           TransitGatewayConnectPeerId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteTransitGatewayConnectPeerRequest",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayConnectPeerRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -65913,9 +64475,7 @@ function __c519(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayConnectPeer" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteTransitGatewayConnectPeerResult",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayConnectPeerResult" });
   }
 }
 function __c520(j: number): any {
@@ -65926,9 +64486,7 @@ function __c520(j: number): any {
           TransitGatewayMeteringPolicyId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteTransitGatewayMeteringPolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayMeteringPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -65939,9 +64497,7 @@ function __c520(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayMeteringPolicy" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteTransitGatewayMeteringPolicyResult",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayMeteringPolicyResult" });
   }
 }
 function __c521(j: number): any {
@@ -65953,9 +64509,7 @@ function __c521(j: number): any {
           PolicyRuleNumber: S.optional(S.Number),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteTransitGatewayMeteringPolicyEntryRequest",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayMeteringPolicyEntryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -65966,9 +64520,7 @@ function __c521(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayMeteringPolicyEntry" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteTransitGatewayMeteringPolicyEntryResult",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayMeteringPolicyEntryResult" });
   }
 }
 function __c522(j: number): any {
@@ -65979,9 +64531,7 @@ function __c522(j: number): any {
           TransitGatewayMulticastDomainId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteTransitGatewayMulticastDomainRequest",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayMulticastDomainRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -65992,9 +64542,7 @@ function __c522(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayMulticastDomain" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteTransitGatewayMulticastDomainResult",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayMulticastDomainResult" });
   }
 }
 function __c523(j: number): any {
@@ -66005,9 +64553,7 @@ function __c523(j: number): any {
           TransitGatewayAttachmentId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteTransitGatewayPeeringAttachmentRequest",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayPeeringAttachmentRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -66018,9 +64564,7 @@ function __c523(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayPeeringAttachment" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteTransitGatewayPeeringAttachmentResult",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayPeeringAttachmentResult" });
   }
 }
 function __c524(j: number): any {
@@ -66031,9 +64575,7 @@ function __c524(j: number): any {
           TransitGatewayPolicyTableId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteTransitGatewayPolicyTableRequest",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayPolicyTableRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -66044,9 +64586,7 @@ function __c524(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayPolicyTable" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteTransitGatewayPolicyTableResult",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayPolicyTableResult" });
   }
 }
 function __c525(j: number): any {
@@ -66058,9 +64598,7 @@ function __c525(j: number): any {
           PolicyRuleNumber: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteTransitGatewayPolicyTableEntryRequest",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayPolicyTableEntryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -66071,9 +64609,7 @@ function __c525(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayPolicyTableEntry" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteTransitGatewayPolicyTableEntryResult",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayPolicyTableEntryResult" });
   }
 }
 function __c526(j: number): any {
@@ -66085,9 +64621,7 @@ function __c526(j: number): any {
           PrefixListId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteTransitGatewayPrefixListReferenceRequest",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayPrefixListReferenceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -66098,9 +64632,7 @@ function __c526(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayPrefixListReference" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteTransitGatewayPrefixListReferenceResult",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayPrefixListReferenceResult" });
   }
 }
 function __c527(j: number): any {
@@ -66112,9 +64644,7 @@ function __c527(j: number): any {
           DestinationCidrBlock: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteTransitGatewayRouteRequest",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayRouteRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -66122,9 +64652,7 @@ function __c527(j: number): any {
             .pipe(T.XmlName("route"), T.Ec2QueryName("Route"))
             .annotate({ identifier: "TransitGatewayRoute" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteTransitGatewayRouteResult",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayRouteResult" });
   }
 }
 function __c528(j: number): any {
@@ -66135,9 +64663,7 @@ function __c528(j: number): any {
           TransitGatewayRouteTableId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteTransitGatewayRouteTableRequest",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayRouteTableRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -66145,9 +64671,7 @@ function __c528(j: number): any {
             .pipe(T.XmlName("transitGatewayRouteTable"), T.Ec2QueryName("TransitGatewayRouteTable"))
             .annotate({ identifier: "TransitGatewayRouteTable" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteTransitGatewayRouteTableResult",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayRouteTableResult" });
   }
 }
 function __c529(j: number): any {
@@ -66158,9 +64682,7 @@ function __c529(j: number): any {
           TransitGatewayRouteTableAnnouncementId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteTransitGatewayRouteTableAnnouncementRequest",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayRouteTableAnnouncementRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -66171,9 +64693,7 @@ function __c529(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayRouteTableAnnouncement" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteTransitGatewayRouteTableAnnouncementResult",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayRouteTableAnnouncementResult" });
   }
 }
 function __c530(j: number): any {
@@ -66184,9 +64704,7 @@ function __c530(j: number): any {
           TransitGatewayAttachmentId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteTransitGatewayVpcAttachmentRequest",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayVpcAttachmentRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -66197,9 +64715,7 @@ function __c530(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayVpcAttachment" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteTransitGatewayVpcAttachmentResult",
-      });
+      ).annotate({ identifier: "DeleteTransitGatewayVpcAttachmentResult" });
   }
 }
 function __c531(j: number): any {
@@ -66211,9 +64727,7 @@ function __c531(j: number): any {
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteVerifiedAccessEndpointRequest",
-      });
+      ).annotate({ identifier: "DeleteVerifiedAccessEndpointRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -66221,9 +64735,7 @@ function __c531(j: number): any {
             .pipe(T.XmlName("verifiedAccessEndpoint"), T.Ec2QueryName("VerifiedAccessEndpoint"))
             .annotate({ identifier: "VerifiedAccessEndpoint" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteVerifiedAccessEndpointResult",
-      });
+      ).annotate({ identifier: "DeleteVerifiedAccessEndpointResult" });
   }
 }
 function __c532(j: number): any {
@@ -66235,9 +64747,7 @@ function __c532(j: number): any {
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteVerifiedAccessGroupRequest",
-      });
+      ).annotate({ identifier: "DeleteVerifiedAccessGroupRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -66245,9 +64755,7 @@ function __c532(j: number): any {
             .pipe(T.XmlName("verifiedAccessGroup"), T.Ec2QueryName("VerifiedAccessGroup"))
             .annotate({ identifier: "VerifiedAccessGroup" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteVerifiedAccessGroupResult",
-      });
+      ).annotate({ identifier: "DeleteVerifiedAccessGroupResult" });
   }
 }
 function __c533(j: number): any {
@@ -66259,9 +64767,7 @@ function __c533(j: number): any {
           DryRun: S.optional(S.Boolean),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteVerifiedAccessInstanceRequest",
-      });
+      ).annotate({ identifier: "DeleteVerifiedAccessInstanceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -66269,9 +64775,7 @@ function __c533(j: number): any {
             .pipe(T.XmlName("verifiedAccessInstance"), T.Ec2QueryName("VerifiedAccessInstance"))
             .annotate({ identifier: "VerifiedAccessInstance" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteVerifiedAccessInstanceResult",
-      });
+      ).annotate({ identifier: "DeleteVerifiedAccessInstanceResult" });
   }
 }
 function __c534(j: number): any {
@@ -66283,9 +64787,7 @@ function __c534(j: number): any {
           DryRun: S.optional(S.Boolean),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteVerifiedAccessTrustProviderRequest",
-      });
+      ).annotate({ identifier: "DeleteVerifiedAccessTrustProviderRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -66296,9 +64798,7 @@ function __c534(j: number): any {
             )
             .annotate({ identifier: "VerifiedAccessTrustProvider" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteVerifiedAccessTrustProviderResult",
-      });
+      ).annotate({ identifier: "DeleteVerifiedAccessTrustProviderResult" });
   }
 }
 function __c535(j: number): any {
@@ -66326,9 +64826,7 @@ function __c536(j: number): any {
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DeleteVpcRequest" });
     case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeleteVpcResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "DeleteVpcResponse" });
   }
 }
 function __c537(j: number): any {
@@ -66338,9 +64836,7 @@ function __c537(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean), ExclusionId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteVpcBlockPublicAccessExclusionRequest",
-      });
+      ).annotate({ identifier: "DeleteVpcBlockPublicAccessExclusionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -66351,9 +64847,7 @@ function __c537(j: number): any {
             )
             .annotate({ identifier: "VpcBlockPublicAccessExclusion" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteVpcBlockPublicAccessExclusionResult",
-      });
+      ).annotate({ identifier: "DeleteVpcBlockPublicAccessExclusionResult" });
   }
 }
 function __c538(j: number): any {
@@ -66364,9 +64858,7 @@ function __c538(j: number): any {
           DryRun: S.optional(S.Boolean),
           VpcEncryptionControlId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteVpcEncryptionControlRequest",
-      });
+      ).annotate({ identifier: "DeleteVpcEncryptionControlRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -66374,9 +64866,7 @@ function __c538(j: number): any {
             .pipe(T.XmlName("vpcEncryptionControl"), T.Ec2QueryName("VpcEncryptionControl"))
             .annotate({ identifier: "VpcEncryptionControl" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteVpcEncryptionControlResult",
-      });
+      ).annotate({ identifier: "DeleteVpcEncryptionControlResult" });
   }
 }
 function __c539(j: number): any {
@@ -66391,9 +64881,7 @@ function __c539(j: number): any {
             T.XmlName("ConnectionNotificationId"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteVpcEndpointConnectionNotificationsRequest",
-      });
+      ).annotate({ identifier: "DeleteVpcEndpointConnectionNotificationsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -66402,9 +64890,7 @@ function __c539(j: number): any {
             T.Ec2QueryName("Unsuccessful"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteVpcEndpointConnectionNotificationsResult",
-      });
+      ).annotate({ identifier: "DeleteVpcEndpointConnectionNotificationsResult" });
   }
 }
 function __c540(j: number): any {
@@ -66415,9 +64901,7 @@ function __c540(j: number): any {
           DryRun: S.optional(S.Boolean),
           VpcEndpointIds: S.optional(__S(2528, __c79, 0)).pipe(T.XmlName("VpcEndpointId")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteVpcEndpointsRequest",
-      });
+      ).annotate({ identifier: "DeleteVpcEndpointsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -66437,9 +64921,7 @@ function __c541(j: number): any {
           DryRun: S.optional(S.Boolean),
           ServiceIds: S.optional(__S(17344, __c542, 0)).pipe(T.XmlName("ServiceId")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteVpcEndpointServiceConfigurationsRequest",
-      });
+      ).annotate({ identifier: "DeleteVpcEndpointServiceConfigurationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -66448,9 +64930,7 @@ function __c541(j: number): any {
             T.Ec2QueryName("Unsuccessful"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteVpcEndpointServiceConfigurationsResult",
-      });
+      ).annotate({ identifier: "DeleteVpcEndpointServiceConfigurationsResult" });
   }
 }
 function __c542(j: number): any {
@@ -66470,17 +64950,13 @@ function __c543(j: number): any {
             T.Ec2QueryName("VpcPeeringConnectionId"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteVpcPeeringConnectionRequest",
-      });
+      ).annotate({ identifier: "DeleteVpcPeeringConnectionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteVpcPeeringConnectionResult",
-      });
+      ).annotate({ identifier: "DeleteVpcPeeringConnectionResult" });
   }
 }
 function __c544(j: number): any {
@@ -66490,17 +64966,13 @@ function __c544(j: number): any {
         S.Struct({ VpnConcentratorId: S.optional(S.String), DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteVpnConcentratorRequest",
-      });
+      ).annotate({ identifier: "DeleteVpnConcentratorRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteVpnConcentratorResult",
-      });
+      ).annotate({ identifier: "DeleteVpnConcentratorResult" });
   }
 }
 function __c545(j: number): any {
@@ -66511,9 +64983,7 @@ function __c545(j: number): any {
           VpnConnectionId: S.optional(S.String),
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteVpnConnectionRequest",
-      });
+      ).annotate({ identifier: "DeleteVpnConnectionRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteVpnConnectionResponse",
@@ -66528,9 +64998,7 @@ function __c546(j: number): any {
           DestinationCidrBlock: S.optional(S.String),
           VpnConnectionId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteVpnConnectionRouteRequest",
-      });
+      ).annotate({ identifier: "DeleteVpnConnectionRouteRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteVpnConnectionRouteResponse",
@@ -66559,9 +65027,7 @@ function __c548(j: number): any {
         S.Struct({ Cidr: S.optional(S.String), DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeprovisionByoipCidrRequest",
-      });
+      ).annotate({ identifier: "DeprovisionByoipCidrRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -66569,9 +65035,7 @@ function __c548(j: number): any {
             .pipe(T.XmlName("byoipCidr"), T.Ec2QueryName("ByoipCidr"))
             .annotate({ identifier: "ByoipCidr" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeprovisionByoipCidrResult",
-      });
+      ).annotate({ identifier: "DeprovisionByoipCidrResult" });
   }
 }
 function __c549(j: number): any {
@@ -66583,9 +65047,7 @@ function __c549(j: number): any {
           IpamId: S.optional(S.String),
           Asn: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeprovisionIpamByoasnRequest",
-      });
+      ).annotate({ identifier: "DeprovisionIpamByoasnRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -66593,9 +65055,7 @@ function __c549(j: number): any {
             .pipe(T.XmlName("byoasn"), T.Ec2QueryName("Byoasn"))
             .annotate({ identifier: "Byoasn" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeprovisionIpamByoasnResult",
-      });
+      ).annotate({ identifier: "DeprovisionIpamByoasnResult" });
   }
 }
 function __c550(j: number): any {
@@ -66623,9 +65083,7 @@ function __c551(j: number): any {
           IpamPoolId: S.optional(S.String),
           Cidr: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeprovisionIpamPoolCidrRequest",
-      });
+      ).annotate({ identifier: "DeprovisionIpamPoolCidrRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -66633,9 +65091,7 @@ function __c551(j: number): any {
             .pipe(T.XmlName("ipamPoolCidr"), T.Ec2QueryName("IpamPoolCidr"))
             .annotate({ identifier: "IpamPoolCidr" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeprovisionIpamPoolCidrResult",
-      });
+      ).annotate({ identifier: "DeprovisionIpamPoolCidrResult" });
   }
 }
 function __c552(j: number): any {
@@ -66646,9 +65102,7 @@ function __c552(j: number): any {
           Code: S.optional(S.String).pipe(T.XmlName("code"), T.Ec2QueryName("Code")),
           Message: S.optional(S.String).pipe(T.XmlName("message"), T.Ec2QueryName("Message")),
         }),
-      ).annotate({
-        identifier: "IpamPoolCidrFailureReason",
-      });
+      ).annotate({ identifier: "IpamPoolCidrFailureReason" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -66678,9 +65132,7 @@ function __c553(j: number): any {
           PoolId: S.optional(S.String),
           Cidr: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeprovisionPublicIpv4PoolCidrRequest",
-      });
+      ).annotate({ identifier: "DeprovisionPublicIpv4PoolCidrRequest" });
     case 1:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")));
     case 2:
@@ -66692,9 +65144,7 @@ function __c553(j: number): any {
             T.Ec2QueryName("DeprovisionedAddressSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeprovisionPublicIpv4PoolCidrResult",
-      });
+      ).annotate({ identifier: "DeprovisionPublicIpv4PoolCidrResult" });
   }
 }
 function __c554(j: number): any {
@@ -66722,9 +65172,9 @@ function __c554(j: number): any {
       ).annotate({ identifier: "DeleteSnapshotReturnCode" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(17729, __c554, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "DeleteSnapshotReturnCode",
-        }),
+        /*@__PURE__*/ __S(17729, __c554, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "DeleteSnapshotReturnCode" }),
       );
     case 3:
       return S.suspend(() =>
@@ -66746,18 +65196,14 @@ function __c555(j: number): any {
           IncludeAllTagsOfInstance: S.optional(S.Boolean),
           InstanceTagKeys: S.optional(__S(17792, __c556, 0)).pipe(T.XmlName("InstanceTagKey")),
         }),
-      ).annotate({
-        identifier: "DeregisterInstanceTagAttributeRequest",
-      });
+      ).annotate({ identifier: "DeregisterInstanceTagAttributeRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           DryRun: S.optional(S.Boolean),
           InstanceTagAttribute: S.optional(__S(17760, __c555, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeregisterInstanceEventNotificationAttributesRequest",
-      });
+      ).annotate({ identifier: "DeregisterInstanceEventNotificationAttributesRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -66765,9 +65211,7 @@ function __c555(j: number): any {
             .pipe(T.XmlName("instanceTagAttribute"), T.Ec2QueryName("InstanceTagAttribute"))
             .annotate({ identifier: "InstanceTagNotificationAttribute" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeregisterInstanceEventNotificationAttributesResult",
-      });
+      ).annotate({ identifier: "DeregisterInstanceEventNotificationAttributesResult" });
   }
 }
 function __c556(j: number): any {
@@ -66786,9 +65230,7 @@ function __c556(j: number): any {
             T.Ec2QueryName("IncludeAllTagsOfInstance"),
           ),
         }),
-      ).annotate({
-        identifier: "InstanceTagNotificationAttribute",
-      });
+      ).annotate({ identifier: "InstanceTagNotificationAttribute" });
   }
 }
 function __c557(j: number): any {
@@ -66801,9 +65243,7 @@ function __c557(j: number): any {
           NetworkInterfaceIds: S.optional(__S(17856, __c558, 0)),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeregisterTransitGatewayMulticastGroupMembersRequest",
-      });
+      ).annotate({ identifier: "DeregisterTransitGatewayMulticastGroupMembersRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -66820,9 +65260,7 @@ function __c557(j: number): any {
             T.Ec2QueryName("GroupIpAddress"),
           ),
         }),
-      ).annotate({
-        identifier: "TransitGatewayMulticastDeregisteredGroupMembers",
-      });
+      ).annotate({ identifier: "TransitGatewayMulticastDeregisteredGroupMembers" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -66833,9 +65271,7 @@ function __c557(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayMulticastDeregisteredGroupMembers" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeregisterTransitGatewayMulticastGroupMembersResult",
-      });
+      ).annotate({ identifier: "DeregisterTransitGatewayMulticastGroupMembersResult" });
   }
 }
 function __c558(j: number): any {
@@ -66854,9 +65290,7 @@ function __c559(j: number): any {
           NetworkInterfaceIds: S.optional(__S(17856, __c558, 0)),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeregisterTransitGatewayMulticastGroupSourcesRequest",
-      });
+      ).annotate({ identifier: "DeregisterTransitGatewayMulticastGroupSourcesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -66873,9 +65307,7 @@ function __c559(j: number): any {
             T.Ec2QueryName("GroupIpAddress"),
           ),
         }),
-      ).annotate({
-        identifier: "TransitGatewayMulticastDeregisteredGroupSources",
-      });
+      ).annotate({ identifier: "TransitGatewayMulticastDeregisteredGroupSources" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -66886,9 +65318,7 @@ function __c559(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayMulticastDeregisteredGroupSources" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeregisterTransitGatewayMulticastGroupSourcesResult",
-      });
+      ).annotate({ identifier: "DeregisterTransitGatewayMulticastGroupSourcesResult" });
   }
 }
 function __c560(j: number): any {
@@ -66904,9 +65334,7 @@ function __c560(j: number): any {
             T.Ec2QueryName("AttributeName"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeAccountAttributesRequest",
-      });
+      ).annotate({ identifier: "DescribeAccountAttributesRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -66918,9 +65346,9 @@ function __c560(j: number): any {
       ).annotate({ identifier: "AccountAttributeValue" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(17922, __c560, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "AccountAttributeValue",
-        }),
+        /*@__PURE__*/ __S(17922, __c560, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "AccountAttributeValue" }),
       );
     case 4:
       return S.suspend(() =>
@@ -66937,9 +65365,9 @@ function __c560(j: number): any {
       ).annotate({ identifier: "AccountAttribute" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(17924, __c560, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "AccountAttribute",
-        }),
+        /*@__PURE__*/ __S(17924, __c560, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "AccountAttribute" }),
       );
     case 6:
       return S.suspend(() =>
@@ -66949,9 +65377,7 @@ function __c560(j: number): any {
             T.Ec2QueryName("AccountAttributeSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeAccountAttributesResult",
-      });
+      ).annotate({ identifier: "DescribeAccountAttributesResult" });
   }
 }
 function __c561(j: number): any {
@@ -66961,9 +65387,7 @@ function __c561(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeAccountVpcEncryptionControlRequest",
-      });
+      ).annotate({ identifier: "DescribeAccountVpcEncryptionControlRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -66974,9 +65398,7 @@ function __c561(j: number): any {
             )
             .annotate({ identifier: "AccountVpcEncryptionControl" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeAccountVpcEncryptionControlResult",
-      });
+      ).annotate({ identifier: "DescribeAccountVpcEncryptionControlResult" });
   }
 }
 function __c562(j: number): any {
@@ -67014,9 +65436,7 @@ function __c562(j: number): any {
             T.Ec2QueryName("ElasticFileSystem"),
           ),
         }),
-      ).annotate({
-        identifier: "AccountVpcEncryptionControlExclusions",
-      });
+      ).annotate({ identifier: "AccountVpcEncryptionControlExclusions" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -67030,9 +65450,7 @@ function __c562(j: number): any {
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ).pipe(T.XmlName("lastUpdateTimestamp"), T.Ec2QueryName("LastUpdateTimestamp")),
         }),
-      ).annotate({
-        identifier: "AccountVpcEncryptionControl",
-      });
+      ).annotate({ identifier: "AccountVpcEncryptionControl" });
   }
 }
 function __c563(j: number): any {
@@ -67149,14 +65567,12 @@ function __c565(j: number): any {
           MaxResults: S.optional(S.Number),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeAddressesAttributeRequest",
-      });
+      ).annotate({ identifier: "DescribeAddressesAttributeRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(18113, __c566, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "AddressAttribute",
-        }),
+        /*@__PURE__*/ __S(18113, __c566, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "AddressAttribute" }),
       );
     case 3:
       return S.suspend(() =>
@@ -67167,9 +65583,7 @@ function __c565(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeAddressesAttributeResult",
-      });
+      ).annotate({ identifier: "DescribeAddressesAttributeResult" });
   }
 }
 function __c566(j: number): any {
@@ -67208,14 +65622,12 @@ function __c567(j: number): any {
           MaxResults: S.optional(S.Number),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeAddressTransfersRequest",
-      });
+      ).annotate({ identifier: "DescribeAddressTransfersRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(1984, __c62, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "AddressTransfer",
-        }),
+        /*@__PURE__*/ __S(1984, __c62, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "AddressTransfer" }),
       );
     case 2:
       return S.suspend(() =>
@@ -67226,9 +65638,7 @@ function __c567(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeAddressTransfersResult",
-      });
+      ).annotate({ identifier: "DescribeAddressTransfersResult" });
   }
 }
 function __c568(j: number): any {
@@ -67238,9 +65648,7 @@ function __c568(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeAggregateIdFormatRequest",
-      });
+      ).annotate({ identifier: "DescribeAggregateIdFormatRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -67253,9 +65661,7 @@ function __c568(j: number): any {
             T.Ec2QueryName("StatusSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeAggregateIdFormatResult",
-      });
+      ).annotate({ identifier: "DescribeAggregateIdFormatResult" });
   }
 }
 function __c569(j: number): any {
@@ -67293,9 +65699,7 @@ function __c570(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeApplicationStatusRequest",
-      });
+      ).annotate({ identifier: "DescribeApplicationStatusRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -67338,9 +65742,9 @@ function __c570(j: number): any {
       ).annotate({ identifier: "ApplicationStatusDetail" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(18242, __c570, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ApplicationStatusDetail",
-        }),
+        /*@__PURE__*/ __S(18242, __c570, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ApplicationStatusDetail" }),
       );
     case 4:
       return S.suspend(() =>
@@ -67384,14 +65788,12 @@ function __c570(j: number): any {
             .annotate({ identifier: "ApplicationStatus" }),
           Tags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("tagSet"), T.Ec2QueryName("TagSet")),
         }),
-      ).annotate({
-        identifier: "InstanceApplicationStatus",
-      });
+      ).annotate({ identifier: "InstanceApplicationStatus" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ __S(18245, __c570, 5).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceApplicationStatus",
-        }),
+        /*@__PURE__*/ __S(18245, __c570, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceApplicationStatus" }),
       );
     case 7:
       return S.suspend(() =>
@@ -67401,9 +65803,7 @@ function __c570(j: number): any {
             T.Ec2QueryName("InstanceSet"),
           ),
         }),
-      ).annotate({
-        identifier: "ApplicationStatusesResponseType",
-      });
+      ).annotate({ identifier: "ApplicationStatusesResponseType" });
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -67415,9 +65815,7 @@ function __c570(j: number): any {
             .annotate({ identifier: "ApplicationStatusesResponseType" }),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeApplicationStatusResult",
-      });
+      ).annotate({ identifier: "DescribeApplicationStatusResult" });
   }
 }
 function __c571(j: number): any {
@@ -67433,9 +65831,7 @@ function __c571(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeApplicationStatusCheckAssociationsRequest",
-      });
+      ).annotate({ identifier: "DescribeApplicationStatusCheckAssociationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -67450,14 +65846,12 @@ function __c571(j: number): any {
           Key: S.optional(S.String).pipe(T.XmlName("key"), T.Ec2QueryName("Key")),
           Value: S.optional(S.String).pipe(T.XmlName("value"), T.Ec2QueryName("Value")),
         }),
-      ).annotate({
-        identifier: "ApplicationStatusCheckAssociationObject",
-      });
+      ).annotate({ identifier: "ApplicationStatusCheckAssociationObject" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(18273, __c571, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ApplicationStatusCheckAssociationObject",
-        }),
+        /*@__PURE__*/ __S(18273, __c571, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ApplicationStatusCheckAssociationObject" }),
       );
     case 3:
       return S.suspend(() =>
@@ -67469,9 +65863,7 @@ function __c571(j: number): any {
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
           Tags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("tagSet"), T.Ec2QueryName("TagSet")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeApplicationStatusCheckAssociationsResult",
-      });
+      ).annotate({ identifier: "DescribeApplicationStatusCheckAssociationsResult" });
   }
 }
 function __c572(j: number): any {
@@ -67494,14 +65886,12 @@ function __c573(j: number): any {
           IncludeAll: S.optional(S.Boolean),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeApplicationStatusChecksRequest",
-      });
+      ).annotate({ identifier: "DescribeApplicationStatusChecksRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(5991, __c187, 7).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ApplicationStatusCheckResponseObject",
-        }),
+        /*@__PURE__*/ __S(5991, __c187, 7)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ApplicationStatusCheckResponseObject" }),
       );
     case 2:
       return S.suspend(() =>
@@ -67512,9 +65902,7 @@ function __c573(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeApplicationStatusChecksResult",
-      });
+      ).annotate({ identifier: "DescribeApplicationStatusChecksResult" });
   }
 }
 function __c574(j: number): any {
@@ -67532,9 +65920,7 @@ function __c574(j: number): any {
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeAvailabilityZonesRequest",
-      });
+      ).annotate({ identifier: "DescribeAvailabilityZonesRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -67543,33 +65929,29 @@ function __c574(j: number): any {
       ).annotate({ identifier: "AvailabilityZoneMessage" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(18371, __c574, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "AvailabilityZoneMessage",
-        }),
+        /*@__PURE__*/ __S(18371, __c574, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "AvailabilityZoneMessage" }),
       );
     case 5:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String).pipe(T.XmlName("name"), T.Ec2QueryName("Name")) }),
-      ).annotate({
-        identifier: "AvailabilityZoneGeography",
-      });
+      ).annotate({ identifier: "AvailabilityZoneGeography" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ __S(18373, __c574, 5).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "AvailabilityZoneGeography",
-        }),
+        /*@__PURE__*/ __S(18373, __c574, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "AvailabilityZoneGeography" }),
       );
     case 7:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String).pipe(T.XmlName("name"), T.Ec2QueryName("Name")) }),
-      ).annotate({
-        identifier: "AvailabilityZoneSubGeography",
-      });
+      ).annotate({ identifier: "AvailabilityZoneSubGeography" });
     case 8:
       return S.Array(
-        /*@__PURE__*/ __S(18375, __c574, 7).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "AvailabilityZoneSubGeography",
-        }),
+        /*@__PURE__*/ __S(18375, __c574, 7)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "AvailabilityZoneSubGeography" }),
       );
     case 9:
       return S.suspend(() =>
@@ -67619,9 +66001,9 @@ function __c574(j: number): any {
       ).annotate({ identifier: "AvailabilityZone" });
     case 10:
       return S.Array(
-        /*@__PURE__*/ __S(18377, __c574, 9).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "AvailabilityZone",
-        }),
+        /*@__PURE__*/ __S(18377, __c574, 9)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "AvailabilityZone" }),
       );
     case 11:
       return S.suspend(() =>
@@ -67631,9 +66013,7 @@ function __c574(j: number): any {
             T.Ec2QueryName("AvailabilityZoneInfo"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeAvailabilityZonesResult",
-      });
+      ).annotate({ identifier: "DescribeAvailabilityZonesResult" });
   }
 }
 function __c575(j: number): any {
@@ -67646,9 +66026,7 @@ function __c575(j: number): any {
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeAwsNetworkPerformanceMetricSubscriptionsRequest",
-      });
+      ).annotate({ identifier: "DescribeAwsNetworkPerformanceMetricSubscriptionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -67664,9 +66042,9 @@ function __c575(j: number): any {
       ).annotate({ identifier: "Subscription" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(18401, __c575, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "Subscription",
-        }),
+        /*@__PURE__*/ __S(18401, __c575, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "Subscription" }),
       );
     case 3:
       return S.suspend(() =>
@@ -67677,9 +66055,7 @@ function __c575(j: number): any {
             T.Ec2QueryName("SubscriptionSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeAwsNetworkPerformanceMetricSubscriptionsResult",
-      });
+      ).annotate({ identifier: "DescribeAwsNetworkPerformanceMetricSubscriptionsResult" });
   }
 }
 function __c576(j: number): any {
@@ -67693,14 +66069,12 @@ function __c576(j: number): any {
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeBundleTasksRequest",
-      });
+      ).annotate({ identifier: "DescribeBundleTasksRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(5187, __c162, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "BundleTask",
-        }),
+        /*@__PURE__*/ __S(5187, __c162, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "BundleTask" }),
       );
     case 3:
       return S.suspend(() =>
@@ -67710,9 +66084,7 @@ function __c576(j: number): any {
             T.Ec2QueryName("BundleInstanceTasksSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeBundleTasksResult",
-      });
+      ).annotate({ identifier: "DescribeBundleTasksResult" });
   }
 }
 function __c577(j: number): any {
@@ -67724,14 +66096,12 @@ function __c577(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeByoipCidrsRequest",
-      });
+      ).annotate({ identifier: "DescribeByoipCidrsRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(2689, __c84, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ByoipCidr",
-        }),
+        /*@__PURE__*/ __S(2689, __c84, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ByoipCidr" }),
       );
     case 2:
       return S.suspend(() =>
@@ -67758,9 +66128,7 @@ function __c578(j: number): any {
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeCapacityBlockExtensionHistoryRequest",
-      });
+      ).annotate({ identifier: "DescribeCapacityBlockExtensionHistoryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -67770,9 +66138,7 @@ function __c578(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeCapacityBlockExtensionHistoryResult",
-      });
+      ).annotate({ identifier: "DescribeCapacityBlockExtensionHistoryResult" });
   }
 }
 function __c579(j: number): any {
@@ -67843,9 +66209,9 @@ function __c579(j: number): any {
       ).annotate({ identifier: "CapacityBlockExtension" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(18528, __c579, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CapacityBlockExtension",
-        }),
+        /*@__PURE__*/ __S(18528, __c579, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CapacityBlockExtension" }),
       );
   }
 }
@@ -67860,9 +66226,7 @@ function __c580(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeCapacityBlockExtensionOfferingsRequest",
-      });
+      ).annotate({ identifier: "DescribeCapacityBlockExtensionOfferingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -67917,14 +66281,12 @@ function __c580(j: number): any {
           Tenancy: S.optional(S.String).pipe(T.XmlName("tenancy"), T.Ec2QueryName("Tenancy")),
           ZoneType: S.optional(S.String).pipe(T.XmlName("zoneType"), T.Ec2QueryName("ZoneType")),
         }),
-      ).annotate({
-        identifier: "CapacityBlockExtensionOffering",
-      });
+      ).annotate({ identifier: "CapacityBlockExtensionOffering" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(18561, __c580, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CapacityBlockExtensionOffering",
-        }),
+        /*@__PURE__*/ __S(18561, __c580, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CapacityBlockExtensionOffering" }),
       );
     case 3:
       return S.suspend(() =>
@@ -67935,9 +66297,7 @@ function __c580(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeCapacityBlockExtensionOfferingsResult",
-      });
+      ).annotate({ identifier: "DescribeCapacityBlockExtensionOfferingsResult" });
   }
 }
 function __c581(j: number): any {
@@ -67957,9 +66317,7 @@ function __c581(j: number): any {
           UltraserverCount: S.optional(S.Number),
           AllAvailabilityZones: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeCapacityBlockOfferingsRequest",
-      });
+      ).annotate({ identifier: "DescribeCapacityBlockOfferingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -68017,9 +66375,9 @@ function __c581(j: number): any {
       ).annotate({ identifier: "CapacityBlockOffering" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(18593, __c581, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CapacityBlockOffering",
-        }),
+        /*@__PURE__*/ __S(18593, __c581, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CapacityBlockOffering" }),
       );
     case 3:
       return S.suspend(() =>
@@ -68030,9 +66388,7 @@ function __c581(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeCapacityBlockOfferingsResult",
-      });
+      ).annotate({ identifier: "DescribeCapacityBlockOfferingsResult" });
   }
 }
 function __c582(j: number): any {
@@ -68046,9 +66402,7 @@ function __c582(j: number): any {
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeCapacityBlocksRequest",
-      });
+      ).annotate({ identifier: "DescribeCapacityBlocksRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -68058,9 +66412,7 @@ function __c582(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeCapacityBlocksResult",
-      });
+      ).annotate({ identifier: "DescribeCapacityBlocksResult" });
   }
 }
 function __c583(j: number): any {
@@ -68112,9 +66464,9 @@ function __c584(j: number): any {
       ).annotate({ identifier: "CapacityBlock" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(18688, __c584, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CapacityBlock",
-        }),
+        /*@__PURE__*/ __S(18688, __c584, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CapacityBlock" }),
       );
   }
 }
@@ -68129,9 +66481,7 @@ function __c585(j: number): any {
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeCapacityBlockStatusRequest",
-      });
+      ).annotate({ identifier: "DescribeCapacityBlockStatusRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -68152,14 +66502,12 @@ function __c585(j: number): any {
             T.Ec2QueryName("TotalUnavailableCapacity"),
           ),
         }),
-      ).annotate({
-        identifier: "CapacityReservationStatus",
-      });
+      ).annotate({ identifier: "CapacityReservationStatus" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(18721, __c585, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CapacityReservationStatus",
-        }),
+        /*@__PURE__*/ __S(18721, __c585, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CapacityReservationStatus" }),
       );
     case 3:
       return S.suspend(() =>
@@ -68192,9 +66540,9 @@ function __c585(j: number): any {
       ).annotate({ identifier: "CapacityBlockStatus" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(18723, __c585, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CapacityBlockStatus",
-        }),
+        /*@__PURE__*/ __S(18723, __c585, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CapacityBlockStatus" }),
       );
     case 5:
       return S.suspend(() =>
@@ -68205,9 +66553,7 @@ function __c585(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeCapacityBlockStatusResult",
-      });
+      ).annotate({ identifier: "DescribeCapacityBlockStatusResult" });
   }
 }
 function __c586(j: number): any {
@@ -68225,9 +66571,7 @@ function __c586(j: number): any {
           DryRun: S.optional(S.Boolean),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeCapacityManagerDataExportsRequest",
-      });
+      ).annotate({ identifier: "DescribeCapacityManagerDataExportsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -68269,14 +66613,12 @@ function __c586(j: number): any {
           ).pipe(T.XmlName("latestDeliveryTime"), T.Ec2QueryName("LatestDeliveryTime")),
           Tags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("tagSet"), T.Ec2QueryName("TagSet")),
         }),
-      ).annotate({
-        identifier: "CapacityManagerDataExportResponse",
-      });
+      ).annotate({ identifier: "CapacityManagerDataExportResponse" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(18754, __c586, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CapacityManagerDataExportResponse",
-        }),
+        /*@__PURE__*/ __S(18754, __c586, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CapacityManagerDataExportResponse" }),
       );
     case 4:
       return S.suspend(() =>
@@ -68287,9 +66629,7 @@ function __c586(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeCapacityManagerDataExportsResult",
-      });
+      ).annotate({ identifier: "DescribeCapacityManagerDataExportsResult" });
   }
 }
 function __c587(j: number): any {
@@ -68306,9 +66646,7 @@ function __c587(j: number): any {
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeCapacityReservationBillingRequestsRequest",
-      });
+      ).annotate({ identifier: "DescribeCapacityReservationBillingRequestsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -68355,14 +66693,12 @@ function __c587(j: number): any {
             .pipe(T.XmlName("capacityReservationInfo"), T.Ec2QueryName("CapacityReservationInfo"))
             .annotate({ identifier: "CapacityReservationInfo" }),
         }),
-      ).annotate({
-        identifier: "CapacityReservationBillingRequest",
-      });
+      ).annotate({ identifier: "CapacityReservationBillingRequest" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(18786, __c587, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CapacityReservationBillingRequest",
-        }),
+        /*@__PURE__*/ __S(18786, __c587, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CapacityReservationBillingRequest" }),
       );
     case 4:
       return S.suspend(() =>
@@ -68373,9 +66709,7 @@ function __c587(j: number): any {
             T.Ec2QueryName("CapacityReservationBillingRequestSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeCapacityReservationBillingRequestsResult",
-      });
+      ).annotate({ identifier: "DescribeCapacityReservationBillingRequestsResult" });
   }
 }
 function __c588(j: number): any {
@@ -68393,14 +66727,12 @@ function __c588(j: number): any {
           DryRun: S.optional(S.Boolean),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeCapacityReservationCancellationQuotesRequest",
-      });
+      ).annotate({ identifier: "DescribeCapacityReservationCancellationQuotesRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(6275, __c196, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CapacityReservationCancellationQuote",
-        }),
+        /*@__PURE__*/ __S(6275, __c196, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CapacityReservationCancellationQuote" }),
       );
     case 3:
       return S.suspend(() =>
@@ -68411,9 +66743,7 @@ function __c588(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeCapacityReservationCancellationQuotesResult",
-      });
+      ).annotate({ identifier: "DescribeCapacityReservationCancellationQuotesResult" });
   }
 }
 function __c589(j: number): any {
@@ -68431,14 +66761,12 @@ function __c589(j: number): any {
           DryRun: S.optional(S.Boolean),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeCapacityReservationDateChangeQuotesRequest",
-      });
+      ).annotate({ identifier: "DescribeCapacityReservationDateChangeQuotesRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(6339, __c198, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CapacityReservationModificationQuote",
-        }),
+        /*@__PURE__*/ __S(6339, __c198, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CapacityReservationModificationQuote" }),
       );
     case 3:
       return S.suspend(() =>
@@ -68449,9 +66777,7 @@ function __c589(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeCapacityReservationDateChangeQuotesResult",
-      });
+      ).annotate({ identifier: "DescribeCapacityReservationDateChangeQuotesResult" });
   }
 }
 function __c590(j: number): any {
@@ -68467,9 +66793,7 @@ function __c590(j: number): any {
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeCapacityReservationFleetsRequest",
-      });
+      ).annotate({ identifier: "DescribeCapacityReservationFleetsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -68516,9 +66840,9 @@ function __c590(j: number): any {
       ).annotate({ identifier: "CapacityReservationFleet" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(18881, __c590, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CapacityReservationFleet",
-        }),
+        /*@__PURE__*/ __S(18881, __c590, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CapacityReservationFleet" }),
       );
     case 3:
       return S.suspend(() =>
@@ -68529,9 +66853,7 @@ function __c590(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeCapacityReservationFleetsResult",
-      });
+      ).annotate({ identifier: "DescribeCapacityReservationFleetsResult" });
   }
 }
 function __c591(j: number): any {
@@ -68547,14 +66869,12 @@ function __c591(j: number): any {
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeCapacityReservationsRequest",
-      });
+      ).annotate({ identifier: "DescribeCapacityReservationsRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(6181, __c193, 5).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CapacityReservation",
-        }),
+        /*@__PURE__*/ __S(6181, __c193, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CapacityReservation" }),
       );
     case 2:
       return S.suspend(() =>
@@ -68565,9 +66885,7 @@ function __c591(j: number): any {
             T.Ec2QueryName("CapacityReservationSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeCapacityReservationsResult",
-      });
+      ).annotate({ identifier: "DescribeCapacityReservationsResult" });
   }
 }
 function __c592(j: number): any {
@@ -68583,9 +66901,7 @@ function __c592(j: number): any {
           ),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeCapacityReservationTopologyRequest",
-      });
+      ).annotate({ identifier: "DescribeCapacityReservationTopologyRequest" });
     case 1:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")));
     case 2:
@@ -68618,14 +66934,12 @@ function __c592(j: number): any {
             T.Ec2QueryName("AvailabilityZone"),
           ),
         }),
-      ).annotate({
-        identifier: "CapacityReservationTopology",
-      });
+      ).annotate({ identifier: "CapacityReservationTopology" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(18946, __c592, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CapacityReservationTopology",
-        }),
+        /*@__PURE__*/ __S(18946, __c592, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CapacityReservationTopology" }),
       );
     case 4:
       return S.suspend(() =>
@@ -68636,9 +66950,7 @@ function __c592(j: number): any {
             T.Ec2QueryName("CapacityReservationSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeCapacityReservationTopologyResult",
-      });
+      ).annotate({ identifier: "DescribeCapacityReservationTopologyResult" });
   }
 }
 function __c593(j: number): any {
@@ -68654,14 +66966,12 @@ function __c593(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeCarrierGatewaysRequest",
-      });
+      ).annotate({ identifier: "DescribeCarrierGatewaysRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(6464, __c202, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CarrierGateway",
-        }),
+        /*@__PURE__*/ __S(6464, __c202, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CarrierGateway" }),
       );
     case 3:
       return S.suspend(() =>
@@ -68672,9 +66982,7 @@ function __c593(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeCarrierGatewaysResult",
-      });
+      ).annotate({ identifier: "DescribeCarrierGatewaysResult" });
   }
 }
 function __c594(j: number): any {
@@ -68691,9 +66999,7 @@ function __c594(j: number): any {
             T.Ec2QueryName("MaxResults"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeClassicLinkInstancesRequest",
-      });
+      ).annotate({ identifier: "DescribeClassicLinkInstancesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -68711,9 +67017,9 @@ function __c594(j: number): any {
       ).annotate({ identifier: "ClassicLinkInstance" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(19009, __c594, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ClassicLinkInstance",
-        }),
+        /*@__PURE__*/ __S(19009, __c594, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ClassicLinkInstance" }),
       );
     case 3:
       return S.suspend(() =>
@@ -68724,9 +67030,7 @@ function __c594(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeClassicLinkInstancesResult",
-      });
+      ).annotate({ identifier: "DescribeClassicLinkInstancesResult" });
   }
 }
 function __c595(j: number): any {
@@ -68746,9 +67050,7 @@ function __c596(j: number): any {
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeClientVpnAuthorizationRulesRequest",
-      });
+      ).annotate({ identifier: "DescribeClientVpnAuthorizationRulesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -68776,9 +67078,9 @@ function __c596(j: number): any {
       ).annotate({ identifier: "AuthorizationRule" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(19073, __c596, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "AuthorizationRule",
-        }),
+        /*@__PURE__*/ __S(19073, __c596, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "AuthorizationRule" }),
       );
     case 3:
       return S.suspend(() =>
@@ -68789,9 +67091,7 @@ function __c596(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeClientVpnAuthorizationRulesResult",
-      });
+      ).annotate({ identifier: "DescribeClientVpnAuthorizationRulesResult" });
   }
 }
 function __c597(j: number): any {
@@ -68805,9 +67105,7 @@ function __c597(j: number): any {
           MaxResults: S.optional(S.Number),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeClientVpnConnectionsRequest",
-      });
+      ).annotate({ identifier: "DescribeClientVpnConnectionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -68869,9 +67167,9 @@ function __c597(j: number): any {
       ).annotate({ identifier: "ClientVpnConnection" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(19105, __c597, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ClientVpnConnection",
-        }),
+        /*@__PURE__*/ __S(19105, __c597, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ClientVpnConnection" }),
       );
     case 3:
       return S.suspend(() =>
@@ -68882,9 +67180,7 @@ function __c597(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeClientVpnConnectionsResult",
-      });
+      ).annotate({ identifier: "DescribeClientVpnConnectionsResult" });
   }
 }
 function __c598(j: number): any {
@@ -68895,9 +67191,7 @@ function __c598(j: number): any {
           Code: S.optional(S.String).pipe(T.XmlName("code"), T.Ec2QueryName("Code")),
           Message: S.optional(S.String).pipe(T.XmlName("message"), T.Ec2QueryName("Message")),
         }),
-      ).annotate({
-        identifier: "ClientVpnConnectionStatus",
-      });
+      ).annotate({ identifier: "ClientVpnConnectionStatus" });
   }
 }
 function __c599(j: number): any {
@@ -68915,9 +67209,7 @@ function __c599(j: number): any {
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeClientVpnEndpointsRequest",
-      });
+      ).annotate({ identifier: "DescribeClientVpnEndpointsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -68930,9 +67222,9 @@ function __c599(j: number): any {
       ).annotate({ identifier: "AssociatedTargetNetwork" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(19170, __c599, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "AssociatedTargetNetwork",
-        }),
+        /*@__PURE__*/ __S(19170, __c599, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "AssociatedTargetNetwork" }),
       );
     case 4:
       return S.suspend(() =>
@@ -68942,9 +67234,7 @@ function __c599(j: number): any {
             T.Ec2QueryName("DirectoryId"),
           ),
         }),
-      ).annotate({
-        identifier: "DirectoryServiceAuthentication",
-      });
+      ).annotate({ identifier: "DirectoryServiceAuthentication" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -68953,9 +67243,7 @@ function __c599(j: number): any {
             T.Ec2QueryName("ClientRootCertificateChain"),
           ),
         }),
-      ).annotate({
-        identifier: "CertificateAuthentication",
-      });
+      ).annotate({ identifier: "CertificateAuthentication" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -68986,9 +67274,9 @@ function __c599(j: number): any {
       ).annotate({ identifier: "ClientVpnAuthentication" });
     case 8:
       return S.Array(
-        /*@__PURE__*/ __S(19175, __c599, 7).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ClientVpnAuthentication",
-        }),
+        /*@__PURE__*/ __S(19175, __c599, 7)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ClientVpnAuthentication" }),
       );
     case 9:
       return S.suspend(() =>
@@ -68998,18 +67286,14 @@ function __c599(j: number): any {
           CloudwatchLogStream: S.optional(S.String),
           IncludeAuthorizationPolicyContext: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "ConnectionLogResponseOptions",
-      });
+      ).annotate({ identifier: "ConnectionLogResponseOptions" });
     case 10:
       return S.suspend(() =>
         S.Struct({
           Code: S.optional(S.String).pipe(T.XmlName("code"), T.Ec2QueryName("Code")),
           Message: S.optional(S.String).pipe(T.XmlName("message"), T.Ec2QueryName("Message")),
         }),
-      ).annotate({
-        identifier: "ClientVpnEndpointAttributeStatus",
-      });
+      ).annotate({ identifier: "ClientVpnEndpointAttributeStatus" });
     case 11:
       return S.suspend(() =>
         S.Struct({
@@ -69022,9 +67306,7 @@ function __c599(j: number): any {
             .pipe(T.XmlName("status"), T.Ec2QueryName("Status"))
             .annotate({ identifier: "ClientVpnEndpointAttributeStatus" }),
         }),
-      ).annotate({
-        identifier: "ClientConnectResponseOptions",
-      });
+      ).annotate({ identifier: "ClientConnectResponseOptions" });
     case 12:
       return S.suspend(() =>
         S.Struct({
@@ -69034,17 +67316,13 @@ function __c599(j: number): any {
             T.Ec2QueryName("BannerText"),
           ),
         }),
-      ).annotate({
-        identifier: "ClientLoginBannerResponseOptions",
-      });
+      ).annotate({ identifier: "ClientLoginBannerResponseOptions" });
     case 13:
       return S.suspend(() =>
         S.Struct({
           Enforced: S.optional(S.Boolean).pipe(T.XmlName("enforced"), T.Ec2QueryName("Enforced")),
         }),
-      ).annotate({
-        identifier: "ClientRouteEnforcementResponseOptions",
-      });
+      ).annotate({ identifier: "ClientRouteEnforcementResponseOptions" });
     case 14:
       return S.suspend(() =>
         S.Struct({
@@ -69065,9 +67343,7 @@ function __c599(j: number): any {
             T.Ec2QueryName("AvailabilityZoneIdSet"),
           ),
         }),
-      ).annotate({
-        identifier: "TransitGatewayConfigurationDescribeEndpointStructure",
-      });
+      ).annotate({ identifier: "TransitGatewayConfigurationDescribeEndpointStructure" });
     case 15:
       return S.suspend(() =>
         S.Struct({
@@ -69084,9 +67360,9 @@ function __c599(j: number): any {
       ).annotate({ identifier: "ClientVpnTrustProvider" });
     case 16:
       return S.Array(
-        /*@__PURE__*/ __S(19183, __c599, 15).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ClientVpnTrustProvider",
-        }),
+        /*@__PURE__*/ __S(19183, __c599, 15)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ClientVpnTrustProvider" }),
       );
     case 17:
       return S.suspend(() =>
@@ -69096,9 +67372,7 @@ function __c599(j: number): any {
             T.Ec2QueryName("TrustProviderSet"),
           ),
         }),
-      ).annotate({
-        identifier: "DevicePostureResponseOptions",
-      });
+      ).annotate({ identifier: "DevicePostureResponseOptions" });
     case 18:
       return S.suspend(() =>
         S.Struct({
@@ -69209,9 +67483,9 @@ function __c599(j: number): any {
       ).annotate({ identifier: "ClientVpnEndpoint" });
     case 19:
       return S.Array(
-        /*@__PURE__*/ __S(19186, __c599, 18).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ClientVpnEndpoint",
-        }),
+        /*@__PURE__*/ __S(19186, __c599, 18)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ClientVpnEndpoint" }),
       );
     case 20:
       return S.suspend(() =>
@@ -69222,9 +67496,7 @@ function __c599(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeClientVpnEndpointsResult",
-      });
+      ).annotate({ identifier: "DescribeClientVpnEndpointsResult" });
   }
 }
 function __c600(j: number): any {
@@ -69238,9 +67510,7 @@ function __c600(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeClientVpnRoutesRequest",
-      });
+      ).annotate({ identifier: "DescribeClientVpnRoutesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -69273,9 +67543,9 @@ function __c600(j: number): any {
       ).annotate({ identifier: "ClientVpnRoute" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(19201, __c600, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ClientVpnRoute",
-        }),
+        /*@__PURE__*/ __S(19201, __c600, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ClientVpnRoute" }),
       );
     case 3:
       return S.suspend(() =>
@@ -69286,9 +67556,7 @@ function __c600(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeClientVpnRoutesResult",
-      });
+      ).annotate({ identifier: "DescribeClientVpnRoutesResult" });
   }
 }
 function __c601(j: number): any {
@@ -69303,9 +67571,7 @@ function __c601(j: number): any {
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeClientVpnTargetNetworksRequest",
-      });
+      ).annotate({ identifier: "DescribeClientVpnTargetNetworksRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -69341,9 +67607,9 @@ function __c601(j: number): any {
       ).annotate({ identifier: "TargetNetwork" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(19233, __c601, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TargetNetwork",
-        }),
+        /*@__PURE__*/ __S(19233, __c601, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TargetNetwork" }),
       );
     case 3:
       return S.suspend(() =>
@@ -69354,9 +67620,7 @@ function __c601(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeClientVpnTargetNetworksResult",
-      });
+      ).annotate({ identifier: "DescribeClientVpnTargetNetworksResult" });
   }
 }
 function __c602(j: number): any {
@@ -69404,14 +67668,12 @@ function __c603(j: number): any {
             T.Ec2QueryName("ConversionTaskId"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeConversionTasksRequest",
-      });
+      ).annotate({ identifier: "DescribeConversionTasksRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(19334, __c604, 6).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ConversionTask",
-        }),
+        /*@__PURE__*/ __S(19334, __c604, 6)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ConversionTask" }),
       );
     case 3:
       return S.suspend(() =>
@@ -69421,9 +67683,7 @@ function __c603(j: number): any {
             T.Ec2QueryName("ConversionTasks"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeConversionTasksResult",
-      });
+      ).annotate({ identifier: "DescribeConversionTasksResult" });
   }
 }
 function __c604(j: number): any {
@@ -69446,9 +67706,7 @@ function __c604(j: number): any {
           Id: S.optional(S.String).pipe(T.XmlName("id"), T.Ec2QueryName("Id")),
           Size: S.optional(S.Number).pipe(T.XmlName("size"), T.Ec2QueryName("Size")),
         }),
-      ).annotate({
-        identifier: "DiskImageVolumeDescription",
-      });
+      ).annotate({ identifier: "DiskImageVolumeDescription" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -69480,14 +67738,12 @@ function __c604(j: number): any {
             .pipe(T.XmlName("volume"), T.Ec2QueryName("Volume"))
             .annotate({ identifier: "DiskImageVolumeDescription" }),
         }),
-      ).annotate({
-        identifier: "ImportInstanceVolumeDetailItem",
-      });
+      ).annotate({ identifier: "ImportInstanceVolumeDetailItem" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(19330, __c604, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ImportInstanceVolumeDetailItem",
-        }),
+        /*@__PURE__*/ __S(19330, __c604, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ImportInstanceVolumeDetailItem" }),
       );
     case 4:
       return S.suspend(() =>
@@ -69506,9 +67762,7 @@ function __c604(j: number): any {
             T.Ec2QueryName("Volumes"),
           ),
         }),
-      ).annotate({
-        identifier: "ImportInstanceTaskDetails",
-      });
+      ).annotate({ identifier: "ImportInstanceTaskDetails" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -69576,14 +67830,12 @@ function __c605(j: number): any {
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeCustomerGatewaysRequest",
-      });
+      ).annotate({ identifier: "DescribeCustomerGatewaysRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(6848, __c214, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CustomerGateway",
-        }),
+        /*@__PURE__*/ __S(6848, __c214, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CustomerGateway" }),
       );
     case 3:
       return S.suspend(() =>
@@ -69593,9 +67845,7 @@ function __c605(j: number): any {
             T.Ec2QueryName("CustomerGatewaySet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeCustomerGatewaysResult",
-      });
+      ).annotate({ identifier: "DescribeCustomerGatewaysResult" });
   }
 }
 function __c606(j: number): any {
@@ -69608,9 +67858,7 @@ function __c606(j: number): any {
           MaxResults: S.optional(S.Number),
           ReportIds: S.optional(__S(2208, __c69, 0)).pipe(T.XmlName("ReportId")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeDeclarativePoliciesReportsRequest",
-      });
+      ).annotate({ identifier: "DescribeDeclarativePoliciesReportsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -69629,14 +67877,12 @@ function __c606(j: number): any {
           Status: S.optional(S.String).pipe(T.XmlName("status"), T.Ec2QueryName("Status")),
           Tags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("tagSet"), T.Ec2QueryName("TagSet")),
         }),
-      ).annotate({
-        identifier: "DeclarativePoliciesReport",
-      });
+      ).annotate({ identifier: "DeclarativePoliciesReport" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(19393, __c606, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "DeclarativePoliciesReport",
-        }),
+        /*@__PURE__*/ __S(19393, __c606, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "DeclarativePoliciesReport" }),
       );
     case 3:
       return S.suspend(() =>
@@ -69647,9 +67893,7 @@ function __c606(j: number): any {
             T.Ec2QueryName("ReportSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeDeclarativePoliciesReportsResult",
-      });
+      ).annotate({ identifier: "DescribeDeclarativePoliciesReportsResult" });
   }
 }
 function __c607(j: number): any {
@@ -69665,14 +67909,12 @@ function __c607(j: number): any {
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeDhcpOptionsRequest",
-      });
+      ).annotate({ identifier: "DescribeDhcpOptionsRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(7171, __c224, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "DhcpOptions",
-        }),
+        /*@__PURE__*/ __S(7171, __c224, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "DhcpOptions" }),
       );
     case 3:
       return S.suspend(() =>
@@ -69683,9 +67925,7 @@ function __c607(j: number): any {
             T.Ec2QueryName("DhcpOptionsSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeDhcpOptionsResult",
-      });
+      ).annotate({ identifier: "DescribeDhcpOptionsResult" });
   }
 }
 function __c608(j: number): any {
@@ -69703,14 +67943,12 @@ function __c608(j: number): any {
           NextToken: S.optional(S.String),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeEgressOnlyInternetGatewaysRequest",
-      });
+      ).annotate({ identifier: "DescribeEgressOnlyInternetGatewaysRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(7296, __c228, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "EgressOnlyInternetGateway",
-        }),
+        /*@__PURE__*/ __S(7296, __c228, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "EgressOnlyInternetGateway" }),
       );
     case 3:
       return S.suspend(() =>
@@ -69721,9 +67959,7 @@ function __c608(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeEgressOnlyInternetGatewaysResult",
-      });
+      ).annotate({ identifier: "DescribeEgressOnlyInternetGatewaysResult" });
   }
 }
 function __c609(j: number): any {
@@ -69739,9 +67975,7 @@ function __c609(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeElasticGpusRequest",
-      });
+      ).annotate({ identifier: "DescribeElasticGpusRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -69779,9 +68013,9 @@ function __c609(j: number): any {
       ).annotate({ identifier: "ElasticGpus" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(19491, __c609, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ElasticGpus",
-        }),
+        /*@__PURE__*/ __S(19491, __c609, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ElasticGpus" }),
       );
     case 5:
       return S.suspend(() =>
@@ -69796,9 +68030,7 @@ function __c609(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeElasticGpusResult",
-      });
+      ).annotate({ identifier: "DescribeElasticGpusResult" });
   }
 }
 function __c610(j: number): any {
@@ -69816,9 +68048,7 @@ function __c610(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeExportImageTasksRequest",
-      });
+      ).annotate({ identifier: "DescribeExportImageTasksRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -69845,9 +68075,9 @@ function __c610(j: number): any {
       ).annotate({ identifier: "ExportImageTask" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(19522, __c610, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ExportImageTask",
-        }),
+        /*@__PURE__*/ __S(19522, __c610, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ExportImageTask" }),
       );
     case 4:
       return S.suspend(() =>
@@ -69858,9 +68088,7 @@ function __c610(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeExportImageTasksResult",
-      });
+      ).annotate({ identifier: "DescribeExportImageTasksResult" });
   }
 }
 function __c611(j: number): any {
@@ -69887,14 +68115,12 @@ function __c612(j: number): any {
             T.Ec2QueryName("ExportTaskId"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeExportTasksRequest",
-      });
+      ).annotate({ identifier: "DescribeExportTasksRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(8066, __c252, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ExportTask",
-        }),
+        /*@__PURE__*/ __S(8066, __c252, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ExportTask" }),
       );
     case 3:
       return S.suspend(() =>
@@ -69904,9 +68130,7 @@ function __c612(j: number): any {
             T.Ec2QueryName("ExportTaskSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeExportTasksResult",
-      });
+      ).annotate({ identifier: "DescribeExportTasksResult" });
   }
 }
 function __c613(j: number): any {
@@ -69922,9 +68146,7 @@ function __c613(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeFastLaunchImagesRequest",
-      });
+      ).annotate({ identifier: "DescribeFastLaunchImagesRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -69953,14 +68175,12 @@ function __c613(j: number): any {
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ).pipe(T.XmlName("stateTransitionTime"), T.Ec2QueryName("StateTransitionTime")),
         }),
-      ).annotate({
-        identifier: "DescribeFastLaunchImagesSuccessItem",
-      });
+      ).annotate({ identifier: "DescribeFastLaunchImagesSuccessItem" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(19618, __c613, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "DescribeFastLaunchImagesSuccessItem",
-        }),
+        /*@__PURE__*/ __S(19618, __c613, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "DescribeFastLaunchImagesSuccessItem" }),
       );
     case 4:
       return S.suspend(() =>
@@ -69971,9 +68191,7 @@ function __c613(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeFastLaunchImagesResult",
-      });
+      ).annotate({ identifier: "DescribeFastLaunchImagesResult" });
   }
 }
 function __c614(j: number): any {
@@ -69986,9 +68204,7 @@ function __c614(j: number): any {
             T.Ec2QueryName("TargetResourceCount"),
           ),
         }),
-      ).annotate({
-        identifier: "FastLaunchSnapshotConfigurationResponse",
-      });
+      ).annotate({ identifier: "FastLaunchSnapshotConfigurationResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -70002,9 +68218,7 @@ function __c614(j: number): any {
           ),
           Version: S.optional(S.String).pipe(T.XmlName("version"), T.Ec2QueryName("Version")),
         }),
-      ).annotate({
-        identifier: "FastLaunchLaunchTemplateSpecificationResponse",
-      });
+      ).annotate({ identifier: "FastLaunchLaunchTemplateSpecificationResponse" });
   }
 }
 function __c615(j: number): any {
@@ -70017,9 +68231,7 @@ function __c615(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeFastSnapshotRestoresRequest",
-      });
+      ).annotate({ identifier: "DescribeFastSnapshotRestoresRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -70066,14 +68278,12 @@ function __c615(j: number): any {
             T.Ec2QueryName("DisabledTime"),
           ),
         }),
-      ).annotate({
-        identifier: "DescribeFastSnapshotRestoreSuccessItem",
-      });
+      ).annotate({ identifier: "DescribeFastSnapshotRestoreSuccessItem" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(19681, __c615, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "DescribeFastSnapshotRestoreSuccessItem",
-        }),
+        /*@__PURE__*/ __S(19681, __c615, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "DescribeFastSnapshotRestoreSuccessItem" }),
       );
     case 3:
       return S.suspend(() =>
@@ -70084,9 +68294,7 @@ function __c615(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeFastSnapshotRestoresResult",
-      });
+      ).annotate({ identifier: "DescribeFastSnapshotRestoresResult" });
   }
 }
 function __c616(j: number): any {
@@ -70101,9 +68309,7 @@ function __c616(j: number): any {
           FleetId: S.optional(S.String),
           StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeFleetHistoryRequest",
-      });
+      ).annotate({ identifier: "DescribeFleetHistoryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -70119,9 +68325,9 @@ function __c616(j: number): any {
       ).annotate({ identifier: "HistoryRecordEntry" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(19713, __c616, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "HistoryRecordEntry",
-        }),
+        /*@__PURE__*/ __S(19713, __c616, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "HistoryRecordEntry" }),
       );
     case 3:
       return S.suspend(() =>
@@ -70141,9 +68347,7 @@ function __c616(j: number): any {
             T.Ec2QueryName("StartTime"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeFleetHistoryResult",
-      });
+      ).annotate({ identifier: "DescribeFleetHistoryResult" });
   }
 }
 function __c617(j: number): any {
@@ -70178,9 +68382,7 @@ function __c618(j: number): any {
           FleetId: S.optional(S.String),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeFleetInstancesRequest",
-      });
+      ).annotate({ identifier: "DescribeFleetInstancesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -70191,9 +68393,7 @@ function __c618(j: number): any {
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
           FleetId: S.optional(S.String).pipe(T.XmlName("fleetId"), T.Ec2QueryName("FleetId")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeFleetInstancesResult",
-      });
+      ).annotate({ identifier: "DescribeFleetInstancesResult" });
   }
 }
 function __c619(j: number): any {
@@ -70221,9 +68421,9 @@ function __c619(j: number): any {
       ).annotate({ identifier: "ActiveInstance" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(19808, __c619, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ActiveInstance",
-        }),
+        /*@__PURE__*/ __S(19808, __c619, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ActiveInstance" }),
       );
   }
 }
@@ -70241,9 +68441,9 @@ function __c620(j: number): any {
       ).annotate({ identifier: "DescribeFleetsRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(7493, __c234, 5).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "FleetLaunchTemplateOverrides",
-        }),
+        /*@__PURE__*/ __S(7493, __c234, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "FleetLaunchTemplateOverrides" }),
       );
     case 2:
       return S.suspend(() =>
@@ -70259,14 +68459,12 @@ function __c620(j: number): any {
             T.Ec2QueryName("Overrides"),
           ),
         }),
-      ).annotate({
-        identifier: "FleetLaunchTemplateConfig",
-      });
+      ).annotate({ identifier: "FleetLaunchTemplateConfig" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(19842, __c620, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "FleetLaunchTemplateConfig",
-        }),
+        /*@__PURE__*/ __S(19842, __c620, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "FleetLaunchTemplateConfig" }),
       );
     case 4:
       return S.suspend(() =>
@@ -70292,9 +68490,7 @@ function __c620(j: number): any {
             T.Ec2QueryName("TargetCapacityUnitType"),
           ),
         }),
-      ).annotate({
-        identifier: "TargetCapacitySpecification",
-      });
+      ).annotate({ identifier: "TargetCapacitySpecification" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -70307,9 +68503,7 @@ function __c620(j: number): any {
             T.Ec2QueryName("TerminationDelay"),
           ),
         }),
-      ).annotate({
-        identifier: "FleetSpotCapacityRebalance",
-      });
+      ).annotate({ identifier: "FleetSpotCapacityRebalance" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -70317,9 +68511,7 @@ function __c620(j: number): any {
             .pipe(T.XmlName("capacityRebalance"), T.Ec2QueryName("CapacityRebalance"))
             .annotate({ identifier: "FleetSpotCapacityRebalance" }),
         }),
-      ).annotate({
-        identifier: "FleetSpotMaintenanceStrategies",
-      });
+      ).annotate({ identifier: "FleetSpotMaintenanceStrategies" });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -70364,9 +68556,7 @@ function __c620(j: number): any {
             T.Ec2QueryName("UsageStrategy"),
           ),
         }),
-      ).annotate({
-        identifier: "CapacityReservationOptions",
-      });
+      ).annotate({ identifier: "CapacityReservationOptions" });
     case 9:
       return S.suspend(() =>
         S.Struct({
@@ -70408,9 +68598,7 @@ function __c620(j: number): any {
             T.Ec2QueryName("MarketTypeSet"),
           ),
         }),
-      ).annotate({
-        identifier: "ReservedCapacityFallbackOptions",
-      });
+      ).annotate({ identifier: "ReservedCapacityFallbackOptions" });
     case 12:
       return S.suspend(() =>
         S.Struct({
@@ -70449,9 +68637,9 @@ function __c620(j: number): any {
       ).annotate({ identifier: "DescribeFleetError" });
     case 14:
       return S.Array(
-        /*@__PURE__*/ __S(19853, __c620, 13).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "DescribeFleetError",
-        }),
+        /*@__PURE__*/ __S(19853, __c620, 13)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "DescribeFleetError" }),
       );
     case 15:
       return S.suspend(() =>
@@ -70476,9 +68664,9 @@ function __c620(j: number): any {
       ).annotate({ identifier: "DescribeFleetsInstances" });
     case 16:
       return S.Array(
-        /*@__PURE__*/ __S(19855, __c620, 15).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "DescribeFleetsInstances",
-        }),
+        /*@__PURE__*/ __S(19855, __c620, 15)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "DescribeFleetsInstances" }),
       );
     case 17:
       return S.suspend(() =>
@@ -70562,9 +68750,9 @@ function __c620(j: number): any {
       ).annotate({ identifier: "FleetData" });
     case 18:
       return S.Array(
-        /*@__PURE__*/ __S(19857, __c620, 17).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "FleetData",
-        }),
+        /*@__PURE__*/ __S(19857, __c620, 17)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "FleetData" }),
       );
     case 19:
       return S.suspend(() =>
@@ -70606,9 +68794,7 @@ function __c621(j: number): any {
             T.Ec2QueryName("PerHourPartition"),
           ),
         }),
-      ).annotate({
-        identifier: "DestinationOptionsResponse",
-      });
+      ).annotate({ identifier: "DestinationOptionsResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -70621,14 +68807,12 @@ function __c621(j: number): any {
             T.Ec2QueryName("TagKeySet"),
           ),
         }),
-      ).annotate({
-        identifier: "TagFieldSpecificationResponse",
-      });
+      ).annotate({ identifier: "TagFieldSpecificationResponse" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(19874, __c621, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TagFieldSpecificationResponse",
-        }),
+        /*@__PURE__*/ __S(19874, __c621, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TagFieldSpecificationResponse" }),
       );
     case 4:
       return S.suspend(() =>
@@ -70720,9 +68904,7 @@ function __c622(j: number): any {
           FpgaImageId: S.optional(S.String),
           Attribute: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeFpgaImageAttributeRequest",
-      });
+      ).annotate({ identifier: "DescribeFpgaImageAttributeRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -70730,9 +68912,7 @@ function __c622(j: number): any {
             .pipe(T.XmlName("fpgaImageAttribute"), T.Ec2QueryName("FpgaImageAttribute"))
             .annotate({ identifier: "FpgaImageAttribute" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeFpgaImageAttributeResult",
-      });
+      ).annotate({ identifier: "DescribeFpgaImageAttributeResult" });
   }
 }
 function __c623(j: number): any {
@@ -70749,9 +68929,9 @@ function __c623(j: number): any {
       ).annotate({ identifier: "ProductCode" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(19936, __c623, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ProductCode",
-        }),
+        /*@__PURE__*/ __S(19936, __c623, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ProductCode" }),
       );
   }
 }
@@ -70766,9 +68946,9 @@ function __c624(j: number): any {
       ).annotate({ identifier: "LoadPermission" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(19968, __c624, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "LoadPermission",
-        }),
+        /*@__PURE__*/ __S(19968, __c624, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "LoadPermission" }),
       );
     case 2:
       return S.suspend(() =>
@@ -70808,9 +68988,7 @@ function __c625(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeFpgaImagesRequest",
-      });
+      ).annotate({ identifier: "DescribeFpgaImagesRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -70886,9 +69064,9 @@ function __c625(j: number): any {
       ).annotate({ identifier: "FpgaImage" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ __S(20005, __c625, 5).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "FpgaImage",
-        }),
+        /*@__PURE__*/ __S(20005, __c625, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "FpgaImage" }),
       );
     case 7:
       return S.suspend(() =>
@@ -70920,9 +69098,7 @@ function __c627(j: number): any {
           NextToken: S.optional(S.String),
           OfferingId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeHostReservationOfferingsRequest",
-      });
+      ).annotate({ identifier: "DescribeHostReservationOfferingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -70955,9 +69131,9 @@ function __c627(j: number): any {
       ).annotate({ identifier: "HostOffering" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(20065, __c627, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "HostOffering",
-        }),
+        /*@__PURE__*/ __S(20065, __c627, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "HostOffering" }),
       );
     case 3:
       return S.suspend(() =>
@@ -70968,9 +69144,7 @@ function __c627(j: number): any {
             T.Ec2QueryName("OfferingSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeHostReservationOfferingsResult",
-      });
+      ).annotate({ identifier: "DescribeHostReservationOfferingsResult" });
   }
 }
 function __c628(j: number): any {
@@ -70985,9 +69159,7 @@ function __c628(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeHostReservationsRequest",
-      });
+      ).annotate({ identifier: "DescribeHostReservationsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -71039,9 +69211,9 @@ function __c628(j: number): any {
       ).annotate({ identifier: "HostReservation" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(20098, __c628, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "HostReservation",
-        }),
+        /*@__PURE__*/ __S(20098, __c628, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "HostReservation" }),
       );
     case 4:
       return S.suspend(() =>
@@ -71052,9 +69224,7 @@ function __c628(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeHostReservationsResult",
-      });
+      ).annotate({ identifier: "DescribeHostReservationsResult" });
   }
 }
 function __c629(j: number): any {
@@ -71102,9 +69272,9 @@ function __c630(j: number): any {
       ).annotate({ identifier: "InstanceCapacity" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(20161, __c630, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceCapacity",
-        }),
+        /*@__PURE__*/ __S(20161, __c630, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceCapacity" }),
       );
     case 3:
       return S.suspend(() =>
@@ -71154,9 +69324,9 @@ function __c630(j: number): any {
       ).annotate({ identifier: "HostInstance" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ __S(20165, __c630, 5).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "HostInstance",
-        }),
+        /*@__PURE__*/ __S(20165, __c630, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "HostInstance" }),
       );
     case 7:
       return S.suspend(() =>
@@ -71271,14 +69441,12 @@ function __c632(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeIamInstanceProfileAssociationsRequest",
-      });
+      ).annotate({ identifier: "DescribeIamInstanceProfileAssociationsRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(3584, __c112, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IamInstanceProfileAssociation",
-        }),
+        /*@__PURE__*/ __S(3584, __c112, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IamInstanceProfileAssociation" }),
       );
     case 3:
       return S.suspend(() =>
@@ -71289,9 +69457,7 @@ function __c632(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeIamInstanceProfileAssociationsResult",
-      });
+      ).annotate({ identifier: "DescribeIamInstanceProfileAssociationsResult" });
   }
 }
 function __c633(j: number): any {
@@ -71305,9 +69471,7 @@ function __c633(j: number): any {
             T.Ec2QueryName("PrincipalArn"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeIdentityIdFormatRequest",
-      });
+      ).annotate({ identifier: "DescribeIdentityIdFormatRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -71316,9 +69480,7 @@ function __c633(j: number): any {
             T.Ec2QueryName("StatusSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeIdentityIdFormatResult",
-      });
+      ).annotate({ identifier: "DescribeIdentityIdFormatResult" });
   }
 }
 function __c634(j: number): any {
@@ -71349,9 +69511,7 @@ function __c635(j: number): any {
           ImageId: S.optional(S.String),
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeImageAttributeRequest",
-      });
+      ).annotate({ identifier: "DescribeImageAttributeRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -71406,9 +69566,9 @@ function __c636(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ __S(7745, __c242, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "BlockDeviceMapping",
-        }),
+        /*@__PURE__*/ __S(7745, __c242, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "BlockDeviceMapping" }),
       );
   }
 }
@@ -71431,9 +69591,9 @@ function __c637(j: number): any {
       ).annotate({ identifier: "LaunchPermission" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(20384, __c637, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "LaunchPermission",
-        }),
+        /*@__PURE__*/ __S(20384, __c637, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "LaunchPermission" }),
       );
   }
 }
@@ -71473,9 +69633,7 @@ function __c638(j: number): any {
           DryRun: S.optional(S.Boolean),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeImageReferencesRequest",
-      });
+      ).annotate({ identifier: "DescribeImageReferencesRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -71489,9 +69647,9 @@ function __c638(j: number): any {
       ).annotate({ identifier: "ImageReference" });
     case 8:
       return S.Array(
-        /*@__PURE__*/ __S(20423, __c638, 7).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ImageReference",
-        }),
+        /*@__PURE__*/ __S(20423, __c638, 7)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ImageReference" }),
       );
     case 9:
       return S.suspend(() =>
@@ -71502,9 +69660,7 @@ function __c638(j: number): any {
             T.Ec2QueryName("ImageReferenceSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeImageReferencesResult",
-      });
+      ).annotate({ identifier: "DescribeImageReferencesResult" });
   }
 }
 function __c639(j: number): any {
@@ -71536,15 +69692,15 @@ function __c639(j: number): any {
       ).annotate({ identifier: "InstanceTypeItem" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(20450, __c639, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceTypeItem",
-        }),
+        /*@__PURE__*/ __S(20450, __c639, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceTypeItem" }),
       );
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(20450, __c639, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceTypeItem",
-        }),
+        /*@__PURE__*/ __S(20450, __c639, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceTypeItem" }),
       );
     case 5:
       return S.suspend(() =>
@@ -71558,9 +69714,7 @@ function __c639(j: number): any {
             T.Ec2QueryName("UnsupportedInstanceTypeSet"),
           ),
         }),
-      ).annotate({
-        identifier: "InstanceTypeSpecification",
-      });
+      ).annotate({ identifier: "InstanceTypeSpecification" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -71742,9 +69896,9 @@ function __c640(j: number): any {
       ).annotate({ identifier: "ImageWatermark" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(20480, __c640, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ImageWatermark",
-        }),
+        /*@__PURE__*/ __S(20480, __c640, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ImageWatermark" }),
       );
   }
 }
@@ -71766,9 +69920,7 @@ function __c642(j: number): any {
           DryRun: S.optional(S.Boolean),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeImageUsageReportEntriesRequest",
-      });
+      ).annotate({ identifier: "DescribeImageUsageReportEntriesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -71790,9 +69942,9 @@ function __c642(j: number): any {
       ).annotate({ identifier: "ImageUsageReportEntry" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(20545, __c642, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ImageUsageReportEntry",
-        }),
+        /*@__PURE__*/ __S(20545, __c642, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ImageUsageReportEntry" }),
       );
     case 3:
       return S.suspend(() =>
@@ -71803,9 +69955,7 @@ function __c642(j: number): any {
             T.Ec2QueryName("ImageUsageReportEntrySet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeImageUsageReportEntriesResult",
-      });
+      ).annotate({ identifier: "DescribeImageUsageReportEntriesResult" });
   }
 }
 function __c643(j: number): any {
@@ -71828,9 +69978,7 @@ function __c644(j: number): any {
           DryRun: S.optional(S.Boolean),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeImageUsageReportsRequest",
-      });
+      ).annotate({ identifier: "DescribeImageUsageReportsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -71843,14 +69991,12 @@ function __c644(j: number): any {
             T.Ec2QueryName("OptionValueSet"),
           ),
         }),
-      ).annotate({
-        identifier: "ImageUsageResourceTypeOption",
-      });
+      ).annotate({ identifier: "ImageUsageResourceTypeOption" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(20609, __c644, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ImageUsageResourceTypeOption",
-        }),
+        /*@__PURE__*/ __S(20609, __c644, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ImageUsageResourceTypeOption" }),
       );
     case 3:
       return S.suspend(() =>
@@ -71867,9 +70013,9 @@ function __c644(j: number): any {
       ).annotate({ identifier: "ImageUsageResourceType" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(20611, __c644, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ImageUsageResourceType",
-        }),
+        /*@__PURE__*/ __S(20611, __c644, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ImageUsageResourceType" }),
       );
     case 5:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")));
@@ -71904,9 +70050,9 @@ function __c644(j: number): any {
       ).annotate({ identifier: "ImageUsageReport" });
     case 7:
       return S.Array(
-        /*@__PURE__*/ __S(20614, __c644, 6).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ImageUsageReport",
-        }),
+        /*@__PURE__*/ __S(20614, __c644, 6)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ImageUsageReport" }),
       );
     case 8:
       return S.suspend(() =>
@@ -71917,9 +70063,7 @@ function __c644(j: number): any {
             T.Ec2QueryName("ImageUsageReportSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeImageUsageReportsResult",
-      });
+      ).annotate({ identifier: "DescribeImageUsageReportsResult" });
   }
 }
 function __c645(j: number): any {
@@ -71935,9 +70079,7 @@ function __c645(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeImportImageTasksRequest",
-      });
+      ).annotate({ identifier: "DescribeImportImageTasksRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -71992,9 +70134,9 @@ function __c645(j: number): any {
       ).annotate({ identifier: "ImportImageTask" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(20642, __c645, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ImportImageTask",
-        }),
+        /*@__PURE__*/ __S(20642, __c645, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ImportImageTask" }),
       );
     case 4:
       return S.suspend(() =>
@@ -72005,9 +70147,7 @@ function __c645(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeImportImageTasksResult",
-      });
+      ).annotate({ identifier: "DescribeImportImageTasksResult" });
   }
 }
 function __c646(j: number): any {
@@ -72057,9 +70197,9 @@ function __c647(j: number): any {
       ).annotate({ identifier: "SnapshotDetail" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(20704, __c647, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SnapshotDetail",
-        }),
+        /*@__PURE__*/ __S(20704, __c647, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SnapshotDetail" }),
       );
     case 2:
       return S.suspend(() =>
@@ -72069,14 +70209,12 @@ function __c647(j: number): any {
             T.Ec2QueryName("LicenseConfigurationArn"),
           ),
         }),
-      ).annotate({
-        identifier: "ImportImageLicenseConfigurationResponse",
-      });
+      ).annotate({ identifier: "ImportImageLicenseConfigurationResponse" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(20706, __c647, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ImportImageLicenseConfigurationResponse",
-        }),
+        /*@__PURE__*/ __S(20706, __c647, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ImportImageLicenseConfigurationResponse" }),
       );
   }
 }
@@ -72093,9 +70231,7 @@ function __c648(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeImportSnapshotTasksRequest",
-      });
+      ).annotate({ identifier: "DescribeImportSnapshotTasksRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -72115,9 +70251,9 @@ function __c648(j: number): any {
       ).annotate({ identifier: "ImportSnapshotTask" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(20738, __c648, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ImportSnapshotTask",
-        }),
+        /*@__PURE__*/ __S(20738, __c648, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ImportSnapshotTask" }),
       );
     case 4:
       return S.suspend(() =>
@@ -72128,9 +70264,7 @@ function __c648(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeImportSnapshotTasksResult",
-      });
+      ).annotate({ identifier: "DescribeImportSnapshotTasksResult" });
   }
 }
 function __c649(j: number): any {
@@ -72182,9 +70316,7 @@ function __c650(j: number): any {
           ),
           Attribute: S.optional(S.String).pipe(T.XmlName("attribute"), T.Ec2QueryName("Attribute")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeInstanceAttributeRequest",
-      });
+      ).annotate({ identifier: "DescribeInstanceAttributeRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -72293,14 +70425,12 @@ function __c651(j: number): any {
             .pipe(T.XmlName("ebs"), T.Ec2QueryName("Ebs"))
             .annotate({ identifier: "EbsInstanceBlockDevice" }),
         }),
-      ).annotate({
-        identifier: "InstanceBlockDeviceMapping",
-      });
+      ).annotate({ identifier: "InstanceBlockDeviceMapping" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(20833, __c651, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceBlockDeviceMapping",
-        }),
+        /*@__PURE__*/ __S(20833, __c651, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceBlockDeviceMapping" }),
       );
     case 3:
       return S.suspend(() =>
@@ -72333,14 +70463,12 @@ function __c653(j: number): any {
             T.XmlName("InstanceConnectEndpointId"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeInstanceConnectEndpointsRequest",
-      });
+      ).annotate({ identifier: "DescribeInstanceConnectEndpointsRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(7908, __c247, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "Ec2InstanceConnectEndpoint",
-        }),
+        /*@__PURE__*/ __S(7908, __c247, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "Ec2InstanceConnectEndpoint" }),
       );
     case 2:
       return S.suspend(() =>
@@ -72351,9 +70479,7 @@ function __c653(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeInstanceConnectEndpointsResult",
-      });
+      ).annotate({ identifier: "DescribeInstanceConnectEndpointsResult" });
   }
 }
 function __c654(j: number): any {
@@ -72367,9 +70493,7 @@ function __c654(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeInstanceCreditSpecificationsRequest",
-      });
+      ).annotate({ identifier: "DescribeInstanceCreditSpecificationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -72382,14 +70506,12 @@ function __c654(j: number): any {
             T.Ec2QueryName("CpuCredits"),
           ),
         }),
-      ).annotate({
-        identifier: "InstanceCreditSpecification",
-      });
+      ).annotate({ identifier: "InstanceCreditSpecification" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(20929, __c654, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceCreditSpecification",
-        }),
+        /*@__PURE__*/ __S(20929, __c654, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceCreditSpecification" }),
       );
     case 3:
       return S.suspend(() =>
@@ -72400,9 +70522,7 @@ function __c654(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeInstanceCreditSpecificationsResult",
-      });
+      ).annotate({ identifier: "DescribeInstanceCreditSpecificationsResult" });
   }
 }
 function __c655(j: number): any {
@@ -72412,9 +70532,7 @@ function __c655(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeInstanceEventNotificationAttributesRequest",
-      });
+      ).annotate({ identifier: "DescribeInstanceEventNotificationAttributesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -72422,9 +70540,7 @@ function __c655(j: number): any {
             .pipe(T.XmlName("instanceTagAttribute"), T.Ec2QueryName("InstanceTagAttribute"))
             .annotate({ identifier: "InstanceTagNotificationAttribute" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeInstanceEventNotificationAttributesResult",
-      });
+      ).annotate({ identifier: "DescribeInstanceEventNotificationAttributesResult" });
   }
 }
 function __c656(j: number): any {
@@ -72442,14 +70558,12 @@ function __c656(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeInstanceEventWindowsRequest",
-      });
+      ).annotate({ identifier: "DescribeInstanceEventWindowsRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(3684, __c115, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceEventWindow",
-        }),
+        /*@__PURE__*/ __S(3684, __c115, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceEventWindow" }),
       );
     case 3:
       return S.suspend(() =>
@@ -72460,9 +70574,7 @@ function __c656(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeInstanceEventWindowsResult",
-      });
+      ).annotate({ identifier: "DescribeInstanceEventWindowsResult" });
   }
 }
 function __c657(j: number): any {
@@ -72476,9 +70588,7 @@ function __c657(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeInstanceImageMetadataRequest",
-      });
+      ).annotate({ identifier: "DescribeInstanceImageMetadataRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -72550,9 +70660,9 @@ function __c657(j: number): any {
       ).annotate({ identifier: "InstanceImageMetadata" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(21026, __c657, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceImageMetadata",
-        }),
+        /*@__PURE__*/ __S(21026, __c657, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceImageMetadata" }),
       );
     case 4:
       return S.suspend(() =>
@@ -72563,9 +70673,7 @@ function __c657(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeInstanceImageMetadataResult",
-      });
+      ).annotate({ identifier: "DescribeInstanceImageMetadataResult" });
   }
 }
 function __c658(j: number): any {
@@ -72597,9 +70705,9 @@ function __c659(j: number): any {
       ).annotate({ identifier: "DescribeInstancesRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(21152, __c661, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "Reservation",
-        }),
+        /*@__PURE__*/ __S(21152, __c661, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "Reservation" }),
       );
     case 2:
       return S.suspend(() =>
@@ -72638,9 +70746,9 @@ function __c660(j: number): any {
       ).annotate({ identifier: "ElasticGpuAssociation" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(21120, __c660, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ElasticGpuAssociation",
-        }),
+        /*@__PURE__*/ __S(21120, __c660, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ElasticGpuAssociation" }),
       );
     case 2:
       return S.suspend(() =>
@@ -72664,14 +70772,12 @@ function __c660(j: number): any {
             T.Ec2QueryName("ElasticInferenceAcceleratorAssociationTime"),
           ),
         }),
-      ).annotate({
-        identifier: "ElasticInferenceAcceleratorAssociation",
-      });
+      ).annotate({ identifier: "ElasticInferenceAcceleratorAssociation" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(21122, __c660, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ElasticInferenceAcceleratorAssociation",
-        }),
+        /*@__PURE__*/ __S(21122, __c660, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ElasticInferenceAcceleratorAssociation" }),
       );
     case 4:
       return S.suspend(() =>
@@ -72688,9 +70794,7 @@ function __c660(j: number): any {
           ),
           PublicIp: S.optional(S.String).pipe(T.XmlName("publicIp"), T.Ec2QueryName("PublicIp")),
         }),
-      ).annotate({
-        identifier: "InstanceNetworkInterfaceAssociation",
-      });
+      ).annotate({ identifier: "InstanceNetworkInterfaceAssociation" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -72699,9 +70803,7 @@ function __c660(j: number): any {
             T.Ec2QueryName("EnaSrdUdpEnabled"),
           ),
         }),
-      ).annotate({
-        identifier: "InstanceAttachmentEnaSrdUdpSpecification",
-      });
+      ).annotate({ identifier: "InstanceAttachmentEnaSrdUdpSpecification" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -72713,9 +70815,7 @@ function __c660(j: number): any {
             .pipe(T.XmlName("enaSrdUdpSpecification"), T.Ec2QueryName("EnaSrdUdpSpecification"))
             .annotate({ identifier: "InstanceAttachmentEnaSrdUdpSpecification" }),
         }),
-      ).annotate({
-        identifier: "InstanceAttachmentEnaSrdSpecification",
-      });
+      ).annotate({ identifier: "InstanceAttachmentEnaSrdSpecification" });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -72748,9 +70848,7 @@ function __c660(j: number): any {
             T.Ec2QueryName("EnaQueueCount"),
           ),
         }),
-      ).annotate({
-        identifier: "InstanceNetworkInterfaceAttachment",
-      });
+      ).annotate({ identifier: "InstanceNetworkInterfaceAttachment" });
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -72770,9 +70868,9 @@ function __c660(j: number): any {
       ).annotate({ identifier: "InstancePrivateIpAddress" });
     case 9:
       return S.Array(
-        /*@__PURE__*/ __S(21128, __c660, 8).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstancePrivateIpAddress",
-        }),
+        /*@__PURE__*/ __S(21128, __c660, 8)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstancePrivateIpAddress" }),
       );
     case 10:
       return S.suspend(() =>
@@ -72785,9 +70883,9 @@ function __c660(j: number): any {
       ).annotate({ identifier: "InstanceIpv4Prefix" });
     case 11:
       return S.Array(
-        /*@__PURE__*/ __S(21130, __c660, 10).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceIpv4Prefix",
-        }),
+        /*@__PURE__*/ __S(21130, __c660, 10)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceIpv4Prefix" }),
       );
     case 12:
       return S.suspend(() =>
@@ -72800,9 +70898,9 @@ function __c660(j: number): any {
       ).annotate({ identifier: "InstanceIpv6Prefix" });
     case 13:
       return S.Array(
-        /*@__PURE__*/ __S(21132, __c660, 12).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceIpv6Prefix",
-        }),
+        /*@__PURE__*/ __S(21132, __c660, 12)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceIpv6Prefix" }),
       );
     case 14:
       return S.suspend(() =>
@@ -72820,9 +70918,7 @@ function __c660(j: number): any {
             T.Ec2QueryName("UdpTimeout"),
           ),
         }),
-      ).annotate({
-        identifier: "ConnectionTrackingSpecificationResponse",
-      });
+      ).annotate({ identifier: "ConnectionTrackingSpecificationResponse" });
     case 15:
       return S.suspend(() =>
         S.Struct({
@@ -72897,9 +70993,9 @@ function __c660(j: number): any {
       ).annotate({ identifier: "InstanceNetworkInterface" });
     case 16:
       return S.Array(
-        /*@__PURE__*/ __S(21135, __c660, 15).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceNetworkInterface",
-        }),
+        /*@__PURE__*/ __S(21135, __c660, 15)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceNetworkInterface" }),
       );
     case 17:
       return S.suspend(() =>
@@ -72930,9 +71026,7 @@ function __c660(j: number): any {
             )
             .annotate({ identifier: "CapacityReservationTargetResponse" }),
         }),
-      ).annotate({
-        identifier: "CapacityReservationSpecificationResponse",
-      });
+      ).annotate({ identifier: "CapacityReservationSpecificationResponse" });
     case 19:
       return S.suspend(() =>
         S.Struct({
@@ -72953,9 +71047,9 @@ function __c660(j: number): any {
       ).annotate({ identifier: "LicenseConfiguration" });
     case 21:
       return S.Array(
-        /*@__PURE__*/ __S(21140, __c660, 20).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "LicenseConfiguration",
-        }),
+        /*@__PURE__*/ __S(21140, __c660, 20)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "LicenseConfiguration" }),
       );
     case 22:
       return S.suspend(() =>
@@ -72973,9 +71067,7 @@ function __c660(j: number): any {
             T.Ec2QueryName("EnableResourceNameDnsAAAARecord"),
           ),
         }),
-      ).annotate({
-        identifier: "PrivateDnsNameOptionsResponse",
-      });
+      ).annotate({ identifier: "PrivateDnsNameOptionsResponse" });
     case 23:
       return S.suspend(() =>
         S.Struct({
@@ -72988,9 +71080,7 @@ function __c660(j: number): any {
             T.Ec2QueryName("RebootMigration"),
           ),
         }),
-      ).annotate({
-        identifier: "InstanceMaintenanceOptions",
-      });
+      ).annotate({ identifier: "InstanceMaintenanceOptions" });
     case 24:
       return S.suspend(() =>
         S.Struct({
@@ -72999,9 +71089,7 @@ function __c660(j: number): any {
             T.Ec2QueryName("BandwidthWeighting"),
           ),
         }),
-      ).annotate({
-        identifier: "InstanceNetworkPerformanceOptions",
-      });
+      ).annotate({ identifier: "InstanceNetworkPerformanceOptions" });
     case 25:
       return S.suspend(() =>
         S.Struct({
@@ -73027,9 +71115,7 @@ function __c660(j: number): any {
             T.Ec2QueryName("NetworkCardIndex"),
           ),
         }),
-      ).annotate({
-        identifier: "InstanceSecondaryInterfaceAttachment",
-      });
+      ).annotate({ identifier: "InstanceSecondaryInterfaceAttachment" });
     case 26:
       return S.suspend(() =>
         S.Struct({
@@ -73038,14 +71124,12 @@ function __c660(j: number): any {
             T.Ec2QueryName("PrivateIpAddress"),
           ),
         }),
-      ).annotate({
-        identifier: "InstanceSecondaryInterfacePrivateIpAddress",
-      });
+      ).annotate({ identifier: "InstanceSecondaryInterfacePrivateIpAddress" });
     case 27:
       return S.Array(
-        /*@__PURE__*/ __S(21146, __c660, 26).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceSecondaryInterfacePrivateIpAddress",
-        }),
+        /*@__PURE__*/ __S(21146, __c660, 26)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceSecondaryInterfacePrivateIpAddress" }),
       );
     case 28:
       return S.suspend(() =>
@@ -73084,14 +71168,12 @@ function __c660(j: number): any {
             T.Ec2QueryName("InterfaceType"),
           ),
         }),
-      ).annotate({
-        identifier: "InstanceSecondaryInterface",
-      });
+      ).annotate({ identifier: "InstanceSecondaryInterface" });
     case 29:
       return S.Array(
-        /*@__PURE__*/ __S(21148, __c660, 28).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceSecondaryInterface",
-        }),
+        /*@__PURE__*/ __S(21148, __c660, 28)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceSecondaryInterface" }),
       );
     case 30:
       return S.suspend(() =>
@@ -73364,18 +71446,14 @@ function __c662(j: number): any {
             T.Ec2QueryName("InstanceMetadataTags"),
           ),
         }),
-      ).annotate({
-        identifier: "InstanceMetadataOptionsResponse",
-      });
+      ).annotate({ identifier: "InstanceMetadataOptionsResponse" });
   }
 }
 function __c663(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          State: S.optional(S.String).pipe(T.XmlName("state"), T.Ec2QueryName("State")),
-        }),
+        S.Struct({ State: S.optional(S.String).pipe(T.XmlName("state"), T.Ec2QueryName("State")) }),
       ).annotate({ identifier: "Monitoring" });
   }
 }
@@ -73392,9 +71470,7 @@ function __c664(j: number): any {
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeInstanceSqlHaHistoryStatesRequest",
-      });
+      ).annotate({ identifier: "DescribeInstanceSqlHaHistoryStatesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -73404,9 +71480,7 @@ function __c664(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeInstanceSqlHaHistoryStatesResult",
-      });
+      ).annotate({ identifier: "DescribeInstanceSqlHaHistoryStatesResult" });
   }
 }
 function __c665(j: number): any {
@@ -73440,9 +71514,9 @@ function __c665(j: number): any {
       ).annotate({ identifier: "RegisteredInstance" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(21280, __c665, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "RegisteredInstance",
-        }),
+        /*@__PURE__*/ __S(21280, __c665, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "RegisteredInstance" }),
       );
   }
 }
@@ -73457,9 +71531,7 @@ function __c666(j: number): any {
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeInstanceSqlHaStatesRequest",
-      });
+      ).annotate({ identifier: "DescribeInstanceSqlHaStatesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -73469,9 +71541,7 @@ function __c666(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeInstanceSqlHaStatesResult",
-      });
+      ).annotate({ identifier: "DescribeInstanceSqlHaStatesResult" });
   }
 }
 function __c667(j: number): any {
@@ -73490,14 +71560,12 @@ function __c667(j: number): any {
             T.Ec2QueryName("IncludeAllInstances"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeInstanceStatusRequest",
-      });
+      ).annotate({ identifier: "DescribeInstanceStatusRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(21376, __c668, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceStatusEvent",
-        }),
+        /*@__PURE__*/ __S(21376, __c668, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceStatusEvent" }),
       );
     case 2:
       return S.suspend(() =>
@@ -73512,9 +71580,9 @@ function __c667(j: number): any {
       ).annotate({ identifier: "InstanceStatusDetails" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(21346, __c667, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceStatusDetails",
-        }),
+        /*@__PURE__*/ __S(21346, __c667, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceStatusDetails" }),
       );
     case 4:
       return S.suspend(() =>
@@ -73539,9 +71607,9 @@ function __c667(j: number): any {
       ).annotate({ identifier: "EbsStatusDetails" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ __S(21349, __c667, 5).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "EbsStatusDetails",
-        }),
+        /*@__PURE__*/ __S(21349, __c667, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "EbsStatusDetails" }),
       );
     case 7:
       return S.suspend(() =>
@@ -73608,9 +71676,9 @@ function __c667(j: number): any {
       ).annotate({ identifier: "InstanceStatus" });
     case 10:
       return S.Array(
-        /*@__PURE__*/ __S(21353, __c667, 9).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceStatus",
-        }),
+        /*@__PURE__*/ __S(21353, __c667, 9)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceStatus" }),
       );
     case 11:
       return S.suspend(() =>
@@ -73621,9 +71689,7 @@ function __c667(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeInstanceStatusResult",
-      });
+      ).annotate({ identifier: "DescribeInstanceStatusResult" });
   }
 }
 function __c668(j: number): any {
@@ -73672,9 +71738,7 @@ function __c669(j: number): any {
           GroupNames: S.optional(__S(21409, __c669, 1)).pipe(T.XmlName("GroupName")),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeInstanceTopologyRequest",
-      });
+      ).annotate({ identifier: "DescribeInstanceTopologyRequest" });
     case 3:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")));
     case 4:
@@ -73706,9 +71770,9 @@ function __c669(j: number): any {
       ).annotate({ identifier: "InstanceTopology" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(21412, __c669, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceTopology",
-        }),
+        /*@__PURE__*/ __S(21412, __c669, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceTopology" }),
       );
     case 6:
       return S.suspend(() =>
@@ -73719,9 +71783,7 @@ function __c669(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeInstanceTopologyResult",
-      });
+      ).annotate({ identifier: "DescribeInstanceTopologyResult" });
   }
 }
 function __c670(j: number): any {
@@ -73735,9 +71797,7 @@ function __c670(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeInstanceTypeOfferingsRequest",
-      });
+      ).annotate({ identifier: "DescribeInstanceTypeOfferingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -73754,9 +71814,9 @@ function __c670(j: number): any {
       ).annotate({ identifier: "InstanceTypeOffering" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(21441, __c670, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceTypeOffering",
-        }),
+        /*@__PURE__*/ __S(21441, __c670, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceTypeOffering" }),
       );
     case 3:
       return S.suspend(() =>
@@ -73767,9 +71827,7 @@ function __c670(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeInstanceTypeOfferingsResult",
-      });
+      ).annotate({ identifier: "DescribeInstanceTypeOfferingsResult" });
   }
 }
 function __c671(j: number): any {
@@ -73786,9 +71844,7 @@ function __c671(j: number): any {
           NextToken: S.optional(S.String),
           IncludeUnsupportedInRegion: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeInstanceTypesRequest",
-      });
+      ).annotate({ identifier: "DescribeInstanceTypesRequest" });
     case 2:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")));
     case 3:
@@ -73954,9 +72010,9 @@ function __c671(j: number): any {
       ).annotate({ identifier: "EbsCardInfo" });
     case 17:
       return S.Array(
-        /*@__PURE__*/ __S(21488, __c671, 16).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "EbsCardInfo",
-        }),
+        /*@__PURE__*/ __S(21488, __c671, 16)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "EbsCardInfo" }),
       );
     case 18:
       return S.suspend(() =>
@@ -74043,9 +72099,9 @@ function __c671(j: number): any {
       ).annotate({ identifier: "NetworkCardInfo" });
     case 21:
       return S.Array(
-        /*@__PURE__*/ __S(21492, __c671, 20).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "NetworkCardInfo",
-        }),
+        /*@__PURE__*/ __S(21492, __c671, 20)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "NetworkCardInfo" }),
       );
     case 22:
       return S.suspend(() =>
@@ -74074,9 +72130,7 @@ function __c671(j: number): any {
             T.Ec2QueryName("DefaultUdpStreamTimeout"),
           ),
         }),
-      ).annotate({
-        identifier: "DefaultConnectionTrackingConfiguration",
-      });
+      ).annotate({ identifier: "DefaultConnectionTrackingConfiguration" });
     case 25:
       return S.suspend(() =>
         S.Struct({
@@ -74195,9 +72249,9 @@ function __c671(j: number): any {
       ).annotate({ identifier: "GpuDeviceInfo" });
     case 29:
       return S.Array(
-        /*@__PURE__*/ __S(21500, __c671, 28).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "GpuDeviceInfo",
-        }),
+        /*@__PURE__*/ __S(21500, __c671, 28)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "GpuDeviceInfo" }),
       );
     case 30:
       return S.suspend(() =>
@@ -74235,9 +72289,9 @@ function __c672(j: number): any {
       ).annotate({ identifier: "FpgaDeviceInfo" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(21504, __c672, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "FpgaDeviceInfo",
-        }),
+        /*@__PURE__*/ __S(21504, __c672, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "FpgaDeviceInfo" }),
       );
     case 2:
       return S.suspend(() =>
@@ -74268,9 +72322,7 @@ function __c672(j: number): any {
         S.Struct({
           SizeInMiB: S.optional(S.Number).pipe(T.XmlName("sizeInMiB"), T.Ec2QueryName("SizeInMiB")),
         }),
-      ).annotate({
-        identifier: "InferenceDeviceMemoryInfo",
-      });
+      ).annotate({ identifier: "InferenceDeviceMemoryInfo" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -74335,9 +72387,9 @@ function __c672(j: number): any {
       ).annotate({ identifier: "MediaDeviceInfo" });
     case 14:
       return S.Array(
-        /*@__PURE__*/ __S(21517, __c672, 13).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "MediaDeviceInfo",
-        }),
+        /*@__PURE__*/ __S(21517, __c672, 13)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "MediaDeviceInfo" }),
       );
     case 15:
       return S.suspend(() =>
@@ -74380,9 +72432,9 @@ function __c672(j: number): any {
       ).annotate({ identifier: "NeuronDeviceInfo" });
     case 19:
       return S.Array(
-        /*@__PURE__*/ __S(21522, __c672, 18).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "NeuronDeviceInfo",
-        }),
+        /*@__PURE__*/ __S(21522, __c672, 18)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "NeuronDeviceInfo" }),
       );
     case 20:
       return S.suspend(() =>
@@ -74519,9 +72571,9 @@ function __c672(j: number): any {
       ).annotate({ identifier: "InstanceTypeInfo" });
     case 22:
       return S.Array(
-        /*@__PURE__*/ __S(21525, __c672, 21).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceTypeInfo",
-        }),
+        /*@__PURE__*/ __S(21525, __c672, 21)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceTypeInfo" }),
       );
     case 23:
       return S.suspend(() =>
@@ -74532,9 +72584,7 @@ function __c672(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeInstanceTypesResult",
-      });
+      ).annotate({ identifier: "DescribeInstanceTypesResult" });
   }
 }
 function __c673(j: number): any {
@@ -74553,14 +72603,12 @@ function __c673(j: number): any {
           ),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeInternetGatewaysRequest",
-      });
+      ).annotate({ identifier: "DescribeInternetGatewaysRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(8128, __c254, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InternetGateway",
-        }),
+        /*@__PURE__*/ __S(8128, __c254, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InternetGateway" }),
       );
     case 3:
       return S.suspend(() =>
@@ -74571,9 +72619,7 @@ function __c673(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeInternetGatewaysResult",
-      });
+      ).annotate({ identifier: "DescribeInternetGatewaysResult" });
   }
 }
 function __c674(j: number): any {
@@ -74585,9 +72631,7 @@ function __c674(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeIpamByoasnRequest",
-      });
+      ).annotate({ identifier: "DescribeIpamByoasnRequest" });
     case 1:
       return S.Array(
         /*@__PURE__*/ __S(17600, __c550, 0)
@@ -74619,14 +72663,12 @@ function __c675(j: number): any {
             T.XmlName("IpamExternalResourceVerificationTokenId"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeIpamExternalResourceVerificationTokensRequest",
-      });
+      ).annotate({ identifier: "DescribeIpamExternalResourceVerificationTokensRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(8352, __c261, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamExternalResourceVerificationToken",
-        }),
+        /*@__PURE__*/ __S(8352, __c261, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamExternalResourceVerificationToken" }),
       );
     case 2:
       return S.suspend(() =>
@@ -74637,9 +72679,7 @@ function __c675(j: number): any {
             T.Ec2QueryName("IpamExternalResourceVerificationTokenSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeIpamExternalResourceVerificationTokensResult",
-      });
+      ).annotate({ identifier: "DescribeIpamExternalResourceVerificationTokensResult" });
   }
 }
 function __c676(j: number): any {
@@ -74655,14 +72695,12 @@ function __c676(j: number): any {
           NextToken: S.optional(S.String),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeIpamInternetRegistryAssociationsRequest",
-      });
+      ).annotate({ identifier: "DescribeIpamInternetRegistryAssociationsRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(8416, __c263, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamInternetRegistryAssociation",
-        }),
+        /*@__PURE__*/ __S(8416, __c263, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamInternetRegistryAssociation" }),
       );
     case 2:
       return S.suspend(() =>
@@ -74673,9 +72711,7 @@ function __c676(j: number): any {
             T.Ec2QueryName("IpamInternetRegistryAssociationSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeIpamInternetRegistryAssociationsResult",
-      });
+      ).annotate({ identifier: "DescribeIpamInternetRegistryAssociationsResult" });
   }
 }
 function __c677(j: number): any {
@@ -74689,14 +72725,12 @@ function __c677(j: number): any {
           NextToken: S.optional(S.String),
           IpamPolicyIds: S.optional(__S(2208, __c69, 0)).pipe(T.XmlName("IpamPolicyId")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeIpamPoliciesRequest",
-      });
+      ).annotate({ identifier: "DescribeIpamPoliciesRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(8480, __c265, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamPolicy",
-        }),
+        /*@__PURE__*/ __S(8480, __c265, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamPolicy" }),
       );
     case 2:
       return S.suspend(() =>
@@ -74707,9 +72741,7 @@ function __c677(j: number): any {
             T.Ec2QueryName("IpamPolicySet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeIpamPoliciesResult",
-      });
+      ).annotate({ identifier: "DescribeIpamPoliciesResult" });
   }
 }
 function __c678(j: number): any {
@@ -74725,9 +72757,7 @@ function __c678(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeIpamPoolAllocationsRequest",
-      });
+      ).annotate({ identifier: "DescribeIpamPoolAllocationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -74737,18 +72767,16 @@ function __c678(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeIpamPoolAllocationsResult",
-      });
+      ).annotate({ identifier: "DescribeIpamPoolAllocationsResult" });
   }
 }
 function __c679(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ __S(2848, __c89, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamPoolAllocation",
-        }),
+        /*@__PURE__*/ __S(2848, __c89, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamPoolAllocation" }),
       );
   }
 }
@@ -74795,14 +72823,12 @@ function __c681(j: number): any {
             T.XmlName("IpamPrefixListResolverId"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeIpamPrefixListResolversRequest",
-      });
+      ).annotate({ identifier: "DescribeIpamPrefixListResolversRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(8736, __c273, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamPrefixListResolver",
-        }),
+        /*@__PURE__*/ __S(8736, __c273, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamPrefixListResolver" }),
       );
     case 2:
       return S.suspend(() =>
@@ -74813,9 +72839,7 @@ function __c681(j: number): any {
             T.Ec2QueryName("IpamPrefixListResolverSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeIpamPrefixListResolversResult",
-      });
+      ).annotate({ identifier: "DescribeIpamPrefixListResolversResult" });
   }
 }
 function __c682(j: number): any {
@@ -74832,14 +72856,12 @@ function __c682(j: number): any {
           ),
           IpamPrefixListResolverId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeIpamPrefixListResolverTargetsRequest",
-      });
+      ).annotate({ identifier: "DescribeIpamPrefixListResolverTargetsRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(8832, __c276, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamPrefixListResolverTarget",
-        }),
+        /*@__PURE__*/ __S(8832, __c276, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamPrefixListResolverTarget" }),
       );
     case 2:
       return S.suspend(() =>
@@ -74850,9 +72872,7 @@ function __c682(j: number): any {
             T.Ec2QueryName("IpamPrefixListResolverTargetSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeIpamPrefixListResolverTargetsResult",
-      });
+      ).annotate({ identifier: "DescribeIpamPrefixListResolverTargetsResult" });
   }
 }
 function __c683(j: number): any {
@@ -74868,14 +72888,12 @@ function __c683(j: number): any {
           MaxResults: S.optional(S.Number),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeIpamResourceDiscoveriesRequest",
-      });
+      ).annotate({ identifier: "DescribeIpamResourceDiscoveriesRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(8898, __c278, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamResourceDiscovery",
-        }),
+        /*@__PURE__*/ __S(8898, __c278, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamResourceDiscovery" }),
       );
     case 2:
       return S.suspend(() =>
@@ -74886,9 +72904,7 @@ function __c683(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeIpamResourceDiscoveriesResult",
-      });
+      ).annotate({ identifier: "DescribeIpamResourceDiscoveriesResult" });
   }
 }
 function __c684(j: number): any {
@@ -74904,14 +72920,12 @@ function __c684(j: number): any {
           MaxResults: S.optional(S.Number),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeIpamResourceDiscoveryAssociationsRequest",
-      });
+      ).annotate({ identifier: "DescribeIpamResourceDiscoveryAssociationsRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(3776, __c118, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamResourceDiscoveryAssociation",
-        }),
+        /*@__PURE__*/ __S(3776, __c118, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamResourceDiscoveryAssociation" }),
       );
     case 2:
       return S.suspend(() =>
@@ -74922,9 +72936,7 @@ function __c684(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeIpamResourceDiscoveryAssociationsResult",
-      });
+      ).annotate({ identifier: "DescribeIpamResourceDiscoveryAssociationsResult" });
   }
 }
 function __c685(j: number): any {
@@ -74968,14 +72980,12 @@ function __c686(j: number): any {
           NextToken: S.optional(S.String),
           IpamScopeIds: S.optional(__S(2208, __c69, 0)).pipe(T.XmlName("IpamScopeId")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeIpamScopesRequest",
-      });
+      ).annotate({ identifier: "DescribeIpamScopesRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(9025, __c282, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamScope",
-        }),
+        /*@__PURE__*/ __S(9025, __c282, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamScope" }),
       );
     case 2:
       return S.suspend(() =>
@@ -75014,9 +73024,9 @@ function __c687(j: number): any {
       ).annotate({ identifier: "PoolCidrBlock" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(21986, __c687, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "PoolCidrBlock",
-        }),
+        /*@__PURE__*/ __S(21986, __c687, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "PoolCidrBlock" }),
       );
     case 4:
       return S.suspend(() =>
@@ -75087,9 +73097,9 @@ function __c688(j: number): any {
       ).annotate({ identifier: "KeyPairInfo" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(22019, __c688, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "KeyPairInfo",
-        }),
+        /*@__PURE__*/ __S(22019, __c688, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "KeyPairInfo" }),
       );
     case 5:
       return S.suspend(() =>
@@ -75121,14 +73131,12 @@ function __c689(j: number): any {
           MaxResults: S.optional(S.Number),
           IncludeManagedResources: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeLaunchTemplatesRequest",
-      });
+      ).annotate({ identifier: "DescribeLaunchTemplatesRequest" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(9504, __c297, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "LaunchTemplate",
-        }),
+        /*@__PURE__*/ __S(9504, __c297, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "LaunchTemplate" }),
       );
     case 4:
       return S.suspend(() =>
@@ -75139,9 +73147,7 @@ function __c689(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeLaunchTemplatesResult",
-      });
+      ).annotate({ identifier: "DescribeLaunchTemplatesResult" });
   }
 }
 function __c690(j: number): any {
@@ -75161,14 +73167,12 @@ function __c690(j: number): any {
           ResolveAlias: S.optional(S.Boolean),
           IncludeManagedResources: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeLaunchTemplateVersionsRequest",
-      });
+      ).annotate({ identifier: "DescribeLaunchTemplateVersionsRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(9632, __c301, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "LaunchTemplateVersion",
-        }),
+        /*@__PURE__*/ __S(9632, __c301, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "LaunchTemplateVersion" }),
       );
     case 2:
       return S.suspend(() =>
@@ -75179,9 +73183,7 @@ function __c690(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeLaunchTemplateVersionsResult",
-      });
+      ).annotate({ identifier: "DescribeLaunchTemplateVersionsResult" });
   }
 }
 function __c691(j: number): any {
@@ -75199,14 +73201,12 @@ function __c691(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeLocalGatewayRouteTablesRequest",
-      });
+      ).annotate({ identifier: "DescribeLocalGatewayRouteTablesRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(9856, __c308, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "LocalGatewayRouteTable",
-        }),
+        /*@__PURE__*/ __S(9856, __c308, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "LocalGatewayRouteTable" }),
       );
     case 3:
       return S.suspend(() =>
@@ -75217,9 +73217,7 @@ function __c691(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeLocalGatewayRouteTablesResult",
-      });
+      ).annotate({ identifier: "DescribeLocalGatewayRouteTablesResult" });
   }
 }
 function __c692(j: number): any {
@@ -75242,9 +73240,9 @@ function __c692(j: number): any {
       });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(9920, __c310, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "LocalGatewayRouteTableVirtualInterfaceGroupAssociation",
-        }),
+        /*@__PURE__*/ __S(9920, __c310, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "LocalGatewayRouteTableVirtualInterfaceGroupAssociation" }),
       );
     case 3:
       return S.suspend(() =>
@@ -75277,14 +73275,12 @@ function __c693(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeLocalGatewayRouteTableVpcAssociationsRequest",
-      });
+      ).annotate({ identifier: "DescribeLocalGatewayRouteTableVpcAssociationsRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(9984, __c312, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "LocalGatewayRouteTableVpcAssociation",
-        }),
+        /*@__PURE__*/ __S(9984, __c312, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "LocalGatewayRouteTableVpcAssociation" }),
       );
     case 3:
       return S.suspend(() =>
@@ -75295,9 +73291,7 @@ function __c693(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeLocalGatewayRouteTableVpcAssociationsResult",
-      });
+      ).annotate({ identifier: "DescribeLocalGatewayRouteTableVpcAssociationsResult" });
   }
 }
 function __c694(j: number): any {
@@ -75313,9 +73307,7 @@ function __c694(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeLocalGatewaysRequest",
-      });
+      ).annotate({ identifier: "DescribeLocalGatewaysRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -75334,9 +73326,9 @@ function __c694(j: number): any {
       ).annotate({ identifier: "LocalGateway" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(22210, __c694, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "LocalGateway",
-        }),
+        /*@__PURE__*/ __S(22210, __c694, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "LocalGateway" }),
       );
     case 4:
       return S.suspend(() =>
@@ -75347,9 +73339,7 @@ function __c694(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeLocalGatewaysResult",
-      });
+      ).annotate({ identifier: "DescribeLocalGatewaysResult" });
   }
 }
 function __c695(j: number): any {
@@ -75367,14 +73357,12 @@ function __c695(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeLocalGatewayVirtualInterfaceGroupsRequest",
-      });
+      ).annotate({ identifier: "DescribeLocalGatewayVirtualInterfaceGroupsRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(10112, __c316, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "LocalGatewayVirtualInterfaceGroup",
-        }),
+        /*@__PURE__*/ __S(10112, __c316, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "LocalGatewayVirtualInterfaceGroup" }),
       );
     case 3:
       return S.suspend(() =>
@@ -75385,9 +73373,7 @@ function __c695(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeLocalGatewayVirtualInterfaceGroupsResult",
-      });
+      ).annotate({ identifier: "DescribeLocalGatewayVirtualInterfaceGroupsResult" });
   }
 }
 function __c696(j: number): any {
@@ -75403,14 +73389,12 @@ function __c696(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeLocalGatewayVirtualInterfacesRequest",
-      });
+      ).annotate({ identifier: "DescribeLocalGatewayVirtualInterfacesRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(10048, __c314, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "LocalGatewayVirtualInterface",
-        }),
+        /*@__PURE__*/ __S(10048, __c314, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "LocalGatewayVirtualInterface" }),
       );
     case 2:
       return S.suspend(() =>
@@ -75421,9 +73405,7 @@ function __c696(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeLocalGatewayVirtualInterfacesResult",
-      });
+      ).annotate({ identifier: "DescribeLocalGatewayVirtualInterfacesResult" });
   }
 }
 function __c697(j: number): any {
@@ -75437,9 +73419,7 @@ function __c697(j: number): any {
           SnapshotIds: S.optional(__S(22336, __c698, 0)).pipe(T.XmlName("SnapshotId")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeLockedSnapshotsRequest",
-      });
+      ).annotate({ identifier: "DescribeLockedSnapshotsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -75475,9 +73455,9 @@ function __c697(j: number): any {
       ).annotate({ identifier: "LockedSnapshotsInfo" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(22305, __c697, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "LockedSnapshotsInfo",
-        }),
+        /*@__PURE__*/ __S(22305, __c697, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "LockedSnapshotsInfo" }),
       );
     case 3:
       return S.suspend(() =>
@@ -75488,9 +73468,7 @@ function __c697(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeLockedSnapshotsResult",
-      });
+      ).annotate({ identifier: "DescribeLockedSnapshotsResult" });
   }
 }
 function __c698(j: number): any {
@@ -75555,14 +73533,12 @@ function __c700(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeMacModificationTasksRequest",
-      });
+      ).annotate({ identifier: "DescribeMacModificationTasksRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(7105, __c222, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "MacModificationTask",
-        }),
+        /*@__PURE__*/ __S(7105, __c222, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "MacModificationTask" }),
       );
     case 3:
       return S.suspend(() =>
@@ -75573,9 +73549,7 @@ function __c700(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeMacModificationTasksResult",
-      });
+      ).annotate({ identifier: "DescribeMacModificationTasksResult" });
   }
 }
 function __c701(j: number): any {
@@ -75589,14 +73563,12 @@ function __c701(j: number): any {
           NextToken: S.optional(S.String),
           PrefixListIds: S.optional(__S(2208, __c69, 0)).pipe(T.XmlName("PrefixListId")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeManagedPrefixListsRequest",
-      });
+      ).annotate({ identifier: "DescribeManagedPrefixListsRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(10240, __c320, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ManagedPrefixList",
-        }),
+        /*@__PURE__*/ __S(10240, __c320, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ManagedPrefixList" }),
       );
     case 2:
       return S.suspend(() =>
@@ -75607,9 +73579,7 @@ function __c701(j: number): any {
             T.Ec2QueryName("PrefixListSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeManagedPrefixListsResult",
-      });
+      ).annotate({ identifier: "DescribeManagedPrefixListsResult" });
   }
 }
 function __c702(j: number): any {
@@ -75632,9 +73602,7 @@ function __c702(j: number): any {
             T.Ec2QueryName("MaxResults"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeMovingAddressesRequest",
-      });
+      ).annotate({ identifier: "DescribeMovingAddressesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -75647,9 +73615,9 @@ function __c702(j: number): any {
       ).annotate({ identifier: "MovingAddressStatus" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(22465, __c702, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "MovingAddressStatus",
-        }),
+        /*@__PURE__*/ __S(22465, __c702, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "MovingAddressStatus" }),
       );
     case 3:
       return S.suspend(() =>
@@ -75660,9 +73628,7 @@ function __c702(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeMovingAddressesResult",
-      });
+      ).annotate({ identifier: "DescribeMovingAddressesResult" });
   }
 }
 function __c703(j: number): any {
@@ -75678,14 +73644,12 @@ function __c703(j: number): any {
           NatGatewayIds: S.optional(__S(22496, __c703, 0)).pipe(T.XmlName("NatGatewayId")),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeNatGatewaysRequest",
-      });
+      ).annotate({ identifier: "DescribeNatGatewaysRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(10339, __c323, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "NatGateway",
-        }),
+        /*@__PURE__*/ __S(10339, __c323, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "NatGateway" }),
       );
     case 3:
       return S.suspend(() =>
@@ -75696,9 +73660,7 @@ function __c703(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeNatGatewaysResult",
-      });
+      ).annotate({ identifier: "DescribeNatGatewaysResult" });
   }
 }
 function __c704(j: number): any {
@@ -75714,14 +73676,12 @@ function __c704(j: number): any {
           NetworkAclIds: S.optional(__S(22528, __c704, 0)).pipe(T.XmlName("NetworkAclId")),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeNetworkAclsRequest",
-      });
+      ).annotate({ identifier: "DescribeNetworkAclsRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(10468, __c327, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "NetworkAcl",
-        }),
+        /*@__PURE__*/ __S(10468, __c327, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "NetworkAcl" }),
       );
     case 3:
       return S.suspend(() =>
@@ -75732,9 +73692,7 @@ function __c704(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeNetworkAclsResult",
-      });
+      ).annotate({ identifier: "DescribeNetworkAclsResult" });
   }
 }
 function __c705(j: number): any {
@@ -75755,14 +73713,12 @@ function __c705(j: number): any {
           DryRun: S.optional(S.Boolean),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeNetworkInsightsAccessScopeAnalysesRequest",
-      });
+      ).annotate({ identifier: "DescribeNetworkInsightsAccessScopeAnalysesRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(22592, __c706, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "NetworkInsightsAccessScopeAnalysis",
-        }),
+        /*@__PURE__*/ __S(22592, __c706, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "NetworkInsightsAccessScopeAnalysis" }),
       );
     case 3:
       return S.suspend(() =>
@@ -75773,9 +73729,7 @@ function __c705(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeNetworkInsightsAccessScopeAnalysesResult",
-      });
+      ).annotate({ identifier: "DescribeNetworkInsightsAccessScopeAnalysesResult" });
   }
 }
 function __c706(j: number): any {
@@ -75822,9 +73776,7 @@ function __c706(j: number): any {
           ),
           Tags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("tagSet"), T.Ec2QueryName("TagSet")),
         }),
-      ).annotate({
-        identifier: "NetworkInsightsAccessScopeAnalysis",
-      });
+      ).annotate({ identifier: "NetworkInsightsAccessScopeAnalysis" });
   }
 }
 function __c707(j: number): any {
@@ -75842,14 +73794,12 @@ function __c707(j: number): any {
           DryRun: S.optional(S.Boolean),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeNetworkInsightsAccessScopesRequest",
-      });
+      ).annotate({ identifier: "DescribeNetworkInsightsAccessScopesRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(10560, __c330, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "NetworkInsightsAccessScope",
-        }),
+        /*@__PURE__*/ __S(10560, __c330, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "NetworkInsightsAccessScope" }),
       );
     case 3:
       return S.suspend(() =>
@@ -75860,9 +73810,7 @@ function __c707(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeNetworkInsightsAccessScopesResult",
-      });
+      ).annotate({ identifier: "DescribeNetworkInsightsAccessScopesResult" });
   }
 }
 function __c708(j: number): any {
@@ -75883,14 +73831,12 @@ function __c708(j: number): any {
           DryRun: S.optional(S.Boolean),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeNetworkInsightsAnalysesRequest",
-      });
+      ).annotate({ identifier: "DescribeNetworkInsightsAnalysesRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(22691, __c709, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "NetworkInsightsAnalysis",
-        }),
+        /*@__PURE__*/ __S(22691, __c709, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "NetworkInsightsAnalysis" }),
       );
     case 3:
       return S.suspend(() =>
@@ -75901,9 +73847,7 @@ function __c708(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeNetworkInsightsAnalysesResult",
-      });
+      ).annotate({ identifier: "DescribeNetworkInsightsAnalysesResult" });
   }
 }
 function __c709(j: number): any {
@@ -75925,9 +73869,9 @@ function __c709(j: number): any {
       ).annotate({ identifier: "AlternatePathHint" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(22689, __c709, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "AlternatePathHint",
-        }),
+        /*@__PURE__*/ __S(22689, __c709, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "AlternatePathHint" }),
       );
     case 3:
       return S.suspend(() =>
@@ -76031,9 +73975,9 @@ function __c710(j: number): any {
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")));
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(10432, __c326, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "PortRange",
-        }),
+        /*@__PURE__*/ __S(10432, __c326, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "PortRange" }),
       );
     case 4:
       return S.suspend(() =>
@@ -76127,9 +74071,7 @@ function __c710(j: number): any {
           ),
           Protocol: S.optional(S.String).pipe(T.XmlName("protocol"), T.Ec2QueryName("Protocol")),
         }),
-      ).annotate({
-        identifier: "AnalysisSecurityGroupRule",
-      });
+      ).annotate({ identifier: "AnalysisSecurityGroupRule" });
     case 7:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")));
     case 8:
@@ -76144,9 +74086,9 @@ function __c710(j: number): any {
       ).annotate({ identifier: "RuleOption" });
     case 9:
       return S.Array(
-        /*@__PURE__*/ __S(22728, __c710, 8).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "RuleOption",
-        }),
+        /*@__PURE__*/ __S(22728, __c710, 8)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "RuleOption" }),
       );
     case 10:
       return S.suspend(() =>
@@ -76163,9 +74105,9 @@ function __c710(j: number): any {
       ).annotate({ identifier: "RuleGroupTypePair" });
     case 11:
       return S.Array(
-        /*@__PURE__*/ __S(22730, __c710, 10).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "RuleGroupTypePair",
-        }),
+        /*@__PURE__*/ __S(22730, __c710, 10)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "RuleGroupTypePair" }),
       );
     case 12:
       return S.suspend(() =>
@@ -76182,15 +74124,15 @@ function __c710(j: number): any {
       ).annotate({ identifier: "RuleGroupRuleOptionsPair" });
     case 13:
       return S.Array(
-        /*@__PURE__*/ __S(22732, __c710, 12).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "RuleGroupRuleOptionsPair",
-        }),
+        /*@__PURE__*/ __S(22732, __c710, 12)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "RuleGroupRuleOptionsPair" }),
       );
     case 14:
       return S.Array(
-        /*@__PURE__*/ __S(22721, __c710, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "AnalysisComponent",
-        }),
+        /*@__PURE__*/ __S(22721, __c710, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "AnalysisComponent" }),
       );
     case 15:
       return S.suspend(() =>
@@ -76229,9 +74171,9 @@ function __c710(j: number): any {
       ).annotate({ identifier: "AdditionalDetail" });
     case 16:
       return S.Array(
-        /*@__PURE__*/ __S(22735, __c710, 15).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "AdditionalDetail",
-        }),
+        /*@__PURE__*/ __S(22735, __c710, 15)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "AdditionalDetail" }),
       );
     case 17:
       return S.suspend(() =>
@@ -76262,9 +74204,7 @@ function __c710(j: number): any {
             T.Ec2QueryName("ResourceType"),
           ),
         }),
-      ).annotate({
-        identifier: "TransitGatewayRouteTableRoute",
-      });
+      ).annotate({ identifier: "TransitGatewayRouteTableRoute" });
     case 18:
       return S.suspend(() =>
         S.Struct({
@@ -76277,9 +74217,7 @@ function __c710(j: number): any {
             T.Ec2QueryName("InstancePort"),
           ),
         }),
-      ).annotate({
-        identifier: "AnalysisLoadBalancerListener",
-      });
+      ).annotate({ identifier: "AnalysisLoadBalancerListener" });
     case 19:
       return S.suspend(() =>
         S.Struct({
@@ -76297,9 +74235,7 @@ function __c710(j: number): any {
             .annotate({ identifier: "AnalysisComponent" }),
           Port: S.optional(S.Number).pipe(T.XmlName("port"), T.Ec2QueryName("Port")),
         }),
-      ).annotate({
-        identifier: "AnalysisLoadBalancerTarget",
-      });
+      ).annotate({ identifier: "AnalysisLoadBalancerTarget" });
     case 20:
       return S.Array(/*@__PURE__*/ S.Number.pipe(/*@__PURE__*/ T.XmlName("item")));
     case 21:
@@ -76553,9 +74489,9 @@ function __c710(j: number): any {
       ).annotate({ identifier: "Explanation" });
     case 24:
       return S.Array(
-        /*@__PURE__*/ __S(22743, __c710, 23).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "Explanation",
-        }),
+        /*@__PURE__*/ __S(22743, __c710, 23)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "Explanation" }),
       );
     case 25:
       return S.suspend(() =>
@@ -76634,9 +74570,9 @@ function __c710(j: number): any {
       ).annotate({ identifier: "PathComponent" });
     case 26:
       return S.Array(
-        /*@__PURE__*/ __S(22745, __c710, 25).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "PathComponent",
-        }),
+        /*@__PURE__*/ __S(22745, __c710, 25)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "PathComponent" }),
       );
   }
 }
@@ -76655,14 +74591,12 @@ function __c711(j: number): any {
           DryRun: S.optional(S.Boolean),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeNetworkInsightsPathsRequest",
-      });
+      ).annotate({ identifier: "DescribeNetworkInsightsPathsRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(10658, __c333, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "NetworkInsightsPath",
-        }),
+        /*@__PURE__*/ __S(10658, __c333, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "NetworkInsightsPath" }),
       );
     case 3:
       return S.suspend(() =>
@@ -76673,9 +74607,7 @@ function __c711(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeNetworkInsightsPathsResult",
-      });
+      ).annotate({ identifier: "DescribeNetworkInsightsPathsResult" });
   }
 }
 function __c712(j: number): any {
@@ -76690,9 +74622,7 @@ function __c712(j: number): any {
           ),
           Attribute: S.optional(S.String).pipe(T.XmlName("attribute"), T.Ec2QueryName("Attribute")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeNetworkInterfaceAttributeRequest",
-      });
+      ).annotate({ identifier: "DescribeNetworkInterfaceAttributeRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -76718,9 +74648,7 @@ function __c712(j: number): any {
             T.Ec2QueryName("AssociatePublicIpAddress"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeNetworkInterfaceAttributeResult",
-      });
+      ).annotate({ identifier: "DescribeNetworkInterfaceAttributeResult" });
   }
 }
 function __c713(j: number): any {
@@ -76737,14 +74665,12 @@ function __c713(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeNetworkInterfacePermissionsRequest",
-      });
+      ).annotate({ identifier: "DescribeNetworkInterfacePermissionsRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(10849, __c339, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "NetworkInterfacePermission",
-        }),
+        /*@__PURE__*/ __S(10849, __c339, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "NetworkInterfacePermission" }),
       );
     case 3:
       return S.suspend(() =>
@@ -76755,9 +74681,7 @@ function __c713(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeNetworkInterfacePermissionsResult",
-      });
+      ).annotate({ identifier: "DescribeNetworkInterfacePermissionsResult" });
   }
 }
 function __c714(j: number): any {
@@ -76779,14 +74703,12 @@ function __c714(j: number): any {
             T.Ec2QueryName("Filter"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeNetworkInterfacesRequest",
-      });
+      ).annotate({ identifier: "DescribeNetworkInterfacesRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(10794, __c337, 10).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "NetworkInterface",
-        }),
+        /*@__PURE__*/ __S(10794, __c337, 10)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "NetworkInterface" }),
       );
     case 3:
       return S.suspend(() =>
@@ -76797,9 +74719,7 @@ function __c714(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeNetworkInterfacesResult",
-      });
+      ).annotate({ identifier: "DescribeNetworkInterfacesResult" });
   }
 }
 function __c715(j: number): any {
@@ -76815,9 +74735,7 @@ function __c715(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeOutpostLagsRequest",
-      });
+      ).annotate({ identifier: "DescribeOutpostLagsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -76844,9 +74762,9 @@ function __c715(j: number): any {
       ).annotate({ identifier: "OutpostLag" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(22882, __c715, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "OutpostLag",
-        }),
+        /*@__PURE__*/ __S(22882, __c715, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "OutpostLag" }),
       );
     case 4:
       return S.suspend(() =>
@@ -76857,9 +74775,7 @@ function __c715(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeOutpostLagsResult",
-      });
+      ).annotate({ identifier: "DescribeOutpostLagsResult" });
   }
 }
 function __c716(j: number): any {
@@ -76885,14 +74801,12 @@ function __c717(j: number): any {
           ),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribePlacementGroupsRequest",
-      });
+      ).annotate({ identifier: "DescribePlacementGroupsRequest" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(10912, __c341, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "PlacementGroup",
-        }),
+        /*@__PURE__*/ __S(10912, __c341, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "PlacementGroup" }),
       );
     case 4:
       return S.suspend(() =>
@@ -76902,9 +74816,7 @@ function __c717(j: number): any {
             T.Ec2QueryName("PlacementGroupSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribePlacementGroupsResult",
-      });
+      ).annotate({ identifier: "DescribePlacementGroupsResult" });
   }
 }
 function __c718(j: number): any {
@@ -76920,9 +74832,7 @@ function __c718(j: number): any {
           NextToken: S.optional(S.String),
           PrefixListIds: S.optional(__S(22976, __c718, 0)).pipe(T.XmlName("PrefixListId")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribePrefixListsRequest",
-      });
+      ).annotate({ identifier: "DescribePrefixListsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -76942,9 +74852,9 @@ function __c718(j: number): any {
       ).annotate({ identifier: "PrefixList" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(22978, __c718, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "PrefixList",
-        }),
+        /*@__PURE__*/ __S(22978, __c718, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "PrefixList" }),
       );
     case 4:
       return S.suspend(() =>
@@ -76955,9 +74865,7 @@ function __c718(j: number): any {
             T.Ec2QueryName("PrefixListSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribePrefixListsResult",
-      });
+      ).annotate({ identifier: "DescribePrefixListsResult" });
   }
 }
 function __c719(j: number): any {
@@ -76972,9 +74880,7 @@ function __c719(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribePrincipalIdFormatRequest",
-      });
+      ).annotate({ identifier: "DescribePrincipalIdFormatRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -76987,9 +74893,9 @@ function __c719(j: number): any {
       ).annotate({ identifier: "PrincipalIdFormat" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(23010, __c719, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "PrincipalIdFormat",
-        }),
+        /*@__PURE__*/ __S(23010, __c719, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "PrincipalIdFormat" }),
       );
     case 4:
       return S.suspend(() =>
@@ -77000,9 +74906,7 @@ function __c719(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribePrincipalIdFormatResult",
-      });
+      ).annotate({ identifier: "DescribePrincipalIdFormatResult" });
   }
 }
 function __c720(j: number): any {
@@ -77017,14 +74921,12 @@ function __c720(j: number): any {
           MaxResults: S.optional(S.Number),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribePublicIpv4PoolsRequest",
-      });
+      ).annotate({ identifier: "DescribePublicIpv4PoolsRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(23072, __c721, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "PublicIpv4PoolRange",
-        }),
+        /*@__PURE__*/ __S(23072, __c721, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "PublicIpv4PoolRange" }),
       );
     case 3:
       return S.suspend(() =>
@@ -77055,9 +74957,9 @@ function __c720(j: number): any {
       ).annotate({ identifier: "PublicIpv4Pool" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(23043, __c720, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "PublicIpv4Pool",
-        }),
+        /*@__PURE__*/ __S(23043, __c720, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "PublicIpv4Pool" }),
       );
     case 5:
       return S.suspend(() =>
@@ -77068,9 +74970,7 @@ function __c720(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribePublicIpv4PoolsResult",
-      });
+      ).annotate({ identifier: "DescribePublicIpv4PoolsResult" });
   }
 }
 function __c721(j: number): any {
@@ -77145,14 +75045,12 @@ function __c723(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeReplaceRootVolumeTasksRequest",
-      });
+      ).annotate({ identifier: "DescribeReplaceRootVolumeTasksRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(11008, __c344, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ReplaceRootVolumeTask",
-        }),
+        /*@__PURE__*/ __S(11008, __c344, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ReplaceRootVolumeTask" }),
       );
     case 3:
       return S.suspend(() =>
@@ -77163,9 +75061,7 @@ function __c723(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeReplaceRootVolumeTasksResult",
-      });
+      ).annotate({ identifier: "DescribeReplaceRootVolumeTasksResult" });
   }
 }
 function __c724(j: number): any {
@@ -77184,9 +75080,7 @@ function __c724(j: number): any {
             T.Ec2QueryName("OfferingType"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeReservedInstancesRequest",
-      });
+      ).annotate({ identifier: "DescribeReservedInstancesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -77258,9 +75152,9 @@ function __c724(j: number): any {
       ).annotate({ identifier: "ReservedInstances" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(23169, __c724, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ReservedInstances",
-        }),
+        /*@__PURE__*/ __S(23169, __c724, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ReservedInstances" }),
       );
     case 3:
       return S.suspend(() =>
@@ -77270,9 +75164,7 @@ function __c724(j: number): any {
             T.Ec2QueryName("ReservedInstancesSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeReservedInstancesResult",
-      });
+      ).annotate({ identifier: "DescribeReservedInstancesResult" });
   }
 }
 function __c725(j: number): any {
@@ -77286,9 +75178,9 @@ function __c725(j: number): any {
       ).annotate({ identifier: "RecurringCharge" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(23200, __c725, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "RecurringCharge",
-        }),
+        /*@__PURE__*/ __S(23200, __c725, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "RecurringCharge" }),
       );
   }
 }
@@ -77313,9 +75205,7 @@ function __c727(j: number): any {
           ),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeReservedInstancesListingsRequest",
-      });
+      ).annotate({ identifier: "DescribeReservedInstancesListingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -77324,9 +75214,7 @@ function __c727(j: number): any {
             T.Ec2QueryName("ReservedInstancesListingsSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeReservedInstancesListingsResult",
-      });
+      ).annotate({ identifier: "DescribeReservedInstancesListingsResult" });
   }
 }
 function __c728(j: number): any {
@@ -77344,9 +75232,7 @@ function __c728(j: number): any {
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeReservedInstancesModificationsRequest",
-      });
+      ).annotate({ identifier: "DescribeReservedInstancesModificationsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -77358,14 +75244,12 @@ function __c728(j: number): any {
             .pipe(T.XmlName("targetConfiguration"), T.Ec2QueryName("TargetConfiguration"))
             .annotate({ identifier: "ReservedInstancesConfiguration" }),
         }),
-      ).annotate({
-        identifier: "ReservedInstancesModificationResult",
-      });
+      ).annotate({ identifier: "ReservedInstancesModificationResult" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(23298, __c728, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ReservedInstancesModificationResult",
-        }),
+        /*@__PURE__*/ __S(23298, __c728, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ReservedInstancesModificationResult" }),
       );
     case 4:
       return S.suspend(() =>
@@ -77378,9 +75262,9 @@ function __c728(j: number): any {
       ).annotate({ identifier: "ReservedInstancesId" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(23300, __c728, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ReservedInstancesId",
-        }),
+        /*@__PURE__*/ __S(23300, __c728, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ReservedInstancesId" }),
       );
     case 6:
       return S.suspend(() =>
@@ -77419,14 +75303,12 @@ function __c728(j: number): any {
             T.Ec2QueryName("UpdateDate"),
           ),
         }),
-      ).annotate({
-        identifier: "ReservedInstancesModification",
-      });
+      ).annotate({ identifier: "ReservedInstancesModification" });
     case 7:
       return S.Array(
-        /*@__PURE__*/ __S(23302, __c728, 6).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ReservedInstancesModification",
-        }),
+        /*@__PURE__*/ __S(23302, __c728, 6)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ReservedInstancesModification" }),
       );
     case 8:
       return S.suspend(() =>
@@ -77437,9 +75319,7 @@ function __c728(j: number): any {
             T.Ec2QueryName("ReservedInstancesModificationsSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeReservedInstancesModificationsResult",
-      });
+      ).annotate({ identifier: "DescribeReservedInstancesModificationsResult" });
   }
 }
 function __c729(j: number): any {
@@ -77466,9 +75346,7 @@ function __c729(j: number): any {
             T.Ec2QueryName("AvailabilityZoneId"),
           ),
         }),
-      ).annotate({
-        identifier: "ReservedInstancesConfiguration",
-      });
+      ).annotate({ identifier: "ReservedInstancesConfiguration" });
   }
 }
 function __c730(j: number): any {
@@ -77506,9 +75384,7 @@ function __c730(j: number): any {
             T.Ec2QueryName("MaxResults"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeReservedInstancesOfferingsRequest",
-      });
+      ).annotate({ identifier: "DescribeReservedInstancesOfferingsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -77518,9 +75394,9 @@ function __c730(j: number): any {
       ).annotate({ identifier: "PricingDetail" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(23362, __c730, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "PricingDetail",
-        }),
+        /*@__PURE__*/ __S(23362, __c730, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "PricingDetail" }),
       );
     case 4:
       return S.suspend(() =>
@@ -77584,14 +75460,12 @@ function __c730(j: number): any {
             T.Ec2QueryName("ProductDescription"),
           ),
         }),
-      ).annotate({
-        identifier: "ReservedInstancesOffering",
-      });
+      ).annotate({ identifier: "ReservedInstancesOffering" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(23364, __c730, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ReservedInstancesOffering",
-        }),
+        /*@__PURE__*/ __S(23364, __c730, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ReservedInstancesOffering" }),
       );
     case 6:
       return S.suspend(() =>
@@ -77602,9 +75476,7 @@ function __c730(j: number): any {
             T.Ec2QueryName("ReservedInstancesOfferingsSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeReservedInstancesOfferingsResult",
-      });
+      ).annotate({ identifier: "DescribeReservedInstancesOfferingsResult" });
   }
 }
 function __c731(j: number): any {
@@ -77622,14 +75494,12 @@ function __c731(j: number): any {
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeRouteServerEndpointsRequest",
-      });
+      ).annotate({ identifier: "DescribeRouteServerEndpointsRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(11232, __c351, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "RouteServerEndpoint",
-        }),
+        /*@__PURE__*/ __S(11232, __c351, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "RouteServerEndpoint" }),
       );
     case 3:
       return S.suspend(() =>
@@ -77640,9 +75510,7 @@ function __c731(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeRouteServerEndpointsResult",
-      });
+      ).annotate({ identifier: "DescribeRouteServerEndpointsResult" });
   }
 }
 function __c732(j: number): any {
@@ -77660,14 +75528,12 @@ function __c732(j: number): any {
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeRouteServerPeersRequest",
-      });
+      ).annotate({ identifier: "DescribeRouteServerPeersRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(11299, __c353, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "RouteServerPeer",
-        }),
+        /*@__PURE__*/ __S(11299, __c353, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "RouteServerPeer" }),
       );
     case 3:
       return S.suspend(() =>
@@ -77678,9 +75544,7 @@ function __c732(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeRouteServerPeersResult",
-      });
+      ).annotate({ identifier: "DescribeRouteServerPeersResult" });
   }
 }
 function __c733(j: number): any {
@@ -77696,14 +75560,12 @@ function __c733(j: number): any {
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeRouteServersRequest",
-      });
+      ).annotate({ identifier: "DescribeRouteServersRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(11168, __c349, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "RouteServer",
-        }),
+        /*@__PURE__*/ __S(11168, __c349, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "RouteServer" }),
       );
     case 3:
       return S.suspend(() =>
@@ -77714,9 +75576,7 @@ function __c733(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeRouteServersResult",
-      });
+      ).annotate({ identifier: "DescribeRouteServersResult" });
   }
 }
 function __c734(j: number): any {
@@ -77732,14 +75592,12 @@ function __c734(j: number): any {
           RouteTableIds: S.optional(__S(23488, __c734, 0)).pipe(T.XmlName("RouteTableId")),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeRouteTablesRequest",
-      });
+      ).annotate({ identifier: "DescribeRouteTablesRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(11366, __c355, 6).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "RouteTable",
-        }),
+        /*@__PURE__*/ __S(11366, __c355, 6)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "RouteTable" }),
       );
     case 3:
       return S.suspend(() =>
@@ -77750,9 +75608,7 @@ function __c734(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeRouteTablesResult",
-      });
+      ).annotate({ identifier: "DescribeRouteTablesResult" });
   }
 }
 function __c735(j: number): any {
@@ -77775,9 +75631,7 @@ function __c735(j: number): any {
           OccurrenceRelativeToEnd: S.optional(S.Boolean),
           OccurrenceUnit: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ScheduledInstanceRecurrenceRequest",
-      });
+      ).annotate({ identifier: "ScheduledInstanceRecurrenceRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -77790,9 +75644,7 @@ function __c735(j: number): any {
           NextToken: S.optional(S.String),
           Recurrence: S.optional(__S(23522, __c735, 2)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeScheduledInstanceAvailabilityRequest",
-      });
+      ).annotate({ identifier: "DescribeScheduledInstanceAvailabilityRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -77844,14 +75696,12 @@ function __c735(j: number): any {
             T.Ec2QueryName("TotalScheduledInstanceHours"),
           ),
         }),
-      ).annotate({
-        identifier: "ScheduledInstanceAvailability",
-      });
+      ).annotate({ identifier: "ScheduledInstanceAvailability" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(23524, __c735, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ScheduledInstanceAvailability",
-        }),
+        /*@__PURE__*/ __S(23524, __c735, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ScheduledInstanceAvailability" }),
       );
     case 6:
       return S.suspend(() =>
@@ -77862,9 +75712,7 @@ function __c735(j: number): any {
             T.Ec2QueryName("ScheduledInstanceAvailabilitySet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeScheduledInstanceAvailabilityResult",
-      });
+      ).annotate({ identifier: "DescribeScheduledInstanceAvailabilityResult" });
   }
 }
 function __c736(j: number): any {
@@ -77889,9 +75737,7 @@ function __c736(j: number): any {
             T.Ec2QueryName("OccurrenceUnit"),
           ),
         }),
-      ).annotate({
-        identifier: "ScheduledInstanceRecurrence",
-      });
+      ).annotate({ identifier: "ScheduledInstanceRecurrence" });
   }
 }
 function __c737(j: number): any {
@@ -77904,9 +75750,7 @@ function __c737(j: number): any {
           EarliestTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           LatestTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "SlotStartTimeRangeRequest",
-      });
+      ).annotate({ identifier: "SlotStartTimeRangeRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -77919,14 +75763,12 @@ function __c737(j: number): any {
           ),
           SlotStartTimeRange: S.optional(__S(23585, __c737, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeScheduledInstancesRequest",
-      });
+      ).annotate({ identifier: "DescribeScheduledInstancesRequest" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(23616, __c738, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ScheduledInstance",
-        }),
+        /*@__PURE__*/ __S(23616, __c738, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ScheduledInstance" }),
       );
     case 4:
       return S.suspend(() =>
@@ -77937,9 +75779,7 @@ function __c737(j: number): any {
             T.Ec2QueryName("ScheduledInstanceSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeScheduledInstancesResult",
-      });
+      ).annotate({ identifier: "DescribeScheduledInstancesResult" });
   }
 }
 function __c738(j: number): any {
@@ -78021,9 +75861,7 @@ function __c739(j: number): any {
             T.XmlName("SecondaryInterfaceId"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeSecondaryInterfacesRequest",
-      });
+      ).annotate({ identifier: "DescribeSecondaryInterfacesRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -78057,9 +75895,7 @@ function __c739(j: number): any {
           ),
           Status: S.optional(S.String).pipe(T.XmlName("status"), T.Ec2QueryName("Status")),
         }),
-      ).annotate({
-        identifier: "SecondaryInterfaceAttachment",
-      });
+      ).annotate({ identifier: "SecondaryInterfaceAttachment" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -78068,14 +75904,12 @@ function __c739(j: number): any {
             T.Ec2QueryName("PrivateIpAddress"),
           ),
         }),
-      ).annotate({
-        identifier: "SecondaryInterfaceIpv4Address",
-      });
+      ).annotate({ identifier: "SecondaryInterfaceIpv4Address" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(23651, __c739, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SecondaryInterfaceIpv4Address",
-        }),
+        /*@__PURE__*/ __S(23651, __c739, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SecondaryInterfaceIpv4Address" }),
       );
     case 5:
       return S.suspend(() =>
@@ -78134,9 +75968,9 @@ function __c739(j: number): any {
       ).annotate({ identifier: "SecondaryInterface" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ __S(23653, __c739, 5).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SecondaryInterface",
-        }),
+        /*@__PURE__*/ __S(23653, __c739, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SecondaryInterface" }),
       );
     case 7:
       return S.suspend(() =>
@@ -78147,9 +75981,7 @@ function __c739(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeSecondaryInterfacesResult",
-      });
+      ).annotate({ identifier: "DescribeSecondaryInterfacesResult" });
   }
 }
 function __c740(j: number): any {
@@ -78167,14 +75999,12 @@ function __c740(j: number): any {
             T.XmlName("SecondaryNetworkId"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeSecondaryNetworksRequest",
-      });
+      ).annotate({ identifier: "DescribeSecondaryNetworksRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(11426, __c357, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SecondaryNetwork",
-        }),
+        /*@__PURE__*/ __S(11426, __c357, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SecondaryNetwork" }),
       );
     case 3:
       return S.suspend(() =>
@@ -78185,9 +76015,7 @@ function __c740(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeSecondaryNetworksResult",
-      });
+      ).annotate({ identifier: "DescribeSecondaryNetworksResult" });
   }
 }
 function __c741(j: number): any {
@@ -78205,14 +76033,12 @@ function __c741(j: number): any {
             T.XmlName("SecondarySubnetId"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeSecondarySubnetsRequest",
-      });
+      ).annotate({ identifier: "DescribeSecondarySubnetsRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(11490, __c359, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SecondarySubnet",
-        }),
+        /*@__PURE__*/ __S(11490, __c359, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SecondarySubnet" }),
       );
     case 3:
       return S.suspend(() =>
@@ -78223,9 +76049,7 @@ function __c741(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeSecondarySubnetsResult",
-      });
+      ).annotate({ identifier: "DescribeSecondarySubnetsResult" });
   }
 }
 function __c742(j: number): any {
@@ -78238,9 +76062,7 @@ function __c742(j: number): any {
           DryRun: S.optional(S.Boolean),
           GroupId: S.optional(__S(23744, __c742, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeSecurityGroupReferencesRequest",
-      });
+      ).annotate({ identifier: "DescribeSecurityGroupReferencesRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -78261,9 +76083,9 @@ function __c742(j: number): any {
       ).annotate({ identifier: "SecurityGroupReference" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(23746, __c742, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SecurityGroupReference",
-        }),
+        /*@__PURE__*/ __S(23746, __c742, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SecurityGroupReference" }),
       );
     case 4:
       return S.suspend(() =>
@@ -78273,9 +76095,7 @@ function __c742(j: number): any {
             T.Ec2QueryName("SecurityGroupReferenceSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeSecurityGroupReferencesResult",
-      });
+      ).annotate({ identifier: "DescribeSecurityGroupReferencesResult" });
   }
 }
 function __c743(j: number): any {
@@ -78291,9 +76111,7 @@ function __c743(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeSecurityGroupRulesRequest",
-      });
+      ).annotate({ identifier: "DescribeSecurityGroupRulesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -78303,9 +76121,7 @@ function __c743(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeSecurityGroupRulesResult",
-      });
+      ).annotate({ identifier: "DescribeSecurityGroupRulesResult" });
   }
 }
 function __c744(j: number): any {
@@ -78326,9 +76142,7 @@ function __c745(j: number): any {
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeSecurityGroupsRequest",
-      });
+      ).annotate({ identifier: "DescribeSecurityGroupsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -78357,9 +76171,9 @@ function __c745(j: number): any {
       ).annotate({ identifier: "SecurityGroup" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(23841, __c745, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SecurityGroup",
-        }),
+        /*@__PURE__*/ __S(23841, __c745, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SecurityGroup" }),
       );
     case 3:
       return S.suspend(() =>
@@ -78370,9 +76184,7 @@ function __c745(j: number): any {
             T.Ec2QueryName("SecurityGroupInfo"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeSecurityGroupsResult",
-      });
+      ).annotate({ identifier: "DescribeSecurityGroupsResult" });
   }
 }
 function __c746(j: number): any {
@@ -78391,9 +76203,7 @@ function __c747(j: number): any {
           MaxResults: S.optional(S.Number),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeSecurityGroupVpcAssociationsRequest",
-      });
+      ).annotate({ identifier: "DescribeSecurityGroupVpcAssociationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -78413,14 +76223,12 @@ function __c747(j: number): any {
             T.Ec2QueryName("GroupOwnerId"),
           ),
         }),
-      ).annotate({
-        identifier: "SecurityGroupVpcAssociation",
-      });
+      ).annotate({ identifier: "SecurityGroupVpcAssociation" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(23905, __c747, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SecurityGroupVpcAssociation",
-        }),
+        /*@__PURE__*/ __S(23905, __c747, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SecurityGroupVpcAssociation" }),
       );
     case 3:
       return S.suspend(() =>
@@ -78431,9 +76239,7 @@ function __c747(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeSecurityGroupVpcAssociationsResult",
-      });
+      ).annotate({ identifier: "DescribeSecurityGroupVpcAssociationsResult" });
   }
 }
 function __c748(j: number): any {
@@ -78449,9 +76255,7 @@ function __c748(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeServiceLinkVirtualInterfacesRequest",
-      });
+      ).annotate({ identifier: "DescribeServiceLinkVirtualInterfacesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -78492,14 +76296,12 @@ function __c748(j: number): any {
             T.Ec2QueryName("ConfigurationState"),
           ),
         }),
-      ).annotate({
-        identifier: "ServiceLinkVirtualInterface",
-      });
+      ).annotate({ identifier: "ServiceLinkVirtualInterface" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(23937, __c748, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ServiceLinkVirtualInterface",
-        }),
+        /*@__PURE__*/ __S(23937, __c748, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ServiceLinkVirtualInterface" }),
       );
     case 3:
       return S.suspend(() =>
@@ -78510,9 +76312,7 @@ function __c748(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeServiceLinkVirtualInterfacesResult",
-      });
+      ).annotate({ identifier: "DescribeServiceLinkVirtualInterfacesResult" });
   }
 }
 function __c749(j: number): any {
@@ -78524,9 +76324,7 @@ function __c749(j: number): any {
           SnapshotId: S.optional(S.String),
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeSnapshotAttributeRequest",
-      });
+      ).annotate({ identifier: "DescribeSnapshotAttributeRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -78543,9 +76341,7 @@ function __c749(j: number): any {
             T.Ec2QueryName("CreateVolumePermission"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeSnapshotAttributeResult",
-      });
+      ).annotate({ identifier: "DescribeSnapshotAttributeResult" });
   }
 }
 function __c750(j: number): any {
@@ -78559,9 +76355,9 @@ function __c750(j: number): any {
       ).annotate({ identifier: "CreateVolumePermission" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(24000, __c750, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CreateVolumePermission",
-        }),
+        /*@__PURE__*/ __S(24000, __c750, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CreateVolumePermission" }),
       );
   }
 }
@@ -78609,9 +76405,7 @@ function __c752(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeSnapshotTierStatusRequest",
-      });
+      ).annotate({ identifier: "DescribeSnapshotTierStatusRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -78653,9 +76447,9 @@ function __c752(j: number): any {
       ).annotate({ identifier: "SnapshotTierStatus" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(24065, __c752, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SnapshotTierStatus",
-        }),
+        /*@__PURE__*/ __S(24065, __c752, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SnapshotTierStatus" }),
       );
     case 3:
       return S.suspend(() =>
@@ -78666,9 +76460,7 @@ function __c752(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeSnapshotTierStatusResult",
-      });
+      ).annotate({ identifier: "DescribeSnapshotTierStatusResult" });
   }
 }
 function __c753(j: number): any {
@@ -78678,9 +76470,7 @@ function __c753(j: number): any {
         S.Struct({
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeSpotDatafeedSubscriptionRequest",
-      });
+      ).annotate({ identifier: "DescribeSpotDatafeedSubscriptionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -78688,9 +76478,7 @@ function __c753(j: number): any {
             .pipe(T.XmlName("spotDatafeedSubscription"), T.Ec2QueryName("SpotDatafeedSubscription"))
             .annotate({ identifier: "SpotDatafeedSubscription" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeSpotDatafeedSubscriptionResult",
-      });
+      ).annotate({ identifier: "DescribeSpotDatafeedSubscriptionResult" });
   }
 }
 function __c754(j: number): any {
@@ -78709,9 +76497,7 @@ function __c754(j: number): any {
             T.Ec2QueryName("MaxResults"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeSpotFleetInstancesRequest",
-      });
+      ).annotate({ identifier: "DescribeSpotFleetInstancesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -78725,9 +76511,7 @@ function __c754(j: number): any {
             T.Ec2QueryName("SpotFleetRequestId"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeSpotFleetInstancesResponse",
-      });
+      ).annotate({ identifier: "DescribeSpotFleetInstancesResponse" });
   }
 }
 function __c755(j: number): any {
@@ -78751,9 +76535,7 @@ function __c755(j: number): any {
             T.Ec2QueryName("MaxResults"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeSpotFleetRequestHistoryRequest",
-      });
+      ).annotate({ identifier: "DescribeSpotFleetRequestHistoryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -78769,9 +76551,9 @@ function __c755(j: number): any {
       ).annotate({ identifier: "HistoryRecord" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(24161, __c755, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "HistoryRecord",
-        }),
+        /*@__PURE__*/ __S(24161, __c755, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "HistoryRecord" }),
       );
     case 3:
       return S.suspend(() =>
@@ -78794,9 +76576,7 @@ function __c755(j: number): any {
             T.Ec2QueryName("StartTime"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeSpotFleetRequestHistoryResponse",
-      });
+      ).annotate({ identifier: "DescribeSpotFleetRequestHistoryResponse" });
   }
 }
 function __c756(j: number): any {
@@ -78815,9 +76595,7 @@ function __c756(j: number): any {
             T.Ec2QueryName("MaxResults"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeSpotFleetRequestsRequest",
-      });
+      ).annotate({ identifier: "DescribeSpotFleetRequestsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -78845,9 +76623,9 @@ function __c756(j: number): any {
       ).annotate({ identifier: "SpotFleetRequestConfig" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(24193, __c756, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SpotFleetRequestConfig",
-        }),
+        /*@__PURE__*/ __S(24193, __c756, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SpotFleetRequestConfig" }),
       );
     case 3:
       return S.suspend(() =>
@@ -78858,9 +76636,7 @@ function __c756(j: number): any {
             T.Ec2QueryName("SpotFleetRequestConfigSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeSpotFleetRequestsResponse",
-      });
+      ).annotate({ identifier: "DescribeSpotFleetRequestsResponse" });
   }
 }
 function __c757(j: number): any {
@@ -78885,9 +76661,7 @@ function __c757(j: number): any {
             .pipe(T.XmlName("capacityRebalance"), T.Ec2QueryName("CapacityRebalance"))
             .annotate({ identifier: "SpotCapacityRebalance" }),
         }),
-      ).annotate({
-        identifier: "SpotMaintenanceStrategies",
-      });
+      ).annotate({ identifier: "SpotMaintenanceStrategies" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -78903,14 +76677,12 @@ function __c757(j: number): any {
           ),
           Tags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("tag"), T.Ec2QueryName("Tag")),
         }),
-      ).annotate({
-        identifier: "SpotFleetTagSpecification",
-      });
+      ).annotate({ identifier: "SpotFleetTagSpecification" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(24227, __c757, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SpotFleetTagSpecification",
-        }),
+        /*@__PURE__*/ __S(24227, __c757, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SpotFleetTagSpecification" }),
       );
     case 5:
       return S.suspend(() =>
@@ -78970,14 +76742,12 @@ function __c757(j: number): any {
             T.Ec2QueryName("GroupSet"),
           ),
         }),
-      ).annotate({
-        identifier: "SpotFleetLaunchSpecification",
-      });
+      ).annotate({ identifier: "SpotFleetLaunchSpecification" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ __S(24229, __c757, 5).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SpotFleetLaunchSpecification",
-        }),
+        /*@__PURE__*/ __S(24229, __c757, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SpotFleetLaunchSpecification" }),
       );
     case 7:
       return S.suspend(() =>
@@ -78985,9 +76755,9 @@ function __c757(j: number): any {
       ).annotate({ identifier: "ClassicLoadBalancer" });
     case 8:
       return S.Array(
-        /*@__PURE__*/ __S(24231, __c757, 7).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ClassicLoadBalancer",
-        }),
+        /*@__PURE__*/ __S(24231, __c757, 7)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ClassicLoadBalancer" }),
       );
     case 9:
       return S.suspend(() =>
@@ -78997,18 +76767,16 @@ function __c757(j: number): any {
             T.Ec2QueryName("ClassicLoadBalancers"),
           ),
         }),
-      ).annotate({
-        identifier: "ClassicLoadBalancersConfig",
-      });
+      ).annotate({ identifier: "ClassicLoadBalancersConfig" });
     case 10:
       return S.suspend(() =>
         S.Struct({ Arn: S.optional(S.String).pipe(T.XmlName("arn"), T.Ec2QueryName("Arn")) }),
       ).annotate({ identifier: "TargetGroup" });
     case 11:
       return S.Array(
-        /*@__PURE__*/ __S(24234, __c757, 10).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TargetGroup",
-        }),
+        /*@__PURE__*/ __S(24234, __c757, 10)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TargetGroup" }),
       );
     case 12:
       return S.suspend(() =>
@@ -79130,9 +76898,7 @@ function __c757(j: number): any {
           ),
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
         }),
-      ).annotate({
-        identifier: "SpotFleetRequestConfigData",
-      });
+      ).annotate({ identifier: "SpotFleetRequestConfigData" });
   }
 }
 function __c758(j: number): any {
@@ -79213,14 +76979,12 @@ function __c759(j: number): any {
           ConnectionTrackingSpecification: S.optional(__S(9376, __c293, 0)),
           EnaQueueCount: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "InstanceNetworkInterfaceSpecification",
-      });
+      ).annotate({ identifier: "InstanceNetworkInterfaceSpecification" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(24288, __c759, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceNetworkInterfaceSpecification",
-        }),
+        /*@__PURE__*/ __S(24288, __c759, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceNetworkInterfaceSpecification" }),
       );
   }
 }
@@ -79255,9 +77019,9 @@ function __c760(j: number): any {
       ).annotate({ identifier: "LaunchTemplateOverrides" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(24320, __c760, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "LaunchTemplateOverrides",
-        }),
+        /*@__PURE__*/ __S(24320, __c760, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "LaunchTemplateOverrides" }),
       );
     case 2:
       return S.suspend(() =>
@@ -79276,9 +77040,9 @@ function __c760(j: number): any {
       ).annotate({ identifier: "LaunchTemplateConfig" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(24322, __c760, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "LaunchTemplateConfig",
-        }),
+        /*@__PURE__*/ __S(24322, __c760, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "LaunchTemplateConfig" }),
       );
   }
 }
@@ -79295,9 +77059,7 @@ function __c761(j: number): any {
           ),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeSpotInstanceRequestsRequest",
-      });
+      ).annotate({ identifier: "DescribeSpotInstanceRequestsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -79307,9 +77069,7 @@ function __c761(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeSpotInstanceRequestsResult",
-      });
+      ).annotate({ identifier: "DescribeSpotInstanceRequestsResult" });
   }
 }
 function __c762(j: number): any {
@@ -79444,9 +77204,9 @@ function __c762(j: number): any {
       ).annotate({ identifier: "SpotInstanceRequest" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(24386, __c762, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SpotInstanceRequest",
-        }),
+        /*@__PURE__*/ __S(24386, __c762, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SpotInstanceRequest" }),
       );
   }
 }
@@ -79457,9 +77217,7 @@ function __c763(j: number): any {
         S.Struct({
           Enabled: S.optional(S.Boolean).pipe(T.XmlName("enabled"), T.Ec2QueryName("Enabled")),
         }),
-      ).annotate({
-        identifier: "RunInstancesMonitoringEnabled",
-      });
+      ).annotate({ identifier: "RunInstancesMonitoringEnabled" });
   }
 }
 function __c764(j: number): any {
@@ -79496,9 +77254,7 @@ function __c764(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeSpotPriceHistoryRequest",
-      });
+      ).annotate({ identifier: "DescribeSpotPriceHistoryRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -79527,9 +77283,9 @@ function __c764(j: number): any {
       ).annotate({ identifier: "SpotPrice" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(24451, __c764, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SpotPrice",
-        }),
+        /*@__PURE__*/ __S(24451, __c764, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SpotPrice" }),
       );
     case 5:
       return S.suspend(() =>
@@ -79540,9 +77296,7 @@ function __c764(j: number): any {
             T.Ec2QueryName("SpotPriceHistorySet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeSpotPriceHistoryResult",
-      });
+      ).annotate({ identifier: "DescribeSpotPriceHistoryResult" });
   }
 }
 function __c765(j: number): any {
@@ -79555,18 +77309,16 @@ function __c765(j: number): any {
           NextToken: S.optional(S.String),
           VpcId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeStaleSecurityGroupsRequest",
-      });
+      ).annotate({ identifier: "DescribeStaleSecurityGroupsRequest" });
     case 1:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")));
     case 2:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")));
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(5024, __c157, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "UserIdGroupPair",
-        }),
+        /*@__PURE__*/ __S(5024, __c157, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "UserIdGroupPair" }),
       );
     case 4:
       return S.suspend(() =>
@@ -79593,9 +77345,9 @@ function __c765(j: number): any {
       ).annotate({ identifier: "StaleIpPermission" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(24484, __c765, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "StaleIpPermission",
-        }),
+        /*@__PURE__*/ __S(24484, __c765, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "StaleIpPermission" }),
       );
     case 6:
       return S.suspend(() =>
@@ -79619,9 +77371,9 @@ function __c765(j: number): any {
       ).annotate({ identifier: "StaleSecurityGroup" });
     case 7:
       return S.Array(
-        /*@__PURE__*/ __S(24486, __c765, 6).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "StaleSecurityGroup",
-        }),
+        /*@__PURE__*/ __S(24486, __c765, 6)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "StaleSecurityGroup" }),
       );
     case 8:
       return S.suspend(() =>
@@ -79632,9 +77384,7 @@ function __c765(j: number): any {
             T.Ec2QueryName("StaleSecurityGroupSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeStaleSecurityGroupsResult",
-      });
+      ).annotate({ identifier: "DescribeStaleSecurityGroupsResult" });
   }
 }
 function __c766(j: number): any {
@@ -79650,9 +77400,7 @@ function __c766(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeStoreImageTasksRequest",
-      });
+      ).annotate({ identifier: "DescribeStoreImageTasksRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -79682,9 +77430,9 @@ function __c766(j: number): any {
       ).annotate({ identifier: "StoreImageTaskResult" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(24514, __c766, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "StoreImageTaskResult",
-        }),
+        /*@__PURE__*/ __S(24514, __c766, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "StoreImageTaskResult" }),
       );
     case 4:
       return S.suspend(() =>
@@ -79695,9 +77443,7 @@ function __c766(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeStoreImageTasksResult",
-      });
+      ).annotate({ identifier: "DescribeStoreImageTasksResult" });
   }
 }
 function __c767(j: number): any {
@@ -79763,9 +77509,9 @@ function __c768(j: number): any {
       ).annotate({ identifier: "TagDescription" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(24577, __c768, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TagDescription",
-        }),
+        /*@__PURE__*/ __S(24577, __c768, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TagDescription" }),
       );
     case 3:
       return S.suspend(() =>
@@ -79795,14 +77541,12 @@ function __c769(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeTrafficMirrorFilterRulesRequest",
-      });
+      ).annotate({ identifier: "DescribeTrafficMirrorFilterRulesRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(12001, __c375, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TrafficMirrorFilterRule",
-        }),
+        /*@__PURE__*/ __S(12001, __c375, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TrafficMirrorFilterRule" }),
       );
     case 3:
       return S.suspend(() =>
@@ -79813,9 +77557,7 @@ function __c769(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeTrafficMirrorFilterRulesResult",
-      });
+      ).annotate({ identifier: "DescribeTrafficMirrorFilterRulesResult" });
   }
 }
 function __c770(j: number): any {
@@ -79833,14 +77575,12 @@ function __c770(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeTrafficMirrorFiltersRequest",
-      });
+      ).annotate({ identifier: "DescribeTrafficMirrorFiltersRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(12034, __c376, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TrafficMirrorFilter",
-        }),
+        /*@__PURE__*/ __S(12034, __c376, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TrafficMirrorFilter" }),
       );
     case 3:
       return S.suspend(() =>
@@ -79851,9 +77591,7 @@ function __c770(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeTrafficMirrorFiltersResult",
-      });
+      ).annotate({ identifier: "DescribeTrafficMirrorFiltersResult" });
   }
 }
 function __c771(j: number): any {
@@ -79871,14 +77609,12 @@ function __c771(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeTrafficMirrorSessionsRequest",
-      });
+      ).annotate({ identifier: "DescribeTrafficMirrorSessionsRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(12160, __c380, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TrafficMirrorSession",
-        }),
+        /*@__PURE__*/ __S(12160, __c380, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TrafficMirrorSession" }),
       );
     case 3:
       return S.suspend(() =>
@@ -79889,9 +77625,7 @@ function __c771(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeTrafficMirrorSessionsResult",
-      });
+      ).annotate({ identifier: "DescribeTrafficMirrorSessionsResult" });
   }
 }
 function __c772(j: number): any {
@@ -79909,14 +77643,12 @@ function __c772(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeTrafficMirrorTargetsRequest",
-      });
+      ).annotate({ identifier: "DescribeTrafficMirrorTargetsRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(12224, __c382, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TrafficMirrorTarget",
-        }),
+        /*@__PURE__*/ __S(12224, __c382, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TrafficMirrorTarget" }),
       );
     case 3:
       return S.suspend(() =>
@@ -79927,9 +77659,7 @@ function __c772(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeTrafficMirrorTargetsResult",
-      });
+      ).annotate({ identifier: "DescribeTrafficMirrorTargetsResult" });
   }
 }
 function __c773(j: number): any {
@@ -79943,9 +77673,7 @@ function __c773(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeTransitGatewayAttachmentsRequest",
-      });
+      ).annotate({ identifier: "DescribeTransitGatewayAttachmentsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -79959,9 +77687,7 @@ function __c773(j: number): any {
           ),
           State: S.optional(S.String).pipe(T.XmlName("state"), T.Ec2QueryName("State")),
         }),
-      ).annotate({
-        identifier: "TransitGatewayAttachmentAssociation",
-      });
+      ).annotate({ identifier: "TransitGatewayAttachmentAssociation" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -80002,9 +77728,9 @@ function __c773(j: number): any {
       ).annotate({ identifier: "TransitGatewayAttachment" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(24738, __c773, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TransitGatewayAttachment",
-        }),
+        /*@__PURE__*/ __S(24738, __c773, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TransitGatewayAttachment" }),
       );
     case 4:
       return S.suspend(() =>
@@ -80015,9 +77741,7 @@ function __c773(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeTransitGatewayAttachmentsResult",
-      });
+      ).annotate({ identifier: "DescribeTransitGatewayAttachmentsResult" });
   }
 }
 function __c774(j: number): any {
@@ -80033,14 +77757,12 @@ function __c774(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeTransitGatewayConnectPeersRequest",
-      });
+      ).annotate({ identifier: "DescribeTransitGatewayConnectPeersRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(12452, __c389, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TransitGatewayConnectPeer",
-        }),
+        /*@__PURE__*/ __S(12452, __c389, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TransitGatewayConnectPeer" }),
       );
     case 3:
       return S.suspend(() =>
@@ -80051,9 +77773,7 @@ function __c774(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeTransitGatewayConnectPeersResult",
-      });
+      ).annotate({ identifier: "DescribeTransitGatewayConnectPeersResult" });
   }
 }
 function __c775(j: number): any {
@@ -80067,14 +77787,12 @@ function __c775(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeTransitGatewayConnectsRequest",
-      });
+      ).annotate({ identifier: "DescribeTransitGatewayConnectsRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(12385, __c387, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TransitGatewayConnect",
-        }),
+        /*@__PURE__*/ __S(12385, __c387, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TransitGatewayConnect" }),
       );
     case 2:
       return S.suspend(() =>
@@ -80085,9 +77803,7 @@ function __c775(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeTransitGatewayConnectsResult",
-      });
+      ).annotate({ identifier: "DescribeTransitGatewayConnectsResult" });
   }
 }
 function __c776(j: number): any {
@@ -80103,14 +77819,12 @@ function __c776(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeTransitGatewayMeteringPoliciesRequest",
-      });
+      ).annotate({ identifier: "DescribeTransitGatewayMeteringPoliciesRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(12512, __c391, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TransitGatewayMeteringPolicy",
-        }),
+        /*@__PURE__*/ __S(12512, __c391, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TransitGatewayMeteringPolicy" }),
       );
     case 3:
       return S.suspend(() =>
@@ -80121,9 +77835,7 @@ function __c776(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeTransitGatewayMeteringPoliciesResult",
-      });
+      ).annotate({ identifier: "DescribeTransitGatewayMeteringPoliciesResult" });
   }
 }
 function __c777(j: number): any {
@@ -80139,14 +77851,12 @@ function __c777(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeTransitGatewayMulticastDomainsRequest",
-      });
+      ).annotate({ identifier: "DescribeTransitGatewayMulticastDomainsRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(12673, __c396, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TransitGatewayMulticastDomain",
-        }),
+        /*@__PURE__*/ __S(12673, __c396, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TransitGatewayMulticastDomain" }),
       );
     case 3:
       return S.suspend(() =>
@@ -80157,9 +77867,7 @@ function __c777(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeTransitGatewayMulticastDomainsResult",
-      });
+      ).annotate({ identifier: "DescribeTransitGatewayMulticastDomainsResult" });
   }
 }
 function __c778(j: number): any {
@@ -80173,14 +77881,12 @@ function __c778(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeTransitGatewayPeeringAttachmentsRequest",
-      });
+      ).annotate({ identifier: "DescribeTransitGatewayPeeringAttachmentsRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(2339, __c73, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TransitGatewayPeeringAttachment",
-        }),
+        /*@__PURE__*/ __S(2339, __c73, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TransitGatewayPeeringAttachment" }),
       );
     case 2:
       return S.suspend(() =>
@@ -80191,9 +77897,7 @@ function __c778(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeTransitGatewayPeeringAttachmentsResult",
-      });
+      ).annotate({ identifier: "DescribeTransitGatewayPeeringAttachmentsResult" });
   }
 }
 function __c779(j: number): any {
@@ -80209,14 +77913,12 @@ function __c779(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeTransitGatewayPolicyTablesRequest",
-      });
+      ).annotate({ identifier: "DescribeTransitGatewayPolicyTablesRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(12768, __c399, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TransitGatewayPolicyTable",
-        }),
+        /*@__PURE__*/ __S(12768, __c399, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TransitGatewayPolicyTable" }),
       );
     case 3:
       return S.suspend(() =>
@@ -80227,9 +77929,7 @@ function __c779(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeTransitGatewayPolicyTablesResult",
-      });
+      ).annotate({ identifier: "DescribeTransitGatewayPolicyTablesResult" });
   }
 }
 function __c780(j: number): any {
@@ -80245,14 +77945,12 @@ function __c780(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeTransitGatewayRouteTableAnnouncementsRequest",
-      });
+      ).annotate({ identifier: "DescribeTransitGatewayRouteTableAnnouncementsRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(13120, __c410, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TransitGatewayRouteTableAnnouncement",
-        }),
+        /*@__PURE__*/ __S(13120, __c410, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TransitGatewayRouteTableAnnouncement" }),
       );
     case 3:
       return S.suspend(() =>
@@ -80263,9 +77961,7 @@ function __c780(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeTransitGatewayRouteTableAnnouncementsResult",
-      });
+      ).annotate({ identifier: "DescribeTransitGatewayRouteTableAnnouncementsResult" });
   }
 }
 function __c781(j: number): any {
@@ -80281,14 +77977,12 @@ function __c781(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeTransitGatewayRouteTablesRequest",
-      });
+      ).annotate({ identifier: "DescribeTransitGatewayRouteTablesRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(13056, __c408, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TransitGatewayRouteTable",
-        }),
+        /*@__PURE__*/ __S(13056, __c408, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TransitGatewayRouteTable" }),
       );
     case 3:
       return S.suspend(() =>
@@ -80299,9 +77993,7 @@ function __c781(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeTransitGatewayRouteTablesResult",
-      });
+      ).annotate({ identifier: "DescribeTransitGatewayRouteTablesResult" });
   }
 }
 function __c782(j: number): any {
@@ -80317,14 +78009,12 @@ function __c782(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeTransitGatewaysRequest",
-      });
+      ).annotate({ identifier: "DescribeTransitGatewaysRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(12290, __c384, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TransitGateway",
-        }),
+        /*@__PURE__*/ __S(12290, __c384, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TransitGateway" }),
       );
     case 3:
       return S.suspend(() =>
@@ -80335,9 +78025,7 @@ function __c782(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeTransitGatewaysResult",
-      });
+      ).annotate({ identifier: "DescribeTransitGatewaysResult" });
   }
 }
 function __c783(j: number): any {
@@ -80351,14 +78039,12 @@ function __c783(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeTransitGatewayVpcAttachmentsRequest",
-      });
+      ).annotate({ identifier: "DescribeTransitGatewayVpcAttachmentsRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(2401, __c75, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TransitGatewayVpcAttachment",
-        }),
+        /*@__PURE__*/ __S(2401, __c75, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TransitGatewayVpcAttachment" }),
       );
     case 2:
       return S.suspend(() =>
@@ -80369,9 +78055,7 @@ function __c783(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeTransitGatewayVpcAttachmentsResult",
-      });
+      ).annotate({ identifier: "DescribeTransitGatewayVpcAttachmentsResult" });
   }
 }
 function __c784(j: number): any {
@@ -80387,14 +78071,12 @@ function __c784(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeTrunkInterfaceAssociationsRequest",
-      });
+      ).annotate({ identifier: "DescribeTrunkInterfaceAssociationsRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(4320, __c135, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TrunkInterfaceAssociation",
-        }),
+        /*@__PURE__*/ __S(4320, __c135, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TrunkInterfaceAssociation" }),
       );
     case 3:
       return S.suspend(() =>
@@ -80405,9 +78087,7 @@ function __c784(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeTrunkInterfaceAssociationsResult",
-      });
+      ).annotate({ identifier: "DescribeTrunkInterfaceAssociationsResult" });
   }
 }
 function __c785(j: number): any {
@@ -80427,14 +78107,12 @@ function __c785(j: number): any {
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeVerifiedAccessEndpointsRequest",
-      });
+      ).annotate({ identifier: "DescribeVerifiedAccessEndpointsRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(13256, __c414, 8).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VerifiedAccessEndpoint",
-        }),
+        /*@__PURE__*/ __S(13256, __c414, 8)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VerifiedAccessEndpoint" }),
       );
     case 3:
       return S.suspend(() =>
@@ -80445,9 +78123,7 @@ function __c785(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeVerifiedAccessEndpointsResult",
-      });
+      ).annotate({ identifier: "DescribeVerifiedAccessEndpointsResult" });
   }
 }
 function __c786(j: number): any {
@@ -80466,14 +78142,12 @@ function __c786(j: number): any {
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeVerifiedAccessGroupsRequest",
-      });
+      ).annotate({ identifier: "DescribeVerifiedAccessGroupsRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(13344, __c417, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VerifiedAccessGroup",
-        }),
+        /*@__PURE__*/ __S(13344, __c417, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VerifiedAccessGroup" }),
       );
     case 3:
       return S.suspend(() =>
@@ -80484,9 +78158,7 @@ function __c786(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeVerifiedAccessGroupsResult",
-      });
+      ).annotate({ identifier: "DescribeVerifiedAccessGroupsResult" });
   }
 }
 function __c787(j: number): any {
@@ -80502,14 +78174,12 @@ function __c787(j: number): any {
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeVerifiedAccessInstanceLoggingConfigurationsRequest",
-      });
+      ).annotate({ identifier: "DescribeVerifiedAccessInstanceLoggingConfigurationsRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(25253, __c789, 5).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VerifiedAccessInstanceLoggingConfiguration",
-        }),
+        /*@__PURE__*/ __S(25253, __c789, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VerifiedAccessInstanceLoggingConfiguration" }),
       );
     case 2:
       return S.suspend(() =>
@@ -80520,9 +78190,7 @@ function __c787(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeVerifiedAccessInstanceLoggingConfigurationsResult",
-      });
+      ).annotate({ identifier: "DescribeVerifiedAccessInstanceLoggingConfigurationsResult" });
   }
 }
 function __c788(j: number): any {
@@ -80539,9 +78207,7 @@ function __c789(j: number): any {
           Code: S.optional(S.String).pipe(T.XmlName("code"), T.Ec2QueryName("Code")),
           Message: S.optional(S.String).pipe(T.XmlName("message"), T.Ec2QueryName("Message")),
         }),
-      ).annotate({
-        identifier: "VerifiedAccessLogDeliveryStatus",
-      });
+      ).annotate({ identifier: "VerifiedAccessLogDeliveryStatus" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -80559,9 +78225,7 @@ function __c789(j: number): any {
             T.Ec2QueryName("BucketOwner"),
           ),
         }),
-      ).annotate({
-        identifier: "VerifiedAccessLogS3Destination",
-      });
+      ).annotate({ identifier: "VerifiedAccessLogS3Destination" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -80571,9 +78235,7 @@ function __c789(j: number): any {
             .annotate({ identifier: "VerifiedAccessLogDeliveryStatus" }),
           LogGroup: S.optional(S.String).pipe(T.XmlName("logGroup"), T.Ec2QueryName("LogGroup")),
         }),
-      ).annotate({
-        identifier: "VerifiedAccessLogCloudWatchLogsDestination",
-      });
+      ).annotate({ identifier: "VerifiedAccessLogCloudWatchLogsDestination" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -80586,9 +78248,7 @@ function __c789(j: number): any {
             T.Ec2QueryName("DeliveryStream"),
           ),
         }),
-      ).annotate({
-        identifier: "VerifiedAccessLogKinesisDataFirehoseDestination",
-      });
+      ).annotate({ identifier: "VerifiedAccessLogKinesisDataFirehoseDestination" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -80622,9 +78282,7 @@ function __c789(j: number): any {
             .pipe(T.XmlName("accessLogs"), T.Ec2QueryName("AccessLogs"))
             .annotate({ identifier: "VerifiedAccessLogs" }),
         }),
-      ).annotate({
-        identifier: "VerifiedAccessInstanceLoggingConfiguration",
-      });
+      ).annotate({ identifier: "VerifiedAccessInstanceLoggingConfiguration" });
   }
 }
 function __c790(j: number): any {
@@ -80640,14 +78298,12 @@ function __c790(j: number): any {
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeVerifiedAccessInstancesRequest",
-      });
+      ).annotate({ identifier: "DescribeVerifiedAccessInstancesRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(4675, __c146, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VerifiedAccessInstance",
-        }),
+        /*@__PURE__*/ __S(4675, __c146, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VerifiedAccessInstance" }),
       );
     case 2:
       return S.suspend(() =>
@@ -80658,9 +78314,7 @@ function __c790(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeVerifiedAccessInstancesResult",
-      });
+      ).annotate({ identifier: "DescribeVerifiedAccessInstancesResult" });
   }
 }
 function __c791(j: number): any {
@@ -80678,14 +78332,12 @@ function __c791(j: number): any {
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeVerifiedAccessTrustProvidersRequest",
-      });
+      ).annotate({ identifier: "DescribeVerifiedAccessTrustProvidersRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(4707, __c147, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VerifiedAccessTrustProvider",
-        }),
+        /*@__PURE__*/ __S(4707, __c147, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VerifiedAccessTrustProvider" }),
       );
     case 3:
       return S.suspend(() =>
@@ -80696,9 +78348,7 @@ function __c791(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeVerifiedAccessTrustProvidersResult",
-      });
+      ).annotate({ identifier: "DescribeVerifiedAccessTrustProvidersResult" });
   }
 }
 function __c792(j: number): any {
@@ -80710,9 +78360,7 @@ function __c792(j: number): any {
           VolumeId: S.optional(S.String),
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeVolumeAttributeRequest",
-      });
+      ).annotate({ identifier: "DescribeVolumeAttributeRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -80725,9 +78373,7 @@ function __c792(j: number): any {
           ),
           VolumeId: S.optional(S.String).pipe(T.XmlName("volumeId"), T.Ec2QueryName("VolumeId")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeVolumeAttributeResult",
-      });
+      ).annotate({ identifier: "DescribeVolumeAttributeResult" });
   }
 }
 function __c793(j: number): any {
@@ -80770,14 +78416,12 @@ function __c794(j: number): any {
           MaxResults: S.optional(S.Number),
           IncludeManagedResources: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeVolumesModificationsRequest",
-      });
+      ).annotate({ identifier: "DescribeVolumesModificationsRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(25440, __c795, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VolumeModification",
-        }),
+        /*@__PURE__*/ __S(25440, __c795, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VolumeModification" }),
       );
     case 2:
       return S.suspend(() =>
@@ -80788,9 +78432,7 @@ function __c794(j: number): any {
             T.Ec2QueryName("VolumeModificationSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeVolumesModificationsResult",
-      });
+      ).annotate({ identifier: "DescribeVolumesModificationsResult" });
   }
 }
 function __c795(j: number): any {
@@ -80875,9 +78517,7 @@ function __c796(j: number): any {
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeVolumeStatusRequest",
-      });
+      ).annotate({ identifier: "DescribeVolumeStatusRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -80892,9 +78532,9 @@ function __c796(j: number): any {
       ).annotate({ identifier: "VolumeStatusAction" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(25473, __c796, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VolumeStatusAction",
-        }),
+        /*@__PURE__*/ __S(25473, __c796, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VolumeStatusAction" }),
       );
     case 3:
       return S.suspend(() =>
@@ -80921,9 +78561,9 @@ function __c796(j: number): any {
       ).annotate({ identifier: "VolumeStatusEvent" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(25475, __c796, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VolumeStatusEvent",
-        }),
+        /*@__PURE__*/ __S(25475, __c796, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VolumeStatusEvent" }),
       );
     case 5:
       return S.suspend(() =>
@@ -80934,9 +78574,9 @@ function __c796(j: number): any {
       ).annotate({ identifier: "VolumeStatusDetails" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ __S(25477, __c796, 5).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VolumeStatusDetails",
-        }),
+        /*@__PURE__*/ __S(25477, __c796, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VolumeStatusDetails" }),
       );
     case 7:
       return S.suspend(() =>
@@ -80960,14 +78600,12 @@ function __c796(j: number): any {
             T.Ec2QueryName("InstanceId"),
           ),
         }),
-      ).annotate({
-        identifier: "VolumeStatusAttachmentStatus",
-      });
+      ).annotate({ identifier: "VolumeStatusAttachmentStatus" });
     case 9:
       return S.Array(
-        /*@__PURE__*/ __S(25480, __c796, 8).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VolumeStatusAttachmentStatus",
-        }),
+        /*@__PURE__*/ __S(25480, __c796, 8)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VolumeStatusAttachmentStatus" }),
       );
     case 10:
       return S.suspend(() =>
@@ -80982,9 +78620,7 @@ function __c796(j: number): any {
             T.Ec2QueryName("EstimatedTimeToCompleteInSeconds"),
           ),
         }),
-      ).annotate({
-        identifier: "InitializationStatusDetails",
-      });
+      ).annotate({ identifier: "InitializationStatusDetails" });
     case 11:
       return S.suspend(() =>
         S.Struct({
@@ -81029,9 +78665,9 @@ function __c796(j: number): any {
       ).annotate({ identifier: "VolumeStatusItem" });
     case 12:
       return S.Array(
-        /*@__PURE__*/ __S(25483, __c796, 11).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VolumeStatusItem",
-        }),
+        /*@__PURE__*/ __S(25483, __c796, 11)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VolumeStatusItem" }),
       );
     case 13:
       return S.suspend(() =>
@@ -81042,9 +78678,7 @@ function __c796(j: number): any {
             T.Ec2QueryName("VolumeStatusSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeVolumeStatusResult",
-      });
+      ).annotate({ identifier: "DescribeVolumeStatusResult" });
   }
 }
 function __c797(j: number): any {
@@ -81056,9 +78690,7 @@ function __c797(j: number): any {
           VpcId: S.optional(S.String),
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeVpcAttributeRequest",
-      });
+      ).annotate({ identifier: "DescribeVpcAttributeRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -81076,9 +78708,7 @@ function __c797(j: number): any {
             .annotate({ identifier: "AttributeBooleanValue" }),
           VpcId: S.optional(S.String).pipe(T.XmlName("vpcId"), T.Ec2QueryName("VpcId")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeVpcAttributeResult",
-      });
+      ).annotate({ identifier: "DescribeVpcAttributeResult" });
   }
 }
 function __c798(j: number): any {
@@ -81094,14 +78724,12 @@ function __c798(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeVpcBlockPublicAccessExclusionsRequest",
-      });
+      ).annotate({ identifier: "DescribeVpcBlockPublicAccessExclusionsRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(13536, __c423, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VpcBlockPublicAccessExclusion",
-        }),
+        /*@__PURE__*/ __S(13536, __c423, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VpcBlockPublicAccessExclusion" }),
       );
     case 3:
       return S.suspend(() =>
@@ -81112,9 +78740,7 @@ function __c798(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeVpcBlockPublicAccessExclusionsResult",
-      });
+      ).annotate({ identifier: "DescribeVpcBlockPublicAccessExclusionsResult" });
   }
 }
 function __c799(j: number): any {
@@ -81124,9 +78750,7 @@ function __c799(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeVpcBlockPublicAccessOptionsRequest",
-      });
+      ).annotate({ identifier: "DescribeVpcBlockPublicAccessOptionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -81137,9 +78761,7 @@ function __c799(j: number): any {
             )
             .annotate({ identifier: "VpcBlockPublicAccessOptions" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeVpcBlockPublicAccessOptionsResult",
-      });
+      ).annotate({ identifier: "DescribeVpcBlockPublicAccessOptionsResult" });
   }
 }
 function __c800(j: number): any {
@@ -81167,9 +78789,7 @@ function __c800(j: number): any {
             T.Ec2QueryName("ExclusionsAllowed"),
           ),
         }),
-      ).annotate({
-        identifier: "VpcBlockPublicAccessOptions",
-      });
+      ).annotate({ identifier: "VpcBlockPublicAccessOptions" });
   }
 }
 function __c801(j: number): any {
@@ -81181,9 +78801,7 @@ function __c801(j: number): any {
           VpcIds: S.optional(__S(25664, __c802, 0)).pipe(T.XmlName("VpcId")),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeVpcClassicLinkRequest",
-      });
+      ).annotate({ identifier: "DescribeVpcClassicLinkRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -81197,9 +78815,9 @@ function __c801(j: number): any {
       ).annotate({ identifier: "VpcClassicLink" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(25633, __c801, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VpcClassicLink",
-        }),
+        /*@__PURE__*/ __S(25633, __c801, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VpcClassicLink" }),
       );
     case 3:
       return S.suspend(() =>
@@ -81209,9 +78827,7 @@ function __c801(j: number): any {
             T.Ec2QueryName("VpcSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeVpcClassicLinkResult",
-      });
+      ).annotate({ identifier: "DescribeVpcClassicLinkResult" });
   }
 }
 function __c802(j: number): any {
@@ -81232,9 +78848,7 @@ function __c803(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeVpcClassicLinkDnsSupportRequest",
-      });
+      ).annotate({ identifier: "DescribeVpcClassicLinkDnsSupportRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -81247,9 +78861,9 @@ function __c803(j: number): any {
       ).annotate({ identifier: "ClassicLinkDnsSupport" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(25697, __c803, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ClassicLinkDnsSupport",
-        }),
+        /*@__PURE__*/ __S(25697, __c803, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ClassicLinkDnsSupport" }),
       );
     case 3:
       return S.suspend(() =>
@@ -81257,9 +78871,7 @@ function __c803(j: number): any {
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
           Vpcs: S.optional(__S(25698, __c803, 2)).pipe(T.XmlName("vpcs"), T.Ec2QueryName("Vpcs")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeVpcClassicLinkDnsSupportResult",
-      });
+      ).annotate({ identifier: "DescribeVpcClassicLinkDnsSupportResult" });
   }
 }
 function __c804(j: number): any {
@@ -81278,14 +78890,12 @@ function __c804(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeVpcEncryptionControlsRequest",
-      });
+      ).annotate({ identifier: "DescribeVpcEncryptionControlsRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(7010, __c219, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VpcEncryptionControl",
-        }),
+        /*@__PURE__*/ __S(7010, __c219, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VpcEncryptionControl" }),
       );
     case 3:
       return S.suspend(() =>
@@ -81296,9 +78906,7 @@ function __c804(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeVpcEncryptionControlsResult",
-      });
+      ).annotate({ identifier: "DescribeVpcEncryptionControlsResult" });
   }
 }
 function __c805(j: number): any {
@@ -81318,9 +78926,7 @@ function __c806(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeVpcEndpointAssociationsRequest",
-      });
+      ).annotate({ identifier: "DescribeVpcEndpointAssociationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -81368,9 +78974,9 @@ function __c806(j: number): any {
       ).annotate({ identifier: "VpcEndpointAssociation" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(25793, __c806, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VpcEndpointAssociation",
-        }),
+        /*@__PURE__*/ __S(25793, __c806, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VpcEndpointAssociation" }),
       );
     case 3:
       return S.suspend(() =>
@@ -81381,9 +78987,7 @@ function __c806(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeVpcEndpointAssociationsResult",
-      });
+      ).annotate({ identifier: "DescribeVpcEndpointAssociationsResult" });
   }
 }
 function __c807(j: number): any {
@@ -81397,14 +79001,12 @@ function __c807(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeVpcEndpointConnectionNotificationsRequest",
-      });
+      ).annotate({ identifier: "DescribeVpcEndpointConnectionNotificationsRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(13856, __c433, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ConnectionNotification",
-        }),
+        /*@__PURE__*/ __S(13856, __c433, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ConnectionNotification" }),
       );
     case 2:
       return S.suspend(() =>
@@ -81415,9 +79017,7 @@ function __c807(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeVpcEndpointConnectionNotificationsResult",
-      });
+      ).annotate({ identifier: "DescribeVpcEndpointConnectionNotificationsResult" });
   }
 }
 function __c808(j: number): any {
@@ -81430,9 +79030,7 @@ function __c808(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeVpcEndpointConnectionsRequest",
-      });
+      ).annotate({ identifier: "DescribeVpcEndpointConnectionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -81486,9 +79084,9 @@ function __c808(j: number): any {
       ).annotate({ identifier: "VpcEndpointConnection" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(25857, __c808, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VpcEndpointConnection",
-        }),
+        /*@__PURE__*/ __S(25857, __c808, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VpcEndpointConnection" }),
       );
     case 3:
       return S.suspend(() =>
@@ -81499,9 +79097,7 @@ function __c808(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeVpcEndpointConnectionsResult",
-      });
+      ).annotate({ identifier: "DescribeVpcEndpointConnectionsResult" });
   }
 }
 function __c809(j: number): any {
@@ -81515,14 +79111,12 @@ function __c809(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeVpcEndpointsRequest",
-      });
+      ).annotate({ identifier: "DescribeVpcEndpointsRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(13734, __c429, 6).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VpcEndpoint",
-        }),
+        /*@__PURE__*/ __S(13734, __c429, 6)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VpcEndpoint" }),
       );
     case 2:
       return S.suspend(() =>
@@ -81533,9 +79127,7 @@ function __c809(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeVpcEndpointsResult",
-      });
+      ).annotate({ identifier: "DescribeVpcEndpointsResult" });
   }
 }
 function __c810(j: number): any {
@@ -81549,14 +79141,12 @@ function __c810(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeVpcEndpointServiceConfigurationsRequest",
-      });
+      ).annotate({ identifier: "DescribeVpcEndpointServiceConfigurationsRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(13923, __c435, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ServiceConfiguration",
-        }),
+        /*@__PURE__*/ __S(13923, __c435, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ServiceConfiguration" }),
       );
     case 2:
       return S.suspend(() =>
@@ -81567,9 +79157,7 @@ function __c810(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeVpcEndpointServiceConfigurationsResult",
-      });
+      ).annotate({ identifier: "DescribeVpcEndpointServiceConfigurationsResult" });
   }
 }
 function __c811(j: number): any {
@@ -81583,9 +79171,7 @@ function __c811(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeVpcEndpointServicePermissionsRequest",
-      });
+      ).annotate({ identifier: "DescribeVpcEndpointServicePermissionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -81604,9 +79190,9 @@ function __c811(j: number): any {
       ).annotate({ identifier: "AllowedPrincipal" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(25953, __c811, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "AllowedPrincipal",
-        }),
+        /*@__PURE__*/ __S(25953, __c811, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "AllowedPrincipal" }),
       );
     case 3:
       return S.suspend(() =>
@@ -81617,9 +79203,7 @@ function __c811(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeVpcEndpointServicePermissionsResult",
-      });
+      ).annotate({ identifier: "DescribeVpcEndpointServicePermissionsResult" });
   }
 }
 function __c812(j: number): any {
@@ -81634,9 +79218,7 @@ function __c812(j: number): any {
           NextToken: S.optional(S.String),
           ServiceRegions: S.optional(__S(2208, __c69, 0)).pipe(T.XmlName("ServiceRegion")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeVpcEndpointServicesRequest",
-      });
+      ).annotate({ identifier: "DescribeVpcEndpointServicesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -81648,9 +79230,9 @@ function __c812(j: number): any {
       ).annotate({ identifier: "PrivateDnsDetails" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(25985, __c812, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "PrivateDnsDetails",
-        }),
+        /*@__PURE__*/ __S(25985, __c812, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "PrivateDnsDetails" }),
       );
     case 3:
       return S.suspend(() =>
@@ -81718,9 +79300,9 @@ function __c812(j: number): any {
       ).annotate({ identifier: "ServiceDetail" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(25987, __c812, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ServiceDetail",
-        }),
+        /*@__PURE__*/ __S(25987, __c812, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ServiceDetail" }),
       );
     case 5:
       return S.suspend(() =>
@@ -81735,9 +79317,7 @@ function __c812(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeVpcEndpointServicesResult",
-      });
+      ).annotate({ identifier: "DescribeVpcEndpointServicesResult" });
   }
 }
 function __c813(j: number): any {
@@ -81755,14 +79335,12 @@ function __c813(j: number): any {
           ),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeVpcPeeringConnectionsRequest",
-      });
+      ).annotate({ identifier: "DescribeVpcPeeringConnectionsRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(2599, __c81, 7).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VpcPeeringConnection",
-        }),
+        /*@__PURE__*/ __S(2599, __c81, 7)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VpcPeeringConnection" }),
       );
     case 3:
       return S.suspend(() =>
@@ -81773,9 +79351,7 @@ function __c813(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeVpcPeeringConnectionsResult",
-      });
+      ).annotate({ identifier: "DescribeVpcPeeringConnectionsResult" });
   }
 }
 function __c814(j: number): any {
@@ -81823,14 +79399,12 @@ function __c815(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeVpnConcentratorsRequest",
-      });
+      ).annotate({ identifier: "DescribeVpnConcentratorsRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(14048, __c439, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VpnConcentrator",
-        }),
+        /*@__PURE__*/ __S(14048, __c439, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VpnConcentrator" }),
       );
     case 3:
       return S.suspend(() =>
@@ -81841,9 +79415,7 @@ function __c815(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeVpnConcentratorsResult",
-      });
+      ).annotate({ identifier: "DescribeVpnConcentratorsResult" });
   }
 }
 function __c816(j: number): any {
@@ -81857,14 +79429,12 @@ function __c816(j: number): any {
           VpnConnectionIds: S.optional(__S(26112, __c816, 0)).pipe(T.XmlName("VpnConnectionId")),
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeVpnConnectionsRequest",
-      });
+      ).annotate({ identifier: "DescribeVpnConnectionsRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(14135, __c441, 23).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VpnConnection",
-        }),
+        /*@__PURE__*/ __S(14135, __c441, 23)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VpnConnection" }),
       );
     case 3:
       return S.suspend(() =>
@@ -81874,9 +79444,7 @@ function __c816(j: number): any {
             T.Ec2QueryName("VpnConnectionSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeVpnConnectionsResult",
-      });
+      ).annotate({ identifier: "DescribeVpnConnectionsResult" });
   }
 }
 function __c817(j: number): any {
@@ -81890,14 +79458,12 @@ function __c817(j: number): any {
           VpnGatewayIds: S.optional(__S(26144, __c817, 0)).pipe(T.XmlName("VpnGatewayId")),
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeVpnGatewaysRequest",
-      });
+      ).annotate({ identifier: "DescribeVpnGatewaysRequest" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(14241, __c445, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VpnGateway",
-        }),
+        /*@__PURE__*/ __S(14241, __c445, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VpnGateway" }),
       );
     case 3:
       return S.suspend(() =>
@@ -81907,9 +79473,7 @@ function __c817(j: number): any {
             T.Ec2QueryName("VpnGatewaySet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeVpnGatewaysResult",
-      });
+      ).annotate({ identifier: "DescribeVpnGatewaysResult" });
   }
 }
 function __c818(j: number): any {
@@ -81924,17 +79488,13 @@ function __c818(j: number): any {
           ),
           VpcId: S.optional(S.String).pipe(T.XmlName("vpcId"), T.Ec2QueryName("VpcId")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DetachClassicLinkVpcRequest",
-      });
+      ).annotate({ identifier: "DetachClassicLinkVpcRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DetachClassicLinkVpcResult",
-      });
+      ).annotate({ identifier: "DetachClassicLinkVpcResult" });
   }
 }
 function __c819(j: number): any {
@@ -81946,17 +79506,13 @@ function __c819(j: number): any {
           WatermarkKey: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DetachImageWatermarkRequest",
-      });
+      ).annotate({ identifier: "DetachImageWatermarkRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DetachImageWatermarkResult",
-      });
+      ).annotate({ identifier: "DetachImageWatermarkResult" });
   }
 }
 function __c820(j: number): any {
@@ -81971,9 +79527,7 @@ function __c820(j: number): any {
           ),
           VpcId: S.optional(S.String).pipe(T.XmlName("vpcId"), T.Ec2QueryName("VpcId")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DetachInternetGatewayRequest",
-      });
+      ).annotate({ identifier: "DetachInternetGatewayRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DetachInternetGatewayResponse",
@@ -81992,9 +79546,7 @@ function __c821(j: number): any {
           ),
           Force: S.optional(S.Boolean).pipe(T.XmlName("force"), T.Ec2QueryName("Force")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DetachNetworkInterfaceRequest",
-      });
+      ).annotate({ identifier: "DetachNetworkInterfaceRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DetachNetworkInterfaceResponse",
@@ -82011,9 +79563,7 @@ function __c822(j: number): any {
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DetachVerifiedAccessTrustProviderRequest",
-      });
+      ).annotate({ identifier: "DetachVerifiedAccessTrustProviderRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -82027,9 +79577,7 @@ function __c822(j: number): any {
             .pipe(T.XmlName("verifiedAccessInstance"), T.Ec2QueryName("VerifiedAccessInstance"))
             .annotate({ identifier: "VerifiedAccessInstance" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DetachVerifiedAccessTrustProviderResult",
-      });
+      ).annotate({ identifier: "DetachVerifiedAccessTrustProviderResult" });
   }
 }
 function __c823(j: number): any {
@@ -82069,9 +79617,7 @@ function __c825(j: number): any {
         S.Struct({ AllocationId: S.optional(S.String), DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DisableAddressTransferRequest",
-      });
+      ).annotate({ identifier: "DisableAddressTransferRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -82079,9 +79625,7 @@ function __c825(j: number): any {
             .pipe(T.XmlName("addressTransfer"), T.Ec2QueryName("AddressTransfer"))
             .annotate({ identifier: "AddressTransfer" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisableAddressTransferResult",
-      });
+      ).annotate({ identifier: "DisableAddressTransferResult" });
   }
 }
 function __c826(j: number): any {
@@ -82091,9 +79635,7 @@ function __c826(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DisableAllowedImagesSettingsRequest",
-      });
+      ).annotate({ identifier: "DisableAllowedImagesSettingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -82102,9 +79644,7 @@ function __c826(j: number): any {
             T.Ec2QueryName("AllowedImagesSettingsState"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisableAllowedImagesSettingsResult",
-      });
+      ).annotate({ identifier: "DisableAllowedImagesSettingsResult" });
   }
 }
 function __c827(j: number): any {
@@ -82116,9 +79656,7 @@ function __c827(j: number): any {
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisableApplicationStatusCheckSuppressionRequest",
-      });
+      ).annotate({ identifier: "DisableApplicationStatusCheckSuppressionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -82131,9 +79669,7 @@ function __c827(j: number): any {
             T.Ec2QueryName("UnsuccessfulResultSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisableApplicationStatusCheckSuppressionResult",
-      });
+      ).annotate({ identifier: "DisableApplicationStatusCheckSuppressionResult" });
   }
 }
 function __c828(j: number): any {
@@ -82154,14 +79690,12 @@ function __c828(j: number): any {
             T.Ec2QueryName("ResumeAt"),
           ),
         }),
-      ).annotate({
-        identifier: "SuccessfulSuppressionResponseObject",
-      });
+      ).annotate({ identifier: "SuccessfulSuppressionResponseObject" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(26496, __c828, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SuccessfulSuppressionResponseObject",
-        }),
+        /*@__PURE__*/ __S(26496, __c828, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SuccessfulSuppressionResponseObject" }),
       );
     case 2:
       return S.suspend(() =>
@@ -82180,14 +79714,12 @@ function __c828(j: number): any {
           ),
           Reason: S.optional(S.String).pipe(T.XmlName("reason"), T.Ec2QueryName("Reason")),
         }),
-      ).annotate({
-        identifier: "UnsuccessfulSuppressionResponseObject",
-      });
+      ).annotate({ identifier: "UnsuccessfulSuppressionResponseObject" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(26498, __c828, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "UnsuccessfulSuppressionResponseObject",
-        }),
+        /*@__PURE__*/ __S(26498, __c828, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "UnsuccessfulSuppressionResponseObject" }),
       );
   }
 }
@@ -82202,17 +79734,13 @@ function __c829(j: number): any {
           Statistic: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisableAwsNetworkPerformanceMetricSubscriptionRequest",
-      });
+      ).annotate({ identifier: "DisableAwsNetworkPerformanceMetricSubscriptionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Output: S.optional(S.Boolean).pipe(T.XmlName("output"), T.Ec2QueryName("Output")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisableAwsNetworkPerformanceMetricSubscriptionResult",
-      });
+      ).annotate({ identifier: "DisableAwsNetworkPerformanceMetricSubscriptionResult" });
   }
 }
 function __c830(j: number): any {
@@ -82223,9 +79751,7 @@ function __c830(j: number): any {
           DryRun: S.optional(S.Boolean),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisableCapacityManagerRequest",
-      });
+      ).annotate({ identifier: "DisableCapacityManagerRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -82238,9 +79764,7 @@ function __c830(j: number): any {
             T.Ec2QueryName("OrganizationsAccess"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisableCapacityManagerResult",
-      });
+      ).annotate({ identifier: "DisableCapacityManagerResult" });
   }
 }
 function __c831(j: number): any {
@@ -82250,9 +79774,7 @@ function __c831(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DisableEbsEncryptionByDefaultRequest",
-      });
+      ).annotate({ identifier: "DisableEbsEncryptionByDefaultRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -82261,9 +79783,7 @@ function __c831(j: number): any {
             T.Ec2QueryName("EbsEncryptionByDefault"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisableEbsEncryptionByDefaultResult",
-      });
+      ).annotate({ identifier: "DisableEbsEncryptionByDefaultResult" });
   }
 }
 function __c832(j: number): any {
@@ -82319,9 +79839,7 @@ function __c833(j: number): any {
           SourceSnapshotIds: S.optional(__S(22336, __c698, 0)).pipe(T.XmlName("SourceSnapshotId")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisableFastSnapshotRestoresRequest",
-      });
+      ).annotate({ identifier: "DisableFastSnapshotRestoresRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -82368,14 +79886,12 @@ function __c833(j: number): any {
             T.Ec2QueryName("DisabledTime"),
           ),
         }),
-      ).annotate({
-        identifier: "DisableFastSnapshotRestoreSuccessItem",
-      });
+      ).annotate({ identifier: "DisableFastSnapshotRestoreSuccessItem" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(26657, __c833, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "DisableFastSnapshotRestoreSuccessItem",
-        }),
+        /*@__PURE__*/ __S(26657, __c833, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "DisableFastSnapshotRestoreSuccessItem" }),
       );
     case 3:
       return S.suspend(() =>
@@ -82383,9 +79899,7 @@ function __c833(j: number): any {
           Code: S.optional(S.String).pipe(T.XmlName("code"), T.Ec2QueryName("Code")),
           Message: S.optional(S.String).pipe(T.XmlName("message"), T.Ec2QueryName("Message")),
         }),
-      ).annotate({
-        identifier: "DisableFastSnapshotRestoreStateError",
-      });
+      ).annotate({ identifier: "DisableFastSnapshotRestoreStateError" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -82401,14 +79915,12 @@ function __c833(j: number): any {
             .pipe(T.XmlName("error"), T.Ec2QueryName("Error"))
             .annotate({ identifier: "DisableFastSnapshotRestoreStateError" }),
         }),
-      ).annotate({
-        identifier: "DisableFastSnapshotRestoreStateErrorItem",
-      });
+      ).annotate({ identifier: "DisableFastSnapshotRestoreStateErrorItem" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(26660, __c833, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "DisableFastSnapshotRestoreStateErrorItem",
-        }),
+        /*@__PURE__*/ __S(26660, __c833, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "DisableFastSnapshotRestoreStateErrorItem" }),
       );
     case 6:
       return S.suspend(() =>
@@ -82422,14 +79934,12 @@ function __c833(j: number): any {
             T.Ec2QueryName("FastSnapshotRestoreStateErrorSet"),
           ),
         }),
-      ).annotate({
-        identifier: "DisableFastSnapshotRestoreErrorItem",
-      });
+      ).annotate({ identifier: "DisableFastSnapshotRestoreErrorItem" });
     case 7:
       return S.Array(
-        /*@__PURE__*/ __S(26662, __c833, 6).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "DisableFastSnapshotRestoreErrorItem",
-        }),
+        /*@__PURE__*/ __S(26662, __c833, 6)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "DisableFastSnapshotRestoreErrorItem" }),
       );
     case 8:
       return S.suspend(() =>
@@ -82443,9 +79953,7 @@ function __c833(j: number): any {
             T.Ec2QueryName("Unsuccessful"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisableFastSnapshotRestoresResult",
-      });
+      ).annotate({ identifier: "DisableFastSnapshotRestoresResult" });
   }
 }
 function __c834(j: number): any {
@@ -82479,9 +79987,7 @@ function __c836(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DisableImageBlockPublicAccessRequest",
-      });
+      ).annotate({ identifier: "DisableImageBlockPublicAccessRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -82490,9 +79996,7 @@ function __c836(j: number): any {
             T.Ec2QueryName("ImageBlockPublicAccessState"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisableImageBlockPublicAccessResult",
-      });
+      ).annotate({ identifier: "DisableImageBlockPublicAccessResult" });
   }
 }
 function __c837(j: number): any {
@@ -82502,17 +80006,13 @@ function __c837(j: number): any {
         S.Struct({ ImageId: S.optional(S.String), DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DisableImageDeprecationRequest",
-      });
+      ).annotate({ identifier: "DisableImageDeprecationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisableImageDeprecationResult",
-      });
+      ).annotate({ identifier: "DisableImageDeprecationResult" });
   }
 }
 function __c838(j: number): any {
@@ -82522,17 +80022,13 @@ function __c838(j: number): any {
         S.Struct({ ImageId: S.optional(S.String), DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DisableImageDeregistrationProtectionRequest",
-      });
+      ).annotate({ identifier: "DisableImageDeregistrationProtectionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.String).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisableImageDeregistrationProtectionResult",
-      });
+      ).annotate({ identifier: "DisableImageDeregistrationProtectionResult" });
   }
 }
 function __c839(j: number): any {
@@ -82543,9 +80039,7 @@ function __c839(j: number): any {
           InstanceIds: S.optional(__S(26880, __c840, 0)).pipe(T.XmlName("InstanceId")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisableInstanceSqlHaStandbyDetectionsRequest",
-      });
+      ).annotate({ identifier: "DisableInstanceSqlHaStandbyDetectionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -82554,9 +80048,7 @@ function __c839(j: number): any {
             T.Ec2QueryName("InstanceSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisableInstanceSqlHaStandbyDetectionsResult",
-      });
+      ).annotate({ identifier: "DisableInstanceSqlHaStandbyDetectionsResult" });
   }
 }
 function __c840(j: number): any {
@@ -82573,17 +80065,13 @@ function __c841(j: number): any {
           DryRun: S.optional(S.Boolean),
           DelegatedAdminAccountId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisableIpamOrganizationAdminAccountRequest",
-      });
+      ).annotate({ identifier: "DisableIpamOrganizationAdminAccountRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Success: S.optional(S.Boolean).pipe(T.XmlName("success"), T.Ec2QueryName("Success")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisableIpamOrganizationAdminAccountResult",
-      });
+      ).annotate({ identifier: "DisableIpamOrganizationAdminAccountResult" });
   }
 }
 function __c842(j: number): any {
@@ -82613,9 +80101,7 @@ function __c843(j: number): any {
           RouteTableId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisableRouteServerPropagationRequest",
-      });
+      ).annotate({ identifier: "DisableRouteServerPropagationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -82623,9 +80109,7 @@ function __c843(j: number): any {
             .pipe(T.XmlName("routeServerPropagation"), T.Ec2QueryName("RouteServerPropagation"))
             .annotate({ identifier: "RouteServerPropagation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisableRouteServerPropagationResult",
-      });
+      ).annotate({ identifier: "DisableRouteServerPropagationResult" });
   }
 }
 function __c844(j: number): any {
@@ -82653,9 +80137,7 @@ function __c845(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DisableSerialConsoleAccessRequest",
-      });
+      ).annotate({ identifier: "DisableSerialConsoleAccessRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -82664,9 +80146,7 @@ function __c845(j: number): any {
             T.Ec2QueryName("SerialConsoleAccessEnabled"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisableSerialConsoleAccessResult",
-      });
+      ).annotate({ identifier: "DisableSerialConsoleAccessResult" });
   }
 }
 function __c846(j: number): any {
@@ -82676,17 +80156,13 @@ function __c846(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DisableSnapshotBlockPublicAccessRequest",
-      });
+      ).annotate({ identifier: "DisableSnapshotBlockPublicAccessRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           State: S.optional(S.String).pipe(T.XmlName("state"), T.Ec2QueryName("State")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisableSnapshotBlockPublicAccessResult",
-      });
+      ).annotate({ identifier: "DisableSnapshotBlockPublicAccessResult" });
   }
 }
 function __c847(j: number): any {
@@ -82699,9 +80175,7 @@ function __c847(j: number): any {
           DryRun: S.optional(S.Boolean),
           TransitGatewayRouteTableAnnouncementId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisableTransitGatewayRouteTablePropagationRequest",
-      });
+      ).annotate({ identifier: "DisableTransitGatewayRouteTablePropagationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -82709,9 +80183,7 @@ function __c847(j: number): any {
             .pipe(T.XmlName("propagation"), T.Ec2QueryName("Propagation"))
             .annotate({ identifier: "TransitGatewayPropagation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisableTransitGatewayRouteTablePropagationResult",
-      });
+      ).annotate({ identifier: "DisableTransitGatewayRouteTablePropagationResult" });
   }
 }
 function __c848(j: number): any {
@@ -82741,9 +80213,7 @@ function __c848(j: number): any {
             T.Ec2QueryName("TransitGatewayRouteTableAnnouncementId"),
           ),
         }),
-      ).annotate({
-        identifier: "TransitGatewayPropagation",
-      });
+      ).annotate({ identifier: "TransitGatewayPropagation" });
   }
 }
 function __c849(j: number): any {
@@ -82755,9 +80225,7 @@ function __c849(j: number): any {
           RouteTableId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisableVgwRoutePropagationRequest",
-      });
+      ).annotate({ identifier: "DisableVgwRoutePropagationRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DisableVgwRoutePropagationResponse",
@@ -82772,17 +80240,13 @@ function __c850(j: number): any {
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
           VpcId: S.optional(S.String).pipe(T.XmlName("vpcId"), T.Ec2QueryName("VpcId")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisableVpcClassicLinkRequest",
-      });
+      ).annotate({ identifier: "DisableVpcClassicLinkRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisableVpcClassicLinkResult",
-      });
+      ).annotate({ identifier: "DisableVpcClassicLinkResult" });
   }
 }
 function __c851(j: number): any {
@@ -82792,17 +80256,13 @@ function __c851(j: number): any {
         S.Struct({ VpcId: S.optional(S.String).pipe(T.XmlName("VpcId")) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DisableVpcClassicLinkDnsSupportRequest",
-      });
+      ).annotate({ identifier: "DisableVpcClassicLinkDnsSupportRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisableVpcClassicLinkDnsSupportResult",
-      });
+      ).annotate({ identifier: "DisableVpcClassicLinkDnsSupportResult" });
   }
 }
 function __c852(j: number): any {
@@ -82814,9 +80274,7 @@ function __c852(j: number): any {
           PublicIp: S.optional(S.String),
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisassociateAddressRequest",
-      });
+      ).annotate({ identifier: "DisassociateAddressRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DisassociateAddressResponse",
@@ -82836,9 +80294,7 @@ function __c853(j: number): any {
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisassociateApplicationStatusCheckRequest",
-      });
+      ).annotate({ identifier: "DisassociateApplicationStatusCheckRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -82851,9 +80307,7 @@ function __c853(j: number): any {
             T.Ec2QueryName("UnsuccessfulResultSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisassociateApplicationStatusCheckResult",
-      });
+      ).annotate({ identifier: "DisassociateApplicationStatusCheckResult" });
   }
 }
 function __c854(j: number): any {
@@ -82865,17 +80319,13 @@ function __c854(j: number): any {
           CapacityReservationId: S.optional(S.String),
           UnusedReservationBillingOwnerId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisassociateCapacityReservationBillingOwnerRequest",
-      });
+      ).annotate({ identifier: "DisassociateCapacityReservationBillingOwnerRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisassociateCapacityReservationBillingOwnerResult",
-      });
+      ).annotate({ identifier: "DisassociateCapacityReservationBillingOwnerResult" });
   }
 }
 function __c855(j: number): any {
@@ -82887,9 +80337,7 @@ function __c855(j: number): any {
           AssociationId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisassociateClientVpnTargetNetworkRequest",
-      });
+      ).annotate({ identifier: "DisassociateClientVpnTargetNetworkRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -82901,9 +80349,7 @@ function __c855(j: number): any {
             .pipe(T.XmlName("status"), T.Ec2QueryName("Status"))
             .annotate({ identifier: "AssociationStatus" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisassociateClientVpnTargetNetworkResult",
-      });
+      ).annotate({ identifier: "DisassociateClientVpnTargetNetworkResult" });
   }
 }
 function __c856(j: number): any {
@@ -82915,17 +80361,13 @@ function __c856(j: number): any {
           RoleArn: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisassociateEnclaveCertificateIamRoleRequest",
-      });
+      ).annotate({ identifier: "DisassociateEnclaveCertificateIamRoleRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisassociateEnclaveCertificateIamRoleResult",
-      });
+      ).annotate({ identifier: "DisassociateEnclaveCertificateIamRoleResult" });
   }
 }
 function __c857(j: number): any {
@@ -82935,9 +80377,7 @@ function __c857(j: number): any {
         S.Struct({ AssociationId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DisassociateIamInstanceProfileRequest",
-      });
+      ).annotate({ identifier: "DisassociateIamInstanceProfileRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -82948,9 +80388,7 @@ function __c857(j: number): any {
             )
             .annotate({ identifier: "IamInstanceProfileAssociation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisassociateIamInstanceProfileResult",
-      });
+      ).annotate({ identifier: "DisassociateIamInstanceProfileResult" });
   }
 }
 function __c858(j: number): any {
@@ -82962,9 +80400,7 @@ function __c858(j: number): any {
           InstanceTags: S.optional(__S(1921, __c60, 1)).pipe(T.XmlName("InstanceTag")),
           DedicatedHostIds: S.optional(__S(3680, __c115, 0)).pipe(T.XmlName("DedicatedHostId")),
         }),
-      ).annotate({
-        identifier: "InstanceEventWindowDisassociationRequest",
-      });
+      ).annotate({ identifier: "InstanceEventWindowDisassociationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -82972,9 +80408,7 @@ function __c858(j: number): any {
           InstanceEventWindowId: S.optional(S.String),
           AssociationTarget: S.optional(__S(27456, __c858, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisassociateInstanceEventWindowRequest",
-      });
+      ).annotate({ identifier: "DisassociateInstanceEventWindowRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -82982,9 +80416,7 @@ function __c858(j: number): any {
             .pipe(T.XmlName("instanceEventWindow"), T.Ec2QueryName("InstanceEventWindow"))
             .annotate({ identifier: "InstanceEventWindow" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisassociateInstanceEventWindowResult",
-      });
+      ).annotate({ identifier: "DisassociateInstanceEventWindowResult" });
   }
 }
 function __c859(j: number): any {
@@ -82996,9 +80428,7 @@ function __c859(j: number): any {
           Asn: S.optional(S.String),
           Cidr: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisassociateIpamByoasnRequest",
-      });
+      ).annotate({ identifier: "DisassociateIpamByoasnRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -83006,9 +80436,7 @@ function __c859(j: number): any {
             .pipe(T.XmlName("asnAssociation"), T.Ec2QueryName("AsnAssociation"))
             .annotate({ identifier: "AsnAssociation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisassociateIpamByoasnResult",
-      });
+      ).annotate({ identifier: "DisassociateIpamByoasnResult" });
   }
 }
 function __c860(j: number): any {
@@ -83019,9 +80447,7 @@ function __c860(j: number): any {
           DryRun: S.optional(S.Boolean),
           IpamResourceDiscoveryAssociationId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisassociateIpamResourceDiscoveryRequest",
-      });
+      ).annotate({ identifier: "DisassociateIpamResourceDiscoveryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -83032,9 +80458,7 @@ function __c860(j: number): any {
             )
             .annotate({ identifier: "IpamResourceDiscoveryAssociation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisassociateIpamResourceDiscoveryResult",
-      });
+      ).annotate({ identifier: "DisassociateIpamResourceDiscoveryResult" });
   }
 }
 function __c861(j: number): any {
@@ -83049,9 +80473,7 @@ function __c861(j: number): any {
           MaxDrainDurationSeconds: S.optional(S.Number),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisassociateNatGatewayAddressRequest",
-      });
+      ).annotate({ identifier: "DisassociateNatGatewayAddressRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -83064,9 +80486,7 @@ function __c861(j: number): any {
             T.Ec2QueryName("NatGatewayAddressSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisassociateNatGatewayAddressResult",
-      });
+      ).annotate({ identifier: "DisassociateNatGatewayAddressResult" });
   }
 }
 function __c862(j: number): any {
@@ -83078,9 +80498,7 @@ function __c862(j: number): any {
           VpcId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisassociateRouteServerRequest",
-      });
+      ).annotate({ identifier: "DisassociateRouteServerRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -83088,9 +80506,7 @@ function __c862(j: number): any {
             .pipe(T.XmlName("routeServerAssociation"), T.Ec2QueryName("RouteServerAssociation"))
             .annotate({ identifier: "RouteServerAssociation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisassociateRouteServerResult",
-      });
+      ).annotate({ identifier: "DisassociateRouteServerResult" });
   }
 }
 function __c863(j: number): any {
@@ -83104,9 +80520,7 @@ function __c863(j: number): any {
             T.Ec2QueryName("AssociationId"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisassociateRouteTableRequest",
-      });
+      ).annotate({ identifier: "DisassociateRouteTableRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DisassociateRouteTableResponse",
@@ -83122,17 +80536,13 @@ function __c864(j: number): any {
           VpcId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisassociateSecurityGroupVpcRequest",
-      });
+      ).annotate({ identifier: "DisassociateSecurityGroupVpcRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           State: S.optional(S.String).pipe(T.XmlName("state"), T.Ec2QueryName("State")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisassociateSecurityGroupVpcResult",
-      });
+      ).annotate({ identifier: "DisassociateSecurityGroupVpcResult" });
   }
 }
 function __c865(j: number): any {
@@ -83145,9 +80555,7 @@ function __c865(j: number): any {
             T.Ec2QueryName("AssociationId"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisassociateSubnetCidrBlockRequest",
-      });
+      ).annotate({ identifier: "DisassociateSubnetCidrBlockRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -83156,9 +80564,7 @@ function __c865(j: number): any {
             .annotate({ identifier: "SubnetIpv6CidrBlockAssociation" }),
           SubnetId: S.optional(S.String).pipe(T.XmlName("subnetId"), T.Ec2QueryName("SubnetId")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisassociateSubnetCidrBlockResult",
-      });
+      ).annotate({ identifier: "DisassociateSubnetCidrBlockResult" });
   }
 }
 function __c866(j: number): any {
@@ -83171,9 +80577,7 @@ function __c866(j: number): any {
           SubnetIds: S.optional(__S(4128, __c129, 0)),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisassociateTransitGatewayMulticastDomainRequest",
-      });
+      ).annotate({ identifier: "DisassociateTransitGatewayMulticastDomainRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -83181,9 +80585,7 @@ function __c866(j: number): any {
             .pipe(T.XmlName("associations"), T.Ec2QueryName("Associations"))
             .annotate({ identifier: "TransitGatewayMulticastDomainAssociations" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisassociateTransitGatewayMulticastDomainResult",
-      });
+      ).annotate({ identifier: "DisassociateTransitGatewayMulticastDomainResult" });
   }
 }
 function __c867(j: number): any {
@@ -83195,9 +80597,7 @@ function __c867(j: number): any {
           TransitGatewayAttachmentId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisassociateTransitGatewayPolicyTableRequest",
-      });
+      ).annotate({ identifier: "DisassociateTransitGatewayPolicyTableRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -83205,9 +80605,7 @@ function __c867(j: number): any {
             .pipe(T.XmlName("association"), T.Ec2QueryName("Association"))
             .annotate({ identifier: "TransitGatewayPolicyTableAssociation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisassociateTransitGatewayPolicyTableResult",
-      });
+      ).annotate({ identifier: "DisassociateTransitGatewayPolicyTableResult" });
   }
 }
 function __c868(j: number): any {
@@ -83219,9 +80617,7 @@ function __c868(j: number): any {
           TransitGatewayAttachmentId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisassociateTransitGatewayRouteTableRequest",
-      });
+      ).annotate({ identifier: "DisassociateTransitGatewayRouteTableRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -83229,9 +80625,7 @@ function __c868(j: number): any {
             .pipe(T.XmlName("association"), T.Ec2QueryName("Association"))
             .annotate({ identifier: "TransitGatewayAssociation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisassociateTransitGatewayRouteTableResult",
-      });
+      ).annotate({ identifier: "DisassociateTransitGatewayRouteTableResult" });
   }
 }
 function __c869(j: number): any {
@@ -83243,9 +80637,7 @@ function __c869(j: number): any {
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisassociateTrunkInterfaceRequest",
-      });
+      ).annotate({ identifier: "DisassociateTrunkInterfaceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -83255,9 +80647,7 @@ function __c869(j: number): any {
             T.Ec2QueryName("ClientToken"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisassociateTrunkInterfaceResult",
-      });
+      ).annotate({ identifier: "DisassociateTrunkInterfaceResult" });
   }
 }
 function __c870(j: number): any {
@@ -83270,9 +80660,7 @@ function __c870(j: number): any {
             T.Ec2QueryName("AssociationId"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DisassociateVpcCidrBlockRequest",
-      });
+      ).annotate({ identifier: "DisassociateVpcCidrBlockRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -83284,9 +80672,7 @@ function __c870(j: number): any {
             .annotate({ identifier: "VpcCidrBlockAssociation" }),
           VpcId: S.optional(S.String).pipe(T.XmlName("vpcId"), T.Ec2QueryName("VpcId")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DisassociateVpcCidrBlockResult",
-      });
+      ).annotate({ identifier: "DisassociateVpcCidrBlockResult" });
   }
 }
 function __c871(j: number): any {
@@ -83298,9 +80684,7 @@ function __c871(j: number): any {
           TransferAccountId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "EnableAddressTransferRequest",
-      });
+      ).annotate({ identifier: "EnableAddressTransferRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -83308,9 +80692,7 @@ function __c871(j: number): any {
             .pipe(T.XmlName("addressTransfer"), T.Ec2QueryName("AddressTransfer"))
             .annotate({ identifier: "AddressTransfer" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "EnableAddressTransferResult",
-      });
+      ).annotate({ identifier: "EnableAddressTransferResult" });
   }
 }
 function __c872(j: number): any {
@@ -83321,9 +80703,7 @@ function __c872(j: number): any {
           AllowedImagesSettingsState: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "EnableAllowedImagesSettingsRequest",
-      });
+      ).annotate({ identifier: "EnableAllowedImagesSettingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -83332,9 +80712,7 @@ function __c872(j: number): any {
             T.Ec2QueryName("AllowedImagesSettingsState"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "EnableAllowedImagesSettingsResult",
-      });
+      ).annotate({ identifier: "EnableAllowedImagesSettingsResult" });
   }
 }
 function __c873(j: number): any {
@@ -83347,9 +80725,7 @@ function __c873(j: number): any {
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "EnableApplicationStatusCheckSuppressionRequest",
-      });
+      ).annotate({ identifier: "EnableApplicationStatusCheckSuppressionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -83362,9 +80738,7 @@ function __c873(j: number): any {
             T.Ec2QueryName("UnsuccessfulResultSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "EnableApplicationStatusCheckSuppressionResult",
-      });
+      ).annotate({ identifier: "EnableApplicationStatusCheckSuppressionResult" });
   }
 }
 function __c874(j: number): any {
@@ -83378,17 +80752,13 @@ function __c874(j: number): any {
           Statistic: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "EnableAwsNetworkPerformanceMetricSubscriptionRequest",
-      });
+      ).annotate({ identifier: "EnableAwsNetworkPerformanceMetricSubscriptionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Output: S.optional(S.Boolean).pipe(T.XmlName("output"), T.Ec2QueryName("Output")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "EnableAwsNetworkPerformanceMetricSubscriptionResult",
-      });
+      ).annotate({ identifier: "EnableAwsNetworkPerformanceMetricSubscriptionResult" });
   }
 }
 function __c875(j: number): any {
@@ -83400,9 +80770,7 @@ function __c875(j: number): any {
           DryRun: S.optional(S.Boolean),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "EnableCapacityManagerRequest",
-      });
+      ).annotate({ identifier: "EnableCapacityManagerRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -83415,9 +80783,7 @@ function __c875(j: number): any {
             T.Ec2QueryName("OrganizationsAccess"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "EnableCapacityManagerResult",
-      });
+      ).annotate({ identifier: "EnableCapacityManagerResult" });
   }
 }
 function __c876(j: number): any {
@@ -83427,9 +80793,7 @@ function __c876(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "EnableEbsEncryptionByDefaultRequest",
-      });
+      ).annotate({ identifier: "EnableEbsEncryptionByDefaultRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -83438,9 +80802,7 @@ function __c876(j: number): any {
             T.Ec2QueryName("EbsEncryptionByDefault"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "EnableEbsEncryptionByDefaultResult",
-      });
+      ).annotate({ identifier: "EnableEbsEncryptionByDefaultResult" });
   }
 }
 function __c877(j: number): any {
@@ -83456,9 +80818,7 @@ function __c877(j: number): any {
           LaunchTemplateName: S.optional(S.String),
           Version: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "FastLaunchLaunchTemplateSpecificationRequest",
-      });
+      ).annotate({ identifier: "FastLaunchLaunchTemplateSpecificationRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -83513,9 +80873,7 @@ function __c878(j: number): any {
           SourceSnapshotIds: S.optional(__S(22336, __c698, 0)).pipe(T.XmlName("SourceSnapshotId")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "EnableFastSnapshotRestoresRequest",
-      });
+      ).annotate({ identifier: "EnableFastSnapshotRestoresRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -83562,14 +80920,12 @@ function __c878(j: number): any {
             T.Ec2QueryName("DisabledTime"),
           ),
         }),
-      ).annotate({
-        identifier: "EnableFastSnapshotRestoreSuccessItem",
-      });
+      ).annotate({ identifier: "EnableFastSnapshotRestoreSuccessItem" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(28097, __c878, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "EnableFastSnapshotRestoreSuccessItem",
-        }),
+        /*@__PURE__*/ __S(28097, __c878, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "EnableFastSnapshotRestoreSuccessItem" }),
       );
     case 3:
       return S.suspend(() =>
@@ -83577,9 +80933,7 @@ function __c878(j: number): any {
           Code: S.optional(S.String).pipe(T.XmlName("code"), T.Ec2QueryName("Code")),
           Message: S.optional(S.String).pipe(T.XmlName("message"), T.Ec2QueryName("Message")),
         }),
-      ).annotate({
-        identifier: "EnableFastSnapshotRestoreStateError",
-      });
+      ).annotate({ identifier: "EnableFastSnapshotRestoreStateError" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -83595,14 +80949,12 @@ function __c878(j: number): any {
             .pipe(T.XmlName("error"), T.Ec2QueryName("Error"))
             .annotate({ identifier: "EnableFastSnapshotRestoreStateError" }),
         }),
-      ).annotate({
-        identifier: "EnableFastSnapshotRestoreStateErrorItem",
-      });
+      ).annotate({ identifier: "EnableFastSnapshotRestoreStateErrorItem" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(28100, __c878, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "EnableFastSnapshotRestoreStateErrorItem",
-        }),
+        /*@__PURE__*/ __S(28100, __c878, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "EnableFastSnapshotRestoreStateErrorItem" }),
       );
     case 6:
       return S.suspend(() =>
@@ -83616,14 +80968,12 @@ function __c878(j: number): any {
             T.Ec2QueryName("FastSnapshotRestoreStateErrorSet"),
           ),
         }),
-      ).annotate({
-        identifier: "EnableFastSnapshotRestoreErrorItem",
-      });
+      ).annotate({ identifier: "EnableFastSnapshotRestoreErrorItem" });
     case 7:
       return S.Array(
-        /*@__PURE__*/ __S(28102, __c878, 6).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "EnableFastSnapshotRestoreErrorItem",
-        }),
+        /*@__PURE__*/ __S(28102, __c878, 6)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "EnableFastSnapshotRestoreErrorItem" }),
       );
     case 8:
       return S.suspend(() =>
@@ -83637,9 +80987,7 @@ function __c878(j: number): any {
             T.Ec2QueryName("Unsuccessful"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "EnableFastSnapshotRestoresResult",
-      });
+      ).annotate({ identifier: "EnableFastSnapshotRestoresResult" });
   }
 }
 function __c879(j: number): any {
@@ -83666,9 +81014,7 @@ function __c880(j: number): any {
           ImageBlockPublicAccessState: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "EnableImageBlockPublicAccessRequest",
-      });
+      ).annotate({ identifier: "EnableImageBlockPublicAccessRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -83677,9 +81023,7 @@ function __c880(j: number): any {
             T.Ec2QueryName("ImageBlockPublicAccessState"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "EnableImageBlockPublicAccessResult",
-      });
+      ).annotate({ identifier: "EnableImageBlockPublicAccessResult" });
   }
 }
 function __c881(j: number): any {
@@ -83691,17 +81035,13 @@ function __c881(j: number): any {
           DeprecateAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "EnableImageDeprecationRequest",
-      });
+      ).annotate({ identifier: "EnableImageDeprecationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "EnableImageDeprecationResult",
-      });
+      ).annotate({ identifier: "EnableImageDeprecationResult" });
   }
 }
 function __c882(j: number): any {
@@ -83713,17 +81053,13 @@ function __c882(j: number): any {
           WithCooldown: S.optional(S.Boolean),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "EnableImageDeregistrationProtectionRequest",
-      });
+      ).annotate({ identifier: "EnableImageDeregistrationProtectionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.String).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "EnableImageDeregistrationProtectionResult",
-      });
+      ).annotate({ identifier: "EnableImageDeregistrationProtectionResult" });
   }
 }
 function __c883(j: number): any {
@@ -83735,9 +81071,7 @@ function __c883(j: number): any {
           SqlServerCredentials: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "EnableInstanceSqlHaStandbyDetectionsRequest",
-      });
+      ).annotate({ identifier: "EnableInstanceSqlHaStandbyDetectionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -83746,9 +81080,7 @@ function __c883(j: number): any {
             T.Ec2QueryName("InstanceSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "EnableInstanceSqlHaStandbyDetectionsResult",
-      });
+      ).annotate({ identifier: "EnableInstanceSqlHaStandbyDetectionsResult" });
   }
 }
 function __c884(j: number): any {
@@ -83765,9 +81097,7 @@ function __c884(j: number): any {
           ParentBpkiTa: S.optional(S.String),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "EnableIpamInternetRegistryAssociationRequest",
-      });
+      ).annotate({ identifier: "EnableIpamInternetRegistryAssociationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -83778,9 +81108,7 @@ function __c884(j: number): any {
             )
             .annotate({ identifier: "IpamInternetRegistryAssociation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "EnableIpamInternetRegistryAssociationResult",
-      });
+      ).annotate({ identifier: "EnableIpamInternetRegistryAssociationResult" });
   }
 }
 function __c885(j: number): any {
@@ -83791,17 +81119,13 @@ function __c885(j: number): any {
           DryRun: S.optional(S.Boolean),
           DelegatedAdminAccountId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "EnableIpamOrganizationAdminAccountRequest",
-      });
+      ).annotate({ identifier: "EnableIpamOrganizationAdminAccountRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Success: S.optional(S.Boolean).pipe(T.XmlName("success"), T.Ec2QueryName("Success")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "EnableIpamOrganizationAdminAccountResult",
-      });
+      ).annotate({ identifier: "EnableIpamOrganizationAdminAccountResult" });
   }
 }
 function __c886(j: number): any {
@@ -83832,9 +81156,7 @@ function __c887(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "EnableReachabilityAnalyzerOrganizationSharingRequest",
-      });
+      ).annotate({ identifier: "EnableReachabilityAnalyzerOrganizationSharingRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -83843,9 +81165,7 @@ function __c887(j: number): any {
             T.Ec2QueryName("ReturnValue"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "EnableReachabilityAnalyzerOrganizationSharingResult",
-      });
+      ).annotate({ identifier: "EnableReachabilityAnalyzerOrganizationSharingResult" });
   }
 }
 function __c888(j: number): any {
@@ -83857,9 +81177,7 @@ function __c888(j: number): any {
           RouteTableId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "EnableRouteServerPropagationRequest",
-      });
+      ).annotate({ identifier: "EnableRouteServerPropagationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -83867,9 +81185,7 @@ function __c888(j: number): any {
             .pipe(T.XmlName("routeServerPropagation"), T.Ec2QueryName("RouteServerPropagation"))
             .annotate({ identifier: "RouteServerPropagation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "EnableRouteServerPropagationResult",
-      });
+      ).annotate({ identifier: "EnableRouteServerPropagationResult" });
   }
 }
 function __c889(j: number): any {
@@ -83879,9 +81195,7 @@ function __c889(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "EnableSerialConsoleAccessRequest",
-      });
+      ).annotate({ identifier: "EnableSerialConsoleAccessRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -83890,30 +81204,23 @@ function __c889(j: number): any {
             T.Ec2QueryName("SerialConsoleAccessEnabled"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "EnableSerialConsoleAccessResult",
-      });
+      ).annotate({ identifier: "EnableSerialConsoleAccessResult" });
   }
 }
 function __c890(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          State: S.optional(S.String),
-          DryRun: S.optional(S.Boolean),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "EnableSnapshotBlockPublicAccessRequest",
-      });
+        S.Struct({ State: S.optional(S.String), DryRun: S.optional(S.Boolean) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "EnableSnapshotBlockPublicAccessRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           State: S.optional(S.String).pipe(T.XmlName("state"), T.Ec2QueryName("State")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "EnableSnapshotBlockPublicAccessResult",
-      });
+      ).annotate({ identifier: "EnableSnapshotBlockPublicAccessResult" });
   }
 }
 function __c891(j: number): any {
@@ -83926,9 +81233,7 @@ function __c891(j: number): any {
           DryRun: S.optional(S.Boolean),
           TransitGatewayRouteTableAnnouncementId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "EnableTransitGatewayRouteTablePropagationRequest",
-      });
+      ).annotate({ identifier: "EnableTransitGatewayRouteTablePropagationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -83936,9 +81241,7 @@ function __c891(j: number): any {
             .pipe(T.XmlName("propagation"), T.Ec2QueryName("Propagation"))
             .annotate({ identifier: "TransitGatewayPropagation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "EnableTransitGatewayRouteTablePropagationResult",
-      });
+      ).annotate({ identifier: "EnableTransitGatewayRouteTablePropagationResult" });
   }
 }
 function __c892(j: number): any {
@@ -83950,9 +81253,7 @@ function __c892(j: number): any {
           RouteTableId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "EnableVgwRoutePropagationRequest",
-      });
+      ).annotate({ identifier: "EnableVgwRoutePropagationRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "EnableVgwRoutePropagationResponse",
@@ -83982,17 +81283,13 @@ function __c894(j: number): any {
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
           VpcId: S.optional(S.String).pipe(T.XmlName("vpcId"), T.Ec2QueryName("VpcId")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "EnableVpcClassicLinkRequest",
-      });
+      ).annotate({ identifier: "EnableVpcClassicLinkRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "EnableVpcClassicLinkResult",
-      });
+      ).annotate({ identifier: "EnableVpcClassicLinkResult" });
   }
 }
 function __c895(j: number): any {
@@ -84002,17 +81299,13 @@ function __c895(j: number): any {
         S.Struct({ VpcId: S.optional(S.String).pipe(T.XmlName("VpcId")) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "EnableVpcClassicLinkDnsSupportRequest",
-      });
+      ).annotate({ identifier: "EnableVpcClassicLinkDnsSupportRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "EnableVpcClassicLinkDnsSupportResult",
-      });
+      ).annotate({ identifier: "EnableVpcClassicLinkDnsSupportResult" });
   }
 }
 function __c896(j: number): any {
@@ -84022,18 +81315,14 @@ function __c896(j: number): any {
         S.Struct({ ClientVpnEndpointId: S.optional(S.String), DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ExportClientVpnClientCertificateRevocationListRequest",
-      });
+      ).annotate({ identifier: "ExportClientVpnClientCertificateRevocationListRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Code: S.optional(S.String).pipe(T.XmlName("code"), T.Ec2QueryName("Code")),
           Message: S.optional(S.String).pipe(T.XmlName("message"), T.Ec2QueryName("Message")),
         }),
-      ).annotate({
-        identifier: "ClientCertificateRevocationListStatus",
-      });
+      ).annotate({ identifier: "ClientCertificateRevocationListStatus" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -84045,9 +81334,7 @@ function __c896(j: number): any {
             .pipe(T.XmlName("status"), T.Ec2QueryName("Status"))
             .annotate({ identifier: "ClientCertificateRevocationListStatus" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ExportClientVpnClientCertificateRevocationListResult",
-      });
+      ).annotate({ identifier: "ExportClientVpnClientCertificateRevocationListResult" });
   }
 }
 function __c897(j: number): any {
@@ -84057,9 +81344,7 @@ function __c897(j: number): any {
         S.Struct({ ClientVpnEndpointId: S.optional(S.String), DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ExportClientVpnClientConfigurationRequest",
-      });
+      ).annotate({ identifier: "ExportClientVpnClientConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -84068,9 +81353,7 @@ function __c897(j: number): any {
             T.Ec2QueryName("ClientConfiguration"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ExportClientVpnClientConfigurationResult",
-      });
+      ).annotate({ identifier: "ExportClientVpnClientConfigurationResult" });
   }
 }
 function __c898(j: number): any {
@@ -84078,9 +81361,7 @@ function __c898(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ S3Bucket: S.optional(S.String), S3Prefix: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ExportTaskS3LocationRequest",
-      });
+      ).annotate({ identifier: "ExportTaskS3LocationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -84135,9 +81416,7 @@ function __c899(j: number): any {
           S3Bucket: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ExportTransitGatewayRoutesRequest",
-      });
+      ).annotate({ identifier: "ExportTransitGatewayRoutesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -84146,9 +81425,7 @@ function __c899(j: number): any {
             T.Ec2QueryName("S3Location"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ExportTransitGatewayRoutesResult",
-      });
+      ).annotate({ identifier: "ExportTransitGatewayRoutesResult" });
   }
 }
 function __c900(j: number): any {
@@ -84159,9 +81436,7 @@ function __c900(j: number): any {
           VerifiedAccessInstanceId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ExportVerifiedAccessInstanceClientConfigurationRequest",
-      });
+      ).annotate({ identifier: "ExportVerifiedAccessInstanceClientConfigurationRequest" });
     case 1:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")));
     case 2:
@@ -84196,20 +81471,16 @@ function __c900(j: number): any {
             T.Ec2QueryName("PkceEnabled"),
           ),
         }),
-      ).annotate({
-        identifier: "VerifiedAccessInstanceUserTrustProviderClientConfiguration",
-      });
+      ).annotate({ identifier: "VerifiedAccessInstanceUserTrustProviderClientConfiguration" });
     case 3:
       return S.suspend(() =>
         S.Struct({ Cidr: S.optional(S.String).pipe(T.XmlName("cidr"), T.Ec2QueryName("Cidr")) }),
-      ).annotate({
-        identifier: "VerifiedAccessInstanceOpenVpnClientConfigurationRoute",
-      });
+      ).annotate({ identifier: "VerifiedAccessInstanceOpenVpnClientConfigurationRoute" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(28803, __c900, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VerifiedAccessInstanceOpenVpnClientConfigurationRoute",
-        }),
+        /*@__PURE__*/ __S(28803, __c900, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VerifiedAccessInstanceOpenVpnClientConfigurationRoute" }),
       );
     case 5:
       return S.suspend(() =>
@@ -84220,14 +81491,12 @@ function __c900(j: number): any {
             T.Ec2QueryName("RouteSet"),
           ),
         }),
-      ).annotate({
-        identifier: "VerifiedAccessInstanceOpenVpnClientConfiguration",
-      });
+      ).annotate({ identifier: "VerifiedAccessInstanceOpenVpnClientConfiguration" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ __S(28805, __c900, 5).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VerifiedAccessInstanceOpenVpnClientConfiguration",
-        }),
+        /*@__PURE__*/ __S(28805, __c900, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VerifiedAccessInstanceOpenVpnClientConfiguration" }),
       );
     case 7:
       return S.suspend(() =>
@@ -84250,9 +81519,7 @@ function __c900(j: number): any {
             T.Ec2QueryName("OpenVpnConfigurationSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ExportVerifiedAccessInstanceClientConfigurationResult",
-      });
+      ).annotate({ identifier: "ExportVerifiedAccessInstanceClientConfigurationResult" });
   }
 }
 function __c901(j: number): any {
@@ -84264,9 +81531,7 @@ function __c901(j: number): any {
           VpnTunnelOutsideIpAddress: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetActiveVpnTunnelStatusRequest",
-      });
+      ).annotate({ identifier: "GetActiveVpnTunnelStatusRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -84315,9 +81580,7 @@ function __c901(j: number): any {
             .pipe(T.XmlName("activeVpnTunnelStatus"), T.Ec2QueryName("ActiveVpnTunnelStatus"))
             .annotate({ identifier: "ActiveVpnTunnelStatus" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetActiveVpnTunnelStatusResult",
-      });
+      ).annotate({ identifier: "GetActiveVpnTunnelStatusResult" });
   }
 }
 function __c902(j: number): any {
@@ -84327,9 +81590,7 @@ function __c902(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetAllowedImagesSettingsRequest",
-      });
+      ).annotate({ identifier: "GetAllowedImagesSettingsRequest" });
     case 1:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")));
     case 2:
@@ -84374,14 +81635,12 @@ function __c902(j: number): any {
             T.Ec2QueryName("MaximumDaysSinceWatermarkCreated"),
           ),
         }),
-      ).annotate({
-        identifier: "ImageWatermarkFilterResponse",
-      });
+      ).annotate({ identifier: "ImageWatermarkFilterResponse" });
     case 7:
       return S.Array(
-        /*@__PURE__*/ __S(28870, __c902, 6).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ImageWatermarkFilterResponse",
-        }),
+        /*@__PURE__*/ __S(28870, __c902, 6)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ImageWatermarkFilterResponse" }),
       );
     case 8:
       return S.suspend(() =>
@@ -84412,9 +81671,9 @@ function __c902(j: number): any {
       ).annotate({ identifier: "ImageCriterion" });
     case 9:
       return S.Array(
-        /*@__PURE__*/ __S(28872, __c902, 8).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ImageCriterion",
-        }),
+        /*@__PURE__*/ __S(28872, __c902, 8)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ImageCriterion" }),
       );
     case 10:
       return S.suspend(() =>
@@ -84426,9 +81685,7 @@ function __c902(j: number): any {
           ),
           ManagedBy: S.optional(S.String).pipe(T.XmlName("managedBy"), T.Ec2QueryName("ManagedBy")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetAllowedImagesSettingsResult",
-      });
+      ).annotate({ identifier: "GetAllowedImagesSettingsResult" });
   }
 }
 function __c903(j: number): any {
@@ -84438,9 +81695,7 @@ function __c903(j: number): any {
         S.Struct({ CertificateArn: S.optional(S.String), DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetAssociatedEnclaveCertificateIamRolesRequest",
-      });
+      ).annotate({ identifier: "GetAssociatedEnclaveCertificateIamRolesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -84464,9 +81719,9 @@ function __c903(j: number): any {
       ).annotate({ identifier: "AssociatedRole" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(28897, __c903, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "AssociatedRole",
-        }),
+        /*@__PURE__*/ __S(28897, __c903, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "AssociatedRole" }),
       );
     case 3:
       return S.suspend(() =>
@@ -84476,9 +81731,7 @@ function __c903(j: number): any {
             T.Ec2QueryName("AssociatedRoleSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetAssociatedEnclaveCertificateIamRolesResult",
-      });
+      ).annotate({ identifier: "GetAssociatedEnclaveCertificateIamRolesResult" });
   }
 }
 function __c904(j: number): any {
@@ -84491,9 +81744,7 @@ function __c904(j: number): any {
           MaxResults: S.optional(S.Number),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetAssociatedIpv6PoolCidrsRequest",
-      });
+      ).annotate({ identifier: "GetAssociatedIpv6PoolCidrsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -84506,9 +81757,9 @@ function __c904(j: number): any {
       ).annotate({ identifier: "Ipv6CidrAssociation" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(28929, __c904, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "Ipv6CidrAssociation",
-        }),
+        /*@__PURE__*/ __S(28929, __c904, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "Ipv6CidrAssociation" }),
       );
     case 3:
       return S.suspend(() =>
@@ -84519,9 +81770,7 @@ function __c904(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetAssociatedIpv6PoolCidrsResult",
-      });
+      ).annotate({ identifier: "GetAssociatedIpv6PoolCidrsResult" });
   }
 }
 function __c905(j: number): any {
@@ -84549,9 +81798,7 @@ function __c905(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetAwsNetworkPerformanceDataRequest",
-      });
+      ).annotate({ identifier: "GetAwsNetworkPerformanceDataRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -84569,9 +81816,9 @@ function __c905(j: number): any {
       ).annotate({ identifier: "MetricPoint" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(28963, __c905, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "MetricPoint",
-        }),
+        /*@__PURE__*/ __S(28963, __c905, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "MetricPoint" }),
       );
     case 5:
       return S.suspend(() =>
@@ -84593,9 +81840,9 @@ function __c905(j: number): any {
       ).annotate({ identifier: "DataResponse" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ __S(28965, __c905, 5).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "DataResponse",
-        }),
+        /*@__PURE__*/ __S(28965, __c905, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "DataResponse" }),
       );
     case 7:
       return S.suspend(() =>
@@ -84606,9 +81853,7 @@ function __c905(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetAwsNetworkPerformanceDataResult",
-      });
+      ).annotate({ identifier: "GetAwsNetworkPerformanceDataResult" });
   }
 }
 function __c906(j: number): any {
@@ -84618,9 +81863,7 @@ function __c906(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetCapacityManagerAttributesRequest",
-      });
+      ).annotate({ identifier: "GetCapacityManagerAttributesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -84654,9 +81897,7 @@ function __c906(j: number): any {
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ).pipe(T.XmlName("latestDatapointTimestamp"), T.Ec2QueryName("LatestDatapointTimestamp")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetCapacityManagerAttributesResult",
-      });
+      ).annotate({ identifier: "GetCapacityManagerAttributesResult" });
   }
 }
 function __c907(j: number): any {
@@ -84674,9 +81915,7 @@ function __c907(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetCapacityManagerMetricDataRequest",
-      });
+      ).annotate({ identifier: "GetCapacityManagerMetricDataRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -84686,9 +81925,9 @@ function __c907(j: number): any {
       ).annotate({ identifier: "MetricValue" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(29025, __c907, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "MetricValue",
-        }),
+        /*@__PURE__*/ __S(29025, __c907, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "MetricValue" }),
       );
     case 3:
       return S.suspend(() =>
@@ -84708,9 +81947,9 @@ function __c907(j: number): any {
       ).annotate({ identifier: "MetricDataResult" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(29027, __c907, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "MetricDataResult",
-        }),
+        /*@__PURE__*/ __S(29027, __c907, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "MetricDataResult" }),
       );
     case 5:
       return S.suspend(() =>
@@ -84721,9 +81960,7 @@ function __c907(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetCapacityManagerMetricDataResult",
-      });
+      ).annotate({ identifier: "GetCapacityManagerMetricDataResult" });
   }
 }
 function __c908(j: number): any {
@@ -84748,9 +81985,9 @@ function __c908(j: number): any {
       ).annotate({ identifier: "CapacityManagerCondition" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(29060, __c908, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CapacityManagerCondition",
-        }),
+        /*@__PURE__*/ __S(29060, __c908, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CapacityManagerCondition" }),
       );
     case 6:
       return S.suspend(() =>
@@ -84758,14 +81995,12 @@ function __c908(j: number): any {
           Key: S.optional(S.String).pipe(T.XmlName("key"), T.Ec2QueryName("Key")),
           Value: S.optional(S.String).pipe(T.XmlName("value"), T.Ec2QueryName("Value")),
         }),
-      ).annotate({
-        identifier: "CapacityManagerTagDimension",
-      });
+      ).annotate({ identifier: "CapacityManagerTagDimension" });
     case 7:
       return S.Array(
-        /*@__PURE__*/ __S(29062, __c908, 6).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CapacityManagerTagDimension",
-        }),
+        /*@__PURE__*/ __S(29062, __c908, 6)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CapacityManagerTagDimension" }),
       );
     case 8:
       return S.suspend(() =>
@@ -84861,14 +82096,12 @@ function __c909(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetCapacityManagerMetricDimensionsRequest",
-      });
+      ).annotate({ identifier: "GetCapacityManagerMetricDimensionsRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(29064, __c908, 8).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CapacityManagerDimension",
-        }),
+        /*@__PURE__*/ __S(29064, __c908, 8)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CapacityManagerDimension" }),
       );
     case 2:
       return S.suspend(() =>
@@ -84879,9 +82112,7 @@ function __c909(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetCapacityManagerMetricDimensionsResult",
-      });
+      ).annotate({ identifier: "GetCapacityManagerMetricDimensionsResult" });
   }
 }
 function __c910(j: number): any {
@@ -84893,9 +82124,7 @@ function __c910(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetCapacityManagerMonitoredTagKeysRequest",
-      });
+      ).annotate({ identifier: "GetCapacityManagerMonitoredTagKeysRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -84905,9 +82134,7 @@ function __c910(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetCapacityManagerMonitoredTagKeysResult",
-      });
+      ).annotate({ identifier: "GetCapacityManagerMonitoredTagKeysResult" });
   }
 }
 function __c911(j: number): any {
@@ -84932,14 +82159,12 @@ function __c911(j: number): any {
             T.Ec2QueryName("EarliestDatapointTimestamp"),
           ),
         }),
-      ).annotate({
-        identifier: "CapacityManagerMonitoredTagKey",
-      });
+      ).annotate({ identifier: "CapacityManagerMonitoredTagKey" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(29152, __c911, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CapacityManagerMonitoredTagKey",
-        }),
+        /*@__PURE__*/ __S(29152, __c911, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CapacityManagerMonitoredTagKey" }),
       );
   }
 }
@@ -84953,9 +82178,7 @@ function __c912(j: number): any {
           MaxResults: S.optional(S.Number),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetCapacityReservationUsageRequest",
-      });
+      ).annotate({ identifier: "GetCapacityReservationUsageRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -84968,9 +82191,9 @@ function __c912(j: number): any {
       ).annotate({ identifier: "InstanceUsage" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(29185, __c912, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceUsage",
-        }),
+        /*@__PURE__*/ __S(29185, __c912, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceUsage" }),
       );
     case 3:
       return S.suspend(() =>
@@ -85011,9 +82234,7 @@ function __c912(j: number): any {
             .pipe(T.XmlName("interruptionInfo"), T.Ec2QueryName("InterruptionInfo"))
             .annotate({ identifier: "InterruptionInfo" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetCapacityReservationUsageResult",
-      });
+      ).annotate({ identifier: "GetCapacityReservationUsageResult" });
   }
 }
 function __c913(j: number): any {
@@ -85023,9 +82244,7 @@ function __c913(j: number): any {
         S.Struct({ ClientVpnEndpointId: S.optional(S.String), DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetClientVpnEndpointAuthorizationPolicyRequest",
-      });
+      ).annotate({ identifier: "GetClientVpnEndpointAuthorizationPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -85047,9 +82266,7 @@ function __c913(j: number): any {
           ),
           Status: S.optional(S.String).pipe(T.XmlName("status"), T.Ec2QueryName("Status")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetClientVpnEndpointAuthorizationPolicyResult",
-      });
+      ).annotate({ identifier: "GetClientVpnEndpointAuthorizationPolicyResult" });
   }
 }
 function __c914(j: number): any {
@@ -85084,9 +82301,9 @@ function __c914(j: number): any {
       ).annotate({ identifier: "CoipAddressUsage" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(29249, __c914, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CoipAddressUsage",
-        }),
+        /*@__PURE__*/ __S(29249, __c914, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CoipAddressUsage" }),
       );
     case 3:
       return S.suspend(() =>
@@ -85143,9 +82360,7 @@ function __c916(j: number): any {
           InstanceId: S.optional(S.String),
           WakeUp: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetConsoleScreenshotRequest",
-      });
+      ).annotate({ identifier: "GetConsoleScreenshotRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -85155,9 +82370,7 @@ function __c916(j: number): any {
             T.Ec2QueryName("InstanceId"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetConsoleScreenshotResult",
-      });
+      ).annotate({ identifier: "GetConsoleScreenshotResult" });
   }
 }
 function __c917(j: number): any {
@@ -85167,9 +82380,7 @@ function __c917(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean), ReportId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetDeclarativePoliciesReportSummaryRequest",
-      });
+      ).annotate({ identifier: "GetDeclarativePoliciesReportSummaryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -85189,9 +82400,9 @@ function __c917(j: number): any {
       ).annotate({ identifier: "RegionalSummary" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(29345, __c917, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "RegionalSummary",
-        }),
+        /*@__PURE__*/ __S(29345, __c917, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "RegionalSummary" }),
       );
     case 3:
       return S.suspend(() =>
@@ -85220,9 +82431,9 @@ function __c917(j: number): any {
       ).annotate({ identifier: "AttributeSummary" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(29347, __c917, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "AttributeSummary",
-        }),
+        /*@__PURE__*/ __S(29347, __c917, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "AttributeSummary" }),
       );
     case 5:
       return S.suspend(() =>
@@ -85252,22 +82463,17 @@ function __c917(j: number): any {
             T.Ec2QueryName("AttributeSummarySet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetDeclarativePoliciesReportSummaryResult",
-      });
+      ).annotate({ identifier: "GetDeclarativePoliciesReportSummaryResult" });
   }
 }
 function __c918(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          DryRun: S.optional(S.Boolean),
-          InstanceFamily: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetDefaultCreditSpecificationRequest",
-      });
+        S.Struct({ DryRun: S.optional(S.Boolean), InstanceFamily: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetDefaultCreditSpecificationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -85278,9 +82484,7 @@ function __c918(j: number): any {
             )
             .annotate({ identifier: "InstanceFamilyCreditSpecification" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetDefaultCreditSpecificationResult",
-      });
+      ).annotate({ identifier: "GetDefaultCreditSpecificationResult" });
   }
 }
 function __c919(j: number): any {
@@ -85297,9 +82501,7 @@ function __c919(j: number): any {
             T.Ec2QueryName("CpuCredits"),
           ),
         }),
-      ).annotate({
-        identifier: "InstanceFamilyCreditSpecification",
-      });
+      ).annotate({ identifier: "InstanceFamilyCreditSpecification" });
   }
 }
 function __c920(j: number): any {
@@ -85309,17 +82511,13 @@ function __c920(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetEbsDefaultKmsKeyIdRequest",
-      });
+      ).annotate({ identifier: "GetEbsDefaultKmsKeyIdRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           KmsKeyId: S.optional(S.String).pipe(T.XmlName("kmsKeyId"), T.Ec2QueryName("KmsKeyId")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetEbsDefaultKmsKeyIdResult",
-      });
+      ).annotate({ identifier: "GetEbsDefaultKmsKeyIdResult" });
   }
 }
 function __c921(j: number): any {
@@ -85329,9 +82527,7 @@ function __c921(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetEbsEncryptionByDefaultRequest",
-      });
+      ).annotate({ identifier: "GetEbsEncryptionByDefaultRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -85341,9 +82537,7 @@ function __c921(j: number): any {
           ),
           SseType: S.optional(S.String).pipe(T.XmlName("sseType"), T.Ec2QueryName("SseType")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetEbsEncryptionByDefaultResult",
-      });
+      ).annotate({ identifier: "GetEbsEncryptionByDefaultResult" });
   }
 }
 function __c922(j: number): any {
@@ -85353,9 +82547,7 @@ function __c922(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetEnabledIpamPolicyRequest",
-      });
+      ).annotate({ identifier: "GetEnabledIpamPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -85369,9 +82561,7 @@ function __c922(j: number): any {
           ),
           ManagedBy: S.optional(S.String).pipe(T.XmlName("managedBy"), T.Ec2QueryName("ManagedBy")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetEnabledIpamPolicyResult",
-      });
+      ).annotate({ identifier: "GetEnabledIpamPolicyResult" });
   }
 }
 function __c923(j: number): any {
@@ -85387,9 +82577,9 @@ function __c923(j: number): any {
       ).annotate({ identifier: "AthenaIntegration" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(29536, __c923, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "AthenaIntegration",
-        }),
+        /*@__PURE__*/ __S(29536, __c923, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "AthenaIntegration" }),
       );
     case 2:
       return S.suspend(() =>
@@ -85409,17 +82599,13 @@ function __c923(j: number): any {
             .pipe(T.XmlName("IntegrateService"))
             .annotate({ identifier: "IntegrateServices" }),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetFlowLogsIntegrationTemplateRequest",
-      });
+      ).annotate({ identifier: "GetFlowLogsIntegrationTemplateRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           Result: S.optional(S.String).pipe(T.XmlName("result"), T.Ec2QueryName("Result")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetFlowLogsIntegrationTemplateResult",
-      });
+      ).annotate({ identifier: "GetFlowLogsIntegrationTemplateResult" });
   }
 }
 function __c924(j: number): any {
@@ -85432,9 +82618,7 @@ function __c924(j: number): any {
           MaxResults: S.optional(S.Number),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetGroupsForCapacityReservationRequest",
-      });
+      ).annotate({ identifier: "GetGroupsForCapacityReservationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -85444,9 +82628,9 @@ function __c924(j: number): any {
       ).annotate({ identifier: "CapacityReservationGroup" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(29569, __c924, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "CapacityReservationGroup",
-        }),
+        /*@__PURE__*/ __S(29569, __c924, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "CapacityReservationGroup" }),
       );
     case 3:
       return S.suspend(() =>
@@ -85457,9 +82641,7 @@ function __c924(j: number): any {
             T.Ec2QueryName("CapacityReservationGroupSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetGroupsForCapacityReservationResult",
-      });
+      ).annotate({ identifier: "GetGroupsForCapacityReservationResult" });
   }
 }
 function __c925(j: number): any {
@@ -85470,9 +82652,7 @@ function __c925(j: number): any {
           HostIdSet: S.optional(__S(29632, __c926, 0)),
           OfferingId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetHostReservationPurchasePreviewRequest",
-      });
+      ).annotate({ identifier: "GetHostReservationPurchasePreviewRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -85493,9 +82673,7 @@ function __c925(j: number): any {
             T.Ec2QueryName("TotalUpfrontPrice"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetHostReservationPurchasePreviewResult",
-      });
+      ).annotate({ identifier: "GetHostReservationPurchasePreviewResult" });
   }
 }
 function __c926(j: number): any {
@@ -85576,9 +82754,9 @@ function __c927(j: number): any {
       ).annotate({ identifier: "ImageAncestryEntry" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(29665, __c927, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ImageAncestryEntry",
-        }),
+        /*@__PURE__*/ __S(29665, __c927, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ImageAncestryEntry" }),
       );
     case 3:
       return S.suspend(() =>
@@ -85598,9 +82776,7 @@ function __c928(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetImageBlockPublicAccessStateRequest",
-      });
+      ).annotate({ identifier: "GetImageBlockPublicAccessStateRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -85610,9 +82786,7 @@ function __c928(j: number): any {
           ),
           ManagedBy: S.optional(S.String).pipe(T.XmlName("managedBy"), T.Ec2QueryName("ManagedBy")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetImageBlockPublicAccessStateResult",
-      });
+      ).annotate({ identifier: "GetImageBlockPublicAccessStateResult" });
   }
 }
 function __c929(j: number): any {
@@ -85622,9 +82796,7 @@ function __c929(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetInstanceMetadataDefaultsRequest",
-      });
+      ).annotate({ identifier: "GetInstanceMetadataDefaultsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -85654,9 +82826,7 @@ function __c929(j: number): any {
             T.Ec2QueryName("HttpTokensEnforced"),
           ),
         }),
-      ).annotate({
-        identifier: "InstanceMetadataDefaultsResponse",
-      });
+      ).annotate({ identifier: "InstanceMetadataDefaultsResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -85664,9 +82834,7 @@ function __c929(j: number): any {
             .pipe(T.XmlName("accountLevel"), T.Ec2QueryName("AccountLevel"))
             .annotate({ identifier: "InstanceMetadataDefaultsResponse" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetInstanceMetadataDefaultsResult",
-      });
+      ).annotate({ identifier: "GetInstanceMetadataDefaultsResult" });
   }
 }
 function __c930(j: number): any {
@@ -85679,9 +82847,7 @@ function __c930(j: number): any {
           KeyFormat: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetInstanceTpmEkPubRequest",
-      });
+      ).annotate({ identifier: "GetInstanceTpmEkPubRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -85696,9 +82862,7 @@ function __c930(j: number): any {
             T.Ec2QueryName("KeyValue"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetInstanceTpmEkPubResult",
-      });
+      ).annotate({ identifier: "GetInstanceTpmEkPubResult" });
   }
 }
 function __c931(j: number): any {
@@ -85716,9 +82880,7 @@ function __c931(j: number): any {
           NextToken: S.optional(S.String),
           Context: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetInstanceTypesFromInstanceRequirementsRequest",
-      });
+      ).annotate({ identifier: "GetInstanceTypesFromInstanceRequirementsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -85727,14 +82889,12 @@ function __c931(j: number): any {
             T.Ec2QueryName("InstanceType"),
           ),
         }),
-      ).annotate({
-        identifier: "InstanceTypeInfoFromInstanceRequirements",
-      });
+      ).annotate({ identifier: "InstanceTypeInfoFromInstanceRequirements" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(29793, __c931, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceTypeInfoFromInstanceRequirements",
-        }),
+        /*@__PURE__*/ __S(29793, __c931, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceTypeInfoFromInstanceRequirements" }),
       );
     case 3:
       return S.suspend(() =>
@@ -85745,9 +82905,7 @@ function __c931(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetInstanceTypesFromInstanceRequirementsResult",
-      });
+      ).annotate({ identifier: "GetInstanceTypesFromInstanceRequirementsResult" });
   }
 }
 function __c932(j: number): any {
@@ -85766,9 +82924,7 @@ function __c933(j: number): any {
           InstanceId: S.optional(S.String).pipe(T.XmlName("InstanceId")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetInstanceUefiDataRequest",
-      });
+      ).annotate({ identifier: "GetInstanceUefiDataRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -85781,9 +82937,7 @@ function __c933(j: number): any {
             T.Ec2QueryName("UefiData"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetInstanceUefiDataResult",
-      });
+      ).annotate({ identifier: "GetInstanceUefiDataResult" });
   }
 }
 function __c934(j: number): any {
@@ -85800,9 +82954,7 @@ function __c934(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetIpamAddressHistoryRequest",
-      });
+      ).annotate({ identifier: "GetIpamAddressHistoryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -85851,9 +83003,9 @@ function __c934(j: number): any {
       ).annotate({ identifier: "IpamAddressHistoryRecord" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(29889, __c934, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamAddressHistoryRecord",
-        }),
+        /*@__PURE__*/ __S(29889, __c934, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamAddressHistoryRecord" }),
       );
     case 3:
       return S.suspend(() =>
@@ -85864,9 +83016,7 @@ function __c934(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetIpamAddressHistoryResult",
-      });
+      ).annotate({ identifier: "GetIpamAddressHistoryResult" });
   }
 }
 function __c935(j: number): any {
@@ -85881,18 +83031,14 @@ function __c935(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetIpamDiscoveredAccountsRequest",
-      });
+      ).annotate({ identifier: "GetIpamDiscoveredAccountsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Code: S.optional(S.String).pipe(T.XmlName("code"), T.Ec2QueryName("Code")),
           Message: S.optional(S.String).pipe(T.XmlName("message"), T.Ec2QueryName("Message")),
         }),
-      ).annotate({
-        identifier: "IpamDiscoveryFailureReason",
-      });
+      ).annotate({ identifier: "IpamDiscoveryFailureReason" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -85924,9 +83070,9 @@ function __c935(j: number): any {
       ).annotate({ identifier: "IpamDiscoveredAccount" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(29922, __c935, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamDiscoveredAccount",
-        }),
+        /*@__PURE__*/ __S(29922, __c935, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamDiscoveredAccount" }),
       );
     case 4:
       return S.suspend(() =>
@@ -85937,9 +83083,7 @@ function __c935(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetIpamDiscoveredAccountsResult",
-      });
+      ).annotate({ identifier: "GetIpamDiscoveredAccountsResult" });
   }
 }
 function __c936(j: number): any {
@@ -85954,9 +83098,7 @@ function __c936(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetIpamDiscoveredPublicAddressesRequest",
-      });
+      ).annotate({ identifier: "GetIpamDiscoveredPublicAddressesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -85966,9 +83108,9 @@ function __c936(j: number): any {
       ).annotate({ identifier: "IpamPublicAddressTag" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(29953, __c936, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamPublicAddressTag",
-        }),
+        /*@__PURE__*/ __S(29953, __c936, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamPublicAddressTag" }),
       );
     case 3:
       return S.suspend(() =>
@@ -85985,14 +83127,12 @@ function __c936(j: number): any {
           GroupName: S.optional(S.String).pipe(T.XmlName("groupName"), T.Ec2QueryName("GroupName")),
           GroupId: S.optional(S.String).pipe(T.XmlName("groupId"), T.Ec2QueryName("GroupId")),
         }),
-      ).annotate({
-        identifier: "IpamPublicAddressSecurityGroup",
-      });
+      ).annotate({ identifier: "IpamPublicAddressSecurityGroup" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(29956, __c936, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamPublicAddressSecurityGroup",
-        }),
+        /*@__PURE__*/ __S(29956, __c936, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamPublicAddressSecurityGroup" }),
       );
     case 6:
       return S.suspend(() =>
@@ -86061,14 +83201,12 @@ function __c936(j: number): any {
             T.Ec2QueryName("SampleTime"),
           ),
         }),
-      ).annotate({
-        identifier: "IpamDiscoveredPublicAddress",
-      });
+      ).annotate({ identifier: "IpamDiscoveredPublicAddress" });
     case 7:
       return S.Array(
-        /*@__PURE__*/ __S(29958, __c936, 6).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamDiscoveredPublicAddress",
-        }),
+        /*@__PURE__*/ __S(29958, __c936, 6)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamDiscoveredPublicAddress" }),
       );
     case 8:
       return S.suspend(() =>
@@ -86083,9 +83221,7 @@ function __c936(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetIpamDiscoveredPublicAddressesResult",
-      });
+      ).annotate({ identifier: "GetIpamDiscoveredPublicAddressesResult" });
   }
 }
 function __c937(j: number): any {
@@ -86100,9 +83236,7 @@ function __c937(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetIpamDiscoveredResourceCidrsRequest",
-      });
+      ).annotate({ identifier: "GetIpamDiscoveredResourceCidrsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -86151,14 +83285,12 @@ function __c937(j: number): any {
             T.Ec2QueryName("AvailabilityZoneId"),
           ),
         }),
-      ).annotate({
-        identifier: "IpamDiscoveredResourceCidr",
-      });
+      ).annotate({ identifier: "IpamDiscoveredResourceCidr" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(29985, __c937, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamDiscoveredResourceCidr",
-        }),
+        /*@__PURE__*/ __S(29985, __c937, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamDiscoveredResourceCidr" }),
       );
     case 3:
       return S.suspend(() =>
@@ -86169,9 +83301,7 @@ function __c937(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetIpamDiscoveredResourceCidrsResult",
-      });
+      ).annotate({ identifier: "GetIpamDiscoveredResourceCidrsResult" });
   }
 }
 function __c938(j: number): any {
@@ -86186,9 +83316,7 @@ function __c938(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetIpamDiscoveredRoutesRequest",
-      });
+      ).annotate({ identifier: "GetIpamDiscoveredRoutesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -86228,9 +83356,9 @@ function __c938(j: number): any {
       ).annotate({ identifier: "IpamDiscoveredRoute" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(30017, __c938, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamDiscoveredRoute",
-        }),
+        /*@__PURE__*/ __S(30017, __c938, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamDiscoveredRoute" }),
       );
     case 3:
       return S.suspend(() =>
@@ -86241,9 +83369,7 @@ function __c938(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetIpamDiscoveredRoutesResult",
-      });
+      ).annotate({ identifier: "GetIpamDiscoveredRoutesResult" });
   }
 }
 function __c939(j: number): any {
@@ -86257,9 +83383,7 @@ function __c939(j: number): any {
           NextToken: S.optional(S.String),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetIpamInternetRegistryAssociationAsnsRequest",
-      });
+      ).annotate({ identifier: "GetIpamInternetRegistryAssociationAsnsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -86269,14 +83393,12 @@ function __c939(j: number): any {
             T.Ec2QueryName("LastObservedAt"),
           ),
         }),
-      ).annotate({
-        identifier: "IpamInternetRegistryAssociationAsn",
-      });
+      ).annotate({ identifier: "IpamInternetRegistryAssociationAsn" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(30049, __c939, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamInternetRegistryAssociationAsn",
-        }),
+        /*@__PURE__*/ __S(30049, __c939, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamInternetRegistryAssociationAsn" }),
       );
     case 3:
       return S.suspend(() =>
@@ -86287,9 +83409,7 @@ function __c939(j: number): any {
             T.Ec2QueryName("IpamInternetRegistryAssociationAsnSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetIpamInternetRegistryAssociationAsnsResult",
-      });
+      ).annotate({ identifier: "GetIpamInternetRegistryAssociationAsnsResult" });
   }
 }
 function __c940(j: number): any {
@@ -86303,9 +83423,7 @@ function __c940(j: number): any {
           NextToken: S.optional(S.String),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetIpamInternetRegistryAssociationCidrsRequest",
-      });
+      ).annotate({ identifier: "GetIpamInternetRegistryAssociationCidrsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -86315,14 +83433,12 @@ function __c940(j: number): any {
             T.Ec2QueryName("LastObservedAt"),
           ),
         }),
-      ).annotate({
-        identifier: "IpamInternetRegistryAssociationCidr",
-      });
+      ).annotate({ identifier: "IpamInternetRegistryAssociationCidr" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(30081, __c940, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamInternetRegistryAssociationCidr",
-        }),
+        /*@__PURE__*/ __S(30081, __c940, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamInternetRegistryAssociationCidr" }),
       );
     case 3:
       return S.suspend(() =>
@@ -86333,9 +83449,7 @@ function __c940(j: number): any {
             T.Ec2QueryName("IpamInternetRegistryAssociationCidrSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetIpamInternetRegistryAssociationCidrsResult",
-      });
+      ).annotate({ identifier: "GetIpamInternetRegistryAssociationCidrsResult" });
   }
 }
 function __c941(j: number): any {
@@ -86351,14 +83465,12 @@ function __c941(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetIpamPolicyAllocationRulesRequest",
-      });
+      ).annotate({ identifier: "GetIpamPolicyAllocationRulesRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(30146, __c942, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamPolicyDocument",
-        }),
+        /*@__PURE__*/ __S(30146, __c942, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamPolicyDocument" }),
       );
     case 2:
       return S.suspend(() =>
@@ -86369,9 +83481,7 @@ function __c941(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetIpamPolicyAllocationRulesResult",
-      });
+      ).annotate({ identifier: "GetIpamPolicyAllocationRulesResult" });
   }
 }
 function __c942(j: number): any {
@@ -86387,9 +83497,9 @@ function __c942(j: number): any {
       ).annotate({ identifier: "IpamPolicyAllocationRule" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(30144, __c942, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamPolicyAllocationRule",
-        }),
+        /*@__PURE__*/ __S(30144, __c942, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamPolicyAllocationRule" }),
       );
     case 2:
       return S.suspend(() =>
@@ -86422,9 +83532,7 @@ function __c943(j: number): any {
           IpamPolicyId: S.optional(S.String),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetIpamPolicyOrganizationTargetsRequest",
-      });
+      ).annotate({ identifier: "GetIpamPolicyOrganizationTargetsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -86433,14 +83541,12 @@ function __c943(j: number): any {
             T.Ec2QueryName("OrganizationTargetId"),
           ),
         }),
-      ).annotate({
-        identifier: "IpamPolicyOrganizationTarget",
-      });
+      ).annotate({ identifier: "IpamPolicyOrganizationTarget" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(30177, __c943, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamPolicyOrganizationTarget",
-        }),
+        /*@__PURE__*/ __S(30177, __c943, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamPolicyOrganizationTarget" }),
       );
     case 3:
       return S.suspend(() =>
@@ -86451,9 +83557,7 @@ function __c943(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetIpamPolicyOrganizationTargetsResult",
-      });
+      ).annotate({ identifier: "GetIpamPolicyOrganizationTargetsResult" });
   }
 }
 function __c944(j: number): any {
@@ -86468,9 +83572,7 @@ function __c944(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetIpamPoolAllocationsRequest",
-      });
+      ).annotate({ identifier: "GetIpamPoolAllocationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -86480,9 +83582,7 @@ function __c944(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetIpamPoolAllocationsResult",
-      });
+      ).annotate({ identifier: "GetIpamPoolAllocationsResult" });
   }
 }
 function __c945(j: number): any {
@@ -86499,9 +83599,9 @@ function __c945(j: number): any {
       ).annotate({ identifier: "GetIpamPoolCidrsRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(17665, __c552, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamPoolCidr",
-        }),
+        /*@__PURE__*/ __S(17665, __c552, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamPoolCidr" }),
       );
     case 2:
       return S.suspend(() =>
@@ -86526,9 +83626,7 @@ function __c946(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetIpamPrefixListResolverRulesRequest",
-      });
+      ).annotate({ identifier: "GetIpamPrefixListResolverRulesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -86554,14 +83652,12 @@ function __c946(j: number): any {
             .annotate({ identifier: "IpamResourceTag" }),
           Cidr: S.optional(S.String).pipe(T.XmlName("cidr"), T.Ec2QueryName("Cidr")),
         }),
-      ).annotate({
-        identifier: "IpamPrefixListResolverRuleCondition",
-      });
+      ).annotate({ identifier: "IpamPrefixListResolverRuleCondition" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(30273, __c946, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamPrefixListResolverRuleCondition",
-        }),
+        /*@__PURE__*/ __S(30273, __c946, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamPrefixListResolverRuleCondition" }),
       );
     case 3:
       return S.suspend(() =>
@@ -86584,14 +83680,12 @@ function __c946(j: number): any {
             T.Ec2QueryName("ConditionSet"),
           ),
         }),
-      ).annotate({
-        identifier: "IpamPrefixListResolverRule",
-      });
+      ).annotate({ identifier: "IpamPrefixListResolverRule" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(30275, __c946, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamPrefixListResolverRule",
-        }),
+        /*@__PURE__*/ __S(30275, __c946, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamPrefixListResolverRule" }),
       );
     case 5:
       return S.suspend(() =>
@@ -86602,9 +83696,7 @@ function __c946(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetIpamPrefixListResolverRulesResult",
-      });
+      ).annotate({ identifier: "GetIpamPrefixListResolverRulesResult" });
   }
 }
 function __c947(j: number): any {
@@ -86618,20 +83710,16 @@ function __c947(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetIpamPrefixListResolverVersionEntriesRequest",
-      });
+      ).annotate({ identifier: "GetIpamPrefixListResolverVersionEntriesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Cidr: S.optional(S.String).pipe(T.XmlName("cidr"), T.Ec2QueryName("Cidr")) }),
-      ).annotate({
-        identifier: "IpamPrefixListResolverVersionEntry",
-      });
+      ).annotate({ identifier: "IpamPrefixListResolverVersionEntry" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(30305, __c947, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamPrefixListResolverVersionEntry",
-        }),
+        /*@__PURE__*/ __S(30305, __c947, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamPrefixListResolverVersionEntry" }),
       );
     case 3:
       return S.suspend(() =>
@@ -86642,9 +83730,7 @@ function __c947(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetIpamPrefixListResolverVersionEntriesResult",
-      });
+      ).annotate({ identifier: "GetIpamPrefixListResolverVersionEntriesResult" });
   }
 }
 function __c948(j: number): any {
@@ -86663,22 +83749,18 @@ function __c948(j: number): any {
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetIpamPrefixListResolverVersionsRequest",
-      });
+      ).annotate({ identifier: "GetIpamPrefixListResolverVersionsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           Version: S.optional(S.Number).pipe(T.XmlName("version"), T.Ec2QueryName("Version")),
         }),
-      ).annotate({
-        identifier: "IpamPrefixListResolverVersion",
-      });
+      ).annotate({ identifier: "IpamPrefixListResolverVersion" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(30338, __c948, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamPrefixListResolverVersion",
-        }),
+        /*@__PURE__*/ __S(30338, __c948, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamPrefixListResolverVersion" }),
       );
     case 4:
       return S.suspend(() =>
@@ -86689,9 +83771,7 @@ function __c948(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetIpamPrefixListResolverVersionsResult",
-      });
+      ).annotate({ identifier: "GetIpamPrefixListResolverVersionsResult" });
   }
 }
 function __c949(j: number): any {
@@ -86710,14 +83790,12 @@ function __c949(j: number): any {
           ResourceTag: S.optional(__S(8544, __c267, 0)),
           ResourceOwner: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetIpamResourceCidrsRequest",
-      });
+      ).annotate({ identifier: "GetIpamResourceCidrsRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(30400, __c950, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamResourceCidr",
-        }),
+        /*@__PURE__*/ __S(30400, __c950, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamResourceCidr" }),
       );
     case 2:
       return S.suspend(() =>
@@ -86728,9 +83806,7 @@ function __c949(j: number): any {
             T.Ec2QueryName("IpamResourceCidrSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetIpamResourceCidrsResult",
-      });
+      ).annotate({ identifier: "GetIpamResourceCidrsResult" });
   }
 }
 function __c950(j: number): any {
@@ -86808,9 +83884,7 @@ function __c951(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetIpamRouteOriginAuthorizationsRequest",
-      });
+      ).annotate({ identifier: "GetIpamRouteOriginAuthorizationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -86818,14 +83892,12 @@ function __c951(j: number): any {
           Asn: S.optional(S.String).pipe(T.XmlName("asn"), T.Ec2QueryName("Asn")),
           MaxLength: S.optional(S.Number).pipe(T.XmlName("maxLength"), T.Ec2QueryName("MaxLength")),
         }),
-      ).annotate({
-        identifier: "IpamRouteOriginAuthorizationInfo",
-      });
+      ).annotate({ identifier: "IpamRouteOriginAuthorizationInfo" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(30433, __c951, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamRouteOriginAuthorizationInfo",
-        }),
+        /*@__PURE__*/ __S(30433, __c951, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamRouteOriginAuthorizationInfo" }),
       );
     case 3:
       return S.suspend(() =>
@@ -86836,9 +83908,7 @@ function __c951(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetIpamRouteOriginAuthorizationsResult",
-      });
+      ).annotate({ identifier: "GetIpamRouteOriginAuthorizationsResult" });
   }
 }
 function __c952(j: number): any {
@@ -86852,9 +83922,7 @@ function __c952(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetIpamRouteProtectionFindingsRequest",
-      });
+      ).annotate({ identifier: "GetIpamRouteProtectionFindingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -86867,14 +83935,12 @@ function __c952(j: number): any {
             T.Ec2QueryName("Expiration"),
           ),
         }),
-      ).annotate({
-        identifier: "IpamRouteOriginAuthorization",
-      });
+      ).annotate({ identifier: "IpamRouteOriginAuthorization" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(30465, __c952, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamRouteOriginAuthorization",
-        }),
+        /*@__PURE__*/ __S(30465, __c952, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamRouteOriginAuthorization" }),
       );
     case 3:
       return S.suspend(() =>
@@ -86889,9 +83955,9 @@ function __c952(j: number): any {
       ).annotate({ identifier: "IpamRouteOverlap" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(30467, __c952, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamRouteOverlap",
-        }),
+        /*@__PURE__*/ __S(30467, __c952, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamRouteOverlap" }),
       );
     case 5:
       return S.suspend(() =>
@@ -86945,14 +84011,12 @@ function __c952(j: number): any {
             T.Ec2QueryName("RoaSampleTime"),
           ),
         }),
-      ).annotate({
-        identifier: "IpamRouteProtectionFinding",
-      });
+      ).annotate({ identifier: "IpamRouteProtectionFinding" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ __S(30469, __c952, 5).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamRouteProtectionFinding",
-        }),
+        /*@__PURE__*/ __S(30469, __c952, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamRouteProtectionFinding" }),
       );
     case 7:
       return S.suspend(() =>
@@ -86964,9 +84028,7 @@ function __c952(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetIpamRouteProtectionFindingsResult",
-      });
+      ).annotate({ identifier: "GetIpamRouteProtectionFindingsResult" });
   }
 }
 function __c953(j: number): any {
@@ -86983,14 +84045,12 @@ function __c953(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetIpamRoutingPolicyRegistrationDeltasRequest",
-      });
+      ).annotate({ identifier: "GetIpamRoutingPolicyRegistrationDeltasRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(5120, __c160, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamRoutingPolicyRegistrationDelta",
-        }),
+        /*@__PURE__*/ __S(5120, __c160, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamRoutingPolicyRegistrationDelta" }),
       );
     case 2:
       return S.suspend(() =>
@@ -87001,9 +84061,7 @@ function __c953(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetIpamRoutingPolicyRegistrationDeltasResult",
-      });
+      ).annotate({ identifier: "GetIpamRoutingPolicyRegistrationDeltasResult" });
   }
 }
 function __c954(j: number): any {
@@ -87017,9 +84075,7 @@ function __c954(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetIpamRoutingPolicyRegistrationsRequest",
-      });
+      ).annotate({ identifier: "GetIpamRoutingPolicyRegistrationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -87043,14 +84099,12 @@ function __c954(j: number): any {
           ),
           State: S.optional(S.String).pipe(T.XmlName("state"), T.Ec2QueryName("State")),
         }),
-      ).annotate({
-        identifier: "IpamRoutingPolicyRegistration",
-      });
+      ).annotate({ identifier: "IpamRoutingPolicyRegistration" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(30529, __c954, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamRoutingPolicyRegistration",
-        }),
+        /*@__PURE__*/ __S(30529, __c954, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamRoutingPolicyRegistration" }),
       );
     case 3:
       return S.suspend(() =>
@@ -87061,9 +84115,7 @@ function __c954(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetIpamRoutingPolicyRegistrationsResult",
-      });
+      ).annotate({ identifier: "GetIpamRoutingPolicyRegistrationsResult" });
   }
 }
 function __c955(j: number): any {
@@ -87073,9 +84125,7 @@ function __c955(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean), InstanceId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetLaunchTemplateDataRequest",
-      });
+      ).annotate({ identifier: "GetLaunchTemplateDataRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -87083,9 +84133,7 @@ function __c955(j: number): any {
             .pipe(T.XmlName("launchTemplateData"), T.Ec2QueryName("LaunchTemplateData"))
             .annotate({ identifier: "ResponseLaunchTemplateData" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetLaunchTemplateDataResult",
-      });
+      ).annotate({ identifier: "GetLaunchTemplateDataResult" });
   }
 }
 function __c956(j: number): any {
@@ -87098,9 +84146,7 @@ function __c956(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetManagedPrefixListAssociationsRequest",
-      });
+      ).annotate({ identifier: "GetManagedPrefixListAssociationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -87116,9 +84162,9 @@ function __c956(j: number): any {
       ).annotate({ identifier: "PrefixListAssociation" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(30593, __c956, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "PrefixListAssociation",
-        }),
+        /*@__PURE__*/ __S(30593, __c956, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "PrefixListAssociation" }),
       );
     case 3:
       return S.suspend(() =>
@@ -87129,9 +84175,7 @@ function __c956(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetManagedPrefixListAssociationsResult",
-      });
+      ).annotate({ identifier: "GetManagedPrefixListAssociationsResult" });
   }
 }
 function __c957(j: number): any {
@@ -87145,9 +84189,7 @@ function __c957(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetManagedPrefixListEntriesRequest",
-      });
+      ).annotate({ identifier: "GetManagedPrefixListEntriesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -87160,9 +84202,9 @@ function __c957(j: number): any {
       ).annotate({ identifier: "PrefixListEntry" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(30625, __c957, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "PrefixListEntry",
-        }),
+        /*@__PURE__*/ __S(30625, __c957, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "PrefixListEntry" }),
       );
     case 3:
       return S.suspend(() =>
@@ -87173,9 +84215,7 @@ function __c957(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetManagedPrefixListEntriesResult",
-      });
+      ).annotate({ identifier: "GetManagedPrefixListEntriesResult" });
   }
 }
 function __c958(j: number): any {
@@ -87185,9 +84225,7 @@ function __c958(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetManagedResourceVisibilityRequest",
-      });
+      ).annotate({ identifier: "GetManagedResourceVisibilityRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -87195,9 +84233,7 @@ function __c958(j: number): any {
             .pipe(T.XmlName("visibility"), T.Ec2QueryName("Visibility"))
             .annotate({ identifier: "ManagedResourceVisibilitySettings" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetManagedResourceVisibilityResult",
-      });
+      ).annotate({ identifier: "GetManagedResourceVisibilityResult" });
   }
 }
 function __c959(j: number): any {
@@ -87210,9 +84246,7 @@ function __c959(j: number): any {
             T.Ec2QueryName("DefaultVisibility"),
           ),
         }),
-      ).annotate({
-        identifier: "ManagedResourceVisibilitySettings",
-      });
+      ).annotate({ identifier: "ManagedResourceVisibilitySettings" });
   }
 }
 function __c960(j: number): any {
@@ -87225,9 +84259,7 @@ function __c960(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetNetworkInsightsAccessScopeAnalysisFindingsRequest",
-      });
+      ).annotate({ identifier: "GetNetworkInsightsAccessScopeAnalysisFindingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -87245,14 +84277,12 @@ function __c960(j: number): any {
             T.Ec2QueryName("FindingComponentSet"),
           ),
         }),
-      ).annotate({
-        identifier: "AccessScopeAnalysisFinding",
-      });
+      ).annotate({ identifier: "AccessScopeAnalysisFinding" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(30721, __c960, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "AccessScopeAnalysisFinding",
-        }),
+        /*@__PURE__*/ __S(30721, __c960, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "AccessScopeAnalysisFinding" }),
       );
     case 3:
       return S.suspend(() =>
@@ -87271,9 +84301,7 @@ function __c960(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetNetworkInsightsAccessScopeAnalysisFindingsResult",
-      });
+      ).annotate({ identifier: "GetNetworkInsightsAccessScopeAnalysisFindingsResult" });
   }
 }
 function __c961(j: number): any {
@@ -87284,9 +84312,7 @@ function __c961(j: number): any {
           NetworkInsightsAccessScopeId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetNetworkInsightsAccessScopeContentRequest",
-      });
+      ).annotate({ identifier: "GetNetworkInsightsAccessScopeContentRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -87297,9 +84323,7 @@ function __c961(j: number): any {
             )
             .annotate({ identifier: "NetworkInsightsAccessScopeContent" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetNetworkInsightsAccessScopeContentResult",
-      });
+      ).annotate({ identifier: "GetNetworkInsightsAccessScopeContentResult" });
   }
 }
 function __c962(j: number): any {
@@ -87343,9 +84367,7 @@ function __c963(j: number): any {
             T.XmlName("TargetConfiguration"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetReservedInstancesExchangeQuoteRequest",
-      });
+      ).annotate({ identifier: "GetReservedInstancesExchangeQuoteRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -87374,14 +84396,12 @@ function __c963(j: number): any {
             T.Ec2QueryName("ReservedInstanceId"),
           ),
         }),
-      ).annotate({
-        identifier: "ReservedInstanceReservationValue",
-      });
+      ).annotate({ identifier: "ReservedInstanceReservationValue" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(30818, __c963, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ReservedInstanceReservationValue",
-        }),
+        /*@__PURE__*/ __S(30818, __c963, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ReservedInstanceReservationValue" }),
       );
     case 4:
       return S.suspend(() =>
@@ -87409,9 +84429,9 @@ function __c963(j: number): any {
       ).annotate({ identifier: "TargetReservationValue" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ __S(30821, __c963, 5).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TargetReservationValue",
-        }),
+        /*@__PURE__*/ __S(30821, __c963, 5)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TargetReservationValue" }),
       );
     case 7:
       return S.suspend(() =>
@@ -87459,9 +84479,7 @@ function __c963(j: number): any {
             T.Ec2QueryName("ValidationFailureReason"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetReservedInstancesExchangeQuoteResult",
-      });
+      ).annotate({ identifier: "GetReservedInstancesExchangeQuoteResult" });
   }
 }
 function __c964(j: number): any {
@@ -87471,14 +84489,12 @@ function __c964(j: number): any {
         S.Struct({ RouteServerId: S.optional(S.String), DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetRouteServerAssociationsRequest",
-      });
+      ).annotate({ identifier: "GetRouteServerAssociationsRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(3904, __c122, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "RouteServerAssociation",
-        }),
+        /*@__PURE__*/ __S(3904, __c122, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "RouteServerAssociation" }),
       );
     case 2:
       return S.suspend(() =>
@@ -87488,9 +84504,7 @@ function __c964(j: number): any {
             T.Ec2QueryName("RouteServerAssociationSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetRouteServerAssociationsResult",
-      });
+      ).annotate({ identifier: "GetRouteServerAssociationsResult" });
   }
 }
 function __c965(j: number): any {
@@ -87502,14 +84516,12 @@ function __c965(j: number): any {
           RouteTableId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetRouteServerPropagationsRequest",
-      });
+      ).annotate({ identifier: "GetRouteServerPropagationsRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(27008, __c844, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "RouteServerPropagation",
-        }),
+        /*@__PURE__*/ __S(27008, __c844, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "RouteServerPropagation" }),
       );
     case 2:
       return S.suspend(() =>
@@ -87519,9 +84531,7 @@ function __c965(j: number): any {
             T.Ec2QueryName("RouteServerPropagationSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetRouteServerPropagationsResult",
-      });
+      ).annotate({ identifier: "GetRouteServerPropagationsResult" });
   }
 }
 function __c966(j: number): any {
@@ -87535,9 +84545,7 @@ function __c966(j: number): any {
           DryRun: S.optional(S.Boolean),
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetRouteServerRoutingDatabaseRequest",
-      });
+      ).annotate({ identifier: "GetRouteServerRoutingDatabaseRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -87554,14 +84562,12 @@ function __c966(j: number): any {
             T.Ec2QueryName("RouteInstallationStatusReason"),
           ),
         }),
-      ).annotate({
-        identifier: "RouteServerRouteInstallationDetail",
-      });
+      ).annotate({ identifier: "RouteServerRouteInstallationDetail" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(30913, __c966, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "RouteServerRouteInstallationDetail",
-        }),
+        /*@__PURE__*/ __S(30913, __c966, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "RouteServerRouteInstallationDetail" }),
       );
     case 3:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")));
@@ -87595,9 +84601,9 @@ function __c966(j: number): any {
       ).annotate({ identifier: "RouteServerRoute" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(30916, __c966, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "RouteServerRoute",
-        }),
+        /*@__PURE__*/ __S(30916, __c966, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "RouteServerRoute" }),
       );
     case 6:
       return S.suspend(() =>
@@ -87612,9 +84618,7 @@ function __c966(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetRouteServerRoutingDatabaseResult",
-      });
+      ).annotate({ identifier: "GetRouteServerRoutingDatabaseResult" });
   }
 }
 function __c967(j: number): any {
@@ -87628,9 +84632,7 @@ function __c967(j: number): any {
           Filters: S.optional(__S(18049, __c564, 1)).pipe(T.XmlName("Filter")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetSecurityGroupsForVpcRequest",
-      });
+      ).annotate({ identifier: "GetSecurityGroupsForVpcRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -87650,9 +84652,9 @@ function __c967(j: number): any {
       ).annotate({ identifier: "SecurityGroupForVpc" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(30945, __c967, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SecurityGroupForVpc",
-        }),
+        /*@__PURE__*/ __S(30945, __c967, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SecurityGroupForVpc" }),
       );
     case 3:
       return S.suspend(() =>
@@ -87663,9 +84665,7 @@ function __c967(j: number): any {
             T.Ec2QueryName("SecurityGroupForVpcSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetSecurityGroupsForVpcResult",
-      });
+      ).annotate({ identifier: "GetSecurityGroupsForVpcResult" });
   }
 }
 function __c968(j: number): any {
@@ -87675,9 +84675,7 @@ function __c968(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetSerialConsoleAccessStatusRequest",
-      });
+      ).annotate({ identifier: "GetSerialConsoleAccessStatusRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -87687,9 +84685,7 @@ function __c968(j: number): any {
           ),
           ManagedBy: S.optional(S.String).pipe(T.XmlName("managedBy"), T.Ec2QueryName("ManagedBy")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetSerialConsoleAccessStatusResult",
-      });
+      ).annotate({ identifier: "GetSerialConsoleAccessStatusResult" });
   }
 }
 function __c969(j: number): any {
@@ -87699,18 +84695,14 @@ function __c969(j: number): any {
         S.Struct({ DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetSnapshotBlockPublicAccessStateRequest",
-      });
+      ).annotate({ identifier: "GetSnapshotBlockPublicAccessStateRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           State: S.optional(S.String).pipe(T.XmlName("state"), T.Ec2QueryName("State")),
           ManagedBy: S.optional(S.String).pipe(T.XmlName("managedBy"), T.Ec2QueryName("ManagedBy")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetSnapshotBlockPublicAccessStateResult",
-      });
+      ).annotate({ identifier: "GetSnapshotBlockPublicAccessStateResult" });
   }
 }
 function __c970(j: number): any {
@@ -87728,9 +84720,7 @@ function __c970(j: number): any {
           ),
           InstanceRequirements: S.optional(__S(7405, __c231, 13)),
         }),
-      ).annotate({
-        identifier: "InstanceRequirementsWithMetadataRequest",
-      });
+      ).annotate({ identifier: "InstanceRequirementsWithMetadataRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -87745,9 +84735,7 @@ function __c970(j: number): any {
           NextToken: S.optional(S.String),
           IncludeLocalZones: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetSpotPlacementScoresRequest",
-      });
+      ).annotate({ identifier: "GetSpotPlacementScoresRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -87761,9 +84749,9 @@ function __c970(j: number): any {
       ).annotate({ identifier: "SpotPlacementScore" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(31044, __c970, 4).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SpotPlacementScore",
-        }),
+        /*@__PURE__*/ __S(31044, __c970, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SpotPlacementScore" }),
       );
     case 6:
       return S.suspend(() =>
@@ -87774,9 +84762,7 @@ function __c970(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetSpotPlacementScoresResult",
-      });
+      ).annotate({ identifier: "GetSpotPlacementScoresResult" });
   }
 }
 function __c971(j: number): any {
@@ -87790,14 +84776,12 @@ function __c971(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetSubnetCidrReservationsRequest",
-      });
+      ).annotate({ identifier: "GetSubnetCidrReservationsRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(11872, __c371, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SubnetCidrReservation",
-        }),
+        /*@__PURE__*/ __S(11872, __c371, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SubnetCidrReservation" }),
       );
     case 2:
       return S.suspend(() =>
@@ -87812,9 +84796,7 @@ function __c971(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetSubnetCidrReservationsResult",
-      });
+      ).annotate({ identifier: "GetSubnetCidrReservationsResult" });
   }
 }
 function __c972(j: number): any {
@@ -87828,9 +84810,7 @@ function __c972(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetTransitGatewayAttachmentPropagationsRequest",
-      });
+      ).annotate({ identifier: "GetTransitGatewayAttachmentPropagationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -87840,14 +84820,12 @@ function __c972(j: number): any {
           ),
           State: S.optional(S.String).pipe(T.XmlName("state"), T.Ec2QueryName("State")),
         }),
-      ).annotate({
-        identifier: "TransitGatewayAttachmentPropagation",
-      });
+      ).annotate({ identifier: "TransitGatewayAttachmentPropagation" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(31105, __c972, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TransitGatewayAttachmentPropagation",
-        }),
+        /*@__PURE__*/ __S(31105, __c972, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TransitGatewayAttachmentPropagation" }),
       );
     case 3:
       return S.suspend(() =>
@@ -87858,9 +84836,7 @@ function __c972(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetTransitGatewayAttachmentPropagationsResult",
-      });
+      ).annotate({ identifier: "GetTransitGatewayAttachmentPropagationsResult" });
   }
 }
 function __c973(j: number): any {
@@ -87874,14 +84850,12 @@ function __c973(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetTransitGatewayMeteringPolicyEntriesRequest",
-      });
+      ).annotate({ identifier: "GetTransitGatewayMeteringPolicyEntriesRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(12609, __c394, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TransitGatewayMeteringPolicyEntry",
-        }),
+        /*@__PURE__*/ __S(12609, __c394, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TransitGatewayMeteringPolicyEntry" }),
       );
     case 2:
       return S.suspend(() =>
@@ -87892,9 +84866,7 @@ function __c973(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetTransitGatewayMeteringPolicyEntriesResult",
-      });
+      ).annotate({ identifier: "GetTransitGatewayMeteringPolicyEntriesResult" });
   }
 }
 function __c974(j: number): any {
@@ -87908,9 +84880,7 @@ function __c974(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetTransitGatewayMulticastDomainAssociationsRequest",
-      });
+      ).annotate({ identifier: "GetTransitGatewayMulticastDomainAssociationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -87934,14 +84904,12 @@ function __c974(j: number): any {
             .pipe(T.XmlName("subnet"), T.Ec2QueryName("Subnet"))
             .annotate({ identifier: "SubnetAssociation" }),
         }),
-      ).annotate({
-        identifier: "TransitGatewayMulticastDomainAssociation",
-      });
+      ).annotate({ identifier: "TransitGatewayMulticastDomainAssociation" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(31169, __c974, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TransitGatewayMulticastDomainAssociation",
-        }),
+        /*@__PURE__*/ __S(31169, __c974, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TransitGatewayMulticastDomainAssociation" }),
       );
     case 3:
       return S.suspend(() =>
@@ -87952,9 +84920,7 @@ function __c974(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetTransitGatewayMulticastDomainAssociationsResult",
-      });
+      ).annotate({ identifier: "GetTransitGatewayMulticastDomainAssociationsResult" });
   }
 }
 function __c975(j: number): any {
@@ -87968,14 +84934,12 @@ function __c975(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetTransitGatewayPolicyTableAssociationsRequest",
-      });
+      ).annotate({ identifier: "GetTransitGatewayPolicyTableAssociationsRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(4192, __c131, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TransitGatewayPolicyTableAssociation",
-        }),
+        /*@__PURE__*/ __S(4192, __c131, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TransitGatewayPolicyTableAssociation" }),
       );
     case 2:
       return S.suspend(() =>
@@ -87986,9 +84950,7 @@ function __c975(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetTransitGatewayPolicyTableAssociationsResult",
-      });
+      ).annotate({ identifier: "GetTransitGatewayPolicyTableAssociationsResult" });
   }
 }
 function __c976(j: number): any {
@@ -88002,14 +84964,12 @@ function __c976(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetTransitGatewayPolicyTableEntriesRequest",
-      });
+      ).annotate({ identifier: "GetTransitGatewayPolicyTableEntriesRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(12834, __c401, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TransitGatewayPolicyTableEntry",
-        }),
+        /*@__PURE__*/ __S(12834, __c401, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TransitGatewayPolicyTableEntry" }),
       );
     case 2:
       return S.suspend(() =>
@@ -88020,9 +84980,7 @@ function __c976(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetTransitGatewayPolicyTableEntriesResult",
-      });
+      ).annotate({ identifier: "GetTransitGatewayPolicyTableEntriesResult" });
   }
 }
 function __c977(j: number): any {
@@ -88036,14 +84994,12 @@ function __c977(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetTransitGatewayPrefixListReferencesRequest",
-      });
+      ).annotate({ identifier: "GetTransitGatewayPrefixListReferencesRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(12929, __c404, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TransitGatewayPrefixListReference",
-        }),
+        /*@__PURE__*/ __S(12929, __c404, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TransitGatewayPrefixListReference" }),
       );
     case 2:
       return S.suspend(() =>
@@ -88054,9 +85010,7 @@ function __c977(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetTransitGatewayPrefixListReferencesResult",
-      });
+      ).annotate({ identifier: "GetTransitGatewayPrefixListReferencesResult" });
   }
 }
 function __c978(j: number): any {
@@ -88070,9 +85024,7 @@ function __c978(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetTransitGatewayRouteTableAssociationsRequest",
-      });
+      ).annotate({ identifier: "GetTransitGatewayRouteTableAssociationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -88090,14 +85042,12 @@ function __c978(j: number): any {
           ),
           State: S.optional(S.String).pipe(T.XmlName("state"), T.Ec2QueryName("State")),
         }),
-      ).annotate({
-        identifier: "TransitGatewayRouteTableAssociation",
-      });
+      ).annotate({ identifier: "TransitGatewayRouteTableAssociation" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(31297, __c978, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TransitGatewayRouteTableAssociation",
-        }),
+        /*@__PURE__*/ __S(31297, __c978, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TransitGatewayRouteTableAssociation" }),
       );
     case 3:
       return S.suspend(() =>
@@ -88108,9 +85058,7 @@ function __c978(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetTransitGatewayRouteTableAssociationsResult",
-      });
+      ).annotate({ identifier: "GetTransitGatewayRouteTableAssociationsResult" });
   }
 }
 function __c979(j: number): any {
@@ -88124,9 +85072,7 @@ function __c979(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetTransitGatewayRouteTablePropagationsRequest",
-      });
+      ).annotate({ identifier: "GetTransitGatewayRouteTablePropagationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -88148,14 +85094,12 @@ function __c979(j: number): any {
             T.Ec2QueryName("TransitGatewayRouteTableAnnouncementId"),
           ),
         }),
-      ).annotate({
-        identifier: "TransitGatewayRouteTablePropagation",
-      });
+      ).annotate({ identifier: "TransitGatewayRouteTablePropagation" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(31329, __c979, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TransitGatewayRouteTablePropagation",
-        }),
+        /*@__PURE__*/ __S(31329, __c979, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "TransitGatewayRouteTablePropagation" }),
       );
     case 3:
       return S.suspend(() =>
@@ -88166,9 +85110,7 @@ function __c979(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetTransitGatewayRouteTablePropagationsResult",
-      });
+      ).annotate({ identifier: "GetTransitGatewayRouteTablePropagationsResult" });
   }
 }
 function __c980(j: number): any {
@@ -88179,9 +85121,7 @@ function __c980(j: number): any {
           VerifiedAccessEndpointId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetVerifiedAccessEndpointPolicyRequest",
-      });
+      ).annotate({ identifier: "GetVerifiedAccessEndpointPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -88194,9 +85134,7 @@ function __c980(j: number): any {
             T.Ec2QueryName("PolicyDocument"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetVerifiedAccessEndpointPolicyResult",
-      });
+      ).annotate({ identifier: "GetVerifiedAccessEndpointPolicyResult" });
   }
 }
 function __c981(j: number): any {
@@ -88211,9 +85149,7 @@ function __c981(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetVerifiedAccessEndpointTargetsRequest",
-      });
+      ).annotate({ identifier: "GetVerifiedAccessEndpointTargetsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -88230,14 +85166,12 @@ function __c981(j: number): any {
             T.Ec2QueryName("VerifiedAccessEndpointTargetDns"),
           ),
         }),
-      ).annotate({
-        identifier: "VerifiedAccessEndpointTarget",
-      });
+      ).annotate({ identifier: "VerifiedAccessEndpointTarget" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(31393, __c981, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VerifiedAccessEndpointTarget",
-        }),
+        /*@__PURE__*/ __S(31393, __c981, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VerifiedAccessEndpointTarget" }),
       );
     case 3:
       return S.suspend(() =>
@@ -88248,9 +85182,7 @@ function __c981(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetVerifiedAccessEndpointTargetsResult",
-      });
+      ).annotate({ identifier: "GetVerifiedAccessEndpointTargetsResult" });
   }
 }
 function __c982(j: number): any {
@@ -88261,9 +85193,7 @@ function __c982(j: number): any {
           VerifiedAccessGroupId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetVerifiedAccessGroupPolicyRequest",
-      });
+      ).annotate({ identifier: "GetVerifiedAccessGroupPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -88276,9 +85206,7 @@ function __c982(j: number): any {
             T.Ec2QueryName("PolicyDocument"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetVerifiedAccessGroupPolicyResult",
-      });
+      ).annotate({ identifier: "GetVerifiedAccessGroupPolicyResult" });
   }
 }
 function __c983(j: number): any {
@@ -88291,9 +85219,7 @@ function __c983(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetVpcResourcesBlockingEncryptionEnforcementRequest",
-      });
+      ).annotate({ identifier: "GetVpcResourcesBlockingEncryptionEnforcementRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -88308,14 +85234,12 @@ function __c983(j: number): any {
             T.Ec2QueryName("IsExcludable"),
           ),
         }),
-      ).annotate({
-        identifier: "VpcEncryptionNonCompliantResource",
-      });
+      ).annotate({ identifier: "VpcEncryptionNonCompliantResource" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(31457, __c983, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VpcEncryptionNonCompliantResource",
-        }),
+        /*@__PURE__*/ __S(31457, __c983, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VpcEncryptionNonCompliantResource" }),
       );
     case 3:
       return S.suspend(() =>
@@ -88326,9 +85250,7 @@ function __c983(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetVpcResourcesBlockingEncryptionEnforcementResult",
-      });
+      ).annotate({ identifier: "GetVpcResourcesBlockingEncryptionEnforcementResult" });
   }
 }
 function __c984(j: number): any {
@@ -88342,9 +85264,7 @@ function __c984(j: number): any {
           SampleType: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetVpnConnectionDeviceSampleConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetVpnConnectionDeviceSampleConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -88353,9 +85273,7 @@ function __c984(j: number): any {
             T.Ec2QueryName("VpnConnectionDeviceSampleConfiguration"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetVpnConnectionDeviceSampleConfigurationResult",
-      });
+      ).annotate({ identifier: "GetVpnConnectionDeviceSampleConfigurationResult" });
   }
 }
 function __c985(j: number): any {
@@ -88367,9 +85285,7 @@ function __c985(j: number): any {
           NextToken: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetVpnConnectionDeviceTypesRequest",
-      });
+      ).annotate({ identifier: "GetVpnConnectionDeviceTypesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -88384,9 +85300,9 @@ function __c985(j: number): any {
       ).annotate({ identifier: "VpnConnectionDeviceType" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(31521, __c985, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VpnConnectionDeviceType",
-        }),
+        /*@__PURE__*/ __S(31521, __c985, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VpnConnectionDeviceType" }),
       );
     case 3:
       return S.suspend(() =>
@@ -88397,9 +85313,7 @@ function __c985(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetVpnConnectionDeviceTypesResult",
-      });
+      ).annotate({ identifier: "GetVpnConnectionDeviceTypesResult" });
   }
 }
 function __c986(j: number): any {
@@ -88411,9 +85325,7 @@ function __c986(j: number): any {
           VpnTunnelOutsideIpAddress: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetVpnTunnelReplacementStatusRequest",
-      });
+      ).annotate({ identifier: "GetVpnTunnelReplacementStatusRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -88459,9 +85371,7 @@ function __c986(j: number): any {
             .pipe(T.XmlName("maintenanceDetails"), T.Ec2QueryName("MaintenanceDetails"))
             .annotate({ identifier: "MaintenanceDetails" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetVpnTunnelReplacementStatusResult",
-      });
+      ).annotate({ identifier: "GetVpnTunnelReplacementStatusResult" });
   }
 }
 function __c987(j: number): any {
@@ -88473,17 +85383,13 @@ function __c987(j: number): any {
           CertificateRevocationList: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ImportClientVpnClientCertificateRevocationListRequest",
-      });
+      ).annotate({ identifier: "ImportClientVpnClientCertificateRevocationListRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ImportClientVpnClientCertificateRevocationListResult",
-      });
+      ).annotate({ identifier: "ImportClientVpnClientCertificateRevocationListResult" });
   }
 }
 function __c988(j: number): any {
@@ -88501,9 +85407,9 @@ function __c988(j: number): any {
       ).annotate({ identifier: "ImageDiskContainer" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(31616, __c988, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ImageDiskContainer",
-        }),
+        /*@__PURE__*/ __S(31616, __c988, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ImageDiskContainer" }),
       );
     case 2:
       return S.suspend(() => S.Struct({ LicenseConfigurationArn: S.optional(S.String) })).annotate({
@@ -88511,9 +85417,9 @@ function __c988(j: number): any {
       });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(31618, __c988, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ImportImageLicenseConfigurationRequest",
-        }),
+        /*@__PURE__*/ __S(31618, __c988, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ImportImageLicenseConfigurationRequest" }),
       );
     case 4:
       return S.suspend(() =>
@@ -88649,9 +85555,7 @@ function __c990(j: number): any {
             T.Ec2QueryName("PrivateIpAddress"),
           ),
         }),
-      ).annotate({
-        identifier: "ImportInstanceLaunchSpecification",
-      });
+      ).annotate({ identifier: "ImportInstanceLaunchSpecification" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -88824,9 +85728,7 @@ function __c995(j: number): any {
           MaxResults: S.optional(S.Number),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListImagesInRecycleBinRequest",
-      });
+      ).annotate({ identifier: "ListImagesInRecycleBinRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -88846,9 +85748,9 @@ function __c995(j: number): any {
       ).annotate({ identifier: "ImageRecycleBinInfo" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(31841, __c995, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ImageRecycleBinInfo",
-        }),
+        /*@__PURE__*/ __S(31841, __c995, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ImageRecycleBinInfo" }),
       );
     case 3:
       return S.suspend(() =>
@@ -88859,9 +85761,7 @@ function __c995(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListImagesInRecycleBinResult",
-      });
+      ).annotate({ identifier: "ListImagesInRecycleBinResult" });
   }
 }
 function __c996(j: number): any {
@@ -88874,9 +85774,7 @@ function __c996(j: number): any {
           SnapshotIds: S.optional(__S(22336, __c698, 0)).pipe(T.XmlName("SnapshotId")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListSnapshotsInRecycleBinRequest",
-      });
+      ).annotate({ identifier: "ListSnapshotsInRecycleBinRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -88899,9 +85797,9 @@ function __c996(j: number): any {
       ).annotate({ identifier: "SnapshotRecycleBinInfo" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(31873, __c996, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SnapshotRecycleBinInfo",
-        }),
+        /*@__PURE__*/ __S(31873, __c996, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SnapshotRecycleBinInfo" }),
       );
     case 3:
       return S.suspend(() =>
@@ -88912,9 +85810,7 @@ function __c996(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListSnapshotsInRecycleBinResult",
-      });
+      ).annotate({ identifier: "ListSnapshotsInRecycleBinResult" });
   }
 }
 function __c997(j: number): any {
@@ -88927,9 +85823,7 @@ function __c997(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListVolumesInRecycleBinRequest",
-      });
+      ).annotate({ identifier: "ListVolumesInRecycleBinRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -88982,9 +85876,9 @@ function __c997(j: number): any {
       ).annotate({ identifier: "VolumeRecycleBinInfo" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(31905, __c997, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "VolumeRecycleBinInfo",
-        }),
+        /*@__PURE__*/ __S(31905, __c997, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "VolumeRecycleBinInfo" }),
       );
     case 3:
       return S.suspend(() =>
@@ -88995,9 +85889,7 @@ function __c997(j: number): any {
           ),
           NextToken: S.optional(S.String).pipe(T.XmlName("nextToken"), T.Ec2QueryName("NextToken")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListVolumesInRecycleBinResult",
-      });
+      ).annotate({ identifier: "ListVolumesInRecycleBinResult" });
   }
 }
 function __c998(j: number): any {
@@ -89063,9 +85955,7 @@ function __c999(j: number): any {
           VpcLattice: S.optional(S.String),
           ElasticFileSystem: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyAccountVpcEncryptionControlRequest",
-      });
+      ).annotate({ identifier: "ModifyAccountVpcEncryptionControlRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -89076,9 +85966,7 @@ function __c999(j: number): any {
             )
             .annotate({ identifier: "AccountVpcEncryptionControl" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyAccountVpcEncryptionControlResult",
-      });
+      ).annotate({ identifier: "ModifyAccountVpcEncryptionControlResult" });
   }
 }
 function __c1000(j: number): any {
@@ -89090,9 +85978,7 @@ function __c1000(j: number): any {
           DomainName: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyAddressAttributeRequest",
-      });
+      ).annotate({ identifier: "ModifyAddressAttributeRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -89100,9 +85986,7 @@ function __c1000(j: number): any {
             .pipe(T.XmlName("address"), T.Ec2QueryName("Address"))
             .annotate({ identifier: "AddressAttribute" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyAddressAttributeResult",
-      });
+      ).annotate({ identifier: "ModifyAddressAttributeResult" });
   }
 }
 function __c1001(j: number): any {
@@ -89128,9 +86012,7 @@ function __c1001(j: number): any {
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyApplicationStatusCheckRequest",
-      });
+      ).annotate({ identifier: "ModifyApplicationStatusCheckRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -89138,9 +86020,7 @@ function __c1001(j: number): any {
             .pipe(T.XmlName("applicationStatusCheck"), T.Ec2QueryName("ApplicationStatusCheck"))
             .annotate({ identifier: "ApplicationStatusCheckResponseObject" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyApplicationStatusCheckResult",
-      });
+      ).annotate({ identifier: "ModifyApplicationStatusCheckResult" });
   }
 }
 function __c1002(j: number): any {
@@ -89152,17 +86032,13 @@ function __c1002(j: number): any {
           OptInStatus: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyAvailabilityZoneGroupRequest",
-      });
+      ).annotate({ identifier: "ModifyAvailabilityZoneGroupRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyAvailabilityZoneGroupResult",
-      });
+      ).annotate({ identifier: "ModifyAvailabilityZoneGroupResult" });
   }
 }
 function __c1003(j: number): any {
@@ -89182,9 +86058,7 @@ function __c1003(j: number): any {
           StartDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           QuoteId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyCapacityReservationRequest",
-      });
+      ).annotate({ identifier: "ModifyCapacityReservationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -89197,9 +86071,7 @@ function __c1003(j: number): any {
             .pipe(T.XmlName("adjustmentDetails"), T.Ec2QueryName("AdjustmentDetails"))
             .annotate({ identifier: "CapacityReservationAdjustmentDetails" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyCapacityReservationResult",
-      });
+      ).annotate({ identifier: "ModifyCapacityReservationResult" });
   }
 }
 function __c1004(j: number): any {
@@ -89213,17 +86085,13 @@ function __c1004(j: number): any {
           DryRun: S.optional(S.Boolean),
           RemoveEndDate: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyCapacityReservationFleetRequest",
-      });
+      ).annotate({ identifier: "ModifyCapacityReservationFleetRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyCapacityReservationFleetResult",
-      });
+      ).annotate({ identifier: "ModifyCapacityReservationFleetResult" });
   }
 }
 function __c1005(j: number): any {
@@ -89234,9 +86102,7 @@ function __c1005(j: number): any {
           CustomDnsServers: S.optional(__S(2208, __c69, 0)),
           Enabled: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "DnsServersOptionsModifyStructure",
-      });
+      ).annotate({ identifier: "DnsServersOptionsModifyStructure" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -89259,17 +86125,13 @@ function __c1005(j: number): any {
           TransitGatewayConfiguration: S.optional(__S(6596, __c206, 4)),
           DevicePostureOptions: S.optional(__S(6599, __c206, 7)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyClientVpnEndpointRequest",
-      });
+      ).annotate({ identifier: "ModifyClientVpnEndpointRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyClientVpnEndpointResult",
-      });
+      ).annotate({ identifier: "ModifyClientVpnEndpointResult" });
   }
 }
 function __c1006(j: number): any {
@@ -89284,17 +86146,13 @@ function __c1006(j: number): any {
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyClientVpnEndpointAuthorizationPolicyRequest",
-      });
+      ).annotate({ identifier: "ModifyClientVpnEndpointAuthorizationPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String).pipe(T.XmlName("status"), T.Ec2QueryName("Status")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyClientVpnEndpointAuthorizationPolicyResult",
-      });
+      ).annotate({ identifier: "ModifyClientVpnEndpointAuthorizationPolicyResult" });
   }
 }
 function __c1007(j: number): any {
@@ -89306,9 +86164,7 @@ function __c1007(j: number): any {
           InstanceFamily: S.optional(S.String),
           CpuCredits: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyDefaultCreditSpecificationRequest",
-      });
+      ).annotate({ identifier: "ModifyDefaultCreditSpecificationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -89319,9 +86175,7 @@ function __c1007(j: number): any {
             )
             .annotate({ identifier: "InstanceFamilyCreditSpecification" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyDefaultCreditSpecificationResult",
-      });
+      ).annotate({ identifier: "ModifyDefaultCreditSpecificationResult" });
   }
 }
 function __c1008(j: number): any {
@@ -89331,17 +86185,13 @@ function __c1008(j: number): any {
         S.Struct({ KmsKeyId: S.optional(S.String), DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ModifyEbsDefaultKmsKeyIdRequest",
-      });
+      ).annotate({ identifier: "ModifyEbsDefaultKmsKeyIdRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           KmsKeyId: S.optional(S.String).pipe(T.XmlName("kmsKeyId"), T.Ec2QueryName("KmsKeyId")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyEbsDefaultKmsKeyIdResult",
-      });
+      ).annotate({ identifier: "ModifyEbsDefaultKmsKeyIdResult" });
   }
 }
 function __c1009(j: number): any {
@@ -89375,9 +86225,9 @@ function __c1010(j: number): any {
       ).annotate({ identifier: "LoadPermissionRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(32320, __c1010, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "LoadPermissionRequest",
-        }),
+        /*@__PURE__*/ __S(32320, __c1010, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "LoadPermissionRequest" }),
       );
     case 2:
       return S.suspend(() =>
@@ -89385,9 +86235,7 @@ function __c1010(j: number): any {
           Add: S.optional(__S(32321, __c1010, 1)),
           Remove: S.optional(__S(32321, __c1010, 1)),
         }),
-      ).annotate({
-        identifier: "LoadPermissionModifications",
-      });
+      ).annotate({ identifier: "LoadPermissionModifications" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -89402,9 +86250,7 @@ function __c1010(j: number): any {
           Description: S.optional(S.String),
           Name: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyFpgaImageAttributeRequest",
-      });
+      ).annotate({ identifier: "ModifyFpgaImageAttributeRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -89412,9 +86258,7 @@ function __c1010(j: number): any {
             .pipe(T.XmlName("fpgaImageAttribute"), T.Ec2QueryName("FpgaImageAttribute"))
             .annotate({ identifier: "FpgaImageAttribute" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyFpgaImageAttributeResult",
-      });
+      ).annotate({ identifier: "ModifyFpgaImageAttributeResult" });
   }
 }
 function __c1011(j: number): any {
@@ -89469,9 +86313,9 @@ function __c1014(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ __S(2465, __c77, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "UnsuccessfulItem",
-        }),
+        /*@__PURE__*/ __S(2465, __c77, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "UnsuccessfulItem" }),
       );
   }
 }
@@ -89490,9 +86334,7 @@ function __c1015(j: number): any {
             T.Ec2QueryName("PrincipalArn"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyIdentityIdFormatRequest",
-      });
+      ).annotate({ identifier: "ModifyIdentityIdFormatRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "ModifyIdentityIdFormatResponse",
@@ -89521,9 +86363,7 @@ function __c1017(j: number): any {
           Add: S.optional(__S(20385, __c637, 1)),
           Remove: S.optional(__S(20385, __c637, 1)),
         }),
-      ).annotate({
-        identifier: "LaunchPermissionModifications",
-      });
+      ).annotate({ identifier: "LaunchPermissionModifications" });
     case 1:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("OrganizationArn")));
     case 2:
@@ -89547,9 +86387,7 @@ function __c1017(j: number): any {
           ImdsSupport: S.optional(__S(7200, __c225, 0)),
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyImageAttributeRequest",
-      });
+      ).annotate({ identifier: "ModifyImageAttributeRequest" });
     case 4:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "ModifyImageAttributeResponse",
@@ -89567,9 +86405,7 @@ function __c1018(j: number): any {
             T.Ec2QueryName("DeleteOnTermination"),
           ),
         }),
-      ).annotate({
-        identifier: "EbsInstanceBlockDeviceSpecification",
-      });
+      ).annotate({ identifier: "EbsInstanceBlockDeviceSpecification" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -89586,14 +86422,12 @@ function __c1018(j: number): any {
           ),
           NoDevice: S.optional(S.String).pipe(T.XmlName("noDevice"), T.Ec2QueryName("NoDevice")),
         }),
-      ).annotate({
-        identifier: "InstanceBlockDeviceMappingSpecification",
-      });
+      ).annotate({ identifier: "InstanceBlockDeviceMappingSpecification" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(32577, __c1018, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceBlockDeviceMappingSpecification",
-        }),
+        /*@__PURE__*/ __S(32577, __c1018, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceBlockDeviceMappingSpecification" }),
       );
     case 3:
       return S.suspend(() =>
@@ -89650,9 +86484,7 @@ function __c1018(j: number): any {
             .pipe(T.XmlName("enaSupport"), T.Ec2QueryName("EnaSupport"))
             .annotate({ identifier: "AttributeBooleanValue" }),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyInstanceAttributeRequest",
-      });
+      ).annotate({ identifier: "ModifyInstanceAttributeRequest" });
     case 5:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "ModifyInstanceAttributeResponse",
@@ -89676,17 +86508,13 @@ function __c1020(j: number): any {
           CapacityReservationSpecification: S.optional(__S(32672, __c1021, 0)),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyInstanceCapacityReservationAttributesRequest",
-      });
+      ).annotate({ identifier: "ModifyInstanceCapacityReservationAttributesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyInstanceCapacityReservationAttributesResult",
-      });
+      ).annotate({ identifier: "ModifyInstanceCapacityReservationAttributesResult" });
   }
 }
 function __c1021(j: number): any {
@@ -89697,9 +86525,7 @@ function __c1021(j: number): any {
           CapacityReservationPreference: S.optional(S.String),
           CapacityReservationTarget: S.optional(__S(9472, __c296, 0)),
         }),
-      ).annotate({
-        identifier: "CapacityReservationSpecification",
-      });
+      ).annotate({ identifier: "CapacityReservationSpecification" });
   }
 }
 function __c1022(j: number): any {
@@ -89713,17 +86539,13 @@ function __c1022(j: number): any {
           SecurityGroupIds: S.optional(__S(7936, __c248, 0)).pipe(T.XmlName("SecurityGroupId")),
           PreserveClientIp: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyInstanceConnectEndpointRequest",
-      });
+      ).annotate({ identifier: "ModifyInstanceConnectEndpointRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyInstanceConnectEndpointResult",
-      });
+      ).annotate({ identifier: "ModifyInstanceConnectEndpointResult" });
   }
 }
 function __c1023(j: number): any {
@@ -89737,9 +86559,7 @@ function __c1023(j: number): any {
           NestedVirtualization: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyInstanceCpuOptionsRequest",
-      });
+      ).annotate({ identifier: "ModifyInstanceCpuOptionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -89757,9 +86577,7 @@ function __c1023(j: number): any {
             T.Ec2QueryName("NestedVirtualization"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyInstanceCpuOptionsResult",
-      });
+      ).annotate({ identifier: "ModifyInstanceCpuOptionsResult" });
   }
 }
 function __c1024(j: number): any {
@@ -89767,14 +86585,12 @@ function __c1024(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ InstanceId: S.optional(S.String), CpuCredits: S.optional(S.String) }),
-      ).annotate({
-        identifier: "InstanceCreditSpecificationRequest",
-      });
+      ).annotate({ identifier: "InstanceCreditSpecificationRequest" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(32768, __c1024, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceCreditSpecificationRequest",
-        }),
+        /*@__PURE__*/ __S(32768, __c1024, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceCreditSpecificationRequest" }),
       );
     case 2:
       return S.suspend(() =>
@@ -89785,9 +86601,7 @@ function __c1024(j: number): any {
             T.XmlName("InstanceCreditSpecification"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyInstanceCreditSpecificationRequest",
-      });
+      ).annotate({ identifier: "ModifyInstanceCreditSpecificationRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -89796,14 +86610,12 @@ function __c1024(j: number): any {
             T.Ec2QueryName("InstanceId"),
           ),
         }),
-      ).annotate({
-        identifier: "SuccessfulInstanceCreditSpecificationItem",
-      });
+      ).annotate({ identifier: "SuccessfulInstanceCreditSpecificationItem" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(32771, __c1024, 3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SuccessfulInstanceCreditSpecificationItem",
-        }),
+        /*@__PURE__*/ __S(32771, __c1024, 3)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SuccessfulInstanceCreditSpecificationItem" }),
       );
     case 5:
       return S.suspend(() =>
@@ -89811,9 +86623,7 @@ function __c1024(j: number): any {
           Code: S.optional(S.String).pipe(T.XmlName("code"), T.Ec2QueryName("Code")),
           Message: S.optional(S.String).pipe(T.XmlName("message"), T.Ec2QueryName("Message")),
         }),
-      ).annotate({
-        identifier: "UnsuccessfulInstanceCreditSpecificationItemError",
-      });
+      ).annotate({ identifier: "UnsuccessfulInstanceCreditSpecificationItemError" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -89825,14 +86635,12 @@ function __c1024(j: number): any {
             .pipe(T.XmlName("error"), T.Ec2QueryName("Error"))
             .annotate({ identifier: "UnsuccessfulInstanceCreditSpecificationItemError" }),
         }),
-      ).annotate({
-        identifier: "UnsuccessfulInstanceCreditSpecificationItem",
-      });
+      ).annotate({ identifier: "UnsuccessfulInstanceCreditSpecificationItem" });
     case 7:
       return S.Array(
-        /*@__PURE__*/ __S(32774, __c1024, 6).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "UnsuccessfulInstanceCreditSpecificationItem",
-        }),
+        /*@__PURE__*/ __S(32774, __c1024, 6)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "UnsuccessfulInstanceCreditSpecificationItem" }),
       );
     case 8:
       return S.suspend(() =>
@@ -89846,9 +86654,7 @@ function __c1024(j: number): any {
             T.Ec2QueryName("UnsuccessfulInstanceCreditSpecificationSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyInstanceCreditSpecificationResult",
-      });
+      ).annotate({ identifier: "ModifyInstanceCreditSpecificationResult" });
   }
 }
 function __c1025(j: number): any {
@@ -89861,9 +86667,7 @@ function __c1025(j: number): any {
           InstanceEventId: S.optional(S.String),
           NotBefore: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyInstanceEventStartTimeRequest",
-      });
+      ).annotate({ identifier: "ModifyInstanceEventStartTimeRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -89871,9 +86675,7 @@ function __c1025(j: number): any {
             .pipe(T.XmlName("event"), T.Ec2QueryName("Event"))
             .annotate({ identifier: "InstanceStatusEvent" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyInstanceEventStartTimeResult",
-      });
+      ).annotate({ identifier: "ModifyInstanceEventStartTimeResult" });
   }
 }
 function __c1026(j: number): any {
@@ -89887,9 +86689,7 @@ function __c1026(j: number): any {
           TimeRanges: S.optional(__S(8001, __c250, 1)).pipe(T.XmlName("TimeRange")),
           CronExpression: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyInstanceEventWindowRequest",
-      });
+      ).annotate({ identifier: "ModifyInstanceEventWindowRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -89897,9 +86697,7 @@ function __c1026(j: number): any {
             .pipe(T.XmlName("instanceEventWindow"), T.Ec2QueryName("InstanceEventWindow"))
             .annotate({ identifier: "InstanceEventWindow" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyInstanceEventWindowResult",
-      });
+      ).annotate({ identifier: "ModifyInstanceEventWindowResult" });
   }
 }
 function __c1027(j: number): any {
@@ -89912,9 +86710,7 @@ function __c1027(j: number): any {
           RebootMigration: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyInstanceMaintenanceOptionsRequest",
-      });
+      ).annotate({ identifier: "ModifyInstanceMaintenanceOptionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -89931,9 +86727,7 @@ function __c1027(j: number): any {
             T.Ec2QueryName("RebootMigration"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyInstanceMaintenanceOptionsResult",
-      });
+      ).annotate({ identifier: "ModifyInstanceMaintenanceOptionsResult" });
   }
 }
 function __c1028(j: number): any {
@@ -89948,17 +86742,13 @@ function __c1028(j: number): any {
           DryRun: S.optional(S.Boolean),
           HttpTokensEnforced: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyInstanceMetadataDefaultsRequest",
-      });
+      ).annotate({ identifier: "ModifyInstanceMetadataDefaultsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyInstanceMetadataDefaultsResult",
-      });
+      ).annotate({ identifier: "ModifyInstanceMetadataDefaultsResult" });
   }
 }
 function __c1029(j: number): any {
@@ -89974,9 +86764,7 @@ function __c1029(j: number): any {
           HttpProtocolIpv6: S.optional(S.String),
           InstanceMetadataTags: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyInstanceMetadataOptionsRequest",
-      });
+      ).annotate({ identifier: "ModifyInstanceMetadataOptionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -89988,9 +86776,7 @@ function __c1029(j: number): any {
             .pipe(T.XmlName("instanceMetadataOptions"), T.Ec2QueryName("InstanceMetadataOptions"))
             .annotate({ identifier: "InstanceMetadataOptionsResponse" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyInstanceMetadataOptionsResult",
-      });
+      ).annotate({ identifier: "ModifyInstanceMetadataOptionsResult" });
   }
 }
 function __c1030(j: number): any {
@@ -90002,9 +86788,7 @@ function __c1030(j: number): any {
           BandwidthWeighting: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyInstanceNetworkPerformanceRequest",
-      });
+      ).annotate({ identifier: "ModifyInstanceNetworkPerformanceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -90017,9 +86801,7 @@ function __c1030(j: number): any {
             T.Ec2QueryName("BandwidthWeighting"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyInstanceNetworkPerformanceResult",
-      });
+      ).annotate({ identifier: "ModifyInstanceNetworkPerformanceResult" });
   }
 }
 function __c1031(j: number): any {
@@ -90039,17 +86821,13 @@ function __c1031(j: number): any {
           Affinity: S.optional(S.String).pipe(T.XmlName("affinity"), T.Ec2QueryName("Affinity")),
           HostId: S.optional(S.String).pipe(T.XmlName("hostId"), T.Ec2QueryName("HostId")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyInstancePlacementRequest",
-      });
+      ).annotate({ identifier: "ModifyInstancePlacementRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyInstancePlacementResult",
-      });
+      ).annotate({ identifier: "ModifyInstancePlacementResult" });
   }
 }
 function __c1032(j: number): any {
@@ -90099,9 +86877,9 @@ function __c1034(j: number): any {
       });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(33088, __c1034, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "IpamPolicyAllocationRuleRequest",
-        }),
+        /*@__PURE__*/ __S(33088, __c1034, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "IpamPolicyAllocationRuleRequest" }),
       );
     case 2:
       return S.suspend(() =>
@@ -90112,9 +86890,7 @@ function __c1034(j: number): any {
           ResourceType: S.optional(S.String),
           AllocationRules: S.optional(__S(33089, __c1034, 1)).pipe(T.XmlName("AllocationRule")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyIpamPolicyAllocationRulesRequest",
-      });
+      ).annotate({ identifier: "ModifyIpamPolicyAllocationRulesRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -90122,9 +86898,7 @@ function __c1034(j: number): any {
             .pipe(T.XmlName("ipamPolicyDocument"), T.Ec2QueryName("IpamPolicyDocument"))
             .annotate({ identifier: "IpamPolicyDocument" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyIpamPolicyAllocationRulesResult",
-      });
+      ).annotate({ identifier: "ModifyIpamPolicyAllocationRulesResult" });
   }
 }
 function __c1035(j: number): any {
@@ -90167,9 +86941,7 @@ function __c1036(j: number): any {
           IpamPoolAllocationId: S.optional(S.String),
           Description: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyIpamPoolAllocationRequest",
-      });
+      ).annotate({ identifier: "ModifyIpamPoolAllocationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -90177,9 +86949,7 @@ function __c1036(j: number): any {
             .pipe(T.XmlName("ipamPoolAllocation"), T.Ec2QueryName("IpamPoolAllocation"))
             .annotate({ identifier: "IpamPoolAllocation" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyIpamPoolAllocationResult",
-      });
+      ).annotate({ identifier: "ModifyIpamPoolAllocationResult" });
   }
 }
 function __c1037(j: number): any {
@@ -90192,9 +86962,7 @@ function __c1037(j: number): any {
           Description: S.optional(S.String),
           Rules: S.optional(__S(8771, __c274, 3)).pipe(T.XmlName("Rule")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyIpamPrefixListResolverRequest",
-      });
+      ).annotate({ identifier: "ModifyIpamPrefixListResolverRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -90202,9 +86970,7 @@ function __c1037(j: number): any {
             .pipe(T.XmlName("ipamPrefixListResolver"), T.Ec2QueryName("IpamPrefixListResolver"))
             .annotate({ identifier: "IpamPrefixListResolver" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyIpamPrefixListResolverResult",
-      });
+      ).annotate({ identifier: "ModifyIpamPrefixListResolverResult" });
   }
 }
 function __c1038(j: number): any {
@@ -90218,9 +86984,7 @@ function __c1038(j: number): any {
           TrackLatestVersion: S.optional(S.Boolean),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyIpamPrefixListResolverTargetRequest",
-      });
+      ).annotate({ identifier: "ModifyIpamPrefixListResolverTargetRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -90231,9 +86995,7 @@ function __c1038(j: number): any {
             )
             .annotate({ identifier: "IpamPrefixListResolverTarget" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyIpamPrefixListResolverTargetResult",
-      });
+      ).annotate({ identifier: "ModifyIpamPrefixListResolverTargetResult" });
   }
 }
 function __c1039(j: number): any {
@@ -90249,9 +87011,7 @@ function __c1039(j: number): any {
           DestinationIpamScopeId: S.optional(S.String),
           Monitored: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyIpamResourceCidrRequest",
-      });
+      ).annotate({ identifier: "ModifyIpamResourceCidrRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -90259,9 +87019,7 @@ function __c1039(j: number): any {
             .pipe(T.XmlName("ipamResourceCidr"), T.Ec2QueryName("IpamResourceCidr"))
             .annotate({ identifier: "IpamResourceCidr" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyIpamResourceCidrResult",
-      });
+      ).annotate({ identifier: "ModifyIpamResourceCidrResult" });
   }
 }
 function __c1040(j: number): any {
@@ -90297,9 +87055,7 @@ function __c1040(j: number): any {
             T.XmlName("RemoveOrganizationalUnitExclusion"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyIpamResourceDiscoveryRequest",
-      });
+      ).annotate({ identifier: "ModifyIpamResourceDiscoveryRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -90307,9 +87063,7 @@ function __c1040(j: number): any {
             .pipe(T.XmlName("ipamResourceDiscovery"), T.Ec2QueryName("IpamResourceDiscovery"))
             .annotate({ identifier: "IpamResourceDiscovery" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyIpamResourceDiscoveryResult",
-      });
+      ).annotate({ identifier: "ModifyIpamResourceDiscoveryResult" });
   }
 }
 function __c1041(j: number): any {
@@ -90327,9 +87081,7 @@ function __c1041(j: number): any {
           Force: S.optional(S.Boolean),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyIpamRoutingPolicyRegistrationRequest",
-      });
+      ).annotate({ identifier: "ModifyIpamRoutingPolicyRegistrationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -90340,9 +87092,7 @@ function __c1041(j: number): any {
             )
             .annotate({ identifier: "IpamRoutingPolicyRegistrationDelta" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyIpamRoutingPolicyRegistrationResult",
-      });
+      ).annotate({ identifier: "ModifyIpamRoutingPolicyRegistrationResult" });
   }
 }
 function __c1042(j: number): any {
@@ -90378,9 +87128,7 @@ function __c1043(j: number): any {
           LaunchTemplateName: S.optional(S.String),
           DefaultVersion: S.optional(S.String).pipe(T.XmlName("SetDefaultVersion")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyLaunchTemplateRequest",
-      });
+      ).annotate({ identifier: "ModifyLaunchTemplateRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -90388,9 +87136,7 @@ function __c1043(j: number): any {
             .pipe(T.XmlName("launchTemplate"), T.Ec2QueryName("LaunchTemplate"))
             .annotate({ identifier: "LaunchTemplate" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyLaunchTemplateResult",
-      });
+      ).annotate({ identifier: "ModifyLaunchTemplateResult" });
   }
 }
 function __c1044(j: number): any {
@@ -90405,9 +87151,7 @@ function __c1044(j: number): any {
           DryRun: S.optional(S.Boolean),
           DestinationPrefixListId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyLocalGatewayRouteRequest",
-      });
+      ).annotate({ identifier: "ModifyLocalGatewayRouteRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -90415,9 +87159,7 @@ function __c1044(j: number): any {
             .pipe(T.XmlName("route"), T.Ec2QueryName("Route"))
             .annotate({ identifier: "LocalGatewayRoute" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyLocalGatewayRouteResult",
-      });
+      ).annotate({ identifier: "ModifyLocalGatewayRouteResult" });
   }
 }
 function __c1045(j: number): any {
@@ -90440,9 +87182,7 @@ function __c1045(j: number): any {
           MaxEntries: S.optional(S.Number),
           IpamPrefixListResolverSyncEnabled: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyManagedPrefixListRequest",
-      });
+      ).annotate({ identifier: "ModifyManagedPrefixListRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -90450,22 +87190,17 @@ function __c1045(j: number): any {
             .pipe(T.XmlName("prefixList"), T.Ec2QueryName("PrefixList"))
             .annotate({ identifier: "ManagedPrefixList" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyManagedPrefixListResult",
-      });
+      ).annotate({ identifier: "ModifyManagedPrefixListResult" });
   }
 }
 function __c1046(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          DryRun: S.optional(S.Boolean),
-          DefaultVisibility: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyManagedResourceVisibilityRequest",
-      });
+        S.Struct({ DryRun: S.optional(S.Boolean), DefaultVisibility: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ModifyManagedResourceVisibilityRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -90473,9 +87208,7 @@ function __c1046(j: number): any {
             .pipe(T.XmlName("visibility"), T.Ec2QueryName("Visibility"))
             .annotate({ identifier: "ManagedResourceVisibilitySettings" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyManagedResourceVisibilityResult",
-      });
+      ).annotate({ identifier: "ModifyManagedResourceVisibilityResult" });
   }
 }
 function __c1047(j: number): any {
@@ -90496,9 +87229,7 @@ function __c1047(j: number): any {
             T.Ec2QueryName("DeleteOnTermination"),
           ),
         }),
-      ).annotate({
-        identifier: "NetworkInterfaceAttachmentChanges",
-      });
+      ).annotate({ identifier: "NetworkInterfaceAttachmentChanges" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -90525,9 +87256,7 @@ function __c1047(j: number): any {
             .pipe(T.XmlName("attachment"), T.Ec2QueryName("Attachment"))
             .annotate({ identifier: "NetworkInterfaceAttachmentChanges" }),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyNetworkInterfaceAttributeRequest",
-      });
+      ).annotate({ identifier: "ModifyNetworkInterfaceAttributeRequest" });
     case 3:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "ModifyNetworkInterfaceAttributeResponse",
@@ -90545,17 +87274,13 @@ function __c1048(j: number): any {
           EnableResourceNameDnsARecord: S.optional(S.Boolean),
           EnableResourceNameDnsAAAARecord: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyPrivateDnsNameOptionsRequest",
-      });
+      ).annotate({ identifier: "ModifyPrivateDnsNameOptionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyPrivateDnsNameOptionsResult",
-      });
+      ).annotate({ identifier: "ModifyPrivateDnsNameOptionsResult" });
   }
 }
 function __c1049(j: number): any {
@@ -90567,9 +87292,7 @@ function __c1049(j: number): any {
           HostnameType: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyPublicIpDnsNameOptionsRequest",
-      });
+      ).annotate({ identifier: "ModifyPublicIpDnsNameOptionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -90578,18 +87301,16 @@ function __c1049(j: number): any {
             T.Ec2QueryName("Successful"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyPublicIpDnsNameOptionsResult",
-      });
+      ).annotate({ identifier: "ModifyPublicIpDnsNameOptionsResult" });
   }
 }
 function __c1050(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ __S(23328, __c729, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ReservedInstancesConfiguration",
-        }),
+        /*@__PURE__*/ __S(23328, __c729, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ReservedInstancesConfiguration" }),
       );
     case 1:
       return S.suspend(() =>
@@ -90605,9 +87326,7 @@ function __c1050(j: number): any {
             T.XmlName("ReservedInstancesConfigurationSetItemType"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyReservedInstancesRequest",
-      });
+      ).annotate({ identifier: "ModifyReservedInstancesRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -90616,9 +87335,7 @@ function __c1050(j: number): any {
             T.Ec2QueryName("ReservedInstancesModificationId"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyReservedInstancesResult",
-      });
+      ).annotate({ identifier: "ModifyReservedInstancesResult" });
   }
 }
 function __c1051(j: number): any {
@@ -90667,9 +87384,9 @@ function __c1052(j: number): any {
       ).annotate({ identifier: "SecurityGroupRuleUpdate" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(33665, __c1052, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "SecurityGroupRuleUpdate",
-        }),
+        /*@__PURE__*/ __S(33665, __c1052, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "SecurityGroupRuleUpdate" }),
       );
     case 3:
       return S.suspend(() =>
@@ -90680,17 +87397,13 @@ function __c1052(j: number): any {
           ),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifySecurityGroupRulesRequest",
-      });
+      ).annotate({ identifier: "ModifySecurityGroupRulesRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifySecurityGroupRulesResult",
-      });
+      ).annotate({ identifier: "ModifySecurityGroupRulesResult" });
   }
 }
 function __c1053(j: number): any {
@@ -90701,9 +87414,7 @@ function __c1053(j: number): any {
           Add: S.optional(__S(24001, __c750, 1)),
           Remove: S.optional(__S(24001, __c750, 1)),
         }),
-      ).annotate({
-        identifier: "CreateVolumePermissionModifications",
-      });
+      ).annotate({ identifier: "CreateVolumePermissionModifications" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -90715,9 +87426,7 @@ function __c1053(j: number): any {
           UserIds: S.optional(__S(32384, __c1012, 0)).pipe(T.XmlName("UserId")),
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifySnapshotAttributeRequest",
-      });
+      ).annotate({ identifier: "ModifySnapshotAttributeRequest" });
     case 2:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "ModifySnapshotAttributeResponse",
@@ -90733,9 +87442,7 @@ function __c1054(j: number): any {
           StorageTier: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifySnapshotTierRequest",
-      });
+      ).annotate({ identifier: "ModifySnapshotTierRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -90774,17 +87481,13 @@ function __c1055(j: number): any {
             T.Ec2QueryName("ExcessCapacityTerminationPolicy"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifySpotFleetRequestRequest",
-      });
+      ).annotate({ identifier: "ModifySpotFleetRequestRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifySpotFleetRequestResponse",
-      });
+      ).annotate({ identifier: "ModifySpotFleetRequestResponse" });
   }
 }
 function __c1056(j: number): any {
@@ -90804,9 +87507,7 @@ function __c1056(j: number): any {
           EnableLniAtDeviceIndex: S.optional(S.Number),
           DisableLniAtDeviceIndex: S.optional(__S(20864, __c652, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifySubnetAttributeRequest",
-      });
+      ).annotate({ identifier: "ModifySubnetAttributeRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "ModifySubnetAttributeResponse",
@@ -90827,9 +87528,7 @@ function __c1057(j: number): any {
           ),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyTrafficMirrorFilterNetworkServicesRequest",
-      });
+      ).annotate({ identifier: "ModifyTrafficMirrorFilterNetworkServicesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -90837,9 +87536,7 @@ function __c1057(j: number): any {
             .pipe(T.XmlName("trafficMirrorFilter"), T.Ec2QueryName("TrafficMirrorFilter"))
             .annotate({ identifier: "TrafficMirrorFilter" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyTrafficMirrorFilterNetworkServicesResult",
-      });
+      ).annotate({ identifier: "ModifyTrafficMirrorFilterNetworkServicesResult" });
   }
 }
 function __c1058(j: number): any {
@@ -90862,9 +87559,7 @@ function __c1058(j: number): any {
           RemoveFields: S.optional(__S(33856, __c1058, 0)).pipe(T.XmlName("RemoveField")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyTrafficMirrorFilterRuleRequest",
-      });
+      ).annotate({ identifier: "ModifyTrafficMirrorFilterRuleRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -90872,9 +87567,7 @@ function __c1058(j: number): any {
             .pipe(T.XmlName("trafficMirrorFilterRule"), T.Ec2QueryName("TrafficMirrorFilterRule"))
             .annotate({ identifier: "TrafficMirrorFilterRule" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyTrafficMirrorFilterRuleResult",
-      });
+      ).annotate({ identifier: "ModifyTrafficMirrorFilterRuleResult" });
   }
 }
 function __c1059(j: number): any {
@@ -90894,9 +87587,7 @@ function __c1059(j: number): any {
           RemoveFields: S.optional(__S(33888, __c1059, 0)).pipe(T.XmlName("RemoveField")),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyTrafficMirrorSessionRequest",
-      });
+      ).annotate({ identifier: "ModifyTrafficMirrorSessionRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -90904,9 +87595,7 @@ function __c1059(j: number): any {
             .pipe(T.XmlName("trafficMirrorSession"), T.Ec2QueryName("TrafficMirrorSession"))
             .annotate({ identifier: "TrafficMirrorSession" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyTrafficMirrorSessionResult",
-      });
+      ).annotate({ identifier: "ModifyTrafficMirrorSessionResult" });
   }
 }
 function __c1060(j: number): any {
@@ -90927,9 +87616,7 @@ function __c1060(j: number): any {
           AmazonSideAsn: S.optional(S.Number),
           EncryptionSupport: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ModifyTransitGatewayOptions",
-      });
+      ).annotate({ identifier: "ModifyTransitGatewayOptions" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -90938,9 +87625,7 @@ function __c1060(j: number): any {
           Options: S.optional(__S(33920, __c1060, 0)),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyTransitGatewayRequest",
-      });
+      ).annotate({ identifier: "ModifyTransitGatewayRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -90948,9 +87633,7 @@ function __c1060(j: number): any {
             .pipe(T.XmlName("transitGateway"), T.Ec2QueryName("TransitGateway"))
             .annotate({ identifier: "TransitGateway" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyTransitGatewayResult",
-      });
+      ).annotate({ identifier: "ModifyTransitGatewayResult" });
   }
 }
 function __c1061(j: number): any {
@@ -90967,9 +87650,7 @@ function __c1061(j: number): any {
           ),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyTransitGatewayMeteringPolicyRequest",
-      });
+      ).annotate({ identifier: "ModifyTransitGatewayMeteringPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -90980,9 +87661,7 @@ function __c1061(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayMeteringPolicy" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyTransitGatewayMeteringPolicyResult",
-      });
+      ).annotate({ identifier: "ModifyTransitGatewayMeteringPolicyResult" });
   }
 }
 function __c1062(j: number): any {
@@ -90996,9 +87675,7 @@ function __c1062(j: number): any {
           TargetRouteTableId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyTransitGatewayPolicyTableEntryRequest",
-      });
+      ).annotate({ identifier: "ModifyTransitGatewayPolicyTableEntryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -91009,9 +87686,7 @@ function __c1062(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayPolicyTableEntry" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyTransitGatewayPolicyTableEntryResult",
-      });
+      ).annotate({ identifier: "ModifyTransitGatewayPolicyTableEntryResult" });
   }
 }
 function __c1063(j: number): any {
@@ -91025,9 +87700,7 @@ function __c1063(j: number): any {
           Blackhole: S.optional(S.Boolean),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyTransitGatewayPrefixListReferenceRequest",
-      });
+      ).annotate({ identifier: "ModifyTransitGatewayPrefixListReferenceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -91038,9 +87711,7 @@ function __c1063(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayPrefixListReference" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyTransitGatewayPrefixListReferenceResult",
-      });
+      ).annotate({ identifier: "ModifyTransitGatewayPrefixListReferenceResult" });
   }
 }
 function __c1064(j: number): any {
@@ -91053,9 +87724,7 @@ function __c1064(j: number): any {
           Ipv6Support: S.optional(S.String),
           ApplianceModeSupport: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ModifyTransitGatewayVpcAttachmentRequestOptions",
-      });
+      ).annotate({ identifier: "ModifyTransitGatewayVpcAttachmentRequestOptions" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -91065,9 +87734,7 @@ function __c1064(j: number): any {
           Options: S.optional(__S(34048, __c1064, 0)),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyTransitGatewayVpcAttachmentRequest",
-      });
+      ).annotate({ identifier: "ModifyTransitGatewayVpcAttachmentRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -91078,9 +87745,7 @@ function __c1064(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayVpcAttachment" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyTransitGatewayVpcAttachmentResult",
-      });
+      ).annotate({ identifier: "ModifyTransitGatewayVpcAttachmentResult" });
   }
 }
 function __c1065(j: number): any {
@@ -91090,14 +87755,12 @@ function __c1065(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ FromPort: S.optional(S.Number), ToPort: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "ModifyVerifiedAccessEndpointPortRange",
-      });
+      ).annotate({ identifier: "ModifyVerifiedAccessEndpointPortRange" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(34081, __c1065, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ModifyVerifiedAccessEndpointPortRange",
-        }),
+        /*@__PURE__*/ __S(34081, __c1065, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ModifyVerifiedAccessEndpointPortRange" }),
       );
     case 3:
       return S.suspend(() =>
@@ -91107,9 +87770,7 @@ function __c1065(j: number): any {
           Port: S.optional(S.Number),
           PortRanges: S.optional(__S(34082, __c1065, 2)).pipe(T.XmlName("PortRange")),
         }),
-      ).annotate({
-        identifier: "ModifyVerifiedAccessEndpointLoadBalancerOptions",
-      });
+      ).annotate({ identifier: "ModifyVerifiedAccessEndpointLoadBalancerOptions" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -91117,9 +87778,7 @@ function __c1065(j: number): any {
           Port: S.optional(S.Number),
           PortRanges: S.optional(__S(34082, __c1065, 2)).pipe(T.XmlName("PortRange")),
         }),
-      ).annotate({
-        identifier: "ModifyVerifiedAccessEndpointEniOptions",
-      });
+      ).annotate({ identifier: "ModifyVerifiedAccessEndpointEniOptions" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -91127,17 +87786,11 @@ function __c1065(j: number): any {
           Port: S.optional(S.Number),
           RdsEndpoint: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ModifyVerifiedAccessEndpointRdsOptions",
-      });
+      ).annotate({ identifier: "ModifyVerifiedAccessEndpointRdsOptions" });
     case 6:
       return S.suspend(() =>
-        S.Struct({
-          PortRanges: S.optional(__S(34082, __c1065, 2)).pipe(T.XmlName("PortRange")),
-        }),
-      ).annotate({
-        identifier: "ModifyVerifiedAccessEndpointCidrOptions",
-      });
+        S.Struct({ PortRanges: S.optional(__S(34082, __c1065, 2)).pipe(T.XmlName("PortRange")) }),
+      ).annotate({ identifier: "ModifyVerifiedAccessEndpointCidrOptions" });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -91151,9 +87804,7 @@ function __c1065(j: number): any {
           RdsOptions: S.optional(__S(34085, __c1065, 5)),
           CidrOptions: S.optional(__S(34086, __c1065, 6)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyVerifiedAccessEndpointRequest",
-      });
+      ).annotate({ identifier: "ModifyVerifiedAccessEndpointRequest" });
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -91161,9 +87812,7 @@ function __c1065(j: number): any {
             .pipe(T.XmlName("verifiedAccessEndpoint"), T.Ec2QueryName("VerifiedAccessEndpoint"))
             .annotate({ identifier: "VerifiedAccessEndpoint" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyVerifiedAccessEndpointResult",
-      });
+      ).annotate({ identifier: "ModifyVerifiedAccessEndpointResult" });
   }
 }
 function __c1066(j: number): any {
@@ -91178,9 +87827,7 @@ function __c1066(j: number): any {
           DryRun: S.optional(S.Boolean),
           SseSpecification: S.optional(__S(13216, __c413, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyVerifiedAccessEndpointPolicyRequest",
-      });
+      ).annotate({ identifier: "ModifyVerifiedAccessEndpointPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -91196,9 +87843,7 @@ function __c1066(j: number): any {
             .pipe(T.XmlName("sseSpecification"), T.Ec2QueryName("SseSpecification"))
             .annotate({ identifier: "VerifiedAccessSseSpecificationResponse" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyVerifiedAccessEndpointPolicyResult",
-      });
+      ).annotate({ identifier: "ModifyVerifiedAccessEndpointPolicyResult" });
   }
 }
 function __c1067(j: number): any {
@@ -91212,9 +87857,7 @@ function __c1067(j: number): any {
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyVerifiedAccessGroupRequest",
-      });
+      ).annotate({ identifier: "ModifyVerifiedAccessGroupRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -91222,9 +87865,7 @@ function __c1067(j: number): any {
             .pipe(T.XmlName("verifiedAccessGroup"), T.Ec2QueryName("VerifiedAccessGroup"))
             .annotate({ identifier: "VerifiedAccessGroup" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyVerifiedAccessGroupResult",
-      });
+      ).annotate({ identifier: "ModifyVerifiedAccessGroupResult" });
   }
 }
 function __c1068(j: number): any {
@@ -91239,9 +87880,7 @@ function __c1068(j: number): any {
           DryRun: S.optional(S.Boolean),
           SseSpecification: S.optional(__S(13216, __c413, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyVerifiedAccessGroupPolicyRequest",
-      });
+      ).annotate({ identifier: "ModifyVerifiedAccessGroupPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -91257,9 +87896,7 @@ function __c1068(j: number): any {
             .pipe(T.XmlName("sseSpecification"), T.Ec2QueryName("SseSpecification"))
             .annotate({ identifier: "VerifiedAccessSseSpecificationResponse" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyVerifiedAccessGroupPolicyResult",
-      });
+      ).annotate({ identifier: "ModifyVerifiedAccessGroupPolicyResult" });
   }
 }
 function __c1069(j: number): any {
@@ -91273,9 +87910,7 @@ function __c1069(j: number): any {
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           CidrEndpointsCustomSubDomain: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyVerifiedAccessInstanceRequest",
-      });
+      ).annotate({ identifier: "ModifyVerifiedAccessInstanceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -91283,9 +87918,7 @@ function __c1069(j: number): any {
             .pipe(T.XmlName("verifiedAccessInstance"), T.Ec2QueryName("VerifiedAccessInstance"))
             .annotate({ identifier: "VerifiedAccessInstance" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyVerifiedAccessInstanceResult",
-      });
+      ).annotate({ identifier: "ModifyVerifiedAccessInstanceResult" });
   }
 }
 function __c1070(j: number): any {
@@ -91298,21 +87931,15 @@ function __c1070(j: number): any {
           Prefix: S.optional(S.String),
           BucketOwner: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "VerifiedAccessLogS3DestinationOptions",
-      });
+      ).annotate({ identifier: "VerifiedAccessLogS3DestinationOptions" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Enabled: S.optional(S.Boolean), LogGroup: S.optional(S.String) }),
-      ).annotate({
-        identifier: "VerifiedAccessLogCloudWatchLogsDestinationOptions",
-      });
+      ).annotate({ identifier: "VerifiedAccessLogCloudWatchLogsDestinationOptions" });
     case 2:
       return S.suspend(() =>
         S.Struct({ Enabled: S.optional(S.Boolean), DeliveryStream: S.optional(S.String) }),
-      ).annotate({
-        identifier: "VerifiedAccessLogKinesisDataFirehoseDestinationOptions",
-      });
+      ).annotate({ identifier: "VerifiedAccessLogKinesisDataFirehoseDestinationOptions" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -91331,9 +87958,7 @@ function __c1070(j: number): any {
           DryRun: S.optional(S.Boolean),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyVerifiedAccessInstanceLoggingConfigurationRequest",
-      });
+      ).annotate({ identifier: "ModifyVerifiedAccessInstanceLoggingConfigurationRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -91341,9 +87966,7 @@ function __c1070(j: number): any {
             .pipe(T.XmlName("loggingConfiguration"), T.Ec2QueryName("LoggingConfiguration"))
             .annotate({ identifier: "VerifiedAccessInstanceLoggingConfiguration" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyVerifiedAccessInstanceLoggingConfigurationResult",
-      });
+      ).annotate({ identifier: "ModifyVerifiedAccessInstanceLoggingConfigurationResult" });
   }
 }
 function __c1071(j: number): any {
@@ -91359,9 +87982,7 @@ function __c1071(j: number): any {
           ClientSecret: S.optional(SensitiveString),
           Scope: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ModifyVerifiedAccessTrustProviderOidcOptions",
-      });
+      ).annotate({ identifier: "ModifyVerifiedAccessTrustProviderOidcOptions" });
     case 1:
       return S.suspend(() => S.Struct({ PublicSigningKeyUrl: S.optional(S.String) })).annotate({
         identifier: "ModifyVerifiedAccessTrustProviderDeviceOptions",
@@ -91378,9 +87999,7 @@ function __c1071(j: number): any {
           ClientSecret: S.optional(SensitiveString),
           Scope: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ModifyVerifiedAccessNativeApplicationOidcOptions",
-      });
+      ).annotate({ identifier: "ModifyVerifiedAccessNativeApplicationOidcOptions" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -91393,9 +88012,7 @@ function __c1071(j: number): any {
           SseSpecification: S.optional(__S(13216, __c413, 0)),
           NativeApplicationOidcOptions: S.optional(__S(34274, __c1071, 2)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyVerifiedAccessTrustProviderRequest",
-      });
+      ).annotate({ identifier: "ModifyVerifiedAccessTrustProviderRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -91406,9 +88023,7 @@ function __c1071(j: number): any {
             )
             .annotate({ identifier: "VerifiedAccessTrustProvider" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyVerifiedAccessTrustProviderResult",
-      });
+      ).annotate({ identifier: "ModifyVerifiedAccessTrustProviderResult" });
   }
 }
 function __c1072(j: number): any {
@@ -91444,9 +88059,7 @@ function __c1073(j: number): any {
           VolumeId: S.optional(S.String),
           DryRun: S.optional(S.Boolean).pipe(T.XmlName("dryRun"), T.Ec2QueryName("DryRun")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyVolumeAttributeRequest",
-      });
+      ).annotate({ identifier: "ModifyVolumeAttributeRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "ModifyVolumeAttributeResponse",
@@ -91463,9 +88076,7 @@ function __c1074(j: number): any {
           VpcId: S.optional(S.String).pipe(T.XmlName("vpcId"), T.Ec2QueryName("VpcId")),
           EnableNetworkAddressUsageMetrics: S.optional(__S(20864, __c652, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyVpcAttributeRequest",
-      });
+      ).annotate({ identifier: "ModifyVpcAttributeRequest" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "ModifyVpcAttributeResponse",
@@ -91481,9 +88092,7 @@ function __c1075(j: number): any {
           ExclusionId: S.optional(S.String),
           InternetGatewayExclusionMode: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyVpcBlockPublicAccessExclusionRequest",
-      });
+      ).annotate({ identifier: "ModifyVpcBlockPublicAccessExclusionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -91494,9 +88103,7 @@ function __c1075(j: number): any {
             )
             .annotate({ identifier: "VpcBlockPublicAccessExclusion" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyVpcBlockPublicAccessExclusionResult",
-      });
+      ).annotate({ identifier: "ModifyVpcBlockPublicAccessExclusionResult" });
   }
 }
 function __c1076(j: number): any {
@@ -91507,9 +88114,7 @@ function __c1076(j: number): any {
           DryRun: S.optional(S.Boolean),
           InternetGatewayBlockMode: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyVpcBlockPublicAccessOptionsRequest",
-      });
+      ).annotate({ identifier: "ModifyVpcBlockPublicAccessOptionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -91520,9 +88125,7 @@ function __c1076(j: number): any {
             )
             .annotate({ identifier: "VpcBlockPublicAccessOptions" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyVpcBlockPublicAccessOptionsResult",
-      });
+      ).annotate({ identifier: "ModifyVpcBlockPublicAccessOptionsResult" });
   }
 }
 function __c1077(j: number): any {
@@ -91542,9 +88145,7 @@ function __c1077(j: number): any {
           VpcLatticeExclusion: S.optional(S.String),
           ElasticFileSystemExclusion: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyVpcEncryptionControlRequest",
-      });
+      ).annotate({ identifier: "ModifyVpcEncryptionControlRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -91552,9 +88153,7 @@ function __c1077(j: number): any {
             .pipe(T.XmlName("vpcEncryptionControl"), T.Ec2QueryName("VpcEncryptionControl"))
             .annotate({ identifier: "VpcEncryptionControl" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyVpcEncryptionControlResult",
-      });
+      ).annotate({ identifier: "ModifyVpcEncryptionControlResult" });
   }
 }
 function __c1078(j: number): any {
@@ -91604,17 +88203,13 @@ function __c1079(j: number): any {
           ConnectionNotificationArn: S.optional(S.String),
           ConnectionEvents: S.optional(__S(2208, __c69, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyVpcEndpointConnectionNotificationRequest",
-      });
+      ).annotate({ identifier: "ModifyVpcEndpointConnectionNotificationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ReturnValue: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyVpcEndpointConnectionNotificationResult",
-      });
+      ).annotate({ identifier: "ModifyVpcEndpointConnectionNotificationResult" });
   }
 }
 function __c1080(j: number): any {
@@ -91628,9 +88223,7 @@ function __c1080(j: number): any {
           PayerResponsibility: S.optional(S.String),
           Scope: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyVpcEndpointPayerResponsibilityRequest",
-      });
+      ).annotate({ identifier: "ModifyVpcEndpointPayerResponsibilityRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -91643,9 +88236,7 @@ function __c1080(j: number): any {
             T.Ec2QueryName("PayerResponsibilitySet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyVpcEndpointPayerResponsibilityResult",
-      });
+      ).annotate({ identifier: "ModifyVpcEndpointPayerResponsibilityResult" });
   }
 }
 function __c1081(j: number): any {
@@ -91683,17 +88274,13 @@ function __c1081(j: number): any {
             T.XmlName("RemoveSupportedRegion"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyVpcEndpointServiceConfigurationRequest",
-      });
+      ).annotate({ identifier: "ModifyVpcEndpointServiceConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyVpcEndpointServiceConfigurationResult",
-      });
+      ).annotate({ identifier: "ModifyVpcEndpointServiceConfigurationResult" });
   }
 }
 function __c1082(j: number): any {
@@ -91705,17 +88292,13 @@ function __c1082(j: number): any {
           ServiceId: S.optional(S.String),
           PayerResponsibility: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyVpcEndpointServicePayerResponsibilityRequest",
-      });
+      ).annotate({ identifier: "ModifyVpcEndpointServicePayerResponsibilityRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ReturnValue: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyVpcEndpointServicePayerResponsibilityResult",
-      });
+      ).annotate({ identifier: "ModifyVpcEndpointServicePayerResponsibilityResult" });
   }
 }
 function __c1083(j: number): any {
@@ -91728,9 +88311,7 @@ function __c1083(j: number): any {
           AddAllowedPrincipals: S.optional(__S(2208, __c69, 0)),
           RemoveAllowedPrincipals: S.optional(__S(2208, __c69, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyVpcEndpointServicePermissionsRequest",
-      });
+      ).annotate({ identifier: "ModifyVpcEndpointServicePermissionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -91748,9 +88329,9 @@ function __c1083(j: number): any {
       ).annotate({ identifier: "AddedPrincipal" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(34657, __c1083, 1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "AddedPrincipal",
-        }),
+        /*@__PURE__*/ __S(34657, __c1083, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "AddedPrincipal" }),
       );
     case 3:
       return S.suspend(() =>
@@ -91761,9 +88342,7 @@ function __c1083(j: number): any {
           ),
           ReturnValue: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyVpcEndpointServicePermissionsResult",
-      });
+      ).annotate({ identifier: "ModifyVpcEndpointServicePermissionsResult" });
   }
 }
 function __c1084(j: number): any {
@@ -91775,9 +88354,7 @@ function __c1084(j: number): any {
           AllowEgressFromLocalClassicLinkToRemoteVpc: S.optional(S.Boolean),
           AllowEgressFromLocalVpcToRemoteClassicLink: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "PeeringConnectionOptionsRequest",
-      });
+      ).annotate({ identifier: "PeeringConnectionOptionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -91786,9 +88363,7 @@ function __c1084(j: number): any {
           RequesterPeeringConnectionOptions: S.optional(__S(34688, __c1084, 0)),
           VpcPeeringConnectionId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyVpcPeeringConnectionOptionsRequest",
-      });
+      ).annotate({ identifier: "ModifyVpcPeeringConnectionOptionsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -91822,9 +88397,7 @@ function __c1084(j: number): any {
             )
             .annotate({ identifier: "PeeringConnectionOptions" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyVpcPeeringConnectionOptionsResult",
-      });
+      ).annotate({ identifier: "ModifyVpcPeeringConnectionOptionsResult" });
   }
 }
 function __c1085(j: number): any {
@@ -91856,9 +88429,7 @@ function __c1086(j: number): any {
           VpnGatewayId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyVpnConnectionRequest",
-      });
+      ).annotate({ identifier: "ModifyVpnConnectionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -91866,9 +88437,7 @@ function __c1086(j: number): any {
             .pipe(T.XmlName("vpnConnection"), T.Ec2QueryName("VpnConnection"))
             .annotate({ identifier: "VpnConnection" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyVpnConnectionResult",
-      });
+      ).annotate({ identifier: "ModifyVpnConnectionResult" });
   }
 }
 function __c1087(j: number): any {
@@ -91884,9 +88453,7 @@ function __c1087(j: number): any {
           TunnelBandwidth: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyVpnConnectionOptionsRequest",
-      });
+      ).annotate({ identifier: "ModifyVpnConnectionOptionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -91894,9 +88461,7 @@ function __c1087(j: number): any {
             .pipe(T.XmlName("vpnConnection"), T.Ec2QueryName("VpnConnection"))
             .annotate({ identifier: "VpnConnection" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyVpnConnectionOptionsResult",
-      });
+      ).annotate({ identifier: "ModifyVpnConnectionOptionsResult" });
   }
 }
 function __c1088(j: number): any {
@@ -91908,9 +88473,7 @@ function __c1088(j: number): any {
           VpnTunnelOutsideIpAddress: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyVpnTunnelCertificateRequest",
-      });
+      ).annotate({ identifier: "ModifyVpnTunnelCertificateRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -91918,9 +88481,7 @@ function __c1088(j: number): any {
             .pipe(T.XmlName("vpnConnection"), T.Ec2QueryName("VpnConnection"))
             .annotate({ identifier: "VpnConnection" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyVpnTunnelCertificateResult",
-      });
+      ).annotate({ identifier: "ModifyVpnTunnelCertificateResult" });
   }
 }
 function __c1089(j: number): any {
@@ -91961,9 +88522,7 @@ function __c1089(j: number): any {
           LogOptions: S.optional(__S(14159, __c442, 15)),
           EnableTunnelLifecycleControl: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "ModifyVpnTunnelOptionsSpecification",
-      });
+      ).annotate({ identifier: "ModifyVpnTunnelOptionsSpecification" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -91974,9 +88533,7 @@ function __c1089(j: number): any {
           SkipTunnelReplacement: S.optional(S.Boolean),
           PreSharedKeyStorage: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ModifyVpnTunnelOptionsRequest",
-      });
+      ).annotate({ identifier: "ModifyVpnTunnelOptionsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -91984,9 +88541,7 @@ function __c1089(j: number): any {
             .pipe(T.XmlName("vpnConnection"), T.Ec2QueryName("VpnConnection"))
             .annotate({ identifier: "VpnConnection" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyVpnTunnelOptionsResult",
-      });
+      ).annotate({ identifier: "ModifyVpnTunnelOptionsResult" });
   }
 }
 function __c1090(j: number): any {
@@ -92025,9 +88580,9 @@ function __c1091(j: number): any {
       ).annotate({ identifier: "InstanceMonitoring" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(34912, __c1091, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "InstanceMonitoring",
-        }),
+        /*@__PURE__*/ __S(34912, __c1091, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "InstanceMonitoring" }),
       );
   }
 }
@@ -92062,9 +88617,7 @@ function __c1093(j: number): any {
           IpamPoolId: S.optional(S.String),
           IpamPoolOwner: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "MoveByoipCidrToIpamRequest",
-      });
+      ).annotate({ identifier: "MoveByoipCidrToIpamRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -92072,9 +88625,7 @@ function __c1093(j: number): any {
             .pipe(T.XmlName("byoipCidr"), T.Ec2QueryName("ByoipCidr"))
             .annotate({ identifier: "ByoipCidr" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "MoveByoipCidrToIpamResult",
-      });
+      ).annotate({ identifier: "MoveByoipCidrToIpamResult" });
   }
 }
 function __c1094(j: number): any {
@@ -92088,9 +88639,7 @@ function __c1094(j: number): any {
           DestinationCapacityReservationId: S.optional(S.String),
           InstanceCount: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "MoveCapacityReservationInstancesRequest",
-      });
+      ).annotate({ identifier: "MoveCapacityReservationInstancesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -92111,9 +88660,7 @@ function __c1094(j: number): any {
             T.Ec2QueryName("InstanceCount"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "MoveCapacityReservationInstancesResult",
-      });
+      ).annotate({ identifier: "MoveCapacityReservationInstancesResult" });
   }
 }
 function __c1095(j: number): any {
@@ -92136,9 +88683,7 @@ function __c1095(j: number): any {
           MultiRegion: S.optional(S.Boolean),
           NetworkBorderGroup: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ProvisionByoipCidrRequest",
-      });
+      ).annotate({ identifier: "ProvisionByoipCidrRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -92163,9 +88708,7 @@ function __c1096(j: number): any {
           Asn: S.optional(S.String),
           AsnAuthorizationContext: S.optional(__S(35072, __c1096, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ProvisionIpamByoasnRequest",
-      });
+      ).annotate({ identifier: "ProvisionIpamByoasnRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -92173,9 +88716,7 @@ function __c1096(j: number): any {
             .pipe(T.XmlName("byoasn"), T.Ec2QueryName("Byoasn"))
             .annotate({ identifier: "Byoasn" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ProvisionIpamByoasnResult",
-      });
+      ).annotate({ identifier: "ProvisionIpamByoasnResult" });
   }
 }
 function __c1097(j: number): any {
@@ -92183,9 +88724,7 @@ function __c1097(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ Message: S.optional(S.String), Signature: S.optional(S.String) }),
-      ).annotate({
-        identifier: "IpamCidrAuthorizationContext",
-      });
+      ).annotate({ identifier: "IpamCidrAuthorizationContext" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -92198,9 +88737,7 @@ function __c1097(j: number): any {
           VerificationMethod: S.optional(S.String),
           IpamExternalResourceVerificationTokenId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ProvisionIpamPoolCidrRequest",
-      });
+      ).annotate({ identifier: "ProvisionIpamPoolCidrRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -92208,9 +88745,7 @@ function __c1097(j: number): any {
             .pipe(T.XmlName("ipamPoolCidr"), T.Ec2QueryName("IpamPoolCidr"))
             .annotate({ identifier: "IpamPoolCidr" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ProvisionIpamPoolCidrResult",
-      });
+      ).annotate({ identifier: "ProvisionIpamPoolCidrResult" });
   }
 }
 function __c1098(j: number): any {
@@ -92224,9 +88759,7 @@ function __c1098(j: number): any {
           NetmaskLength: S.optional(S.Number),
           NetworkBorderGroup: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ProvisionPublicIpv4PoolCidrRequest",
-      });
+      ).annotate({ identifier: "ProvisionPublicIpv4PoolCidrRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -92235,9 +88768,7 @@ function __c1098(j: number): any {
             .pipe(T.XmlName("poolAddressRange"), T.Ec2QueryName("PoolAddressRange"))
             .annotate({ identifier: "PublicIpv4PoolRange" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ProvisionPublicIpv4PoolCidrResult",
-      });
+      ).annotate({ identifier: "ProvisionPublicIpv4PoolCidrResult" });
   }
 }
 function __c1099(j: number): any {
@@ -92250,9 +88781,7 @@ function __c1099(j: number): any {
           CapacityBlockOfferingId: S.optional(S.String),
           InstancePlatform: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PurchaseCapacityBlockRequest",
-      });
+      ).annotate({ identifier: "PurchaseCapacityBlockRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -92264,9 +88793,7 @@ function __c1099(j: number): any {
             T.Ec2QueryName("CapacityBlockSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "PurchaseCapacityBlockResult",
-      });
+      ).annotate({ identifier: "PurchaseCapacityBlockResult" });
   }
 }
 function __c1100(j: number): any {
@@ -92278,9 +88805,7 @@ function __c1100(j: number): any {
           CapacityReservationId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PurchaseCapacityBlockExtensionRequest",
-      });
+      ).annotate({ identifier: "PurchaseCapacityBlockExtensionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -92289,9 +88814,7 @@ function __c1100(j: number): any {
             T.Ec2QueryName("CapacityBlockExtensionSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "PurchaseCapacityBlockExtensionResult",
-      });
+      ).annotate({ identifier: "PurchaseCapacityBlockExtensionResult" });
   }
 }
 function __c1101(j: number): any {
@@ -92306,9 +88829,7 @@ function __c1101(j: number): any {
           OfferingId: S.optional(S.String),
           TagSpecifications: S.optional(__S(1953, __c61, 1)).pipe(T.XmlName("TagSpecification")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PurchaseHostReservationRequest",
-      });
+      ).annotate({ identifier: "PurchaseHostReservationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -92333,9 +88854,7 @@ function __c1101(j: number): any {
             T.Ec2QueryName("TotalUpfrontPrice"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "PurchaseHostReservationResult",
-      });
+      ).annotate({ identifier: "PurchaseHostReservationResult" });
   }
 }
 function __c1102(j: number): any {
@@ -92349,9 +88868,7 @@ function __c1102(j: number): any {
             T.Ec2QueryName("CurrencyCode"),
           ),
         }),
-      ).annotate({
-        identifier: "ReservedInstanceLimitPrice",
-      });
+      ).annotate({ identifier: "ReservedInstanceLimitPrice" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -92363,9 +88880,7 @@ function __c1102(j: number): any {
             .pipe(T.XmlName("limitPrice"), T.Ec2QueryName("LimitPrice"))
             .annotate({ identifier: "ReservedInstanceLimitPrice" }),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PurchaseReservedInstancesOfferingRequest",
-      });
+      ).annotate({ identifier: "PurchaseReservedInstancesOfferingRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -92374,9 +88889,7 @@ function __c1102(j: number): any {
             T.Ec2QueryName("ReservedInstancesId"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "PurchaseReservedInstancesOfferingResult",
-      });
+      ).annotate({ identifier: "PurchaseReservedInstancesOfferingResult" });
   }
 }
 function __c1103(j: number): any {
@@ -92389,9 +88902,7 @@ function __c1103(j: number): any {
       return S.Array(
         /*@__PURE__*/ __S(35296, __c1103, 0)
           .pipe(/*@__PURE__*/ T.XmlName("PurchaseRequest"))
-          .annotate({
-            identifier: "PurchaseRequest",
-          }),
+          .annotate({ identifier: "PurchaseRequest" }),
       );
     case 2:
       return S.suspend(() =>
@@ -92400,14 +88911,12 @@ function __c1103(j: number): any {
           DryRun: S.optional(S.Boolean),
           PurchaseRequests: S.optional(__S(35297, __c1103, 1)).pipe(T.XmlName("PurchaseRequest")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PurchaseScheduledInstancesRequest",
-      });
+      ).annotate({ identifier: "PurchaseScheduledInstancesRequest" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(23616, __c738, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ScheduledInstance",
-        }),
+        /*@__PURE__*/ __S(23616, __c738, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "ScheduledInstance" }),
       );
     case 4:
       return S.suspend(() =>
@@ -92417,9 +88926,7 @@ function __c1103(j: number): any {
             T.Ec2QueryName("ScheduledInstanceSet"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "PurchaseScheduledInstancesResult",
-      });
+      ).annotate({ identifier: "PurchaseScheduledInstancesResult" });
   }
 }
 function __c1104(j: number): any {
@@ -92500,18 +89007,14 @@ function __c1106(j: number): any {
           IncludeAllTagsOfInstance: S.optional(S.Boolean),
           InstanceTagKeys: S.optional(__S(17792, __c556, 0)).pipe(T.XmlName("InstanceTagKey")),
         }),
-      ).annotate({
-        identifier: "RegisterInstanceTagAttributeRequest",
-      });
+      ).annotate({ identifier: "RegisterInstanceTagAttributeRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           DryRun: S.optional(S.Boolean),
           InstanceTagAttribute: S.optional(__S(35392, __c1106, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RegisterInstanceEventNotificationAttributesRequest",
-      });
+      ).annotate({ identifier: "RegisterInstanceEventNotificationAttributesRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -92519,9 +89022,7 @@ function __c1106(j: number): any {
             .pipe(T.XmlName("instanceTagAttribute"), T.Ec2QueryName("InstanceTagAttribute"))
             .annotate({ identifier: "InstanceTagNotificationAttribute" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "RegisterInstanceEventNotificationAttributesResult",
-      });
+      ).annotate({ identifier: "RegisterInstanceEventNotificationAttributesResult" });
   }
 }
 function __c1107(j: number): any {
@@ -92534,9 +89035,7 @@ function __c1107(j: number): any {
           NetworkInterfaceIds: S.optional(__S(17856, __c558, 0)),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RegisterTransitGatewayMulticastGroupMembersRequest",
-      });
+      ).annotate({ identifier: "RegisterTransitGatewayMulticastGroupMembersRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -92553,9 +89052,7 @@ function __c1107(j: number): any {
             T.Ec2QueryName("GroupIpAddress"),
           ),
         }),
-      ).annotate({
-        identifier: "TransitGatewayMulticastRegisteredGroupMembers",
-      });
+      ).annotate({ identifier: "TransitGatewayMulticastRegisteredGroupMembers" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -92566,9 +89063,7 @@ function __c1107(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayMulticastRegisteredGroupMembers" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "RegisterTransitGatewayMulticastGroupMembersResult",
-      });
+      ).annotate({ identifier: "RegisterTransitGatewayMulticastGroupMembersResult" });
   }
 }
 function __c1108(j: number): any {
@@ -92581,9 +89076,7 @@ function __c1108(j: number): any {
           NetworkInterfaceIds: S.optional(__S(17856, __c558, 0)),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RegisterTransitGatewayMulticastGroupSourcesRequest",
-      });
+      ).annotate({ identifier: "RegisterTransitGatewayMulticastGroupSourcesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -92600,9 +89093,7 @@ function __c1108(j: number): any {
             T.Ec2QueryName("GroupIpAddress"),
           ),
         }),
-      ).annotate({
-        identifier: "TransitGatewayMulticastRegisteredGroupSources",
-      });
+      ).annotate({ identifier: "TransitGatewayMulticastRegisteredGroupSources" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -92613,9 +89104,7 @@ function __c1108(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayMulticastRegisteredGroupSources" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "RegisterTransitGatewayMulticastGroupSourcesResult",
-      });
+      ).annotate({ identifier: "RegisterTransitGatewayMulticastGroupSourcesResult" });
   }
 }
 function __c1109(j: number): any {
@@ -92626,17 +89115,13 @@ function __c1109(j: number): any {
           DryRun: S.optional(S.Boolean),
           CapacityReservationId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RejectCapacityReservationBillingOwnershipRequest",
-      });
+      ).annotate({ identifier: "RejectCapacityReservationBillingOwnershipRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "RejectCapacityReservationBillingOwnershipResult",
-      });
+      ).annotate({ identifier: "RejectCapacityReservationBillingOwnershipResult" });
   }
 }
 function __c1110(j: number): any {
@@ -92647,9 +89132,7 @@ function __c1110(j: number): any {
           TransitGatewayAttachmentId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RejectTransitGatewayClientVpnAttachmentRequest",
-      });
+      ).annotate({ identifier: "RejectTransitGatewayClientVpnAttachmentRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -92660,9 +89143,7 @@ function __c1110(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayClientVpnAttachment" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "RejectTransitGatewayClientVpnAttachmentResult",
-      });
+      ).annotate({ identifier: "RejectTransitGatewayClientVpnAttachmentResult" });
   }
 }
 function __c1111(j: number): any {
@@ -92675,9 +89156,7 @@ function __c1111(j: number): any {
           SubnetIds: S.optional(__S(2208, __c69, 0)),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RejectTransitGatewayMulticastDomainAssociationsRequest",
-      });
+      ).annotate({ identifier: "RejectTransitGatewayMulticastDomainAssociationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -92685,9 +89164,7 @@ function __c1111(j: number): any {
             .pipe(T.XmlName("associations"), T.Ec2QueryName("Associations"))
             .annotate({ identifier: "TransitGatewayMulticastDomainAssociations" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "RejectTransitGatewayMulticastDomainAssociationsResult",
-      });
+      ).annotate({ identifier: "RejectTransitGatewayMulticastDomainAssociationsResult" });
   }
 }
 function __c1112(j: number): any {
@@ -92698,9 +89175,7 @@ function __c1112(j: number): any {
           TransitGatewayAttachmentId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RejectTransitGatewayPeeringAttachmentRequest",
-      });
+      ).annotate({ identifier: "RejectTransitGatewayPeeringAttachmentRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -92711,9 +89186,7 @@ function __c1112(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayPeeringAttachment" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "RejectTransitGatewayPeeringAttachmentResult",
-      });
+      ).annotate({ identifier: "RejectTransitGatewayPeeringAttachmentResult" });
   }
 }
 function __c1113(j: number): any {
@@ -92724,9 +89197,7 @@ function __c1113(j: number): any {
           TransitGatewayAttachmentId: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RejectTransitGatewayVpcAttachmentRequest",
-      });
+      ).annotate({ identifier: "RejectTransitGatewayVpcAttachmentRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -92737,9 +89208,7 @@ function __c1113(j: number): any {
             )
             .annotate({ identifier: "TransitGatewayVpcAttachment" }),
         }).pipe(ns),
-      ).annotate({
-        identifier: "RejectTransitGatewayVpcAttachmentResult",
-      });
+      ).annotate({ identifier: "RejectTransitGatewayVpcAttachmentResult" });
   }
 }
 function __c1114(j: number): any {
@@ -92751,9 +89220,7 @@ function __c1114(j: number): any {
           ServiceId: S.optional(S.String),
           VpcEndpointIds: S.optional(__S(2528, __c79, 0)).pipe(T.XmlName("VpcEndpointId")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RejectVpcEndpointConnectionsRequest",
-      });
+      ).annotate({ identifier: "RejectVpcEndpointConnectionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -92762,9 +89229,7 @@ function __c1114(j: number): any {
             T.Ec2QueryName("Unsuccessful"),
           ),
         }).pipe(ns),
-      ).annotate({
-        identifier: "RejectVpcEndpointConnectionsResult",
-      });
+      ).annotate({ identifier: "RejectVpcEndpointConnectionsResult" });
   }
 }
 function __c1115(j: number): any {
@@ -92778,17 +89243,13 @@ function __c1115(j: number): any {
             T.Ec2QueryName("VpcPeeringConnectionId"),
           ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "RejectVpcPeeringConnectionRequest",
-      });
+      ).annotate({ identifier: "RejectVpcPeeringConnectionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Return: S.optional(S.Boolean).pipe(T.XmlName("return"), T.Ec2QueryName("Return")),
         }).pipe(ns),
-      ).annotate({
-        identifier: "RejectVpcPeeringConnectionResult",
-      });
+      ).annotate({ identifier: "RejectVpcPeeringConnectionResult" });
   }
 }
 function __c1116(j: number): any {

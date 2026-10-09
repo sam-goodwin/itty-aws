@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -910,8 +910,8 @@ export const associateLibraryItemReview: API.OperationMethod<
   AssociateLibraryItemReviewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c46, 0) as any as S.Schema<AssociateLibraryItemReviewInput>,
-  output: __S(752, __c47, 0) as any as S.Schema<AssociateLibraryItemReviewResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<AssociateLibraryItemReviewInput>,
+  output: __S(736, __c46, 0) as any as S.Schema<AssociateLibraryItemReviewResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -946,7 +946,7 @@ export const associateQAppWithUser: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AssociateQAppWithUserInput>,
-  output: __S(16, __c1, 0) as any as S.Schema<AssociateQAppWithUserResponse>,
+  output: __S(736, __c46, 0) as any as S.Schema<AssociateQAppWithUserResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -979,8 +979,8 @@ export const batchCreateCategory: API.OperationMethod<
   BatchCreateCategoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c2, 2) as any as S.Schema<BatchCreateCategoryInput>,
-  output: __S(16, __c1, 0) as any as S.Schema<BatchCreateCategoryResponse>,
+  input: __S(18, __c1, 2) as any as S.Schema<BatchCreateCategoryInput>,
+  output: __S(736, __c46, 0) as any as S.Schema<BatchCreateCategoryResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1013,8 +1013,8 @@ export const batchDeleteCategory: API.OperationMethod<
   BatchDeleteCategoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c3, 0) as any as S.Schema<BatchDeleteCategoryInput>,
-  output: __S(16, __c1, 0) as any as S.Schema<BatchDeleteCategoryResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<BatchDeleteCategoryInput>,
+  output: __S(736, __c46, 0) as any as S.Schema<BatchDeleteCategoryResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1047,8 +1047,8 @@ export const batchUpdateCategory: API.OperationMethod<
   BatchUpdateCategoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c5, 2) as any as S.Schema<BatchUpdateCategoryInput>,
-  output: __S(16, __c1, 0) as any as S.Schema<BatchUpdateCategoryResponse>,
+  input: __S(66, __c4, 2) as any as S.Schema<BatchUpdateCategoryInput>,
+  output: __S(736, __c46, 0) as any as S.Schema<BatchUpdateCategoryResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1081,8 +1081,8 @@ export const createLibraryItem: API.OperationMethod<
   CreateLibraryItemError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c6, 0) as any as S.Schema<CreateLibraryItemInput>,
-  output: __S(97, __c6, 1) as any as S.Schema<CreateLibraryItemOutput>,
+  input: __S(80, __c5, 0) as any as S.Schema<CreateLibraryItemInput>,
+  output: __S(81, __c5, 1) as any as S.Schema<CreateLibraryItemOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1115,8 +1115,8 @@ export const createPresignedUrl: API.OperationMethod<
   CreatePresignedUrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c7, 0) as any as S.Schema<CreatePresignedUrlInput>,
-  output: __S(114, __c7, 2) as any as S.Schema<CreatePresignedUrlOutput>,
+  input: __S(96, __c6, 0) as any as S.Schema<CreatePresignedUrlInput>,
+  output: __S(97, __c6, 1) as any as S.Schema<CreatePresignedUrlOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1149,7 +1149,7 @@ export const createQApp: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(128, __c8, 0) as any as S.Schema<CreateQAppInput>,
-  output: __S(208, __c13, 0) as any as S.Schema<CreateQAppOutput>,
+  output: __S(192, __c12, 0) as any as S.Schema<CreateQAppOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1183,8 +1183,8 @@ export const deleteLibraryItem: API.OperationMethod<
   DeleteLibraryItemError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c14, 0) as any as S.Schema<DeleteLibraryItemInput>,
-  output: __S(16, __c1, 0) as any as S.Schema<DeleteLibraryItemResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<DeleteLibraryItemInput>,
+  output: __S(736, __c46, 0) as any as S.Schema<DeleteLibraryItemResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1216,8 +1216,8 @@ export const deleteQApp: API.OperationMethod<
   DeleteQAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c15, 0) as any as S.Schema<DeleteQAppInput>,
-  output: __S(16, __c1, 0) as any as S.Schema<DeleteQAppResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<DeleteQAppInput>,
+  output: __S(736, __c46, 0) as any as S.Schema<DeleteQAppResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1248,8 +1248,8 @@ export const describeQAppPermissions: API.OperationMethod<
   DescribeQAppPermissionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c16, 0) as any as S.Schema<DescribeQAppPermissionsInput>,
-  output: __S(275, __c17, 3) as any as S.Schema<DescribeQAppPermissionsOutput>,
+  input: __S(240, __c15, 0) as any as S.Schema<DescribeQAppPermissionsInput>,
+  output: __S(259, __c16, 3) as any as S.Schema<DescribeQAppPermissionsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1282,8 +1282,8 @@ export const disassociateLibraryItemReview: API.OperationMethod<
   DisassociateLibraryItemReviewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c18, 0) as any as S.Schema<DisassociateLibraryItemReviewInput>,
-  output: __S(752, __c47, 0) as any as S.Schema<DisassociateLibraryItemReviewResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<DisassociateLibraryItemReviewInput>,
+  output: __S(736, __c46, 0) as any as S.Schema<DisassociateLibraryItemReviewResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1316,8 +1316,8 @@ export const disassociateQAppFromUser: API.OperationMethod<
   DisassociateQAppFromUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c19, 0) as any as S.Schema<DisassociateQAppFromUserInput>,
-  output: __S(752, __c47, 0) as any as S.Schema<DisassociateQAppFromUserResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<DisassociateQAppFromUserInput>,
+  output: __S(736, __c46, 0) as any as S.Schema<DisassociateQAppFromUserResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1350,8 +1350,8 @@ export const exportQAppSessionData: API.OperationMethod<
   ExportQAppSessionDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c20, 0) as any as S.Schema<ExportQAppSessionDataInput>,
-  output: __S(321, __c20, 1) as any as S.Schema<ExportQAppSessionDataOutput>,
+  input: __S(304, __c19, 0) as any as S.Schema<ExportQAppSessionDataInput>,
+  output: __S(305, __c19, 1) as any as S.Schema<ExportQAppSessionDataOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1384,8 +1384,8 @@ export const getLibraryItem: API.OperationMethod<
   GetLibraryItemError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<GetLibraryItemInput>,
-  output: __S(368, __c23, 0) as any as S.Schema<GetLibraryItemOutput>,
+  input: __S(320, __c20, 0) as any as S.Schema<GetLibraryItemInput>,
+  output: __S(352, __c22, 0) as any as S.Schema<GetLibraryItemOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1416,8 +1416,8 @@ export const getQApp: API.OperationMethod<
   GetQAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<GetQAppInput>,
-  output: __S(393, __c24, 9) as any as S.Schema<GetQAppOutput>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetQAppInput>,
+  output: __S(377, __c23, 9) as any as S.Schema<GetQAppOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1449,8 +1449,8 @@ export const getQAppSession: API.OperationMethod<
   GetQAppSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c25, 0) as any as S.Schema<GetQAppSessionInput>,
-  output: __S(405, __c25, 5) as any as S.Schema<GetQAppSessionOutput>,
+  input: __S(384, __c24, 0) as any as S.Schema<GetQAppSessionInput>,
+  output: __S(389, __c24, 5) as any as S.Schema<GetQAppSessionOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1483,8 +1483,8 @@ export const getQAppSessionMetadata: API.OperationMethod<
   GetQAppSessionMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c26, 0) as any as S.Schema<GetQAppSessionMetadataInput>,
-  output: __S(417, __c26, 1) as any as S.Schema<GetQAppSessionMetadataOutput>,
+  input: __S(400, __c25, 0) as any as S.Schema<GetQAppSessionMetadataInput>,
+  output: __S(401, __c25, 1) as any as S.Schema<GetQAppSessionMetadataOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1518,8 +1518,8 @@ export const importDocument: API.OperationMethod<
   ImportDocumentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<ImportDocumentInput>,
-  output: __S(449, __c28, 1) as any as S.Schema<ImportDocumentOutput>,
+  input: __S(432, __c27, 0) as any as S.Schema<ImportDocumentInput>,
+  output: __S(433, __c27, 1) as any as S.Schema<ImportDocumentOutput>,
   errors: [
     AccessDeniedException,
     ContentTooLargeException,
@@ -1552,8 +1552,8 @@ export const listCategories: API.OperationMethod<
   ListCategoriesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c29, 0) as any as S.Schema<ListCategoriesInput>,
-  output: __S(465, __c29, 1) as any as S.Schema<ListCategoriesOutput>,
+  input: __S(448, __c28, 0) as any as S.Schema<ListCategoriesInput>,
+  output: __S(449, __c28, 1) as any as S.Schema<ListCategoriesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1585,8 +1585,8 @@ export const listLibraryItems: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LibraryItemMember
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<ListLibraryItemsInput>,
-  output: __S(482, __c30, 2) as any as S.Schema<ListLibraryItemsOutput>,
+  input: __S(464, __c29, 0) as any as S.Schema<ListLibraryItemsInput>,
+  output: __S(466, __c29, 2) as any as S.Schema<ListLibraryItemsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1623,8 +1623,8 @@ export const listQApps: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   UserAppItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<ListQAppsInput>,
-  output: __S(499, __c31, 3) as any as S.Schema<ListQAppsOutput>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListQAppsInput>,
+  output: __S(483, __c30, 3) as any as S.Schema<ListQAppsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1661,8 +1661,8 @@ export const listQAppSessionData: API.OperationMethod<
   ListQAppSessionDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c32, 0) as any as S.Schema<ListQAppSessionDataInput>,
-  output: __S(516, __c32, 4) as any as S.Schema<ListQAppSessionDataOutput>,
+  input: __S(496, __c31, 0) as any as S.Schema<ListQAppSessionDataInput>,
+  output: __S(500, __c31, 4) as any as S.Schema<ListQAppSessionDataOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1693,8 +1693,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c33, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(529, __c33, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(513, __c32, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1723,8 +1723,8 @@ export const predictQApp: API.OperationMethod<
   PredictQAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(547, __c34, 3) as any as S.Schema<PredictQAppInput>,
-  output: __S(549, __c34, 5) as any as S.Schema<PredictQAppOutput>,
+  input: __S(531, __c33, 3) as any as S.Schema<PredictQAppInput>,
+  output: __S(533, __c33, 5) as any as S.Schema<PredictQAppOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1757,8 +1757,8 @@ export const startQAppSession: API.OperationMethod<
   StartQAppSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(560, __c35, 0) as any as S.Schema<StartQAppSessionInput>,
-  output: __S(579, __c36, 3) as any as S.Schema<StartQAppSessionOutput>,
+  input: __S(544, __c34, 0) as any as S.Schema<StartQAppSessionInput>,
+  output: __S(563, __c35, 3) as any as S.Schema<StartQAppSessionOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1791,8 +1791,8 @@ export const stopQAppSession: API.OperationMethod<
   StopQAppSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c37, 0) as any as S.Schema<StopQAppSessionInput>,
-  output: __S(16, __c1, 0) as any as S.Schema<StopQAppSessionResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<StopQAppSessionInput>,
+  output: __S(736, __c46, 0) as any as S.Schema<StopQAppSessionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1824,8 +1824,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c38, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(16, __c1, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(736, __c46, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1855,8 +1855,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c39, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(16, __c1, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(736, __c46, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1887,8 +1887,8 @@ export const updateLibraryItem: API.OperationMethod<
   UpdateLibraryItemError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c40, 0) as any as S.Schema<UpdateLibraryItemInput>,
-  output: __S(368, __c23, 0) as any as S.Schema<UpdateLibraryItemOutput>,
+  input: __S(624, __c39, 0) as any as S.Schema<UpdateLibraryItemInput>,
+  output: __S(352, __c22, 0) as any as S.Schema<UpdateLibraryItemOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1921,8 +1921,8 @@ export const updateLibraryItemMetadata: API.OperationMethod<
   UpdateLibraryItemMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656, __c41, 0) as any as S.Schema<UpdateLibraryItemMetadataInput>,
-  output: __S(752, __c47, 0) as any as S.Schema<UpdateLibraryItemMetadataResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<UpdateLibraryItemMetadataInput>,
+  output: __S(736, __c46, 0) as any as S.Schema<UpdateLibraryItemMetadataResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1955,8 +1955,8 @@ export const updateQApp: API.OperationMethod<
   UpdateQAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c42, 0) as any as S.Schema<UpdateQAppInput>,
-  output: __S(208, __c13, 0) as any as S.Schema<UpdateQAppOutput>,
+  input: __S(656, __c41, 0) as any as S.Schema<UpdateQAppInput>,
+  output: __S(192, __c12, 0) as any as S.Schema<UpdateQAppOutput>,
   errors: [
     AccessDeniedException,
     ContentTooLargeException,
@@ -1988,8 +1988,8 @@ export const updateQAppPermissions: API.OperationMethod<
   UpdateQAppPermissionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(690, __c43, 2) as any as S.Schema<UpdateQAppPermissionsInput>,
-  output: __S(275, __c17, 3) as any as S.Schema<UpdateQAppPermissionsOutput>,
+  input: __S(674, __c42, 2) as any as S.Schema<UpdateQAppPermissionsInput>,
+  output: __S(259, __c16, 3) as any as S.Schema<UpdateQAppPermissionsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2021,8 +2021,8 @@ export const updateQAppSession: API.OperationMethod<
   UpdateQAppSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c44, 0) as any as S.Schema<UpdateQAppSessionInput>,
-  output: __S(579, __c36, 3) as any as S.Schema<UpdateQAppSessionOutput>,
+  input: __S(688, __c43, 0) as any as S.Schema<UpdateQAppSessionInput>,
+  output: __S(563, __c35, 3) as any as S.Schema<UpdateQAppSessionOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2055,8 +2055,8 @@ export const updateQAppSessionMetadata: API.OperationMethod<
   UpdateQAppSessionMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(720, __c45, 0) as any as S.Schema<UpdateQAppSessionMetadataInput>,
-  output: __S(721, __c45, 1) as any as S.Schema<UpdateQAppSessionMetadataOutput>,
+  input: __S(704, __c44, 0) as any as S.Schema<UpdateQAppSessionMetadataInput>,
+  output: __S(705, __c44, 1) as any as S.Schema<UpdateQAppSessionMetadataOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2079,34 +2079,22 @@ function __c0(j: number): any {
         S.Struct({ instanceId: S.String.pipe(T.HttpHeader("instance-id")), appId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/apps.install" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "AssociateQAppWithUserInput",
-      });
+      ).annotate({ identifier: "AssociateQAppWithUserInput" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AssociateQAppWithUserResponse",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({ id: S.optional(S.String), title: S.String, color: S.optional(S.String) }),
-      ).annotate({
-        identifier: "BatchCreateCategoryInputCategory",
-      });
+      ).annotate({ identifier: "BatchCreateCategoryInputCategory" });
     case 1:
-      return S.Array(__S(32, __c2, 0));
+      return S.Array(__S(16, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-          categories: __S(33, __c2, 1),
+          categories: __S(17, __c1, 1),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/catalog.createCategories" }),
@@ -2120,13 +2108,13 @@ function __c2(j: number): any {
       ).annotate({ identifier: "BatchCreateCategoryInput" });
   }
 }
-function __c3(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-          categories: __S(64, __c4, 0),
+          categories: __S(48, __c3, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/catalog.deleteCategories" }),
@@ -2140,25 +2128,25 @@ function __c3(j: number): any {
       ).annotate({ identifier: "BatchDeleteCategoryInput" });
   }
 }
-function __c4(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c5(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ id: S.String, title: S.String, color: S.optional(S.String) }),
       ).annotate({ identifier: "CategoryInput" });
     case 1:
-      return S.Array(__S(80, __c5, 0));
+      return S.Array(__S(64, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-          categories: __S(81, __c5, 1),
+          categories: __S(65, __c4, 1),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/catalog.updateCategories" }),
@@ -2172,7 +2160,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "BatchUpdateCategoryInput" });
   }
 }
-function __c6(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2180,7 +2168,7 @@ function __c6(j: number): any {
           instanceId: S.String.pipe(T.HttpHeader("instance-id")),
           appId: S.String,
           appVersion: S.Number,
-          categories: __S(64, __c4, 0),
+          categories: __S(48, __c3, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/catalog.createItem" }),
@@ -2207,7 +2195,7 @@ function __c6(j: number): any {
       ).annotate({ identifier: "CreateLibraryItemOutput" });
   }
 }
-function __c7(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2231,16 +2219,20 @@ function __c7(j: number): any {
         ),
       ).annotate({ identifier: "CreatePresignedUrlInput" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           fileId: S.String,
           presignedUrl: S.String,
-          presignedUrlFields: __S(113, __c7, 1),
+          presignedUrlFields: __S(112, __c7, 0),
           presignedUrlExpiration: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "CreatePresignedUrlOutput" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
 function __c8(j: number): any {
@@ -2251,8 +2243,8 @@ function __c8(j: number): any {
           instanceId: S.String.pipe(T.HttpHeader("instance-id")),
           title: S.String,
           description: S.optional(S.String),
-          appDefinition: __S(199, __c12, 7),
-          tags: S.optional(__S(176, __c11, 0)),
+          appDefinition: __S(183, __c11, 7),
+          tags: S.optional(__S(112, __c7, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/apps.create" }), svc, auth, proto, ver, rules),
         ),
@@ -2270,7 +2262,7 @@ function __c9(j: number): any {
     case 1:
       return S.Union([
         /*@__PURE__*/ S.Struct({ stringValue: S.String }),
-        /*@__PURE__*/ S.Struct({ stringListValue: __S(64, __c4, 0) }),
+        /*@__PURE__*/ S.Struct({ stringListValue: __S(48, __c3, 0) }),
         /*@__PURE__*/ S.Struct({ longValue: S.Number }),
         /*@__PURE__*/ S.Struct({
           dateValue: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
@@ -2316,12 +2308,6 @@ function __c10(j: number): any {
   }
 }
 function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2378,21 +2364,21 @@ function __c12(j: number): any {
       ).annotate({ identifier: "FormInputCardInput" });
     case 5:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ textInput: __S(192, __c12, 0) }),
-        /*@__PURE__*/ S.Struct({ qQuery: __S(193, __c12, 1) }),
-        /*@__PURE__*/ S.Struct({ qPlugin: __S(194, __c12, 2) }),
-        /*@__PURE__*/ S.Struct({ fileUpload: __S(195, __c12, 3) }),
-        /*@__PURE__*/ S.Struct({ formInput: __S(196, __c12, 4) }),
+        /*@__PURE__*/ S.Struct({ textInput: __S(176, __c11, 0) }),
+        /*@__PURE__*/ S.Struct({ qQuery: __S(177, __c11, 1) }),
+        /*@__PURE__*/ S.Struct({ qPlugin: __S(178, __c11, 2) }),
+        /*@__PURE__*/ S.Struct({ fileUpload: __S(179, __c11, 3) }),
+        /*@__PURE__*/ S.Struct({ formInput: __S(180, __c11, 4) }),
       ]);
     case 6:
-      return S.Array(__S(197, __c12, 5));
+      return S.Array(__S(181, __c11, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ cards: __S(198, __c12, 6), initialPrompt: S.optional(S.String) }),
+        S.Struct({ cards: __S(182, __c11, 6), initialPrompt: S.optional(S.String) }),
       ).annotate({ identifier: "AppDefinitionInput" });
   }
 }
-function __c13(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2413,7 +2399,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "CreateQAppOutput" });
   }
 }
-function __c14(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2433,7 +2419,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "DeleteLibraryItemInput" });
   }
 }
-function __c15(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2443,7 +2429,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "DeleteQAppInput" });
   }
 }
-function __c16(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2460,12 +2446,10 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeQAppPermissionsInput",
-      });
+      ).annotate({ identifier: "DescribeQAppPermissionsInput" });
   }
 }
-function __c17(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2477,23 +2461,21 @@ function __c17(j: number): any {
       ).annotate({ identifier: "PrincipalOutput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ action: S.String, principal: __S(272, __c17, 0) }),
+        S.Struct({ action: S.String, principal: __S(256, __c16, 0) }),
       ).annotate({ identifier: "PermissionOutput" });
     case 2:
-      return S.Array(__S(273, __c17, 1));
+      return S.Array(__S(257, __c16, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.optional(S.String),
           appId: S.optional(S.String),
-          permissions: S.optional(__S(274, __c17, 2)),
+          permissions: S.optional(__S(258, __c16, 2)),
         }),
-      ).annotate({
-        identifier: "DescribeQAppPermissionsOutput",
-      });
+      ).annotate({ identifier: "DescribeQAppPermissionsOutput" });
   }
 }
-function __c18(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2510,24 +2492,20 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateLibraryItemReviewInput",
-      });
+      ).annotate({ identifier: "DisassociateLibraryItemReviewInput" });
   }
 }
-function __c19(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ instanceId: S.String.pipe(T.HttpHeader("instance-id")), appId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/apps.uninstall" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DisassociateQAppFromUserInput",
-      });
+      ).annotate({ identifier: "DisassociateQAppFromUserInput" });
   }
 }
-function __c20(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2544,9 +2522,7 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ExportQAppSessionDataInput",
-      });
+      ).annotate({ identifier: "ExportQAppSessionDataInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2554,12 +2530,10 @@ function __c20(j: number): any {
           expiresAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           sessionArn: S.String,
         }),
-      ).annotate({
-        identifier: "ExportQAppSessionDataOutput",
-      });
+      ).annotate({ identifier: "ExportQAppSessionDataOutput" });
   }
 }
-function __c21(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2573,7 +2547,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "GetLibraryItemInput" });
   }
 }
-function __c22(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2585,10 +2559,10 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "Category" });
     case 1:
-      return S.Array(__S(352, __c22, 0));
+      return S.Array(__S(336, __c21, 0));
   }
 }
-function __c23(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2596,7 +2570,7 @@ function __c23(j: number): any {
           libraryItemId: S.String,
           appId: S.String,
           appVersion: S.Number,
-          categories: __S(353, __c22, 1),
+          categories: __S(337, __c21, 1),
           status: S.String,
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           createdBy: S.String,
@@ -2610,7 +2584,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "GetLibraryItemOutput" });
   }
 }
-function __c24(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2625,7 +2599,7 @@ function __c24(j: number): any {
         S.Struct({
           id: S.String,
           title: S.String,
-          dependencies: __S(64, __c4, 0),
+          dependencies: __S(48, __c3, 0),
           type: S.String,
           placeholder: S.optional(S.String),
           defaultValue: S.optional(S.String),
@@ -2636,12 +2610,12 @@ function __c24(j: number): any {
         S.Struct({
           id: S.String,
           title: S.String,
-          dependencies: __S(64, __c4, 0),
+          dependencies: __S(48, __c3, 0),
           type: S.String,
           prompt: S.String,
           outputSource: S.String,
           attributeFilter: S.optional(__S(147, __c9, 3)),
-          memoryReferences: S.optional(__S(64, __c4, 0)),
+          memoryReferences: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({ identifier: "QQueryCard" });
     case 3:
@@ -2649,7 +2623,7 @@ function __c24(j: number): any {
         S.Struct({
           id: S.String,
           title: S.String,
-          dependencies: __S(64, __c4, 0),
+          dependencies: __S(48, __c3, 0),
           type: S.String,
           prompt: S.String,
           pluginType: S.String,
@@ -2662,7 +2636,7 @@ function __c24(j: number): any {
         S.Struct({
           id: S.String,
           title: S.String,
-          dependencies: __S(64, __c4, 0),
+          dependencies: __S(48, __c3, 0),
           type: S.String,
           filename: S.optional(S.String),
           fileId: S.optional(S.String),
@@ -2674,7 +2648,7 @@ function __c24(j: number): any {
         S.Struct({
           id: S.String,
           title: S.String,
-          dependencies: __S(64, __c4, 0),
+          dependencies: __S(48, __c3, 0),
           type: S.String,
           metadata: __S(148, __c9, 4),
           computeMode: S.optional(S.String),
@@ -2682,19 +2656,19 @@ function __c24(j: number): any {
       ).annotate({ identifier: "FormInputCard" });
     case 6:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ textInput: __S(385, __c24, 1) }),
-        /*@__PURE__*/ S.Struct({ qQuery: __S(386, __c24, 2) }),
-        /*@__PURE__*/ S.Struct({ qPlugin: __S(387, __c24, 3) }),
-        /*@__PURE__*/ S.Struct({ fileUpload: __S(388, __c24, 4) }),
-        /*@__PURE__*/ S.Struct({ formInput: __S(389, __c24, 5) }),
+        /*@__PURE__*/ S.Struct({ textInput: __S(369, __c23, 1) }),
+        /*@__PURE__*/ S.Struct({ qQuery: __S(370, __c23, 2) }),
+        /*@__PURE__*/ S.Struct({ qPlugin: __S(371, __c23, 3) }),
+        /*@__PURE__*/ S.Struct({ fileUpload: __S(372, __c23, 4) }),
+        /*@__PURE__*/ S.Struct({ formInput: __S(373, __c23, 5) }),
       ]);
     case 7:
-      return S.Array(__S(390, __c24, 6));
+      return S.Array(__S(374, __c23, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
           appDefinitionVersion: S.String,
-          cards: __S(391, __c24, 7),
+          cards: __S(375, __c23, 7),
           canEdit: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AppDefinition" });
@@ -2713,12 +2687,12 @@ function __c24(j: number): any {
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedBy: S.String,
           requiredCapabilities: S.optional(__S(160, __c10, 0)),
-          appDefinition: __S(392, __c24, 8),
+          appDefinition: __S(376, __c23, 8),
         }),
       ).annotate({ identifier: "GetQAppOutput" });
   }
 }
-function __c25(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2745,17 +2719,17 @@ function __c25(j: number): any {
         }),
       ).annotate({ identifier: "Submission" });
     case 2:
-      return S.Array(__S(401, __c25, 1));
+      return S.Array(__S(385, __c24, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           currentState: S.String,
           currentValue: S.String,
-          submissions: S.optional(__S(402, __c25, 2)),
+          submissions: S.optional(__S(386, __c24, 2)),
         }),
       ).annotate({ identifier: "CardStatus" });
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(403, __c25, 3).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(387, __c24, 3).pipe(S.optional));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2765,13 +2739,13 @@ function __c25(j: number): any {
           appVersion: S.optional(S.Number),
           latestPublishedAppVersion: S.optional(S.Number),
           status: S.String,
-          cardStatus: __S(404, __c25, 4),
+          cardStatus: __S(388, __c24, 4),
           userIsHost: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GetQAppSessionOutput" });
   }
 }
-function __c26(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2788,24 +2762,20 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetQAppSessionMetadataInput",
-      });
+      ).annotate({ identifier: "GetQAppSessionMetadataInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           sessionId: S.String,
           sessionArn: S.String,
           sessionName: S.optional(S.String),
-          sharingConfiguration: __S(432, __c27, 0),
+          sharingConfiguration: __S(416, __c26, 0),
           sessionOwner: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "GetQAppSessionMetadataOutput",
-      });
+      ).annotate({ identifier: "GetQAppSessionMetadataOutput" });
   }
 }
-function __c27(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2814,12 +2784,10 @@ function __c27(j: number): any {
           acceptResponses: S.optional(S.Boolean),
           revealCards: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "SessionSharingConfiguration",
-      });
+      ).annotate({ identifier: "SessionSharingConfiguration" });
   }
 }
-function __c28(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2848,7 +2816,7 @@ function __c28(j: number): any {
       });
   }
 }
-function __c29(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2864,12 +2832,12 @@ function __c29(j: number): any {
         ),
       ).annotate({ identifier: "ListCategoriesInput" });
     case 1:
-      return S.suspend(() => S.Struct({ categories: S.optional(__S(353, __c22, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ categories: S.optional(__S(337, __c21, 1)) })).annotate({
         identifier: "ListCategoriesOutput",
       });
   }
 }
-function __c30(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2883,14 +2851,14 @@ function __c30(j: number): any {
         ),
       ).annotate({ identifier: "ListLibraryItemsInput" });
     case 1:
-      return S.Array(__S(368, __c23, 0));
+      return S.Array(__S(352, __c22, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ libraryItems: S.optional(__S(481, __c30, 1)), nextToken: S.optional(S.String) }),
+        S.Struct({ libraryItems: S.optional(__S(465, __c29, 1)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListLibraryItemsOutput" });
   }
 }
-function __c31(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2914,14 +2882,14 @@ function __c31(j: number): any {
         }),
       ).annotate({ identifier: "UserAppItem" });
     case 2:
-      return S.Array(__S(497, __c31, 1));
+      return S.Array(__S(481, __c30, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ apps: __S(498, __c31, 2), nextToken: S.optional(S.String) }),
+        S.Struct({ apps: __S(482, __c30, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListQAppsOutput" });
   }
 }
-function __c32(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2948,27 +2916,25 @@ function __c32(j: number): any {
         S.Struct({
           cardId: S.String,
           value: S.optional(S.Any),
-          user: __S(513, __c32, 1),
+          user: __S(497, __c31, 1),
           submissionId: S.optional(S.String),
           timestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "QAppSessionData" });
     case 3:
-      return S.Array(__S(514, __c32, 2));
+      return S.Array(__S(498, __c31, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           sessionId: S.String,
           sessionArn: S.String,
-          sessionData: S.optional(__S(515, __c32, 3)),
+          sessionData: S.optional(__S(499, __c31, 3)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListQAppSessionDataOutput",
-      });
+      ).annotate({ identifier: "ListQAppSessionDataOutput" });
   }
 }
-function __c33(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2982,33 +2948,31 @@ function __c33(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(176, __c11, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(112, __c7, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c34(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ body: S.String, type: S.String })).annotate({
         identifier: "ConversationMessage",
       });
     case 1:
-      return S.Array(__S(544, __c34, 0));
+      return S.Array(__S(528, __c33, 0));
     case 2:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ conversation: __S(545, __c34, 1) }),
+        /*@__PURE__*/ S.Struct({ conversation: __S(529, __c33, 1) }),
         /*@__PURE__*/ S.Struct({ problemStatement: S.String }),
       ]);
     case 3:
       return S.suspend(() =>
         S.Struct({
           instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-          options: S.optional(__S(546, __c34, 2)),
+          options: S.optional(__S(530, __c33, 2)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/apps.predictQApp" }), svc, auth, proto, ver, rules),
         ),
@@ -3018,16 +2982,16 @@ function __c34(j: number): any {
         S.Struct({
           title: S.String,
           description: S.optional(S.String),
-          appDefinition: __S(199, __c12, 7),
+          appDefinition: __S(183, __c11, 7),
         }),
       ).annotate({ identifier: "PredictAppDefinition" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ app: __S(548, __c34, 4), problemStatement: S.String }),
+        S.Struct({ app: __S(532, __c33, 4), problemStatement: S.String }),
       ).annotate({ identifier: "PredictQAppOutput" });
   }
 }
-function __c35(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3035,9 +2999,9 @@ function __c35(j: number): any {
           instanceId: S.String.pipe(T.HttpHeader("instance-id")),
           appId: S.String,
           appVersion: S.Number,
-          initialValues: S.optional(__S(578, __c36, 2)),
+          initialValues: S.optional(__S(562, __c35, 2)),
           sessionId: S.optional(S.String),
-          tags: S.optional(__S(176, __c11, 0)),
+          tags: S.optional(__S(112, __c7, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/runtime.startQAppSession" }),
@@ -3051,7 +3015,7 @@ function __c35(j: number): any {
       ).annotate({ identifier: "StartQAppSessionInput" });
   }
 }
-function __c36(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ submissionId: S.String, mutationType: S.String })).annotate(
@@ -3062,18 +3026,18 @@ function __c36(j: number): any {
         S.Struct({
           cardId: S.String,
           value: S.String,
-          submissionMutation: S.optional(__S(576, __c36, 0)),
+          submissionMutation: S.optional(__S(560, __c35, 0)),
         }),
       ).annotate({ identifier: "CardValue" });
     case 2:
-      return S.Array(__S(577, __c36, 1));
+      return S.Array(__S(561, __c35, 1));
     case 3:
       return S.suspend(() => S.Struct({ sessionId: S.String, sessionArn: S.String })).annotate({
         identifier: "StartQAppSessionOutput",
       });
   }
 }
-function __c37(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3093,13 +3057,13 @@ function __c37(j: number): any {
       ).annotate({ identifier: "StopQAppSessionInput" });
   }
 }
-function __c38(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceARN: S.String.pipe(T.HttpLabel("resourceARN")),
-          tags: __S(176, __c11, 0),
+          tags: __S(112, __c7, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceARN}" }),
@@ -3113,13 +3077,13 @@ function __c38(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c39(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceARN: S.String.pipe(T.HttpLabel("resourceARN")),
-          tagKeys: __S(64, __c4, 0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(48, __c3, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceARN}" }),
@@ -3133,7 +3097,7 @@ function __c39(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c40(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3141,7 +3105,7 @@ function __c40(j: number): any {
           instanceId: S.String.pipe(T.HttpHeader("instance-id")),
           libraryItemId: S.String,
           status: S.optional(S.String),
-          categories: S.optional(__S(64, __c4, 0)),
+          categories: S.optional(__S(48, __c3, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/catalog.updateItem" }),
@@ -3155,7 +3119,7 @@ function __c40(j: number): any {
       ).annotate({ identifier: "UpdateLibraryItemInput" });
   }
 }
-function __c41(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3173,12 +3137,10 @@ function __c41(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateLibraryItemMetadataInput",
-      });
+      ).annotate({ identifier: "UpdateLibraryItemMetadataInput" });
   }
 }
-function __c42(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3187,28 +3149,28 @@ function __c42(j: number): any {
           appId: S.String,
           title: S.optional(S.String),
           description: S.optional(S.String),
-          appDefinition: S.optional(__S(199, __c12, 7)),
+          appDefinition: S.optional(__S(183, __c11, 7)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/apps.update" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateQAppInput" });
   }
 }
-function __c43(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ action: S.String, principal: S.String })).annotate({
         identifier: "PermissionInput",
       });
     case 1:
-      return S.Array(__S(688, __c43, 0));
+      return S.Array(__S(672, __c42, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           instanceId: S.String.pipe(T.HttpHeader("instance-id")),
           appId: S.String,
-          grantPermissions: S.optional(__S(689, __c43, 1)),
-          revokePermissions: S.optional(__S(689, __c43, 1)),
+          grantPermissions: S.optional(__S(673, __c42, 1)),
+          revokePermissions: S.optional(__S(673, __c42, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/apps.updateQAppPermissions" }),
@@ -3219,19 +3181,17 @@ function __c43(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateQAppPermissionsInput",
-      });
+      ).annotate({ identifier: "UpdateQAppPermissionsInput" });
   }
 }
-function __c44(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           instanceId: S.String.pipe(T.HttpHeader("instance-id")),
           sessionId: S.String,
-          values: S.optional(__S(578, __c36, 2)),
+          values: S.optional(__S(562, __c35, 2)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/runtime.updateQAppSession" }),
@@ -3245,7 +3205,7 @@ function __c44(j: number): any {
       ).annotate({ identifier: "UpdateQAppSessionInput" });
   }
 }
-function __c45(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3253,7 +3213,7 @@ function __c45(j: number): any {
           instanceId: S.String.pipe(T.HttpHeader("instance-id")),
           sessionId: S.String,
           sessionName: S.optional(S.String),
-          sharingConfiguration: __S(432, __c27, 0),
+          sharingConfiguration: __S(416, __c26, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/runtime.updateQAppSessionMetadata" }),
@@ -3264,23 +3224,19 @@ function __c45(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateQAppSessionMetadataInput",
-      });
+      ).annotate({ identifier: "UpdateQAppSessionMetadataInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           sessionId: S.String,
           sessionArn: S.String,
           sessionName: S.optional(S.String),
-          sharingConfiguration: __S(432, __c27, 0),
+          sharingConfiguration: __S(416, __c26, 0),
         }),
-      ).annotate({
-        identifier: "UpdateQAppSessionMetadataOutput",
-      });
+      ).annotate({ identifier: "UpdateQAppSessionMetadataOutput" });
   }
 }
-function __c46(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3297,12 +3253,10 @@ function __c46(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateLibraryItemReviewInput",
-      });
+      ).annotate({ identifier: "AssociateLibraryItemReviewInput" });
   }
 }
-function __c47(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({

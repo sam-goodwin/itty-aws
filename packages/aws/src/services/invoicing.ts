@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -978,7 +978,7 @@ export const listInvoiceSummaries: API.PaginatedOperationMethod<
   InvoiceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(100, __c6, 4) as any as S.Schema<ListInvoiceSummariesRequest>,
-  output: __S(111, __c6, 15) as any as S.Schema<ListInvoiceSummariesResponse>,
+  output: __S(110, __c6, 14) as any as S.Schema<ListInvoiceSummariesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1423,9 +1423,7 @@ function __c1(j: number): any {
           ProcurementPortalPreferenceArn: S.String,
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteProcurementPortalPreferenceRequest",
-      });
+      ).annotate({ identifier: "DeleteProcurementPortalPreferenceRequest" });
   }
 }
 function __c2(j: number): any {
@@ -1496,9 +1494,7 @@ function __c5(j: number): any {
         S.Struct({ ProcurementPortalPreferenceArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetProcurementPortalPreferenceRequest",
-      });
+      ).annotate({ identifier: "GetProcurementPortalPreferenceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1540,9 +1536,7 @@ function __c5(j: number): any {
           CreateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           LastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
-      ).annotate({
-        identifier: "ProcurementPortalPreference",
-      });
+      ).annotate({ identifier: "ProcurementPortalPreference" });
     case 3:
       return S.suspend(() => S.Struct({ ProcurementPortalPreference: __S(82, __c5, 2) })).annotate({
         identifier: "GetProcurementPortalPreferenceResponse",
@@ -1583,9 +1577,7 @@ function __c6(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListInvoiceSummariesRequest",
-      });
+      ).annotate({ identifier: "ListInvoiceSummariesRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({ InvoicingEntity: S.optional(S.String), BillingEntity: S.optional(S.String) }),
@@ -1602,25 +1594,18 @@ function __c6(j: number): any {
       return S.Array(__S(102, __c6, 6));
     case 8:
       return S.suspend(() =>
-        S.Struct({
-          Breakdown: S.optional(__S(103, __c6, 7)),
-          TotalAmount: S.optional(S.String),
-        }),
+        S.Struct({ Breakdown: S.optional(__S(103, __c6, 7)), TotalAmount: S.optional(S.String) }),
       ).annotate({ identifier: "DiscountsBreakdown" });
     case 9:
-      return S.suspend(() =>
-        S.Struct({ Breakdown: S.optional(__S(103, __c6, 7)), TotalAmount: S.optional(S.String) }),
-      ).annotate({ identifier: "TaxesBreakdown" });
-    case 10:
       return S.suspend(() =>
         S.Struct({
           SubTotalAmount: S.optional(S.String),
           Discounts: S.optional(__S(104, __c6, 8)),
-          Taxes: S.optional(__S(105, __c6, 9)),
-          Fees: S.optional(__S(105, __c6, 9)),
+          Taxes: S.optional(__S(104, __c6, 8)),
+          Fees: S.optional(__S(104, __c6, 8)),
         }),
       ).annotate({ identifier: "AmountBreakdown" });
-    case 11:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           SourceCurrencyCode: S.optional(S.String),
@@ -1628,17 +1613,17 @@ function __c6(j: number): any {
           Rate: S.optional(S.String),
         }),
       ).annotate({ identifier: "CurrencyExchangeDetails" });
-    case 12:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           TotalAmount: S.optional(S.String),
           TotalAmountBeforeTax: S.optional(S.String),
           CurrencyCode: S.optional(S.String),
-          AmountBreakdown: S.optional(__S(106, __c6, 10)),
-          CurrencyExchangeDetails: S.optional(__S(107, __c6, 11)),
+          AmountBreakdown: S.optional(__S(105, __c6, 9)),
+          CurrencyExchangeDetails: S.optional(__S(106, __c6, 10)),
         }),
       ).annotate({ identifier: "InvoiceCurrencyAmount" });
-    case 13:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.optional(S.String),
@@ -1658,19 +1643,17 @@ function __c6(j: number): any {
           PurchaseOrderNumber: S.optional(S.String),
           EinvoiceDeliveryStatus: S.optional(S.String),
           TaxAuthorityStatus: S.optional(S.String),
-          BaseCurrencyAmount: S.optional(__S(108, __c6, 12)),
-          TaxCurrencyAmount: S.optional(__S(108, __c6, 12)),
-          PaymentCurrencyAmount: S.optional(__S(108, __c6, 12)),
+          BaseCurrencyAmount: S.optional(__S(107, __c6, 11)),
+          TaxCurrencyAmount: S.optional(__S(107, __c6, 11)),
+          PaymentCurrencyAmount: S.optional(__S(107, __c6, 11)),
         }),
       ).annotate({ identifier: "InvoiceSummary" });
+    case 13:
+      return S.Array(__S(108, __c6, 12));
     case 14:
-      return S.Array(__S(109, __c6, 13));
-    case 15:
       return S.suspend(() =>
-        S.Struct({ InvoiceSummaries: __S(110, __c6, 14), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListInvoiceSummariesResponse",
-      });
+        S.Struct({ InvoiceSummaries: __S(109, __c6, 13), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListInvoiceSummariesResponse" });
   }
 }
 function __c7(j: number): any {
@@ -1708,9 +1691,7 @@ function __c8(j: number): any {
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListProcurementPortalPreferencesRequest",
-      });
+      ).annotate({ identifier: "ListProcurementPortalPreferencesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1733,9 +1714,7 @@ function __c8(j: number): any {
           CreateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           LastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
-      ).annotate({
-        identifier: "ProcurementPortalPreferenceSummary",
-      });
+      ).annotate({ identifier: "ProcurementPortalPreferenceSummary" });
     case 2:
       return S.Array(__S(129, __c8, 1));
     case 3:
@@ -1744,9 +1723,7 @@ function __c8(j: number): any {
           ProcurementPortalPreferences: S.optional(__S(130, __c8, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListProcurementPortalPreferencesResponse",
-      });
+      ).annotate({ identifier: "ListProcurementPortalPreferencesResponse" });
   }
 }
 function __c9(j: number): any {
@@ -1756,14 +1733,12 @@ function __c9(j: number): any {
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListProcurementPortalsRequest",
-      });
+      ).annotate({ identifier: "ListProcurementPortalsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           DocumentTypes: S.optional(__S(480, __c30, 0)),
-          AttachmentTypes: S.optional(__S(481, __c30, 1)),
+          AttachmentTypes: S.optional(__S(480, __c30, 0)),
         }),
       ).annotate({ identifier: "InvoiceConfiguration" });
     case 2:
@@ -1784,9 +1759,7 @@ function __c9(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({ ProcurementPortals: __S(148, __c9, 4), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListProcurementPortalsResponse",
-      });
+      ).annotate({ identifier: "ListProcurementPortalsResponse" });
   }
 }
 function __c10(j: number): any {
@@ -1798,9 +1771,7 @@ function __c10(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListProcurementPortalSuppliersRequest",
-      });
+      ).annotate({ identifier: "ListProcurementPortalSuppliersRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1809,9 +1780,7 @@ function __c10(j: number): any {
           CountryCode: S.optional(S.String),
           Environment: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ProcurementPortalSupplier",
-      });
+      ).annotate({ identifier: "ProcurementPortalSupplier" });
     case 2:
       return S.Array(__S(161, __c10, 1));
     case 3:
@@ -1820,9 +1789,7 @@ function __c10(j: number): any {
           ProcurementPortalSuppliers: __S(162, __c10, 2),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListProcurementPortalSuppliersResponse",
-      });
+      ).annotate({ identifier: "ListProcurementPortalSuppliersResponse" });
   }
 }
 function __c11(j: number): any {
@@ -1832,9 +1799,7 @@ function __c11(j: number): any {
         S.Struct({ ResourceArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ ResourceTags: S.optional(__S(417, __c26, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -1859,9 +1824,7 @@ function __c12(j: number): any {
           Contacts: __S(501, __c31, 5),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PutProcurementPortalPreferenceRequest",
-      });
+      ).annotate({ identifier: "PutProcurementPortalPreferenceRequest" });
   }
 }
 function __c13(j: number): any {
@@ -1872,9 +1835,7 @@ function __c13(j: number): any {
           ProcurementPortalPreferenceArn: S.String,
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SendProcurementPortalValidationRequest",
-      });
+      ).annotate({ identifier: "SendProcurementPortalValidationRequest" });
   }
 }
 function __c14(j: number): any {
@@ -1890,9 +1851,7 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TagResourceResponse" });
   }
 }
 function __c16(j: number): any {
@@ -1931,9 +1890,7 @@ function __c18(j: number): any {
           PurchaseOrderRetrievalPreferenceStatusReason: S.optional(S.String),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateProcurementPortalPreferenceStatusRequest",
-      });
+      ).annotate({ identifier: "UpdateProcurementPortalPreferenceStatusRequest" });
   }
 }
 function __c19(j: number): any {
@@ -1945,9 +1902,7 @@ function __c19(j: number): any {
           Code: S.String,
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "VerifyProcurementPortalValidationRequest",
-      });
+      ).annotate({ identifier: "VerifyProcurementPortalValidationRequest" });
   }
 }
 function __c20(j: number): any {
@@ -1967,9 +1922,7 @@ function __c21(j: number): any {
         S.Struct({ AccountIds: __S(352, __c22, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "BatchGetInvoiceProfileRequest",
-      });
+      ).annotate({ identifier: "BatchGetInvoiceProfileRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2077,9 +2030,7 @@ function __c27(j: number): any {
           ResourceTags: S.optional(__S(417, __c26, 1)),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateProcurementPortalPreferenceRequest",
-      });
+      ).annotate({ identifier: "CreateProcurementPortalPreferenceRequest" });
   }
 }
 function __c28(j: number): any {
@@ -2098,16 +2049,12 @@ function __c29(j: number): any {
           InvoiceUnitArns: S.optional(__S(352, __c22, 0)),
           SellerOfRecords: S.optional(__S(352, __c22, 0)),
         }),
-      ).annotate({
-        identifier: "ProcurementPortalPreferenceSelector",
-      });
+      ).annotate({ identifier: "ProcurementPortalPreferenceSelector" });
   }
 }
 function __c30(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.Array(S.String);
   }
 }
@@ -2126,21 +2073,17 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           EinvoiceDeliveryDocumentTypes: __S(480, __c30, 0),
-          EinvoiceDeliveryAttachmentTypes: S.optional(__S(481, __c30, 1)),
+          EinvoiceDeliveryAttachmentTypes: S.optional(__S(480, __c30, 0)),
           Protocol: S.String,
           PurchaseOrderDataSources: __S(497, __c31, 1),
           ConnectionTestingMethod: S.String,
           EinvoiceDeliveryActivationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
-      ).annotate({
-        identifier: "EinvoiceDeliveryPreference",
-      });
+      ).annotate({ identifier: "EinvoiceDeliveryPreference" });
     case 3:
       return S.suspend(() =>
         S.Struct({ ApprovalRequestRedirectUrl: S.optional(S.String) }),
-      ).annotate({
-        identifier: "MarketplacePunchOutPreference",
-      });
+      ).annotate({ identifier: "MarketplacePunchOutPreference" });
     case 4:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String), Email: S.optional(S.String) }),

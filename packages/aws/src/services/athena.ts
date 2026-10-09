@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1326,8 +1326,8 @@ export const batchGetNamedQuery: API.OperationMethod<
   BatchGetNamedQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1520, __c95, 0) as any as S.Schema<BatchGetNamedQueryInput>,
-  output: __S(1524, __c95, 4) as any as S.Schema<BatchGetNamedQueryOutput>,
+  input: __S(1536, __c96, 0) as any as S.Schema<BatchGetNamedQueryInput>,
+  output: __S(1540, __c96, 4) as any as S.Schema<BatchGetNamedQueryOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1528,7 +1528,7 @@ export const createPreparedStatement: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(336, __c21, 0) as any as S.Schema<CreatePreparedStatementInput>,
-  output: __S(352, __c22, 0) as any as S.Schema<CreatePreparedStatementOutput>,
+  output: __S(192, __c12, 0) as any as S.Schema<CreatePreparedStatementOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1553,8 +1553,8 @@ export const createPresignedNotebookUrl: API.OperationMethod<
   CreatePresignedNotebookUrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c23, 0) as any as S.Schema<CreatePresignedNotebookUrlRequest>,
-  output: __S(369, __c23, 1) as any as S.Schema<CreatePresignedNotebookUrlResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<CreatePresignedNotebookUrlRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<CreatePresignedNotebookUrlResponse>,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1572,8 +1572,8 @@ export const createWorkGroup: API.OperationMethod<
   CreateWorkGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<CreateWorkGroupInput>,
-  output: __S(352, __c22, 0) as any as S.Schema<CreateWorkGroupOutput>,
+  input: __S(368, __c23, 0) as any as S.Schema<CreateWorkGroupInput>,
+  output: __S(192, __c12, 0) as any as S.Schema<CreateWorkGroupOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1597,7 +1597,7 @@ export const deleteCapacityReservation: API.OperationMethod<
   DeleteCapacityReservationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<DeleteCapacityReservationInput>,
+  input: __S(432, __c27, 0) as any as S.Schema<DeleteCapacityReservationInput>,
   output: __S(192, __c12, 0) as any as S.Schema<DeleteCapacityReservationOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
@@ -1619,7 +1619,7 @@ export const deleteDataCatalog: API.OperationMethod<
   DeleteDataCatalogError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c29, 0) as any as S.Schema<DeleteDataCatalogInput>,
+  input: __S(448, __c28, 0) as any as S.Schema<DeleteDataCatalogInput>,
   output: __S(273, __c17, 1) as any as S.Schema<DeleteDataCatalogOutput>,
   errors: [InternalServerException, InvalidRequestException, DataCatalogNotFound],
   protocol: AwsProtocol,
@@ -1642,8 +1642,8 @@ export const deleteNamedQuery: API.OperationMethod<
   DeleteNamedQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<DeleteNamedQueryInput>,
-  output: __S(352, __c22, 0) as any as S.Schema<DeleteNamedQueryOutput>,
+  input: __S(464, __c29, 0) as any as S.Schema<DeleteNamedQueryInput>,
+  output: __S(192, __c12, 0) as any as S.Schema<DeleteNamedQueryOutput>,
   errors: [InternalServerException, InvalidRequestException, NamedQueryNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1664,8 +1664,8 @@ export const deleteNotebook: API.OperationMethod<
   DeleteNotebookError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<DeleteNotebookInput>,
-  output: __S(352, __c22, 0) as any as S.Schema<DeleteNotebookOutput>,
+  input: __S(480, __c30, 0) as any as S.Schema<DeleteNotebookInput>,
+  output: __S(192, __c12, 0) as any as S.Schema<DeleteNotebookOutput>,
   errors: [InternalServerException, InvalidRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1688,8 +1688,8 @@ export const deletePreparedStatement: API.OperationMethod<
   DeletePreparedStatementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c32, 0) as any as S.Schema<DeletePreparedStatementInput>,
-  output: __S(352, __c22, 0) as any as S.Schema<DeletePreparedStatementOutput>,
+  input: __S(496, __c31, 0) as any as S.Schema<DeletePreparedStatementInput>,
+  output: __S(192, __c12, 0) as any as S.Schema<DeletePreparedStatementOutput>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -1712,8 +1712,8 @@ export const deleteWorkGroup: API.OperationMethod<
   DeleteWorkGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c33, 0) as any as S.Schema<DeleteWorkGroupInput>,
-  output: __S(352, __c22, 0) as any as S.Schema<DeleteWorkGroupOutput>,
+  input: __S(512, __c32, 0) as any as S.Schema<DeleteWorkGroupInput>,
+  output: __S(192, __c12, 0) as any as S.Schema<DeleteWorkGroupOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1734,8 +1734,8 @@ export const exportNotebook: API.OperationMethod<
   ExportNotebookError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c34, 0) as any as S.Schema<ExportNotebookInput>,
-  output: __S(545, __c34, 1) as any as S.Schema<ExportNotebookOutput>,
+  input: __S(528, __c33, 0) as any as S.Schema<ExportNotebookInput>,
+  output: __S(529, __c33, 1) as any as S.Schema<ExportNotebookOutput>,
   errors: [InternalServerException, InvalidRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1756,8 +1756,8 @@ export const getCalculationExecution: API.OperationMethod<
   GetCalculationExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c36, 0) as any as S.Schema<GetCalculationExecutionRequest>,
-  output: __S(578, __c36, 2) as any as S.Schema<GetCalculationExecutionResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<GetCalculationExecutionRequest>,
+  output: __S(562, __c35, 2) as any as S.Schema<GetCalculationExecutionResponse>,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1778,8 +1778,8 @@ export const getCalculationExecutionCode: API.OperationMethod<
   GetCalculationExecutionCodeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c39, 0) as any as S.Schema<GetCalculationExecutionCodeRequest>,
-  output: __S(625, __c39, 1) as any as S.Schema<GetCalculationExecutionCodeResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<GetCalculationExecutionCodeRequest>,
+  output: __S(624, __c39, 0) as any as S.Schema<GetCalculationExecutionCodeResponse>,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2687,7 +2687,7 @@ export const putCapacityAssignmentConfiguration: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1264, __c79, 0) as any as S.Schema<PutCapacityAssignmentConfigurationInput>,
-  output: __S(1265, __c79, 1) as any as S.Schema<PutCapacityAssignmentConfigurationOutput>,
+  output: __S(192, __c12, 0) as any as S.Schema<PutCapacityAssignmentConfigurationOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2714,8 +2714,8 @@ export const startCalculationExecution: API.OperationMethod<
   StartCalculationExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1281, __c80, 1) as any as S.Schema<StartCalculationExecutionRequest>,
-  output: __S(1282, __c80, 2) as any as S.Schema<StartCalculationExecutionResponse>,
+  input: __S(1280, __c80, 0) as any as S.Schema<StartCalculationExecutionRequest>,
+  output: __S(1281, __c80, 1) as any as S.Schema<StartCalculationExecutionResponse>,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2803,7 +2803,7 @@ export const stopCalculationExecution: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1328, __c83, 0) as any as S.Schema<StopCalculationExecutionRequest>,
-  output: __S(1329, __c83, 1) as any as S.Schema<StopCalculationExecutionResponse>,
+  output: __S(1344, __c84, 0) as any as S.Schema<StopCalculationExecutionResponse>,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2824,8 +2824,8 @@ export const stopQueryExecution: API.OperationMethod<
   StopQueryExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1344, __c84, 0) as any as S.Schema<StopQueryExecutionInput>,
-  output: __S(352, __c22, 0) as any as S.Schema<StopQueryExecutionOutput>,
+  input: __S(1360, __c85, 0) as any as S.Schema<StopQueryExecutionInput>,
+  output: __S(192, __c12, 0) as any as S.Schema<StopQueryExecutionOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2856,8 +2856,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1360, __c85, 0) as any as S.Schema<TagResourceInput>,
-  output: __S(352, __c22, 0) as any as S.Schema<TagResourceOutput>,
+  input: __S(1376, __c86, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(192, __c12, 0) as any as S.Schema<TagResourceOutput>,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2882,8 +2882,8 @@ export const terminateSession: API.OperationMethod<
   TerminateSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1376, __c86, 0) as any as S.Schema<TerminateSessionRequest>,
-  output: __S(1377, __c86, 1) as any as S.Schema<TerminateSessionResponse>,
+  input: __S(1392, __c87, 0) as any as S.Schema<TerminateSessionRequest>,
+  output: __S(1344, __c84, 0) as any as S.Schema<TerminateSessionResponse>,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2904,8 +2904,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1392, __c87, 0) as any as S.Schema<UntagResourceInput>,
-  output: __S(352, __c22, 0) as any as S.Schema<UntagResourceOutput>,
+  input: __S(1408, __c88, 0) as any as S.Schema<UntagResourceInput>,
+  output: __S(192, __c12, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2926,7 +2926,7 @@ export const updateCapacityReservation: API.OperationMethod<
   UpdateCapacityReservationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1408, __c88, 0) as any as S.Schema<UpdateCapacityReservationInput>,
+  input: __S(1424, __c89, 0) as any as S.Schema<UpdateCapacityReservationInput>,
   output: __S(192, __c12, 0) as any as S.Schema<UpdateCapacityReservationOutput>,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
@@ -2948,8 +2948,8 @@ export const updateDataCatalog: API.OperationMethod<
   UpdateDataCatalogError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1424, __c89, 0) as any as S.Schema<UpdateDataCatalogInput>,
-  output: __S(352, __c22, 0) as any as S.Schema<UpdateDataCatalogOutput>,
+  input: __S(1440, __c90, 0) as any as S.Schema<UpdateDataCatalogInput>,
+  output: __S(192, __c12, 0) as any as S.Schema<UpdateDataCatalogOutput>,
   errors: [InternalServerException, InvalidRequestException, DataCatalogNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2971,8 +2971,8 @@ export const updateNamedQuery: API.OperationMethod<
   UpdateNamedQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c90, 0) as any as S.Schema<UpdateNamedQueryInput>,
-  output: __S(352, __c22, 0) as any as S.Schema<UpdateNamedQueryOutput>,
+  input: __S(1456, __c91, 0) as any as S.Schema<UpdateNamedQueryInput>,
+  output: __S(192, __c12, 0) as any as S.Schema<UpdateNamedQueryOutput>,
   errors: [InternalServerException, InvalidRequestException, NamedQueryNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2993,8 +2993,8 @@ export const updateNotebook: API.OperationMethod<
   UpdateNotebookError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1456, __c91, 0) as any as S.Schema<UpdateNotebookInput>,
-  output: __S(352, __c22, 0) as any as S.Schema<UpdateNotebookOutput>,
+  input: __S(1472, __c92, 0) as any as S.Schema<UpdateNotebookInput>,
+  output: __S(192, __c12, 0) as any as S.Schema<UpdateNotebookOutput>,
   errors: [InternalServerException, InvalidRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3015,8 +3015,8 @@ export const updateNotebookMetadata: API.OperationMethod<
   UpdateNotebookMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1472, __c92, 0) as any as S.Schema<UpdateNotebookMetadataInput>,
-  output: __S(352, __c22, 0) as any as S.Schema<UpdateNotebookMetadataOutput>,
+  input: __S(1488, __c93, 0) as any as S.Schema<UpdateNotebookMetadataInput>,
+  output: __S(192, __c12, 0) as any as S.Schema<UpdateNotebookMetadataOutput>,
   errors: [InternalServerException, InvalidRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3037,8 +3037,8 @@ export const updatePreparedStatement: API.OperationMethod<
   UpdatePreparedStatementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1488, __c93, 0) as any as S.Schema<UpdatePreparedStatementInput>,
-  output: __S(352, __c22, 0) as any as S.Schema<UpdatePreparedStatementOutput>,
+  input: __S(1504, __c94, 0) as any as S.Schema<UpdatePreparedStatementInput>,
+  output: __S(192, __c12, 0) as any as S.Schema<UpdatePreparedStatementOutput>,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3060,8 +3060,8 @@ export const updateWorkGroup: API.OperationMethod<
   UpdateWorkGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1507, __c94, 3) as any as S.Schema<UpdateWorkGroupInput>,
-  output: __S(352, __c22, 0) as any as S.Schema<UpdateWorkGroupOutput>,
+  input: __S(1523, __c95, 3) as any as S.Schema<UpdateWorkGroupInput>,
+  output: __S(192, __c12, 0) as any as S.Schema<UpdateWorkGroupOutput>,
   errors: [InternalServerException, InvalidRequestException, WorkGroupNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3073,12 +3073,10 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ PreparedStatementNames: __S(1536, __c96, 0), WorkGroup: S.String }).pipe(
+        S.Struct({ PreparedStatementNames: __S(1552, __c97, 0), WorkGroup: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "BatchGetPreparedStatementInput",
-      });
+      ).annotate({ identifier: "BatchGetPreparedStatementInput" });
     case 1:
       return S.Array(__S(16, __c1, 0));
     case 2:
@@ -3088,9 +3086,7 @@ function __c0(j: number): any {
           ErrorCode: S.optional(S.String),
           ErrorMessage: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "UnprocessedPreparedStatementName",
-      });
+      ).annotate({ identifier: "UnprocessedPreparedStatementName" });
     case 3:
       return S.Array(__S(2, __c0, 2));
     case 4:
@@ -3099,9 +3095,7 @@ function __c0(j: number): any {
           PreparedStatements: S.optional(__S(1, __c0, 1)),
           UnprocessedPreparedStatementNames: S.optional(__S(3, __c0, 3)),
         }),
-      ).annotate({
-        identifier: "BatchGetPreparedStatementOutput",
-      });
+      ).annotate({ identifier: "BatchGetPreparedStatementOutput" });
   }
 }
 function __c1(j: number): any {
@@ -3122,12 +3116,10 @@ function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ QueryExecutionIds: __S(1536, __c96, 0) }).pipe(
+        S.Struct({ QueryExecutionIds: __S(1552, __c97, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "BatchGetQueryExecutionInput",
-      });
+      ).annotate({ identifier: "BatchGetQueryExecutionInput" });
     case 1:
       return S.Array(__S(148, __c9, 4));
     case 2:
@@ -3137,9 +3129,7 @@ function __c2(j: number): any {
           ErrorCode: S.optional(S.String),
           ErrorMessage: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "UnprocessedQueryExecutionId",
-      });
+      ).annotate({ identifier: "UnprocessedQueryExecutionId" });
     case 3:
       return S.Array(__S(34, __c2, 2));
     case 4:
@@ -3148,9 +3138,7 @@ function __c2(j: number): any {
           QueryExecutions: S.optional(__S(33, __c2, 1)),
           UnprocessedQueryExecutionIds: S.optional(__S(35, __c2, 3)),
         }),
-      ).annotate({
-        identifier: "BatchGetQueryExecutionOutput",
-      });
+      ).annotate({ identifier: "BatchGetQueryExecutionOutput" });
   }
 }
 function __c3(j: number): any {
@@ -3165,13 +3153,8 @@ function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          Enabled: S.Boolean,
-          EncryptionConfiguration: S.optional(__S(128, __c8, 0)),
-        }),
-      ).annotate({
-        identifier: "ManagedQueryResultsConfiguration",
-      });
+        S.Struct({ Enabled: S.Boolean, EncryptionConfiguration: S.optional(__S(128, __c8, 0)) }),
+      ).annotate({ identifier: "ManagedQueryResultsConfiguration" });
   }
 }
 function __c5(j: number): any {
@@ -3219,9 +3202,7 @@ function __c8(j: number): any {
           CreateUserLevelPrefix: S.optional(S.Boolean),
           AuthenticationType: S.String,
         }),
-      ).annotate({
-        identifier: "QueryResultsS3AccessGrantsConfiguration",
-      });
+      ).annotate({ identifier: "QueryResultsS3AccessGrantsConfiguration" });
   }
 }
 function __c9(j: number): any {
@@ -3278,7 +3259,7 @@ function __c9(j: number): any {
           Statistics: S.optional(__S(147, __c9, 3)),
           WorkGroup: S.optional(S.String),
           EngineVersion: S.optional(__S(80, __c5, 0)),
-          ExecutionParameters: S.optional(__S(1536, __c96, 0)),
+          ExecutionParameters: S.optional(__S(1552, __c97, 0)),
           SubstatementType: S.optional(S.String),
           QueryResultsS3AccessGrantsConfiguration: S.optional(__S(129, __c8, 1)),
         }),
@@ -3290,9 +3271,7 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ Enabled: S.Boolean, MaxAgeInMinutes: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "ResultReuseByAgeConfiguration",
-      });
+      ).annotate({ identifier: "ResultReuseByAgeConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ResultReuseByAgeConfiguration: S.optional(__S(160, __c10, 0)) }),
@@ -3310,9 +3289,7 @@ function __c11(j: number): any {
         S.Struct({ Name: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CancelCapacityReservationInput",
-      });
+      ).annotate({ identifier: "CancelCapacityReservationInput" });
   }
 }
 function __c12(j: number): any {
@@ -3332,9 +3309,7 @@ function __c13(j: number): any {
           Name: S.String,
           Tags: S.optional(__S(225, __c14, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateCapacityReservationInput",
-      });
+      ).annotate({ identifier: "CreateCapacityReservationInput" });
   }
 }
 function __c14(j: number): any {
@@ -3436,58 +3411,44 @@ function __c21(j: number): any {
           QueryStatement: S.String,
           Description: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreatePreparedStatementInput",
-      });
+      ).annotate({ identifier: "CreatePreparedStatementInput" });
   }
 }
 function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreatePreparedStatementOutput",
-      });
-  }
-}
-function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ SessionId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreatePresignedNotebookUrlRequest",
-      });
+      ).annotate({ identifier: "CreatePresignedNotebookUrlRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ NotebookUrl: S.String, AuthToken: S.String, AuthTokenExpirationTime: S.Number }),
-      ).annotate({
-        identifier: "CreatePresignedNotebookUrlResponse",
-      });
+      ).annotate({ identifier: "CreatePresignedNotebookUrlResponse" });
   }
 }
-function __c24(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          Configuration: S.optional(__S(433, __c27, 1)),
+          Configuration: S.optional(__S(417, __c26, 1)),
           Description: S.optional(S.String),
           Tags: S.optional(__S(225, __c14, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateWorkGroupInput" });
   }
 }
-function __c25(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String), Properties: S.optional(__S(256, __c16, 0)) }),
       ).annotate({ identifier: "Classification" });
     case 1:
-      return S.Array(__S(400, __c25, 0));
+      return S.Array(__S(384, __c24, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3496,32 +3457,28 @@ function __c25(j: number): any {
           DefaultExecutorDpuSize: S.optional(S.Number),
           AdditionalConfigs: S.optional(__S(256, __c16, 0)),
           SparkProperties: S.optional(__S(256, __c16, 0)),
-          Classifications: S.optional(__S(401, __c25, 1)),
+          Classifications: S.optional(__S(385, __c24, 1)),
         }),
       ).annotate({ identifier: "EngineConfiguration" });
   }
 }
-function __c26(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ __S(1536, __c96, 0).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(1552, __c97, 0).pipe(S.optional));
     case 1:
       return S.suspend(() =>
         S.Struct({
           Enabled: S.Boolean,
           LogGroup: S.optional(S.String),
           LogStreamNamePrefix: S.optional(S.String),
-          LogTypes: S.optional(__S(416, __c26, 0)),
+          LogTypes: S.optional(__S(400, __c25, 0)),
         }),
-      ).annotate({
-        identifier: "CloudWatchLoggingConfiguration",
-      });
+      ).annotate({ identifier: "CloudWatchLoggingConfiguration" });
     case 2:
       return S.suspend(() =>
         S.Struct({ Enabled: S.Boolean, KmsKey: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ManagedLoggingConfiguration",
-      });
+      ).annotate({ identifier: "ManagedLoggingConfiguration" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3533,14 +3490,14 @@ function __c26(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          CloudWatchLoggingConfiguration: S.optional(__S(417, __c26, 1)),
-          ManagedLoggingConfiguration: S.optional(__S(418, __c26, 2)),
-          S3LoggingConfiguration: S.optional(__S(419, __c26, 3)),
+          CloudWatchLoggingConfiguration: S.optional(__S(401, __c25, 1)),
+          ManagedLoggingConfiguration: S.optional(__S(402, __c25, 2)),
+          S3LoggingConfiguration: S.optional(__S(403, __c25, 3)),
         }),
       ).annotate({ identifier: "MonitoringConfiguration" });
   }
 }
-function __c27(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3548,9 +3505,7 @@ function __c27(j: number): any {
           EnableIdentityCenter: S.optional(S.Boolean),
           IdentityCenterInstanceArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "IdentityCenterConfiguration",
-      });
+      ).annotate({ identifier: "IdentityCenterConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3563,29 +3518,27 @@ function __c27(j: number): any {
           EngineVersion: S.optional(__S(80, __c5, 0)),
           AdditionalConfiguration: S.optional(S.String),
           ExecutionRole: S.optional(S.String),
-          MonitoringConfiguration: S.optional(__S(420, __c26, 4)),
-          EngineConfiguration: S.optional(__S(402, __c25, 2)),
+          MonitoringConfiguration: S.optional(__S(404, __c25, 4)),
+          EngineConfiguration: S.optional(__S(386, __c24, 2)),
           CustomerContentEncryptionConfiguration: S.optional(__S(128, __c8, 0)),
           EnableMinimumEncryptionConfiguration: S.optional(S.Boolean),
-          IdentityCenterConfiguration: S.optional(__S(432, __c27, 0)),
+          IdentityCenterConfiguration: S.optional(__S(416, __c26, 0)),
           QueryResultsS3AccessGrantsConfiguration: S.optional(__S(129, __c8, 1)),
         }),
       ).annotate({ identifier: "WorkGroupConfiguration" });
   }
 }
-function __c28(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteCapacityReservationInput",
-      });
+      ).annotate({ identifier: "DeleteCapacityReservationInput" });
   }
 }
-function __c29(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3595,7 +3548,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "DeleteDataCatalogInput" });
   }
 }
-function __c30(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3605,7 +3558,7 @@ function __c30(j: number): any {
       ).annotate({ identifier: "DeleteNamedQueryInput" });
   }
 }
-function __c31(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3615,19 +3568,17 @@ function __c31(j: number): any {
       ).annotate({ identifier: "DeleteNotebookInput" });
   }
 }
-function __c32(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ StatementName: S.String, WorkGroup: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeletePreparedStatementInput",
-      });
+      ).annotate({ identifier: "DeletePreparedStatementInput" });
   }
 }
-function __c33(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3637,7 +3588,7 @@ function __c33(j: number): any {
       ).annotate({ identifier: "DeleteWorkGroupInput" });
   }
 }
-function __c34(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3648,13 +3599,13 @@ function __c34(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          NotebookMetadata: S.optional(__S(560, __c35, 0)),
+          NotebookMetadata: S.optional(__S(544, __c34, 0)),
           Payload: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExportNotebookOutput" });
   }
 }
-function __c35(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3669,16 +3620,14 @@ function __c35(j: number): any {
       ).annotate({ identifier: "NotebookMetadata" });
   }
 }
-function __c36(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ CalculationExecutionId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetCalculationExecutionRequest",
-      });
+      ).annotate({ identifier: "GetCalculationExecutionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3695,16 +3644,14 @@ function __c36(j: number): any {
           SessionId: S.optional(S.String),
           Description: S.optional(S.String),
           WorkingDirectory: S.optional(S.String),
-          Status: S.optional(__S(608, __c38, 0)),
-          Statistics: S.optional(__S(592, __c37, 0)),
-          Result: S.optional(__S(577, __c36, 1)),
+          Status: S.optional(__S(592, __c37, 0)),
+          Statistics: S.optional(__S(576, __c36, 0)),
+          Result: S.optional(__S(561, __c35, 1)),
         }),
-      ).annotate({
-        identifier: "GetCalculationExecutionResponse",
-      });
+      ).annotate({ identifier: "GetCalculationExecutionResponse" });
   }
 }
-function __c37(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3712,7 +3659,7 @@ function __c37(j: number): any {
       ).annotate({ identifier: "CalculationStatistics" });
   }
 }
-function __c38(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3725,17 +3672,19 @@ function __c38(j: number): any {
       ).annotate({ identifier: "CalculationStatus" });
   }
 }
-function __c39(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ CalculationExecutionId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetCalculationExecutionCodeRequest",
-      });
-    case 1:
+      ).annotate({ identifier: "GetCalculationExecutionCodeRequest" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ CodeBlock: S.optional(S.String) })).annotate({
         identifier: "GetCalculationExecutionCodeResponse",
       });
@@ -3748,18 +3697,14 @@ function __c40(j: number): any {
         S.Struct({ CalculationExecutionId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetCalculationExecutionStatusRequest",
-      });
+      ).annotate({ identifier: "GetCalculationExecutionStatusRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Status: S.optional(__S(608, __c38, 0)),
-          Statistics: S.optional(__S(592, __c37, 0)),
+          Status: S.optional(__S(592, __c37, 0)),
+          Statistics: S.optional(__S(576, __c36, 0)),
         }),
-      ).annotate({
-        identifier: "GetCalculationExecutionStatusResponse",
-      });
+      ).annotate({ identifier: "GetCalculationExecutionStatusResponse" });
   }
 }
 function __c41(j: number): any {
@@ -3769,31 +3714,25 @@ function __c41(j: number): any {
         S.Struct({ CapacityReservationName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetCapacityAssignmentConfigurationInput",
-      });
+      ).annotate({ identifier: "GetCapacityAssignmentConfigurationInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           CapacityReservationName: S.optional(S.String),
           CapacityAssignments: S.optional(__S(673, __c42, 1)),
         }),
-      ).annotate({
-        identifier: "CapacityAssignmentConfiguration",
-      });
+      ).annotate({ identifier: "CapacityAssignmentConfiguration" });
     case 2:
       return S.suspend(() =>
         S.Struct({ CapacityAssignmentConfiguration: __S(657, __c41, 1) }),
-      ).annotate({
-        identifier: "GetCapacityAssignmentConfigurationOutput",
-      });
+      ).annotate({ identifier: "GetCapacityAssignmentConfigurationOutput" });
   }
 }
 function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ WorkGroupNames: S.optional(__S(1536, __c96, 0)) }),
+        S.Struct({ WorkGroupNames: S.optional(__S(1552, __c97, 0)) }),
       ).annotate({ identifier: "CapacityAssignment" });
     case 1:
       return S.Array(__S(672, __c42, 0));
@@ -3806,9 +3745,7 @@ function __c43(j: number): any {
         S.Struct({ Name: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetCapacityReservationInput",
-      });
+      ).annotate({ identifier: "GetCapacityReservationInput" });
     case 1:
       return S.suspend(() => S.Struct({ CapacityReservation: __S(705, __c44, 1) })).annotate({
         identifier: "GetCapacityReservationOutput",
@@ -3887,7 +3824,7 @@ function __c48(j: number): any {
         ),
       ).annotate({ identifier: "GetNamedQueryInput" });
     case 1:
-      return S.suspend(() => S.Struct({ NamedQuery: S.optional(__S(1552, __c97, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ NamedQuery: S.optional(__S(1568, __c98, 0)) })).annotate({
         identifier: "GetNamedQueryOutput",
       });
   }
@@ -3902,10 +3839,8 @@ function __c49(j: number): any {
       ).annotate({ identifier: "GetNotebookMetadataInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ NotebookMetadata: S.optional(__S(560, __c35, 0)) }),
-      ).annotate({
-        identifier: "GetNotebookMetadataOutput",
-      });
+        S.Struct({ NotebookMetadata: S.optional(__S(544, __c34, 0)) }),
+      ).annotate({ identifier: "GetNotebookMetadataOutput" });
   }
 }
 function __c50(j: number): any {
@@ -3915,15 +3850,11 @@ function __c50(j: number): any {
         S.Struct({ StatementName: S.String, WorkGroup: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetPreparedStatementInput",
-      });
+      ).annotate({ identifier: "GetPreparedStatementInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ PreparedStatement: S.optional(__S(16, __c1, 0)) }),
-      ).annotate({
-        identifier: "GetPreparedStatementOutput",
-      });
+      ).annotate({ identifier: "GetPreparedStatementOutput" });
   }
 }
 function __c51(j: number): any {
@@ -4008,9 +3939,7 @@ function __c53(j: number): any {
         S.Struct({ QueryExecutionId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetQueryRuntimeStatisticsInput",
-      });
+      ).annotate({ identifier: "GetQueryRuntimeStatisticsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4021,9 +3950,7 @@ function __c53(j: number): any {
           ServiceProcessingTimeInMillis: S.optional(S.Number),
           TotalExecutionTimeInMillis: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "QueryRuntimeStatisticsTimeline",
-      });
+      ).annotate({ identifier: "QueryRuntimeStatisticsTimeline" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4032,9 +3959,7 @@ function __c53(j: number): any {
           OutputBytes: S.optional(S.Number),
           OutputRows: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "QueryRuntimeStatisticsRows",
-      });
+      ).annotate({ identifier: "QueryRuntimeStatisticsRows" });
     case 3:
       return S.Array(
         /*@__PURE__*/ S.suspend((): S.Schema<QueryStagePlanNode> => __S(852, __c53, 4)).annotate({
@@ -4049,7 +3974,7 @@ function __c53(j: number): any {
           Children: S.optional(
             S.suspend(() => __S(851, __c53, 3)).annotate({ identifier: "QueryStagePlanNodes" }),
           ),
-          RemoteSources: S.optional(__S(1536, __c96, 0)),
+          RemoteSources: S.optional(__S(1552, __c97, 0)),
         }),
       ).annotate({ identifier: "QueryStagePlanNode" });
     case 5:
@@ -4089,9 +4014,7 @@ function __c53(j: number): any {
     case 8:
       return S.suspend(() =>
         S.Struct({ QueryRuntimeStatistics: S.optional(__S(855, __c53, 7)) }),
-      ).annotate({
-        identifier: "GetQueryRuntimeStatisticsOutput",
-      });
+      ).annotate({ identifier: "GetQueryRuntimeStatisticsOutput" });
   }
 }
 function __c54(j: number): any {
@@ -4101,9 +4024,7 @@ function __c54(j: number): any {
         S.Struct({ ResourceARN: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetResourceDashboardRequest",
-      });
+      ).annotate({ identifier: "GetResourceDashboardRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Url: S.String })).annotate({
         identifier: "GetResourceDashboardResponse",
@@ -4139,9 +4060,9 @@ function __c55(j: number): any {
           Description: S.optional(S.String),
           WorkGroup: S.optional(S.String),
           EngineVersion: S.optional(S.String),
-          EngineConfiguration: S.optional(__S(402, __c25, 2)),
+          EngineConfiguration: S.optional(__S(386, __c24, 2)),
           NotebookVersion: S.optional(S.String),
-          MonitoringConfiguration: S.optional(__S(420, __c26, 4)),
+          MonitoringConfiguration: S.optional(__S(404, __c25, 4)),
           SessionConfiguration: S.optional(__S(881, __c55, 1)),
           Status: S.optional(__S(896, __c56, 0)),
           Statistics: S.optional(__S(882, __c55, 2)),
@@ -4171,9 +4092,7 @@ function __c57(j: number): any {
         S.Struct({ SessionId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetSessionEndpointRequest",
-      });
+      ).annotate({ identifier: "GetSessionEndpointRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4181,9 +4100,7 @@ function __c57(j: number): any {
           AuthToken: S.String,
           AuthTokenExpirationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
-      ).annotate({
-        identifier: "GetSessionEndpointResponse",
-      });
+      ).annotate({ identifier: "GetSessionEndpointResponse" });
   }
 }
 function __c58(j: number): any {
@@ -4252,7 +4169,7 @@ function __c61(j: number): any {
         S.Struct({
           Name: S.String,
           State: S.optional(S.String),
-          Configuration: S.optional(__S(433, __c27, 1)),
+          Configuration: S.optional(__S(417, __c26, 1)),
           Description: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           IdentityCenterApplicationArn: S.optional(S.String),
@@ -4286,9 +4203,7 @@ function __c63(j: number): any {
         S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListApplicationDPUSizesInput",
-      });
+      ).annotate({ identifier: "ListApplicationDPUSizesInput" });
     case 1:
       return S.Array(S.Number);
     case 2:
@@ -4306,9 +4221,7 @@ function __c63(j: number): any {
           ApplicationDPUSizes: S.optional(__S(1011, __c63, 3)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListApplicationDPUSizesOutput",
-      });
+      ).annotate({ identifier: "ListApplicationDPUSizesOutput" });
   }
 }
 function __c64(j: number): any {
@@ -4321,15 +4234,13 @@ function __c64(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListCalculationExecutionsRequest",
-      });
+      ).annotate({ identifier: "ListCalculationExecutionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           CalculationExecutionId: S.optional(S.String),
           Description: S.optional(S.String),
-          Status: S.optional(__S(608, __c38, 0)),
+          Status: S.optional(__S(592, __c37, 0)),
         }),
       ).annotate({ identifier: "CalculationSummary" });
     case 2:
@@ -4340,9 +4251,7 @@ function __c64(j: number): any {
           NextToken: S.optional(S.String),
           Calculations: S.optional(__S(1026, __c64, 2)),
         }),
-      ).annotate({
-        identifier: "ListCalculationExecutionsResponse",
-      });
+      ).annotate({ identifier: "ListCalculationExecutionsResponse" });
   }
 }
 function __c65(j: number): any {
@@ -4352,17 +4261,13 @@ function __c65(j: number): any {
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListCapacityReservationsInput",
-      });
+      ).annotate({ identifier: "ListCapacityReservationsInput" });
     case 1:
       return S.Array(__S(705, __c44, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), CapacityReservations: __S(1041, __c65, 1) }),
-      ).annotate({
-        identifier: "ListCapacityReservationsOutput",
-      });
+      ).annotate({ identifier: "ListCapacityReservationsOutput" });
   }
 }
 function __c66(j: number): any {
@@ -4484,7 +4389,7 @@ function __c70(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          NamedQueryIds: S.optional(__S(1536, __c96, 0)),
+          NamedQueryIds: S.optional(__S(1552, __c97, 0)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListNamedQueriesOutput" });
@@ -4504,20 +4409,16 @@ function __c71(j: number): any {
           MaxResults: S.optional(S.Number),
           WorkGroup: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListNotebookMetadataInput",
-      });
+      ).annotate({ identifier: "ListNotebookMetadataInput" });
     case 2:
-      return S.Array(__S(560, __c35, 0));
+      return S.Array(__S(544, __c34, 0));
     case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           NotebookMetadataList: S.optional(__S(1138, __c71, 2)),
         }),
-      ).annotate({
-        identifier: "ListNotebookMetadataOutput",
-      });
+      ).annotate({ identifier: "ListNotebookMetadataOutput" });
   }
 }
 function __c72(j: number): any {
@@ -4529,9 +4430,7 @@ function __c72(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListNotebookSessionsRequest",
-      });
+      ).annotate({ identifier: "ListNotebookSessionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4544,9 +4443,7 @@ function __c72(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ NotebookSessionsList: __S(1154, __c72, 2), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListNotebookSessionsResponse",
-      });
+      ).annotate({ identifier: "ListNotebookSessionsResponse" });
   }
 }
 function __c73(j: number): any {
@@ -4558,9 +4455,7 @@ function __c73(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListPreparedStatementsInput",
-      });
+      ).annotate({ identifier: "ListPreparedStatementsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4576,9 +4471,7 @@ function __c73(j: number): any {
           PreparedStatements: S.optional(__S(1170, __c73, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListPreparedStatementsOutput",
-      });
+      ).annotate({ identifier: "ListPreparedStatementsOutput" });
   }
 }
 function __c74(j: number): any {
@@ -4594,12 +4487,10 @@ function __c74(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          QueryExecutionIds: S.optional(__S(1536, __c96, 0)),
+          QueryExecutionIds: S.optional(__S(1552, __c97, 0)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListQueryExecutionsOutput",
-      });
+      ).annotate({ identifier: "ListQueryExecutionsOutput" });
   }
 }
 function __c75(j: number): any {
@@ -4668,9 +4559,7 @@ function __c77(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ Tags: S.optional(__S(225, __c14, 1)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListTagsForResourceOutput",
-      });
+      ).annotate({ identifier: "ListTagsForResourceOutput" });
   }
 }
 function __c78(j: number): any {
@@ -4708,42 +4597,25 @@ function __c79(j: number): any {
           CapacityReservationName: S.String,
           CapacityAssignments: __S(673, __c42, 1),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PutCapacityAssignmentConfigurationInput",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "PutCapacityAssignmentConfigurationOutput",
-      });
+      ).annotate({ identifier: "PutCapacityAssignmentConfigurationInput" });
   }
 }
 function __c80(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ CodeBlock: S.optional(S.String) })).annotate({
-        identifier: "CalculationConfiguration",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           SessionId: S.String,
           Description: S.optional(S.String),
-          CalculationConfiguration: S.optional(__S(1280, __c80, 0)),
+          CalculationConfiguration: S.optional(__S(624, __c39, 0)),
           CodeBlock: S.optional(S.String),
           ClientRequestToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartCalculationExecutionRequest",
-      });
-    case 2:
+      ).annotate({ identifier: "StartCalculationExecutionRequest" });
+    case 1:
       return S.suspend(() =>
-        S.Struct({
-          CalculationExecutionId: S.optional(S.String),
-          State: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "StartCalculationExecutionResponse",
-      });
+        S.Struct({ CalculationExecutionId: S.optional(S.String), State: S.optional(S.String) }),
+      ).annotate({ identifier: "StartCalculationExecutionResponse" });
   }
 }
 function __c81(j: number): any {
@@ -4756,9 +4628,9 @@ function __c81(j: number): any {
           QueryExecutionContext: S.optional(__S(162, __c10, 2)),
           ResultConfiguration: S.optional(__S(96, __c6, 0)),
           WorkGroup: S.optional(S.String),
-          ExecutionParameters: S.optional(__S(1536, __c96, 0)),
+          ExecutionParameters: S.optional(__S(1552, __c97, 0)),
           ResultReuseConfiguration: S.optional(__S(161, __c10, 1)),
-          EngineConfiguration: S.optional(__S(402, __c25, 2)),
+          EngineConfiguration: S.optional(__S(386, __c24, 2)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartQueryExecutionInput" });
     case 1:
@@ -4774,9 +4646,9 @@ function __c82(j: number): any {
         S.Struct({
           Description: S.optional(S.String),
           WorkGroup: S.String,
-          EngineConfiguration: __S(402, __c25, 2),
+          EngineConfiguration: __S(386, __c24, 2),
           ExecutionRole: S.optional(S.String),
-          MonitoringConfiguration: S.optional(__S(420, __c26, 4)),
+          MonitoringConfiguration: S.optional(__S(404, __c25, 4)),
           NotebookVersion: S.optional(S.String),
           SessionIdleTimeoutInMinutes: S.optional(S.Number),
           ClientRequestToken: S.optional(S.String),
@@ -4797,16 +4669,18 @@ function __c83(j: number): any {
         S.Struct({ CalculationExecutionId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StopCalculationExecutionRequest",
-      });
-    case 1:
+      ).annotate({ identifier: "StopCalculationExecutionRequest" });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ State: S.optional(S.String) })).annotate({
         identifier: "StopCalculationExecutionResponse",
       });
   }
 }
-function __c84(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4816,7 +4690,7 @@ function __c84(j: number): any {
       ).annotate({ identifier: "StopQueryExecutionInput" });
   }
 }
-function __c85(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4826,7 +4700,7 @@ function __c85(j: number): any {
       ).annotate({ identifier: "TagResourceInput" });
   }
 }
-function __c86(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4834,35 +4708,29 @@ function __c86(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TerminateSessionRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({ State: S.optional(S.String) })).annotate({
-        identifier: "TerminateSessionResponse",
-      });
-  }
-}
-function __c87(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: __S(1536, __c96, 0) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "UntagResourceInput" });
   }
 }
 function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ TargetDpus: S.Number, Name: S.String }).pipe(
+        S.Struct({ ResourceARN: S.String, TagKeys: __S(1552, __c97, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateCapacityReservationInput",
-      });
+      ).annotate({ identifier: "UntagResourceInput" });
   }
 }
 function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ TargetDpus: S.Number, Name: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UpdateCapacityReservationInput" });
+  }
+}
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4875,7 +4743,7 @@ function __c89(j: number): any {
       ).annotate({ identifier: "UpdateDataCatalogInput" });
   }
 }
-function __c90(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4888,7 +4756,7 @@ function __c90(j: number): any {
       ).annotate({ identifier: "UpdateNamedQueryInput" });
   }
 }
-function __c91(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4902,7 +4770,7 @@ function __c91(j: number): any {
       ).annotate({ identifier: "UpdateNotebookInput" });
   }
 }
-function __c92(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4911,12 +4779,10 @@ function __c92(j: number): any {
           ClientRequestToken: S.optional(S.String),
           Name: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateNotebookMetadataInput",
-      });
+      ).annotate({ identifier: "UpdateNotebookMetadataInput" });
   }
 }
-function __c93(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4926,12 +4792,10 @@ function __c93(j: number): any {
           QueryStatement: S.String,
           Description: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdatePreparedStatementInput",
-      });
+      ).annotate({ identifier: "UpdatePreparedStatementInput" });
   }
 }
-function __c94(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4945,9 +4809,7 @@ function __c94(j: number): any {
           AclConfiguration: S.optional(__S(112, __c7, 0)),
           RemoveAclConfiguration: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "ResultConfigurationUpdates",
-      });
+      ).annotate({ identifier: "ResultConfigurationUpdates" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4955,15 +4817,13 @@ function __c94(j: number): any {
           EncryptionConfiguration: S.optional(__S(128, __c8, 0)),
           RemoveEncryptionConfiguration: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "ManagedQueryResultsConfigurationUpdates",
-      });
+      ).annotate({ identifier: "ManagedQueryResultsConfigurationUpdates" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           EnforceWorkGroupConfiguration: S.optional(S.Boolean),
-          ResultConfigurationUpdates: S.optional(__S(1504, __c94, 0)),
-          ManagedQueryResultsConfigurationUpdates: S.optional(__S(1505, __c94, 1)),
+          ResultConfigurationUpdates: S.optional(__S(1520, __c95, 0)),
+          ManagedQueryResultsConfigurationUpdates: S.optional(__S(1521, __c95, 1)),
           PublishCloudWatchMetricsEnabled: S.optional(S.Boolean),
           BytesScannedCutoffPerQuery: S.optional(S.Number),
           RemoveBytesScannedCutoffPerQuery: S.optional(S.Boolean),
@@ -4975,33 +4835,31 @@ function __c94(j: number): any {
           CustomerContentEncryptionConfiguration: S.optional(__S(128, __c8, 0)),
           EnableMinimumEncryptionConfiguration: S.optional(S.Boolean),
           QueryResultsS3AccessGrantsConfiguration: S.optional(__S(129, __c8, 1)),
-          MonitoringConfiguration: S.optional(__S(420, __c26, 4)),
-          EngineConfiguration: S.optional(__S(402, __c25, 2)),
+          MonitoringConfiguration: S.optional(__S(404, __c25, 4)),
+          EngineConfiguration: S.optional(__S(386, __c24, 2)),
         }),
-      ).annotate({
-        identifier: "WorkGroupConfigurationUpdates",
-      });
+      ).annotate({ identifier: "WorkGroupConfigurationUpdates" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           WorkGroup: S.String,
           Description: S.optional(S.String),
-          ConfigurationUpdates: S.optional(__S(1506, __c94, 2)),
+          ConfigurationUpdates: S.optional(__S(1522, __c95, 2)),
           State: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateWorkGroupInput" });
   }
 }
-function __c95(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ NamedQueryIds: __S(1536, __c96, 0) }).pipe(
+        S.Struct({ NamedQueryIds: __S(1552, __c97, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "BatchGetNamedQueryInput" });
     case 1:
-      return S.Array(__S(1552, __c97, 0));
+      return S.Array(__S(1568, __c98, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5011,23 +4869,23 @@ function __c95(j: number): any {
         }),
       ).annotate({ identifier: "UnprocessedNamedQueryId" });
     case 3:
-      return S.Array(__S(1522, __c95, 2));
+      return S.Array(__S(1538, __c96, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          NamedQueries: S.optional(__S(1521, __c95, 1)),
-          UnprocessedNamedQueryIds: S.optional(__S(1523, __c95, 3)),
+          NamedQueries: S.optional(__S(1537, __c96, 1)),
+          UnprocessedNamedQueryIds: S.optional(__S(1539, __c96, 3)),
         }),
       ).annotate({ identifier: "BatchGetNamedQueryOutput" });
   }
 }
-function __c96(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c97(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

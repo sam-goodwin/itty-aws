@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -337,9 +337,7 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(8, __c2, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -381,9 +379,7 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutDeploymentParameterRequest",
-      });
+      ).annotate({ identifier: "PutDeploymentParameterRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -392,9 +388,7 @@ function __c3(j: number): any {
           deploymentParameterId: S.String,
           tags: S.optional(__S(8, __c2, 0)),
         }),
-      ).annotate({
-        identifier: "PutDeploymentParameterResponse",
-      });
+      ).annotate({ identifier: "PutDeploymentParameterResponse" });
   }
 }
 function __c4(j: number): any {
@@ -420,9 +414,7 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TagResourceResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

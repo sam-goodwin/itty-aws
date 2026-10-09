@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -633,7 +633,7 @@ export const disconnectParticipant: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(16, __c1, 0) as any as S.Schema<DisconnectParticipantRequest>,
-  output: __S(17, __c1, 1) as any as S.Schema<DisconnectParticipantResponse>,
+  output: __S(144, __c9, 0) as any as S.Schema<DisconnectParticipantResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -972,13 +972,7 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisconnectParticipantRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DisconnectParticipantResponse",
-      });
+      ).annotate({ identifier: "DisconnectParticipantRequest" });
   }
 }
 function __c2(j: number): any {
@@ -1028,9 +1022,7 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAuthenticationUrlRequest",
-      });
+      ).annotate({ identifier: "GetAuthenticationUrlRequest" });
     case 1:
       return S.suspend(() => S.Struct({ AuthenticationUrl: S.optional(S.String) })).annotate({
         identifier: "GetAuthenticationUrlResponse",
@@ -1206,9 +1198,7 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartAttachmentUploadRequest",
-      });
+      ).annotate({ identifier: "StartAttachmentUploadRequest" });
     case 1:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 2:
@@ -1225,9 +1215,7 @@ function __c7(j: number): any {
           AttachmentId: S.optional(S.String),
           UploadMetadata: S.optional(__S(114, __c7, 2)),
         }),
-      ).annotate({
-        identifier: "StartAttachmentUploadResponse",
-      });
+      ).annotate({ identifier: "StartAttachmentUploadResponse" });
   }
 }
 function __c8(j: number): any {
@@ -1247,9 +1235,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CancelParticipantAuthenticationRequest",
-      });
+      ).annotate({ identifier: "CancelParticipantAuthenticationRequest" });
   }
 }
 function __c9(j: number): any {
@@ -1280,9 +1266,7 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CompleteAttachmentUploadRequest",
-      });
+      ).annotate({ identifier: "CompleteAttachmentUploadRequest" });
   }
 }
 function __c11(j: number): any {
@@ -1305,9 +1289,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateParticipantConnectionRequest",
-      });
+      ).annotate({ identifier: "CreateParticipantConnectionRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({ Url: S.optional(S.String), ConnectionExpiry: S.optional(S.String) }),
@@ -1359,9 +1341,7 @@ function __c11(j: number): any {
           ConnectionCredentials: S.optional(__S(179, __c11, 3)),
           WebRTCConnection: S.optional(__S(185, __c11, 9)),
         }),
-      ).annotate({
-        identifier: "CreateParticipantConnectionResponse",
-      });
+      ).annotate({ identifier: "CreateParticipantConnectionResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

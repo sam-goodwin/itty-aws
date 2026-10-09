@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials as Creds } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -503,7 +503,7 @@ export interface Endpoint {
   failureReason?: FailureReason;
   tags?: { [key: string]: string | undefined };
 }
-const Endpoint = /*@__PURE__*/ __L.at(__c36, 12) as any as S.Schema<Endpoint>;
+const Endpoint = /*@__PURE__*/ __L.at(__c37, 11) as any as S.Schema<Endpoint>;
 export interface DescribeManagedEndpointResponse {
   endpoint?: Endpoint;
 }
@@ -703,7 +703,7 @@ export const cancelJobRun: API.OperationMethod<
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(560, __c35, 0) as any as S.Schema<CancelJobRunRequest>,
-  output: __S(561, __c35, 1) as any as S.Schema<CancelJobRunResponse>,
+  output: __S(576, __c36, 0) as any as S.Schema<CancelJobRunResponse>,
   errors: [InternalServerException, ValidationException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -728,8 +728,8 @@ export const createJobTemplate: API.OperationMethod<
   CreateJobTemplateError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c37, 0) as any as S.Schema<CreateJobTemplateRequest>,
-  output: __S(593, __c37, 1) as any as S.Schema<CreateJobTemplateResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<CreateJobTemplateRequest>,
+  output: __S(609, __c38, 1) as any as S.Schema<CreateJobTemplateResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -757,8 +757,8 @@ export const createManagedEndpoint: API.OperationMethod<
   CreateManagedEndpointError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c40, 0) as any as S.Schema<CreateManagedEndpointRequest>,
-  output: __S(641, __c40, 1) as any as S.Schema<CreateManagedEndpointResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<CreateManagedEndpointRequest>,
+  output: __S(672, __c42, 0) as any as S.Schema<CreateManagedEndpointResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -869,7 +869,7 @@ export const deleteManagedEndpoint: API.OperationMethod<
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(128, __c8, 0) as any as S.Schema<DeleteManagedEndpointRequest>,
-  output: __S(129, __c8, 1) as any as S.Schema<DeleteManagedEndpointResponse>,
+  output: __S(576, __c36, 0) as any as S.Schema<DeleteManagedEndpointResponse>,
   errors: [InternalServerException, ValidationException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1310,7 +1310,7 @@ export const startJobRun: API.OperationMethod<
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(480, __c30, 0) as any as S.Schema<StartJobRunRequest>,
-  output: __S(481, __c30, 1) as any as S.Schema<StartJobRunResponse>,
+  output: __S(672, __c42, 0) as any as S.Schema<StartJobRunResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1425,7 +1425,7 @@ function __c0(j: number): any {
           name: S.String,
           containerProvider: S.optional(__S(34, __c2, 2)),
           securityConfigurationData: __S(57, __c3, 9),
-          tags: S.optional(__S(579, __c36, 3)),
+          tags: S.optional(__S(592, __c37, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/securityconfigurations" }),
@@ -1436,9 +1436,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateSecurityConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateSecurityConfigurationRequest" });
   }
 }
 function __c1(j: number): any {
@@ -1450,9 +1448,7 @@ function __c1(j: number): any {
           name: S.optional(S.String),
           arn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateSecurityConfigurationResponse",
-      });
+      ).annotate({ identifier: "CreateSecurityConfigurationResponse" });
   }
 }
 function __c2(j: number): any {
@@ -1482,9 +1478,7 @@ function __c3(j: number): any {
           secureNamespaceInfo: S.optional(__S(48, __c3, 0)),
           queryEngineRoleArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "LakeFormationConfiguration",
-      });
+      ).annotate({ identifier: "LakeFormationConfiguration" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1492,15 +1486,11 @@ function __c3(j: number): any {
           publicCertificateSecretArn: S.optional(S.String),
           privateCertificateSecretArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "TLSCertificateConfiguration",
-      });
+      ).annotate({ identifier: "TLSCertificateConfiguration" });
     case 3:
       return S.suspend(() =>
         S.Struct({ tlsCertificateConfiguration: S.optional(__S(50, __c3, 2)) }),
-      ).annotate({
-        identifier: "InTransitEncryptionConfiguration",
-      });
+      ).annotate({ identifier: "InTransitEncryptionConfiguration" });
     case 4:
       return S.suspend(() =>
         S.Struct({ inTransitEncryptionConfiguration: S.optional(__S(51, __c3, 3)) }),
@@ -1511,9 +1501,7 @@ function __c3(j: number): any {
           lakeFormationConfiguration: S.optional(__S(49, __c3, 1)),
           encryptionConfiguration: S.optional(__S(52, __c3, 4)),
         }),
-      ).annotate({
-        identifier: "AuthorizationConfiguration",
-      });
+      ).annotate({ identifier: "AuthorizationConfiguration" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1522,9 +1510,7 @@ function __c3(j: number): any {
           identityCenterInstanceARN: S.optional(S.String),
           emrIdentityCenterApplicationARN: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "IdentityCenterConfiguration",
-      });
+      ).annotate({ identifier: "IdentityCenterConfiguration" });
     case 7:
       return S.suspend(() => S.Struct({ systemRole: S.optional(S.String) })).annotate({
         identifier: "IAMConfiguration",
@@ -1535,18 +1521,14 @@ function __c3(j: number): any {
           identityCenterConfiguration: S.optional(__S(54, __c3, 6)),
           iamConfiguration: S.optional(__S(55, __c3, 7)),
         }),
-      ).annotate({
-        identifier: "AuthenticationConfiguration",
-      });
+      ).annotate({ identifier: "AuthenticationConfiguration" });
     case 9:
       return S.suspend(() =>
         S.Struct({
           authorizationConfiguration: S.optional(__S(53, __c3, 5)),
           authenticationConfiguration: S.optional(__S(56, __c3, 8)),
         }),
-      ).annotate({
-        identifier: "SecurityConfigurationData",
-      });
+      ).annotate({ identifier: "SecurityConfigurationData" });
   }
 }
 function __c4(j: number): any {
@@ -1557,16 +1539,14 @@ function __c4(j: number): any {
           name: S.String,
           containerProvider: __S(34, __c2, 2),
           clientToken: S.String.pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(579, __c36, 3)),
+          tags: S.optional(__S(592, __c37, 0)),
           securityConfigurationId: S.optional(S.String),
           sessionEnabled: S.optional(S.Boolean),
           schedulerConfiguration: S.optional(__S(80, __c5, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/virtualclusters" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateVirtualClusterRequest",
-      });
+      ).annotate({ identifier: "CreateVirtualClusterRequest" });
   }
 }
 function __c5(j: number): any {
@@ -1622,15 +1602,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteManagedEndpointRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ id: S.optional(S.String), virtualClusterId: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DeleteManagedEndpointResponse",
-      });
+      ).annotate({ identifier: "DeleteManagedEndpointRequest" });
   }
 }
 function __c9(j: number): any {
@@ -1647,9 +1619,7 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteSecurityConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteSecurityConfigurationRequest" });
   }
 }
 function __c10(j: number): any {
@@ -1666,9 +1636,7 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteVirtualClusterRequest",
-      });
+      ).annotate({ identifier: "DeleteVirtualClusterRequest" });
   }
 }
 function __c11(j: number): any {
@@ -1712,14 +1680,14 @@ function __c12(j: number): any {
           clientToken: S.optional(S.String),
           executionRoleArn: S.optional(S.String),
           releaseLabel: S.optional(S.String),
-          configurationOverrides: S.optional(__S(585, __c36, 9)),
-          jobDriver: S.optional(__S(611, __c38, 3)),
+          configurationOverrides: S.optional(__S(600, __c37, 8)),
+          jobDriver: S.optional(__S(627, __c39, 3)),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           createdBy: S.optional(S.String),
           finishedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           stateDetails: S.optional(S.String),
           failureReason: S.optional(S.String),
-          tags: S.optional(__S(579, __c36, 3)),
+          tags: S.optional(__S(592, __c37, 0)),
           retryPolicyConfiguration: S.optional(__S(208, __c13, 0)),
           retryPolicyExecution: S.optional(__S(192, __c12, 0)),
         }),
@@ -1741,9 +1709,7 @@ function __c14(j: number): any {
         S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
           T.all(T.Http({ method: "GET", uri: "/jobtemplates/{id}" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeJobTemplateRequest",
-      });
+      ).annotate({ identifier: "DescribeJobTemplateRequest" });
     case 1:
       return S.suspend(() => S.Struct({ jobTemplate: S.optional(__S(240, __c15, 0)) })).annotate({
         identifier: "DescribeJobTemplateResponse",
@@ -1760,8 +1726,8 @@ function __c15(j: number): any {
           arn: S.optional(S.String),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           createdBy: S.optional(S.String),
-          tags: S.optional(__S(579, __c36, 3)),
-          jobTemplateData: __S(630, __c39, 6),
+          tags: S.optional(__S(592, __c37, 0)),
+          jobTemplateData: __S(646, __c40, 6),
           kmsKeyArn: S.optional(S.String),
           decryptionError: S.optional(S.String),
         }),
@@ -1785,9 +1751,7 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeManagedEndpointRequest",
-      });
+      ).annotate({ identifier: "DescribeManagedEndpointRequest" });
     case 1:
       return S.suspend(() => S.Struct({ endpoint: S.optional(Endpoint) })).annotate({
         identifier: "DescribeManagedEndpointResponse",
@@ -1808,15 +1772,11 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeSecurityConfigurationRequest",
-      });
+      ).annotate({ identifier: "DescribeSecurityConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ securityConfiguration: S.optional(__S(288, __c18, 0)) }),
-      ).annotate({
-        identifier: "DescribeSecurityConfigurationResponse",
-      });
+      ).annotate({ identifier: "DescribeSecurityConfigurationResponse" });
   }
 }
 function __c18(j: number): any {
@@ -1830,7 +1790,7 @@ function __c18(j: number): any {
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           createdBy: S.optional(S.String),
           securityConfigurationData: S.optional(__S(57, __c3, 9)),
-          tags: S.optional(__S(579, __c36, 3)),
+          tags: S.optional(__S(592, __c37, 0)),
         }),
       ).annotate({ identifier: "SecurityConfiguration" });
   }
@@ -1849,9 +1809,7 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeVirtualClusterRequest",
-      });
+      ).annotate({ identifier: "DescribeVirtualClusterRequest" });
   }
 }
 function __c20(j: number): any {
@@ -1872,7 +1830,7 @@ function __c20(j: number): any {
           state: S.optional(S.String),
           containerProvider: S.optional(__S(34, __c2, 2)),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          tags: S.optional(__S(579, __c36, 3)),
+          tags: S.optional(__S(592, __c37, 0)),
           securityConfigurationId: S.optional(S.String),
           sessionEnabled: S.optional(S.Boolean),
           schedulerConfiguration: S.optional(__S(80, __c5, 0)),
@@ -1885,9 +1843,7 @@ function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ virtualCluster: S.optional(__S(321, __c20, 1)) })).annotate(
-        {
-          identifier: "DescribeVirtualClusterResponse",
-        },
+        { identifier: "DescribeVirtualClusterResponse" },
       );
   }
 }
@@ -1916,9 +1872,7 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetManagedEndpointSessionCredentialsRequest",
-      });
+      ).annotate({ identifier: "GetManagedEndpointSessionCredentialsRequest" });
     case 1:
       return S.Union([/*@__PURE__*/ S.Struct({ token: SensitiveString })]);
     case 2:
@@ -1929,9 +1883,7 @@ function __c22(j: number): any {
           endpointCredentials: S.optional(__S(353, __c22, 1)),
           expiresAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "GetManagedEndpointSessionCredentialsResponse",
-      });
+      ).annotate({ identifier: "GetManagedEndpointSessionCredentialsResponse" });
   }
 }
 function __c23(j: number): any {
@@ -2012,7 +1964,7 @@ function __c26(j: number): any {
           createdAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
             T.HttpQuery("createdAfter"),
           ),
-          types: S.optional(__S(587, __c36, 11)).pipe(T.HttpQuery("types")),
+          types: S.optional(__S(602, __c37, 10)).pipe(T.HttpQuery("types")),
           states: S.optional(__S(384, __c24, 0)).pipe(T.HttpQuery("states")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -2026,17 +1978,13 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListManagedEndpointsRequest",
-      });
+      ).annotate({ identifier: "ListManagedEndpointsRequest" });
     case 1:
       return S.Array(Endpoint);
     case 2:
       return S.suspend(() =>
         S.Struct({ endpoints: S.optional(__S(417, __c26, 1)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListManagedEndpointsResponse",
-      });
+      ).annotate({ identifier: "ListManagedEndpointsResponse" });
   }
 }
 function __c27(j: number): any {
@@ -2062,9 +2010,7 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSecurityConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListSecurityConfigurationsRequest" });
     case 1:
       return S.Array(__S(288, __c18, 0));
     case 2:
@@ -2073,9 +2019,7 @@ function __c27(j: number): any {
           securityConfigurations: S.optional(__S(433, __c27, 1)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListSecurityConfigurationsResponse",
-      });
+      ).annotate({ identifier: "ListSecurityConfigurationsResponse" });
   }
 }
 function __c28(j: number): any {
@@ -2092,11 +2036,9 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(579, __c36, 3)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(592, __c37, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
@@ -2123,9 +2065,7 @@ function __c29(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/virtualclusters" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListVirtualClustersRequest",
-      });
+      ).annotate({ identifier: "ListVirtualClustersRequest" });
     case 1:
       return S.Array(__S(321, __c20, 1));
     case 2:
@@ -2134,9 +2074,7 @@ function __c29(j: number): any {
           virtualClusters: S.optional(__S(465, __c29, 1)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListVirtualClustersResponse",
-      });
+      ).annotate({ identifier: "ListVirtualClustersResponse" });
   }
 }
 function __c30(j: number): any {
@@ -2149,11 +2087,11 @@ function __c30(j: number): any {
           clientToken: S.String.pipe(T.IdempotencyToken()),
           executionRoleArn: S.optional(S.String),
           releaseLabel: S.optional(S.String),
-          jobDriver: S.optional(__S(611, __c38, 3)),
-          configurationOverrides: S.optional(__S(585, __c36, 9)),
-          tags: S.optional(__S(579, __c36, 3)),
+          jobDriver: S.optional(__S(627, __c39, 3)),
+          configurationOverrides: S.optional(__S(600, __c37, 8)),
+          tags: S.optional(__S(592, __c37, 0)),
           jobTemplateId: S.optional(S.String),
-          jobTemplateParameters: S.optional(__S(576, __c36, 0)),
+          jobTemplateParameters: S.optional(__S(592, __c37, 0)),
           retryPolicyConfiguration: S.optional(__S(208, __c13, 0)),
         }).pipe(
           T.all(
@@ -2166,15 +2104,6 @@ function __c30(j: number): any {
           ),
         ),
       ).annotate({ identifier: "StartJobRunRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          arn: S.optional(S.String),
-          virtualClusterId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StartJobRunResponse" });
   }
 }
 function __c31(j: number): any {
@@ -2183,7 +2112,7 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(579, __c36, 3),
+          tags: __S(592, __c37, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -2200,9 +2129,7 @@ function __c31(j: number): any {
 function __c32(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TagResourceResponse" });
   }
 }
 function __c33(j: number): any {
@@ -2211,7 +2138,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(587, __c36, 11).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(602, __c37, 10).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -2243,9 +2170,7 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateVirtualClusterRequest",
-      });
+      ).annotate({ identifier: "UpdateVirtualClusterRequest" });
   }
 }
 function __c35(j: number): any {
@@ -2266,13 +2191,17 @@ function __c35(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CancelJobRunRequest" });
-    case 1:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ id: S.optional(S.String), virtualClusterId: S.optional(S.String) }),
       ).annotate({ identifier: "CancelJobRunResponse" });
   }
 }
-function __c36(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
@@ -2280,69 +2209,61 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           classification: S.String,
-          properties: S.optional(__S(576, __c36, 0)),
+          properties: S.optional(__S(592, __c37, 0)),
           configurations: S.optional(
-            S.suspend(() => __S(578, __c36, 2)).annotate({ identifier: "ConfigurationList" }),
+            S.suspend(() => __S(594, __c37, 2)).annotate({ identifier: "ConfigurationList" }),
           ),
         }),
       ).annotate({ identifier: "Configuration" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<Configuration> => __S(577, __c36, 1)).annotate({
+        /*@__PURE__*/ S.suspend((): S.Schema<Configuration> => __S(593, __c37, 1)).annotate({
           identifier: "Configuration",
         }),
       );
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           allowAWSToRetainLogs: S.optional(S.String),
           encryptionKeyArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedLogs" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({ logGroupName: S.String, logStreamNamePrefix: S.optional(S.String) }),
-      ).annotate({
-        identifier: "CloudWatchMonitoringConfiguration",
-      });
-    case 6:
+      ).annotate({ identifier: "CloudWatchMonitoringConfiguration" });
+    case 5:
       return S.suspend(() =>
         S.Struct({ logUri: S.String, encryptionKeyArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "S3MonitoringConfiguration",
-      });
-    case 7:
+      ).annotate({ identifier: "S3MonitoringConfiguration" });
+    case 6:
       return S.suspend(() =>
         S.Struct({ rotationSize: S.String, maxFilesToKeep: S.Number }),
-      ).annotate({
-        identifier: "ContainerLogRotationConfiguration",
-      });
+      ).annotate({ identifier: "ContainerLogRotationConfiguration" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          managedLogs: S.optional(__S(595, __c37, 3)),
+          persistentAppUI: S.optional(S.String),
+          cloudWatchMonitoringConfiguration: S.optional(__S(596, __c37, 4)),
+          s3MonitoringConfiguration: S.optional(__S(597, __c37, 5)),
+          containerLogRotationConfiguration: S.optional(__S(598, __c37, 6)),
+        }),
+      ).annotate({ identifier: "MonitoringConfiguration" });
     case 8:
       return S.suspend(() =>
         S.Struct({
-          managedLogs: S.optional(__S(580, __c36, 4)),
-          persistentAppUI: S.optional(S.String),
-          cloudWatchMonitoringConfiguration: S.optional(__S(581, __c36, 5)),
-          s3MonitoringConfiguration: S.optional(__S(582, __c36, 6)),
-          containerLogRotationConfiguration: S.optional(__S(583, __c36, 7)),
-        }),
-      ).annotate({ identifier: "MonitoringConfiguration" });
-    case 9:
-      return S.suspend(() =>
-        S.Struct({
-          applicationConfiguration: S.optional(__S(578, __c36, 2)),
-          monitoringConfiguration: S.optional(__S(584, __c36, 8)),
+          applicationConfiguration: S.optional(__S(594, __c37, 2)),
+          monitoringConfiguration: S.optional(__S(599, __c37, 7)),
         }),
       ).annotate({ identifier: "ConfigurationOverrides" });
-    case 10:
+    case 9:
       return S.suspend(() =>
         S.Struct({ certificateArn: S.optional(S.String), certificateData: S.optional(S.String) }),
       ).annotate({ identifier: "Certificate" });
-    case 11:
+    case 10:
       return S.Array(S.String);
-    case 12:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -2354,29 +2275,29 @@ function __c36(j: number): any {
           releaseLabel: S.optional(S.String),
           executionRoleArn: S.optional(S.String),
           certificateArn: S.optional(S.String),
-          certificateAuthority: S.optional(__S(586, __c36, 10)),
-          configurationOverrides: S.optional(__S(585, __c36, 9)),
+          certificateAuthority: S.optional(__S(601, __c37, 9)),
+          configurationOverrides: S.optional(__S(600, __c37, 8)),
           serverUrl: S.optional(S.String),
           authProxyUrl: S.optional(S.String),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           securityGroup: S.optional(S.String),
-          subnetIds: S.optional(__S(587, __c36, 11)),
+          subnetIds: S.optional(__S(602, __c37, 10)),
           stateDetails: S.optional(S.String),
           failureReason: S.optional(S.String),
-          tags: S.optional(__S(579, __c36, 3)),
+          tags: S.optional(__S(592, __c37, 0)),
         }),
       ).annotate({ identifier: "Endpoint" });
   }
 }
-function __c37(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           clientToken: S.String.pipe(T.IdempotencyToken()),
-          jobTemplateData: __S(630, __c39, 6),
-          tags: S.optional(__S(579, __c36, 3)),
+          jobTemplateData: __S(646, __c40, 6),
+          tags: S.optional(__S(592, __c37, 0)),
           kmsKeyArn: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/jobtemplates" }), svc, auth, proto, ver, rules),
@@ -2390,12 +2311,10 @@ function __c37(j: number): any {
           arn: S.optional(S.String),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "CreateJobTemplateResponse",
-      });
+      ).annotate({ identifier: "CreateJobTemplateResponse" });
   }
 }
-function __c38(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.Array(SensitiveString);
@@ -2403,7 +2322,7 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           entryPoint: SensitiveString,
-          entryPointArguments: S.optional(__S(608, __c38, 0)),
+          entryPointArguments: S.optional(__S(624, __c39, 0)),
           sparkSubmitParameters: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "SparkSubmitJobDriver" });
@@ -2417,20 +2336,18 @@ function __c38(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          sparkSubmitJobDriver: S.optional(__S(609, __c38, 1)),
-          sparkSqlJobDriver: S.optional(__S(610, __c38, 2)),
+          sparkSubmitJobDriver: S.optional(__S(625, __c39, 1)),
+          sparkSqlJobDriver: S.optional(__S(626, __c39, 2)),
         }),
       ).annotate({ identifier: "JobDriver" });
   }
 }
-function __c39(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ logGroupName: S.optional(S.String), logStreamNamePrefix: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ParametricCloudWatchMonitoringConfiguration",
-      });
+      ).annotate({ identifier: "ParametricCloudWatchMonitoringConfiguration" });
     case 1:
       return S.suspend(() => S.Struct({ logUri: S.optional(S.String) })).annotate({
         identifier: "ParametricS3MonitoringConfiguration",
@@ -2439,43 +2356,37 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           persistentAppUI: S.optional(S.String),
-          cloudWatchMonitoringConfiguration: S.optional(__S(624, __c39, 0)),
-          s3MonitoringConfiguration: S.optional(__S(625, __c39, 1)),
+          cloudWatchMonitoringConfiguration: S.optional(__S(640, __c40, 0)),
+          s3MonitoringConfiguration: S.optional(__S(641, __c40, 1)),
         }),
-      ).annotate({
-        identifier: "ParametricMonitoringConfiguration",
-      });
+      ).annotate({ identifier: "ParametricMonitoringConfiguration" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          applicationConfiguration: S.optional(__S(578, __c36, 2)),
-          monitoringConfiguration: S.optional(__S(626, __c39, 2)),
+          applicationConfiguration: S.optional(__S(594, __c37, 2)),
+          monitoringConfiguration: S.optional(__S(642, __c40, 2)),
         }),
-      ).annotate({
-        identifier: "ParametricConfigurationOverrides",
-      });
+      ).annotate({ identifier: "ParametricConfigurationOverrides" });
     case 4:
       return S.suspend(() =>
         S.Struct({ type: S.optional(S.String), defaultValue: S.optional(S.String) }),
-      ).annotate({
-        identifier: "TemplateParameterConfiguration",
-      });
+      ).annotate({ identifier: "TemplateParameterConfiguration" });
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(628, __c39, 4).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(644, __c40, 4).pipe(S.optional));
     case 6:
       return S.suspend(() =>
         S.Struct({
           executionRoleArn: S.String,
           releaseLabel: S.String,
-          configurationOverrides: S.optional(__S(627, __c39, 3)),
-          jobDriver: __S(611, __c38, 3),
-          parameterConfiguration: S.optional(__S(629, __c39, 5)),
-          jobTags: S.optional(__S(579, __c36, 3)),
+          configurationOverrides: S.optional(__S(643, __c40, 3)),
+          jobDriver: __S(627, __c39, 3),
+          parameterConfiguration: S.optional(__S(645, __c40, 5)),
+          jobTags: S.optional(__S(592, __c37, 0)),
         }),
       ).annotate({ identifier: "JobTemplateData" });
   }
 }
-function __c40(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2486,9 +2397,9 @@ function __c40(j: number): any {
           releaseLabel: S.String,
           executionRoleArn: S.String,
           certificateArn: S.optional(S.String),
-          configurationOverrides: S.optional(__S(585, __c36, 9)),
+          configurationOverrides: S.optional(__S(600, __c37, 8)),
           clientToken: S.String.pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(579, __c36, 3)),
+          tags: S.optional(__S(592, __c37, 0)),
           sessionIdleTimeoutInMinutes: S.optional(S.Number),
         }).pipe(
           T.all(
@@ -2500,10 +2411,12 @@ function __c40(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateManagedEndpointRequest",
-      });
-    case 1:
+      ).annotate({ identifier: "CreateManagedEndpointRequest" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -2511,9 +2424,7 @@ function __c40(j: number): any {
           arn: S.optional(S.String),
           virtualClusterId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateManagedEndpointResponse",
-      });
+      ).annotate({ identifier: "CreateManagedEndpointResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

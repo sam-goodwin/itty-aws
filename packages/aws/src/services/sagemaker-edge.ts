@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
@@ -282,15 +282,11 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDeviceRegistrationRequest",
-      });
+      ).annotate({ identifier: "GetDeviceRegistrationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ DeviceRegistration: S.optional(S.String), CacheTTL: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetDeviceRegistrationResult",
-      });
+      ).annotate({ identifier: "GetDeviceRegistrationResult" });
   }
 }
 function __c2(j: number): any {
@@ -358,9 +354,7 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "SendHeartbeatRequest" });
     case 8:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "SendHeartbeatResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "SendHeartbeatResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

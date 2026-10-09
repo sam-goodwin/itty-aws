@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -303,7 +303,7 @@ export interface Region {
   RegionName?: string;
   RegionOptStatus?: string;
 }
-const Region = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<Region>;
+const Region = __S(76, __c19, 0) as any as S.Schema<Region>;
 export type RegionOptList = Region[];
 export interface ListRegionsResponse {
   NextToken?: string;
@@ -685,7 +685,7 @@ export const getRegionOptStatus: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(32, __c8, 0) as any as S.Schema<GetRegionOptStatusRequest>,
-  output: __S(33, __c8, 1) as any as S.Schema<GetRegionOptStatusResponse>,
+  output: __S(76, __c19, 0) as any as S.Schema<GetRegionOptStatusResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -947,9 +947,7 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAccountInformationRequest",
-      });
+      ).annotate({ identifier: "GetAccountInformationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -958,9 +956,7 @@ function __c1(j: number): any {
           AccountCreatedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           AccountState: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetAccountInformationResponse",
-      });
+      ).annotate({ identifier: "GetAccountInformationResponse" });
   }
 }
 function __c2(j: number): any {
@@ -977,9 +973,7 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAlternateContactRequest",
-      });
+      ).annotate({ identifier: "GetAlternateContactRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1010,18 +1004,14 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetContactInformationRequest",
-      });
+      ).annotate({ identifier: "GetContactInformationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ContactInformation: S.optional(__S(16, __c4, 0)),
           VerificationStatus: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetContactInformationResponse",
-      });
+      ).annotate({ identifier: "GetContactInformationResponse" });
   }
 }
 function __c4(j: number): any {
@@ -1059,15 +1049,11 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetGovCloudAccountInformationRequest",
-      });
+      ).annotate({ identifier: "GetGovCloudAccountInformationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ GovCloudAccountId: S.String, AccountState: S.String }),
-      ).annotate({
-        identifier: "GetGovCloudAccountInformationResponse",
-      });
+      ).annotate({ identifier: "GetGovCloudAccountInformationResponse" });
   }
 }
 function __c6(j: number): any {
@@ -1098,18 +1084,14 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetPrimaryEmailUpdateStatusRequest",
-      });
+      ).annotate({ identifier: "GetPrimaryEmailUpdateStatusRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Status: S.String,
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "GetPrimaryEmailUpdateStatusResponse",
-      });
+      ).annotate({ identifier: "GetPrimaryEmailUpdateStatusResponse" });
   }
 }
 function __c8(j: number): any {
@@ -1126,15 +1108,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetRegionOptStatusRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ RegionName: S.optional(S.String), RegionOptStatus: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetRegionOptStatusResponse",
-      });
+      ).annotate({ identifier: "GetRegionOptStatusRequest" });
   }
 }
 function __c9(j: number): any {
@@ -1191,9 +1165,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutAlternateContactRequest",
-      });
+      ).annotate({ identifier: "PutAlternateContactRequest" });
   }
 }
 function __c12(j: number): any {
@@ -1210,9 +1182,7 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutContactInformationRequest",
-      });
+      ).annotate({ identifier: "PutContactInformationRequest" });
   }
 }
 function __c13(j: number): any {
@@ -1229,9 +1199,7 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SendPhoneNumberVerificationRequest",
-      });
+      ).annotate({ identifier: "SendPhoneNumberVerificationRequest" });
   }
 }
 function __c14(j: number): any {
@@ -1248,9 +1216,7 @@ function __c14(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartPrimaryEmailUpdateRequest",
-      });
+      ).annotate({ identifier: "StartPrimaryEmailUpdateRequest" });
   }
 }
 function __c15(j: number): any {
@@ -1294,9 +1260,7 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AcceptPrimaryEmailUpdateRequest",
-      });
+      ).annotate({ identifier: "AcceptPrimaryEmailUpdateRequest" });
   }
 }
 function __c18(j: number): any {
@@ -1312,7 +1276,7 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ RegionName: S.optional(S.String), RegionOptStatus: S.optional(S.String) }),
-      ).annotate({ identifier: "Region" });
+      ).annotate({ identifier: "GetRegionOptStatusResponse" });
   }
 }
 function __c20(j: number): any {
@@ -1329,9 +1293,7 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteAlternateContactRequest",
-      });
+      ).annotate({ identifier: "DeleteAlternateContactRequest" });
   }
 }
 function __c21(j: number): any {

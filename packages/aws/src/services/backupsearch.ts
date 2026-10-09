@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -667,15 +667,11 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartSearchResultExportJobInput",
-      });
+      ).annotate({ identifier: "StartSearchResultExportJobInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ExportJobArn: S.optional(S.String), ExportJobIdentifier: S.String }),
-      ).annotate({
-        identifier: "StartSearchResultExportJobOutput",
-      });
+      ).annotate({ identifier: "StartSearchResultExportJobOutput" });
   }
 }
 function __c2(j: number): any {
@@ -698,9 +694,7 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "StopSearchJobOutput",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "StopSearchJobOutput" });
   }
 }
 function __c4(j: number): any {
@@ -898,9 +892,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetSearchResultExportJobInput",
-      });
+      ).annotate({ identifier: "GetSearchResultExportJobInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -913,9 +905,7 @@ function __c11(j: number): any {
           ExportSpecification: S.optional(__S(193, __c12, 1)),
           SearchJobArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetSearchResultExportJobOutput",
-      });
+      ).annotate({ identifier: "GetSearchResultExportJobOutput" });
   }
 }
 function __c12(j: number): any {
@@ -946,9 +936,7 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSearchJobBackupsInput",
-      });
+      ).annotate({ identifier: "ListSearchJobBackupsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -966,9 +954,7 @@ function __c13(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ Results: __S(210, __c13, 2), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListSearchJobBackupsOutput",
-      });
+      ).annotate({ identifier: "ListSearchJobBackupsOutput" });
   }
 }
 function __c14(j: number): any {
@@ -989,9 +975,7 @@ function __c14(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSearchJobResultsInput",
-      });
+      ).annotate({ identifier: "ListSearchJobResultsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1028,9 +1012,7 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({ Results: __S(228, __c14, 4), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListSearchJobResultsOutput",
-      });
+      ).annotate({ identifier: "ListSearchJobResultsOutput" });
   }
 }
 function __c15(j: number): any {
@@ -1085,9 +1067,7 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSearchResultExportJobsInput",
-      });
+      ).annotate({ identifier: "ListSearchResultExportJobsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1105,9 +1085,7 @@ function __c16(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ ExportJobs: __S(258, __c16, 2), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListSearchResultExportJobsOutput",
-      });
+      ).annotate({ identifier: "ListSearchResultExportJobsOutput" });
   }
 }
 function __c17(j: number): any {
@@ -1124,9 +1102,7 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(160, __c10, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",

@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
@@ -268,7 +268,7 @@ export const acceptConnectionProposal: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AcceptConnectionProposalRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AcceptConnectionProposalResponse>,
+  output: __S(20, __c5, 0) as any as S.Schema<AcceptConnectionProposalResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -291,8 +291,8 @@ export const createConnection: API.OperationMethod<
   CreateConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c5, 1) as any as S.Schema<CreateConnectionRequest>,
-  output: __S(24, __c6, 0) as any as S.Schema<CreateConnectionResponse>,
+  input: __S(25, __c6, 1) as any as S.Schema<CreateConnectionRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<CreateConnectionResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -348,7 +348,7 @@ export const getConnection: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(52, __c13, 0) as any as S.Schema<GetConnectionRequest>,
-  output: __S(24, __c6, 0) as any as S.Schema<GetConnectionResponse>,
+  output: __S(20, __c5, 0) as any as S.Schema<GetConnectionResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -525,7 +525,7 @@ export const updateConnection: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(40, __c10, 0) as any as S.Schema<UpdateConnectionRequest>,
-  output: __S(24, __c6, 0) as any as S.Schema<UpdateConnectionResponse>,
+  output: __S(20, __c5, 0) as any as S.Schema<UpdateConnectionResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -544,13 +544,7 @@ function __c0(j: number): any {
           tags: S.optional(__S(16, __c4, 0)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AcceptConnectionProposalRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ connection: S.optional(__S(8, __c2, 0)) })).annotate({
-        identifier: "AcceptConnectionProposalResponse",
-      });
+      ).annotate({ identifier: "AcceptConnectionProposalRequest" });
   }
 }
 function __c1(j: number): any {
@@ -604,6 +598,14 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() => S.Struct({ connection: S.optional(__S(8, __c2, 0)) })).annotate({
+        identifier: "AcceptConnectionProposalResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.Union([/*@__PURE__*/ S.Struct({ identifier: S.String })]);
     case 1:
       return S.suspend(() =>
@@ -612,19 +614,11 @@ function __c5(j: number): any {
           bandwidth: S.String,
           attachPoint: __S(12, __c3, 0),
           environmentId: S.String,
-          remoteAccount: S.optional(__S(20, __c5, 0)),
+          remoteAccount: S.optional(__S(24, __c6, 0)),
           tags: S.optional(__S(16, __c4, 0)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateConnectionRequest" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ connection: S.optional(__S(8, __c2, 0)) })).annotate({
-        identifier: "CreateConnectionResponse",
-      });
   }
 }
 function __c7(j: number): any {
@@ -640,9 +634,7 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "TagResourceResponse" });
   }
 }
 function __c9(j: number): any {
@@ -690,9 +682,7 @@ function __c12(j: number): any {
         S.Struct({ activationKey: SensitiveString }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeConnectionProposalRequest",
-      });
+      ).annotate({ identifier: "DescribeConnectionProposalRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -701,9 +691,7 @@ function __c12(j: number): any {
           provider: __S(4, __c1, 0),
           location: S.String,
         }),
-      ).annotate({
-        identifier: "DescribeConnectionProposalResponse",
-      });
+      ).annotate({ identifier: "DescribeConnectionProposalResponse" });
   }
 }
 function __c13(j: number): any {
@@ -846,9 +834,7 @@ function __c20(j: number): any {
         S.Struct({ arn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(16, __c4, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",

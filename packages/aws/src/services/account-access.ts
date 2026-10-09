@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -616,9 +616,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteApplicationResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteApplicationResponse" });
   }
 }
 function __c2(j: number): any {
@@ -719,9 +717,7 @@ function __c5(j: number): any {
           account: S.String,
           accountName: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "PrincipalRoleEntitlementDetails",
-      });
+      ).annotate({ identifier: "PrincipalRoleEntitlementDetails" });
     case 1:
       return S.Union([/*@__PURE__*/ S.Struct({ principalRole: __S(40, __c5, 0) })]);
   }
@@ -767,9 +763,7 @@ function __c7(j: number): any {
           roleArn: S.optional(S.String),
           account: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "PrincipalRoleEntitlementFilter",
-      });
+      ).annotate({ identifier: "PrincipalRoleEntitlementFilter" });
     case 1:
       return S.suspend(() => S.Struct({ principalRole: S.optional(__S(56, __c7, 0)) })).annotate({
         identifier: "EntitlementFilter",
@@ -822,9 +816,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(96, __c12, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",

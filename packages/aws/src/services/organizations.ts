@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1765,7 +1765,7 @@ export const createAccount: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(160, __c20, 0) as any as S.Schema<CreateAccountRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<CreateAccountResponse>,
+  output: __S(176, __c22, 0) as any as S.Schema<CreateAccountResponse>,
   errors: [
     AccessDeniedException,
     AWSOrganizationsNotInUseException,
@@ -1915,8 +1915,8 @@ export const createGovCloudAccount: API.OperationMethod<
   CreateGovCloudAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<CreateGovCloudAccountRequest>,
-  output: __S(192, __c24, 0) as any as S.Schema<CreateGovCloudAccountResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<CreateGovCloudAccountRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<CreateGovCloudAccountResponse>,
   errors: [
     AccessDeniedException,
     AWSOrganizationsNotInUseException,
@@ -2155,7 +2155,7 @@ export const deleteOrganization: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(280, __c35, 0) as any as S.Schema<DeleteOrganizationRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<DeleteOrganizationResponse>,
+  output: __S(136, __c17, 0) as any as S.Schema<DeleteOrganizationResponse>,
   errors: [
     AccessDeniedException,
     AWSOrganizationsNotInUseException,
@@ -2193,8 +2193,8 @@ export const deleteOrganizationalUnit: API.OperationMethod<
   DeleteOrganizationalUnitError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<DeleteOrganizationalUnitRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<DeleteOrganizationalUnitResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<DeleteOrganizationalUnitRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<DeleteOrganizationalUnitResponse>,
   errors: [
     AccessDeniedException,
     AWSOrganizationsNotInUseException,
@@ -2234,7 +2234,7 @@ export const deletePolicy: API.OperationMethod<
   DeletePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<DeletePolicyRequest>,
+  input: __S(296, __c37, 0) as any as S.Schema<DeletePolicyRequest>,
   output: __S(136, __c17, 0) as any as S.Schema<DeletePolicyResponse>,
   errors: [
     AccessDeniedException,
@@ -2273,8 +2273,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<DeleteResourcePolicyRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<DeleteResourcePolicyResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<DeleteResourcePolicyRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<DeleteResourcePolicyResponse>,
   errors: [
     AccessDeniedException,
     AWSOrganizationsNotInUseException,
@@ -2324,8 +2324,8 @@ export const deregisterDelegatedAdministrator: API.OperationMethod<
   DeregisterDelegatedAdministratorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<DeregisterDelegatedAdministratorRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<DeregisterDelegatedAdministratorResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<DeregisterDelegatedAdministratorRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<DeregisterDelegatedAdministratorResponse>,
   errors: [
     AccessDeniedException,
     AccountNotFoundException,
@@ -2362,8 +2362,8 @@ export const describeAccount: API.OperationMethod<
   DescribeAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<DescribeAccountRequest>,
-  output: __S(329, __c41, 1) as any as S.Schema<DescribeAccountResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<DescribeAccountRequest>,
+  output: __S(321, __c40, 1) as any as S.Schema<DescribeAccountResponse>,
   errors: [
     AccessDeniedException,
     AccountNotFoundException,
@@ -2397,8 +2397,8 @@ export const describeCreateAccountStatus: API.OperationMethod<
   DescribeCreateAccountStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<DescribeCreateAccountStatusRequest>,
-  output: __S(192, __c24, 0) as any as S.Schema<DescribeCreateAccountStatusResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<DescribeCreateAccountStatusRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<DescribeCreateAccountStatusResponse>,
   errors: [
     AccessDeniedException,
     AWSOrganizationsNotInUseException,
@@ -2445,8 +2445,8 @@ export const describeEffectivePolicy: API.OperationMethod<
   DescribeEffectivePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<DescribeEffectivePolicyRequest>,
-  output: __S(362, __c45, 2) as any as S.Schema<DescribeEffectivePolicyResponse>,
+  input: __S(352, __c44, 0) as any as S.Schema<DescribeEffectivePolicyRequest>,
+  output: __S(354, __c44, 2) as any as S.Schema<DescribeEffectivePolicyResponse>,
   errors: [
     AccessDeniedException,
     AWSOrganizationsNotInUseException,
@@ -2486,8 +2486,8 @@ export const describeHandshake: API.OperationMethod<
   DescribeHandshakeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<DescribeHandshakeRequest>,
-  output: __S(376, __c47, 0) as any as S.Schema<DescribeHandshakeResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<DescribeHandshakeRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<DescribeHandshakeResponse>,
   errors: [
     AccessDeniedException,
     ConcurrentModificationException,
@@ -2524,7 +2524,7 @@ export const describeOrganization: API.OperationMethod<
   DescribeOrganizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c48, 0) as any as S.Schema<DescribeOrganizationRequest>,
+  input: __S(368, __c46, 0) as any as S.Schema<DescribeOrganizationRequest>,
   output: __S(209, __c26, 1) as any as S.Schema<DescribeOrganizationResponse>,
   errors: [
     AccessDeniedException,
@@ -2557,7 +2557,7 @@ export const describeOrganizationalUnit: API.OperationMethod<
   DescribeOrganizationalUnitError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<DescribeOrganizationalUnitRequest>,
+  input: __S(376, __c47, 0) as any as S.Schema<DescribeOrganizationalUnitRequest>,
   output: __S(232, __c29, 0) as any as S.Schema<DescribeOrganizationalUnitResponse>,
   errors: [
     AccessDeniedException,
@@ -2592,7 +2592,7 @@ export const describePolicy: API.OperationMethod<
   DescribePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c50, 0) as any as S.Schema<DescribePolicyRequest>,
+  input: __S(384, __c48, 0) as any as S.Schema<DescribePolicyRequest>,
   output: __S(257, __c32, 1) as any as S.Schema<DescribePolicyResponse>,
   errors: [
     AccessDeniedException,
@@ -2628,8 +2628,8 @@ export const describeResourcePolicy: API.OperationMethod<
   DescribeResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(408, __c51, 0) as any as S.Schema<DescribeResourcePolicyRequest>,
-  output: __S(418, __c52, 2) as any as S.Schema<DescribeResourcePolicyResponse>,
+  input: __S(392, __c49, 0) as any as S.Schema<DescribeResourcePolicyRequest>,
+  output: __S(402, __c50, 2) as any as S.Schema<DescribeResourcePolicyResponse>,
   errors: [
     AccessDeniedException,
     AWSOrganizationsNotInUseException,
@@ -2664,8 +2664,8 @@ export const describeResponsibilityTransfer: API.OperationMethod<
   DescribeResponsibilityTransferError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<DescribeResponsibilityTransferRequest>,
-  output: __S(432, __c54, 0) as any as S.Schema<DescribeResponsibilityTransferResponse>,
+  input: __S(408, __c51, 0) as any as S.Schema<DescribeResponsibilityTransferRequest>,
+  output: __S(416, __c52, 0) as any as S.Schema<DescribeResponsibilityTransferResponse>,
   errors: [
     AccessDeniedException,
     AWSOrganizationsNotInUseException,
@@ -2718,7 +2718,7 @@ export const detachPolicy: API.OperationMethod<
   DetachPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c56, 0) as any as S.Schema<DetachPolicyRequest>,
+  input: __S(432, __c54, 0) as any as S.Schema<DetachPolicyRequest>,
   output: __S(136, __c17, 0) as any as S.Schema<DetachPolicyResponse>,
   errors: [
     AccessDeniedException,
@@ -2812,8 +2812,8 @@ export const disableAWSServiceAccess: API.OperationMethod<
   DisableAWSServiceAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(456, __c57, 0) as any as S.Schema<DisableAWSServiceAccessRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<DisableAWSServiceAccessResponse>,
+  input: __S(440, __c55, 0) as any as S.Schema<DisableAWSServiceAccessRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<DisableAWSServiceAccessResponse>,
   errors: [
     AccessDeniedException,
     AWSOrganizationsNotInUseException,
@@ -2864,8 +2864,8 @@ export const disablePolicyType: API.OperationMethod<
   DisablePolicyTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c58, 0) as any as S.Schema<DisablePolicyTypeRequest>,
-  output: __S(465, __c58, 1) as any as S.Schema<DisablePolicyTypeResponse>,
+  input: __S(448, __c56, 0) as any as S.Schema<DisablePolicyTypeRequest>,
+  output: __S(456, __c57, 0) as any as S.Schema<DisablePolicyTypeResponse>,
   errors: [
     AccessDeniedException,
     AWSOrganizationsNotInUseException,
@@ -2930,8 +2930,8 @@ export const enableAllFeatures: API.OperationMethod<
   EnableAllFeaturesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c60, 0) as any as S.Schema<EnableAllFeaturesRequest>,
-  output: __S(376, __c47, 0) as any as S.Schema<EnableAllFeaturesResponse>,
+  input: __S(472, __c59, 0) as any as S.Schema<EnableAllFeaturesRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<EnableAllFeaturesResponse>,
   errors: [
     AccessDeniedException,
     AWSOrganizationsNotInUseException,
@@ -2984,8 +2984,8 @@ export const enableAWSServiceAccess: API.OperationMethod<
   EnableAWSServiceAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(488, __c61, 0) as any as S.Schema<EnableAWSServiceAccessRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<EnableAWSServiceAccessResponse>,
+  input: __S(480, __c60, 0) as any as S.Schema<EnableAWSServiceAccessRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<EnableAWSServiceAccessResponse>,
   errors: [
     AccessDeniedException,
     AWSOrganizationsNotInUseException,
@@ -3037,8 +3037,8 @@ export const enablePolicyType: API.OperationMethod<
   EnablePolicyTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c62, 0) as any as S.Schema<EnablePolicyTypeRequest>,
-  output: __S(497, __c62, 1) as any as S.Schema<EnablePolicyTypeResponse>,
+  input: __S(488, __c61, 0) as any as S.Schema<EnablePolicyTypeRequest>,
+  output: __S(456, __c57, 0) as any as S.Schema<EnablePolicyTypeResponse>,
   errors: [
     AccessDeniedException,
     AWSOrganizationsNotInUseException,
@@ -3094,8 +3094,8 @@ export const inviteAccountToOrganization: API.OperationMethod<
   InviteAccountToOrganizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(504, __c63, 0) as any as S.Schema<InviteAccountToOrganizationRequest>,
-  output: __S(376, __c47, 0) as any as S.Schema<InviteAccountToOrganizationResponse>,
+  input: __S(496, __c62, 0) as any as S.Schema<InviteAccountToOrganizationRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<InviteAccountToOrganizationResponse>,
   errors: [
     AccessDeniedException,
     AccountOwnerNotVerifiedException,
@@ -3139,8 +3139,8 @@ export const inviteOrganizationToTransferResponsibility: API.OperationMethod<
   InviteOrganizationToTransferResponsibilityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c64, 0) as any as S.Schema<InviteOrganizationToTransferResponsibilityRequest>,
-  output: __S(376, __c47, 0) as any as S.Schema<InviteOrganizationToTransferResponsibilityResponse>,
+  input: __S(504, __c63, 0) as any as S.Schema<InviteOrganizationToTransferResponsibilityRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<InviteOrganizationToTransferResponsibilityResponse>,
   errors: [
     AccessDeniedException,
     AWSOrganizationsNotInUseException,
@@ -3231,8 +3231,8 @@ export const leaveOrganization: API.OperationMethod<
   LeaveOrganizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(520, __c65, 0) as any as S.Schema<LeaveOrganizationRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<LeaveOrganizationResponse>,
+  input: __S(512, __c64, 0) as any as S.Schema<LeaveOrganizationRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<LeaveOrganizationResponse>,
   errors: [
     AccessDeniedException,
     AccountNotFoundException,
@@ -3273,8 +3273,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(528, __c66, 0) as any as S.Schema<ListAccountsRequest>,
-  output: __S(529, __c66, 1) as any as S.Schema<ListAccountsResponse>,
+  input: __S(520, __c65, 0) as any as S.Schema<ListAccountsRequest>,
+  output: __S(528, __c66, 0) as any as S.Schema<ListAccountsResponse>,
   errors: [
     AccessDeniedException,
     AWSOrganizationsNotInUseException,
@@ -3321,7 +3321,7 @@ export const listAccountsForParent: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(544, __c68, 0) as any as S.Schema<ListAccountsForParentRequest>,
-  output: __S(545, __c68, 1) as any as S.Schema<ListAccountsForParentResponse>,
+  output: __S(528, __c66, 0) as any as S.Schema<ListAccountsForParentResponse>,
   errors: [
     AccessDeniedException,
     AWSOrganizationsNotInUseException,
@@ -3959,7 +3959,7 @@ export const listPolicies: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(680, __c85, 0) as any as S.Schema<ListPoliciesRequest>,
-  output: __S(681, __c85, 1) as any as S.Schema<ListPoliciesResponse>,
+  output: __S(689, __c86, 1) as any as S.Schema<ListPoliciesResponse>,
   errors: [
     AccessDeniedException,
     AWSOrganizationsNotInUseException,
@@ -4006,7 +4006,7 @@ export const listPoliciesForTarget: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(696, __c87, 0) as any as S.Schema<ListPoliciesForTargetRequest>,
-  output: __S(697, __c87, 1) as any as S.Schema<ListPoliciesForTargetResponse>,
+  output: __S(689, __c86, 1) as any as S.Schema<ListPoliciesForTargetResponse>,
   errors: [
     AccessDeniedException,
     AWSOrganizationsNotInUseException,
@@ -4232,7 +4232,7 @@ export const putResourcePolicy: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(32, __c4, 0) as any as S.Schema<PutResourcePolicyRequest>,
-  output: __S(418, __c52, 2) as any as S.Schema<PutResourcePolicyResponse>,
+  output: __S(402, __c50, 2) as any as S.Schema<PutResourcePolicyResponse>,
   errors: [
     AccessDeniedException,
     AWSOrganizationsNotInUseException,
@@ -4279,7 +4279,7 @@ export const registerDelegatedAdministrator: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(40, __c5, 0) as any as S.Schema<RegisterDelegatedAdministratorRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<RegisterDelegatedAdministratorResponse>,
+  output: __S(136, __c17, 0) as any as S.Schema<RegisterDelegatedAdministratorResponse>,
   errors: [
     AccessDeniedException,
     AccountAlreadyRegisteredException,
@@ -4349,7 +4349,7 @@ export const removeAccountFromOrganization: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(48, __c6, 0) as any as S.Schema<RemoveAccountFromOrganizationRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<RemoveAccountFromOrganizationResponse>,
+  output: __S(136, __c17, 0) as any as S.Schema<RemoveAccountFromOrganizationResponse>,
   errors: [
     AccessDeniedException,
     AccountNotFoundException,
@@ -4445,7 +4445,7 @@ export const terminateResponsibilityTransfer: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(64, __c8, 0) as any as S.Schema<TerminateResponsibilityTransferRequest>,
-  output: __S(432, __c54, 0) as any as S.Schema<TerminateResponsibilityTransferResponse>,
+  output: __S(416, __c52, 0) as any as S.Schema<TerminateResponsibilityTransferResponse>,
   errors: [
     AccessDeniedException,
     AWSOrganizationsNotInUseException,
@@ -4624,7 +4624,7 @@ export const updateResponsibilityTransfer: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c12, 0) as any as S.Schema<UpdateResponsibilityTransferRequest>,
-  output: __S(432, __c54, 0) as any as S.Schema<UpdateResponsibilityTransferResponse>,
+  output: __S(416, __c52, 0) as any as S.Schema<UpdateResponsibilityTransferResponse>,
   errors: [
     AccessDeniedException,
     AWSOrganizationsNotInUseException,
@@ -4650,7 +4650,7 @@ function __c0(j: number): any {
         ),
       ).annotate({ identifier: "ListRootsRequest" });
     case 1:
-      return S.Array(__S(472, __c59, 0));
+      return S.Array(__S(464, __c58, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ Roots: S.optional(__S(1, __c0, 1)), NextToken: S.optional(S.String) }).pipe(ns),
@@ -4664,17 +4664,13 @@ function __c1(j: number): any {
         S.Struct({ ResourceId: S.String, NextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Tags: S.optional(__S(169, __c21, 1)), NextToken: S.optional(S.String) }).pipe(
           ns,
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
+      ).annotate({ identifier: "ListTagsForResourceResponse" });
   }
 }
 function __c2(j: number): any {
@@ -4686,9 +4682,7 @@ function __c2(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListTargetsForPolicyRequest",
-      });
+      ).annotate({ identifier: "ListTargetsForPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4705,9 +4699,7 @@ function __c2(j: number): any {
         S.Struct({ Targets: S.optional(__S(18, __c2, 2)), NextToken: S.optional(S.String) }).pipe(
           ns,
         ),
-      ).annotate({
-        identifier: "ListTargetsForPolicyResponse",
-      });
+      ).annotate({ identifier: "ListTargetsForPolicyResponse" });
   }
 }
 function __c3(j: number): any {
@@ -4739,9 +4731,7 @@ function __c5(j: number): any {
         S.Struct({ AccountId: S.String, ServicePrincipal: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "RegisterDelegatedAdministratorRequest",
-      });
+      ).annotate({ identifier: "RegisterDelegatedAdministratorRequest" });
   }
 }
 function __c6(j: number): any {
@@ -4751,9 +4741,7 @@ function __c6(j: number): any {
         S.Struct({ AccountId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "RemoveAccountFromOrganizationRequest",
-      });
+      ).annotate({ identifier: "RemoveAccountFromOrganizationRequest" });
   }
 }
 function __c7(j: number): any {
@@ -4774,16 +4762,14 @@ function __c8(j: number): any {
           Id: S.String,
           EndTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "TerminateResponsibilityTransferRequest",
-      });
+      ).annotate({ identifier: "TerminateResponsibilityTransferRequest" });
   }
 }
 function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceId: S.String, TagKeys: __S(344, __c43, 0) }).pipe(
+        S.Struct({ ResourceId: S.String, TagKeys: __S(336, __c42, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
@@ -4796,9 +4782,7 @@ function __c10(j: number): any {
         S.Struct({ OrganizationalUnitId: S.String, Name: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateOrganizationalUnitRequest",
-      });
+      ).annotate({ identifier: "UpdateOrganizationalUnitRequest" });
   }
 }
 function __c11(j: number): any {
@@ -4821,9 +4805,7 @@ function __c12(j: number): any {
         S.Struct({ Id: S.String, Name: SensitiveString }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateResponsibilityTransferRequest",
-      });
+      ).annotate({ identifier: "UpdateResponsibilityTransferRequest" });
   }
 }
 function __c13(j: number): any {
@@ -4933,10 +4915,6 @@ function __c20(j: number): any {
           Tags: S.optional(__S(169, __c21, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateAccountRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ CreateAccountStatus: S.optional(__S(176, __c22, 0)) }).pipe(ns),
-      ).annotate({ identifier: "CreateAccountResponse" });
   }
 }
 function __c21(j: number): any {
@@ -4953,6 +4931,14 @@ function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({ CreateAccountStatus: S.optional(__S(184, __c23, 0)) }).pipe(ns),
+      ).annotate({ identifier: "CreateAccountResponse" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
           AccountName: S.optional(SensitiveString),
@@ -4966,7 +4952,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "CreateAccountStatus" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4977,19 +4963,7 @@ function __c23(j: number): any {
           IamUserAccessToBilling: S.optional(S.String),
           Tags: S.optional(__S(169, __c21, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateGovCloudAccountRequest",
-      });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ CreateAccountStatus: S.optional(__S(176, __c22, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateGovCloudAccountResponse",
-      });
+      ).annotate({ identifier: "CreateGovCloudAccountRequest" });
   }
 }
 function __c25(j: number): any {
@@ -4999,9 +4973,7 @@ function __c25(j: number): any {
         S.Struct({ FeatureSet: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateOrganizationRequest",
-      });
+      ).annotate({ identifier: "CreateOrganizationRequest" });
   }
 }
 function __c26(j: number): any {
@@ -5021,9 +4993,7 @@ function __c26(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ Organization: S.optional(__S(208, __c26, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateOrganizationResponse",
-      });
+      ).annotate({ identifier: "CreateOrganizationResponse" });
   }
 }
 function __c27(j: number): any {
@@ -5043,9 +5013,7 @@ function __c28(j: number): any {
         S.Struct({ ParentId: S.String, Name: S.String, Tags: S.optional(__S(169, __c21, 1)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateOrganizationalUnitRequest",
-      });
+      ).annotate({ identifier: "CreateOrganizationalUnitRequest" });
   }
 }
 function __c29(j: number): any {
@@ -5053,9 +5021,7 @@ function __c29(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationalUnit: S.optional(__S(240, __c30, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateOrganizationalUnitResponse",
-      });
+      ).annotate({ identifier: "CreateOrganizationalUnitResponse" });
   }
 }
 function __c30(j: number): any {
@@ -5129,32 +5095,20 @@ function __c35(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteOrganizationRequest",
-      });
+      ).annotate({ identifier: "DeleteOrganizationRequest" });
   }
 }
 function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeleteOrganizationResponse",
-      });
-  }
-}
-function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationalUnitId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteOrganizationalUnitRequest",
-      });
+      ).annotate({ identifier: "DeleteOrganizationalUnitRequest" });
   }
 }
-function __c38(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5164,31 +5118,27 @@ function __c38(j: number): any {
       ).annotate({ identifier: "DeletePolicyRequest" });
   }
 }
-function __c39(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteResourcePolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteResourcePolicyRequest" });
   }
 }
-function __c40(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ AccountId: S.String, ServicePrincipal: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeregisterDelegatedAdministratorRequest",
-      });
+      ).annotate({ identifier: "DeregisterDelegatedAdministratorRequest" });
   }
 }
-function __c41(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5198,11 +5148,11 @@ function __c41(j: number): any {
       ).annotate({ identifier: "DescribeAccountRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Account: S.optional(__S(336, __c42, 0)) }).pipe(ns),
+        S.Struct({ Account: S.optional(__S(328, __c41, 0)) }).pipe(ns),
       ).annotate({ identifier: "DescribeAccountResponse" });
   }
 }
-function __c42(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5213,41 +5163,37 @@ function __c42(j: number): any {
           Name: S.optional(SensitiveString),
           Status: S.optional(S.String),
           State: S.optional(S.String),
-          Paths: S.optional(__S(344, __c43, 0)),
+          Paths: S.optional(__S(336, __c42, 0)),
           JoinedMethod: S.optional(S.String),
           JoinedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Account" });
   }
 }
-function __c43(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c44(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ CreateAccountRequestId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeCreateAccountStatusRequest",
-      });
+      ).annotate({ identifier: "DescribeCreateAccountStatusRequest" });
   }
 }
-function __c45(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ PolicyType: S.String, TargetId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeEffectivePolicyRequest",
-      });
+      ).annotate({ identifier: "DescribeEffectivePolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5259,13 +5205,11 @@ function __c45(j: number): any {
       ).annotate({ identifier: "EffectivePolicy" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ EffectivePolicy: S.optional(__S(361, __c45, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeEffectivePolicyResponse",
-      });
+        S.Struct({ EffectivePolicy: S.optional(__S(353, __c44, 1)) }).pipe(ns),
+      ).annotate({ identifier: "DescribeEffectivePolicyResponse" });
   }
 }
-function __c46(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5275,41 +5219,27 @@ function __c46(j: number): any {
       ).annotate({ identifier: "DescribeHandshakeRequest" });
   }
 }
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ Handshake: S.optional(__S(124, __c15, 4)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeHandshakeResponse",
-      });
-  }
-}
-function __c48(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeOrganizationRequest",
-      });
+      ).annotate({ identifier: "DescribeOrganizationRequest" });
   }
 }
-function __c49(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationalUnitId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeOrganizationalUnitRequest",
-      });
+      ).annotate({ identifier: "DescribeOrganizationalUnitRequest" });
   }
 }
-function __c50(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5319,19 +5249,17 @@ function __c50(j: number): any {
       ).annotate({ identifier: "DescribePolicyRequest" });
   }
 }
-function __c51(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeResourcePolicyRequest",
-      });
+      ).annotate({ identifier: "DescribeResourcePolicyRequest" });
   }
 }
-function __c52(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5340,41 +5268,35 @@ function __c52(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ResourcePolicySummary: S.optional(__S(416, __c52, 0)),
+          ResourcePolicySummary: S.optional(__S(400, __c50, 0)),
           Content: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourcePolicy" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ ResourcePolicy: S.optional(__S(417, __c52, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeResourcePolicyResponse",
-      });
+        S.Struct({ ResourcePolicy: S.optional(__S(401, __c50, 1)) }).pipe(ns),
+      ).annotate({ identifier: "DescribeResourcePolicyResponse" });
   }
 }
-function __c53(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ Id: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeResponsibilityTransferRequest",
-      });
+      ).annotate({ identifier: "DescribeResponsibilityTransferRequest" });
   }
 }
-function __c54(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResponsibilityTransfer: S.optional(__S(441, __c55, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeResponsibilityTransferResponse",
-      });
+        S.Struct({ ResponsibilityTransfer: S.optional(__S(425, __c53, 1)) }).pipe(ns),
+      ).annotate({ identifier: "DescribeResponsibilityTransferResponse" });
   }
 }
-function __c55(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5391,8 +5313,8 @@ function __c55(j: number): any {
           Id: S.optional(S.String),
           Type: S.optional(S.String),
           Status: S.optional(S.String),
-          Source: S.optional(__S(440, __c55, 0)),
-          Target: S.optional(__S(440, __c55, 0)),
+          Source: S.optional(__S(424, __c53, 0)),
+          Target: S.optional(__S(424, __c53, 0)),
           StartTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ActiveHandshakeId: S.optional(S.String),
@@ -5400,7 +5322,7 @@ function __c55(j: number): any {
       ).annotate({ identifier: "ResponsibilityTransfer" });
   }
 }
-function __c56(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5410,19 +5332,17 @@ function __c56(j: number): any {
       ).annotate({ identifier: "DetachPolicyRequest" });
   }
 }
-function __c57(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ ServicePrincipal: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DisableAWSServiceAccessRequest",
-      });
+      ).annotate({ identifier: "DisableAWSServiceAccessRequest" });
   }
 }
-function __c58(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5430,13 +5350,17 @@ function __c58(j: number): any {
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DisablePolicyTypeRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({ Root: S.optional(__S(472, __c59, 0)) }).pipe(ns)).annotate({
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Root: S.optional(__S(464, __c58, 0)) }).pipe(ns)).annotate({
         identifier: "DisablePolicyTypeResponse",
       });
   }
 }
-function __c59(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5449,7 +5373,7 @@ function __c59(j: number): any {
       ).annotate({ identifier: "Root" });
   }
 }
-function __c60(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5459,19 +5383,17 @@ function __c60(j: number): any {
       ).annotate({ identifier: "EnableAllFeaturesRequest" });
   }
 }
-function __c61(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ ServicePrincipal: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "EnableAWSServiceAccessRequest",
-      });
+      ).annotate({ identifier: "EnableAWSServiceAccessRequest" });
   }
 }
-function __c62(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5479,13 +5401,9 @@ function __c62(j: number): any {
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "EnablePolicyTypeRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({ Root: S.optional(__S(472, __c59, 0)) }).pipe(ns)).annotate({
-        identifier: "EnablePolicyTypeResponse",
-      });
   }
 }
-function __c63(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5494,12 +5412,10 @@ function __c63(j: number): any {
           Notes: S.optional(SensitiveString),
           Tags: S.optional(__S(169, __c21, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "InviteAccountToOrganizationRequest",
-      });
+      ).annotate({ identifier: "InviteAccountToOrganizationRequest" });
   }
 }
-function __c64(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5511,12 +5427,10 @@ function __c64(j: number): any {
           SourceName: SensitiveString,
           Tags: S.optional(__S(169, __c21, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "InviteOrganizationToTransferResponsibilityRequest",
-      });
+      ).annotate({ identifier: "InviteOrganizationToTransferResponsibilityRequest" });
   }
 }
-function __c65(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5526,7 +5440,7 @@ function __c65(j: number): any {
       ).annotate({ identifier: "LeaveOrganizationRequest" });
   }
 }
-function __c66(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5534,7 +5448,11 @@ function __c66(j: number): any {
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListAccountsRequest" });
-    case 1:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Accounts: S.optional(__S(536, __c67, 0)),
@@ -5546,7 +5464,7 @@ function __c66(j: number): any {
 function __c67(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(336, __c42, 0));
+      return S.Array(__S(328, __c41, 0));
   }
 }
 function __c68(j: number): any {
@@ -5558,18 +5476,7 @@ function __c68(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListAccountsForParentRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Accounts: S.optional(__S(536, __c67, 0)),
-          NextToken: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "ListAccountsForParentResponse",
-      });
+      ).annotate({ identifier: "ListAccountsForParentRequest" });
   }
 }
 function __c69(j: number): any {
@@ -5581,9 +5488,7 @@ function __c69(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListAccountsWithInvalidEffectivePolicyRequest",
-      });
+      ).annotate({ identifier: "ListAccountsWithInvalidEffectivePolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5591,9 +5496,7 @@ function __c69(j: number): any {
           PolicyType: S.optional(S.String),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListAccountsWithInvalidEffectivePolicyResponse",
-      });
+      ).annotate({ identifier: "ListAccountsWithInvalidEffectivePolicyResponse" });
   }
 }
 function __c70(j: number): any {
@@ -5603,9 +5506,7 @@ function __c70(j: number): any {
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListAWSServiceAccessForOrganizationRequest",
-      });
+      ).annotate({ identifier: "ListAWSServiceAccessForOrganizationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5621,9 +5522,7 @@ function __c70(j: number): any {
           EnabledServicePrincipals: S.optional(__S(562, __c70, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListAWSServiceAccessForOrganizationResponse",
-      });
+      ).annotate({ identifier: "ListAWSServiceAccessForOrganizationResponse" });
   }
 }
 function __c71(j: number): any {
@@ -5667,20 +5566,16 @@ function __c73(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListCreateAccountStatusRequest",
-      });
+      ).annotate({ identifier: "ListCreateAccountStatusRequest" });
     case 2:
-      return S.Array(__S(176, __c22, 0));
+      return S.Array(__S(184, __c23, 0));
     case 3:
       return S.suspend(() =>
         S.Struct({
           CreateAccountStatuses: S.optional(__S(586, __c73, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListCreateAccountStatusResponse",
-      });
+      ).annotate({ identifier: "ListCreateAccountStatusResponse" });
   }
 }
 function __c74(j: number): any {
@@ -5692,9 +5587,7 @@ function __c74(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListDelegatedAdministratorsRequest",
-      });
+      ).annotate({ identifier: "ListDelegatedAdministratorsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5717,9 +5610,7 @@ function __c74(j: number): any {
           DelegatedAdministrators: S.optional(__S(594, __c74, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListDelegatedAdministratorsResponse",
-      });
+      ).annotate({ identifier: "ListDelegatedAdministratorsResponse" });
   }
 }
 function __c75(j: number): any {
@@ -5731,9 +5622,7 @@ function __c75(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListDelegatedServicesForAccountRequest",
-      });
+      ).annotate({ identifier: "ListDelegatedServicesForAccountRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5749,9 +5638,7 @@ function __c75(j: number): any {
           DelegatedServices: S.optional(__S(602, __c75, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListDelegatedServicesForAccountResponse",
-      });
+      ).annotate({ identifier: "ListDelegatedServicesForAccountResponse" });
   }
 }
 function __c76(j: number): any {
@@ -5764,20 +5651,16 @@ function __c76(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListEffectivePolicyValidationErrorsRequest",
-      });
+      ).annotate({ identifier: "ListEffectivePolicyValidationErrorsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ErrorCode: S.optional(S.String),
           ErrorMessage: S.optional(S.String),
           PathToError: S.optional(S.String),
-          ContributingPolicies: S.optional(__S(344, __c43, 0)),
+          ContributingPolicies: S.optional(__S(336, __c42, 0)),
         }),
-      ).annotate({
-        identifier: "EffectivePolicyValidationError",
-      });
+      ).annotate({ identifier: "EffectivePolicyValidationError" });
     case 2:
       return S.Array(__S(609, __c76, 1));
     case 3:
@@ -5790,9 +5673,7 @@ function __c76(j: number): any {
           NextToken: S.optional(S.String),
           EffectivePolicyValidationErrors: S.optional(__S(610, __c76, 2)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListEffectivePolicyValidationErrorsResponse",
-      });
+      ).annotate({ identifier: "ListEffectivePolicyValidationErrorsResponse" });
   }
 }
 function __c77(j: number): any {
@@ -5804,9 +5685,7 @@ function __c77(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListHandshakesForAccountRequest",
-      });
+      ).annotate({ identifier: "ListHandshakesForAccountRequest" });
   }
 }
 function __c78(j: number): any {
@@ -5823,9 +5702,7 @@ function __c78(j: number): any {
           Handshakes: S.optional(__S(625, __c78, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListHandshakesForAccountResponse",
-      });
+      ).annotate({ identifier: "ListHandshakesForAccountResponse" });
   }
 }
 function __c79(j: number): any {
@@ -5837,9 +5714,7 @@ function __c79(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListHandshakesForOrganizationRequest",
-      });
+      ).annotate({ identifier: "ListHandshakesForOrganizationRequest" });
   }
 }
 function __c80(j: number): any {
@@ -5852,24 +5727,20 @@ function __c80(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListInboundResponsibilityTransfersRequest",
-      });
+      ).annotate({ identifier: "ListInboundResponsibilityTransfersRequest" });
   }
 }
 function __c81(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(441, __c55, 1));
+      return S.Array(__S(425, __c53, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
           ResponsibilityTransfers: S.optional(__S(648, __c81, 0)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListInboundResponsibilityTransfersResponse",
-      });
+      ).annotate({ identifier: "ListInboundResponsibilityTransfersResponse" });
   }
 }
 function __c82(j: number): any {
@@ -5881,9 +5752,7 @@ function __c82(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListOrganizationalUnitsForParentRequest",
-      });
+      ).annotate({ identifier: "ListOrganizationalUnitsForParentRequest" });
     case 1:
       return S.Array(__S(240, __c30, 0));
     case 2:
@@ -5892,9 +5761,7 @@ function __c82(j: number): any {
           OrganizationalUnits: S.optional(__S(657, __c82, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListOrganizationalUnitsForParentResponse",
-      });
+      ).annotate({ identifier: "ListOrganizationalUnitsForParentResponse" });
   }
 }
 function __c83(j: number): any {
@@ -5906,9 +5773,7 @@ function __c83(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListOutboundResponsibilityTransfersRequest",
-      });
+      ).annotate({ identifier: "ListOutboundResponsibilityTransfersRequest" });
   }
 }
 function __c84(j: number): any {
@@ -5939,6 +5804,12 @@ function __c85(j: number): any {
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListPoliciesRequest" });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(264, __c33, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5946,12 +5817,6 @@ function __c85(j: number): any {
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListPoliciesResponse" });
-  }
-}
-function __c86(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(264, __c33, 0));
   }
 }
 function __c87(j: number): any {
@@ -5964,18 +5829,7 @@ function __c87(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListPoliciesForTargetRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Policies: S.optional(__S(688, __c86, 0)),
-          NextToken: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "ListPoliciesForTargetResponse",
-      });
+      ).annotate({ identifier: "ListPoliciesForTargetRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

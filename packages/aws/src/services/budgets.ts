@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1718,9 +1718,7 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ Notification: __S(48, __c6, 0), Subscribers: __S(16, __c2, 0) }),
-      ).annotate({
-        identifier: "NotificationWithSubscribers",
-      });
+      ).annotate({ identifier: "NotificationWithSubscribers" });
     case 1:
       return S.Array(__S(0, __c0, 0));
     case 2:
@@ -1767,9 +1765,7 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateBudgetResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "CreateBudgetResponse" });
   }
 }
 function __c6(j: number): any {
@@ -1836,9 +1832,7 @@ function __c8(j: number): any {
           Values: __S(24, __c3, 0),
           MatchOptions: S.optional(__S(68, __c8, 4)),
         }),
-      ).annotate({
-        identifier: "ExpressionDimensionValues",
-      });
+      ).annotate({ identifier: "ExpressionDimensionValues" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1935,15 +1929,11 @@ function __c10(j: number): any {
           Subscribers: __S(16, __c2, 0),
           ResourceTags: S.optional(__S(33, __c4, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateBudgetActionRequest",
-      });
+      ).annotate({ identifier: "CreateBudgetActionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ AccountId: S.String, BudgetName: S.String, ActionId: S.String }),
-      ).annotate({
-        identifier: "CreateBudgetActionResponse",
-      });
+      ).annotate({ identifier: "CreateBudgetActionResponse" });
   }
 }
 function __c11(j: number): any {
@@ -1989,9 +1979,7 @@ function __c12(j: number): any {
           Notification: __S(48, __c6, 0),
           Subscribers: __S(16, __c2, 0),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateNotificationRequest",
-      });
+      ).annotate({ identifier: "CreateNotificationRequest" });
   }
 }
 function __c13(j: number): any {
@@ -2024,9 +2012,7 @@ function __c15(j: number): any {
         S.Struct({ AccountId: S.String, BudgetName: S.String, ActionId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteBudgetActionRequest",
-      });
+      ).annotate({ identifier: "DeleteBudgetActionRequest" });
   }
 }
 function __c16(j: number): any {
@@ -2034,9 +2020,7 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ AccountId: S.String, BudgetName: S.String, Action: __S(136, __c17, 0) }),
-      ).annotate({
-        identifier: "DeleteBudgetActionResponse",
-      });
+      ).annotate({ identifier: "DeleteBudgetActionResponse" });
   }
 }
 function __c17(j: number): any {
@@ -2067,9 +2051,7 @@ function __c18(j: number): any {
           BudgetName: S.String,
           Notification: __S(48, __c6, 0),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteNotificationRequest",
-      });
+      ).annotate({ identifier: "DeleteNotificationRequest" });
   }
 }
 function __c19(j: number): any {
@@ -2108,9 +2090,7 @@ function __c21(j: number): any {
         S.Struct({ AccountId: S.String, BudgetName: S.String, ActionId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeBudgetActionRequest",
-      });
+      ).annotate({ identifier: "DescribeBudgetActionRequest" });
   }
 }
 function __c22(j: number): any {
@@ -2125,9 +2105,7 @@ function __c22(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeBudgetActionHistoriesRequest",
-      });
+      ).annotate({ identifier: "DescribeBudgetActionHistoriesRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Message: S.String, Action: __S(136, __c17, 0) })).annotate({
         identifier: "ActionHistoryDetails",
@@ -2146,9 +2124,7 @@ function __c22(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({ ActionHistories: __S(179, __c22, 3), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DescribeBudgetActionHistoriesResponse",
-      });
+      ).annotate({ identifier: "DescribeBudgetActionHistoriesResponse" });
   }
 }
 function __c23(j: number): any {
@@ -2160,9 +2136,7 @@ function __c23(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeBudgetActionsForAccountRequest",
-      });
+      ).annotate({ identifier: "DescribeBudgetActionsForAccountRequest" });
   }
 }
 function __c24(j: number): any {
@@ -2172,9 +2146,7 @@ function __c24(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ Actions: __S(192, __c24, 0), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DescribeBudgetActionsForAccountResponse",
-      });
+      ).annotate({ identifier: "DescribeBudgetActionsForAccountResponse" });
   }
 }
 function __c25(j: number): any {
@@ -2187,9 +2159,7 @@ function __c25(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeBudgetActionsForBudgetRequest",
-      });
+      ).annotate({ identifier: "DescribeBudgetActionsForBudgetRequest" });
   }
 }
 function __c26(j: number): any {
@@ -2201,18 +2171,14 @@ function __c26(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeBudgetNotificationsForAccountRequest",
-      });
+      ).annotate({ identifier: "DescribeBudgetNotificationsForAccountRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Notifications: S.optional(__S(216, __c27, 0)),
           BudgetName: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BudgetNotificationsForAccount",
-      });
+      ).annotate({ identifier: "BudgetNotificationsForAccount" });
     case 2:
       return S.Array(__S(209, __c26, 1));
     case 3:
@@ -2221,9 +2187,7 @@ function __c26(j: number): any {
           BudgetNotificationsForAccount: S.optional(__S(210, __c26, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeBudgetNotificationsForAccountResponse",
-      });
+      ).annotate({ identifier: "DescribeBudgetNotificationsForAccountResponse" });
   }
 }
 function __c27(j: number): any {
@@ -2243,9 +2207,7 @@ function __c28(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeBudgetPerformanceHistoryRequest",
-      });
+      ).annotate({ identifier: "DescribeBudgetPerformanceHistoryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2276,9 +2238,7 @@ function __c28(j: number): any {
           BudgetPerformanceHistory: S.optional(__S(227, __c28, 3)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeBudgetPerformanceHistoryResponse",
-      });
+      ).annotate({ identifier: "DescribeBudgetPerformanceHistoryResponse" });
   }
 }
 function __c29(j: number): any {
@@ -2310,18 +2270,14 @@ function __c30(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeNotificationsForBudgetRequest",
-      });
+      ).annotate({ identifier: "DescribeNotificationsForBudgetRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Notifications: S.optional(__S(216, __c27, 0)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeNotificationsForBudgetResponse",
-      });
+      ).annotate({ identifier: "DescribeNotificationsForBudgetResponse" });
   }
 }
 function __c31(j: number): any {
@@ -2335,15 +2291,11 @@ function __c31(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeSubscribersForNotificationRequest",
-      });
+      ).annotate({ identifier: "DescribeSubscribersForNotificationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Subscribers: S.optional(__S(16, __c2, 0)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DescribeSubscribersForNotificationResponse",
-      });
+      ).annotate({ identifier: "DescribeSubscribersForNotificationResponse" });
   }
 }
 function __c32(j: number): any {
@@ -2356,9 +2308,7 @@ function __c32(j: number): any {
           ActionId: S.String,
           ExecutionType: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ExecuteBudgetActionRequest",
-      });
+      ).annotate({ identifier: "ExecuteBudgetActionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2367,9 +2317,7 @@ function __c32(j: number): any {
           ActionId: S.String,
           ExecutionType: S.String,
         }),
-      ).annotate({
-        identifier: "ExecuteBudgetActionResponse",
-      });
+      ).annotate({ identifier: "ExecuteBudgetActionResponse" });
   }
 }
 function __c33(j: number): any {
@@ -2379,9 +2327,7 @@ function __c33(j: number): any {
         S.Struct({ ResourceARN: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ ResourceTags: S.optional(__S(33, __c4, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -2433,9 +2379,7 @@ function __c37(j: number): any {
           ApprovalModel: S.optional(S.String),
           Subscribers: S.optional(__S(16, __c2, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateBudgetActionRequest",
-      });
+      ).annotate({ identifier: "UpdateBudgetActionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2444,9 +2388,7 @@ function __c37(j: number): any {
           OldAction: __S(136, __c17, 0),
           NewAction: __S(136, __c17, 0),
         }),
-      ).annotate({
-        identifier: "UpdateBudgetActionResponse",
-      });
+      ).annotate({ identifier: "UpdateBudgetActionResponse" });
   }
 }
 function __c38(j: number): any {
@@ -2459,9 +2401,7 @@ function __c38(j: number): any {
           OldNotification: __S(48, __c6, 0),
           NewNotification: __S(48, __c6, 0),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateNotificationRequest",
-      });
+      ).annotate({ identifier: "UpdateNotificationRequest" });
   }
 }
 function __c39(j: number): any {

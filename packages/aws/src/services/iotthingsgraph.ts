@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -610,8 +610,8 @@ export const associateEntityToThing: API.OperationMethod<
   AssociateEntityToThingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<AssociateEntityToThingRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<AssociateEntityToThingResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<AssociateEntityToThingRequest>,
+  output: __S(312, __c39, 0) as any as S.Schema<AssociateEntityToThingResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -641,8 +641,8 @@ export const createFlowTemplate: API.OperationMethod<
   CreateFlowTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<CreateFlowTemplateRequest>,
-  output: __S(312, __c39, 0) as any as S.Schema<CreateFlowTemplateResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<CreateFlowTemplateRequest>,
+  output: __S(336, __c42, 0) as any as S.Schema<CreateFlowTemplateResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -683,8 +683,8 @@ export const createSystemInstance: API.OperationMethod<
   CreateSystemInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<CreateSystemInstanceRequest>,
-  output: __S(360, __c45, 0) as any as S.Schema<CreateSystemInstanceResponse>,
+  input: __S(352, __c44, 0) as any as S.Schema<CreateSystemInstanceRequest>,
+  output: __S(384, __c48, 0) as any as S.Schema<CreateSystemInstanceResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -714,7 +714,7 @@ export const createSystemTemplate: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateSystemTemplateRequest>,
-  output: __S(312, __c39, 0) as any as S.Schema<CreateSystemTemplateResponse>,
+  output: __S(336, __c42, 0) as any as S.Schema<CreateSystemTemplateResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -743,7 +743,7 @@ export const deleteFlowTemplate: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(8, __c1, 0) as any as S.Schema<DeleteFlowTemplateRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<DeleteFlowTemplateResponse>,
+  output: __S(312, __c39, 0) as any as S.Schema<DeleteFlowTemplateResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -793,7 +793,7 @@ export const deleteSystemInstance: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(24, __c3, 0) as any as S.Schema<DeleteSystemInstanceRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<DeleteSystemInstanceResponse>,
+  output: __S(312, __c39, 0) as any as S.Schema<DeleteSystemInstanceResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -822,7 +822,7 @@ export const deleteSystemTemplate: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(32, __c4, 0) as any as S.Schema<DeleteSystemTemplateRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<DeleteSystemTemplateResponse>,
+  output: __S(312, __c39, 0) as any as S.Schema<DeleteSystemTemplateResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -892,7 +892,7 @@ export const deprecateFlowTemplate: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(48, __c6, 0) as any as S.Schema<DeprecateFlowTemplateRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<DeprecateFlowTemplateResponse>,
+  output: __S(312, __c39, 0) as any as S.Schema<DeprecateFlowTemplateResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -920,7 +920,7 @@ export const deprecateSystemTemplate: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(56, __c7, 0) as any as S.Schema<DeprecateSystemTemplateRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<DeprecateSystemTemplateResponse>,
+  output: __S(312, __c39, 0) as any as S.Schema<DeprecateSystemTemplateResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -977,7 +977,7 @@ export const dissociateEntityFromThing: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(72, __c9, 0) as any as S.Schema<DissociateEntityFromThingRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<DissociateEntityFromThingResponse>,
+  output: __S(312, __c39, 0) as any as S.Schema<DissociateEntityFromThingResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1054,7 +1054,7 @@ export const getFlowTemplate: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(104, __c13, 0) as any as S.Schema<GetFlowTemplateRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<GetFlowTemplateResponse>,
+  output: __S(113, __c14, 1) as any as S.Schema<GetFlowTemplateResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1083,8 +1083,8 @@ export const getFlowTemplateRevisions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FlowTemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<GetFlowTemplateRevisionsRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<GetFlowTemplateRevisionsResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetFlowTemplateRevisionsRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<GetFlowTemplateRevisionsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1116,8 +1116,8 @@ export const getNamespaceDeletionStatus: API.OperationMethod<
   GetNamespaceDeletionStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<GetNamespaceDeletionStatusRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<GetNamespaceDeletionStatusResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<GetNamespaceDeletionStatusRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<GetNamespaceDeletionStatusResponse>,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1139,8 +1139,8 @@ export const getSystemInstance: API.OperationMethod<
   GetSystemInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<GetSystemInstanceRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<GetSystemInstanceResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetSystemInstanceRequest>,
+  output: __S(148, __c18, 4) as any as S.Schema<GetSystemInstanceResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1167,8 +1167,8 @@ export const getSystemTemplate: API.OperationMethod<
   GetSystemTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<GetSystemTemplateRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<GetSystemTemplateResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetSystemTemplateRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<GetSystemTemplateResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1197,8 +1197,8 @@ export const getSystemTemplateRevisions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SystemTemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<GetSystemTemplateRevisionsRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<GetSystemTemplateRevisionsResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<GetSystemTemplateRevisionsRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<GetSystemTemplateRevisionsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1231,8 +1231,8 @@ export const getUploadStatus: API.OperationMethod<
   GetUploadStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<GetUploadStatusRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<GetUploadStatusResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<GetUploadStatusRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<GetUploadStatusResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1260,8 +1260,8 @@ export const listFlowExecutionMessages: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FlowExecutionMessage
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<ListFlowExecutionMessagesRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<ListFlowExecutionMessagesResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<ListFlowExecutionMessagesRequest>,
+  output: __S(179, __c22, 3) as any as S.Schema<ListFlowExecutionMessagesResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1295,8 +1295,8 @@ export const listTagsForResource: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Tag
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(185, __c23, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1329,8 +1329,8 @@ export const searchEntities: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EntityDescription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<SearchEntitiesRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<SearchEntitiesResponse>,
+  input: __S(193, __c24, 1) as any as S.Schema<SearchEntitiesRequest>,
+  output: __S(194, __c24, 2) as any as S.Schema<SearchEntitiesResponse>,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1359,8 +1359,8 @@ export const searchFlowExecutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FlowExecutionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<SearchFlowExecutionsRequest>,
-  output: __S(195, __c24, 3) as any as S.Schema<SearchFlowExecutionsResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<SearchFlowExecutionsRequest>,
+  output: __S(211, __c26, 3) as any as S.Schema<SearchFlowExecutionsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1393,8 +1393,8 @@ export const searchFlowTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FlowTemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<SearchFlowTemplatesRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<SearchFlowTemplatesResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<SearchFlowTemplatesRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<SearchFlowTemplatesResponse>,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1422,8 +1422,8 @@ export const searchSystemInstances: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SystemInstanceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<SearchSystemInstancesRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<SearchSystemInstancesResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<SearchSystemInstancesRequest>,
+  output: __S(234, __c29, 2) as any as S.Schema<SearchSystemInstancesResponse>,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1451,8 +1451,8 @@ export const searchSystemTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SystemTemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<SearchSystemTemplatesRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<SearchSystemTemplatesResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<SearchSystemTemplatesRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<SearchSystemTemplatesResponse>,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1486,8 +1486,8 @@ export const searchThings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Thing
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<SearchThingsRequest>,
-  output: __S(227, __c28, 3) as any as S.Schema<SearchThingsResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<SearchThingsRequest>,
+  output: __S(251, __c31, 3) as any as S.Schema<SearchThingsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1520,8 +1520,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(312, __c39, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1549,8 +1549,8 @@ export const undeploySystemInstance: API.OperationMethod<
   UndeploySystemInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<UndeploySystemInstanceRequest>,
-  output: __S(360, __c45, 0) as any as S.Schema<UndeploySystemInstanceResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<UndeploySystemInstanceRequest>,
+  output: __S(384, __c48, 0) as any as S.Schema<UndeploySystemInstanceResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1578,8 +1578,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(312, __c39, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1607,8 +1607,8 @@ export const updateFlowTemplate: API.OperationMethod<
   UpdateFlowTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<UpdateFlowTemplateRequest>,
-  output: __S(312, __c39, 0) as any as S.Schema<UpdateFlowTemplateResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<UpdateFlowTemplateRequest>,
+  output: __S(336, __c42, 0) as any as S.Schema<UpdateFlowTemplateResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1635,8 +1635,8 @@ export const updateSystemTemplate: API.OperationMethod<
   UpdateSystemTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<UpdateSystemTemplateRequest>,
-  output: __S(312, __c39, 0) as any as S.Schema<UpdateSystemTemplateResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<UpdateSystemTemplateRequest>,
+  output: __S(336, __c42, 0) as any as S.Schema<UpdateSystemTemplateResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1674,8 +1674,8 @@ export const uploadEntityDefinitions: API.OperationMethod<
   UploadEntityDefinitionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<UploadEntityDefinitionsRequest>,
-  output: __S(273, __c34, 1) as any as S.Schema<UploadEntityDefinitionsResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<UploadEntityDefinitionsRequest>,
+  output: __S(297, __c37, 1) as any as S.Schema<UploadEntityDefinitionsResponse>,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1688,12 +1688,10 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          definition: __S(320, __c40, 0),
+          definition: __S(344, __c43, 0),
           compatibleNamespaceVersion: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateSystemTemplateRequest",
-      });
+      ).annotate({ identifier: "CreateSystemTemplateRequest" });
   }
 }
 function __c1(j: number): any {
@@ -1703,9 +1701,7 @@ function __c1(j: number): any {
         S.Struct({ id: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteFlowTemplateRequest",
-      });
+      ).annotate({ identifier: "DeleteFlowTemplateRequest" });
   }
 }
 function __c2(j: number): any {
@@ -1729,9 +1725,7 @@ function __c3(j: number): any {
         S.Struct({ id: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteSystemInstanceRequest",
-      });
+      ).annotate({ identifier: "DeleteSystemInstanceRequest" });
   }
 }
 function __c4(j: number): any {
@@ -1741,9 +1735,7 @@ function __c4(j: number): any {
         S.Struct({ id: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteSystemTemplateRequest",
-      });
+      ).annotate({ identifier: "DeleteSystemTemplateRequest" });
   }
 }
 function __c5(j: number): any {
@@ -1753,15 +1745,11 @@ function __c5(j: number): any {
         S.Struct({ id: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeploySystemInstanceRequest",
-      });
+      ).annotate({ identifier: "DeploySystemInstanceRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ summary: __S(336, __c42, 0), greengrassDeploymentId: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DeploySystemInstanceResponse",
-      });
+        S.Struct({ summary: __S(360, __c45, 0), greengrassDeploymentId: S.optional(S.String) }),
+      ).annotate({ identifier: "DeploySystemInstanceResponse" });
   }
 }
 function __c6(j: number): any {
@@ -1771,9 +1759,7 @@ function __c6(j: number): any {
         S.Struct({ id: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeprecateFlowTemplateRequest",
-      });
+      ).annotate({ identifier: "DeprecateFlowTemplateRequest" });
   }
 }
 function __c7(j: number): any {
@@ -1783,13 +1769,7 @@ function __c7(j: number): any {
         S.Struct({ id: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeprecateSystemTemplateRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeprecateSystemTemplateResponse",
-      });
+      ).annotate({ identifier: "DeprecateSystemTemplateRequest" });
   }
 }
 function __c8(j: number): any {
@@ -1809,9 +1789,7 @@ function __c8(j: number): any {
           trackingNamespaceVersion: S.optional(S.Number),
           namespaceVersion: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "DescribeNamespaceResponse",
-      });
+      ).annotate({ identifier: "DescribeNamespaceResponse" });
   }
 }
 function __c9(j: number): any {
@@ -1821,13 +1799,7 @@ function __c9(j: number): any {
         S.Struct({ thingName: S.String, entityType: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DissociateEntityFromThingRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DissociateEntityFromThingResponse",
-      });
+      ).annotate({ identifier: "DissociateEntityFromThingRequest" });
   }
 }
 function __c10(j: number): any {
@@ -1859,7 +1831,7 @@ function __c12(j: number): any {
           arn: S.optional(S.String),
           type: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          definition: S.optional(__S(320, __c40, 0)),
+          definition: S.optional(__S(344, __c43, 0)),
         }),
       ).annotate({ identifier: "EntityDescription" });
     case 1:
@@ -1874,21 +1846,25 @@ function __c13(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetFlowTemplateRequest" });
-    case 1:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          summary: S.optional(__S(304, __c38, 0)),
-          definition: S.optional(__S(320, __c40, 0)),
+          summary: S.optional(__S(328, __c41, 0)),
+          definition: S.optional(__S(344, __c43, 0)),
           validatedNamespaceVersion: S.optional(S.Number),
         }),
       ).annotate({ identifier: "FlowTemplateDescription" });
-    case 2:
-      return S.suspend(() => S.Struct({ description: S.optional(__S(105, __c13, 1)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ description: S.optional(__S(112, __c14, 0)) })).annotate({
         identifier: "GetFlowTemplateResponse",
       });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1897,33 +1873,27 @@ function __c14(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetFlowTemplateRevisionsRequest",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(304, __c38, 0));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ summaries: S.optional(__S(120, __c15, 0)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetFlowTemplateRevisionsResponse",
-      });
+      ).annotate({ identifier: "GetFlowTemplateRevisionsRequest" });
   }
 }
 function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(328, __c41, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ summaries: S.optional(__S(128, __c16, 0)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "GetFlowTemplateRevisionsResponse" });
+  }
+}
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetNamespaceDeletionStatusRequest",
-      });
+      ).annotate({ identifier: "GetNamespaceDeletionStatusRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1933,12 +1903,10 @@ function __c16(j: number): any {
           errorCode: S.optional(S.String),
           errorMessage: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetNamespaceDeletionStatusResponse",
-      });
+      ).annotate({ identifier: "GetNamespaceDeletionStatusResponse" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1951,28 +1919,26 @@ function __c17(j: number): any {
         S.Struct({ id: S.optional(S.String), revisionNumber: S.optional(S.Number) }),
       ).annotate({ identifier: "DependencyRevision" });
     case 2:
-      return S.Array(__S(137, __c17, 1));
+      return S.Array(__S(145, __c18, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          summary: S.optional(__S(336, __c42, 0)),
-          definition: S.optional(__S(320, __c40, 0)),
+          summary: S.optional(__S(360, __c45, 0)),
+          definition: S.optional(__S(344, __c43, 0)),
           s3BucketName: S.optional(S.String),
-          metricsConfiguration: S.optional(__S(344, __c43, 0)),
+          metricsConfiguration: S.optional(__S(368, __c46, 0)),
           validatedNamespaceVersion: S.optional(S.Number),
-          validatedDependencyRevisions: S.optional(__S(138, __c17, 2)),
+          validatedDependencyRevisions: S.optional(__S(146, __c18, 2)),
           flowActionsRoleArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SystemInstanceDescription",
-      });
+      ).annotate({ identifier: "SystemInstanceDescription" });
     case 4:
-      return S.suspend(() => S.Struct({ description: S.optional(__S(139, __c17, 3)) })).annotate({
+      return S.suspend(() => S.Struct({ description: S.optional(__S(147, __c18, 3)) })).annotate({
         identifier: "GetSystemInstanceResponse",
       });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1980,23 +1946,9 @@ function __c18(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetSystemTemplateRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          summary: S.optional(__S(304, __c38, 0)),
-          definition: S.optional(__S(320, __c40, 0)),
-          validatedNamespaceVersion: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "SystemTemplateDescription",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ description: S.optional(__S(145, __c18, 1)) })).annotate({
-        identifier: "GetSystemTemplateResponse",
-      });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2005,12 +1957,10 @@ function __c19(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetSystemTemplateRevisionsRequest",
-      });
+      ).annotate({ identifier: "GetSystemTemplateRevisionsRequest" });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2032,7 +1982,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "GetUploadStatusResponse" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2041,9 +1991,7 @@ function __c21(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListFlowExecutionMessagesRequest",
-      });
+      ).annotate({ identifier: "ListFlowExecutionMessagesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2054,16 +2002,14 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "FlowExecutionMessage" });
     case 2:
-      return S.Array(__S(169, __c21, 1));
+      return S.Array(__S(177, __c22, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ messages: S.optional(__S(170, __c21, 2)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListFlowExecutionMessagesResponse",
-      });
+        S.Struct({ messages: S.optional(__S(178, __c22, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListFlowExecutionMessagesResponse" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2072,44 +2018,44 @@ function __c22(j: number): any {
           resourceArn: S.String,
           nextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ tags: S.optional(__S(353, __c44, 1)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
+        S.Struct({ tags: S.optional(__S(377, __c47, 1)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListTagsForResourceResponse" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
     case 1:
       return S.suspend(() =>
-        S.Struct({ name: S.optional(S.String), value: S.optional(__S(88, __c11, 0)) }),
-      ).annotate({ identifier: "EntityFilter" });
-    case 2:
-      return S.Array(__S(185, __c23, 1));
-    case 3:
-      return S.suspend(() =>
         S.Struct({
-          entityTypes: __S(184, __c23, 0),
-          filters: S.optional(__S(186, __c23, 2)),
+          entityTypes: __S(192, __c24, 0),
+          filters: S.optional(__S(201, __c25, 1)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
           namespaceVersion: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "SearchEntitiesRequest" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({ descriptions: S.optional(__S(97, __c12, 1)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "SearchEntitiesResponse" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ name: S.optional(S.String), value: S.optional(__S(88, __c11, 0)) }),
+      ).annotate({ identifier: "EntityFilter" });
+    case 1:
+      return S.Array(__S(200, __c25, 0));
+  }
+}
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2121,9 +2067,7 @@ function __c24(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SearchFlowExecutionsRequest",
-      });
+      ).annotate({ identifier: "SearchFlowExecutionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2136,87 +2080,66 @@ function __c24(j: number): any {
         }),
       ).annotate({ identifier: "FlowExecutionSummary" });
     case 2:
-      return S.Array(__S(193, __c24, 1));
+      return S.Array(__S(209, __c26, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ summaries: S.optional(__S(194, __c24, 2)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "SearchFlowExecutionsResponse",
-      });
+        S.Struct({ summaries: S.optional(__S(210, __c26, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "SearchFlowExecutionsResponse" });
   }
 }
-function __c25(j: number): any {
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filters: S.optional(__S(225, __c28, 1)),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "SearchFlowTemplatesRequest" });
+  }
+}
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ name: S.String, value: __S(88, __c11, 0) })).annotate({
         identifier: "FlowTemplateFilter",
       });
     case 1:
-      return S.Array(__S(200, __c25, 0));
-    case 2:
+      return S.Array(__S(224, __c28, 0));
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filters: S.optional(__S(201, __c25, 1)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SearchFlowTemplatesRequest",
-      });
+      ).annotate({ identifier: "SearchSystemInstancesRequest" });
+    case 1:
+      return S.Array(__S(360, __c45, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ summaries: S.optional(__S(233, __c29, 1)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "SearchSystemInstancesResponse" });
   }
 }
-function __c26(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
-          value: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({ identifier: "SystemInstanceFilter" });
-    case 1:
-      return S.Array(__S(208, __c26, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          filters: S.optional(__S(209, __c26, 1)),
+          filters: S.optional(__S(225, __c28, 1)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SearchSystemInstancesRequest",
-      });
-    case 3:
-      return S.Array(__S(336, __c42, 0));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ summaries: S.optional(__S(211, __c26, 3)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "SearchSystemInstancesResponse",
-      });
+      ).annotate({ identifier: "SearchSystemTemplatesRequest" });
   }
 }
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ name: S.String, value: __S(88, __c11, 0) })).annotate({
-        identifier: "SystemTemplateFilter",
-      });
-    case 1:
-      return S.Array(__S(216, __c27, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          filters: S.optional(__S(217, __c27, 1)),
-          nextToken: S.optional(S.String),
-          maxResults: S.optional(S.Number),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SearchSystemTemplatesRequest",
-      });
-  }
-}
-function __c28(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2232,36 +2155,34 @@ function __c28(j: number): any {
         S.Struct({ thingArn: S.optional(S.String), thingName: S.optional(S.String) }),
       ).annotate({ identifier: "Thing" });
     case 2:
-      return S.Array(__S(225, __c28, 1));
+      return S.Array(__S(249, __c31, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ things: S.optional(__S(226, __c28, 2)), nextToken: S.optional(S.String) }),
+        S.Struct({ things: S.optional(__S(250, __c31, 2)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "SearchThingsResponse" });
   }
 }
-function __c29(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tags: __S(353, __c44, 1) }).pipe(
+        S.Struct({ resourceArn: S.String, tags: __S(377, __c47, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c30(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ id: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UndeploySystemInstanceRequest",
-      });
+      ).annotate({ identifier: "UndeploySystemInstanceRequest" });
   }
 }
-function __c31(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2271,53 +2192,47 @@ function __c31(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c32(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          definition: __S(320, __c40, 0),
+          definition: __S(344, __c43, 0),
           compatibleNamespaceVersion: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateFlowTemplateRequest",
-      });
+      ).annotate({ identifier: "UpdateFlowTemplateRequest" });
   }
 }
-function __c33(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          definition: __S(320, __c40, 0),
+          definition: __S(344, __c43, 0),
           compatibleNamespaceVersion: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateSystemTemplateRequest",
-      });
+      ).annotate({ identifier: "UpdateSystemTemplateRequest" });
   }
 }
-function __c34(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          document: S.optional(__S(320, __c40, 0)),
+          document: S.optional(__S(344, __c43, 0)),
           syncWithPublicNamespace: S.optional(S.Boolean),
           deprecateExistingEntities: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UploadEntityDefinitionsRequest",
-      });
+      ).annotate({ identifier: "UploadEntityDefinitionsRequest" });
     case 1:
       return S.suspend(() => S.Struct({ uploadId: S.String })).annotate({
         identifier: "UploadEntityDefinitionsResponse",
       });
   }
 }
-function __c35(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2326,12 +2241,10 @@ function __c35(j: number): any {
           entityId: S.String,
           namespaceVersion: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssociateEntityToThingRequest",
-      });
+      ).annotate({ identifier: "AssociateEntityToThingRequest" });
   }
 }
-function __c36(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
@@ -2339,20 +2252,18 @@ function __c36(j: number): any {
       });
   }
 }
-function __c37(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          definition: __S(320, __c40, 0),
+          definition: __S(344, __c43, 0),
           compatibleNamespaceVersion: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateFlowTemplateRequest",
-      });
+      ).annotate({ identifier: "CreateFlowTemplateRequest" });
   }
 }
-function __c38(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2365,15 +2276,15 @@ function __c38(j: number): any {
       ).annotate({ identifier: "FlowTemplateSummary" });
   }
 }
-function __c39(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ summary: S.optional(__S(304, __c38, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ summary: S.optional(__S(328, __c41, 0)) })).annotate({
         identifier: "CreateFlowTemplateResponse",
       });
   }
 }
-function __c40(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ language: S.String, text: S.String })).annotate({
@@ -2381,25 +2292,23 @@ function __c40(j: number): any {
       });
   }
 }
-function __c41(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(353, __c44, 1)),
-          definition: __S(320, __c40, 0),
+          tags: S.optional(__S(377, __c47, 1)),
+          definition: __S(344, __c43, 0),
           target: S.String,
           greengrassGroupName: S.optional(S.String),
           s3BucketName: S.optional(S.String),
-          metricsConfiguration: S.optional(__S(344, __c43, 0)),
+          metricsConfiguration: S.optional(__S(368, __c46, 0)),
           flowActionsRoleArn: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateSystemInstanceRequest",
-      });
+      ).annotate({ identifier: "CreateSystemInstanceRequest" });
   }
 }
-function __c42(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2417,7 +2326,7 @@ function __c42(j: number): any {
       ).annotate({ identifier: "SystemInstanceSummary" });
   }
 }
-function __c43(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2428,20 +2337,20 @@ function __c43(j: number): any {
       ).annotate({ identifier: "MetricsConfiguration" });
   }
 }
-function __c44(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
         identifier: "Tag",
       });
     case 1:
-      return S.Array(__S(352, __c44, 0));
+      return S.Array(__S(376, __c47, 0));
   }
 }
-function __c45(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ summary: S.optional(__S(336, __c42, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ summary: S.optional(__S(360, __c45, 0)) })).annotate({
         identifier: "CreateSystemInstanceResponse",
       });
   }

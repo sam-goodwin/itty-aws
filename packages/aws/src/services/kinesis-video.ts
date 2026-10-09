@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -812,7 +812,7 @@ export const deleteStream: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(72, __c9, 0) as any as S.Schema<DeleteStreamInput>,
-  output: __S(80, __c10, 0) as any as S.Schema<DeleteStreamOutput>,
+  output: __S(56, __c7, 0) as any as S.Schema<DeleteStreamOutput>,
   errors: [
     ClientLimitExceededException,
     InvalidArgumentException,
@@ -846,8 +846,8 @@ export const describeEdgeConfiguration: API.OperationMethod<
   DescribeEdgeConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<DescribeEdgeConfigurationInput>,
-  output: __S(92, __c11, 4) as any as S.Schema<DescribeEdgeConfigurationOutput>,
+  input: __S(80, __c10, 0) as any as S.Schema<DescribeEdgeConfigurationInput>,
+  output: __S(84, __c10, 4) as any as S.Schema<DescribeEdgeConfigurationOutput>,
   errors: [
     AccessDeniedException,
     ClientLimitExceededException,
@@ -875,8 +875,8 @@ export const describeImageGenerationConfiguration: API.OperationMethod<
   DescribeImageGenerationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<DescribeImageGenerationConfigurationInput>,
-  output: __S(105, __c13, 1) as any as S.Schema<DescribeImageGenerationConfigurationOutput>,
+  input: __S(96, __c12, 0) as any as S.Schema<DescribeImageGenerationConfigurationInput>,
+  output: __S(97, __c12, 1) as any as S.Schema<DescribeImageGenerationConfigurationOutput>,
   errors: [
     AccessDeniedException,
     ClientLimitExceededException,
@@ -905,8 +905,8 @@ export const describeMappedResourceConfiguration: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MappedResourceConfigurationListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<DescribeMappedResourceConfigurationInput>,
-  output: __S(123, __c15, 3) as any as S.Schema<DescribeMappedResourceConfigurationOutput>,
+  input: __S(112, __c14, 0) as any as S.Schema<DescribeMappedResourceConfigurationInput>,
+  output: __S(115, __c14, 3) as any as S.Schema<DescribeMappedResourceConfigurationOutput>,
   errors: [
     AccessDeniedException,
     ClientLimitExceededException,
@@ -940,8 +940,8 @@ export const describeMediaStorageConfiguration: API.OperationMethod<
   DescribeMediaStorageConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<DescribeMediaStorageConfigurationInput>,
-  output: __S(129, __c16, 1) as any as S.Schema<DescribeMediaStorageConfigurationOutput>,
+  input: __S(120, __c15, 0) as any as S.Schema<DescribeMediaStorageConfigurationInput>,
+  output: __S(121, __c15, 1) as any as S.Schema<DescribeMediaStorageConfigurationOutput>,
   errors: [
     AccessDeniedException,
     ClientLimitExceededException,
@@ -968,8 +968,8 @@ export const describeNotificationConfiguration: API.OperationMethod<
   DescribeNotificationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<DescribeNotificationConfigurationInput>,
-  output: __S(145, __c18, 1) as any as S.Schema<DescribeNotificationConfigurationOutput>,
+  input: __S(136, __c17, 0) as any as S.Schema<DescribeNotificationConfigurationInput>,
+  output: __S(137, __c17, 1) as any as S.Schema<DescribeNotificationConfigurationOutput>,
   errors: [
     AccessDeniedException,
     ClientLimitExceededException,
@@ -998,8 +998,8 @@ export const describeSignalingChannel: API.OperationMethod<
   DescribeSignalingChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<DescribeSignalingChannelInput>,
-  output: __S(161, __c20, 1) as any as S.Schema<DescribeSignalingChannelOutput>,
+  input: __S(152, __c19, 0) as any as S.Schema<DescribeSignalingChannelInput>,
+  output: __S(153, __c19, 1) as any as S.Schema<DescribeSignalingChannelOutput>,
   errors: [
     AccessDeniedException,
     ClientLimitExceededException,
@@ -1027,8 +1027,8 @@ export const describeStream: API.OperationMethod<
   DescribeStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<DescribeStreamInput>,
-  output: __S(177, __c22, 1) as any as S.Schema<DescribeStreamOutput>,
+  input: __S(168, __c21, 0) as any as S.Schema<DescribeStreamInput>,
+  output: __S(169, __c21, 1) as any as S.Schema<DescribeStreamOutput>,
   errors: [
     ClientLimitExceededException,
     InvalidArgumentException,
@@ -1059,8 +1059,8 @@ export const describeStreamStorageConfiguration: API.OperationMethod<
   DescribeStreamStorageConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<DescribeStreamStorageConfigurationInput>,
-  output: __S(193, __c24, 1) as any as S.Schema<DescribeStreamStorageConfigurationOutput>,
+  input: __S(184, __c23, 0) as any as S.Schema<DescribeStreamStorageConfigurationInput>,
+  output: __S(185, __c23, 1) as any as S.Schema<DescribeStreamStorageConfigurationOutput>,
   errors: [
     AccessDeniedException,
     ClientLimitExceededException,
@@ -1096,8 +1096,8 @@ export const getDataEndpoint: API.OperationMethod<
   GetDataEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<GetDataEndpointInput>,
-  output: __S(201, __c25, 1) as any as S.Schema<GetDataEndpointOutput>,
+  input: __S(192, __c24, 0) as any as S.Schema<GetDataEndpointInput>,
+  output: __S(193, __c24, 1) as any as S.Schema<GetDataEndpointOutput>,
   errors: [
     ClientLimitExceededException,
     InvalidArgumentException,
@@ -1139,8 +1139,8 @@ export const getSignalingChannelEndpoint: API.OperationMethod<
   GetSignalingChannelEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<GetSignalingChannelEndpointInput>,
-  output: __S(213, __c26, 5) as any as S.Schema<GetSignalingChannelEndpointOutput>,
+  input: __S(202, __c25, 2) as any as S.Schema<GetSignalingChannelEndpointInput>,
+  output: __S(205, __c25, 5) as any as S.Schema<GetSignalingChannelEndpointOutput>,
   errors: [
     AccessDeniedException,
     ClientLimitExceededException,
@@ -1170,8 +1170,8 @@ export const listEdgeAgentConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListEdgeAgentConfigurationsEdgeConfig
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<ListEdgeAgentConfigurationsInput>,
-  output: __S(219, __c27, 3) as any as S.Schema<ListEdgeAgentConfigurationsOutput>,
+  input: __S(208, __c26, 0) as any as S.Schema<ListEdgeAgentConfigurationsInput>,
+  output: __S(211, __c26, 3) as any as S.Schema<ListEdgeAgentConfigurationsOutput>,
   errors: [ClientLimitExceededException, InvalidArgumentException, NotAuthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1201,8 +1201,8 @@ export const listSignalingChannels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ChannelInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<ListSignalingChannelsInput>,
-  output: __S(226, __c28, 2) as any as S.Schema<ListSignalingChannelsOutput>,
+  input: __S(216, __c27, 0) as any as S.Schema<ListSignalingChannelsInput>,
+  output: __S(218, __c27, 2) as any as S.Schema<ListSignalingChannelsOutput>,
   errors: [AccessDeniedException, ClientLimitExceededException, InvalidArgumentException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1231,8 +1231,8 @@ export const listStreams: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   StreamInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<ListStreamsInput>,
-  output: __S(242, __c30, 2) as any as S.Schema<ListStreamsOutput>,
+  input: __S(232, __c29, 0) as any as S.Schema<ListStreamsInput>,
+  output: __S(234, __c29, 2) as any as S.Schema<ListStreamsOutput>,
   errors: [ClientLimitExceededException, InvalidArgumentException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1260,8 +1260,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(249, __c31, 1) as any as S.Schema<ListTagsForResourceOutput>,
+  input: __S(240, __c30, 0) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(248, __c31, 0) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [
     AccessDeniedException,
     ClientLimitExceededException,
@@ -1293,7 +1293,7 @@ export const listTagsForStream: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(256, __c32, 0) as any as S.Schema<ListTagsForStreamInput>,
-  output: __S(257, __c32, 1) as any as S.Schema<ListTagsForStreamOutput>,
+  output: __S(248, __c31, 0) as any as S.Schema<ListTagsForStreamOutput>,
   errors: [
     ClientLimitExceededException,
     InvalidArgumentException,
@@ -1376,7 +1376,7 @@ export const tagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(272, __c34, 0) as any as S.Schema<TagResourceInput>,
-  output: __S(80, __c10, 0) as any as S.Schema<TagResourceOutput>,
+  output: __S(56, __c7, 0) as any as S.Schema<TagResourceOutput>,
   errors: [
     AccessDeniedException,
     ClientLimitExceededException,
@@ -1421,7 +1421,7 @@ export const tagStream: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(280, __c35, 0) as any as S.Schema<TagStreamInput>,
-  output: __S(80, __c10, 0) as any as S.Schema<TagStreamOutput>,
+  output: __S(56, __c7, 0) as any as S.Schema<TagStreamOutput>,
   errors: [
     ClientLimitExceededException,
     InvalidArgumentException,
@@ -1455,7 +1455,7 @@ export const untagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(288, __c36, 0) as any as S.Schema<UntagResourceInput>,
-  output: __S(80, __c10, 0) as any as S.Schema<UntagResourceOutput>,
+  output: __S(56, __c7, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [
     AccessDeniedException,
     ClientLimitExceededException,
@@ -1491,7 +1491,7 @@ export const untagStream: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(304, __c38, 0) as any as S.Schema<UntagStreamInput>,
-  output: __S(80, __c10, 0) as any as S.Schema<UntagStreamOutput>,
+  output: __S(56, __c7, 0) as any as S.Schema<UntagStreamOutput>,
   errors: [
     ClientLimitExceededException,
     InvalidArgumentException,
@@ -1737,7 +1737,7 @@ export const updateStream: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(352, __c44, 0) as any as S.Schema<UpdateStreamInput>,
-  output: __S(80, __c10, 0) as any as S.Schema<UpdateStreamOutput>,
+  output: __S(56, __c7, 0) as any as S.Schema<UpdateStreamOutput>,
   errors: [
     ClientLimitExceededException,
     InvalidArgumentException,
@@ -1811,9 +1811,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateSignalingChannelInput",
-      });
+      ).annotate({ identifier: "CreateSignalingChannelInput" });
     case 1:
       return S.suspend(() => S.Struct({ ChannelARN: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "CreateSignalingChannelOutput",
@@ -1889,9 +1887,7 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteEdgeConfigurationInput",
-      });
+      ).annotate({ identifier: "DeleteEdgeConfigurationInput" });
   }
 }
 function __c7(j: number): any {
@@ -1917,9 +1913,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteSignalingChannelInput",
-      });
+      ).annotate({ identifier: "DeleteSignalingChannelInput" });
   }
 }
 function __c9(j: number): any {
@@ -1935,14 +1929,6 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeleteStreamOutput",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({ StreamName: S.optional(S.String), StreamARN: S.optional(S.String) }).pipe(
           T.all(
@@ -1955,9 +1941,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeEdgeConfigurationInput",
-      });
+      ).annotate({ identifier: "DescribeEdgeConfigurationInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1979,8 +1963,8 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          LastRecorderStatus: S.optional(__S(89, __c11, 1)),
-          LastUploaderStatus: S.optional(__S(90, __c11, 2)),
+          LastRecorderStatus: S.optional(__S(81, __c10, 1)),
+          LastUploaderStatus: S.optional(__S(82, __c10, 2)),
         }),
       ).annotate({ identifier: "EdgeAgentStatus" });
     case 4:
@@ -1992,15 +1976,13 @@ function __c11(j: number): any {
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           SyncStatus: S.optional(S.String),
           FailedStatusDetails: S.optional(S.String),
-          EdgeConfig: S.optional(__S(102, __c12, 6)),
-          EdgeAgentStatus: S.optional(__S(91, __c11, 3)),
+          EdgeConfig: S.optional(__S(94, __c11, 6)),
+          EdgeAgentStatus: S.optional(__S(83, __c10, 3)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeEdgeConfigurationOutput",
-      });
+      ).annotate({ identifier: "DescribeEdgeConfigurationOutput" });
   }
 }
-function __c12(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2013,12 +1995,12 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          MediaSourceConfig: __S(96, __c12, 0),
-          ScheduleConfig: S.optional(__S(97, __c12, 1)),
+          MediaSourceConfig: __S(88, __c11, 0),
+          ScheduleConfig: S.optional(__S(89, __c11, 1)),
         }),
       ).annotate({ identifier: "RecorderConfig" });
     case 3:
-      return S.suspend(() => S.Struct({ ScheduleConfig: __S(97, __c12, 1) })).annotate({
+      return S.suspend(() => S.Struct({ ScheduleConfig: __S(89, __c11, 1) })).annotate({
         identifier: "UploaderConfig",
       });
     case 4:
@@ -2032,7 +2014,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           EdgeRetentionInHours: S.optional(S.Number),
-          LocalSizeConfig: S.optional(__S(100, __c12, 4)),
+          LocalSizeConfig: S.optional(__S(92, __c11, 4)),
           DeleteAfterUpload: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DeletionConfig" });
@@ -2040,14 +2022,14 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           HubDeviceArn: S.String,
-          RecorderConfig: __S(98, __c12, 2),
-          UploaderConfig: S.optional(__S(99, __c12, 3)),
-          DeletionConfig: S.optional(__S(101, __c12, 5)),
+          RecorderConfig: __S(90, __c11, 2),
+          UploaderConfig: S.optional(__S(91, __c11, 3)),
+          DeletionConfig: S.optional(__S(93, __c11, 5)),
         }),
       ).annotate({ identifier: "EdgeConfig" });
   }
 }
-function __c13(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2062,18 +2044,14 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeImageGenerationConfigurationInput",
-      });
+      ).annotate({ identifier: "DescribeImageGenerationConfigurationInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ImageGenerationConfiguration: S.optional(__S(114, __c14, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeImageGenerationConfigurationOutput",
-      });
+        S.Struct({ ImageGenerationConfiguration: S.optional(__S(106, __c13, 2)) }).pipe(ns),
+      ).annotate({ identifier: "DescribeImageGenerationConfigurationOutput" });
   }
 }
-function __c14(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Uri: S.String, DestinationRegion: S.String })).annotate({
@@ -2086,19 +2064,17 @@ function __c14(j: number): any {
         S.Struct({
           Status: S.String,
           ImageSelectorType: S.String,
-          DestinationConfig: __S(112, __c14, 0),
+          DestinationConfig: __S(104, __c13, 0),
           SamplingInterval: S.Number,
           Format: S.String,
-          FormatConfig: S.optional(__S(113, __c14, 1)),
+          FormatConfig: S.optional(__S(105, __c13, 1)),
           WidthPixels: S.optional(S.Number),
           HeightPixels: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "ImageGenerationConfiguration",
-      });
+      ).annotate({ identifier: "ImageGenerationConfiguration" });
   }
 }
-function __c15(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2118,29 +2094,23 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeMappedResourceConfigurationInput",
-      });
+      ).annotate({ identifier: "DescribeMappedResourceConfigurationInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Type: S.optional(S.String), ARN: S.optional(S.String) }),
-      ).annotate({
-        identifier: "MappedResourceConfigurationListItem",
-      });
+      ).annotate({ identifier: "MappedResourceConfigurationListItem" });
     case 2:
-      return S.Array(__S(121, __c15, 1));
+      return S.Array(__S(113, __c14, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          MappedResourceConfigurationList: S.optional(__S(122, __c15, 2)),
+          MappedResourceConfigurationList: S.optional(__S(114, __c14, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeMappedResourceConfigurationOutput",
-      });
+      ).annotate({ identifier: "DescribeMappedResourceConfigurationOutput" });
   }
 }
-function __c16(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2155,28 +2125,22 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeMediaStorageConfigurationInput",
-      });
+      ).annotate({ identifier: "DescribeMediaStorageConfigurationInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ MediaStorageConfiguration: S.optional(__S(136, __c17, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeMediaStorageConfigurationOutput",
-      });
+        S.Struct({ MediaStorageConfiguration: S.optional(__S(128, __c16, 0)) }).pipe(ns),
+      ).annotate({ identifier: "DescribeMediaStorageConfigurationOutput" });
   }
 }
-function __c17(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ StreamARN: S.optional(S.String), Status: S.String }),
-      ).annotate({
-        identifier: "MediaStorageConfiguration",
-      });
+      ).annotate({ identifier: "MediaStorageConfiguration" });
   }
 }
-function __c18(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2191,18 +2155,14 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeNotificationConfigurationInput",
-      });
+      ).annotate({ identifier: "DescribeNotificationConfigurationInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ NotificationConfiguration: S.optional(__S(153, __c19, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeNotificationConfigurationOutput",
-      });
+        S.Struct({ NotificationConfiguration: S.optional(__S(145, __c18, 1)) }).pipe(ns),
+      ).annotate({ identifier: "DescribeNotificationConfigurationOutput" });
   }
 }
-function __c19(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Uri: S.String })).annotate({
@@ -2210,13 +2170,11 @@ function __c19(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Status: S.String, DestinationConfig: __S(152, __c19, 0) }),
-      ).annotate({
-        identifier: "NotificationConfiguration",
-      });
+        S.Struct({ Status: S.String, DestinationConfig: __S(144, __c18, 0) }),
+      ).annotate({ identifier: "NotificationConfiguration" });
   }
 }
-function __c20(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2231,18 +2189,14 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeSignalingChannelInput",
-      });
+      ).annotate({ identifier: "DescribeSignalingChannelInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ChannelInfo: S.optional(__S(168, __c21, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeSignalingChannelOutput",
-      });
+        S.Struct({ ChannelInfo: S.optional(__S(160, __c20, 0)) }).pipe(ns),
+      ).annotate({ identifier: "DescribeSignalingChannelOutput" });
   }
 }
-function __c21(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2258,7 +2212,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "ChannelInfo" });
   }
 }
-function __c22(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2276,11 +2230,11 @@ function __c22(j: number): any {
       ).annotate({ identifier: "DescribeStreamInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ StreamInfo: S.optional(__S(184, __c23, 0)) }).pipe(ns),
+        S.Struct({ StreamInfo: S.optional(__S(176, __c22, 0)) }).pipe(ns),
       ).annotate({ identifier: "DescribeStreamOutput" });
   }
 }
-function __c23(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2298,7 +2252,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "StreamInfo" });
   }
 }
-function __c24(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2313,9 +2267,7 @@ function __c24(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeStreamStorageConfigurationInput",
-      });
+      ).annotate({ identifier: "DescribeStreamStorageConfigurationInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2323,12 +2275,10 @@ function __c24(j: number): any {
           StreamARN: S.optional(S.String),
           StreamStorageConfiguration: S.optional(__S(32, __c4, 0)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeStreamStorageConfigurationOutput",
-      });
+      ).annotate({ identifier: "DescribeStreamStorageConfigurationOutput" });
   }
 }
-function __c25(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2354,21 +2304,19 @@ function __c25(j: number): any {
       });
   }
 }
-function __c26(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
     case 1:
       return S.suspend(() =>
-        S.Struct({ Protocols: S.optional(__S(208, __c26, 0)), Role: S.optional(S.String) }),
-      ).annotate({
-        identifier: "SingleMasterChannelEndpointConfiguration",
-      });
+        S.Struct({ Protocols: S.optional(__S(200, __c25, 0)), Role: S.optional(S.String) }),
+      ).annotate({ identifier: "SingleMasterChannelEndpointConfiguration" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           ChannelARN: S.String,
-          SingleMasterChannelEndpointConfiguration: S.optional(__S(209, __c26, 1)),
+          SingleMasterChannelEndpointConfiguration: S.optional(__S(201, __c25, 1)),
         }).pipe(
           T.all(
             ns,
@@ -2380,24 +2328,20 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetSignalingChannelEndpointInput",
-      });
+      ).annotate({ identifier: "GetSignalingChannelEndpointInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({ Protocol: S.optional(S.String), ResourceEndpoint: S.optional(S.String) }),
       ).annotate({ identifier: "ResourceEndpointListItem" });
     case 4:
-      return S.Array(__S(211, __c26, 3));
+      return S.Array(__S(203, __c25, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ ResourceEndpointList: S.optional(__S(212, __c26, 4)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetSignalingChannelEndpointOutput",
-      });
+        S.Struct({ ResourceEndpointList: S.optional(__S(204, __c25, 4)) }).pipe(ns),
+      ).annotate({ identifier: "GetSignalingChannelEndpointOutput" });
   }
 }
-function __c27(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2416,9 +2360,7 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListEdgeAgentConfigurationsInput",
-      });
+      ).annotate({ identifier: "ListEdgeAgentConfigurationsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2428,32 +2370,28 @@ function __c27(j: number): any {
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           SyncStatus: S.optional(S.String),
           FailedStatusDetails: S.optional(S.String),
-          EdgeConfig: S.optional(__S(102, __c12, 6)),
+          EdgeConfig: S.optional(__S(94, __c11, 6)),
         }),
-      ).annotate({
-        identifier: "ListEdgeAgentConfigurationsEdgeConfig",
-      });
+      ).annotate({ identifier: "ListEdgeAgentConfigurationsEdgeConfig" });
     case 2:
-      return S.Array(__S(217, __c27, 1));
+      return S.Array(__S(209, __c26, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          EdgeConfigs: S.optional(__S(218, __c27, 2)),
+          EdgeConfigs: S.optional(__S(210, __c26, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListEdgeAgentConfigurationsOutput",
-      });
+      ).annotate({ identifier: "ListEdgeAgentConfigurationsOutput" });
   }
 }
-function __c28(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          ChannelNameCondition: S.optional(__S(232, __c29, 0)),
+          ChannelNameCondition: S.optional(__S(224, __c28, 0)),
         }).pipe(
           T.all(
             ns,
@@ -2465,23 +2403,19 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSignalingChannelsInput",
-      });
+      ).annotate({ identifier: "ListSignalingChannelsInput" });
     case 1:
-      return S.Array(__S(168, __c21, 0));
+      return S.Array(__S(160, __c20, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ChannelInfoList: S.optional(__S(225, __c28, 1)),
+          ChannelInfoList: S.optional(__S(217, __c27, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ListSignalingChannelsOutput",
-      });
+      ).annotate({ identifier: "ListSignalingChannelsOutput" });
   }
 }
-function __c29(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2492,30 +2426,30 @@ function __c29(j: number): any {
       ).annotate({ identifier: "ChannelNameCondition" });
   }
 }
-function __c30(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          StreamNameCondition: S.optional(__S(232, __c29, 0)),
+          StreamNameCondition: S.optional(__S(224, __c28, 0)),
         }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/listStreams" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListStreamsInput" });
     case 1:
-      return S.Array(__S(184, __c23, 0));
+      return S.Array(__S(176, __c22, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          StreamInfoList: S.optional(__S(241, __c30, 1)),
+          StreamInfoList: S.optional(__S(233, __c29, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListStreamsOutput" });
   }
 }
-function __c31(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2531,12 +2465,14 @@ function __c31(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
-    case 1:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), Tags: S.optional(__S(40, __c5, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "ListTagsForResourceOutput",
-      });
+      ).annotate({ identifier: "ListTagsForResourceOutput" });
   }
 }
 function __c32(j: number): any {
@@ -2559,10 +2495,6 @@ function __c32(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListTagsForStreamInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Tags: S.optional(__S(40, __c5, 0)) }).pipe(ns),
-      ).annotate({ identifier: "ListTagsForStreamOutput" });
   }
 }
 function __c33(j: number): any {
@@ -2572,7 +2504,7 @@ function __c33(j: number): any {
         S.Struct({
           StreamName: S.optional(S.String),
           StreamARN: S.optional(S.String),
-          EdgeConfig: __S(102, __c12, 6),
+          EdgeConfig: __S(94, __c11, 6),
         }).pipe(
           T.all(
             ns,
@@ -2584,9 +2516,7 @@ function __c33(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartEdgeConfigurationUpdateInput",
-      });
+      ).annotate({ identifier: "StartEdgeConfigurationUpdateInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2596,11 +2526,9 @@ function __c33(j: number): any {
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           SyncStatus: S.optional(S.String),
           FailedStatusDetails: S.optional(S.String),
-          EdgeConfig: S.optional(__S(102, __c12, 6)),
+          EdgeConfig: S.optional(__S(94, __c11, 6)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "StartEdgeConfigurationUpdateOutput",
-      });
+      ).annotate({ identifier: "StartEdgeConfigurationUpdateOutput" });
   }
 }
 function __c34(j: number): any {
@@ -2696,7 +2624,7 @@ function __c40(j: number): any {
         S.Struct({
           StreamName: S.optional(S.String),
           StreamARN: S.optional(S.String),
-          ImageGenerationConfiguration: S.optional(__S(114, __c14, 2)),
+          ImageGenerationConfiguration: S.optional(__S(106, __c13, 2)),
         }).pipe(
           T.all(
             ns,
@@ -2708,16 +2636,14 @@ function __c40(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateImageGenerationConfigurationInput",
-      });
+      ).annotate({ identifier: "UpdateImageGenerationConfigurationInput" });
   }
 }
 function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ChannelARN: S.String, MediaStorageConfiguration: __S(136, __c17, 0) }).pipe(
+        S.Struct({ ChannelARN: S.String, MediaStorageConfiguration: __S(128, __c16, 0) }).pipe(
           T.all(
             ns,
             T.Http({ method: "POST", uri: "/updateMediaStorageConfiguration" }),
@@ -2728,9 +2654,7 @@ function __c41(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateMediaStorageConfigurationInput",
-      });
+      ).annotate({ identifier: "UpdateMediaStorageConfigurationInput" });
   }
 }
 function __c42(j: number): any {
@@ -2740,7 +2664,7 @@ function __c42(j: number): any {
         S.Struct({
           StreamName: S.optional(S.String),
           StreamARN: S.optional(S.String),
-          NotificationConfiguration: S.optional(__S(153, __c19, 1)),
+          NotificationConfiguration: S.optional(__S(145, __c18, 1)),
         }).pipe(
           T.all(
             ns,
@@ -2752,9 +2676,7 @@ function __c42(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateNotificationConfigurationInput",
-      });
+      ).annotate({ identifier: "UpdateNotificationConfigurationInput" });
   }
 }
 function __c43(j: number): any {
@@ -2776,9 +2698,7 @@ function __c43(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateSignalingChannelInput",
-      });
+      ).annotate({ identifier: "UpdateSignalingChannelInput" });
   }
 }
 function __c44(j: number): any {
@@ -2817,9 +2737,7 @@ function __c45(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateStreamStorageConfigurationInput",
-      });
+      ).annotate({ identifier: "UpdateStreamStorageConfigurationInput" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

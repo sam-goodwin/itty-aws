@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -141,7 +141,7 @@ export class ValidationException
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       reason: S.String,
       fields: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(3233, __c101, 1)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(3169, __c99, 1)).annotate({
           identifier: "ValidationExceptionFields",
         }),
       ),
@@ -3276,8 +3276,8 @@ export const associateMember: API.OperationMethod<
   AssociateMemberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3584, __c112, 0) as any as S.Schema<AssociateMemberRequest>,
-  output: __S(3585, __c112, 1) as any as S.Schema<AssociateMemberResponse>,
+  input: __S(3520, __c110, 0) as any as S.Schema<AssociateMemberRequest>,
+  output: __S(3552, __c111, 0) as any as S.Schema<AssociateMemberResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3309,13 +3309,13 @@ export const batchAssociateCodeSecurityScanConfiguration: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3936,
-    __c123,
+    3872,
+    __c121,
     0,
   ) as any as S.Schema<BatchAssociateCodeSecurityScanConfigurationRequest>,
   output: __S(
-    3974,
-    __c124,
+    3910,
+    __c122,
     6,
   ) as any as S.Schema<BatchAssociateCodeSecurityScanConfigurationResponse>,
   errors: [
@@ -3351,8 +3351,8 @@ export const batchDisassociateCodeSecurityScanConfiguration: API.OperationMethod
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<BatchDisassociateCodeSecurityScanConfigurationRequest>,
   output: __S(
-    3974,
-    __c124,
+    3910,
+    __c122,
     6,
   ) as any as S.Schema<BatchDisassociateCodeSecurityScanConfigurationResponse>,
   errors: [
@@ -3717,8 +3717,8 @@ export const createConnector: API.OperationMethod<
   CreateConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(898, __c28, 2) as any as S.Schema<CreateConnectorRequest>,
-  output: __S(899, __c28, 3) as any as S.Schema<CreateConnectorResponse>,
+  input: __S(866, __c27, 2) as any as S.Schema<CreateConnectorRequest>,
+  output: __S(867, __c27, 3) as any as S.Schema<CreateConnectorResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3750,8 +3750,8 @@ export const createFilter: API.OperationMethod<
   CreateFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c31, 0) as any as S.Schema<CreateFilterRequest>,
-  output: __S(1184, __c37, 0) as any as S.Schema<CreateFilterResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<CreateFilterRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<CreateFilterResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3783,8 +3783,8 @@ export const createFindingsReport: API.OperationMethod<
   CreateFindingsReportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1216, __c38, 0) as any as S.Schema<CreateFindingsReportRequest>,
-  output: __S(1217, __c38, 1) as any as S.Schema<CreateFindingsReportResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<CreateFindingsReportRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<CreateFindingsReportResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3813,7 +3813,7 @@ export const createSbomExport: API.OperationMethod<
   CreateSbomExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1280, __c40, 0) as any as S.Schema<CreateSbomExportRequest>,
+  input: __S(1216, __c38, 0) as any as S.Schema<CreateSbomExportRequest>,
   output: __S(448, __c14, 0) as any as S.Schema<CreateSbomExportResponse>,
   errors: [
     AccessDeniedException,
@@ -3843,7 +3843,7 @@ export const deleteCisScanConfiguration: API.OperationMethod<
   DeleteCisScanConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1344, __c42, 0) as any as S.Schema<DeleteCisScanConfigurationRequest>,
+  input: __S(1280, __c40, 0) as any as S.Schema<DeleteCisScanConfigurationRequest>,
   output: __S(768, __c24, 0) as any as S.Schema<DeleteCisScanConfigurationResponse>,
   errors: [
     AccessDeniedException,
@@ -3873,8 +3873,8 @@ export const deleteCodeSecurityIntegration: API.OperationMethod<
   DeleteCodeSecurityIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1376, __c43, 0) as any as S.Schema<DeleteCodeSecurityIntegrationRequest>,
-  output: __S(1377, __c43, 1) as any as S.Schema<DeleteCodeSecurityIntegrationResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<DeleteCodeSecurityIntegrationRequest>,
+  output: __S(1313, __c41, 1) as any as S.Schema<DeleteCodeSecurityIntegrationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3903,7 +3903,7 @@ export const deleteCodeSecurityScanConfiguration: API.OperationMethod<
   DeleteCodeSecurityScanConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1408, __c44, 0) as any as S.Schema<DeleteCodeSecurityScanConfigurationRequest>,
+  input: __S(1344, __c42, 0) as any as S.Schema<DeleteCodeSecurityScanConfigurationRequest>,
   output: __S(576, __c18, 0) as any as S.Schema<DeleteCodeSecurityScanConfigurationResponse>,
   errors: [
     AccessDeniedException,
@@ -3934,7 +3934,7 @@ export const deleteConnector: API.OperationMethod<
   DeleteConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c45, 0) as any as S.Schema<DeleteConnectorRequest>,
+  input: __S(1376, __c43, 0) as any as S.Schema<DeleteConnectorRequest>,
   output: __S(608, __c19, 0) as any as S.Schema<DeleteConnectorResponse>,
   errors: [
     AccessDeniedException,
@@ -3965,8 +3965,8 @@ export const deleteFilter: API.OperationMethod<
   DeleteFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1472, __c46, 0) as any as S.Schema<DeleteFilterRequest>,
-  output: __S(1184, __c37, 0) as any as S.Schema<DeleteFilterResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<DeleteFilterRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<DeleteFilterResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3994,8 +3994,8 @@ export const describeOrganizationConfiguration: API.OperationMethod<
   DescribeOrganizationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1504, __c47, 0) as any as S.Schema<DescribeOrganizationConfigurationRequest>,
-  output: __S(1505, __c47, 1) as any as S.Schema<DescribeOrganizationConfigurationResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<DescribeOrganizationConfigurationRequest>,
+  output: __S(1441, __c45, 1) as any as S.Schema<DescribeOrganizationConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4024,8 +4024,8 @@ export const disable: API.OperationMethod<
   DisableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1568, __c49, 0) as any as S.Schema<DisableRequest>,
-  output: __S(1602, __c50, 2) as any as S.Schema<DisableResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<DisableRequest>,
+  output: __S(1538, __c48, 2) as any as S.Schema<DisableResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4055,8 +4055,8 @@ export const disableDelegatedAdminAccount: API.OperationMethod<
   DisableDelegatedAdminAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1632, __c51, 0) as any as S.Schema<DisableDelegatedAdminAccountRequest>,
-  output: __S(1664, __c52, 0) as any as S.Schema<DisableDelegatedAdminAccountResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<DisableDelegatedAdminAccountRequest>,
+  output: __S(1600, __c50, 0) as any as S.Schema<DisableDelegatedAdminAccountResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4085,8 +4085,8 @@ export const disassociateMember: API.OperationMethod<
   DisassociateMemberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1696, __c53, 0) as any as S.Schema<DisassociateMemberRequest>,
-  output: __S(1697, __c53, 1) as any as S.Schema<DisassociateMemberResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<DisassociateMemberRequest>,
+  output: __S(3552, __c111, 0) as any as S.Schema<DisassociateMemberResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4114,8 +4114,8 @@ export const enable: API.OperationMethod<
   EnableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1728, __c54, 0) as any as S.Schema<EnableRequest>,
-  output: __S(1602, __c50, 2) as any as S.Schema<EnableResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<EnableRequest>,
+  output: __S(1538, __c48, 2) as any as S.Schema<EnableResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4145,8 +4145,8 @@ export const enableDelegatedAdminAccount: API.OperationMethod<
   EnableDelegatedAdminAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1760, __c55, 0) as any as S.Schema<EnableDelegatedAdminAccountRequest>,
-  output: __S(1664, __c52, 0) as any as S.Schema<EnableDelegatedAdminAccountResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<EnableDelegatedAdminAccountRequest>,
+  output: __S(1600, __c50, 0) as any as S.Schema<EnableDelegatedAdminAccountResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4176,8 +4176,8 @@ export const getCisScanReport: API.OperationMethod<
   GetCisScanReportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1792, __c56, 0) as any as S.Schema<GetCisScanReportRequest>,
-  output: __S(1793, __c56, 1) as any as S.Schema<GetCisScanReportResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<GetCisScanReportRequest>,
+  output: __S(1729, __c54, 1) as any as S.Schema<GetCisScanReportResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4206,8 +4206,8 @@ export const getCisScanResultDetails: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CisScanResultDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1825, __c57, 1) as any as S.Schema<GetCisScanResultDetailsRequest>,
-  output: __S(1828, __c57, 4) as any as S.Schema<GetCisScanResultDetailsResponse>,
+  input: __S(1761, __c55, 1) as any as S.Schema<GetCisScanResultDetailsRequest>,
+  output: __S(1764, __c55, 4) as any as S.Schema<GetCisScanResultDetailsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4241,8 +4241,8 @@ export const getClustersForImage: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ClusterInformation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1921, __c60, 1) as any as S.Schema<GetClustersForImageRequest>,
-  output: __S(1931, __c60, 11) as any as S.Schema<GetClustersForImageResponse>,
+  input: __S(1857, __c58, 1) as any as S.Schema<GetClustersForImageRequest>,
+  output: __S(1867, __c58, 11) as any as S.Schema<GetClustersForImageResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4276,8 +4276,8 @@ export const getCodeSecurityIntegration: API.OperationMethod<
   GetCodeSecurityIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1952, __c61, 0) as any as S.Schema<GetCodeSecurityIntegrationRequest>,
-  output: __S(1953, __c61, 1) as any as S.Schema<GetCodeSecurityIntegrationResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<GetCodeSecurityIntegrationRequest>,
+  output: __S(1889, __c59, 1) as any as S.Schema<GetCodeSecurityIntegrationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4307,8 +4307,8 @@ export const getCodeSecurityScan: API.OperationMethod<
   GetCodeSecurityScanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1984, __c62, 0) as any as S.Schema<GetCodeSecurityScanRequest>,
-  output: __S(1985, __c62, 1) as any as S.Schema<GetCodeSecurityScanResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<GetCodeSecurityScanRequest>,
+  output: __S(1921, __c60, 1) as any as S.Schema<GetCodeSecurityScanResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4338,8 +4338,8 @@ export const getCodeSecurityScanConfiguration: API.OperationMethod<
   GetCodeSecurityScanConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2016, __c63, 0) as any as S.Schema<GetCodeSecurityScanConfigurationRequest>,
-  output: __S(2017, __c63, 1) as any as S.Schema<GetCodeSecurityScanConfigurationResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<GetCodeSecurityScanConfigurationRequest>,
+  output: __S(1953, __c61, 1) as any as S.Schema<GetCodeSecurityScanConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4372,8 +4372,8 @@ export const getConfiguration: API.OperationMethod<
   GetConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2048, __c64, 0) as any as S.Schema<GetConfigurationRequest>,
-  output: __S(2054, __c64, 6) as any as S.Schema<GetConfigurationResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<GetConfigurationRequest>,
+  output: __S(1990, __c62, 6) as any as S.Schema<GetConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4403,8 +4403,8 @@ export const getDelegatedAdminAccount: API.OperationMethod<
   GetDelegatedAdminAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2080, __c65, 0) as any as S.Schema<GetDelegatedAdminAccountRequest>,
-  output: __S(2082, __c65, 2) as any as S.Schema<GetDelegatedAdminAccountResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<GetDelegatedAdminAccountRequest>,
+  output: __S(2018, __c63, 2) as any as S.Schema<GetDelegatedAdminAccountResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4433,8 +4433,8 @@ export const getEc2DeepInspectionConfiguration: API.OperationMethod<
   GetEc2DeepInspectionConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2112, __c66, 0) as any as S.Schema<GetEc2DeepInspectionConfigurationRequest>,
-  output: __S(2144, __c67, 0) as any as S.Schema<GetEc2DeepInspectionConfigurationResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<GetEc2DeepInspectionConfigurationRequest>,
+  output: __S(2080, __c65, 0) as any as S.Schema<GetEc2DeepInspectionConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4462,8 +4462,8 @@ export const getEncryptionKey: API.OperationMethod<
   GetEncryptionKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2176, __c68, 0) as any as S.Schema<GetEncryptionKeyRequest>,
-  output: __S(2177, __c68, 1) as any as S.Schema<GetEncryptionKeyResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<GetEncryptionKeyRequest>,
+  output: __S(2113, __c66, 1) as any as S.Schema<GetEncryptionKeyResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4492,8 +4492,8 @@ export const getFindingsReportStatus: API.OperationMethod<
   GetFindingsReportStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2208, __c69, 0) as any as S.Schema<GetFindingsReportStatusRequest>,
-  output: __S(2209, __c69, 1) as any as S.Schema<GetFindingsReportStatusResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<GetFindingsReportStatusRequest>,
+  output: __S(2145, __c67, 1) as any as S.Schema<GetFindingsReportStatusResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4522,8 +4522,8 @@ export const getMember: API.OperationMethod<
   GetMemberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2240, __c70, 0) as any as S.Schema<GetMemberRequest>,
-  output: __S(2241, __c70, 1) as any as S.Schema<GetMemberResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<GetMemberRequest>,
+  output: __S(2177, __c68, 1) as any as S.Schema<GetMemberResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4552,8 +4552,8 @@ export const getSbomExport: API.OperationMethod<
   GetSbomExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2304, __c72, 0) as any as S.Schema<GetSbomExportRequest>,
-  output: __S(2305, __c72, 1) as any as S.Schema<GetSbomExportResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<GetSbomExportRequest>,
+  output: __S(2241, __c70, 1) as any as S.Schema<GetSbomExportResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4583,8 +4583,8 @@ export const listAccountPermissions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Permission
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2336, __c73, 0) as any as S.Schema<ListAccountPermissionsRequest>,
-  output: __S(2339, __c73, 3) as any as S.Schema<ListAccountPermissionsResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<ListAccountPermissionsRequest>,
+  output: __S(2275, __c71, 3) as any as S.Schema<ListAccountPermissionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4618,8 +4618,8 @@ export const listCisScanConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CisScanConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2369, __c74, 1) as any as S.Schema<ListCisScanConfigurationsRequest>,
-  output: __S(2372, __c74, 4) as any as S.Schema<ListCisScanConfigurationsResponse>,
+  input: __S(2305, __c72, 1) as any as S.Schema<ListCisScanConfigurationsRequest>,
+  output: __S(2308, __c72, 4) as any as S.Schema<ListCisScanConfigurationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4653,8 +4653,8 @@ export const listCisScanResultsAggregatedByChecks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CisCheckAggregation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2465, __c77, 1) as any as S.Schema<ListCisScanResultsAggregatedByChecksRequest>,
-  output: __S(2468, __c77, 4) as any as S.Schema<ListCisScanResultsAggregatedByChecksResponse>,
+  input: __S(2401, __c75, 1) as any as S.Schema<ListCisScanResultsAggregatedByChecksRequest>,
+  output: __S(2404, __c75, 4) as any as S.Schema<ListCisScanResultsAggregatedByChecksResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4689,14 +4689,14 @@ export const listCisScanResultsAggregatedByTargetResource: API.PaginatedOperatio
   CisTargetResourceAggregation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    2531,
-    __c79,
-    3,
+    2465,
+    __c77,
+    1,
   ) as any as S.Schema<ListCisScanResultsAggregatedByTargetResourceRequest>,
   output: __S(
-    2534,
-    __c79,
-    6,
+    2468,
+    __c77,
+    4,
   ) as any as S.Schema<ListCisScanResultsAggregatedByTargetResourceResponse>,
   errors: [
     AccessDeniedException,
@@ -4731,8 +4731,8 @@ export const listCisScans: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CisScan
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2563, __c80, 3) as any as S.Schema<ListCisScansRequest>,
-  output: __S(2566, __c80, 6) as any as S.Schema<ListCisScansResponse>,
+  input: __S(2499, __c78, 3) as any as S.Schema<ListCisScansRequest>,
+  output: __S(2502, __c78, 6) as any as S.Schema<ListCisScansResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4765,8 +4765,8 @@ export const listCodeSecurityIntegrations: API.OperationMethod<
   ListCodeSecurityIntegrationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2592, __c81, 0) as any as S.Schema<ListCodeSecurityIntegrationsRequest>,
-  output: __S(2595, __c81, 3) as any as S.Schema<ListCodeSecurityIntegrationsResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<ListCodeSecurityIntegrationsRequest>,
+  output: __S(2531, __c79, 3) as any as S.Schema<ListCodeSecurityIntegrationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4796,13 +4796,13 @@ export const listCodeSecurityScanConfigurationAssociations: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2624,
-    __c82,
+    2560,
+    __c80,
     0,
   ) as any as S.Schema<ListCodeSecurityScanConfigurationAssociationsRequest>,
   output: __S(
-    2627,
-    __c82,
+    2563,
+    __c80,
     3,
   ) as any as S.Schema<ListCodeSecurityScanConfigurationAssociationsResponse>,
   errors: [
@@ -4833,8 +4833,8 @@ export const listCodeSecurityScanConfigurations: API.OperationMethod<
   ListCodeSecurityScanConfigurationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2656, __c83, 0) as any as S.Schema<ListCodeSecurityScanConfigurationsRequest>,
-  output: __S(2659, __c83, 3) as any as S.Schema<ListCodeSecurityScanConfigurationsResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<ListCodeSecurityScanConfigurationsRequest>,
+  output: __S(2595, __c81, 3) as any as S.Schema<ListCodeSecurityScanConfigurationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4863,8 +4863,8 @@ export const listConnectors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Connector
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2691, __c84, 3) as any as S.Schema<ListConnectorsRequest>,
-  output: __S(2697, __c84, 9) as any as S.Schema<ListConnectorsResponse>,
+  input: __S(2625, __c82, 1) as any as S.Schema<ListConnectorsRequest>,
+  output: __S(2631, __c82, 7) as any as S.Schema<ListConnectorsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4898,8 +4898,8 @@ export const listConnectorScanConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ConnectorScanConfigurationItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2720, __c85, 0) as any as S.Schema<ListConnectorScanConfigurationsRequest>,
-  output: __S(2723, __c85, 3) as any as S.Schema<ListConnectorScanConfigurationsResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<ListConnectorScanConfigurationsRequest>,
+  output: __S(2659, __c83, 3) as any as S.Schema<ListConnectorScanConfigurationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4932,8 +4932,8 @@ export const listCoverage: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CoveredResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2784, __c87, 0) as any as S.Schema<ListCoverageRequest>,
-  output: __S(2805, __c87, 21) as any as S.Schema<ListCoverageResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<ListCoverageRequest>,
+  output: __S(2740, __c85, 20) as any as S.Schema<ListCoverageResponse>,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4961,8 +4961,8 @@ export const listCoverageStatistics: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Counts
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2848, __c89, 0) as any as S.Schema<ListCoverageStatisticsRequest>,
-  output: __S(2851, __c89, 3) as any as S.Schema<ListCoverageStatisticsResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<ListCoverageStatisticsRequest>,
+  output: __S(2787, __c87, 3) as any as S.Schema<ListCoverageStatisticsResponse>,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4990,8 +4990,8 @@ export const listDelegatedAdminAccounts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DelegatedAdminAccount
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2880, __c90, 0) as any as S.Schema<ListDelegatedAdminAccountsRequest>,
-  output: __S(2883, __c90, 3) as any as S.Schema<ListDelegatedAdminAccountsResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<ListDelegatedAdminAccountsRequest>,
+  output: __S(2819, __c88, 3) as any as S.Schema<ListDelegatedAdminAccountsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5025,8 +5025,8 @@ export const listFilters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Filter
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2912, __c91, 0) as any as S.Schema<ListFiltersRequest>,
-  output: __S(2915, __c91, 3) as any as S.Schema<ListFiltersResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<ListFiltersRequest>,
+  output: __S(2851, __c89, 3) as any as S.Schema<ListFiltersResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5059,8 +5059,8 @@ export const listFindingAggregations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AggregationResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2959, __c92, 15) as any as S.Schema<ListFindingAggregationsRequest>,
-  output: __S(2978, __c93, 2) as any as S.Schema<ListFindingAggregationsResponse>,
+  input: __S(2895, __c90, 15) as any as S.Schema<ListFindingAggregationsRequest>,
+  output: __S(2914, __c91, 2) as any as S.Schema<ListFindingAggregationsResponse>,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5088,8 +5088,8 @@ export const listFindings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Finding
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3009, __c94, 1) as any as S.Schema<ListFindingsRequest>,
-  output: __S(3042, __c95, 2) as any as S.Schema<ListFindingsResponse>,
+  input: __S(2945, __c92, 1) as any as S.Schema<ListFindingsRequest>,
+  output: __S(2978, __c93, 2) as any as S.Schema<ListFindingsResponse>,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5119,8 +5119,8 @@ export const listMembers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Member
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3104, __c97, 0) as any as S.Schema<ListMembersRequest>,
-  output: __S(3106, __c97, 2) as any as S.Schema<ListMembersResponse>,
+  input: __S(3040, __c95, 0) as any as S.Schema<ListMembersRequest>,
+  output: __S(3042, __c95, 2) as any as S.Schema<ListMembersResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5153,8 +5153,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3136, __c98, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(3137, __c98, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(3072, __c96, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(3073, __c96, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -5182,8 +5182,8 @@ export const listUsageTotals: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   UsageTotal
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3168, __c99, 0) as any as S.Schema<ListUsageTotalsRequest>,
-  output: __S(3173, __c99, 5) as any as S.Schema<ListUsageTotalsResponse>,
+  input: __S(3104, __c97, 0) as any as S.Schema<ListUsageTotalsRequest>,
+  output: __S(3109, __c97, 5) as any as S.Schema<ListUsageTotalsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5218,7 +5218,7 @@ export const resetEncryptionKey: API.OperationMethod<
   ResetEncryptionKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3200, __c100, 0) as any as S.Schema<ResetEncryptionKeyRequest>,
+  input: __S(3136, __c98, 0) as any as S.Schema<ResetEncryptionKeyRequest>,
   output: __S(608, __c19, 0) as any as S.Schema<ResetEncryptionKeyResponse>,
   errors: [
     AccessDeniedException,
@@ -5248,8 +5248,8 @@ export const searchVulnerabilities: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Vulnerability
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3265, __c102, 1) as any as S.Schema<SearchVulnerabilitiesRequest>,
-  output: __S(3270, __c102, 6) as any as S.Schema<SearchVulnerabilitiesResponse>,
+  input: __S(3201, __c100, 1) as any as S.Schema<SearchVulnerabilitiesRequest>,
+  output: __S(3206, __c100, 6) as any as S.Schema<SearchVulnerabilitiesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5284,7 +5284,7 @@ export const sendCisSessionHealth: API.OperationMethod<
   SendCisSessionHealthError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3296, __c103, 0) as any as S.Schema<SendCisSessionHealthRequest>,
+  input: __S(3232, __c101, 0) as any as S.Schema<SendCisSessionHealthRequest>,
   output: __S(608, __c19, 0) as any as S.Schema<SendCisSessionHealthResponse>,
   errors: [
     AccessDeniedException,
@@ -5316,8 +5316,8 @@ export const sendCisSessionTelemetry: API.OperationMethod<
   SendCisSessionTelemetryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3330, __c104, 2) as any as S.Schema<SendCisSessionTelemetryRequest>,
-  output: __S(3331, __c104, 3) as any as S.Schema<SendCisSessionTelemetryResponse>,
+  input: __S(3266, __c102, 2) as any as S.Schema<SendCisSessionTelemetryRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<SendCisSessionTelemetryResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5348,7 +5348,7 @@ export const startCisSession: API.OperationMethod<
   StartCisSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3361, __c105, 1) as any as S.Schema<StartCisSessionRequest>,
+  input: __S(3297, __c103, 1) as any as S.Schema<StartCisSessionRequest>,
   output: __S(608, __c19, 0) as any as S.Schema<StartCisSessionResponse>,
   errors: [
     AccessDeniedException,
@@ -5379,8 +5379,8 @@ export const startCodeSecurityScan: API.OperationMethod<
   StartCodeSecurityScanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3392, __c106, 0) as any as S.Schema<StartCodeSecurityScanRequest>,
-  output: __S(3393, __c106, 1) as any as S.Schema<StartCodeSecurityScanResponse>,
+  input: __S(3328, __c104, 0) as any as S.Schema<StartCodeSecurityScanRequest>,
+  output: __S(3329, __c104, 1) as any as S.Schema<StartCodeSecurityScanResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5412,7 +5412,7 @@ export const stopCisSession: API.OperationMethod<
   StopCisSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3427, __c107, 3) as any as S.Schema<StopCisSessionRequest>,
+  input: __S(3363, __c105, 3) as any as S.Schema<StopCisSessionRequest>,
   output: __S(608, __c19, 0) as any as S.Schema<StopCisSessionResponse>,
   errors: [
     AccessDeniedException,
@@ -5442,7 +5442,7 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3456, __c108, 0) as any as S.Schema<TagResourceRequest>,
+  input: __S(3392, __c106, 0) as any as S.Schema<TagResourceRequest>,
   output: __S(608, __c19, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     BadRequestException,
@@ -5471,7 +5471,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3488, __c109, 0) as any as S.Schema<UntagResourceRequest>,
+  input: __S(3424, __c107, 0) as any as S.Schema<UntagResourceRequest>,
   output: __S(608, __c19, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     InternalServerException,
@@ -5500,7 +5500,7 @@ export const updateCisScanConfiguration: API.OperationMethod<
   UpdateCisScanConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3520, __c110, 0) as any as S.Schema<UpdateCisScanConfigurationRequest>,
+  input: __S(3456, __c108, 0) as any as S.Schema<UpdateCisScanConfigurationRequest>,
   output: __S(768, __c24, 0) as any as S.Schema<UpdateCisScanConfigurationResponse>,
   errors: [
     AccessDeniedException,
@@ -5536,8 +5536,8 @@ export const updateCodeSecurityIntegration: API.OperationMethod<
   UpdateCodeSecurityIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3555, __c111, 3) as any as S.Schema<UpdateCodeSecurityIntegrationRequest>,
-  output: __S(3556, __c111, 4) as any as S.Schema<UpdateCodeSecurityIntegrationResponse>,
+  input: __S(3491, __c109, 3) as any as S.Schema<UpdateCodeSecurityIntegrationRequest>,
+  output: __S(3492, __c109, 4) as any as S.Schema<UpdateCodeSecurityIntegrationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5568,7 +5568,7 @@ export const updateCodeSecurityScanConfiguration: API.OperationMethod<
   UpdateCodeSecurityScanConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3616, __c113, 0) as any as S.Schema<UpdateCodeSecurityScanConfigurationRequest>,
+  input: __S(3584, __c112, 0) as any as S.Schema<UpdateCodeSecurityScanConfigurationRequest>,
   output: __S(576, __c18, 0) as any as S.Schema<UpdateCodeSecurityScanConfigurationResponse>,
   errors: [
     AccessDeniedException,
@@ -5603,7 +5603,7 @@ export const updateConfiguration: API.OperationMethod<
   UpdateConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3651, __c114, 3) as any as S.Schema<UpdateConfigurationRequest>,
+  input: __S(3619, __c113, 3) as any as S.Schema<UpdateConfigurationRequest>,
   output: __S(608, __c19, 0) as any as S.Schema<UpdateConfigurationResponse>,
   errors: [
     AccessDeniedException,
@@ -5633,8 +5633,8 @@ export const updateConnector: API.OperationMethod<
   UpdateConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3682, __c115, 2) as any as S.Schema<UpdateConnectorRequest>,
-  output: __S(3683, __c115, 3) as any as S.Schema<UpdateConnectorResponse>,
+  input: __S(3650, __c114, 2) as any as S.Schema<UpdateConnectorRequest>,
+  output: __S(3651, __c114, 3) as any as S.Schema<UpdateConnectorResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5665,8 +5665,8 @@ export const updateConnectorScanConfiguration: API.OperationMethod<
   UpdateConnectorScanConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3712, __c116, 0) as any as S.Schema<UpdateConnectorScanConfigurationRequest>,
-  output: __S(3744, __c117, 0) as any as S.Schema<UpdateConnectorScanConfigurationResponse>,
+  input: __S(3680, __c115, 0) as any as S.Schema<UpdateConnectorScanConfigurationRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<UpdateConnectorScanConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5695,8 +5695,8 @@ export const updateEc2DeepInspectionConfiguration: API.OperationMethod<
   UpdateEc2DeepInspectionConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3776, __c118, 0) as any as S.Schema<UpdateEc2DeepInspectionConfigurationRequest>,
-  output: __S(2144, __c67, 0) as any as S.Schema<UpdateEc2DeepInspectionConfigurationResponse>,
+  input: __S(3712, __c116, 0) as any as S.Schema<UpdateEc2DeepInspectionConfigurationRequest>,
+  output: __S(2080, __c65, 0) as any as S.Schema<UpdateEc2DeepInspectionConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5725,7 +5725,7 @@ export const updateEncryptionKey: API.OperationMethod<
   UpdateEncryptionKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3808, __c119, 0) as any as S.Schema<UpdateEncryptionKeyRequest>,
+  input: __S(3744, __c117, 0) as any as S.Schema<UpdateEncryptionKeyRequest>,
   output: __S(608, __c19, 0) as any as S.Schema<UpdateEncryptionKeyResponse>,
   errors: [
     AccessDeniedException,
@@ -5755,8 +5755,8 @@ export const updateFilter: API.OperationMethod<
   UpdateFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3840, __c120, 0) as any as S.Schema<UpdateFilterRequest>,
-  output: __S(1184, __c37, 0) as any as S.Schema<UpdateFilterResponse>,
+  input: __S(3776, __c118, 0) as any as S.Schema<UpdateFilterRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<UpdateFilterResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5784,8 +5784,8 @@ export const updateOrganizationConfiguration: API.OperationMethod<
   UpdateOrganizationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3872, __c121, 0) as any as S.Schema<UpdateOrganizationConfigurationRequest>,
-  output: __S(3873, __c121, 1) as any as S.Schema<UpdateOrganizationConfigurationResponse>,
+  input: __S(3808, __c119, 0) as any as S.Schema<UpdateOrganizationConfigurationRequest>,
+  output: __S(3809, __c119, 1) as any as S.Schema<UpdateOrganizationConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5813,8 +5813,8 @@ export const updateOrgEc2DeepInspectionConfiguration: API.OperationMethod<
   UpdateOrgEc2DeepInspectionConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3904, __c122, 0) as any as S.Schema<UpdateOrgEc2DeepInspectionConfigurationRequest>,
-  output: __S(3744, __c117, 0) as any as S.Schema<UpdateOrgEc2DeepInspectionConfigurationResponse>,
+  input: __S(3840, __c120, 0) as any as S.Schema<UpdateOrgEc2DeepInspectionConfigurationRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<UpdateOrgEc2DeepInspectionConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5831,7 +5831,7 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ disassociateConfigurationRequests: __S(3969, __c124, 1) }).pipe(
+        S.Struct({ disassociateConfigurationRequests: __S(3905, __c122, 1) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/codesecurity/scan-configuration/batch/disassociate" }),
             svc,
@@ -5841,9 +5841,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchDisassociateCodeSecurityScanConfigurationRequest",
-      });
+      ).annotate({ identifier: "BatchDisassociateCodeSecurityScanConfigurationRequest" });
   }
 }
 function __c1(j: number): any {
@@ -5853,9 +5851,7 @@ function __c1(j: number): any {
         S.Struct({ accountIds: S.optional(__S(64, __c2, 0)) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/status/batch/get" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "BatchGetAccountStatusRequest",
-      });
+      ).annotate({ identifier: "BatchGetAccountStatusRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5883,9 +5879,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({ accounts: __S(36, __c1, 4), failedAccounts: S.optional(__S(98, __c3, 2)) }),
-      ).annotate({
-        identifier: "BatchGetAccountStatusResponse",
-      });
+      ).annotate({ identifier: "BatchGetAccountStatusResponse" });
   }
 }
 function __c2(j: number): any {
@@ -5934,9 +5928,7 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchGetCodeSnippetRequest",
-      });
+      ).annotate({ identifier: "BatchGetCodeSnippetRequest" });
     case 1:
       return S.suspend(() => S.Struct({ content: S.String, lineNumber: S.Number })).annotate({
         identifier: "CodeLine",
@@ -5967,9 +5959,7 @@ function __c4(j: number): any {
           codeSnippetResults: S.optional(__S(134, __c4, 6)),
           errors: S.optional(__S(161, __c5, 1)),
         }),
-      ).annotate({
-        identifier: "BatchGetCodeSnippetResponse",
-      });
+      ).annotate({ identifier: "BatchGetCodeSnippetResponse" });
   }
 }
 function __c5(j: number): any {
@@ -5996,9 +5986,7 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchGetFindingDetailsRequest",
-      });
+      ).annotate({ identifier: "BatchGetFindingDetailsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6032,9 +6020,7 @@ function __c6(j: number): any {
           findingDetails: S.optional(__S(196, __c6, 4)),
           errors: S.optional(__S(161, __c5, 1)),
         }),
-      ).annotate({
-        identifier: "BatchGetFindingDetailsResponse",
-      });
+      ).annotate({ identifier: "BatchGetFindingDetailsResponse" });
   }
 }
 function __c7(j: number): any {
@@ -6070,9 +6056,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchGetFreeTrialInfoRequest",
-      });
+      ).annotate({ identifier: "BatchGetFreeTrialInfoRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6100,9 +6084,7 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({ accounts: __S(260, __c8, 4), failedAccounts: __S(262, __c8, 6) }),
-      ).annotate({
-        identifier: "BatchGetFreeTrialInfoResponse",
-      });
+      ).annotate({ identifier: "BatchGetFreeTrialInfoResponse" });
   }
 }
 function __c9(j: number): any {
@@ -6119,9 +6101,7 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchGetMemberEc2DeepInspectionStatusRequest",
-      });
+      ).annotate({ identifier: "BatchGetMemberEc2DeepInspectionStatusRequest" });
   }
 }
 function __c10(j: number): any {
@@ -6133,9 +6113,7 @@ function __c10(j: number): any {
           status: S.optional(S.String),
           errorMessage: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "MemberAccountEc2DeepInspectionStatusState",
-      });
+      ).annotate({ identifier: "MemberAccountEc2DeepInspectionStatusState" });
     case 1:
       return S.Array(__S(320, __c10, 0));
     case 2:
@@ -6145,9 +6123,7 @@ function __c10(j: number): any {
           ec2ScanStatus: S.optional(S.String),
           errorMessage: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "FailedMemberAccountEc2DeepInspectionStatusState",
-      });
+      ).annotate({ identifier: "FailedMemberAccountEc2DeepInspectionStatusState" });
     case 3:
       return S.Array(__S(322, __c10, 2));
     case 4:
@@ -6156,9 +6132,7 @@ function __c10(j: number): any {
           accountIds: S.optional(__S(321, __c10, 1)),
           failedAccountIds: S.optional(__S(323, __c10, 3)),
         }),
-      ).annotate({
-        identifier: "BatchGetMemberEc2DeepInspectionStatusResponse",
-      });
+      ).annotate({ identifier: "BatchGetMemberEc2DeepInspectionStatusResponse" });
   }
 }
 function __c11(j: number): any {
@@ -6166,9 +6140,7 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ accountId: S.String, activateDeepInspection: S.Boolean }),
-      ).annotate({
-        identifier: "MemberAccountEc2DeepInspectionStatus",
-      });
+      ).annotate({ identifier: "MemberAccountEc2DeepInspectionStatus" });
     case 1:
       return S.Array(__S(352, __c11, 0));
     case 2:
@@ -6183,9 +6155,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchUpdateMemberEc2DeepInspectionStatusRequest",
-      });
+      ).annotate({ identifier: "BatchUpdateMemberEc2DeepInspectionStatusRequest" });
   }
 }
 function __c12(j: number): any {
@@ -6195,9 +6165,7 @@ function __c12(j: number): any {
         S.Struct({ reportId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/reporting/cancel" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CancelFindingsReportRequest",
-      });
+      ).annotate({ identifier: "CancelFindingsReportRequest" });
     case 1:
       return S.suspend(() => S.Struct({ reportId: S.String })).annotate({
         identifier: "CancelFindingsReportResponse",
@@ -6253,9 +6221,7 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateCisScanConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateCisScanConfigurationRequest" });
   }
 }
 function __c16(j: number): any {
@@ -6281,9 +6247,7 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "OneTimeSchedule",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "OneTimeSchedule" });
   }
 }
 function __c20(j: number): any {
@@ -6324,9 +6288,7 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ instanceUrl: SensitiveString, accessToken: SensitiveString }),
-      ).annotate({
-        identifier: "CreateGitLabSelfManagedIntegrationDetail",
-      });
+      ).annotate({ identifier: "CreateGitLabSelfManagedIntegrationDetail" });
     case 1:
       return S.Union([/*@__PURE__*/ S.Struct({ gitlabSelfManaged: __S(704, __c22, 0) })]);
     case 2:
@@ -6346,9 +6308,7 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateCodeSecurityIntegrationRequest",
-      });
+      ).annotate({ identifier: "CreateCodeSecurityIntegrationRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6356,9 +6316,7 @@ function __c22(j: number): any {
           status: S.String,
           authorizationUrl: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "CreateCodeSecurityIntegrationResponse",
-      });
+      ).annotate({ identifier: "CreateCodeSecurityIntegrationResponse" });
   }
 }
 function __c23(j: number): any {
@@ -6368,7 +6326,7 @@ function __c23(j: number): any {
         S.Struct({
           name: S.String,
           level: S.String,
-          configuration: __S(866, __c27, 2),
+          configuration: __S(834, __c26, 2),
           scopeSettings: S.optional(__S(800, __c25, 0)),
           tags: S.optional(__S(512, __c16, 0)),
         }).pipe(
@@ -6381,9 +6339,7 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateCodeSecurityScanConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateCodeSecurityScanConfigurationRequest" });
   }
 }
 function __c24(j: number): any {
@@ -6405,7 +6361,21 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.suspend(() =>
+        S.Struct({ frequency: S.optional(S.String), frequencyExpression: S.optional(S.String) }),
+      ).annotate({ identifier: "PeriodicScanConfiguration" });
+    case 1:
+      return S.suspend(() => S.Struct({ supportedEvents: __S(544, __c17, 0) })).annotate({
+        identifier: "ContinuousIntegrationScanConfiguration",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          periodicScanConfiguration: S.optional(__S(832, __c26, 0)),
+          continuousIntegrationScanConfiguration: S.optional(__S(833, __c26, 1)),
+          ruleSetCategories: __S(544, __c17, 0),
+        }),
+      ).annotate({ identifier: "CodeSecurityScanConfiguration" });
   }
 }
 function __c27(j: number): any {
@@ -6413,43 +6383,14 @@ function __c27(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          frequency: S.optional(S.String),
-          frequencyExpression: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PeriodicScanConfiguration",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ supportedEvents: __S(832, __c26, 0) })).annotate({
-        identifier: "ContinuousIntegrationScanConfiguration",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          periodicScanConfiguration: S.optional(__S(864, __c27, 0)),
-          continuousIntegrationScanConfiguration: S.optional(__S(865, __c27, 1)),
-          ruleSetCategories: __S(544, __c17, 0),
-        }),
-      ).annotate({
-        identifier: "CodeSecurityScanConfiguration",
-      });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
           awsConfigConnectorArn: S.String,
-          scopeConfiguration: __S(961, __c30, 1),
+          scopeConfiguration: __S(897, __c28, 1),
           azureRegions: __S(64, __c2, 0),
           autoInstallVMScanner: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "AzureProviderDetailCreate",
-      });
+      ).annotate({ identifier: "AzureProviderDetailCreate" });
     case 1:
-      return S.Union([/*@__PURE__*/ S.Struct({ azure: __S(896, __c28, 0) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ azure: __S(864, __c27, 0) })]);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -6457,8 +6398,8 @@ function __c28(j: number): any {
           name: S.String,
           provider: S.String,
           description: S.optional(S.String),
-          providerDetail: __S(897, __c28, 1),
-          tags: S.optional(__S(928, __c29, 0)),
+          providerDetail: __S(865, __c27, 1),
+          tags: S.optional(__S(512, __c16, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/connector/create" }), svc, auth, proto, ver, rules),
         ),
@@ -6469,13 +6410,7 @@ function __c28(j: number): any {
       });
   }
 }
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c30(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6484,23 +6419,21 @@ function __c30(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          vmScanning: S.optional(__S(960, __c30, 0)),
-          containerImageScanning: S.optional(__S(960, __c30, 0)),
-          serverlessScanning: S.optional(__S(960, __c30, 0)),
+          vmScanning: S.optional(__S(896, __c28, 0)),
+          containerImageScanning: S.optional(__S(896, __c28, 0)),
+          serverlessScanning: S.optional(__S(896, __c28, 0)),
         }),
-      ).annotate({
-        identifier: "AzureScopeConfigurationInput",
-      });
+      ).annotate({ identifier: "AzureScopeConfigurationInput" });
   }
 }
-function __c31(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
           description: S.optional(S.String),
-          filterCriteria: __S(1156, __c36, 4),
+          filterCriteria: __S(1092, __c34, 4),
           name: S.String,
           tags: S.optional(__S(512, __c16, 0)),
           reason: S.optional(S.String),
@@ -6510,37 +6443,37 @@ function __c31(j: number): any {
       ).annotate({ identifier: "CreateFilterRequest" });
   }
 }
-function __c32(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ comparison: S.String, value: S.String })).annotate({
         identifier: "StringFilter",
       });
     case 1:
-      return S.Array(__S(1024, __c32, 0));
+      return S.Array(__S(960, __c30, 0));
   }
 }
-function __c33(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ comparison: S.String, key: S.String, value: S.optional(S.String) }),
       ).annotate({ identifier: "MapFilter" });
     case 1:
-      return S.Array(__S(1056, __c33, 0));
+      return S.Array(__S(992, __c31, 0));
   }
 }
-function __c34(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ upperInclusive: S.optional(S.Number), lowerInclusive: S.optional(S.Number) }),
       ).annotate({ identifier: "NumberFilter" });
     case 1:
-      return S.Array(__S(1088, __c34, 0));
+      return S.Array(__S(1024, __c32, 0));
   }
 }
-function __c35(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6550,105 +6483,105 @@ function __c35(j: number): any {
         }),
       ).annotate({ identifier: "DateFilter" });
     case 1:
-      return S.Array(__S(1120, __c35, 0));
+      return S.Array(__S(1056, __c33, 0));
   }
 }
-function __c36(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ beginInclusive: S.optional(S.Number), endInclusive: S.optional(S.Number) }),
       ).annotate({ identifier: "PortRangeFilter" });
     case 1:
-      return S.Array(__S(1152, __c36, 0));
+      return S.Array(__S(1088, __c34, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(__S(1024, __c32, 0)),
-          version: S.optional(__S(1024, __c32, 0)),
-          epoch: S.optional(__S(1088, __c34, 0)),
-          release: S.optional(__S(1024, __c32, 0)),
-          architecture: S.optional(__S(1024, __c32, 0)),
-          sourceLayerHash: S.optional(__S(1024, __c32, 0)),
-          sourceLambdaLayerArn: S.optional(__S(1024, __c32, 0)),
-          filePath: S.optional(__S(1024, __c32, 0)),
+          name: S.optional(__S(960, __c30, 0)),
+          version: S.optional(__S(960, __c30, 0)),
+          epoch: S.optional(__S(1024, __c32, 0)),
+          release: S.optional(__S(960, __c30, 0)),
+          architecture: S.optional(__S(960, __c30, 0)),
+          sourceLayerHash: S.optional(__S(960, __c30, 0)),
+          sourceLambdaLayerArn: S.optional(__S(960, __c30, 0)),
+          filePath: S.optional(__S(960, __c30, 0)),
         }),
       ).annotate({ identifier: "PackageFilter" });
     case 3:
-      return S.Array(__S(1154, __c36, 2));
+      return S.Array(__S(1090, __c34, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          findingArn: S.optional(__S(1025, __c32, 1)),
-          awsAccountId: S.optional(__S(1025, __c32, 1)),
-          findingType: S.optional(__S(1025, __c32, 1)),
-          severity: S.optional(__S(1025, __c32, 1)),
-          firstObservedAt: S.optional(__S(1121, __c35, 1)),
-          lastObservedAt: S.optional(__S(1121, __c35, 1)),
-          updatedAt: S.optional(__S(1121, __c35, 1)),
-          findingStatus: S.optional(__S(1025, __c32, 1)),
-          title: S.optional(__S(1025, __c32, 1)),
-          inspectorScore: S.optional(__S(1089, __c34, 1)),
-          resourceType: S.optional(__S(1025, __c32, 1)),
-          resourceId: S.optional(__S(1025, __c32, 1)),
-          resourceTags: S.optional(__S(1057, __c33, 1)),
-          ec2InstanceImageId: S.optional(__S(1025, __c32, 1)),
-          ec2InstanceVpcId: S.optional(__S(1025, __c32, 1)),
-          ec2InstanceSubnetId: S.optional(__S(1025, __c32, 1)),
-          ecrImagePushedAt: S.optional(__S(1121, __c35, 1)),
-          ecrImageArchitecture: S.optional(__S(1025, __c32, 1)),
-          ecrImageRegistry: S.optional(__S(1025, __c32, 1)),
-          ecrImageRepositoryName: S.optional(__S(1025, __c32, 1)),
-          ecrImageTags: S.optional(__S(1025, __c32, 1)),
-          ecrImageHash: S.optional(__S(1025, __c32, 1)),
-          ecrImageLastInUseAt: S.optional(__S(1121, __c35, 1)),
-          ecrImageInUseCount: S.optional(__S(1089, __c34, 1)),
-          portRange: S.optional(__S(1153, __c36, 1)),
-          networkProtocol: S.optional(__S(1025, __c32, 1)),
-          componentId: S.optional(__S(1025, __c32, 1)),
-          componentType: S.optional(__S(1025, __c32, 1)),
-          vulnerabilityId: S.optional(__S(1025, __c32, 1)),
-          vulnerabilitySource: S.optional(__S(1025, __c32, 1)),
-          vendorSeverity: S.optional(__S(1025, __c32, 1)),
-          vulnerablePackages: S.optional(__S(1155, __c36, 3)),
-          relatedVulnerabilities: S.optional(__S(1025, __c32, 1)),
-          fixAvailable: S.optional(__S(1025, __c32, 1)),
-          lambdaFunctionName: S.optional(__S(1025, __c32, 1)),
-          lambdaFunctionLayers: S.optional(__S(1025, __c32, 1)),
-          lambdaFunctionRuntime: S.optional(__S(1025, __c32, 1)),
-          lambdaFunctionLastModifiedAt: S.optional(__S(1121, __c35, 1)),
-          lambdaFunctionExecutionRoleArn: S.optional(__S(1025, __c32, 1)),
-          exploitAvailable: S.optional(__S(1025, __c32, 1)),
-          codeVulnerabilityDetectorName: S.optional(__S(1025, __c32, 1)),
-          codeVulnerabilityDetectorTags: S.optional(__S(1025, __c32, 1)),
-          codeVulnerabilityFilePath: S.optional(__S(1025, __c32, 1)),
-          epssScore: S.optional(__S(1089, __c34, 1)),
-          codeRepositoryProjectName: S.optional(__S(1025, __c32, 1)),
-          codeRepositoryProviderType: S.optional(__S(1025, __c32, 1)),
-          cloudProvider: S.optional(__S(1025, __c32, 1)),
-          cloudProviderRegion: S.optional(__S(1025, __c32, 1)),
-          cloudProviderAccountId: S.optional(__S(1025, __c32, 1)),
-          cloudProviderOrgId: S.optional(__S(1025, __c32, 1)),
-          cloudVmImageReference: S.optional(__S(1025, __c32, 1)),
-          cloudVmNetworkId: S.optional(__S(1025, __c32, 1)),
-          cloudVmSubnetIds: S.optional(__S(1025, __c32, 1)),
-          cloudImageRepositoryName: S.optional(__S(1025, __c32, 1)),
-          cloudImageRegistry: S.optional(__S(1025, __c32, 1)),
-          cloudImageDigest: S.optional(__S(1025, __c32, 1)),
-          cloudImageTags: S.optional(__S(1025, __c32, 1)),
-          cloudImagePushedAt: S.optional(__S(1121, __c35, 1)),
-          cloudImageArchitecture: S.optional(__S(1025, __c32, 1)),
-          cloudImageLastInUseAt: S.optional(__S(1121, __c35, 1)),
-          cloudImageInUseCount: S.optional(__S(1089, __c34, 1)),
-          cloudServerlessFunctionName: S.optional(__S(1025, __c32, 1)),
-          cloudServerlessFunctionRuntime: S.optional(__S(1025, __c32, 1)),
-          cloudServerlessFunctionLastModifiedAt: S.optional(__S(1121, __c35, 1)),
-          cloudServerlessFunctionExecutionRole: S.optional(__S(1025, __c32, 1)),
+          findingArn: S.optional(__S(961, __c30, 1)),
+          awsAccountId: S.optional(__S(961, __c30, 1)),
+          findingType: S.optional(__S(961, __c30, 1)),
+          severity: S.optional(__S(961, __c30, 1)),
+          firstObservedAt: S.optional(__S(1057, __c33, 1)),
+          lastObservedAt: S.optional(__S(1057, __c33, 1)),
+          updatedAt: S.optional(__S(1057, __c33, 1)),
+          findingStatus: S.optional(__S(961, __c30, 1)),
+          title: S.optional(__S(961, __c30, 1)),
+          inspectorScore: S.optional(__S(1025, __c32, 1)),
+          resourceType: S.optional(__S(961, __c30, 1)),
+          resourceId: S.optional(__S(961, __c30, 1)),
+          resourceTags: S.optional(__S(993, __c31, 1)),
+          ec2InstanceImageId: S.optional(__S(961, __c30, 1)),
+          ec2InstanceVpcId: S.optional(__S(961, __c30, 1)),
+          ec2InstanceSubnetId: S.optional(__S(961, __c30, 1)),
+          ecrImagePushedAt: S.optional(__S(1057, __c33, 1)),
+          ecrImageArchitecture: S.optional(__S(961, __c30, 1)),
+          ecrImageRegistry: S.optional(__S(961, __c30, 1)),
+          ecrImageRepositoryName: S.optional(__S(961, __c30, 1)),
+          ecrImageTags: S.optional(__S(961, __c30, 1)),
+          ecrImageHash: S.optional(__S(961, __c30, 1)),
+          ecrImageLastInUseAt: S.optional(__S(1057, __c33, 1)),
+          ecrImageInUseCount: S.optional(__S(1025, __c32, 1)),
+          portRange: S.optional(__S(1089, __c34, 1)),
+          networkProtocol: S.optional(__S(961, __c30, 1)),
+          componentId: S.optional(__S(961, __c30, 1)),
+          componentType: S.optional(__S(961, __c30, 1)),
+          vulnerabilityId: S.optional(__S(961, __c30, 1)),
+          vulnerabilitySource: S.optional(__S(961, __c30, 1)),
+          vendorSeverity: S.optional(__S(961, __c30, 1)),
+          vulnerablePackages: S.optional(__S(1091, __c34, 3)),
+          relatedVulnerabilities: S.optional(__S(961, __c30, 1)),
+          fixAvailable: S.optional(__S(961, __c30, 1)),
+          lambdaFunctionName: S.optional(__S(961, __c30, 1)),
+          lambdaFunctionLayers: S.optional(__S(961, __c30, 1)),
+          lambdaFunctionRuntime: S.optional(__S(961, __c30, 1)),
+          lambdaFunctionLastModifiedAt: S.optional(__S(1057, __c33, 1)),
+          lambdaFunctionExecutionRoleArn: S.optional(__S(961, __c30, 1)),
+          exploitAvailable: S.optional(__S(961, __c30, 1)),
+          codeVulnerabilityDetectorName: S.optional(__S(961, __c30, 1)),
+          codeVulnerabilityDetectorTags: S.optional(__S(961, __c30, 1)),
+          codeVulnerabilityFilePath: S.optional(__S(961, __c30, 1)),
+          epssScore: S.optional(__S(1025, __c32, 1)),
+          codeRepositoryProjectName: S.optional(__S(961, __c30, 1)),
+          codeRepositoryProviderType: S.optional(__S(961, __c30, 1)),
+          cloudProvider: S.optional(__S(961, __c30, 1)),
+          cloudProviderRegion: S.optional(__S(961, __c30, 1)),
+          cloudProviderAccountId: S.optional(__S(961, __c30, 1)),
+          cloudProviderOrgId: S.optional(__S(961, __c30, 1)),
+          cloudVmImageReference: S.optional(__S(961, __c30, 1)),
+          cloudVmNetworkId: S.optional(__S(961, __c30, 1)),
+          cloudVmSubnetIds: S.optional(__S(961, __c30, 1)),
+          cloudImageRepositoryName: S.optional(__S(961, __c30, 1)),
+          cloudImageRegistry: S.optional(__S(961, __c30, 1)),
+          cloudImageDigest: S.optional(__S(961, __c30, 1)),
+          cloudImageTags: S.optional(__S(961, __c30, 1)),
+          cloudImagePushedAt: S.optional(__S(1057, __c33, 1)),
+          cloudImageArchitecture: S.optional(__S(961, __c30, 1)),
+          cloudImageLastInUseAt: S.optional(__S(1057, __c33, 1)),
+          cloudImageInUseCount: S.optional(__S(1025, __c32, 1)),
+          cloudServerlessFunctionName: S.optional(__S(961, __c30, 1)),
+          cloudServerlessFunctionRuntime: S.optional(__S(961, __c30, 1)),
+          cloudServerlessFunctionLastModifiedAt: S.optional(__S(1057, __c33, 1)),
+          cloudServerlessFunctionExecutionRole: S.optional(__S(961, __c30, 1)),
         }),
       ).annotate({ identifier: "FilterCriteria" });
   }
 }
-function __c37(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ arn: S.String })).annotate({
@@ -6656,27 +6589,21 @@ function __c37(j: number): any {
       });
   }
 }
-function __c38(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          filterCriteria: S.optional(__S(1156, __c36, 4)),
+          filterCriteria: S.optional(__S(1092, __c34, 4)),
           reportFormat: S.String,
-          s3Destination: __S(1248, __c39, 0),
+          s3Destination: __S(1184, __c37, 0),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/reporting/create" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateFindingsReportRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ reportId: S.optional(S.String) })).annotate({
-        identifier: "CreateFindingsReportResponse",
-      });
+      ).annotate({ identifier: "CreateFindingsReportRequest" });
   }
 }
-function __c39(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6684,14 +6611,14 @@ function __c39(j: number): any {
       ).annotate({ identifier: "Destination" });
   }
 }
-function __c40(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          resourceFilterCriteria: S.optional(__S(1312, __c41, 0)),
+          resourceFilterCriteria: S.optional(__S(1248, __c39, 0)),
           reportFormat: S.String,
-          s3Destination: __S(1248, __c39, 0),
+          s3Destination: __S(1184, __c37, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/sbomexport/create" }),
@@ -6705,35 +6632,35 @@ function __c40(j: number): any {
       ).annotate({ identifier: "CreateSbomExportRequest" });
   }
 }
-function __c41(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accountId: S.optional(__S(1025, __c32, 1)),
-          resourceId: S.optional(__S(1025, __c32, 1)),
-          resourceType: S.optional(__S(1025, __c32, 1)),
-          ecrRepositoryName: S.optional(__S(1025, __c32, 1)),
-          lambdaFunctionName: S.optional(__S(1025, __c32, 1)),
-          ecrImageTags: S.optional(__S(1025, __c32, 1)),
-          ec2InstanceTags: S.optional(__S(1057, __c33, 1)),
-          lambdaFunctionTags: S.optional(__S(1057, __c33, 1)),
-          cloudProvider: S.optional(__S(1025, __c32, 1)),
-          cloudProviderAccountId: S.optional(__S(1025, __c32, 1)),
-          cloudProviderOrgId: S.optional(__S(1025, __c32, 1)),
-          cloudProviderRegion: S.optional(__S(1025, __c32, 1)),
-          cloudVmInstanceTags: S.optional(__S(1057, __c33, 1)),
-          cloudContainerImageTags: S.optional(__S(1025, __c32, 1)),
-          cloudContainerRepositoryName: S.optional(__S(1025, __c32, 1)),
-          cloudContainerRegistryName: S.optional(__S(1025, __c32, 1)),
-          cloudServerlessFunctionName: S.optional(__S(1025, __c32, 1)),
-          cloudServerlessFunctionRuntime: S.optional(__S(1025, __c32, 1)),
-          cloudServerlessFunctionTags: S.optional(__S(1057, __c33, 1)),
+          accountId: S.optional(__S(961, __c30, 1)),
+          resourceId: S.optional(__S(961, __c30, 1)),
+          resourceType: S.optional(__S(961, __c30, 1)),
+          ecrRepositoryName: S.optional(__S(961, __c30, 1)),
+          lambdaFunctionName: S.optional(__S(961, __c30, 1)),
+          ecrImageTags: S.optional(__S(961, __c30, 1)),
+          ec2InstanceTags: S.optional(__S(993, __c31, 1)),
+          lambdaFunctionTags: S.optional(__S(993, __c31, 1)),
+          cloudProvider: S.optional(__S(961, __c30, 1)),
+          cloudProviderAccountId: S.optional(__S(961, __c30, 1)),
+          cloudProviderOrgId: S.optional(__S(961, __c30, 1)),
+          cloudProviderRegion: S.optional(__S(961, __c30, 1)),
+          cloudVmInstanceTags: S.optional(__S(993, __c31, 1)),
+          cloudContainerImageTags: S.optional(__S(961, __c30, 1)),
+          cloudContainerRepositoryName: S.optional(__S(961, __c30, 1)),
+          cloudContainerRegistryName: S.optional(__S(961, __c30, 1)),
+          cloudServerlessFunctionName: S.optional(__S(961, __c30, 1)),
+          cloudServerlessFunctionRuntime: S.optional(__S(961, __c30, 1)),
+          cloudServerlessFunctionTags: S.optional(__S(993, __c31, 1)),
         }),
       ).annotate({ identifier: "ResourceFilterCriteria" });
   }
 }
-function __c42(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6747,12 +6674,10 @@ function __c42(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteCisScanConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteCisScanConfigurationRequest" });
   }
 }
-function __c43(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6766,16 +6691,14 @@ function __c43(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteCodeSecurityIntegrationRequest",
-      });
+      ).annotate({ identifier: "DeleteCodeSecurityIntegrationRequest" });
     case 1:
       return S.suspend(() => S.Struct({ integrationArn: S.optional(S.String) })).annotate({
         identifier: "DeleteCodeSecurityIntegrationResponse",
       });
   }
 }
-function __c44(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6789,12 +6712,10 @@ function __c44(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteCodeSecurityScanConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteCodeSecurityScanConfigurationRequest" });
   }
 }
-function __c45(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6804,7 +6725,7 @@ function __c45(j: number): any {
       ).annotate({ identifier: "DeleteConnectorRequest" });
   }
 }
-function __c46(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6814,7 +6735,7 @@ function __c46(j: number): any {
       ).annotate({ identifier: "DeleteFilterRequest" });
   }
 }
-function __c47(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6828,21 +6749,17 @@ function __c47(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeOrganizationConfigurationRequest",
-      });
+      ).annotate({ identifier: "DescribeOrganizationConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          autoEnable: S.optional(__S(1536, __c48, 0)),
+          autoEnable: S.optional(__S(1472, __c46, 0)),
           maxAccountLimitReached: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "DescribeOrganizationConfigurationResponse",
-      });
+      ).annotate({ identifier: "DescribeOrganizationConfigurationResponse" });
   }
 }
-function __c48(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6856,7 +6773,7 @@ function __c48(j: number): any {
       ).annotate({ identifier: "AutoEnable" });
   }
 }
-function __c49(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6867,21 +6784,21 @@ function __c49(j: number): any {
       ).annotate({ identifier: "DisableRequest" });
   }
 }
-function __c50(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ accountId: S.String, status: S.String, resourceStatus: __S(96, __c3, 0) }),
       ).annotate({ identifier: "Account" });
     case 1:
-      return S.Array(__S(1600, __c50, 0));
+      return S.Array(__S(1536, __c48, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ accounts: __S(1601, __c50, 1), failedAccounts: S.optional(__S(98, __c3, 2)) }),
+        S.Struct({ accounts: __S(1537, __c48, 1), failedAccounts: S.optional(__S(98, __c3, 2)) }),
       ).annotate({ identifier: "DisableResponse" });
   }
 }
-function __c51(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6895,12 +6812,10 @@ function __c51(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisableDelegatedAdminAccountRequest",
-      });
+      ).annotate({ identifier: "DisableDelegatedAdminAccountRequest" });
   }
 }
-function __c52(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ delegatedAdminAccountId: S.String })).annotate({
@@ -6908,7 +6823,7 @@ function __c52(j: number): any {
       });
   }
 }
-function __c53(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6922,16 +6837,10 @@ function __c53(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateMemberRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ accountId: S.String })).annotate({
-        identifier: "DisassociateMemberResponse",
-      });
+      ).annotate({ identifier: "DisassociateMemberRequest" });
   }
 }
-function __c54(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6943,7 +6852,7 @@ function __c54(j: number): any {
       ).annotate({ identifier: "EnableRequest" });
   }
 }
-function __c55(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6960,12 +6869,10 @@ function __c55(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "EnableDelegatedAdminAccountRequest",
-      });
+      ).annotate({ identifier: "EnableDelegatedAdminAccountRequest" });
   }
 }
-function __c56(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6990,27 +6897,25 @@ function __c56(j: number): any {
       ).annotate({ identifier: "GetCisScanReportResponse" });
   }
 }
-function __c57(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          findingStatusFilters: S.optional(__S(1889, __c59, 1)),
-          checkIdFilters: S.optional(__S(1857, __c58, 1)),
-          titleFilters: S.optional(__S(1857, __c58, 1)),
-          securityLevelFilters: S.optional(__S(1889, __c59, 1)),
-          findingArnFilters: S.optional(__S(1857, __c58, 1)),
+          findingStatusFilters: S.optional(__S(1825, __c57, 1)),
+          checkIdFilters: S.optional(__S(1793, __c56, 1)),
+          titleFilters: S.optional(__S(1793, __c56, 1)),
+          securityLevelFilters: S.optional(__S(1825, __c57, 1)),
+          findingArnFilters: S.optional(__S(1793, __c56, 1)),
         }),
-      ).annotate({
-        identifier: "CisScanResultDetailsFilterCriteria",
-      });
+      ).annotate({ identifier: "CisScanResultDetailsFilterCriteria" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           scanArn: S.String,
           targetResourceId: S.String,
           accountId: S.String,
-          filterCriteria: S.optional(__S(1824, __c57, 0)),
+          filterCriteria: S.optional(__S(1760, __c55, 0)),
           sortBy: S.optional(S.String),
           sortOrder: S.optional(S.String),
           nextToken: S.optional(S.String),
@@ -7025,9 +6930,7 @@ function __c57(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetCisScanResultDetailsRequest",
-      });
+      ).annotate({ identifier: "GetCisScanResultDetailsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -7046,39 +6949,37 @@ function __c57(j: number): any {
         }),
       ).annotate({ identifier: "CisScanResultDetails" });
     case 3:
-      return S.Array(__S(1826, __c57, 2));
+      return S.Array(__S(1762, __c55, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          scanResultDetails: S.optional(__S(1827, __c57, 3)),
+          scanResultDetails: S.optional(__S(1763, __c55, 3)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetCisScanResultDetailsResponse",
-      });
+      ).annotate({ identifier: "GetCisScanResultDetailsResponse" });
   }
 }
-function __c58(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ comparison: S.String, value: S.String })).annotate({
         identifier: "CisStringFilter",
       });
     case 1:
-      return S.Array(__S(1856, __c58, 0));
+      return S.Array(__S(1792, __c56, 0));
   }
 }
-function __c59(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ comparison: S.String, value: S.String })).annotate({
         identifier: "CisFindingStatusFilter",
       });
     case 1:
-      return S.Array(__S(1888, __c59, 0));
+      return S.Array(__S(1824, __c57, 0));
   }
 }
-function __c60(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ resourceId: S.String })).annotate({
@@ -7087,15 +6988,13 @@ function __c60(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          filter: __S(1920, __c60, 0),
+          filter: __S(1856, __c58, 0),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/cluster/get" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetClustersForImageRequest",
-      });
+      ).annotate({ identifier: "GetClustersForImageRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({ detailsGroup: S.String, taskDefinitionArn: S.String }),
@@ -7105,18 +7004,18 @@ function __c60(j: number): any {
         identifier: "AwsEksWorkloadInfo",
       });
     case 4:
-      return S.Array(__S(1923, __c60, 3));
+      return S.Array(__S(1859, __c58, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           namespace: S.optional(S.String),
-          workloadInfoList: S.optional(__S(1924, __c60, 4)),
+          workloadInfoList: S.optional(__S(1860, __c58, 4)),
         }),
       ).annotate({ identifier: "AwsEksMetadataDetails" });
     case 6:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ awsEcsMetadataDetails: __S(1922, __c60, 2) }),
-        /*@__PURE__*/ S.Struct({ awsEksMetadataDetails: __S(1925, __c60, 5) }),
+        /*@__PURE__*/ S.Struct({ awsEcsMetadataDetails: __S(1858, __c58, 2) }),
+        /*@__PURE__*/ S.Struct({ awsEksMetadataDetails: __S(1861, __c58, 5) }),
       ]);
     case 7:
       return S.suspend(() =>
@@ -7124,26 +7023,24 @@ function __c60(j: number): any {
           lastInUse: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           runningUnitCount: S.optional(S.Number),
           stoppedUnitCount: S.optional(S.Number),
-          clusterMetadata: __S(1926, __c60, 6),
+          clusterMetadata: __S(1862, __c58, 6),
         }),
       ).annotate({ identifier: "ClusterDetails" });
     case 8:
-      return S.Array(__S(1927, __c60, 7));
+      return S.Array(__S(1863, __c58, 7));
     case 9:
       return S.suspend(() =>
-        S.Struct({ clusterArn: S.String, clusterDetails: S.optional(__S(1928, __c60, 8)) }),
+        S.Struct({ clusterArn: S.String, clusterDetails: S.optional(__S(1864, __c58, 8)) }),
       ).annotate({ identifier: "ClusterInformation" });
     case 10:
-      return S.Array(__S(1929, __c60, 9));
+      return S.Array(__S(1865, __c58, 9));
     case 11:
       return S.suspend(() =>
-        S.Struct({ cluster: __S(1930, __c60, 10), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetClustersForImageResponse",
-      });
+        S.Struct({ cluster: __S(1866, __c58, 10), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "GetClustersForImageResponse" });
   }
 }
-function __c61(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7157,9 +7054,7 @@ function __c61(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetCodeSecurityIntegrationRequest",
-      });
+      ).annotate({ identifier: "GetCodeSecurityIntegrationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7173,16 +7068,14 @@ function __c61(j: number): any {
           authorizationUrl: S.optional(SensitiveString),
           tags: S.optional(__S(512, __c16, 0)),
         }),
-      ).annotate({
-        identifier: "GetCodeSecurityIntegrationResponse",
-      });
+      ).annotate({ identifier: "GetCodeSecurityIntegrationResponse" });
   }
 }
-function __c62(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ resource: __S(4000, __c125, 0), scanId: S.String }).pipe(
+        S.Struct({ resource: __S(3936, __c123, 0), scanId: S.String }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/codesecurity/scan/get" }),
             svc,
@@ -7192,14 +7085,12 @@ function __c62(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetCodeSecurityScanRequest",
-      });
+      ).annotate({ identifier: "GetCodeSecurityScanRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           scanId: S.optional(S.String),
-          resource: S.optional(__S(4000, __c125, 0)),
+          resource: S.optional(__S(3936, __c123, 0)),
           accountId: S.optional(S.String),
           status: S.optional(S.String),
           statusReason: S.optional(S.String),
@@ -7207,12 +7098,10 @@ function __c62(j: number): any {
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastCommitId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetCodeSecurityScanResponse",
-      });
+      ).annotate({ identifier: "GetCodeSecurityScanResponse" });
   }
 }
-function __c63(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7226,27 +7115,23 @@ function __c63(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetCodeSecurityScanConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetCodeSecurityScanConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           scanConfigurationArn: S.optional(S.String),
           name: S.optional(S.String),
-          configuration: S.optional(__S(866, __c27, 2)),
+          configuration: S.optional(__S(834, __c26, 2)),
           level: S.optional(S.String),
           scopeSettings: S.optional(__S(800, __c25, 0)),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           tags: S.optional(__S(512, __c16, 0)),
         }),
-      ).annotate({
-        identifier: "GetCodeSecurityScanConfigurationResponse",
-      });
+      ).annotate({ identifier: "GetCodeSecurityScanConfigurationResponse" });
   }
 }
-function __c64(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7273,7 +7158,7 @@ function __c64(j: number): any {
       ).annotate({ identifier: "EcrRescanDurationState" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ rescanDurationState: S.optional(__S(2049, __c64, 1)) }),
+        S.Struct({ rescanDurationState: S.optional(__S(1985, __c62, 1)) }),
       ).annotate({ identifier: "EcrConfigurationState" });
     case 3:
       return S.suspend(() =>
@@ -7290,20 +7175,20 @@ function __c64(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          scanModeState: S.optional(__S(2051, __c64, 3)),
-          vmScannerState: S.optional(__S(2052, __c64, 4)),
+          scanModeState: S.optional(__S(1987, __c62, 3)),
+          vmScannerState: S.optional(__S(1988, __c62, 4)),
         }),
       ).annotate({ identifier: "Ec2ConfigurationState" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ecrConfiguration: S.optional(__S(2050, __c64, 2)),
-          ec2Configuration: S.optional(__S(2053, __c64, 5)),
+          ecrConfiguration: S.optional(__S(1986, __c62, 2)),
+          ec2Configuration: S.optional(__S(1989, __c62, 5)),
         }),
       ).annotate({ identifier: "GetConfigurationResponse" });
   }
 }
-function __c65(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7317,22 +7202,18 @@ function __c65(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDelegatedAdminAccountRequest",
-      });
+      ).annotate({ identifier: "GetDelegatedAdminAccountRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ accountId: S.optional(S.String), relationshipStatus: S.optional(S.String) }),
       ).annotate({ identifier: "DelegatedAdmin" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ delegatedAdmin: S.optional(__S(2081, __c65, 1)) }),
-      ).annotate({
-        identifier: "GetDelegatedAdminAccountResponse",
-      });
+        S.Struct({ delegatedAdmin: S.optional(__S(2017, __c63, 1)) }),
+      ).annotate({ identifier: "GetDelegatedAdminAccountResponse" });
   }
 }
-function __c66(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7346,12 +7227,10 @@ function __c66(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetEc2DeepInspectionConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetEc2DeepInspectionConfigurationRequest" });
   }
 }
-function __c67(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7361,12 +7240,10 @@ function __c67(j: number): any {
           status: S.optional(S.String),
           errorMessage: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetEc2DeepInspectionConfigurationResponse",
-      });
+      ).annotate({ identifier: "GetEc2DeepInspectionConfigurationResponse" });
   }
 }
-function __c68(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7383,7 +7260,7 @@ function __c68(j: number): any {
       });
   }
 }
-function __c69(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7397,9 +7274,7 @@ function __c69(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetFindingsReportStatusRequest",
-      });
+      ).annotate({ identifier: "GetFindingsReportStatusRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7407,15 +7282,13 @@ function __c69(j: number): any {
           status: S.optional(S.String),
           errorCode: S.optional(S.String),
           errorMessage: S.optional(S.String),
-          destination: S.optional(__S(1248, __c39, 0)),
-          filterCriteria: S.optional(__S(1156, __c36, 4)),
+          destination: S.optional(__S(1184, __c37, 0)),
+          filterCriteria: S.optional(__S(1092, __c34, 4)),
         }),
-      ).annotate({
-        identifier: "GetFindingsReportStatusResponse",
-      });
+      ).annotate({ identifier: "GetFindingsReportStatusResponse" });
   }
 }
-function __c70(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7424,12 +7297,12 @@ function __c70(j: number): any {
         ),
       ).annotate({ identifier: "GetMemberRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ member: S.optional(__S(2272, __c71, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ member: S.optional(__S(2208, __c69, 0)) })).annotate({
         identifier: "GetMemberResponse",
       });
   }
 }
-function __c71(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7442,7 +7315,7 @@ function __c71(j: number): any {
       ).annotate({ identifier: "Member" });
   }
 }
-function __c72(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7458,13 +7331,13 @@ function __c72(j: number): any {
           status: S.optional(S.String),
           errorCode: S.optional(S.String),
           errorMessage: S.optional(S.String),
-          s3Destination: S.optional(__S(1248, __c39, 0)),
-          filterCriteria: S.optional(__S(1312, __c41, 0)),
+          s3Destination: S.optional(__S(1184, __c37, 0)),
+          filterCriteria: S.optional(__S(1248, __c39, 0)),
         }),
       ).annotate({ identifier: "GetSbomExportResponse" });
   }
 }
-function __c73(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7482,39 +7355,33 @@ function __c73(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListAccountPermissionsRequest",
-      });
+      ).annotate({ identifier: "ListAccountPermissionsRequest" });
     case 1:
       return S.suspend(() => S.Struct({ service: S.String, operation: S.String })).annotate({
         identifier: "Permission",
       });
     case 2:
-      return S.Array(__S(2337, __c73, 1));
+      return S.Array(__S(2273, __c71, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ permissions: __S(2338, __c73, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListAccountPermissionsResponse",
-      });
+        S.Struct({ permissions: __S(2274, __c71, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListAccountPermissionsResponse" });
   }
 }
-function __c74(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          scanNameFilters: S.optional(__S(1857, __c58, 1)),
-          targetResourceTagFilters: S.optional(__S(2401, __c75, 1)),
-          scanConfigurationArnFilters: S.optional(__S(1857, __c58, 1)),
+          scanNameFilters: S.optional(__S(1793, __c56, 1)),
+          targetResourceTagFilters: S.optional(__S(2337, __c73, 1)),
+          scanConfigurationArnFilters: S.optional(__S(1793, __c56, 1)),
         }),
-      ).annotate({
-        identifier: "ListCisScanConfigurationsFilterCriteria",
-      });
+      ).annotate({ identifier: "ListCisScanConfigurationsFilterCriteria" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          filterCriteria: S.optional(__S(2368, __c74, 0)),
+          filterCriteria: S.optional(__S(2304, __c72, 0)),
           sortBy: S.optional(S.String),
           sortOrder: S.optional(S.String),
           nextToken: S.optional(S.String),
@@ -7529,9 +7396,7 @@ function __c74(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListCisScanConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListCisScanConfigurationsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -7540,34 +7405,32 @@ function __c74(j: number): any {
           scanName: S.optional(S.String),
           securityLevel: S.optional(S.String),
           schedule: S.optional(__S(676, __c21, 4)),
-          targets: S.optional(__S(2432, __c76, 0)),
+          targets: S.optional(__S(2368, __c74, 0)),
           tags: S.optional(__S(512, __c16, 0)),
         }),
       ).annotate({ identifier: "CisScanConfiguration" });
     case 3:
-      return S.Array(__S(2370, __c74, 2));
+      return S.Array(__S(2306, __c72, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          scanConfigurations: S.optional(__S(2371, __c74, 3)),
+          scanConfigurations: S.optional(__S(2307, __c72, 3)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListCisScanConfigurationsResponse",
-      });
+      ).annotate({ identifier: "ListCisScanConfigurationsResponse" });
   }
 }
-function __c75(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ comparison: S.String, key: S.String, value: S.String }),
       ).annotate({ identifier: "TagFilter" });
     case 1:
-      return S.Array(__S(2400, __c75, 0));
+      return S.Array(__S(2336, __c73, 0));
   }
 }
-function __c76(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7578,26 +7441,24 @@ function __c76(j: number): any {
       ).annotate({ identifier: "CisTargets" });
   }
 }
-function __c77(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accountIdFilters: S.optional(__S(1857, __c58, 1)),
-          checkIdFilters: S.optional(__S(1857, __c58, 1)),
-          titleFilters: S.optional(__S(1857, __c58, 1)),
-          platformFilters: S.optional(__S(1857, __c58, 1)),
-          failedResourcesFilters: S.optional(__S(1089, __c34, 1)),
-          securityLevelFilters: S.optional(__S(1889, __c59, 1)),
+          accountIdFilters: S.optional(__S(1793, __c56, 1)),
+          checkIdFilters: S.optional(__S(1793, __c56, 1)),
+          titleFilters: S.optional(__S(1793, __c56, 1)),
+          platformFilters: S.optional(__S(1793, __c56, 1)),
+          failedResourcesFilters: S.optional(__S(1025, __c32, 1)),
+          securityLevelFilters: S.optional(__S(1825, __c57, 1)),
         }),
-      ).annotate({
-        identifier: "CisScanResultsAggregatedByChecksFilterCriteria",
-      });
+      ).annotate({ identifier: "CisScanResultsAggregatedByChecksFilterCriteria" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           scanArn: S.String,
-          filterCriteria: S.optional(__S(2464, __c77, 0)),
+          filterCriteria: S.optional(__S(2400, __c75, 0)),
           sortBy: S.optional(S.String),
           sortOrder: S.optional(S.String),
           nextToken: S.optional(S.String),
@@ -7612,9 +7473,7 @@ function __c77(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListCisScanResultsAggregatedByChecksRequest",
-      });
+      ).annotate({ identifier: "ListCisScanResultsAggregatedByChecksRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -7624,24 +7483,22 @@ function __c77(j: number): any {
           checkDescription: S.optional(S.String),
           level: S.optional(S.String),
           accountId: S.optional(S.String),
-          statusCounts: S.optional(__S(2496, __c78, 0)),
+          statusCounts: S.optional(__S(2432, __c76, 0)),
           platform: S.optional(S.String),
         }),
       ).annotate({ identifier: "CisCheckAggregation" });
     case 3:
-      return S.Array(__S(2466, __c77, 2));
+      return S.Array(__S(2402, __c75, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          checkAggregations: S.optional(__S(2467, __c77, 3)),
+          checkAggregations: S.optional(__S(2403, __c75, 3)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListCisScanResultsAggregatedByChecksResponse",
-      });
+      ).annotate({ identifier: "ListCisScanResultsAggregatedByChecksResponse" });
   }
 }
-function __c78(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7653,35 +7510,27 @@ function __c78(j: number): any {
       ).annotate({ identifier: "StatusCounts" });
   }
 }
-function __c79(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ comparison: S.String, value: S.String })).annotate({
-        identifier: "CisTargetStatusReasonFilter",
-      });
-    case 1:
-      return S.Array(__S(2528, __c79, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          accountIdFilters: S.optional(__S(1857, __c58, 1)),
-          statusFilters: S.optional(__S(1889, __c59, 1)),
-          checkIdFilters: S.optional(__S(1857, __c58, 1)),
-          targetResourceIdFilters: S.optional(__S(1857, __c58, 1)),
-          targetResourceTagFilters: S.optional(__S(2401, __c75, 1)),
-          platformFilters: S.optional(__S(1857, __c58, 1)),
-          targetStatusFilters: S.optional(__S(1889, __c59, 1)),
-          targetStatusReasonFilters: S.optional(__S(2529, __c79, 1)),
-          failedChecksFilters: S.optional(__S(1089, __c34, 1)),
+          accountIdFilters: S.optional(__S(1793, __c56, 1)),
+          statusFilters: S.optional(__S(1825, __c57, 1)),
+          checkIdFilters: S.optional(__S(1793, __c56, 1)),
+          targetResourceIdFilters: S.optional(__S(1793, __c56, 1)),
+          targetResourceTagFilters: S.optional(__S(2337, __c73, 1)),
+          platformFilters: S.optional(__S(1793, __c56, 1)),
+          targetStatusFilters: S.optional(__S(1825, __c57, 1)),
+          targetStatusReasonFilters: S.optional(__S(1825, __c57, 1)),
+          failedChecksFilters: S.optional(__S(1025, __c32, 1)),
         }),
-      ).annotate({
-        identifier: "CisScanResultsAggregatedByTargetResourceFilterCriteria",
-      });
-    case 3:
+      ).annotate({ identifier: "CisScanResultsAggregatedByTargetResourceFilterCriteria" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           scanArn: S.String,
-          filterCriteria: S.optional(__S(2530, __c79, 2)),
+          filterCriteria: S.optional(__S(2464, __c77, 0)),
           sortBy: S.optional(S.String),
           sortOrder: S.optional(S.String),
           nextToken: S.optional(S.String),
@@ -7696,38 +7545,32 @@ function __c79(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListCisScanResultsAggregatedByTargetResourceRequest",
-      });
-    case 4:
+      ).annotate({ identifier: "ListCisScanResultsAggregatedByTargetResourceRequest" });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           scanArn: S.String,
           targetResourceId: S.optional(S.String),
           accountId: S.optional(S.String),
           targetResourceTags: S.optional(__S(640, __c20, 0)),
-          statusCounts: S.optional(__S(2496, __c78, 0)),
+          statusCounts: S.optional(__S(2432, __c76, 0)),
           platform: S.optional(S.String),
           targetStatus: S.optional(S.String),
           targetStatusReason: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CisTargetResourceAggregation",
-      });
-    case 5:
-      return S.Array(__S(2532, __c79, 4));
-    case 6:
+      ).annotate({ identifier: "CisTargetResourceAggregation" });
+    case 3:
+      return S.Array(__S(2466, __c77, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          targetResourceAggregations: S.optional(__S(2533, __c79, 5)),
+          targetResourceAggregations: S.optional(__S(2467, __c77, 3)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListCisScanResultsAggregatedByTargetResourceResponse",
-      });
+      ).annotate({ identifier: "ListCisScanResultsAggregatedByTargetResourceResponse" });
   }
 }
-function __c80(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7737,28 +7580,26 @@ function __c80(j: number): any {
         }),
       ).annotate({ identifier: "CisDateFilter" });
     case 1:
-      return S.Array(__S(2560, __c80, 0));
+      return S.Array(__S(2496, __c78, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          scanNameFilters: S.optional(__S(1857, __c58, 1)),
-          targetResourceTagFilters: S.optional(__S(2401, __c75, 1)),
-          targetResourceIdFilters: S.optional(__S(1857, __c58, 1)),
-          scanStatusFilters: S.optional(__S(1889, __c59, 1)),
-          scanAtFilters: S.optional(__S(2561, __c80, 1)),
-          scanConfigurationArnFilters: S.optional(__S(1857, __c58, 1)),
-          scanArnFilters: S.optional(__S(1857, __c58, 1)),
-          scheduledByFilters: S.optional(__S(1857, __c58, 1)),
-          failedChecksFilters: S.optional(__S(1089, __c34, 1)),
-          targetAccountIdFilters: S.optional(__S(1857, __c58, 1)),
+          scanNameFilters: S.optional(__S(1793, __c56, 1)),
+          targetResourceTagFilters: S.optional(__S(2337, __c73, 1)),
+          targetResourceIdFilters: S.optional(__S(1793, __c56, 1)),
+          scanStatusFilters: S.optional(__S(1825, __c57, 1)),
+          scanAtFilters: S.optional(__S(2497, __c78, 1)),
+          scanConfigurationArnFilters: S.optional(__S(1793, __c56, 1)),
+          scanArnFilters: S.optional(__S(1793, __c56, 1)),
+          scheduledByFilters: S.optional(__S(1793, __c56, 1)),
+          failedChecksFilters: S.optional(__S(1025, __c32, 1)),
+          targetAccountIdFilters: S.optional(__S(1793, __c56, 1)),
         }),
-      ).annotate({
-        identifier: "ListCisScansFilterCriteria",
-      });
+      ).annotate({ identifier: "ListCisScansFilterCriteria" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          filterCriteria: S.optional(__S(2562, __c80, 2)),
+          filterCriteria: S.optional(__S(2498, __c78, 2)),
           detailLevel: S.optional(S.String),
           sortBy: S.optional(S.String),
           sortOrder: S.optional(S.String),
@@ -7778,20 +7619,20 @@ function __c80(j: number): any {
           scanDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           failedChecks: S.optional(S.Number),
           totalChecks: S.optional(S.Number),
-          targets: S.optional(__S(2432, __c76, 0)),
+          targets: S.optional(__S(2368, __c74, 0)),
           scheduledBy: S.optional(S.String),
           securityLevel: S.optional(S.String),
         }),
       ).annotate({ identifier: "CisScan" });
     case 5:
-      return S.Array(__S(2564, __c80, 4));
+      return S.Array(__S(2500, __c78, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({ scans: S.optional(__S(2565, __c80, 5)), nextToken: S.optional(S.String) }),
+        S.Struct({ scans: S.optional(__S(2501, __c78, 5)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListCisScansResponse" });
   }
 }
-function __c81(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7808,9 +7649,7 @@ function __c81(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListCodeSecurityIntegrationsRequest",
-      });
+      ).annotate({ identifier: "ListCodeSecurityIntegrationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7822,23 +7661,19 @@ function __c81(j: number): any {
           createdOn: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastUpdateOn: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
-      ).annotate({
-        identifier: "CodeSecurityIntegrationSummary",
-      });
+      ).annotate({ identifier: "CodeSecurityIntegrationSummary" });
     case 2:
-      return S.Array(__S(2593, __c81, 1));
+      return S.Array(__S(2529, __c79, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          integrations: S.optional(__S(2594, __c81, 2)),
+          integrations: S.optional(__S(2530, __c79, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListCodeSecurityIntegrationsResponse",
-      });
+      ).annotate({ identifier: "ListCodeSecurityIntegrationsResponse" });
   }
 }
-function __c82(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7856,27 +7691,23 @@ function __c82(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListCodeSecurityScanConfigurationAssociationsRequest",
-      });
+      ).annotate({ identifier: "ListCodeSecurityScanConfigurationAssociationsRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ resource: S.optional(__S(4000, __c125, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ resource: S.optional(__S(3936, __c123, 0)) })).annotate({
         identifier: "CodeSecurityScanConfigurationAssociationSummary",
       });
     case 2:
-      return S.Array(__S(2625, __c82, 1));
+      return S.Array(__S(2561, __c80, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          associations: S.optional(__S(2626, __c82, 2)),
+          associations: S.optional(__S(2562, __c80, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListCodeSecurityScanConfigurationAssociationsResponse",
-      });
+      ).annotate({ identifier: "ListCodeSecurityScanConfigurationAssociationsResponse" });
   }
 }
-function __c83(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7893,9 +7724,7 @@ function __c83(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListCodeSecurityScanConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListCodeSecurityScanConfigurationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7904,55 +7733,45 @@ function __c83(j: number): any {
           ownerAccountId: S.String,
           periodicScanFrequency: S.optional(S.String),
           frequencyExpression: S.optional(S.String),
-          continuousIntegrationScanSupportedEvents: S.optional(__S(832, __c26, 0)),
+          continuousIntegrationScanSupportedEvents: S.optional(__S(544, __c17, 0)),
           ruleSetCategories: __S(544, __c17, 0),
           scopeSettings: S.optional(__S(800, __c25, 0)),
         }),
-      ).annotate({
-        identifier: "CodeSecurityScanConfigurationSummary",
-      });
+      ).annotate({ identifier: "CodeSecurityScanConfigurationSummary" });
     case 2:
-      return S.Array(__S(2657, __c83, 1));
+      return S.Array(__S(2593, __c81, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          configurations: S.optional(__S(2658, __c83, 2)),
+          configurations: S.optional(__S(2594, __c81, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListCodeSecurityScanConfigurationsResponse",
-      });
+      ).annotate({ identifier: "ListCodeSecurityScanConfigurationsResponse" });
   }
 }
-function __c84(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ comparison: S.String, value: S.String })).annotate({
-        identifier: "AwsConfigConnectorArnFilter",
-      });
-    case 1:
-      return S.Array(__S(2688, __c84, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          connectorArns: S.optional(__S(1857, __c58, 1)),
-          accounts: S.optional(__S(1025, __c32, 1)),
-          awsConfigConnectorArns: S.optional(__S(2689, __c84, 1)),
-          connectorType: S.optional(__S(1889, __c59, 1)),
-          provider: S.optional(__S(1889, __c59, 1)),
+          connectorArns: S.optional(__S(1793, __c56, 1)),
+          accounts: S.optional(__S(961, __c30, 1)),
+          awsConfigConnectorArns: S.optional(__S(1793, __c56, 1)),
+          connectorType: S.optional(__S(1825, __c57, 1)),
+          provider: S.optional(__S(1825, __c57, 1)),
         }),
       ).annotate({ identifier: "ConnectorFilterCriteria" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number),
           nextToken: S.optional(SensitiveString),
-          filterCriteria: S.optional(__S(2690, __c84, 2)),
+          filterCriteria: S.optional(__S(2624, __c82, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/connector/list" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListConnectorsRequest" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           connectorStatus: S.String,
@@ -7960,7 +7779,7 @@ function __c84(j: number): any {
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectorHealth" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           scopeType: S.String,
@@ -7969,15 +7788,15 @@ function __c84(j: number): any {
           stateReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScopeConfiguration" });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          vmScanning: S.optional(__S(2693, __c84, 5)),
-          containerImageScanning: S.optional(__S(2693, __c84, 5)),
-          serverlessScanning: S.optional(__S(2693, __c84, 5)),
+          vmScanning: S.optional(__S(2627, __c82, 3)),
+          containerImageScanning: S.optional(__S(2627, __c82, 3)),
+          serverlessScanning: S.optional(__S(2627, __c82, 3)),
         }),
       ).annotate({ identifier: "AzureScopeConfiguration" });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           connectorArn: S.String,
@@ -7986,25 +7805,25 @@ function __c84(j: number): any {
           provider: S.String,
           enablementStatus: S.optional(S.String),
           enablementStatusReason: S.optional(S.String),
-          health: S.optional(__S(2692, __c84, 4)),
+          health: S.optional(__S(2626, __c82, 2)),
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           azureRegions: S.optional(__S(64, __c2, 0)),
           awsConfigConnectorArn: S.optional(S.String),
-          scopeConfiguration: S.optional(__S(2694, __c84, 6)),
-          tags: S.optional(__S(928, __c29, 0)),
+          scopeConfiguration: S.optional(__S(2628, __c82, 4)),
+          tags: S.optional(__S(512, __c16, 0)),
           autoInstallVMScanner: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Connector" });
-    case 8:
-      return S.Array(__S(2695, __c84, 7));
-    case 9:
+    case 6:
+      return S.Array(__S(2629, __c82, 5));
+    case 7:
       return S.suspend(() =>
-        S.Struct({ items: __S(2696, __c84, 8), nextToken: S.optional(SensitiveString) }),
+        S.Struct({ items: __S(2630, __c82, 6), nextToken: S.optional(SensitiveString) }),
       ).annotate({ identifier: "ListConnectorsResponse" });
   }
 }
-function __c85(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8022,56 +7841,46 @@ function __c85(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListConnectorScanConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListConnectorScanConfigurationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           awsConfigConnectorArn: S.String,
           connectorArns: __S(64, __c2, 0),
-          scanConfiguration: __S(2753, __c86, 1),
+          scanConfiguration: __S(2689, __c84, 1),
         }),
-      ).annotate({
-        identifier: "ConnectorScanConfigurationItem",
-      });
+      ).annotate({ identifier: "ConnectorScanConfigurationItem" });
     case 2:
-      return S.Array(__S(2721, __c85, 1));
+      return S.Array(__S(2657, __c83, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          scanConfigurations: __S(2722, __c85, 2),
+          scanConfigurations: __S(2658, __c83, 2),
           nextToken: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "ListConnectorScanConfigurationsResponse",
-      });
+      ).annotate({ identifier: "ListConnectorScanConfigurationsResponse" });
   }
 }
-function __c86(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ pushDuration: S.optional(S.String), pullDuration: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ConnectorContainerImageScanConfiguration",
-      });
+      ).annotate({ identifier: "ConnectorContainerImageScanConfiguration" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ containerImageScanning: S.optional(__S(2752, __c86, 0)) }),
-      ).annotate({
-        identifier: "ConnectorScanConfiguration",
-      });
+        S.Struct({ containerImageScanning: S.optional(__S(2688, __c84, 0)) }),
+      ).annotate({ identifier: "ConnectorScanConfiguration" });
   }
 }
-function __c87(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
-          filterCriteria: S.optional(__S(2816, __c88, 0)),
+          filterCriteria: S.optional(__S(2752, __c86, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/coverage/list" }), svc, auth, proto, ver, rules),
         ),
@@ -8092,9 +7901,7 @@ function __c87(j: number): any {
           lastInUseAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           inUseCount: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "EcrContainerImageMetadata",
-      });
+      ).annotate({ identifier: "EcrContainerImageMetadata" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -8118,41 +7925,33 @@ function __c87(j: number): any {
           frequencyExpression: S.optional(S.String),
           ruleSetCategories: S.optional(__S(544, __c17, 0)),
         }),
-      ).annotate({
-        identifier: "ProjectPeriodicScanConfiguration",
-      });
+      ).annotate({ identifier: "ProjectPeriodicScanConfiguration" });
     case 7:
-      return S.Array(__S(2790, __c87, 6));
+      return S.Array(__S(2726, __c85, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
           supportedEvent: S.optional(S.String),
           ruleSetCategories: S.optional(__S(544, __c17, 0)),
         }),
-      ).annotate({
-        identifier: "ProjectContinuousIntegrationScanConfiguration",
-      });
+      ).annotate({ identifier: "ProjectContinuousIntegrationScanConfiguration" });
     case 9:
-      return S.Array(__S(2792, __c87, 8));
+      return S.Array(__S(2728, __c85, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
-          periodicScanConfigurations: S.optional(__S(2791, __c87, 7)),
-          continuousIntegrationScanConfigurations: S.optional(__S(2793, __c87, 9)),
+          periodicScanConfigurations: S.optional(__S(2727, __c85, 7)),
+          continuousIntegrationScanConfigurations: S.optional(__S(2729, __c85, 9)),
         }),
-      ).annotate({
-        identifier: "ProjectCodeSecurityScanConfiguration",
-      });
+      ).annotate({ identifier: "ProjectCodeSecurityScanConfiguration" });
     case 11:
       return S.suspend(() =>
         S.Struct({
           lastScannedCommitId: S.optional(S.String),
           lastScanAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          scanStatus: S.optional(__S(2785, __c87, 1)),
+          scanStatus: S.optional(__S(2721, __c85, 1)),
         }),
-      ).annotate({
-        identifier: "CodeRepositoryOnDemandScan",
-      });
+      ).annotate({ identifier: "CodeRepositoryOnDemandScan" });
     case 12:
       return S.suspend(() =>
         S.Struct({
@@ -8161,8 +7960,8 @@ function __c87(j: number): any {
           providerType: S.String,
           providerTypeVisibility: S.String,
           lastScannedCommitId: S.optional(S.String),
-          scanConfiguration: S.optional(__S(2794, __c87, 10)),
-          onDemandScan: S.optional(__S(2795, __c87, 11)),
+          scanConfiguration: S.optional(__S(2730, __c85, 10)),
+          onDemandScan: S.optional(__S(2731, __c85, 11)),
         }),
       ).annotate({ identifier: "CodeRepositoryMetadata" });
     case 13:
@@ -8184,49 +7983,41 @@ function __c87(j: number): any {
         }),
       ).annotate({ identifier: "ContainerImageMetadata" });
     case 15:
-      return S.suspend(() =>
-        S.Struct({ name: S.optional(S.String), scanFrequency: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ContainerRepositoryMetadata",
-      });
-    case 16:
       return S.suspend(() => S.Struct({ name: S.optional(S.String) })).annotate({
         identifier: "ContainerRegistryMetadata",
       });
-    case 17:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           serverlessFunctionName: S.optional(S.String),
           runtime: S.optional(S.String),
           functionTags: S.optional(__S(512, __c16, 0)),
         }),
-      ).annotate({
-        identifier: "ServerlessFunctionMetadata",
-      });
-    case 18:
+      ).annotate({ identifier: "ServerlessFunctionMetadata" });
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          ecrRepository: S.optional(__S(2786, __c87, 2)),
-          ecrImage: S.optional(__S(2787, __c87, 3)),
-          ec2: S.optional(__S(2788, __c87, 4)),
-          lambdaFunction: S.optional(__S(2789, __c87, 5)),
-          codeRepository: S.optional(__S(2796, __c87, 12)),
-          vmInstance: S.optional(__S(2797, __c87, 13)),
-          containerImage: S.optional(__S(2798, __c87, 14)),
-          containerRepository: S.optional(__S(2799, __c87, 15)),
-          containerRegistry: S.optional(__S(2800, __c87, 16)),
-          serverlessFunction: S.optional(__S(2801, __c87, 17)),
+          ecrRepository: S.optional(__S(2722, __c85, 2)),
+          ecrImage: S.optional(__S(2723, __c85, 3)),
+          ec2: S.optional(__S(2724, __c85, 4)),
+          lambdaFunction: S.optional(__S(2725, __c85, 5)),
+          codeRepository: S.optional(__S(2732, __c85, 12)),
+          vmInstance: S.optional(__S(2733, __c85, 13)),
+          containerImage: S.optional(__S(2734, __c85, 14)),
+          containerRepository: S.optional(__S(2722, __c85, 2)),
+          containerRegistry: S.optional(__S(2735, __c85, 15)),
+          serverlessFunction: S.optional(__S(2736, __c85, 16)),
         }),
       ).annotate({ identifier: "ResourceScanMetadata" });
-    case 19:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.String,
           resourceId: S.String,
           accountId: S.String,
           scanType: S.String,
-          scanStatus: S.optional(__S(2785, __c87, 1)),
-          resourceMetadata: S.optional(__S(2802, __c87, 18)),
+          scanStatus: S.optional(__S(2721, __c85, 1)),
+          resourceMetadata: S.optional(__S(2737, __c85, 17)),
           lastScannedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           scanMode: S.optional(S.String),
           provider: S.optional(S.String),
@@ -8236,64 +8027,64 @@ function __c87(j: number): any {
           providerPartition: S.optional(S.String),
         }),
       ).annotate({ identifier: "CoveredResource" });
+    case 19:
+      return S.Array(__S(2738, __c85, 18));
     case 20:
-      return S.Array(__S(2803, __c87, 19));
-    case 21:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          coveredResources: S.optional(__S(2804, __c87, 20)),
+          coveredResources: S.optional(__S(2739, __c85, 19)),
         }),
       ).annotate({ identifier: "ListCoverageResponse" });
   }
 }
-function __c88(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          scanStatusCode: S.optional(__S(1025, __c32, 1)),
-          scanStatusReason: S.optional(__S(1025, __c32, 1)),
-          accountId: S.optional(__S(1025, __c32, 1)),
-          resourceId: S.optional(__S(1025, __c32, 1)),
-          resourceType: S.optional(__S(1025, __c32, 1)),
-          scanType: S.optional(__S(1025, __c32, 1)),
-          ecrRepositoryName: S.optional(__S(1025, __c32, 1)),
-          ecrImageTags: S.optional(__S(1025, __c32, 1)),
-          ec2InstanceTags: S.optional(__S(1057, __c33, 1)),
-          lambdaFunctionName: S.optional(__S(1025, __c32, 1)),
-          lambdaFunctionTags: S.optional(__S(1057, __c33, 1)),
-          lambdaFunctionRuntime: S.optional(__S(1025, __c32, 1)),
-          lastScannedAt: S.optional(__S(1121, __c35, 1)),
-          scanMode: S.optional(__S(1025, __c32, 1)),
-          imagePulledAt: S.optional(__S(1121, __c35, 1)),
-          ecrImageLastInUseAt: S.optional(__S(1121, __c35, 1)),
-          ecrImageInUseCount: S.optional(__S(1089, __c34, 1)),
-          codeRepositoryProjectName: S.optional(__S(1025, __c32, 1)),
-          codeRepositoryProviderType: S.optional(__S(1025, __c32, 1)),
-          codeRepositoryProviderTypeVisibility: S.optional(__S(1025, __c32, 1)),
-          lastScannedCommitId: S.optional(__S(1025, __c32, 1)),
-          cloudProvider: S.optional(__S(1025, __c32, 1)),
-          cloudProviderAccountId: S.optional(__S(1025, __c32, 1)),
-          cloudProviderRegion: S.optional(__S(1025, __c32, 1)),
-          cloudVmInstanceTags: S.optional(__S(1057, __c33, 1)),
-          cloudContainerImageTags: S.optional(__S(1025, __c32, 1)),
-          cloudContainerRepositoryName: S.optional(__S(1025, __c32, 1)),
-          cloudContainerRegistryName: S.optional(__S(1025, __c32, 1)),
-          cloudServerlessFunctionName: S.optional(__S(1025, __c32, 1)),
-          cloudServerlessFunctionRuntime: S.optional(__S(1025, __c32, 1)),
-          cloudServerlessFunctionTags: S.optional(__S(1057, __c33, 1)),
-          cloudProviderOrgId: S.optional(__S(1025, __c32, 1)),
+          scanStatusCode: S.optional(__S(961, __c30, 1)),
+          scanStatusReason: S.optional(__S(961, __c30, 1)),
+          accountId: S.optional(__S(961, __c30, 1)),
+          resourceId: S.optional(__S(961, __c30, 1)),
+          resourceType: S.optional(__S(961, __c30, 1)),
+          scanType: S.optional(__S(961, __c30, 1)),
+          ecrRepositoryName: S.optional(__S(961, __c30, 1)),
+          ecrImageTags: S.optional(__S(961, __c30, 1)),
+          ec2InstanceTags: S.optional(__S(993, __c31, 1)),
+          lambdaFunctionName: S.optional(__S(961, __c30, 1)),
+          lambdaFunctionTags: S.optional(__S(993, __c31, 1)),
+          lambdaFunctionRuntime: S.optional(__S(961, __c30, 1)),
+          lastScannedAt: S.optional(__S(1057, __c33, 1)),
+          scanMode: S.optional(__S(961, __c30, 1)),
+          imagePulledAt: S.optional(__S(1057, __c33, 1)),
+          ecrImageLastInUseAt: S.optional(__S(1057, __c33, 1)),
+          ecrImageInUseCount: S.optional(__S(1025, __c32, 1)),
+          codeRepositoryProjectName: S.optional(__S(961, __c30, 1)),
+          codeRepositoryProviderType: S.optional(__S(961, __c30, 1)),
+          codeRepositoryProviderTypeVisibility: S.optional(__S(961, __c30, 1)),
+          lastScannedCommitId: S.optional(__S(961, __c30, 1)),
+          cloudProvider: S.optional(__S(961, __c30, 1)),
+          cloudProviderAccountId: S.optional(__S(961, __c30, 1)),
+          cloudProviderRegion: S.optional(__S(961, __c30, 1)),
+          cloudVmInstanceTags: S.optional(__S(993, __c31, 1)),
+          cloudContainerImageTags: S.optional(__S(961, __c30, 1)),
+          cloudContainerRepositoryName: S.optional(__S(961, __c30, 1)),
+          cloudContainerRegistryName: S.optional(__S(961, __c30, 1)),
+          cloudServerlessFunctionName: S.optional(__S(961, __c30, 1)),
+          cloudServerlessFunctionRuntime: S.optional(__S(961, __c30, 1)),
+          cloudServerlessFunctionTags: S.optional(__S(993, __c31, 1)),
+          cloudProviderOrgId: S.optional(__S(961, __c30, 1)),
         }),
       ).annotate({ identifier: "CoverageFilterCriteria" });
   }
 }
-function __c89(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          filterCriteria: S.optional(__S(2816, __c88, 0)),
+          filterCriteria: S.optional(__S(2752, __c86, 0)),
           groupBy: S.optional(S.String),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -8306,28 +8097,24 @@ function __c89(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListCoverageStatisticsRequest",
-      });
+      ).annotate({ identifier: "ListCoverageStatisticsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ count: S.optional(S.Number), groupKey: S.optional(S.String) }),
       ).annotate({ identifier: "Counts" });
     case 2:
-      return S.Array(__S(2849, __c89, 1));
+      return S.Array(__S(2785, __c87, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          countsByGroup: S.optional(__S(2850, __c89, 2)),
+          countsByGroup: S.optional(__S(2786, __c87, 2)),
           totalCounts: S.Number,
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListCoverageStatisticsResponse",
-      });
+      ).annotate({ identifier: "ListCoverageStatisticsResponse" });
   }
 }
-function __c90(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8341,27 +8128,23 @@ function __c90(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDelegatedAdminAccountsRequest",
-      });
+      ).annotate({ identifier: "ListDelegatedAdminAccountsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ accountId: S.optional(S.String), status: S.optional(S.String) }),
       ).annotate({ identifier: "DelegatedAdminAccount" });
     case 2:
-      return S.Array(__S(2881, __c90, 1));
+      return S.Array(__S(2817, __c88, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          delegatedAdminAccounts: S.optional(__S(2882, __c90, 2)),
+          delegatedAdminAccounts: S.optional(__S(2818, __c88, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListDelegatedAdminAccountsResponse",
-      });
+      ).annotate({ identifier: "ListDelegatedAdminAccountsResponse" });
   }
 }
-function __c91(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8380,7 +8163,7 @@ function __c91(j: number): any {
           arn: S.String,
           ownerId: S.String,
           name: S.String,
-          criteria: __S(1156, __c36, 4),
+          criteria: __S(1092, __c34, 4),
           action: S.String,
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -8390,14 +8173,14 @@ function __c91(j: number): any {
         }),
       ).annotate({ identifier: "Filter" });
     case 2:
-      return S.Array(__S(2913, __c91, 1));
+      return S.Array(__S(2849, __c89, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ filters: __S(2914, __c91, 2), nextToken: S.optional(S.String) }),
+        S.Struct({ filters: __S(2850, __c89, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListFiltersResponse" });
   }
 }
-function __c92(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8411,7 +8194,7 @@ function __c92(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          amis: S.optional(__S(1025, __c32, 1)),
+          amis: S.optional(__S(961, __c30, 1)),
           sortOrder: S.optional(S.String),
           sortBy: S.optional(S.String),
         }),
@@ -8419,26 +8202,24 @@ function __c92(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resourceIds: S.optional(__S(1025, __c32, 1)),
-          imageShas: S.optional(__S(1025, __c32, 1)),
-          repositories: S.optional(__S(1025, __c32, 1)),
-          architectures: S.optional(__S(1025, __c32, 1)),
-          imageTags: S.optional(__S(1025, __c32, 1)),
+          resourceIds: S.optional(__S(961, __c30, 1)),
+          imageShas: S.optional(__S(961, __c30, 1)),
+          repositories: S.optional(__S(961, __c30, 1)),
+          architectures: S.optional(__S(961, __c30, 1)),
+          imageTags: S.optional(__S(961, __c30, 1)),
           sortOrder: S.optional(S.String),
           sortBy: S.optional(S.String),
-          lastInUseAt: S.optional(__S(1121, __c35, 1)),
-          inUseCount: S.optional(__S(1089, __c34, 1)),
+          lastInUseAt: S.optional(__S(1057, __c33, 1)),
+          inUseCount: S.optional(__S(1025, __c32, 1)),
         }),
-      ).annotate({
-        identifier: "AwsEcrContainerAggregation",
-      });
+      ).annotate({ identifier: "AwsEcrContainerAggregation" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          amis: S.optional(__S(1025, __c32, 1)),
-          operatingSystems: S.optional(__S(1025, __c32, 1)),
-          instanceIds: S.optional(__S(1025, __c32, 1)),
-          instanceTags: S.optional(__S(1057, __c33, 1)),
+          amis: S.optional(__S(961, __c30, 1)),
+          operatingSystems: S.optional(__S(961, __c30, 1)),
+          instanceIds: S.optional(__S(961, __c30, 1)),
+          instanceTags: S.optional(__S(993, __c31, 1)),
           sortOrder: S.optional(S.String),
           sortBy: S.optional(S.String),
         }),
@@ -8446,14 +8227,14 @@ function __c92(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          repositories: S.optional(__S(1025, __c32, 1)),
-          resourceIds: S.optional(__S(1025, __c32, 1)),
-          layerHashes: S.optional(__S(1025, __c32, 1)),
-          cloudProviders: S.optional(__S(1025, __c32, 1)),
-          cloudAccountIds: S.optional(__S(1025, __c32, 1)),
-          cloudOrgIds: S.optional(__S(1025, __c32, 1)),
-          cloudRegions: S.optional(__S(1025, __c32, 1)),
-          cloudPartitions: S.optional(__S(1025, __c32, 1)),
+          repositories: S.optional(__S(961, __c30, 1)),
+          resourceIds: S.optional(__S(961, __c30, 1)),
+          layerHashes: S.optional(__S(961, __c30, 1)),
+          cloudProviders: S.optional(__S(961, __c30, 1)),
+          cloudAccountIds: S.optional(__S(961, __c30, 1)),
+          cloudOrgIds: S.optional(__S(961, __c30, 1)),
+          cloudRegions: S.optional(__S(961, __c30, 1)),
+          cloudPartitions: S.optional(__S(961, __c30, 1)),
           sortOrder: S.optional(S.String),
           sortBy: S.optional(S.String),
         }),
@@ -8461,7 +8242,7 @@ function __c92(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          packageNames: S.optional(__S(1025, __c32, 1)),
+          packageNames: S.optional(__S(961, __c30, 1)),
           sortOrder: S.optional(S.String),
           sortBy: S.optional(S.String),
         }),
@@ -8469,7 +8250,7 @@ function __c92(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          repositories: S.optional(__S(1025, __c32, 1)),
+          repositories: S.optional(__S(961, __c30, 1)),
           sortOrder: S.optional(S.String),
           sortBy: S.optional(S.String),
         }),
@@ -8477,8 +8258,8 @@ function __c92(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          titles: S.optional(__S(1025, __c32, 1)),
-          vulnerabilityIds: S.optional(__S(1025, __c32, 1)),
+          titles: S.optional(__S(961, __c30, 1)),
+          vulnerabilityIds: S.optional(__S(961, __c30, 1)),
           resourceType: S.optional(S.String),
           findingType: S.optional(S.String),
           sortOrder: S.optional(S.String),
@@ -8488,9 +8269,9 @@ function __c92(j: number): any {
     case 8:
       return S.suspend(() =>
         S.Struct({
-          functionNames: S.optional(__S(1025, __c32, 1)),
-          resourceIds: S.optional(__S(1025, __c32, 1)),
-          layerArns: S.optional(__S(1025, __c32, 1)),
+          functionNames: S.optional(__S(961, __c30, 1)),
+          resourceIds: S.optional(__S(961, __c30, 1)),
+          layerArns: S.optional(__S(961, __c30, 1)),
           sortOrder: S.optional(S.String),
           sortBy: S.optional(S.String),
         }),
@@ -8498,40 +8279,36 @@ function __c92(j: number): any {
     case 9:
       return S.suspend(() =>
         S.Struct({
-          resourceIds: S.optional(__S(1025, __c32, 1)),
-          functionNames: S.optional(__S(1025, __c32, 1)),
-          runtimes: S.optional(__S(1025, __c32, 1)),
-          functionTags: S.optional(__S(1057, __c33, 1)),
+          resourceIds: S.optional(__S(961, __c30, 1)),
+          functionNames: S.optional(__S(961, __c30, 1)),
+          runtimes: S.optional(__S(961, __c30, 1)),
+          functionTags: S.optional(__S(993, __c31, 1)),
           sortOrder: S.optional(S.String),
           sortBy: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "LambdaFunctionAggregation",
-      });
+      ).annotate({ identifier: "LambdaFunctionAggregation" });
     case 10:
       return S.suspend(() =>
         S.Struct({
-          projectNames: S.optional(__S(1025, __c32, 1)),
-          providerTypes: S.optional(__S(1025, __c32, 1)),
+          projectNames: S.optional(__S(961, __c30, 1)),
+          providerTypes: S.optional(__S(961, __c30, 1)),
           sortOrder: S.optional(S.String),
           sortBy: S.optional(S.String),
-          resourceIds: S.optional(__S(1025, __c32, 1)),
+          resourceIds: S.optional(__S(961, __c30, 1)),
         }),
-      ).annotate({
-        identifier: "CodeRepositoryAggregation",
-      });
+      ).annotate({ identifier: "CodeRepositoryAggregation" });
     case 11:
       return S.suspend(() =>
         S.Struct({
-          resourceIds: S.optional(__S(1025, __c32, 1)),
-          operatingSystems: S.optional(__S(1025, __c32, 1)),
-          instanceTags: S.optional(__S(1057, __c33, 1)),
-          vmImageReferences: S.optional(__S(1025, __c32, 1)),
-          cloudProviders: S.optional(__S(1025, __c32, 1)),
-          cloudPartitions: S.optional(__S(1025, __c32, 1)),
-          cloudRegions: S.optional(__S(1025, __c32, 1)),
-          cloudOrgIds: S.optional(__S(1025, __c32, 1)),
-          cloudAccountIds: S.optional(__S(1025, __c32, 1)),
+          resourceIds: S.optional(__S(961, __c30, 1)),
+          operatingSystems: S.optional(__S(961, __c30, 1)),
+          instanceTags: S.optional(__S(993, __c31, 1)),
+          vmImageReferences: S.optional(__S(961, __c30, 1)),
+          cloudProviders: S.optional(__S(961, __c30, 1)),
+          cloudPartitions: S.optional(__S(961, __c30, 1)),
+          cloudRegions: S.optional(__S(961, __c30, 1)),
+          cloudOrgIds: S.optional(__S(961, __c30, 1)),
+          cloudAccountIds: S.optional(__S(961, __c30, 1)),
           sortOrder: S.optional(S.String),
           sortBy: S.optional(S.String),
         }),
@@ -8539,60 +8316,56 @@ function __c92(j: number): any {
     case 12:
       return S.suspend(() =>
         S.Struct({
-          resourceIds: S.optional(__S(1025, __c32, 1)),
-          imageDigests: S.optional(__S(1025, __c32, 1)),
-          repositories: S.optional(__S(1025, __c32, 1)),
-          registries: S.optional(__S(1025, __c32, 1)),
-          architectures: S.optional(__S(1025, __c32, 1)),
-          imageTags: S.optional(__S(1025, __c32, 1)),
-          cloudProviders: S.optional(__S(1025, __c32, 1)),
-          cloudPartitions: S.optional(__S(1025, __c32, 1)),
-          cloudRegions: S.optional(__S(1025, __c32, 1)),
-          cloudOrgIds: S.optional(__S(1025, __c32, 1)),
-          cloudAccountIds: S.optional(__S(1025, __c32, 1)),
-          lastInUseAt: S.optional(__S(1121, __c35, 1)),
-          inUseCount: S.optional(__S(1089, __c34, 1)),
+          resourceIds: S.optional(__S(961, __c30, 1)),
+          imageDigests: S.optional(__S(961, __c30, 1)),
+          repositories: S.optional(__S(961, __c30, 1)),
+          registries: S.optional(__S(961, __c30, 1)),
+          architectures: S.optional(__S(961, __c30, 1)),
+          imageTags: S.optional(__S(961, __c30, 1)),
+          cloudProviders: S.optional(__S(961, __c30, 1)),
+          cloudPartitions: S.optional(__S(961, __c30, 1)),
+          cloudRegions: S.optional(__S(961, __c30, 1)),
+          cloudOrgIds: S.optional(__S(961, __c30, 1)),
+          cloudAccountIds: S.optional(__S(961, __c30, 1)),
+          lastInUseAt: S.optional(__S(1057, __c33, 1)),
+          inUseCount: S.optional(__S(1025, __c32, 1)),
           sortOrder: S.optional(S.String),
           sortBy: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ContainerImageAggregation",
-      });
+      ).annotate({ identifier: "ContainerImageAggregation" });
     case 13:
       return S.suspend(() =>
         S.Struct({
-          resourceIds: S.optional(__S(1025, __c32, 1)),
-          functionNames: S.optional(__S(1025, __c32, 1)),
-          runtimes: S.optional(__S(1025, __c32, 1)),
-          functionTags: S.optional(__S(1057, __c33, 1)),
-          cloudProviders: S.optional(__S(1025, __c32, 1)),
-          cloudPartitions: S.optional(__S(1025, __c32, 1)),
-          cloudRegions: S.optional(__S(1025, __c32, 1)),
-          cloudOrgIds: S.optional(__S(1025, __c32, 1)),
-          cloudAccountIds: S.optional(__S(1025, __c32, 1)),
+          resourceIds: S.optional(__S(961, __c30, 1)),
+          functionNames: S.optional(__S(961, __c30, 1)),
+          runtimes: S.optional(__S(961, __c30, 1)),
+          functionTags: S.optional(__S(993, __c31, 1)),
+          cloudProviders: S.optional(__S(961, __c30, 1)),
+          cloudPartitions: S.optional(__S(961, __c30, 1)),
+          cloudRegions: S.optional(__S(961, __c30, 1)),
+          cloudOrgIds: S.optional(__S(961, __c30, 1)),
+          cloudAccountIds: S.optional(__S(961, __c30, 1)),
           sortOrder: S.optional(S.String),
           sortBy: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ServerlessFunctionAggregation",
-      });
+      ).annotate({ identifier: "ServerlessFunctionAggregation" });
     case 14:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ accountAggregation: __S(2944, __c92, 0) }),
-        /*@__PURE__*/ S.Struct({ amiAggregation: __S(2945, __c92, 1) }),
-        /*@__PURE__*/ S.Struct({ awsEcrContainerAggregation: __S(2946, __c92, 2) }),
-        /*@__PURE__*/ S.Struct({ ec2InstanceAggregation: __S(2947, __c92, 3) }),
-        /*@__PURE__*/ S.Struct({ findingTypeAggregation: __S(2944, __c92, 0) }),
-        /*@__PURE__*/ S.Struct({ imageLayerAggregation: __S(2948, __c92, 4) }),
-        /*@__PURE__*/ S.Struct({ packageAggregation: __S(2949, __c92, 5) }),
-        /*@__PURE__*/ S.Struct({ repositoryAggregation: __S(2950, __c92, 6) }),
-        /*@__PURE__*/ S.Struct({ titleAggregation: __S(2951, __c92, 7) }),
-        /*@__PURE__*/ S.Struct({ lambdaLayerAggregation: __S(2952, __c92, 8) }),
-        /*@__PURE__*/ S.Struct({ lambdaFunctionAggregation: __S(2953, __c92, 9) }),
-        /*@__PURE__*/ S.Struct({ codeRepositoryAggregation: __S(2954, __c92, 10) }),
-        /*@__PURE__*/ S.Struct({ vmInstanceAggregation: __S(2955, __c92, 11) }),
-        /*@__PURE__*/ S.Struct({ containerImageAggregation: __S(2956, __c92, 12) }),
-        /*@__PURE__*/ S.Struct({ serverlessFunctionAggregation: __S(2957, __c92, 13) }),
+        /*@__PURE__*/ S.Struct({ accountAggregation: __S(2880, __c90, 0) }),
+        /*@__PURE__*/ S.Struct({ amiAggregation: __S(2881, __c90, 1) }),
+        /*@__PURE__*/ S.Struct({ awsEcrContainerAggregation: __S(2882, __c90, 2) }),
+        /*@__PURE__*/ S.Struct({ ec2InstanceAggregation: __S(2883, __c90, 3) }),
+        /*@__PURE__*/ S.Struct({ findingTypeAggregation: __S(2880, __c90, 0) }),
+        /*@__PURE__*/ S.Struct({ imageLayerAggregation: __S(2884, __c90, 4) }),
+        /*@__PURE__*/ S.Struct({ packageAggregation: __S(2885, __c90, 5) }),
+        /*@__PURE__*/ S.Struct({ repositoryAggregation: __S(2886, __c90, 6) }),
+        /*@__PURE__*/ S.Struct({ titleAggregation: __S(2887, __c90, 7) }),
+        /*@__PURE__*/ S.Struct({ lambdaLayerAggregation: __S(2888, __c90, 8) }),
+        /*@__PURE__*/ S.Struct({ lambdaFunctionAggregation: __S(2889, __c90, 9) }),
+        /*@__PURE__*/ S.Struct({ codeRepositoryAggregation: __S(2890, __c90, 10) }),
+        /*@__PURE__*/ S.Struct({ vmInstanceAggregation: __S(2891, __c90, 11) }),
+        /*@__PURE__*/ S.Struct({ containerImageAggregation: __S(2892, __c90, 12) }),
+        /*@__PURE__*/ S.Struct({ serverlessFunctionAggregation: __S(2893, __c90, 13) }),
       ]);
     case 15:
       return S.suspend(() =>
@@ -8600,8 +8373,8 @@ function __c92(j: number): any {
           aggregationType: S.String,
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          accountIds: S.optional(__S(1025, __c32, 1)),
-          aggregationRequest: S.optional(__S(2958, __c92, 14)),
+          accountIds: S.optional(__S(961, __c30, 1)),
+          aggregationRequest: S.optional(__S(2894, __c90, 14)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/findings/aggregation/list" }),
@@ -8612,9 +8385,7 @@ function __c92(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListFindingAggregationsRequest",
-      });
+      ).annotate({ identifier: "ListFindingAggregationsRequest" });
     case 16:
       return S.suspend(() =>
         S.Struct({
@@ -8631,13 +8402,11 @@ function __c92(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.optional(S.String),
-          severityCounts: S.optional(__S(2960, __c92, 16)),
+          severityCounts: S.optional(__S(2896, __c90, 16)),
           exploitAvailableCount: S.optional(S.Number),
           fixAvailableCount: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "AccountAggregationResponse",
-      });
+      ).annotate({ identifier: "AccountAggregationResponse" });
     case 18:
       return S.suspend(() =>
         S.Struct({
@@ -8648,7 +8417,7 @@ function __c92(j: number): any {
           cloudRegion: S.optional(S.String),
           cloudOrgId: S.optional(S.String),
           cloudAccountId: S.optional(S.String),
-          severityCounts: S.optional(__S(2960, __c92, 16)),
+          severityCounts: S.optional(__S(2896, __c90, 16)),
           affectedInstances: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AmiAggregationResponse" });
@@ -8661,13 +8430,11 @@ function __c92(j: number): any {
           architecture: S.optional(S.String),
           imageTags: S.optional(__S(64, __c2, 0)),
           accountId: S.optional(S.String),
-          severityCounts: S.optional(__S(2960, __c92, 16)),
+          severityCounts: S.optional(__S(2896, __c90, 16)),
           lastInUseAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           inUseCount: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "AwsEcrContainerAggregationResponse",
-      });
+      ).annotate({ identifier: "AwsEcrContainerAggregationResponse" });
     case 20:
       return S.suspend(() =>
         S.Struct({
@@ -8676,17 +8443,15 @@ function __c92(j: number): any {
           operatingSystem: S.optional(S.String),
           instanceTags: S.optional(__S(512, __c16, 0)),
           accountId: S.optional(S.String),
-          severityCounts: S.optional(__S(2960, __c92, 16)),
+          severityCounts: S.optional(__S(2896, __c90, 16)),
           networkFindings: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "Ec2InstanceAggregationResponse",
-      });
+      ).annotate({ identifier: "Ec2InstanceAggregationResponse" });
     case 21:
       return S.suspend(() =>
         S.Struct({
           accountId: S.optional(S.String),
-          severityCounts: S.optional(__S(2960, __c92, 16)),
+          severityCounts: S.optional(__S(2896, __c90, 16)),
           exploitAvailableCount: S.optional(S.Number),
           fixAvailableCount: S.optional(S.Number),
           cloudProvider: S.optional(S.String),
@@ -8695,9 +8460,7 @@ function __c92(j: number): any {
           cloudRegion: S.optional(S.String),
           cloudPartition: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "FindingTypeAggregationResponse",
-      });
+      ).annotate({ identifier: "FindingTypeAggregationResponse" });
     case 22:
       return S.suspend(() =>
         S.Struct({
@@ -8710,21 +8473,17 @@ function __c92(j: number): any {
           cloudOrgId: S.optional(S.String),
           cloudRegion: S.optional(S.String),
           cloudPartition: S.optional(S.String),
-          severityCounts: S.optional(__S(2960, __c92, 16)),
+          severityCounts: S.optional(__S(2896, __c90, 16)),
         }),
-      ).annotate({
-        identifier: "ImageLayerAggregationResponse",
-      });
+      ).annotate({ identifier: "ImageLayerAggregationResponse" });
     case 23:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String,
           accountId: S.optional(S.String),
-          severityCounts: S.optional(__S(2960, __c92, 16)),
+          severityCounts: S.optional(__S(2896, __c90, 16)),
         }),
-      ).annotate({
-        identifier: "PackageAggregationResponse",
-      });
+      ).annotate({ identifier: "PackageAggregationResponse" });
     case 24:
       return S.suspend(() =>
         S.Struct({
@@ -8735,19 +8494,17 @@ function __c92(j: number): any {
           cloudRegion: S.optional(S.String),
           cloudOrgId: S.optional(S.String),
           cloudAccountId: S.optional(S.String),
-          severityCounts: S.optional(__S(2960, __c92, 16)),
+          severityCounts: S.optional(__S(2896, __c90, 16)),
           affectedImages: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "RepositoryAggregationResponse",
-      });
+      ).annotate({ identifier: "RepositoryAggregationResponse" });
     case 25:
       return S.suspend(() =>
         S.Struct({
           title: S.String,
           vulnerabilityId: S.optional(S.String),
           accountId: S.optional(S.String),
-          severityCounts: S.optional(__S(2960, __c92, 16)),
+          severityCounts: S.optional(__S(2896, __c90, 16)),
         }),
       ).annotate({ identifier: "TitleAggregationResponse" });
     case 26:
@@ -8757,11 +8514,9 @@ function __c92(j: number): any {
           resourceId: S.String,
           layerArn: S.String,
           accountId: S.String,
-          severityCounts: S.optional(__S(2960, __c92, 16)),
+          severityCounts: S.optional(__S(2896, __c90, 16)),
         }),
-      ).annotate({
-        identifier: "LambdaLayerAggregationResponse",
-      });
+      ).annotate({ identifier: "LambdaLayerAggregationResponse" });
     case 27:
       return S.suspend(() =>
         S.Struct({
@@ -8770,26 +8525,22 @@ function __c92(j: number): any {
           runtime: S.optional(S.String),
           lambdaTags: S.optional(__S(512, __c16, 0)),
           accountId: S.optional(S.String),
-          severityCounts: S.optional(__S(2960, __c92, 16)),
+          severityCounts: S.optional(__S(2896, __c90, 16)),
           lastModifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "LambdaFunctionAggregationResponse",
-      });
+      ).annotate({ identifier: "LambdaFunctionAggregationResponse" });
     case 28:
       return S.suspend(() =>
         S.Struct({
           projectNames: S.String,
           providerType: S.optional(S.String),
-          severityCounts: S.optional(__S(2960, __c92, 16)),
+          severityCounts: S.optional(__S(2896, __c90, 16)),
           exploitAvailableActiveFindingsCount: S.optional(S.Number),
           fixAvailableActiveFindingsCount: S.optional(S.Number),
           accountId: S.optional(S.String),
           resourceId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CodeRepositoryAggregationResponse",
-      });
+      ).annotate({ identifier: "CodeRepositoryAggregationResponse" });
     case 29:
       return S.suspend(() =>
         S.Struct({
@@ -8803,14 +8554,12 @@ function __c92(j: number): any {
           operatingSystem: S.optional(S.String),
           tags: S.optional(__S(512, __c16, 0)),
           accountId: S.optional(S.String),
-          severityCounts: S.optional(__S(2960, __c92, 16)),
+          severityCounts: S.optional(__S(2896, __c90, 16)),
           networkFindings: S.optional(S.Number),
           exploitAvailableActiveFindingsCount: S.optional(S.Number),
           fixAvailableActiveFindingsCount: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "VmInstanceAggregationResponse",
-      });
+      ).annotate({ identifier: "VmInstanceAggregationResponse" });
     case 30:
       return S.suspend(() =>
         S.Struct({
@@ -8826,15 +8575,13 @@ function __c92(j: number): any {
           architecture: S.optional(S.String),
           imageTags: S.optional(__S(64, __c2, 0)),
           accountId: S.optional(S.String),
-          severityCounts: S.optional(__S(2960, __c92, 16)),
+          severityCounts: S.optional(__S(2896, __c90, 16)),
           lastInUseAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           inUseCount: S.optional(S.Number),
           exploitAvailableActiveFindingsCount: S.optional(S.Number),
           fixAvailableActiveFindingsCount: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "ContainerImageAggregationResponse",
-      });
+      ).annotate({ identifier: "ContainerImageAggregationResponse" });
     case 31:
       return S.suspend(() =>
         S.Struct({
@@ -8848,51 +8595,47 @@ function __c92(j: number): any {
           runtime: S.optional(S.String),
           tags: S.optional(__S(512, __c16, 0)),
           accountId: S.optional(S.String),
-          severityCounts: S.optional(__S(2960, __c92, 16)),
+          severityCounts: S.optional(__S(2896, __c90, 16)),
           lastModifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           exploitAvailableActiveFindingsCount: S.optional(S.Number),
           fixAvailableActiveFindingsCount: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "ServerlessFunctionAggregationResponse",
-      });
+      ).annotate({ identifier: "ServerlessFunctionAggregationResponse" });
   }
 }
-function __c93(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ accountAggregation: __S(2961, __c92, 17) }),
-        /*@__PURE__*/ S.Struct({ amiAggregation: __S(2962, __c92, 18) }),
-        /*@__PURE__*/ S.Struct({ awsEcrContainerAggregation: __S(2963, __c92, 19) }),
-        /*@__PURE__*/ S.Struct({ ec2InstanceAggregation: __S(2964, __c92, 20) }),
-        /*@__PURE__*/ S.Struct({ findingTypeAggregation: __S(2965, __c92, 21) }),
-        /*@__PURE__*/ S.Struct({ imageLayerAggregation: __S(2966, __c92, 22) }),
-        /*@__PURE__*/ S.Struct({ packageAggregation: __S(2967, __c92, 23) }),
-        /*@__PURE__*/ S.Struct({ repositoryAggregation: __S(2968, __c92, 24) }),
-        /*@__PURE__*/ S.Struct({ titleAggregation: __S(2969, __c92, 25) }),
-        /*@__PURE__*/ S.Struct({ lambdaLayerAggregation: __S(2970, __c92, 26) }),
-        /*@__PURE__*/ S.Struct({ lambdaFunctionAggregation: __S(2971, __c92, 27) }),
-        /*@__PURE__*/ S.Struct({ codeRepositoryAggregation: __S(2972, __c92, 28) }),
-        /*@__PURE__*/ S.Struct({ vmInstanceAggregation: __S(2973, __c92, 29) }),
-        /*@__PURE__*/ S.Struct({ containerImageAggregation: __S(2974, __c92, 30) }),
-        /*@__PURE__*/ S.Struct({ serverlessFunctionAggregation: __S(2975, __c92, 31) }),
+        /*@__PURE__*/ S.Struct({ accountAggregation: __S(2897, __c90, 17) }),
+        /*@__PURE__*/ S.Struct({ amiAggregation: __S(2898, __c90, 18) }),
+        /*@__PURE__*/ S.Struct({ awsEcrContainerAggregation: __S(2899, __c90, 19) }),
+        /*@__PURE__*/ S.Struct({ ec2InstanceAggregation: __S(2900, __c90, 20) }),
+        /*@__PURE__*/ S.Struct({ findingTypeAggregation: __S(2901, __c90, 21) }),
+        /*@__PURE__*/ S.Struct({ imageLayerAggregation: __S(2902, __c90, 22) }),
+        /*@__PURE__*/ S.Struct({ packageAggregation: __S(2903, __c90, 23) }),
+        /*@__PURE__*/ S.Struct({ repositoryAggregation: __S(2904, __c90, 24) }),
+        /*@__PURE__*/ S.Struct({ titleAggregation: __S(2905, __c90, 25) }),
+        /*@__PURE__*/ S.Struct({ lambdaLayerAggregation: __S(2906, __c90, 26) }),
+        /*@__PURE__*/ S.Struct({ lambdaFunctionAggregation: __S(2907, __c90, 27) }),
+        /*@__PURE__*/ S.Struct({ codeRepositoryAggregation: __S(2908, __c90, 28) }),
+        /*@__PURE__*/ S.Struct({ vmInstanceAggregation: __S(2909, __c90, 29) }),
+        /*@__PURE__*/ S.Struct({ containerImageAggregation: __S(2910, __c90, 30) }),
+        /*@__PURE__*/ S.Struct({ serverlessFunctionAggregation: __S(2911, __c90, 31) }),
       ]);
     case 1:
-      return S.Array(__S(2976, __c93, 0));
+      return S.Array(__S(2912, __c91, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           aggregationType: S.String,
-          responses: S.optional(__S(2977, __c93, 1)),
+          responses: S.optional(__S(2913, __c91, 1)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListFindingAggregationsResponse",
-      });
+      ).annotate({ identifier: "ListFindingAggregationsResponse" });
   }
 }
-function __c94(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ field: S.String, sortOrder: S.String })).annotate({
@@ -8903,8 +8646,8 @@ function __c94(j: number): any {
         S.Struct({
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
-          filterCriteria: S.optional(__S(1156, __c36, 4)),
-          sortCriteria: S.optional(__S(3008, __c94, 0)),
+          filterCriteria: S.optional(__S(1092, __c34, 4)),
+          sortCriteria: S.optional(__S(2944, __c92, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/findings/list" }), svc, auth, proto, ver, rules),
         ),
@@ -8915,7 +8658,7 @@ function __c94(j: number): any {
       ).annotate({ identifier: "Recommendation" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ recommendation: S.optional(__S(3010, __c94, 2)) }),
+        S.Struct({ recommendation: S.optional(__S(2946, __c92, 2)) }),
       ).annotate({ identifier: "Remediation" });
     case 4:
       return S.suspend(() =>
@@ -8946,9 +8689,7 @@ function __c94(j: number): any {
           lastInUseAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           inUseCount: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "AwsEcrContainerImageDetails",
-      });
+      ).annotate({ identifier: "AwsEcrContainerImageDetails" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -8966,7 +8707,7 @@ function __c94(j: number): any {
           version: S.String,
           executionRoleArn: S.String,
           layers: S.optional(__S(64, __c2, 0)),
-          vpcConfig: S.optional(__S(3014, __c94, 6)),
+          vpcConfig: S.optional(__S(2950, __c92, 6)),
           packageType: S.optional(S.String),
           architectures: S.optional(__S(64, __c2, 0)),
           lastModifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -9032,13 +8773,13 @@ function __c94(j: number): any {
     case 12:
       return S.suspend(() =>
         S.Struct({
-          awsEc2Instance: S.optional(__S(3012, __c94, 4)),
-          awsEcrContainerImage: S.optional(__S(3013, __c94, 5)),
-          awsLambdaFunction: S.optional(__S(3015, __c94, 7)),
-          codeRepository: S.optional(__S(3016, __c94, 8)),
-          vm: S.optional(__S(3017, __c94, 9)),
-          image: S.optional(__S(3018, __c94, 10)),
-          serverlessFunction: S.optional(__S(3019, __c94, 11)),
+          awsEc2Instance: S.optional(__S(2948, __c92, 4)),
+          awsEcrContainerImage: S.optional(__S(2949, __c92, 5)),
+          awsLambdaFunction: S.optional(__S(2951, __c92, 7)),
+          codeRepository: S.optional(__S(2952, __c92, 8)),
+          vm: S.optional(__S(2953, __c92, 9)),
+          image: S.optional(__S(2954, __c92, 10)),
+          serverlessFunction: S.optional(__S(2955, __c92, 11)),
         }),
       ).annotate({ identifier: "ResourceDetails" });
     case 13:
@@ -9049,20 +8790,20 @@ function __c94(j: number): any {
           partition: S.optional(S.String),
           region: S.optional(S.String),
           tags: S.optional(__S(512, __c16, 0)),
-          details: S.optional(__S(3020, __c94, 12)),
+          details: S.optional(__S(2956, __c92, 12)),
           provider: S.optional(S.String),
           providerAccountId: S.optional(S.String),
           providerOrgId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Resource" });
     case 14:
-      return S.Array(__S(3021, __c94, 13));
+      return S.Array(__S(2957, __c92, 13));
     case 15:
       return S.suspend(() => S.Struct({ metric: S.String, reason: S.String })).annotate({
         identifier: "CvssScoreAdjustment",
       });
     case 16:
-      return S.Array(__S(3023, __c94, 15));
+      return S.Array(__S(2959, __c92, 15));
     case 17:
       return S.suspend(() =>
         S.Struct({
@@ -9071,11 +8812,11 @@ function __c94(j: number): any {
           version: S.String,
           score: S.Number,
           scoringVector: S.String,
-          adjustments: S.optional(__S(3024, __c94, 16)),
+          adjustments: S.optional(__S(2960, __c92, 16)),
         }),
       ).annotate({ identifier: "CvssScoreDetails" });
     case 18:
-      return S.suspend(() => S.Struct({ adjustedCvss: S.optional(__S(3025, __c94, 17)) })).annotate(
+      return S.suspend(() => S.Struct({ adjustedCvss: S.optional(__S(2961, __c92, 17)) })).annotate(
         { identifier: "InspectorScoreDetails" },
       );
     case 19:
@@ -9091,21 +8832,19 @@ function __c94(j: number): any {
         }),
       ).annotate({ identifier: "Step" });
     case 21:
-      return S.Array(__S(3028, __c94, 20));
+      return S.Array(__S(2964, __c92, 20));
     case 22:
-      return S.suspend(() => S.Struct({ steps: S.optional(__S(3029, __c94, 21)) })).annotate({
+      return S.suspend(() => S.Struct({ steps: S.optional(__S(2965, __c92, 21)) })).annotate({
         identifier: "NetworkPath",
       });
     case 23:
       return S.suspend(() =>
         S.Struct({
-          openPortRange: __S(3027, __c94, 19),
+          openPortRange: __S(2963, __c92, 19),
           protocol: S.String,
-          networkPath: __S(3030, __c94, 22),
+          networkPath: __S(2966, __c92, 22),
         }),
-      ).annotate({
-        identifier: "NetworkReachabilityDetails",
-      });
+      ).annotate({ identifier: "NetworkReachabilityDetails" });
     case 24:
       return S.suspend(() =>
         S.Struct({
@@ -9123,7 +8862,7 @@ function __c94(j: number): any {
         }),
       ).annotate({ identifier: "VulnerablePackage" });
     case 25:
-      return S.Array(__S(3032, __c94, 24));
+      return S.Array(__S(2968, __c92, 24));
     case 26:
       return S.suspend(() =>
         S.Struct({
@@ -9134,14 +8873,14 @@ function __c94(j: number): any {
         }),
       ).annotate({ identifier: "CvssScore" });
     case 27:
-      return S.Array(__S(3034, __c94, 26));
+      return S.Array(__S(2970, __c92, 26));
     case 28:
       return S.suspend(() =>
         S.Struct({
           vulnerabilityId: S.String,
-          vulnerablePackages: S.optional(__S(3033, __c94, 25)),
+          vulnerablePackages: S.optional(__S(2969, __c92, 25)),
           source: S.String,
-          cvss: S.optional(__S(3035, __c94, 27)),
+          cvss: S.optional(__S(2971, __c92, 27)),
           relatedVulnerabilities: S.optional(__S(64, __c2, 0)),
           sourceUrl: S.optional(S.String),
           vendorSeverity: S.optional(S.String),
@@ -9149,9 +8888,7 @@ function __c94(j: number): any {
           vendorUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           referenceUrls: S.optional(__S(64, __c2, 0)),
         }),
-      ).annotate({
-        identifier: "PackageVulnerabilityDetails",
-      });
+      ).annotate({ identifier: "PackageVulnerabilityDetails" });
     case 29:
       return S.suspend(() =>
         S.Struct({
@@ -9170,7 +8907,7 @@ function __c94(j: number): any {
     case 31:
       return S.suspend(() =>
         S.Struct({
-          filePath: __S(3038, __c94, 30),
+          filePath: __S(2974, __c92, 30),
           detectorTags: S.optional(__S(64, __c2, 0)),
           referenceUrls: S.optional(__S(64, __c2, 0)),
           ruleId: S.optional(S.String),
@@ -9182,7 +8919,7 @@ function __c94(j: number): any {
       ).annotate({ identifier: "CodeVulnerabilityDetails" });
   }
 }
-function __c95(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9192,33 +8929,33 @@ function __c95(j: number): any {
           type: S.String,
           description: S.String,
           title: S.optional(S.String),
-          remediation: __S(3011, __c94, 3),
+          remediation: __S(2947, __c92, 3),
           severity: S.String,
           firstObservedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastObservedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           status: S.String,
-          resources: __S(3022, __c94, 14),
+          resources: __S(2958, __c92, 14),
           inspectorScore: S.optional(S.Number),
-          inspectorScoreDetails: S.optional(__S(3026, __c94, 18)),
-          networkReachabilityDetails: S.optional(__S(3031, __c94, 23)),
-          packageVulnerabilityDetails: S.optional(__S(3036, __c94, 28)),
+          inspectorScoreDetails: S.optional(__S(2962, __c92, 18)),
+          networkReachabilityDetails: S.optional(__S(2967, __c92, 23)),
+          packageVulnerabilityDetails: S.optional(__S(2972, __c92, 28)),
           fixAvailable: S.optional(S.String),
           exploitAvailable: S.optional(S.String),
-          exploitabilityDetails: S.optional(__S(3037, __c94, 29)),
-          codeVulnerabilityDetails: S.optional(__S(3039, __c94, 31)),
-          epss: S.optional(__S(3072, __c96, 0)),
+          exploitabilityDetails: S.optional(__S(2973, __c92, 29)),
+          codeVulnerabilityDetails: S.optional(__S(2975, __c92, 31)),
+          epss: S.optional(__S(3008, __c94, 0)),
         }),
       ).annotate({ identifier: "Finding" });
     case 1:
-      return S.Array(__S(3040, __c95, 0));
+      return S.Array(__S(2976, __c93, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), findings: S.optional(__S(3041, __c95, 1)) }),
+        S.Struct({ nextToken: S.optional(S.String), findings: S.optional(__S(2977, __c93, 1)) }),
       ).annotate({ identifier: "ListFindingsResponse" });
   }
 }
-function __c96(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ score: S.optional(S.Number) })).annotate({
@@ -9226,7 +8963,7 @@ function __c96(j: number): any {
       });
   }
 }
-function __c97(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9239,14 +8976,14 @@ function __c97(j: number): any {
         ),
       ).annotate({ identifier: "ListMembersRequest" });
     case 1:
-      return S.Array(__S(2272, __c71, 0));
+      return S.Array(__S(2208, __c69, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ members: S.optional(__S(3105, __c97, 1)), nextToken: S.optional(S.String) }),
+        S.Struct({ members: S.optional(__S(3041, __c95, 1)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListMembersResponse" });
   }
 }
-function __c98(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9260,16 +8997,14 @@ function __c98(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(512, __c16, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c99(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9292,20 +9027,20 @@ function __c99(j: number): any {
         }),
       ).annotate({ identifier: "Usage" });
     case 2:
-      return S.Array(__S(3169, __c99, 1));
+      return S.Array(__S(3105, __c97, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ accountId: S.optional(S.String), usage: S.optional(__S(3170, __c99, 2)) }),
+        S.Struct({ accountId: S.optional(S.String), usage: S.optional(__S(3106, __c97, 2)) }),
       ).annotate({ identifier: "UsageTotal" });
     case 4:
-      return S.Array(__S(3171, __c99, 3));
+      return S.Array(__S(3107, __c97, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), totals: S.optional(__S(3172, __c99, 4)) }),
+        S.Struct({ nextToken: S.optional(S.String), totals: S.optional(__S(3108, __c97, 4)) }),
       ).annotate({ identifier: "ListUsageTotalsResponse" });
   }
 }
-function __c100(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9319,22 +9054,20 @@ function __c100(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ResetEncryptionKeyRequest",
-      });
+      ).annotate({ identifier: "ResetEncryptionKeyRequest" });
   }
 }
-function __c101(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
         identifier: "ValidationExceptionField",
       });
     case 1:
-      return S.Array(__S(3232, __c101, 0));
+      return S.Array(__S(3168, __c99, 0));
   }
 }
-function __c102(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ vulnerabilityIds: __S(64, __c2, 0) })).annotate({
@@ -9342,10 +9075,7 @@ function __c102(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          filterCriteria: __S(3264, __c102, 0),
-          nextToken: S.optional(S.String),
-        }).pipe(
+        S.Struct({ filterCriteria: __S(3200, __c100, 0), nextToken: S.optional(S.String) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/vulnerabilities/search" }),
             svc,
@@ -9355,9 +9085,7 @@ function __c102(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SearchVulnerabilitiesRequest",
-      });
+      ).annotate({ identifier: "SearchVulnerabilitiesRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -9379,32 +9107,30 @@ function __c102(j: number): any {
           cisaData: S.optional(__S(224, __c7, 0)),
           source: S.optional(S.String),
           description: S.optional(S.String),
-          atigData: S.optional(__S(3266, __c102, 2)),
+          atigData: S.optional(__S(3202, __c100, 2)),
           vendorSeverity: S.optional(S.String),
-          cvss4: S.optional(__S(3267, __c102, 3)),
-          cvss3: S.optional(__S(3267, __c102, 3)),
+          cvss4: S.optional(__S(3203, __c100, 3)),
+          cvss3: S.optional(__S(3203, __c100, 3)),
           relatedVulnerabilities: S.optional(__S(64, __c2, 0)),
-          cvss2: S.optional(__S(3267, __c102, 3)),
+          cvss2: S.optional(__S(3203, __c100, 3)),
           vendorCreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           vendorUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           sourceUrl: S.optional(S.String),
           referenceUrls: S.optional(__S(64, __c2, 0)),
           exploitObserved: S.optional(__S(225, __c7, 1)),
           detectionPlatforms: S.optional(__S(64, __c2, 0)),
-          epss: S.optional(__S(3072, __c96, 0)),
+          epss: S.optional(__S(3008, __c94, 0)),
         }),
       ).annotate({ identifier: "Vulnerability" });
     case 5:
-      return S.Array(__S(3268, __c102, 4));
+      return S.Array(__S(3204, __c100, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({ vulnerabilities: __S(3269, __c102, 5), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "SearchVulnerabilitiesResponse",
-      });
+        S.Struct({ vulnerabilities: __S(3205, __c100, 5), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "SearchVulnerabilitiesResponse" });
   }
 }
-function __c103(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9418,25 +9144,23 @@ function __c103(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SendCisSessionHealthRequest",
-      });
+      ).annotate({ identifier: "SendCisSessionHealthRequest" });
   }
 }
-function __c104(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ ruleId: S.String, status: S.String, cisRuleDetails: T.Blob }),
       ).annotate({ identifier: "CisSessionMessage" });
     case 1:
-      return S.Array(__S(3328, __c104, 0));
+      return S.Array(__S(3264, __c102, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           scanJobId: S.String,
           sessionToken: S.String,
-          messages: __S(3329, __c104, 1),
+          messages: __S(3265, __c102, 1),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/cissession/telemetry/send" }),
@@ -9447,16 +9171,10 @@ function __c104(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SendCisSessionTelemetryRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "SendCisSessionTelemetryResponse",
-      });
+      ).annotate({ identifier: "SendCisSessionTelemetryRequest" });
   }
 }
-function __c105(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ sessionToken: S.String })).annotate({
@@ -9464,19 +9182,19 @@ function __c105(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ scanJobId: S.String, message: __S(3360, __c105, 0) }).pipe(
+        S.Struct({ scanJobId: S.String, message: __S(3296, __c103, 0) }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/cissession/start" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StartCisSessionRequest" });
   }
 }
-function __c106(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          resource: __S(4000, __c125, 0),
+          resource: __S(3936, __c123, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/codesecurity/scan/start" }),
@@ -9487,18 +9205,14 @@ function __c106(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartCodeSecurityScanRequest",
-      });
+      ).annotate({ identifier: "StartCodeSecurityScanRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ scanId: S.optional(S.String), status: S.optional(S.String) }),
-      ).annotate({
-        identifier: "StartCodeSecurityScanResponse",
-      });
+      ).annotate({ identifier: "StartCodeSecurityScanResponse" });
   }
 }
-function __c107(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9526,8 +9240,8 @@ function __c107(j: number): any {
         S.Struct({
           status: S.String,
           reason: S.optional(S.String),
-          progress: __S(3424, __c107, 0),
-          computePlatform: S.optional(__S(3425, __c107, 1)),
+          progress: __S(3360, __c105, 0),
+          computePlatform: S.optional(__S(3361, __c105, 1)),
           benchmarkVersion: S.optional(S.String),
           benchmarkProfile: S.optional(S.String),
         }),
@@ -9537,14 +9251,14 @@ function __c107(j: number): any {
         S.Struct({
           scanJobId: S.String,
           sessionToken: S.String,
-          message: __S(3426, __c107, 2),
+          message: __S(3362, __c105, 2),
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/cissession/stop" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StopCisSessionRequest" });
   }
 }
-function __c108(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9564,7 +9278,7 @@ function __c108(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c109(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9584,7 +9298,7 @@ function __c109(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c110(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9593,7 +9307,7 @@ function __c110(j: number): any {
           scanName: S.optional(S.String),
           securityLevel: S.optional(S.String),
           schedule: S.optional(__S(676, __c21, 4)),
-          targets: S.optional(__S(2432, __c76, 0)),
+          targets: S.optional(__S(2368, __c74, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/cis/scan-configuration/update" }),
@@ -9604,12 +9318,10 @@ function __c110(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateCisScanConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateCisScanConfigurationRequest" });
   }
 }
-function __c111(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ authCode: SensitiveString })).annotate({
@@ -9618,17 +9330,15 @@ function __c111(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ code: SensitiveString, installationId: S.String }),
-      ).annotate({
-        identifier: "UpdateGitHubIntegrationDetail",
-      });
+      ).annotate({ identifier: "UpdateGitHubIntegrationDetail" });
     case 2:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ gitlabSelfManaged: __S(3552, __c111, 0) }),
-        /*@__PURE__*/ S.Struct({ github: __S(3553, __c111, 1) }),
+        /*@__PURE__*/ S.Struct({ gitlabSelfManaged: __S(3488, __c109, 0) }),
+        /*@__PURE__*/ S.Struct({ github: __S(3489, __c109, 1) }),
       ]);
     case 3:
       return S.suspend(() =>
-        S.Struct({ integrationArn: S.String, details: __S(3554, __c111, 2) }).pipe(
+        S.Struct({ integrationArn: S.String, details: __S(3490, __c109, 2) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/codesecurity/integration/update" }),
             svc,
@@ -9638,16 +9348,14 @@ function __c111(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateCodeSecurityIntegrationRequest",
-      });
+      ).annotate({ identifier: "UpdateCodeSecurityIntegrationRequest" });
     case 4:
       return S.suspend(() => S.Struct({ integrationArn: S.String, status: S.String })).annotate({
         identifier: "UpdateCodeSecurityIntegrationResponse",
       });
   }
 }
-function __c112(j: number): any {
+function __c110(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9662,17 +9370,21 @@ function __c112(j: number): any {
           ),
         ),
       ).annotate({ identifier: "AssociateMemberRequest" });
-    case 1:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ accountId: S.String })).annotate({
         identifier: "AssociateMemberResponse",
       });
   }
 }
-function __c113(j: number): any {
+function __c112(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ scanConfigurationArn: S.String, configuration: __S(866, __c27, 2) }).pipe(
+        S.Struct({ scanConfigurationArn: S.String, configuration: __S(834, __c26, 2) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/codesecurity/scan-configuration/update" }),
             svc,
@@ -9682,12 +9394,10 @@ function __c113(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateCodeSecurityScanConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateCodeSecurityScanConfigurationRequest" });
   }
 }
-function __c114(j: number): any {
+function __c113(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9707,16 +9417,14 @@ function __c114(j: number): any {
           ec2Configuration: S.optional(S.String),
           ecrConfiguration: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "UpdateConfigurationInheritance",
-      });
+      ).annotate({ identifier: "UpdateConfigurationInheritance" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           accountId: S.optional(S.String),
-          ecrConfiguration: S.optional(__S(3648, __c114, 0)),
-          ec2Configuration: S.optional(__S(3649, __c114, 1)),
-          updateConfigurationInheritance: S.optional(__S(3650, __c114, 2)),
+          ecrConfiguration: S.optional(__S(3616, __c113, 0)),
+          ec2Configuration: S.optional(__S(3617, __c113, 1)),
+          updateConfigurationInheritance: S.optional(__S(3618, __c113, 2)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/configuration/update" }),
@@ -9727,31 +9435,27 @@ function __c114(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateConfigurationRequest" });
   }
 }
-function __c115(j: number): any {
+function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           azureRegions: S.optional(__S(64, __c2, 0)),
-          scopeConfiguration: S.optional(__S(961, __c30, 1)),
+          scopeConfiguration: S.optional(__S(897, __c28, 1)),
           autoInstallVMScanner: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "AzureProviderDetailUpdate",
-      });
+      ).annotate({ identifier: "AzureProviderDetailUpdate" });
     case 1:
-      return S.Union([/*@__PURE__*/ S.Struct({ azure: __S(3680, __c115, 0) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ azure: __S(3648, __c114, 0) })]);
     case 2:
       return S.suspend(() =>
         S.Struct({
           connectorArn: S.String,
           description: S.optional(S.String),
-          providerDetail: S.optional(__S(3681, __c115, 1)),
+          providerDetail: S.optional(__S(3649, __c114, 1)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/connector/update" }), svc, auth, proto, ver, rules),
         ),
@@ -9762,11 +9466,11 @@ function __c115(j: number): any {
       });
   }
 }
-function __c116(j: number): any {
+function __c115(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ awsConfigConnectorArn: S.String, scanConfiguration: __S(2753, __c86, 1) }).pipe(
+        S.Struct({ awsConfigConnectorArn: S.String, scanConfiguration: __S(2689, __c84, 1) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/connectorscanconfiguration/update" }),
             svc,
@@ -9776,20 +9480,10 @@ function __c116(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateConnectorScanConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateConnectorScanConfigurationRequest" });
   }
 }
-function __c117(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UpdateConnectorScanConfigurationResponse",
-      });
-  }
-}
-function __c118(j: number): any {
+function __c116(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9806,12 +9500,10 @@ function __c118(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateEc2DeepInspectionConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateEc2DeepInspectionConfigurationRequest" });
   }
 }
-function __c119(j: number): any {
+function __c117(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9825,19 +9517,17 @@ function __c119(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateEncryptionKeyRequest",
-      });
+      ).annotate({ identifier: "UpdateEncryptionKeyRequest" });
   }
 }
-function __c120(j: number): any {
+function __c118(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.String),
           description: S.optional(S.String),
-          filterCriteria: S.optional(__S(1156, __c36, 4)),
+          filterCriteria: S.optional(__S(1092, __c34, 4)),
           name: S.optional(S.String),
           filterArn: S.String,
           reason: S.optional(S.String),
@@ -9847,11 +9537,11 @@ function __c120(j: number): any {
       ).annotate({ identifier: "UpdateFilterRequest" });
   }
 }
-function __c121(j: number): any {
+function __c119(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ autoEnable: __S(1536, __c48, 0) }).pipe(
+        S.Struct({ autoEnable: __S(1472, __c46, 0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/organizationconfiguration/update" }),
             svc,
@@ -9861,16 +9551,14 @@ function __c121(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateOrganizationConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateOrganizationConfigurationRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ autoEnable: __S(1536, __c48, 0) })).annotate({
+      return S.suspend(() => S.Struct({ autoEnable: __S(1472, __c46, 0) })).annotate({
         identifier: "UpdateOrganizationConfigurationResponse",
       });
   }
 }
-function __c122(j: number): any {
+function __c120(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9884,16 +9572,14 @@ function __c122(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateOrgEc2DeepInspectionConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateOrgEc2DeepInspectionConfigurationRequest" });
   }
 }
-function __c123(j: number): any {
+function __c121(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ associateConfigurationRequests: __S(3969, __c124, 1) }).pipe(
+        S.Struct({ associateConfigurationRequests: __S(3905, __c122, 1) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/codesecurity/scan-configuration/batch/associate" }),
             svc,
@@ -9903,55 +9589,47 @@ function __c123(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchAssociateCodeSecurityScanConfigurationRequest",
-      });
+      ).annotate({ identifier: "BatchAssociateCodeSecurityScanConfigurationRequest" });
   }
 }
-function __c124(j: number): any {
+function __c122(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ scanConfigurationArn: S.String, resource: __S(4000, __c125, 0) }),
-      ).annotate({
-        identifier: "AssociateConfigurationRequest",
-      });
+        S.Struct({ scanConfigurationArn: S.String, resource: __S(3936, __c123, 0) }),
+      ).annotate({ identifier: "AssociateConfigurationRequest" });
     case 1:
-      return S.Array(__S(3968, __c124, 0));
+      return S.Array(__S(3904, __c122, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           scanConfigurationArn: S.optional(S.String),
-          resource: S.optional(__S(4000, __c125, 0)),
+          resource: S.optional(__S(3936, __c123, 0)),
           statusCode: S.optional(S.String),
           statusMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "FailedAssociationResult" });
     case 3:
-      return S.Array(__S(3970, __c124, 2));
+      return S.Array(__S(3906, __c122, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           scanConfigurationArn: S.optional(S.String),
-          resource: S.optional(__S(4000, __c125, 0)),
+          resource: S.optional(__S(3936, __c123, 0)),
         }),
-      ).annotate({
-        identifier: "SuccessfulAssociationResult",
-      });
+      ).annotate({ identifier: "SuccessfulAssociationResult" });
     case 5:
-      return S.Array(__S(3972, __c124, 4));
+      return S.Array(__S(3908, __c122, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          failedAssociations: S.optional(__S(3971, __c124, 3)),
-          successfulAssociations: S.optional(__S(3973, __c124, 5)),
+          failedAssociations: S.optional(__S(3907, __c122, 3)),
+          successfulAssociations: S.optional(__S(3909, __c122, 5)),
         }),
-      ).annotate({
-        identifier: "BatchAssociateCodeSecurityScanConfigurationResponse",
-      });
+      ).annotate({ identifier: "BatchAssociateCodeSecurityScanConfigurationResponse" });
   }
 }
-function __c125(j: number): any {
+function __c123(j: number): any {
   switch (j) {
     case 0:
       return S.Union([/*@__PURE__*/ S.Struct({ projectId: S.String })]);

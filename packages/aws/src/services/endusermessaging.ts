@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -862,7 +862,7 @@ export const deleteNotifyCodeConfiguration: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(64, __c8, 0) as any as S.Schema<DeleteNotifyCodeConfigurationInput>,
-  output: __S(65, __c8, 1) as any as S.Schema<DeleteNotifyCodeConfigurationOutput>,
+  output: __S(72, __c9, 0) as any as S.Schema<DeleteNotifyCodeConfigurationOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -892,8 +892,8 @@ export const getBrandProfile: API.OperationMethod<
   GetBrandProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<GetBrandProfileInput>,
-  output: __S(80, __c10, 0) as any as S.Schema<GetBrandProfileOutput>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetBrandProfileInput>,
+  output: __S(88, __c11, 0) as any as S.Schema<GetBrandProfileOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -922,8 +922,8 @@ export const getBrandProfileAttribute: API.OperationMethod<
   GetBrandProfileAttributeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<GetBrandProfileAttributeInput>,
-  output: __S(89, __c11, 1) as any as S.Schema<GetBrandProfileAttributeOutput>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetBrandProfileAttributeInput>,
+  output: __S(97, __c12, 1) as any as S.Schema<GetBrandProfileAttributeOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -952,8 +952,8 @@ export const getJob: API.OperationMethod<
   GetJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<GetJobInput>,
-  output: __S(106, __c13, 2) as any as S.Schema<Job>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetJobInput>,
+  output: __S(114, __c14, 2) as any as S.Schema<Job>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -982,7 +982,7 @@ export const getNotifyCodeConfiguration: API.OperationMethod<
   GetNotifyCodeConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<GetNotifyCodeConfigurationInput>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetNotifyCodeConfigurationInput>,
   output: __S(24, __c3, 0) as any as S.Schema<GetNotifyCodeConfigurationOutput>,
   errors: [
     AccessDeniedException,
@@ -1013,8 +1013,8 @@ export const listBrandProfileAttributes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BrandProfileAttributeSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<ListBrandProfileAttributesInput>,
-  output: __S(123, __c15, 3) as any as S.Schema<ListBrandProfileAttributesOutput>,
+  input: __S(128, __c16, 0) as any as S.Schema<ListBrandProfileAttributesInput>,
+  output: __S(131, __c16, 3) as any as S.Schema<ListBrandProfileAttributesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1049,8 +1049,8 @@ export const listBrandProfiles: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BrandProfileInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<ListBrandProfilesInput>,
-  output: __S(130, __c16, 2) as any as S.Schema<ListBrandProfilesOutput>,
+  input: __S(136, __c17, 0) as any as S.Schema<ListBrandProfilesInput>,
+  output: __S(138, __c17, 2) as any as S.Schema<ListBrandProfilesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1084,8 +1084,8 @@ export const listJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   JobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<ListJobsInput>,
-  output: __S(138, __c17, 2) as any as S.Schema<ListJobsOutput>,
+  input: __S(144, __c18, 0) as any as S.Schema<ListJobsInput>,
+  output: __S(146, __c18, 2) as any as S.Schema<ListJobsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1119,8 +1119,8 @@ export const listNotifyCodeConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NotifyCodeConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<ListNotifyCodeConfigurationsInput>,
-  output: __S(146, __c18, 2) as any as S.Schema<ListNotifyCodeConfigurationsOutput>,
+  input: __S(152, __c19, 0) as any as S.Schema<ListNotifyCodeConfigurationsInput>,
+  output: __S(154, __c19, 2) as any as S.Schema<ListNotifyCodeConfigurationsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1155,8 +1155,8 @@ export const listRegistrationsFromBrandProfile: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RegistrationAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<ListRegistrationsFromBrandProfileInput>,
-  output: __S(155, __c19, 3) as any as S.Schema<ListRegistrationsFromBrandProfileOutput>,
+  input: __S(160, __c20, 0) as any as S.Schema<ListRegistrationsFromBrandProfileInput>,
+  output: __S(163, __c20, 3) as any as S.Schema<ListRegistrationsFromBrandProfileOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1191,8 +1191,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(161, __c20, 1) as any as S.Schema<ListTagsForResourceOutput>,
+  input: __S(168, __c21, 0) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(169, __c21, 1) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1223,8 +1223,8 @@ export const sendNotifyCodeVerification: API.OperationMethod<
   SendNotifyCodeVerificationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<SendNotifyCodeVerificationInput>,
-  output: __S(169, __c21, 1) as any as S.Schema<SendNotifyCodeVerificationOutput>,
+  input: __S(176, __c22, 0) as any as S.Schema<SendNotifyCodeVerificationInput>,
+  output: __S(177, __c22, 1) as any as S.Schema<SendNotifyCodeVerificationOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1256,8 +1256,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<TagResourceInput>,
-  output: __S(184, __c23, 0) as any as S.Schema<TagResourceOutput>,
+  input: __S(184, __c23, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(72, __c9, 0) as any as S.Schema<TagResourceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1288,7 +1288,7 @@ export const untagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(192, __c24, 0) as any as S.Schema<UntagResourceInput>,
-  output: __S(184, __c23, 0) as any as S.Schema<UntagResourceOutput>,
+  output: __S(72, __c9, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1319,7 +1319,7 @@ export const updateBrandProfile: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(200, __c25, 0) as any as S.Schema<UpdateBrandProfileInput>,
-  output: __S(80, __c10, 0) as any as S.Schema<UpdateBrandProfileOutput>,
+  output: __S(88, __c11, 0) as any as S.Schema<UpdateBrandProfileOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1511,9 +1511,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateNotifyCodeConfigurationInput",
-      });
+      ).annotate({ identifier: "CreateNotifyCodeConfigurationInput" });
   }
 }
 function __c1(j: number): any {
@@ -1526,9 +1524,7 @@ function __c1(j: number): any {
           validityPeriodMinutes: S.optional(S.Number),
           maxAttempts: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "CodeConfigurationParameters",
-      });
+      ).annotate({ identifier: "CodeConfigurationParameters" });
     case 1:
       return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
     case 2:
@@ -1616,9 +1612,7 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateRegistrationsFromBrandProfileInput",
-      });
+      ).annotate({ identifier: "CreateRegistrationsFromBrandProfileInput" });
   }
 }
 function __c5(j: number): any {
@@ -1668,15 +1662,11 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteBrandProfileAttributeInput",
-      });
+      ).annotate({ identifier: "DeleteBrandProfileAttributeInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ brandProfileId: S.String, attributeName: SensitiveString }),
-      ).annotate({
-        identifier: "DeleteBrandProfileAttributeOutput",
-      });
+      ).annotate({ identifier: "DeleteBrandProfileAttributeOutput" });
   }
 }
 function __c8(j: number): any {
@@ -1698,16 +1688,18 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteNotifyCodeConfigurationInput",
-      });
-    case 1:
+      ).annotate({ identifier: "DeleteNotifyCodeConfigurationInput" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteNotifyCodeConfigurationOutput",
       });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1724,7 +1716,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "GetBrandProfileInput" });
   }
 }
-function __c10(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1740,7 +1732,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "GetBrandProfileOutput" });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1760,9 +1752,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetBrandProfileAttributeInput",
-      });
+      ).annotate({ identifier: "GetBrandProfileAttributeInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1777,12 +1767,10 @@ function __c11(j: number): any {
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
-      ).annotate({
-        identifier: "GetBrandProfileAttributeOutput",
-      });
+      ).annotate({ identifier: "GetBrandProfileAttributeOutput" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1792,14 +1780,14 @@ function __c12(j: number): any {
       ).annotate({ identifier: "GetJobInput" });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ resourceType: S.String, resourceId: S.String, resourceArn: S.String }),
       ).annotate({ identifier: "JobResource" });
     case 1:
-      return S.Array(__S(104, __c13, 0));
+      return S.Array(__S(112, __c14, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1811,12 +1799,12 @@ function __c13(j: number): any {
           brandProfileId: S.optional(S.String),
           errorCode: S.optional(S.String),
           errorMessage: S.optional(S.String),
-          resources: S.optional(__S(105, __c13, 1)),
+          resources: S.optional(__S(113, __c14, 1)),
         }),
       ).annotate({ identifier: "Job" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1835,12 +1823,10 @@ function __c14(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetNotifyCodeConfigurationInput",
-      });
+      ).annotate({ identifier: "GetNotifyCodeConfigurationInput" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1858,9 +1844,7 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListBrandProfileAttributesInput",
-      });
+      ).annotate({ identifier: "ListBrandProfileAttributesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1871,23 +1855,16 @@ function __c15(j: number): any {
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
-      ).annotate({
-        identifier: "BrandProfileAttributeSummary",
-      });
+      ).annotate({ identifier: "BrandProfileAttributeSummary" });
     case 2:
-      return S.Array(__S(121, __c15, 1));
+      return S.Array(__S(129, __c16, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          brandProfileAttributes: __S(122, __c15, 2),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListBrandProfileAttributesOutput",
-      });
+        S.Struct({ brandProfileAttributes: __S(130, __c16, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListBrandProfileAttributesOutput" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1899,14 +1876,14 @@ function __c16(j: number): any {
         ),
       ).annotate({ identifier: "ListBrandProfilesInput" });
     case 1:
-      return S.Array(__S(80, __c10, 0));
+      return S.Array(__S(88, __c11, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ brandProfiles: __S(129, __c16, 1), nextToken: S.optional(S.String) }),
+        S.Struct({ brandProfiles: __S(137, __c17, 1), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListBrandProfilesOutput" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1919,14 +1896,14 @@ function __c17(j: number): any {
         }).pipe(T.all(T.Http({ method: "GET", uri: "/v1/jobs" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListJobsInput" });
     case 1:
-      return S.Array(__S(106, __c13, 2));
+      return S.Array(__S(114, __c14, 2));
     case 2:
       return S.suspend(() =>
-        S.Struct({ jobs: __S(137, __c17, 1), nextToken: S.optional(S.String) }),
+        S.Struct({ jobs: __S(145, __c18, 1), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListJobsOutput" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1943,23 +1920,16 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListNotifyCodeConfigurationsInput",
-      });
+      ).annotate({ identifier: "ListNotifyCodeConfigurationsInput" });
     case 1:
       return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          notifyCodeConfigurations: __S(145, __c18, 1),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListNotifyCodeConfigurationsOutput",
-      });
+        S.Struct({ notifyCodeConfigurations: __S(153, __c19, 1), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListNotifyCodeConfigurationsOutput" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1977,9 +1947,7 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListRegistrationsFromBrandProfileInput",
-      });
+      ).annotate({ identifier: "ListRegistrationsFromBrandProfileInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1988,23 +1956,16 @@ function __c19(j: number): any {
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           smartMatchUsed: S.Boolean,
         }),
-      ).annotate({
-        identifier: "RegistrationAssociationSummary",
-      });
+      ).annotate({ identifier: "RegistrationAssociationSummary" });
     case 2:
-      return S.Array(__S(153, __c19, 1));
+      return S.Array(__S(161, __c20, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          registrationAssociations: __S(154, __c19, 2),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListRegistrationsFromBrandProfileOutput",
-      });
+        S.Struct({ registrationAssociations: __S(162, __c20, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListRegistrationsFromBrandProfileOutput" });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2025,7 +1986,7 @@ function __c20(j: number): any {
       });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2049,16 +2010,14 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SendNotifyCodeVerificationInput",
-      });
+      ).annotate({ identifier: "SendNotifyCodeVerificationInput" });
     case 1:
       return S.suspend(() => S.Struct({ verificationId: S.String, messageId: S.String })).annotate({
         identifier: "SendNotifyCodeVerificationOutput",
       });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2076,14 +2035,6 @@ function __c22(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceInput" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceOutput",
-      });
   }
 }
 function __c24(j: number): any {
@@ -2151,9 +2102,7 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateBrandProfileAttributeInput",
-      });
+      ).annotate({ identifier: "UpdateBrandProfileAttributeInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2167,9 +2116,7 @@ function __c26(j: number): any {
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
-      ).annotate({
-        identifier: "UpdateBrandProfileAttributeOutput",
-      });
+      ).annotate({ identifier: "UpdateBrandProfileAttributeOutput" });
   }
 }
 function __c27(j: number): any {
@@ -2195,9 +2142,7 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateBrandProfileFromRegistrationInput",
-      });
+      ).annotate({ identifier: "UpdateBrandProfileFromRegistrationInput" });
   }
 }
 function __c28(j: number): any {
@@ -2223,9 +2168,7 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateNotifyCodeConfigurationInput",
-      });
+      ).annotate({ identifier: "UpdateNotifyCodeConfigurationInput" });
   }
 }
 function __c29(j: number): any {
@@ -2251,9 +2194,7 @@ function __c29(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateRegistrationsFromBrandProfileInput",
-      });
+      ).annotate({ identifier: "UpdateRegistrationsFromBrandProfileInput" });
   }
 }
 function __c30(j: number): any {
@@ -2274,9 +2215,7 @@ function __c30(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ValidateNotifyCodeVerificationInput",
-      });
+      ).annotate({ identifier: "ValidateNotifyCodeVerificationInput" });
     case 1:
       return S.suspend(() => S.Struct({ status: S.String })).annotate({
         identifier: "ValidateNotifyCodeVerificationOutput",
@@ -2350,9 +2289,7 @@ function __c34(j: number): any {
           description: S.optional(SensitiveString),
           category: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BrandProfileAttributeInput",
-      });
+      ).annotate({ identifier: "BrandProfileAttributeInput" });
     case 1:
       return S.Array(__S(272, __c34, 0));
     case 2:
@@ -2371,9 +2308,7 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateBrandProfileAttributesInput",
-      });
+      ).annotate({ identifier: "CreateBrandProfileAttributesInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2381,9 +2316,7 @@ function __c34(j: number): any {
           attributeType: S.String,
           mediaDownloadUrl: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "BrandProfileAttributeOutput",
-      });
+      ).annotate({ identifier: "BrandProfileAttributeOutput" });
     case 4:
       return S.Array(__S(275, __c34, 3));
     case 5:
@@ -2412,9 +2345,7 @@ function __c35(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateBrandProfileFromRegistrationInput",
-      });
+      ).annotate({ identifier: "CreateBrandProfileFromRegistrationInput" });
   }
 }
 function __c36(j: number): any {

@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -799,8 +799,8 @@ export const createCampaign: API.OperationMethod<
   CreateCampaignError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1344, __c42, 0) as any as S.Schema<CreateCampaignRequest>,
-  output: __S(1345, __c42, 1) as any as S.Schema<CreateCampaignResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<CreateCampaignRequest>,
+  output: __S(673, __c42, 1) as any as S.Schema<CreateCampaignResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -831,7 +831,7 @@ export const deleteCampaign: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteCampaignRequest>,
-  output: __S(1376, __c43, 0) as any as S.Schema<DeleteCampaignResponse>,
+  output: __S(688, __c43, 0) as any as S.Schema<DeleteCampaignResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -859,8 +859,8 @@ export const deleteCampaignChannelSubtypeConfig: API.OperationMethod<
   DeleteCampaignChannelSubtypeConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c1, 0) as any as S.Schema<DeleteCampaignChannelSubtypeConfigRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<DeleteCampaignChannelSubtypeConfigResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<DeleteCampaignChannelSubtypeConfigRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<DeleteCampaignChannelSubtypeConfigResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -890,8 +890,8 @@ export const deleteCampaignCommunicationLimits: API.OperationMethod<
   DeleteCampaignCommunicationLimitsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c3, 0) as any as S.Schema<DeleteCampaignCommunicationLimitsRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<DeleteCampaignCommunicationLimitsResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<DeleteCampaignCommunicationLimitsRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<DeleteCampaignCommunicationLimitsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -922,8 +922,8 @@ export const deleteCampaignCommunicationTime: API.OperationMethod<
   DeleteCampaignCommunicationTimeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c4, 0) as any as S.Schema<DeleteCampaignCommunicationTimeRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<DeleteCampaignCommunicationTimeResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<DeleteCampaignCommunicationTimeRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<DeleteCampaignCommunicationTimeResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -954,8 +954,8 @@ export const deleteCampaignEntryLimits: API.OperationMethod<
   DeleteCampaignEntryLimitsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c5, 0) as any as S.Schema<DeleteCampaignEntryLimitsRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<DeleteCampaignEntryLimitsResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<DeleteCampaignEntryLimitsRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<DeleteCampaignEntryLimitsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -986,8 +986,8 @@ export const deleteConnectInstanceConfig: API.OperationMethod<
   DeleteConnectInstanceConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c6, 0) as any as S.Schema<DeleteConnectInstanceConfigRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<DeleteConnectInstanceConfigResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<DeleteConnectInstanceConfigRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<DeleteConnectInstanceConfigResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1017,8 +1017,8 @@ export const deleteConnectInstanceIntegration: API.OperationMethod<
   DeleteConnectInstanceIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227, __c7, 3) as any as S.Schema<DeleteConnectInstanceIntegrationRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<DeleteConnectInstanceIntegrationResponse>,
+  input: __S(98, __c6, 2) as any as S.Schema<DeleteConnectInstanceIntegrationRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<DeleteConnectInstanceIntegrationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1047,8 +1047,8 @@ export const deleteInstanceOnboardingJob: API.OperationMethod<
   DeleteInstanceOnboardingJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c9, 0) as any as S.Schema<DeleteInstanceOnboardingJobRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<DeleteInstanceOnboardingJobResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<DeleteInstanceOnboardingJobRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<DeleteInstanceOnboardingJobResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1076,8 +1076,8 @@ export const describeCampaign: API.OperationMethod<
   DescribeCampaignError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c10, 0) as any as S.Schema<DescribeCampaignRequest>,
-  output: __S(322, __c10, 2) as any as S.Schema<DescribeCampaignResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<DescribeCampaignRequest>,
+  output: __S(146, __c9, 2) as any as S.Schema<DescribeCampaignResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1105,8 +1105,8 @@ export const getCampaignState: API.OperationMethod<
   GetCampaignStateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c11, 0) as any as S.Schema<GetCampaignStateRequest>,
-  output: __S(353, __c11, 1) as any as S.Schema<GetCampaignStateResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetCampaignStateRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<GetCampaignStateResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1134,8 +1134,8 @@ export const getCampaignStateBatch: API.OperationMethod<
   GetCampaignStateBatchError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c12, 0) as any as S.Schema<GetCampaignStateBatchRequest>,
-  output: __S(389, __c12, 5) as any as S.Schema<GetCampaignStateBatchResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetCampaignStateBatchRequest>,
+  output: __S(181, __c11, 5) as any as S.Schema<GetCampaignStateBatchResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1162,8 +1162,8 @@ export const getConnectInstanceConfig: API.OperationMethod<
   GetConnectInstanceConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c13, 0) as any as S.Schema<GetConnectInstanceConfigRequest>,
-  output: __S(418, __c13, 2) as any as S.Schema<GetConnectInstanceConfigResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetConnectInstanceConfigRequest>,
+  output: __S(194, __c12, 2) as any as S.Schema<GetConnectInstanceConfigResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1190,8 +1190,8 @@ export const getInstanceCommunicationLimits: API.OperationMethod<
   GetInstanceCommunicationLimitsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c15, 0) as any as S.Schema<GetInstanceCommunicationLimitsRequest>,
-  output: __S(481, __c15, 1) as any as S.Schema<GetInstanceCommunicationLimitsResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetInstanceCommunicationLimitsRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<GetInstanceCommunicationLimitsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1218,8 +1218,8 @@ export const getInstanceOnboardingJobStatus: API.OperationMethod<
   GetInstanceOnboardingJobStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c17, 0) as any as S.Schema<GetInstanceOnboardingJobStatusRequest>,
-  output: __S(577, __c18, 1) as any as S.Schema<GetInstanceOnboardingJobStatusResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetInstanceOnboardingJobStatusRequest>,
+  output: __S(273, __c17, 1) as any as S.Schema<GetInstanceOnboardingJobStatusResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1246,8 +1246,8 @@ export const listCampaigns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CampaignSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(610, __c19, 2) as any as S.Schema<ListCampaignsRequest>,
-  output: __S(613, __c19, 5) as any as S.Schema<ListCampaignsResponse>,
+  input: __S(290, __c18, 2) as any as S.Schema<ListCampaignsRequest>,
+  output: __S(293, __c18, 5) as any as S.Schema<ListCampaignsResponse>,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1277,8 +1277,8 @@ export const listConnectInstanceIntegrations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   IntegrationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(640, __c20, 0) as any as S.Schema<ListConnectInstanceIntegrationsRequest>,
-  output: __S(642, __c20, 2) as any as S.Schema<ListConnectInstanceIntegrationsResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListConnectInstanceIntegrationsRequest>,
+  output: __S(306, __c19, 2) as any as S.Schema<ListConnectInstanceIntegrationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1313,8 +1313,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c22, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(705, __c22, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(337, __c21, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1345,8 +1345,8 @@ export const pauseCampaign: API.OperationMethod<
   PauseCampaignError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c23, 0) as any as S.Schema<PauseCampaignRequest>,
-  output: __S(1376, __c43, 0) as any as S.Schema<PauseCampaignResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<PauseCampaignRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<PauseCampaignResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1378,8 +1378,8 @@ export const putConnectInstanceIntegration: API.OperationMethod<
   PutConnectInstanceIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c24, 0) as any as S.Schema<PutConnectInstanceIntegrationRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<PutConnectInstanceIntegrationResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<PutConnectInstanceIntegrationRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<PutConnectInstanceIntegrationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1409,8 +1409,8 @@ export const putInstanceCommunicationLimits: API.OperationMethod<
   PutInstanceCommunicationLimitsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c25, 0) as any as S.Schema<PutInstanceCommunicationLimitsRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<PutInstanceCommunicationLimitsResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<PutInstanceCommunicationLimitsRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<PutInstanceCommunicationLimitsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1441,8 +1441,8 @@ export const putOutboundRequestBatch: API.OperationMethod<
   PutOutboundRequestBatchError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(838, __c26, 6) as any as S.Schema<PutOutboundRequestBatchRequest>,
-  output: __S(843, __c26, 11) as any as S.Schema<PutOutboundRequestBatchResponse>,
+  input: __S(406, __c25, 6) as any as S.Schema<PutOutboundRequestBatchRequest>,
+  output: __S(420, __c26, 4) as any as S.Schema<PutOutboundRequestBatchResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1475,8 +1475,8 @@ export const putProfileOutboundRequestBatch: API.OperationMethod<
   PutProfileOutboundRequestBatchError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(869, __c27, 5) as any as S.Schema<PutProfileOutboundRequestBatchRequest>,
-  output: __S(874, __c27, 10) as any as S.Schema<PutProfileOutboundRequestBatchResponse>,
+  input: __S(437, __c27, 5) as any as S.Schema<PutProfileOutboundRequestBatchRequest>,
+  output: __S(420, __c26, 4) as any as S.Schema<PutProfileOutboundRequestBatchResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1509,8 +1509,8 @@ export const resumeCampaign: API.OperationMethod<
   ResumeCampaignError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c28, 0) as any as S.Schema<ResumeCampaignRequest>,
-  output: __S(1376, __c43, 0) as any as S.Schema<ResumeCampaignResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<ResumeCampaignRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<ResumeCampaignResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1543,8 +1543,8 @@ export const startCampaign: API.OperationMethod<
   StartCampaignError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c29, 0) as any as S.Schema<StartCampaignRequest>,
-  output: __S(1376, __c43, 0) as any as S.Schema<StartCampaignResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<StartCampaignRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<StartCampaignResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1576,8 +1576,8 @@ export const startInstanceOnboardingJob: API.OperationMethod<
   StartInstanceOnboardingJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c30, 0) as any as S.Schema<StartInstanceOnboardingJobRequest>,
-  output: __S(577, __c18, 1) as any as S.Schema<StartInstanceOnboardingJobResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<StartInstanceOnboardingJobRequest>,
+  output: __S(273, __c17, 1) as any as S.Schema<StartInstanceOnboardingJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1609,8 +1609,8 @@ export const stopCampaign: API.OperationMethod<
   StopCampaignError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c31, 0) as any as S.Schema<StopCampaignRequest>,
-  output: __S(1376, __c43, 0) as any as S.Schema<StopCampaignResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<StopCampaignRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<StopCampaignResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1641,8 +1641,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c32, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(1376, __c43, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1671,8 +1671,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c33, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(1376, __c43, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1701,8 +1701,8 @@ export const updateCampaignChannelSubtypeConfig: API.OperationMethod<
   UpdateCampaignChannelSubtypeConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c34, 0) as any as S.Schema<UpdateCampaignChannelSubtypeConfigRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<UpdateCampaignChannelSubtypeConfigResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<UpdateCampaignChannelSubtypeConfigRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<UpdateCampaignChannelSubtypeConfigResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1732,8 +1732,8 @@ export const updateCampaignCommunicationLimits: API.OperationMethod<
   UpdateCampaignCommunicationLimitsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1120, __c35, 0) as any as S.Schema<UpdateCampaignCommunicationLimitsRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<UpdateCampaignCommunicationLimitsResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<UpdateCampaignCommunicationLimitsRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<UpdateCampaignCommunicationLimitsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1764,8 +1764,8 @@ export const updateCampaignCommunicationTime: API.OperationMethod<
   UpdateCampaignCommunicationTimeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1152, __c36, 0) as any as S.Schema<UpdateCampaignCommunicationTimeRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<UpdateCampaignCommunicationTimeResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<UpdateCampaignCommunicationTimeRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<UpdateCampaignCommunicationTimeResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1796,8 +1796,8 @@ export const updateCampaignEntryLimits: API.OperationMethod<
   UpdateCampaignEntryLimitsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1184, __c37, 0) as any as S.Schema<UpdateCampaignEntryLimitsRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<UpdateCampaignEntryLimitsResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<UpdateCampaignEntryLimitsRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<UpdateCampaignEntryLimitsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1828,8 +1828,8 @@ export const updateCampaignFlowAssociation: API.OperationMethod<
   UpdateCampaignFlowAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1216, __c38, 0) as any as S.Schema<UpdateCampaignFlowAssociationRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<UpdateCampaignFlowAssociationResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<UpdateCampaignFlowAssociationRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<UpdateCampaignFlowAssociationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1859,8 +1859,8 @@ export const updateCampaignName: API.OperationMethod<
   UpdateCampaignNameError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1248, __c39, 0) as any as S.Schema<UpdateCampaignNameRequest>,
-  output: __S(1376, __c43, 0) as any as S.Schema<UpdateCampaignNameResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<UpdateCampaignNameRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<UpdateCampaignNameResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1890,8 +1890,8 @@ export const updateCampaignSchedule: API.OperationMethod<
   UpdateCampaignScheduleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1280, __c40, 0) as any as S.Schema<UpdateCampaignScheduleRequest>,
-  output: __S(1376, __c43, 0) as any as S.Schema<UpdateCampaignScheduleResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<UpdateCampaignScheduleRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<UpdateCampaignScheduleResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1922,8 +1922,8 @@ export const updateCampaignSource: API.OperationMethod<
   UpdateCampaignSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1312, __c41, 0) as any as S.Schema<UpdateCampaignSourceRequest>,
-  output: __S(1376, __c43, 0) as any as S.Schema<UpdateCampaignSourceResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<UpdateCampaignSourceRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<UpdateCampaignSourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1972,20 +1972,10 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteCampaignChannelSubtypeConfigRequest",
-      });
+      ).annotate({ identifier: "DeleteCampaignChannelSubtypeConfigRequest" });
   }
 }
 function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteCampaignChannelSubtypeConfigResponse",
-      });
-  }
-}
-function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2002,12 +1992,10 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteCampaignCommunicationLimitsRequest",
-      });
+      ).annotate({ identifier: "DeleteCampaignCommunicationLimitsRequest" });
   }
 }
-function __c4(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2024,12 +2012,10 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteCampaignCommunicationTimeRequest",
-      });
+      ).annotate({ identifier: "DeleteCampaignCommunicationTimeRequest" });
   }
 }
-function __c5(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2043,12 +2029,10 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteCampaignEntryLimitsRequest",
-      });
+      ).annotate({ identifier: "DeleteCampaignEntryLimitsRequest" });
   }
 }
-function __c6(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2065,32 +2049,26 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteConnectInstanceConfigRequest",
-      });
+      ).annotate({ identifier: "DeleteConnectInstanceConfigRequest" });
   }
 }
-function __c7(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ domainArn: S.String })).annotate({
         identifier: "CustomerProfilesIntegrationIdentifier",
       });
     case 1:
-      return S.suspend(() => S.Struct({ functionArn: S.String })).annotate({
-        identifier: "LambdaIntegrationIdentifier",
-      });
-    case 2:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ customerProfiles: __S(224, __c7, 0) }),
-        /*@__PURE__*/ S.Struct({ qConnect: __S(256, __c8, 0) }),
-        /*@__PURE__*/ S.Struct({ lambda: __S(225, __c7, 1) }),
+        /*@__PURE__*/ S.Struct({ customerProfiles: __S(96, __c6, 0) }),
+        /*@__PURE__*/ S.Struct({ qConnect: __S(112, __c7, 0) }),
+        /*@__PURE__*/ S.Struct({ lambda: __S(113, __c7, 1) }),
       ]);
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")),
-          integrationIdentifier: __S(226, __c7, 2),
+          integrationIdentifier: __S(97, __c6, 1),
         }).pipe(
           T.all(
             T.Http({
@@ -2104,20 +2082,22 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteConnectInstanceIntegrationRequest",
-      });
+      ).annotate({ identifier: "DeleteConnectInstanceIntegrationRequest" });
   }
 }
-function __c8(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ knowledgeBaseArn: S.String })).annotate({
         identifier: "QConnectIntegrationIdentifier",
       });
+    case 1:
+      return S.suspend(() => S.Struct({ functionArn: S.String })).annotate({
+        identifier: "LambdaIntegrationIdentifier",
+      });
   }
 }
-function __c9(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2134,12 +2114,10 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteInstanceOnboardingJobRequest",
-      });
+      ).annotate({ identifier: "DeleteInstanceOnboardingJobRequest" });
   }
 }
-function __c10(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2154,24 +2132,24 @@ function __c10(j: number): any {
           arn: S.String,
           name: S.String,
           connectInstanceId: S.String,
-          channelSubtypeConfig: S.optional(__S(1616, __c50, 16)),
+          channelSubtypeConfig: S.optional(__S(815, __c50, 15)),
           type: S.optional(S.String),
-          source: S.optional(__S(1697, __c53, 1)),
+          source: S.optional(__S(849, __c53, 1)),
           connectCampaignFlowArn: S.optional(S.String),
-          schedule: S.optional(__S(1504, __c47, 0)),
-          entryLimitsConfig: S.optional(__S(1472, __c46, 0)),
-          communicationTimeConfig: S.optional(__S(1673, __c52, 9)),
-          communicationLimitsOverride: S.optional(__S(1632, __c51, 0)),
-          tags: S.optional(__S(1536, __c48, 0)),
+          schedule: S.optional(__S(752, __c47, 0)),
+          entryLimitsConfig: S.optional(__S(736, __c46, 0)),
+          communicationTimeConfig: S.optional(__S(841, __c52, 9)),
+          communicationLimitsOverride: S.optional(__S(816, __c51, 0)),
+          tags: S.optional(__S(768, __c48, 0)),
         }),
       ).annotate({ identifier: "Campaign" });
     case 2:
-      return S.suspend(() => S.Struct({ campaign: S.optional(__S(321, __c10, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ campaign: S.optional(__S(145, __c9, 1)) })).annotate({
         identifier: "DescribeCampaignResponse",
       });
   }
 }
-function __c11(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2192,11 +2170,11 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ campaignIds: __S(1408, __c44, 0) }).pipe(
+        S.Struct({ campaignIds: __S(704, __c44, 0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v2/campaigns-state" }),
             svc,
@@ -2206,37 +2184,29 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetCampaignStateBatchRequest",
-      });
+      ).annotate({ identifier: "GetCampaignStateBatchRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ campaignId: S.optional(S.String), state: S.optional(S.String) }),
-      ).annotate({
-        identifier: "SuccessfulCampaignStateResponse",
-      });
+      ).annotate({ identifier: "SuccessfulCampaignStateResponse" });
     case 2:
-      return S.Array(__S(385, __c12, 1));
+      return S.Array(__S(177, __c11, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ campaignId: S.optional(S.String), failureCode: S.optional(S.String) }),
-      ).annotate({
-        identifier: "FailedCampaignStateResponse",
-      });
+      ).annotate({ identifier: "FailedCampaignStateResponse" });
     case 4:
-      return S.Array(__S(387, __c12, 3));
+      return S.Array(__S(179, __c11, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          successfulRequests: S.optional(__S(386, __c12, 2)),
-          failedRequests: S.optional(__S(388, __c12, 4)),
+          successfulRequests: S.optional(__S(178, __c11, 2)),
+          failedRequests: S.optional(__S(180, __c11, 4)),
         }),
-      ).annotate({
-        identifier: "GetCampaignStateBatchResponse",
-      });
+      ).annotate({ identifier: "GetCampaignStateBatchResponse" });
   }
 }
-function __c13(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2250,26 +2220,22 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetConnectInstanceConfigRequest",
-      });
+      ).annotate({ identifier: "GetConnectInstanceConfigRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           connectInstanceId: S.String,
           serviceLinkedRoleArn: S.String,
-          encryptionConfig: __S(448, __c14, 0),
+          encryptionConfig: __S(208, __c13, 0),
         }),
       ).annotate({ identifier: "InstanceConfig" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ connectInstanceConfig: S.optional(__S(417, __c13, 1)) }),
-      ).annotate({
-        identifier: "GetConnectInstanceConfigResponse",
-      });
+        S.Struct({ connectInstanceConfig: S.optional(__S(193, __c12, 1)) }),
+      ).annotate({ identifier: "GetConnectInstanceConfigResponse" });
   }
 }
-function __c14(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2281,7 +2247,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "EncryptionConfig" });
   }
 }
-function __c15(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2298,28 +2264,22 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetInstanceCommunicationLimitsRequest",
-      });
+      ).annotate({ identifier: "GetInstanceCommunicationLimitsRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ communicationLimitsConfig: S.optional(__S(512, __c16, 0)) }),
-      ).annotate({
-        identifier: "GetInstanceCommunicationLimitsResponse",
-      });
+        S.Struct({ communicationLimitsConfig: S.optional(__S(240, __c15, 0)) }),
+      ).annotate({ identifier: "GetInstanceCommunicationLimitsResponse" });
   }
 }
-function __c16(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ allChannelSubtypes: S.optional(__S(1442, __c45, 2)) }),
-      ).annotate({
-        identifier: "InstanceCommunicationLimitsConfig",
-      });
+        S.Struct({ allChannelSubtypes: S.optional(__S(722, __c45, 2)) }),
+      ).annotate({ identifier: "InstanceCommunicationLimitsConfig" });
   }
 }
-function __c17(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2333,12 +2293,10 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetInstanceOnboardingJobStatusRequest",
-      });
+      ).annotate({ identifier: "GetInstanceOnboardingJobStatusRequest" });
   }
 }
-function __c18(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2347,18 +2305,14 @@ function __c18(j: number): any {
           status: S.String,
           failureCode: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "InstanceOnboardingJobStatus",
-      });
+      ).annotate({ identifier: "InstanceOnboardingJobStatus" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ connectInstanceOnboardingJobStatus: S.optional(__S(576, __c18, 0)) }),
-      ).annotate({
-        identifier: "GetInstanceOnboardingJobStatusResponse",
-      });
+        S.Struct({ connectInstanceOnboardingJobStatus: S.optional(__S(272, __c17, 0)) }),
+      ).annotate({ identifier: "GetInstanceOnboardingJobStatusResponse" });
   }
 }
-function __c19(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ value: S.String, operator: S.String })).annotate({
@@ -2366,14 +2320,14 @@ function __c19(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ instanceIdFilter: S.optional(__S(608, __c19, 0)) }),
+        S.Struct({ instanceIdFilter: S.optional(__S(288, __c18, 0)) }),
       ).annotate({ identifier: "CampaignFilters" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
-          filters: S.optional(__S(609, __c19, 1)),
+          filters: S.optional(__S(289, __c18, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v2/campaigns-summary" }),
@@ -2392,25 +2346,25 @@ function __c19(j: number): any {
           arn: S.String,
           name: S.String,
           connectInstanceId: S.String,
-          channelSubtypes: __S(1408, __c44, 0),
+          channelSubtypes: __S(704, __c44, 0),
           type: S.optional(S.String),
-          schedule: S.optional(__S(1504, __c47, 0)),
-          entryLimitsConfig: S.optional(__S(1472, __c46, 0)),
+          schedule: S.optional(__S(752, __c47, 0)),
+          entryLimitsConfig: S.optional(__S(736, __c46, 0)),
           connectCampaignFlowArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "CampaignSummary" });
     case 4:
-      return S.Array(__S(611, __c19, 3));
+      return S.Array(__S(291, __c18, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          campaignSummaryList: S.optional(__S(612, __c19, 4)),
+          campaignSummaryList: S.optional(__S(292, __c18, 4)),
         }),
       ).annotate({ identifier: "ListCampaignsResponse" });
   }
 }
-function __c20(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2428,61 +2382,47 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListConnectInstanceIntegrationsRequest",
-      });
+      ).annotate({ identifier: "ListConnectInstanceIntegrationsRequest" });
     case 1:
-      return S.Array(__S(675, __c21, 3));
+      return S.Array(__S(321, __c20, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          integrationSummaryList: S.optional(__S(641, __c20, 1)),
+          integrationSummaryList: S.optional(__S(305, __c19, 1)),
         }),
-      ).annotate({
-        identifier: "ListConnectInstanceIntegrationsResponse",
-      });
+      ).annotate({ identifier: "ListConnectInstanceIntegrationsResponse" });
   }
 }
-function __c21(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 1:
       return S.suspend(() =>
-        S.Struct({ domainArn: S.String, objectTypeNames: __S(672, __c21, 0) }),
-      ).annotate({
-        identifier: "CustomerProfilesIntegrationSummary",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ functionArn: S.String })).annotate({
-        identifier: "LambdaIntegrationSummary",
-      });
-    case 3:
+        S.Struct({ domainArn: S.String, objectTypeNames: __S(768, __c48, 0) }),
+      ).annotate({ identifier: "CustomerProfilesIntegrationSummary" });
+    case 1:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ customerProfiles: __S(673, __c21, 1) }),
-        /*@__PURE__*/ S.Struct({ qConnect: __S(256, __c8, 0) }),
-        /*@__PURE__*/ S.Struct({ lambda: __S(674, __c21, 2) }),
+        /*@__PURE__*/ S.Struct({ customerProfiles: __S(320, __c20, 0) }),
+        /*@__PURE__*/ S.Struct({ qConnect: __S(112, __c7, 0) }),
+        /*@__PURE__*/ S.Struct({ lambda: __S(113, __c7, 1) }),
       ]);
   }
 }
-function __c22(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
           T.all(T.Http({ method: "GET", uri: "/v2/tags/{arn}" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(1536, __c48, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(768, __c48, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c23(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2499,13 +2439,13 @@ function __c23(j: number): any {
       ).annotate({ identifier: "PauseCampaignRequest" });
   }
 }
-function __c24(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")),
-          integrationConfig: __S(675, __c21, 3),
+          integrationConfig: __S(321, __c20, 1),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/v2/connect-instance/{connectInstanceId}/integrations" }),
@@ -2516,18 +2456,16 @@ function __c24(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutConnectInstanceIntegrationRequest",
-      });
+      ).annotate({ identifier: "PutConnectInstanceIntegrationRequest" });
   }
 }
-function __c25(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")),
-          communicationLimitsConfig: __S(512, __c16, 0),
+          communicationLimitsConfig: __S(240, __c15, 0),
         }).pipe(
           T.all(
             T.Http({
@@ -2541,69 +2479,61 @@ function __c25(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutInstanceCommunicationLimitsRequest",
-      });
+      ).annotate({ identifier: "PutInstanceCommunicationLimitsRequest" });
   }
 }
-function __c26(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           destinationPhoneNumber: SensitiveString,
-          attributes: __S(1536, __c48, 0),
+          attributes: __S(768, __c48, 0),
           connectSourcePhoneNumber: S.optional(S.String),
-          answerMachineDetectionConfig: S.optional(__S(1568, __c49, 0)),
+          answerMachineDetectionConfig: S.optional(__S(784, __c49, 0)),
           ringTimeout: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "TelephonyChannelSubtypeParameters",
-      });
+      ).annotate({ identifier: "TelephonyChannelSubtypeParameters" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           destinationPhoneNumber: SensitiveString,
           connectSourcePhoneNumberArn: S.optional(S.String),
           templateArn: S.optional(S.String),
-          templateParameters: __S(1536, __c48, 0),
+          templateParameters: __S(768, __c48, 0),
         }),
-      ).annotate({
-        identifier: "SmsChannelSubtypeParameters",
-      });
+      ).annotate({ identifier: "SmsChannelSubtypeParameters" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           destinationEmailAddress: SensitiveString,
           connectSourceEmailAddress: S.optional(SensitiveString),
           templateArn: S.optional(S.String),
-          templateParameters: __S(1536, __c48, 0),
+          templateParameters: __S(768, __c48, 0),
         }),
-      ).annotate({
-        identifier: "EmailChannelSubtypeParameters",
-      });
+      ).annotate({ identifier: "EmailChannelSubtypeParameters" });
     case 3:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ telephony: __S(832, __c26, 0) }),
-        /*@__PURE__*/ S.Struct({ sms: __S(833, __c26, 1) }),
-        /*@__PURE__*/ S.Struct({ email: __S(834, __c26, 2) }),
-        /*@__PURE__*/ S.Struct({ whatsApp: __S(833, __c26, 1) }),
+        /*@__PURE__*/ S.Struct({ telephony: __S(400, __c25, 0) }),
+        /*@__PURE__*/ S.Struct({ sms: __S(401, __c25, 1) }),
+        /*@__PURE__*/ S.Struct({ email: __S(402, __c25, 2) }),
+        /*@__PURE__*/ S.Struct({ whatsApp: __S(401, __c25, 1) }),
       ]);
     case 4:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.String,
           expirationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          channelSubtypeParameters: __S(835, __c26, 3),
+          channelSubtypeParameters: __S(403, __c25, 3),
         }),
       ).annotate({ identifier: "OutboundRequest" });
     case 5:
-      return S.Array(__S(836, __c26, 4));
+      return S.Array(__S(404, __c25, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.HttpLabel("id")),
-          outboundRequests: __S(837, __c26, 5),
+          outboundRequests: __S(405, __c25, 5),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/v2/campaigns/{id}/outbound-requests" }),
@@ -2614,16 +2544,18 @@ function __c26(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutOutboundRequestBatchRequest",
-      });
-    case 7:
+      ).annotate({ identifier: "PutOutboundRequestBatchRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ clientToken: S.optional(S.String), id: S.optional(S.String) }),
       ).annotate({ identifier: "SuccessfulRequest" });
-    case 8:
-      return S.Array(__S(839, __c26, 7));
-    case 9:
+    case 1:
+      return S.Array(__S(416, __c26, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String),
@@ -2631,17 +2563,15 @@ function __c26(j: number): any {
           failureCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "FailedRequest" });
-    case 10:
-      return S.Array(__S(841, __c26, 9));
-    case 11:
+    case 3:
+      return S.Array(__S(418, __c26, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          successfulRequests: S.optional(__S(840, __c26, 8)),
-          failedRequests: S.optional(__S(842, __c26, 10)),
+          successfulRequests: S.optional(__S(417, __c26, 1)),
+          failedRequests: S.optional(__S(419, __c26, 3)),
         }),
-      ).annotate({
-        identifier: "PutOutboundRequestBatchResponse",
-      });
+      ).annotate({ identifier: "PutOutboundRequestBatchResponse" });
   }
 }
 function __c27(j: number): any {
@@ -2652,13 +2582,13 @@ function __c27(j: number): any {
       ).annotate({ identifier: "WebNotificationContext" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ webNotificationContext: S.optional(__S(864, __c27, 0)) }),
+        S.Struct({ webNotificationContext: S.optional(__S(432, __c27, 0)) }),
       ).annotate({ identifier: "ChannelContext" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           sourceEvent: S.optional(S.String),
-          channelContext: S.optional(__S(865, __c27, 1)),
+          channelContext: S.optional(__S(433, __c27, 1)),
         }),
       ).annotate({ identifier: "EventTriggerContext" });
     case 3:
@@ -2667,16 +2597,16 @@ function __c27(j: number): any {
           clientToken: S.String,
           profileId: S.String,
           expirationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          eventTriggerContext: S.optional(__S(866, __c27, 2)),
+          eventTriggerContext: S.optional(__S(434, __c27, 2)),
         }),
       ).annotate({ identifier: "ProfileOutboundRequest" });
     case 4:
-      return S.Array(__S(867, __c27, 3));
+      return S.Array(__S(435, __c27, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.HttpLabel("id")),
-          profileOutboundRequests: __S(868, __c27, 4),
+          profileOutboundRequests: __S(436, __c27, 4),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/v2/campaigns/{id}/profile-outbound-requests" }),
@@ -2687,38 +2617,7 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutProfileOutboundRequestBatchRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ clientToken: S.optional(S.String), id: S.optional(S.String) }),
-      ).annotate({
-        identifier: "SuccessfulProfileOutboundRequest",
-      });
-    case 7:
-      return S.Array(__S(870, __c27, 6));
-    case 8:
-      return S.suspend(() =>
-        S.Struct({
-          clientToken: S.optional(S.String),
-          id: S.optional(S.String),
-          failureCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "FailedProfileOutboundRequest",
-      });
-    case 9:
-      return S.Array(__S(872, __c27, 8));
-    case 10:
-      return S.suspend(() =>
-        S.Struct({
-          successfulRequests: S.optional(__S(871, __c27, 7)),
-          failedRequests: S.optional(__S(873, __c27, 9)),
-        }),
-      ).annotate({
-        identifier: "PutProfileOutboundRequestBatchResponse",
-      });
+      ).annotate({ identifier: "PutProfileOutboundRequestBatchRequest" });
   }
 }
 function __c28(j: number): any {
@@ -2761,7 +2660,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")),
-          encryptionConfig: __S(448, __c14, 0),
+          encryptionConfig: __S(208, __c13, 0),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/v2/connect-instance/{connectInstanceId}/onboarding" }),
@@ -2772,9 +2671,7 @@ function __c30(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartInstanceOnboardingJobRequest",
-      });
+      ).annotate({ identifier: "StartInstanceOnboardingJobRequest" });
   }
 }
 function __c31(j: number): any {
@@ -2798,7 +2695,7 @@ function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")), tags: __S(1536, __c48, 0) }).pipe(
+        S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")), tags: __S(768, __c48, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/v2/tags/{arn}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
@@ -2810,7 +2707,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           arn: S.String.pipe(T.HttpLabel("arn")),
-          tagKeys: __S(1408, __c44, 0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(704, __c44, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(T.Http({ method: "DELETE", uri: "/v2/tags/{arn}" }), svc, auth, proto, ver, rules),
         ),
@@ -2823,7 +2720,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.HttpLabel("id")),
-          channelSubtypeConfig: __S(1616, __c50, 16),
+          channelSubtypeConfig: __S(815, __c50, 15),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v2/campaigns/{id}/channel-subtype-config" }),
@@ -2834,9 +2731,7 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateCampaignChannelSubtypeConfigRequest",
-      });
+      ).annotate({ identifier: "UpdateCampaignChannelSubtypeConfigRequest" });
   }
 }
 function __c35(j: number): any {
@@ -2845,7 +2740,7 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.HttpLabel("id")),
-          communicationLimitsOverride: __S(1632, __c51, 0),
+          communicationLimitsOverride: __S(816, __c51, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v2/campaigns/{id}/communication-limits" }),
@@ -2856,9 +2751,7 @@ function __c35(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateCampaignCommunicationLimitsRequest",
-      });
+      ).annotate({ identifier: "UpdateCampaignCommunicationLimitsRequest" });
   }
 }
 function __c36(j: number): any {
@@ -2867,7 +2760,7 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.HttpLabel("id")),
-          communicationTimeConfig: __S(1673, __c52, 9),
+          communicationTimeConfig: __S(841, __c52, 9),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v2/campaigns/{id}/communication-time" }),
@@ -2878,9 +2771,7 @@ function __c36(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateCampaignCommunicationTimeRequest",
-      });
+      ).annotate({ identifier: "UpdateCampaignCommunicationTimeRequest" });
   }
 }
 function __c37(j: number): any {
@@ -2889,7 +2780,7 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.HttpLabel("id")),
-          entryLimitsConfig: __S(1472, __c46, 0),
+          entryLimitsConfig: __S(736, __c46, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v2/campaigns/{id}/entry-limits" }),
@@ -2900,9 +2791,7 @@ function __c37(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateCampaignEntryLimitsRequest",
-      });
+      ).annotate({ identifier: "UpdateCampaignEntryLimitsRequest" });
   }
 }
 function __c38(j: number): any {
@@ -2919,9 +2808,7 @@ function __c38(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateCampaignFlowAssociationRequest",
-      });
+      ).annotate({ identifier: "UpdateCampaignFlowAssociationRequest" });
   }
 }
 function __c39(j: number): any {
@@ -2938,16 +2825,14 @@ function __c39(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateCampaignNameRequest",
-      });
+      ).annotate({ identifier: "UpdateCampaignNameRequest" });
   }
 }
 function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ id: S.String.pipe(T.HttpLabel("id")), schedule: __S(1504, __c47, 0) }).pipe(
+        S.Struct({ id: S.String.pipe(T.HttpLabel("id")), schedule: __S(752, __c47, 0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v2/campaigns/{id}/schedule" }),
             svc,
@@ -2957,16 +2842,14 @@ function __c40(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateCampaignScheduleRequest",
-      });
+      ).annotate({ identifier: "UpdateCampaignScheduleRequest" });
   }
 }
 function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ id: S.String.pipe(T.HttpLabel("id")), source: __S(1697, __c53, 1) }).pipe(
+        S.Struct({ id: S.String.pipe(T.HttpLabel("id")), source: __S(849, __c53, 1) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v2/campaigns/{id}/source" }),
             svc,
@@ -2976,9 +2859,7 @@ function __c41(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateCampaignSourceRequest",
-      });
+      ).annotate({ identifier: "UpdateCampaignSourceRequest" });
   }
 }
 function __c42(j: number): any {
@@ -2988,15 +2869,15 @@ function __c42(j: number): any {
         S.Struct({
           name: S.String,
           connectInstanceId: S.String,
-          channelSubtypeConfig: S.optional(__S(1616, __c50, 16)),
+          channelSubtypeConfig: S.optional(__S(815, __c50, 15)),
           type: S.optional(S.String),
-          source: S.optional(__S(1697, __c53, 1)),
+          source: S.optional(__S(849, __c53, 1)),
           connectCampaignFlowArn: S.optional(S.String),
-          schedule: S.optional(__S(1504, __c47, 0)),
-          entryLimitsConfig: S.optional(__S(1472, __c46, 0)),
-          communicationTimeConfig: S.optional(__S(1673, __c52, 9)),
-          communicationLimitsOverride: S.optional(__S(1632, __c51, 0)),
-          tags: S.optional(__S(1536, __c48, 0)),
+          schedule: S.optional(__S(752, __c47, 0)),
+          entryLimitsConfig: S.optional(__S(736, __c46, 0)),
+          communicationTimeConfig: S.optional(__S(841, __c52, 9)),
+          communicationLimitsOverride: S.optional(__S(816, __c51, 0)),
+          tags: S.optional(__S(768, __c48, 0)),
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/v2/campaigns" }), svc, auth, proto, ver, rules),
         ),
@@ -3006,7 +2887,7 @@ function __c42(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           arn: S.optional(S.String),
-          tags: S.optional(__S(1536, __c48, 0)),
+          tags: S.optional(__S(768, __c48, 0)),
         }),
       ).annotate({ identifier: "CreateCampaignResponse" });
   }
@@ -3014,9 +2895,7 @@ function __c42(j: number): any {
 function __c43(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AgentlessConfig",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "AgentlessConfig" });
   }
 }
 function __c44(j: number): any {
@@ -3032,9 +2911,9 @@ function __c45(j: number): any {
         S.Struct({ maxCountPerRecipient: S.Number, frequency: S.Number, unit: S.String }),
       ).annotate({ identifier: "CommunicationLimit" });
     case 1:
-      return S.Array(__S(1440, __c45, 0));
+      return S.Array(__S(720, __c45, 0));
     case 2:
-      return S.Union([/*@__PURE__*/ S.Struct({ communicationLimitsList: __S(1441, __c45, 1) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ communicationLimitsList: __S(721, __c45, 1) })]);
   }
 }
 function __c46(j: number): any {
@@ -3071,9 +2950,7 @@ function __c49(j: number): any {
           enableAnswerMachineDetection: S.Boolean,
           awaitAnswerMachinePrompt: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "AnswerMachineDetectionConfig",
-      });
+      ).annotate({ identifier: "AnswerMachineDetectionConfig" });
   }
 }
 function __c50(j: number): any {
@@ -3090,18 +2967,16 @@ function __c50(j: number): any {
           connectionThresholdSeconds: S.Number,
           evaluationWindow: S.String,
         }),
-      ).annotate({
-        identifier: "AbandonmentRatePacingConfig",
-      });
+      ).annotate({ identifier: "AbandonmentRatePacingConfig" });
     case 2:
-      return S.Union([/*@__PURE__*/ S.Struct({ abandonmentRate: __S(1601, __c50, 1) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ abandonmentRate: __S(801, __c50, 1) })]);
     case 3:
-      return S.Array(__S(1602, __c50, 2));
+      return S.Array(__S(802, __c50, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           bandwidthAllocation: S.Number,
-          pacingStrategies: S.optional(__S(1603, __c50, 3)),
+          pacingStrategies: S.optional(__S(803, __c50, 3)),
         }),
       ).annotate({ identifier: "PredictiveConfig" });
     case 5:
@@ -3112,23 +2987,23 @@ function __c50(j: number): any {
       return S.suspend(() =>
         S.Struct({
           bandwidthAllocation: S.Number,
-          timeoutConfig: __S(1605, __c50, 5),
-          agentActions: S.optional(__S(1408, __c44, 0)),
+          timeoutConfig: __S(805, __c50, 5),
+          agentActions: S.optional(__S(704, __c44, 0)),
         }),
       ).annotate({ identifier: "PreviewConfig" });
     case 7:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ progressive: __S(1600, __c50, 0) }),
-        /*@__PURE__*/ S.Struct({ predictive: __S(1604, __c50, 4) }),
-        /*@__PURE__*/ S.Struct({ agentless: __S(1376, __c43, 0) }),
-        /*@__PURE__*/ S.Struct({ preview: __S(1606, __c50, 6) }),
+        /*@__PURE__*/ S.Struct({ progressive: __S(800, __c50, 0) }),
+        /*@__PURE__*/ S.Struct({ predictive: __S(804, __c50, 4) }),
+        /*@__PURE__*/ S.Struct({ agentless: __S(688, __c43, 0) }),
+        /*@__PURE__*/ S.Struct({ preview: __S(806, __c50, 6) }),
       ]);
     case 8:
       return S.suspend(() =>
         S.Struct({
           connectContactFlowId: S.String,
           connectSourcePhoneNumber: S.optional(S.String),
-          answerMachineDetectionConfig: S.optional(__S(1568, __c49, 0)),
+          answerMachineDetectionConfig: S.optional(__S(784, __c49, 0)),
           ringTimeout: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TelephonyOutboundConfig" });
@@ -3137,14 +3012,12 @@ function __c50(j: number): any {
         S.Struct({
           capacity: S.optional(S.Number),
           connectQueueId: S.optional(S.String),
-          outboundMode: __S(1607, __c50, 7),
-          defaultOutboundConfig: __S(1608, __c50, 8),
+          outboundMode: __S(807, __c50, 7),
+          defaultOutboundConfig: __S(808, __c50, 8),
         }),
-      ).annotate({
-        identifier: "TelephonyChannelSubtypeConfig",
-      });
+      ).annotate({ identifier: "TelephonyChannelSubtypeConfig" });
     case 10:
-      return S.Union([/*@__PURE__*/ S.Struct({ agentless: __S(1376, __c43, 0) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ agentless: __S(688, __c43, 0) })]);
     case 11:
       return S.suspend(() =>
         S.Struct({ connectSourcePhoneNumberArn: S.String, wisdomTemplateArn: S.String }),
@@ -3153,8 +3026,8 @@ function __c50(j: number): any {
       return S.suspend(() =>
         S.Struct({
           capacity: S.optional(S.Number),
-          outboundMode: __S(1610, __c50, 10),
-          defaultOutboundConfig: __S(1611, __c50, 11),
+          outboundMode: __S(810, __c50, 10),
+          defaultOutboundConfig: __S(811, __c50, 11),
         }),
       ).annotate({ identifier: "SmsChannelSubtypeConfig" });
     case 13:
@@ -3169,29 +3042,17 @@ function __c50(j: number): any {
       return S.suspend(() =>
         S.Struct({
           capacity: S.optional(S.Number),
-          outboundMode: __S(1610, __c50, 10),
-          defaultOutboundConfig: __S(1613, __c50, 13),
+          outboundMode: __S(810, __c50, 10),
+          defaultOutboundConfig: __S(813, __c50, 13),
         }),
-      ).annotate({
-        identifier: "EmailChannelSubtypeConfig",
-      });
+      ).annotate({ identifier: "EmailChannelSubtypeConfig" });
     case 15:
       return S.suspend(() =>
         S.Struct({
-          capacity: S.optional(S.Number),
-          outboundMode: __S(1610, __c50, 10),
-          defaultOutboundConfig: __S(1611, __c50, 11),
-        }),
-      ).annotate({
-        identifier: "WhatsAppChannelSubtypeConfig",
-      });
-    case 16:
-      return S.suspend(() =>
-        S.Struct({
-          telephony: S.optional(__S(1609, __c50, 9)),
-          sms: S.optional(__S(1612, __c50, 12)),
-          email: S.optional(__S(1614, __c50, 14)),
-          whatsApp: S.optional(__S(1615, __c50, 15)),
+          telephony: S.optional(__S(809, __c50, 9)),
+          sms: S.optional(__S(812, __c50, 12)),
+          email: S.optional(__S(814, __c50, 14)),
+          whatsApp: S.optional(__S(812, __c50, 12)),
         }),
       ).annotate({ identifier: "ChannelSubtypeConfig" });
   }
@@ -3201,12 +3062,10 @@ function __c51(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          allChannelSubtypes: S.optional(__S(1442, __c45, 2)),
+          allChannelSubtypes: S.optional(__S(722, __c45, 2)),
           instanceLimitsHandling: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CommunicationLimitsConfig",
-      });
+      ).annotate({ identifier: "CommunicationLimitsConfig" });
   }
 }
 function __c52(j: number): any {
@@ -3215,7 +3074,7 @@ function __c52(j: number): any {
       return S.suspend(() =>
         S.Struct({
           defaultTimeZone: S.optional(S.String),
-          localTimeZoneDetection: S.optional(__S(1408, __c44, 0)),
+          localTimeZoneDetection: S.optional(__S(704, __c44, 0)),
           localTimeZoneDetectionScope: S.optional(S.String),
         }),
       ).annotate({ identifier: "LocalTimeZoneConfig" });
@@ -3224,34 +3083,34 @@ function __c52(j: number): any {
         identifier: "TimeRange",
       });
     case 2:
-      return S.Array(__S(1665, __c52, 1));
+      return S.Array(__S(833, __c52, 1));
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(1666, __c52, 2).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(834, __c52, 2).pipe(S.optional));
     case 4:
-      return S.Union([/*@__PURE__*/ S.Struct({ dailyHours: __S(1667, __c52, 3) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ dailyHours: __S(835, __c52, 3) })]);
     case 5:
       return S.suspend(() =>
         S.Struct({ name: S.optional(S.String), startDate: S.String, endDate: S.String }),
       ).annotate({ identifier: "RestrictedPeriod" });
     case 6:
-      return S.Array(__S(1669, __c52, 5));
+      return S.Array(__S(837, __c52, 5));
     case 7:
-      return S.Union([/*@__PURE__*/ S.Struct({ restrictedPeriodList: __S(1670, __c52, 6) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ restrictedPeriodList: __S(838, __c52, 6) })]);
     case 8:
       return S.suspend(() =>
         S.Struct({
-          openHours: __S(1668, __c52, 4),
-          restrictedPeriods: S.optional(__S(1671, __c52, 7)),
+          openHours: __S(836, __c52, 4),
+          restrictedPeriods: S.optional(__S(839, __c52, 7)),
         }),
       ).annotate({ identifier: "TimeWindow" });
     case 9:
       return S.suspend(() =>
         S.Struct({
-          localTimeZoneConfig: __S(1664, __c52, 0),
-          telephony: S.optional(__S(1672, __c52, 8)),
-          sms: S.optional(__S(1672, __c52, 8)),
-          email: S.optional(__S(1672, __c52, 8)),
-          whatsApp: S.optional(__S(1672, __c52, 8)),
+          localTimeZoneConfig: __S(832, __c52, 0),
+          telephony: S.optional(__S(840, __c52, 8)),
+          sms: S.optional(__S(840, __c52, 8)),
+          email: S.optional(__S(840, __c52, 8)),
+          whatsApp: S.optional(__S(840, __c52, 8)),
         }),
       ).annotate({ identifier: "CommunicationTimeConfig" });
   }
@@ -3265,7 +3124,7 @@ function __c53(j: number): any {
     case 1:
       return S.Union([
         /*@__PURE__*/ S.Struct({ customerProfilesSegmentArn: S.String }),
-        /*@__PURE__*/ S.Struct({ eventTrigger: __S(1696, __c53, 0) }),
+        /*@__PURE__*/ S.Struct({ eventTrigger: __S(848, __c53, 0) }),
       ]);
   }
 }

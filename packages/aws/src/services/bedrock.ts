@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -3877,7 +3877,7 @@ export const createAdvancedPromptOptimizationJob: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(768, __c24, 0) as any as S.Schema<CreateAdvancedPromptOptimizationJobRequest>,
-  output: __S(832, __c26, 0) as any as S.Schema<CreateAdvancedPromptOptimizationJobResponse>,
+  output: __S(864, __c27, 0) as any as S.Schema<CreateAdvancedPromptOptimizationJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3914,8 +3914,8 @@ export const createAutomatedReasoningPolicy: API.OperationMethod<
   CreateAutomatedReasoningPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c29, 0) as any as S.Schema<CreateAutomatedReasoningPolicyRequest>,
-  output: __S(929, __c29, 1) as any as S.Schema<CreateAutomatedReasoningPolicyResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<CreateAutomatedReasoningPolicyRequest>,
+  output: __S(961, __c30, 1) as any as S.Schema<CreateAutomatedReasoningPolicyResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3949,8 +3949,8 @@ export const createAutomatedReasoningPolicyTestCase: API.OperationMethod<
   CreateAutomatedReasoningPolicyTestCaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c32, 0) as any as S.Schema<CreateAutomatedReasoningPolicyTestCaseRequest>,
-  output: __S(1056, __c33, 0) as any as S.Schema<CreateAutomatedReasoningPolicyTestCaseResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<CreateAutomatedReasoningPolicyTestCaseRequest>,
+  output: __S(1088, __c34, 0) as any as S.Schema<CreateAutomatedReasoningPolicyTestCaseResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3984,8 +3984,8 @@ export const createAutomatedReasoningPolicyVersion: API.OperationMethod<
   CreateAutomatedReasoningPolicyVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c34, 0) as any as S.Schema<CreateAutomatedReasoningPolicyVersionRequest>,
-  output: __S(1089, __c34, 1) as any as S.Schema<CreateAutomatedReasoningPolicyVersionResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<CreateAutomatedReasoningPolicyVersionRequest>,
+  output: __S(1121, __c35, 1) as any as S.Schema<CreateAutomatedReasoningPolicyVersionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4044,8 +4044,8 @@ export const createCustomModel: API.OperationMethod<
   CreateCustomModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1122, __c35, 2) as any as S.Schema<CreateCustomModelRequest>,
-  output: __S(1123, __c35, 3) as any as S.Schema<CreateCustomModelResponse>,
+  input: __S(1154, __c36, 2) as any as S.Schema<CreateCustomModelRequest>,
+  output: __S(1155, __c36, 3) as any as S.Schema<CreateCustomModelResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4124,7 +4124,7 @@ export const createEvaluationJob: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1280, __c40, 0) as any as S.Schema<CreateEvaluationJobRequest>,
-  output: __S(832, __c26, 0) as any as S.Schema<CreateEvaluationJobResponse>,
+  output: __S(864, __c27, 0) as any as S.Schema<CreateEvaluationJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4341,7 +4341,7 @@ export const createModelCopyJob: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1760, __c55, 0) as any as S.Schema<CreateModelCopyJobRequest>,
-  output: __S(832, __c26, 0) as any as S.Schema<CreateModelCopyJobResponse>,
+  output: __S(864, __c27, 0) as any as S.Schema<CreateModelCopyJobResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4381,7 +4381,7 @@ export const createModelCustomizationJob: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1792, __c56, 0) as any as S.Schema<CreateModelCustomizationJobRequest>,
-  output: __S(832, __c26, 0) as any as S.Schema<CreateModelCustomizationJobResponse>,
+  output: __S(864, __c27, 0) as any as S.Schema<CreateModelCustomizationJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4417,7 +4417,7 @@ export const createModelImportJob: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1856, __c58, 0) as any as S.Schema<CreateModelImportJobRequest>,
-  output: __S(832, __c26, 0) as any as S.Schema<CreateModelImportJobResponse>,
+  output: __S(864, __c27, 0) as any as S.Schema<CreateModelImportJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4454,7 +4454,7 @@ export const createModelInvocationJob: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1888, __c59, 0) as any as S.Schema<CreateModelInvocationJobRequest>,
-  output: __S(832, __c26, 0) as any as S.Schema<CreateModelInvocationJobResponse>,
+  output: __S(864, __c27, 0) as any as S.Schema<CreateModelInvocationJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4663,7 +4663,7 @@ export const deleteCustomModel: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(2176, __c68, 0) as any as S.Schema<DeleteCustomModelRequest>,
-  output: __S(2208, __c69, 0) as any as S.Schema<DeleteCustomModelResponse>,
+  output: __S(736, __c23, 0) as any as S.Schema<DeleteCustomModelResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4702,7 +4702,7 @@ export const deleteCustomModelDeployment: API.OperationMethod<
   DeleteCustomModelDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2240, __c70, 0) as any as S.Schema<DeleteCustomModelDeploymentRequest>,
+  input: __S(2208, __c69, 0) as any as S.Schema<DeleteCustomModelDeploymentRequest>,
   output: __S(736, __c23, 0) as any as S.Schema<DeleteCustomModelDeploymentResponse>,
   errors: [
     AccessDeniedException,
@@ -4733,7 +4733,7 @@ export const deleteEnforcedGuardrailConfiguration: API.OperationMethod<
   DeleteEnforcedGuardrailConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2272, __c71, 0) as any as S.Schema<DeleteEnforcedGuardrailConfigurationRequest>,
+  input: __S(2240, __c70, 0) as any as S.Schema<DeleteEnforcedGuardrailConfigurationRequest>,
   output: __S(736, __c23, 0) as any as S.Schema<DeleteEnforcedGuardrailConfigurationResponse>,
   errors: [
     AccessDeniedException,
@@ -4764,7 +4764,7 @@ export const deleteFoundationModelAgreement: API.OperationMethod<
   DeleteFoundationModelAgreementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2304, __c72, 0) as any as S.Schema<DeleteFoundationModelAgreementRequest>,
+  input: __S(2272, __c71, 0) as any as S.Schema<DeleteFoundationModelAgreementRequest>,
   output: __S(736, __c23, 0) as any as S.Schema<DeleteFoundationModelAgreementResponse>,
   errors: [
     AccessDeniedException,
@@ -4801,8 +4801,8 @@ export const deleteGuardrail: API.OperationMethod<
   DeleteGuardrailError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2336, __c73, 0) as any as S.Schema<DeleteGuardrailRequest>,
-  output: __S(2208, __c69, 0) as any as S.Schema<DeleteGuardrailResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<DeleteGuardrailRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<DeleteGuardrailResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4834,8 +4834,8 @@ export const deleteImportedModel: API.OperationMethod<
   DeleteImportedModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2368, __c74, 0) as any as S.Schema<DeleteImportedModelRequest>,
-  output: __S(2208, __c69, 0) as any as S.Schema<DeleteImportedModelResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<DeleteImportedModelRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<DeleteImportedModelResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4866,8 +4866,8 @@ export const deleteInferenceProfile: API.OperationMethod<
   DeleteInferenceProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2400, __c75, 0) as any as S.Schema<DeleteInferenceProfileRequest>,
-  output: __S(2208, __c69, 0) as any as S.Schema<DeleteInferenceProfileResponse>,
+  input: __S(2368, __c74, 0) as any as S.Schema<DeleteInferenceProfileRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<DeleteInferenceProfileResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4897,7 +4897,7 @@ export const deleteMarketplaceModelEndpoint: API.OperationMethod<
   DeleteMarketplaceModelEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2432, __c76, 0) as any as S.Schema<DeleteMarketplaceModelEndpointRequest>,
+  input: __S(2400, __c75, 0) as any as S.Schema<DeleteMarketplaceModelEndpointRequest>,
   output: __S(736, __c23, 0) as any as S.Schema<DeleteMarketplaceModelEndpointResponse>,
   errors: [
     AccessDeniedException,
@@ -4925,7 +4925,7 @@ export const deleteModelInvocationLoggingConfiguration: API.OperationMethod<
   DeleteModelInvocationLoggingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2464, __c77, 0) as any as S.Schema<DeleteModelInvocationLoggingConfigurationRequest>,
+  input: __S(2432, __c76, 0) as any as S.Schema<DeleteModelInvocationLoggingConfigurationRequest>,
   output: __S(736, __c23, 0) as any as S.Schema<DeleteModelInvocationLoggingConfigurationResponse>,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
   protocol: AwsProtocol,
@@ -4949,8 +4949,8 @@ export const deletePromptRouter: API.OperationMethod<
   DeletePromptRouterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2496, __c78, 0) as any as S.Schema<DeletePromptRouterRequest>,
-  output: __S(2208, __c69, 0) as any as S.Schema<DeletePromptRouterResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<DeletePromptRouterRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<DeletePromptRouterResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4980,7 +4980,7 @@ export const deleteProvisionedModelThroughput: API.OperationMethod<
   DeleteProvisionedModelThroughputError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2528, __c79, 0) as any as S.Schema<DeleteProvisionedModelThroughputRequest>,
+  input: __S(2496, __c78, 0) as any as S.Schema<DeleteProvisionedModelThroughputRequest>,
   output: __S(736, __c23, 0) as any as S.Schema<DeleteProvisionedModelThroughputResponse>,
   errors: [
     AccessDeniedException,
@@ -5011,8 +5011,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2560, __c80, 0) as any as S.Schema<DeleteResourcePolicyRequest>,
-  output: __S(2208, __c69, 0) as any as S.Schema<DeleteResourcePolicyResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<DeleteResourcePolicyRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<DeleteResourcePolicyResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5042,7 +5042,7 @@ export const deregisterMarketplaceModelEndpoint: API.OperationMethod<
   DeregisterMarketplaceModelEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2592, __c81, 0) as any as S.Schema<DeregisterMarketplaceModelEndpointRequest>,
+  input: __S(2560, __c80, 0) as any as S.Schema<DeregisterMarketplaceModelEndpointRequest>,
   output: __S(736, __c23, 0) as any as S.Schema<DeregisterMarketplaceModelEndpointResponse>,
   errors: [
     AccessDeniedException,
@@ -5073,8 +5073,8 @@ export const exportAutomatedReasoningPolicyVersion: API.OperationMethod<
   ExportAutomatedReasoningPolicyVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2624, __c82, 0) as any as S.Schema<ExportAutomatedReasoningPolicyVersionRequest>,
-  output: __S(2625, __c82, 1) as any as S.Schema<ExportAutomatedReasoningPolicyVersionResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<ExportAutomatedReasoningPolicyVersionRequest>,
+  output: __S(2593, __c81, 1) as any as S.Schema<ExportAutomatedReasoningPolicyVersionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5102,8 +5102,8 @@ export const getAccountDataRetention: API.OperationMethod<
   GetAccountDataRetentionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2656, __c83, 0) as any as S.Schema<GetAccountDataRetentionRequest>,
-  output: __S(2688, __c84, 0) as any as S.Schema<GetAccountDataRetentionResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<GetAccountDataRetentionRequest>,
+  output: __S(2656, __c83, 0) as any as S.Schema<GetAccountDataRetentionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5131,8 +5131,8 @@ export const getAdvancedPromptOptimizationJob: API.OperationMethod<
   GetAdvancedPromptOptimizationJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2720, __c85, 0) as any as S.Schema<GetAdvancedPromptOptimizationJobRequest>,
-  output: __S(2721, __c85, 1) as any as S.Schema<GetAdvancedPromptOptimizationJobResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<GetAdvancedPromptOptimizationJobRequest>,
+  output: __S(2689, __c84, 1) as any as S.Schema<GetAdvancedPromptOptimizationJobResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5161,8 +5161,8 @@ export const getAutomatedReasoningPolicy: API.OperationMethod<
   GetAutomatedReasoningPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2752, __c86, 0) as any as S.Schema<GetAutomatedReasoningPolicyRequest>,
-  output: __S(2753, __c86, 1) as any as S.Schema<GetAutomatedReasoningPolicyResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<GetAutomatedReasoningPolicyRequest>,
+  output: __S(2721, __c85, 1) as any as S.Schema<GetAutomatedReasoningPolicyResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5191,8 +5191,8 @@ export const getAutomatedReasoningPolicyAnnotations: API.OperationMethod<
   GetAutomatedReasoningPolicyAnnotationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2784, __c87, 0) as any as S.Schema<GetAutomatedReasoningPolicyAnnotationsRequest>,
-  output: __S(2785, __c87, 1) as any as S.Schema<GetAutomatedReasoningPolicyAnnotationsResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<GetAutomatedReasoningPolicyAnnotationsRequest>,
+  output: __S(2753, __c86, 1) as any as S.Schema<GetAutomatedReasoningPolicyAnnotationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5221,8 +5221,8 @@ export const getAutomatedReasoningPolicyBuildWorkflow: API.OperationMethod<
   GetAutomatedReasoningPolicyBuildWorkflowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2880, __c90, 0) as any as S.Schema<GetAutomatedReasoningPolicyBuildWorkflowRequest>,
-  output: __S(2881, __c90, 1) as any as S.Schema<GetAutomatedReasoningPolicyBuildWorkflowResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<GetAutomatedReasoningPolicyBuildWorkflowRequest>,
+  output: __S(2849, __c89, 1) as any as S.Schema<GetAutomatedReasoningPolicyBuildWorkflowResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5252,13 +5252,13 @@ export const getAutomatedReasoningPolicyBuildWorkflowResultAssets: API.Operation
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2912,
-    __c91,
+    2880,
+    __c90,
     0,
   ) as any as S.Schema<GetAutomatedReasoningPolicyBuildWorkflowResultAssetsRequest>,
   output: __S(
-    2960,
-    __c92,
+    2928,
+    __c91,
     16,
   ) as any as S.Schema<GetAutomatedReasoningPolicyBuildWorkflowResultAssetsResponse>,
   errors: [
@@ -5289,8 +5289,8 @@ export const getAutomatedReasoningPolicyNextScenario: API.OperationMethod<
   GetAutomatedReasoningPolicyNextScenarioError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3008, __c94, 0) as any as S.Schema<GetAutomatedReasoningPolicyNextScenarioRequest>,
-  output: __S(3009, __c94, 1) as any as S.Schema<GetAutomatedReasoningPolicyNextScenarioResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<GetAutomatedReasoningPolicyNextScenarioRequest>,
+  output: __S(2977, __c93, 1) as any as S.Schema<GetAutomatedReasoningPolicyNextScenarioResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5319,8 +5319,8 @@ export const getAutomatedReasoningPolicyTestCase: API.OperationMethod<
   GetAutomatedReasoningPolicyTestCaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3040, __c95, 0) as any as S.Schema<GetAutomatedReasoningPolicyTestCaseRequest>,
-  output: __S(3041, __c95, 1) as any as S.Schema<GetAutomatedReasoningPolicyTestCaseResponse>,
+  input: __S(3008, __c94, 0) as any as S.Schema<GetAutomatedReasoningPolicyTestCaseRequest>,
+  output: __S(3009, __c94, 1) as any as S.Schema<GetAutomatedReasoningPolicyTestCaseResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5349,8 +5349,8 @@ export const getAutomatedReasoningPolicyTestResult: API.OperationMethod<
   GetAutomatedReasoningPolicyTestResultError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3104, __c97, 0) as any as S.Schema<GetAutomatedReasoningPolicyTestResultRequest>,
-  output: __S(3105, __c97, 1) as any as S.Schema<GetAutomatedReasoningPolicyTestResultResponse>,
+  input: __S(3072, __c96, 0) as any as S.Schema<GetAutomatedReasoningPolicyTestResultRequest>,
+  output: __S(3073, __c96, 1) as any as S.Schema<GetAutomatedReasoningPolicyTestResultResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5379,8 +5379,8 @@ export const getCustomModel: API.OperationMethod<
   GetCustomModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3168, __c99, 0) as any as S.Schema<GetCustomModelRequest>,
-  output: __S(3169, __c99, 1) as any as S.Schema<GetCustomModelResponse>,
+  input: __S(3136, __c98, 0) as any as S.Schema<GetCustomModelRequest>,
+  output: __S(3137, __c98, 1) as any as S.Schema<GetCustomModelResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5417,8 +5417,8 @@ export const getCustomModelDeployment: API.OperationMethod<
   GetCustomModelDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3232, __c101, 0) as any as S.Schema<GetCustomModelDeploymentRequest>,
-  output: __S(3234, __c101, 2) as any as S.Schema<GetCustomModelDeploymentResponse>,
+  input: __S(3200, __c100, 0) as any as S.Schema<GetCustomModelDeploymentRequest>,
+  output: __S(3202, __c100, 2) as any as S.Schema<GetCustomModelDeploymentResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5447,8 +5447,8 @@ export const getEvaluationJob: API.OperationMethod<
   GetEvaluationJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3264, __c102, 0) as any as S.Schema<GetEvaluationJobRequest>,
-  output: __S(3265, __c102, 1) as any as S.Schema<GetEvaluationJobResponse>,
+  input: __S(3232, __c101, 0) as any as S.Schema<GetEvaluationJobRequest>,
+  output: __S(3233, __c101, 1) as any as S.Schema<GetEvaluationJobResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5477,8 +5477,8 @@ export const getFoundationModel: API.OperationMethod<
   GetFoundationModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3296, __c103, 0) as any as S.Schema<GetFoundationModelRequest>,
-  output: __S(3297, __c103, 1) as any as S.Schema<GetFoundationModelResponse>,
+  input: __S(3264, __c102, 0) as any as S.Schema<GetFoundationModelRequest>,
+  output: __S(3265, __c102, 1) as any as S.Schema<GetFoundationModelResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5507,8 +5507,8 @@ export const getFoundationModelAvailability: API.OperationMethod<
   GetFoundationModelAvailabilityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3360, __c105, 0) as any as S.Schema<GetFoundationModelAvailabilityRequest>,
-  output: __S(3362, __c105, 2) as any as S.Schema<GetFoundationModelAvailabilityResponse>,
+  input: __S(3328, __c104, 0) as any as S.Schema<GetFoundationModelAvailabilityRequest>,
+  output: __S(3330, __c104, 2) as any as S.Schema<GetFoundationModelAvailabilityResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5537,8 +5537,8 @@ export const getGuardrail: API.OperationMethod<
   GetGuardrailError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3392, __c106, 0) as any as S.Schema<GetGuardrailRequest>,
-  output: __S(3405, __c106, 13) as any as S.Schema<GetGuardrailResponse>,
+  input: __S(3360, __c105, 0) as any as S.Schema<GetGuardrailRequest>,
+  output: __S(3368, __c105, 8) as any as S.Schema<GetGuardrailResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5567,8 +5567,8 @@ export const getImportedModel: API.OperationMethod<
   GetImportedModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3456, __c108, 0) as any as S.Schema<GetImportedModelRequest>,
-  output: __S(3458, __c108, 2) as any as S.Schema<GetImportedModelResponse>,
+  input: __S(3424, __c107, 0) as any as S.Schema<GetImportedModelRequest>,
+  output: __S(3426, __c107, 2) as any as S.Schema<GetImportedModelResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5597,8 +5597,8 @@ export const getInferenceProfile: API.OperationMethod<
   GetInferenceProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3488, __c109, 0) as any as S.Schema<GetInferenceProfileRequest>,
-  output: __S(3489, __c109, 1) as any as S.Schema<GetInferenceProfileResponse>,
+  input: __S(3456, __c108, 0) as any as S.Schema<GetInferenceProfileRequest>,
+  output: __S(3488, __c109, 0) as any as S.Schema<GetInferenceProfileResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -6392,7 +6392,7 @@ export const listInferenceProfiles: API.PaginatedOperationMethod<
   InferenceProfileSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4416, __c138, 0) as any as S.Schema<ListInferenceProfilesRequest>,
-  output: __S(4419, __c138, 3) as any as S.Schema<ListInferenceProfilesResponse>,
+  output: __S(4418, __c138, 2) as any as S.Schema<ListInferenceProfilesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -6709,7 +6709,7 @@ export const putAccountDataRetention: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(4704, __c147, 0) as any as S.Schema<PutAccountDataRetentionRequest>,
-  output: __S(2688, __c84, 0) as any as S.Schema<PutAccountDataRetentionResponse>,
+  output: __S(2656, __c83, 0) as any as S.Schema<PutAccountDataRetentionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -6989,7 +6989,7 @@ export const stopEvaluationJob: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(256, __c8, 0) as any as S.Schema<StopEvaluationJobRequest>,
-  output: __S(2208, __c69, 0) as any as S.Schema<StopEvaluationJobResponse>,
+  output: __S(736, __c23, 0) as any as S.Schema<StopEvaluationJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -7053,7 +7053,7 @@ export const stopModelInvocationJob: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(320, __c10, 0) as any as S.Schema<StopModelInvocationJobRequest>,
-  output: __S(2208, __c69, 0) as any as S.Schema<StopModelInvocationJobResponse>,
+  output: __S(736, __c23, 0) as any as S.Schema<StopModelInvocationJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -7085,7 +7085,7 @@ export const tagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(352, __c11, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(2208, __c69, 0) as any as S.Schema<TagResourceResponse>,
+  output: __S(736, __c23, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -7116,7 +7116,7 @@ export const untagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(448, __c14, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(2208, __c69, 0) as any as S.Schema<UntagResourceResponse>,
+  output: __S(736, __c23, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -7214,7 +7214,7 @@ export const updateAutomatedReasoningPolicyTestCase: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(544, __c17, 0) as any as S.Schema<UpdateAutomatedReasoningPolicyTestCaseRequest>,
-  output: __S(1056, __c33, 0) as any as S.Schema<UpdateAutomatedReasoningPolicyTestCaseResponse>,
+  output: __S(1088, __c34, 0) as any as S.Schema<UpdateAutomatedReasoningPolicyTestCaseResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -7392,15 +7392,11 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchDeleteAdvancedPromptOptimizationJobRequest",
-      });
+      ).annotate({ identifier: "BatchDeleteAdvancedPromptOptimizationJobRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ jobIdentifier: S.String, code: S.String, message: S.optional(S.String) }),
-      ).annotate({
-        identifier: "BatchDeleteAdvancedPromptOptimizationJobError",
-      });
+      ).annotate({ identifier: "BatchDeleteAdvancedPromptOptimizationJobError" });
     case 2:
       return S.Array(__S(1, __c0, 1));
     case 3:
@@ -7411,13 +7407,8 @@ function __c0(j: number): any {
       return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({
-          errors: __S(2, __c0, 2),
-          advancedPromptOptimizationJobs: __S(4, __c0, 4),
-        }),
-      ).annotate({
-        identifier: "BatchDeleteAdvancedPromptOptimizationJobResponse",
-      });
+        S.Struct({ errors: __S(2, __c0, 2), advancedPromptOptimizationJobs: __S(4, __c0, 4) }),
+      ).annotate({ identifier: "BatchDeleteAdvancedPromptOptimizationJobResponse" });
   }
 }
 function __c1(j: number): any {
@@ -7454,9 +7445,7 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutUseCaseForModelAccessRequest",
-      });
+      ).annotate({ identifier: "PutUseCaseForModelAccessRequest" });
   }
 }
 function __c4(j: number): any {
@@ -7479,9 +7468,7 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "RegisterMarketplaceModelEndpointRequest",
-      });
+      ).annotate({ identifier: "RegisterMarketplaceModelEndpointRequest" });
   }
 }
 function __c5(j: number): any {
@@ -7494,48 +7481,33 @@ function __c5(j: number): any {
           documentName: SensitiveString,
           documentDescription: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyBuildWorkflowDocument",
-      });
+      ).annotate({ identifier: "AutomatedReasoningPolicyBuildWorkflowDocument" });
     case 1:
       return S.Array(__S(160, __c5, 0));
     case 2:
-      return S.suspend(() => S.Struct({ annotations: __S(2816, __c88, 0) })).annotate({
+      return S.suspend(() => S.Struct({ annotations: __S(2784, __c87, 0) })).annotate({
         identifier: "AutomatedReasoningPolicyBuildWorkflowRepairContent",
       });
     case 3:
       return S.Union([/*@__PURE__*/ S.Struct({ documents: __S(161, __c5, 1) })]);
     case 4:
       return S.suspend(() =>
-        S.Struct({
-          documents: __S(161, __c5, 1),
-          feedback: S.optional(SensitiveString),
-        }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyIterativeRefinementContent",
-      });
+        S.Struct({ documents: __S(161, __c5, 1), feedback: S.optional(SensitiveString) }),
+      ).annotate({ identifier: "AutomatedReasoningPolicyIterativeRefinementContent" });
     case 5:
       return S.Union([
         /*@__PURE__*/ S.Struct({ documents: __S(161, __c5, 1) }),
-        /*@__PURE__*/ S.Struct({
-          policyRepairAssets: __S(162, __c5, 2),
-        }),
-        /*@__PURE__*/ S.Struct({
-          generateFidelityReportContent: __S(163, __c5, 3),
-        }),
-        /*@__PURE__*/ S.Struct({
-          iterativeRefinementContent: __S(164, __c5, 4),
-        }),
+        /*@__PURE__*/ S.Struct({ policyRepairAssets: __S(162, __c5, 2) }),
+        /*@__PURE__*/ S.Struct({ generateFidelityReportContent: __S(163, __c5, 3) }),
+        /*@__PURE__*/ S.Struct({ iterativeRefinementContent: __S(164, __c5, 4) }),
       ]);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          policyDefinition: S.optional(__S(997, __c31, 5)),
+          policyDefinition: S.optional(__S(1029, __c32, 5)),
           workflowContent: S.optional(__S(165, __c5, 5)),
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyBuildWorkflowSource",
-      });
+      ).annotate({ identifier: "AutomatedReasoningPolicyBuildWorkflowSource" });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -7545,9 +7517,9 @@ function __c5(j: number): any {
             T.HttpHeader("x-amz-client-token"),
             T.IdempotencyToken(),
           ),
-          sourceContent: __S(166, __c5, 6).pipe(T.HttpPayload()).annotate({
-            identifier: "AutomatedReasoningPolicyBuildWorkflowSource",
-          }),
+          sourceContent: __S(166, __c5, 6)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "AutomatedReasoningPolicyBuildWorkflowSource" }),
         }).pipe(
           T.all(
             T.Http({
@@ -7561,14 +7533,10 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartAutomatedReasoningPolicyBuildWorkflowRequest",
-      });
+      ).annotate({ identifier: "StartAutomatedReasoningPolicyBuildWorkflowRequest" });
     case 8:
       return S.suspend(() => S.Struct({ policyArn: S.String, buildWorkflowId: S.String })).annotate(
-        {
-          identifier: "StartAutomatedReasoningPolicyBuildWorkflowResponse",
-        },
+        { identifier: "StartAutomatedReasoningPolicyBuildWorkflowResponse" },
       );
   }
 }
@@ -7594,9 +7562,7 @@ function __c6(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartAutomatedReasoningPolicyTestWorkflowRequest",
-      });
+      ).annotate({ identifier: "StartAutomatedReasoningPolicyTestWorkflowRequest" });
     case 1:
       return S.suspend(() => S.Struct({ policyArn: S.String })).annotate({
         identifier: "StartAutomatedReasoningPolicyTestWorkflowResponse",
@@ -7620,9 +7586,7 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StopAdvancedPromptOptimizationJobRequest",
-      });
+      ).annotate({ identifier: "StopAdvancedPromptOptimizationJobRequest" });
   }
 }
 function __c8(j: number): any {
@@ -7656,9 +7620,7 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StopModelCustomizationJobRequest",
-      });
+      ).annotate({ identifier: "StopModelCustomizationJobRequest" });
   }
 }
 function __c10(j: number): any {
@@ -7675,9 +7637,7 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StopModelInvocationJobRequest",
-      });
+      ).annotate({ identifier: "StopModelInvocationJobRequest" });
   }
 }
 function __c11(j: number): any {
@@ -7704,34 +7664,23 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchDeleteEvaluationJobRequest",
-      });
+      ).annotate({ identifier: "BatchDeleteEvaluationJobRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ jobIdentifier: SensitiveString, code: S.String, message: S.optional(S.String) }),
-      ).annotate({
-        identifier: "BatchDeleteEvaluationJobError",
-      });
+      ).annotate({ identifier: "BatchDeleteEvaluationJobError" });
     case 2:
       return S.Array(__S(385, __c12, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ jobIdentifier: SensitiveString, jobStatus: S.String }),
-      ).annotate({
-        identifier: "BatchDeleteEvaluationJobItem",
-      });
+      ).annotate({ identifier: "BatchDeleteEvaluationJobItem" });
     case 4:
       return S.Array(__S(387, __c12, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({
-          errors: __S(386, __c12, 2),
-          evaluationJobs: __S(388, __c12, 4),
-        }),
-      ).annotate({
-        identifier: "BatchDeleteEvaluationJobResponse",
-      });
+        S.Struct({ errors: __S(386, __c12, 2), evaluationJobs: __S(388, __c12, 4) }),
+      ).annotate({ identifier: "BatchDeleteEvaluationJobResponse" });
   }
 }
 function __c13(j: number): any {
@@ -7756,7 +7705,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           policyArn: S.String.pipe(T.HttpLabel("policyArn")),
-          policyDefinition: __S(997, __c31, 5),
+          policyDefinition: __S(1029, __c32, 5),
           name: S.optional(SensitiveString),
           description: S.optional(SensitiveString),
         }).pipe(
@@ -7769,9 +7718,7 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateAutomatedReasoningPolicyRequest",
-      });
+      ).annotate({ identifier: "UpdateAutomatedReasoningPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7780,9 +7727,7 @@ function __c15(j: number): any {
           definitionHash: S.String,
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "UpdateAutomatedReasoningPolicyResponse",
-      });
+      ).annotate({ identifier: "UpdateAutomatedReasoningPolicyResponse" });
   }
 }
 function __c16(j: number): any {
@@ -7792,7 +7737,7 @@ function __c16(j: number): any {
         S.Struct({
           policyArn: S.String.pipe(T.HttpLabel("policyArn")),
           buildWorkflowId: S.String.pipe(T.HttpLabel("buildWorkflowId")),
-          annotations: __S(2816, __c88, 0),
+          annotations: __S(2784, __c87, 0),
           lastUpdatedAnnotationSetHash: S.String,
         }).pipe(
           T.all(
@@ -7807,9 +7752,7 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateAutomatedReasoningPolicyAnnotationsRequest",
-      });
+      ).annotate({ identifier: "UpdateAutomatedReasoningPolicyAnnotationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7818,9 +7761,7 @@ function __c16(j: number): any {
           annotationSetHash: S.String,
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "UpdateAutomatedReasoningPolicyAnnotationsResponse",
-      });
+      ).annotate({ identifier: "UpdateAutomatedReasoningPolicyAnnotationsResponse" });
   }
 }
 function __c17(j: number): any {
@@ -7849,9 +7790,7 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateAutomatedReasoningPolicyTestCaseRequest",
-      });
+      ).annotate({ identifier: "UpdateAutomatedReasoningPolicyTestCaseRequest" });
   }
 }
 function __c18(j: number): any {
@@ -7876,9 +7815,7 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateCustomModelDeploymentRequest",
-      });
+      ).annotate({ identifier: "UpdateCustomModelDeploymentRequest" });
   }
 }
 function __c19(j: number): any {
@@ -7890,12 +7827,12 @@ function __c19(j: number): any {
           name: SensitiveString,
           description: S.optional(SensitiveString),
           topicPolicyConfig: S.optional(__S(1474, __c46, 2)),
-          contentPolicyConfig: S.optional(__S(1477, __c46, 5)),
-          wordPolicyConfig: S.optional(__S(1480, __c46, 8)),
-          sensitiveInformationPolicyConfig: S.optional(__S(1481, __c46, 9)),
-          contextualGroundingPolicyConfig: S.optional(__S(1482, __c46, 10)),
-          automatedReasoningPolicyConfig: S.optional(__S(1545, __c48, 9)),
-          crossRegionConfig: S.optional(__S(1483, __c46, 11)),
+          contentPolicyConfig: S.optional(__S(1475, __c46, 3)),
+          wordPolicyConfig: S.optional(__S(1476, __c46, 4)),
+          sensitiveInformationPolicyConfig: S.optional(__S(1477, __c46, 5)),
+          contextualGroundingPolicyConfig: S.optional(__S(1478, __c46, 6)),
+          automatedReasoningPolicyConfig: S.optional(__S(1549, __c48, 13)),
+          crossRegionConfig: S.optional(__S(1479, __c46, 7)),
           blockedInputMessaging: SensitiveString,
           blockedOutputsMessaging: SensitiveString,
           kmsKeyId: S.optional(S.String),
@@ -7939,9 +7876,7 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateMarketplaceModelEndpointRequest",
-      });
+      ).annotate({ identifier: "UpdateMarketplaceModelEndpointRequest" });
   }
 }
 function __c21(j: number): any {
@@ -7962,9 +7897,7 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateProvisionedModelThroughputRequest",
-      });
+      ).annotate({ identifier: "UpdateProvisionedModelThroughputRequest" });
   }
 }
 function __c22(j: number): any {
@@ -7987,9 +7920,7 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CancelAutomatedReasoningPolicyBuildWorkflowRequest",
-      });
+      ).annotate({ identifier: "CancelAutomatedReasoningPolicyBuildWorkflowRequest" });
   }
 }
 function __c23(j: number): any {
@@ -8008,11 +7939,11 @@ function __c24(j: number): any {
           jobName: S.String,
           jobDescription: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          inputConfig: __S(864, __c27, 0),
-          outputConfig: __S(864, __c27, 0),
+          inputConfig: __S(832, __c26, 0),
+          outputConfig: __S(832, __c26, 0),
           encryptionKeyArn: S.optional(S.String),
           tags: S.optional(__S(801, __c25, 1)),
-          modelConfigurations: __S(898, __c28, 2),
+          modelConfigurations: __S(930, __c29, 2),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/advanced-prompt-optimization-jobs" }),
@@ -8023,9 +7954,7 @@ function __c24(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateAdvancedPromptOptimizationJobRequest",
-      });
+      ).annotate({ identifier: "CreateAdvancedPromptOptimizationJobRequest" });
   }
 }
 function __c25(j: number): any {
@@ -8041,22 +7970,26 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ jobArn: S.String })).annotate({
-        identifier: "CreateAdvancedPromptOptimizationJobResponse",
+      return S.suspend(() => S.Struct({ s3Uri: S.String })).annotate({
+        identifier: "AdvancedPromptOptimizationInputConfig",
       });
   }
 }
 function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ s3Uri: S.String })).annotate({
-        identifier: "AdvancedPromptOptimizationInputConfig",
+      return S.suspend(() => S.Struct({ jobArn: S.String })).annotate({
+        identifier: "CreateAdvancedPromptOptimizationJobResponse",
       });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.Any.pipe(S.optional));
   }
 }
 function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.Any.pipe(S.optional));
+  }
+}
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8071,15 +8004,15 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           modelId: S.String,
-          inferenceConfig: S.optional(__S(896, __c28, 0)),
-          additionalModelRequestFields: S.optional(__S(865, __c27, 1)),
+          inferenceConfig: S.optional(__S(928, __c29, 0)),
+          additionalModelRequestFields: S.optional(__S(896, __c28, 0)),
         }),
       ).annotate({ identifier: "ModelConfiguration" });
     case 2:
-      return S.Array(__S(897, __c28, 1));
+      return S.Array(__S(929, __c29, 1));
   }
 }
-function __c29(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8087,7 +8020,7 @@ function __c29(j: number): any {
           name: SensitiveString,
           description: S.optional(SensitiveString),
           clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          policyDefinition: S.optional(__S(997, __c31, 5)),
+          policyDefinition: S.optional(__S(1029, __c32, 5)),
           kmsKeyId: S.optional(S.String),
           tags: S.optional(__S(801, __c25, 1)),
         }).pipe(
@@ -8100,9 +8033,7 @@ function __c29(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateAutomatedReasoningPolicyRequest",
-      });
+      ).annotate({ identifier: "CreateAutomatedReasoningPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8114,43 +8045,35 @@ function __c29(j: number): any {
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "CreateAutomatedReasoningPolicyResponse",
-      });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ value: S.String, description: S.optional(SensitiveString) }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyDefinitionTypeValue",
-      });
-    case 1:
-      return S.Array(__S(960, __c30, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ name: SensitiveString, type: SensitiveString, description: SensitiveString }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyDefinitionVariable",
-      });
+      ).annotate({ identifier: "CreateAutomatedReasoningPolicyResponse" });
   }
 }
 function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({ value: S.String, description: S.optional(SensitiveString) }),
+      ).annotate({ identifier: "AutomatedReasoningPolicyDefinitionTypeValue" });
+    case 1:
+      return S.Array(__S(992, __c31, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ name: SensitiveString, type: SensitiveString, description: SensitiveString }),
+      ).annotate({ identifier: "AutomatedReasoningPolicyDefinitionVariable" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({
           name: SensitiveString,
           description: S.optional(SensitiveString),
-          values: __S(961, __c30, 1),
+          values: __S(993, __c31, 1),
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyDefinitionType",
-      });
+      ).annotate({ identifier: "AutomatedReasoningPolicyDefinitionType" });
     case 1:
-      return S.Array(__S(992, __c31, 0));
+      return S.Array(__S(1024, __c32, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -8158,27 +8081,23 @@ function __c31(j: number): any {
           expression: SensitiveString,
           alternateExpression: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyDefinitionRule",
-      });
+      ).annotate({ identifier: "AutomatedReasoningPolicyDefinitionRule" });
     case 3:
-      return S.Array(__S(994, __c31, 2));
+      return S.Array(__S(1026, __c32, 2));
     case 4:
-      return S.Array(__S(962, __c30, 2));
+      return S.Array(__S(994, __c31, 2));
     case 5:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
-          types: S.optional(__S(993, __c31, 1)),
-          rules: S.optional(__S(995, __c31, 3)),
-          variables: S.optional(__S(996, __c31, 4)),
+          types: S.optional(__S(1025, __c32, 1)),
+          rules: S.optional(__S(1027, __c32, 3)),
+          variables: S.optional(__S(1028, __c32, 4)),
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyDefinition",
-      });
+      ).annotate({ identifier: "AutomatedReasoningPolicyDefinition" });
   }
 }
-function __c32(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8199,12 +8118,10 @@ function __c32(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateAutomatedReasoningPolicyTestCaseRequest",
-      });
+      ).annotate({ identifier: "CreateAutomatedReasoningPolicyTestCaseRequest" });
   }
 }
-function __c33(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ policyArn: S.String, testCaseId: S.String })).annotate({
@@ -8212,7 +8129,7 @@ function __c33(j: number): any {
       });
   }
 }
-function __c34(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8231,9 +8148,7 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateAutomatedReasoningPolicyVersionRequest",
-      });
+      ).annotate({ identifier: "CreateAutomatedReasoningPolicyVersionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8244,25 +8159,23 @@ function __c34(j: number): any {
           definitionHash: S.String,
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "CreateAutomatedReasoningPolicyVersionResponse",
-      });
+      ).annotate({ identifier: "CreateAutomatedReasoningPolicyVersionResponse" });
   }
 }
-function __c35(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ modelPackageArn: S.String })).annotate({
         identifier: "ModelPackageArnDataSource",
       });
     case 1:
-      return S.Union([/*@__PURE__*/ S.Struct({ modelPackageArnDataSource: __S(1120, __c35, 0) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ modelPackageArnDataSource: __S(1152, __c36, 0) })]);
     case 2:
       return S.suspend(() =>
         S.Struct({
           modelName: S.String,
           modelSourceConfig: S.optional(__S(1184, __c37, 0)),
-          customModelDataSource: S.optional(__S(1121, __c35, 1)),
+          customModelDataSource: S.optional(__S(1153, __c36, 1)),
           modelKmsKeyArn: S.optional(S.String),
           roleArn: S.optional(S.String),
           modelTags: S.optional(__S(801, __c25, 1)),
@@ -8284,18 +8197,10 @@ function __c35(j: number): any {
       });
   }
 }
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ s3Uri: S.String })).annotate({
-        identifier: "S3DataSource",
-      });
-  }
-}
 function __c37(j: number): any {
   switch (j) {
     case 0:
-      return S.Union([/*@__PURE__*/ S.Struct({ s3DataSource: __S(1152, __c36, 0) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ s3DataSource: __S(832, __c26, 0) })]);
   }
 }
 function __c38(j: number): any {
@@ -8318,9 +8223,7 @@ function __c38(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateCustomModelDeploymentRequest",
-      });
+      ).annotate({ identifier: "CreateCustomModelDeploymentRequest" });
   }
 }
 function __c39(j: number): any {
@@ -8343,15 +8246,13 @@ function __c40(j: number): any {
           customerEncryptionKeyId: S.optional(S.String),
           jobTags: S.optional(__S(801, __c25, 1)),
           applicationType: S.optional(S.String),
-          evaluationConfig: __S(1365, __c42, 21),
-          inferenceConfig: __S(1407, __c43, 31),
-          outputDataConfig: __S(864, __c27, 0),
+          evaluationConfig: __S(1363, __c42, 19),
+          inferenceConfig: __S(1404, __c43, 28),
+          outputDataConfig: __S(832, __c26, 0),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/evaluation-jobs" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateEvaluationJobRequest",
-      });
+      ).annotate({ identifier: "CreateEvaluationJobRequest" });
   }
 }
 function __c41(j: number): any {
@@ -8373,9 +8274,7 @@ function __c42(j: number): any {
           dataset: __S(1344, __c42, 0),
           metricNames: __S(416, __c13, 0),
         }),
-      ).annotate({
-        identifier: "EvaluationDatasetMetricConfig",
-      });
+      ).annotate({ identifier: "EvaluationDatasetMetricConfig" });
     case 2:
       return S.Array(__S(1345, __c42, 1));
     case 3:
@@ -8410,218 +8309,192 @@ function __c42(j: number): any {
     case 11:
       return S.Array(__S(1354, __c42, 10));
     case 12:
-      return S.suspend(() => S.Struct({ modelIdentifier: S.String })).annotate({
-        identifier: "CustomMetricBedrockEvaluatorModel",
-      });
-    case 13:
-      return S.Array(__S(1356, __c42, 12));
-    case 14:
-      return S.suspend(() => S.Struct({ bedrockEvaluatorModels: __S(1357, __c42, 13) })).annotate({
+      return S.suspend(() => S.Struct({ bedrockEvaluatorModels: __S(1348, __c42, 4) })).annotate({
         identifier: "CustomMetricEvaluatorModelConfig",
       });
-    case 15:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           customMetrics: __S(1355, __c42, 11),
-          evaluatorModelConfig: __S(1358, __c42, 14),
+          evaluatorModelConfig: __S(1356, __c42, 12),
         }),
-      ).annotate({
-        identifier: "AutomatedEvaluationCustomMetricConfig",
-      });
-    case 16:
+      ).annotate({ identifier: "AutomatedEvaluationCustomMetricConfig" });
+    case 14:
       return S.suspend(() =>
         S.Struct({
           datasetMetricConfigs: __S(1346, __c42, 2),
           evaluatorModelConfig: S.optional(__S(1349, __c42, 5)),
-          customMetricConfig: S.optional(__S(1359, __c42, 15)),
+          customMetricConfig: S.optional(__S(1357, __c42, 13)),
         }),
-      ).annotate({
-        identifier: "AutomatedEvaluationConfig",
-      });
-    case 17:
+      ).annotate({ identifier: "AutomatedEvaluationConfig" });
+    case 15:
       return S.suspend(() =>
         S.Struct({ flowDefinitionArn: S.String, instructions: S.optional(SensitiveString) }),
       ).annotate({ identifier: "HumanWorkflowConfig" });
-    case 18:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           name: SensitiveString,
           description: S.optional(SensitiveString),
           ratingMethod: S.String,
         }),
-      ).annotate({
-        identifier: "HumanEvaluationCustomMetric",
-      });
-    case 19:
-      return S.Array(__S(1362, __c42, 18));
-    case 20:
+      ).annotate({ identifier: "HumanEvaluationCustomMetric" });
+    case 17:
+      return S.Array(__S(1360, __c42, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          humanWorkflowConfig: S.optional(__S(1361, __c42, 17)),
-          customMetrics: S.optional(__S(1363, __c42, 19)),
+          humanWorkflowConfig: S.optional(__S(1359, __c42, 15)),
+          customMetrics: S.optional(__S(1361, __c42, 17)),
           datasetMetricConfigs: __S(1346, __c42, 2),
         }),
       ).annotate({ identifier: "HumanEvaluationConfig" });
-    case 21:
+    case 19:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ automated: __S(1360, __c42, 16) }),
-        /*@__PURE__*/ S.Struct({ human: __S(1364, __c42, 20) }),
+        /*@__PURE__*/ S.Struct({ automated: __S(1358, __c42, 14) }),
+        /*@__PURE__*/ S.Struct({ human: __S(1362, __c42, 18) }),
       ]);
-    case 22:
+    case 20:
       return S.suspend(() => S.Struct({ latency: S.optional(S.String) })).annotate({
         identifier: "PerformanceConfiguration",
       });
-    case 23:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           modelIdentifier: S.String,
           inferenceParams: S.optional(SensitiveString),
-          performanceConfig: S.optional(__S(1366, __c42, 22)),
+          performanceConfig: S.optional(__S(1364, __c42, 20)),
         }),
       ).annotate({ identifier: "EvaluationBedrockModel" });
-    case 24:
+    case 22:
       return S.suspend(() => S.Struct({ inferenceSourceIdentifier: S.String })).annotate({
         identifier: "EvaluationPrecomputedInferenceSource",
       });
-    case 25:
+    case 23:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ bedrockModel: __S(1367, __c42, 23) }),
-        /*@__PURE__*/ S.Struct({ precomputedInferenceSource: __S(1368, __c42, 24) }),
+        /*@__PURE__*/ S.Struct({ bedrockModel: __S(1365, __c42, 21) }),
+        /*@__PURE__*/ S.Struct({ precomputedInferenceSource: __S(1366, __c42, 22) }),
       ]);
-    case 26:
-      return S.Array(__S(1369, __c42, 25));
-    case 27:
+    case 24:
+      return S.Array(__S(1367, __c42, 23));
+    case 25:
       return S.suspend(() => S.Struct({ key: S.String, value: S.Any })).annotate({
         identifier: "FilterAttribute",
       });
-    case 28:
+    case 26:
       return S.Array(
-        /*@__PURE__*/ S.suspend(() => __S(1373, __c42, 29)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(1371, __c42, 27)).annotate({
           identifier: "RetrievalFilter",
         }),
       );
-    case 29:
+    case 27:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ equals: __S(1371, __c42, 27) }),
-        /*@__PURE__*/ S.Struct({ notEquals: __S(1371, __c42, 27) }),
-        /*@__PURE__*/ S.Struct({ greaterThan: __S(1371, __c42, 27) }),
-        /*@__PURE__*/ S.Struct({ greaterThanOrEquals: __S(1371, __c42, 27) }),
-        /*@__PURE__*/ S.Struct({ lessThan: __S(1371, __c42, 27) }),
-        /*@__PURE__*/ S.Struct({ lessThanOrEquals: __S(1371, __c42, 27) }),
-        /*@__PURE__*/ S.Struct({ in: __S(1371, __c42, 27) }),
-        /*@__PURE__*/ S.Struct({ notIn: __S(1371, __c42, 27) }),
-        /*@__PURE__*/ S.Struct({ startsWith: __S(1371, __c42, 27) }),
-        /*@__PURE__*/ S.Struct({ listContains: __S(1371, __c42, 27) }),
-        /*@__PURE__*/ S.Struct({ stringContains: __S(1371, __c42, 27) }),
+        /*@__PURE__*/ S.Struct({ equals: __S(1369, __c42, 25) }),
+        /*@__PURE__*/ S.Struct({ notEquals: __S(1369, __c42, 25) }),
+        /*@__PURE__*/ S.Struct({ greaterThan: __S(1369, __c42, 25) }),
+        /*@__PURE__*/ S.Struct({ greaterThanOrEquals: __S(1369, __c42, 25) }),
+        /*@__PURE__*/ S.Struct({ lessThan: __S(1369, __c42, 25) }),
+        /*@__PURE__*/ S.Struct({ lessThanOrEquals: __S(1369, __c42, 25) }),
+        /*@__PURE__*/ S.Struct({ in: __S(1369, __c42, 25) }),
+        /*@__PURE__*/ S.Struct({ notIn: __S(1369, __c42, 25) }),
+        /*@__PURE__*/ S.Struct({ startsWith: __S(1369, __c42, 25) }),
+        /*@__PURE__*/ S.Struct({ listContains: __S(1369, __c42, 25) }),
+        /*@__PURE__*/ S.Struct({ stringContains: __S(1369, __c42, 25) }),
         /*@__PURE__*/ S.Struct({
-          andAll: /*@__PURE__*/ S.suspend(() => __S(1372, __c42, 28)).annotate({
+          andAll: /*@__PURE__*/ S.suspend(() => __S(1370, __c42, 26)).annotate({
             identifier: "RetrievalFilterList",
           }),
         }),
         /*@__PURE__*/ S.Struct({
-          orAll: /*@__PURE__*/ S.suspend(() => __S(1372, __c42, 28)).annotate({
+          orAll: /*@__PURE__*/ S.suspend(() => __S(1370, __c42, 26)).annotate({
             identifier: "RetrievalFilterList",
           }),
         }),
       ]);
-    case 30:
+    case 28:
       return S.suspend(() =>
         S.Struct({ key: S.String, type: S.String, description: S.String }),
       ).annotate({ identifier: "MetadataAttributeSchema" });
+    case 29:
+      return S.Array(__S(1372, __c42, 28));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({ metadataAttributes: __S(1373, __c42, 29), modelArn: S.String }),
+      ).annotate({ identifier: "ImplicitFilterConfiguration" });
     case 31:
-      return S.Array(__S(1374, __c42, 30));
+      return S.suspend(() =>
+        S.Struct({
+          modelArn: S.String,
+          additionalModelRequestFields: S.optional(__S(896, __c28, 0)),
+        }),
+      ).annotate({ identifier: "VectorSearchBedrockRerankingModelConfiguration" });
   }
 }
 function __c43(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ metadataAttributes: __S(1375, __c42, 31), modelArn: S.String }),
-      ).annotate({
-        identifier: "ImplicitFilterConfiguration",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          modelArn: S.String,
-          additionalModelRequestFields: S.optional(__S(865, __c27, 1)),
-        }),
-      ).annotate({
-        identifier: "VectorSearchBedrockRerankingModelConfiguration",
-      });
-    case 2:
       return S.suspend(() => S.Struct({ fieldName: S.String })).annotate({
         identifier: "FieldForReranking",
       });
-    case 3:
-      return S.Array(__S(1378, __c43, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(1376, __c43, 0));
+    case 2:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ fieldsToInclude: __S(1379, __c43, 3) }),
-        /*@__PURE__*/ S.Struct({ fieldsToExclude: __S(1379, __c43, 3) }),
+        /*@__PURE__*/ S.Struct({ fieldsToInclude: __S(1377, __c43, 1) }),
+        /*@__PURE__*/ S.Struct({ fieldsToExclude: __S(1377, __c43, 1) }),
       ]);
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           selectionMode: S.String,
-          selectiveModeConfiguration: S.optional(__S(1380, __c43, 4)),
+          selectiveModeConfiguration: S.optional(__S(1378, __c43, 2)),
         }),
-      ).annotate({
-        identifier: "MetadataConfigurationForReranking",
-      });
-    case 6:
+      ).annotate({ identifier: "MetadataConfigurationForReranking" });
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          modelConfiguration: __S(1377, __c43, 1),
+          modelConfiguration: __S(1375, __c42, 31),
           numberOfRerankedResults: S.optional(S.Number),
-          metadataConfiguration: S.optional(__S(1381, __c43, 5)),
+          metadataConfiguration: S.optional(__S(1379, __c43, 3)),
         }),
-      ).annotate({
-        identifier: "VectorSearchBedrockRerankingConfiguration",
-      });
-    case 7:
+      ).annotate({ identifier: "VectorSearchBedrockRerankingConfiguration" });
+    case 5:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          bedrockRerankingConfiguration: S.optional(__S(1382, __c43, 6)),
+          bedrockRerankingConfiguration: S.optional(__S(1380, __c43, 4)),
         }),
-      ).annotate({
-        identifier: "VectorSearchRerankingConfiguration",
-      });
-    case 8:
+      ).annotate({ identifier: "VectorSearchRerankingConfiguration" });
+    case 6:
       return S.suspend(() =>
         S.Struct({
           numberOfResults: S.optional(S.Number),
           overrideSearchType: S.optional(S.String),
-          filter: S.optional(__S(1373, __c42, 29)),
-          implicitFilterConfiguration: S.optional(__S(1376, __c43, 0)),
-          rerankingConfiguration: S.optional(__S(1383, __c43, 7)),
+          filter: S.optional(__S(1371, __c42, 27)),
+          implicitFilterConfiguration: S.optional(__S(1374, __c42, 30)),
+          rerankingConfiguration: S.optional(__S(1381, __c43, 5)),
         }),
-      ).annotate({
-        identifier: "KnowledgeBaseVectorSearchConfiguration",
-      });
-    case 9:
-      return S.suspend(() => S.Struct({ vectorSearchConfiguration: __S(1384, __c43, 8) })).annotate(
-        {
-          identifier: "KnowledgeBaseRetrievalConfiguration",
-        },
+      ).annotate({ identifier: "KnowledgeBaseVectorSearchConfiguration" });
+    case 7:
+      return S.suspend(() => S.Struct({ vectorSearchConfiguration: __S(1382, __c43, 6) })).annotate(
+        { identifier: "KnowledgeBaseRetrievalConfiguration" },
       );
-    case 10:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           knowledgeBaseId: S.String,
-          knowledgeBaseRetrievalConfiguration: __S(1385, __c43, 9),
+          knowledgeBaseRetrievalConfiguration: __S(1383, __c43, 7),
         }),
       ).annotate({ identifier: "RetrieveConfig" });
-    case 11:
+    case 9:
       return S.suspend(() =>
         S.Struct({ textPromptTemplate: S.optional(SensitiveString) }),
       ).annotate({ identifier: "PromptTemplate" });
-    case 12:
+    case 10:
       return S.suspend(() =>
         S.Struct({ guardrailId: S.String, guardrailVersion: S.String }),
       ).annotate({ identifier: "GuardrailConfiguration" });
-    case 13:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           temperature: S.optional(S.Number),
@@ -8630,117 +8503,94 @@ function __c43(j: number): any {
           stopSequences: S.optional(__S(32, __c1, 0)),
         }),
       ).annotate({ identifier: "TextInferenceConfig" });
-    case 14:
+    case 12:
       return S.suspend(() =>
-        S.Struct({ textInferenceConfig: S.optional(__S(1389, __c43, 13)) }),
+        S.Struct({ textInferenceConfig: S.optional(__S(1387, __c43, 11)) }),
       ).annotate({ identifier: "KbInferenceConfig" });
-    case 15:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          promptTemplate: S.optional(__S(1387, __c43, 11)),
-          guardrailConfiguration: S.optional(__S(1388, __c43, 12)),
-          kbInferenceConfig: S.optional(__S(1390, __c43, 14)),
-          additionalModelRequestFields: S.optional(__S(865, __c27, 1)),
+          promptTemplate: S.optional(__S(1385, __c43, 9)),
+          guardrailConfiguration: S.optional(__S(1386, __c43, 10)),
+          kbInferenceConfig: S.optional(__S(1388, __c43, 12)),
+          additionalModelRequestFields: S.optional(__S(896, __c28, 0)),
         }),
       ).annotate({ identifier: "GenerationConfiguration" });
-    case 16:
+    case 14:
       return S.suspend(() => S.Struct({ type: S.String })).annotate({
         identifier: "QueryTransformationConfiguration",
       });
-    case 17:
+    case 15:
       return S.suspend(() =>
-        S.Struct({ queryTransformationConfiguration: __S(1392, __c43, 16) }),
-      ).annotate({
-        identifier: "OrchestrationConfiguration",
-      });
-    case 18:
+        S.Struct({ queryTransformationConfiguration: __S(1390, __c43, 14) }),
+      ).annotate({ identifier: "OrchestrationConfiguration" });
+    case 16:
       return S.suspend(() =>
         S.Struct({
           knowledgeBaseId: S.String,
           modelArn: S.String,
-          retrievalConfiguration: S.optional(__S(1385, __c43, 9)),
-          generationConfiguration: S.optional(__S(1391, __c43, 15)),
-          orchestrationConfiguration: S.optional(__S(1393, __c43, 17)),
+          retrievalConfiguration: S.optional(__S(1383, __c43, 7)),
+          generationConfiguration: S.optional(__S(1389, __c43, 13)),
+          orchestrationConfiguration: S.optional(__S(1391, __c43, 15)),
         }),
-      ).annotate({
-        identifier: "KnowledgeBaseRetrieveAndGenerateConfiguration",
-      });
-    case 19:
-      return S.suspend(() => S.Struct({ uri: S.String })).annotate({
-        identifier: "S3ObjectDoc",
-      });
-    case 20:
+      ).annotate({ identifier: "KnowledgeBaseRetrieveAndGenerateConfiguration" });
+    case 17:
+      return S.suspend(() => S.Struct({ uri: S.String })).annotate({ identifier: "S3ObjectDoc" });
+    case 18:
       return S.suspend(() =>
         S.Struct({ identifier: SensitiveString, contentType: S.String, data: SensitiveBlob }),
       ).annotate({ identifier: "ByteContentDoc" });
-    case 21:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           sourceType: S.String,
-          s3Location: S.optional(__S(1395, __c43, 19)),
-          byteContent: S.optional(__S(1396, __c43, 20)),
+          s3Location: S.optional(__S(1393, __c43, 17)),
+          byteContent: S.optional(__S(1394, __c43, 18)),
         }),
       ).annotate({ identifier: "ExternalSource" });
-    case 22:
-      return S.Array(__S(1397, __c43, 21));
-    case 23:
-      return S.suspend(() =>
-        S.Struct({
-          promptTemplate: S.optional(__S(1387, __c43, 11)),
-          guardrailConfiguration: S.optional(__S(1388, __c43, 12)),
-          kbInferenceConfig: S.optional(__S(1390, __c43, 14)),
-          additionalModelRequestFields: S.optional(__S(865, __c27, 1)),
-        }),
-      ).annotate({
-        identifier: "ExternalSourcesGenerationConfiguration",
-      });
-    case 24:
+    case 20:
+      return S.Array(__S(1395, __c43, 19));
+    case 21:
       return S.suspend(() =>
         S.Struct({
           modelArn: S.String,
-          sources: __S(1398, __c43, 22),
-          generationConfiguration: S.optional(__S(1399, __c43, 23)),
+          sources: __S(1396, __c43, 20),
+          generationConfiguration: S.optional(__S(1389, __c43, 13)),
         }),
-      ).annotate({
-        identifier: "ExternalSourcesRetrieveAndGenerateConfiguration",
-      });
-    case 25:
+      ).annotate({ identifier: "ExternalSourcesRetrieveAndGenerateConfiguration" });
+    case 22:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          knowledgeBaseConfiguration: S.optional(__S(1394, __c43, 18)),
-          externalSourcesConfiguration: S.optional(__S(1400, __c43, 24)),
+          knowledgeBaseConfiguration: S.optional(__S(1392, __c43, 16)),
+          externalSourcesConfiguration: S.optional(__S(1397, __c43, 21)),
         }),
-      ).annotate({
-        identifier: "RetrieveAndGenerateConfiguration",
-      });
-    case 26:
+      ).annotate({ identifier: "RetrieveAndGenerateConfiguration" });
+    case 23:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ retrieveConfig: __S(1386, __c43, 10) }),
-        /*@__PURE__*/ S.Struct({ retrieveAndGenerateConfig: __S(1401, __c43, 25) }),
+        /*@__PURE__*/ S.Struct({ retrieveConfig: __S(1384, __c43, 8) }),
+        /*@__PURE__*/ S.Struct({ retrieveAndGenerateConfig: __S(1398, __c43, 22) }),
       ]);
-    case 27:
+    case 24:
       return S.suspend(() => S.Struct({ ragSourceIdentifier: S.String })).annotate({
         identifier: "EvaluationPrecomputedRetrieveSourceConfig",
       });
+    case 25:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ retrieveSourceConfig: __S(1400, __c43, 24) }),
+        /*@__PURE__*/ S.Struct({ retrieveAndGenerateSourceConfig: __S(1400, __c43, 24) }),
+      ]);
+    case 26:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ knowledgeBaseConfig: __S(1399, __c43, 23) }),
+        /*@__PURE__*/ S.Struct({ precomputedRagSourceConfig: __S(1401, __c43, 25) }),
+      ]);
+    case 27:
+      return S.Array(__S(1402, __c43, 26));
     case 28:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ retrieveSourceConfig: __S(1403, __c43, 27) }),
-        /*@__PURE__*/ S.Struct({
-          retrieveAndGenerateSourceConfig: __S(1403, __c43, 27),
-        }),
-      ]);
-    case 29:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ knowledgeBaseConfig: __S(1402, __c43, 26) }),
-        /*@__PURE__*/ S.Struct({ precomputedRagSourceConfig: __S(1404, __c43, 28) }),
-      ]);
-    case 30:
-      return S.Array(__S(1405, __c43, 29));
-    case 31:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ models: __S(1370, __c42, 26) }),
-        /*@__PURE__*/ S.Struct({ ragConfigs: __S(1406, __c43, 30) }),
+        /*@__PURE__*/ S.Struct({ models: __S(1368, __c42, 24) }),
+        /*@__PURE__*/ S.Struct({ ragConfigs: __S(1403, __c43, 27) }),
       ]);
   }
 }
@@ -8758,9 +8608,7 @@ function __c44(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateFoundationModelAgreementRequest",
-      });
+      ).annotate({ identifier: "CreateFoundationModelAgreementRequest" });
     case 1:
       return S.suspend(() => S.Struct({ modelId: S.String })).annotate({
         identifier: "CreateFoundationModelAgreementResponse",
@@ -8775,12 +8623,12 @@ function __c45(j: number): any {
           name: SensitiveString,
           description: S.optional(SensitiveString),
           topicPolicyConfig: S.optional(__S(1474, __c46, 2)),
-          contentPolicyConfig: S.optional(__S(1477, __c46, 5)),
-          wordPolicyConfig: S.optional(__S(1480, __c46, 8)),
-          sensitiveInformationPolicyConfig: S.optional(__S(1481, __c46, 9)),
-          contextualGroundingPolicyConfig: S.optional(__S(1482, __c46, 10)),
-          automatedReasoningPolicyConfig: S.optional(__S(1545, __c48, 9)),
-          crossRegionConfig: S.optional(__S(1483, __c46, 11)),
+          contentPolicyConfig: S.optional(__S(1475, __c46, 3)),
+          wordPolicyConfig: S.optional(__S(1476, __c46, 4)),
+          sensitiveInformationPolicyConfig: S.optional(__S(1477, __c46, 5)),
+          contextualGroundingPolicyConfig: S.optional(__S(1478, __c46, 6)),
+          automatedReasoningPolicyConfig: S.optional(__S(1549, __c48, 13)),
+          crossRegionConfig: S.optional(__S(1479, __c46, 7)),
           blockedInputMessaging: SensitiveString,
           blockedOutputsMessaging: SensitiveString,
           kmsKeyId: S.optional(S.String),
@@ -8824,73 +8672,33 @@ function __c46(j: number): any {
           topicsConfig: __S(1473, __c46, 1),
           tierConfig: S.optional(__S(1536, __c48, 0)),
         }),
-      ).annotate({
-        identifier: "GuardrailTopicPolicyConfig",
-      });
+      ).annotate({ identifier: "GuardrailTopicPolicyConfig" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          inputStrength: S.String,
-          outputStrength: S.String,
-          inputModalities: S.optional(__S(1504, __c47, 0)),
-          outputModalities: S.optional(__S(1504, __c47, 0)),
-          inputAction: S.optional(S.String),
-          outputAction: S.optional(S.String),
-          inputEnabled: S.optional(S.Boolean),
-          outputEnabled: S.optional(S.Boolean),
+          filtersConfig: __S(1538, __c48, 2),
+          tierConfig: S.optional(__S(1536, __c48, 0)),
         }),
-      ).annotate({
-        identifier: "GuardrailContentFilterConfig",
-      });
+      ).annotate({ identifier: "GuardrailContentPolicyConfig" });
     case 4:
-      return S.Array(__S(1475, __c46, 3));
+      return S.suspend(() =>
+        S.Struct({
+          wordsConfig: S.optional(__S(1540, __c48, 4)),
+          managedWordListsConfig: S.optional(__S(1542, __c48, 6)),
+        }),
+      ).annotate({ identifier: "GuardrailWordPolicyConfig" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          filtersConfig: __S(1476, __c46, 4),
-          tierConfig: S.optional(__S(1536, __c48, 0)),
+          piiEntitiesConfig: S.optional(__S(1544, __c48, 8)),
+          regexesConfig: S.optional(__S(1546, __c48, 10)),
         }),
-      ).annotate({
-        identifier: "GuardrailContentPolicyConfig",
-      });
+      ).annotate({ identifier: "GuardrailSensitiveInformationPolicyConfig" });
     case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          inputAction: S.optional(S.String),
-          outputAction: S.optional(S.String),
-          inputEnabled: S.optional(S.Boolean),
-          outputEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GuardrailManagedWordsConfig",
-      });
-    case 7:
-      return S.Array(__S(1478, __c46, 6));
-    case 8:
-      return S.suspend(() =>
-        S.Struct({
-          wordsConfig: S.optional(__S(1538, __c48, 2)),
-          managedWordListsConfig: S.optional(__S(1479, __c46, 7)),
-        }),
-      ).annotate({
-        identifier: "GuardrailWordPolicyConfig",
-      });
-    case 9:
-      return S.suspend(() =>
-        S.Struct({
-          piiEntitiesConfig: S.optional(__S(1540, __c48, 4)),
-          regexesConfig: S.optional(__S(1542, __c48, 6)),
-        }),
-      ).annotate({
-        identifier: "GuardrailSensitiveInformationPolicyConfig",
-      });
-    case 10:
-      return S.suspend(() => S.Struct({ filtersConfig: __S(1544, __c48, 8) })).annotate({
+      return S.suspend(() => S.Struct({ filtersConfig: __S(1548, __c48, 12) })).annotate({
         identifier: "GuardrailContextualGroundingPolicyConfig",
       });
-    case 11:
+    case 7:
       return S.suspend(() => S.Struct({ guardrailProfileIdentifier: S.String })).annotate({
         identifier: "GuardrailCrossRegionConfig",
       });
@@ -8911,6 +8719,22 @@ function __c48(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          type: S.String,
+          inputStrength: S.String,
+          outputStrength: S.String,
+          inputModalities: S.optional(__S(1504, __c47, 0)),
+          outputModalities: S.optional(__S(1504, __c47, 0)),
+          inputAction: S.optional(S.String),
+          outputAction: S.optional(S.String),
+          inputEnabled: S.optional(S.Boolean),
+          outputEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "GuardrailContentFilterConfig" });
+    case 2:
+      return S.Array(__S(1537, __c48, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
           text: S.String,
           inputAction: S.optional(S.String),
           outputAction: S.optional(S.String),
@@ -8918,9 +8742,21 @@ function __c48(j: number): any {
           outputEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GuardrailWordConfig" });
-    case 2:
-      return S.Array(__S(1537, __c48, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(1539, __c48, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          inputAction: S.optional(S.String),
+          outputAction: S.optional(S.String),
+          inputEnabled: S.optional(S.Boolean),
+          outputEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "GuardrailManagedWordsConfig" });
+    case 6:
+      return S.Array(__S(1541, __c48, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -8931,9 +8767,9 @@ function __c48(j: number): any {
           outputEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GuardrailPiiEntityConfig" });
-    case 4:
-      return S.Array(__S(1539, __c48, 3));
-    case 5:
+    case 8:
+      return S.Array(__S(1543, __c48, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -8946,9 +8782,9 @@ function __c48(j: number): any {
           outputEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GuardrailRegexConfig" });
-    case 6:
-      return S.Array(__S(1541, __c48, 5));
-    case 7:
+    case 10:
+      return S.Array(__S(1545, __c48, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -8956,20 +8792,13 @@ function __c48(j: number): any {
           action: S.optional(S.String),
           enabled: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "GuardrailContextualGroundingFilterConfig",
-      });
-    case 8:
-      return S.Array(__S(1543, __c48, 7));
-    case 9:
+      ).annotate({ identifier: "GuardrailContextualGroundingFilterConfig" });
+    case 12:
+      return S.Array(__S(1547, __c48, 11));
+    case 13:
       return S.suspend(() =>
-        S.Struct({
-          policies: __S(32, __c1, 0),
-          confidenceThreshold: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GuardrailAutomatedReasoningPolicyConfig",
-      });
+        S.Struct({ policies: __S(32, __c1, 0), confidenceThreshold: S.optional(S.Number) }),
+      ).annotate({ identifier: "GuardrailAutomatedReasoningPolicyConfig" });
   }
 }
 function __c49(j: number): any {
@@ -8990,9 +8819,7 @@ function __c49(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateGuardrailVersionRequest",
-      });
+      ).annotate({ identifier: "CreateGuardrailVersionRequest" });
     case 1:
       return S.suspend(() => S.Struct({ guardrailId: S.String, version: S.String })).annotate({
         identifier: "CreateGuardrailVersionResponse",
@@ -9021,15 +8848,11 @@ function __c50(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateInferenceProfileRequest",
-      });
+      ).annotate({ identifier: "CreateInferenceProfileRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({ inferenceProfileArn: S.String, status: S.optional(S.String) }),
-      ).annotate({
-        identifier: "CreateInferenceProfileResponse",
-      });
+      ).annotate({ identifier: "CreateInferenceProfileResponse" });
   }
 }
 function __c51(j: number): any {
@@ -9053,9 +8876,7 @@ function __c51(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateMarketplaceModelEndpointRequest",
-      });
+      ).annotate({ identifier: "CreateMarketplaceModelEndpointRequest" });
   }
 }
 function __c52(j: number): any {
@@ -9117,9 +8938,7 @@ function __c55(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/model-copy-jobs" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateModelCopyJobRequest",
-      });
+      ).annotate({ identifier: "CreateModelCopyJobRequest" });
   }
 }
 function __c56(j: number): any {
@@ -9138,10 +8957,10 @@ function __c56(j: number): any {
           customModelTags: S.optional(__S(801, __c25, 1)),
           trainingDataConfig: __S(1829, __c57, 5),
           validationDataConfig: S.optional(__S(1831, __c57, 7)),
-          outputDataConfig: __S(1832, __c57, 8),
+          outputDataConfig: __S(832, __c26, 0),
           hyperParameters: S.optional(__S(1824, __c57, 0)),
           vpcConfig: S.optional(__S(1696, __c53, 0)),
-          customizationConfig: S.optional(__S(1839, __c57, 15)),
+          customizationConfig: S.optional(__S(1838, __c57, 14)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/model-customization-jobs" }),
@@ -9152,9 +8971,7 @@ function __c56(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateModelCustomizationJobRequest",
-      });
+      ).annotate({ identifier: "CreateModelCustomizationJobRequest" });
   }
 }
 function __c57(j: number): any {
@@ -9167,9 +8984,7 @@ function __c57(j: number): any {
           equals: S.optional(__S(1824, __c57, 0)),
           notEquals: S.optional(__S(1824, __c57, 0)),
         }),
-      ).annotate({
-        identifier: "RequestMetadataBaseFilters",
-      });
+      ).annotate({ identifier: "RequestMetadataBaseFilters" });
     case 2:
       return S.Array(__S(1825, __c57, 1));
     case 3:
@@ -9195,33 +9010,29 @@ function __c57(j: number): any {
         }),
       ).annotate({ identifier: "TrainingDataConfig" });
     case 6:
-      return S.Array(__S(1152, __c36, 0));
+      return S.Array(__S(832, __c26, 0));
     case 7:
       return S.suspend(() => S.Struct({ validators: __S(1830, __c57, 6) })).annotate({
         identifier: "ValidationDataConfig",
       });
     case 8:
-      return S.suspend(() => S.Struct({ s3Uri: S.String })).annotate({
-        identifier: "OutputDataConfig",
-      });
-    case 9:
       return S.suspend(() =>
         S.Struct({
           teacherModelIdentifier: S.String,
           maxResponseLengthForInference: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TeacherModelConfig" });
-    case 10:
-      return S.suspend(() => S.Struct({ teacherModelConfig: __S(1833, __c57, 9) })).annotate({
+    case 9:
+      return S.suspend(() => S.Struct({ teacherModelConfig: __S(1832, __c57, 8) })).annotate({
         identifier: "DistillationConfig",
       });
-    case 11:
+    case 10:
       return S.suspend(() => S.Struct({ lambdaArn: S.String })).annotate({
         identifier: "LambdaGraderConfig",
       });
+    case 11:
+      return S.Union([/*@__PURE__*/ S.Struct({ lambdaGrader: __S(1834, __c57, 10) })]);
     case 12:
-      return S.Union([/*@__PURE__*/ S.Struct({ lambdaGrader: __S(1835, __c57, 11) })]);
-    case 13:
       return S.suspend(() =>
         S.Struct({
           epochCount: S.optional(S.Number),
@@ -9234,17 +9045,17 @@ function __c57(j: number): any {
           evalInterval: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RFTHyperParameters" });
-    case 14:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          graderConfig: S.optional(__S(1836, __c57, 12)),
-          hyperParameters: S.optional(__S(1837, __c57, 13)),
+          graderConfig: S.optional(__S(1835, __c57, 11)),
+          hyperParameters: S.optional(__S(1836, __c57, 12)),
         }),
       ).annotate({ identifier: "RFTConfig" });
-    case 15:
+    case 14:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ distillationConfig: __S(1834, __c57, 10) }),
-        /*@__PURE__*/ S.Struct({ rftConfig: __S(1838, __c57, 14) }),
+        /*@__PURE__*/ S.Struct({ distillationConfig: __S(1833, __c57, 9) }),
+        /*@__PURE__*/ S.Struct({ rftConfig: __S(1837, __c57, 13) }),
       ]);
   }
 }
@@ -9272,9 +9083,7 @@ function __c58(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateModelImportJobRequest",
-      });
+      ).annotate({ identifier: "CreateModelImportJobRequest" });
   }
 }
 function __c59(j: number): any {
@@ -9302,9 +9111,7 @@ function __c59(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateModelInvocationJobRequest",
-      });
+      ).annotate({ identifier: "CreateModelInvocationJobRequest" });
   }
 }
 function __c60(j: number): any {
@@ -9316,9 +9123,7 @@ function __c60(j: number): any {
           s3Uri: S.String,
           s3BucketOwner: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ModelInvocationJobS3InputDataConfig",
-      });
+      ).annotate({ identifier: "ModelInvocationJobS3InputDataConfig" });
     case 1:
       return S.Union([/*@__PURE__*/ S.Struct({ s3InputDataConfig: __S(1920, __c60, 0) })]);
     case 2:
@@ -9328,9 +9133,7 @@ function __c60(j: number): any {
           s3EncryptionKeyId: S.optional(S.String),
           s3BucketOwner: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ModelInvocationJobS3OutputDataConfig",
-      });
+      ).annotate({ identifier: "ModelInvocationJobS3OutputDataConfig" });
     case 3:
       return S.Union([/*@__PURE__*/ S.Struct({ s3OutputDataConfig: __S(1922, __c60, 2) })]);
   }
@@ -9350,9 +9153,7 @@ function __c61(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/prompt-routers" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreatePromptRouterRequest",
-      });
+      ).annotate({ identifier: "CreatePromptRouterRequest" });
     case 1:
       return S.suspend(() => S.Struct({ promptRouterArn: S.optional(S.String) })).annotate({
         identifier: "CreatePromptRouterResponse",
@@ -9398,9 +9199,7 @@ function __c64(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateProvisionedModelThroughputRequest",
-      });
+      ).annotate({ identifier: "CreateProvisionedModelThroughputRequest" });
     case 1:
       return S.suspend(() => S.Struct({ provisionedModelArn: S.String })).annotate({
         identifier: "CreateProvisionedModelThroughputResponse",
@@ -9424,9 +9223,7 @@ function __c65(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteAutomatedReasoningPolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteAutomatedReasoningPolicyRequest" });
   }
 }
 function __c66(j: number): any {
@@ -9452,9 +9249,7 @@ function __c66(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteAutomatedReasoningPolicyBuildWorkflowRequest",
-      });
+      ).annotate({ identifier: "DeleteAutomatedReasoningPolicyBuildWorkflowRequest" });
   }
 }
 function __c67(j: number): any {
@@ -9480,9 +9275,7 @@ function __c67(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteAutomatedReasoningPolicyTestCaseRequest",
-      });
+      ).annotate({ identifier: "DeleteAutomatedReasoningPolicyTestCaseRequest" });
   }
 }
 function __c68(j: number): any {
@@ -9505,14 +9298,6 @@ function __c68(j: number): any {
 function __c69(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteCustomModelResponse",
-      });
-  }
-}
-function __c70(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           customModelDeploymentIdentifier: S.String.pipe(
@@ -9531,12 +9316,10 @@ function __c70(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteCustomModelDeploymentRequest",
-      });
+      ).annotate({ identifier: "DeleteCustomModelDeploymentRequest" });
   }
 }
-function __c71(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9550,12 +9333,10 @@ function __c71(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteEnforcedGuardrailConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteEnforcedGuardrailConfigurationRequest" });
   }
 }
-function __c72(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9569,12 +9350,10 @@ function __c72(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteFoundationModelAgreementRequest",
-      });
+      ).annotate({ identifier: "DeleteFoundationModelAgreementRequest" });
   }
 }
-function __c73(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9594,7 +9373,7 @@ function __c73(j: number): any {
       ).annotate({ identifier: "DeleteGuardrailRequest" });
   }
 }
-function __c74(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9608,12 +9387,10 @@ function __c74(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteImportedModelRequest",
-      });
+      ).annotate({ identifier: "DeleteImportedModelRequest" });
   }
 }
-function __c75(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9629,12 +9406,10 @@ function __c75(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteInferenceProfileRequest",
-      });
+      ).annotate({ identifier: "DeleteInferenceProfileRequest" });
   }
 }
-function __c76(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9648,12 +9423,10 @@ function __c76(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteMarketplaceModelEndpointRequest",
-      });
+      ).annotate({ identifier: "DeleteMarketplaceModelEndpointRequest" });
   }
 }
-function __c77(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9667,12 +9440,10 @@ function __c77(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteModelInvocationLoggingConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteModelInvocationLoggingConfigurationRequest" });
   }
 }
-function __c78(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9686,12 +9457,10 @@ function __c78(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeletePromptRouterRequest",
-      });
+      ).annotate({ identifier: "DeletePromptRouterRequest" });
   }
 }
-function __c79(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9705,12 +9474,10 @@ function __c79(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteProvisionedModelThroughputRequest",
-      });
+      ).annotate({ identifier: "DeleteProvisionedModelThroughputRequest" });
   }
 }
-function __c80(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9724,12 +9491,10 @@ function __c80(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteResourcePolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteResourcePolicyRequest" });
   }
 }
-function __c81(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9746,12 +9511,10 @@ function __c81(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeregisterMarketplaceModelEndpointRequest",
-      });
+      ).annotate({ identifier: "DeregisterMarketplaceModelEndpointRequest" });
   }
 }
-function __c82(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9765,34 +9528,28 @@ function __c82(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ExportAutomatedReasoningPolicyVersionRequest",
-      });
+      ).annotate({ identifier: "ExportAutomatedReasoningPolicyVersionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          policyDefinition: __S(997, __c31, 5).pipe(T.HttpPayload()).annotate({
-            identifier: "AutomatedReasoningPolicyDefinition",
-          }),
+          policyDefinition: __S(1029, __c32, 5)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "AutomatedReasoningPolicyDefinition" }),
         }),
-      ).annotate({
-        identifier: "ExportAutomatedReasoningPolicyVersionResponse",
-      });
+      ).annotate({ identifier: "ExportAutomatedReasoningPolicyVersionResponse" });
   }
 }
-function __c83(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "GET", uri: "/data-retention" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetAccountDataRetentionRequest",
-      });
+      ).annotate({ identifier: "GetAccountDataRetentionRequest" });
   }
 }
-function __c84(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9800,12 +9557,10 @@ function __c84(j: number): any {
           mode: S.String,
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "GetAccountDataRetentionResponse",
-      });
+      ).annotate({ identifier: "GetAccountDataRetentionResponse" });
   }
 }
-function __c85(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9819,9 +9574,7 @@ function __c85(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAdvancedPromptOptimizationJobRequest",
-      });
+      ).annotate({ identifier: "GetAdvancedPromptOptimizationJobRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9829,20 +9582,18 @@ function __c85(j: number): any {
           jobName: S.String,
           jobDescription: S.optional(S.String),
           jobStatus: S.String,
-          inputConfig: __S(864, __c27, 0),
-          outputConfig: __S(864, __c27, 0),
+          inputConfig: __S(832, __c26, 0),
+          outputConfig: __S(832, __c26, 0),
           encryptionKeyArn: S.optional(S.String),
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           lastModifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           failureMessage: S.optional(S.String),
-          modelConfigurations: __S(898, __c28, 2),
+          modelConfigurations: __S(930, __c29, 2),
         }),
-      ).annotate({
-        identifier: "GetAdvancedPromptOptimizationJobResponse",
-      });
+      ).annotate({ identifier: "GetAdvancedPromptOptimizationJobResponse" });
   }
 }
-function __c86(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9856,9 +9607,7 @@ function __c86(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAutomatedReasoningPolicyRequest",
-      });
+      ).annotate({ identifier: "GetAutomatedReasoningPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9872,12 +9621,10 @@ function __c86(j: number): any {
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "GetAutomatedReasoningPolicyResponse",
-      });
+      ).annotate({ identifier: "GetAutomatedReasoningPolicyResponse" });
   }
 }
-function __c87(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9897,42 +9644,36 @@ function __c87(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAutomatedReasoningPolicyAnnotationsRequest",
-      });
+      ).annotate({ identifier: "GetAutomatedReasoningPolicyAnnotationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           policyArn: S.String,
           name: SensitiveString,
           buildWorkflowId: S.String,
-          annotations: __S(2816, __c88, 0),
+          annotations: __S(2784, __c87, 0),
           annotationSetHash: S.String,
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "GetAutomatedReasoningPolicyAnnotationsResponse",
-      });
+      ).annotate({ identifier: "GetAutomatedReasoningPolicyAnnotationsResponse" });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2831, __c88, 15));
   }
 }
 function __c88(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(2863, __c89, 15));
-  }
-}
-function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: SensitiveString,
           description: SensitiveString,
-          values: __S(961, __c30, 1),
+          values: __S(993, __c31, 1),
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyAddTypeAnnotation",
-      });
+      ).annotate({ identifier: "AutomatedReasoningPolicyAddTypeAnnotation" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9940,32 +9681,28 @@ function __c89(j: number): any {
           newValue: S.optional(S.String),
           description: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyUpdateTypeValue",
-      });
+      ).annotate({ identifier: "AutomatedReasoningPolicyUpdateTypeValue" });
     case 2:
       return S.suspend(() => S.Struct({ value: S.String })).annotate({
         identifier: "AutomatedReasoningPolicyDeleteTypeValue",
       });
     case 3:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ addTypeValue: __S(960, __c30, 0) }),
-        /*@__PURE__*/ S.Struct({ updateTypeValue: __S(2849, __c89, 1) }),
-        /*@__PURE__*/ S.Struct({ deleteTypeValue: __S(2850, __c89, 2) }),
+        /*@__PURE__*/ S.Struct({ addTypeValue: __S(992, __c31, 0) }),
+        /*@__PURE__*/ S.Struct({ updateTypeValue: __S(2817, __c88, 1) }),
+        /*@__PURE__*/ S.Struct({ deleteTypeValue: __S(2818, __c88, 2) }),
       ]);
     case 4:
-      return S.Array(__S(2851, __c89, 3));
+      return S.Array(__S(2819, __c88, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: SensitiveString,
           newName: S.optional(SensitiveString),
           description: S.optional(SensitiveString),
-          values: __S(2852, __c89, 4),
+          values: __S(2820, __c88, 4),
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyUpdateTypeAnnotation",
-      });
+      ).annotate({ identifier: "AutomatedReasoningPolicyUpdateTypeAnnotation" });
     case 6:
       return S.suspend(() => S.Struct({ name: SensitiveString })).annotate({
         identifier: "AutomatedReasoningPolicyDeleteTypeAnnotation",
@@ -9977,9 +9714,7 @@ function __c89(j: number): any {
           newName: S.optional(SensitiveString),
           description: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyUpdateVariableAnnotation",
-      });
+      ).annotate({ identifier: "AutomatedReasoningPolicyUpdateVariableAnnotation" });
     case 8:
       return S.suspend(() => S.Struct({ expression: SensitiveString })).annotate({
         identifier: "AutomatedReasoningPolicyAddRuleAnnotation",
@@ -9998,13 +9733,8 @@ function __c89(j: number): any {
       });
     case 12:
       return S.suspend(() =>
-        S.Struct({
-          ruleIds: S.optional(__S(32, __c1, 0)),
-          feedback: SensitiveString,
-        }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyUpdateFromRuleFeedbackAnnotation",
-      });
+        S.Struct({ ruleIds: S.optional(__S(32, __c1, 0)), feedback: SensitiveString }),
+      ).annotate({ identifier: "AutomatedReasoningPolicyUpdateFromRuleFeedbackAnnotation" });
     case 13:
       return S.suspend(() =>
         S.Struct({
@@ -10012,38 +9742,30 @@ function __c89(j: number): any {
           scenarioExpression: SensitiveString,
           feedback: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyUpdateFromScenarioFeedbackAnnotation",
-      });
+      ).annotate({ identifier: "AutomatedReasoningPolicyUpdateFromScenarioFeedbackAnnotation" });
     case 14:
       return S.suspend(() => S.Struct({ content: SensitiveString })).annotate({
         identifier: "AutomatedReasoningPolicyIngestContentAnnotation",
       });
     case 15:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ addType: __S(2848, __c89, 0) }),
-        /*@__PURE__*/ S.Struct({ updateType: __S(2853, __c89, 5) }),
-        /*@__PURE__*/ S.Struct({ deleteType: __S(2854, __c89, 6) }),
-        /*@__PURE__*/ S.Struct({ addVariable: __S(962, __c30, 2) }),
-        /*@__PURE__*/ S.Struct({ updateVariable: __S(2855, __c89, 7) }),
-        /*@__PURE__*/ S.Struct({ deleteVariable: __S(2854, __c89, 6) }),
-        /*@__PURE__*/ S.Struct({ addRule: __S(2856, __c89, 8) }),
-        /*@__PURE__*/ S.Struct({ updateRule: __S(2857, __c89, 9) }),
-        /*@__PURE__*/ S.Struct({ deleteRule: __S(2858, __c89, 10) }),
-        /*@__PURE__*/ S.Struct({
-          addRuleFromNaturalLanguage: __S(2859, __c89, 11),
-        }),
-        /*@__PURE__*/ S.Struct({
-          updateFromRulesFeedback: __S(2860, __c89, 12),
-        }),
-        /*@__PURE__*/ S.Struct({
-          updateFromScenarioFeedback: __S(2861, __c89, 13),
-        }),
-        /*@__PURE__*/ S.Struct({ ingestContent: __S(2862, __c89, 14) }),
+        /*@__PURE__*/ S.Struct({ addType: __S(2816, __c88, 0) }),
+        /*@__PURE__*/ S.Struct({ updateType: __S(2821, __c88, 5) }),
+        /*@__PURE__*/ S.Struct({ deleteType: __S(2822, __c88, 6) }),
+        /*@__PURE__*/ S.Struct({ addVariable: __S(994, __c31, 2) }),
+        /*@__PURE__*/ S.Struct({ updateVariable: __S(2823, __c88, 7) }),
+        /*@__PURE__*/ S.Struct({ deleteVariable: __S(2822, __c88, 6) }),
+        /*@__PURE__*/ S.Struct({ addRule: __S(2824, __c88, 8) }),
+        /*@__PURE__*/ S.Struct({ updateRule: __S(2825, __c88, 9) }),
+        /*@__PURE__*/ S.Struct({ deleteRule: __S(2826, __c88, 10) }),
+        /*@__PURE__*/ S.Struct({ addRuleFromNaturalLanguage: __S(2827, __c88, 11) }),
+        /*@__PURE__*/ S.Struct({ updateFromRulesFeedback: __S(2828, __c88, 12) }),
+        /*@__PURE__*/ S.Struct({ updateFromScenarioFeedback: __S(2829, __c88, 13) }),
+        /*@__PURE__*/ S.Struct({ ingestContent: __S(2830, __c88, 14) }),
       ]);
   }
 }
-function __c90(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10063,9 +9785,7 @@ function __c90(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAutomatedReasoningPolicyBuildWorkflowRequest",
-      });
+      ).annotate({ identifier: "GetAutomatedReasoningPolicyBuildWorkflowRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10079,12 +9799,10 @@ function __c90(j: number): any {
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "GetAutomatedReasoningPolicyBuildWorkflowResponse",
-      });
+      ).annotate({ identifier: "GetAutomatedReasoningPolicyBuildWorkflowResponse" });
   }
 }
-function __c91(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10106,28 +9824,19 @@ function __c91(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAutomatedReasoningPolicyBuildWorkflowResultAssetsRequest",
-      });
+      ).annotate({ identifier: "GetAutomatedReasoningPolicyBuildWorkflowResultAssetsRequest" });
     case 1:
       return S.suspend(() => S.Struct({ typeName: SensitiveString, valueName: S.String })).annotate(
-        {
-          identifier: "AutomatedReasoningPolicyDefinitionTypeValuePair",
-        },
+        { identifier: "AutomatedReasoningPolicyDefinitionTypeValuePair" },
       );
     case 2:
-      return S.Array(__S(2913, __c91, 1));
+      return S.Array(__S(2881, __c90, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          variables: __S(416, __c13, 0),
-          rules: __S(32, __c1, 0),
-        }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyDisjointRuleSet",
-      });
+        S.Struct({ variables: __S(416, __c13, 0), rules: __S(32, __c1, 0) }),
+      ).annotate({ identifier: "AutomatedReasoningPolicyDisjointRuleSet" });
     case 4:
-      return S.Array(__S(2915, __c91, 3));
+      return S.Array(__S(2883, __c90, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -10135,24 +9844,22 @@ function __c91(j: number): any {
           variableCount: S.Number,
           ruleCount: S.Number,
           unusedTypes: __S(416, __c13, 0),
-          unusedTypeValues: __S(2914, __c91, 2),
+          unusedTypeValues: __S(2882, __c90, 2),
           unusedVariables: __S(416, __c13, 0),
           conflictingRules: __S(32, __c1, 0),
-          disjointRuleSets: __S(2916, __c91, 4),
+          disjointRuleSets: __S(2884, __c90, 4),
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyDefinitionQualityReport",
-      });
+      ).annotate({ identifier: "AutomatedReasoningPolicyDefinitionQualityReport" });
     case 6:
-      return S.suspend(() => S.Struct({ type: __S(992, __c31, 0) })).annotate({
+      return S.suspend(() => S.Struct({ type: __S(1024, __c32, 0) })).annotate({
         identifier: "AutomatedReasoningPolicyAddTypeMutation",
       });
     case 7:
-      return S.suspend(() => S.Struct({ variable: __S(962, __c30, 2) })).annotate({
+      return S.suspend(() => S.Struct({ variable: __S(994, __c31, 2) })).annotate({
         identifier: "AutomatedReasoningPolicyAddVariableMutation",
       });
     case 8:
-      return S.suspend(() => S.Struct({ rule: __S(994, __c31, 2) })).annotate({
+      return S.suspend(() => S.Struct({ rule: __S(1026, __c32, 2) })).annotate({
         identifier: "AutomatedReasoningPolicyAddRuleMutation",
       });
     case 9:
@@ -10161,59 +9868,55 @@ function __c91(j: number): any {
       });
     case 10:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ addType: __S(2918, __c91, 6) }),
-        /*@__PURE__*/ S.Struct({ updateType: __S(2918, __c91, 6) }),
-        /*@__PURE__*/ S.Struct({ deleteType: __S(2854, __c89, 6) }),
-        /*@__PURE__*/ S.Struct({ addVariable: __S(2919, __c91, 7) }),
-        /*@__PURE__*/ S.Struct({ updateVariable: __S(2919, __c91, 7) }),
-        /*@__PURE__*/ S.Struct({ deleteVariable: __S(2854, __c89, 6) }),
-        /*@__PURE__*/ S.Struct({ addRule: __S(2920, __c91, 8) }),
-        /*@__PURE__*/ S.Struct({ updateRule: __S(2920, __c91, 8) }),
-        /*@__PURE__*/ S.Struct({ deleteRule: __S(2921, __c91, 9) }),
+        /*@__PURE__*/ S.Struct({ addType: __S(2886, __c90, 6) }),
+        /*@__PURE__*/ S.Struct({ updateType: __S(2886, __c90, 6) }),
+        /*@__PURE__*/ S.Struct({ deleteType: __S(2822, __c88, 6) }),
+        /*@__PURE__*/ S.Struct({ addVariable: __S(2887, __c90, 7) }),
+        /*@__PURE__*/ S.Struct({ updateVariable: __S(2887, __c90, 7) }),
+        /*@__PURE__*/ S.Struct({ deleteVariable: __S(2822, __c88, 6) }),
+        /*@__PURE__*/ S.Struct({ addRule: __S(2888, __c90, 8) }),
+        /*@__PURE__*/ S.Struct({ updateRule: __S(2888, __c90, 8) }),
+        /*@__PURE__*/ S.Struct({ deleteRule: __S(2889, __c90, 9) }),
       ]);
     case 11:
       return S.Union([
         /*@__PURE__*/ S.Struct({ planning: __S(736, __c23, 0) }),
-        /*@__PURE__*/ S.Struct({ mutation: __S(2922, __c91, 10) }),
+        /*@__PURE__*/ S.Struct({ mutation: __S(2890, __c90, 10) }),
       ]);
     case 12:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ policyDefinitionVariable: __S(962, __c30, 2) }),
-        /*@__PURE__*/ S.Struct({ policyDefinitionType: __S(992, __c31, 0) }),
-        /*@__PURE__*/ S.Struct({ policyDefinitionRule: __S(994, __c31, 2) }),
+        /*@__PURE__*/ S.Struct({ policyDefinitionVariable: __S(994, __c31, 2) }),
+        /*@__PURE__*/ S.Struct({ policyDefinitionType: __S(1024, __c32, 0) }),
+        /*@__PURE__*/ S.Struct({ policyDefinitionRule: __S(1026, __c32, 2) }),
       ]);
     case 13:
       return S.suspend(() => S.Struct({ message: S.String, messageType: S.String })).annotate({
         identifier: "AutomatedReasoningPolicyBuildStepMessage",
       });
     case 14:
-      return S.Array(__S(2925, __c91, 13));
+      return S.Array(__S(2893, __c90, 13));
     case 15:
       return S.suspend(() =>
         S.Struct({
-          context: __S(2923, __c91, 11),
-          priorElement: S.optional(__S(2924, __c91, 12)),
-          messages: __S(2926, __c91, 14),
+          context: __S(2891, __c90, 11),
+          priorElement: S.optional(__S(2892, __c90, 12)),
+          messages: __S(2894, __c90, 14),
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyBuildStep",
-      });
+      ).annotate({ identifier: "AutomatedReasoningPolicyBuildStep" });
     case 16:
-      return S.Array(__S(2927, __c91, 15));
+      return S.Array(__S(2895, __c90, 15));
     case 17:
       return S.suspend(() =>
         S.Struct({
-          annotation: __S(2863, __c89, 15),
+          annotation: __S(2831, __c88, 15),
           status: S.String,
-          buildSteps: __S(2928, __c91, 16),
+          buildSteps: __S(2896, __c90, 16),
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyBuildLogEntry",
-      });
+      ).annotate({ identifier: "AutomatedReasoningPolicyBuildLogEntry" });
     case 18:
-      return S.Array(__S(2929, __c91, 17));
+      return S.Array(__S(2897, __c90, 17));
     case 19:
-      return S.suspend(() => S.Struct({ entries: __S(2930, __c91, 18) })).annotate({
+      return S.suspend(() => S.Struct({ entries: __S(2898, __c90, 18) })).annotate({
         identifier: "AutomatedReasoningPolicyBuildLog",
       });
     case 20:
@@ -10223,19 +9926,17 @@ function __c91(j: number): any {
           guardContent: SensitiveString,
           expectedAggregatedFindingsResult: S.String,
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyGeneratedTestCase",
-      });
+      ).annotate({ identifier: "AutomatedReasoningPolicyGeneratedTestCase" });
     case 21:
-      return S.Array(__S(2932, __c91, 20));
+      return S.Array(__S(2900, __c90, 20));
     case 22:
-      return S.suspend(() => S.Struct({ generatedTestCases: __S(2933, __c91, 21) })).annotate({
+      return S.suspend(() => S.Struct({ generatedTestCases: __S(2901, __c90, 21) })).annotate({
         identifier: "AutomatedReasoningPolicyGeneratedTestCases",
       });
     case 23:
-      return S.Array(__S(2976, __c93, 0));
+      return S.Array(__S(2944, __c92, 0));
     case 24:
-      return S.suspend(() => S.Struct({ policyScenarios: __S(2935, __c91, 23) })).annotate({
+      return S.suspend(() => S.Struct({ policyScenarios: __S(2903, __c90, 23) })).annotate({
         identifier: "AutomatedReasoningPolicyScenarios",
       });
     case 25:
@@ -10245,13 +9946,11 @@ function __c91(j: number): any {
           assetName: S.optional(SensitiveString),
           assetId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyBuildResultAssetManifestEntry",
-      });
+      ).annotate({ identifier: "AutomatedReasoningPolicyBuildResultAssetManifestEntry" });
     case 26:
-      return S.Array(__S(2937, __c91, 25));
+      return S.Array(__S(2905, __c90, 25));
     case 27:
-      return S.suspend(() => S.Struct({ entries: __S(2938, __c91, 26) })).annotate({
+      return S.suspend(() => S.Struct({ entries: __S(2906, __c90, 26) })).annotate({
         identifier: "AutomatedReasoningPolicyBuildResultAssetManifest",
       });
     case 28:
@@ -10263,136 +9962,111 @@ function __c91(j: number): any {
           documentDescription: S.optional(SensitiveString),
           documentHash: S.String,
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicySourceDocument",
-      });
+      ).annotate({ identifier: "AutomatedReasoningPolicySourceDocument" });
     case 29:
       return S.suspend(() => S.Struct({ documentId: S.String, statementId: S.String })).annotate({
         identifier: "AutomatedReasoningPolicyStatementReference",
       });
     case 30:
-      return S.Array(__S(2941, __c91, 29));
+      return S.Array(__S(2909, __c90, 29));
     case 31:
       return S.suspend(() =>
         S.Struct({
           rule: S.String,
-          groundingStatements: S.optional(__S(2942, __c91, 30)),
+          groundingStatements: S.optional(__S(2910, __c90, 30)),
           groundingJustifications: S.optional(__S(416, __c13, 0)),
           accuracyScore: S.optional(S.Number),
           accuracyJustification: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyRuleReport",
-      });
+      ).annotate({ identifier: "AutomatedReasoningPolicyRuleReport" });
   }
 }
-function __c92(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ __S(2943, __c91, 31).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(2911, __c90, 31).pipe(S.optional));
     case 1:
       return S.suspend(() =>
         S.Struct({
           policyVariable: SensitiveString,
-          groundingStatements: S.optional(__S(2942, __c91, 30)),
+          groundingStatements: S.optional(__S(2910, __c90, 30)),
           groundingJustifications: S.optional(__S(416, __c13, 0)),
           accuracyScore: S.optional(S.Number),
           accuracyJustification: S.optional(SensitiveString),
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyVariableReport",
-      });
+      ).annotate({ identifier: "AutomatedReasoningPolicyVariableReport" });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(2945, __c92, 1).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(2913, __c91, 1).pipe(S.optional));
     case 3:
       return S.Array(S.Number);
     case 4:
-      return S.suspend(() => S.Struct({ lines: __S(2947, __c92, 3) })).annotate({
+      return S.suspend(() => S.Struct({ lines: __S(2915, __c91, 3) })).annotate({
         identifier: "AutomatedReasoningPolicyStatementLocation",
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          text: SensitiveString,
-          location: __S(2948, __c92, 4),
-        }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyAtomicStatement",
-      });
+        S.Struct({ id: S.String, text: SensitiveString, location: __S(2916, __c91, 4) }),
+      ).annotate({ identifier: "AutomatedReasoningPolicyAtomicStatement" });
     case 6:
-      return S.Array(__S(2949, __c92, 5));
+      return S.Array(__S(2917, __c91, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({ lineNumber: S.optional(S.Number), lineText: S.optional(SensitiveString) }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyAnnotatedLine",
-      });
+      ).annotate({ identifier: "AutomatedReasoningPolicyAnnotatedLine" });
     case 8:
-      return S.Union([/*@__PURE__*/ S.Struct({ line: __S(2951, __c92, 7) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ line: __S(2919, __c91, 7) })]);
     case 9:
-      return S.Array(__S(2952, __c92, 8));
+      return S.Array(__S(2920, __c91, 8));
     case 10:
       return S.suspend(() =>
-        S.Struct({
-          pageNumber: S.optional(S.Number),
-          content: __S(2953, __c92, 9),
-        }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyAnnotatedChunk",
-      });
+        S.Struct({ pageNumber: S.optional(S.Number), content: __S(2921, __c91, 9) }),
+      ).annotate({ identifier: "AutomatedReasoningPolicyAnnotatedChunk" });
     case 11:
-      return S.Array(__S(2954, __c92, 10));
+      return S.Array(__S(2922, __c91, 10));
     case 12:
       return S.suspend(() =>
         S.Struct({
           documentName: SensitiveString,
           documentHash: S.String,
           documentId: S.String,
-          atomicStatements: __S(2950, __c92, 6),
-          documentContent: __S(2955, __c92, 11),
+          atomicStatements: __S(2918, __c91, 6),
+          documentContent: __S(2923, __c91, 11),
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyReportSourceDocument",
-      });
+      ).annotate({ identifier: "AutomatedReasoningPolicyReportSourceDocument" });
     case 13:
-      return S.Array(__S(2956, __c92, 12));
+      return S.Array(__S(2924, __c91, 12));
     case 14:
       return S.suspend(() =>
         S.Struct({
           coverageScore: S.Number,
           accuracyScore: S.Number,
-          ruleReports: __S(2944, __c92, 0),
-          variableReports: __S(2946, __c92, 2),
-          documentSources: __S(2957, __c92, 13),
+          ruleReports: __S(2912, __c91, 0),
+          variableReports: __S(2914, __c91, 2),
+          documentSources: __S(2925, __c91, 13),
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyFidelityReport",
-      });
+      ).annotate({ identifier: "AutomatedReasoningPolicyFidelityReport" });
     case 15:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ policyDefinition: __S(997, __c31, 5) }),
-        /*@__PURE__*/ S.Struct({ qualityReport: __S(2917, __c91, 5) }),
-        /*@__PURE__*/ S.Struct({ buildLog: __S(2931, __c91, 19) }),
-        /*@__PURE__*/ S.Struct({ generatedTestCases: __S(2934, __c91, 22) }),
-        /*@__PURE__*/ S.Struct({ policyScenarios: __S(2936, __c91, 24) }),
-        /*@__PURE__*/ S.Struct({ assetManifest: __S(2939, __c91, 27) }),
-        /*@__PURE__*/ S.Struct({ document: __S(2940, __c91, 28) }),
-        /*@__PURE__*/ S.Struct({ fidelityReport: __S(2958, __c92, 14) }),
+        /*@__PURE__*/ S.Struct({ policyDefinition: __S(1029, __c32, 5) }),
+        /*@__PURE__*/ S.Struct({ qualityReport: __S(2885, __c90, 5) }),
+        /*@__PURE__*/ S.Struct({ buildLog: __S(2899, __c90, 19) }),
+        /*@__PURE__*/ S.Struct({ generatedTestCases: __S(2902, __c90, 22) }),
+        /*@__PURE__*/ S.Struct({ policyScenarios: __S(2904, __c90, 24) }),
+        /*@__PURE__*/ S.Struct({ assetManifest: __S(2907, __c90, 27) }),
+        /*@__PURE__*/ S.Struct({ document: __S(2908, __c90, 28) }),
+        /*@__PURE__*/ S.Struct({ fidelityReport: __S(2926, __c91, 14) }),
       ]);
     case 16:
       return S.suspend(() =>
         S.Struct({
           policyArn: S.String,
           buildWorkflowId: S.String,
-          buildWorkflowAssets: S.optional(__S(2959, __c92, 15)),
+          buildWorkflowAssets: S.optional(__S(2927, __c91, 15)),
         }),
-      ).annotate({
-        identifier: "GetAutomatedReasoningPolicyBuildWorkflowResultAssetsResponse",
-      });
+      ).annotate({ identifier: "GetAutomatedReasoningPolicyBuildWorkflowResultAssetsResponse" });
   }
 }
-function __c93(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10402,12 +10076,10 @@ function __c93(j: number): any {
           expectedResult: S.String,
           ruleIds: __S(32, __c1, 0),
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyScenario",
-      });
+      ).annotate({ identifier: "AutomatedReasoningPolicyScenario" });
   }
 }
-function __c94(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10427,18 +10099,14 @@ function __c94(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAutomatedReasoningPolicyNextScenarioRequest",
-      });
+      ).annotate({ identifier: "GetAutomatedReasoningPolicyNextScenarioRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ policyArn: S.String, scenario: S.optional(__S(2976, __c93, 0)) }),
-      ).annotate({
-        identifier: "GetAutomatedReasoningPolicyNextScenarioResponse",
-      });
+        S.Struct({ policyArn: S.String, scenario: S.optional(__S(2944, __c92, 0)) }),
+      ).annotate({ identifier: "GetAutomatedReasoningPolicyNextScenarioResponse" });
   }
 }
-function __c95(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10458,18 +10126,14 @@ function __c95(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAutomatedReasoningPolicyTestCaseRequest",
-      });
+      ).annotate({ identifier: "GetAutomatedReasoningPolicyTestCaseRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ policyArn: S.String, testCase: __S(3072, __c96, 0) }),
-      ).annotate({
-        identifier: "GetAutomatedReasoningPolicyTestCaseResponse",
-      });
+        S.Struct({ policyArn: S.String, testCase: __S(3040, __c95, 0) }),
+      ).annotate({ identifier: "GetAutomatedReasoningPolicyTestCaseResponse" });
   }
 }
-function __c96(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10482,12 +10146,10 @@ function __c96(j: number): any {
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           confidenceThreshold: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyTestCase",
-      });
+      ).annotate({ identifier: "AutomatedReasoningPolicyTestCase" });
   }
 }
-function __c97(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10508,149 +10170,125 @@ function __c97(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAutomatedReasoningPolicyTestResultRequest",
-      });
+      ).annotate({ identifier: "GetAutomatedReasoningPolicyTestResultRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ testResult: __S(3155, __c98, 19) })).annotate({
+      return S.suspend(() => S.Struct({ testResult: __S(3123, __c97, 19) })).annotate({
         identifier: "GetAutomatedReasoningPolicyTestResultResponse",
       });
   }
 }
-function __c98(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ logic: SensitiveString, naturalLanguage: S.optional(SensitiveString) }),
-      ).annotate({
-        identifier: "AutomatedReasoningLogicStatement",
-      });
+      ).annotate({ identifier: "AutomatedReasoningLogicStatement" });
     case 1:
-      return S.Array(__S(3136, __c98, 0));
+      return S.Array(__S(3104, __c97, 0));
     case 2:
       return S.suspend(() => S.Struct({ text: S.optional(SensitiveString) })).annotate({
         identifier: "AutomatedReasoningCheckInputTextReference",
       });
     case 3:
-      return S.Array(__S(3138, __c98, 2));
+      return S.Array(__S(3106, __c97, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          premises: S.optional(__S(3137, __c98, 1)),
-          claims: __S(3137, __c98, 1),
-          untranslatedPremises: S.optional(__S(3139, __c98, 3)),
-          untranslatedClaims: S.optional(__S(3139, __c98, 3)),
+          premises: S.optional(__S(3105, __c97, 1)),
+          claims: __S(3105, __c97, 1),
+          untranslatedPremises: S.optional(__S(3107, __c97, 3)),
+          untranslatedClaims: S.optional(__S(3107, __c97, 3)),
           confidence: S.Number,
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningCheckTranslation",
-      });
+      ).annotate({ identifier: "AutomatedReasoningCheckTranslation" });
     case 5:
-      return S.suspend(() => S.Struct({ statements: S.optional(__S(3137, __c98, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ statements: S.optional(__S(3105, __c97, 1)) })).annotate({
         identifier: "AutomatedReasoningCheckScenario",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({ id: S.optional(S.String), policyVersionArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "AutomatedReasoningCheckRule",
-      });
+      ).annotate({ identifier: "AutomatedReasoningCheckRule" });
     case 7:
-      return S.Array(__S(3142, __c98, 6));
+      return S.Array(__S(3110, __c97, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          premises: S.optional(__S(3137, __c98, 1)),
-          claims: S.optional(__S(3137, __c98, 1)),
+          premises: S.optional(__S(3105, __c97, 1)),
+          claims: S.optional(__S(3105, __c97, 1)),
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningCheckLogicWarning",
-      });
+      ).annotate({ identifier: "AutomatedReasoningCheckLogicWarning" });
     case 9:
       return S.suspend(() =>
         S.Struct({
-          translation: S.optional(__S(3140, __c98, 4)),
-          claimsTrueScenario: S.optional(__S(3141, __c98, 5)),
-          supportingRules: S.optional(__S(3143, __c98, 7)),
-          logicWarning: S.optional(__S(3144, __c98, 8)),
+          translation: S.optional(__S(3108, __c97, 4)),
+          claimsTrueScenario: S.optional(__S(3109, __c97, 5)),
+          supportingRules: S.optional(__S(3111, __c97, 7)),
+          logicWarning: S.optional(__S(3112, __c97, 8)),
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningCheckValidFinding",
-      });
+      ).annotate({ identifier: "AutomatedReasoningCheckValidFinding" });
     case 10:
       return S.suspend(() =>
         S.Struct({
-          translation: S.optional(__S(3140, __c98, 4)),
-          contradictingRules: S.optional(__S(3143, __c98, 7)),
-          logicWarning: S.optional(__S(3144, __c98, 8)),
+          translation: S.optional(__S(3108, __c97, 4)),
+          contradictingRules: S.optional(__S(3111, __c97, 7)),
+          logicWarning: S.optional(__S(3112, __c97, 8)),
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningCheckInvalidFinding",
-      });
+      ).annotate({ identifier: "AutomatedReasoningCheckInvalidFinding" });
     case 11:
       return S.suspend(() =>
         S.Struct({
-          translation: S.optional(__S(3140, __c98, 4)),
-          claimsTrueScenario: S.optional(__S(3141, __c98, 5)),
-          claimsFalseScenario: S.optional(__S(3141, __c98, 5)),
-          logicWarning: S.optional(__S(3144, __c98, 8)),
+          translation: S.optional(__S(3108, __c97, 4)),
+          claimsTrueScenario: S.optional(__S(3109, __c97, 5)),
+          claimsFalseScenario: S.optional(__S(3109, __c97, 5)),
+          logicWarning: S.optional(__S(3112, __c97, 8)),
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningCheckSatisfiableFinding",
-      });
+      ).annotate({ identifier: "AutomatedReasoningCheckSatisfiableFinding" });
     case 12:
-      return S.Array(__S(3140, __c98, 4));
+      return S.Array(__S(3108, __c97, 4));
     case 13:
-      return S.suspend(() => S.Struct({ translations: S.optional(__S(3148, __c98, 12)) })).annotate(
-        {
-          identifier: "AutomatedReasoningCheckTranslationOption",
-        },
+      return S.suspend(() => S.Struct({ translations: S.optional(__S(3116, __c97, 12)) })).annotate(
+        { identifier: "AutomatedReasoningCheckTranslationOption" },
       );
     case 14:
-      return S.Array(__S(3149, __c98, 13));
+      return S.Array(__S(3117, __c97, 13));
     case 15:
-      return S.Array(__S(3141, __c98, 5));
+      return S.Array(__S(3109, __c97, 5));
     case 16:
       return S.suspend(() =>
         S.Struct({
-          options: S.optional(__S(3150, __c98, 14)),
-          differenceScenarios: S.optional(__S(3151, __c98, 15)),
+          options: S.optional(__S(3118, __c97, 14)),
+          differenceScenarios: S.optional(__S(3119, __c97, 15)),
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningCheckTranslationAmbiguousFinding",
-      });
+      ).annotate({ identifier: "AutomatedReasoningCheckTranslationAmbiguousFinding" });
     case 17:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ valid: __S(3145, __c98, 9) }),
-        /*@__PURE__*/ S.Struct({ invalid: __S(3146, __c98, 10) }),
-        /*@__PURE__*/ S.Struct({ satisfiable: __S(3147, __c98, 11) }),
-        /*@__PURE__*/ S.Struct({ impossible: __S(3146, __c98, 10) }),
-        /*@__PURE__*/ S.Struct({
-          translationAmbiguous: __S(3152, __c98, 16),
-        }),
+        /*@__PURE__*/ S.Struct({ valid: __S(3113, __c97, 9) }),
+        /*@__PURE__*/ S.Struct({ invalid: __S(3114, __c97, 10) }),
+        /*@__PURE__*/ S.Struct({ satisfiable: __S(3115, __c97, 11) }),
+        /*@__PURE__*/ S.Struct({ impossible: __S(3114, __c97, 10) }),
+        /*@__PURE__*/ S.Struct({ translationAmbiguous: __S(3120, __c97, 16) }),
         /*@__PURE__*/ S.Struct({ tooComplex: __S(736, __c23, 0) }),
         /*@__PURE__*/ S.Struct({ noTranslations: __S(736, __c23, 0) }),
       ]);
     case 18:
-      return S.Array(__S(3153, __c98, 17));
+      return S.Array(__S(3121, __c97, 17));
     case 19:
       return S.suspend(() =>
         S.Struct({
-          testCase: __S(3072, __c96, 0),
+          testCase: __S(3040, __c95, 0),
           policyArn: S.String,
           testRunStatus: S.String,
-          testFindings: S.optional(__S(3154, __c98, 18)),
+          testFindings: S.optional(__S(3122, __c97, 18)),
           testRunResult: S.optional(S.String),
           aggregatedTestFindingsResult: S.optional(S.String),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyTestResult",
-      });
+      ).annotate({ identifier: "AutomatedReasoningPolicyTestResult" });
   }
 }
-function __c99(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10678,18 +10316,18 @@ function __c99(j: number): any {
           hyperParameters: S.optional(__S(1824, __c57, 0)),
           trainingDataConfig: S.optional(__S(1829, __c57, 5)),
           validationDataConfig: S.optional(__S(1831, __c57, 7)),
-          outputDataConfig: S.optional(__S(1832, __c57, 8)),
-          trainingMetrics: S.optional(__S(3200, __c100, 0)),
-          validationMetrics: S.optional(__S(3202, __c100, 2)),
+          outputDataConfig: S.optional(__S(832, __c26, 0)),
+          trainingMetrics: S.optional(__S(3168, __c99, 0)),
+          validationMetrics: S.optional(__S(3170, __c99, 2)),
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          customizationConfig: S.optional(__S(1839, __c57, 15)),
+          customizationConfig: S.optional(__S(1838, __c57, 14)),
           modelStatus: S.optional(S.String),
           failureMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetCustomModelResponse" });
   }
 }
-function __c100(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ trainingLoss: S.optional(S.Number) })).annotate({
@@ -10700,10 +10338,10 @@ function __c100(j: number): any {
         identifier: "ValidatorMetric",
       });
     case 2:
-      return S.Array(__S(3201, __c100, 1));
+      return S.Array(__S(3169, __c99, 1));
   }
 }
-function __c101(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10724,9 +10362,7 @@ function __c101(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetCustomModelDeploymentRequest",
-      });
+      ).annotate({ identifier: "GetCustomModelDeploymentRequest" });
     case 1:
       return S.suspend(() => S.Struct({ modelArn: S.String, updateStatus: S.String })).annotate({
         identifier: "CustomModelDeploymentUpdateDetails",
@@ -10740,16 +10376,14 @@ function __c101(j: number): any {
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           status: S.String,
           description: S.optional(S.String),
-          updateDetails: S.optional(__S(3233, __c101, 1)),
+          updateDetails: S.optional(__S(3201, __c100, 1)),
           failureMessage: S.optional(S.String),
           lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "GetCustomModelDeploymentResponse",
-      });
+      ).annotate({ identifier: "GetCustomModelDeploymentResponse" });
   }
 }
-function __c102(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10775,9 +10409,9 @@ function __c102(j: number): any {
           customerEncryptionKeyId: S.optional(S.String),
           jobType: S.String,
           applicationType: S.optional(S.String),
-          evaluationConfig: __S(1365, __c42, 21),
-          inferenceConfig: __S(1407, __c43, 31),
-          outputDataConfig: __S(864, __c27, 0),
+          evaluationConfig: __S(1363, __c42, 19),
+          inferenceConfig: __S(1404, __c43, 28),
+          outputDataConfig: __S(832, __c26, 0),
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           lastModifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           failureMessages: S.optional(__S(32, __c1, 0)),
@@ -10785,7 +10419,7 @@ function __c102(j: number): any {
       ).annotate({ identifier: "GetEvaluationJobResponse" });
   }
 }
-function __c103(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10799,18 +10433,14 @@ function __c103(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetFoundationModelRequest",
-      });
+      ).annotate({ identifier: "GetFoundationModelRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ modelDetails: S.optional(__S(3329, __c104, 1)) })).annotate(
-        {
-          identifier: "GetFoundationModelResponse",
-        },
+      return S.suspend(() => S.Struct({ modelDetails: S.optional(__S(3297, __c103, 1)) })).annotate(
+        { identifier: "GetFoundationModelResponse" },
       );
   }
 }
-function __c104(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10836,12 +10466,12 @@ function __c104(j: number): any {
           responseStreamingSupported: S.optional(S.Boolean),
           customizationsSupported: S.optional(__S(1504, __c47, 0)),
           inferenceTypesSupported: S.optional(__S(1504, __c47, 0)),
-          modelLifecycle: S.optional(__S(3328, __c104, 0)),
+          modelLifecycle: S.optional(__S(3296, __c103, 0)),
         }),
       ).annotate({ identifier: "FoundationModelDetails" });
   }
 }
-function __c105(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10855,9 +10485,7 @@ function __c105(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetFoundationModelAvailabilityRequest",
-      });
+      ).annotate({ identifier: "GetFoundationModelAvailabilityRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ status: S.String, errorMessage: S.optional(S.String) }),
@@ -10866,17 +10494,15 @@ function __c105(j: number): any {
       return S.suspend(() =>
         S.Struct({
           modelId: S.String,
-          agreementAvailability: __S(3361, __c105, 1),
+          agreementAvailability: __S(3329, __c104, 1),
           authorizationStatus: S.String,
           entitlementAvailability: S.String,
           regionAvailability: S.String,
         }),
-      ).annotate({
-        identifier: "GetFoundationModelAvailabilityResponse",
-      });
+      ).annotate({ identifier: "GetFoundationModelAvailabilityResponse" });
   }
 }
-function __c106(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10908,71 +10534,37 @@ function __c106(j: number): any {
         }),
       ).annotate({ identifier: "GuardrailTopic" });
     case 2:
-      return S.Array(__S(3393, __c106, 1));
+      return S.Array(__S(3361, __c105, 1));
     case 3:
-      return S.suspend(() => S.Struct({ tierName: S.String })).annotate({
-        identifier: "GuardrailTopicsTier",
-      });
+      return S.suspend(() =>
+        S.Struct({ topics: __S(3362, __c105, 2), tier: S.optional(__S(1536, __c48, 0)) }),
+      ).annotate({ identifier: "GuardrailTopicPolicy" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ topics: __S(3394, __c106, 2), tier: S.optional(__S(3395, __c106, 3)) }),
-      ).annotate({ identifier: "GuardrailTopicPolicy" });
-    case 5:
-      return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          inputStrength: S.String,
-          outputStrength: S.String,
-          inputModalities: S.optional(__S(1504, __c47, 0)),
-          outputModalities: S.optional(__S(1504, __c47, 0)),
-          inputAction: S.optional(S.String),
-          outputAction: S.optional(S.String),
-          inputEnabled: S.optional(S.Boolean),
-          outputEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "GuardrailContentFilter" });
-    case 6:
-      return S.Array(__S(3397, __c106, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          filters: S.optional(__S(3398, __c106, 6)),
+          filters: S.optional(__S(1538, __c48, 2)),
           tier: S.optional(__S(1536, __c48, 0)),
         }),
       ).annotate({ identifier: "GuardrailContentPolicy" });
-    case 8:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          inputAction: S.optional(S.String),
-          outputAction: S.optional(S.String),
-          inputEnabled: S.optional(S.Boolean),
-          outputEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "GuardrailManagedWords" });
-    case 9:
-      return S.Array(__S(3400, __c106, 8));
-    case 10:
-      return S.suspend(() =>
-        S.Struct({
-          words: S.optional(__S(1538, __c48, 2)),
-          managedWordLists: S.optional(__S(3401, __c106, 9)),
+          words: S.optional(__S(1540, __c48, 4)),
+          managedWordLists: S.optional(__S(1542, __c48, 6)),
         }),
       ).annotate({ identifier: "GuardrailWordPolicy" });
-    case 11:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          piiEntities: S.optional(__S(1540, __c48, 4)),
-          regexes: S.optional(__S(1542, __c48, 6)),
+          piiEntities: S.optional(__S(1544, __c48, 8)),
+          regexes: S.optional(__S(1546, __c48, 10)),
         }),
-      ).annotate({
-        identifier: "GuardrailSensitiveInformationPolicy",
-      });
-    case 12:
-      return S.suspend(() => S.Struct({ filters: __S(1544, __c48, 8) })).annotate({
+      ).annotate({ identifier: "GuardrailSensitiveInformationPolicy" });
+    case 7:
+      return S.suspend(() => S.Struct({ filters: __S(1548, __c48, 12) })).annotate({
         identifier: "GuardrailContextualGroundingPolicy",
       });
-    case 13:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           name: SensitiveString,
@@ -10981,13 +10573,13 @@ function __c106(j: number): any {
           guardrailArn: S.String,
           version: S.String,
           status: S.String,
-          topicPolicy: S.optional(__S(3396, __c106, 4)),
-          contentPolicy: S.optional(__S(3399, __c106, 7)),
-          wordPolicy: S.optional(__S(3402, __c106, 10)),
-          sensitiveInformationPolicy: S.optional(__S(3403, __c106, 11)),
-          contextualGroundingPolicy: S.optional(__S(3404, __c106, 12)),
-          automatedReasoningPolicy: S.optional(__S(1545, __c48, 9)),
-          crossRegionDetails: S.optional(__S(3424, __c107, 0)),
+          topicPolicy: S.optional(__S(3363, __c105, 3)),
+          contentPolicy: S.optional(__S(3364, __c105, 4)),
+          wordPolicy: S.optional(__S(3365, __c105, 5)),
+          sensitiveInformationPolicy: S.optional(__S(3366, __c105, 6)),
+          contextualGroundingPolicy: S.optional(__S(3367, __c105, 7)),
+          automatedReasoningPolicy: S.optional(__S(1549, __c48, 13)),
+          crossRegionDetails: S.optional(__S(3392, __c106, 0)),
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           statusReasons: S.optional(__S(416, __c13, 0)),
@@ -10999,7 +10591,7 @@ function __c106(j: number): any {
       ).annotate({ identifier: "GetGuardrailResponse" });
   }
 }
-function __c107(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11007,12 +10599,10 @@ function __c107(j: number): any {
           guardrailProfileId: S.optional(S.String),
           guardrailProfileArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GuardrailCrossRegionDetails",
-      });
+      ).annotate({ identifier: "GuardrailCrossRegionDetails" });
   }
 }
-function __c108(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11046,12 +10636,12 @@ function __c108(j: number): any {
           modelArchitecture: S.optional(S.String),
           modelKmsKeyArn: S.optional(S.String),
           instructSupported: S.optional(S.Boolean),
-          customModelUnits: S.optional(__S(3457, __c108, 1)),
+          customModelUnits: S.optional(__S(3425, __c107, 1)),
         }),
       ).annotate({ identifier: "GetImportedModelResponse" });
   }
 }
-function __c109(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11067,10 +10657,12 @@ function __c109(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetInferenceProfileRequest",
-      });
-    case 1:
+      ).annotate({ identifier: "GetInferenceProfileRequest" });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           inferenceProfileName: S.String,
@@ -11083,9 +10675,7 @@ function __c109(j: number): any {
           status: S.String,
           type: S.String,
         }),
-      ).annotate({
-        identifier: "GetInferenceProfileResponse",
-      });
+      ).annotate({ identifier: "GetInferenceProfileResponse" });
   }
 }
 function __c110(j: number): any {
@@ -11102,15 +10692,11 @@ function __c110(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetMarketplaceModelEndpointRequest",
-      });
+      ).annotate({ identifier: "GetMarketplaceModelEndpointRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ marketplaceModelEndpoint: S.optional(__S(1730, __c54, 2)) }),
-      ).annotate({
-        identifier: "GetMarketplaceModelEndpointResponse",
-      });
+      ).annotate({ identifier: "GetMarketplaceModelEndpointResponse" });
   }
 }
 function __c111(j: number): any {
@@ -11164,9 +10750,7 @@ function __c113(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetModelCustomizationJobRequest",
-      });
+      ).annotate({ identifier: "GetModelCustomizationJobRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11186,17 +10770,15 @@ function __c113(j: number): any {
           hyperParameters: S.optional(__S(1824, __c57, 0)),
           trainingDataConfig: __S(1829, __c57, 5),
           validationDataConfig: __S(1831, __c57, 7),
-          outputDataConfig: __S(1832, __c57, 8),
+          outputDataConfig: __S(832, __c26, 0),
           customizationType: S.optional(S.String),
           outputModelKmsKeyArn: S.optional(S.String),
-          trainingMetrics: S.optional(__S(3200, __c100, 0)),
-          validationMetrics: S.optional(__S(3202, __c100, 2)),
+          trainingMetrics: S.optional(__S(3168, __c99, 0)),
+          validationMetrics: S.optional(__S(3170, __c99, 2)),
           vpcConfig: S.optional(__S(1696, __c53, 0)),
-          customizationConfig: S.optional(__S(1839, __c57, 15)),
+          customizationConfig: S.optional(__S(1838, __c57, 14)),
         }),
-      ).annotate({
-        identifier: "GetModelCustomizationJobResponse",
-      });
+      ).annotate({ identifier: "GetModelCustomizationJobResponse" });
   }
 }
 function __c114(j: number): any {
@@ -11251,9 +10833,7 @@ function __c115(j: number): any {
           vpcConfig: S.optional(__S(1696, __c53, 0)),
           importedModelKmsKeyArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetModelImportJobResponse",
-      });
+      ).annotate({ identifier: "GetModelImportJobResponse" });
   }
 }
 function __c116(j: number): any {
@@ -11270,9 +10850,7 @@ function __c116(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetModelInvocationJobRequest",
-      });
+      ).annotate({ identifier: "GetModelInvocationJobRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11297,9 +10875,7 @@ function __c116(j: number): any {
           successRecordCount: S.optional(S.Number),
           errorRecordCount: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "GetModelInvocationJobResponse",
-      });
+      ).annotate({ identifier: "GetModelInvocationJobResponse" });
   }
 }
 function __c117(j: number): any {
@@ -11316,15 +10892,11 @@ function __c117(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetModelInvocationLoggingConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetModelInvocationLoggingConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ loggingConfig: S.optional(__S(3778, __c118, 2)) }),
-      ).annotate({
-        identifier: "GetModelInvocationLoggingConfigurationResponse",
-      });
+      ).annotate({ identifier: "GetModelInvocationLoggingConfigurationResponse" });
   }
 }
 function __c118(j: number): any {
@@ -11405,9 +10977,7 @@ function __c121(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetProvisionedModelThroughputRequest",
-      });
+      ).annotate({ identifier: "GetProvisionedModelThroughputRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11427,9 +10997,7 @@ function __c121(j: number): any {
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ),
         }),
-      ).annotate({
-        identifier: "GetProvisionedModelThroughputResponse",
-      });
+      ).annotate({ identifier: "GetProvisionedModelThroughputResponse" });
   }
 }
 function __c122(j: number): any {
@@ -11467,9 +11035,7 @@ function __c123(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetUseCaseForModelAccessRequest",
-      });
+      ).annotate({ identifier: "GetUseCaseForModelAccessRequest" });
     case 1:
       return S.suspend(() => S.Struct({ formData: T.Blob })).annotate({
         identifier: "GetUseCaseForModelAccessResponse",
@@ -11495,9 +11061,7 @@ function __c124(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListAdvancedPromptOptimizationJobsRequest",
-      });
+      ).annotate({ identifier: "ListAdvancedPromptOptimizationJobsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11507,9 +11071,7 @@ function __c124(j: number): any {
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           lastModifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
-      ).annotate({
-        identifier: "AdvancedPromptOptimizationJobSummary",
-      });
+      ).annotate({ identifier: "AdvancedPromptOptimizationJobSummary" });
     case 2:
       return S.Array(__S(3969, __c124, 1));
     case 3:
@@ -11518,9 +11080,7 @@ function __c124(j: number): any {
           jobSummaries: S.optional(__S(3970, __c124, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListAdvancedPromptOptimizationJobsResponse",
-      });
+      ).annotate({ identifier: "ListAdvancedPromptOptimizationJobsResponse" });
   }
 }
 function __c125(j: number): any {
@@ -11541,9 +11101,7 @@ function __c125(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListAutomatedReasoningPoliciesRequest",
-      });
+      ).annotate({ identifier: "ListAutomatedReasoningPoliciesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11555,9 +11113,7 @@ function __c125(j: number): any {
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicySummary",
-      });
+      ).annotate({ identifier: "AutomatedReasoningPolicySummary" });
     case 2:
       return S.Array(__S(4001, __c125, 1));
     case 3:
@@ -11566,9 +11122,7 @@ function __c125(j: number): any {
           automatedReasoningPolicySummaries: __S(4002, __c125, 2),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListAutomatedReasoningPoliciesResponse",
-      });
+      ).annotate({ identifier: "ListAutomatedReasoningPoliciesResponse" });
   }
 }
 function __c126(j: number): any {
@@ -11592,9 +11146,7 @@ function __c126(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListAutomatedReasoningPolicyBuildWorkflowsRequest",
-      });
+      ).annotate({ identifier: "ListAutomatedReasoningPolicyBuildWorkflowsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11605,9 +11157,7 @@ function __c126(j: number): any {
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "AutomatedReasoningPolicyBuildWorkflowSummary",
-      });
+      ).annotate({ identifier: "AutomatedReasoningPolicyBuildWorkflowSummary" });
     case 2:
       return S.Array(__S(4033, __c126, 1));
     case 3:
@@ -11616,9 +11166,7 @@ function __c126(j: number): any {
           automatedReasoningPolicyBuildWorkflowSummaries: __S(4034, __c126, 2),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListAutomatedReasoningPolicyBuildWorkflowsResponse",
-      });
+      ).annotate({ identifier: "ListAutomatedReasoningPolicyBuildWorkflowsResponse" });
   }
 }
 function __c127(j: number): any {
@@ -11639,17 +11187,13 @@ function __c127(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListAutomatedReasoningPolicyTestCasesRequest",
-      });
+      ).annotate({ identifier: "ListAutomatedReasoningPolicyTestCasesRequest" });
     case 1:
-      return S.Array(__S(3072, __c96, 0));
+      return S.Array(__S(3040, __c95, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ testCases: __S(4065, __c127, 1), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListAutomatedReasoningPolicyTestCasesResponse",
-      });
+      ).annotate({ identifier: "ListAutomatedReasoningPolicyTestCasesResponse" });
   }
 }
 function __c128(j: number): any {
@@ -11674,17 +11218,13 @@ function __c128(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListAutomatedReasoningPolicyTestResultsRequest",
-      });
+      ).annotate({ identifier: "ListAutomatedReasoningPolicyTestResultsRequest" });
     case 1:
-      return S.Array(__S(3155, __c98, 19));
+      return S.Array(__S(3123, __c97, 19));
     case 2:
       return S.suspend(() =>
         S.Struct({ testResults: __S(4097, __c128, 1), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListAutomatedReasoningPolicyTestResultsResponse",
-      });
+      ).annotate({ identifier: "ListAutomatedReasoningPolicyTestResultsResponse" });
   }
 }
 function __c129(j: number): any {
@@ -11715,9 +11255,7 @@ function __c129(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListCustomModelDeploymentsRequest",
-      });
+      ).annotate({ identifier: "ListCustomModelDeploymentsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11729,9 +11267,7 @@ function __c129(j: number): any {
           lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           failureMessage: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CustomModelDeploymentSummary",
-      });
+      ).annotate({ identifier: "CustomModelDeploymentSummary" });
     case 2:
       return S.Array(__S(4129, __c129, 1));
     case 3:
@@ -11740,9 +11276,7 @@ function __c129(j: number): any {
           nextToken: S.optional(S.String),
           modelDeploymentSummaries: S.optional(__S(4130, __c129, 2)),
         }),
-      ).annotate({
-        identifier: "ListCustomModelDeploymentsResponse",
-      });
+      ).annotate({ identifier: "ListCustomModelDeploymentsResponse" });
   }
 }
 function __c130(j: number): any {
@@ -11809,9 +11343,7 @@ function __c131(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListEnforcedGuardrailsConfigurationRequest",
-      });
+      ).annotate({ identifier: "ListEnforcedGuardrailsConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11828,30 +11360,20 @@ function __c131(j: number): any {
           owner: S.optional(S.String),
           modelEnforcement: S.optional(__S(4225, __c132, 1)),
         }),
-      ).annotate({
-        identifier: "AccountEnforcedGuardrailOutputConfiguration",
-      });
+      ).annotate({ identifier: "AccountEnforcedGuardrailOutputConfiguration" });
     case 2:
       return S.Array(__S(4193, __c131, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          guardrailsConfig: __S(4194, __c131, 2),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListEnforcedGuardrailsConfigurationResponse",
-      });
+        S.Struct({ guardrailsConfig: __S(4194, __c131, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListEnforcedGuardrailsConfigurationResponse" });
   }
 }
 function __c132(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          system: S.optional(S.String),
-          messages: S.optional(S.String),
-        }),
+        S.Struct({ system: S.optional(S.String), messages: S.optional(S.String) }),
       ).annotate({ identifier: "SelectiveContentGuarding" });
     case 1:
       return S.suspend(() =>
@@ -11880,36 +11402,28 @@ function __c133(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/evaluation-jobs" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListEvaluationJobsRequest",
-      });
+      ).annotate({ identifier: "ListEvaluationJobsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           bedrockModelIdentifiers: S.optional(__S(32, __c1, 0)),
           precomputedInferenceSourceIdentifiers: S.optional(__S(32, __c1, 0)),
         }),
-      ).annotate({
-        identifier: "EvaluationModelConfigSummary",
-      });
+      ).annotate({ identifier: "EvaluationModelConfigSummary" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           bedrockKnowledgeBaseIdentifiers: S.optional(__S(32, __c1, 0)),
           precomputedRagSourceIdentifiers: S.optional(__S(32, __c1, 0)),
         }),
-      ).annotate({
-        identifier: "EvaluationRagConfigSummary",
-      });
+      ).annotate({ identifier: "EvaluationRagConfigSummary" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           modelConfigSummary: S.optional(__S(4257, __c133, 1)),
           ragConfigSummary: S.optional(__S(4258, __c133, 2)),
         }),
-      ).annotate({
-        identifier: "EvaluationInferenceConfigSummary",
-      });
+      ).annotate({ identifier: "EvaluationInferenceConfigSummary" });
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -11935,9 +11449,7 @@ function __c133(j: number): any {
           nextToken: S.optional(S.String),
           jobSummaries: S.optional(__S(4261, __c133, 5)),
         }),
-      ).annotate({
-        identifier: "ListEvaluationJobsResponse",
-      });
+      ).annotate({ identifier: "ListEvaluationJobsResponse" });
   }
 }
 function __c134(j: number): any {
@@ -11957,9 +11469,7 @@ function __c134(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListFoundationModelAgreementOffersRequest",
-      });
+      ).annotate({ identifier: "ListFoundationModelAgreementOffersRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12009,9 +11519,7 @@ function __c134(j: number): any {
     case 10:
       return S.suspend(() =>
         S.Struct({ modelId: S.String, offers: __S(4297, __c134, 9) }),
-      ).annotate({
-        identifier: "ListFoundationModelAgreementOffersResponse",
-      });
+      ).annotate({ identifier: "ListFoundationModelAgreementOffersResponse" });
   }
 }
 function __c135(j: number): any {
@@ -12026,17 +11534,13 @@ function __c135(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/foundation-models" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListFoundationModelsRequest",
-      });
+      ).annotate({ identifier: "ListFoundationModelsRequest" });
     case 1:
-      return S.Array(__S(3329, __c104, 1));
+      return S.Array(__S(3297, __c103, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({ modelSummaries: S.optional(__S(4321, __c135, 1)) }),
-      ).annotate({
-        identifier: "ListFoundationModelsResponse",
-      });
+      ).annotate({ identifier: "ListFoundationModelsResponse" });
   }
 }
 function __c136(j: number): any {
@@ -12060,7 +11564,7 @@ function __c136(j: number): any {
           version: S.String,
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          crossRegionDetails: S.optional(__S(3424, __c107, 0)),
+          crossRegionDetails: S.optional(__S(3392, __c106, 0)),
         }),
       ).annotate({ identifier: "GuardrailSummary" });
     case 2:
@@ -12090,9 +11594,7 @@ function __c137(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/imported-models" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListImportedModelsRequest",
-      });
+      ).annotate({ identifier: "ListImportedModelsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12111,9 +11613,7 @@ function __c137(j: number): any {
           nextToken: S.optional(S.String),
           modelSummaries: S.optional(__S(4386, __c137, 2)),
         }),
-      ).annotate({
-        identifier: "ListImportedModelsResponse",
-      });
+      ).annotate({ identifier: "ListImportedModelsResponse" });
   }
 }
 function __c138(j: number): any {
@@ -12134,34 +11634,16 @@ function __c138(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListInferenceProfilesRequest",
-      });
+      ).annotate({ identifier: "ListInferenceProfilesRequest" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          inferenceProfileName: S.String,
-          description: S.optional(SensitiveString),
-          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          inferenceProfileArn: S.String,
-          models: __S(1985, __c62, 1),
-          inferenceProfileId: S.String,
-          status: S.String,
-          type: S.String,
-        }),
-      ).annotate({ identifier: "InferenceProfileSummary" });
+      return S.Array(__S(3488, __c109, 0));
     case 2:
-      return S.Array(__S(4417, __c138, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          inferenceProfileSummaries: S.optional(__S(4418, __c138, 2)),
+          inferenceProfileSummaries: S.optional(__S(4417, __c138, 1)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListInferenceProfilesResponse",
-      });
+      ).annotate({ identifier: "ListInferenceProfilesResponse" });
   }
 }
 function __c139(j: number): any {
@@ -12182,9 +11664,7 @@ function __c139(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListMarketplaceModelEndpointsRequest",
-      });
+      ).annotate({ identifier: "ListMarketplaceModelEndpointsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12195,9 +11675,7 @@ function __c139(j: number): any {
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "MarketplaceModelEndpointSummary",
-      });
+      ).annotate({ identifier: "MarketplaceModelEndpointSummary" });
     case 2:
       return S.Array(__S(4449, __c139, 1));
     case 3:
@@ -12206,9 +11684,7 @@ function __c139(j: number): any {
           marketplaceModelEndpoints: S.optional(__S(4450, __c139, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListMarketplaceModelEndpointsResponse",
-      });
+      ).annotate({ identifier: "ListMarketplaceModelEndpointsResponse" });
   }
 }
 function __c140(j: number): any {
@@ -12244,9 +11720,7 @@ function __c140(j: number): any {
           nextToken: S.optional(S.String),
           modelCopyJobSummaries: S.optional(__S(4481, __c140, 1)),
         }),
-      ).annotate({
-        identifier: "ListModelCopyJobsResponse",
-      });
+      ).annotate({ identifier: "ListModelCopyJobsResponse" });
   }
 }
 function __c141(j: number): any {
@@ -12276,9 +11750,7 @@ function __c141(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListModelCustomizationJobsRequest",
-      });
+      ).annotate({ identifier: "ListModelCustomizationJobsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12294,9 +11766,7 @@ function __c141(j: number): any {
           customModelName: S.optional(S.String),
           customizationType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ModelCustomizationJobSummary",
-      });
+      ).annotate({ identifier: "ModelCustomizationJobSummary" });
     case 2:
       return S.Array(__S(4513, __c141, 1));
     case 3:
@@ -12305,9 +11775,7 @@ function __c141(j: number): any {
           nextToken: S.optional(S.String),
           modelCustomizationJobSummaries: S.optional(__S(4514, __c141, 2)),
         }),
-      ).annotate({
-        identifier: "ListModelCustomizationJobsResponse",
-      });
+      ).annotate({ identifier: "ListModelCustomizationJobsResponse" });
   }
 }
 function __c142(j: number): any {
@@ -12330,9 +11798,7 @@ function __c142(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/model-import-jobs" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListModelImportJobsRequest",
-      });
+      ).annotate({ identifier: "ListModelImportJobsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12354,9 +11820,7 @@ function __c142(j: number): any {
           nextToken: S.optional(S.String),
           modelImportJobSummaries: S.optional(__S(4546, __c142, 2)),
         }),
-      ).annotate({
-        identifier: "ListModelImportJobsResponse",
-      });
+      ).annotate({ identifier: "ListModelImportJobsResponse" });
   }
 }
 function __c143(j: number): any {
@@ -12386,9 +11850,7 @@ function __c143(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListModelInvocationJobsRequest",
-      });
+      ).annotate({ identifier: "ListModelInvocationJobsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12413,9 +11875,7 @@ function __c143(j: number): any {
           successRecordCount: S.optional(S.Number),
           errorRecordCount: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "ModelInvocationJobSummary",
-      });
+      ).annotate({ identifier: "ModelInvocationJobSummary" });
     case 2:
       return S.Array(__S(4577, __c143, 1));
     case 3:
@@ -12424,9 +11884,7 @@ function __c143(j: number): any {
           nextToken: S.optional(S.String),
           invocationJobSummaries: S.optional(__S(4578, __c143, 2)),
         }),
-      ).annotate({
-        identifier: "ListModelInvocationJobsResponse",
-      });
+      ).annotate({ identifier: "ListModelInvocationJobsResponse" });
   }
 }
 function __c144(j: number): any {
@@ -12449,9 +11907,7 @@ function __c144(j: number): any {
           promptRouterSummaries: S.optional(__S(4609, __c144, 1)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListPromptRoutersResponse",
-      });
+      ).annotate({ identifier: "ListPromptRoutersResponse" });
   }
 }
 function __c145(j: number): any {
@@ -12482,9 +11938,7 @@ function __c145(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListProvisionedModelThroughputsRequest",
-      });
+      ).annotate({ identifier: "ListProvisionedModelThroughputsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12512,9 +11966,7 @@ function __c145(j: number): any {
           nextToken: S.optional(S.String),
           provisionedModelSummaries: S.optional(__S(4642, __c145, 2)),
         }),
-      ).annotate({
-        identifier: "ListProvisionedModelThroughputsResponse",
-      });
+      ).annotate({ identifier: "ListProvisionedModelThroughputsResponse" });
   }
 }
 function __c146(j: number): any {
@@ -12531,9 +11983,7 @@ function __c146(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(801, __c25, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -12547,9 +11997,7 @@ function __c147(j: number): any {
         S.Struct({ mode: S.String }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/data-retention" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "PutAccountDataRetentionRequest",
-      });
+      ).annotate({ identifier: "PutAccountDataRetentionRequest" });
   }
 }
 function __c148(j: number): any {
@@ -12562,9 +12010,7 @@ function __c148(j: number): any {
           selectiveContentGuarding: S.optional(__S(4224, __c132, 0)),
           modelEnforcement: S.optional(__S(4225, __c132, 1)),
         }),
-      ).annotate({
-        identifier: "AccountEnforcedGuardrailInferenceInputConfiguration",
-      });
+      ).annotate({ identifier: "AccountEnforcedGuardrailInferenceInputConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12580,9 +12026,7 @@ function __c148(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutEnforcedGuardrailConfigurationRequest",
-      });
+      ).annotate({ identifier: "PutEnforcedGuardrailConfigurationRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -12590,9 +12034,7 @@ function __c148(j: number): any {
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           updatedBy: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "PutEnforcedGuardrailConfigurationResponse",
-      });
+      ).annotate({ identifier: "PutEnforcedGuardrailConfigurationResponse" });
   }
 }
 function __c149(j: number): any {
@@ -12609,9 +12051,7 @@ function __c149(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutModelInvocationLoggingConfigurationRequest",
-      });
+      ).annotate({ identifier: "PutModelInvocationLoggingConfigurationRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

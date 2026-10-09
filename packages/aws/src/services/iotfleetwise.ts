@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -99,12 +99,12 @@ export class DecoderManifestValidationException
     "DecoderManifestValidationException",
     {
       invalidSignals: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(705, __c22, 1)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(737, __c23, 1)).annotate({
           identifier: "InvalidSignalDecoders",
         }),
       ),
       invalidNetworkInterfaces: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(707, __c22, 3)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(739, __c23, 3)).annotate({
           identifier: "InvalidNetworkInterfaces",
         }),
       ),
@@ -128,7 +128,7 @@ export class InvalidNodeException
     "InvalidNodeException",
     {
       invalidNodes: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(1478, __c46, 6)).annotate({ identifier: "Nodes" }),
+        /*@__PURE__*/ S.suspend(() => __S(1510, __c47, 6)).annotate({ identifier: "Nodes" }),
       ),
       reason: /*@__PURE__*/ S.optional(S.String),
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
@@ -141,7 +141,7 @@ export class InvalidSignalsException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       invalidSignals: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(1857, __c58, 1)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(1889, __c59, 1)).annotate({
           identifier: "InvalidSignals",
         }),
       ),
@@ -192,7 +192,7 @@ export class ValidationException
         }),
       ),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(2433, __c76, 1)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(2465, __c77, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -1554,7 +1554,7 @@ export const batchCreateVehicle: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(66, __c2, 2) as any as S.Schema<BatchCreateVehicleRequest>,
-  output: __S(71, __c2, 7) as any as S.Schema<BatchCreateVehicleResponse>,
+  output: __S(70, __c2, 6) as any as S.Schema<BatchCreateVehicleResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1590,7 +1590,7 @@ export const batchUpdateVehicle: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(258, __c8, 2) as any as S.Schema<BatchUpdateVehicleRequest>,
-  output: __S(263, __c8, 7) as any as S.Schema<BatchUpdateVehicleResponse>,
+  output: __S(262, __c8, 6) as any as S.Schema<BatchUpdateVehicleResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1628,8 +1628,8 @@ export const createCampaign: API.OperationMethod<
   CreateCampaignError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c9, 0) as any as S.Schema<CreateCampaignRequest>,
-  output: __S(320, __c10, 0) as any as S.Schema<CreateCampaignResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<CreateCampaignRequest>,
+  output: __S(352, __c11, 0) as any as S.Schema<CreateCampaignResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1670,8 +1670,8 @@ export const createDecoderManifest: API.OperationMethod<
   CreateDecoderManifestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c12, 0) as any as S.Schema<CreateDecoderManifestRequest>,
-  output: __S(416, __c13, 0) as any as S.Schema<CreateDecoderManifestResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<CreateDecoderManifestRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<CreateDecoderManifestResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1709,8 +1709,8 @@ export const createFleet: API.OperationMethod<
   CreateFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c16, 0) as any as S.Schema<CreateFleetRequest>,
-  output: __S(513, __c16, 1) as any as S.Schema<CreateFleetResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<CreateFleetRequest>,
+  output: __S(545, __c17, 1) as any as S.Schema<CreateFleetResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1747,8 +1747,8 @@ export const createModelManifest: API.OperationMethod<
   CreateModelManifestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c17, 0) as any as S.Schema<CreateModelManifestRequest>,
-  output: __S(416, __c13, 0) as any as S.Schema<CreateModelManifestResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<CreateModelManifestRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<CreateModelManifestResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1782,8 +1782,8 @@ export const createSignalCatalog: API.OperationMethod<
   CreateSignalCatalogError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c18, 0) as any as S.Schema<CreateSignalCatalogRequest>,
-  output: __S(416, __c13, 0) as any as S.Schema<CreateSignalCatalogResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<CreateSignalCatalogRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<CreateSignalCatalogResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1819,8 +1819,8 @@ export const createStateTemplate: API.OperationMethod<
   CreateStateTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c19, 0) as any as S.Schema<CreateStateTemplateRequest>,
-  output: __S(640, __c20, 0) as any as S.Schema<CreateStateTemplateResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<CreateStateTemplateRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<CreateStateTemplateResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1862,8 +1862,8 @@ export const createVehicle: API.OperationMethod<
   CreateVehicleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c21, 0) as any as S.Schema<CreateVehicleRequest>,
-  output: __S(673, __c21, 1) as any as S.Schema<CreateVehicleResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<CreateVehicleRequest>,
+  output: __S(224, __c7, 0) as any as S.Schema<CreateVehicleResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1894,8 +1894,8 @@ export const deleteCampaign: API.OperationMethod<
   DeleteCampaignError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c23, 0) as any as S.Schema<DeleteCampaignRequest>,
-  output: __S(320, __c10, 0) as any as S.Schema<DeleteCampaignResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<DeleteCampaignRequest>,
+  output: __S(352, __c11, 0) as any as S.Schema<DeleteCampaignResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -1924,8 +1924,8 @@ export const deleteDecoderManifest: API.OperationMethod<
   DeleteDecoderManifestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c24, 0) as any as S.Schema<DeleteDecoderManifestRequest>,
-  output: __S(416, __c13, 0) as any as S.Schema<DeleteDecoderManifestResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<DeleteDecoderManifestRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<DeleteDecoderManifestResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1955,8 +1955,8 @@ export const deleteFleet: API.OperationMethod<
   DeleteFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c25, 0) as any as S.Schema<DeleteFleetRequest>,
-  output: __S(832, __c26, 0) as any as S.Schema<DeleteFleetResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<DeleteFleetRequest>,
+  output: __S(864, __c27, 0) as any as S.Schema<DeleteFleetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1984,8 +1984,8 @@ export const deleteModelManifest: API.OperationMethod<
   DeleteModelManifestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c27, 0) as any as S.Schema<DeleteModelManifestRequest>,
-  output: __S(416, __c13, 0) as any as S.Schema<DeleteModelManifestResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<DeleteModelManifestRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<DeleteModelManifestResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2014,8 +2014,8 @@ export const deleteSignalCatalog: API.OperationMethod<
   DeleteSignalCatalogError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c28, 0) as any as S.Schema<DeleteSignalCatalogRequest>,
-  output: __S(416, __c13, 0) as any as S.Schema<DeleteSignalCatalogResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<DeleteSignalCatalogRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<DeleteSignalCatalogResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2043,8 +2043,8 @@ export const deleteStateTemplate: API.OperationMethod<
   DeleteStateTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c29, 0) as any as S.Schema<DeleteStateTemplateRequest>,
-  output: __S(640, __c20, 0) as any as S.Schema<DeleteStateTemplateResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<DeleteStateTemplateRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<DeleteStateTemplateResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2071,8 +2071,8 @@ export const deleteVehicle: API.OperationMethod<
   DeleteVehicleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c30, 0) as any as S.Schema<DeleteVehicleRequest>,
-  output: __S(961, __c30, 1) as any as S.Schema<DeleteVehicleResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<DeleteVehicleRequest>,
+  output: __S(993, __c31, 1) as any as S.Schema<DeleteVehicleResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2101,8 +2101,8 @@ export const disassociateVehicleFleet: API.OperationMethod<
   DisassociateVehicleFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c31, 0) as any as S.Schema<DisassociateVehicleFleetRequest>,
-  output: __S(128, __c4, 0) as any as S.Schema<DisassociateVehicleFleetResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<DisassociateVehicleFleetRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DisassociateVehicleFleetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2132,8 +2132,8 @@ export const getCampaign: API.OperationMethod<
   GetCampaignError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c32, 0) as any as S.Schema<GetCampaignRequest>,
-  output: __S(1025, __c32, 1) as any as S.Schema<GetCampaignResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<GetCampaignRequest>,
+  output: __S(1057, __c33, 1) as any as S.Schema<GetCampaignResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2160,8 +2160,8 @@ export const getDecoderManifest: API.OperationMethod<
   GetDecoderManifestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c33, 0) as any as S.Schema<GetDecoderManifestRequest>,
-  output: __S(1057, __c33, 1) as any as S.Schema<GetDecoderManifestResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<GetDecoderManifestRequest>,
+  output: __S(1089, __c34, 1) as any as S.Schema<GetDecoderManifestResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2189,8 +2189,8 @@ export const getEncryptionConfiguration: API.OperationMethod<
   GetEncryptionConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c34, 0) as any as S.Schema<GetEncryptionConfigurationRequest>,
-  output: __S(1089, __c34, 1) as any as S.Schema<GetEncryptionConfigurationResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<GetEncryptionConfigurationRequest>,
+  output: __S(1121, __c35, 1) as any as S.Schema<GetEncryptionConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2219,8 +2219,8 @@ export const getFleet: API.OperationMethod<
   GetFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1120, __c35, 0) as any as S.Schema<GetFleetRequest>,
-  output: __S(1121, __c35, 1) as any as S.Schema<GetFleetResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<GetFleetRequest>,
+  output: __S(1153, __c36, 1) as any as S.Schema<GetFleetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2243,8 +2243,8 @@ export const getLoggingOptions: API.OperationMethod<
   GetLoggingOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1152, __c36, 0) as any as S.Schema<GetLoggingOptionsRequest>,
-  output: __S(1153, __c36, 1) as any as S.Schema<GetLoggingOptionsResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<GetLoggingOptionsRequest>,
+  output: __S(1185, __c37, 1) as any as S.Schema<GetLoggingOptionsResponse>,
   errors: [AccessDeniedException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2266,8 +2266,8 @@ export const getModelManifest: API.OperationMethod<
   GetModelManifestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1216, __c38, 0) as any as S.Schema<GetModelManifestRequest>,
-  output: __S(1217, __c38, 1) as any as S.Schema<GetModelManifestResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<GetModelManifestRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<GetModelManifestResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2301,8 +2301,8 @@ export const getRegisterAccountStatus: API.OperationMethod<
   GetRegisterAccountStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1248, __c39, 0) as any as S.Schema<GetRegisterAccountStatusRequest>,
-  output: __S(1251, __c39, 3) as any as S.Schema<GetRegisterAccountStatusResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<GetRegisterAccountStatusRequest>,
+  output: __S(1283, __c40, 3) as any as S.Schema<GetRegisterAccountStatusResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2330,8 +2330,8 @@ export const getSignalCatalog: API.OperationMethod<
   GetSignalCatalogError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1280, __c40, 0) as any as S.Schema<GetSignalCatalogRequest>,
-  output: __S(1282, __c40, 2) as any as S.Schema<GetSignalCatalogResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<GetSignalCatalogRequest>,
+  output: __S(1314, __c41, 2) as any as S.Schema<GetSignalCatalogResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2361,8 +2361,8 @@ export const getStateTemplate: API.OperationMethod<
   GetStateTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1312, __c41, 0) as any as S.Schema<GetStateTemplateRequest>,
-  output: __S(1313, __c41, 1) as any as S.Schema<GetStateTemplateResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<GetStateTemplateRequest>,
+  output: __S(1345, __c42, 1) as any as S.Schema<GetStateTemplateResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2391,8 +2391,8 @@ export const getVehicle: API.OperationMethod<
   GetVehicleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1344, __c42, 0) as any as S.Schema<GetVehicleRequest>,
-  output: __S(1345, __c42, 1) as any as S.Schema<GetVehicleResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<GetVehicleRequest>,
+  output: __S(1377, __c43, 1) as any as S.Schema<GetVehicleResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2422,8 +2422,8 @@ export const getVehicleStatus: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   VehicleStatus
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1376, __c43, 0) as any as S.Schema<GetVehicleStatusRequest>,
-  output: __S(1379, __c43, 3) as any as S.Schema<GetVehicleStatusResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<GetVehicleStatusRequest>,
+  output: __S(1411, __c44, 3) as any as S.Schema<GetVehicleStatusResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2461,8 +2461,8 @@ export const importDecoderManifest: API.OperationMethod<
   ImportDecoderManifestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1412, __c44, 4) as any as S.Schema<ImportDecoderManifestRequest>,
-  output: __S(416, __c13, 0) as any as S.Schema<ImportDecoderManifestResponse>,
+  input: __S(1444, __c45, 4) as any as S.Schema<ImportDecoderManifestRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<ImportDecoderManifestResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2497,8 +2497,8 @@ export const importSignalCatalog: API.OperationMethod<
   ImportSignalCatalogError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1505, __c47, 1) as any as S.Schema<ImportSignalCatalogRequest>,
-  output: __S(416, __c13, 0) as any as S.Schema<ImportSignalCatalogResponse>,
+  input: __S(1537, __c48, 1) as any as S.Schema<ImportSignalCatalogRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<ImportSignalCatalogResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2531,8 +2531,8 @@ export const listCampaigns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CampaignSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1536, __c48, 0) as any as S.Schema<ListCampaignsRequest>,
-  output: __S(1539, __c48, 3) as any as S.Schema<ListCampaignsResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<ListCampaignsRequest>,
+  output: __S(1571, __c49, 3) as any as S.Schema<ListCampaignsResponse>,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2564,8 +2564,8 @@ export const listDecoderManifestNetworkInterfaces: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NetworkInterface
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1568, __c49, 0) as any as S.Schema<ListDecoderManifestNetworkInterfacesRequest>,
-  output: __S(1569, __c49, 1) as any as S.Schema<ListDecoderManifestNetworkInterfacesResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<ListDecoderManifestNetworkInterfacesRequest>,
+  output: __S(1601, __c50, 1) as any as S.Schema<ListDecoderManifestNetworkInterfacesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2602,8 +2602,8 @@ export const listDecoderManifests: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DecoderManifestSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1600, __c50, 0) as any as S.Schema<ListDecoderManifestsRequest>,
-  output: __S(1603, __c50, 3) as any as S.Schema<ListDecoderManifestsResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<ListDecoderManifestsRequest>,
+  output: __S(1635, __c51, 3) as any as S.Schema<ListDecoderManifestsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2640,8 +2640,8 @@ export const listDecoderManifestSignals: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SignalDecoder
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1632, __c51, 0) as any as S.Schema<ListDecoderManifestSignalsRequest>,
-  output: __S(1633, __c51, 1) as any as S.Schema<ListDecoderManifestSignalsResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<ListDecoderManifestSignalsRequest>,
+  output: __S(1665, __c52, 1) as any as S.Schema<ListDecoderManifestSignalsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2679,8 +2679,8 @@ export const listFleets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FleetSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1664, __c52, 0) as any as S.Schema<ListFleetsRequest>,
-  output: __S(1667, __c52, 3) as any as S.Schema<ListFleetsResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<ListFleetsRequest>,
+  output: __S(1699, __c53, 3) as any as S.Schema<ListFleetsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2718,8 +2718,8 @@ export const listFleetsForVehicle: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FleetId
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1696, __c53, 0) as any as S.Schema<ListFleetsForVehicleRequest>,
-  output: __S(1697, __c53, 1) as any as S.Schema<ListFleetsForVehicleResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<ListFleetsForVehicleRequest>,
+  output: __S(1729, __c54, 1) as any as S.Schema<ListFleetsForVehicleResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2758,8 +2758,8 @@ export const listModelManifestNodes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Node
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1728, __c54, 0) as any as S.Schema<ListModelManifestNodesRequest>,
-  output: __S(1760, __c55, 0) as any as S.Schema<ListModelManifestNodesResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<ListModelManifestNodesRequest>,
+  output: __S(1792, __c56, 0) as any as S.Schema<ListModelManifestNodesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2797,8 +2797,8 @@ export const listModelManifests: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ModelManifestSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1792, __c56, 0) as any as S.Schema<ListModelManifestsRequest>,
-  output: __S(1795, __c56, 3) as any as S.Schema<ListModelManifestsResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<ListModelManifestsRequest>,
+  output: __S(1827, __c57, 3) as any as S.Schema<ListModelManifestsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2836,8 +2836,8 @@ export const listSignalCatalogNodes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Node
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1824, __c57, 0) as any as S.Schema<ListSignalCatalogNodesRequest>,
-  output: __S(1760, __c55, 0) as any as S.Schema<ListSignalCatalogNodesResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<ListSignalCatalogNodesRequest>,
+  output: __S(1792, __c56, 0) as any as S.Schema<ListSignalCatalogNodesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2878,8 +2878,8 @@ export const listSignalCatalogs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SignalCatalogSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1888, __c59, 0) as any as S.Schema<ListSignalCatalogsRequest>,
-  output: __S(1891, __c59, 3) as any as S.Schema<ListSignalCatalogsResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<ListSignalCatalogsRequest>,
+  output: __S(1923, __c60, 3) as any as S.Schema<ListSignalCatalogsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2915,8 +2915,8 @@ export const listStateTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   StateTemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1920, __c60, 0) as any as S.Schema<ListStateTemplatesRequest>,
-  output: __S(1923, __c60, 3) as any as S.Schema<ListStateTemplatesResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<ListStateTemplatesRequest>,
+  output: __S(1955, __c61, 3) as any as S.Schema<ListStateTemplatesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2950,8 +2950,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1952, __c61, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(1953, __c61, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(1985, __c62, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2982,8 +2982,8 @@ export const listVehicles: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   VehicleSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1984, __c62, 0) as any as S.Schema<ListVehiclesRequest>,
-  output: __S(1987, __c62, 3) as any as S.Schema<ListVehiclesResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<ListVehiclesRequest>,
+  output: __S(2019, __c63, 3) as any as S.Schema<ListVehiclesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3020,8 +3020,8 @@ export const listVehiclesInFleet: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   VehicleName
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2016, __c63, 0) as any as S.Schema<ListVehiclesInFleetRequest>,
-  output: __S(2017, __c63, 1) as any as S.Schema<ListVehiclesInFleetResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<ListVehiclesInFleetRequest>,
+  output: __S(2049, __c64, 1) as any as S.Schema<ListVehiclesInFleetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3060,8 +3060,8 @@ export const putEncryptionConfiguration: API.OperationMethod<
   PutEncryptionConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2048, __c64, 0) as any as S.Schema<PutEncryptionConfigurationRequest>,
-  output: __S(2049, __c64, 1) as any as S.Schema<PutEncryptionConfigurationResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<PutEncryptionConfigurationRequest>,
+  output: __S(2081, __c65, 1) as any as S.Schema<PutEncryptionConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3091,7 +3091,7 @@ export const putLoggingOptions: API.OperationMethod<
   PutLoggingOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2080, __c65, 0) as any as S.Schema<PutLoggingOptionsRequest>,
+  input: __S(2112, __c66, 0) as any as S.Schema<PutLoggingOptionsRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<PutLoggingOptionsResponse>,
   errors: [
     AccessDeniedException,
@@ -3144,8 +3144,8 @@ export const registerAccount: API.OperationMethod<
   RegisterAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2114, __c66, 2) as any as S.Schema<RegisterAccountRequest>,
-  output: __S(2115, __c66, 3) as any as S.Schema<RegisterAccountResponse>,
+  input: __S(2146, __c67, 2) as any as S.Schema<RegisterAccountRequest>,
+  output: __S(2147, __c67, 3) as any as S.Schema<RegisterAccountResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3176,7 +3176,7 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2144, __c67, 0) as any as S.Schema<TagResourceRequest>,
+  input: __S(2176, __c68, 0) as any as S.Schema<TagResourceRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
@@ -3206,7 +3206,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2176, __c68, 0) as any as S.Schema<UntagResourceRequest>,
+  input: __S(2208, __c69, 0) as any as S.Schema<UntagResourceRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
@@ -3236,8 +3236,8 @@ export const updateCampaign: API.OperationMethod<
   UpdateCampaignError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2208, __c69, 0) as any as S.Schema<UpdateCampaignRequest>,
-  output: __S(2209, __c69, 1) as any as S.Schema<UpdateCampaignResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<UpdateCampaignRequest>,
+  output: __S(2241, __c70, 1) as any as S.Schema<UpdateCampaignResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3271,8 +3271,8 @@ export const updateDecoderManifest: API.OperationMethod<
   UpdateDecoderManifestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2240, __c70, 0) as any as S.Schema<UpdateDecoderManifestRequest>,
-  output: __S(416, __c13, 0) as any as S.Schema<UpdateDecoderManifestResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<UpdateDecoderManifestRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<UpdateDecoderManifestResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3304,8 +3304,8 @@ export const updateFleet: API.OperationMethod<
   UpdateFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2272, __c71, 0) as any as S.Schema<UpdateFleetRequest>,
-  output: __S(832, __c26, 0) as any as S.Schema<UpdateFleetResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<UpdateFleetRequest>,
+  output: __S(864, __c27, 0) as any as S.Schema<UpdateFleetResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3338,8 +3338,8 @@ export const updateModelManifest: API.OperationMethod<
   UpdateModelManifestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2304, __c72, 0) as any as S.Schema<UpdateModelManifestRequest>,
-  output: __S(416, __c13, 0) as any as S.Schema<UpdateModelManifestResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<UpdateModelManifestRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<UpdateModelManifestResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3374,8 +3374,8 @@ export const updateSignalCatalog: API.OperationMethod<
   UpdateSignalCatalogError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2336, __c73, 0) as any as S.Schema<UpdateSignalCatalogRequest>,
-  output: __S(416, __c13, 0) as any as S.Schema<UpdateSignalCatalogResponse>,
+  input: __S(2368, __c74, 0) as any as S.Schema<UpdateSignalCatalogRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<UpdateSignalCatalogResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3412,8 +3412,8 @@ export const updateStateTemplate: API.OperationMethod<
   UpdateStateTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2368, __c74, 0) as any as S.Schema<UpdateStateTemplateRequest>,
-  output: __S(640, __c20, 0) as any as S.Schema<UpdateStateTemplateResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<UpdateStateTemplateRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<UpdateStateTemplateResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3448,8 +3448,8 @@ export const updateVehicle: API.OperationMethod<
   UpdateVehicleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2400, __c75, 0) as any as S.Schema<UpdateVehicleRequest>,
-  output: __S(2401, __c75, 1) as any as S.Schema<UpdateVehicleResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<UpdateVehicleRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<UpdateVehicleResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3482,9 +3482,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateVehicleFleetRequest",
-      });
+      ).annotate({ identifier: "AssociateVehicleFleetRequest" });
   }
 }
 function __c1(j: number): any {
@@ -3503,10 +3501,10 @@ function __c2(j: number): any {
           vehicleName: S.String,
           modelManifestArn: S.String,
           decoderManifestArn: S.String,
-          attributes: S.optional(__S(160, __c5, 0)),
+          attributes: S.optional(__S(128, __c4, 0)),
           associationBehavior: S.optional(S.String),
-          tags: S.optional(__S(225, __c7, 1)),
-          stateTemplates: S.optional(__S(195, __c6, 3)),
+          tags: S.optional(__S(193, __c6, 1)),
+          stateTemplates: S.optional(__S(163, __c5, 3)),
         }),
       ).annotate({ identifier: "CreateVehicleRequestItem" });
     case 1:
@@ -3516,22 +3514,10 @@ function __c2(j: number): any {
         S.Struct({ vehicles: __S(65, __c2, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/vehicles" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "BatchCreateVehicleRequest",
-      });
+      ).annotate({ identifier: "BatchCreateVehicleRequest" });
     case 3:
-      return S.suspend(() =>
-        S.Struct({
-          vehicleName: S.optional(S.String),
-          arn: S.optional(S.String),
-          thingArn: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateVehicleResponseItem",
-      });
+      return S.Array(__S(224, __c7, 0));
     case 4:
-      return S.Array(__S(67, __c2, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           vehicleName: S.optional(S.String),
@@ -3539,17 +3525,12 @@ function __c2(j: number): any {
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateVehicleError" });
+    case 5:
+      return S.Array(__S(68, __c2, 4));
     case 6:
-      return S.Array(__S(69, __c2, 5));
-    case 7:
       return S.suspend(() =>
-        S.Struct({
-          vehicles: S.optional(__S(68, __c2, 4)),
-          errors: S.optional(__S(70, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "BatchCreateVehicleResponse",
-      });
+        S.Struct({ vehicles: S.optional(__S(67, __c2, 3)), errors: S.optional(__S(69, __c2, 5)) }),
+      ).annotate({ identifier: "BatchCreateVehicleResponse" });
   }
 }
 function __c3(j: number): any {
@@ -3563,18 +3544,10 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "OnChangeStateTemplateUpdateStrategy",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c6(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ stateTemplateUpdateRate: __S(96, __c3, 0) })).annotate({
@@ -3582,25 +3555,37 @@ function __c6(j: number): any {
       });
     case 1:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ periodic: __S(192, __c6, 0) }),
-        /*@__PURE__*/ S.Struct({ onChange: __S(128, __c4, 0) }),
+        /*@__PURE__*/ S.Struct({ periodic: __S(160, __c5, 0) }),
+        /*@__PURE__*/ S.Struct({ onChange: __S(32, __c1, 0) }),
       ]);
     case 2:
       return S.suspend(() =>
-        S.Struct({ identifier: S.String, stateTemplateUpdateStrategy: __S(193, __c6, 1) }),
+        S.Struct({ identifier: S.String, stateTemplateUpdateStrategy: __S(161, __c5, 1) }),
       ).annotate({ identifier: "StateTemplateAssociation" });
     case 3:
-      return S.Array(__S(194, __c6, 2));
+      return S.Array(__S(162, __c5, 2));
   }
 }
-function __c7(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
         identifier: "Tag",
       });
     case 1:
-      return S.Array(__S(224, __c7, 0));
+      return S.Array(__S(192, __c6, 0));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          vehicleName: S.optional(S.String),
+          arn: S.optional(S.String),
+          thingArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateVehicleResponseItem" });
   }
 }
 function __c8(j: number): any {
@@ -3611,11 +3596,11 @@ function __c8(j: number): any {
           vehicleName: S.String,
           modelManifestArn: S.optional(S.String),
           decoderManifestArn: S.optional(S.String),
-          attributes: S.optional(__S(160, __c5, 0)),
+          attributes: S.optional(__S(128, __c4, 0)),
           attributeUpdateMode: S.optional(S.String),
-          stateTemplatesToAdd: S.optional(__S(195, __c6, 3)),
-          stateTemplatesToRemove: S.optional(__S(1440, __c45, 0)),
-          stateTemplatesToUpdate: S.optional(__S(195, __c6, 3)),
+          stateTemplatesToAdd: S.optional(__S(163, __c5, 3)),
+          stateTemplatesToRemove: S.optional(__S(1472, __c46, 0)),
+          stateTemplatesToUpdate: S.optional(__S(163, __c5, 3)),
         }),
       ).annotate({ identifier: "UpdateVehicleRequestItem" });
     case 1:
@@ -3625,18 +3610,10 @@ function __c8(j: number): any {
         S.Struct({ vehicles: __S(257, __c8, 1) }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/vehicles" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "BatchUpdateVehicleRequest",
-      });
+      ).annotate({ identifier: "BatchUpdateVehicleRequest" });
     case 3:
-      return S.suspend(() =>
-        S.Struct({ vehicleName: S.optional(S.String), arn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "UpdateVehicleResponseItem",
-      });
+      return S.Array(__S(288, __c9, 0));
     case 4:
-      return S.Array(__S(259, __c8, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           vehicleName: S.optional(S.String),
@@ -3644,20 +3621,26 @@ function __c8(j: number): any {
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateVehicleError" });
+    case 5:
+      return S.Array(__S(260, __c8, 4));
     case 6:
-      return S.Array(__S(261, __c8, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
-          vehicles: S.optional(__S(260, __c8, 4)),
-          errors: S.optional(__S(262, __c8, 6)),
+          vehicles: S.optional(__S(259, __c8, 3)),
+          errors: S.optional(__S(261, __c8, 5)),
         }),
-      ).annotate({
-        identifier: "BatchUpdateVehicleResponse",
-      });
+      ).annotate({ identifier: "BatchUpdateVehicleResponse" });
   }
 }
 function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ vehicleName: S.optional(S.String), arn: S.optional(S.String) }),
+      ).annotate({ identifier: "UpdateVehicleResponseItem" });
+  }
+}
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3673,20 +3656,20 @@ function __c9(j: number): any {
           spoolingMode: S.optional(S.String),
           compression: S.optional(S.String),
           priority: S.optional(S.Number),
-          signalsToCollect: S.optional(__S(353, __c11, 1)),
-          collectionScheme: __S(356, __c11, 4),
-          dataExtraDimensions: S.optional(__S(1440, __c45, 0)),
-          tags: S.optional(__S(225, __c7, 1)),
-          dataDestinationConfigs: S.optional(__S(361, __c11, 9)),
-          dataPartitions: S.optional(__S(365, __c11, 13)),
-          signalsToFetch: S.optional(__S(371, __c11, 19)),
+          signalsToCollect: S.optional(__S(385, __c12, 1)),
+          collectionScheme: __S(388, __c12, 4),
+          dataExtraDimensions: S.optional(__S(1472, __c46, 0)),
+          tags: S.optional(__S(193, __c6, 1)),
+          dataDestinationConfigs: S.optional(__S(393, __c12, 9)),
+          dataPartitions: S.optional(__S(397, __c12, 13)),
+          signalsToFetch: S.optional(__S(403, __c12, 19)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/campaigns/{name}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateCampaignRequest" });
   }
 }
-function __c10(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3694,7 +3677,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "CreateCampaignResponse" });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3706,7 +3689,7 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "SignalInformation" });
     case 1:
-      return S.Array(__S(352, __c11, 0));
+      return S.Array(__S(384, __c12, 0));
     case 2:
       return S.suspend(() => S.Struct({ periodMs: S.Number })).annotate({
         identifier: "TimeBasedCollectionScheme",
@@ -3719,13 +3702,11 @@ function __c11(j: number): any {
           triggerMode: S.optional(S.String),
           conditionLanguageVersion: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "ConditionBasedCollectionScheme",
-      });
+      ).annotate({ identifier: "ConditionBasedCollectionScheme" });
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ timeBasedCollectionScheme: __S(354, __c11, 2) }),
-        /*@__PURE__*/ S.Struct({ conditionBasedCollectionScheme: __S(355, __c11, 3) }),
+        /*@__PURE__*/ S.Struct({ timeBasedCollectionScheme: __S(386, __c12, 2) }),
+        /*@__PURE__*/ S.Struct({ conditionBasedCollectionScheme: __S(387, __c12, 3) }),
       ]);
     case 5:
       return S.suspend(() =>
@@ -3746,12 +3727,12 @@ function __c11(j: number): any {
       ).annotate({ identifier: "MqttTopicConfig" });
     case 8:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ s3Config: __S(357, __c11, 5) }),
-        /*@__PURE__*/ S.Struct({ timestreamConfig: __S(358, __c11, 6) }),
-        /*@__PURE__*/ S.Struct({ mqttTopicConfig: __S(359, __c11, 7) }),
+        /*@__PURE__*/ S.Struct({ s3Config: __S(389, __c12, 5) }),
+        /*@__PURE__*/ S.Struct({ timestreamConfig: __S(390, __c12, 6) }),
+        /*@__PURE__*/ S.Struct({ mqttTopicConfig: __S(391, __c12, 7) }),
       ]);
     case 9:
-      return S.Array(__S(360, __c11, 8));
+      return S.Array(__S(392, __c12, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
@@ -3759,25 +3740,21 @@ function __c11(j: number): any {
           storageLocation: SensitiveString,
           minimumTimeToLive: __S(96, __c3, 0),
         }),
-      ).annotate({
-        identifier: "DataPartitionStorageOptions",
-      });
+      ).annotate({ identifier: "DataPartitionStorageOptions" });
     case 11:
       return S.suspend(() =>
         S.Struct({ expression: SensitiveString, conditionLanguageVersion: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "DataPartitionUploadOptions",
-      });
+      ).annotate({ identifier: "DataPartitionUploadOptions" });
     case 12:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          storageOptions: __S(362, __c11, 10),
-          uploadOptions: S.optional(__S(363, __c11, 11)),
+          storageOptions: __S(394, __c12, 10),
+          uploadOptions: S.optional(__S(395, __c12, 11)),
         }),
       ).annotate({ identifier: "DataPartition" });
     case 13:
-      return S.Array(__S(364, __c11, 12));
+      return S.Array(__S(396, __c12, 12));
     case 14:
       return S.suspend(() => S.Struct({ executionFrequencyMs: S.Number })).annotate({
         identifier: "TimeBasedSignalFetchConfig",
@@ -3785,13 +3762,11 @@ function __c11(j: number): any {
     case 15:
       return S.suspend(() =>
         S.Struct({ conditionExpression: SensitiveString, triggerMode: S.String }),
-      ).annotate({
-        identifier: "ConditionBasedSignalFetchConfig",
-      });
+      ).annotate({ identifier: "ConditionBasedSignalFetchConfig" });
     case 16:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ timeBased: __S(366, __c11, 14) }),
-        /*@__PURE__*/ S.Struct({ conditionBased: __S(367, __c11, 15) }),
+        /*@__PURE__*/ S.Struct({ timeBased: __S(398, __c12, 14) }),
+        /*@__PURE__*/ S.Struct({ conditionBased: __S(399, __c12, 15) }),
       ]);
     case 17:
       return S.Array(SensitiveString);
@@ -3799,16 +3774,16 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fullyQualifiedName: S.String,
-          signalFetchConfig: __S(368, __c11, 16),
+          signalFetchConfig: __S(400, __c12, 16),
           conditionLanguageVersion: S.optional(S.Number),
-          actions: __S(369, __c11, 17),
+          actions: __S(401, __c12, 17),
         }),
       ).annotate({ identifier: "SignalFetchInformation" });
     case 19:
-      return S.Array(__S(370, __c11, 18));
+      return S.Array(__S(402, __c12, 18));
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3816,10 +3791,10 @@ function __c12(j: number): any {
           name: S.String.pipe(T.HttpLabel("name")),
           description: S.optional(S.String),
           modelManifestArn: S.String,
-          signalDecoders: S.optional(__S(491, __c15, 11)),
-          networkInterfaces: S.optional(__S(453, __c14, 5)),
+          signalDecoders: S.optional(__S(523, __c16, 11)),
+          networkInterfaces: S.optional(__S(485, __c15, 5)),
           defaultForUnmappedSignals: S.optional(S.String),
-          tags: S.optional(__S(225, __c7, 1)),
+          tags: S.optional(__S(193, __c6, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/decoder-manifests/{name}" }),
@@ -3830,12 +3805,10 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateDecoderManifestRequest",
-      });
+      ).annotate({ identifier: "CreateDecoderManifestRequest" });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ name: S.String, arn: S.String })).annotate({
@@ -3843,7 +3816,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3878,17 +3851,17 @@ function __c14(j: number): any {
         S.Struct({
           interfaceId: S.String,
           type: S.String,
-          canInterface: S.optional(__S(448, __c14, 0)),
-          obdInterface: S.optional(__S(449, __c14, 1)),
-          vehicleMiddleware: S.optional(__S(450, __c14, 2)),
-          customDecodingInterface: S.optional(__S(451, __c14, 3)),
+          canInterface: S.optional(__S(480, __c15, 0)),
+          obdInterface: S.optional(__S(481, __c15, 1)),
+          vehicleMiddleware: S.optional(__S(482, __c15, 2)),
+          customDecodingInterface: S.optional(__S(483, __c15, 3)),
         }),
       ).annotate({ identifier: "NetworkInterface" });
     case 5:
-      return S.Array(__S(452, __c14, 4));
+      return S.Array(__S(484, __c15, 4));
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3928,60 +3901,54 @@ function __c15(j: number): any {
           scaling: S.optional(S.Number),
           upperBound: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "ROS2PrimitiveMessageDefinition",
-      });
+      ).annotate({ identifier: "ROS2PrimitiveMessageDefinition" });
     case 3:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ ros2PrimitiveMessageDefinition: __S(482, __c15, 2) }),
+        /*@__PURE__*/ S.Struct({ ros2PrimitiveMessageDefinition: __S(514, __c16, 2) }),
       ]);
     case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          memberType: S.suspend(() => __S(487, __c15, 7)).annotate({
+          memberType: S.suspend(() => __S(519, __c16, 7)).annotate({
             identifier: "StructuredMessage",
           }),
           listType: S.String,
           capacity: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "StructuredMessageListDefinition",
-      });
+      ).annotate({ identifier: "StructuredMessageListDefinition" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           fieldName: S.String,
-          dataType: S.suspend(() => __S(487, __c15, 7)).annotate({
+          dataType: S.suspend(() => __S(519, __c16, 7)).annotate({
             identifier: "StructuredMessage",
           }),
         }),
-      ).annotate({
-        identifier: "StructuredMessageFieldNameAndDataTypePair",
-      });
+      ).annotate({ identifier: "StructuredMessageFieldNameAndDataTypePair" });
     case 6:
       return S.Array(
         /*@__PURE__*/ S.suspend((): S.Schema<StructuredMessageFieldNameAndDataTypePair> =>
-          __S(485, __c15, 5),
+          __S(517, __c16, 5),
         ).annotate({ identifier: "StructuredMessageFieldNameAndDataTypePair" }),
       );
     case 7:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ primitiveMessageDefinition: __S(483, __c15, 3) }),
+        /*@__PURE__*/ S.Struct({ primitiveMessageDefinition: __S(515, __c16, 3) }),
         /*@__PURE__*/ S.Struct({
           structuredMessageListDefinition: /*@__PURE__*/ S.suspend(
-            (): S.Schema<StructuredMessageListDefinition> => __S(484, __c15, 4),
+            (): S.Schema<StructuredMessageListDefinition> => __S(516, __c16, 4),
           ).annotate({ identifier: "StructuredMessageListDefinition" }),
         }),
         /*@__PURE__*/ S.Struct({
-          structuredMessageDefinition: /*@__PURE__*/ S.suspend(() => __S(486, __c15, 6)).annotate({
+          structuredMessageDefinition: /*@__PURE__*/ S.suspend(() => __S(518, __c16, 6)).annotate({
             identifier: "StructuredMessageDefinition",
           }),
         }),
       ]);
     case 8:
       return S.suspend(() =>
-        S.Struct({ topicName: S.String, structuredMessage: __S(487, __c15, 7) }),
+        S.Struct({ topicName: S.String, structuredMessage: __S(519, __c16, 7) }),
       ).annotate({ identifier: "MessageSignal" });
     case 9:
       return S.suspend(() => S.Struct({ id: S.String })).annotate({
@@ -3993,17 +3960,17 @@ function __c15(j: number): any {
           fullyQualifiedName: S.String,
           type: S.String,
           interfaceId: S.String,
-          canSignal: S.optional(__S(480, __c15, 0)),
-          obdSignal: S.optional(__S(481, __c15, 1)),
-          messageSignal: S.optional(__S(488, __c15, 8)),
-          customDecodingSignal: S.optional(__S(489, __c15, 9)),
+          canSignal: S.optional(__S(512, __c16, 0)),
+          obdSignal: S.optional(__S(513, __c16, 1)),
+          messageSignal: S.optional(__S(520, __c16, 8)),
+          customDecodingSignal: S.optional(__S(521, __c16, 9)),
         }),
       ).annotate({ identifier: "SignalDecoder" });
     case 11:
-      return S.Array(__S(490, __c15, 10));
+      return S.Array(__S(522, __c16, 10));
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4011,7 +3978,7 @@ function __c16(j: number): any {
           fleetId: S.String.pipe(T.HttpLabel("fleetId")),
           description: S.optional(S.String),
           signalCatalogArn: S.String,
-          tags: S.optional(__S(225, __c7, 1)),
+          tags: S.optional(__S(193, __c6, 1)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/fleets/{fleetId}" }), svc, auth, proto, ver, rules),
         ),
@@ -4022,16 +3989,16 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.HttpLabel("name")),
           description: S.optional(S.String),
-          nodes: __S(1440, __c45, 0),
+          nodes: __S(1472, __c46, 0),
           signalCatalogArn: S.String,
-          tags: S.optional(__S(225, __c7, 1)),
+          tags: S.optional(__S(193, __c6, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/model-manifests/{name}" }),
@@ -4042,20 +4009,18 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateModelManifestRequest",
-      });
+      ).annotate({ identifier: "CreateModelManifestRequest" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.HttpLabel("name")),
           description: S.optional(S.String),
-          nodes: S.optional(__S(1478, __c46, 6)),
-          tags: S.optional(__S(225, __c7, 1)),
+          nodes: S.optional(__S(1510, __c47, 6)),
+          tags: S.optional(__S(193, __c6, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/signal-catalogs/{name}" }),
@@ -4066,12 +4031,10 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateSignalCatalogRequest",
-      });
+      ).annotate({ identifier: "CreateSignalCatalogRequest" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4079,10 +4042,10 @@ function __c19(j: number): any {
           name: S.String.pipe(T.HttpLabel("name")),
           description: S.optional(S.String),
           signalCatalogArn: S.String,
-          stateTemplateProperties: __S(1440, __c45, 0),
-          dataExtraDimensions: S.optional(__S(1440, __c45, 0)),
-          metadataExtraDimensions: S.optional(__S(1440, __c45, 0)),
-          tags: S.optional(__S(225, __c7, 1)),
+          stateTemplateProperties: __S(1472, __c46, 0),
+          dataExtraDimensions: S.optional(__S(1472, __c46, 0)),
+          metadataExtraDimensions: S.optional(__S(1472, __c46, 0)),
+          tags: S.optional(__S(193, __c6, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/state-templates/{name}" }),
@@ -4093,12 +4056,10 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateStateTemplateRequest",
-      });
+      ).annotate({ identifier: "CreateStateTemplateRequest" });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4107,12 +4068,10 @@ function __c20(j: number): any {
           arn: S.optional(S.String),
           id: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateStateTemplateResponse",
-      });
+      ).annotate({ identifier: "CreateStateTemplateResponse" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4120,10 +4079,10 @@ function __c21(j: number): any {
           vehicleName: S.String.pipe(T.HttpLabel("vehicleName")),
           modelManifestArn: S.String,
           decoderManifestArn: S.String,
-          attributes: S.optional(__S(160, __c5, 0)),
+          attributes: S.optional(__S(128, __c4, 0)),
           associationBehavior: S.optional(S.String),
-          tags: S.optional(__S(225, __c7, 1)),
-          stateTemplates: S.optional(__S(195, __c6, 3)),
+          tags: S.optional(__S(193, __c6, 1)),
+          stateTemplates: S.optional(__S(163, __c5, 3)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/vehicles/{vehicleName}" }),
@@ -4135,17 +4094,9 @@ function __c21(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateVehicleRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          vehicleName: S.optional(S.String),
-          arn: S.optional(S.String),
-          thingArn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateVehicleResponse" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4156,19 +4107,16 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "InvalidSignalDecoder" });
     case 1:
-      return S.Array(__S(704, __c22, 0));
+      return S.Array(__S(736, __c23, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          interfaceId: S.optional(S.String),
-          reason: S.optional(S.String),
-        }),
+        S.Struct({ interfaceId: S.optional(S.String), reason: S.optional(S.String) }),
       ).annotate({ identifier: "InvalidNetworkInterface" });
     case 3:
-      return S.Array(__S(706, __c22, 2));
+      return S.Array(__S(738, __c23, 2));
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4185,7 +4133,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "DeleteCampaignRequest" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4199,12 +4147,10 @@ function __c24(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteDecoderManifestRequest",
-      });
+      ).annotate({ identifier: "DeleteDecoderManifestRequest" });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4221,7 +4167,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "DeleteFleetRequest" });
   }
 }
-function __c26(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4229,7 +4175,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "DeleteFleetResponse" });
   }
 }
-function __c27(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4243,12 +4189,10 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteModelManifestRequest",
-      });
+      ).annotate({ identifier: "DeleteModelManifestRequest" });
   }
 }
-function __c28(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4262,12 +4206,10 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteSignalCatalogRequest",
-      });
+      ).annotate({ identifier: "DeleteSignalCatalogRequest" });
   }
 }
-function __c29(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4281,12 +4223,10 @@ function __c29(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteStateTemplateRequest",
-      });
+      ).annotate({ identifier: "DeleteStateTemplateRequest" });
   }
 }
-function __c30(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4307,7 +4247,7 @@ function __c30(j: number): any {
       });
   }
 }
-function __c31(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4324,12 +4264,10 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateVehicleFleetRequest",
-      });
+      ).annotate({ identifier: "DisassociateVehicleFleetRequest" });
   }
 }
-function __c32(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4353,19 +4291,19 @@ function __c32(j: number): any {
           spoolingMode: S.optional(S.String),
           compression: S.optional(S.String),
           priority: S.optional(S.Number),
-          signalsToCollect: S.optional(__S(353, __c11, 1)),
-          collectionScheme: S.optional(__S(356, __c11, 4)),
-          dataExtraDimensions: S.optional(__S(1440, __c45, 0)),
+          signalsToCollect: S.optional(__S(385, __c12, 1)),
+          collectionScheme: S.optional(__S(388, __c12, 4)),
+          dataExtraDimensions: S.optional(__S(1472, __c46, 0)),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModificationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          dataDestinationConfigs: S.optional(__S(361, __c11, 9)),
-          dataPartitions: S.optional(__S(365, __c11, 13)),
-          signalsToFetch: S.optional(__S(371, __c11, 19)),
+          dataDestinationConfigs: S.optional(__S(393, __c12, 9)),
+          dataPartitions: S.optional(__S(397, __c12, 13)),
+          signalsToFetch: S.optional(__S(403, __c12, 19)),
         }),
       ).annotate({ identifier: "GetCampaignResponse" });
   }
 }
-function __c33(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4379,9 +4317,7 @@ function __c33(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetDecoderManifestRequest",
-      });
+      ).annotate({ identifier: "GetDecoderManifestRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4394,12 +4330,10 @@ function __c33(j: number): any {
           lastModificationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           message: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetDecoderManifestResponse",
-      });
+      ).annotate({ identifier: "GetDecoderManifestResponse" });
   }
 }
-function __c34(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4413,9 +4347,7 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetEncryptionConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetEncryptionConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4426,12 +4358,10 @@ function __c34(j: number): any {
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModificationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "GetEncryptionConfigurationResponse",
-      });
+      ).annotate({ identifier: "GetEncryptionConfigurationResponse" });
   }
 }
-function __c35(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4452,7 +4382,7 @@ function __c35(j: number): any {
       ).annotate({ identifier: "GetFleetResponse" });
   }
 }
-function __c36(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4461,22 +4391,20 @@ function __c36(j: number): any {
         ),
       ).annotate({ identifier: "GetLoggingOptionsRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ cloudWatchLogDelivery: __S(1184, __c37, 0) })).annotate({
+      return S.suspend(() => S.Struct({ cloudWatchLogDelivery: __S(1216, __c38, 0) })).annotate({
         identifier: "GetLoggingOptionsResponse",
       });
   }
 }
-function __c37(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ logType: S.String, logGroupName: S.optional(S.String) }),
-      ).annotate({
-        identifier: "CloudWatchLogDeliveryOptions",
-      });
+      ).annotate({ identifier: "CloudWatchLogDeliveryOptions" });
   }
 }
-function __c38(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4505,7 +4433,7 @@ function __c38(j: number): any {
       ).annotate({ identifier: "GetModelManifestResponse" });
   }
 }
-function __c39(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4519,9 +4447,7 @@ function __c39(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetRegisterAccountStatusRequest",
-      });
+      ).annotate({ identifier: "GetRegisterAccountStatusRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4532,9 +4458,7 @@ function __c39(j: number): any {
           registrationStatus: S.String,
           errorMessage: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "TimestreamRegistrationResponse",
-      });
+      ).annotate({ identifier: "TimestreamRegistrationResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4548,17 +4472,15 @@ function __c39(j: number): any {
         S.Struct({
           customerAccountId: S.String,
           accountStatus: S.String,
-          timestreamRegistrationResponse: S.optional(__S(1249, __c39, 1)),
-          iamRegistrationResponse: __S(1250, __c39, 2),
+          timestreamRegistrationResponse: S.optional(__S(1281, __c40, 1)),
+          iamRegistrationResponse: __S(1282, __c40, 2),
           creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastModificationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
-      ).annotate({
-        identifier: "GetRegisterAccountStatusResponse",
-      });
+      ).annotate({ identifier: "GetRegisterAccountStatusResponse" });
   }
 }
-function __c40(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4591,14 +4513,14 @@ function __c40(j: number): any {
           name: S.String,
           arn: S.String,
           description: S.optional(S.String),
-          nodeCounts: S.optional(__S(1281, __c40, 1)),
+          nodeCounts: S.optional(__S(1313, __c41, 1)),
           creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastModificationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "GetSignalCatalogResponse" });
   }
 }
-function __c41(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4620,9 +4542,9 @@ function __c41(j: number): any {
           arn: S.optional(S.String),
           description: S.optional(S.String),
           signalCatalogArn: S.optional(S.String),
-          stateTemplateProperties: S.optional(__S(1440, __c45, 0)),
-          dataExtraDimensions: S.optional(__S(1440, __c45, 0)),
-          metadataExtraDimensions: S.optional(__S(1440, __c45, 0)),
+          stateTemplateProperties: S.optional(__S(1472, __c46, 0)),
+          dataExtraDimensions: S.optional(__S(1472, __c46, 0)),
+          metadataExtraDimensions: S.optional(__S(1472, __c46, 0)),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModificationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           id: S.optional(S.String),
@@ -4630,7 +4552,7 @@ function __c41(j: number): any {
       ).annotate({ identifier: "GetStateTemplateResponse" });
   }
 }
-function __c42(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4652,15 +4574,15 @@ function __c42(j: number): any {
           arn: S.optional(S.String),
           modelManifestArn: S.optional(S.String),
           decoderManifestArn: S.optional(S.String),
-          attributes: S.optional(__S(160, __c5, 0)),
-          stateTemplates: S.optional(__S(195, __c6, 3)),
+          attributes: S.optional(__S(128, __c4, 0)),
+          stateTemplates: S.optional(__S(163, __c5, 3)),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModificationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "GetVehicleResponse" });
   }
 }
-function __c43(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4688,14 +4610,14 @@ function __c43(j: number): any {
         }),
       ).annotate({ identifier: "VehicleStatus" });
     case 2:
-      return S.Array(__S(1377, __c43, 1));
+      return S.Array(__S(1409, __c44, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ campaigns: S.optional(__S(1378, __c43, 2)), nextToken: S.optional(S.String) }),
+        S.Struct({ campaigns: S.optional(__S(1410, __c44, 2)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "GetVehicleStatusResponse" });
   }
 }
-function __c44(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.Array(T.Blob);
@@ -4703,19 +4625,19 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           networkInterface: S.String,
-          canDbcFiles: __S(1408, __c44, 0),
-          signalsMap: S.optional(__S(160, __c5, 0)),
+          canDbcFiles: __S(1440, __c45, 0),
+          signalsMap: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({ identifier: "CanDbcDefinition" });
     case 2:
-      return S.Union([/*@__PURE__*/ S.Struct({ canDbc: __S(1409, __c44, 1) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ canDbc: __S(1441, __c45, 1) })]);
     case 3:
-      return S.Array(__S(1410, __c44, 2));
+      return S.Array(__S(1442, __c45, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.HttpLabel("name")),
-          networkFileDefinitions: __S(1411, __c44, 3),
+          networkFileDefinitions: __S(1443, __c45, 3),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/decoder-manifests/{name}" }),
@@ -4726,18 +4648,16 @@ function __c44(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ImportDecoderManifestRequest",
-      });
+      ).annotate({ identifier: "ImportDecoderManifestRequest" });
   }
 }
-function __c45(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c46(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4755,7 +4675,7 @@ function __c46(j: number): any {
           dataType: S.String,
           description: S.optional(S.String),
           unit: S.optional(S.String),
-          allowedValues: S.optional(__S(1440, __c45, 0)),
+          allowedValues: S.optional(__S(1472, __c46, 0)),
           min: S.optional(S.Number),
           max: S.optional(S.Number),
           deprecationMessage: S.optional(S.String),
@@ -4770,7 +4690,7 @@ function __c46(j: number): any {
           dataType: S.String,
           description: S.optional(S.String),
           unit: S.optional(S.String),
-          allowedValues: S.optional(__S(1440, __c45, 0)),
+          allowedValues: S.optional(__S(1472, __c46, 0)),
           min: S.optional(S.Number),
           max: S.optional(S.Number),
           assignedValue: S.optional(S.String),
@@ -4786,7 +4706,7 @@ function __c46(j: number): any {
           dataType: S.String,
           description: S.optional(S.String),
           unit: S.optional(S.String),
-          allowedValues: S.optional(__S(1440, __c45, 0)),
+          allowedValues: S.optional(__S(1472, __c46, 0)),
           min: S.optional(S.Number),
           max: S.optional(S.Number),
           assignedValue: S.optional(S.String),
@@ -4809,18 +4729,18 @@ function __c46(j: number): any {
       ).annotate({ identifier: "CustomProperty" });
     case 5:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ branch: __S(1472, __c46, 0) }),
-        /*@__PURE__*/ S.Struct({ sensor: __S(1473, __c46, 1) }),
-        /*@__PURE__*/ S.Struct({ actuator: __S(1474, __c46, 2) }),
-        /*@__PURE__*/ S.Struct({ attribute: __S(1475, __c46, 3) }),
-        /*@__PURE__*/ S.Struct({ struct: __S(1472, __c46, 0) }),
-        /*@__PURE__*/ S.Struct({ property: __S(1476, __c46, 4) }),
+        /*@__PURE__*/ S.Struct({ branch: __S(1504, __c47, 0) }),
+        /*@__PURE__*/ S.Struct({ sensor: __S(1505, __c47, 1) }),
+        /*@__PURE__*/ S.Struct({ actuator: __S(1506, __c47, 2) }),
+        /*@__PURE__*/ S.Struct({ attribute: __S(1507, __c47, 3) }),
+        /*@__PURE__*/ S.Struct({ struct: __S(1504, __c47, 0) }),
+        /*@__PURE__*/ S.Struct({ property: __S(1508, __c47, 4) }),
       ]);
     case 6:
-      return S.Array(__S(1477, __c46, 5));
+      return S.Array(__S(1509, __c47, 5));
   }
 }
-function __c47(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.Union([/*@__PURE__*/ S.Struct({ vssJson: S.String })]);
@@ -4829,8 +4749,8 @@ function __c47(j: number): any {
         S.Struct({
           name: S.String.pipe(T.HttpLabel("name")),
           description: S.optional(S.String),
-          vss: S.optional(__S(1504, __c47, 0)),
-          tags: S.optional(__S(225, __c7, 1)),
+          vss: S.optional(__S(1536, __c48, 0)),
+          tags: S.optional(__S(193, __c6, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/signal-catalogs/{name}/nodes" }),
@@ -4841,12 +4761,10 @@ function __c47(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ImportSignalCatalogRequest",
-      });
+      ).annotate({ identifier: "ImportSignalCatalogRequest" });
   }
 }
-function __c48(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4871,17 +4789,17 @@ function __c48(j: number): any {
         }),
       ).annotate({ identifier: "CampaignSummary" });
     case 2:
-      return S.Array(__S(1537, __c48, 1));
+      return S.Array(__S(1569, __c49, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          campaignSummaries: S.optional(__S(1538, __c48, 2)),
+          campaignSummaries: S.optional(__S(1570, __c49, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListCampaignsResponse" });
   }
 }
-function __c49(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4899,21 +4817,17 @@ function __c49(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDecoderManifestNetworkInterfacesRequest",
-      });
+      ).annotate({ identifier: "ListDecoderManifestNetworkInterfacesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          networkInterfaces: S.optional(__S(453, __c14, 5)),
+          networkInterfaces: S.optional(__S(485, __c15, 5)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListDecoderManifestNetworkInterfacesResponse",
-      });
+      ).annotate({ identifier: "ListDecoderManifestNetworkInterfacesResponse" });
   }
 }
-function __c50(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4925,9 +4839,7 @@ function __c50(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/decoder-manifests" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListDecoderManifestsRequest",
-      });
+      ).annotate({ identifier: "ListDecoderManifestsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4942,16 +4854,14 @@ function __c50(j: number): any {
         }),
       ).annotate({ identifier: "DecoderManifestSummary" });
     case 2:
-      return S.Array(__S(1601, __c50, 1));
+      return S.Array(__S(1633, __c51, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ summaries: S.optional(__S(1602, __c50, 2)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListDecoderManifestsResponse",
-      });
+        S.Struct({ summaries: S.optional(__S(1634, __c51, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListDecoderManifestsResponse" });
   }
 }
-function __c51(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4969,21 +4879,17 @@ function __c51(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDecoderManifestSignalsRequest",
-      });
+      ).annotate({ identifier: "ListDecoderManifestSignalsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          signalDecoders: S.optional(__S(491, __c15, 11)),
+          signalDecoders: S.optional(__S(523, __c16, 11)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListDecoderManifestSignalsResponse",
-      });
+      ).annotate({ identifier: "ListDecoderManifestSignalsResponse" });
   }
 }
-function __c52(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5005,17 +4911,17 @@ function __c52(j: number): any {
         }),
       ).annotate({ identifier: "FleetSummary" });
     case 2:
-      return S.Array(__S(1665, __c52, 1));
+      return S.Array(__S(1697, __c53, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          fleetSummaries: S.optional(__S(1666, __c52, 2)),
+          fleetSummaries: S.optional(__S(1698, __c53, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListFleetsResponse" });
   }
 }
-function __c53(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5033,18 +4939,14 @@ function __c53(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListFleetsForVehicleRequest",
-      });
+      ).annotate({ identifier: "ListFleetsForVehicleRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ fleets: S.optional(__S(1440, __c45, 0)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListFleetsForVehicleResponse",
-      });
+        S.Struct({ fleets: S.optional(__S(1472, __c46, 0)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListFleetsForVehicleResponse" });
   }
 }
-function __c54(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5062,22 +4964,18 @@ function __c54(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListModelManifestNodesRequest",
-      });
-  }
-}
-function __c55(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ nodes: S.optional(__S(1478, __c46, 6)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListModelManifestNodesResponse",
-      });
+      ).annotate({ identifier: "ListModelManifestNodesRequest" });
   }
 }
 function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ nodes: S.optional(__S(1510, __c47, 6)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListModelManifestNodesResponse" });
+  }
+}
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5089,9 +4987,7 @@ function __c56(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/model-manifests" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListModelManifestsRequest",
-      });
+      ).annotate({ identifier: "ListModelManifestsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5105,16 +5001,14 @@ function __c56(j: number): any {
         }),
       ).annotate({ identifier: "ModelManifestSummary" });
     case 2:
-      return S.Array(__S(1793, __c56, 1));
+      return S.Array(__S(1825, __c57, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ summaries: S.optional(__S(1794, __c56, 2)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListModelManifestsResponse",
-      });
+        S.Struct({ summaries: S.optional(__S(1826, __c57, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListModelManifestsResponse" });
   }
 }
-function __c57(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5133,22 +5027,20 @@ function __c57(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListSignalCatalogNodesRequest",
-      });
+      ).annotate({ identifier: "ListSignalCatalogNodesRequest" });
   }
 }
-function __c58(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ name: S.optional(S.String), reason: S.optional(S.String) }),
       ).annotate({ identifier: "InvalidSignal" });
     case 1:
-      return S.Array(__S(1856, __c58, 0));
+      return S.Array(__S(1888, __c59, 0));
   }
 }
-function __c59(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5158,9 +5050,7 @@ function __c59(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/signal-catalogs" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListSignalCatalogsRequest",
-      });
+      ).annotate({ identifier: "ListSignalCatalogsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5171,16 +5061,14 @@ function __c59(j: number): any {
         }),
       ).annotate({ identifier: "SignalCatalogSummary" });
     case 2:
-      return S.Array(__S(1889, __c59, 1));
+      return S.Array(__S(1921, __c60, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ summaries: S.optional(__S(1890, __c59, 2)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListSignalCatalogsResponse",
-      });
+        S.Struct({ summaries: S.optional(__S(1922, __c60, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListSignalCatalogsResponse" });
   }
 }
-function __c60(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5191,9 +5079,7 @@ function __c60(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/state-templates" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListStateTemplatesRequest",
-      });
+      ).annotate({ identifier: "ListStateTemplatesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5207,39 +5093,35 @@ function __c60(j: number): any {
         }),
       ).annotate({ identifier: "StateTemplateSummary" });
     case 2:
-      return S.Array(__S(1921, __c60, 1));
+      return S.Array(__S(1953, __c61, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ summaries: S.optional(__S(1922, __c60, 2)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListStateTemplatesResponse",
-      });
-  }
-}
-function __c61(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String.pipe(T.HttpQuery("resourceArn")) }).pipe(
-          T.all(T.Http({ method: "GET", uri: "/tags" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(225, __c7, 1)) })).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
+        S.Struct({ summaries: S.optional(__S(1954, __c61, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListStateTemplatesResponse" });
   }
 }
 function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({ ResourceARN: S.String.pipe(T.HttpQuery("resourceArn")) }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/tags" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(193, __c6, 1)) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({
           modelManifestArn: S.optional(S.String).pipe(T.HttpQuery("modelManifestArn")),
-          attributeNames: S.optional(__S(1440, __c45, 0)).pipe(T.HttpQuery("attributeNames")),
-          attributeValues: S.optional(__S(1440, __c45, 0)).pipe(T.HttpQuery("attributeValues")),
+          attributeNames: S.optional(__S(1472, __c46, 0)).pipe(T.HttpQuery("attributeNames")),
+          attributeValues: S.optional(__S(1472, __c46, 0)).pipe(T.HttpQuery("attributeValues")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           listResponseScope: S.optional(S.String).pipe(T.HttpQuery("listResponseScope")),
@@ -5254,21 +5136,21 @@ function __c62(j: number): any {
           decoderManifestArn: S.String,
           creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastModificationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          attributes: S.optional(__S(160, __c5, 0)),
+          attributes: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({ identifier: "VehicleSummary" });
     case 2:
-      return S.Array(__S(1985, __c62, 1));
+      return S.Array(__S(2017, __c63, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          vehicleSummaries: S.optional(__S(1986, __c62, 2)),
+          vehicleSummaries: S.optional(__S(2018, __c63, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListVehiclesResponse" });
   }
 }
-function __c63(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5286,18 +5168,14 @@ function __c63(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListVehiclesInFleetRequest",
-      });
+      ).annotate({ identifier: "ListVehiclesInFleetRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ vehicles: S.optional(__S(1440, __c45, 0)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListVehiclesInFleetResponse",
-      });
+        S.Struct({ vehicles: S.optional(__S(1472, __c46, 0)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListVehiclesInFleetResponse" });
   }
 }
-function __c64(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5311,9 +5189,7 @@ function __c64(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutEncryptionConfigurationRequest",
-      });
+      ).annotate({ identifier: "PutEncryptionConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5321,22 +5197,20 @@ function __c64(j: number): any {
           encryptionStatus: S.String,
           encryptionType: S.String,
         }),
-      ).annotate({
-        identifier: "PutEncryptionConfigurationResponse",
-      });
+      ).annotate({ identifier: "PutEncryptionConfigurationResponse" });
   }
 }
-function __c65(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ cloudWatchLogDelivery: __S(1184, __c37, 0) }).pipe(
+        S.Struct({ cloudWatchLogDelivery: __S(1216, __c38, 0) }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/loggingOptions" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutLoggingOptionsRequest" });
   }
 }
-function __c66(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5349,8 +5223,8 @@ function __c66(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          timestreamResources: S.optional(__S(2112, __c66, 0)),
-          iamResources: S.optional(__S(2113, __c66, 1)),
+          timestreamResources: S.optional(__S(2144, __c67, 0)),
+          iamResources: S.optional(__S(2145, __c67, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/account/registration" }),
@@ -5366,23 +5240,12 @@ function __c66(j: number): any {
       return S.suspend(() =>
         S.Struct({
           registerAccountStatus: S.String,
-          timestreamResources: S.optional(__S(2112, __c66, 0)),
-          iamResources: __S(2113, __c66, 1),
+          timestreamResources: S.optional(__S(2144, __c67, 0)),
+          iamResources: __S(2145, __c67, 1),
           creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastModificationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "RegisterAccountResponse" });
-  }
-}
-function __c67(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ResourceARN: S.String.pipe(T.HttpQuery("resourceArn")),
-          Tags: __S(225, __c7, 1),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/tags" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "TagResourceRequest" });
   }
 }
 function __c68(j: number): any {
@@ -5391,9 +5254,9 @@ function __c68(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceARN: S.String.pipe(T.HttpQuery("resourceArn")),
-          TagKeys: __S(1440, __c45, 0).pipe(T.HttpQuery("tagKeys")),
-        }).pipe(T.all(T.Http({ method: "DELETE", uri: "/tags" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "UntagResourceRequest" });
+          Tags: __S(193, __c6, 1),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/tags" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "TagResourceRequest" });
   }
 }
 function __c69(j: number): any {
@@ -5401,9 +5264,20 @@ function __c69(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          ResourceARN: S.String.pipe(T.HttpQuery("resourceArn")),
+          TagKeys: __S(1472, __c46, 0).pipe(T.HttpQuery("tagKeys")),
+        }).pipe(T.all(T.Http({ method: "DELETE", uri: "/tags" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           name: S.String.pipe(T.HttpLabel("name")),
           description: S.optional(S.String),
-          dataExtraDimensions: S.optional(__S(1440, __c45, 0)),
+          dataExtraDimensions: S.optional(__S(1472, __c46, 0)),
           action: S.String,
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/campaigns/{name}" }), svc, auth, proto, ver, rules),
@@ -5419,19 +5293,19 @@ function __c69(j: number): any {
       ).annotate({ identifier: "UpdateCampaignResponse" });
   }
 }
-function __c70(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.HttpLabel("name")),
           description: S.optional(S.String),
-          signalDecodersToAdd: S.optional(__S(491, __c15, 11)),
-          signalDecodersToUpdate: S.optional(__S(491, __c15, 11)),
-          signalDecodersToRemove: S.optional(__S(1440, __c45, 0)),
-          networkInterfacesToAdd: S.optional(__S(453, __c14, 5)),
-          networkInterfacesToUpdate: S.optional(__S(453, __c14, 5)),
-          networkInterfacesToRemove: S.optional(__S(1440, __c45, 0)),
+          signalDecodersToAdd: S.optional(__S(523, __c16, 11)),
+          signalDecodersToUpdate: S.optional(__S(523, __c16, 11)),
+          signalDecodersToRemove: S.optional(__S(1472, __c46, 0)),
+          networkInterfacesToAdd: S.optional(__S(485, __c15, 5)),
+          networkInterfacesToUpdate: S.optional(__S(485, __c15, 5)),
+          networkInterfacesToRemove: S.optional(__S(1472, __c46, 0)),
           status: S.optional(S.String),
           defaultForUnmappedSignals: S.optional(S.String),
         }).pipe(
@@ -5444,12 +5318,10 @@ function __c70(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateDecoderManifestRequest",
-      });
+      ).annotate({ identifier: "UpdateDecoderManifestRequest" });
   }
 }
-function __c71(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5469,15 +5341,15 @@ function __c71(j: number): any {
       ).annotate({ identifier: "UpdateFleetRequest" });
   }
 }
-function __c72(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.HttpLabel("name")),
           description: S.optional(S.String),
-          nodesToAdd: S.optional(__S(1440, __c45, 0)),
-          nodesToRemove: S.optional(__S(1440, __c45, 0)),
+          nodesToAdd: S.optional(__S(1472, __c46, 0)),
+          nodesToRemove: S.optional(__S(1472, __c46, 0)),
           status: S.optional(S.String),
         }).pipe(
           T.all(
@@ -5489,21 +5361,19 @@ function __c72(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateModelManifestRequest",
-      });
+      ).annotate({ identifier: "UpdateModelManifestRequest" });
   }
 }
-function __c73(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.HttpLabel("name")),
           description: S.optional(S.String),
-          nodesToAdd: S.optional(__S(1478, __c46, 6)),
-          nodesToUpdate: S.optional(__S(1478, __c46, 6)),
-          nodesToRemove: S.optional(__S(1440, __c45, 0)),
+          nodesToAdd: S.optional(__S(1510, __c47, 6)),
+          nodesToUpdate: S.optional(__S(1510, __c47, 6)),
+          nodesToRemove: S.optional(__S(1472, __c46, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/signal-catalogs/{name}" }),
@@ -5514,22 +5384,20 @@ function __c73(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateSignalCatalogRequest",
-      });
+      ).annotate({ identifier: "UpdateSignalCatalogRequest" });
   }
 }
-function __c74(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           identifier: S.String.pipe(T.HttpLabel("identifier")),
           description: S.optional(S.String),
-          stateTemplatePropertiesToAdd: S.optional(__S(1440, __c45, 0)),
-          stateTemplatePropertiesToRemove: S.optional(__S(1440, __c45, 0)),
-          dataExtraDimensions: S.optional(__S(1440, __c45, 0)),
-          metadataExtraDimensions: S.optional(__S(1440, __c45, 0)),
+          stateTemplatePropertiesToAdd: S.optional(__S(1472, __c46, 0)),
+          stateTemplatePropertiesToRemove: S.optional(__S(1472, __c46, 0)),
+          dataExtraDimensions: S.optional(__S(1472, __c46, 0)),
+          metadataExtraDimensions: S.optional(__S(1472, __c46, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/state-templates/{identifier}" }),
@@ -5540,12 +5408,10 @@ function __c74(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateStateTemplateRequest",
-      });
+      ).annotate({ identifier: "UpdateStateTemplateRequest" });
   }
 }
-function __c75(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5553,11 +5419,11 @@ function __c75(j: number): any {
           vehicleName: S.String.pipe(T.HttpLabel("vehicleName")),
           modelManifestArn: S.optional(S.String),
           decoderManifestArn: S.optional(S.String),
-          attributes: S.optional(__S(160, __c5, 0)),
+          attributes: S.optional(__S(128, __c4, 0)),
           attributeUpdateMode: S.optional(S.String),
-          stateTemplatesToAdd: S.optional(__S(195, __c6, 3)),
-          stateTemplatesToRemove: S.optional(__S(1440, __c45, 0)),
-          stateTemplatesToUpdate: S.optional(__S(195, __c6, 3)),
+          stateTemplatesToAdd: S.optional(__S(163, __c5, 3)),
+          stateTemplatesToRemove: S.optional(__S(1472, __c46, 0)),
+          stateTemplatesToUpdate: S.optional(__S(163, __c5, 3)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/vehicles/{vehicleName}" }),
@@ -5569,20 +5435,16 @@ function __c75(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateVehicleRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ vehicleName: S.optional(S.String), arn: S.optional(S.String) }),
-      ).annotate({ identifier: "UpdateVehicleResponse" });
   }
 }
-function __c76(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
         identifier: "ValidationExceptionField",
       });
     case 1:
-      return S.Array(__S(2432, __c76, 0));
+      return S.Array(__S(2464, __c77, 0));
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -2249,8 +2249,8 @@ export const associateAwsAccountWithPartnerAccount: API.OperationMethod<
   AssociateAwsAccountWithPartnerAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3489, __c109, 1) as any as S.Schema<AssociateAwsAccountWithPartnerAccountRequest>,
-  output: __S(3490, __c109, 2) as any as S.Schema<AssociateAwsAccountWithPartnerAccountResponse>,
+  input: __S(3457, __c108, 1) as any as S.Schema<AssociateAwsAccountWithPartnerAccountRequest>,
+  output: __S(3458, __c108, 2) as any as S.Schema<AssociateAwsAccountWithPartnerAccountResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2281,8 +2281,8 @@ export const associateMulticastGroupWithFuotaTask: API.OperationMethod<
   AssociateMulticastGroupWithFuotaTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3968, __c124, 0) as any as S.Schema<AssociateMulticastGroupWithFuotaTaskRequest>,
-  output: __S(4000, __c125, 0) as any as S.Schema<AssociateMulticastGroupWithFuotaTaskResponse>,
+  input: __S(3936, __c123, 0) as any as S.Schema<AssociateMulticastGroupWithFuotaTaskRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<AssociateMulticastGroupWithFuotaTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2313,8 +2313,8 @@ export const associateWirelessDeviceWithFuotaTask: API.OperationMethod<
   AssociateWirelessDeviceWithFuotaTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4384, __c137, 0) as any as S.Schema<AssociateWirelessDeviceWithFuotaTaskRequest>,
-  output: __S(4000, __c125, 0) as any as S.Schema<AssociateWirelessDeviceWithFuotaTaskResponse>,
+  input: __S(4352, __c136, 0) as any as S.Schema<AssociateWirelessDeviceWithFuotaTaskRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<AssociateWirelessDeviceWithFuotaTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2347,8 +2347,8 @@ export const associateWirelessDeviceWithMulticastGroup: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AssociateWirelessDeviceWithMulticastGroupRequest>,
   output: __S(
-    4000,
-    __c125,
+    3968,
+    __c124,
     0,
   ) as any as S.Schema<AssociateWirelessDeviceWithMulticastGroupResponse>,
   errors: [
@@ -2382,7 +2382,7 @@ export const associateWirelessDeviceWithThing: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(352, __c11, 0) as any as S.Schema<AssociateWirelessDeviceWithThingRequest>,
-  output: __S(4000, __c125, 0) as any as S.Schema<AssociateWirelessDeviceWithThingResponse>,
+  output: __S(3968, __c124, 0) as any as S.Schema<AssociateWirelessDeviceWithThingResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2446,7 +2446,7 @@ export const associateWirelessGatewayWithThing: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(704, __c22, 0) as any as S.Schema<AssociateWirelessGatewayWithThingRequest>,
-  output: __S(4000, __c125, 0) as any as S.Schema<AssociateWirelessGatewayWithThingResponse>,
+  output: __S(3968, __c124, 0) as any as S.Schema<AssociateWirelessGatewayWithThingResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2478,7 +2478,7 @@ export const cancelMulticastGroupSession: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(736, __c23, 0) as any as S.Schema<CancelMulticastGroupSessionRequest>,
-  output: __S(4000, __c125, 0) as any as S.Schema<CancelMulticastGroupSessionResponse>,
+  output: __S(3968, __c124, 0) as any as S.Schema<CancelMulticastGroupSessionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2571,8 +2571,8 @@ export const createFuotaTask: API.OperationMethod<
   CreateFuotaTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c31, 0) as any as S.Schema<CreateFuotaTaskRequest>,
-  output: __S(993, __c31, 1) as any as S.Schema<CreateFuotaTaskResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<CreateFuotaTaskRequest>,
+  output: __S(864, __c27, 0) as any as S.Schema<CreateFuotaTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2603,7 +2603,7 @@ export const createMulticastGroup: API.OperationMethod<
   CreateMulticastGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c33, 0) as any as S.Schema<CreateMulticastGroupRequest>,
+  input: __S(1024, __c32, 0) as any as S.Schema<CreateMulticastGroupRequest>,
   output: __S(864, __c27, 0) as any as S.Schema<CreateMulticastGroupResponse>,
   errors: [
     AccessDeniedException,
@@ -2635,7 +2635,7 @@ export const createNetworkAnalyzerConfiguration: API.OperationMethod<
   CreateNetworkAnalyzerConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1184, __c37, 0) as any as S.Schema<CreateNetworkAnalyzerConfigurationRequest>,
+  input: __S(1152, __c36, 0) as any as S.Schema<CreateNetworkAnalyzerConfigurationRequest>,
   output: __S(800, __c25, 0) as any as S.Schema<CreateNetworkAnalyzerConfigurationResponse>,
   errors: [
     AccessDeniedException,
@@ -2666,7 +2666,7 @@ export const createServiceProfile: API.OperationMethod<
   CreateServiceProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1249, __c39, 1) as any as S.Schema<CreateServiceProfileRequest>,
+  input: __S(1217, __c38, 1) as any as S.Schema<CreateServiceProfileRequest>,
   output: __S(864, __c27, 0) as any as S.Schema<CreateServiceProfileResponse>,
   errors: [
     AccessDeniedException,
@@ -2697,7 +2697,7 @@ export const createWirelessDevice: API.OperationMethod<
   CreateWirelessDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1281, __c40, 1) as any as S.Schema<CreateWirelessDeviceRequest>,
+  input: __S(1249, __c39, 1) as any as S.Schema<CreateWirelessDeviceRequest>,
   output: __S(864, __c27, 0) as any as S.Schema<CreateWirelessDeviceResponse>,
   errors: [
     AccessDeniedException,
@@ -2739,7 +2739,7 @@ export const createWirelessGateway: API.OperationMethod<
   CreateWirelessGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1408, __c44, 0) as any as S.Schema<CreateWirelessGatewayRequest>,
+  input: __S(1376, __c43, 0) as any as S.Schema<CreateWirelessGatewayRequest>,
   output: __S(864, __c27, 0) as any as S.Schema<CreateWirelessGatewayResponse>,
   errors: [
     AccessDeniedException,
@@ -2770,8 +2770,8 @@ export const createWirelessGatewayTask: API.OperationMethod<
   CreateWirelessGatewayTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1504, __c47, 0) as any as S.Schema<CreateWirelessGatewayTaskRequest>,
-  output: __S(1505, __c47, 1) as any as S.Schema<CreateWirelessGatewayTaskResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<CreateWirelessGatewayTaskRequest>,
+  output: __S(1473, __c46, 1) as any as S.Schema<CreateWirelessGatewayTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2802,8 +2802,8 @@ export const createWirelessGatewayTaskDefinition: API.OperationMethod<
   CreateWirelessGatewayTaskDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1536, __c48, 0) as any as S.Schema<CreateWirelessGatewayTaskDefinitionRequest>,
-  output: __S(1568, __c49, 0) as any as S.Schema<CreateWirelessGatewayTaskDefinitionResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<CreateWirelessGatewayTaskDefinitionRequest>,
+  output: __S(1536, __c48, 0) as any as S.Schema<CreateWirelessGatewayTaskDefinitionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2834,8 +2834,8 @@ export const deleteDestination: API.OperationMethod<
   DeleteDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1664, __c52, 0) as any as S.Schema<DeleteDestinationRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<DeleteDestinationResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<DeleteDestinationRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<DeleteDestinationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2866,8 +2866,8 @@ export const deleteDeviceProfile: API.OperationMethod<
   DeleteDeviceProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1696, __c53, 0) as any as S.Schema<DeleteDeviceProfileRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<DeleteDeviceProfileResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<DeleteDeviceProfileRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<DeleteDeviceProfileResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2897,8 +2897,8 @@ export const deleteFuotaTask: API.OperationMethod<
   DeleteFuotaTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1728, __c54, 0) as any as S.Schema<DeleteFuotaTaskRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<DeleteFuotaTaskResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<DeleteFuotaTaskRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<DeleteFuotaTaskResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2928,8 +2928,8 @@ export const deleteMulticastGroup: API.OperationMethod<
   DeleteMulticastGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1760, __c55, 0) as any as S.Schema<DeleteMulticastGroupRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<DeleteMulticastGroupResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<DeleteMulticastGroupRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<DeleteMulticastGroupResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2960,8 +2960,8 @@ export const deleteNetworkAnalyzerConfiguration: API.OperationMethod<
   DeleteNetworkAnalyzerConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1792, __c56, 0) as any as S.Schema<DeleteNetworkAnalyzerConfigurationRequest>,
-  output: __S(4000, __c125, 0) as any as S.Schema<DeleteNetworkAnalyzerConfigurationResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<DeleteNetworkAnalyzerConfigurationRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<DeleteNetworkAnalyzerConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2991,8 +2991,8 @@ export const deleteQueuedMessages: API.OperationMethod<
   DeleteQueuedMessagesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1824, __c57, 0) as any as S.Schema<DeleteQueuedMessagesRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<DeleteQueuedMessagesResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<DeleteQueuedMessagesRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<DeleteQueuedMessagesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3022,8 +3022,8 @@ export const deleteServiceProfile: API.OperationMethod<
   DeleteServiceProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1856, __c58, 0) as any as S.Schema<DeleteServiceProfileRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<DeleteServiceProfileResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<DeleteServiceProfileRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<DeleteServiceProfileResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3053,8 +3053,8 @@ export const deleteWirelessDevice: API.OperationMethod<
   DeleteWirelessDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1888, __c59, 0) as any as S.Schema<DeleteWirelessDeviceRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<DeleteWirelessDeviceResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<DeleteWirelessDeviceRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<DeleteWirelessDeviceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3084,8 +3084,8 @@ export const deleteWirelessDeviceImportTask: API.OperationMethod<
   DeleteWirelessDeviceImportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1920, __c60, 0) as any as S.Schema<DeleteWirelessDeviceImportTaskRequest>,
-  output: __S(4000, __c125, 0) as any as S.Schema<DeleteWirelessDeviceImportTaskResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<DeleteWirelessDeviceImportTaskRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<DeleteWirelessDeviceImportTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3126,8 +3126,8 @@ export const deleteWirelessGateway: API.OperationMethod<
   DeleteWirelessGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1952, __c61, 0) as any as S.Schema<DeleteWirelessGatewayRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<DeleteWirelessGatewayResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<DeleteWirelessGatewayRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<DeleteWirelessGatewayResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3156,8 +3156,8 @@ export const deleteWirelessGatewayTask: API.OperationMethod<
   DeleteWirelessGatewayTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1984, __c62, 0) as any as S.Schema<DeleteWirelessGatewayTaskRequest>,
-  output: __S(4000, __c125, 0) as any as S.Schema<DeleteWirelessGatewayTaskResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<DeleteWirelessGatewayTaskRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<DeleteWirelessGatewayTaskResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3187,8 +3187,8 @@ export const deleteWirelessGatewayTaskDefinition: API.OperationMethod<
   DeleteWirelessGatewayTaskDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2016, __c63, 0) as any as S.Schema<DeleteWirelessGatewayTaskDefinitionRequest>,
-  output: __S(4000, __c125, 0) as any as S.Schema<DeleteWirelessGatewayTaskDefinitionResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<DeleteWirelessGatewayTaskDefinitionRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<DeleteWirelessGatewayTaskDefinitionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3216,8 +3216,8 @@ export const deregisterWirelessDevice: API.OperationMethod<
   DeregisterWirelessDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2048, __c64, 0) as any as S.Schema<DeregisterWirelessDeviceRequest>,
-  output: __S(4000, __c125, 0) as any as S.Schema<DeregisterWirelessDeviceResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<DeregisterWirelessDeviceRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<DeregisterWirelessDeviceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -3246,8 +3246,8 @@ export const disassociateAwsAccountFromPartnerAccount: API.OperationMethod<
   DisassociateAwsAccountFromPartnerAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2080, __c65, 0) as any as S.Schema<DisassociateAwsAccountFromPartnerAccountRequest>,
-  output: __S(4000, __c125, 0) as any as S.Schema<DisassociateAwsAccountFromPartnerAccountResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<DisassociateAwsAccountFromPartnerAccountRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<DisassociateAwsAccountFromPartnerAccountResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -3275,8 +3275,8 @@ export const disassociateMulticastGroupFromFuotaTask: API.OperationMethod<
   DisassociateMulticastGroupFromFuotaTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2112, __c66, 0) as any as S.Schema<DisassociateMulticastGroupFromFuotaTaskRequest>,
-  output: __S(4000, __c125, 0) as any as S.Schema<DisassociateMulticastGroupFromFuotaTaskResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<DisassociateMulticastGroupFromFuotaTaskRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<DisassociateMulticastGroupFromFuotaTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3306,8 +3306,8 @@ export const disassociateWirelessDeviceFromFuotaTask: API.OperationMethod<
   DisassociateWirelessDeviceFromFuotaTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2144, __c67, 0) as any as S.Schema<DisassociateWirelessDeviceFromFuotaTaskRequest>,
-  output: __S(4000, __c125, 0) as any as S.Schema<DisassociateWirelessDeviceFromFuotaTaskResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<DisassociateWirelessDeviceFromFuotaTaskRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<DisassociateWirelessDeviceFromFuotaTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3338,13 +3338,13 @@ export const disassociateWirelessDeviceFromMulticastGroup: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2176,
-    __c68,
+    2144,
+    __c67,
     0,
   ) as any as S.Schema<DisassociateWirelessDeviceFromMulticastGroupRequest>,
   output: __S(
-    4000,
-    __c125,
+    3968,
+    __c124,
     0,
   ) as any as S.Schema<DisassociateWirelessDeviceFromMulticastGroupResponse>,
   errors: [
@@ -3376,8 +3376,8 @@ export const disassociateWirelessDeviceFromThing: API.OperationMethod<
   DisassociateWirelessDeviceFromThingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2208, __c69, 0) as any as S.Schema<DisassociateWirelessDeviceFromThingRequest>,
-  output: __S(4000, __c125, 0) as any as S.Schema<DisassociateWirelessDeviceFromThingResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<DisassociateWirelessDeviceFromThingRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<DisassociateWirelessDeviceFromThingResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3407,10 +3407,10 @@ export const disassociateWirelessGatewayFromCertificate: API.OperationMethod<
   DisassociateWirelessGatewayFromCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2240, __c70, 0) as any as S.Schema<DisassociateWirelessGatewayFromCertificateRequest>,
+  input: __S(2208, __c69, 0) as any as S.Schema<DisassociateWirelessGatewayFromCertificateRequest>,
   output: __S(
-    4000,
-    __c125,
+    3968,
+    __c124,
     0,
   ) as any as S.Schema<DisassociateWirelessGatewayFromCertificateResponse>,
   errors: [
@@ -3442,8 +3442,8 @@ export const disassociateWirelessGatewayFromThing: API.OperationMethod<
   DisassociateWirelessGatewayFromThingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2272, __c71, 0) as any as S.Schema<DisassociateWirelessGatewayFromThingRequest>,
-  output: __S(4000, __c125, 0) as any as S.Schema<DisassociateWirelessGatewayFromThingResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<DisassociateWirelessGatewayFromThingRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<DisassociateWirelessGatewayFromThingResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3473,8 +3473,8 @@ export const getDestination: API.OperationMethod<
   GetDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2304, __c72, 0) as any as S.Schema<GetDestinationRequest>,
-  output: __S(2305, __c72, 1) as any as S.Schema<GetDestinationResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<GetDestinationRequest>,
+  output: __S(2273, __c71, 1) as any as S.Schema<GetDestinationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3503,8 +3503,8 @@ export const getDeviceProfile: API.OperationMethod<
   GetDeviceProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2336, __c73, 0) as any as S.Schema<GetDeviceProfileRequest>,
-  output: __S(2340, __c73, 4) as any as S.Schema<GetDeviceProfileResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<GetDeviceProfileRequest>,
+  output: __S(2308, __c72, 4) as any as S.Schema<GetDeviceProfileResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3531,8 +3531,8 @@ export const getEventConfigurationByResourceTypes: API.OperationMethod<
   GetEventConfigurationByResourceTypesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2368, __c74, 0) as any as S.Schema<GetEventConfigurationByResourceTypesRequest>,
-  output: __S(2369, __c74, 1) as any as S.Schema<GetEventConfigurationByResourceTypesResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<GetEventConfigurationByResourceTypesRequest>,
+  output: __S(2337, __c73, 1) as any as S.Schema<GetEventConfigurationByResourceTypesResponse>,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3555,8 +3555,8 @@ export const getFuotaTask: API.OperationMethod<
   GetFuotaTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2432, __c76, 0) as any as S.Schema<GetFuotaTaskRequest>,
-  output: __S(2434, __c76, 2) as any as S.Schema<GetFuotaTaskResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<GetFuotaTaskRequest>,
+  output: __S(2402, __c75, 2) as any as S.Schema<GetFuotaTaskResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3587,8 +3587,8 @@ export const getLogLevelsByResourceTypes: API.OperationMethod<
   GetLogLevelsByResourceTypesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2464, __c77, 0) as any as S.Schema<GetLogLevelsByResourceTypesRequest>,
-  output: __S(2465, __c77, 1) as any as S.Schema<GetLogLevelsByResourceTypesResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<GetLogLevelsByResourceTypesRequest>,
+  output: __S(2433, __c76, 1) as any as S.Schema<GetLogLevelsByResourceTypesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3618,8 +3618,8 @@ export const getMetricConfiguration: API.OperationMethod<
   GetMetricConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2528, __c79, 0) as any as S.Schema<GetMetricConfigurationRequest>,
-  output: __S(2529, __c79, 1) as any as S.Schema<GetMetricConfigurationResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<GetMetricConfigurationRequest>,
+  output: __S(2497, __c78, 1) as any as S.Schema<GetMetricConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3650,8 +3650,8 @@ export const getMetrics: API.OperationMethod<
   GetMetricsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2596, __c81, 4) as any as S.Schema<GetMetricsRequest>,
-  output: __S(2602, __c81, 10) as any as S.Schema<GetMetricsResponse>,
+  input: __S(2564, __c80, 4) as any as S.Schema<GetMetricsRequest>,
+  output: __S(2570, __c80, 10) as any as S.Schema<GetMetricsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3681,8 +3681,8 @@ export const getMulticastGroup: API.OperationMethod<
   GetMulticastGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2624, __c82, 0) as any as S.Schema<GetMulticastGroupRequest>,
-  output: __S(2626, __c82, 2) as any as S.Schema<GetMulticastGroupResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<GetMulticastGroupRequest>,
+  output: __S(2594, __c81, 2) as any as S.Schema<GetMulticastGroupResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3711,8 +3711,8 @@ export const getMulticastGroupSession: API.OperationMethod<
   GetMulticastGroupSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2656, __c83, 0) as any as S.Schema<GetMulticastGroupSessionRequest>,
-  output: __S(2657, __c83, 1) as any as S.Schema<GetMulticastGroupSessionResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<GetMulticastGroupSessionRequest>,
+  output: __S(2625, __c82, 1) as any as S.Schema<GetMulticastGroupSessionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3741,8 +3741,8 @@ export const getNetworkAnalyzerConfiguration: API.OperationMethod<
   GetNetworkAnalyzerConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2720, __c85, 0) as any as S.Schema<GetNetworkAnalyzerConfigurationRequest>,
-  output: __S(2721, __c85, 1) as any as S.Schema<GetNetworkAnalyzerConfigurationResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<GetNetworkAnalyzerConfigurationRequest>,
+  output: __S(2689, __c84, 1) as any as S.Schema<GetNetworkAnalyzerConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3771,8 +3771,8 @@ export const getPartnerAccount: API.OperationMethod<
   GetPartnerAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2752, __c86, 0) as any as S.Schema<GetPartnerAccountRequest>,
-  output: __S(2753, __c86, 1) as any as S.Schema<GetPartnerAccountResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<GetPartnerAccountRequest>,
+  output: __S(2721, __c85, 1) as any as S.Schema<GetPartnerAccountResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -3803,8 +3803,8 @@ export const getPosition: API.OperationMethod<
   GetPositionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2816, __c88, 0) as any as S.Schema<GetPositionRequest>,
-  output: __S(2818, __c88, 2) as any as S.Schema<GetPositionResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<GetPositionRequest>,
+  output: __S(2786, __c87, 2) as any as S.Schema<GetPositionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3836,8 +3836,8 @@ export const getPositionConfiguration: API.OperationMethod<
   GetPositionConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2848, __c89, 0) as any as S.Schema<GetPositionConfigurationRequest>,
-  output: __S(2849, __c89, 1) as any as S.Schema<GetPositionConfigurationResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<GetPositionConfigurationRequest>,
+  output: __S(2817, __c88, 1) as any as S.Schema<GetPositionConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3868,8 +3868,8 @@ export const getPositionEstimate: API.OperationMethod<
   GetPositionEstimateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2948, __c92, 4) as any as S.Schema<GetPositionEstimateRequest>,
-  output: __S(2976, __c93, 0) as any as S.Schema<GetPositionEstimateResponse>,
+  input: __S(2916, __c91, 4) as any as S.Schema<GetPositionEstimateRequest>,
+  output: __S(2944, __c92, 0) as any as S.Schema<GetPositionEstimateResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3898,8 +3898,8 @@ export const getResourceEventConfiguration: API.OperationMethod<
   GetResourceEventConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3008, __c94, 0) as any as S.Schema<GetResourceEventConfigurationRequest>,
-  output: __S(3040, __c95, 0) as any as S.Schema<GetResourceEventConfigurationResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<GetResourceEventConfigurationRequest>,
+  output: __S(3008, __c94, 0) as any as S.Schema<GetResourceEventConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3929,8 +3929,8 @@ export const getResourceLogLevel: API.OperationMethod<
   GetResourceLogLevelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3104, __c97, 0) as any as S.Schema<GetResourceLogLevelRequest>,
-  output: __S(3105, __c97, 1) as any as S.Schema<GetResourceLogLevelResponse>,
+  input: __S(3072, __c96, 0) as any as S.Schema<GetResourceLogLevelRequest>,
+  output: __S(3073, __c96, 1) as any as S.Schema<GetResourceLogLevelResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3961,8 +3961,8 @@ export const getResourcePosition: API.OperationMethod<
   GetResourcePositionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3136, __c98, 0) as any as S.Schema<GetResourcePositionRequest>,
-  output: __S(2976, __c93, 0) as any as S.Schema<GetResourcePositionResponse>,
+  input: __S(3104, __c97, 0) as any as S.Schema<GetResourcePositionRequest>,
+  output: __S(2944, __c92, 0) as any as S.Schema<GetResourcePositionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3991,8 +3991,8 @@ export const getServiceEndpoint: API.OperationMethod<
   GetServiceEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3168, __c99, 0) as any as S.Schema<GetServiceEndpointRequest>,
-  output: __S(3169, __c99, 1) as any as S.Schema<GetServiceEndpointResponse>,
+  input: __S(3136, __c98, 0) as any as S.Schema<GetServiceEndpointRequest>,
+  output: __S(3137, __c98, 1) as any as S.Schema<GetServiceEndpointResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4020,8 +4020,8 @@ export const getServiceProfile: API.OperationMethod<
   GetServiceProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3200, __c100, 0) as any as S.Schema<GetServiceProfileRequest>,
-  output: __S(3202, __c100, 2) as any as S.Schema<GetServiceProfileResponse>,
+  input: __S(3168, __c99, 0) as any as S.Schema<GetServiceProfileRequest>,
+  output: __S(3170, __c99, 2) as any as S.Schema<GetServiceProfileResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4050,8 +4050,8 @@ export const getWirelessDevice: API.OperationMethod<
   GetWirelessDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3232, __c101, 0) as any as S.Schema<GetWirelessDeviceRequest>,
-  output: __S(3234, __c101, 2) as any as S.Schema<GetWirelessDeviceResponse>,
+  input: __S(3200, __c100, 0) as any as S.Schema<GetWirelessDeviceRequest>,
+  output: __S(3202, __c100, 2) as any as S.Schema<GetWirelessDeviceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4082,7 +4082,7 @@ export const getWirelessDeviceImportTask: API.OperationMethod<
   GetWirelessDeviceImportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3296, __c103, 0) as any as S.Schema<GetWirelessDeviceImportTaskRequest>,
+  input: __S(3264, __c102, 0) as any as S.Schema<GetWirelessDeviceImportTaskRequest>,
   output: __S(3297, __c103, 1) as any as S.Schema<GetWirelessDeviceImportTaskResponse>,
   errors: [
     AccessDeniedException,
@@ -4113,8 +4113,8 @@ export const getWirelessDeviceStatistics: API.OperationMethod<
   GetWirelessDeviceStatisticsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3360, __c105, 0) as any as S.Schema<GetWirelessDeviceStatisticsRequest>,
-  output: __S(3367, __c105, 7) as any as S.Schema<GetWirelessDeviceStatisticsResponse>,
+  input: __S(3328, __c104, 0) as any as S.Schema<GetWirelessDeviceStatisticsRequest>,
+  output: __S(3335, __c104, 7) as any as S.Schema<GetWirelessDeviceStatisticsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4143,8 +4143,8 @@ export const getWirelessGateway: API.OperationMethod<
   GetWirelessGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3392, __c106, 0) as any as S.Schema<GetWirelessGatewayRequest>,
-  output: __S(3393, __c106, 1) as any as S.Schema<GetWirelessGatewayResponse>,
+  input: __S(3360, __c105, 0) as any as S.Schema<GetWirelessGatewayRequest>,
+  output: __S(3361, __c105, 1) as any as S.Schema<GetWirelessGatewayResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4174,8 +4174,8 @@ export const getWirelessGatewayCertificate: API.OperationMethod<
   GetWirelessGatewayCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3424, __c107, 0) as any as S.Schema<GetWirelessGatewayCertificateRequest>,
-  output: __S(3425, __c107, 1) as any as S.Schema<GetWirelessGatewayCertificateResponse>,
+  input: __S(3392, __c106, 0) as any as S.Schema<GetWirelessGatewayCertificateRequest>,
+  output: __S(3393, __c106, 1) as any as S.Schema<GetWirelessGatewayCertificateResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4204,8 +4204,8 @@ export const getWirelessGatewayFirmwareInformation: API.OperationMethod<
   GetWirelessGatewayFirmwareInformationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3456, __c108, 0) as any as S.Schema<GetWirelessGatewayFirmwareInformationRequest>,
-  output: __S(3458, __c108, 2) as any as S.Schema<GetWirelessGatewayFirmwareInformationResponse>,
+  input: __S(3424, __c107, 0) as any as S.Schema<GetWirelessGatewayFirmwareInformationRequest>,
+  output: __S(3426, __c107, 2) as any as S.Schema<GetWirelessGatewayFirmwareInformationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4234,8 +4234,8 @@ export const getWirelessGatewayStatistics: API.OperationMethod<
   GetWirelessGatewayStatisticsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3552, __c111, 0) as any as S.Schema<GetWirelessGatewayStatisticsRequest>,
-  output: __S(3553, __c111, 1) as any as S.Schema<GetWirelessGatewayStatisticsResponse>,
+  input: __S(3520, __c110, 0) as any as S.Schema<GetWirelessGatewayStatisticsRequest>,
+  output: __S(3521, __c110, 1) as any as S.Schema<GetWirelessGatewayStatisticsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4264,8 +4264,8 @@ export const getWirelessGatewayTask: API.OperationMethod<
   GetWirelessGatewayTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3584, __c112, 0) as any as S.Schema<GetWirelessGatewayTaskRequest>,
-  output: __S(3585, __c112, 1) as any as S.Schema<GetWirelessGatewayTaskResponse>,
+  input: __S(3552, __c111, 0) as any as S.Schema<GetWirelessGatewayTaskRequest>,
+  output: __S(3553, __c111, 1) as any as S.Schema<GetWirelessGatewayTaskResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4294,8 +4294,8 @@ export const getWirelessGatewayTaskDefinition: API.OperationMethod<
   GetWirelessGatewayTaskDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3616, __c113, 0) as any as S.Schema<GetWirelessGatewayTaskDefinitionRequest>,
-  output: __S(3617, __c113, 1) as any as S.Schema<GetWirelessGatewayTaskDefinitionResponse>,
+  input: __S(3584, __c112, 0) as any as S.Schema<GetWirelessGatewayTaskDefinitionRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<GetWirelessGatewayTaskDefinitionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4324,8 +4324,8 @@ export const listDestinations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3648, __c114, 0) as any as S.Schema<ListDestinationsRequest>,
-  output: __S(3651, __c114, 3) as any as S.Schema<ListDestinationsResponse>,
+  input: __S(3616, __c113, 0) as any as S.Schema<ListDestinationsRequest>,
+  output: __S(3619, __c113, 3) as any as S.Schema<ListDestinationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4358,8 +4358,8 @@ export const listDeviceProfiles: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3680, __c115, 0) as any as S.Schema<ListDeviceProfilesRequest>,
-  output: __S(3681, __c115, 1) as any as S.Schema<ListDeviceProfilesResponse>,
+  input: __S(3648, __c114, 0) as any as S.Schema<ListDeviceProfilesRequest>,
+  output: __S(3649, __c114, 1) as any as S.Schema<ListDeviceProfilesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4393,8 +4393,8 @@ export const listDevicesForWirelessDeviceImportTask: API.OperationMethod<
   ListDevicesForWirelessDeviceImportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3744, __c117, 0) as any as S.Schema<ListDevicesForWirelessDeviceImportTaskRequest>,
-  output: __S(3748, __c117, 4) as any as S.Schema<ListDevicesForWirelessDeviceImportTaskResponse>,
+  input: __S(3712, __c116, 0) as any as S.Schema<ListDevicesForWirelessDeviceImportTaskRequest>,
+  output: __S(3716, __c116, 4) as any as S.Schema<ListDevicesForWirelessDeviceImportTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4423,8 +4423,8 @@ export const listEventConfigurations: API.OperationMethod<
   ListEventConfigurationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3808, __c119, 0) as any as S.Schema<ListEventConfigurationsRequest>,
-  output: __S(3811, __c119, 3) as any as S.Schema<ListEventConfigurationsResponse>,
+  input: __S(3776, __c118, 0) as any as S.Schema<ListEventConfigurationsRequest>,
+  output: __S(3779, __c118, 3) as any as S.Schema<ListEventConfigurationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4452,8 +4452,8 @@ export const listFuotaTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3840, __c120, 0) as any as S.Schema<ListFuotaTasksRequest>,
-  output: __S(3841, __c120, 1) as any as S.Schema<ListFuotaTasksResponse>,
+  input: __S(3808, __c119, 0) as any as S.Schema<ListFuotaTasksRequest>,
+  output: __S(3809, __c119, 1) as any as S.Schema<ListFuotaTasksResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4486,8 +4486,8 @@ export const listMulticastGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3904, __c122, 0) as any as S.Schema<ListMulticastGroupsRequest>,
-  output: __S(3905, __c122, 1) as any as S.Schema<ListMulticastGroupsResponse>,
+  input: __S(3872, __c121, 0) as any as S.Schema<ListMulticastGroupsRequest>,
+  output: __S(3873, __c121, 1) as any as S.Schema<ListMulticastGroupsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4521,8 +4521,8 @@ export const listMulticastGroupsByFuotaTask: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3936, __c123, 0) as any as S.Schema<ListMulticastGroupsByFuotaTaskRequest>,
-  output: __S(3939, __c123, 3) as any as S.Schema<ListMulticastGroupsByFuotaTaskResponse>,
+  input: __S(3904, __c122, 0) as any as S.Schema<ListMulticastGroupsByFuotaTaskRequest>,
+  output: __S(3907, __c122, 3) as any as S.Schema<ListMulticastGroupsByFuotaTaskResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4556,8 +4556,8 @@ export const listNetworkAnalyzerConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4032, __c126, 0) as any as S.Schema<ListNetworkAnalyzerConfigurationsRequest>,
-  output: __S(4034, __c126, 2) as any as S.Schema<ListNetworkAnalyzerConfigurationsResponse>,
+  input: __S(4000, __c125, 0) as any as S.Schema<ListNetworkAnalyzerConfigurationsRequest>,
+  output: __S(4002, __c125, 2) as any as S.Schema<ListNetworkAnalyzerConfigurationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4589,8 +4589,8 @@ export const listPartnerAccounts: API.OperationMethod<
   ListPartnerAccountsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4064, __c127, 0) as any as S.Schema<ListPartnerAccountsRequest>,
-  output: __S(4066, __c127, 2) as any as S.Schema<ListPartnerAccountsResponse>,
+  input: __S(4032, __c126, 0) as any as S.Schema<ListPartnerAccountsRequest>,
+  output: __S(4034, __c126, 2) as any as S.Schema<ListPartnerAccountsResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -4621,8 +4621,8 @@ export const listPositionConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4096, __c128, 0) as any as S.Schema<ListPositionConfigurationsRequest>,
-  output: __S(4099, __c128, 3) as any as S.Schema<ListPositionConfigurationsResponse>,
+  input: __S(4064, __c127, 0) as any as S.Schema<ListPositionConfigurationsRequest>,
+  output: __S(4067, __c127, 3) as any as S.Schema<ListPositionConfigurationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4656,8 +4656,8 @@ export const listQueuedMessages: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4128, __c129, 0) as any as S.Schema<ListQueuedMessagesRequest>,
-  output: __S(4131, __c129, 3) as any as S.Schema<ListQueuedMessagesResponse>,
+  input: __S(4096, __c128, 0) as any as S.Schema<ListQueuedMessagesRequest>,
+  output: __S(4099, __c128, 3) as any as S.Schema<ListQueuedMessagesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4691,8 +4691,8 @@ export const listServiceProfiles: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4192, __c131, 0) as any as S.Schema<ListServiceProfilesRequest>,
-  output: __S(4193, __c131, 1) as any as S.Schema<ListServiceProfilesResponse>,
+  input: __S(4160, __c130, 0) as any as S.Schema<ListServiceProfilesRequest>,
+  output: __S(4161, __c130, 1) as any as S.Schema<ListServiceProfilesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4725,8 +4725,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4224, __c132, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(4225, __c132, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(4192, __c131, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(4193, __c131, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -4757,8 +4757,8 @@ export const listWirelessDeviceImportTasks: API.OperationMethod<
   ListWirelessDeviceImportTasksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4256, __c133, 0) as any as S.Schema<ListWirelessDeviceImportTasksRequest>,
-  output: __S(4259, __c133, 3) as any as S.Schema<ListWirelessDeviceImportTasksResponse>,
+  input: __S(4224, __c132, 0) as any as S.Schema<ListWirelessDeviceImportTasksRequest>,
+  output: __S(4226, __c132, 2) as any as S.Schema<ListWirelessDeviceImportTasksResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4788,8 +4788,8 @@ export const listWirelessDevices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4288, __c134, 0) as any as S.Schema<ListWirelessDevicesRequest>,
-  output: __S(4293, __c134, 5) as any as S.Schema<ListWirelessDevicesResponse>,
+  input: __S(4256, __c133, 0) as any as S.Schema<ListWirelessDevicesRequest>,
+  output: __S(4261, __c133, 5) as any as S.Schema<ListWirelessDevicesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4822,8 +4822,8 @@ export const listWirelessGateways: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4320, __c135, 0) as any as S.Schema<ListWirelessGatewaysRequest>,
-  output: __S(4323, __c135, 3) as any as S.Schema<ListWirelessGatewaysResponse>,
+  input: __S(4288, __c134, 0) as any as S.Schema<ListWirelessGatewaysRequest>,
+  output: __S(4291, __c134, 3) as any as S.Schema<ListWirelessGatewaysResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4855,8 +4855,8 @@ export const listWirelessGatewayTaskDefinitions: API.OperationMethod<
   ListWirelessGatewayTaskDefinitionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4352, __c136, 0) as any as S.Schema<ListWirelessGatewayTaskDefinitionsRequest>,
-  output: __S(4356, __c136, 4) as any as S.Schema<ListWirelessGatewayTaskDefinitionsResponse>,
+  input: __S(4320, __c135, 0) as any as S.Schema<ListWirelessGatewayTaskDefinitionsRequest>,
+  output: __S(4324, __c135, 4) as any as S.Schema<ListWirelessGatewayTaskDefinitionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4887,8 +4887,8 @@ export const putPositionConfiguration: API.OperationMethod<
   PutPositionConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4418, __c138, 2) as any as S.Schema<PutPositionConfigurationRequest>,
-  output: __S(4000, __c125, 0) as any as S.Schema<PutPositionConfigurationResponse>,
+  input: __S(4386, __c137, 2) as any as S.Schema<PutPositionConfigurationRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<PutPositionConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4918,8 +4918,8 @@ export const putResourceLogLevel: API.OperationMethod<
   PutResourceLogLevelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4448, __c139, 0) as any as S.Schema<PutResourceLogLevelRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<PutResourceLogLevelResponse>,
+  input: __S(4416, __c138, 0) as any as S.Schema<PutResourceLogLevelRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<PutResourceLogLevelResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4949,8 +4949,8 @@ export const resetAllResourceLogLevels: API.OperationMethod<
   ResetAllResourceLogLevelsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4480, __c140, 0) as any as S.Schema<ResetAllResourceLogLevelsRequest>,
-  output: __S(4000, __c125, 0) as any as S.Schema<ResetAllResourceLogLevelsResponse>,
+  input: __S(4448, __c139, 0) as any as S.Schema<ResetAllResourceLogLevelsRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<ResetAllResourceLogLevelsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4980,8 +4980,8 @@ export const resetResourceLogLevel: API.OperationMethod<
   ResetResourceLogLevelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4512, __c141, 0) as any as S.Schema<ResetResourceLogLevelRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<ResetResourceLogLevelResponse>,
+  input: __S(4480, __c140, 0) as any as S.Schema<ResetResourceLogLevelRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<ResetResourceLogLevelResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5011,8 +5011,8 @@ export const sendDataToMulticastGroup: API.OperationMethod<
   SendDataToMulticastGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4546, __c142, 2) as any as S.Schema<SendDataToMulticastGroupRequest>,
-  output: __S(4576, __c143, 0) as any as S.Schema<SendDataToMulticastGroupResponse>,
+  input: __S(4514, __c141, 2) as any as S.Schema<SendDataToMulticastGroupRequest>,
+  output: __S(4544, __c142, 0) as any as S.Schema<SendDataToMulticastGroupResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5041,8 +5041,8 @@ export const sendDataToWirelessDevice: API.OperationMethod<
   SendDataToWirelessDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4610, __c144, 2) as any as S.Schema<SendDataToWirelessDeviceRequest>,
-  output: __S(4576, __c143, 0) as any as S.Schema<SendDataToWirelessDeviceResponse>,
+  input: __S(4578, __c143, 2) as any as S.Schema<SendDataToWirelessDeviceRequest>,
+  output: __S(4544, __c142, 0) as any as S.Schema<SendDataToWirelessDeviceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -5072,14 +5072,14 @@ export const startBulkAssociateWirelessDeviceWithMulticastGroup: API.OperationMe
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4640,
-    __c145,
+    4608,
+    __c144,
     0,
   ) as any as S.Schema<StartBulkAssociateWirelessDeviceWithMulticastGroupRequest>,
   output: __S(
-    4641,
-    __c145,
-    1,
+    3968,
+    __c124,
+    0,
   ) as any as S.Schema<StartBulkAssociateWirelessDeviceWithMulticastGroupResponse>,
   errors: [
     AccessDeniedException,
@@ -5111,14 +5111,14 @@ export const startBulkDisassociateWirelessDeviceFromMulticastGroup: API.Operatio
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4672,
-    __c146,
+    4640,
+    __c145,
     0,
   ) as any as S.Schema<StartBulkDisassociateWirelessDeviceFromMulticastGroupRequest>,
   output: __S(
-    4673,
-    __c146,
-    1,
+    3968,
+    __c124,
+    0,
   ) as any as S.Schema<StartBulkDisassociateWirelessDeviceFromMulticastGroupResponse>,
   errors: [
     AccessDeniedException,
@@ -5149,8 +5149,8 @@ export const startFuotaTask: API.OperationMethod<
   StartFuotaTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4705, __c147, 1) as any as S.Schema<StartFuotaTaskRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<StartFuotaTaskResponse>,
+  input: __S(4673, __c146, 1) as any as S.Schema<StartFuotaTaskRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<StartFuotaTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5181,8 +5181,8 @@ export const startMulticastGroupSession: API.OperationMethod<
   StartMulticastGroupSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4736, __c148, 0) as any as S.Schema<StartMulticastGroupSessionRequest>,
-  output: __S(4000, __c125, 0) as any as S.Schema<StartMulticastGroupSessionResponse>,
+  input: __S(4704, __c147, 0) as any as S.Schema<StartMulticastGroupSessionRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<StartMulticastGroupSessionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5214,7 +5214,7 @@ export const startSingleWirelessDeviceImportTask: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(33, __c1, 1) as any as S.Schema<StartSingleWirelessDeviceImportTaskRequest>,
-  output: __S(1568, __c49, 0) as any as S.Schema<StartSingleWirelessDeviceImportTaskResponse>,
+  output: __S(1536, __c48, 0) as any as S.Schema<StartSingleWirelessDeviceImportTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5247,7 +5247,7 @@ export const startWirelessDeviceImportTask: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(65, __c2, 1) as any as S.Schema<StartWirelessDeviceImportTaskRequest>,
-  output: __S(1568, __c49, 0) as any as S.Schema<StartWirelessDeviceImportTaskResponse>,
+  output: __S(1536, __c48, 0) as any as S.Schema<StartWirelessDeviceImportTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5279,7 +5279,7 @@ export const tagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c3, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<TagResourceResponse>,
+  output: __S(3968, __c124, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -5339,7 +5339,7 @@ export const untagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(160, __c5, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<UntagResourceResponse>,
+  output: __S(3968, __c124, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -5369,7 +5369,7 @@ export const updateDestination: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(192, __c6, 0) as any as S.Schema<UpdateDestinationRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<UpdateDestinationResponse>,
+  output: __S(3968, __c124, 0) as any as S.Schema<UpdateDestinationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5398,7 +5398,7 @@ export const updateEventConfigurationByResourceTypes: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(224, __c7, 0) as any as S.Schema<UpdateEventConfigurationByResourceTypesRequest>,
-  output: __S(4000, __c125, 0) as any as S.Schema<UpdateEventConfigurationByResourceTypesResponse>,
+  output: __S(3968, __c124, 0) as any as S.Schema<UpdateEventConfigurationByResourceTypesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5428,7 +5428,7 @@ export const updateFuotaTask: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(256, __c8, 0) as any as S.Schema<UpdateFuotaTaskRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<UpdateFuotaTaskResponse>,
+  output: __S(3968, __c124, 0) as any as S.Schema<UpdateFuotaTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5462,7 +5462,7 @@ export const updateLogLevelsByResourceTypes: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(288, __c9, 0) as any as S.Schema<UpdateLogLevelsByResourceTypesRequest>,
-  output: __S(4000, __c125, 0) as any as S.Schema<UpdateLogLevelsByResourceTypesResponse>,
+  output: __S(3968, __c124, 0) as any as S.Schema<UpdateLogLevelsByResourceTypesResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5494,7 +5494,7 @@ export const updateMetricConfiguration: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(320, __c10, 0) as any as S.Schema<UpdateMetricConfigurationRequest>,
-  output: __S(4000, __c125, 0) as any as S.Schema<UpdateMetricConfigurationResponse>,
+  output: __S(3968, __c124, 0) as any as S.Schema<UpdateMetricConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5526,7 +5526,7 @@ export const updateMulticastGroup: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(384, __c12, 0) as any as S.Schema<UpdateMulticastGroupRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<UpdateMulticastGroupResponse>,
+  output: __S(3968, __c124, 0) as any as S.Schema<UpdateMulticastGroupResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5557,7 +5557,7 @@ export const updateNetworkAnalyzerConfiguration: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(416, __c13, 0) as any as S.Schema<UpdateNetworkAnalyzerConfigurationRequest>,
-  output: __S(4000, __c125, 0) as any as S.Schema<UpdateNetworkAnalyzerConfigurationResponse>,
+  output: __S(3968, __c124, 0) as any as S.Schema<UpdateNetworkAnalyzerConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5586,7 +5586,7 @@ export const updatePartnerAccount: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(449, __c14, 1) as any as S.Schema<UpdatePartnerAccountRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<UpdatePartnerAccountResponse>,
+  output: __S(3968, __c124, 0) as any as S.Schema<UpdatePartnerAccountResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -5618,7 +5618,7 @@ export const updatePosition: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(480, __c15, 0) as any as S.Schema<UpdatePositionRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<UpdatePositionResponse>,
+  output: __S(3968, __c124, 0) as any as S.Schema<UpdatePositionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5649,7 +5649,7 @@ export const updateResourceEventConfiguration: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(512, __c16, 0) as any as S.Schema<UpdateResourceEventConfigurationRequest>,
-  output: __S(4000, __c125, 0) as any as S.Schema<UpdateResourceEventConfigurationResponse>,
+  output: __S(3968, __c124, 0) as any as S.Schema<UpdateResourceEventConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5682,7 +5682,7 @@ export const updateResourcePosition: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(544, __c17, 0) as any as S.Schema<UpdateResourcePositionRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<UpdateResourcePositionResponse>,
+  output: __S(3968, __c124, 0) as any as S.Schema<UpdateResourcePositionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5712,7 +5712,7 @@ export const updateWirelessDevice: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(579, __c18, 3) as any as S.Schema<UpdateWirelessDeviceRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<UpdateWirelessDeviceResponse>,
+  output: __S(3968, __c124, 0) as any as S.Schema<UpdateWirelessDeviceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5743,7 +5743,7 @@ export const updateWirelessDeviceImportTask: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(609, __c19, 1) as any as S.Schema<UpdateWirelessDeviceImportTaskRequest>,
-  output: __S(4000, __c125, 0) as any as S.Schema<UpdateWirelessDeviceImportTaskResponse>,
+  output: __S(3968, __c124, 0) as any as S.Schema<UpdateWirelessDeviceImportTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5774,7 +5774,7 @@ export const updateWirelessGateway: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(640, __c20, 0) as any as S.Schema<UpdateWirelessGatewayRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<UpdateWirelessGatewayResponse>,
+  output: __S(3968, __c124, 0) as any as S.Schema<UpdateWirelessGatewayResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5802,9 +5802,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateWirelessDeviceWithMulticastGroupRequest",
-      });
+      ).annotate({ identifier: "AssociateWirelessDeviceWithMulticastGroupRequest" });
   }
 }
 function __c1(j: number): any {
@@ -5813,18 +5811,16 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SidewalkManufacturingSn: S.optional(S.String),
-          Positioning: S.optional(__S(1376, __c43, 0)),
+          Positioning: S.optional(__S(1344, __c42, 0)),
         }),
-      ).annotate({
-        identifier: "SidewalkSingleStartImportInfo",
-      });
+      ).annotate({ identifier: "SidewalkSingleStartImportInfo" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           DestinationName: S.String,
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           DeviceName: S.optional(S.String),
-          Tags: S.optional(__S(3521, __c110, 1)),
+          Tags: S.optional(__S(3489, __c109, 1)),
           Positioning: S.optional(S.String),
           Sidewalk: __S(32, __c1, 0),
         }).pipe(
@@ -5837,9 +5833,7 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartSingleWirelessDeviceImportTaskRequest",
-      });
+      ).annotate({ identifier: "StartSingleWirelessDeviceImportTaskRequest" });
   }
 }
 function __c2(j: number): any {
@@ -5849,7 +5843,7 @@ function __c2(j: number): any {
         S.Struct({
           DeviceCreationFile: S.optional(S.String),
           Role: S.optional(S.String),
-          Positioning: S.optional(__S(1376, __c43, 0)),
+          Positioning: S.optional(__S(1344, __c42, 0)),
         }),
       ).annotate({ identifier: "SidewalkStartImportInfo" });
     case 1:
@@ -5857,7 +5851,7 @@ function __c2(j: number): any {
         S.Struct({
           DestinationName: S.String,
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(3521, __c110, 1)),
+          Tags: S.optional(__S(3489, __c109, 1)),
           Positioning: S.optional(S.String),
           Sidewalk: __S(64, __c2, 0),
         }).pipe(
@@ -5870,9 +5864,7 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartWirelessDeviceImportTaskRequest",
-      });
+      ).annotate({ identifier: "StartWirelessDeviceImportTaskRequest" });
   }
 }
 function __c3(j: number): any {
@@ -5881,7 +5873,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpQuery("resourceArn")),
-          Tags: __S(3521, __c110, 1),
+          Tags: __S(3489, __c109, 1),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/tags" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "TagResourceRequest" });
   }
@@ -5900,9 +5892,7 @@ function __c4(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "TestWirelessDeviceRequest",
-      });
+      ).annotate({ identifier: "TestWirelessDeviceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Result: S.optional(S.String) })).annotate({
         identifier: "TestWirelessDeviceResponse",
@@ -5915,7 +5905,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpQuery("resourceArn")),
-          TagKeys: __S(1120, __c35, 0).pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(1088, __c34, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(T.all(T.Http({ method: "DELETE", uri: "/tags" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UntagResourceRequest" });
   }
@@ -5948,11 +5938,11 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          DeviceRegistrationState: S.optional(__S(2401, __c75, 1)),
-          Proximity: S.optional(__S(2401, __c75, 1)),
-          Join: S.optional(__S(2402, __c75, 2)),
-          ConnectionStatus: S.optional(__S(2404, __c75, 4)),
-          MessageDeliveryStatus: S.optional(__S(2401, __c75, 1)),
+          DeviceRegistrationState: S.optional(__S(2369, __c74, 1)),
+          Proximity: S.optional(__S(2369, __c74, 1)),
+          Join: S.optional(__S(2370, __c74, 2)),
+          ConnectionStatus: S.optional(__S(2372, __c74, 4)),
+          MessageDeliveryStatus: S.optional(__S(2369, __c74, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/event-configurations-resource-types" }),
@@ -5963,9 +5953,7 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateEventConfigurationByResourceTypesRequest",
-      });
+      ).annotate({ identifier: "UpdateEventConfigurationByResourceTypesRequest" });
   }
 }
 function __c8(j: number): any {
@@ -5976,7 +5964,7 @@ function __c8(j: number): any {
           Id: S.String.pipe(T.HttpLabel("Id")),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          LoRaWAN: S.optional(__S(1024, __c32, 0)),
+          LoRaWAN: S.optional(__S(992, __c31, 0)),
           FirmwareUpdateImage: S.optional(S.String),
           FirmwareUpdateRole: S.optional(S.String),
           RedundancyPercent: S.optional(S.Number),
@@ -6002,22 +5990,20 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DefaultLogLevel: S.optional(S.String),
-          FuotaTaskLogOptions: S.optional(__S(2506, __c78, 10)),
-          WirelessDeviceLogOptions: S.optional(__S(2502, __c78, 6)),
-          WirelessGatewayLogOptions: S.optional(__S(2499, __c78, 3)),
+          FuotaTaskLogOptions: S.optional(__S(2467, __c77, 3)),
+          WirelessDeviceLogOptions: S.optional(__S(2467, __c77, 3)),
+          WirelessGatewayLogOptions: S.optional(__S(2467, __c77, 3)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/log-levels" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UpdateLogLevelsByResourceTypesRequest",
-      });
+      ).annotate({ identifier: "UpdateLogLevelsByResourceTypesRequest" });
   }
 }
 function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ SummaryMetric: S.optional(__S(2560, __c80, 0)) }).pipe(
+        S.Struct({ SummaryMetric: S.optional(__S(2528, __c79, 0)) }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/metric-configuration" }),
             svc,
@@ -6027,9 +6013,7 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateMetricConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateMetricConfigurationRequest" });
   }
 }
 function __c11(j: number): any {
@@ -6046,9 +6030,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateWirelessDeviceWithThingRequest",
-      });
+      ).annotate({ identifier: "AssociateWirelessDeviceWithThingRequest" });
   }
 }
 function __c12(j: number): any {
@@ -6059,7 +6041,7 @@ function __c12(j: number): any {
           Id: S.String.pipe(T.HttpLabel("Id")),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          LoRaWAN: S.optional(__S(1088, __c34, 0)),
+          LoRaWAN: S.optional(__S(1056, __c33, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/multicast-groups/{Id}" }),
@@ -6070,9 +6052,7 @@ function __c12(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateMulticastGroupRequest",
-      });
+      ).annotate({ identifier: "UpdateMulticastGroupRequest" });
   }
 }
 function __c13(j: number): any {
@@ -6081,14 +6061,14 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ConfigurationName: S.String.pipe(T.HttpLabel("ConfigurationName")),
-          TraceContent: S.optional(__S(1216, __c38, 0)),
-          WirelessDevicesToAdd: S.optional(__S(1120, __c35, 0)),
-          WirelessDevicesToRemove: S.optional(__S(1120, __c35, 0)),
-          WirelessGatewaysToAdd: S.optional(__S(1120, __c35, 0)),
-          WirelessGatewaysToRemove: S.optional(__S(1120, __c35, 0)),
+          TraceContent: S.optional(__S(1184, __c37, 0)),
+          WirelessDevicesToAdd: S.optional(__S(1088, __c34, 0)),
+          WirelessDevicesToRemove: S.optional(__S(1088, __c34, 0)),
+          WirelessGatewaysToAdd: S.optional(__S(1088, __c34, 0)),
+          WirelessGatewaysToRemove: S.optional(__S(1088, __c34, 0)),
           Description: S.optional(S.String),
-          MulticastGroupsToAdd: S.optional(__S(1120, __c35, 0)),
-          MulticastGroupsToRemove: S.optional(__S(1120, __c35, 0)),
+          MulticastGroupsToAdd: S.optional(__S(1088, __c34, 0)),
+          MulticastGroupsToRemove: S.optional(__S(1088, __c34, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -6102,9 +6082,7 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateNetworkAnalyzerConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateNetworkAnalyzerConfigurationRequest" });
   }
 }
 function __c14(j: number): any {
@@ -6129,9 +6107,7 @@ function __c14(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdatePartnerAccountRequest",
-      });
+      ).annotate({ identifier: "UpdatePartnerAccountRequest" });
   }
 }
 function __c15(j: number): any {
@@ -6163,11 +6139,11 @@ function __c16(j: number): any {
           Identifier: S.String.pipe(T.HttpLabel("Identifier")),
           IdentifierType: S.String.pipe(T.HttpQuery("identifierType")),
           PartnerType: S.optional(S.String).pipe(T.HttpQuery("partnerType")),
-          DeviceRegistrationState: S.optional(__S(3073, __c96, 1)),
-          Proximity: S.optional(__S(3073, __c96, 1)),
-          Join: S.optional(__S(3075, __c96, 3)),
-          ConnectionStatus: S.optional(__S(3077, __c96, 5)),
-          MessageDeliveryStatus: S.optional(__S(3073, __c96, 1)),
+          DeviceRegistrationState: S.optional(__S(3041, __c95, 1)),
+          Proximity: S.optional(__S(3041, __c95, 1)),
+          Join: S.optional(__S(3043, __c95, 3)),
+          ConnectionStatus: S.optional(__S(3045, __c95, 5)),
+          MessageDeliveryStatus: S.optional(__S(3041, __c95, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/event-configurations/{Identifier}" }),
@@ -6178,9 +6154,7 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateResourceEventConfigurationRequest",
-      });
+      ).annotate({ identifier: "UpdateResourceEventConfigurationRequest" });
   }
 }
 function __c17(j: number): any {
@@ -6201,9 +6175,7 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateResourcePositionRequest",
-      });
+      ).annotate({ identifier: "UpdateResourcePositionRequest" });
   }
 }
 function __c18(j: number): any {
@@ -6215,8 +6187,8 @@ function __c18(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Positioning: S.optional(__S(1344, __c42, 0)),
-          Applications: S.optional(__S(1346, __c42, 2)),
+          Positioning: S.optional(__S(1312, __c41, 0)),
+          Applications: S.optional(__S(1314, __c41, 2)),
         }),
       ).annotate({ identifier: "UpdateFPorts" });
     case 2:
@@ -6238,7 +6210,7 @@ function __c18(j: number): any {
           Description: S.optional(S.String),
           LoRaWAN: S.optional(__S(578, __c18, 2)),
           Positioning: S.optional(S.String),
-          Sidewalk: S.optional(__S(3776, __c118, 0)),
+          Sidewalk: S.optional(__S(3744, __c117, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/wireless-devices/{Id}" }),
@@ -6249,9 +6221,7 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateWirelessDeviceRequest",
-      });
+      ).annotate({ identifier: "UpdateWirelessDeviceRequest" });
   }
 }
 function __c19(j: number): any {
@@ -6272,9 +6242,7 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateWirelessDeviceImportTaskRequest",
-      });
+      ).annotate({ identifier: "UpdateWirelessDeviceImportTaskRequest" });
   }
 }
 function __c20(j: number): any {
@@ -6285,8 +6253,8 @@ function __c20(j: number): any {
           Id: S.String.pipe(T.HttpLabel("Id")),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          JoinEuiFilters: S.optional(__S(1472, __c46, 0)),
-          NetIdFilters: S.optional(__S(1120, __c35, 0)),
+          JoinEuiFilters: S.optional(__S(1440, __c45, 0)),
+          NetIdFilters: S.optional(__S(1088, __c34, 0)),
           MaxEirp: S.optional(S.Number),
         }).pipe(
           T.all(
@@ -6298,9 +6266,7 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateWirelessGatewayRequest",
-      });
+      ).annotate({ identifier: "UpdateWirelessGatewayRequest" });
   }
 }
 function __c21(j: number): any {
@@ -6317,9 +6283,7 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateWirelessGatewayWithCertificateRequest",
-      });
+      ).annotate({ identifier: "AssociateWirelessGatewayWithCertificateRequest" });
     case 1:
       return S.suspend(() => S.Struct({ IotCertificateId: S.optional(S.String) })).annotate({
         identifier: "AssociateWirelessGatewayWithCertificateResponse",
@@ -6340,9 +6304,7 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateWirelessGatewayWithThingRequest",
-      });
+      ).annotate({ identifier: "AssociateWirelessGatewayWithThingRequest" });
   }
 }
 function __c23(j: number): any {
@@ -6359,9 +6321,7 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CancelMulticastGroupSessionRequest",
-      });
+      ).annotate({ identifier: "CancelMulticastGroupSessionRequest" });
   }
 }
 function __c24(j: number): any {
@@ -6374,7 +6334,7 @@ function __c24(j: number): any {
           Expression: S.String,
           Description: S.optional(S.String),
           RoleArn: S.String,
-          Tags: S.optional(__S(3521, __c110, 1)),
+          Tags: S.optional(__S(3489, __c109, 1)),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/destinations" }), svc, auth, proto, ver, rules),
@@ -6387,9 +6347,7 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ Arn: S.optional(S.String), Name: S.optional(S.String) }),
-      ).annotate({
-        identifier: "CreateDestinationResponse",
-      });
+      ).annotate({ identifier: "CreateDestinationResponse" });
   }
 }
 function __c26(j: number): any {
@@ -6398,16 +6356,14 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          LoRaWAN: S.optional(__S(960, __c30, 0)),
-          Tags: S.optional(__S(3521, __c110, 1)),
+          LoRaWAN: S.optional(__S(928, __c29, 0)),
+          Tags: S.optional(__S(3489, __c109, 1)),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Sidewalk: S.optional(__S(928, __c29, 0)),
+          Sidewalk: S.optional(__S(3968, __c124, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/device-profiles" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateDeviceProfileRequest",
-      });
+      ).annotate({ identifier: "CreateDeviceProfileRequest" });
   }
 }
 function __c27(j: number): any {
@@ -6415,9 +6371,7 @@ function __c27(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ Arn: S.optional(S.String), Id: S.optional(S.String) }),
-      ).annotate({
-        identifier: "CreateDeviceProfileResponse",
-      });
+      ).annotate({ identifier: "CreateDeviceProfileResponse" });
   }
 }
 function __c28(j: number): any {
@@ -6427,14 +6381,6 @@ function __c28(j: number): any {
   }
 }
 function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "SidewalkCreateDeviceProfile",
-      });
-  }
-}
-function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6462,7 +6408,7 @@ function __c30(j: number): any {
       ).annotate({ identifier: "LoRaWANDeviceProfile" });
   }
 }
-function __c31(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6470,10 +6416,10 @@ function __c31(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          LoRaWAN: S.optional(__S(1024, __c32, 0)),
+          LoRaWAN: S.optional(__S(992, __c31, 0)),
           FirmwareUpdateImage: S.String,
           FirmwareUpdateRole: S.String,
-          Tags: S.optional(__S(3521, __c110, 1)),
+          Tags: S.optional(__S(3489, __c109, 1)),
           RedundancyPercent: S.optional(S.Number),
           FragmentSizeBytes: S.optional(S.Number),
           FragmentIntervalMS: S.optional(S.Number),
@@ -6482,13 +6428,9 @@ function __c31(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/fuota-tasks" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateFuotaTaskRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Arn: S.optional(S.String), Id: S.optional(S.String) }),
-      ).annotate({ identifier: "CreateFuotaTaskResponse" });
   }
 }
-function __c32(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ RfRegion: S.optional(S.String) })).annotate({
@@ -6496,7 +6438,7 @@ function __c32(j: number): any {
       });
   }
 }
-function __c33(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6504,33 +6446,46 @@ function __c33(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          LoRaWAN: __S(1088, __c34, 0),
-          Tags: S.optional(__S(3521, __c110, 1)),
+          LoRaWAN: __S(1056, __c33, 0),
+          Tags: S.optional(__S(3489, __c109, 1)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/multicast-groups" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateMulticastGroupRequest",
-      });
+      ).annotate({ identifier: "CreateMulticastGroupRequest" });
   }
 }
-function __c34(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           RfRegion: S.optional(S.String),
           DlClass: S.optional(S.String),
-          ParticipatingGateways: S.optional(__S(1152, __c36, 0)),
-          DefaultSessionParameters: S.optional(__S(1153, __c36, 1)),
+          ParticipatingGateways: S.optional(__S(1120, __c35, 0)),
+          DefaultSessionParameters: S.optional(__S(1121, __c35, 1)),
         }),
       ).annotate({ identifier: "LoRaWANMulticast" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
   }
 }
 function __c35(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.suspend(() =>
+        S.Struct({
+          GatewayList: S.optional(__S(1088, __c34, 0)),
+          TransmissionInterval: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ParticipatingGatewaysMulticast" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DlDr: S.optional(S.Number), DlFreq: S.optional(S.Number) }),
+      ).annotate({ identifier: "DefaultSessionParametersMulticast" });
   }
 }
 function __c36(j: number): any {
@@ -6538,33 +6493,14 @@ function __c36(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          GatewayList: S.optional(__S(1120, __c35, 0)),
-          TransmissionInterval: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ParticipatingGatewaysMulticast",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ DlDr: S.optional(S.Number), DlFreq: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "DefaultSessionParametersMulticast",
-      });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
           Name: S.String,
-          TraceContent: S.optional(__S(1216, __c38, 0)),
-          WirelessDevices: S.optional(__S(1120, __c35, 0)),
-          WirelessGateways: S.optional(__S(1120, __c35, 0)),
+          TraceContent: S.optional(__S(1184, __c37, 0)),
+          WirelessDevices: S.optional(__S(1088, __c34, 0)),
+          WirelessGateways: S.optional(__S(1088, __c34, 0)),
           Description: S.optional(S.String),
-          Tags: S.optional(__S(3521, __c110, 1)),
+          Tags: S.optional(__S(3489, __c109, 1)),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          MulticastGroups: S.optional(__S(1120, __c35, 0)),
+          MulticastGroups: S.optional(__S(1088, __c34, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/network-analyzer-configurations" }),
@@ -6575,12 +6511,10 @@ function __c37(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateNetworkAnalyzerConfigurationRequest",
-      });
+      ).annotate({ identifier: "CreateNetworkAnalyzerConfigurationRequest" });
   }
 }
-function __c38(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6592,7 +6526,7 @@ function __c38(j: number): any {
       ).annotate({ identifier: "TraceContent" });
   }
 }
-function __c39(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6612,29 +6546,25 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          LoRaWAN: S.optional(__S(1248, __c39, 0)),
-          Tags: S.optional(__S(3521, __c110, 1)),
+          LoRaWAN: S.optional(__S(1216, __c38, 0)),
+          Tags: S.optional(__S(3489, __c109, 1)),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/service-profiles" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateServiceProfileRequest",
-      });
+      ).annotate({ identifier: "CreateServiceProfileRequest" });
   }
 }
-function __c40(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           DeviceProfileId: S.optional(S.String),
-          Positioning: S.optional(__S(1376, __c43, 0)),
+          Positioning: S.optional(__S(1344, __c42, 0)),
           SidewalkManufacturingSn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SidewalkCreateWirelessDevice",
-      });
+      ).annotate({ identifier: "SidewalkCreateWirelessDevice" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6643,19 +6573,17 @@ function __c40(j: number): any {
           Description: S.optional(S.String),
           DestinationName: S.String,
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          LoRaWAN: S.optional(__S(1319, __c41, 7)),
-          Tags: S.optional(__S(3521, __c110, 1)),
+          LoRaWAN: S.optional(__S(1287, __c40, 7)),
+          Tags: S.optional(__S(3489, __c109, 1)),
           Positioning: S.optional(S.String),
-          Sidewalk: S.optional(__S(1280, __c40, 0)),
+          Sidewalk: S.optional(__S(1248, __c39, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/wireless-devices" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateWirelessDeviceRequest",
-      });
+      ).annotate({ identifier: "CreateWirelessDeviceRequest" });
   }
 }
-function __c41(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6687,7 +6615,7 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DevAddr: S.optional(S.String),
-          SessionKeys: S.optional(__S(1314, __c41, 2)),
+          SessionKeys: S.optional(__S(1282, __c40, 2)),
           FCntStart: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AbpV1_1" });
@@ -6699,7 +6627,7 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DevAddr: S.optional(S.String),
-          SessionKeys: S.optional(__S(1316, __c41, 4)),
+          SessionKeys: S.optional(__S(1284, __c40, 4)),
           FCntStart: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AbpV1_0_x" });
@@ -6709,8 +6637,8 @@ function __c41(j: number): any {
           Fuota: S.optional(S.Number),
           Multicast: S.optional(S.Number),
           ClockSync: S.optional(S.Number),
-          Positioning: S.optional(__S(1344, __c42, 0)),
-          Applications: S.optional(__S(1346, __c42, 2)),
+          Positioning: S.optional(__S(1312, __c41, 0)),
+          Applications: S.optional(__S(1314, __c41, 2)),
         }),
       ).annotate({ identifier: "FPorts" });
     case 7:
@@ -6719,16 +6647,16 @@ function __c41(j: number): any {
           DevEui: S.optional(S.String),
           DeviceProfileId: S.optional(S.String),
           ServiceProfileId: S.optional(S.String),
-          OtaaV1_1: S.optional(__S(1312, __c41, 0)),
-          OtaaV1_0_x: S.optional(__S(1313, __c41, 1)),
-          AbpV1_1: S.optional(__S(1315, __c41, 3)),
-          AbpV1_0_x: S.optional(__S(1317, __c41, 5)),
-          FPorts: S.optional(__S(1318, __c41, 6)),
+          OtaaV1_1: S.optional(__S(1280, __c40, 0)),
+          OtaaV1_0_x: S.optional(__S(1281, __c40, 1)),
+          AbpV1_1: S.optional(__S(1283, __c40, 3)),
+          AbpV1_0_x: S.optional(__S(1285, __c40, 5)),
+          FPorts: S.optional(__S(1286, __c40, 6)),
         }),
       ).annotate({ identifier: "LoRaWANDevice" });
   }
 }
-function __c42(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6747,10 +6675,10 @@ function __c42(j: number): any {
         }),
       ).annotate({ identifier: "ApplicationConfig" });
     case 2:
-      return S.Array(__S(1345, __c42, 1));
+      return S.Array(__S(1313, __c41, 1));
   }
 }
-function __c43(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ DestinationName: S.optional(S.String) })).annotate({
@@ -6758,15 +6686,15 @@ function __c43(j: number): any {
       });
   }
 }
-function __c44(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          LoRaWAN: __S(1441, __c45, 1),
-          Tags: S.optional(__S(3521, __c110, 1)),
+          LoRaWAN: __S(1409, __c44, 1),
+          Tags: S.optional(__S(3489, __c109, 1)),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -6778,12 +6706,10 @@ function __c44(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateWirelessGatewayRequest",
-      });
+      ).annotate({ identifier: "CreateWirelessGatewayRequest" });
   }
 }
-function __c45(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6794,22 +6720,22 @@ function __c45(j: number): any {
         S.Struct({
           GatewayEui: S.optional(S.String),
           RfRegion: S.optional(S.String),
-          JoinEuiFilters: S.optional(__S(1472, __c46, 0)),
-          NetIdFilters: S.optional(__S(1120, __c35, 0)),
+          JoinEuiFilters: S.optional(__S(1440, __c45, 0)),
+          NetIdFilters: S.optional(__S(1088, __c34, 0)),
           SubBands: S.optional(__S(896, __c28, 0)),
-          Beaconing: S.optional(__S(1440, __c45, 0)),
+          Beaconing: S.optional(__S(1408, __c44, 0)),
           MaxEirp: S.optional(S.Number),
         }),
       ).annotate({ identifier: "LoRaWANGateway" });
   }
 }
-function __c46(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1120, __c35, 0));
+      return S.Array(__S(1088, __c34, 0));
   }
 }
-function __c47(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6826,30 +6752,26 @@ function __c47(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateWirelessGatewayTaskRequest",
-      });
+      ).annotate({ identifier: "CreateWirelessGatewayTaskRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           WirelessGatewayTaskDefinitionId: S.optional(S.String),
           Status: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateWirelessGatewayTaskResponse",
-      });
+      ).annotate({ identifier: "CreateWirelessGatewayTaskResponse" });
   }
 }
-function __c48(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           AutoCreateTasks: S.Boolean,
           Name: S.optional(S.String),
-          Update: S.optional(__S(1633, __c51, 1)),
+          Update: S.optional(__S(1601, __c50, 1)),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(3521, __c110, 1)),
+          Tags: S.optional(__S(3489, __c109, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/wireless-gateway-task-definitions" }),
@@ -6860,22 +6782,18 @@ function __c48(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateWirelessGatewayTaskDefinitionRequest",
-      });
+      ).annotate({ identifier: "CreateWirelessGatewayTaskDefinitionRequest" });
   }
 }
-function __c49(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ Id: S.optional(S.String), Arn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "CreateWirelessGatewayTaskDefinitionResponse",
-      });
+      ).annotate({ identifier: "CreateWirelessGatewayTaskDefinitionResponse" });
   }
 }
-function __c50(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6887,32 +6805,28 @@ function __c50(j: number): any {
       ).annotate({ identifier: "LoRaWANGatewayVersion" });
   }
 }
-function __c51(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           UpdateSignature: S.optional(S.String),
           SigKeyCrc: S.optional(S.Number),
-          CurrentVersion: S.optional(__S(1600, __c50, 0)),
-          UpdateVersion: S.optional(__S(1600, __c50, 0)),
+          CurrentVersion: S.optional(__S(1568, __c49, 0)),
+          UpdateVersion: S.optional(__S(1568, __c49, 0)),
         }),
-      ).annotate({
-        identifier: "LoRaWANUpdateGatewayTaskCreate",
-      });
+      ).annotate({ identifier: "LoRaWANUpdateGatewayTaskCreate" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           UpdateDataSource: S.optional(S.String),
           UpdateDataRole: S.optional(S.String),
-          LoRaWAN: S.optional(__S(1632, __c51, 0)),
+          LoRaWAN: S.optional(__S(1600, __c50, 0)),
         }),
-      ).annotate({
-        identifier: "UpdateWirelessGatewayTaskCreate",
-      });
+      ).annotate({ identifier: "UpdateWirelessGatewayTaskCreate" });
   }
 }
-function __c52(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6929,7 +6843,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "DeleteDestinationRequest" });
   }
 }
-function __c53(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6943,12 +6857,10 @@ function __c53(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteDeviceProfileRequest",
-      });
+      ).annotate({ identifier: "DeleteDeviceProfileRequest" });
   }
 }
-function __c54(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6965,7 +6877,7 @@ function __c54(j: number): any {
       ).annotate({ identifier: "DeleteFuotaTaskRequest" });
   }
 }
-function __c55(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6979,12 +6891,10 @@ function __c55(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteMulticastGroupRequest",
-      });
+      ).annotate({ identifier: "DeleteMulticastGroupRequest" });
   }
 }
-function __c56(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7001,12 +6911,10 @@ function __c56(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteNetworkAnalyzerConfigurationRequest",
-      });
+      ).annotate({ identifier: "DeleteNetworkAnalyzerConfigurationRequest" });
   }
 }
-function __c57(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7024,12 +6932,10 @@ function __c57(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteQueuedMessagesRequest",
-      });
+      ).annotate({ identifier: "DeleteQueuedMessagesRequest" });
   }
 }
-function __c58(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7043,12 +6949,10 @@ function __c58(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteServiceProfileRequest",
-      });
+      ).annotate({ identifier: "DeleteServiceProfileRequest" });
   }
 }
-function __c59(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7062,12 +6966,10 @@ function __c59(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteWirelessDeviceRequest",
-      });
+      ).annotate({ identifier: "DeleteWirelessDeviceRequest" });
   }
 }
-function __c60(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7081,12 +6983,10 @@ function __c60(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteWirelessDeviceImportTaskRequest",
-      });
+      ).annotate({ identifier: "DeleteWirelessDeviceImportTaskRequest" });
   }
 }
-function __c61(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7100,12 +7000,10 @@ function __c61(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteWirelessGatewayRequest",
-      });
+      ).annotate({ identifier: "DeleteWirelessGatewayRequest" });
   }
 }
-function __c62(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7119,12 +7017,10 @@ function __c62(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteWirelessGatewayTaskRequest",
-      });
+      ).annotate({ identifier: "DeleteWirelessGatewayTaskRequest" });
   }
 }
-function __c63(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7138,12 +7034,10 @@ function __c63(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteWirelessGatewayTaskDefinitionRequest",
-      });
+      ).annotate({ identifier: "DeleteWirelessGatewayTaskDefinitionRequest" });
   }
 }
-function __c64(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7160,12 +7054,10 @@ function __c64(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeregisterWirelessDeviceRequest",
-      });
+      ).annotate({ identifier: "DeregisterWirelessDeviceRequest" });
   }
 }
-function __c65(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7182,12 +7074,10 @@ function __c65(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateAwsAccountFromPartnerAccountRequest",
-      });
+      ).annotate({ identifier: "DisassociateAwsAccountFromPartnerAccountRequest" });
   }
 }
-function __c66(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7207,12 +7097,10 @@ function __c66(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateMulticastGroupFromFuotaTaskRequest",
-      });
+      ).annotate({ identifier: "DisassociateMulticastGroupFromFuotaTaskRequest" });
   }
 }
-function __c67(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7232,12 +7120,10 @@ function __c67(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateWirelessDeviceFromFuotaTaskRequest",
-      });
+      ).annotate({ identifier: "DisassociateWirelessDeviceFromFuotaTaskRequest" });
   }
 }
-function __c68(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7257,12 +7143,10 @@ function __c68(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateWirelessDeviceFromMulticastGroupRequest",
-      });
+      ).annotate({ identifier: "DisassociateWirelessDeviceFromMulticastGroupRequest" });
   }
 }
-function __c69(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7276,12 +7160,10 @@ function __c69(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateWirelessDeviceFromThingRequest",
-      });
+      ).annotate({ identifier: "DisassociateWirelessDeviceFromThingRequest" });
   }
 }
-function __c70(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7295,12 +7177,10 @@ function __c70(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateWirelessGatewayFromCertificateRequest",
-      });
+      ).annotate({ identifier: "DisassociateWirelessGatewayFromCertificateRequest" });
   }
 }
-function __c71(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7314,12 +7194,10 @@ function __c71(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateWirelessGatewayFromThingRequest",
-      });
+      ).annotate({ identifier: "DisassociateWirelessGatewayFromThingRequest" });
   }
 }
-function __c72(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7347,7 +7225,7 @@ function __c72(j: number): any {
       ).annotate({ identifier: "GetDestinationResponse" });
   }
 }
-function __c73(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7373,13 +7251,13 @@ function __c73(j: number): any {
         }),
       ).annotate({ identifier: "DakCertificateMetadata" });
     case 2:
-      return S.Array(__S(2337, __c73, 1));
+      return S.Array(__S(2305, __c72, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           ApplicationServerPublicKey: S.optional(SensitiveString),
           QualificationStatus: S.optional(S.Boolean),
-          DakCertificateMetadata: S.optional(__S(2338, __c73, 2)),
+          DakCertificateMetadata: S.optional(__S(2306, __c72, 2)),
         }),
       ).annotate({ identifier: "SidewalkGetDeviceProfile" });
     case 4:
@@ -7388,13 +7266,13 @@ function __c73(j: number): any {
           Arn: S.optional(S.String),
           Name: S.optional(S.String),
           Id: S.optional(S.String),
-          LoRaWAN: S.optional(__S(960, __c30, 0)),
-          Sidewalk: S.optional(__S(2339, __c73, 3)),
+          LoRaWAN: S.optional(__S(928, __c29, 0)),
+          Sidewalk: S.optional(__S(2307, __c72, 3)),
         }),
       ).annotate({ identifier: "GetDeviceProfileResponse" });
   }
 }
-function __c74(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7408,52 +7286,44 @@ function __c74(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetEventConfigurationByResourceTypesRequest",
-      });
+      ).annotate({ identifier: "GetEventConfigurationByResourceTypesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          DeviceRegistrationState: S.optional(__S(2401, __c75, 1)),
-          Proximity: S.optional(__S(2401, __c75, 1)),
-          Join: S.optional(__S(2402, __c75, 2)),
-          ConnectionStatus: S.optional(__S(2404, __c75, 4)),
-          MessageDeliveryStatus: S.optional(__S(2401, __c75, 1)),
+          DeviceRegistrationState: S.optional(__S(2369, __c74, 1)),
+          Proximity: S.optional(__S(2369, __c74, 1)),
+          Join: S.optional(__S(2370, __c74, 2)),
+          ConnectionStatus: S.optional(__S(2372, __c74, 4)),
+          MessageDeliveryStatus: S.optional(__S(2369, __c74, 1)),
         }),
-      ).annotate({
-        identifier: "GetEventConfigurationByResourceTypesResponse",
-      });
+      ).annotate({ identifier: "GetEventConfigurationByResourceTypesResponse" });
   }
 }
-function __c75(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ WirelessDeviceEventTopic: S.optional(S.String) })).annotate(
-        {
-          identifier: "SidewalkResourceTypeEventConfiguration",
-        },
+        { identifier: "SidewalkResourceTypeEventConfiguration" },
       );
     case 1:
-      return S.suspend(() => S.Struct({ Sidewalk: S.optional(__S(2400, __c75, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ Sidewalk: S.optional(__S(2368, __c74, 0)) })).annotate({
         identifier: "DeviceRegistrationStateResourceTypeEventConfiguration",
       });
     case 2:
-      return S.suspend(() => S.Struct({ LoRaWAN: S.optional(__S(2400, __c75, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ LoRaWAN: S.optional(__S(2368, __c74, 0)) })).annotate({
         identifier: "JoinResourceTypeEventConfiguration",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({ WirelessGatewayEventTopic: S.optional(S.String) }),
-      ).annotate({
-        identifier: "LoRaWANConnectionStatusResourceTypeEventConfiguration",
-      });
+      ).annotate({ identifier: "LoRaWANConnectionStatusResourceTypeEventConfiguration" });
     case 4:
-      return S.suspend(() => S.Struct({ LoRaWAN: S.optional(__S(2403, __c75, 3)) })).annotate({
+      return S.suspend(() => S.Struct({ LoRaWAN: S.optional(__S(2371, __c74, 3)) })).annotate({
         identifier: "ConnectionStatusResourceTypeEventConfiguration",
       });
   }
 }
-function __c76(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7476,7 +7346,7 @@ function __c76(j: number): any {
           Status: S.optional(S.String),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          LoRaWAN: S.optional(__S(2433, __c76, 1)),
+          LoRaWAN: S.optional(__S(2401, __c75, 1)),
           FirmwareUpdateImage: S.optional(S.String),
           FirmwareUpdateRole: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -7488,78 +7358,42 @@ function __c76(j: number): any {
       ).annotate({ identifier: "GetFuotaTaskResponse" });
   }
 }
-function __c77(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "GET", uri: "/log-levels" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetLogLevelsByResourceTypesRequest",
-      });
+      ).annotate({ identifier: "GetLogLevelsByResourceTypesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           DefaultLogLevel: S.optional(S.String),
-          WirelessGatewayLogOptions: S.optional(__S(2499, __c78, 3)),
-          WirelessDeviceLogOptions: S.optional(__S(2502, __c78, 6)),
-          FuotaTaskLogOptions: S.optional(__S(2506, __c78, 10)),
+          WirelessGatewayLogOptions: S.optional(__S(2467, __c77, 3)),
+          WirelessDeviceLogOptions: S.optional(__S(2467, __c77, 3)),
+          FuotaTaskLogOptions: S.optional(__S(2467, __c77, 3)),
         }),
-      ).annotate({
-        identifier: "GetLogLevelsByResourceTypesResponse",
-      });
+      ).annotate({ identifier: "GetLogLevelsByResourceTypesResponse" });
   }
 }
-function __c78(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Event: S.String, LogLevel: S.String })).annotate({
         identifier: "WirelessGatewayEventLogOption",
       });
     case 1:
-      return S.Array(__S(2496, __c78, 0));
+      return S.Array(__S(2464, __c77, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          Type: S.String,
-          LogLevel: S.String,
-          Events: S.optional(__S(2497, __c78, 1)),
-        }),
+        S.Struct({ Type: S.String, LogLevel: S.String, Events: S.optional(__S(2465, __c77, 1)) }),
       ).annotate({ identifier: "WirelessGatewayLogOption" });
     case 3:
-      return S.Array(__S(2498, __c78, 2));
-    case 4:
-      return S.Array(__S(2496, __c78, 0));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Type: S.String,
-          LogLevel: S.String,
-          Events: S.optional(__S(2500, __c78, 4)),
-        }),
-      ).annotate({ identifier: "WirelessDeviceLogOption" });
-    case 6:
-      return S.Array(__S(2501, __c78, 5));
-    case 7:
-      return S.suspend(() => S.Struct({ Event: S.String, LogLevel: S.String })).annotate({
-        identifier: "FuotaTaskEventLogOption",
-      });
-    case 8:
-      return S.Array(__S(2503, __c78, 7));
-    case 9:
-      return S.suspend(() =>
-        S.Struct({
-          Type: S.String,
-          LogLevel: S.String,
-          Events: S.optional(__S(2504, __c78, 8)),
-        }),
-      ).annotate({ identifier: "FuotaTaskLogOption" });
-    case 10:
-      return S.Array(__S(2505, __c78, 9));
+      return S.Array(__S(2466, __c77, 2));
   }
 }
-function __c79(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7573,18 +7407,14 @@ function __c79(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetMetricConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetMetricConfigurationRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ SummaryMetric: S.optional(__S(2560, __c80, 0)) })).annotate(
-        {
-          identifier: "GetMetricConfigurationResponse",
-        },
+      return S.suspend(() => S.Struct({ SummaryMetric: S.optional(__S(2528, __c79, 0)) })).annotate(
+        { identifier: "GetMetricConfigurationResponse" },
       );
   }
 }
-function __c80(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
@@ -7592,30 +7422,30 @@ function __c80(j: number): any {
       });
   }
 }
-function __c81(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ name: S.optional(S.String), value: S.optional(S.String) }),
       ).annotate({ identifier: "Dimension" });
     case 1:
-      return S.Array(__S(2592, __c81, 0));
+      return S.Array(__S(2560, __c80, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           QueryId: S.optional(S.String),
           MetricName: S.optional(S.String),
-          Dimensions: S.optional(__S(2593, __c81, 1)),
+          Dimensions: S.optional(__S(2561, __c80, 1)),
           AggregationPeriod: S.optional(S.String),
           StartTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "SummaryMetricQuery" });
     case 3:
-      return S.Array(__S(2594, __c81, 2));
+      return S.Array(__S(2562, __c80, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ SummaryMetricQueries: S.optional(__S(2595, __c81, 3)) }).pipe(
+        S.Struct({ SummaryMetricQueries: S.optional(__S(2563, __c80, 3)) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/metrics" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetMetricsRequest" });
@@ -7633,7 +7463,7 @@ function __c81(j: number): any {
         }),
       ).annotate({ identifier: "MetricQueryValue" });
     case 7:
-      return S.Array(__S(2598, __c81, 6));
+      return S.Array(__S(2566, __c80, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -7641,24 +7471,24 @@ function __c81(j: number): any {
           QueryStatus: S.optional(S.String),
           Error: S.optional(S.String),
           MetricName: S.optional(S.String),
-          Dimensions: S.optional(__S(2593, __c81, 1)),
+          Dimensions: S.optional(__S(2561, __c80, 1)),
           AggregationPeriod: S.optional(S.String),
           StartTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Timestamps: S.optional(__S(2597, __c81, 5)),
-          Values: S.optional(__S(2599, __c81, 7)),
+          Timestamps: S.optional(__S(2565, __c80, 5)),
+          Values: S.optional(__S(2567, __c80, 7)),
           Unit: S.optional(S.String),
         }),
       ).annotate({ identifier: "SummaryMetricQueryResult" });
     case 9:
-      return S.Array(__S(2600, __c81, 8));
+      return S.Array(__S(2568, __c80, 8));
     case 10:
       return S.suspend(() =>
-        S.Struct({ SummaryMetricQueryResults: S.optional(__S(2601, __c81, 9)) }),
+        S.Struct({ SummaryMetricQueryResults: S.optional(__S(2569, __c80, 9)) }),
       ).annotate({ identifier: "GetMetricsResponse" });
   }
 }
-function __c82(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7680,8 +7510,8 @@ function __c82(j: number): any {
           DlClass: S.optional(S.String),
           NumberOfDevicesRequested: S.optional(S.Number),
           NumberOfDevicesInGroup: S.optional(S.Number),
-          ParticipatingGateways: S.optional(__S(1152, __c36, 0)),
-          DefaultSessionParameters: S.optional(__S(1153, __c36, 1)),
+          ParticipatingGateways: S.optional(__S(1120, __c35, 0)),
+          DefaultSessionParameters: S.optional(__S(1121, __c35, 1)),
         }),
       ).annotate({ identifier: "LoRaWANMulticastGet" });
     case 2:
@@ -7692,15 +7522,13 @@ function __c82(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           Status: S.optional(S.String),
-          LoRaWAN: S.optional(__S(2625, __c82, 1)),
+          LoRaWAN: S.optional(__S(2593, __c81, 1)),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "GetMulticastGroupResponse",
-      });
+      ).annotate({ identifier: "GetMulticastGroupResponse" });
   }
 }
-function __c83(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7714,16 +7542,14 @@ function __c83(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetMulticastGroupSessionRequest",
-      });
+      ).annotate({ identifier: "GetMulticastGroupSessionRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ LoRaWAN: S.optional(__S(2688, __c84, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ LoRaWAN: S.optional(__S(2656, __c83, 0)) })).annotate({
         identifier: "GetMulticastGroupSessionResponse",
       });
   }
 }
-function __c84(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7737,7 +7563,7 @@ function __c84(j: number): any {
       ).annotate({ identifier: "LoRaWANMulticastSession" });
   }
 }
-function __c85(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7751,26 +7577,22 @@ function __c85(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetNetworkAnalyzerConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetNetworkAnalyzerConfigurationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          TraceContent: S.optional(__S(1216, __c38, 0)),
-          WirelessDevices: S.optional(__S(1120, __c35, 0)),
-          WirelessGateways: S.optional(__S(1120, __c35, 0)),
+          TraceContent: S.optional(__S(1184, __c37, 0)),
+          WirelessDevices: S.optional(__S(1088, __c34, 0)),
+          WirelessGateways: S.optional(__S(1088, __c34, 0)),
           Description: S.optional(S.String),
           Arn: S.optional(S.String),
           Name: S.optional(S.String),
-          MulticastGroups: S.optional(__S(1120, __c35, 0)),
+          MulticastGroups: S.optional(__S(1088, __c34, 0)),
         }),
-      ).annotate({
-        identifier: "GetNetworkAnalyzerConfigurationResponse",
-      });
+      ).annotate({ identifier: "GetNetworkAnalyzerConfigurationResponse" });
   }
 }
-function __c86(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7791,15 +7613,13 @@ function __c86(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Sidewalk: S.optional(__S(2784, __c87, 0)),
+          Sidewalk: S.optional(__S(2752, __c86, 0)),
           AccountLinked: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "GetPartnerAccountResponse",
-      });
+      ).annotate({ identifier: "GetPartnerAccountResponse" });
   }
 }
-function __c87(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7808,12 +7628,10 @@ function __c87(j: number): any {
           Fingerprint: S.optional(SensitiveString),
           Arn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SidewalkAccountInfoWithFingerprint",
-      });
+      ).annotate({ identifier: "SidewalkAccountInfoWithFingerprint" });
   }
 }
-function __c88(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7842,7 +7660,7 @@ function __c88(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Position: S.optional(__S(896, __c28, 0)),
-          Accuracy: S.optional(__S(2817, __c88, 1)),
+          Accuracy: S.optional(__S(2785, __c87, 1)),
           SolverType: S.optional(S.String),
           SolverProvider: S.optional(S.String),
           SolverVersion: S.optional(S.String),
@@ -7851,7 +7669,7 @@ function __c88(j: number): any {
       ).annotate({ identifier: "GetPositionResponse" });
   }
 }
-function __c89(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7868,18 +7686,14 @@ function __c89(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetPositionConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetPositionConfigurationRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Solvers: S.optional(__S(2881, __c90, 1)), Destination: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetPositionConfigurationResponse",
-      });
+        S.Struct({ Solvers: S.optional(__S(2849, __c89, 1)), Destination: S.optional(S.String) }),
+      ).annotate({ identifier: "GetPositionConfigurationResponse" });
   }
 }
-function __c90(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7891,19 +7705,19 @@ function __c90(j: number): any {
         }),
       ).annotate({ identifier: "SemtechGnssDetail" });
     case 1:
-      return S.suspend(() => S.Struct({ SemtechGnss: S.optional(__S(2880, __c90, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ SemtechGnss: S.optional(__S(2848, __c89, 0)) })).annotate({
         identifier: "PositionSolverDetails",
       });
   }
 }
-function __c91(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ MacAddress: S.String, Rss: S.Number })).annotate({
         identifier: "WiFiAccessPoint",
       });
     case 1:
-      return S.Array(__S(2912, __c91, 0));
+      return S.Array(__S(2880, __c90, 0));
     case 2:
       return S.suspend(() => S.Struct({ Bsic: S.Number, Bcch: S.Number })).annotate({
         identifier: "GsmLocalId",
@@ -7918,11 +7732,11 @@ function __c91(j: number): any {
           Bsic: S.Number,
           Bcch: S.Number,
           RxLevel: S.optional(S.Number),
-          GlobalIdentity: S.optional(__S(2915, __c91, 3)),
+          GlobalIdentity: S.optional(__S(2883, __c90, 3)),
         }),
       ).annotate({ identifier: "GsmNmrObj" });
     case 5:
-      return S.Array(__S(2916, __c91, 4));
+      return S.Array(__S(2884, __c90, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -7930,14 +7744,14 @@ function __c91(j: number): any {
           Mnc: S.Number,
           Lac: S.Number,
           GeranCid: S.Number,
-          GsmLocalId: S.optional(__S(2914, __c91, 2)),
+          GsmLocalId: S.optional(__S(2882, __c90, 2)),
           GsmTimingAdvance: S.optional(S.Number),
           RxLevel: S.optional(S.Number),
-          GsmNmr: S.optional(__S(2917, __c91, 5)),
+          GsmNmr: S.optional(__S(2885, __c90, 5)),
         }),
       ).annotate({ identifier: "GsmObj" });
     case 7:
-      return S.Array(__S(2918, __c91, 6));
+      return S.Array(__S(2886, __c90, 6));
     case 8:
       return S.suspend(() => S.Struct({ Uarfcndl: S.Number, Psc: S.Number })).annotate({
         identifier: "WcdmaLocalId",
@@ -7953,7 +7767,7 @@ function __c91(j: number): any {
         }),
       ).annotate({ identifier: "WcdmaNmrObj" });
     case 10:
-      return S.Array(__S(2921, __c91, 9));
+      return S.Array(__S(2889, __c90, 9));
     case 11:
       return S.suspend(() =>
         S.Struct({
@@ -7961,14 +7775,14 @@ function __c91(j: number): any {
           Mnc: S.Number,
           Lac: S.optional(S.Number),
           UtranCid: S.Number,
-          WcdmaLocalId: S.optional(__S(2920, __c91, 8)),
+          WcdmaLocalId: S.optional(__S(2888, __c90, 8)),
           Rscp: S.optional(S.Number),
           PathLoss: S.optional(S.Number),
-          WcdmaNmr: S.optional(__S(2922, __c91, 10)),
+          WcdmaNmr: S.optional(__S(2890, __c90, 10)),
         }),
       ).annotate({ identifier: "WcdmaObj" });
     case 12:
-      return S.Array(__S(2923, __c91, 11));
+      return S.Array(__S(2891, __c90, 11));
     case 13:
       return S.suspend(() => S.Struct({ Uarfcn: S.Number, CellParams: S.Number })).annotate({
         identifier: "TdscdmaLocalId",
@@ -7984,7 +7798,7 @@ function __c91(j: number): any {
         }),
       ).annotate({ identifier: "TdscdmaNmrObj" });
     case 15:
-      return S.Array(__S(2926, __c91, 14));
+      return S.Array(__S(2894, __c90, 14));
     case 16:
       return S.suspend(() =>
         S.Struct({
@@ -7992,15 +7806,15 @@ function __c91(j: number): any {
           Mnc: S.Number,
           Lac: S.optional(S.Number),
           UtranCid: S.Number,
-          TdscdmaLocalId: S.optional(__S(2925, __c91, 13)),
+          TdscdmaLocalId: S.optional(__S(2893, __c90, 13)),
           TdscdmaTimingAdvance: S.optional(S.Number),
           Rscp: S.optional(S.Number),
           PathLoss: S.optional(S.Number),
-          TdscdmaNmr: S.optional(__S(2927, __c91, 15)),
+          TdscdmaNmr: S.optional(__S(2895, __c90, 15)),
         }),
       ).annotate({ identifier: "TdscdmaObj" });
     case 17:
-      return S.Array(__S(2928, __c91, 16));
+      return S.Array(__S(2896, __c90, 16));
     case 18:
       return S.suspend(() => S.Struct({ Pci: S.Number, Earfcn: S.Number })).annotate({
         identifier: "LteLocalId",
@@ -8016,7 +7830,7 @@ function __c91(j: number): any {
         }),
       ).annotate({ identifier: "LteNmrObj" });
     case 20:
-      return S.Array(__S(2931, __c91, 19));
+      return S.Array(__S(2899, __c90, 19));
     case 21:
       return S.suspend(() =>
         S.Struct({
@@ -8024,16 +7838,16 @@ function __c91(j: number): any {
           Mnc: S.Number,
           EutranCid: S.Number,
           Tac: S.optional(S.Number),
-          LteLocalId: S.optional(__S(2930, __c91, 18)),
+          LteLocalId: S.optional(__S(2898, __c90, 18)),
           LteTimingAdvance: S.optional(S.Number),
           Rsrp: S.optional(S.Number),
           Rsrq: S.optional(S.Number),
           NrCapable: S.optional(S.Boolean),
-          LteNmr: S.optional(__S(2932, __c91, 20)),
+          LteNmr: S.optional(__S(2900, __c90, 20)),
         }),
       ).annotate({ identifier: "LteObj" });
     case 22:
-      return S.Array(__S(2933, __c91, 21));
+      return S.Array(__S(2901, __c90, 21));
     case 23:
       return S.suspend(() => S.Struct({ PnOffset: S.Number, CdmaChannel: S.Number })).annotate({
         identifier: "CdmaLocalId",
@@ -8048,7 +7862,7 @@ function __c91(j: number): any {
         }),
       ).annotate({ identifier: "CdmaNmrObj" });
     case 25:
-      return S.Array(__S(2936, __c91, 24));
+      return S.Array(__S(2904, __c90, 24));
     case 26:
       return S.suspend(() =>
         S.Struct({
@@ -8056,29 +7870,27 @@ function __c91(j: number): any {
           NetworkId: S.Number,
           BaseStationId: S.Number,
           RegistrationZone: S.optional(S.Number),
-          CdmaLocalId: S.optional(__S(2935, __c91, 23)),
+          CdmaLocalId: S.optional(__S(2903, __c90, 23)),
           PilotPower: S.optional(S.Number),
           BaseLat: S.optional(S.Number),
           BaseLng: S.optional(S.Number),
-          CdmaNmr: S.optional(__S(2937, __c91, 25)),
+          CdmaNmr: S.optional(__S(2905, __c90, 25)),
         }),
       ).annotate({ identifier: "CdmaObj" });
     case 27:
-      return S.Array(__S(2938, __c91, 26));
+      return S.Array(__S(2906, __c90, 26));
     case 28:
       return S.suspend(() =>
         S.Struct({
-          Gsm: S.optional(__S(2919, __c91, 7)),
-          Wcdma: S.optional(__S(2924, __c91, 12)),
-          Tdscdma: S.optional(__S(2929, __c91, 17)),
-          Lte: S.optional(__S(2934, __c91, 22)),
-          Cdma: S.optional(__S(2939, __c91, 27)),
+          Gsm: S.optional(__S(2887, __c90, 7)),
+          Wcdma: S.optional(__S(2892, __c90, 12)),
+          Tdscdma: S.optional(__S(2897, __c90, 17)),
+          Lte: S.optional(__S(2902, __c90, 22)),
+          Cdma: S.optional(__S(2907, __c90, 27)),
         }),
       ).annotate({ identifier: "CellTowers" });
     case 29:
-      return S.suspend(() => S.Struct({ IpAddress: S.String })).annotate({
-        identifier: "Ip",
-      });
+      return S.suspend(() => S.Struct({ IpAddress: S.String })).annotate({ identifier: "Ip" });
     case 30:
       return S.suspend(() =>
         S.Struct({
@@ -8096,14 +7908,14 @@ function __c91(j: number): any {
       ).annotate({ identifier: "GnssCapture" });
   }
 }
-function __c92(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(2943, __c91, 31));
+      return S.Array(__S(2911, __c90, 31));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Captures: __S(2944, __c92, 0),
+          Captures: __S(2912, __c91, 0),
           CaptureTimeAccuracy: S.optional(S.Number),
           AssistPosition: S.optional(__S(896, __c28, 0)),
           AssistAltitude: S.optional(S.Number),
@@ -8115,19 +7927,19 @@ function __c92(j: number): any {
         identifier: "WiFiCellular",
       });
     case 3:
-      return S.suspend(() => S.Struct({ WiFiCellular: S.optional(__S(2946, __c92, 2)) })).annotate({
+      return S.suspend(() => S.Struct({ WiFiCellular: S.optional(__S(2914, __c91, 2)) })).annotate({
         identifier: "AdvancedConfiguration",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          WiFiAccessPoints: S.optional(__S(2913, __c91, 1)),
-          CellTowers: S.optional(__S(2940, __c91, 28)),
-          Ip: S.optional(__S(2941, __c91, 29)),
-          Gnss: S.optional(__S(2942, __c91, 30)),
-          GnssMultiFrame: S.optional(__S(2945, __c92, 1)),
+          WiFiAccessPoints: S.optional(__S(2881, __c90, 1)),
+          CellTowers: S.optional(__S(2908, __c90, 28)),
+          Ip: S.optional(__S(2909, __c90, 29)),
+          Gnss: S.optional(__S(2910, __c90, 30)),
+          GnssMultiFrame: S.optional(__S(2913, __c91, 1)),
           Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AdvancedConfiguration: S.optional(__S(2947, __c92, 3)),
+          AdvancedConfiguration: S.optional(__S(2915, __c91, 3)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/position-estimate" }),
@@ -8138,22 +7950,18 @@ function __c92(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetPositionEstimateRequest",
-      });
+      ).annotate({ identifier: "GetPositionEstimateRequest" });
   }
 }
-function __c93(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ GeoJsonPayload: S.optional(T.StreamingOutput).pipe(T.HttpPayload()) }),
-      ).annotate({
-        identifier: "GetPositionEstimateResponse",
-      });
+      ).annotate({ identifier: "GetPositionEstimateResponse" });
   }
 }
-function __c94(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8171,28 +7979,24 @@ function __c94(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetResourceEventConfigurationRequest",
-      });
+      ).annotate({ identifier: "GetResourceEventConfigurationRequest" });
   }
 }
-function __c95(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          DeviceRegistrationState: S.optional(__S(3073, __c96, 1)),
-          Proximity: S.optional(__S(3073, __c96, 1)),
-          Join: S.optional(__S(3075, __c96, 3)),
-          ConnectionStatus: S.optional(__S(3077, __c96, 5)),
-          MessageDeliveryStatus: S.optional(__S(3073, __c96, 1)),
+          DeviceRegistrationState: S.optional(__S(3041, __c95, 1)),
+          Proximity: S.optional(__S(3041, __c95, 1)),
+          Join: S.optional(__S(3043, __c95, 3)),
+          ConnectionStatus: S.optional(__S(3045, __c95, 5)),
+          MessageDeliveryStatus: S.optional(__S(3041, __c95, 1)),
         }),
-      ).annotate({
-        identifier: "GetResourceEventConfigurationResponse",
-      });
+      ).annotate({ identifier: "GetResourceEventConfigurationResponse" });
   }
 }
-function __c96(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ AmazonIdEventTopic: S.optional(S.String) })).annotate({
@@ -8201,12 +8005,10 @@ function __c96(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Sidewalk: S.optional(__S(3072, __c96, 0)),
+          Sidewalk: S.optional(__S(3040, __c95, 0)),
           WirelessDeviceIdEventTopic: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DeviceRegistrationStateEventConfiguration",
-      });
+      ).annotate({ identifier: "DeviceRegistrationStateEventConfiguration" });
     case 2:
       return S.suspend(() => S.Struct({ DevEuiEventTopic: S.optional(S.String) })).annotate({
         identifier: "LoRaWANJoinEventNotificationConfigurations",
@@ -8214,7 +8016,7 @@ function __c96(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          LoRaWAN: S.optional(__S(3074, __c96, 2)),
+          LoRaWAN: S.optional(__S(3042, __c95, 2)),
           WirelessDeviceIdEventTopic: S.optional(S.String),
         }),
       ).annotate({ identifier: "JoinEventConfiguration" });
@@ -8225,15 +8027,13 @@ function __c96(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          LoRaWAN: S.optional(__S(3076, __c96, 4)),
+          LoRaWAN: S.optional(__S(3044, __c95, 4)),
           WirelessGatewayIdEventTopic: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ConnectionStatusEventConfiguration",
-      });
+      ).annotate({ identifier: "ConnectionStatusEventConfiguration" });
   }
 }
-function __c97(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8250,16 +8050,14 @@ function __c97(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetResourceLogLevelRequest",
-      });
+      ).annotate({ identifier: "GetResourceLogLevelRequest" });
     case 1:
       return S.suspend(() => S.Struct({ LogLevel: S.optional(S.String) })).annotate({
         identifier: "GetResourceLogLevelResponse",
       });
   }
 }
-function __c98(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8276,23 +8074,17 @@ function __c98(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetResourcePositionRequest",
-      });
+      ).annotate({ identifier: "GetResourcePositionRequest" });
   }
 }
-function __c99(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          ServiceType: S.optional(S.String).pipe(T.HttpQuery("serviceType")),
-        }).pipe(
+        S.Struct({ ServiceType: S.optional(S.String).pipe(T.HttpQuery("serviceType")) }).pipe(
           T.all(T.Http({ method: "GET", uri: "/service-endpoint" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetServiceEndpointRequest",
-      });
+      ).annotate({ identifier: "GetServiceEndpointRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8300,12 +8092,10 @@ function __c99(j: number): any {
           ServiceEndpoint: S.optional(S.String),
           ServerTrust: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetServiceEndpointResponse",
-      });
+      ).annotate({ identifier: "GetServiceEndpointResponse" });
   }
 }
-function __c100(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8347,23 +8137,19 @@ function __c100(j: number): any {
           NbTransMin: S.optional(S.Number),
           NbTransMax: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "LoRaWANGetServiceProfileInfo",
-      });
+      ).annotate({ identifier: "LoRaWANGetServiceProfileInfo" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
           Name: S.optional(S.String),
           Id: S.optional(S.String),
-          LoRaWAN: S.optional(__S(3201, __c100, 1)),
+          LoRaWAN: S.optional(__S(3169, __c99, 1)),
         }),
-      ).annotate({
-        identifier: "GetServiceProfileResponse",
-      });
+      ).annotate({ identifier: "GetServiceProfileResponse" });
   }
 }
-function __c101(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8387,12 +8173,12 @@ function __c101(j: number): any {
           AmazonId: S.optional(S.String),
           SidewalkId: S.optional(S.String),
           SidewalkManufacturingSn: S.optional(S.String),
-          DeviceCertificates: S.optional(__S(3265, __c102, 1)),
-          PrivateKeys: S.optional(__S(3265, __c102, 1)),
+          DeviceCertificates: S.optional(__S(3233, __c101, 1)),
+          PrivateKeys: S.optional(__S(3233, __c101, 1)),
           DeviceProfileId: S.optional(S.String),
           CertificateId: S.optional(S.String),
           Status: S.optional(S.String),
-          Positioning: S.optional(__S(1376, __c43, 0)),
+          Positioning: S.optional(__S(1344, __c42, 0)),
         }),
       ).annotate({ identifier: "SidewalkDevice" });
     case 2:
@@ -8406,26 +8192,24 @@ function __c101(j: number): any {
           Arn: S.optional(S.String),
           ThingName: S.optional(S.String),
           ThingArn: S.optional(S.String),
-          LoRaWAN: S.optional(__S(1319, __c41, 7)),
-          Sidewalk: S.optional(__S(3233, __c101, 1)),
+          LoRaWAN: S.optional(__S(1287, __c40, 7)),
+          Sidewalk: S.optional(__S(3201, __c100, 1)),
           Positioning: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetWirelessDeviceResponse",
-      });
+      ).annotate({ identifier: "GetWirelessDeviceResponse" });
   }
 }
-function __c102(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ SigningAlg: S.String, Value: S.String })).annotate({
         identifier: "CertificateList",
       });
     case 1:
-      return S.Array(__S(3264, __c102, 0));
+      return S.Array(__S(3232, __c101, 0));
   }
 }
-function __c103(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8439,9 +8223,19 @@ function __c103(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetWirelessDeviceImportTaskRequest",
-      });
+      ).annotate({ identifier: "GetWirelessDeviceImportTaskRequest" });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DeviceCreationFileList: S.optional(__S(1088, __c34, 0)),
+          Role: S.optional(S.String),
+          Positioning: S.optional(__S(1344, __c42, 0)),
+        }),
+      ).annotate({ identifier: "SidewalkGetStartImportInfo" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8449,7 +8243,7 @@ function __c103(j: number): any {
           Arn: S.optional(S.String),
           DestinationName: S.optional(S.String),
           Positioning: S.optional(S.String),
-          Sidewalk: S.optional(__S(3328, __c104, 0)),
+          Sidewalk: S.optional(__S(3296, __c103, 0)),
           CreationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Status: S.optional(S.String),
           StatusReason: S.optional(S.String),
@@ -8458,26 +8252,10 @@ function __c103(j: number): any {
           OnboardedImportedDeviceCount: S.optional(S.Number),
           FailedImportedDeviceCount: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "GetWirelessDeviceImportTaskResponse",
-      });
+      ).annotate({ identifier: "GetWirelessDeviceImportTaskResponse" });
   }
 }
 function __c104(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          DeviceCreationFileList: S.optional(__S(1120, __c35, 0)),
-          Role: S.optional(S.String),
-          Positioning: S.optional(__S(1376, __c43, 0)),
-        }),
-      ).annotate({
-        identifier: "SidewalkGetStartImportInfo",
-      });
-  }
-}
-function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8491,9 +8269,7 @@ function __c105(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetWirelessDeviceStatisticsRequest",
-      });
+      ).annotate({ identifier: "GetWirelessDeviceStatisticsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8503,7 +8279,7 @@ function __c105(j: number): any {
         }),
       ).annotate({ identifier: "LoRaWANGatewayMetadata" });
     case 2:
-      return S.Array(__S(3361, __c105, 1));
+      return S.Array(__S(3329, __c104, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -8514,11 +8290,9 @@ function __c105(j: number): any {
           RfRegion: S.optional(S.String),
           DlAllowed: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "LoRaWANPublicGatewayMetadata",
-      });
+      ).annotate({ identifier: "LoRaWANPublicGatewayMetadata" });
     case 4:
-      return S.Array(__S(3363, __c105, 3));
+      return S.Array(__S(3331, __c104, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -8527,8 +8301,8 @@ function __c105(j: number): any {
           DataRate: S.optional(S.Number),
           Frequency: S.optional(S.Number),
           Timestamp: S.optional(S.String),
-          Gateways: S.optional(__S(3362, __c105, 2)),
-          PublicGateways: S.optional(__S(3364, __c105, 4)),
+          Gateways: S.optional(__S(3330, __c104, 2)),
+          PublicGateways: S.optional(__S(3332, __c104, 4)),
         }),
       ).annotate({ identifier: "LoRaWANDeviceMetadata" });
     case 6:
@@ -8545,15 +8319,13 @@ function __c105(j: number): any {
         S.Struct({
           WirelessDeviceId: S.optional(S.String),
           LastUplinkReceivedAt: S.optional(S.String),
-          LoRaWAN: S.optional(__S(3365, __c105, 5)),
-          Sidewalk: S.optional(__S(3366, __c105, 6)),
+          LoRaWAN: S.optional(__S(3333, __c104, 5)),
+          Sidewalk: S.optional(__S(3334, __c104, 6)),
         }),
-      ).annotate({
-        identifier: "GetWirelessDeviceStatisticsResponse",
-      });
+      ).annotate({ identifier: "GetWirelessDeviceStatisticsResponse" });
   }
 }
-function __c106(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8570,26 +8342,22 @@ function __c106(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetWirelessGatewayRequest",
-      });
+      ).annotate({ identifier: "GetWirelessGatewayRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           Id: S.optional(S.String),
           Description: S.optional(S.String),
-          LoRaWAN: S.optional(__S(1441, __c45, 1)),
+          LoRaWAN: S.optional(__S(1409, __c44, 1)),
           Arn: S.optional(S.String),
           ThingName: S.optional(S.String),
           ThingArn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetWirelessGatewayResponse",
-      });
+      ).annotate({ identifier: "GetWirelessGatewayResponse" });
   }
 }
-function __c107(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8603,21 +8371,17 @@ function __c107(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetWirelessGatewayCertificateRequest",
-      });
+      ).annotate({ identifier: "GetWirelessGatewayCertificateRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           IotCertificateId: S.optional(S.String),
           LoRaWANNetworkServerCertificateId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetWirelessGatewayCertificateResponse",
-      });
+      ).annotate({ identifier: "GetWirelessGatewayCertificateResponse" });
   }
 }
-function __c108(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8631,22 +8395,18 @@ function __c108(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetWirelessGatewayFirmwareInformationRequest",
-      });
+      ).annotate({ identifier: "GetWirelessGatewayFirmwareInformationRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ CurrentVersion: S.optional(__S(1600, __c50, 0)) }),
-      ).annotate({
-        identifier: "LoRaWANGatewayCurrentVersion",
-      });
+        S.Struct({ CurrentVersion: S.optional(__S(1568, __c49, 0)) }),
+      ).annotate({ identifier: "LoRaWANGatewayCurrentVersion" });
     case 2:
-      return S.suspend(() => S.Struct({ LoRaWAN: S.optional(__S(3457, __c108, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ LoRaWAN: S.optional(__S(3425, __c107, 1)) })).annotate({
         identifier: "GetWirelessGatewayFirmwareInformationResponse",
       });
   }
 }
-function __c109(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8658,34 +8418,30 @@ function __c109(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Sidewalk: __S(3488, __c109, 0),
+          Sidewalk: __S(3456, __c108, 0),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(3521, __c110, 1)),
+          Tags: S.optional(__S(3489, __c109, 1)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/partner-accounts" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "AssociateAwsAccountWithPartnerAccountRequest",
-      });
+      ).annotate({ identifier: "AssociateAwsAccountWithPartnerAccountRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Sidewalk: S.optional(__S(3488, __c109, 0)), Arn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "AssociateAwsAccountWithPartnerAccountResponse",
-      });
+        S.Struct({ Sidewalk: S.optional(__S(3456, __c108, 0)), Arn: S.optional(S.String) }),
+      ).annotate({ identifier: "AssociateAwsAccountWithPartnerAccountResponse" });
   }
 }
-function __c110(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
         identifier: "Tag",
       });
     case 1:
-      return S.Array(__S(3520, __c110, 0));
+      return S.Array(__S(3488, __c109, 0));
   }
 }
-function __c111(j: number): any {
+function __c110(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8699,9 +8455,7 @@ function __c111(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetWirelessGatewayStatisticsRequest",
-      });
+      ).annotate({ identifier: "GetWirelessGatewayStatisticsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8709,12 +8463,10 @@ function __c111(j: number): any {
           LastUplinkReceivedAt: S.optional(S.String),
           ConnectionStatus: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetWirelessGatewayStatisticsResponse",
-      });
+      ).annotate({ identifier: "GetWirelessGatewayStatisticsResponse" });
   }
 }
-function __c112(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8728,9 +8480,7 @@ function __c112(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetWirelessGatewayTaskRequest",
-      });
+      ).annotate({ identifier: "GetWirelessGatewayTaskRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8740,12 +8490,10 @@ function __c112(j: number): any {
           TaskCreatedAt: S.optional(S.String),
           Status: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetWirelessGatewayTaskResponse",
-      });
+      ).annotate({ identifier: "GetWirelessGatewayTaskResponse" });
   }
 }
-function __c113(j: number): any {
+function __c112(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8759,23 +8507,19 @@ function __c113(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetWirelessGatewayTaskDefinitionRequest",
-      });
+      ).annotate({ identifier: "GetWirelessGatewayTaskDefinitionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           AutoCreateTasks: S.optional(S.Boolean),
           Name: S.optional(S.String),
-          Update: S.optional(__S(1633, __c51, 1)),
+          Update: S.optional(__S(1601, __c50, 1)),
           Arn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetWirelessGatewayTaskDefinitionResponse",
-      });
+      ).annotate({ identifier: "GetWirelessGatewayTaskDefinitionResponse" });
   }
 }
-function __c114(j: number): any {
+function __c113(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8798,17 +8542,17 @@ function __c114(j: number): any {
         }),
       ).annotate({ identifier: "Destinations" });
     case 2:
-      return S.Array(__S(3649, __c114, 1));
+      return S.Array(__S(3617, __c113, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          DestinationList: S.optional(__S(3650, __c114, 2)),
+          DestinationList: S.optional(__S(3618, __c113, 2)),
         }),
       ).annotate({ identifier: "ListDestinationsResponse" });
   }
 }
-function __c115(j: number): any {
+function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8819,21 +8563,17 @@ function __c115(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/device-profiles" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListDeviceProfilesRequest",
-      });
+      ).annotate({ identifier: "ListDeviceProfilesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          DeviceProfileList: S.optional(__S(3713, __c116, 1)),
+          DeviceProfileList: S.optional(__S(3681, __c115, 1)),
         }),
-      ).annotate({
-        identifier: "ListDeviceProfilesResponse",
-      });
+      ).annotate({ identifier: "ListDeviceProfilesResponse" });
   }
 }
-function __c116(j: number): any {
+function __c115(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8844,10 +8584,10 @@ function __c116(j: number): any {
         }),
       ).annotate({ identifier: "DeviceProfile" });
     case 1:
-      return S.Array(__S(3712, __c116, 0));
+      return S.Array(__S(3680, __c115, 0));
   }
 }
-function __c117(j: number): any {
+function __c116(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8866,9 +8606,7 @@ function __c117(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListDevicesForWirelessDeviceImportTaskRequest",
-      });
+      ).annotate({ identifier: "ListDevicesForWirelessDeviceImportTaskRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8879,34 +8617,32 @@ function __c117(j: number): any {
         }),
       ).annotate({ identifier: "ImportedSidewalkDevice" });
     case 2:
-      return S.suspend(() => S.Struct({ Sidewalk: S.optional(__S(3745, __c117, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ Sidewalk: S.optional(__S(3713, __c116, 1)) })).annotate({
         identifier: "ImportedWirelessDevice",
       });
     case 3:
-      return S.Array(__S(3746, __c117, 2));
+      return S.Array(__S(3714, __c116, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           DestinationName: S.optional(S.String),
           Positioning: S.optional(S.String),
-          Sidewalk: S.optional(__S(3776, __c118, 0)),
-          ImportedWirelessDeviceList: S.optional(__S(3747, __c117, 3)),
+          Sidewalk: S.optional(__S(3744, __c117, 0)),
+          ImportedWirelessDeviceList: S.optional(__S(3715, __c116, 3)),
         }),
-      ).annotate({
-        identifier: "ListDevicesForWirelessDeviceImportTaskResponse",
-      });
+      ).annotate({ identifier: "ListDevicesForWirelessDeviceImportTaskResponse" });
   }
 }
-function __c118(j: number): any {
+function __c117(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Positioning: S.optional(__S(1376, __c43, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ Positioning: S.optional(__S(1344, __c42, 0)) })).annotate({
         identifier: "SidewalkListDevicesForImportInfo",
       });
   }
 }
-function __c119(j: number): any {
+function __c118(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8924,32 +8660,28 @@ function __c119(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListEventConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListEventConfigurationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Identifier: S.optional(S.String),
           IdentifierType: S.optional(S.String),
           PartnerType: S.optional(S.String),
-          Events: S.optional(__S(3040, __c95, 0)),
+          Events: S.optional(__S(3008, __c94, 0)),
         }),
       ).annotate({ identifier: "EventConfigurationItem" });
     case 2:
-      return S.Array(__S(3809, __c119, 1));
+      return S.Array(__S(3777, __c118, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          EventConfigurationsList: S.optional(__S(3810, __c119, 2)),
+          EventConfigurationsList: S.optional(__S(3778, __c118, 2)),
         }),
-      ).annotate({
-        identifier: "ListEventConfigurationsResponse",
-      });
+      ).annotate({ identifier: "ListEventConfigurationsResponse" });
   }
 }
-function __c120(j: number): any {
+function __c119(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8964,12 +8696,12 @@ function __c120(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          FuotaTaskList: S.optional(__S(3873, __c121, 1)),
+          FuotaTaskList: S.optional(__S(3841, __c120, 1)),
         }),
       ).annotate({ identifier: "ListFuotaTasksResponse" });
   }
 }
-function __c121(j: number): any {
+function __c120(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8980,10 +8712,10 @@ function __c121(j: number): any {
         }),
       ).annotate({ identifier: "FuotaTask" });
     case 1:
-      return S.Array(__S(3872, __c121, 0));
+      return S.Array(__S(3840, __c120, 0));
   }
 }
-function __c122(j: number): any {
+function __c121(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8993,21 +8725,17 @@ function __c122(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/multicast-groups" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListMulticastGroupsRequest",
-      });
+      ).annotate({ identifier: "ListMulticastGroupsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          MulticastGroupList: S.optional(__S(3873, __c121, 1)),
+          MulticastGroupList: S.optional(__S(3841, __c120, 1)),
         }),
-      ).annotate({
-        identifier: "ListMulticastGroupsResponse",
-      });
+      ).annotate({ identifier: "ListMulticastGroupsResponse" });
   }
 }
-function __c123(j: number): any {
+function __c122(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9025,27 +8753,23 @@ function __c123(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListMulticastGroupsByFuotaTaskRequest",
-      });
+      ).annotate({ identifier: "ListMulticastGroupsByFuotaTaskRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Id: S.optional(S.String) })).annotate({
         identifier: "MulticastGroupByFuotaTask",
       });
     case 2:
-      return S.Array(__S(3937, __c123, 1));
+      return S.Array(__S(3905, __c122, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          MulticastGroupList: S.optional(__S(3938, __c123, 2)),
+          MulticastGroupList: S.optional(__S(3906, __c122, 2)),
         }),
-      ).annotate({
-        identifier: "ListMulticastGroupsByFuotaTaskResponse",
-      });
+      ).annotate({ identifier: "ListMulticastGroupsByFuotaTaskResponse" });
   }
 }
-function __c124(j: number): any {
+function __c123(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9059,12 +8783,10 @@ function __c124(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateMulticastGroupWithFuotaTaskRequest",
-      });
+      ).annotate({ identifier: "AssociateMulticastGroupWithFuotaTaskRequest" });
   }
 }
-function __c125(j: number): any {
+function __c124(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
@@ -9072,7 +8794,7 @@ function __c125(j: number): any {
       });
   }
 }
-function __c126(j: number): any {
+function __c125(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9089,23 +8811,19 @@ function __c126(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListNetworkAnalyzerConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListNetworkAnalyzerConfigurationsRequest" });
     case 1:
       return S.Array(__S(800, __c25, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          NetworkAnalyzerConfigurationList: S.optional(__S(4033, __c126, 1)),
+          NetworkAnalyzerConfigurationList: S.optional(__S(4001, __c125, 1)),
         }),
-      ).annotate({
-        identifier: "ListNetworkAnalyzerConfigurationsResponse",
-      });
+      ).annotate({ identifier: "ListNetworkAnalyzerConfigurationsResponse" });
   }
 }
-function __c127(j: number): any {
+function __c126(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9115,20 +8833,16 @@ function __c127(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/partner-accounts" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListPartnerAccountsRequest",
-      });
+      ).annotate({ identifier: "ListPartnerAccountsRequest" });
     case 1:
-      return S.Array(__S(2784, __c87, 0));
+      return S.Array(__S(2752, __c86, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Sidewalk: S.optional(__S(4065, __c127, 1)) }),
-      ).annotate({
-        identifier: "ListPartnerAccountsResponse",
-      });
+        S.Struct({ NextToken: S.optional(S.String), Sidewalk: S.optional(__S(4033, __c126, 1)) }),
+      ).annotate({ identifier: "ListPartnerAccountsResponse" });
   }
 }
-function __c128(j: number): any {
+function __c127(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9146,34 +8860,28 @@ function __c128(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListPositionConfigurationsRequest",
-      });
+      ).annotate({ identifier: "ListPositionConfigurationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ResourceIdentifier: S.optional(S.String),
           ResourceType: S.optional(S.String),
-          Solvers: S.optional(__S(2881, __c90, 1)),
+          Solvers: S.optional(__S(2849, __c89, 1)),
           Destination: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "PositionConfigurationItem",
-      });
+      ).annotate({ identifier: "PositionConfigurationItem" });
     case 2:
-      return S.Array(__S(4097, __c128, 1));
+      return S.Array(__S(4065, __c127, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          PositionConfigurationList: S.optional(__S(4098, __c128, 2)),
+          PositionConfigurationList: S.optional(__S(4066, __c127, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListPositionConfigurationsResponse",
-      });
+      ).annotate({ identifier: "ListPositionConfigurationsResponse" });
   }
 }
-function __c129(j: number): any {
+function __c128(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9192,44 +8900,40 @@ function __c129(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListQueuedMessagesRequest",
-      });
+      ).annotate({ identifier: "ListQueuedMessagesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           MessageId: S.optional(S.String),
           TransmitMode: S.optional(S.Number),
           ReceivedAt: S.optional(S.String),
-          LoRaWAN: S.optional(__S(4163, __c130, 3)),
+          LoRaWAN: S.optional(__S(4131, __c129, 3)),
         }),
       ).annotate({ identifier: "DownlinkQueueMessage" });
     case 2:
-      return S.Array(__S(4129, __c129, 1));
+      return S.Array(__S(4097, __c128, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          DownlinkQueueMessagesList: S.optional(__S(4130, __c129, 2)),
+          DownlinkQueueMessagesList: S.optional(__S(4098, __c128, 2)),
         }),
-      ).annotate({
-        identifier: "ListQueuedMessagesResponse",
-      });
+      ).annotate({ identifier: "ListQueuedMessagesResponse" });
   }
 }
-function __c130(j: number): any {
+function __c129(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ GatewayId: S.String, DownlinkFrequency: S.Number }),
       ).annotate({ identifier: "GatewayListItem" });
     case 1:
-      return S.Array(__S(4160, __c130, 0));
+      return S.Array(__S(4128, __c129, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           DownlinkMode: S.String,
-          GatewayList: __S(4161, __c130, 1),
+          GatewayList: __S(4129, __c129, 1),
           TransmissionInterval: S.Number,
         }),
       ).annotate({ identifier: "ParticipatingGateways" });
@@ -9237,12 +8941,12 @@ function __c130(j: number): any {
       return S.suspend(() =>
         S.Struct({
           FPort: S.optional(S.Number),
-          ParticipatingGateways: S.optional(__S(4162, __c130, 2)),
+          ParticipatingGateways: S.optional(__S(4130, __c129, 2)),
         }),
       ).annotate({ identifier: "LoRaWANSendDataToDevice" });
   }
 }
-function __c131(j: number): any {
+function __c130(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9252,37 +8956,31 @@ function __c131(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/service-profiles" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListServiceProfilesRequest",
-      });
+      ).annotate({ identifier: "ListServiceProfilesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          ServiceProfileList: S.optional(__S(3713, __c116, 1)),
+          ServiceProfileList: S.optional(__S(3681, __c115, 1)),
         }),
-      ).annotate({
-        identifier: "ListServiceProfilesResponse",
-      });
+      ).annotate({ identifier: "ListServiceProfilesResponse" });
   }
 }
-function __c132(j: number): any {
+function __c131(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String.pipe(T.HttpQuery("resourceArn")) }).pipe(
           T.all(T.Http({ method: "GET", uri: "/tags" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(3521, __c110, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(3489, __c109, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c133(j: number): any {
+function __c132(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9299,40 +8997,19 @@ function __c133(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListWirelessDeviceImportTasksRequest",
-      });
+      ).annotate({ identifier: "ListWirelessDeviceImportTasksRequest" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Id: S.optional(S.String),
-          Arn: S.optional(S.String),
-          DestinationName: S.optional(S.String),
-          Positioning: S.optional(S.String),
-          Sidewalk: S.optional(__S(3328, __c104, 0)),
-          CreationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Status: S.optional(S.String),
-          StatusReason: S.optional(S.String),
-          InitializedImportedDeviceCount: S.optional(S.Number),
-          PendingImportedDeviceCount: S.optional(S.Number),
-          OnboardedImportedDeviceCount: S.optional(S.Number),
-          FailedImportedDeviceCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "WirelessDeviceImportTask" });
+      return S.Array(__S(3297, __c103, 1));
     case 2:
-      return S.Array(__S(4257, __c133, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          WirelessDeviceImportTaskList: S.optional(__S(4258, __c133, 2)),
+          WirelessDeviceImportTaskList: S.optional(__S(4225, __c132, 1)),
         }),
-      ).annotate({
-        identifier: "ListWirelessDeviceImportTasksResponse",
-      });
+      ).annotate({ identifier: "ListWirelessDeviceImportTasksResponse" });
   }
 }
-function __c134(j: number): any {
+function __c133(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9348,9 +9025,7 @@ function __c134(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/wireless-devices" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListWirelessDevicesRequest",
-      });
+      ).annotate({ identifier: "ListWirelessDevicesRequest" });
     case 1:
       return S.suspend(() => S.Struct({ DevEui: S.optional(S.String) })).annotate({
         identifier: "LoRaWANListDevice",
@@ -9361,10 +9036,10 @@ function __c134(j: number): any {
           AmazonId: S.optional(S.String),
           SidewalkId: S.optional(S.String),
           SidewalkManufacturingSn: S.optional(S.String),
-          DeviceCertificates: S.optional(__S(3265, __c102, 1)),
+          DeviceCertificates: S.optional(__S(3233, __c101, 1)),
           DeviceProfileId: S.optional(S.String),
           Status: S.optional(S.String),
-          Positioning: S.optional(__S(1376, __c43, 0)),
+          Positioning: S.optional(__S(1344, __c42, 0)),
         }),
       ).annotate({ identifier: "SidewalkListDevice" });
     case 3:
@@ -9376,8 +9051,8 @@ function __c134(j: number): any {
           Name: S.optional(S.String),
           DestinationName: S.optional(S.String),
           LastUplinkReceivedAt: S.optional(S.String),
-          LoRaWAN: S.optional(__S(4289, __c134, 1)),
-          Sidewalk: S.optional(__S(4290, __c134, 2)),
+          LoRaWAN: S.optional(__S(4257, __c133, 1)),
+          Sidewalk: S.optional(__S(4258, __c133, 2)),
           FuotaDeviceStatus: S.optional(S.String),
           MulticastDeviceStatus: S.optional(S.String),
           McGroupId: S.optional(S.Number),
@@ -9385,19 +9060,17 @@ function __c134(j: number): any {
         }),
       ).annotate({ identifier: "WirelessDeviceStatistics" });
     case 4:
-      return S.Array(__S(4291, __c134, 3));
+      return S.Array(__S(4259, __c133, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          WirelessDeviceList: S.optional(__S(4292, __c134, 4)),
+          WirelessDeviceList: S.optional(__S(4260, __c133, 4)),
         }),
-      ).annotate({
-        identifier: "ListWirelessDevicesResponse",
-      });
+      ).annotate({ identifier: "ListWirelessDevicesResponse" });
   }
 }
-function __c135(j: number): any {
+function __c134(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9407,9 +9080,7 @@ function __c135(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/wireless-gateways" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListWirelessGatewaysRequest",
-      });
+      ).annotate({ identifier: "ListWirelessGatewaysRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9417,26 +9088,22 @@ function __c135(j: number): any {
           Id: S.optional(S.String),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          LoRaWAN: S.optional(__S(1441, __c45, 1)),
+          LoRaWAN: S.optional(__S(1409, __c44, 1)),
           LastUplinkReceivedAt: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "WirelessGatewayStatistics",
-      });
+      ).annotate({ identifier: "WirelessGatewayStatistics" });
     case 2:
-      return S.Array(__S(4321, __c135, 1));
+      return S.Array(__S(4289, __c134, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          WirelessGatewayList: S.optional(__S(4322, __c135, 2)),
+          WirelessGatewayList: S.optional(__S(4290, __c134, 2)),
         }),
-      ).annotate({
-        identifier: "ListWirelessGatewaysResponse",
-      });
+      ).annotate({ identifier: "ListWirelessGatewaysResponse" });
   }
 }
-function __c136(j: number): any {
+function __c135(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9454,42 +9121,34 @@ function __c136(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListWirelessGatewayTaskDefinitionsRequest",
-      });
+      ).annotate({ identifier: "ListWirelessGatewayTaskDefinitionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          CurrentVersion: S.optional(__S(1600, __c50, 0)),
-          UpdateVersion: S.optional(__S(1600, __c50, 0)),
+          CurrentVersion: S.optional(__S(1568, __c49, 0)),
+          UpdateVersion: S.optional(__S(1568, __c49, 0)),
         }),
-      ).annotate({
-        identifier: "LoRaWANUpdateGatewayTaskEntry",
-      });
+      ).annotate({ identifier: "LoRaWANUpdateGatewayTaskEntry" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
-          LoRaWAN: S.optional(__S(4353, __c136, 1)),
+          LoRaWAN: S.optional(__S(4321, __c135, 1)),
           Arn: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "UpdateWirelessGatewayTaskEntry",
-      });
+      ).annotate({ identifier: "UpdateWirelessGatewayTaskEntry" });
     case 3:
-      return S.Array(__S(4354, __c136, 2));
+      return S.Array(__S(4322, __c135, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          TaskDefinitions: S.optional(__S(4355, __c136, 3)),
+          TaskDefinitions: S.optional(__S(4323, __c135, 3)),
         }),
-      ).annotate({
-        identifier: "ListWirelessGatewayTaskDefinitionsResponse",
-      });
+      ).annotate({ identifier: "ListWirelessGatewayTaskDefinitionsResponse" });
   }
 }
-function __c137(j: number): any {
+function __c136(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9503,19 +9162,17 @@ function __c137(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateWirelessDeviceWithFuotaTaskRequest",
-      });
+      ).annotate({ identifier: "AssociateWirelessDeviceWithFuotaTaskRequest" });
   }
 }
-function __c138(j: number): any {
+function __c137(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Status: S.String, Fec: S.String })).annotate({
         identifier: "SemtechGnssConfiguration",
       });
     case 1:
-      return S.suspend(() => S.Struct({ SemtechGnss: S.optional(__S(4416, __c138, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ SemtechGnss: S.optional(__S(4384, __c137, 0)) })).annotate({
         identifier: "PositionSolverConfigurations",
       });
     case 2:
@@ -9523,7 +9180,7 @@ function __c138(j: number): any {
         S.Struct({
           ResourceIdentifier: S.String.pipe(T.HttpLabel("ResourceIdentifier")),
           ResourceType: S.String.pipe(T.HttpQuery("resourceType")),
-          Solvers: S.optional(__S(4417, __c138, 1)),
+          Solvers: S.optional(__S(4385, __c137, 1)),
           Destination: S.optional(S.String),
         }).pipe(
           T.all(
@@ -9535,12 +9192,10 @@ function __c138(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutPositionConfigurationRequest",
-      });
+      ).annotate({ identifier: "PutPositionConfigurationRequest" });
   }
 }
-function __c139(j: number): any {
+function __c138(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9558,24 +9213,20 @@ function __c139(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "PutResourceLogLevelRequest",
-      });
+      ).annotate({ identifier: "PutResourceLogLevelRequest" });
   }
 }
-function __c140(j: number): any {
+function __c139(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "DELETE", uri: "/log-levels" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ResetAllResourceLogLevelsRequest",
-      });
+      ).annotate({ identifier: "ResetAllResourceLogLevelsRequest" });
   }
 }
-function __c141(j: number): any {
+function __c140(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9592,19 +9243,17 @@ function __c141(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ResetResourceLogLevelRequest",
-      });
+      ).annotate({ identifier: "ResetResourceLogLevelRequest" });
   }
 }
-function __c142(j: number): any {
+function __c141(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ FPort: S.optional(S.Number) })).annotate({
         identifier: "LoRaWANMulticastMetadata",
       });
     case 1:
-      return S.suspend(() => S.Struct({ LoRaWAN: S.optional(__S(4544, __c142, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ LoRaWAN: S.optional(__S(4512, __c141, 0)) })).annotate({
         identifier: "MulticastWirelessMetadata",
       });
     case 2:
@@ -9612,7 +9261,7 @@ function __c142(j: number): any {
         S.Struct({
           Id: S.String.pipe(T.HttpLabel("Id")),
           PayloadData: S.String,
-          WirelessMetadata: __S(4545, __c142, 1),
+          WirelessMetadata: __S(4513, __c141, 1),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/multicast-groups/{Id}/data" }),
@@ -9623,12 +9272,10 @@ function __c142(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SendDataToMulticastGroupRequest",
-      });
+      ).annotate({ identifier: "SendDataToMulticastGroupRequest" });
   }
 }
-function __c143(j: number): any {
+function __c142(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ MessageId: S.optional(S.String) })).annotate({
@@ -9636,7 +9283,7 @@ function __c143(j: number): any {
       });
   }
 }
-function __c144(j: number): any {
+function __c143(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9649,8 +9296,8 @@ function __c144(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          LoRaWAN: S.optional(__S(4163, __c130, 3)),
-          Sidewalk: S.optional(__S(4608, __c144, 0)),
+          LoRaWAN: S.optional(__S(4131, __c129, 3)),
+          Sidewalk: S.optional(__S(4576, __c143, 0)),
         }),
       ).annotate({ identifier: "WirelessMetadata" });
     case 2:
@@ -9659,7 +9306,7 @@ function __c144(j: number): any {
           Id: S.String.pipe(T.HttpLabel("Id")),
           TransmitMode: S.Number,
           PayloadData: S.String,
-          WirelessMetadata: S.optional(__S(4609, __c144, 1)),
+          WirelessMetadata: S.optional(__S(4577, __c143, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/wireless-devices/{Id}/data" }),
@@ -9670,19 +9317,17 @@ function __c144(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SendDataToWirelessDeviceRequest",
-      });
+      ).annotate({ identifier: "SendDataToWirelessDeviceRequest" });
   }
 }
-function __c145(j: number): any {
+function __c144(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           Id: S.String.pipe(T.HttpLabel("Id")),
           QueryString: S.optional(S.String),
-          Tags: S.optional(__S(3521, __c110, 1)),
+          Tags: S.optional(__S(3489, __c109, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/multicast-groups/{Id}/bulk" }),
@@ -9693,23 +9338,17 @@ function __c145(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartBulkAssociateWirelessDeviceWithMulticastGroupRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "StartBulkAssociateWirelessDeviceWithMulticastGroupResponse",
-      });
+      ).annotate({ identifier: "StartBulkAssociateWirelessDeviceWithMulticastGroupRequest" });
   }
 }
-function __c146(j: number): any {
+function __c145(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           Id: S.String.pipe(T.HttpLabel("Id")),
           QueryString: S.optional(S.String),
-          Tags: S.optional(__S(3521, __c110, 1)),
+          Tags: S.optional(__S(3489, __c109, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/multicast-groups/{Id}/bulk" }),
@@ -9720,16 +9359,10 @@ function __c146(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartBulkDisassociateWirelessDeviceFromMulticastGroupRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "StartBulkDisassociateWirelessDeviceFromMulticastGroupResponse",
-      });
+      ).annotate({ identifier: "StartBulkDisassociateWirelessDeviceFromMulticastGroupRequest" });
   }
 }
-function __c147(j: number): any {
+function __c146(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9739,18 +9372,18 @@ function __c147(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Id: S.String.pipe(T.HttpLabel("Id")),
-          LoRaWAN: S.optional(__S(4704, __c147, 0)),
+          LoRaWAN: S.optional(__S(4672, __c146, 0)),
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/fuota-tasks/{Id}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StartFuotaTaskRequest" });
   }
 }
-function __c148(j: number): any {
+function __c147(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")), LoRaWAN: __S(2688, __c84, 0) }).pipe(
+        S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")), LoRaWAN: __S(2656, __c83, 0) }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/multicast-groups/{Id}/session" }),
             svc,
@@ -9760,9 +9393,7 @@ function __c148(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "StartMulticastGroupSessionRequest",
-      });
+      ).annotate({ identifier: "StartMulticastGroupSessionRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

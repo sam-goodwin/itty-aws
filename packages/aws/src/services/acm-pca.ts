@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -744,7 +744,7 @@ export const deleteCertificateAuthority: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(144, __c9, 0) as any as S.Schema<DeleteCertificateAuthorityRequest>,
-  output: __S(160, __c10, 0) as any as S.Schema<DeleteCertificateAuthorityResponse>,
+  output: __S(112, __c7, 0) as any as S.Schema<DeleteCertificateAuthorityResponse>,
   errors: [
     ConcurrentModificationException,
     InvalidArnException,
@@ -782,7 +782,7 @@ export const deletePermission: API.OperationMethod<
   DeletePermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c11, 0) as any as S.Schema<DeletePermissionRequest>,
+  input: __S(160, __c10, 0) as any as S.Schema<DeletePermissionRequest>,
   output: __S(112, __c7, 0) as any as S.Schema<DeletePermissionResponse>,
   errors: [
     InvalidArnException,
@@ -827,7 +827,7 @@ export const deletePolicy: API.OperationMethod<
   DeletePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c12, 0) as any as S.Schema<DeletePolicyRequest>,
+  input: __S(176, __c11, 0) as any as S.Schema<DeletePolicyRequest>,
   output: __S(112, __c7, 0) as any as S.Schema<DeletePolicyResponse>,
   errors: [
     ConcurrentModificationException,
@@ -869,8 +869,8 @@ export const describeCertificateAuthority: API.OperationMethod<
   DescribeCertificateAuthorityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c13, 0) as any as S.Schema<DescribeCertificateAuthorityRequest>,
-  output: __S(209, __c13, 1) as any as S.Schema<DescribeCertificateAuthorityResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<DescribeCertificateAuthorityRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<DescribeCertificateAuthorityResponse>,
   errors: [InvalidArnException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -891,8 +891,8 @@ export const describeCertificateAuthorityAuditReport: API.OperationMethod<
   DescribeCertificateAuthorityAuditReportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c15, 0) as any as S.Schema<DescribeCertificateAuthorityAuditReportRequest>,
-  output: __S(241, __c15, 1) as any as S.Schema<DescribeCertificateAuthorityAuditReportResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<DescribeCertificateAuthorityAuditReportRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<DescribeCertificateAuthorityAuditReportResponse>,
   errors: [InvalidArgsException, InvalidArnException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -915,8 +915,8 @@ export const getCertificate: API.OperationMethod<
   GetCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c16, 0) as any as S.Schema<GetCertificateRequest>,
-  output: __S(257, __c16, 1) as any as S.Schema<GetCertificateResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetCertificateRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<GetCertificateResponse>,
   errors: [
     InvalidArnException,
     InvalidStateException,
@@ -944,7 +944,7 @@ export const getCertificateAuthorityCertificate: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(272, __c17, 0) as any as S.Schema<GetCertificateAuthorityCertificateRequest>,
-  output: __S(273, __c17, 1) as any as S.Schema<GetCertificateAuthorityCertificateResponse>,
+  output: __S(256, __c16, 0) as any as S.Schema<GetCertificateAuthorityCertificateResponse>,
   errors: [InvalidArnException, InvalidStateException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1115,7 +1115,7 @@ export const importCertificateAuthorityCertificate: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(320, __c20, 0) as any as S.Schema<ImportCertificateAuthorityCertificateRequest>,
-  output: __S(160, __c10, 0) as any as S.Schema<ImportCertificateAuthorityCertificateResponse>,
+  output: __S(112, __c7, 0) as any as S.Schema<ImportCertificateAuthorityCertificateResponse>,
   errors: [
     CertificateMismatchException,
     ConcurrentModificationException,
@@ -1336,7 +1336,7 @@ export const restoreCertificateAuthority: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(416, __c26, 0) as any as S.Schema<RestoreCertificateAuthorityRequest>,
-  output: __S(160, __c10, 0) as any as S.Schema<RestoreCertificateAuthorityResponse>,
+  output: __S(112, __c7, 0) as any as S.Schema<RestoreCertificateAuthorityResponse>,
   errors: [InvalidArnException, InvalidStateException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1406,7 +1406,7 @@ export const tagCertificateAuthority: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(448, __c28, 0) as any as S.Schema<TagCertificateAuthorityRequest>,
-  output: __S(449, __c28, 1) as any as S.Schema<TagCertificateAuthorityResponse>,
+  output: __S(112, __c7, 0) as any as S.Schema<TagCertificateAuthorityResponse>,
   errors: [
     InvalidArnException,
     InvalidStateException,
@@ -1435,7 +1435,7 @@ export const untagCertificateAuthority: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(464, __c29, 0) as any as S.Schema<UntagCertificateAuthorityRequest>,
-  output: __S(160, __c10, 0) as any as S.Schema<UntagCertificateAuthorityResponse>,
+  output: __S(112, __c7, 0) as any as S.Schema<UntagCertificateAuthorityResponse>,
   errors: [
     InvalidArnException,
     InvalidStateException,
@@ -1467,7 +1467,7 @@ export const updateCertificateAuthority: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(480, __c30, 0) as any as S.Schema<UpdateCertificateAuthorityRequest>,
-  output: __S(160, __c10, 0) as any as S.Schema<UpdateCertificateAuthorityResponse>,
+  output: __S(112, __c7, 0) as any as S.Schema<UpdateCertificateAuthorityResponse>,
   errors: [
     ConcurrentModificationException,
     InvalidArgsException,
@@ -1495,9 +1495,7 @@ function __c0(j: number): any {
           Tags: S.optional(__S(65, __c4, 1)),
           UsageMode: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateCertificateAuthorityRequest",
-      });
+      ).annotate({ identifier: "CreateCertificateAuthorityRequest" });
     case 1:
       return S.suspend(() => S.Struct({ CertificateAuthorityArn: S.optional(S.String) })).annotate({
         identifier: "CreateCertificateAuthorityResponse",
@@ -1599,9 +1597,7 @@ function __c2(j: number): any {
           Subject: __S(18, __c1, 2),
           CsrExtensions: S.optional(__S(35, __c2, 3)),
         }),
-      ).annotate({
-        identifier: "CertificateAuthorityConfiguration",
-      });
+      ).annotate({ identifier: "CertificateAuthorityConfiguration" });
   }
 }
 function __c3(j: number): any {
@@ -1655,15 +1651,11 @@ function __c5(j: number): any {
           S3BucketName: S.String,
           AuditReportResponseFormat: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateCertificateAuthorityAuditReportRequest",
-      });
+      ).annotate({ identifier: "CreateCertificateAuthorityAuditReportRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ AuditReportId: S.optional(S.String), S3Key: S.optional(S.String) }),
-      ).annotate({
-        identifier: "CreateCertificateAuthorityAuditReportResponse",
-      });
+      ).annotate({ identifier: "CreateCertificateAuthorityAuditReportResponse" });
   }
 }
 function __c6(j: number): any {
@@ -1682,9 +1674,7 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreatePermissionResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "CreatePermissionResponse" });
   }
 }
 function __c8(j: number): any {
@@ -1701,20 +1691,10 @@ function __c9(j: number): any {
           CertificateAuthorityArn: S.String,
           PermanentDeletionTimeInDays: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteCertificateAuthorityRequest",
-      });
+      ).annotate({ identifier: "DeleteCertificateAuthorityRequest" });
   }
 }
 function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteCertificateAuthorityResponse",
-      });
-  }
-}
-function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1726,7 +1706,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "DeletePermissionRequest" });
   }
 }
-function __c12(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1736,25 +1716,21 @@ function __c12(j: number): any {
       ).annotate({ identifier: "DeletePolicyRequest" });
   }
 }
-function __c13(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ CertificateAuthorityArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeCertificateAuthorityRequest",
-      });
+      ).annotate({ identifier: "DescribeCertificateAuthorityRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ CertificateAuthority: S.optional(__S(224, __c14, 0)) }),
-      ).annotate({
-        identifier: "DescribeCertificateAuthorityResponse",
-      });
+        S.Struct({ CertificateAuthority: S.optional(__S(208, __c13, 0)) }),
+      ).annotate({ identifier: "DescribeCertificateAuthorityResponse" });
   }
 }
-function __c14(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1778,16 +1754,14 @@ function __c14(j: number): any {
       ).annotate({ identifier: "CertificateAuthority" });
   }
 }
-function __c15(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ CertificateAuthorityArn: S.String, AuditReportId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeCertificateAuthorityAuditReportRequest",
-      });
+      ).annotate({ identifier: "DescribeCertificateAuthorityAuditReportRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1796,12 +1770,10 @@ function __c15(j: number): any {
           S3Key: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "DescribeCertificateAuthorityAuditReportResponse",
-      });
+      ).annotate({ identifier: "DescribeCertificateAuthorityAuditReportResponse" });
   }
 }
-function __c16(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1809,7 +1781,11 @@ function __c16(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetCertificateRequest" });
-    case 1:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Certificate: S.optional(S.String), CertificateChain: S.optional(S.String) }),
       ).annotate({ identifier: "GetCertificateResponse" });
@@ -1822,15 +1798,7 @@ function __c17(j: number): any {
         S.Struct({ CertificateAuthorityArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetCertificateAuthorityCertificateRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Certificate: S.optional(S.String), CertificateChain: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetCertificateAuthorityCertificateResponse",
-      });
+      ).annotate({ identifier: "GetCertificateAuthorityCertificateRequest" });
   }
 }
 function __c18(j: number): any {
@@ -1840,9 +1808,7 @@ function __c18(j: number): any {
         S.Struct({ CertificateAuthorityArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetCertificateAuthorityCsrRequest",
-      });
+      ).annotate({ identifier: "GetCertificateAuthorityCsrRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Csr: S.optional(S.String) })).annotate({
         identifier: "GetCertificateAuthorityCsrResponse",
@@ -1872,17 +1838,13 @@ function __c20(j: number): any {
           Certificate: T.Blob,
           CertificateChain: S.optional(T.Blob),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ImportCertificateAuthorityCertificateRequest",
-      });
+      ).annotate({ identifier: "ImportCertificateAuthorityCertificateRequest" });
   }
 }
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ CpsUri: S.String })).annotate({
-        identifier: "Qualifier",
-      });
+      return S.suspend(() => S.Struct({ CpsUri: S.String })).annotate({ identifier: "Qualifier" });
     case 1:
       return S.suspend(() =>
         S.Struct({ PolicyQualifierId: S.String, Qualifier: __S(336, __c21, 0) }),
@@ -1961,20 +1923,16 @@ function __c22(j: number): any {
           NextToken: S.optional(S.String),
           ResourceOwner: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListCertificateAuthoritiesRequest",
-      });
+      ).annotate({ identifier: "ListCertificateAuthoritiesRequest" });
     case 1:
-      return S.Array(__S(224, __c14, 0));
+      return S.Array(__S(208, __c13, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           CertificateAuthorities: S.optional(__S(353, __c22, 1)),
         }),
-      ).annotate({
-        identifier: "ListCertificateAuthoritiesResponse",
-      });
+      ).annotate({ identifier: "ListCertificateAuthoritiesResponse" });
   }
 }
 function __c23(j: number): any {
@@ -2039,9 +1997,7 @@ function __c26(j: number): any {
         S.Struct({ CertificateAuthorityArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "RestoreCertificateAuthorityRequest",
-      });
+      ).annotate({ identifier: "RestoreCertificateAuthorityRequest" });
   }
 }
 function __c27(j: number): any {
@@ -2063,13 +2019,7 @@ function __c28(j: number): any {
         S.Struct({ CertificateAuthorityArn: S.String, Tags: __S(65, __c4, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "TagCertificateAuthorityRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagCertificateAuthorityResponse",
-      });
+      ).annotate({ identifier: "TagCertificateAuthorityRequest" });
   }
 }
 function __c29(j: number): any {
@@ -2079,9 +2029,7 @@ function __c29(j: number): any {
         S.Struct({ CertificateAuthorityArn: S.String, Tags: __S(65, __c4, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "UntagCertificateAuthorityRequest",
-      });
+      ).annotate({ identifier: "UntagCertificateAuthorityRequest" });
   }
 }
 function __c30(j: number): any {
@@ -2093,9 +2041,7 @@ function __c30(j: number): any {
           RevocationConfiguration: S.optional(__S(51, __c3, 3)),
           Status: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateCertificateAuthorityRequest",
-      });
+      ).annotate({ identifier: "UpdateCertificateAuthorityRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1105,9 +1105,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetCaseAttachmentDownloadUrlRequest",
-      });
+      ).annotate({ identifier: "GetCaseAttachmentDownloadUrlRequest" });
   }
 }
 function __c1(j: number): any {
@@ -1137,9 +1135,7 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetCaseAttachmentUploadUrlRequest",
-      });
+      ).annotate({ identifier: "GetCaseAttachmentUploadUrlRequest" });
   }
 }
 function __c3(j: number): any {
@@ -1163,9 +1159,7 @@ function __c3(j: number): any {
           coverEntireOrganization: S.optional(S.Boolean),
           organizationalUnits: S.optional(__S(168, __c21, 0)),
         }),
-      ).annotate({
-        identifier: "MembershipAccountsConfigurations",
-      });
+      ).annotate({ identifier: "MembershipAccountsConfigurations" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1325,9 +1319,7 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListInvestigationsRequest",
-      });
+      ).annotate({ identifier: "ListInvestigationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1353,9 +1345,7 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), investigationActions: __S(59, __c7, 3) }),
-      ).annotate({
-        identifier: "ListInvestigationsResponse",
-      });
+      ).annotate({ identifier: "ListInvestigationsResponse" });
   }
 }
 function __c8(j: number): any {
@@ -1430,9 +1420,7 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "SendFeedbackResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "SendFeedbackResponse" });
   }
 }
 function __c12(j: number): any {
@@ -1542,19 +1530,14 @@ function __c16(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ commentId: S.String, body: S.optional(SensitiveString) }),
-      ).annotate({
-        identifier: "UpdateCaseCommentResponse",
-      });
+      ).annotate({ identifier: "UpdateCaseCommentResponse" });
   }
 }
 function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          caseId: S.String.pipe(T.HttpLabel("caseId")),
-          caseStatus: S.String,
-        }).pipe(
+        S.Struct({ caseId: S.String.pipe(T.HttpLabel("caseId")), caseStatus: S.String }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/cases/{caseId}/update-case-status" }),
             svc,
@@ -1580,9 +1563,7 @@ function __c18(j: number): any {
           organizationalUnitsToAdd: S.optional(__S(168, __c21, 0)),
           organizationalUnitsToRemove: S.optional(__S(168, __c21, 0)),
         }),
-      ).annotate({
-        identifier: "MembershipAccountsConfigurationsUpdate",
-      });
+      ).annotate({ identifier: "MembershipAccountsConfigurationsUpdate" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1619,9 +1600,7 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateResolverTypeRequest",
-      });
+      ).annotate({ identifier: "UpdateResolverTypeRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1629,9 +1608,7 @@ function __c19(j: number): any {
           caseStatus: S.optional(S.String),
           resolverType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "UpdateResolverTypeResponse",
-      });
+      ).annotate({ identifier: "UpdateResolverTypeResponse" });
   }
 }
 function __c20(j: number): any {
@@ -1651,9 +1628,7 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "BatchGetMemberAccountDetailsRequest",
-      });
+      ).annotate({ identifier: "BatchGetMemberAccountDetailsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1661,28 +1636,19 @@ function __c20(j: number): any {
           relationshipStatus: S.optional(S.String),
           relationshipType: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetMembershipAccountDetailItem",
-      });
+      ).annotate({ identifier: "GetMembershipAccountDetailItem" });
     case 2:
       return S.Array(__S(161, __c20, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ accountId: S.String, error: S.String, message: S.String }),
-      ).annotate({
-        identifier: "GetMembershipAccountDetailError",
-      });
+      ).annotate({ identifier: "GetMembershipAccountDetailError" });
     case 4:
       return S.Array(__S(163, __c20, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(162, __c20, 2)),
-          errors: S.optional(__S(164, __c20, 4)),
-        }),
-      ).annotate({
-        identifier: "BatchGetMemberAccountDetailsResponse",
-      });
+        S.Struct({ items: S.optional(__S(162, __c20, 2)), errors: S.optional(__S(164, __c20, 4)) }),
+      ).annotate({ identifier: "BatchGetMemberAccountDetailsResponse" });
   }
 }
 function __c21(j: number): any {

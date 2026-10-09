@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -155,7 +155,7 @@ export class ValidationException
         identifier: "ValidationExceptionReason",
       }),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(241, __c15, 1)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(121, __c15, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -474,8 +474,8 @@ export const createAct: API.OperationMethod<
   CreateActError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259, __c16, 3) as any as S.Schema<CreateActRequest>,
-  output: __S(260, __c16, 4) as any as S.Schema<CreateActResponse>,
+  input: __S(131, __c16, 3) as any as S.Schema<CreateActRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<CreateActResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -508,8 +508,8 @@ export const createSession: API.OperationMethod<
   CreateSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c17, 0) as any as S.Schema<CreateSessionRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<CreateSessionResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<CreateSessionRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<CreateSessionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -541,8 +541,8 @@ export const createWorkflowDefinition: API.OperationMethod<
   CreateWorkflowDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c19, 0) as any as S.Schema<CreateWorkflowDefinitionRequest>,
-  output: __S(320, __c20, 0) as any as S.Schema<CreateWorkflowDefinitionResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<CreateWorkflowDefinitionRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<CreateWorkflowDefinitionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -605,8 +605,8 @@ export const deleteWorkflowDefinition: API.OperationMethod<
   DeleteWorkflowDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c1, 0) as any as S.Schema<DeleteWorkflowDefinitionRequest>,
-  output: __S(320, __c20, 0) as any as S.Schema<DeleteWorkflowDefinitionResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<DeleteWorkflowDefinitionRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<DeleteWorkflowDefinitionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -637,8 +637,8 @@ export const deleteWorkflowRun: API.OperationMethod<
   DeleteWorkflowRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c2, 0) as any as S.Schema<DeleteWorkflowRunRequest>,
-  output: __S(320, __c20, 0) as any as S.Schema<DeleteWorkflowRunResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteWorkflowRunRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<DeleteWorkflowRunResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -668,8 +668,8 @@ export const getWorkflowDefinition: API.OperationMethod<
   GetWorkflowDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c3, 0) as any as S.Schema<GetWorkflowDefinitionRequest>,
-  output: __S(49, __c3, 1) as any as S.Schema<GetWorkflowDefinitionResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetWorkflowDefinitionRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GetWorkflowDefinitionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -699,8 +699,8 @@ export const getWorkflowRun: API.OperationMethod<
   GetWorkflowRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c4, 0) as any as S.Schema<GetWorkflowRunRequest>,
-  output: __S(65, __c4, 1) as any as S.Schema<GetWorkflowRunResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetWorkflowRunRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<GetWorkflowRunResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -732,8 +732,8 @@ export const invokeActStep: API.OperationMethod<
   InvokeActStepError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c5, 4) as any as S.Schema<InvokeActStepRequest>,
-  output: __S(87, __c5, 7) as any as S.Schema<InvokeActStepResponse>,
+  input: __S(44, __c5, 4) as any as S.Schema<InvokeActStepRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<InvokeActStepResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -766,8 +766,8 @@ export const listActs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ActSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(96, __c6, 0) as any as S.Schema<ListActsRequest>,
-  output: __S(99, __c6, 3) as any as S.Schema<ListActsResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListActsRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<ListActsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -801,8 +801,8 @@ export const listModels: API.OperationMethod<
   ListModelsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c8, 0) as any as S.Schema<ListModelsRequest>,
-  output: __S(136, __c8, 8) as any as S.Schema<ListModelsResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListModelsRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<ListModelsResponse>,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -827,8 +827,8 @@ export const listSessions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SessionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(144, __c9, 0) as any as S.Schema<ListSessionsRequest>,
-  output: __S(146, __c9, 2) as any as S.Schema<ListSessionsResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<ListSessionsRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<ListSessionsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -864,8 +864,8 @@ export const listWorkflowDefinitions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WorkflowDefinitionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(160, __c10, 0) as any as S.Schema<ListWorkflowDefinitionsRequest>,
-  output: __S(163, __c10, 3) as any as S.Schema<ListWorkflowDefinitionsResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListWorkflowDefinitionsRequest>,
+  output: __S(83, __c10, 3) as any as S.Schema<ListWorkflowDefinitionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -901,8 +901,8 @@ export const listWorkflowRuns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WorkflowRunSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(176, __c11, 0) as any as S.Schema<ListWorkflowRunsRequest>,
-  output: __S(179, __c11, 3) as any as S.Schema<ListWorkflowRunsResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<ListWorkflowRunsRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<ListWorkflowRunsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -939,8 +939,8 @@ export const updateAct: API.OperationMethod<
   UpdateActError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c12, 1) as any as S.Schema<UpdateActRequest>,
-  output: __S(208, __c13, 0) as any as S.Schema<UpdateActResponse>,
+  input: __S(97, __c12, 1) as any as S.Schema<UpdateActRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<UpdateActResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -971,8 +971,8 @@ export const updateWorkflowRun: API.OperationMethod<
   UpdateWorkflowRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c14, 0) as any as S.Schema<UpdateWorkflowRunRequest>,
-  output: __S(208, __c13, 0) as any as S.Schema<UpdateWorkflowRunResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<UpdateWorkflowRunRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<UpdateWorkflowRunResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1037,9 +1037,7 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteWorkflowDefinitionRequest",
-      });
+      ).annotate({ identifier: "DeleteWorkflowDefinitionRequest" });
   }
 }
 function __c2(j: number): any {
@@ -1081,9 +1079,7 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetWorkflowDefinitionRequest",
-      });
+      ).annotate({ identifier: "GetWorkflowDefinitionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1091,12 +1087,10 @@ function __c3(j: number): any {
           arn: S.String,
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           description: S.optional(SensitiveString),
-          exportConfig: S.optional(__S(336, __c21, 0)),
+          exportConfig: S.optional(__S(168, __c21, 0)),
           status: S.String,
         }),
-      ).annotate({
-        identifier: "GetWorkflowDefinitionResponse",
-      });
+      ).annotate({ identifier: "GetWorkflowDefinitionResponse" });
   }
 }
 function __c4(j: number): any {
@@ -1139,13 +1133,13 @@ function __c5(j: number): any {
     case 0:
       return S.Union([/*@__PURE__*/ S.Struct({ text: S.String })]);
     case 1:
-      return S.Array(__S(80, __c5, 0));
+      return S.Array(__S(40, __c5, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ callId: S.optional(S.String), content: __S(81, __c5, 1) }),
+        S.Struct({ callId: S.optional(S.String), content: __S(41, __c5, 1) }),
       ).annotate({ identifier: "CallResult" });
     case 3:
-      return S.Array(__S(82, __c5, 2));
+      return S.Array(__S(42, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1153,7 +1147,7 @@ function __c5(j: number): any {
           workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
           sessionId: S.String.pipe(T.HttpLabel("sessionId")),
           actId: S.String.pipe(T.HttpLabel("actId")),
-          callResults: __S(83, __c5, 3),
+          callResults: __S(43, __c5, 3),
           previousStepId: S.optional(S.String),
         }).pipe(
           T.all(
@@ -1174,9 +1168,9 @@ function __c5(j: number): any {
         { identifier: "Call" },
       );
     case 6:
-      return S.Array(__S(85, __c5, 5));
+      return S.Array(__S(45, __c5, 5));
     case 7:
-      return S.suspend(() => S.Struct({ calls: __S(86, __c5, 6), stepId: S.String })).annotate({
+      return S.suspend(() => S.Struct({ calls: __S(46, __c5, 6), stepId: S.String })).annotate({
         identifier: "InvokeActStepResponse",
       });
   }
@@ -1212,14 +1206,14 @@ function __c6(j: number): any {
           status: S.String,
           startedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           endedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          traceLocation: S.optional(__S(112, __c7, 0)),
+          traceLocation: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({ identifier: "ActSummary" });
     case 2:
-      return S.Array(__S(97, __c6, 1));
+      return S.Array(__S(49, __c6, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ actSummaries: __S(98, __c6, 2), nextToken: S.optional(S.String) }),
+        S.Struct({ actSummaries: __S(50, __c6, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListActsResponse" });
   }
 }
@@ -1240,20 +1234,16 @@ function __c8(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/models" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListModelsRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ status: S.String })).annotate({
-        identifier: "ModelLifecycle",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           modelId: S.String,
-          modelLifecycle: __S(129, __c8, 1),
+          modelLifecycle: __S(160, __c20, 0),
           minimumCompatibilityVersion: S.Number,
         }),
       ).annotate({ identifier: "ModelSummary" });
+    case 2:
+      return S.Array(__S(65, __c8, 1));
     case 3:
-      return S.Array(__S(130, __c8, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           aliasName: S.String,
@@ -1261,24 +1251,24 @@ function __c8(j: number): any {
           resolvedModelId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ModelAlias" });
+    case 4:
+      return S.Array(__S(67, __c8, 3));
     case 5:
-      return S.Array(__S(132, __c8, 4));
-    case 6:
       return S.Array(S.String);
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           clientCompatibilityVersion: S.Number,
-          supportedModelIds: __S(134, __c8, 6),
+          supportedModelIds: __S(69, __c8, 5),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "CompatibilityInformation" });
-    case 8:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          modelSummaries: __S(131, __c8, 3),
-          modelAliases: __S(133, __c8, 5),
-          compatibilityInformation: __S(135, __c8, 7),
+          modelSummaries: __S(66, __c8, 2),
+          modelAliases: __S(68, __c8, 4),
+          compatibilityInformation: __S(70, __c8, 6),
         }),
       ).annotate({ identifier: "ListModelsResponse" });
   }
@@ -1308,10 +1298,10 @@ function __c9(j: number): any {
         ),
       ).annotate({ identifier: "ListSessionsRequest" });
     case 1:
-      return S.Array(__S(288, __c18, 0));
+      return S.Array(__S(144, __c18, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ sessionSummaries: __S(145, __c9, 1), nextToken: S.optional(S.String) }),
+        S.Struct({ sessionSummaries: __S(73, __c9, 1), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListSessionsResponse" });
   }
 }
@@ -1333,9 +1323,7 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListWorkflowDefinitionsRequest",
-      });
+      ).annotate({ identifier: "ListWorkflowDefinitionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1344,20 +1332,16 @@ function __c10(j: number): any {
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           status: S.String,
         }),
-      ).annotate({
-        identifier: "WorkflowDefinitionSummary",
-      });
+      ).annotate({ identifier: "WorkflowDefinitionSummary" });
     case 2:
-      return S.Array(__S(161, __c10, 1));
+      return S.Array(__S(81, __c10, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          workflowDefinitionSummaries: __S(162, __c10, 2),
+          workflowDefinitionSummaries: __S(82, __c10, 2),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListWorkflowDefinitionsResponse",
-      });
+      ).annotate({ identifier: "ListWorkflowDefinitionsResponse" });
   }
 }
 function __c11(j: number): any {
@@ -1391,14 +1375,14 @@ function __c11(j: number): any {
           status: S.String,
           startedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           endedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          traceLocation: S.optional(__S(112, __c7, 0)),
+          traceLocation: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({ identifier: "WorkflowRunSummary" });
     case 2:
-      return S.Array(__S(177, __c11, 1));
+      return S.Array(__S(89, __c11, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ workflowRunSummaries: __S(178, __c11, 2), nextToken: S.optional(S.String) }),
+        S.Struct({ workflowRunSummaries: __S(90, __c11, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListWorkflowRunsResponse" });
   }
 }
@@ -1416,7 +1400,7 @@ function __c12(j: number): any {
           sessionId: S.String.pipe(T.HttpLabel("sessionId")),
           actId: S.String.pipe(T.HttpLabel("actId")),
           status: S.String,
-          error: S.optional(__S(192, __c12, 0)),
+          error: S.optional(__S(96, __c12, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -1436,9 +1420,7 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UpdateActResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "UpdateActResponse" });
   }
 }
 function __c14(j: number): any {
@@ -1472,7 +1454,7 @@ function __c15(j: number): any {
         identifier: "ValidationExceptionField",
       });
     case 1:
-      return S.Array(__S(240, __c15, 0));
+      return S.Array(__S(120, __c15, 0));
   }
 }
 function __c16(j: number): any {
@@ -1481,10 +1463,10 @@ function __c16(j: number): any {
       return S.Union([/*@__PURE__*/ S.Struct({ json: S.Any })]);
     case 1:
       return S.suspend(() =>
-        S.Struct({ name: S.String, description: SensitiveString, inputSchema: __S(256, __c16, 0) }),
+        S.Struct({ name: S.String, description: SensitiveString, inputSchema: __S(128, __c16, 0) }),
       ).annotate({ identifier: "ToolSpec" });
     case 2:
-      return S.Array(__S(257, __c16, 1));
+      return S.Array(__S(129, __c16, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1492,7 +1474,7 @@ function __c16(j: number): any {
           workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
           sessionId: S.String.pipe(T.HttpLabel("sessionId")),
           task: SensitiveString,
-          toolSpecs: S.optional(__S(258, __c16, 2)),
+          toolSpecs: S.optional(__S(130, __c16, 2)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -1553,7 +1535,7 @@ function __c19(j: number): any {
         S.Struct({
           name: S.String,
           description: S.optional(SensitiveString),
-          exportConfig: S.optional(__S(336, __c21, 0)),
+          exportConfig: S.optional(__S(168, __c21, 0)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -1565,9 +1547,7 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateWorkflowDefinitionRequest",
-      });
+      ).annotate({ identifier: "CreateWorkflowDefinitionRequest" });
   }
 }
 function __c20(j: number): any {

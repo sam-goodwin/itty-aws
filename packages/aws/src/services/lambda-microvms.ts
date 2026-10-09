@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1513,9 +1513,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateMicrovmAuthTokenRequest",
-      });
+      ).annotate({ identifier: "CreateMicrovmAuthTokenRequest" });
   }
 }
 function __c1(j: number): any {
@@ -1562,9 +1560,7 @@ function __c3(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateMicrovmImageRequest",
-      });
+      ).annotate({ identifier: "CreateMicrovmImageRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1590,9 +1586,7 @@ function __c3(j: number): any {
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           imageVersion: S.String,
         }),
-      ).annotate({
-        identifier: "CreateMicrovmImageResponse",
-      });
+      ).annotate({ identifier: "CreateMicrovmImageResponse" });
   }
 }
 function __c4(j: number): any {
@@ -1610,9 +1604,7 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "LoggingDisabled",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "LoggingDisabled" });
   }
 }
 function __c7(j: number): any {
@@ -1698,9 +1690,7 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateMicrovmShellAuthTokenRequest",
-      });
+      ).annotate({ identifier: "CreateMicrovmShellAuthTokenRequest" });
   }
 }
 function __c10(j: number): any {
@@ -1744,15 +1734,11 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteMicrovmImageVersionInput",
-      });
+      ).annotate({ identifier: "DeleteMicrovmImageVersionInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ imageIdentifier: S.String, imageVersion: S.String, state: S.String }),
-      ).annotate({
-        identifier: "DeleteMicrovmImageVersionOutput",
-      });
+      ).annotate({ identifier: "DeleteMicrovmImageVersionOutput" });
   }
 }
 function __c12(j: number): any {
@@ -1853,9 +1839,7 @@ function __c15(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetMicrovmImageBuildInput",
-      });
+      ).annotate({ identifier: "GetMicrovmImageBuildInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1878,9 +1862,7 @@ function __c15(j: number): any {
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           snapshotBuild: S.optional(__S(241, __c15, 1)),
         }),
-      ).annotate({
-        identifier: "GetMicrovmImageBuildOutput",
-      });
+      ).annotate({ identifier: "GetMicrovmImageBuildOutput" });
   }
 }
 function __c16(j: number): any {
@@ -1903,9 +1885,7 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetMicrovmImageVersionInput",
-      });
+      ).annotate({ identifier: "GetMicrovmImageVersionInput" });
   }
 }
 function __c17(j: number): any {
@@ -1934,9 +1914,7 @@ function __c17(j: number): any {
           stateReason: S.optional(S.String),
           tags: S.optional(__S(80, __c5, 0)),
         }),
-      ).annotate({
-        identifier: "GetMicrovmImageVersionOutput",
-      });
+      ).annotate({ identifier: "GetMicrovmImageVersionOutput" });
   }
 }
 function __c18(j: number): any {
@@ -1956,9 +1934,7 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListManagedMicrovmImagesInput",
-      });
+      ).annotate({ identifier: "ListManagedMicrovmImagesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1966,17 +1942,13 @@ function __c18(j: number): any {
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "ManagedMicrovmImageSummary",
-      });
+      ).annotate({ identifier: "ManagedMicrovmImageSummary" });
     case 2:
       return S.Array(__S(289, __c18, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), items: __S(290, __c18, 2) }),
-      ).annotate({
-        identifier: "ListManagedMicrovmImagesOutput",
-      });
+      ).annotate({ identifier: "ListManagedMicrovmImagesOutput" });
   }
 }
 function __c19(j: number): any {
@@ -2000,9 +1972,7 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListManagedMicrovmImageVersionsInput",
-      });
+      ).annotate({ identifier: "ListManagedMicrovmImageVersionsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2012,17 +1982,13 @@ function __c19(j: number): any {
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "ManagedMicrovmImageVersion",
-      });
+      ).annotate({ identifier: "ManagedMicrovmImageVersion" });
     case 2:
       return S.Array(__S(305, __c19, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), items: __S(306, __c19, 2) }),
-      ).annotate({
-        identifier: "ListManagedMicrovmImageVersionsOutput",
-      });
+      ).annotate({ identifier: "ListManagedMicrovmImageVersionsOutput" });
   }
 }
 function __c20(j: number): any {
@@ -2050,9 +2016,7 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListMicrovmImageBuildsInput",
-      });
+      ).annotate({ identifier: "ListMicrovmImageBuildsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2072,9 +2036,7 @@ function __c20(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), items: __S(322, __c20, 2) }),
-      ).annotate({
-        identifier: "ListMicrovmImageBuildsOutput",
-      });
+      ).annotate({ identifier: "ListMicrovmImageBuildsOutput" });
   }
 }
 function __c21(j: number): any {
@@ -2112,9 +2074,7 @@ function __c21(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), items: __S(338, __c21, 2) }),
-      ).annotate({
-        identifier: "ListMicrovmImagesResponse",
-      });
+      ).annotate({ identifier: "ListMicrovmImagesResponse" });
   }
 }
 function __c22(j: number): any {
@@ -2135,17 +2095,13 @@ function __c22(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListMicrovmImageVersionsInput",
-      });
+      ).annotate({ identifier: "ListMicrovmImageVersionsInput" });
     case 1:
       return S.Array(__S(272, __c17, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), items: __S(353, __c22, 1) }),
-      ).annotate({
-        identifier: "ListMicrovmImageVersionsOutput",
-      });
+      ).annotate({ identifier: "ListMicrovmImageVersionsOutput" });
   }
 }
 function __c23(j: number): any {
@@ -2354,9 +2310,7 @@ function __c31(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateMicrovmImageRequest",
-      });
+      ).annotate({ identifier: "UpdateMicrovmImageRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2381,9 +2335,7 @@ function __c31(j: number): any {
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           imageVersion: S.String,
         }),
-      ).annotate({
-        identifier: "UpdateMicrovmImageResponse",
-      });
+      ).annotate({ identifier: "UpdateMicrovmImageResponse" });
   }
 }
 function __c32(j: number): any {
@@ -2407,9 +2359,7 @@ function __c32(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateMicrovmImageVersionRequest",
-      });
+      ).annotate({ identifier: "UpdateMicrovmImageVersionRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

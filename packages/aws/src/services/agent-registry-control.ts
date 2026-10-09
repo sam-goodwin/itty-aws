@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -818,8 +818,8 @@ export const deleteRegistry: API.OperationMethod<
   DeleteRegistryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c28, 0) as any as S.Schema<DeleteRegistryRequest>,
-  output: __S(897, __c28, 1) as any as S.Schema<DeleteRegistryResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<DeleteRegistryRequest>,
+  output: __S(865, __c27, 1) as any as S.Schema<DeleteRegistryResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1241,17 +1241,13 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteRegistryRecordRequest",
-      });
+      ).annotate({ identifier: "DeleteRegistryRecordRequest" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteRegistryRecordResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteRegistryRecordResponse" });
   }
 }
 function __c2(j: number): any {
@@ -1337,21 +1333,19 @@ function __c6(j: number): any {
           displayName: S.optional(S.String),
           description: S.optional(SensitiveString),
           recordType: S.String,
-          descriptors: S.optional(__S(879, __c27, 15)),
+          descriptors: S.optional(__S(847, __c26, 15)),
           recordVersion: S.optional(S.String),
           status: S.String,
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           statusReason: S.optional(S.String),
-          provenance: S.optional(__S(886, __c27, 22)),
+          provenance: S.optional(__S(854, __c26, 22)),
           createdByAutoDetection: S.optional(S.Boolean),
           createdBy: S.optional(S.String),
           customMetadata: S.optional(S.Any),
           customMetadataSchemaComplianceStatus: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetRegistryRecordResponse",
-      });
+      ).annotate({ identifier: "GetRegistryRecordResponse" });
   }
 }
 function __c7(j: number): any {
@@ -1418,16 +1412,10 @@ function __c9(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListRegistryRecordsRequest",
-      });
+      ).annotate({ identifier: "ListRegistryRecordsRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          relation: S.String,
-          sourceId: S.String,
-          sourceType: S.optional(S.String),
-        }),
+        S.Struct({ relation: S.String, sourceId: S.String, sourceType: S.optional(S.String) }),
       ).annotate({ identifier: "ProvenanceSummary" });
     case 2:
       return S.Array(__S(289, __c9, 1));
@@ -1456,9 +1444,7 @@ function __c9(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({ registryRecords: __S(292, __c9, 4), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListRegistryRecordsResponse",
-      });
+      ).annotate({ identifier: "ListRegistryRecordsResponse" });
   }
 }
 function __c10(j: number): any {
@@ -1475,11 +1461,9 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(832, __c26, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(736, __c23, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
@@ -1504,9 +1488,7 @@ function __c11(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "SubmitRegistryRecordForApprovalRequest",
-      });
+      ).annotate({ identifier: "SubmitRegistryRecordForApprovalRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1516,9 +1498,7 @@ function __c11(j: number): any {
           status: S.String,
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "SubmitRegistryRecordForApprovalResponse",
-      });
+      ).annotate({ identifier: "SubmitRegistryRecordForApprovalResponse" });
   }
 }
 function __c12(j: number): any {
@@ -1565,16 +1545,12 @@ function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ optionalValue: S.optional(__S(778, __c24, 10)) })).annotate(
-        {
-          identifier: "UpdatedAuthorizerConfiguration",
-        },
+        { identifier: "UpdatedAuthorizerConfiguration" },
       );
     case 1:
       return S.suspend(() =>
         S.Struct({ authorizerConfiguration: S.optional(__S(448, __c14, 0)) }),
-      ).annotate({
-        identifier: "UpdatedDiscoveryConfiguration",
-      });
+      ).annotate({ identifier: "UpdatedDiscoveryConfiguration" });
     case 2:
       return S.suspend(() => S.Struct({ optionalValue: S.optional(__S(674, __c21, 2)) })).annotate({
         identifier: "UpdatedApprovalConfiguration",
@@ -1625,7 +1601,7 @@ function __c16(j: number): any {
         identifier: "UpdatedDisplayName",
       });
     case 1:
-      return S.suspend(() => S.Struct({ optionalValue: S.optional(__S(872, __c27, 8)) })).annotate({
+      return S.suspend(() => S.Struct({ optionalValue: S.optional(__S(840, __c26, 8)) })).annotate({
         identifier: "UpdatedDescriptorSource",
       });
     case 2:
@@ -1634,9 +1610,7 @@ function __c16(j: number): any {
           data: S.optional(__S(480, __c15, 0)),
           dataSchemaVersion: S.optional(__S(512, __c16, 0)),
         }),
-      ).annotate({
-        identifier: "UpdatedMcpToolsDescriptorFields",
-      });
+      ).annotate({ identifier: "UpdatedMcpToolsDescriptorFields" });
     case 3:
       return S.suspend(() => S.Struct({ optionalValue: S.optional(__S(514, __c16, 2)) })).annotate({
         identifier: "UpdatedMcpToolsDescriptor",
@@ -1657,9 +1631,7 @@ function __c16(j: number): any {
           source: S.optional(__S(513, __c16, 1)),
           additionalData: S.optional(__S(517, __c16, 5)),
         }),
-      ).annotate({
-        identifier: "UpdatedMcpServerDescriptorFields",
-      });
+      ).annotate({ identifier: "UpdatedMcpServerDescriptorFields" });
     case 7:
       return S.suspend(() => S.Struct({ optionalValue: S.optional(__S(518, __c16, 6)) })).annotate({
         identifier: "UpdatedMcpServerDescriptor",
@@ -1671,9 +1643,7 @@ function __c16(j: number): any {
           dataSchemaVersion: S.optional(__S(512, __c16, 0)),
           source: S.optional(__S(513, __c16, 1)),
         }),
-      ).annotate({
-        identifier: "UpdatedA2aAgentCardDescriptorFields",
-      });
+      ).annotate({ identifier: "UpdatedA2aAgentCardDescriptorFields" });
     case 9:
       return S.suspend(() => S.Struct({ optionalValue: S.optional(__S(520, __c16, 8)) })).annotate({
         identifier: "UpdatedA2aAgentCardDescriptor",
@@ -1684,9 +1654,7 @@ function __c16(j: number): any {
       });
     case 11:
       return S.suspend(() => S.Struct({ optionalValue: S.optional(__S(522, __c16, 10)) })).annotate(
-        {
-          identifier: "UpdatedAgentSkillsAdditionalData",
-        },
+        { identifier: "UpdatedAgentSkillsAdditionalData" },
       );
     case 12:
       return S.suspend(() =>
@@ -1695,14 +1663,10 @@ function __c16(j: number): any {
           dataSchemaVersion: S.optional(__S(512, __c16, 0)),
           additionalData: S.optional(__S(523, __c16, 11)),
         }),
-      ).annotate({
-        identifier: "UpdatedAgentSkillsDefinitionDescriptorFields",
-      });
+      ).annotate({ identifier: "UpdatedAgentSkillsDefinitionDescriptorFields" });
     case 13:
       return S.suspend(() => S.Struct({ optionalValue: S.optional(__S(524, __c16, 12)) })).annotate(
-        {
-          identifier: "UpdatedAgentSkillsDefinitionDescriptor",
-        },
+        { identifier: "UpdatedAgentSkillsDefinitionDescriptor" },
       );
     case 14:
       return S.suspend(() => S.Struct({ data: S.optional(__S(480, __c15, 0)) })).annotate({
@@ -1752,7 +1716,7 @@ function __c16(j: number): any {
           recordVersion: S.optional(S.String),
           customMetadata: S.optional(__S(532, __c16, 20)),
           triggerSynchronization: S.optional(S.Boolean),
-          provenance: S.optional(__S(886, __c27, 22)),
+          provenance: S.optional(__S(854, __c26, 22)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/registries/{registryId}/records/{recordId}" }),
@@ -1763,9 +1727,7 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateRegistryRecordRequest",
-      });
+      ).annotate({ identifier: "UpdateRegistryRecordRequest" });
   }
 }
 function __c17(j: number): any {
@@ -1787,9 +1749,7 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateRegistryRecordStatusRequest",
-      });
+      ).annotate({ identifier: "UpdateRegistryRecordStatusRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1800,9 +1760,7 @@ function __c17(j: number): any {
           statusReason: S.String,
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "UpdateRegistryRecordStatusResponse",
-      });
+      ).annotate({ identifier: "UpdateRegistryRecordStatusResponse" });
   }
 }
 function __c18(j: number): any {
@@ -1878,9 +1836,7 @@ function __c21(j: number): any {
           defaultSchema: S.optional(SensitiveString),
           recordTypeSchemaOverrides: S.optional(__S(676, __c21, 4)),
         }),
-      ).annotate({
-        identifier: "CustomMetadataSchemaConfiguration",
-      });
+      ).annotate({ identifier: "CustomMetadataSchemaConfiguration" });
   }
 }
 function __c22(j: number): any {
@@ -1905,9 +1861,7 @@ function __c24(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ claimMatchValue: __S(768, __c24, 0), claimMatchOperator: S.String }),
-      ).annotate({
-        identifier: "AuthorizingClaimMatchValueType",
-      });
+      ).annotate({ identifier: "AuthorizingClaimMatchValueType" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1915,9 +1869,7 @@ function __c24(j: number): any {
           inboundTokenClaimValueType: S.String,
           authorizingClaimMatchValue: __S(769, __c24, 1),
         }),
-      ).annotate({
-        identifier: "CustomClaimValidationType",
-      });
+      ).annotate({ identifier: "CustomClaimValidationType" });
     case 3:
       return S.Array(__S(770, __c24, 2));
     case 4:
@@ -1955,9 +1907,7 @@ function __c24(j: number): any {
           privateEndpoint: S.optional(__S(774, __c24, 6)),
           privateEndpointOverrides: S.optional(__S(776, __c24, 8)),
         }),
-      ).annotate({
-        identifier: "CustomJWTAuthorizerConfiguration",
-      });
+      ).annotate({ identifier: "CustomJWTAuthorizerConfiguration" });
     case 10:
       return S.Union([/*@__PURE__*/ S.Struct({ customJWTAuthorizer: __S(777, __c24, 9) })]);
   }
@@ -1972,10 +1922,10 @@ function __c25(j: number): any {
           displayName: S.optional(S.String),
           description: S.optional(SensitiveString),
           recordType: S.String,
-          descriptors: __S(879, __c27, 15),
+          descriptors: __S(847, __c26, 15),
           recordVersion: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          provenance: S.optional(__S(886, __c27, 22)),
+          provenance: S.optional(__S(854, __c26, 22)),
           customMetadata: S.optional(S.Any),
           tags: S.optional(__S(736, __c23, 0)),
         }).pipe(
@@ -1988,9 +1938,7 @@ function __c25(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateRegistryRecordRequest",
-      });
+      ).annotate({ identifier: "CreateRegistryRecordRequest" });
     case 1:
       return S.suspend(() => S.Struct({ recordArn: S.String, status: S.String })).annotate({
         identifier: "CreateRegistryRecordResponse",
@@ -2000,17 +1948,11 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({ data: S.optional(SensitiveString), dataSchemaVersion: S.optional(S.String) }),
       ).annotate({ identifier: "McpToolsDescriptor" });
     case 1:
-      return S.suspend(() => S.Struct({ tools: S.optional(__S(864, __c27, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ tools: S.optional(__S(832, __c26, 0)) })).annotate({
         identifier: "McpServerAdditionalData",
       });
     case 2:
@@ -2019,11 +1961,9 @@ function __c27(j: number): any {
           providerArn: S.String,
           grantType: S.optional(S.String),
           scopes: S.optional(__S(704, __c22, 0)),
-          customParameters: S.optional(__S(832, __c26, 0)),
+          customParameters: S.optional(__S(736, __c23, 0)),
         }),
-      ).annotate({
-        identifier: "RegistryRecordOAuthCredentialProvider",
-      });
+      ).annotate({ identifier: "RegistryRecordOAuthCredentialProvider" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2031,34 +1971,27 @@ function __c27(j: number): any {
           service: S.optional(S.String),
           region: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "RegistryRecordIamCredentialProvider",
-      });
+      ).annotate({ identifier: "RegistryRecordIamCredentialProvider" });
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ oauthCredentialProvider: __S(866, __c27, 2) }),
-        /*@__PURE__*/ S.Struct({ iamCredentialProvider: __S(867, __c27, 3) }),
+        /*@__PURE__*/ S.Struct({ oauthCredentialProvider: __S(834, __c26, 2) }),
+        /*@__PURE__*/ S.Struct({ iamCredentialProvider: __S(835, __c26, 3) }),
       ]);
     case 5:
       return S.suspend(() =>
-        S.Struct({
-          credentialProviderType: S.String,
-          credentialProvider: __S(868, __c27, 4),
-        }),
-      ).annotate({
-        identifier: "RegistryRecordCredentialProviderConfiguration",
-      });
+        S.Struct({ credentialProviderType: S.String, credentialProvider: __S(836, __c26, 4) }),
+      ).annotate({ identifier: "RegistryRecordCredentialProviderConfiguration" });
     case 6:
-      return S.Array(__S(869, __c27, 5));
+      return S.Array(__S(837, __c26, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
-          credentialProviderConfigurations: S.optional(__S(870, __c27, 6)),
+          credentialProviderConfigurations: S.optional(__S(838, __c26, 6)),
         }),
       ).annotate({ identifier: "DescriptorSourceFromUrl" });
     case 8:
-      return S.suspend(() => S.Struct({ fromUrl: S.optional(__S(871, __c27, 7)) })).annotate({
+      return S.suspend(() => S.Struct({ fromUrl: S.optional(__S(839, __c26, 7)) })).annotate({
         identifier: "DescriptorSource",
       });
     case 9:
@@ -2066,8 +1999,8 @@ function __c27(j: number): any {
         S.Struct({
           data: S.optional(SensitiveString),
           dataSchemaVersion: S.optional(S.String),
-          additionalData: S.optional(__S(865, __c27, 1)),
-          source: S.optional(__S(872, __c27, 8)),
+          additionalData: S.optional(__S(833, __c26, 1)),
+          source: S.optional(__S(840, __c26, 8)),
         }),
       ).annotate({ identifier: "McpServerDescriptor" });
     case 10:
@@ -2075,11 +2008,11 @@ function __c27(j: number): any {
         S.Struct({
           data: S.optional(SensitiveString),
           dataSchemaVersion: S.optional(S.String),
-          source: S.optional(__S(872, __c27, 8)),
+          source: S.optional(__S(840, __c26, 8)),
         }),
       ).annotate({ identifier: "A2aAgentCardDescriptor" });
     case 11:
-      return S.suspend(() => S.Struct({ skillMd: S.optional(__S(874, __c27, 10)) })).annotate({
+      return S.suspend(() => S.Struct({ skillMd: S.optional(__S(842, __c26, 10)) })).annotate({
         identifier: "AgentSkillsAdditionalData",
       });
     case 12:
@@ -2087,28 +2020,26 @@ function __c27(j: number): any {
         S.Struct({
           data: S.optional(SensitiveString),
           dataSchemaVersion: S.optional(S.String),
-          additionalData: S.optional(__S(875, __c27, 11)),
+          additionalData: S.optional(__S(843, __c26, 11)),
         }),
-      ).annotate({
-        identifier: "AgentSkillsDefinitionDescriptor",
-      });
+      ).annotate({ identifier: "AgentSkillsDefinitionDescriptor" });
     case 13:
       return S.suspend(() => S.Struct({ data: S.optional(SensitiveString) })).annotate({
         identifier: "CustomDescriptor",
       });
     case 14:
-      return S.suspend(() => S.Struct({ source: S.optional(__S(872, __c27, 8)) })).annotate({
+      return S.suspend(() => S.Struct({ source: S.optional(__S(840, __c26, 8)) })).annotate({
         identifier: "HttpDescriptor",
       });
     case 15:
       return S.suspend(() =>
         S.Struct({
-          mcpServer: S.optional(__S(873, __c27, 9)),
-          a2aAgentCard: S.optional(__S(874, __c27, 10)),
-          agentSkillsDefinition: S.optional(__S(876, __c27, 12)),
-          custom: S.optional(__S(877, __c27, 13)),
-          http: S.optional(__S(878, __c27, 14)),
-          agui: S.optional(__S(878, __c27, 14)),
+          mcpServer: S.optional(__S(841, __c26, 9)),
+          a2aAgentCard: S.optional(__S(842, __c26, 10)),
+          agentSkillsDefinition: S.optional(__S(844, __c26, 12)),
+          custom: S.optional(__S(845, __c26, 13)),
+          http: S.optional(__S(846, __c26, 14)),
+          agui: S.optional(__S(846, __c26, 14)),
         }),
       ).annotate({ identifier: "Descriptors" });
     case 16:
@@ -2122,28 +2053,24 @@ function __c27(j: number): any {
     case 18:
       return S.suspend(() =>
         S.Struct({
-          protocolConfiguration: S.optional(__S(880, __c27, 16)),
+          protocolConfiguration: S.optional(__S(848, __c26, 16)),
           authorizerConfiguration: S.optional(__S(778, __c24, 10)),
-          workloadIdentityDetails: S.optional(__S(881, __c27, 17)),
+          workloadIdentityDetails: S.optional(__S(849, __c26, 17)),
         }),
-      ).annotate({
-        identifier: "AgentCoreRuntimeSourceDetails",
-      });
+      ).annotate({ identifier: "AgentCoreRuntimeSourceDetails" });
     case 19:
       return S.suspend(() =>
         S.Struct({
           protocolType: S.optional(S.String),
           authorizerType: S.optional(S.String),
           authorizerConfiguration: S.optional(__S(778, __c24, 10)),
-          workloadIdentityDetails: S.optional(__S(881, __c27, 17)),
+          workloadIdentityDetails: S.optional(__S(849, __c26, 17)),
         }),
-      ).annotate({
-        identifier: "AgentCoreGatewaySourceDetails",
-      });
+      ).annotate({ identifier: "AgentCoreGatewaySourceDetails" });
     case 20:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ agentcoreRuntime: __S(882, __c27, 18) }),
-        /*@__PURE__*/ S.Struct({ agentcoreGateway: __S(883, __c27, 19) }),
+        /*@__PURE__*/ S.Struct({ agentcoreRuntime: __S(850, __c26, 18) }),
+        /*@__PURE__*/ S.Struct({ agentcoreGateway: __S(851, __c26, 19) }),
       ]);
     case 21:
       return S.suspend(() =>
@@ -2151,14 +2078,14 @@ function __c27(j: number): any {
           relation: S.String,
           sourceId: S.String,
           sourceType: S.optional(S.String),
-          sourceDetails: S.optional(__S(884, __c27, 20)),
+          sourceDetails: S.optional(__S(852, __c26, 20)),
         }),
       ).annotate({ identifier: "Provenance" });
     case 22:
-      return S.Array(__S(885, __c27, 21));
+      return S.Array(__S(853, __c26, 21));
   }
 }
-function __c28(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

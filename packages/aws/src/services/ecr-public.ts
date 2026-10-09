@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1331,9 +1331,7 @@ function __c0(j: number): any {
           repositoryName: S.String,
           layerDigests: __S(8, __c1, 0),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "BatchCheckLayerAvailabilityRequest",
-      });
+      ).annotate({ identifier: "BatchCheckLayerAvailabilityRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1361,9 +1359,7 @@ function __c0(j: number): any {
           layers: S.optional(__S(2, __c0, 2)),
           failures: S.optional(__S(4, __c0, 4)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "BatchCheckLayerAvailabilityResponse",
-      });
+      ).annotate({ identifier: "BatchCheckLayerAvailabilityResponse" });
   }
 }
 function __c1(j: number): any {
@@ -1425,9 +1421,7 @@ function __c5(j: number): any {
           uploadId: S.String,
           layerDigests: __S(8, __c1, 0),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CompleteLayerUploadRequest",
-      });
+      ).annotate({ identifier: "CompleteLayerUploadRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1436,9 +1430,7 @@ function __c5(j: number): any {
           uploadId: S.optional(S.String),
           layerDigest: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "CompleteLayerUploadResponse",
-      });
+      ).annotate({ identifier: "CompleteLayerUploadResponse" });
   }
 }
 function __c6(j: number): any {
@@ -1512,9 +1504,7 @@ function __c10(j: number): any {
           aboutText: S.optional(S.String),
           usageText: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "RepositoryCatalogDataInput",
-      });
+      ).annotate({ identifier: "RepositoryCatalogDataInput" });
   }
 }
 function __c11(j: number): any {
@@ -1540,9 +1530,7 @@ function __c12(j: number): any {
         S.Struct({ registryId: S.optional(S.String), repositoryName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteRepositoryPolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteRepositoryPolicyRequest" });
   }
 }
 function __c13(j: number): any {
@@ -1554,9 +1542,7 @@ function __c13(j: number): any {
           repositoryName: S.optional(S.String),
           policyText: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteRepositoryPolicyResponse",
-      });
+      ).annotate({ identifier: "DeleteRepositoryPolicyResponse" });
   }
 }
 function __c14(j: number): any {
@@ -1632,9 +1618,7 @@ function __c15(j: number): any {
           imageTagDetails: S.optional(__S(123, __c15, 3)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeImageTagsResponse",
-      });
+      ).annotate({ identifier: "DescribeImageTagsResponse" });
   }
 }
 function __c16(j: number): any {
@@ -1644,9 +1628,7 @@ function __c16(j: number): any {
         S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeRegistriesRequest",
-      });
+      ).annotate({ identifier: "DescribeRegistriesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1673,9 +1655,7 @@ function __c16(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({ registries: __S(132, __c16, 4), nextToken: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeRegistriesResponse",
-      });
+      ).annotate({ identifier: "DescribeRegistriesResponse" });
   }
 }
 function __c17(j: number): any {
@@ -1688,9 +1668,7 @@ function __c17(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeRepositoriesRequest",
-      });
+      ).annotate({ identifier: "DescribeRepositoriesRequest" });
     case 1:
       return S.Array(__S(56, __c7, 0));
     case 2:
@@ -1699,9 +1677,7 @@ function __c17(j: number): any {
           repositories: S.optional(__S(137, __c17, 1)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeRepositoriesResponse",
-      });
+      ).annotate({ identifier: "DescribeRepositoriesResponse" });
   }
 }
 function __c18(j: number): any {
@@ -1711,9 +1687,7 @@ function __c18(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetAuthorizationTokenRequest",
-      });
+      ).annotate({ identifier: "GetAuthorizationTokenRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1724,9 +1698,7 @@ function __c18(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ authorizationData: S.optional(__S(145, __c18, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetAuthorizationTokenResponse",
-      });
+      ).annotate({ identifier: "GetAuthorizationTokenResponse" });
   }
 }
 function __c19(j: number): any {
@@ -1736,9 +1708,7 @@ function __c19(j: number): any {
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetRegistryCatalogDataRequest",
-      });
+      ).annotate({ identifier: "GetRegistryCatalogDataRequest" });
   }
 }
 function __c20(j: number): any {
@@ -1750,9 +1720,7 @@ function __c20(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ registryCatalogData: __S(160, __c20, 0) }).pipe(ns),
-      ).annotate({
-        identifier: "GetRegistryCatalogDataResponse",
-      });
+      ).annotate({ identifier: "GetRegistryCatalogDataResponse" });
   }
 }
 function __c21(j: number): any {
@@ -1762,9 +1730,7 @@ function __c21(j: number): any {
         S.Struct({ registryId: S.optional(S.String), repositoryName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetRepositoryCatalogDataRequest",
-      });
+      ).annotate({ identifier: "GetRepositoryCatalogDataRequest" });
   }
 }
 function __c22(j: number): any {
@@ -1772,9 +1738,7 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ catalogData: S.optional(__S(64, __c8, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetRepositoryCatalogDataResponse",
-      });
+      ).annotate({ identifier: "GetRepositoryCatalogDataResponse" });
   }
 }
 function __c23(j: number): any {
@@ -1784,9 +1748,7 @@ function __c23(j: number): any {
         S.Struct({ registryId: S.optional(S.String), repositoryName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetRepositoryPolicyRequest",
-      });
+      ).annotate({ identifier: "GetRepositoryPolicyRequest" });
   }
 }
 function __c24(j: number): any {
@@ -1796,15 +1758,11 @@ function __c24(j: number): any {
         S.Struct({ registryId: S.optional(S.String), repositoryName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "InitiateLayerUploadRequest",
-      });
+      ).annotate({ identifier: "InitiateLayerUploadRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ uploadId: S.optional(S.String), partSize: S.optional(S.Number) }).pipe(ns),
-      ).annotate({
-        identifier: "InitiateLayerUploadResponse",
-      });
+      ).annotate({ identifier: "InitiateLayerUploadResponse" });
   }
 }
 function __c25(j: number): any {
@@ -1814,9 +1772,7 @@ function __c25(j: number): any {
         S.Struct({ resourceArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(73, __c9, 1)) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -1859,9 +1815,7 @@ function __c27(j: number): any {
         S.Struct({ displayName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "PutRegistryCatalogDataRequest",
-      });
+      ).annotate({ identifier: "PutRegistryCatalogDataRequest" });
   }
 }
 function __c28(j: number): any {
@@ -1873,9 +1827,7 @@ function __c28(j: number): any {
           repositoryName: S.String,
           catalogData: __S(80, __c10, 0),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "PutRepositoryCatalogDataRequest",
-      });
+      ).annotate({ identifier: "PutRepositoryCatalogDataRequest" });
   }
 }
 function __c29(j: number): any {
@@ -1888,9 +1840,7 @@ function __c29(j: number): any {
           policyText: S.String,
           force: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SetRepositoryPolicyRequest",
-      });
+      ).annotate({ identifier: "SetRepositoryPolicyRequest" });
   }
 }
 function __c30(j: number): any {
@@ -1906,9 +1856,7 @@ function __c30(j: number): any {
 function __c31(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "TagResourceResponse",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "TagResourceResponse" });
   }
 }
 function __c32(j: number): any {

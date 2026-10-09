@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials as Creds } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1750,9 +1750,7 @@ function __c1(j: number): any {
           s3DestinationExportFileFormat: S.optional(S.String),
           s3DestinationExportFileFormatOptions: S.optional(__S(156, __c39, 0)),
         }),
-      ).annotate({
-        identifier: "DataViewDestinationTypeParams",
-      });
+      ).annotate({ identifier: "DataViewDestinationTypeParams" });
   }
 }
 function __c2(j: number): any {
@@ -1767,9 +1765,7 @@ function __c2(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/permission-group" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreatePermissionGroupRequest",
-      });
+      ).annotate({ identifier: "CreatePermissionGroupRequest" });
   }
 }
 function __c3(j: number): any {
@@ -1847,9 +1843,7 @@ function __c8(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeletePermissionGroupRequest",
-      });
+      ).annotate({ identifier: "DeletePermissionGroupRequest" });
   }
 }
 function __c9(j: number): any {
@@ -1893,9 +1887,7 @@ function __c10(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateUserFromPermissionGroupRequest",
-      });
+      ).annotate({ identifier: "DisassociateUserFromPermissionGroupRequest" });
   }
 }
 function __c11(j: number): any {
@@ -2057,9 +2049,7 @@ function __c17(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetExternalDataViewAccessDetailsRequest",
-      });
+      ).annotate({ identifier: "GetExternalDataViewAccessDetailsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2079,9 +2069,7 @@ function __c17(j: number): any {
           credentials: S.optional(__S(69, __c17, 1)),
           s3Location: S.optional(__S(70, __c17, 2)),
         }),
-      ).annotate({
-        identifier: "GetExternalDataViewAccessDetailsResponse",
-      });
+      ).annotate({ identifier: "GetExternalDataViewAccessDetailsResponse" });
   }
 }
 function __c18(j: number): any {
@@ -2098,14 +2086,10 @@ function __c18(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetPermissionGroupRequest",
-      });
+      ).annotate({ identifier: "GetPermissionGroupRequest" });
     case 1:
       return S.suspend(() => S.Struct({ permissionGroup: S.optional(__S(76, __c19, 0)) })).annotate(
-        {
-          identifier: "GetPermissionGroupResponse",
-        },
+        { identifier: "GetPermissionGroupResponse" },
       );
   }
 }
@@ -2142,9 +2126,7 @@ function __c20(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetProgrammaticAccessCredentialsRequest",
-      });
+      ).annotate({ identifier: "GetProgrammaticAccessCredentialsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2159,9 +2141,7 @@ function __c20(j: number): any {
           credentials: S.optional(__S(81, __c20, 1)),
           durationInMinutes: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "GetProgrammaticAccessCredentialsResponse",
-      });
+      ).annotate({ identifier: "GetProgrammaticAccessCredentialsResponse" });
   }
 }
 function __c21(j: number): any {
@@ -2210,9 +2190,7 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetWorkingLocationRequest",
-      });
+      ).annotate({ identifier: "GetWorkingLocationRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2220,9 +2198,7 @@ function __c23(j: number): any {
           s3Path: S.optional(S.String),
           s3Bucket: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetWorkingLocationResponse",
-      });
+      ).annotate({ identifier: "GetWorkingLocationResponse" });
   }
 }
 function __c24(j: number): any {
@@ -2338,9 +2314,7 @@ function __c27(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/permission-group" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListPermissionGroupsRequest",
-      });
+      ).annotate({ identifier: "ListPermissionGroupsRequest" });
     case 1:
       return S.Array(__S(76, __c19, 0));
     case 2:
@@ -2349,9 +2323,7 @@ function __c27(j: number): any {
           permissionGroups: S.optional(__S(109, __c27, 1)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListPermissionGroupsResponse",
-      });
+      ).annotate({ identifier: "ListPermissionGroupsResponse" });
   }
 }
 function __c28(j: number): any {
@@ -2372,9 +2344,7 @@ function __c28(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListPermissionGroupsByUserRequest",
-      });
+      ).annotate({ identifier: "ListPermissionGroupsByUserRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2391,9 +2361,7 @@ function __c28(j: number): any {
           permissionGroups: S.optional(__S(114, __c28, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListPermissionGroupsByUserResponse",
-      });
+      ).annotate({ identifier: "ListPermissionGroupsByUserResponse" });
   }
 }
 function __c29(j: number): any {
@@ -2431,9 +2399,7 @@ function __c30(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListUsersByPermissionGroupRequest",
-      });
+      ).annotate({ identifier: "ListUsersByPermissionGroupRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2453,9 +2419,7 @@ function __c30(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ users: S.optional(__S(122, __c30, 2)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListUsersByPermissionGroupResponse",
-      });
+      ).annotate({ identifier: "ListUsersByPermissionGroupResponse" });
   }
 }
 function __c31(j: number): any {
@@ -2479,9 +2443,7 @@ function __c31(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ userId: S.optional(S.String), temporaryPassword: S.optional(SensitiveString) }),
-      ).annotate({
-        identifier: "ResetUserPasswordResponse",
-      });
+      ).annotate({ identifier: "ResetUserPasswordResponse" });
   }
 }
 function __c32(j: number): any {
@@ -2556,9 +2518,7 @@ function __c34(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdatePermissionGroupRequest",
-      });
+      ).annotate({ identifier: "UpdatePermissionGroupRequest" });
   }
 }
 function __c35(j: number): any {
@@ -2597,9 +2557,7 @@ function __c36(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "AssociateUserToPermissionGroupRequest",
-      });
+      ).annotate({ identifier: "AssociateUserToPermissionGroupRequest" });
   }
 }
 function __c37(j: number): any {
@@ -2607,9 +2565,7 @@ function __c37(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ statusCode: S.optional(S.Number).pipe(T.HttpResponseCode()) }),
-      ).annotate({
-        identifier: "AssociateUserToPermissionGroupResponse",
-      });
+      ).annotate({ identifier: "AssociateUserToPermissionGroupResponse" });
   }
 }
 function __c38(j: number): any {

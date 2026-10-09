@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1146,8 +1146,8 @@ export const createCapability: API.OperationMethod<
   CreateCapabilityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c33, 0) as any as S.Schema<CreateCapabilityRequest>,
-  output: __S(529, __c33, 1) as any as S.Schema<CreateCapabilityResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<CreateCapabilityRequest>,
+  output: __S(545, __c34, 1) as any as S.Schema<CreateCapabilityResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1180,8 +1180,8 @@ export const createPartnership: API.OperationMethod<
   CreatePartnershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c40, 0) as any as S.Schema<CreatePartnershipRequest>,
-  output: __S(641, __c40, 1) as any as S.Schema<CreatePartnershipResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<CreatePartnershipRequest>,
+  output: __S(657, __c41, 1) as any as S.Schema<CreatePartnershipResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1214,8 +1214,8 @@ export const createProfile: API.OperationMethod<
   CreateProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(688, __c43, 0) as any as S.Schema<CreateProfileRequest>,
-  output: __S(689, __c43, 1) as any as S.Schema<CreateProfileResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<CreateProfileRequest>,
+  output: __S(705, __c44, 1) as any as S.Schema<CreateProfileResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1523,7 +1523,7 @@ export const getPartnership: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(208, __c13, 0) as any as S.Schema<GetPartnershipRequest>,
-  output: __S(209, __c13, 1) as any as S.Schema<GetPartnershipResponse>,
+  output: __S(224, __c14, 0) as any as S.Schema<GetPartnershipResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1552,8 +1552,8 @@ export const getProfile: API.OperationMethod<
   GetProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c14, 0) as any as S.Schema<GetProfileRequest>,
-  output: __S(240, __c15, 0) as any as S.Schema<GetProfileResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetProfileRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<GetProfileResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1582,8 +1582,8 @@ export const getTransformer: API.OperationMethod<
   GetTransformerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c16, 0) as any as S.Schema<GetTransformerRequest>,
-  output: __S(257, __c16, 1) as any as S.Schema<GetTransformerResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<GetTransformerRequest>,
+  output: __S(273, __c17, 1) as any as S.Schema<GetTransformerResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1614,8 +1614,8 @@ export const getTransformerJob: API.OperationMethod<
   GetTransformerJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c17, 0) as any as S.Schema<GetTransformerJobRequest>,
-  output: __S(273, __c17, 1) as any as S.Schema<GetTransformerJobResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetTransformerJobRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<GetTransformerJobResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1644,8 +1644,8 @@ export const listCapabilities: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CapabilitySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(288, __c18, 0) as any as S.Schema<ListCapabilitiesRequest>,
-  output: __S(291, __c18, 3) as any as S.Schema<ListCapabilitiesResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListCapabilitiesRequest>,
+  output: __S(307, __c19, 3) as any as S.Schema<ListCapabilitiesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1680,8 +1680,8 @@ export const listPartnerships: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PartnershipSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(304, __c19, 0) as any as S.Schema<ListPartnershipsRequest>,
-  output: __S(307, __c19, 3) as any as S.Schema<ListPartnershipsResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<ListPartnershipsRequest>,
+  output: __S(323, __c20, 3) as any as S.Schema<ListPartnershipsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1716,8 +1716,8 @@ export const listProfiles: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProfileSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(320, __c20, 0) as any as S.Schema<ListProfilesRequest>,
-  output: __S(323, __c20, 3) as any as S.Schema<ListProfilesResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<ListProfilesRequest>,
+  output: __S(339, __c21, 3) as any as S.Schema<ListProfilesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1749,8 +1749,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(337, __c21, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1773,8 +1773,8 @@ export const listTransformers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TransformerSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(352, __c22, 0) as any as S.Schema<ListTransformersRequest>,
-  output: __S(355, __c22, 3) as any as S.Schema<ListTransformersResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<ListTransformersRequest>,
+  output: __S(371, __c23, 3) as any as S.Schema<ListTransformersResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1813,8 +1813,8 @@ export const startTransformerJob: API.OperationMethod<
   StartTransformerJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c23, 0) as any as S.Schema<StartTransformerJobRequest>,
-  output: __S(369, __c23, 1) as any as S.Schema<StartTransformerJobResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<StartTransformerJobRequest>,
+  output: __S(385, __c24, 1) as any as S.Schema<StartTransformerJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1845,7 +1845,7 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<TagResourceRequest>,
+  input: __S(400, __c25, 0) as any as S.Schema<TagResourceRequest>,
   output: __S(96, __c6, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     InternalServerException,
@@ -1874,8 +1874,8 @@ export const testConversion: API.OperationMethod<
   TestConversionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(405, __c25, 5) as any as S.Schema<TestConversionRequest>,
-  output: __S(406, __c25, 6) as any as S.Schema<TestConversionResponse>,
+  input: __S(420, __c26, 4) as any as S.Schema<TestConversionRequest>,
+  output: __S(421, __c26, 5) as any as S.Schema<TestConversionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1904,8 +1904,8 @@ export const testMapping: API.OperationMethod<
   TestMappingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c26, 0) as any as S.Schema<TestMappingRequest>,
-  output: __S(417, __c26, 1) as any as S.Schema<TestMappingResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<TestMappingRequest>,
+  output: __S(433, __c27, 1) as any as S.Schema<TestMappingResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1934,8 +1934,8 @@ export const testParsing: API.OperationMethod<
   TestParsingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c27, 0) as any as S.Schema<TestParsingRequest>,
-  output: __S(433, __c27, 1) as any as S.Schema<TestParsingResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<TestParsingRequest>,
+  output: __S(449, __c28, 1) as any as S.Schema<TestParsingResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1962,7 +1962,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<UntagResourceRequest>,
+  input: __S(464, __c29, 0) as any as S.Schema<UntagResourceRequest>,
   output: __S(96, __c6, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
@@ -1988,7 +1988,7 @@ export const updateCapability: API.OperationMethod<
   UpdateCapabilityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c29, 0) as any as S.Schema<UpdateCapabilityRequest>,
+  input: __S(480, __c30, 0) as any as S.Schema<UpdateCapabilityRequest>,
   output: __S(192, __c12, 0) as any as S.Schema<UpdateCapabilityResponse>,
   errors: [
     AccessDeniedException,
@@ -2022,8 +2022,8 @@ export const updatePartnership: API.OperationMethod<
   UpdatePartnershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<UpdatePartnershipRequest>,
-  output: __S(481, __c30, 1) as any as S.Schema<UpdatePartnershipResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<UpdatePartnershipRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<UpdatePartnershipResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2056,8 +2056,8 @@ export const updateProfile: API.OperationMethod<
   UpdateProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<UpdateProfileRequest>,
-  output: __S(240, __c15, 0) as any as S.Schema<UpdateProfileResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<UpdateProfileRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<UpdateProfileResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2090,8 +2090,8 @@ export const updateTransformer: API.OperationMethod<
   UpdateTransformerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c32, 0) as any as S.Schema<UpdateTransformerRequest>,
-  output: __S(513, __c32, 1) as any as S.Schema<UpdateTransformerResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<UpdateTransformerRequest>,
+  output: __S(529, __c33, 1) as any as S.Schema<UpdateTransformerResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2112,7 +2112,7 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          outputSampleLocation: S.optional(__S(560, __c35, 0)),
+          outputSampleLocation: S.optional(__S(576, __c36, 0)),
           mappingType: S.String,
           templateDetails: __S(16, __c1, 0),
         }).pipe(
@@ -2125,9 +2125,7 @@ function __c0(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "CreateStarterMappingTemplateRequest",
-      });
+      ).annotate({ identifier: "CreateStarterMappingTemplateRequest" });
     case 1:
       return S.suspend(() => S.Struct({ mappingTemplate: S.String })).annotate({
         identifier: "CreateStarterMappingTemplateResponse",
@@ -2137,7 +2135,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Union([/*@__PURE__*/ S.Struct({ x12: __S(544, __c34, 0) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ x12: __S(560, __c35, 0) })]);
   }
 }
 function __c2(j: number): any {
@@ -2147,10 +2145,10 @@ function __c2(j: number): any {
         S.Struct({
           name: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(625, __c39, 1)),
+          tags: S.optional(__S(641, __c40, 1)),
           fileFormat: S.optional(S.String),
           mappingTemplate: S.optional(S.String),
-          ediType: S.optional(__S(576, __c36, 0)),
+          ediType: S.optional(__S(592, __c37, 0)),
           sampleDocument: S.optional(S.String),
           inputConversion: S.optional(__S(64, __c4, 0)),
           mapping: S.optional(__S(65, __c4, 1)),
@@ -2170,16 +2168,14 @@ function __c2(j: number): any {
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           fileFormat: S.optional(S.String),
           mappingTemplate: S.optional(S.String),
-          ediType: S.optional(__S(576, __c36, 0)),
+          ediType: S.optional(__S(592, __c37, 0)),
           sampleDocument: S.optional(S.String),
           inputConversion: S.optional(__S(64, __c4, 0)),
           mapping: S.optional(__S(65, __c4, 1)),
           outputConversion: S.optional(__S(66, __c4, 2)),
           sampleDocuments: S.optional(__S(69, __c4, 5)),
         }),
-      ).annotate({
-        identifier: "CreateTransformerResponse",
-      });
+      ).annotate({ identifier: "CreateTransformerResponse" });
   }
 }
 function __c3(j: number): any {
@@ -2192,24 +2188,18 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           elementId: S.String,
-          codesToAdd: S.optional(__S(656, __c41, 0)),
-          codesToRemove: S.optional(__S(656, __c41, 0)),
+          codesToAdd: S.optional(__S(672, __c42, 0)),
+          codesToRemove: S.optional(__S(672, __c42, 0)),
         }),
-      ).annotate({
-        identifier: "X12CodeListValidationRule",
-      });
+      ).annotate({ identifier: "X12CodeListValidationRule" });
     case 2:
       return S.suspend(() =>
         S.Struct({ elementId: S.String, maxLength: S.Number, minLength: S.Number }),
-      ).annotate({
-        identifier: "X12ElementLengthValidationRule",
-      });
+      ).annotate({ identifier: "X12ElementLengthValidationRule" });
     case 3:
       return S.suspend(() =>
         S.Struct({ elementPosition: S.String, requirement: S.String }),
-      ).annotate({
-        identifier: "X12ElementRequirementValidationRule",
-      });
+      ).annotate({ identifier: "X12ElementRequirementValidationRule" });
     case 4:
       return S.Union([
         /*@__PURE__*/ S.Struct({ codeListValidationRule: __S(49, __c3, 1) }),
@@ -2289,9 +2279,7 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteCapabilityResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteCapabilityResponse" });
   }
 }
 function __c7(j: number): any {
@@ -2389,8 +2377,8 @@ function __c12(j: number): any {
           capabilityArn: S.String,
           name: S.String,
           type: S.String,
-          configuration: __S(609, __c38, 1),
-          instructionsDocuments: S.optional(__S(592, __c37, 0)),
+          configuration: __S(625, __c39, 1),
+          instructionsDocuments: S.optional(__S(608, __c38, 0)),
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           modifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
@@ -2412,7 +2400,11 @@ function __c13(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetPartnershipRequest" });
-    case 1:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String,
@@ -2421,8 +2413,8 @@ function __c13(j: number): any {
           name: S.optional(S.String),
           email: S.optional(SensitiveString),
           phone: S.optional(SensitiveString),
-          capabilities: S.optional(__S(656, __c41, 0)),
-          capabilityOptions: S.optional(__S(683, __c42, 11)),
+          capabilities: S.optional(__S(672, __c42, 0)),
+          capabilityOptions: S.optional(__S(699, __c43, 11)),
           tradingPartnerId: S.optional(S.String),
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           modifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -2430,7 +2422,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "GetPartnershipResponse" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2447,7 +2439,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "GetProfileRequest" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2466,7 +2458,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "GetProfileResponse" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2492,7 +2484,7 @@ function __c16(j: number): any {
           modifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           fileFormat: S.optional(S.String),
           mappingTemplate: S.optional(S.String),
-          ediType: S.optional(__S(576, __c36, 0)),
+          ediType: S.optional(__S(592, __c37, 0)),
           sampleDocument: S.optional(S.String),
           inputConversion: S.optional(__S(64, __c4, 0)),
           mapping: S.optional(__S(65, __c4, 1)),
@@ -2502,7 +2494,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "GetTransformerResponse" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2524,15 +2516,13 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           status: S.String,
-          outputFiles: S.optional(__S(592, __c37, 0)),
+          outputFiles: S.optional(__S(608, __c38, 0)),
           message: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetTransformerJobResponse",
-      });
+      ).annotate({ identifier: "GetTransformerJobResponse" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2554,14 +2544,14 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "CapabilitySummary" });
     case 2:
-      return S.Array(__S(289, __c18, 1));
+      return S.Array(__S(305, __c19, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ capabilities: __S(290, __c18, 2), nextToken: S.optional(S.String) }),
+        S.Struct({ capabilities: __S(306, __c19, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListCapabilitiesResponse" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2579,22 +2569,22 @@ function __c19(j: number): any {
           profileId: S.String,
           partnershipId: S.String,
           name: S.optional(S.String),
-          capabilities: S.optional(__S(656, __c41, 0)),
-          capabilityOptions: S.optional(__S(683, __c42, 11)),
+          capabilities: S.optional(__S(672, __c42, 0)),
+          capabilityOptions: S.optional(__S(699, __c43, 11)),
           tradingPartnerId: S.optional(S.String),
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           modifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "PartnershipSummary" });
     case 2:
-      return S.Array(__S(305, __c19, 1));
+      return S.Array(__S(321, __c20, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ partnerships: __S(306, __c19, 2), nextToken: S.optional(S.String) }),
+        S.Struct({ partnerships: __S(322, __c20, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListPartnershipsResponse" });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2616,14 +2606,14 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "ProfileSummary" });
     case 2:
-      return S.Array(__S(321, __c20, 1));
+      return S.Array(__S(337, __c21, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ profiles: __S(322, __c20, 2), nextToken: S.optional(S.String) }),
+        S.Struct({ profiles: __S(338, __c21, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListProfilesResponse" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2637,16 +2627,14 @@ function __c21(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(625, __c39, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(641, __c40, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2667,7 +2655,7 @@ function __c22(j: number): any {
           modifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           fileFormat: S.optional(S.String),
           mappingTemplate: S.optional(S.String),
-          ediType: S.optional(__S(576, __c36, 0)),
+          ediType: S.optional(__S(592, __c37, 0)),
           sampleDocument: S.optional(S.String),
           inputConversion: S.optional(__S(64, __c4, 0)),
           mapping: S.optional(__S(65, __c4, 1)),
@@ -2676,32 +2664,11 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "TransformerSummary" });
     case 2:
-      return S.Array(__S(353, __c22, 1));
+      return S.Array(__S(369, __c23, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ transformers: __S(354, __c22, 2), nextToken: S.optional(S.String) }),
+        S.Struct({ transformers: __S(370, __c23, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListTransformersResponse" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          inputFile: __S(560, __c35, 0),
-          outputLocation: __S(560, __c35, 0),
-          transformerId: S.String,
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/transformer-jobs" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "StartTransformerJobRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ transformerJobId: S.String })).annotate({
-        identifier: "StartTransformerJobResponse",
-      });
   }
 }
 function __c24(j: number): any {
@@ -2709,8 +2676,27 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          inputFile: __S(576, __c36, 0),
+          outputLocation: __S(576, __c36, 0),
+          transformerId: S.String,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/transformer-jobs" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "StartTransformerJobRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ transformerJobId: S.String })).annotate({
+        identifier: "StartTransformerJobResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           ResourceARN: S.String.pipe(T.HttpLabel("ResourceARN")),
-          Tags: __S(625, __c39, 1),
+          Tags: __S(641, __c40, 1),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{ResourceARN}" }),
@@ -2724,43 +2710,41 @@ function __c24(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.Union([/*@__PURE__*/ S.Struct({ fileContent: S.String })]);
     case 1:
       return S.suspend(() =>
-        S.Struct({ fileFormat: S.String, inputFile: __S(400, __c25, 0) }),
+        S.Struct({ fileFormat: S.String, inputFile: __S(416, __c26, 0) }),
       ).annotate({ identifier: "ConversionSource" });
     case 2:
-      return S.Union([/*@__PURE__*/ S.Struct({ x12: __S(544, __c34, 0) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ fileLocation: __S(576, __c36, 0) })]);
     case 3:
-      return S.Union([/*@__PURE__*/ S.Struct({ fileLocation: __S(560, __c35, 0) })]);
-    case 4:
       return S.suspend(() =>
         S.Struct({
           fileFormat: S.String,
-          formatDetails: S.optional(__S(402, __c25, 2)),
-          outputSampleFile: S.optional(__S(403, __c25, 3)),
+          formatDetails: S.optional(__S(16, __c1, 0)),
+          outputSampleFile: S.optional(__S(418, __c26, 2)),
           advancedOptions: S.optional(__S(56, __c3, 8)),
         }),
       ).annotate({ identifier: "ConversionTarget" });
-    case 5:
+    case 4:
       return S.suspend(() =>
-        S.Struct({ source: __S(401, __c25, 1), target: __S(404, __c25, 4) }).pipe(
+        S.Struct({ source: __S(417, __c26, 1), target: __S(419, __c26, 3) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/testconversion" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TestConversionRequest" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           convertedFileContent: S.String,
-          validationMessages: S.optional(__S(656, __c41, 0)),
+          validationMessages: S.optional(__S(672, __c42, 0)),
         }),
       ).annotate({ identifier: "TestConversionResponse" });
   }
 }
-function __c26(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2778,14 +2762,14 @@ function __c26(j: number): any {
       });
   }
 }
-function __c27(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          inputFile: __S(560, __c35, 0),
+          inputFile: __S(576, __c36, 0),
           fileFormat: S.String,
-          ediType: __S(576, __c36, 0),
+          ediType: __S(592, __c37, 0),
           advancedOptions: S.optional(__S(56, __c3, 8)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/testparsing" }), svc, auth, proto, ver, rules),
@@ -2795,19 +2779,19 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parsedFileContent: S.String,
-          parsedSplitFileContents: S.optional(__S(656, __c41, 0)),
-          validationMessages: S.optional(__S(656, __c41, 0)),
+          parsedSplitFileContents: S.optional(__S(672, __c42, 0)),
+          validationMessages: S.optional(__S(672, __c42, 0)),
         }),
       ).annotate({ identifier: "TestParsingResponse" });
   }
 }
-function __c28(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceARN: S.String.pipe(T.HttpLabel("ResourceARN")),
-          TagKeys: __S(656, __c41, 0).pipe(T.HttpQuery("TagKeys")),
+          TagKeys: __S(672, __c42, 0).pipe(T.HttpQuery("TagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceARN}" }),
@@ -2821,15 +2805,15 @@ function __c28(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c29(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           capabilityId: S.String.pipe(T.HttpLabel("capabilityId")),
           name: S.optional(S.String),
-          configuration: S.optional(__S(609, __c38, 1)),
-          instructionsDocuments: S.optional(__S(592, __c37, 0)),
+          configuration: S.optional(__S(625, __c39, 1)),
+          instructionsDocuments: S.optional(__S(608, __c38, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/capabilities/{capabilityId}" }),
@@ -2843,15 +2827,15 @@ function __c29(j: number): any {
       ).annotate({ identifier: "UpdateCapabilityRequest" });
   }
 }
-function __c30(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           partnershipId: S.String.pipe(T.HttpLabel("partnershipId")),
           name: S.optional(S.String),
-          capabilities: S.optional(__S(656, __c41, 0)),
-          capabilityOptions: S.optional(__S(683, __c42, 11)),
+          capabilities: S.optional(__S(672, __c42, 0)),
+          capabilityOptions: S.optional(__S(699, __c43, 11)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/partnerships/{partnershipId}" }),
@@ -2863,27 +2847,9 @@ function __c30(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdatePartnershipRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String,
-          partnershipId: S.String,
-          partnershipArn: S.String,
-          name: S.optional(S.String),
-          email: S.optional(SensitiveString),
-          phone: S.optional(SensitiveString),
-          capabilities: S.optional(__S(656, __c41, 0)),
-          capabilityOptions: S.optional(__S(683, __c42, 11)),
-          tradingPartnerId: S.optional(S.String),
-          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          modifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-        }),
-      ).annotate({
-        identifier: "UpdatePartnershipResponse",
-      });
   }
 }
-function __c31(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2906,7 +2872,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "UpdateProfileRequest" });
   }
 }
-function __c32(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2916,7 +2882,7 @@ function __c32(j: number): any {
           status: S.optional(S.String),
           fileFormat: S.optional(S.String),
           mappingTemplate: S.optional(S.String),
-          ediType: S.optional(__S(576, __c36, 0)),
+          ediType: S.optional(__S(592, __c37, 0)),
           sampleDocument: S.optional(S.String),
           inputConversion: S.optional(__S(64, __c4, 0)),
           mapping: S.optional(__S(65, __c4, 1)),
@@ -2944,29 +2910,27 @@ function __c32(j: number): any {
           modifiedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           fileFormat: S.optional(S.String),
           mappingTemplate: S.optional(S.String),
-          ediType: S.optional(__S(576, __c36, 0)),
+          ediType: S.optional(__S(592, __c37, 0)),
           sampleDocument: S.optional(S.String),
           inputConversion: S.optional(__S(64, __c4, 0)),
           mapping: S.optional(__S(65, __c4, 1)),
           outputConversion: S.optional(__S(66, __c4, 2)),
           sampleDocuments: S.optional(__S(69, __c4, 5)),
         }),
-      ).annotate({
-        identifier: "UpdateTransformerResponse",
-      });
+      ).annotate({ identifier: "UpdateTransformerResponse" });
   }
 }
-function __c33(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           type: S.String,
-          configuration: __S(609, __c38, 1),
-          instructionsDocuments: S.optional(__S(592, __c37, 0)),
+          configuration: __S(625, __c39, 1),
+          instructionsDocuments: S.optional(__S(608, __c38, 0)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(625, __c39, 1)),
+          tags: S.optional(__S(641, __c40, 1)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/capabilities" }), svc, auth, proto, ver, rules),
         ),
@@ -2978,14 +2942,14 @@ function __c33(j: number): any {
           capabilityArn: S.String,
           name: S.String,
           type: S.String,
-          configuration: __S(609, __c38, 1),
-          instructionsDocuments: S.optional(__S(592, __c37, 0)),
+          configuration: __S(625, __c39, 1),
+          instructionsDocuments: S.optional(__S(608, __c38, 0)),
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "CreateCapabilityResponse" });
   }
 }
-function __c34(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2993,7 +2957,7 @@ function __c34(j: number): any {
       ).annotate({ identifier: "X12Details" });
   }
 }
-function __c35(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3001,45 +2965,45 @@ function __c35(j: number): any {
       ).annotate({ identifier: "S3Location" });
   }
 }
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Union([/*@__PURE__*/ S.Struct({ x12Details: __S(544, __c34, 0) })]);
-  }
-}
 function __c37(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(560, __c35, 0));
+      return S.Union([/*@__PURE__*/ S.Struct({ x12Details: __S(560, __c35, 0) })]);
   }
 }
 function __c38(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(576, __c36, 0));
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           capabilityDirection: S.optional(S.String),
-          type: __S(576, __c36, 0),
-          inputLocation: __S(560, __c35, 0),
-          outputLocation: __S(560, __c35, 0),
+          type: __S(592, __c37, 0),
+          inputLocation: __S(576, __c36, 0),
+          outputLocation: __S(576, __c36, 0),
           transformerId: S.String,
         }),
       ).annotate({ identifier: "EdiConfiguration" });
     case 1:
-      return S.Union([/*@__PURE__*/ S.Struct({ edi: __S(608, __c38, 0) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ edi: __S(624, __c39, 0) })]);
   }
 }
-function __c39(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
         identifier: "Tag",
       });
     case 1:
-      return S.Array(__S(624, __c39, 0));
+      return S.Array(__S(640, __c40, 0));
   }
 }
-function __c40(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3048,10 +3012,10 @@ function __c40(j: number): any {
           name: S.String,
           email: SensitiveString,
           phone: S.optional(SensitiveString),
-          capabilities: __S(656, __c41, 0),
-          capabilityOptions: S.optional(__S(683, __c42, 11)),
+          capabilities: __S(672, __c42, 0),
+          capabilityOptions: S.optional(__S(699, __c43, 11)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(625, __c39, 1)),
+          tags: S.optional(__S(641, __c40, 1)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/partnerships" }), svc, auth, proto, ver, rules),
         ),
@@ -3065,23 +3029,21 @@ function __c40(j: number): any {
           name: S.optional(S.String),
           email: S.optional(SensitiveString),
           phone: S.optional(SensitiveString),
-          capabilities: S.optional(__S(656, __c41, 0)),
-          capabilityOptions: S.optional(__S(683, __c42, 11)),
+          capabilities: S.optional(__S(672, __c42, 0)),
+          capabilityOptions: S.optional(__S(699, __c43, 11)),
           tradingPartnerId: S.optional(S.String),
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
-      ).annotate({
-        identifier: "CreatePartnershipResponse",
-      });
+      ).annotate({ identifier: "CreatePartnershipResponse" });
   }
 }
-function __c41(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c42(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3094,9 +3056,7 @@ function __c42(j: number): any {
           acknowledgmentRequestedCode: S.optional(S.String),
           usageIndicatorCode: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "X12InterchangeControlHeaders",
-      });
+      ).annotate({ identifier: "X12InterchangeControlHeaders" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3104,9 +3064,7 @@ function __c42(j: number): any {
           applicationReceiverCode: S.optional(S.String),
           responsibleAgencyCode: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "X12FunctionalGroupHeaders",
-      });
+      ).annotate({ identifier: "X12FunctionalGroupHeaders" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3126,11 +3084,11 @@ function __c42(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          interchangeControlHeaders: S.optional(__S(672, __c42, 0)),
-          functionalGroupHeaders: S.optional(__S(673, __c42, 1)),
-          delimiters: S.optional(__S(674, __c42, 2)),
+          interchangeControlHeaders: S.optional(__S(688, __c43, 0)),
+          functionalGroupHeaders: S.optional(__S(689, __c43, 1)),
+          delimiters: S.optional(__S(690, __c43, 2)),
           validateEdi: S.optional(S.Boolean),
-          controlNumbers: S.optional(__S(675, __c42, 3)),
+          controlNumbers: S.optional(__S(691, __c43, 3)),
           gs05TimeFormat: S.optional(S.String),
         }),
       ).annotate({ identifier: "X12OutboundEdiHeaders" });
@@ -3145,37 +3103,34 @@ function __c42(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          common: S.optional(__S(676, __c42, 4)),
-          wrapOptions: S.optional(__S(677, __c42, 5)),
+          common: S.optional(__S(692, __c43, 4)),
+          wrapOptions: S.optional(__S(693, __c43, 5)),
         }),
       ).annotate({ identifier: "X12Envelope" });
     case 7:
-      return S.Union([/*@__PURE__*/ S.Struct({ x12: __S(678, __c42, 6) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ x12: __S(694, __c43, 6) })]);
     case 8:
       return S.suspend(() =>
-        S.Struct({
-          functionalAcknowledgment: S.String,
-          technicalAcknowledgment: S.String,
-        }),
+        S.Struct({ functionalAcknowledgment: S.String, technicalAcknowledgment: S.String }),
       ).annotate({ identifier: "X12AcknowledgmentOptions" });
     case 9:
       return S.suspend(() =>
-        S.Struct({ acknowledgmentOptions: S.optional(__S(680, __c42, 8)) }),
+        S.Struct({ acknowledgmentOptions: S.optional(__S(696, __c43, 8)) }),
       ).annotate({ identifier: "X12InboundEdiOptions" });
     case 10:
-      return S.suspend(() => S.Struct({ x12: S.optional(__S(681, __c42, 9)) })).annotate({
+      return S.suspend(() => S.Struct({ x12: S.optional(__S(697, __c43, 9)) })).annotate({
         identifier: "InboundEdiOptions",
       });
     case 11:
       return S.suspend(() =>
         S.Struct({
-          outboundEdi: S.optional(__S(679, __c42, 7)),
-          inboundEdi: S.optional(__S(682, __c42, 10)),
+          outboundEdi: S.optional(__S(695, __c43, 7)),
+          inboundEdi: S.optional(__S(698, __c43, 10)),
         }),
       ).annotate({ identifier: "CapabilityOptions" });
   }
 }
-function __c43(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3186,7 +3141,7 @@ function __c43(j: number): any {
           businessName: S.String,
           logging: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(625, __c39, 1)),
+          tags: S.optional(__S(641, __c40, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/profiles" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateProfileRequest" });
     case 1:

@@ -1,8 +1,8 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
-import * as redacted from "effect/Redacted";
+import type * as HttpClient from "effect/http/HttpClient";
+import type * as redacted from "effect/Redacted";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1523,8 +1523,8 @@ export const createAddonInstance: API.OperationMethod<
   CreateAddonInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2144, __c67, 0) as any as S.Schema<CreateAddonInstanceRequest>,
-  output: __S(2145, __c67, 1) as any as S.Schema<CreateAddonInstanceResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<CreateAddonInstanceRequest>,
+  output: __S(2177, __c68, 1) as any as S.Schema<CreateAddonInstanceResponse>,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -1551,8 +1551,8 @@ export const createAddonSubscription: API.OperationMethod<
   CreateAddonSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2400, __c75, 0) as any as S.Schema<CreateAddonSubscriptionRequest>,
-  output: __S(2401, __c75, 1) as any as S.Schema<CreateAddonSubscriptionResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<CreateAddonSubscriptionRequest>,
+  output: __S(2433, __c76, 1) as any as S.Schema<CreateAddonSubscriptionResponse>,
   errors: [
     ConflictException,
     ServiceQuotaExceededException,
@@ -1580,8 +1580,8 @@ export const createAddressList: API.OperationMethod<
   CreateAddressListError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2432, __c76, 0) as any as S.Schema<CreateAddressListRequest>,
-  output: __S(2433, __c76, 1) as any as S.Schema<CreateAddressListResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<CreateAddressListRequest>,
+  output: __S(2465, __c77, 1) as any as S.Schema<CreateAddressListResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1609,8 +1609,8 @@ export const createAddressListImportJob: API.OperationMethod<
   CreateAddressListImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2464, __c77, 0) as any as S.Schema<CreateAddressListImportJobRequest>,
-  output: __S(2465, __c77, 1) as any as S.Schema<CreateAddressListImportJobResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<CreateAddressListImportJobRequest>,
+  output: __S(2497, __c78, 1) as any as S.Schema<CreateAddressListImportJobResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -1769,7 +1769,7 @@ export const deleteAddonSubscription: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(544, __c17, 0) as any as S.Schema<DeleteAddonSubscriptionRequest>,
-  output: __S(545, __c17, 1) as any as S.Schema<DeleteAddonSubscriptionResponse>,
+  output: __S(224, __c7, 0) as any as S.Schema<DeleteAddonSubscriptionResponse>,
   errors: [ConflictException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1923,7 +1923,7 @@ export const deregisterMemberFromAddressList: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(768, __c24, 0) as any as S.Schema<DeregisterMemberFromAddressListRequest>,
-  output: __S(800, __c25, 0) as any as S.Schema<DeregisterMemberFromAddressListResponse>,
+  output: __S(224, __c7, 0) as any as S.Schema<DeregisterMemberFromAddressListResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1946,8 +1946,8 @@ export const getAddonInstance: API.OperationMethod<
   GetAddonInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c26, 0) as any as S.Schema<GetAddonInstanceRequest>,
-  output: __S(833, __c26, 1) as any as S.Schema<GetAddonInstanceResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetAddonInstanceRequest>,
+  output: __S(801, __c25, 1) as any as S.Schema<GetAddonInstanceResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1967,8 +1967,8 @@ export const getAddonSubscription: API.OperationMethod<
   GetAddonSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c27, 0) as any as S.Schema<GetAddonSubscriptionRequest>,
-  output: __S(865, __c27, 1) as any as S.Schema<GetAddonSubscriptionResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetAddonSubscriptionRequest>,
+  output: __S(833, __c26, 1) as any as S.Schema<GetAddonSubscriptionResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1990,8 +1990,8 @@ export const getAddressList: API.OperationMethod<
   GetAddressListError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c28, 0) as any as S.Schema<GetAddressListRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<GetAddressListResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<GetAddressListRequest>,
+  output: __S(896, __c28, 0) as any as S.Schema<GetAddressListResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2018,8 +2018,8 @@ export const getAddressListImportJob: API.OperationMethod<
   GetAddressListImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c30, 0) as any as S.Schema<GetAddressListImportJobRequest>,
-  output: __S(961, __c30, 1) as any as S.Schema<GetAddressListImportJobResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<GetAddressListImportJobRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<GetAddressListImportJobResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2204,7 +2204,7 @@ export const getMemberOfAddressList: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1344, __c42, 0) as any as S.Schema<GetMemberOfAddressListRequest>,
-  output: __S(1345, __c42, 1) as any as S.Schema<GetMemberOfAddressListResponse>,
+  output: __S(1376, __c43, 0) as any as S.Schema<GetMemberOfAddressListResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2226,8 +2226,8 @@ export const getRelay: API.OperationMethod<
   GetRelayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1376, __c43, 0) as any as S.Schema<GetRelayRequest>,
-  output: __S(1377, __c43, 1) as any as S.Schema<GetRelayResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<GetRelayRequest>,
+  output: __S(1409, __c44, 1) as any as S.Schema<GetRelayResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2244,8 +2244,8 @@ export const getRuleSet: API.OperationMethod<
   GetRuleSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1408, __c44, 0) as any as S.Schema<GetRuleSetRequest>,
-  output: __S(1409, __c44, 1) as any as S.Schema<GetRuleSetResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<GetRuleSetRequest>,
+  output: __S(1441, __c45, 1) as any as S.Schema<GetRuleSetResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2262,8 +2262,8 @@ export const getTrafficPolicy: API.OperationMethod<
   GetTrafficPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c45, 0) as any as S.Schema<GetTrafficPolicyRequest>,
-  output: __S(1441, __c45, 1) as any as S.Schema<GetTrafficPolicyResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<GetTrafficPolicyRequest>,
+  output: __S(1473, __c46, 1) as any as S.Schema<GetTrafficPolicyResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2281,8 +2281,8 @@ export const listAddonInstances: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AddonInstance
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1472, __c46, 0) as any as S.Schema<ListAddonInstancesRequest>,
-  output: __S(1475, __c46, 3) as any as S.Schema<ListAddonInstancesResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<ListAddonInstancesRequest>,
+  output: __S(1507, __c47, 3) as any as S.Schema<ListAddonInstancesResponse>,
   errors: [ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2306,8 +2306,8 @@ export const listAddonSubscriptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AddonSubscription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1504, __c47, 0) as any as S.Schema<ListAddonSubscriptionsRequest>,
-  output: __S(1507, __c47, 3) as any as S.Schema<ListAddonSubscriptionsResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<ListAddonSubscriptionsRequest>,
+  output: __S(1539, __c48, 3) as any as S.Schema<ListAddonSubscriptionsResponse>,
   errors: [ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2336,8 +2336,8 @@ export const listAddressListImportJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ImportJob
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1536, __c48, 0) as any as S.Schema<ListAddressListImportJobsRequest>,
-  output: __S(1539, __c48, 3) as any as S.Schema<ListAddressListImportJobsResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<ListAddressListImportJobsRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<ListAddressListImportJobsResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2370,8 +2370,8 @@ export const listAddressLists: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AddressList
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1568, __c49, 0) as any as S.Schema<ListAddressListsRequest>,
-  output: __S(1570, __c49, 2) as any as S.Schema<ListAddressListsResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<ListAddressListsRequest>,
+  output: __S(1602, __c50, 2) as any as S.Schema<ListAddressListsResponse>,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2400,8 +2400,8 @@ export const listArchiveExports: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExportSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1600, __c50, 0) as any as S.Schema<ListArchiveExportsRequest>,
-  output: __S(1603, __c50, 3) as any as S.Schema<ListArchiveExportsResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<ListArchiveExportsRequest>,
+  output: __S(1635, __c51, 3) as any as S.Schema<ListArchiveExportsResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2434,8 +2434,8 @@ export const listArchives: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Archive
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1632, __c51, 0) as any as S.Schema<ListArchivesRequest>,
-  output: __S(1635, __c51, 3) as any as S.Schema<ListArchivesResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<ListArchivesRequest>,
+  output: __S(1667, __c52, 3) as any as S.Schema<ListArchivesResponse>,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2464,8 +2464,8 @@ export const listArchiveSearches: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SearchSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1664, __c52, 0) as any as S.Schema<ListArchiveSearchesRequest>,
-  output: __S(1667, __c52, 3) as any as S.Schema<ListArchiveSearchesResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<ListArchiveSearchesRequest>,
+  output: __S(1699, __c53, 3) as any as S.Schema<ListArchiveSearchesResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2494,8 +2494,8 @@ export const listIngressPoints: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   IngressPoint
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1696, __c53, 0) as any as S.Schema<ListIngressPointsRequest>,
-  output: __S(1699, __c53, 3) as any as S.Schema<ListIngressPointsResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<ListIngressPointsRequest>,
+  output: __S(1731, __c54, 3) as any as S.Schema<ListIngressPointsResponse>,
   errors: [ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2524,8 +2524,8 @@ export const listMembersOfAddressList: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SavedAddress
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1729, __c54, 1) as any as S.Schema<ListMembersOfAddressListRequest>,
-  output: __S(1732, __c54, 4) as any as S.Schema<ListMembersOfAddressListResponse>,
+  input: __S(1761, __c55, 1) as any as S.Schema<ListMembersOfAddressListRequest>,
+  output: __S(1763, __c55, 3) as any as S.Schema<ListMembersOfAddressListResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2554,8 +2554,8 @@ export const listRelays: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Relay
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1760, __c55, 0) as any as S.Schema<ListRelaysRequest>,
-  output: __S(1763, __c55, 3) as any as S.Schema<ListRelaysResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<ListRelaysRequest>,
+  output: __S(1795, __c56, 3) as any as S.Schema<ListRelaysResponse>,
   errors: [ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2579,8 +2579,8 @@ export const listRuleSets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RuleSet
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1792, __c56, 0) as any as S.Schema<ListRuleSetsRequest>,
-  output: __S(1795, __c56, 3) as any as S.Schema<ListRuleSetsResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<ListRuleSetsRequest>,
+  output: __S(1827, __c57, 3) as any as S.Schema<ListRuleSetsResponse>,
   errors: [ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2606,8 +2606,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1824, __c57, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(1825, __c57, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(1857, __c58, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2625,8 +2625,8 @@ export const listTrafficPolicies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TrafficPolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1856, __c58, 0) as any as S.Schema<ListTrafficPoliciesRequest>,
-  output: __S(1859, __c58, 3) as any as S.Schema<ListTrafficPoliciesResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<ListTrafficPoliciesRequest>,
+  output: __S(1891, __c59, 3) as any as S.Schema<ListTrafficPoliciesResponse>,
   errors: [ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2656,8 +2656,8 @@ export const registerMemberToAddressList: API.OperationMethod<
   RegisterMemberToAddressListError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1888, __c59, 0) as any as S.Schema<RegisterMemberToAddressListRequest>,
-  output: __S(800, __c25, 0) as any as S.Schema<RegisterMemberToAddressListResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<RegisterMemberToAddressListRequest>,
+  output: __S(224, __c7, 0) as any as S.Schema<RegisterMemberToAddressListResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2688,8 +2688,8 @@ export const startAddressListImportJob: API.OperationMethod<
   StartAddressListImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1920, __c60, 0) as any as S.Schema<StartAddressListImportJobRequest>,
-  output: __S(800, __c25, 0) as any as S.Schema<StartAddressListImportJobResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<StartAddressListImportJobRequest>,
+  output: __S(224, __c7, 0) as any as S.Schema<StartAddressListImportJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2719,8 +2719,8 @@ export const startArchiveExport: API.OperationMethod<
   StartArchiveExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1952, __c61, 0) as any as S.Schema<StartArchiveExportRequest>,
-  output: __S(1953, __c61, 1) as any as S.Schema<StartArchiveExportResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<StartArchiveExportRequest>,
+  output: __S(1985, __c62, 1) as any as S.Schema<StartArchiveExportResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2750,8 +2750,8 @@ export const startArchiveSearch: API.OperationMethod<
   StartArchiveSearchError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1984, __c62, 0) as any as S.Schema<StartArchiveSearchRequest>,
-  output: __S(1985, __c62, 1) as any as S.Schema<StartArchiveSearchResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<StartArchiveSearchRequest>,
+  output: __S(2017, __c63, 1) as any as S.Schema<StartArchiveSearchResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2781,8 +2781,8 @@ export const stopAddressListImportJob: API.OperationMethod<
   StopAddressListImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2016, __c63, 0) as any as S.Schema<StopAddressListImportJobRequest>,
-  output: __S(800, __c25, 0) as any as S.Schema<StopAddressListImportJobResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<StopAddressListImportJobRequest>,
+  output: __S(224, __c7, 0) as any as S.Schema<StopAddressListImportJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2809,7 +2809,7 @@ export const stopArchiveExport: API.OperationMethod<
   StopArchiveExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2048, __c64, 0) as any as S.Schema<StopArchiveExportRequest>,
+  input: __S(2080, __c65, 0) as any as S.Schema<StopArchiveExportRequest>,
   output: __S(224, __c7, 0) as any as S.Schema<StopArchiveExportResponse>,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
@@ -2831,7 +2831,7 @@ export const stopArchiveSearch: API.OperationMethod<
   StopArchiveSearchError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2080, __c65, 0) as any as S.Schema<StopArchiveSearchRequest>,
+  input: __S(2112, __c66, 0) as any as S.Schema<StopArchiveSearchRequest>,
   output: __S(224, __c7, 0) as any as S.Schema<StopArchiveSearchResponse>,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
@@ -2854,7 +2854,7 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2112, __c66, 0) as any as S.Schema<TagResourceRequest>,
+  input: __S(2144, __c67, 0) as any as S.Schema<TagResourceRequest>,
   output: __S(224, __c7, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     ConflictException,
@@ -2881,7 +2881,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2208, __c69, 0) as any as S.Schema<UntagResourceRequest>,
+  input: __S(2240, __c70, 0) as any as S.Schema<UntagResourceRequest>,
   output: __S(224, __c7, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
@@ -2906,7 +2906,7 @@ export const updateArchive: API.OperationMethod<
   UpdateArchiveError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2240, __c70, 0) as any as S.Schema<UpdateArchiveRequest>,
+  input: __S(2272, __c71, 0) as any as S.Schema<UpdateArchiveRequest>,
   output: __S(224, __c7, 0) as any as S.Schema<UpdateArchiveResponse>,
   errors: [
     AccessDeniedException,
@@ -2935,7 +2935,7 @@ export const updateIngressPoint: API.OperationMethod<
   UpdateIngressPointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2272, __c71, 0) as any as S.Schema<UpdateIngressPointRequest>,
+  input: __S(2304, __c72, 0) as any as S.Schema<UpdateIngressPointRequest>,
   output: __S(224, __c7, 0) as any as S.Schema<UpdateIngressPointResponse>,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
@@ -2957,7 +2957,7 @@ export const updateRelay: API.OperationMethod<
   UpdateRelayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2304, __c72, 0) as any as S.Schema<UpdateRelayRequest>,
+  input: __S(2336, __c73, 0) as any as S.Schema<UpdateRelayRequest>,
   output: __S(224, __c7, 0) as any as S.Schema<UpdateRelayResponse>,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
@@ -2979,7 +2979,7 @@ export const updateRuleSet: API.OperationMethod<
   UpdateRuleSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2336, __c73, 0) as any as S.Schema<UpdateRuleSetRequest>,
+  input: __S(2368, __c74, 0) as any as S.Schema<UpdateRuleSetRequest>,
   output: __S(224, __c7, 0) as any as S.Schema<UpdateRuleSetResponse>,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
@@ -3001,7 +3001,7 @@ export const updateTrafficPolicy: API.OperationMethod<
   UpdateTrafficPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2368, __c74, 0) as any as S.Schema<UpdateTrafficPolicyRequest>,
+  input: __S(2400, __c75, 0) as any as S.Schema<UpdateTrafficPolicyRequest>,
   output: __S(224, __c7, 0) as any as S.Schema<UpdateTrafficPolicyResponse>,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
@@ -3019,7 +3019,7 @@ function __c0(j: number): any {
           ArchiveName: S.String,
           Retention: S.optional(__S(32, __c1, 0)),
           KmsKeyArn: S.optional(S.String),
-          Tags: S.optional(__S(2177, __c68, 1)),
+          Tags: S.optional(__S(2209, __c69, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateArchiveRequest" });
     case 1:
@@ -3047,11 +3047,9 @@ function __c2(j: number): any {
           IngressPointConfiguration: S.optional(__S(160, __c5, 0)),
           NetworkConfiguration: S.optional(__S(98, __c3, 2)),
           TlsPolicy: S.optional(S.String),
-          Tags: S.optional(__S(2177, __c68, 1)),
+          Tags: S.optional(__S(2209, __c69, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateIngressPointRequest",
-      });
+      ).annotate({ identifier: "CreateIngressPointRequest" });
     case 1:
       return S.suspend(() => S.Struct({ IngressPointId: S.String })).annotate({
         identifier: "CreateIngressPointResponse",
@@ -3111,7 +3109,7 @@ function __c6(j: number): any {
           ServerName: S.String,
           ServerPort: S.Number,
           Authentication: __S(256, __c8, 0),
-          Tags: S.optional(__S(2177, __c68, 1)),
+          Tags: S.optional(__S(2209, __c69, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateRelayRequest" });
     case 1:
@@ -3123,9 +3121,7 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "NoAuthentication",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "NoAuthentication" });
   }
 }
 function __c8(j: number): any {
@@ -3144,8 +3140,8 @@ function __c9(j: number): any {
         S.Struct({
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           RuleSetName: S.String,
-          Rules: __S(444, __c13, 28),
-          Tags: S.optional(__S(2177, __c68, 1)),
+          Rules: __S(441, __c13, 25),
+          Tags: S.optional(__S(2209, __c69, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateRuleSetRequest" });
     case 1:
@@ -3164,6 +3160,10 @@ function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.Union([/*@__PURE__*/ S.Struct({ Attribute: S.String })]);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Evaluate: __S(352, __c11, 0), Operator: S.String, Values: __S(320, __c10, 0) }),
+      ).annotate({ identifier: "RuleIpExpression" });
   }
 }
 function __c12(j: number): any {
@@ -3172,80 +3172,68 @@ function __c12(j: number): any {
       return S.suspend(() => S.Struct({ Analyzer: S.String, ResultField: S.String })).annotate({
         identifier: "Analysis",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Attribute: S.String, AddressLists: __S(320, __c10, 0) }),
+      ).annotate({ identifier: "RuleIsInAddressList" });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ Attribute: S.String }),
+        /*@__PURE__*/ S.Struct({ Analysis: __S(384, __c12, 0) }),
+      ]);
   }
 }
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ Attribute: S.String, AddressLists: __S(320, __c10, 0) }),
-      ).annotate({ identifier: "RuleIsInAddressList" });
-    case 1:
       return S.Union([
         /*@__PURE__*/ S.Struct({ Attribute: S.String }),
         /*@__PURE__*/ S.Struct({ Analysis: __S(384, __c12, 0) }),
-        /*@__PURE__*/ S.Struct({ IsInAddressList: __S(416, __c13, 0) }),
+        /*@__PURE__*/ S.Struct({ IsInAddressList: __S(385, __c12, 1) }),
       ]);
-    case 2:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Evaluate: __S(417, __c13, 1), Operator: S.String }),
+        S.Struct({ Evaluate: __S(416, __c13, 0), Operator: S.String }),
       ).annotate({ identifier: "RuleBooleanExpression" });
-    case 3:
+    case 2:
       return S.Union([
         /*@__PURE__*/ S.Struct({ Attribute: S.String }),
         /*@__PURE__*/ S.Struct({ MimeHeaderAttribute: S.String }),
         /*@__PURE__*/ S.Struct({ Analysis: __S(384, __c12, 0) }),
         /*@__PURE__*/ S.Struct({ ClientCertificateAttribute: S.String }),
       ]);
-    case 4:
+    case 3:
       return S.Array(SensitiveString);
-    case 5:
+    case 4:
       return S.suspend(() =>
-        S.Struct({
-          Evaluate: __S(419, __c13, 3),
-          Operator: S.String,
-          Values: __S(420, __c13, 4),
-        }),
+        S.Struct({ Evaluate: __S(418, __c13, 2), Operator: S.String, Values: __S(419, __c13, 3) }),
       ).annotate({ identifier: "RuleStringExpression" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({ Evaluate: __S(352, __c11, 0), Operator: S.String, Value: S.Number }),
       ).annotate({ identifier: "RuleNumberExpression" });
+    case 6:
+      return S.Array(S.String);
     case 7:
       return S.suspend(() =>
-        S.Struct({ Evaluate: __S(352, __c11, 0), Operator: S.String, Values: __S(320, __c10, 0) }),
-      ).annotate({ identifier: "RuleIpExpression" });
-    case 8:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ Attribute: S.String }),
-        /*@__PURE__*/ S.Struct({ Analysis: __S(384, __c12, 0) }),
-      ]);
-    case 9:
-      return S.Array(S.String);
-    case 10:
-      return S.suspend(() =>
-        S.Struct({
-          Evaluate: __S(424, __c13, 8),
-          Operator: S.String,
-          Values: __S(425, __c13, 9),
-        }),
+        S.Struct({ Evaluate: __S(386, __c12, 2), Operator: S.String, Values: __S(422, __c13, 6) }),
       ).annotate({ identifier: "RuleVerdictExpression" });
-    case 11:
-      return S.suspend(() => S.Struct({ Operator: S.String, Values: __S(425, __c13, 9) })).annotate(
+    case 8:
+      return S.suspend(() => S.Struct({ Operator: S.String, Values: __S(422, __c13, 6) })).annotate(
         { identifier: "RuleDmarcExpression" },
       );
-    case 12:
+    case 9:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ BooleanExpression: __S(418, __c13, 2) }),
-        /*@__PURE__*/ S.Struct({ StringExpression: __S(421, __c13, 5) }),
-        /*@__PURE__*/ S.Struct({ NumberExpression: __S(422, __c13, 6) }),
-        /*@__PURE__*/ S.Struct({ IpExpression: __S(423, __c13, 7) }),
-        /*@__PURE__*/ S.Struct({ VerdictExpression: __S(426, __c13, 10) }),
-        /*@__PURE__*/ S.Struct({ DmarcExpression: __S(427, __c13, 11) }),
+        /*@__PURE__*/ S.Struct({ BooleanExpression: __S(417, __c13, 1) }),
+        /*@__PURE__*/ S.Struct({ StringExpression: __S(420, __c13, 4) }),
+        /*@__PURE__*/ S.Struct({ NumberExpression: __S(421, __c13, 5) }),
+        /*@__PURE__*/ S.Struct({ IpExpression: __S(353, __c11, 1) }),
+        /*@__PURE__*/ S.Struct({ VerdictExpression: __S(423, __c13, 7) }),
+        /*@__PURE__*/ S.Struct({ DmarcExpression: __S(424, __c13, 8) }),
       ]);
-    case 13:
-      return S.Array(__S(428, __c13, 12));
-    case 14:
+    case 10:
+      return S.Array(__S(425, __c13, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           ActionFailurePolicy: S.optional(S.String),
@@ -3253,11 +3241,11 @@ function __c13(j: number): any {
           MailFrom: S.optional(S.String),
         }),
       ).annotate({ identifier: "RelayAction" });
-    case 15:
+    case 12:
       return S.suspend(() =>
         S.Struct({ ActionFailurePolicy: S.optional(S.String), TargetArchive: S.String }),
       ).annotate({ identifier: "ArchiveAction" });
-    case 16:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           ActionFailurePolicy: S.optional(S.String),
@@ -3267,19 +3255,19 @@ function __c13(j: number): any {
           S3SseKmsKeyId: S.optional(S.String),
         }),
       ).annotate({ identifier: "S3Action" });
-    case 17:
+    case 14:
       return S.suspend(() =>
         S.Struct({ ActionFailurePolicy: S.optional(S.String), RoleArn: S.String }),
       ).annotate({ identifier: "SendAction" });
-    case 18:
+    case 15:
       return S.suspend(() => S.Struct({ HeaderName: S.String, HeaderValue: S.String })).annotate({
         identifier: "AddHeaderAction",
       });
-    case 19:
-      return S.suspend(() => S.Struct({ ReplaceWith: S.optional(__S(420, __c13, 4)) })).annotate({
+    case 16:
+      return S.suspend(() => S.Struct({ ReplaceWith: S.optional(__S(419, __c13, 3)) })).annotate({
         identifier: "ReplaceRecipientAction",
       });
-    case 20:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           ActionFailurePolicy: S.optional(S.String),
@@ -3287,7 +3275,7 @@ function __c13(j: number): any {
           RoleArn: S.String,
         }),
       ).annotate({ identifier: "DeliverToMailboxAction" });
-    case 21:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           ActionFailurePolicy: S.optional(S.String),
@@ -3296,7 +3284,7 @@ function __c13(j: number): any {
           RoleArn: S.String,
         }),
       ).annotate({ identifier: "DeliverToQBusinessAction" });
-    case 22:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           ActionFailurePolicy: S.optional(S.String),
@@ -3306,7 +3294,7 @@ function __c13(j: number): any {
           PayloadType: S.optional(S.String),
         }),
       ).annotate({ identifier: "SnsAction" });
-    case 23:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           ActionFailurePolicy: S.optional(S.String),
@@ -3318,7 +3306,7 @@ function __c13(j: number): any {
           Message: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "BounceAction" });
-    case 24:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           ActionFailurePolicy: S.optional(S.String),
@@ -3328,34 +3316,34 @@ function __c13(j: number): any {
           RetryTimeMinutes: S.optional(S.Number),
         }),
       ).annotate({ identifier: "InvokeLambdaAction" });
-    case 25:
+    case 22:
       return S.Union([
         /*@__PURE__*/ S.Struct({ Drop: __S(224, __c7, 0) }),
-        /*@__PURE__*/ S.Struct({ Relay: __S(430, __c13, 14) }),
-        /*@__PURE__*/ S.Struct({ Archive: __S(431, __c13, 15) }),
-        /*@__PURE__*/ S.Struct({ WriteToS3: __S(432, __c13, 16) }),
-        /*@__PURE__*/ S.Struct({ Send: __S(433, __c13, 17) }),
-        /*@__PURE__*/ S.Struct({ AddHeader: __S(434, __c13, 18) }),
-        /*@__PURE__*/ S.Struct({ ReplaceRecipient: __S(435, __c13, 19) }),
-        /*@__PURE__*/ S.Struct({ DeliverToMailbox: __S(436, __c13, 20) }),
-        /*@__PURE__*/ S.Struct({ DeliverToQBusiness: __S(437, __c13, 21) }),
-        /*@__PURE__*/ S.Struct({ PublishToSns: __S(438, __c13, 22) }),
-        /*@__PURE__*/ S.Struct({ Bounce: __S(439, __c13, 23) }),
-        /*@__PURE__*/ S.Struct({ InvokeLambda: __S(440, __c13, 24) }),
+        /*@__PURE__*/ S.Struct({ Relay: __S(427, __c13, 11) }),
+        /*@__PURE__*/ S.Struct({ Archive: __S(428, __c13, 12) }),
+        /*@__PURE__*/ S.Struct({ WriteToS3: __S(429, __c13, 13) }),
+        /*@__PURE__*/ S.Struct({ Send: __S(430, __c13, 14) }),
+        /*@__PURE__*/ S.Struct({ AddHeader: __S(431, __c13, 15) }),
+        /*@__PURE__*/ S.Struct({ ReplaceRecipient: __S(432, __c13, 16) }),
+        /*@__PURE__*/ S.Struct({ DeliverToMailbox: __S(433, __c13, 17) }),
+        /*@__PURE__*/ S.Struct({ DeliverToQBusiness: __S(434, __c13, 18) }),
+        /*@__PURE__*/ S.Struct({ PublishToSns: __S(435, __c13, 19) }),
+        /*@__PURE__*/ S.Struct({ Bounce: __S(436, __c13, 20) }),
+        /*@__PURE__*/ S.Struct({ InvokeLambda: __S(437, __c13, 21) }),
       ]);
-    case 26:
-      return S.Array(__S(441, __c13, 25));
-    case 27:
+    case 23:
+      return S.Array(__S(438, __c13, 22));
+    case 24:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          Conditions: S.optional(__S(429, __c13, 13)),
-          Unless: S.optional(__S(429, __c13, 13)),
-          Actions: __S(442, __c13, 26),
+          Conditions: S.optional(__S(426, __c13, 10)),
+          Unless: S.optional(__S(426, __c13, 10)),
+          Actions: __S(439, __c13, 23),
         }),
       ).annotate({ identifier: "Rule" });
-    case 28:
-      return S.Array(__S(443, __c13, 27));
+    case 25:
+      return S.Array(__S(440, __c13, 24));
   }
 }
 function __c14(j: number): any {
@@ -3365,14 +3353,12 @@ function __c14(j: number): any {
         S.Struct({
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           TrafficPolicyName: S.String,
-          PolicyStatements: __S(491, __c15, 11),
+          PolicyStatements: __S(487, __c15, 7),
           DefaultAction: S.String,
           MaxMessageSizeBytes: S.optional(S.Number),
-          Tags: S.optional(__S(2177, __c68, 1)),
+          Tags: S.optional(__S(2209, __c69, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateTrafficPolicyRequest",
-      });
+      ).annotate({ identifier: "CreateTrafficPolicyRequest" });
     case 1:
       return S.suspend(() => S.Struct({ TrafficPolicyId: S.String })).annotate({
         identifier: "CreateTrafficPolicyResponse",
@@ -3382,68 +3368,38 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ Attribute: S.String }),
-        /*@__PURE__*/ S.Struct({ Analysis: __S(384, __c12, 0) }),
-      ]);
+      return S.suspend(() =>
+        S.Struct({ Evaluate: __S(386, __c12, 2), Operator: S.String, Values: __S(320, __c10, 0) }),
+      ).annotate({ identifier: "IngressStringExpression" });
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          Evaluate: __S(480, __c15, 0),
-          Operator: S.String,
-          Values: __S(320, __c10, 0),
-        }),
-      ).annotate({ identifier: "IngressStringExpression" });
+        S.Struct({ Evaluate: __S(352, __c11, 0), Operator: S.String, Value: S.String }),
+      ).annotate({ identifier: "IngressTlsProtocolExpression" });
     case 2:
-      return S.suspend(() =>
-        S.Struct({ Evaluate: __S(352, __c11, 0), Operator: S.String, Values: __S(320, __c10, 0) }),
-      ).annotate({ identifier: "IngressIpv4Expression" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Evaluate: __S(352, __c11, 0), Operator: S.String, Values: __S(320, __c10, 0) }),
-      ).annotate({ identifier: "IngressIpv6Expression" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Evaluate: __S(352, __c11, 0),
-          Operator: S.String,
-          Value: S.String,
-        }),
-      ).annotate({
-        identifier: "IngressTlsProtocolExpression",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Attribute: S.String,
-          AddressLists: __S(320, __c10, 0),
-        }),
-      ).annotate({ identifier: "IngressIsInAddressList" });
-    case 6:
       return S.Union([
         /*@__PURE__*/ S.Struct({ Analysis: __S(384, __c12, 0) }),
-        /*@__PURE__*/ S.Struct({ IsInAddressList: __S(485, __c15, 5) }),
+        /*@__PURE__*/ S.Struct({ IsInAddressList: __S(385, __c12, 1) }),
       ]);
-    case 7:
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Evaluate: __S(486, __c15, 6), Operator: S.String }),
+        S.Struct({ Evaluate: __S(482, __c15, 2), Operator: S.String }),
       ).annotate({ identifier: "IngressBooleanExpression" });
-    case 8:
+    case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ StringExpression: __S(481, __c15, 1) }),
-        /*@__PURE__*/ S.Struct({ IpExpression: __S(482, __c15, 2) }),
-        /*@__PURE__*/ S.Struct({ Ipv6Expression: __S(483, __c15, 3) }),
-        /*@__PURE__*/ S.Struct({ TlsExpression: __S(484, __c15, 4) }),
-        /*@__PURE__*/ S.Struct({ BooleanExpression: __S(487, __c15, 7) }),
+        /*@__PURE__*/ S.Struct({ StringExpression: __S(480, __c15, 0) }),
+        /*@__PURE__*/ S.Struct({ IpExpression: __S(353, __c11, 1) }),
+        /*@__PURE__*/ S.Struct({ Ipv6Expression: __S(353, __c11, 1) }),
+        /*@__PURE__*/ S.Struct({ TlsExpression: __S(481, __c15, 1) }),
+        /*@__PURE__*/ S.Struct({ BooleanExpression: __S(483, __c15, 3) }),
       ]);
-    case 9:
-      return S.Array(__S(488, __c15, 8));
-    case 10:
+    case 5:
+      return S.Array(__S(484, __c15, 4));
+    case 6:
       return S.suspend(() =>
-        S.Struct({ Conditions: __S(489, __c15, 9), Action: S.String }),
+        S.Struct({ Conditions: __S(485, __c15, 5), Action: S.String }),
       ).annotate({ identifier: "PolicyStatement" });
-    case 11:
-      return S.Array(__S(490, __c15, 10));
+    case 7:
+      return S.Array(__S(486, __c15, 6));
   }
 }
 function __c16(j: number): any {
@@ -3453,9 +3409,7 @@ function __c16(j: number): any {
         S.Struct({ AddonInstanceId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteAddonInstanceRequest",
-      });
+      ).annotate({ identifier: "DeleteAddonInstanceRequest" });
   }
 }
 function __c17(j: number): any {
@@ -3465,13 +3419,7 @@ function __c17(j: number): any {
         S.Struct({ AddonSubscriptionId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteAddonSubscriptionRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAddonSubscriptionResponse",
-      });
+      ).annotate({ identifier: "DeleteAddonSubscriptionRequest" });
   }
 }
 function __c18(j: number): any {
@@ -3501,9 +3449,7 @@ function __c20(j: number): any {
         S.Struct({ IngressPointId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteIngressPointRequest",
-      });
+      ).annotate({ identifier: "DeleteIngressPointRequest" });
   }
 }
 function __c21(j: number): any {
@@ -3533,9 +3479,7 @@ function __c23(j: number): any {
         S.Struct({ TrafficPolicyId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteTrafficPolicyRequest",
-      });
+      ).annotate({ identifier: "DeleteTrafficPolicyRequest" });
   }
 }
 function __c24(j: number): any {
@@ -3545,20 +3489,10 @@ function __c24(j: number): any {
         S.Struct({ AddressListId: S.String, Address: SensitiveString }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeregisterMemberFromAddressListRequest",
-      });
+      ).annotate({ identifier: "DeregisterMemberFromAddressListRequest" });
   }
 }
 function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeregisterMemberFromAddressListResponse",
-      });
-  }
-}
-function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3577,16 +3511,14 @@ function __c26(j: number): any {
       ).annotate({ identifier: "GetAddonInstanceResponse" });
   }
 }
-function __c27(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ AddonSubscriptionId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetAddonSubscriptionRequest",
-      });
+      ).annotate({ identifier: "GetAddonSubscriptionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3594,12 +3526,10 @@ function __c27(j: number): any {
           AddonSubscriptionArn: S.optional(S.String),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "GetAddonSubscriptionResponse",
-      });
+      ).annotate({ identifier: "GetAddonSubscriptionResponse" });
   }
 }
-function __c28(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3609,7 +3539,7 @@ function __c28(j: number): any {
       ).annotate({ identifier: "GetAddressListRequest" });
   }
 }
-function __c29(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3623,17 +3553,19 @@ function __c29(j: number): any {
       ).annotate({ identifier: "GetAddressListResponse" });
   }
 }
-function __c30(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetAddressListImportJobRequest",
-      });
-    case 1:
+      ).annotate({ identifier: "GetAddressListImportJobRequest" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           JobId: S.String,
@@ -3642,16 +3574,14 @@ function __c30(j: number): any {
           PreSignedUrl: SensitiveString,
           ImportedItemsCount: S.optional(S.Number),
           FailedItemsCount: S.optional(S.Number),
-          ImportDataFormat: __S(2496, __c78, 0),
+          ImportDataFormat: __S(2528, __c79, 0),
           AddressListId: S.String,
           CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           StartTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CompletedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Error: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetAddressListImportJobResponse",
-      });
+      ).annotate({ identifier: "GetAddressListImportJobResponse" });
   }
 }
 function __c31(j: number): any {
@@ -3689,7 +3619,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ArchiveId: S.optional(S.String),
-          Filters: S.optional(__S(1092, __c34, 4)),
+          Filters: S.optional(__S(1091, __c34, 3)),
           FromTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ToTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           MaxResults: S.optional(S.Number),
@@ -3716,28 +3646,20 @@ function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          Evaluate: __S(352, __c11, 0),
-          Operator: S.String,
-          Values: __S(320, __c10, 0),
-        }),
-      ).annotate({ identifier: "ArchiveStringExpression" });
-    case 1:
-      return S.suspend(() =>
         S.Struct({ Evaluate: __S(352, __c11, 0), Operator: S.String }),
       ).annotate({ identifier: "ArchiveBooleanExpression" });
-    case 2:
+    case 1:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ StringExpression: __S(1088, __c34, 0) }),
-        /*@__PURE__*/ S.Struct({ BooleanExpression: __S(1089, __c34, 1) }),
+        /*@__PURE__*/ S.Struct({ StringExpression: __S(353, __c11, 1) }),
+        /*@__PURE__*/ S.Struct({ BooleanExpression: __S(1088, __c34, 0) }),
       ]);
+    case 2:
+      return S.Array(__S(1089, __c34, 1));
     case 3:
-      return S.Array(__S(1090, __c34, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          Include: S.optional(__S(1091, __c34, 3)),
-          Unless: S.optional(__S(1091, __c34, 3)),
+          Include: S.optional(__S(1090, __c34, 2)),
+          Unless: S.optional(__S(1090, __c34, 2)),
         }),
       ).annotate({ identifier: "ArchiveFilters" });
   }
@@ -3785,9 +3707,7 @@ function __c36(j: number): any {
           Metadata: S.optional(__S(1153, __c36, 1)),
           Envelope: S.optional(__S(1184, __c37, 0)),
         }),
-      ).annotate({
-        identifier: "GetArchiveMessageResponse",
-      });
+      ).annotate({ identifier: "GetArchiveMessageResponse" });
   }
 }
 function __c37(j: number): any {
@@ -3809,9 +3729,7 @@ function __c38(j: number): any {
         S.Struct({ ArchivedMessageId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetArchiveMessageContentRequest",
-      });
+      ).annotate({ identifier: "GetArchiveMessageContentRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3838,7 +3756,7 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ArchiveId: S.optional(S.String),
-          Filters: S.optional(__S(1092, __c34, 4)),
+          Filters: S.optional(__S(1091, __c34, 3)),
           FromTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ToTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           MaxResults: S.optional(S.Number),
@@ -3854,9 +3772,7 @@ function __c40(j: number): any {
         S.Struct({ SearchId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetArchiveSearchResultsRequest",
-      });
+      ).annotate({ identifier: "GetArchiveSearchResultsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3907,9 +3823,7 @@ function __c41(j: number): any {
             S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           ),
         }),
-      ).annotate({
-        identifier: "IngressPointPasswordConfiguration",
-      });
+      ).annotate({ identifier: "IngressPointPasswordConfiguration" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3917,9 +3831,7 @@ function __c41(j: number): any {
           SecretArn: S.optional(S.String),
           TlsAuthConfiguration: S.optional(__S(129, __c4, 1)),
         }),
-      ).annotate({
-        identifier: "IngressPointAuthConfiguration",
-      });
+      ).annotate({ identifier: "IngressPointAuthConfiguration" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3947,21 +3859,21 @@ function __c42(j: number): any {
         S.Struct({ AddressListId: S.String, Address: SensitiveString }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetMemberOfAddressListRequest",
-      });
-    case 1:
+      ).annotate({ identifier: "GetMemberOfAddressListRequest" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Address: SensitiveString,
           CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
-      ).annotate({
-        identifier: "GetMemberOfAddressListResponse",
-      });
+      ).annotate({ identifier: "GetMemberOfAddressListResponse" });
   }
 }
-function __c43(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3984,7 +3896,7 @@ function __c43(j: number): any {
       ).annotate({ identifier: "GetRelayResponse" });
   }
 }
-function __c44(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4000,12 +3912,12 @@ function __c44(j: number): any {
           RuleSetName: S.String,
           CreatedDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           LastModificationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Rules: __S(444, __c13, 28),
+          Rules: __S(441, __c13, 25),
         }),
       ).annotate({ identifier: "GetRuleSetResponse" });
   }
 }
-function __c45(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4019,7 +3931,7 @@ function __c45(j: number): any {
           TrafficPolicyName: S.String,
           TrafficPolicyId: S.String,
           TrafficPolicyArn: S.optional(S.String),
-          PolicyStatements: S.optional(__S(491, __c15, 11)),
+          PolicyStatements: S.optional(__S(487, __c15, 7)),
           MaxMessageSizeBytes: S.optional(S.Number),
           DefaultAction: S.optional(S.String),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4028,16 +3940,14 @@ function __c45(j: number): any {
       ).annotate({ identifier: "GetTrafficPolicyResponse" });
   }
 }
-function __c46(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), PageSize: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListAddonInstancesRequest",
-      });
+      ).annotate({ identifier: "ListAddonInstancesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4049,28 +3959,24 @@ function __c46(j: number): any {
         }),
       ).annotate({ identifier: "AddonInstance" });
     case 2:
-      return S.Array(__S(1473, __c46, 1));
+      return S.Array(__S(1505, __c47, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AddonInstances: S.optional(__S(1474, __c46, 2)),
+          AddonInstances: S.optional(__S(1506, __c47, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListAddonInstancesResponse",
-      });
+      ).annotate({ identifier: "ListAddonInstancesResponse" });
   }
 }
-function __c47(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), PageSize: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListAddonSubscriptionsRequest",
-      });
+      ).annotate({ identifier: "ListAddonSubscriptionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4081,19 +3987,17 @@ function __c47(j: number): any {
         }),
       ).annotate({ identifier: "AddonSubscription" });
     case 2:
-      return S.Array(__S(1505, __c47, 1));
+      return S.Array(__S(1537, __c48, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AddonSubscriptions: S.optional(__S(1506, __c47, 2)),
+          AddonSubscriptions: S.optional(__S(1538, __c48, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListAddonSubscriptionsResponse",
-      });
+      ).annotate({ identifier: "ListAddonSubscriptionsResponse" });
   }
 }
-function __c48(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4102,37 +4006,16 @@ function __c48(j: number): any {
           NextToken: S.optional(S.String),
           PageSize: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListAddressListImportJobsRequest",
-      });
+      ).annotate({ identifier: "ListAddressListImportJobsRequest" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          JobId: S.String,
-          Name: S.String,
-          Status: S.String,
-          PreSignedUrl: SensitiveString,
-          ImportedItemsCount: S.optional(S.Number),
-          FailedItemsCount: S.optional(S.Number),
-          ImportDataFormat: __S(2496, __c78, 0),
-          AddressListId: S.String,
-          CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          StartTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          CompletedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Error: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ImportJob" });
+      return S.Array(__S(960, __c30, 0));
     case 2:
-      return S.Array(__S(1537, __c48, 1));
-    case 3:
       return S.suspend(() =>
-        S.Struct({ ImportJobs: __S(1538, __c48, 2), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListAddressListImportJobsResponse",
-      });
+        S.Struct({ ImportJobs: __S(1569, __c49, 1), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListAddressListImportJobsResponse" });
   }
 }
-function __c49(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4141,14 +4024,14 @@ function __c49(j: number): any {
         ),
       ).annotate({ identifier: "ListAddressListsRequest" });
     case 1:
-      return S.Array(__S(928, __c29, 0));
+      return S.Array(__S(896, __c28, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ AddressLists: __S(1569, __c49, 1), NextToken: S.optional(S.String) }),
+        S.Struct({ AddressLists: __S(1601, __c50, 1), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListAddressListsResponse" });
   }
 }
-function __c50(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4157,24 +4040,20 @@ function __c50(j: number): any {
           NextToken: S.optional(S.String),
           PageSize: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListArchiveExportsRequest",
-      });
+      ).annotate({ identifier: "ListArchiveExportsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ ExportId: S.optional(S.String), Status: S.optional(__S(1056, __c33, 0)) }),
       ).annotate({ identifier: "ExportSummary" });
     case 2:
-      return S.Array(__S(1601, __c50, 1));
+      return S.Array(__S(1633, __c51, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Exports: S.optional(__S(1602, __c50, 2)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListArchiveExportsResponse",
-      });
+        S.Struct({ Exports: S.optional(__S(1634, __c51, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListArchiveExportsResponse" });
   }
 }
-function __c51(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4192,14 +4071,14 @@ function __c51(j: number): any {
         }),
       ).annotate({ identifier: "Archive" });
     case 2:
-      return S.Array(__S(1633, __c51, 1));
+      return S.Array(__S(1665, __c52, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Archives: __S(1634, __c51, 2), NextToken: S.optional(S.String) }),
+        S.Struct({ Archives: __S(1666, __c52, 2), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListArchivesResponse" });
   }
 }
-function __c52(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4208,24 +4087,20 @@ function __c52(j: number): any {
           NextToken: S.optional(S.String),
           PageSize: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListArchiveSearchesRequest",
-      });
+      ).annotate({ identifier: "ListArchiveSearchesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ SearchId: S.optional(S.String), Status: S.optional(__S(1056, __c33, 0)) }),
       ).annotate({ identifier: "SearchSummary" });
     case 2:
-      return S.Array(__S(1665, __c52, 1));
+      return S.Array(__S(1697, __c53, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Searches: S.optional(__S(1666, __c52, 2)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListArchiveSearchesResponse",
-      });
+        S.Struct({ Searches: S.optional(__S(1698, __c53, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListArchiveSearchesResponse" });
   }
 }
-function __c53(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4244,19 +4119,17 @@ function __c53(j: number): any {
         }),
       ).annotate({ identifier: "IngressPoint" });
     case 2:
-      return S.Array(__S(1697, __c53, 1));
+      return S.Array(__S(1729, __c54, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          IngressPoints: S.optional(__S(1698, __c53, 2)),
+          IngressPoints: S.optional(__S(1730, __c54, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListIngressPointsResponse",
-      });
+      ).annotate({ identifier: "ListIngressPointsResponse" });
   }
 }
-function __c54(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ AddressPrefix: S.optional(SensitiveString) })).annotate({
@@ -4266,31 +4139,20 @@ function __c54(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AddressListId: S.String,
-          Filter: S.optional(__S(1728, __c54, 0)),
+          Filter: S.optional(__S(1760, __c55, 0)),
           NextToken: S.optional(S.String),
           PageSize: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListMembersOfAddressListRequest",
-      });
+      ).annotate({ identifier: "ListMembersOfAddressListRequest" });
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Address: SensitiveString,
-          CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }),
-      ).annotate({ identifier: "SavedAddress" });
+      return S.Array(__S(1376, __c43, 0));
     case 3:
-      return S.Array(__S(1730, __c54, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({ Addresses: __S(1731, __c54, 3), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListMembersOfAddressListResponse",
-      });
+        S.Struct({ Addresses: __S(1762, __c55, 2), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListMembersOfAddressListResponse" });
   }
 }
-function __c55(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4307,14 +4169,14 @@ function __c55(j: number): any {
         }),
       ).annotate({ identifier: "Relay" });
     case 2:
-      return S.Array(__S(1761, __c55, 1));
+      return S.Array(__S(1793, __c56, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Relays: __S(1762, __c55, 2), NextToken: S.optional(S.String) }),
+        S.Struct({ Relays: __S(1794, __c56, 2), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListRelaysResponse" });
   }
 }
-function __c56(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4331,39 +4193,35 @@ function __c56(j: number): any {
         }),
       ).annotate({ identifier: "RuleSet" });
     case 2:
-      return S.Array(__S(1793, __c56, 1));
+      return S.Array(__S(1825, __c57, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ RuleSets: __S(1794, __c56, 2), NextToken: S.optional(S.String) }),
+        S.Struct({ RuleSets: __S(1826, __c57, 2), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListRuleSetsResponse" });
-  }
-}
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ Tags: __S(2177, __c68, 1) })).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
   }
 }
 function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: __S(2209, __c69, 1) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({ PageSize: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListTrafficPoliciesRequest",
-      });
+      ).annotate({ identifier: "ListTrafficPoliciesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4373,62 +4231,34 @@ function __c58(j: number): any {
         }),
       ).annotate({ identifier: "TrafficPolicy" });
     case 2:
-      return S.Array(__S(1857, __c58, 1));
+      return S.Array(__S(1889, __c59, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          TrafficPolicies: S.optional(__S(1858, __c58, 2)),
+          TrafficPolicies: S.optional(__S(1890, __c59, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListTrafficPoliciesResponse",
-      });
-  }
-}
-function __c59(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ AddressListId: S.String, Address: SensitiveString }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "RegisterMemberToAddressListRequest",
-      });
+      ).annotate({ identifier: "ListTrafficPoliciesResponse" });
   }
 }
 function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ JobId: S.String }).pipe(
+        S.Struct({ AddressListId: S.String, Address: SensitiveString }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "StartAddressListImportJobRequest",
-      });
+      ).annotate({ identifier: "RegisterMemberToAddressListRequest" });
   }
 }
 function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          ArchiveId: S.String,
-          Filters: S.optional(__S(1092, __c34, 4)),
-          FromTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          ToTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          MaxResults: S.optional(S.Number),
-          ExportDestinationConfiguration: __S(1121, __c35, 1),
-          IncludeMetadata: S.optional(S.Boolean),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartArchiveExportRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ ExportId: S.optional(S.String) })).annotate({
-        identifier: "StartArchiveExportResponse",
-      });
+        S.Struct({ JobId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "StartAddressListImportJobRequest" });
   }
 }
 function __c62(j: number): any {
@@ -4437,17 +4267,17 @@ function __c62(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ArchiveId: S.String,
-          Filters: S.optional(__S(1092, __c34, 4)),
+          Filters: S.optional(__S(1091, __c34, 3)),
           FromTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           ToTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          MaxResults: S.Number,
+          MaxResults: S.optional(S.Number),
+          ExportDestinationConfiguration: __S(1121, __c35, 1),
+          IncludeMetadata: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartArchiveSearchRequest",
-      });
+      ).annotate({ identifier: "StartArchiveExportRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ SearchId: S.optional(S.String) })).annotate({
-        identifier: "StartArchiveSearchResponse",
+      return S.suspend(() => S.Struct({ ExportId: S.optional(S.String) })).annotate({
+        identifier: "StartArchiveExportResponse",
       });
   }
 }
@@ -4455,15 +4285,31 @@ function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ JobId: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "StopAddressListImportJobRequest",
+        S.Struct({
+          ArchiveId: S.String,
+          Filters: S.optional(__S(1091, __c34, 3)),
+          FromTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          ToTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          MaxResults: S.Number,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "StartArchiveSearchRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ SearchId: S.optional(S.String) })).annotate({
+        identifier: "StartArchiveSearchResponse",
       });
   }
 }
 function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ JobId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "StopAddressListImportJobRequest" });
+  }
+}
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4473,7 +4319,7 @@ function __c64(j: number): any {
       ).annotate({ identifier: "StopArchiveExportRequest" });
   }
 }
-function __c65(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4483,45 +4329,43 @@ function __c65(j: number): any {
       ).annotate({ identifier: "StopArchiveSearchRequest" });
   }
 }
-function __c66(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Tags: __S(2177, __c68, 1) }).pipe(
+        S.Struct({ ResourceArn: S.String, Tags: __S(2209, __c69, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c67(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           AddonSubscriptionId: S.String,
-          Tags: S.optional(__S(2177, __c68, 1)),
+          Tags: S.optional(__S(2209, __c69, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateAddonInstanceRequest",
-      });
+      ).annotate({ identifier: "CreateAddonInstanceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ AddonInstanceId: S.String })).annotate({
         identifier: "CreateAddonInstanceResponse",
       });
   }
 }
-function __c68(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
         identifier: "Tag",
       });
     case 1:
-      return S.Array(__S(2176, __c68, 0));
+      return S.Array(__S(2208, __c69, 0));
   }
 }
-function __c69(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4531,7 +4375,7 @@ function __c69(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c70(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4543,7 +4387,7 @@ function __c70(j: number): any {
       ).annotate({ identifier: "UpdateArchiveRequest" });
   }
 }
-function __c71(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4556,12 +4400,10 @@ function __c71(j: number): any {
           IngressPointConfiguration: S.optional(__S(160, __c5, 0)),
           TlsPolicy: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateIngressPointRequest",
-      });
+      ).annotate({ identifier: "UpdateIngressPointRequest" });
   }
 }
-function __c72(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4575,32 +4417,16 @@ function __c72(j: number): any {
       ).annotate({ identifier: "UpdateRelayRequest" });
   }
 }
-function __c73(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           RuleSetId: S.String,
           RuleSetName: S.optional(S.String),
-          Rules: S.optional(__S(444, __c13, 28)),
+          Rules: S.optional(__S(441, __c13, 25)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateRuleSetRequest" });
-  }
-}
-function __c74(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          TrafficPolicyId: S.String,
-          TrafficPolicyName: S.optional(S.String),
-          PolicyStatements: S.optional(__S(491, __c15, 11)),
-          DefaultAction: S.optional(S.String),
-          MaxMessageSizeBytes: S.optional(S.Number),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateTrafficPolicyRequest",
-      });
   }
 }
 function __c75(j: number): any {
@@ -4608,17 +4434,13 @@ function __c75(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          AddonName: S.String,
-          Tags: S.optional(__S(2177, __c68, 1)),
+          TrafficPolicyId: S.String,
+          TrafficPolicyName: S.optional(S.String),
+          PolicyStatements: S.optional(__S(487, __c15, 7)),
+          DefaultAction: S.optional(S.String),
+          MaxMessageSizeBytes: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateAddonSubscriptionRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ AddonSubscriptionId: S.String })).annotate({
-        identifier: "CreateAddonSubscriptionResponse",
-      });
+      ).annotate({ identifier: "UpdateTrafficPolicyRequest" });
   }
 }
 function __c76(j: number): any {
@@ -4627,13 +4449,13 @@ function __c76(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          AddressListName: S.String,
-          Tags: S.optional(__S(2177, __c68, 1)),
+          AddonName: S.String,
+          Tags: S.optional(__S(2209, __c69, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateAddressListRequest" });
+      ).annotate({ identifier: "CreateAddonSubscriptionRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ AddressListId: S.String })).annotate({
-        identifier: "CreateAddressListResponse",
+      return S.suspend(() => S.Struct({ AddonSubscriptionId: S.String })).annotate({
+        identifier: "CreateAddonSubscriptionResponse",
       });
   }
 }
@@ -4643,22 +4465,34 @@ function __c77(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          AddressListId: S.String,
-          Name: S.String,
-          ImportDataFormat: __S(2496, __c78, 0),
+          AddressListName: S.String,
+          Tags: S.optional(__S(2209, __c69, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateAddressListImportJobRequest",
-      });
+      ).annotate({ identifier: "CreateAddressListRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ JobId: S.String, PreSignedUrl: SensitiveString })).annotate(
-        {
-          identifier: "CreateAddressListImportJobResponse",
-        },
-      );
+      return S.suspend(() => S.Struct({ AddressListId: S.String })).annotate({
+        identifier: "CreateAddressListResponse",
+      });
   }
 }
 function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          AddressListId: S.String,
+          Name: S.String,
+          ImportDataFormat: __S(2528, __c79, 0),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateAddressListImportJobRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ JobId: S.String, PreSignedUrl: SensitiveString })).annotate(
+        { identifier: "CreateAddressListImportJobResponse" },
+      );
+  }
+}
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ ImportDataType: S.String })).annotate({

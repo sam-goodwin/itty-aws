@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1496,17 +1496,13 @@ function __c1(j: number): any {
           attachments: __S(8, __c1, 0),
           dryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AddAttachmentsToSetRequest",
-      });
+      ).annotate({ identifier: "AddAttachmentsToSetRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({ attachmentSetId: S.optional(S.String), expiryTime: S.optional(S.String) }).pipe(
           ns,
         ),
-      ).annotate({
-        identifier: "AddAttachmentsToSetResponse",
-      });
+      ).annotate({ identifier: "AddAttachmentsToSetResponse" });
   }
 }
 function __c2(j: number): any {
@@ -1529,9 +1525,7 @@ function __c3(j: number): any {
           uploadIds: S.optional(__S(32, __c4, 0)),
           dryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AddCommunicationToCaseRequest",
-      });
+      ).annotate({ identifier: "AddCommunicationToCaseRequest" });
     case 1:
       return S.suspend(() => S.Struct({ result: S.optional(S.Boolean) }).pipe(ns)).annotate({
         identifier: "AddCommunicationToCaseResponse",
@@ -1559,9 +1553,7 @@ function __c5(j: number): any {
           completedUploads: __S(41, __c5, 1),
           dryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CompleteAttachmentUploadRequest",
-      });
+      ).annotate({ identifier: "CompleteAttachmentUploadRequest" });
     case 3:
       return S.suspend(() => S.Struct({ uploadStatus: S.String }).pipe(ns)).annotate({
         identifier: "CompleteAttachmentUploadResponse",
@@ -1599,15 +1591,11 @@ function __c7(j: number): any {
         S.Struct({ attachmentId: S.String, dryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeAttachmentRequest",
-      });
+      ).annotate({ identifier: "DescribeAttachmentRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ attachment: S.optional(__S(16, __c2, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeAttachmentResponse",
-      });
+      ).annotate({ identifier: "DescribeAttachmentResponse" });
   }
 }
 function __c8(j: number): any {
@@ -1617,9 +1605,7 @@ function __c8(j: number): any {
         S.Struct({ uploadId: S.String, dryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeAttachmentUploadStatusRequest",
-      });
+      ).annotate({ identifier: "DescribeAttachmentUploadStatusRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ totalParts: S.optional(S.Number), completedPartsCount: S.optional(S.Number) }),
@@ -1631,9 +1617,7 @@ function __c8(j: number): any {
           fileName: S.String,
           uploadProgress: S.optional(__S(65, __c8, 1)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeAttachmentUploadStatusResponse",
-      });
+      ).annotate({ identifier: "DescribeAttachmentUploadStatusResponse" });
   }
 }
 function __c9(j: number): any {
@@ -1720,18 +1704,14 @@ function __c11(j: number): any {
           maxResults: S.optional(S.Number),
           dryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeCommunicationsRequest",
-      });
+      ).annotate({ identifier: "DescribeCommunicationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           communications: S.optional(__S(83, __c10, 3)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeCommunicationsResponse",
-      });
+      ).annotate({ identifier: "DescribeCommunicationsResponse" });
   }
 }
 function __c12(j: number): any {
@@ -1745,9 +1725,7 @@ function __c12(j: number): any {
           categoryCode: S.String,
           dryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeCreateCaseOptionsRequest",
-      });
+      ).annotate({ identifier: "DescribeCreateCaseOptionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ startTime: S.optional(S.String), endTime: S.optional(S.String) }),
@@ -1776,9 +1754,7 @@ function __c12(j: number): any {
           languageAvailability: S.optional(S.String),
           communicationTypes: S.optional(__S(102, __c12, 6)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeCreateCaseOptionsResponse",
-      });
+      ).annotate({ identifier: "DescribeCreateCaseOptionsResponse" });
   }
 }
 function __c13(j: number): any {
@@ -1824,15 +1800,11 @@ function __c15(j: number): any {
         S.Struct({ language: S.optional(S.String), dryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeSeverityLevelsRequest",
-      });
+      ).annotate({ identifier: "DescribeSeverityLevelsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ severityLevels: S.optional(__S(113, __c14, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeSeverityLevelsResponse",
-      });
+      ).annotate({ identifier: "DescribeSeverityLevelsResponse" });
   }
 }
 function __c16(j: number): any {
@@ -1845,9 +1817,7 @@ function __c16(j: number): any {
           categoryCode: S.String,
           dryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeSupportedLanguagesRequest",
-      });
+      ).annotate({ identifier: "DescribeSupportedLanguagesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1861,9 +1831,7 @@ function __c16(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ supportedLanguages: S.optional(__S(130, __c16, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeSupportedLanguagesResponse",
-      });
+      ).annotate({ identifier: "DescribeSupportedLanguagesResponse" });
   }
 }
 function __c17(j: number): any {
@@ -1873,9 +1841,7 @@ function __c17(j: number): any {
         S.Struct({ checkIds: __S(144, __c18, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeTrustedAdvisorCheckRefreshStatusesRequest",
-      });
+      ).annotate({ identifier: "DescribeTrustedAdvisorCheckRefreshStatusesRequest" });
     case 1:
       return S.Array(__S(152, __c19, 0));
     case 2:
@@ -1895,9 +1861,7 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ checkId: S.String, status: S.String, millisUntilNextRefreshable: S.Number }),
-      ).annotate({
-        identifier: "TrustedAdvisorCheckRefreshStatus",
-      });
+      ).annotate({ identifier: "TrustedAdvisorCheckRefreshStatus" });
   }
 }
 function __c20(j: number): any {
@@ -1907,9 +1871,7 @@ function __c20(j: number): any {
         S.Struct({ checkId: S.String, language: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeTrustedAdvisorCheckResultRequest",
-      });
+      ).annotate({ identifier: "DescribeTrustedAdvisorCheckResultRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1919,9 +1881,7 @@ function __c20(j: number): any {
           isSuppressed: S.optional(S.Boolean),
           metadata: __S(144, __c18, 0),
         }),
-      ).annotate({
-        identifier: "TrustedAdvisorResourceDetail",
-      });
+      ).annotate({ identifier: "TrustedAdvisorResourceDetail" });
     case 2:
       return S.Array(__S(161, __c20, 1));
     case 3:
@@ -1934,15 +1894,11 @@ function __c20(j: number): any {
           categorySpecificSummary: __S(170, __c21, 2),
           flaggedResources: __S(162, __c20, 2),
         }),
-      ).annotate({
-        identifier: "TrustedAdvisorCheckResult",
-      });
+      ).annotate({ identifier: "TrustedAdvisorCheckResult" });
     case 4:
       return S.suspend(() =>
         S.Struct({ result: S.optional(__S(163, __c20, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeTrustedAdvisorCheckResultResponse",
-      });
+      ).annotate({ identifier: "DescribeTrustedAdvisorCheckResultResponse" });
   }
 }
 function __c21(j: number): any {
@@ -1955,20 +1911,14 @@ function __c21(j: number): any {
           resourcesIgnored: S.Number,
           resourcesSuppressed: S.Number,
         }),
-      ).annotate({
-        identifier: "TrustedAdvisorResourcesSummary",
-      });
+      ).annotate({ identifier: "TrustedAdvisorResourcesSummary" });
     case 1:
       return S.suspend(() =>
         S.Struct({ estimatedMonthlySavings: S.Number, estimatedPercentMonthlySavings: S.Number }),
-      ).annotate({
-        identifier: "TrustedAdvisorCostOptimizingSummary",
-      });
+      ).annotate({ identifier: "TrustedAdvisorCostOptimizingSummary" });
     case 2:
       return S.suspend(() => S.Struct({ costOptimizing: S.optional(__S(169, __c21, 1)) })).annotate(
-        {
-          identifier: "TrustedAdvisorCategorySpecificSummary",
-        },
+        { identifier: "TrustedAdvisorCategorySpecificSummary" },
       );
   }
 }
@@ -1979,9 +1929,7 @@ function __c22(j: number): any {
         S.Struct({ language: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeTrustedAdvisorChecksRequest",
-      });
+      ).annotate({ identifier: "DescribeTrustedAdvisorChecksRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1991,9 +1939,7 @@ function __c22(j: number): any {
           category: S.String,
           metadata: __S(144, __c18, 0),
         }),
-      ).annotate({
-        identifier: "TrustedAdvisorCheckDescription",
-      });
+      ).annotate({ identifier: "TrustedAdvisorCheckDescription" });
     case 2:
       return S.Array(__S(177, __c22, 1));
     case 3:
@@ -2009,9 +1955,7 @@ function __c23(j: number): any {
         S.Struct({ checkIds: __S(144, __c18, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeTrustedAdvisorCheckSummariesRequest",
-      });
+      ).annotate({ identifier: "DescribeTrustedAdvisorCheckSummariesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2022,9 +1966,7 @@ function __c23(j: number): any {
           resourcesSummary: __S(168, __c21, 0),
           categorySpecificSummary: __S(170, __c21, 2),
         }),
-      ).annotate({
-        identifier: "TrustedAdvisorCheckSummary",
-      });
+      ).annotate({ identifier: "TrustedAdvisorCheckSummary" });
     case 2:
       return S.Array(__S(185, __c23, 1));
     case 3:
@@ -2040,9 +1982,7 @@ function __c24(j: number): any {
         S.Struct({ attachmentId: S.String, dryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "GetAttachmentDownloadLinkRequest",
-      });
+      ).annotate({ identifier: "GetAttachmentDownloadLinkRequest" });
     case 1:
       return S.suspend(() => S.Struct({ url: S.String, expiryDate: S.String })).annotate({
         identifier: "DownloadUrl",
@@ -2050,9 +1990,7 @@ function __c24(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({ fileName: S.String, downloadUrl: __S(193, __c24, 1) }).pipe(ns),
-      ).annotate({
-        identifier: "GetAttachmentDownloadLinkResponse",
-      });
+      ).annotate({ identifier: "GetAttachmentDownloadLinkResponse" });
   }
 }
 function __c25(j: number): any {
@@ -2070,9 +2008,7 @@ function __c25(j: number): any {
           uploadRange: S.optional(__S(200, __c25, 0)),
           dryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetAttachmentUploadLinksRequest",
-      });
+      ).annotate({ identifier: "GetAttachmentUploadLinksRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({ url: S.String, partIndex: S.Number, expiryDate: S.String }),
@@ -2088,9 +2024,7 @@ function __c25(j: number): any {
           nextIndex: S.optional(S.Number),
           uploadUrls: __S(203, __c25, 3),
         }).pipe(ns),
-      ).annotate({
-        identifier: "GetAttachmentUploadLinksResponse",
-      });
+      ).annotate({ identifier: "GetAttachmentUploadLinksResponse" });
   }
 }
 function __c26(j: number): any {
@@ -2100,9 +2034,7 @@ function __c26(j: number): any {
         S.Struct({ checkId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "RefreshTrustedAdvisorCheckRequest",
-      });
+      ).annotate({ identifier: "RefreshTrustedAdvisorCheckRequest" });
     case 1:
       return S.suspend(() => S.Struct({ status: __S(152, __c19, 0) }).pipe(ns)).annotate({
         identifier: "RefreshTrustedAdvisorCheckResponse",

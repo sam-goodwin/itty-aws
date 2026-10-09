@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1054,7 +1054,7 @@ export const listAssociatedGroups: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(368, __c23, 0) as any as S.Schema<ListAssociatedGroupsRequest>,
-  output: __S(369, __c23, 1) as any as S.Schema<ListAssociatedGroupsResponse>,
+  output: __S(386, __c24, 2) as any as S.Schema<ListAssociatedGroupsResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1113,7 +1113,7 @@ export const listGroups: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(416, __c26, 0) as any as S.Schema<ListGroupsRequest>,
-  output: __S(417, __c26, 1) as any as S.Schema<ListGroupsResponse>,
+  output: __S(386, __c24, 2) as any as S.Schema<ListGroupsResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1390,9 +1390,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AssociateResourceResponse",
-      });
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "AssociateResourceResponse" });
   }
 }
 function __c2(j: number): any {
@@ -1407,11 +1405,11 @@ function __c2(j: number): any {
           ArtifactS3Location: S.String,
           ExecutionRoleArn: S.String,
           Schedule: __S(161, __c10, 1),
-          RunConfig: S.optional(__S(146, __c9, 2)),
+          RunConfig: S.optional(__S(145, __c9, 1)),
           SuccessRetentionPeriodInDays: S.optional(S.Number),
           FailureRetentionPeriodInDays: S.optional(S.Number),
           RuntimeVersion: S.String,
-          VpcConfig: S.optional(__S(147, __c9, 3)),
+          VpcConfig: S.optional(__S(146, __c9, 2)),
           ResourcesToReplicateTags: S.optional(__S(32, __c2, 0)),
           ProvisionedResourceCleanup: S.optional(S.String),
           BrowserConfigs: S.optional(__S(115, __c7, 3)),
@@ -1604,10 +1602,7 @@ function __c7(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({
-          ScreenshotName: S.String,
-          IgnoreCoordinates: S.optional(__S(64, __c4, 0)),
-        }),
+        S.Struct({ ScreenshotName: S.String, IgnoreCoordinates: S.optional(__S(64, __c4, 0)) }),
       ).annotate({ identifier: "BaseScreenshot" });
     case 7:
       return S.Array(__S(118, __c7, 6));
@@ -1636,18 +1631,16 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "CanaryCodeInput" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           TimeoutInSeconds: S.optional(S.Number),
           MemoryInMB: S.optional(S.Number),
           ActiveTracing: S.optional(S.Boolean),
-          EnvironmentVariables: S.optional(__S(145, __c9, 1)),
+          EnvironmentVariables: S.optional(__S(48, __c3, 0)),
           EphemeralStorage: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CanaryRunConfigInput" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           SubnetIds: S.optional(__S(64, __c4, 0)),
@@ -1675,7 +1668,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Location: S.String,
-          VpcConfig: S.optional(__S(147, __c9, 3)),
+          VpcConfig: S.optional(__S(146, __c9, 2)),
           KmsKeyArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "AddReplicaLocationInput" });
@@ -1779,9 +1772,7 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DescribeCanariesLastRunRequest",
-      });
+      ).annotate({ identifier: "DescribeCanariesLastRunRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ CanaryName: S.optional(S.String), LastRun: S.optional(__S(275, __c17, 3)) }),
@@ -1794,9 +1785,7 @@ function __c16(j: number): any {
           CanariesLastRun: S.optional(__S(258, __c16, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeCanariesLastRunResponse",
-      });
+      ).annotate({ identifier: "DescribeCanariesLastRunResponse" });
   }
 }
 function __c17(j: number): any {
@@ -1848,9 +1837,7 @@ function __c18(j: number): any {
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/runtime-versions" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeRuntimeVersionsRequest",
-      });
+      ).annotate({ identifier: "DescribeRuntimeVersionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1868,9 +1855,7 @@ function __c18(j: number): any {
           RuntimeVersions: S.optional(__S(290, __c18, 2)),
           NextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DescribeRuntimeVersionsResponse",
-      });
+      ).annotate({ identifier: "DescribeRuntimeVersionsResponse" });
   }
 }
 function __c19(j: number): any {
@@ -1890,9 +1875,7 @@ function __c19(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DisassociateResourceRequest",
-      });
+      ).annotate({ identifier: "DisassociateResourceRequest" });
   }
 }
 function __c20(j: number): any {
@@ -1972,15 +1955,7 @@ function __c23(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListAssociatedGroupsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Groups: S.optional(__S(385, __c24, 1)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListAssociatedGroupsResponse",
-      });
+      ).annotate({ identifier: "ListAssociatedGroupsRequest" });
   }
 }
 function __c24(j: number): any {
@@ -1995,6 +1970,10 @@ function __c24(j: number): any {
       ).annotate({ identifier: "GroupSummary" });
     case 1:
       return S.Array(__S(384, __c24, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Groups: S.optional(__S(385, __c24, 1)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListAssociatedGroupsResponse" });
   }
 }
 function __c25(j: number): any {
@@ -2015,15 +1994,11 @@ function __c25(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListGroupResourcesRequest",
-      });
+      ).annotate({ identifier: "ListGroupResourcesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Resources: S.optional(__S(64, __c4, 0)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListGroupResourcesResponse",
-      });
+      ).annotate({ identifier: "ListGroupResourcesResponse" });
   }
 }
 function __c26(j: number): any {
@@ -2034,10 +2009,6 @@ function __c26(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/groups" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListGroupsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Groups: S.optional(__S(385, __c24, 1)), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListGroupsResponse" });
   }
 }
 function __c27(j: number): any {
@@ -2054,9 +2025,7 @@ function __c27(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ Tags: S.optional(__S(48, __c3, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -2088,8 +2057,8 @@ function __c29(j: number): any {
           Name: S.String.pipe(T.HttpLabel("Name")),
           Code: S.optional(__S(144, __c9, 0)),
           RuntimeVersion: S.optional(S.String),
-          RunConfig: S.optional(__S(146, __c9, 2)),
-          VpcConfig: S.optional(__S(147, __c9, 3)),
+          RunConfig: S.optional(__S(145, __c9, 1)),
+          VpcConfig: S.optional(__S(146, __c9, 2)),
           ExecutionRoleArn: S.optional(S.String),
           SuccessRetentionPeriodInDays: S.optional(S.Number),
           FailureRetentionPeriodInDays: S.optional(S.Number),
@@ -2197,10 +2166,10 @@ function __c34(j: number): any {
           ExecutionRoleArn: S.optional(S.String),
           RuntimeVersion: S.optional(S.String),
           Schedule: S.optional(__S(161, __c10, 1)),
-          RunConfig: S.optional(__S(146, __c9, 2)),
+          RunConfig: S.optional(__S(145, __c9, 1)),
           SuccessRetentionPeriodInDays: S.optional(S.Number),
           FailureRetentionPeriodInDays: S.optional(S.Number),
-          VpcConfig: S.optional(__S(147, __c9, 3)),
+          VpcConfig: S.optional(__S(146, __c9, 2)),
           VisualReference: S.optional(__S(480, __c30, 0)),
           ArtifactS3Location: S.optional(S.String),
           ArtifactConfig: S.optional(__S(117, __c7, 5)),

@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -240,9 +240,7 @@ function __c1(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetAccountCustomizationsInput",
-      });
+      ).annotate({ identifier: "GetAccountCustomizationsInput" });
   }
 }
 function __c2(j: number): any {
@@ -260,9 +258,7 @@ function __c3(j: number): any {
           visibleServices: S.optional(__S(4, __c2, 0)),
           visibleRegions: S.optional(__S(4, __c2, 0)),
         }),
-      ).annotate({
-        identifier: "GetAccountCustomizationsOutput",
-      });
+      ).annotate({ identifier: "GetAccountCustomizationsOutput" });
   }
 }
 function __c4(j: number): any {
@@ -300,9 +296,7 @@ function __c5(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateAccountCustomizationsInput",
-      });
+      ).annotate({ identifier: "UpdateAccountCustomizationsInput" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

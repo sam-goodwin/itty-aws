@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1541,9 +1541,7 @@ function __c0(j: number): any {
         ),
       ).annotate({ identifier: "AddTagsInput" });
     case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "AddTagsOutput",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "AddTagsOutput" });
   }
 }
 function __c1(j: number): any {
@@ -1569,15 +1567,11 @@ function __c3(j: number): any {
         S.Struct({ LoadBalancerName: S.String, SecurityGroups: __S(64, __c4, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ApplySecurityGroupsToLoadBalancerInput",
-      });
+      ).annotate({ identifier: "ApplySecurityGroupsToLoadBalancerInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ SecurityGroups: S.optional(__S(64, __c4, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "ApplySecurityGroupsToLoadBalancerOutput",
-      });
+      ).annotate({ identifier: "ApplySecurityGroupsToLoadBalancerOutput" });
   }
 }
 function __c4(j: number): any {
@@ -1593,14 +1587,10 @@ function __c5(j: number): any {
         S.Struct({ LoadBalancerName: S.String, Subnets: __S(96, __c6, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "AttachLoadBalancerToSubnetsInput",
-      });
+      ).annotate({ identifier: "AttachLoadBalancerToSubnetsInput" });
     case 1:
       return S.suspend(() => S.Struct({ Subnets: S.optional(__S(96, __c6, 0)) }).pipe(ns)).annotate(
-        {
-          identifier: "AttachLoadBalancerToSubnetsOutput",
-        },
+        { identifier: "AttachLoadBalancerToSubnetsOutput" },
       );
   }
 }
@@ -1617,15 +1607,11 @@ function __c7(j: number): any {
         S.Struct({ LoadBalancerName: S.String, HealthCheck: __S(128, __c8, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ConfigureHealthCheckInput",
-      });
+      ).annotate({ identifier: "ConfigureHealthCheckInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ HealthCheck: S.optional(__S(128, __c8, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "ConfigureHealthCheckOutput",
-      });
+      ).annotate({ identifier: "ConfigureHealthCheckOutput" });
   }
 }
 function __c8(j: number): any {
@@ -1649,9 +1635,7 @@ function __c9(j: number): any {
         S.Struct({ LoadBalancerName: S.String, PolicyName: S.String, CookieName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateAppCookieStickinessPolicyInput",
-      });
+      ).annotate({ identifier: "CreateAppCookieStickinessPolicyInput" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateAppCookieStickinessPolicyOutput",
@@ -1667,9 +1651,7 @@ function __c10(j: number): any {
           PolicyName: S.String,
           CookieExpirationPeriod: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateLBCookieStickinessPolicyInput",
-      });
+      ).annotate({ identifier: "CreateLBCookieStickinessPolicyInput" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateLBCookieStickinessPolicyOutput",
@@ -1729,9 +1711,7 @@ function __c15(j: number): any {
         S.Struct({ LoadBalancerName: S.String, Listeners: __S(192, __c12, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateLoadBalancerListenerInput",
-      });
+      ).annotate({ identifier: "CreateLoadBalancerListenerInput" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateLoadBalancerListenerOutput",
@@ -1754,9 +1734,7 @@ function __c16(j: number): any {
           PolicyTypeName: S.String,
           PolicyAttributes: S.optional(__S(257, __c16, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateLoadBalancerPolicyInput",
-      });
+      ).annotate({ identifier: "CreateLoadBalancerPolicyInput" });
     case 3:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateLoadBalancerPolicyOutput",
@@ -1786,9 +1764,7 @@ function __c18(j: number): any {
         S.Struct({ LoadBalancerName: S.String, LoadBalancerPorts: __S(288, __c18, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteLoadBalancerListenerInput",
-      });
+      ).annotate({ identifier: "DeleteLoadBalancerListenerInput" });
     case 2:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteLoadBalancerListenerOutput",
@@ -1802,9 +1778,7 @@ function __c19(j: number): any {
         S.Struct({ LoadBalancerName: S.String, PolicyName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DeleteLoadBalancerPolicyInput",
-      });
+      ).annotate({ identifier: "DeleteLoadBalancerPolicyInput" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteLoadBalancerPolicyOutput",
@@ -1822,9 +1796,7 @@ function __c20(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ Instances: S.optional(__S(337, __c21, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "DeregisterEndPointsOutput",
-      });
+      ).annotate({ identifier: "DeregisterEndPointsOutput" });
   }
 }
 function __c21(j: number): any {
@@ -1844,9 +1816,7 @@ function __c22(j: number): any {
         S.Struct({ Marker: S.optional(S.String), PageSize: S.optional(S.Number) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeAccountLimitsInput",
-      });
+      ).annotate({ identifier: "DescribeAccountLimitsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String), Max: S.optional(S.String) }),
@@ -1858,9 +1828,7 @@ function __c22(j: number): any {
         S.Struct({ Limits: S.optional(__S(354, __c22, 2)), NextMarker: S.optional(S.String) }).pipe(
           ns,
         ),
-      ).annotate({
-        identifier: "DescribeAccountLimitsOutput",
-      });
+      ).annotate({ identifier: "DescribeAccountLimitsOutput" });
   }
 }
 function __c23(j: number): any {
@@ -1870,9 +1838,7 @@ function __c23(j: number): any {
         S.Struct({ LoadBalancerName: S.String, Instances: S.optional(__S(337, __c21, 1)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeEndPointStateInput",
-      });
+      ).annotate({ identifier: "DescribeEndPointStateInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1887,9 +1853,7 @@ function __c23(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ InstanceStates: S.optional(__S(370, __c23, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeEndPointStateOutput",
-      });
+      ).annotate({ identifier: "DescribeEndPointStateOutput" });
   }
 }
 function __c24(j: number): any {
@@ -1899,15 +1863,11 @@ function __c24(j: number): any {
         S.Struct({ LoadBalancerName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeLoadBalancerAttributesInput",
-      });
+      ).annotate({ identifier: "DescribeLoadBalancerAttributesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ LoadBalancerAttributes: S.optional(__S(406, __c25, 6)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeLoadBalancerAttributesOutput",
-      });
+      ).annotate({ identifier: "DescribeLoadBalancerAttributesOutput" });
   }
 }
 function __c25(j: number): any {
@@ -1959,15 +1919,11 @@ function __c26(j: number): any {
           LoadBalancerName: S.optional(S.String),
           PolicyNames: S.optional(__S(432, __c27, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeLoadBalancerPoliciesInput",
-      });
+      ).annotate({ identifier: "DescribeLoadBalancerPoliciesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ AttributeName: S.optional(S.String), AttributeValue: S.optional(S.String) }),
-      ).annotate({
-        identifier: "PolicyAttributeDescription",
-      });
+      ).annotate({ identifier: "PolicyAttributeDescription" });
     case 2:
       return S.Array(__S(417, __c26, 1));
     case 3:
@@ -1983,9 +1939,7 @@ function __c26(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({ PolicyDescriptions: S.optional(__S(420, __c26, 4)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeLoadBalancerPoliciesOutput",
-      });
+      ).annotate({ identifier: "DescribeLoadBalancerPoliciesOutput" });
   }
 }
 function __c27(j: number): any {
@@ -2003,9 +1957,7 @@ function __c28(j: number): any {
         S.Struct({ PolicyTypeNames: S.optional(__S(448, __c28, 0)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DescribeLoadBalancerPolicyTypesInput",
-      });
+      ).annotate({ identifier: "DescribeLoadBalancerPolicyTypesInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2015,9 +1967,7 @@ function __c28(j: number): any {
           DefaultValue: S.optional(S.String),
           Cardinality: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "PolicyAttributeTypeDescription",
-      });
+      ).annotate({ identifier: "PolicyAttributeTypeDescription" });
     case 3:
       return S.Array(__S(450, __c28, 2));
     case 4:
@@ -2033,9 +1983,7 @@ function __c28(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({ PolicyTypeDescriptions: S.optional(__S(453, __c28, 5)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeLoadBalancerPolicyTypesOutput",
-      });
+      ).annotate({ identifier: "DescribeLoadBalancerPolicyTypesOutput" });
   }
 }
 function __c29(j: number): any {
@@ -2047,9 +1995,7 @@ function __c29(j: number): any {
           Marker: S.optional(S.String),
           PageSize: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeAccessPointsInput",
-      });
+      ).annotate({ identifier: "DescribeAccessPointsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2062,9 +2008,7 @@ function __c29(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({ PolicyName: S.optional(S.String), CookieName: S.optional(S.String) }),
-      ).annotate({
-        identifier: "AppCookieStickinessPolicy",
-      });
+      ).annotate({ identifier: "AppCookieStickinessPolicy" });
     case 4:
       return S.Array(__S(467, __c29, 3));
     case 5:
@@ -2126,9 +2070,7 @@ function __c29(j: number): any {
           LoadBalancerDescriptions: S.optional(__S(476, __c29, 12)),
           NextMarker: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeAccessPointsOutput",
-      });
+      ).annotate({ identifier: "DescribeAccessPointsOutput" });
   }
 }
 function __c30(j: number): any {
@@ -2160,14 +2102,10 @@ function __c31(j: number): any {
         S.Struct({ LoadBalancerName: S.String, Subnets: __S(96, __c6, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "DetachLoadBalancerFromSubnetsInput",
-      });
+      ).annotate({ identifier: "DetachLoadBalancerFromSubnetsInput" });
     case 1:
       return S.suspend(() => S.Struct({ Subnets: S.optional(__S(96, __c6, 0)) }).pipe(ns)).annotate(
-        {
-          identifier: "DetachLoadBalancerFromSubnetsOutput",
-        },
+        { identifier: "DetachLoadBalancerFromSubnetsOutput" },
       );
   }
 }
@@ -2178,15 +2116,11 @@ function __c32(j: number): any {
         S.Struct({ LoadBalancerName: S.String, AvailabilityZones: __S(224, __c14, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "RemoveAvailabilityZonesInput",
-      });
+      ).annotate({ identifier: "RemoveAvailabilityZonesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ AvailabilityZones: S.optional(__S(224, __c14, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "RemoveAvailabilityZonesOutput",
-      });
+      ).annotate({ identifier: "RemoveAvailabilityZonesOutput" });
   }
 }
 function __c33(j: number): any {
@@ -2196,15 +2130,11 @@ function __c33(j: number): any {
         S.Struct({ LoadBalancerName: S.String, AvailabilityZones: __S(224, __c14, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "AddAvailabilityZonesInput",
-      });
+      ).annotate({ identifier: "AddAvailabilityZonesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({ AvailabilityZones: S.optional(__S(224, __c14, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "AddAvailabilityZonesOutput",
-      });
+      ).annotate({ identifier: "AddAvailabilityZonesOutput" });
   }
 }
 function __c34(j: number): any {
@@ -2214,18 +2144,14 @@ function __c34(j: number): any {
         S.Struct({ LoadBalancerName: S.String, LoadBalancerAttributes: __S(406, __c25, 6) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ModifyLoadBalancerAttributesInput",
-      });
+      ).annotate({ identifier: "ModifyLoadBalancerAttributesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           LoadBalancerName: S.optional(S.String),
           LoadBalancerAttributes: S.optional(__S(406, __c25, 6)),
         }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyLoadBalancerAttributesOutput",
-      });
+      ).annotate({ identifier: "ModifyLoadBalancerAttributesOutput" });
   }
 }
 function __c35(j: number): any {
@@ -2257,9 +2183,7 @@ function __c36(j: number): any {
         ),
       ).annotate({ identifier: "RemoveTagsInput" });
     case 3:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "RemoveTagsOutput",
-      });
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({ identifier: "RemoveTagsOutput" });
   }
 }
 function __c37(j: number): any {
@@ -2271,9 +2195,7 @@ function __c37(j: number): any {
           LoadBalancerPort: S.Number,
           SSLCertificateId: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SetLoadBalancerListenerSSLCertificateInput",
-      });
+      ).annotate({ identifier: "SetLoadBalancerListenerSSLCertificateInput" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "SetLoadBalancerListenerSSLCertificateOutput",
@@ -2289,9 +2211,7 @@ function __c38(j: number): any {
           InstancePort: S.Number,
           PolicyNames: __S(432, __c27, 0),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SetLoadBalancerPoliciesForBackendServerInput",
-      });
+      ).annotate({ identifier: "SetLoadBalancerPoliciesForBackendServerInput" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "SetLoadBalancerPoliciesForBackendServerOutput",
@@ -2307,9 +2227,7 @@ function __c39(j: number): any {
           LoadBalancerPort: S.Number,
           PolicyNames: __S(432, __c27, 0),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "SetLoadBalancerPoliciesOfListenerInput",
-      });
+      ).annotate({ identifier: "SetLoadBalancerPoliciesOfListenerInput" });
     case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "SetLoadBalancerPoliciesOfListenerOutput",

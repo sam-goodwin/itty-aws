@@ -1,7 +1,7 @@
 import * as API from "@distilled.cloud/core/api";
 import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
-import * as HttpClient from "effect/http/HttpClient";
+import type * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -723,9 +723,7 @@ function __c0(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/suiteDefinitions" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "ListSuiteDefinitionsRequest",
-      });
+      ).annotate({ identifier: "ListSuiteDefinitionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -737,9 +735,7 @@ function __c0(j: number): any {
           protocol: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "SuiteDefinitionInformation",
-      });
+      ).annotate({ identifier: "SuiteDefinitionInformation" });
     case 2:
       return S.Array(__S(1, __c0, 1));
     case 3:
@@ -748,9 +744,7 @@ function __c0(j: number): any {
           suiteDefinitionInformationList: S.optional(__S(2, __c0, 2)),
           nextToken: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListSuiteDefinitionsResponse",
-      });
+      ).annotate({ identifier: "ListSuiteDefinitionsResponse" });
   }
 }
 function __c1(j: number): any {
@@ -801,9 +795,7 @@ function __c2(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
+      ).annotate({ identifier: "ListTagsForResourceRequest" });
     case 1:
       return S.suspend(() => S.Struct({ tags: S.optional(__S(192, __c12, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -921,9 +913,7 @@ function __c7(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "UpdateSuiteDefinitionRequest",
-      });
+      ).annotate({ identifier: "UpdateSuiteDefinitionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -934,9 +924,7 @@ function __c7(j: number): any {
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "UpdateSuiteDefinitionResponse",
-      });
+      ).annotate({ identifier: "UpdateSuiteDefinitionResponse" });
   }
 }
 function __c8(j: number): any {
@@ -950,9 +938,7 @@ function __c8(j: number): any {
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/suiteDefinitions" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({
-        identifier: "CreateSuiteDefinitionRequest",
-      });
+      ).annotate({ identifier: "CreateSuiteDefinitionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -961,9 +947,7 @@ function __c8(j: number): any {
           suiteDefinitionName: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
-      ).annotate({
-        identifier: "CreateSuiteDefinitionResponse",
-      });
+      ).annotate({ identifier: "CreateSuiteDefinitionResponse" });
   }
 }
 function __c9(j: number): any {
@@ -985,9 +969,7 @@ function __c10(j: number): any {
           devicePermissionRoleArn: S.optional(S.String),
           protocol: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SuiteDefinitionConfiguration",
-      });
+      ).annotate({ identifier: "SuiteDefinitionConfiguration" });
   }
 }
 function __c11(j: number): any {
@@ -1022,9 +1004,7 @@ function __c13(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "DeleteSuiteDefinitionRequest",
-      });
+      ).annotate({ identifier: "DeleteSuiteDefinitionRequest" });
   }
 }
 function __c14(j: number): any {
@@ -1069,9 +1049,7 @@ function __c16(j: number): any {
             rules,
           ),
         ),
-      ).annotate({
-        identifier: "GetSuiteDefinitionRequest",
-      });
+      ).annotate({ identifier: "GetSuiteDefinitionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1084,9 +1062,7 @@ function __c16(j: number): any {
           lastModifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           tags: S.optional(__S(192, __c12, 0)),
         }),
-      ).annotate({
-        identifier: "GetSuiteDefinitionResponse",
-      });
+      ).annotate({ identifier: "GetSuiteDefinitionResponse" });
   }
 }
 function __c17(j: number): any {
@@ -1213,9 +1189,7 @@ function __c20(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({ qualificationReportDownloadUrl: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetSuiteRunReportResponse",
-      });
+      ).annotate({ identifier: "GetSuiteRunReportResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.
