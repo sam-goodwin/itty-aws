@@ -6,7 +6,7 @@ import { ConfigError } from "@distilled.cloud/core/errors";
  * per request; the protocol layer sends them as `x-modal-token-id` /
  * `x-modal-token-secret` (the same headers the official JS/Go clients use).
  */
-import * as EffectConfig from "effect/Config";
+import * as EffectConfig from "@distilled.cloud/core/config";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";

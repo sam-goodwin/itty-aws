@@ -12,7 +12,7 @@ import { ConfigError } from "@distilled.cloud/core/errors";
  * fields rather than credential state, because a single token routinely spans
  * several teams.
  */
-import * as EffectConfig from "effect/Config";
+import * as EffectConfig from "@distilled.cloud/core/config";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";

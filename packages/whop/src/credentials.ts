@@ -18,7 +18,7 @@ import { ConfigError } from "@distilled.cloud/core/errors";
  *
  * @see https://docs.whop.com/developer/api/getting-started
  */
-import * as EffectConfig from "effect/Config";
+import * as EffectConfig from "@distilled.cloud/core/config";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";

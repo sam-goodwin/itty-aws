@@ -10,7 +10,7 @@ import { ConfigError } from "@distilled.cloud/core/errors";
  * Notion requires the `Notion-Version` header on every request. It defaults
  * to the version this package is generated against.
  */
-import * as EffectConfig from "effect/Config";
+import * as EffectConfig from "@distilled.cloud/core/config";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";

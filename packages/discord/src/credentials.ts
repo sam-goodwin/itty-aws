@@ -13,7 +13,7 @@ import { ConfigError } from "@distilled.cloud/core/errors";
  *   * `Bearer <token>` -- an OAuth2 access token, for calls made on behalf of
  *     a user (`/users/@me`, `/users/@me/guilds`, ...)
  */
-import * as EffectConfig from "effect/Config";
+import * as EffectConfig from "@distilled.cloud/core/config";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";

@@ -2,7 +2,7 @@
  * An access token from the process environment.
  */
 import { ConfigError } from "@distilled.cloud/core/errors";
-import * as EffectConfig from "effect/Config";
+import * as EffectConfig from "@distilled.cloud/core/config";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Option from "effect/Option";

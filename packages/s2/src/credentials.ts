@@ -17,7 +17,7 @@ import { ConfigError } from "@distilled.cloud/core/errors";
  * to call the streams/records services. The protocol picks the endpoint per
  * request from the operation's route (see protocol.ts).
  */
-import * as EffectConfig from "effect/Config";
+import * as EffectConfig from "@distilled.cloud/core/config";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";

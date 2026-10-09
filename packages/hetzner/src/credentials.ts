@@ -11,7 +11,7 @@ import { ConfigError } from "@distilled.cloud/core/errors";
  * A token is issued read-write or read-only; a read-only token answers any
  * non-GET request with `403 token_readonly` (surfaced as `Forbidden`).
  */
-import * as EffectConfig from "effect/Config";
+import * as EffectConfig from "@distilled.cloud/core/config";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";

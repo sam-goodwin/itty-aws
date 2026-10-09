@@ -9,7 +9,7 @@ import { ConfigError } from "@distilled.cloud/core/errors";
  * resolves it per request and formats the auth headers via
  * {@link formatHeaders}.
  */
-import * as Config from "effect/Config";
+import * as Config from "@distilled.cloud/core/config";
 import * as Context from "effect/Context";
 import * as Data from "effect/Data";
 import * as Effect from "effect/Effect";

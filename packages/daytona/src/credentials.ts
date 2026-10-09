@@ -20,7 +20,7 @@ import { ConfigError } from "@distilled.cloud/core/errors";
  * (see protocol.ts). `DAYTONA_API_KEY` / `DAYTONA_API_URL` are what the
  * official SDKs read.
  */
-import * as EffectConfig from "effect/Config";
+import * as EffectConfig from "@distilled.cloud/core/config";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";

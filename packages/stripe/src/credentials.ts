@@ -6,7 +6,7 @@
  * credentials on every request. `CredentialsFromEnv` reads `STRIPE_API_KEY`.
  */
 import { ConfigError } from "@distilled.cloud/core/errors";
-import * as EffectConfig from "effect/Config";
+import * as EffectConfig from "@distilled.cloud/core/config";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";

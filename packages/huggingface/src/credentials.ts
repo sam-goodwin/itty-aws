@@ -11,7 +11,7 @@ import { ConfigError } from "@distilled.cloud/core/errors";
  * at all, but the SDK always sends one: anonymous calls get much lower rate
  * limits and gated/private repos 404.
  */
-import * as EffectConfig from "effect/Config";
+import * as EffectConfig from "@distilled.cloud/core/config";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";

@@ -10,7 +10,7 @@ import { ConfigError } from "@distilled.cloud/core/errors";
  * GitHub App installation token, or the `GITHUB_TOKEN` an Actions run is
  * handed -- the REST API accepts all of them as bearer tokens.
  */
-import * as EffectConfig from "effect/Config";
+import * as EffectConfig from "@distilled.cloud/core/config";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";

@@ -7,7 +7,7 @@ import { ConfigError } from "@distilled.cloud/core/errors";
  * credentials on every request (the protocol layer resolves it per request
  * on the calling fiber).
  */
-import * as EffectConfig from "effect/Config";
+import * as EffectConfig from "@distilled.cloud/core/config";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
